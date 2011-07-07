@@ -1,0 +1,1431 @@
+//
+// [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+// Copyright (c) 2010-2011, Sven van der Meer <sven@vandermeer.de>
+// All rights reserved.
+//
+// Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+// modification, are permitted provided that the following conditions are met:
+// 
+//     + Redistributions of source code must retain the above copyright notice,
+//       this list of conditions and the following disclaimer.
+//     + Redistributions  in binary  form must  reproduce the  above copyright
+//       notice, this list  of conditions and  the following disclaimer  in the
+//       documentation and/or other materials provided with the distribution.
+//     + Neither the name of the the author nor the names of its contributors
+//       may be used to endorse or promote products derived from this software
+//       without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+// AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+// LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+// CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+// SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+// CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+
+//
+// Configuration file for the Org.SKB.Lang.Cola.Proto
+//
+// @package    org.skb.lang.cola.proto
+// @author     Sven van der Meer <sven@vandermeer.de>
+// @copyright  2011-2011 Sven van der Meer
+// @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+// @version    v0.30 build 110309 (09-Mar-11)
+//
+
+{
+    "a3ds":{
+        "tribe":{
+            "configuration":{
+                "name":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"COLA"
+                },
+                "name-lc":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"cola"
+                },
+                "copyright":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"Copyright (c) 2002-2011 Sven van der Meer <sven@vandermeer.de>"
+                },
+                "version":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"0.30"
+                },
+                "build":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"110309"
+                },
+                "build-date":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"2011-Mar-09"
+                },
+                "tribe-generic-stg":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/internal\/generic.stg"
+                }
+            }
+        },
+        "language":{
+            "configuration":{
+                "cola":{
+                    "a3ds:language:target:config:constid":"internalColaTgtCola"
+                },
+                "java":{
+                    "a3ds:language:target:config:constid":"internalColaTgtJava"
+                },
+                "php":{
+                    "a3ds:language:target:config:constid":"internalColaTgtPhp"
+                },
+                "xml":{
+                    "a3ds:language:target:config:constid":"internalColaTgtXml"
+                },
+                "sql":{
+                    "a3ds:language:target:config:constid":"internalColaTgtSql"
+                },
+                "internal-scope-sep":{
+                    "a3ds:language:target:config:constid":"keyScopeSep",
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"::"
+                },
+                "pr-stats":{
+                    "a3ds:language:target:config:constid":"keyPrStat",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"Show simple statistic information"
+                },
+                "pr-stats-all":{
+                    "a3ds:language:target:config:constid":"keyPrStatAll",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats-all",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"Show complete statistic information"
+                },
+                "pr-stats-ws":{
+                    "a3ds:language:target:config:constid":"keyPrStatsWScope",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats-ws",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"No scoped names in statistics"
+                },
+                "pr-stg-stats":{
+                    "a3ds:language:target:config:constid":"keyPrStgFileStats",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stg-stats",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"Print statistics string template"
+                },
+                "stat-stg":{
+                    "a3ds:language:target:config:constid":"keyStatStg",
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/statistics.stg",
+                    "cli:option:long":"stat-stg",
+                    "cli:option:arg-name":"file",
+                    "cli:option:type":"oat:atomic:java:string",
+                    "cli:usage:descr":"Group template file for statistics"
+                }
+            },
+            "targets":{
+                "cola":{
+                    "a3ds:language:target:name":"cola",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/cola.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".cola"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "a3ds:language:target:config:cli":{
+                        "xt-do-includes":{
+                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "a3ds:language:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "a3ds:language:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "java":{
+                    "a3ds:language:target:name":"java",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/java.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".java"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"."
+                    },
+                    "a3ds:language:target:config:cli":{
+                        "xt-do-imports":{
+                            "a3ds:language:target:config:constid":"keyXtDoImports",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-imports",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate imports (Java style)"
+                        },
+                        "xt-do-element-code":{
+                            "a3ds:language:target:config:constid":"keyXtDoElementCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-element-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate complete Element skeletons"
+                        },
+                        "xt-java-pkg":{
+                            "a3ds:language:target:config:constid":"keyXtJavaPackage",
+                            "at:type":"oat:atomic:java:string",
+                            "value:default":"",
+                            "cli:option:long":"xt-java-pkg",
+                            "cli:option:arg-name":"package",
+                            "cli:option:type":"oat:atomic:java:string",
+                            "cli:usage:descr":"Root package for java classes"
+                        },
+                        "tgt-split-code":{
+                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":true,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "a3ds:language:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "a3ds:language:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "php":{
+                    "a3ds:language:target:name":"php",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/php.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".php5"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "a3ds:language:target:config:cli":{
+                        "xt-do-includes":{
+                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes"
+                        },
+                        "xt-do-element-code":{
+                            "a3ds:language:target:config:constid":"keyXtDoElementCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-element-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate complete Element skeletons"
+                        },
+                        "tgt-split-code":{
+                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "a3ds:language:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "a3ds:language:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "xml":{
+                    "a3ds:language:target:name":"xml",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/xml.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".xml"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "tgt-stg-angle-br":{
+                        "value:default":false
+                    },
+                    "a3ds:language:target:config:cli":{
+                        "xt-do-includes":{
+                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false
+                        }
+                    }
+                },
+                "sql":{
+                    "a3ds:language:target:name":"sql",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/sql.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".sql"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "a3ds:language:target:config:cli":{
+                        "xt-do-includes":{
+                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false
+                        }
+                    }
+                }
+            },
+
+            "stgchunks":{
+                "mlcomment_start":{
+                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "mlcomment_end":{
+                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "slcomment":{
+                    "a3ds:tribe:stgchunk:mandatory": ["comment"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "colaSpecification":{
+                    "a3ds:tribe:stgchunk:mandatory": ["stage", "environment", "clevel", "language", "spec"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "colaFunction":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "parameter", "ret_type", "ret_array"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaFunctionParam":{
+                    "a3ds:tribe:stgchunk:mandatory": ["type", "array", "id"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "colaPropertyDecl":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "propertyScope", "apply", "aExtends", "aRequires",
+                                  "alterable", "negotiable", "priorityBT", "priorityCV", "description", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "aVisibility":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "colaPropertyDefList":{
+                    "a3ds:tribe:stgchunk:mandatory": ["property"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaPropertyDef":{
+                    "a3ds:tribe:stgchunk:mandatory": ["sn", "id", "type", "val", "array", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "colaContractDecl":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "contractScope", "description", "items" , "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "contractItem":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "property", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "contractItemProp":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "rank", "apply", "alterable", "negotiable", "description", "priorityBT", "priorityCV", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "colaContractDefList":{
+                    "a3ds:tribe:stgchunk:mandatory": ["contract", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaContractDef":{
+                    "a3ds:tribe:stgchunk:mandatory":  ["scoped_name", "id", "items", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaContractItemDef":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "properties", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaItemDef":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "val", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "colaPackage":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "body", "inline_code", "properties", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaElement":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aProvides", "aRequires", "inline_code", "properties", "contracts", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaFacility":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aRequires", "properties", "contracts", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaAction":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "parameter", "inline_code", "properties", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaParameter":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaTypeDef":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "propertiesInstances", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaAttribute":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaStruct":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "member", "inline_code", "properties", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "colaMember":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "const_value":{
+                    "a3ds:tribe:stgchunk:mandatory": ["type", "val"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+                "scoped_name":{
+                    "a3ds:tribe:stgchunk:mandatory": ["id", "add"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                },
+        
+                "inline_code":{
+                    "a3ds:tribe:stgchunk:mandatory": ["language", "code"],
+                    "a3ds:tribe:stgchunk:optional":  []
+                }
+            },
+
+            "tokens":{
+                // for parser
+                "parserARRAY":{
+                    "a3ds:language:target:tokens:cid":"parserARRAY",
+                    "a3ds:language:target:tokens:cval":"array",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "parserMEMBER":{
+                    "a3ds:language:target:tokens:cid":"parserMEMBER",
+                    "a3ds:language:target:tokens:cval":"member",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "parserIDENTIFIER":{
+                    "a3ds:language:target:tokens:cid":"parserIDENTIFIER",
+                    "a3ds:language:target:tokens:cval":"identifier",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "parserScopedName":{
+                    "a3ds:language:target:tokens:cid":"parserScopedName",
+                    "a3ds:language:target:tokens:cval":"scoped_name",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "parserBaseType ":{
+                    "a3ds:language:target:tokens:cid":"parserBaseType ",
+                    "a3ds:language:target:tokens:cval":"base_type",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "parserItemProp":{
+                    "a3ds:language:target:tokens:cid":"parserItemProp",
+                    "a3ds:language:target:tokens:cval":"item-property",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "parserScopeSep":{
+                    "a3ds:language:target:tokens:cid":"parserScopeSep",
+                    "a3ds:language:target:tokens:cval":"::",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscParrentID":{
+                    "a3ds:language:target:tokens:cid":"gcMiscParrentID",
+                    "a3ds:language:target:tokens:cval":"parrentId",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscParrentCat":{
+                    "a3ds:language:target:tokens:cid":"gcMiscParrentCat",
+                    "a3ds:language:target:tokens:cval":"parrentCategory",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscCurrentCat":{
+                    "a3ds:language:target:tokens:cid":"gcMiscCurrentCat",
+                    "a3ds:language:target:tokens:cval":"currentCategory",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInDefinition":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInDefinition",
+                    "a3ds:language:target:tokens:cval":"inDefinition",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInItem":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInItem",
+                    "a3ds:language:target:tokens:cval":"inItem",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInContract":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInContract",
+                    "a3ds:language:target:tokens:cval":"inContract",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInPackage":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInPackage",
+                    "a3ds:language:target:tokens:cval":"inPackage",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInElement":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInElement",
+                    "a3ds:language:target:tokens:cval":"inElement",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInFacility":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInFacility",
+                    "a3ds:language:target:tokens:cval":"inFacility",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInAction":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInAction",
+                    "a3ds:language:target:tokens:cval":"inAction",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscInStruct":{
+                    "a3ds:language:target:tokens:cid":"gcMiscInStruct",
+                    "a3ds:language:target:tokens:cval":"inStruct",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscSpecName":{
+                    "a3ds:language:target:tokens:cid":"gcMiscSpecName",
+                    "a3ds:language:target:tokens:cval":"specificationName",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "gcMiscCurrentScope":{
+                    "a3ds:language:target:tokens:cid":"gcMiscCurrentScope",
+                    "a3ds:language:target:tokens:cval":"currentScope",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+
+
+                // COLA Keywords
+                "colaACTION":{
+                    "a3ds:language:target:tokens:cid":"colaACTION",
+                    "a3ds:language:target:tokens:cval":"action",
+                    "a3ds:language:target:tokens:tid":"ACTION",
+                    "a3ds:language:target:tokens:tval":"keyword 'action'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaATTRIBUTE":{
+                    "a3ds:language:target:tokens:cid":"colaATTRIBUTE",
+                    "a3ds:language:target:tokens:cval":"attribute",
+                    "a3ds:language:target:tokens:tid":"ATTRIBUTE",
+                    "a3ds:language:target:tokens:tval":"keyword 'attribute'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaCONTRACT":{
+                    "a3ds:language:target:tokens:cid":"colaCONTRACT",
+                    "a3ds:language:target:tokens:cval":"contract",
+                    "a3ds:language:target:tokens:tid":"CONTRACT",
+                    "a3ds:language:target:tokens:tval":"keyword 'contract'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaDEFINITION":{
+                    "a3ds:language:target:tokens:cid":"colaDEFINITION",
+                    "a3ds:language:target:tokens:cval":"definition",
+                    "a3ds:language:target:tokens:tid":"DEFINITION",
+                    "a3ds:language:target:tokens:tval":"keyword 'definition'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaELEMENT":{
+                    "a3ds:language:target:tokens:cid":"colaELEMENT",
+                    "a3ds:language:target:tokens:cval":"element",
+                    "a3ds:language:target:tokens:tid":"ELEMENT",
+                    "a3ds:language:target:tokens:tval":"keyword 'element'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaFACILITY":{
+                    "a3ds:language:target:tokens:cid":"colaFACILITY",
+                    "a3ds:language:target:tokens:cval":"facility",
+                    "a3ds:language:target:tokens:tid":"FACILITY",
+                    "a3ds:language:target:tokens:tval":"keyword 'facility'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaFUNCTION":{
+                    "a3ds:language:target:tokens:cid":"colaFUNCTION",
+                    "a3ds:language:target:tokens:cval":"function",
+                    "a3ds:language:target:tokens:tid":"FUNCTON",
+                    "a3ds:language:target:tokens:tval":"keyword 'function'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaINV":{
+                    "a3ds:language:target:tokens:cid":"colaINV",
+                    "a3ds:language:target:tokens:cval":"inv",
+                    "a3ds:language:target:tokens:tid":"INVARIANT",
+                    "a3ds:language:target:tokens:tval":"keyword 'inv'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaITEM":{
+                    "a3ds:language:target:tokens:cid":"colaITEM",
+                    "a3ds:language:target:tokens:cval":"item",
+                    "a3ds:language:target:tokens:tid":"ITEM",
+                    "a3ds:language:target:tokens:tval":"keyword 'item'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaMANDATORY":{
+                    "a3ds:language:target:tokens:cid":"colaMANDATORY",
+                    "a3ds:language:target:tokens:cval":"mandatory",
+                    "a3ds:language:target:tokens:tid":"MANDATORY",
+                    "a3ds:language:target:tokens:tval":"keyword 'mandatory'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaNOT_DEF":{
+                    "a3ds:language:target:tokens:cid":"colaNOT_DEF",
+                    "a3ds:language:target:tokens:cval":"not_def",
+                    "a3ds:language:target:tokens:tid":"NOT_DEF",
+                    "a3ds:language:target:tokens:tval":"keyword 'not_def'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaOPTIONAL":{
+                    "a3ds:language:target:tokens:cid":"colaOPTIONAL",
+                    "a3ds:language:target:tokens:cval":"optional",
+                    "a3ds:language:target:tokens:tid":"OPTIONAL",
+                    "a3ds:language:target:tokens:tval":"keyword 'optional'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaPACKAGE":{
+                    "a3ds:language:target:tokens:cid":"colaPACKAGE",
+                    "a3ds:language:target:tokens:cval":"package",
+                    "a3ds:language:target:tokens:tid":"PACKAGE",
+                    "a3ds:language:target:tokens:tval":"keyword 'package'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaPARAMETER":{
+                    "a3ds:language:target:tokens:cid":"colaPARAMETER",
+                    "a3ds:language:target:tokens:cval":"parameter",
+                    "a3ds:language:target:tokens:tid":"PARAMETER",
+                    "a3ds:language:target:tokens:tval":"keyword 'parameter'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaPOST":{
+                    "a3ds:language:target:tokens:cid":"colaPOST",
+                    "a3ds:language:target:tokens:cval":"post",
+                    "a3ds:language:target:tokens:tid":"POST",
+                    "a3ds:language:target:tokens:tval":"keyword 'post'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaPRE":{
+                    "a3ds:language:target:tokens:cid":"colaPRE",
+                    "a3ds:language:target:tokens:cval":"pre",
+                    "a3ds:language:target:tokens:tid":"PRE",
+                    "a3ds:language:target:tokens:tval":"keyword 'pre'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaPROPERTY":{
+                    "a3ds:language:target:tokens:cid":"colaPROPERTY",
+                    "a3ds:language:target:tokens:cval":"property",
+                    "a3ds:language:target:tokens:tid":"PROPERTY",
+                    "a3ds:language:target:tokens:tval":"keyword 'property'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaREQUIRED":{
+                    "a3ds:language:target:tokens:cid":"colaREQUIRED",
+                    "a3ds:language:target:tokens:cval":"required",
+                    "a3ds:language:target:tokens:tid":"REQUIRED",
+                    "a3ds:language:target:tokens:tval":"keyword 'required'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaSPECIFICATION":{
+                    "a3ds:language:target:tokens:cid":"colaSPECIFICATION",
+                    "a3ds:language:target:tokens:cval":"cola-specification",
+                    "a3ds:language:target:tokens:tid":"SPECIFICATION",
+                    "a3ds:language:target:tokens:tval":"keyword 'cola-specification'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaSTRUCT":{
+                    "a3ds:language:target:tokens:cid":"colaSTRUCT",
+                    "a3ds:language:target:tokens:cval":"struct",
+                    "a3ds:language:target:tokens:tid":"STRUCT",
+                    "a3ds:language:target:tokens:tval":"keyword 'struct'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaTYPEDEF":{
+                    "a3ds:language:target:tokens:cid":"colaTYPEDEF",
+                    "a3ds:language:target:tokens:cval":"typedef",
+                    "a3ds:language:target:tokens:tid":"TYPEDEF",
+                    "a3ds:language:target:tokens:tval":"keyword 'typedef'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+
+
+                // COLA Keywords -> TYPES
+                "colaBINARY":{
+                    "a3ds:language:target:tokens:cid":"colaBINARY",
+                    "a3ds:language:target:tokens:cval":"binary",
+                    "a3ds:language:target:tokens:tid":"BINARY",
+                    "a3ds:language:target:tokens:tval":"keyword 'binary'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaBOOLEAN":{
+                    "a3ds:language:target:tokens:cid":"colaBOOLEAN",
+                    "a3ds:language:target:tokens:cval":"boolean",
+                    "a3ds:language:target:tokens:tid":"BOOLEAN",
+                    "a3ds:language:target:tokens:tval":"keyword 'boolean'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaCHAR":{
+                    "a3ds:language:target:tokens:cid":"colaCHAR",
+                    "a3ds:language:target:tokens:cval":"char",
+                    "a3ds:language:target:tokens:tid":"CHAR",
+                    "a3ds:language:target:tokens:tval":"keyword 'char'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaDOUBLE":{
+                    "a3ds:language:target:tokens:cid":"colaDOUBLE",
+                    "a3ds:language:target:tokens:cval":"double",
+                    "a3ds:language:target:tokens:tid":"DOUBLE",
+                    "a3ds:language:target:tokens:tval":"keyword 'double'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaFLOAT":{
+                    "a3ds:language:target:tokens:cid":"colaFLOAT",
+                    "a3ds:language:target:tokens:cval":"float",
+                    "a3ds:language:target:tokens:tid":"FLOAT",
+                    "a3ds:language:target:tokens:tval":"keyword 'float'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaHEX":{
+                    "a3ds:language:target:tokens:cid":"colaHEX",
+                    "a3ds:language:target:tokens:cval":"hex",
+                    "a3ds:language:target:tokens:tid":"HEX",
+                    "a3ds:language:target:tokens:tval":"keyword 'hex'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaINTEGER":{
+                    "a3ds:language:target:tokens:cid":"colaINTEGER",
+                    "a3ds:language:target:tokens:cval":"integer",
+                    "a3ds:language:target:tokens:tid":"INTEGER",
+                    "a3ds:language:target:tokens:tval":"keyword 'integer'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaLONG":{
+                    "a3ds:language:target:tokens:cid":"colaLONG",
+                    "a3ds:language:target:tokens:cval":"long",
+                    "a3ds:language:target:tokens:tid":"LONG",
+                    "a3ds:language:target:tokens:tval":"keyword 'long'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaOCTET":{
+                    "a3ds:language:target:tokens:cid":"colaOCTET",
+                    "a3ds:language:target:tokens:cval":"octet",
+                    "a3ds:language:target:tokens:tid":"OCTET",
+                    "a3ds:language:target:tokens:tval":"keyword 'octet'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaSHORT":{
+                    "a3ds:language:target:tokens:cid":"colaSHORT",
+                    "a3ds:language:target:tokens:cval":"short",
+                    "a3ds:language:target:tokens:tid":"SHORT",
+                    "a3ds:language:target:tokens:tval":"keyword 'short'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaSTRING":{
+                    "a3ds:language:target:tokens:cid":"colaSTRING",
+                    "a3ds:language:target:tokens:cval":"string",
+                    "a3ds:language:target:tokens:tid":"STRING",
+                    "a3ds:language:target:tokens:tval":"keyword 'string'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVOID":{
+                    "a3ds:language:target:tokens:cid":"colaVOID",
+                    "a3ds:language:target:tokens:cval":"void",
+                    "a3ds:language:target:tokens:tid":"VOID",
+                    "a3ds:language:target:tokens:tval":"keyword 'void'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+
+
+                // COLA Keywords -> VALUES
+                "colaFALSE":{
+                    "a3ds:language:target:tokens:cid":"colaFALSE",
+                    "a3ds:language:target:tokens:cval":"FALSE",
+                    "a3ds:language:target:tokens:tid":"FALSE",
+                    "a3ds:language:target:tokens:tval":"keyword 'FALSE'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaNULL":{
+                    "a3ds:language:target:tokens:cid":"colaNULL",
+                    "a3ds:language:target:tokens:cval":"NULL",
+                    "a3ds:language:target:tokens:tid":"NULL",
+                    "a3ds:language:target:tokens:tval":"keyword 'NULL'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaTRUE":{
+                    "a3ds:language:target:tokens:cid":"colaTRUE",
+                    "a3ds:language:target:tokens:cval":"TRUE",
+                    "a3ds:language:target:tokens:tid":"TRUE",
+                    "a3ds:language:target:tokens:tval":"keyword 'TRUE'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+
+
+                // COLA Keywords -> @@@
+                "colaAT_ALTERABLE":{
+                    "a3ds:language:target:tokens:cid":"colaAT_ALTERABLE",
+                    "a3ds:language:target:tokens:cval":"@alterable",
+                    "a3ds:language:target:tokens:tid":"AT_ALTERABLE",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@alterable'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_APPLY":{
+                    "a3ds:language:target:tokens:cid":"colaAT_APPLY",
+                    "a3ds:language:target:tokens:cval":"@apply",
+                    "a3ds:language:target:tokens:tid":"AT_APPLY",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@apply'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_CLEVEL":{
+                    "a3ds:language:target:tokens:cid":"colaAT_CLEVEL",
+                    "a3ds:language:target:tokens:cval":"@clevel",
+                    "a3ds:language:target:tokens:tid":"AT_CLEVEL",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@clevel'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_CONTAINS":{
+                    "a3ds:language:target:tokens:cid":"colaAT_CONTAINS",
+                    "a3ds:language:target:tokens:cval":"@contains",
+                    "a3ds:language:target:tokens:tid":"AT_CONTAINS",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@contains'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_DESCRIPTION":{
+                    "a3ds:language:target:tokens:cid":"colaAT_DESCRIPTION",
+                    "a3ds:language:target:tokens:cval":"@description",
+                    "a3ds:language:target:tokens:tid":"AT_DESCRIPTION",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@description'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_EXTENDS":{
+                    "a3ds:language:target:tokens:cid":"colaAT_EXTENDS",
+                    "a3ds:language:target:tokens:cval":"@extends",
+                    "a3ds:language:target:tokens:tid":"AT_EXTENDS",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@extends'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_ENVIRONMENT":{
+                    "a3ds:language:target:tokens:cid":"colaAT_ENVIRONMENT",
+                    "a3ds:language:target:tokens:cval":"@environment",
+                    "a3ds:language:target:tokens:tid":"AT_ENVIRONMENT",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@environment'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_LANGUAGE":{
+                    "a3ds:language:target:tokens:cid":"colaAT_LANGUAGE",
+                    "a3ds:language:target:tokens:cval":"@language",
+                    "a3ds:language:target:tokens:tid":"AT_LANGUAGE",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@language'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_NEGOTIABLE":{
+                    "a3ds:language:target:tokens:cid":"colaAT_NEGOTIABLE",
+                    "a3ds:language:target:tokens:cval":"@negotiable",
+                    "a3ds:language:target:tokens:tid":"AT_NEGOTIABLE",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@negotiable'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_PRIORITY":{
+                    "a3ds:language:target:tokens:cid":"colaAT_PRIORITY",
+                    "a3ds:language:target:tokens:cval":"@priority",
+                    "a3ds:language:target:tokens:tid":"AT_PRIORITY",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@priority'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_PROVIDES":{
+                    "a3ds:language:target:tokens:cid":"colaAT_PROVIDES",
+                    "a3ds:language:target:tokens:cval":"@provides",
+                    "a3ds:language:target:tokens:tid":"AT_PROVIDES",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@provides'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_RANK":{
+                    "a3ds:language:target:tokens:cid":"colaAT_RANK",
+                    "a3ds:language:target:tokens:cval":"@rank",
+                    "a3ds:language:target:tokens:tid":"AT_RANK",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@rank'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_REQUIRES":{
+                    "a3ds:language:target:tokens:cid":"colaAT_REQUIRES",
+                    "a3ds:language:target:tokens:cval":"@requires",
+                    "a3ds:language:target:tokens:tid":"AT_REQUIRES",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@requires'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_RETURN":{
+                    "a3ds:language:target:tokens:cid":"colaAT_RETURN",
+                    "a3ds:language:target:tokens:cval":"@return",
+                    "a3ds:language:target:tokens:tid":"AT_RETURN",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@return'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_RUNTIME":{
+                    "a3ds:language:target:tokens:cid":"colaAT_RUNTIME",
+                    "a3ds:language:target:tokens:cval":"@runtime",
+                    "a3ds:language:target:tokens:tid":"AT_RUNTIME",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@runtime'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_SCOPE":{
+                    "a3ds:language:target:tokens:cid":"colaAT_SCOPE",
+                    "a3ds:language:target:tokens:cval":"@scope",
+                    "a3ds:language:target:tokens:tid":"AT_SCOPE",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@scope'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_SPEC":{
+                    "a3ds:language:target:tokens:cid":"colaAT_SPEC",
+                    "a3ds:language:target:tokens:cval":"@scpec",
+                    "a3ds:language:target:tokens:tid":"AT_SPEC",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@scpec'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_STAGE":{
+                    "a3ds:language:target:tokens:cid":"colaAT_STAGE",
+                    "a3ds:language:target:tokens:cval":"@stage",
+                    "a3ds:language:target:tokens:tid":"AT_STAGE",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@stage'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_TYPE":{
+                    "a3ds:language:target:tokens:cid":"colaAT_TYPE",
+                    "a3ds:language:target:tokens:cval":"@type",
+                    "a3ds:language:target:tokens:tid":"AT_TYPE",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@type'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaAT_VISIBILITY":{
+                    "a3ds:language:target:tokens:cid":"colaAT_VISIBILITY",
+                    "a3ds:language:target:tokens:cval":"@visibility",
+                    "a3ds:language:target:tokens:tid":"AT_VISIBILITY",
+                    "a3ds:language:target:tokens:tval":"an @ keyword '@visibility'",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+
+
+                //for lexer to print proper error messages
+                "colaCPP_DIRECTIVE":{
+                    "a3ds:language:target:tokens:cid":"colaCPP_DIRECTIVE",
+                    "a3ds:language:target:tokens:cval":"preprocessor directive",
+                    "a3ds:language:target:tokens:tid":"CPP_DIRECTIVE",
+                    "a3ds:language:target:tokens:tval":"preprocessor directive",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaESC":{
+                    "a3ds:language:target:tokens:cid":"colaESC",
+                    "a3ds:language:target:tokens:cval":"escape sequence",
+                    "a3ds:language:target:tokens:tid":"ESC",
+                    "a3ds:language:target:tokens:tval":"escape sequence",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaFloatSuffix":{
+                    "a3ds:language:target:tokens:cid":"colaFloatSuffix",
+                    "a3ds:language:target:tokens:cval":"floating point suffix",
+                    "a3ds:language:target:tokens:tid":"FloatSuffix",
+                    "a3ds:language:target:tokens:tval":"floating point suffix",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaHexDigit":{
+                    "a3ds:language:target:tokens:cid":"colaHexDigit",
+                    "a3ds:language:target:tokens:cval":"hexadecimal digit",
+                    "a3ds:language:target:tokens:tid":"HexDigit",
+                    "a3ds:language:target:tokens:tval":"hexadecimal digit",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaIDENT":{
+                    "a3ds:language:target:tokens:cid":"colaIDENT",
+                    "a3ds:language:target:tokens:cval":"identifier",
+                    "a3ds:language:target:tokens:tid":"IDENT",
+                    "a3ds:language:target:tokens:tval":"an identifier",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaINLINE_CODE":{
+                    "a3ds:language:target:tokens:cid":"colaINLINE_CODE",
+                    "a3ds:language:target:tokens:cval":"inline code",
+                    "a3ds:language:target:tokens:tid":"INLINE_CODE",
+                    "a3ds:language:target:tokens:tval":"inline code",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaML_COMMENT":{
+                    "a3ds:language:target:tokens:cid":"colaML_COMMENT",
+                    "a3ds:language:target:tokens:cval":"multiple line comment",
+                    "a3ds:language:target:tokens:tid":"ML_COMMENT",
+                    "a3ds:language:target:tokens:tval":"multiple line comment",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaOctDigit":{
+                    "a3ds:language:target:tokens:cid":"colaOctDigit",
+                    "a3ds:language:target:tokens:cval":"otcal digit",
+                    "a3ds:language:target:tokens:tid":"OctDigit",
+                    "a3ds:language:target:tokens:tval":"otcal digit",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaOctalEscape":{
+                    "a3ds:language:target:tokens:cid":"colaOctalEscape",
+                    "a3ds:language:target:tokens:cval":"octal escape sequence",
+                    "a3ds:language:target:tokens:tid":"OctalEscape",
+                    "a3ds:language:target:tokens:tval":"octal escape sequence",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaSL_COMMENT":{
+                    "a3ds:language:target:tokens:cid":"colaSL_COMMENT",
+                    "a3ds:language:target:tokens:cval":"single line comment",
+                    "a3ds:language:target:tokens:tid":"SL_COMMENT",
+                    "a3ds:language:target:tokens:tval":"single line comment",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaUnicodeEscape":{
+                    "a3ds:language:target:tokens:cid":"colaUnicodeEscape",
+                    "a3ds:language:target:tokens:cval":"unicode escape sequence",
+                    "a3ds:language:target:tokens:tid":"UnicodeEscape",
+                    "a3ds:language:target:tokens:tval":"unicode escape sequence",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVAL_BINARY":{
+                    "a3ds:language:target:tokens:cid":"colaVAL_BINARY",
+                    "a3ds:language:target:tokens:cval":"binary value",
+                    "a3ds:language:target:tokens:tid":"VAL_BINARY",
+                    "a3ds:language:target:tokens:tval":"binary value",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVAL_CHAR":{
+                    "a3ds:language:target:tokens:cid":"colaVAL_CHAR",
+                    "a3ds:language:target:tokens:cval":"character value",
+                    "a3ds:language:target:tokens:tid":"VAL_CHAR",
+                    "a3ds:language:target:tokens:tval":"character value",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVAL_FLOAT":{
+                    "a3ds:language:target:tokens:cid":"colaVAL_FLOAT",
+                    "a3ds:language:target:tokens:cval":"floating point value",
+                    "a3ds:language:target:tokens:tid":"VAL_FLOAT",
+                    "a3ds:language:target:tokens:tval":"floating point value",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVAL_HEX":{
+                    "a3ds:language:target:tokens:cid":"colaVAL_HEX",
+                    "a3ds:language:target:tokens:cval":"hexadecimal value",
+                    "a3ds:language:target:tokens:tid":"VAL_HEX",
+                    "a3ds:language:target:tokens:tval":"hexadecimal value",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVAL_INTEGER":{
+                    "a3ds:language:target:tokens:cid":"colaVAL_INTEGER",
+                    "a3ds:language:target:tokens:cval":"integer value",
+                    "a3ds:language:target:tokens:tid":"VAL_INTEGER",
+                    "a3ds:language:target:tokens:tval":"integer value",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVAL_OCT":{
+                    "a3ds:language:target:tokens:cid":"colaVAL_OCT",
+                    "a3ds:language:target:tokens:cval":"octal value",
+                    "a3ds:language:target:tokens:tid":"VAL_OCT",
+                    "a3ds:language:target:tokens:tval":"octal value",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaVAL_STRING":{
+                    "a3ds:language:target:tokens:cid":"colaVAL_STRING",
+                    "a3ds:language:target:tokens:cval":"string value",
+                    "a3ds:language:target:tokens:tid":"VAL_STRING",
+                    "a3ds:language:target:tokens:tval":"string value",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+                "colaWS":{
+                    "a3ds:language:target:tokens:cid":"colaWS",
+                    "a3ds:language:target:tokens:cval":"whitespace",
+                    "a3ds:language:target:tokens:tid":"WS",
+                    "a3ds:language:target:tokens:tval":"whitespace",
+                    "a3ds:language:target:tokens:cjavadoc":""
+                },
+
+
+                //for lexer to print proper error messages
+                ";":{
+                    "a3ds:language:target:tokens:tid":"';'",
+                    "a3ds:language:target:tokens:tval":"character ';'"
+                },
+                "}":{
+                    "a3ds:language:target:tokens:tid":"'}'",
+                    "a3ds:language:target:tokens:tval":"character '}'"
+                },
+                "=":{
+                    "a3ds:language:target:tokens:tid":"'='",
+                    "a3ds:language:target:tokens:tval":"character '='"
+                },
+                "(":{
+                    "a3ds:language:target:tokens:tid":"'('",
+                    "a3ds:language:target:tokens:tval":"character '('"
+                },
+                ":":{
+                    "a3ds:language:target:tokens:tid":"':'",
+                    "a3ds:language:target:tokens:tval":"character ':'"
+                },
+                "::":{
+                    "a3ds:language:target:tokens:tid":"'::'",
+                    "a3ds:language:target:tokens:tval":"scope operator '::'"
+                },
+                "[":{
+                    "a3ds:language:target:tokens:tid":"'['",
+                    "a3ds:language:target:tokens:tval":"character '['"
+                },
+                ",":{
+                    "a3ds:language:target:tokens:tid":"','",
+                    "a3ds:language:target:tokens:tval":"character ','"
+                },
+                ")":{
+                    "a3ds:language:target:tokens:tid":"')'",
+                    "a3ds:language:target:tokens:tval":"character ')'"
+                },
+                "{":{
+                    "a3ds:language:target:tokens:tid":"'{'",
+                    "a3ds:language:target:tokens:tval":"character '{'"
+                },
+                "]":{
+                    "a3ds:language:target:tokens:tid":"']'",
+                    "a3ds:language:target:tokens:tval":"character ']'"
+                }
+            },
+
+            "rules":{
+                "property:01":{
+                    "a3ds:language:target:config:constid":"ruleProperty01",
+                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "a3ds:language:parser:rules:message:add":"all mandatory properties need to be declared",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:02":{
+                    "a3ds:language:target:config:constid":"ruleProperty02",
+                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "a3ds:language:parser:rules:message:add":"all required properties need to be declared",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:03":{
+                    "a3ds:language:target:config:constid":"ruleProperty03",
+                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "a3ds:language:parser:rules:message:add":"required properties must be declared non-empty",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:04":{
+                    "a3ds:language:target:config:constid":"ruleProperty04",
+                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "a3ds:language:parser:rules:message:add":"required properties must be declared non-empty",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:05":{
+                    "a3ds:language:target:config:constid":"ruleProperty05",
+                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:06":{
+                    "a3ds:language:target:config:constid":"ruleProperty06",
+                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:07":{
+                    "a3ds:language:target:config:constid":"ruleProperty07",
+                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:08":{
+                    "a3ds:language:target:config:constid":"ruleProperty08",
+                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:09":{
+                    "a3ds:language:target:config:constid":"ruleProperty09",
+                    "a3ds:language:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "a3ds:language:parser:rules:message:add":"note: typedef, struct and member are handled as attributes",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "property:10":{
+                    "a3ds:language:target:config:constid":"ruleProperty10",
+                    "a3ds:language:parser:rules:message":"declaration of unknown ####",
+                    "a3ds:language:parser:rules:message:add":"#### <%s> is not specified",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY",
+                    "a3ds:language:target:rules:message:add:insert:path":"colaPROPERTY"
+                },
+                "property:11":{
+                    "a3ds:language:target:config:constid":"ruleProperty11",
+                    "a3ds:language:parser:rules:message":"empty description in <%s> <%s>",
+                    "a3ds:language:parser:rules:message:add":"description needs to be a non-empty ####",
+                    "a3ds:language:target:rules:message:add:insert:path":"colaSTRING"
+                },
+                "property:12":{
+                    "a3ds:language:target:config:constid":"ruleProperty12",
+                    "a3ds:language:parser:rules:message":"type mismatch for <%s> declaration <%s>",
+                    "a3ds:language:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>"
+                },
+                "property:13":{
+                    "a3ds:language:target:config:constid":"ruleProperty13",
+                    "a3ds:language:parser:rules:message":"potential type mismatch for <%s> declaration <%s>",
+                    "a3ds:language:parser:rules:message:add":"type declared is <%s>, value associated is of type %s"
+                },
+                "property:14":{
+                    "a3ds:language:target:config:constid":"ruleProperty14",
+                    "a3ds:language:parser:rules:message":"#### scope <%s> redefined for #### <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+
+                "contract:01":{
+                    "a3ds:language:target:config:constid":"ruleContract01",
+                    "a3ds:language:parser:rules:message":"#### defined more than once: <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                },
+                "contract:02":{
+                    "a3ds:language:target:config:constid":"ruleContract02",
+                    "a3ds:language:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                },
+                "contract:03":{
+                    "a3ds:language:target:config:constid":"ruleContract03",
+                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "a3ds:language:parser:rules:message:add":"all mandatory contracts need to be declared",
+                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                },
+                "contract:04":{
+                    "a3ds:language:target:config:constid":"ruleContract04",
+                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "a3ds:language:parser:rules:message:add":"all required contracts need to be declared",
+                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                },
+                "contract:05":{
+                    "a3ds:language:target:config:constid":"ruleContract05",
+                    "a3ds:language:parser:rules:message":"#### scope <%s> redefined for %s <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                },
+                
+                "item:01":{
+                    "a3ds:language:target:config:constid":"ruleItem01",
+                    "a3ds:language:parser:rules:message":"missing declared item <%s> for declared contract <%2>",
+                    "a3ds:language:parser:rules:message:add":"all declared items must be defined"
+                },
+                "item:02":{
+                    "a3ds:language:target:config:constid":"ruleItem02",
+                    "a3ds:language:parser:rules:message":"declaration of unknown ####",
+                    "a3ds:language:parser:rules:message:add":"#### <%s> is not specified",
+                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp",
+                    "a3ds:language:target:rules:message:add:insert:path":"parserItemProp"
+                },
+                "item:03":{
+                    "a3ds:language:target:config:constid":"ruleItem03",
+                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                },
+                "item:04":{
+                    "a3ds:language:target:config:constid":"ruleItem04",
+                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                },
+                "item:05":{
+                    "a3ds:language:target:config:constid":"ruleItem05",
+                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                },
+                "item:06":{
+                    "a3ds:language:target:config:constid":"ruleItem06",
+                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "a3ds:language:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                },
+                "item:07":{
+                    "a3ds:language:target:config:constid":"ruleItem07",
+                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "a3ds:language:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                },
+                "item:08":{
+                    "a3ds:language:target:config:constid":"ruleItem08",
+                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "a3ds:language:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                },
+                "item:09":{
+                    "a3ds:language:target:config:constid":"ruleItem09",
+                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "a3ds:language:parser:rules:message:add":"all mandatory item-properties need to be declared",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+                "item:10":{
+                    "a3ds:language:target:config:constid":"ruleItem10",
+                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "a3ds:language:parser:rules:message:add":"all required item-properties need to be declared",
+                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                },
+
+                "identifier:01":{
+                    "a3ds:language:target:config:constid":"ruleIdentifier01",
+                    "a3ds:language:parser:rules:message":"#### used more than once",
+                    "a3ds:language:parser:rules:message:add":"#### <%s> in property definitions",
+                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "a3ds:language:target:rules:message:add:insert:path":"parserIDENTIFIER"
+                },
+                "identifier:02":{
+                    "a3ds:language:target:config:constid":"ruleIdentifier02",
+                    "a3ds:language:parser:rules:message":"#### used more than once",
+                    "a3ds:language:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
+                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER"
+                },
+                "identifier:03":{
+                    "a3ds:language:target:config:constid":"ruleIdentifier03",
+                    "a3ds:language:parser:rules:message":"#### used more than once",
+                    "a3ds:language:parser:rules:message:add":"#### <%s> in item-property definitions",
+                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "a3ds:language:target:rules:message:add:insert:path":"parserIDENTIFIER"
+                },
+                "identifier:04":{
+                    "a3ds:language:target:config:constid":"ruleIdentifier04",
+                "a3ds:language:parser:rules:message":"#### used more than once",
+                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
+                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "a3ds:language:target:rules:message:add:insert:path":"parserItemProp"
+                },
+                "identifier:05":{
+                    "a3ds:language:target:config:constid":"ruleIdentifier05",
+                    "a3ds:language:parser:rules:message":"#### used more than once",
+                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
+                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "a3ds:language:target:rules:message:add:insert:path":"colaPROPERTY"
+                },
+                "identifier:06":{
+                    "a3ds:language:target:config:constid":"ruleIdentifier06",
+                    "a3ds:language:parser:rules:message":"#### used more than once",
+                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
+                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "a3ds:language:target:rules:message:add:insert:path":"colaCONTRACT"
+                },
+                
+                "scoped-name:01":{
+                    "a3ds:language:target:config:constid":"ruleScopedName01",
+                    "a3ds:language:parser:rules:message":"",
+                    "a3ds:language:parser:rules:message:add":""
+                },
+                "scoped-name:02":{
+                    "a3ds:language:target:config:constid":"ruleScopedName02",
+                    "a3ds:language:parser:rules:message":"",
+                    "a3ds:language:parser:rules:message:add":""
+                },
+                "scoped-name:03":{
+                    "a3ds:language:target:config:constid":"ruleScopedName03",
+                    "a3ds:language:parser:rules:message":"",
+                    "a3ds:language:parser:rules:message:add":""
+                },
+                "scoped-name:04":{
+                    "a3ds:language:target:config:constid":"ruleScopedName04",
+                    "a3ds:language:parser:rules:message":"",
+                    "a3ds:language:parser:rules:message:add":""
+                },
+                "scoped-name:05":{
+                    "a3ds:language:target:config:constid":"ruleScopedName05",
+                    "a3ds:language:parser:rules:message":"",
+                    "a3ds:language:parser:rules:message:add":""
+                },
+                "scoped-name:06":{
+                    "a3ds:language:target:config:constid":"ruleScopedName06",
+                    "a3ds:language:parser:rules:message":"",
+                    "a3ds:language:parser:rules:message:add":""
+                }
+
+            }
+        }
+    }
+}

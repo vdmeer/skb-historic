@@ -1,0 +1,296 @@
+/* Copyright (c) 2010-2011 Sven van der Meer (sven@vandermeer.de)
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Template file for the target sql in Org.SKB.Lang.Cola.Proto
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.30 build 110309 (09-Mar-11) for StringTemplate v3.2.1
+ */
+
+group sql;
+
+mlcomment_start(dummy) ::= "/*"
+mlcomment_end(dummy) ::= "*/"
+slcomment(comment) ::= "-- <comment>"
+
+
+colaSpecification(stage, environment, clevel, language, spec) ::= <<
+INSERT OR IGNORE INTO a3dsSpec (key, "a3ds:languages:stage", "a3ds:languages:environment", "a3ds:languages:clevel", "a3ds:languages:language", "a3ds:languages:cola:definition") VALUES ('<stage>:<environment>:<clevel>:<language>:<spec>', '<stage>', '<environment>', '<clevel>', '<language>', '<spec>');
+
+INSERT OR IGNORE INTO colaDefinition (key, "a3ds:languages:spec", "a3ds:languages:cola:++body_keys") VALUES('<spec>', '<spec>', '');
+>>
+
+
+colaFunction(id, parameter, ret_type, ret_array) ::= <<
+//a3ds:languages:cola:param-list::base_type
+//a3ds:languages:cola:return-type::base_type
+>>
+colaFunctionParam(type, id, array) ::= << >>
+
+
+colaPropertyDecl(id, type, val, array, propertyScope, apply, aExtends, aRequires, alterable, negotiable, priorityBT, priorityCV, description, misc) ::= <<
+<if(misc.inPackage)>
+INSERT OR IGNORE INTO colaPropertyDecl (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:property:at_type", "a3ds:languages:cola:property:at_scope", "a3ds:languages:cola:property:apply+pre", "a3ds:languages:cola:property:apply+post", "a3ds:languages:cola:property:apply+inv", "a3ds:languages:cola:property:at_alterable", "a3ds:languages:cola:property:at_negotiable", "a3ds:languages:cola:property:at_description", "a3ds:languages:cola:property:at_extends", "a3ds:languages:cola:property:at_requires", "a3ds:languages:cola:property:at_priority") VALUES ('<misc.specificationName>++<misc.currentScope>', 'colaPropertyDecl', '<misc.specificationName>++<misc.parrentScope>%<misc.parrentCategory>', '<misc.specificationName>++<id>', '<id>', '<type><if(array)>[]<endif>%<val; separator=",">', 'contract%<propertyScope.contract>,package%<propertyScope.package>,element%<propertyScope.element>,facility%<propertyScope.facility>,action%<propertyScope.action>,parameter%<propertyScope.parameter>,attribute%<propertyScope.attribute>', '<if(apply.pre)><first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}><endif>', '<if(apply.post)><first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}><endif>', '<if(apply.inv)><first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}><endif>', '<if(alterable)>1<else>0<endif>', '<if(negotiable)>1<else>0<endif>', '<description>', '<if(aExtends)><aExtends; separator=","><endif>', '<if(aRequires)><aRequires; separator=","><endif>', '<if(priorityBT)><priorityBT>%<priorityCV><endif>');
+UPDATE colaPackage SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';
+<else>
+INSERT OR IGNORE INTO colaPropertyDecl (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:property:at_type", "a3ds:languages:cola:property:at_scope", "a3ds:languages:cola:property:apply+pre", "a3ds:languages:cola:property:apply+post", "a3ds:languages:cola:property:apply+inv", "a3ds:languages:cola:property:at_alterable", "a3ds:languages:cola:property:at_negotiable", "a3ds:languages:cola:property:at_description", "a3ds:languages:cola:property:at_extends", "a3ds:languages:cola:property:at_requires", "a3ds:languages:cola:property:at_priority") VALUES ('<misc.specificationName>++<misc.currentScope>', 'colaPropertyDecl', '<misc.specificationName>%<misc.parrentCategory>', '<misc.specificationName>++<id>', '<id>', '<type><if(array)>[]<endif>%<val; separator=",">', 'contract%<propertyScope.contract>,package%<propertyScope.package>,element%<propertyScope.element>,facility%<propertyScope.facility>,action%<propertyScope.action>,parameter%<propertyScope.parameter>,attribute%<propertyScope.attribute>', '<if(apply.pre)><first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}><endif>', '<if(apply.post)><first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}><endif>', '<if(apply.inv)><first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}><endif>', '<if(alterable)>1<else>0<endif>', '<if(negotiable)>1<else>0<endif>', '<description>', '<if(aExtends)><aExtends; separator=","><endif>', '<if(aRequires)><aRequires; separator=","><endif>', '<if(priorityBT)><priorityBT>%<priorityCV><endif>');
+UPDATE colaDefinition SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>';
+<endif>
+
+>>
+aVisibility(id) ::= << >>
+
+
+colaPropertyDefList(property) ::=<<
+<if(property)><property; separator="\n"><endif>
+>>
+colaPropertyDef(sn, id, type, val, array, misc) ::= <<
+INSERT OR IGNORE INTO colaPropertyDefList (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:colaPropertyDef_keys") VALUES ('<misc.specificationName>++<misc.currentScope>', 'colaPropertyDefList', '<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>', '');
+INSERT OR IGNORE INTO colaPropertyDef (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:property:decl", "a3ds:languages:cola:property:type", "a3ds:languages:cola:const_value-list") VALUES ('<misc.specificationName>++<misc.currentScope>::<sn>::<id>', 'colaPropertyDef', '<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>', '<id>', '<sn>', '<type>', '<if(val)><val; separator=","><endif>');
+UPDATE colaPropertyDefList SET "a3ds:languages:cola:colaPropertyDef_keys" = "a3ds:languages:cola:colaPropertyDef_keys" || ',<misc.specificationName>++<misc.currentScope>::<sn>::<id>' WHERE key = '<misc.specificationName>++<misc.currentScope>';
+
+>>
+
+
+
+
+colaContractDecl(id, contractScope, description, items, misc) ::= <<
+<if(misc.inPackage)>
+INSERT OR IGNORE INTO colaContractDecl (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:contract:at_scope", "a3ds:languages:cola:contract:at_description", "a3ds:languages:cola:contractItem_keys") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaContractDecl', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', 'element%<contractScope.element>,facility%<contractScope.facility>', '<description>', '');
+<else>
+INSERT OR IGNORE INTO colaContractDecl (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:contract:at_scope", "a3ds:languages:cola:contract:at_description", "a3ds:languages:cola:contractItem_keys") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaContractDecl', '<misc.specificationName>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', 'element%<contractScope.element>,facility%<contractScope.facility>', '<description>', '');
+<endif>
+
+  <if(items)><items; separator="\n"><endif>
+
+>>
+
+
+
+contractItem(id, property, misc) ::= <<
+INSERT OR IGNORE INTO contractItem (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:contractItemProp_keys") VALUES ('<misc.specificationName>++<misc.currentScope>', 'contractItem', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '');
+  <property; separator="\n">
+
+UPDATE colaContractDecl SET "a3ds:languages:cola:contractItem_keys" = "a3ds:languages:cola:contractItem_keys" || ',<misc.specificationName>++<misc.currentScope>' WHERE key = '<misc.specificationName>++<misc.parrentId>';
+
+>>
+
+
+
+contractItemProp(id, type, val, array, rank, apply, alterable, negotiable, priorityBT, priorityCV, description, misc) ::= <<
+INSERT OR IGNORE INTO contractItemProp (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:property:at_type", "a3ds:languages:cola:property:at_scope", "a3ds:languages:cola:property:apply+pre", "a3ds:languages:cola:property:apply+post", "a3ds:languages:cola:property:apply+inv", "a3ds:languages:cola:property:at_alterable", "a3ds:languages:cola:property:at_negotiable", "a3ds:languages:cola:property:at_description", "a3ds:languages:cola:property:at_priority") VALUES ('<misc.specificationName>++<misc.currentScope>', 'contractItemProp', '<misc.specificationName>++<misc.parrentScope>%<misc.parrentCategory>', '<misc.specificationName>++<id>', '<id>', '<type><if(array)>[]<endif>%<val; separator=",">', '<rank>', '<if(apply.pre)><first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}><endif>', '<if(apply.post)><first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}><endif>', '<if(apply.inv)><first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}><endif>', '<if(alterable)>1<else>0<endif>', '<if(negotiable)>1<else>0<endif>', '<description>', '<if(priorityBT)><priorityBT>%<priorityCV><endif>');
+
+UPDATE contractItem SET "a3ds:languages:cola:contractItemProp_keys" = "a3ds:languages:cola:contractItemProp_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';
+>>
+
+
+colaContractDefList(contract, misc) ::= <<
+>>
+
+
+
+colaContractDef(scoped_name, id, items, misc) ::= <<
+>>
+
+
+
+colaContractItemDef(id, properties, misc) ::= <<
+>>
+
+
+colaItemDef(id, val, misc) ::= <<
+>>
+
+
+
+colaPackage(id, body, inline_code, properties, misc) ::= <<
+
+<if(misc.inPackage)>
+INSERT OR IGNORE INTO colaPackage (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaPackage', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '', '<inline_code>');
+<else>
+INSERT OR IGNORE INTO colaPackage (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaPackage', '<misc.specificationName>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '', '<inline_code>');
+<endif>
+
+
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+UPDATE colaPackage SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';  
+<else>
+UPDATE colaDefinition SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>';
+<endif>
+
+  <body>
+
+>>
+
+
+colaElement(id, body, aExtends, aProvides, aRequires, inline_code, properties, contracts, misc) ::= <<
+<if(misc.inPackage)>
+INSERT OR IGNORE INTO colaElement (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:colaContractDefList_key", "a3ds:languages:cola:element:at_extends", "a3ds:languages:cola:element:at_provides", "a3ds:languages:cola:element:at_requires", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaElement', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<misc.specificationName>++<misc.currentScope>', '<if(aExtends)><aExtends><endif>', '<if(aProvides)><aProvides; separator=","><endif>', '<if(aRequires)><aRequires; separator=","><endif>', '', '<inline_code>');  
+<else>
+INSERT OR IGNORE INTO colaElement (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:colaContractDefList_key", "a3ds:languages:cola:element:at_extends", "a3ds:languages:cola:element:at_provides", "a3ds:languages:cola:element:at_requires", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaElement', '<misc.specificationName>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<misc.specificationName>++<misc.currentScope>', '<if(aExtends)><aExtends><endif>', '<if(aProvides)><aProvides; separator=","><endif>', '<if(aRequires)><aRequires; separator=","><endif>', '', '<inline_code>');
+<endif>
+
+<if(contracts)><contracts><endif>
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+UPDATE colaPackage SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';  
+<else>
+UPDATE colaDefinition SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>';
+<endif>
+
+  <body>
+
+>>
+
+
+colaFacility(id, body, aExtends, aRequires, properties, contracts, misc) ::= <<
+<if(misc.inPackage)>
+INSERT OR IGNORE INTO colaFacility(key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:colaContractDefList_key", "a3ds:languages:cola:facility:at_extends", "a3ds:languages:cola:facility:at_requires", "a3ds:languages:cola:++body_keys") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaFacility', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<misc.specificationName>++<misc.currentScope>', '<if(aExtends)><aExtends; separator=","><endif>', '<if(aRequires)><aRequires; separator=","><endif>', '');  
+<else>
+INSERT OR IGNORE INTO colaFacility(key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:colaContractDefList_key", "a3ds:languages:cola:facility:at_extends", "a3ds:languages:cola:facility:at_requires", "a3ds:languages:cola:++body_keys") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaFacility', '<misc.specificationName>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<misc.specificationName>++<misc.currentScope>', '<if(aExtends)><aExtends; separator=","><endif>', '<if(aRequires)><aRequires; separator=","><endif>', '');
+<endif>
+
+<if(contracts)><contracts><endif>
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+UPDATE colaPackage SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';  
+<else>
+UPDATE colaDefinition SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>';
+<endif>
+
+  <body>
+
+>>
+
+
+colaAction(id, type, parameter, inline_code, properties, misc) ::= <<
+<if(misc.inElement)>
+INSERT OR IGNORE INTO colaAction (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:action:return-scoped_name", "a3ds:languages:cola:action:return-based_type", "a3ds:languages:cola:action:return-void", "a3ds:languages:cola:action:return-array", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaAction', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.void)>1<else>0<endif>', '<if(type.array)>1<else>0<endif>', '', '<inline_code>');  
+<elseif(misc.inFacility)>
+INSERT OR IGNORE INTO colaAction (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:action:return-scoped_name", "a3ds:languages:cola:action:return-based_type", "a3ds:languages:cola:action:return-void", "a3ds:languages:cola:action:return-array", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaAction', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.void)>1<else>0<endif>', '<if(type.array)>1<else>0<endif>', '', '<inline_code>');
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inElement)>
+UPDATE colaElement SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';  
+<elseif(misc.inFacility)>
+UPDATE colaFacility SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';
+<endif>
+
+  <parameter; separator="\n">
+
+>>
+
+colaParameter(id, type, properties, misc) ::= <<
+INSERT OR IGNORE INTO colaParameter (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:parameter:type-scoped_name", "a3ds:languages:cola:parameter:type-based_type", "a3ds:languages:cola:parameter:type-array") VALUES('<misc.specificationName>++<misc.currentScope>::<id>', 'colaParameter', '<misc.specificationName>++<misc.currentScope>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>::<id>', '<id>', '<misc.specificationName>++<misc.currentScope>::<id>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.array)>1<else>0<endif>');
+<if(properties)><properties><endif>
+
+UPDATE colaAction SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>::<id>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';
+
+>>
+
+
+colaTypeDef(id, type, inline_code, properties, propertiesInstances, misc) ::= <<
+<if(misc.inPackage)>
+INSERT OR IGNORE INTO colaTypeDef (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:typedef:type-scoped_name", "a3ds:languages:cola:typedef:type-based_type", "a3ds:languages:cola:typedef:type-array", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaTypeDef', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.array)>1<else>0<endif>', '<inline_code; separator="\n">');  
+<else>
+INSERT OR IGNORE INTO colaTypeDef (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:typedef:type-scoped_name", "a3ds:languages:cola:typedef:type-based_type", "a3ds:languages:cola:typedef:type-array", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaTypeDef', '<misc.specificationName>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.array)>1<else>0<endif>', '<inline_code; separator="\n">');
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+UPDATE colaPackage SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';  
+<else>
+UPDATE colaDefinition SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>';
+<endif>
+
+
+>>
+
+
+colaAttribute(id, type, inline_code, properties, misc) ::= <<
+<if(misc.inElement)>
+INSERT OR IGNORE INTO colaAttribute (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:attribute:type-scoped_name", "a3ds:languages:cola:attribute:type-based_type", "a3ds:languages:cola:attribute:type-array", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaAttribute', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.array)>1<else>0<endif>', '<inline_code; separator="\n">');
+<elseif(misc.inFacility)>
+INSERT OR IGNORE INTO colaAttribute (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:attribute:type-scoped_name", "a3ds:languages:cola:attribute:type-based_type", "a3ds:languages:cola:attribute:type-array", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaAttribute', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.array)>1<else>0<endif>', '<inline_code; separator="\n">');
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inElement)>
+UPDATE colaElement SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';  
+<elseif(misc.inFacility)>
+UPDATE colaFacility SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';
+<endif>
+
+>>
+
+
+colaStruct(id, member, inline_code, properties, misc) ::= <<
+<if(misc.inPackage)>
+INSERT OR IGNORE INTO colaStruct (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaStruct', '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '', '<inline_code; separator="\n">');  
+<else>
+INSERT OR IGNORE INTO colaStruct (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:++body_keys", "a3ds:languages:cola:inline_code") VALUES('<misc.specificationName>++<misc.currentScope>', 'colaStruct', '<misc.specificationName>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '', '<inline_code; separator="\n">');
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+UPDATE colaPackage SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';  
+<else>
+UPDATE colaDefinition SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>' WHERE key = '<misc.specificationName>';
+<endif>
+
+<if(member)><member; separator="\n"><endif>
+
+>>
+
+colaMember(id, type, properties, misc) ::= <<
+INSERT OR IGNORE INTO colaMember (key, "a3ds:language:scope:current", "a3ds:languages:cola:++IDENT", "a3ds:languages:cola:IDENT+SC", "a3ds:languages:cola:IDENT", "a3ds:languages:cola:colaPropertyDefList_key", "a3ds:languages:cola:member:type-scoped_name", "a3ds:languages:cola:member:type-based_type", "a3ds:languages:cola:member:type-array") VALUES('<misc.specificationName>++<misc.currentScope>::<id>', 'colaMember', '<misc.specificationName>++<misc.currentScope>%<misc.parrentCategory>', '<misc.specificationName>++<misc.currentScope>', '<id>', '<misc.specificationName>++<misc.currentScope>', '<if(type.scoped_name)><type.scoped_name><endif>', '<if(type.base_type)><type.base_type><endif>', '<if(type.array)>1<else>0<endif>');
+<if(properties)><properties><endif>
+
+UPDATE colaStruct SET "a3ds:languages:cola:++body_keys" = "a3ds:languages:cola:++body_keys" || ',<misc.specificationName>++<misc.currentScope>::<id>%<misc.currentCategory>' WHERE key = '<misc.specificationName>++<misc.parrentId>';
+
+>>
+
+const_value(type, val) ::= "<val>"
+scoped_name(id, add) ::= <<<id; separator="::">
+>>
+
+
+inline_code(language, code) ::= "{@language=<language> \<\<?<code>?\>\>}"

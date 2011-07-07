@@ -1,0 +1,119 @@
+@stage design;
+@environment test;
+@clevel system;
+@language cola;
+@spec rina;
+
+property Description: @type(string = NULL)
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:optional] [attribute:mandatory] [parameter:not_def])
+  @apply(inv)
+  @description("###tbd");
+
+property Enum_ValueMap: @type(short[] = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("###tbd");
+
+property Enum_Values: @type(string[] = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("###tbd");
+
+property GPB_Type: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("Translation of COLA types to Target language types");
+
+property GPB_Optional: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("###tbd");
+
+property GPB_Required: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("###tbd");
+
+property GPB_Order: @type(short = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("###tbd");
+
+property GPB_Order_Default: @type(short = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("###tbd");
+
+[Description descr("tbd"),
+ GPB_Type gt("enum"),
+ Enum_ValueMap vm(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17),
+ Enum_Values v("M_CONNECT", "M_CONNECT_R", "M_RELEASE", "M_RELEASE_R", "M_CREATE", "M_CREATE_R", "M_DELETE", "M_DELETE_R", "M_READ", "M_READ_R", "M_CANCELREAD", "M_CANCELREAD_R", "M_WRITE", "M_WRITE_R", "M_START", "M_START_R", "M_STOP", "M_STOP_R")]
+typedef short opCode_t;
+
+[Description descr("1=set on READ/WRITE to request synchronous r/w; 2=set on all but final reply to an M_READ"),
+ GPB_Type gt("enum"),
+ Enum_ValueMap vm(1, 2),
+ Enum_Values v("F_SYNC", "F_RD_INCOMPLETE")]
+typedef short flagValues_t;
+
+[Description descr("value of an object"), GPB_Type gt("message")]
+struct objVal_t {
+  [GPB_Optional g_opt, GPB_Type gt("int32"),   GPB_Order g_ord(1), Description descr("")] short intval;
+  [GPB_Optional g_opt, GPB_Type gt("sint32"),  GPB_Order g_ord(2), Description descr("")] short sintval;
+  [GPB_Optional g_opt, GPB_Type gt("int64"),   GPB_Order g_ord(3), Description descr("")] short int64val;
+  [GPB_Optional g_opt, GPB_Type gt("sint64"),  GPB_Order g_ord(4), Description descr("")] short sint64val;
+  [GPB_Optional g_opt, GPB_Type gt("string"),  GPB_Order g_ord(5), Description descr("")] string strval;
+  [GPB_Optional g_opt, GPB_Type gt("bytes"),   GPB_Order g_ord(6), Description descr("arbitrary structure or message")] hex[] byteval;
+  [GPB_Optional g_opt, GPB_Type gt("fixed32"), GPB_Order g_ord(7), Description descr("")] short floatval;
+  [GPB_Optional g_opt, GPB_Type gt("fixed64"), GPB_Order g_ord(8), Description descr("")] short doubleval;
+}
+
+[Description descr("CDAP-reserved authentication types are 0-99 and >1000, Authentication types 100-1000 are reserved for private application use.<br />0=No authentication<br />1=User name and password provided<br />2=SSH RSA (version 1 or 2)<br />3=SSH DSA (version 2 only)"),
+ GPB_Type gt("enum"),
+ Enum_ValueMap vm(0, 1, 2, 3),
+ Enum_Values v("AUTH_NONE", "AUTH_PASSWD", "AUTH_SSHRSA", "AUTH_SSHDSA")]
+typedef short authTypes_t;
+
+[Description descr("Reserved authentication fields 1-99, >1000 are reserved for CDAP future use. Authentication type values 100-1000 are reserved for private application use."),
+ GPB_Type gt("message")]
+struct authValue_t {
+  [GPB_Optional g_opt, GPB_Type gt("string"), GPB_Order g_ord(1), Description descr("Authentication name")] string authName;
+  [GPB_Optional g_opt, GPB_Type gt("string"), GPB_Order g_ord(2), Description descr("Authentication password")] string authPassword;
+  [GPB_Optional g_opt, GPB_Type gt("bytes"),  GPB_Order g_ord(3), Description descr("Additional authentication information")] hex[] authOther;
+}
+
+[Description descr("CDAP message field definition, can be used for all messages. In this single-message-buffer-type form, if a field is optional in any message, it must be \"optional\" here. If required in all, it is \"mandatory\" here. See the documentation for the complete field specification of each message type."),
+ GPB_Type gt("message")]
+struct CDAPMessage {
+  [GPB_Optional g_opt, GPB_Type gt("int32"),        GPB_Order g_ord(1),                                  Description descr("Abstract Syntax of messages, see text.")] short absSyntax;
+  [GPB_Required g_req, GPB_Type gt("opCode_t"),     GPB_Order g_ord(2),                                  Description descr("op Code")] opCode_t opCode;
+  [GPB_Optional g_opt, GPB_Type gt("int32"),        GPB_Order g_ord(3),                                  Description descr("Invoke ID, omitted if no reply desired.")] short invokeID;
+  [GPB_Optional g_opt, GPB_Type gt("flagValues_t"), GPB_Order g_ord(4),                                  Description descr("misc. flags")] flagValues_t flags;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(5),                                  Description descr("Name of the object class of objName")] string objClass;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(6),                                  Description descr("Object name, unique in its class")] string objName;
+  [GPB_Optional g_opt, GPB_Type gt("int64"),        GPB_Order g_ord(7),                                  Description descr("Unique object instance")] short objInst;
+  [GPB_Optional g_opt, GPB_Type gt("objVal_t"),     GPB_Order g_ord(8),                                  Description descr("value of object in read/write/etc.")] objVal_t objValue;
+  [GPB_Optional g_opt, GPB_Type gt("int32"),        GPB_Order g_ord(9),  GPB_Order_Default g_ord_def(0), Description descr("result of operation, 0 == success")] short result;
+  [GPB_Optional g_opt, GPB_Type gt("int32"),        GPB_Order g_ord(10),                                 Description descr("scope of READ/WRITE operation")] short scope;
+  [GPB_Optional g_opt, GPB_Type gt("bytes"),        GPB_Order g_ord(11),                                 Description descr("filter script")] hex[] filter;
+  [GPB_Optional g_opt, GPB_Type gt("authTypes_t"),  GPB_Order g_ord(17),                                 Description descr("Authentication mechanism")] authTypes_t authMech;
+  [GPB_Optional g_opt, GPB_Type gt("authValue_t"),  GPB_Order g_ord(18),                                 Description descr("Authentication information")] authValue_t authValue;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(19),                                 Description descr("Destination AE Instance name")] string destAEInst;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(20),                                 Description descr("Destination AE name")] string destAEName;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(21),                                 Description descr("Destination Application Instance name")] string destApInst;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(22),                                 Description descr("Destination Application name")] string destApName;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(23),                                 Description descr("Source AE Instance name")] string srcAEInst;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(24),                                 Description descr("Source AE name")] string srcAEName;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(25),                                 Description descr("Source Application Instance name")] string srcApInst;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(26),                                 Description descr("Source Application name")] string srcApName;
+  [GPB_Optional g_opt, GPB_Type gt("string"),       GPB_Order g_ord(27),                                 Description descr("further explanation of result")] string resultReason;
+  [GPB_Optional g_opt, GPB_Type gt("int64"),        GPB_Order g_ord(28),                                 Description descr("For application use - RIB/class version.")] short version;
+}

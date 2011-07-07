@@ -1,0 +1,752 @@
+/* Copyright (c) 2009-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Example of a Cola specification for Org.SKB.Lang.Cola.Proto used in Ease'09
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.30 build 110309 (09-Mar-11) for Cola v0.30
+ */
+
+@stage design;
+@env test;
+@clevel system;
+@language cola;
+@spec easeEM;
+
+property Behavior: @type(string = NULL)
+  @scope([package:not_def] [element:required] [facility:required]
+         [action:required] [attribute:optional] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/behavior.php");
+
+property Contact: @type(string = NULL)
+  @scope([package:mandatory] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/contact.php");
+
+property Counter: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/counter.php");
+
+property Description: @type(string = NULL)
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:optional] [attribute:mandatory] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/description.php");
+
+property Group: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/group.php");
+
+property History: @type(string = NULL)
+  @scope([package:optional] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/history.php");
+
+property In: @type(boolean = TRUE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:optional])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/in.php");
+
+property MaxLen: @type(long = 1024)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/maxlen.php");
+
+property MaxValue: @type(long = 1024)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/maxvalue.php");
+
+property MinLen: @type(long = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/minlen.php");
+
+property MinValue: @type(long = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/minvalue.php");
+
+property Organization: @type(string = NULL)
+  @scope([package:mandatory] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/organization.php");
+
+property Out: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:optional])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/out.php");
+
+property Permissions: @type(octet = 0755)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/permissions.php");
+
+property Quality: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:not_def] [parameter:not_def])
+  @apply(pre) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/quality.php");
+
+property RegisteredAs: @type(string = NULL)
+  @scope([package:optional] [element:optional] [facility:optional]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/registeredas.php");
+
+property Revision: @type(short = 0)
+  @scope([package:mandatory] [element:mandatory] [facility:optional]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/revision.php");
+
+property SpecStatus: @type(string = "current")
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:mandatory] [attribute:mandatory] [parameter:optional])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/specstatus.php");
+
+property Status: @type(string = "optional")
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:mandatory] [attribute:mandatory] [parameter:optional])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/status.php");
+
+property StepIndex: @type(long = 1)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/stepindex.php")
+  @requires(Counter);
+
+property Units: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/units.php");
+
+property Usage: @type(string = NULL)
+  @scope([package:not_def] [element:mandatory] [facility:mandatory]
+         [action:optional] [attribute:not_def] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/usage.php");
+
+property Values: @type(string[] = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/values.php");
+
+property Version: @type(short = 0)
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/version.php");
+
+property Wildcards: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/wildcards.php");
+
+property xmlDTD: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(pre)
+  @description("http://www.vandermeer.de/mama/doc/q/xmlDTD.php");
+
+
+[Contact contact("Sven van der Meer, Wolfram Fritzsch, Mandeep Singh Multani [vdmeer|fritzsch|ricky]@cs.tu-berlin.de]"),
+ Description descr("The module MAMA contains all specifications of the Core Model including the MAMA protocol, the MAMA API, and the basic application services. To improve the understanding of the specifications, the following naming conventions are applied: (a) module identifiers start with an 'm'; (b) class identifiers start with an 'o'; (c) interface identifiers start with an 'i'; (d) attribute identifiers start with an 'a'; (e) type definitions start with an 't'; (f) structure identifiers start with an 's'; (g) no special recommendations are given for actions and parameters."),
+ History hist(""),
+ Organization org("Technical University Berlin and Fraunhofer FOKUS"),
+ Revision rev(0),
+ SpecStatus spS("current"),
+ Status stat("required"),
+ Version ver(1)]
+package MAMA {
+  [Description descr("URL according to RFC 1738"),
+   SpecStatus spS("current"),
+   Status stat("required")]
+  typedef string tURL;
+
+  [Description descr("description of the ticket in a human readable format"),
+   SpecStatus spS("current"),
+   Status stat("required"),
+   Values values("standard", "manager", "sub-manager", "agent", "sub-agent", "dynamic-mo", "static-mo", "gui", "nels", "nels-manager", "dnss")]
+  typedef short tEntityType;
+
+  [Description descr("###"),
+   SpecStatus spS("current"),
+   Status stat("required")]
+  typedef string tPath;
+
+  [Description descr("###"),
+   SpecStatus spS("current"),
+   Status stat("required"),
+   Values values("standard", "corba", "corba_orbix", "jini", "upnp")]
+  typedef short tMiddleware;
+
+  [Description descr("http://www.iana.org/assignments/operating-system-names IANA houses the many unique parameters and protocol values necessary for operation of the Internet and its future development.  Types of numbers range from unique port assignments to the registration of character sets.  In the past, these numbers were documented through the RFC document series, the last of these documents was RFC 1700, which is also now outdated.  Since that time, the assignments have been listed in this directory as living documents, constantly updated and revised when new information is available and new assignments are made. They are listed alphabetically. Please check back periodically if you need up to date information from these files. Thank you."),
+   SpecStatus spS("current"),
+   Status stat("required"),
+   Values values("unknown", "FREEBSD", "IRIX", "LINUX", "LINUX-2.4", "MACOS", "NETBSD", "OPENBSD", "WIN32", "WINDOWS-NT", "WINDOWS-NT-5")]
+  typedef short tOperatingSystem;
+
+  [Description descr(""),
+   SpecStatus spS("current"),
+   Status stat("required"),
+   Values values("other", "unknown", "idle", "standby", "active", "busy", "powerUp", "powerDown", "maintenance", "jam")]
+  typedef short tEntityStatus;
+
+  [Description descr("1"),
+   SpecStatus spS("current"),
+   Status stat("required")]
+  struct sTime {
+    [Description descr("2DIGIT  ; 00-23"),
+     Counter counter,
+     MaxValue maxV(23),
+     MinValue minV(0),
+     SpecStatus spS("current"),
+     Status stat("required"),
+     StepIndex stI(1)]
+    short hour;
+
+    [Description descr("2DIGIT  ; 00-59"),
+     Counter counter,
+     MaxValue maxV(59),
+     MinValue minV(0),
+     SpecStatus spS("current"),
+     Status stat("required"),
+     StepIndex stI(1)]
+    short minute;
+
+    [Description descr("2DIGIT  ; 00-58, 00-59, 00-60"),
+     Counter counter,
+     MaxValue maxV(60),
+     MinValue minV(0),
+     SpecStatus spS("current"),
+     Status stat("required"),
+     StepIndex stI(1)]
+    short second;
+
+    [Description descr("'.' 1*DIGIT"),
+     Counter counter,
+     MaxValue maxV(9),
+     MinValue minV(0),
+     SpecStatus spS("current"),
+     Status stat("required"),
+     StepIndex stI(1)]
+    short secFrac;
+
+    [Description descr("('+' / '-') time-hour ':' time-minute"),
+     SpecStatus spS("current"),
+     Status stat("required")]
+    short numOffset;
+
+    [Description descr("'Z' / time-numoffset"),
+     SpecStatus spS("current"),
+     Status stat("required")]
+    short offset;
+
+    [Description descr("time-hour ':' time-minute ':' time-second [time-secfrac]"),
+     SpecStatus spS("current"),
+     Status stat("required")]
+    short partialTime;
+  } // struct sTime
+
+  [Description descr("1"),
+   SpecStatus spS("current"),
+   Status stat("required")]
+  struct sDate {
+    [Description descr("2 Digit: 01-12"),
+     Counter counter,
+     MaxValue maxV(12),
+     MinValue minV(1),
+     SpecStatus spS("current"),
+     Status stat("required"),
+     StepIndex stI(1)]
+    short month;
+
+    [Description descr("2DIGIT  ; 01-28, 01-29, 01-30, 01-31"),
+     Counter counter,
+     MaxValue maxV(31),
+     MinValue minV(1),
+     SpecStatus spS("current"),
+     Status stat("required"),
+     StepIndex stI(1)]
+    short day;
+
+    [Description descr("4 Digit: "),
+     SpecStatus spS("current"),
+     Status stat("required"),
+     StepIndex stI(1),
+     Counter counter]
+    short fullyear;
+  } // struct sDate
+
+  [Description descr("full-time"),
+   SpecStatus spS("current"),
+   Status stat("required")]
+  typedef string tTime;
+
+  [Description descr("full-date"),
+   SpecStatus spS("current"),
+   Status stat("required")]
+  typedef string tDate;
+
+  [Description descr("###"),
+   SpecStatus spS("current"),
+   Status stat("required"),
+   Values values("unspecified", "no-security", "object-authentication", "data-encryption")]
+  typedef short tSecurityLevel;
+
+  [Description descr("###"),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sCompileTime {
+    [Description descr("The Number of interfaces the entity supports."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    short NumberOfInterfaces;
+
+    [Description descr("The time at which the entity was compiled."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime CompileTime;
+
+    [Description descr("The major number of the version of the entity."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    short Version;
+
+    [Description descr("The minor number of the version of the entity."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    short Revision;
+
+    [Description descr("The cvs version of the entity's main source file."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string Cvs;
+
+    [Description descr("The type info of the entity."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tEntityType Type;
+  } // struct sCompileTime
+
+  [Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sInstallation {
+    [Description descr("The complete path where the application is installed (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tPath PkgLocation;
+
+    [Description descr("The date and time this application was installed on the host (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tDate PkgDate;
+
+    [Description descr("The serial number of the software assigned by the manufacturer (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string PkgSerialNumber;
+
+    [Description descr("The name assigned to the application package by the Manufacturer (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string PkgProductName;
+
+    [Description descr("The version number assigned to the application by the Manufacturer (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string PkgVersion;
+
+    [Description descr("The Manufacturer of the application (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string PkgManufacturer;
+  } // struct sInstallation
+
+  [Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sLaunch {
+    [Description descr("The process owner's login name (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string launchUser;
+
+    [Description descr("The starting parameters for the process (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string launchParameters;
+
+    [Description descr("The time the process was started (rfc2287)."),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string launchTime;
+  } // struct sLaunch
+
+  [Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sRuntimeGeneral {
+    [Description descr("The textual identification of the contact person for this entity together with information on how to contact this person. If no contact information is known, the value is the zero-length string. (string) (snmpv3)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string SupportContact;
+
+    [Description descr("The physical location of this node (e.g., 'telephone closet, 3rd floor'). If the location is unknown, the value is the zero-length string. (string) (snmpv3)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string PhysicalLocation;
+
+    [Description descr("ID of the entity (UUID)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string ID;
+
+    [Counter counter,
+     Description descr("number of re-initialisations of the entity since initial configuration"),
+     SpecStatus spS("1"),
+     Status stat("current"),
+     StepIndex stI(1)]
+    short Boots;
+
+    [Description descr("time the last change of Entity-Boots"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime Time;
+
+    [Description descr("time since the entity is initially running"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime Uptime;
+
+    [Description descr("local time of the host/resource the entity is running on"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime LocalTime;
+
+    [Description descr("Operating system of the host the entity is running on"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tOperatingSystem OS;
+
+    [Description descr("Middleware the entity is running on"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tMiddleware Middleware;
+
+    [Description descr("ID of the host/resource the entity is running on (string/enum/IP number)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string Host;
+
+    [Description descr("actual status of the entity (int/string/enum)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tEntityStatus Status;
+  } // struct sRuntimeGeneral
+
+  [Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sRuntimeConfigUrls {
+    [Description descr("url of the configuration file of an entity (rfc1738 url)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tURL ConfigUrl;
+
+    [Description descr("url of the persistent storage of the entity (rfc1738 url)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tURL PersistentUrl;
+
+    [Description descr("url of the storage of log information (rfc1738 url)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tURL LogUrl;
+
+    [Description descr("the event server, the entity is currently using (srb-url)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tURL EventServerUrl;
+
+    [Description descr("url of the entity itself, if any (srb-url, rfc1738 url)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tURL EntityUrl;
+  } // struct sRuntimeConfigUrls
+
+  [Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sRuntimeConfigFixed {
+    [Description descr("log level of the entity (int)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    short LogLevel;
+
+    [Description descr("debug level of the entity (int)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    short DebugLevel;
+
+    [Description descr("monitoring level of the entity (int)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    short MonitoringLevel;
+
+    [Description descr("serial number of the entity or zero (long/string)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string SerialNumber;
+
+    [Description descr("vendor of the entity or zero (long/string)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string Vendor;
+
+    [Description descr("manufacturer of the entity or zero (long/string)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string Manufacturer;
+
+    [Description descr("model of the entity or zero (long/string)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string ModelName;
+
+    [Description descr("###"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string LanguageEdition;
+  } // struct sRuntimeConfigFixed
+
+  [Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sRuntimeConfigVariable {
+    [Description descr("timeout for transaction in seconds (int)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    short TransactionTimeout;
+
+    [Description descr("the security model, the entity is currently using (int/enum/string)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string SecurityModel;
+
+    [Description descr("the security level, the entity is currently using (int/enum/string)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tSecurityLevel SecurityLevel;
+
+    [Description descr("the current status of an entity (enum)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    string OperationStatus;
+
+    [Description descr("the last change of an entity (code or variables?)"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime LastChange;
+  } // struct sRuntimeConfigVariable
+
+  [Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current")]
+  struct sRuntimeLog {
+    [Description descr("the last time a request was send to the entity"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime LastRequestIn;
+
+    [Description descr("the last time a request was send by the entity"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime LastRequestOut;
+
+    [Description descr("the last time the entity received a result regarding to a prior request"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime LastResultIn;
+
+    [Description descr("the last time the entity send a result regarding to a prior request"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime LastResultOut;
+
+    [Description descr("the last time a request was rejected by the entity"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime RejectedRequestsIn;
+
+    [Description descr("the last time a request was rejected by a requested entity"),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    MAMA::tTime RejectedRequestsOut;
+
+    [Counter counter,
+     Description descr("number of request send to this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spS("1"),
+     Status stat("current"),
+     StepIndex stI(1)]
+    long RequestInCount;
+
+    [Counter counter,
+     Description descr("number of request send by this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spS("1"),
+     Status stat("current"),
+     StepIndex stI(1)]
+    long RequestOutCount;
+
+    [Counter counter,
+     Description descr("number of received results by this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spS("1"),
+     Status stat("current"),
+     StepIndex stI(1)]
+    long ResultInCount;
+
+    [Counter counter,
+     Description descr("number of send results by this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spS("1"),
+     Status stat("current"),
+     StepIndex stI(1)]
+    long ResultOutCount;
+
+    [Counter counter,
+     Description descr("number of rejected requests"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spS("1"),
+     Status stat("current"),
+     StepIndex stI(1)]
+    long RejectedRequestsInCount;
+
+    [Counter counter,
+     Description descr("number of rejected requests"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spS("1"),
+     Status stat("current"),
+     StepIndex stI(1)]
+    long RejectedRequestsOutCount;
+  } // struct sRuntimeLog
+
+  [Behavior beh("###"),
+   Description descr(""),
+   SpecStatus spS("1"),
+   Status stat("current"),
+   Usage usage(""),
+   Version ver(1)]
+  facility iEntityMgmt {
+  
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sCompileTime compileInformation;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sInstallation installInformation;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sLaunch launchInformation;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sRuntimeGeneral runtimeGeneralInformation;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sRuntimeConfigUrls configUrls;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sRuntimeConfigFixed configInformationFixed;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sRuntimeConfigVariable configInformationVariable;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spS("1"),
+     Status stat("current")]
+    attribute MAMA::sRuntimeLog logInformation;
+  
+  } // facility iEntityMgmt
+
+} // package MAMA

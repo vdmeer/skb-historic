@@ -1,0 +1,214 @@
+/* Copyright (c) 2004-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Template file for the target cola in Org.SKB.Lang.Cola.Proto
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.30 build 110309 (09-Mar-11) for StringTemplate v3.2.1
+ */
+
+group cola;
+
+mlcomment_start(dummy) ::= "/*"
+mlcomment_end(dummy) ::= "*/"
+slcomment(comment) ::= "//<comment>"
+
+colaSpecification(stage, environment, clevel, language, spec) ::= <<
+@stage <stage>;
+@environment <environment>;
+@clevel <clevel>;
+@language <language>;
+@spec <spec>;
+
+>>
+
+colaFunction(id, parameter, ret_type, ret_array) ::= <<
+function <id>: parameter(<if(parameter)><parameter; separator=" "><endif>) @return(<ret_type><if(ret_array)>[]<endif>);<\n>
+>>
+colaFunctionParam(type, id, array) ::= <<[<type><if(array)>[]<endif> <id>]>>
+
+
+colaPropertyDecl(id, type, val, array, propertyScope, apply, aExtends, aRequires, alterable, negotiable, priorityBT, priorityCV, description, misc) ::= <<
+property <id>: @type(<type><if(array)>[]<endif> = <val; separator=", ">)
+  @scope([contract:<propertyScope.contract>] [package:<propertyScope.package>]
+         [element:<propertyScope.element>] [facility:<propertyScope.facility>]
+         [action:<propertyScope.action>] [parameter:<propertyScope.parameter>] [attribute:<propertyScope.attribute>])
+  @apply(<if(apply.pre)>[pre<first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}>]<endif><if(apply.post)>[post<first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}>]<endif><if(apply.inv)>[inv<first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}>]<endif>)
+  /* visibility! */
+  <if(alterable)>  @alterable<endif>
+  <if(negotiable)>  @negotiable<endif>
+  @description(<description>)
+  <if(aExtends)>  @extends(<aExtends; separator=" ">)<endif>
+  <if(aRequires)>  @requires(<aRequires; separator=" ">)<endif>
+  <if(priorityBT)>  @priority(<priorityBT> = <priorityCV>)<endif>
+;<\n>
+>>
+aVisibility(id) ::= << >>
+
+
+
+colaPropertyDefList(property) ::=<<
+<if(property)>  [<property; separator=",\n   ">]<endif>
+>>
+colaPropertyDef(sn, id, type, val, array, misc) ::= <<
+<sn> <id><if(val)>(<val; separator=", ">)<endif>
+>>
+
+
+colaContractDecl(id, contractScope, description, items, misc) ::= <<
+contract <id>:
+  @scope([element:<contractScope.element>] [facility:<contractScope.facility>])
+  @description(<description>)
+  <if(items)><items; separator="\n"><endif>
+;
+<\n>
+>>
+
+contractItem(id, property, misc) ::= <<
+item <id>{
+  <if(property)><property; separator="\n"><endif>
+}
+
+>>
+
+contractItemProp(id, type, val, array, rank, apply, alterable, negotiable, description, priorityBT, priorityCV, misc) ::= <<
+[<id>: @type(<type><if(array)>[]<endif> = <val; separator=", ">) @rank(<rank>) @apply(<if(apply.pre)>[pre<first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}>]<endif><if(apply.post)>[post<first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}>]<endif><if(apply.inv)>[inv<first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}>]<endif>) <if(alterable)>  @alterable<endif><if(negotiable)>  @negotiable<endif> @description(<description>) <if(priorityBT)>  @priority(<priorityBT> = <priorityCV>)<endif>]
+>>
+
+
+
+
+colaContractDefList(contract, misc) ::= <<
+<if(contract)>  [[<contract; separator=",\n    ">]]<endif>
+>>
+colaContractDef(scoped_name, id, items, misc) ::= <<
+{<scoped_name> <id> = <items; separator=", ">}
+>>
+
+colaContractItemDef(id, properties, misc) ::= <<
+<id>[<properties; separator=", ">]
+>>
+colaItemDef(id, val, misc) ::= <<
+<id><if(val)>(<val; separator=", ">)<endif>
+>>
+
+
+
+
+
+
+colaPackage(id, body, inline_code, properties, misc) ::= <<
+<if(properties)><properties><endif>
+package <id> {
+  <if (inline_code)><inline_code; separator="\n"><endif>
+  <if (body)><body; separator="\n"><endif>
+} <slcomment()> package <id>
+<\n>
+>>
+
+
+colaElement(id, body, aExtends, aProvides, aRequires, inline_code, properties, contracts, misc) ::= <<
+<if(properties)><properties><endif>
+<if(contracts)><contracts><endif>
+element <id>
+  <if(aExtends)>  @extends <aExtends><endif>
+  <if(aProvides)>  @provides <aProvides; separator=", "><endif>
+  <if(aRequires)>  @requires <aRequires; separator=", "><endif>
+{
+  <if (inline_code)><inline_code; separator="\n"><endif>
+  <if (body)><body; separator="\n"><endif>
+} <slcomment()> element <id>
+<\n>
+>>
+
+
+colaFacility(id, body, aExtends, aRequires, properties, contracts, misc) ::= <<
+<if(properties)><properties><endif>
+<if(contracts)><contracts><endif>
+facility <id>
+  <if(aExtends)>  @extends <aExtends; separator=", "><endif>
+  <if(aRequires)>  @requires <aRequires; separator=", "><endif>
+{
+  <if (body)><body; separator="\n"><endif>
+} <slcomment()> facility <id>
+<\n>
+>>
+
+
+colaAction(id, type, parameter, inline_code, properties, misc) ::= <<
+<if(properties)><properties><endif>
+action <if(type.scoped_name)><type.scoped_name><else><if(type.base_type)><type.base_type><else><type.void><endif><endif><if(type.array)>[]<endif> <id>(<parameter; separator=", ">)<if (inline_code)>{
+  <inline_code; separator="\n">
+}<endif>;
+>>
+
+colaParameter(id, type, properties, misc) ::= <<
+<if(properties)><properties><endif> <if(type.scoped_name)><type.scoped_name><else><type.base_type><endif><if(type.array)>[]<endif> <id>
+>>
+
+
+colaTypeDef(id, type, inline_code, properties, propertiesInstances, misc) ::= <<
+<if(properties)><properties><endif>
+typedef <if(type.scoped_name)><type.scoped_name><else><type.base_type><endif><if(type.array)>[]<endif> <id><if (inline_code)>{
+  <inline_code; separator="\n">
+}<endif>;
+
+>>
+
+
+colaAttribute(id, type, inline_code, properties, misc) ::= <<
+<if(properties)><properties><endif>
+attribute <if(type.scoped_name)><type.scoped_name><else><type.base_type><endif><if(type.array)>[]<endif> <id><if (inline_code)>{
+  <inline_code; separator="\n">
+}<endif>;
+>>
+
+
+colaStruct(id, member, inline_code, properties, misc) ::= <<
+<if(properties)><properties><endif>
+struct <id> {
+  <if(inline_code)><inline_code; separator="\n\n"><endif>
+  <if(member)><member; separator="\n\n"><endif>
+} <slcomment()> struct <id><\n>
+>>
+
+colaMember(id, type, properties, misc) ::= <<
+<if(properties)><properties><endif>
+<if(type.scoped_name)><type.scoped_name><else><type.base_type><endif><if(type.array)>[]<endif> <id>;
+>>
+
+const_value(type, val) ::= "<val>"
+scoped_name(id, add) ::= <<<id; separator="::">
+>>
+
+
+inline_code(language, code) ::= "{@language=<language> \<\<?<code>?\>\>}"

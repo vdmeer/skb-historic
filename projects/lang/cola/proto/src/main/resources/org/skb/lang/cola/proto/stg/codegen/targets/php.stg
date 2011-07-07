@@ -1,0 +1,378 @@
+/* Copyright (c) 2004-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Template file for the target php in Org.SKB.Lang.Cola.Proto
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.30 build 110309 (09-Mar-11) for StringTemplate v3.2.1
+ */
+
+group php;
+
+mlcomment_start(dummy) ::= "/*"
+mlcomment_end(dummy) ::= "*/"
+slcomment(comment) ::= "// <comment>"
+
+propertyValueMap ::= [
+  "NULL":"null",      "FALSE":"false",          "TRUE":"true",
+  default:key
+]
+
+// for initialising classes, such as: Short t = new Short(short)0);
+propertyValueTypecastMap ::= [
+  "short":"(short)",  "integer":"",   "long":"(long)",
+  "float":"",         "double":"",
+  "string":"",        "char":"",
+  "octet":"",         "boolean":"",
+  "hex":"",
+  default:""
+]
+
+// plain initialisation, such as: String t = null;
+typeInitMap ::= [
+  "short":"(short)0", "integer":"0",    "long":"(long)0",
+  "float":"0.0",      "double":"0.0",
+  "string":"null",    "char":"0",
+  "octet":"0000",     "boolean":"false",
+  "hex":"0",
+  default:"null"
+]
+
+// initialisation for classes using 'new', such as: String s = new String();
+typeInitMapNew ::= [
+  "short":"(short)0", "integer":"0",    "long":"(long)0",
+  "float":"0.0",      "double":"0.0",
+  "string":"\"\"",    "char":"0",
+  "octet":"0000",     "boolean":"false",
+  "hex":"0",
+  default:""
+]
+
+typeMap ::= [
+  "short":"Short",    "integer":"Integer",  "long":"Long",
+  "float":"Float",    "double":"Double",
+  "string":"String",  "char":"Char",
+  "octet":"Number",   "boolean":"Boolean",  "void":"void",
+  "hex":"Integer",
+  default: key
+]
+
+colaSpecification(stage, environment, clevel, language, spec) ::= << >>
+
+colaFunction(id, parameter, ret_type, ret_array) ::= <<
+public function <id> (<if(parameter)><parameter; separator=", "><endif>){
+  $ret=<typeInitMapNew.(ret_type)>;
+
+  return $ret;
+}
+>>
+colaFunctionParam(type, array, id) ::= <<$<id>
+>>
+
+
+colaPropertyDecl(id, type, val, array, propertyScope, apply, aExtends, aRequires, alterable, negotiable, priorityBT, priorityCV, description, misc) ::= <<
+
+class <id> {
+  private $_<id><if(array)>=array()<endif>; // was L-ADS type <type><if(array)>[]<endif>
+
+  private String description = <description>;
+  private $alterable = <if(alterable)>true<else>false<endif>;
+  private $scope=array();
+
+  public function __construct($_t=null){
+    if($_t==null)
+      this._<id><if(array)>[]<endif> = <propertyValueMap.(val); separator=", ">;
+    else
+      this._<id> = _t;
+    this.__init();
+  }
+
+  private function void __init(){
+    $this->scope["package"]  =["<propertyScope.package>"];
+    $this->scope["element"]  =["<propertyScope.element>"];
+    $this->scope["facility"] =["<propertyScope.facility>"];
+    $this->scope["action"]   =["<propertyScope.action>"];
+    $this->scope["attribute"]=["<propertyScope.attribute>"];
+    $this->scope["parameter"]=["<propertyScope.parameter>"];
+  }
+
+  //scope, get scope array or individual scopes
+  public function getScope(){return $this->scope;}
+  public function getRank($sc){return $this->scope[$sc];}
+
+  //get the value of this property
+  public function get(){$this->_<id>;}
+
+  //function for standard parts of the property
+  //public String getDeclaration(){return this.declaration;}
+  //public String getDescription(){return this.description;}
+  public function getAlterable(){return $this->alterable;}
+
+  <if(alterable)>
+  //alterable is true, so allow to set the value of the property
+  public function set($_t){$this->_<id>=$_t;}
+  <endif>
+
+  <if(alterable)><if(array)>
+  //alterable is true and value is an array, provide array functions
+  public function add($_t){$this->_<id>[]=$_t;}
+  public function remove($in){//;}
+  //public function remove($_t){//;}
+  <endif><endif>
+
+  <if(array)>
+  public function get($in){return $this->_<id>[$in];}
+  //public function indexOf(Object elem){return this._<id>.indexOf(elem);}
+  //public function isEmpty(){return this._<id>.isEmpty();}
+  //public function lastIndexOf(Object elem){return this._<id>.indexOf(elem);}
+  //public function size(){return this._<id>.size();}
+  <endif>
+
+  <if(apply.pre)>
+  <if(apply.preList)><apply.preList; separator="\n  "><endif>
+  <endif>
+
+  <if(apply.post)>
+  <if(apply.postList)><apply.postList; separator="\n  "><endif>
+  <endif>
+
+  <if(apply.inv)>
+  <if(apply.invList)><apply.invList; separator="\n  "><endif>
+  <endif>
+
+} // PHP class <id> was LADS Property Declaration <id>
+
+>>
+
+
+aVisibility(id) ::= << >>
+
+
+//###FROM LADS, change
+colaPropertyDefList(property) ::=<<
+###<if(property)><property; separator=",\n   //"><endif>
+>>
+colaPropertyDef(sn, id, type, val, array, misc) ::= <<
+---public <sn> <id>=new <sn>(<if(array)>Arrays.asList(<endif><if(val)><val; separator=", "><endif><if(array)>)<endif>);
+>>
+
+
+
+contractItem(id, property, misc) ::= <<
+item <id>{<property; separator=", ">}<if(!misc.inContract)><\n><\n><endif>
+>>
+
+contractItemProp(id, type, val, array, rank, apply, alterable, negotiable, description, priorityBT, priorityCV, misc) ::= <<
+scoped_name <id> @description(<description>)>>
+
+
+
+colaContractDecl(id, contractScope, description, items, misc) ::= <<
+contract <id>:
+  @scope([element, <contractScope.element>], [facility, <contractScope.facility>]),
+  @description(<description>),
+  <items; separator=",\n">
+  ;
+
+>>
+
+
+colaContractDefList(contract, misc) ::= <<
+<if(contract)>  [[<contract; separator=",\n    ">]]<endif>
+>>
+colaContractDef(scoped_name, id, items, misc) ::= <<
+{<scoped_name> <id> = <items; separator=", ">}
+>>
+
+colaContractItemDef(id, properties, misc) ::= <<
+<id>[<properties; separator=", ">]
+>>
+colaItemDef(id, val, misc) ::= <<
+<id><if(val)>(<val; separator=", ">)<endif>
+>>
+
+
+ 
+
+colaPackage(id, body, inline_code, properties, misc) ::= <<
+/*
+public class <id> {
+  <if (inline_code)><inline_code><endif>
+  <body; separator="\n">
+} // PHP class <id> was LADS Package <id>
+*/
+
+>>
+
+
+
+colaElement(id, body, aExtends, aProvides, aRequires, inline_code, properties, contracts, misc) ::= <<
+class <id><if(aExtends)> extends <aExtends><endif><if(aProvides)> implements <aProvides; separator=", "><endif> {
+<if(properties)>##<properties><endif>
+
+  public function __construct(){}
+  <if(inline_code)><inline_code><endif>
+  <body; separator="\n">
+
+} // PHP class <id> was LADS Element <id>
+
+>>
+
+
+colaFacility(id, body, aExtends, aRequires, properties, contracts, misc) ::= <<
+public interface <id><if(aExtends)> extends <aExtends; separator=", "><endif> {
+  <body; separator="\n">
+}; // PHP interface <id> was LADS Facility <id>
+
+>>
+
+
+colaAction(id, type, parameter, inline_code, properties, misc) ::= <<
+public <if(type.base_type)><typeMap.(type.base_type)><else><type.scoped_name><endif> <id>(<parameter; separator=", ">)<if(misc.inFacility)>;<else>{
+  <if(type.base_type)><typeMap.(type.base_type)><else><type.scoped_name><endif> _ret = <if(type.base_type)><typeInitMap.(type.base_type)><else><typeInitMap.(type.scoped_name)><endif>;
+  <if(inline_code)><inline_code><endif>
+  return _ret;
+}
+<endif>
+>>
+
+
+colaParameter(id, type, properties, misc) ::= <<
+<if(type.base_type)><typeMap.(type.base_type)><else><type.scoped_name><endif> <id>
+>>
+
+
+colaTypeDef(id, type, inline_code, properties, propertiesInstances, misc) ::= <<
+<if(type.array)>import java.util.ArrayList;<endif>
+import java.util.Arrays; //for list properties
+
+<if(type.scoped_name)>
+public class <id> <if(type.scoped_name)> extends <type.scoped_name><endif> {
+  <if(properties)><properties><endif>
+} // PHP class <id> was LADS Typedef <id>
+<else>
+public class <id> {
+  <if(properties)><properties><\n><endif>
+  private <if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> _<id>;
+  public <id> (){_<id> = new <if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif>(<if(type.array)><else><typeInitMapNew.(type.base_type)><endif>);}
+  public <id> (<if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> _t) {this._<id>=_t;}
+
+  private boolean __pre(<typeMap.(type.base_type)> _t){
+    boolean ret=true;
+    <if(propertiesInstances)>
+    <propertiesInstances:{ret=<it>.pre(_t);<\n>if(ret==false) return ret;}>
+    <endif>
+    return ret;
+  }
+
+  private boolean __post(<typeMap.(type.base_type)> _t){
+    boolean ret=true;
+    <if(propertiesInstances)>
+    <propertiesInstances:{ret=<it>.post(_t);<\n>if(ret==false) return ret;}>
+    <endif>
+    return ret;
+  }
+
+  public void set(<if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> _t) {this._<id>=_t;}
+  public void set(<if(type.array)>ArrayList\<<endif>Object<if(type.array)>\><endif> _t) {this._<id>=(<if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif>) _t;}
+
+  public <if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> get() {return this._<id>;}
+  //public <if(type.array)>ArrayList\<<endif>Object<if(type.array)>\><endif> get() {return (<if(type.array)>ArrayList\<<endif>Object<if(type.array)>\><endif>) this._<id>;}
+
+  <if(inline_code)><inline_code><endif>
+} // PHP class <id> was LADS Typedef <id>
+<endif>
+>>
+
+
+colaAttribute(id, type, inline_code, properties, misc) ::= <<
+class __<id><if(type.scoped_name)> extends <type.scoped_name><endif> {
+    private $_<id><if(type.scoped_name)>=new type.scoped_name()<endif><if(type.array)>=array();<endif>;
+    public function __construct(){}
+    public function set($_t){$this->_<id>=$_t;}
+    public function get(){return $this->_<id>;}
+  }
+  <if(inline_code)><inline_code><endif>
+} // PHP class <id> was LADS Attribute <id>
+$<id> = new __<id>();
+
+>>
+
+
+colaStruct(id, member, inline_code, properties, misc) ::= <<
+public class <id> {
+  public <id>(){}
+
+  <if(inline_code)>(<inline_code>)<endif>
+  <member; separator="\n">
+} // class <id> was LADS Struct <id>
+
+>>
+
+
+colaMember(id, type, properties, misc) ::= <<
+
+<if(type.scoped_name)>
+public class __<id> <if(type.scoped_name)> extends <type.scoped_name><endif> {}
+private __<id> <id> = new __<id>();
+//public void <id>(<type.scoped_name> _in){<id>.set(_in);}
+//public <type.scoped_name> <id>(){return <id>.get();}
+public void <id>(Object _in){<id>.set(_in);}
+public Object <id>(){return <id>.get();}
+<else>
+public class __<id> {
+  private <if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> _<id>;
+  public __<id> (){_<id> = new <if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif>(<if(type.array)><else><typeInitMapNew.(type.base_type)><endif>);}
+  public __<id> (<if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> _t) {this._<id>=_t;}
+
+  public void set(<if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> _t) {this._<id>=_t;}
+  public <if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> get() {return this._<id>;}
+
+  <if(inline_code)><inline_code><endif>
+}
+private __<id> <id> = new __<id>();
+public void <id>(<typeMap.(type.base_type)> _in){<id>.set(_in);}
+public <typeMap.(type.base_type)> <id>(){return <id>.get();}
+<endif>
+// JAVA class <id> was LADS Member <id>
+>>
+
+
+
+const_value(type, val) ::= "<val>"
+scoped_name(id, add) ::= <<
+<if(add)><add>.<endif><id; separator=".">
+>>
+
+
+
+inline_code(language, code) ::= "<if(language)><code><endif>"

@@ -1,0 +1,2664 @@
+/* Copyright (c) 2000-2011 Sven van der Meer (sven@vandermeer.de)
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * General example of a Cola specification for Org.SKB.Lang.Cola.Proto
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.30 build 110309 (09-Mar-11) for Cola v0.30
+ */
+
+@stage design;
+@env test;
+@clevel system;
+@language cola;
+@spec specc;
+
+property Abstract: @type(boolean = TRUE)
+  @scope([package:not_def] [element:optional] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/abstract.php");
+
+property ArrayType: @type(string = "bag")
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/arraytype.php");
+
+property Behavior: @type(string = NULL)
+  @scope([package:not_def] [element:required] [facility:required]
+         [action:required] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/behavior.php");
+
+property BitMap: @type(string[] = "")
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/bitmap.php")
+  @requires(Behavior);
+
+property BitValues: @type(string[] = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/bitvalues.php");
+
+property Contact: @type(string = NULL)
+  @scope([package:mandatory] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/contact.php");
+
+property Counter: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/counter.php");
+
+property Description: @type(string = NULL)
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:optional] [attribute:mandatory] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/description.php");
+
+property DisplayHint: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/displayhint.php");
+
+property DisplayName: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/displayname.php");
+
+property Group: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/group.php");
+
+property History: @type(string = NULL)
+  @scope([package:optional] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/history.php");
+
+property In: @type(boolean = TRUE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/in.php");
+
+property MaxLen: @type(long = 1024)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/maxlen.php");
+
+property MaxValue: @type(long = 1024)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/maxvalue.php");
+
+property MinLen: @type(long = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/minlen.php");
+
+property MinValue: @type(long = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/minvalue.php");
+
+property Organization: @type(string = NULL)
+  @scope([package:mandatory] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/organization.php");
+
+property Out: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/out.php");
+
+property Owner: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/owner.php");
+
+property Permissions: @type(octet = 0755)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/permissions.php");
+
+property Quality: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:not_def] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/quality.php");
+
+property RegisteredAs: @type(string = NULL)
+  @scope([package:optional] [element:optional] [facility:optional]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/registeredas.php");
+
+property Revision: @type(short = 0)
+  @scope([package:mandatory] [element:mandatory] [facility:optional]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/revision.php");
+
+property SpecStatus: @type(string = "current")
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:mandatory] [attribute:mandatory] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/specstatus.php");
+
+property Status: @type(string = "optional")
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:mandatory] [attribute:mandatory] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/status.php");
+
+property StepIndex: @type(long = 1)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/stepindex.php")
+  @requires(Counter);
+
+property Units: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/units.php");
+
+property Usage: @type(string = NULL)
+  @scope([package:not_def] [element:mandatory] [facility:mandatory]
+         [action:optional] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/usage.php");
+
+property Values: @type(string[] = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/values.php");
+
+property Version: @type(short = 0)
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/version.php");
+
+property Wildcards: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/wildcards.php");
+
+property xmlDTD: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/xmlDTD.php")
+  @extends(MAMA::BitMap);
+
+
+/*
+item test{bl}
+item test1{bl,vlvlv}
+*/
+/*
+contract TEST111: @scope([element,@optional] [facility,@mandatory]),
+              @description descr("http://www.vandermeer.de/mama/doc/q/xmlDTD.php"),
+              @items(dd,bla);
+*/
+
+[Contact c("Sven van der Meer, Wolfram Fritzsch, Mandeep Singh Multani [vdmeer|fritzsch|ricky]@cs.tu-berlin.de]"),
+ Description descr("The module MAMA contains all specifications of the Core Model including the MAMA protocol, the MAMA API, and the basic application services. To improve the understanding of the specifications, the following naming conventions are applied: (a) module identifiers start with an 'm'; (b) class identifiers start with an 'o'; (c) interface identifiers start with an 'i'; (d) attribute identifiers start with an 'a'; (e) type definitions start with an 't'; (f) structure identifiers start with an 's'; (g) no special recommendations are given for actions and parameters."),
+ History hist(""),
+ Organization org("Technical University Berlin and Fraunhofer FOKUS"),
+ Revision rev(0),
+ SpecStatus spst("current"),
+ Status st("required"),
+ Version ver(1)]
+package MAMA {
+
+property BitMap: @type(string[] = "")
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/bitmap.php");
+
+  [Description descr("This 'short' type represents an enumerate that identifies the type of a single value"),
+   MAMA::BitMap bm("","current"),
+   SpecStatus spst(""),
+   Status st("required"),
+   Values values("inconsistent", "char", "string", "boolean", "octet", "short", "ushort", "long", "ulong", "longlong", "ulonglong", "float", "double", "longdouble", "array", "struct")]
+  typedef short tDataType;
+
+  [Description descr("This 'short' type represents an enumerate that identifies the reuqested action for a type###"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("none", "read", "write", "exec")]
+  typedef short tAccessFlag;
+
+  [Description descr("This strucure forms a Name-Value Pair like the one found in the SNMP protocol or in X.500/X.700 attributes."),
+   SpecStatus spst("current"),
+   Status st("required")]
+  struct sNamedValue {
+    [Description descr("The name of a value."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    string name;
+
+    [Description descr("The actual valu in form of a sring. The type string is used as container because any other type can be mapped to string and back without loss of information."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    string value;
+
+    [Description descr("The actual type of the data needed for backward conversion."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::tDataType nvDataType;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::tAccessFlag nvAccessFlag;
+  } // struct sNamedValue
+
+  [Description descr("A list of Name-Value pairs."),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef MAMA::sNamedValue[] tNameValueList;
+
+  [Description descr("URL according to RFC 1738"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tURL;
+
+  [Description descr("description of the ticket in a human readable format"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("Specification", "Package", "Element", "Facility", "Attribute", "Action", "Parameter", "Property", "Type Definition", "Property Declaration", "DirectoryEntry", "DirectoryEntryInstance", "DirectoryEntryAlias")]
+  typedef short tElementType;
+
+  [Description descr("description of the ticket in a human readable format"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("standard", "manager", "sub-manager", "agent", "sub-agent", "dynamic-mo", "static-mo", "gui", "nels", "nels-manager", "dnss")]
+  typedef short tEntityType;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tPath;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("standard", "corba", "corba_orbix", "jini", "upnp")]
+  typedef short tMiddleware;
+
+  [Description descr("the formal language that is used for a specification unspecified = no special information on the language are given: a)ADL = Application Definition Language (SHOULD be the default); b) xADL = xml specification of ADL; c) CORBA-IDL = OMG CORBA conform IDL; e) DCOM-IDL = Microsoft DCOM conform IDL; f) TINA-ODL = TINA Object Definition Language; g) JAVA = JAVA RMI language; h) SNMP-SMI = ASN.1 specifications conform to SMI; i) OSI-GDMO = ASN.1 specifications conform to GDMO"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("unspecified", "ADL", "xADL", "CORBA-IDL", "DCOM-IDL", "TINA-ODL", "JAVA", "SNMP-SMI", "OSI-GDMO")]
+  typedef short tSpecLanguage;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("standard", "corba", "java", "jini", "upnp")]
+  typedef short tMiddlewareReference;
+
+  [Description descr("http://www.iana.org/assignments/operating-system-names IANA houses the many unique parameters and protocol values necessary for operation of the Internet and its future development.  Types of numbers range from unique port assignments to the registration of character sets.  In the past, these numbers were documented through the RFC document series, the last of these documents was RFC 1700, which is also now outdated.  Since that time, the assignments have been listed in this directory as living documents, constantly updated and revised when new information is available and new assignments are made. They are listed alphabetically. Please check back periodically if you need up to date information from these files. Thank you."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("unknown", "FREEBSD", "IRIX", "LINUX", "LINUX-2.4", "MACOS", "NETBSD", "OPENBSD", "WIN32", "WINDOWS-NT", "WINDOWS-NT-5")]
+  typedef short tOperatingSystem;
+
+  [Description descr(""),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("other", "unknown", "idle", "standby", "active", "busy", "powerUp", "powerDown", "maintenance", "jam")]
+  typedef short tEntityStatus;
+
+  [Description descr("1"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  struct sTime {
+    [Description descr("2DIGIT  ; 00-23"),
+     MaxValue maxV(23),
+     MinValue minV(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     StepIndex stI(1)]
+    short hour;
+
+    [Description descr("2DIGIT  ; 00-59"),
+     MaxValue maxV(59),
+     MinValue minV(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     StepIndex stI(1)]
+    short minute;
+
+    [Description descr("2DIGIT  ; 00-58, 00-59, 00-60"),
+     MaxValue maxV(60),
+     MinValue minV(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     StepIndex stI(1)]
+    short second;
+
+    [Description descr("'.' 1*DIGIT"),
+     MaxValue maxV(9),
+     MinValue minV(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     StepIndex stI(1)]
+    short secFrac;
+
+    [Description descr("('+' / '-') time-hour ':' time-minute"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    short numOffset;
+
+    [Description descr("'Z' / time-numoffset"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    short offset;
+
+    [Description descr("time-hour ':' time-minute ':' time-second [time-secfrac]"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    short partialTime;
+  } // struct sTime
+
+  [Description descr("1"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  struct sDate {
+    [Description descr("2 Digit: 01-12"),
+     MaxValue maxV(12),
+     MinValue minV(1),
+     SpecStatus spst("current"),
+     Status st("required"),
+     StepIndex stI(1)]
+    short month;
+
+    [Description descr("2DIGIT  ; 01-28, 01-29, 01-30, 01-31"),
+     MaxValue maxV(31),
+     MinValue minV(1),
+     SpecStatus spst("current"),
+     Status st("required"),
+     StepIndex stI(1)]
+    short day;
+
+    [Description descr("4 Digit: "),
+     SpecStatus spst("current"),
+     Status st("required"),
+     StepIndex stI(1)]
+    short fullyear;
+  } // struct sDate
+
+  [Description descr("full-time"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tTime;
+
+  [Description descr("full-date"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tDate;
+
+  [Description descr("date-time"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tTimeDate;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("unspecified", "no-security", "object-authentication", "data-encryption")]
+  typedef short tSecurityLevel;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tUUID;
+
+  [Description descr("1"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("Information", "Warning", "Error", "Exception", "Accounting", "Notification")]
+  typedef short ticketCategory;
+
+  [Description descr("1"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  struct sTicket {
+    [Description descr("category of the ticket"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::ticketCategory category;
+
+    [Description descr("the time the ticket was sent"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::tTimeDate time;
+
+    [Description descr("the priority of the ticket"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    long ticketPriority;
+
+    [Description descr("type of the ticket, might be application specific"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    string ticketType;
+
+    [Description descr("address of the originating entity"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    string ticketOriginator;
+
+    [Description descr("description of the ticket in a human readable format"),
+     SpecStatus spst("current"),
+     Status st("optional")]
+    string ticketDescription;
+
+    [Description descr("1"),
+     SpecStatus spst("current"),
+     Status st("optional")]
+    MAMA::tNameValueList optionalHeaderFields;
+
+    [Description descr("1"),
+     SpecStatus spst("current"),
+     Status st("optional")]
+    MAMA::tNameValueList filterableBody;
+
+    [Description descr("1"),
+     SpecStatus spst("current"),
+     Status st("optional")]
+    MAMA::tNameValueList anyThingElse;
+  } // struct sTicket
+
+  [Behavior beh("###"),
+   Description descr("this facility MUST be inherited by all MAMA objects that are not specified 'abstract'"),
+   Revision rev(1),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("###"),
+   Version ver(1)]
+  facility iMamaCore {
+
+    [Behavior beh("###"),
+     Description descr("action to alter qualifiers on the object"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string changeQualifier([In _i] string name, [In _i] string value);
+
+    [Behavior beh("###"),
+     Description descr("action to get the complete specification of the object"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tSpecLanguage getSpecification([Out _o] MAMA::tSpecLanguage language);
+  
+  } // facility iMamaCore
+
+  [Abstract abs,
+   Behavior beh("###"),
+   Description descr("a general purpose object with an ADS facility to alter qualifiers that every other object with alterable qualifiers can inherite from"),
+   Revision rev(1),
+   SpecStatus spst("current"),
+   Status st("optional"),
+   Usage usg("###"),
+   Version ver(1)]
+  element oMamaCore @provides MAMA::iMamaCore {
+  
+    [Behavior beh("###"),
+     Description descr("action to alter qualifiers on the object"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string changeQualifier([In _i] string name, [In _i] string value);
+
+    [Behavior beh("###"),
+     Description descr("action to get the complete specification of the object"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tSpecLanguage getSpecification([Out _o] MAMA::tSpecLanguage language);
+  
+  } // element oMamaCore
+
+  [Behavior beh("###"),
+   Description descr("A typedfinition that binds ADL operation to a string An ADL operation is the actual configuration function of an objects implementation"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tOperation;
+
+  [Behavior beh("###"),
+   Description descr("One object path is the MAMA address of an object. A sequence of object paths can be used to address multiple object within the same function call or to realize hierachies like the one found in management systems where a function call needs to be forwarded via multiple objects up to the final managed object."),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef MAMA::tPath[] tSeqObjectPath;
+
+  [Behavior beh("###"),
+   Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("###"),
+   Version ver(1)]
+  facility Protocol {
+  
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList swAction([In _i] MAMA::tOperation operation, [In _i] MAMA::tSeqObjectPath addresses, [In _i] MAMA::tNameValueList parameters, [In _i] MAMA::tNameValueList options);
+  
+  } // facility Protocol
+
+  [Abstract abs,
+   Behavior beh("###"),
+   Description descr("This object gives ADL specification of the MAMA protocol. The object is sayed to be abstract because no actual instanciation should be made. The purpose of this object is to explain the MAMA protocol to provide information on how to define middleware specific versions of it."),
+   Revision rev(1),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("###"),
+   Version ver(1)]
+  element swProtocol @provides MAMA::Protocol {
+  
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList swAction([In _i] MAMA::tOperation operation, [In _i] MAMA::tSeqObjectPath addresses, [In _i] MAMA::tNameValueList parameters, [In _i] MAMA::tNameValueList options);
+  
+  } // element swProtocol
+
+  [Description descr("###"),
+   MaxValue maxV(9999),
+   MinValue minV(1),
+   SpecStatus spst("current"),
+   Status st("required"),
+   StepIndex stI(1)]
+  typedef long swMaxErrors;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swTransmiterror;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swServerName;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swObjectPtr;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swOpName;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swOpPtr;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swOpDescr;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swEventDescr;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string swEventNumber;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Values values("other", "publisher", "publisherAndSubscriber", "subscriber", "subscriberAndPop", "SubscriberAndPush")]
+  typedef short swEventServerFlags;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string[] tObjectPath;
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  struct swArgStruct {
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::swOpName opName;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::tNameValueList addressList;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::tNameValueList parametersList;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::tNameValueList optionsList;
+  } // struct swArgStruct
+
+  [Behavior beh("###"),
+   Description descr("The element SWAPI represents the main element for the application programmer. This element realizes the configuration of the API, the registration of the application at the naming service and at the event service, configuration of the employed middleware, and provision of an operation for the invocation of actions."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("Each component must instantiate at least one SWAPI object."),
+   Version ver(1)]
+  facility i_swAPI {
+  
+    [Behavior beh("###"),
+     Description descr("This operation configures the API. It must be called before any other API operation. An application can set the type of middleware that should be used for communication (SWMiddleWare). The parameter max-errors defines the maximum number of errors the API should store then no connection to an event ser-vice exists. The parameter transmiterror instructs the API to send errors immediately to the event server (true) or not at all (false). The parameter ServerName can be used to supply a name for the application that is further used for the registration at the naming service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swServerName initEntity([In _i] MAMA::tMiddleware mwtype, [In _i] MAMA::swMaxErrors maxerrors, [In _i] MAMA::swTransmiterror transmiterror, [In _i] MAMA::swServerName servername);
+
+    [Behavior beh("###"),
+     Description descr("This operation binds an existing TIE object to the SWAPI object."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swObjectPtr configureMiddleware([In _i] MAMA::swObjectPtr ptr);
+
+    [Behavior beh("###"),
+     Description descr("The application must register itself at the event service. This registration follows the rules of the MAMA event service"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swEventServerFlags registerEvSrv([In _i] MAMA::swEventServerFlags evflags);
+
+    [Behavior beh("###"),
+     Description descr("Deregistration form the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action short deregisterEvSrv();
+
+    [Behavior beh("###"),
+     Description descr("A change in the registration to the event server is realized by a de-registration and a following new registration. The API takes over the related calls to the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swEventServerFlags changeRegistrationEvSrv([In _i] MAMA::swEventServerFlags evflags);
+
+    [Behavior beh("###"),
+     Description descr("This operation performs an action call on another MAMA application. It completely implements the MAMA protocol, including the rules for marshalling and de-marshalling of the operation parameters."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList performAction([In _i] MAMA::swArgStruct arglist, [Out _o] MAMA::tNameValueList retarglist);
+
+    [Behavior beh("###"),
+     Description descr("Send the given event to the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swEventNumber sendEvent([In _i] MAMA::swEventDescr evdescr, [In _i] MAMA::swEventNumber number);
+
+    [Behavior beh("###"),
+     Description descr("The application needs to announce each supported operation to the API in order to make them available to other operations. An operation can be clearly identified with its name and a pointer to this very operation."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swOpDescr addNewOperation([In _i] MAMA::swOpName opname, [In _i] MAMA::swOpPtr opptr, [In _i] MAMA::swOpDescr opdescr);
+  
+  } // facility i_swAPI
+
+  [Behavior beh("###"),
+   Description descr("This element mainly features the mapping the OMG IDL data type IDLNamedValue to C++ and vice versa. A name-value pair is a structure with the key name and the value. The flags are for setting the original type of the value to retranslate the presentation of string correctly."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("The developer does not need to address this element directly. The API creates an instance of this element for every conversion from IDL to C++ and vice versa. The element defines methods for persistence to save the current state into files or write it into streams."),
+   Version ver(1)]
+  facility swNamedValue {
+  
+    [Behavior beh("###"),
+     Description descr("Return the name."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string Name();
+
+    [Behavior beh("###"),
+     Description descr("Change the name."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string changeName([In _i] string name);
+
+    [Behavior beh("###"),
+     Description descr("Return the value."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string Value();
+  
+  } // facility swNamedValue
+
+  [Behavior beh("###"),
+   Description descr("The main task of this class is to represent the IDLOptionsList in C++. This map has a key and value field. The value is an instance of the class SWNamedValue. The key depends on the name field of the SWNamedValue."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("This class is used to create a structure for combining large amounts of name-value lists in one map. It is the most important structure for exchanging data. The class comprises methods for persistence. These methods allow writing the actual state of an instance of this class to a file or a stream."),
+   Version ver(1)]
+  facility swOptionsList {
+  
+    [Behavior beh("###"),
+     Description descr("Changes the current entry to the given parameter nv. This will change all information in this entry to the information contained in the parameter nv."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue changeNV([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Concatenate the current and the given map (oplist) to one map. The sequence of the entries may have changed after this operation."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList concat([In _i] MAMA::tNameValueList oplist);
+
+    [Behavior beh("###"),
+     Description descr("Returns true when the parameter str matches a key in the map."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string contains([In _i] string str);
+
+    [Behavior beh("###"),
+     Description descr("Return the current entry as SWNamedValue."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList current();
+
+    [Behavior beh("###"),
+     Description descr("Return the number of entries that are present in the map."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action long entries();
+
+    [Behavior beh("###"),
+     Description descr("Changes the parameter nv to the next entry in the map. Return false when the map is empty or the current key is the last available."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue getNext([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Changes the parameter str to the next key in the map. Return false when the iterator is currently at the end of the map or the map is empty."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getNextKey([In _i] string str);
+
+    [Behavior beh("###"),
+     Description descr("Inserts the given parameter nv to the map. Return false when the key is already present."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue insert([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Increase the internal iterator by one. Returns false when the current value is the last in the map or the map is empty."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string next();
+
+    [Behavior beh("###"),
+     Description descr("Removes the SWNamedValue matching str. Returns false when no matching key was found or the map is still empty."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string remove([In _i] string str);
+
+    [Behavior beh("###"),
+     Description descr("Resets the internal iterator for the current map and set it to start of the first entry."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string reset();
+
+    [Behavior beh("###"),
+     Description descr("This operation simply streams all entries with key and value to the standard output device stdout."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showAll();
+  
+  } // facility swOptionsList
+
+  [Behavior beh("###"),
+   Description descr("This is the most powerful map of each MAMA application. It is the representation for registered opera-tions accessible by other applications. Standard operations for each application are automatically inserted in this list. \n\n This class has to maps, one for the function pointer and one for their description. The information is di-vided because C++ offers no mechanism to define structures that include function pointers as members."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("The class SWAPI is responsible for instantiate this map. The developer uses the operation addNewOpera-tion to register new operations."),
+   Version ver(1)]
+  facility swOperationMap {
+  
+    [Behavior beh("###"),
+     Description descr("Return true when the parameter strOP matches an operation, false otherwise."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swOpName contains([In _i] MAMA::swOpName strOP);
+
+    [Behavior beh("###"),
+     Description descr("Return the name of the next operation in map. When no more operations are available, the string is empty."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getNext();
+
+    [Behavior beh("###"),
+     Description descr("Return the current key."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getCurrent();
+
+    [Behavior beh("###"),
+     Description descr("Return the description of the currently selected operation, if available."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getCurrentDescription();
+
+    [Behavior beh("###"),
+     Description descr("Reset the internal iterator."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string reset();
+
+    [Behavior beh("###"),
+     Description descr("Insert the parameterized operation to the map. An existing operation with the same name will be overwritten."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string insert([In _i] string key, [In _i] MAMA::swOpName strOp, [In _i] string description);
+
+    [Behavior beh("###"),
+     Description descr("Return the number of available operations."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action long entries();
+
+    [Behavior beh("###"),
+     Description descr("This function simply streams all entries with key and value to the standard output device stdout."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showAll();
+
+    [Behavior beh("###"),
+     Description descr("Return the name and the description of the operation depicted by the parameter operation as sNamedValue."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swOpName list([In _i] MAMA::swOpName operation);
+
+    [Behavior beh("###"),
+     Description descr("Return a list of all associated operations."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList listAll();
+  
+  } // facility swOperationMap
+
+  [Behavior beh("###"),
+   Description descr("An object path is the address to a MAMA application. This includes the support for addressing objects in a hierarchy. Here, the path is a concatenation of each address an action has to be for-warded to through the hierarchical tree."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("This class is used by the API to realize management hierarchies. The term self in the following descrip-tions of member functions relates to the application itself."),
+   Version ver(1)]
+  facility swObjectPath {
+  
+    [Behavior beh("###"),
+     Description descr("Return the first element in self and remove it."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string decrementPath();
+  
+  } // facility swObjectPath
+
+  [Behavior beh("###"),
+   Description descr("This class is responsible for the address handling. It represents the implementation of IDLSeqObjectPath. Each application which is addressed is represented by one SWObjectPath."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("This class is used by the API according to the definitions of the MAMA protocol. The term self in the following descriptions of member functions relates to the application itself."),
+   Version ver(1)]
+  facility swAddressList {
+  
+    [Behavior beh("###"),
+     Description descr("Return the count of addressed applications."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action long entries();
+
+    [Behavior beh("###"),
+     Description descr("Return the first existing path of self."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tObjectPath getFirst();
+
+    [Behavior beh("###"),
+     Description descr("Return the first element of self and remove it."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tObjectPath removeFirst();
+  
+  } // facility swAddressList
+
+  [Behavior beh("###"),
+   Description descr("This class is responsible for handling errors occurring at runtime. The map stores all errors locally. The maximum number of errors stored can be configured."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("Each error is represented as an SWNamedValue. The map, which contains all errors, is a sorted list."),
+   Version ver(1)]
+  facility swError {
+  
+    [Behavior beh("###"),
+     Description descr("Set the name of the server all errors should be sent to. Usually, this is the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string setServerName([In _i] string ServerName);
+
+    [Behavior beh("###"),
+     Description descr("When true, all errors will be sent immediately. When false, occurred errors will be stored in the map."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string setTransmitMode([In _i] string transmit);
+
+    [Behavior beh("###"),
+     Description descr("Generate a new item."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue newError([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Return the last occurred error."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue lastError();
+
+    [Behavior beh("###"),
+     Description descr("Return a list of all stored errors. The maximum is specified at initialization."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList listErrors();
+
+    [Behavior beh("###"),
+     Description descr("Send all mapped errors to the standard output device stdout."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showErrors();
+
+    [Behavior beh("###"),
+     Description descr("Send the last occurred error to the standard output device stdout."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showLastError();
+
+    [Behavior beh("###"),
+     Description descr("Send the last error. No action will be performed when transmit is set to false."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string sendLastError([In _i] string transmit);
+  
+  } // facility swError
+
+  [Behavior beh("###"),
+   Description descr("This class is the implementation for all functions and mechanism needed to implement a CORBA application. The SWCORBAServer class is included in the static library called CORBALib."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("The functionality of this class is completely hidden to the application programmer. All methods per-formed are redirects from the class SWCORBALib. The three member functions follow the specification of the MAMA protocol."),
+   Version ver(1)]
+  facility CORBAServer {
+  
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string shutdown();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string visible();
+
+    [Behavior beh("###"),
+     Description descr("This method is responsible for validating whether this action is required to run at this application or not."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swArgStruct checkLocalExecution([In _i] MAMA::swArgStruct actionargs);
+
+    [Behavior beh("###"),
+     Description descr("This method checks whether the action should be forwarded to all applications that are associated."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swArgStruct checkForwardExecution([In _i] MAMA::swArgStruct actionargs);
+
+    [Behavior beh("###"),
+     Description descr("This method forwards the execution of the requested action to all associated applications. It takes care to change the addresses and response back to the callee."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swArgStruct ForwardExecution([In _i] MAMA::swArgStruct actionargs);
+  
+  } // facility CORBAServer
+
+  [Behavior beh("###"),
+   Description descr("This class redirects all incoming actions and initialization processes to the needed CORBA mechanisms."),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("If a CORBA action or initialization is required, the methods of this class are called."),
+   Version ver(1)]
+  facility CORBA {
+  
+    [Behavior beh("###"),
+     Description descr("Initializes the class instance. In fact, it binds the given TIE pointer to the IDL interface."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swObjectPtr Initiate([In _i] MAMA::swObjectPtr ptr);
+
+    [Behavior beh("###"),
+     Description descr("This method is responsible for requesting an action on other applications. It checks the parameter ArgStruct for valid data about the called action, the address of the application, and parameters of the called action. The parameter ReturnList contains all return values for the given action."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList Action([In _i] MAMA::swArgStruct ArgStruct, [In _i] MAMA::tNameValueList ReturnList);
+  
+  } // facility CORBA
+
+  [Abstract abs,
+   Behavior beh("###"),
+   Description descr("MAMA API"),
+   Revision rev(0),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg(""),
+   Version ver(1)]
+  element swAPI @provides MAMA::i_swAPI, MAMA::swNamedValue, MAMA::swOptionsList, MAMA::swOperationMap, MAMA::swObjectPath, MAMA::swError, MAMA::CORBAServer, MAMA::CORBA {
+  
+    [Behavior beh("###"),
+     Description descr("This operation configures the API. It must be called before any other API operation. An application can set the type of middleware that should be used for communication (SWMiddleWare). The parameter max-errors defines the maximum number of errors the API should store then no connection to an event ser-vice exists. The parameter transmiterror instructs the API to send errors immediately to the event server (true) or not at all (false). The parameter ServerName can be used to supply a name for the application that is further used for the registration at the naming service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swServerName initEntity([In _i] MAMA::tMiddleware mwtype, [In _i] MAMA::swMaxErrors maxerrors, [In _i] MAMA::swTransmiterror transmiterror, [In _i] MAMA::swServerName servername);
+
+    [Behavior beh("###"),
+     Description descr("This operation binds an existing TIE object to the SWAPI object."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swObjectPtr configureMiddleware([In _i] MAMA::swObjectPtr ptr);
+
+    [Behavior beh("###"),
+     Description descr("The application must register itself at the event service. This registration follows the rules of the MAMA event service"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swEventServerFlags registerEvSrv([In _i] MAMA::swEventServerFlags evflags);
+
+    [Behavior beh("###"),
+     Description descr("Deregistration form the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action short deregisterEvSrv();
+
+    [Behavior beh("###"),
+     Description descr("A change in the registration to the event server is realized by a de-registration and a following new registration. The API takes over the related calls to the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swEventServerFlags changeRegistrationEvSrv([In _i] MAMA::swEventServerFlags evflags);
+
+    [Behavior beh("###"),
+     Description descr("This operation performs an action call on another MAMA application. It completely implements the MAMA protocol, including the rules for marshalling and de-marshalling of the operation parameters."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList performAction([In _i] MAMA::swArgStruct arglist, [Out _o] MAMA::tNameValueList retarglist);
+
+    [Behavior beh("###"),
+     Description descr("Send the given event to the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swEventNumber sendEvent([In _i] MAMA::swEventDescr evdescr, [In _i] MAMA::swEventNumber number);
+
+    [Behavior beh("###"),
+     Description descr("The application needs to announce each supported operation to the API in order to make them available to other operations. An operation can be clearly identified with its name and a pointer to this very operation."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swOpDescr addNewOperation([In _i] MAMA::swOpName opname, [In _i] MAMA::swOpPtr opptr, [In _i] MAMA::swOpDescr opdescr);
+
+    [Behavior beh("###"),
+     Description descr("Return the name."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string Name();
+
+    [Behavior beh("###"),
+     Description descr("Change the name."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string changeName([In _i] string name);
+
+    [Behavior beh("###"),
+     Description descr("Return the value."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string Value();
+
+    [Behavior beh("###"),
+     Description descr("Changes the current entry to the given parameter nv. This will change all information in this entry to the information contained in the parameter nv."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue changeNV([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Concatenate the current and the given map (oplist) to one map. The sequence of the entries may have changed after this operation."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList concat([In _i] MAMA::tNameValueList oplist);
+
+    [Behavior beh("###"),
+     Description descr("Returns true when the parameter str matches a key in the map."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string contains([In _i] string str);
+
+    [Behavior beh("###"),
+     Description descr("Return the current entry as SWNamedValue."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList current();
+
+    [Behavior beh("###"),
+     Description descr("Return the number of entries that are present in the map."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action long entries();
+
+    [Behavior beh("###"),
+     Description descr("Changes the parameter nv to the next entry in the map. Return false when the map is empty or the current key is the last available."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue getNext([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Changes the parameter str to the next key in the map. Return false when the iterator is currently at the end of the map or the map is empty."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getNextKey([In _i] string str);
+
+    [Behavior beh("###"),
+     Description descr("Inserts the given parameter nv to the map. Return false when the key is already present."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue insert([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Increase the internal iterator by one. Returns false when the current value is the last in the map or the map is empty."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string next();
+
+    [Behavior beh("###"),
+     Description descr("Removes the SWNamedValue matching str. Returns false when no matching key was found or the map is still empty."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string remove([In _i] string str);
+
+    [Behavior beh("###"),
+     Description descr("Resets the internal iterator for the current map and set it to start of the first entry."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string reset();
+
+    [Behavior beh("###"),
+     Description descr("This operation simply streams all entries with key and value to the standard output device stdout."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showAll();
+
+    [Behavior beh("###"),
+     Description descr("Return the current key."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getCurrent();
+
+    [Behavior beh("###"),
+     Description descr("Return the description of the currently selected operation, if available."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getCurrentDescription();
+
+    [Behavior beh("###"),
+     Description descr("Return the name and the description of the operation depicted by the parameter operation as sNamedValue."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swOpName list([In _i] MAMA::swOpName operation);
+
+    [Behavior beh("###"),
+     Description descr("Return a list of all associated operations."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList listAll();
+
+    [Behavior beh("###"),
+     Description descr("Return the first element in self and remove it."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string decrementPath();
+
+    [Behavior beh("###"),
+     Description descr("Set the name of the server all errors should be sent to. Usually, this is the event service."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string setServerName([In _i] string ServerName);
+
+    [Behavior beh("###"),
+     Description descr("When true, all errors will be sent immediately. When false, occurred errors will be stored in the map."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string setTransmitMode([In _i] string transmit);
+
+    [Behavior beh("###"),
+     Description descr("Generate a new item."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue newError([In _i] MAMA::sNamedValue nv);
+
+    [Behavior beh("###"),
+     Description descr("Return the last occurred error."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sNamedValue lastError();
+
+    [Behavior beh("###"),
+     Description descr("Return a list of all stored errors. The maximum is specified at initialization."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList listErrors();
+
+    [Behavior beh("###"),
+     Description descr("Send all mapped errors to the standard output device stdout."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showErrors();
+
+    [Behavior beh("###"),
+     Description descr("Send the last occurred error to the standard output device stdout."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showLastError();
+
+    [Behavior beh("###"),
+     Description descr("Send the last error. No action will be performed when transmit is set to false."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string sendLastError([In _i] string transmit);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string shutdown();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string visible();
+
+    [Behavior beh("###"),
+     Description descr("This method is responsible for validating whether this action is required to run at this application or not."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swArgStruct checkLocalExecution([In _i] MAMA::swArgStruct actionargs);
+
+    [Behavior beh("###"),
+     Description descr("This method checks whether the action should be forwarded to all applications that are associated."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swArgStruct checkForwardExecution([In _i] MAMA::swArgStruct actionargs);
+
+    [Behavior beh("###"),
+     Description descr("This method forwards the execution of the requested action to all associated applications. It takes care to change the addresses and response back to the callee."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swArgStruct ForwardExecution([In _i] MAMA::swArgStruct actionargs);
+
+    [Behavior beh("###"),
+     Description descr("Initializes the class instance. In fact, it binds the given TIE pointer to the IDL interface."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::swObjectPtr Initiate([In _i] MAMA::swObjectPtr ptr);
+
+    [Behavior beh("###"),
+     Description descr("This method is responsible for requesting an action on other applications. It checks the parameter ArgStruct for valid data about the called action, the address of the application, and parameters of the called action. The parameter ReturnList contains all return values for the given action."),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tNameValueList Action([In _i] MAMA::swArgStruct ArgStruct, [In _i] MAMA::tNameValueList ReturnList);
+  
+  } // element swAPI
+
+  [Description descr("###"),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sCompileTime {
+    [Description descr("The Number of interfaces the entity supports."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    short NumberOfInterfaces;
+
+    [Description descr("The time at which the entity was compiled."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime CompileTime;
+
+    [Description descr("The major number of the version of the entity."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    short Version;
+
+    [Description descr("The minor number of the version of the entity."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    short Revision;
+
+    [Description descr("The cvs version of the entity's main source file."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string Cvs;
+
+    [Description descr("The type info of the entity."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tEntityType Type;
+  } // struct sCompileTime
+
+  [Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sInstallation {
+    [Description descr("The complete path where the application is installed (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tPath PkgLocation;
+
+    [Description descr("The date and time this application was installed on the host (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tDate PkgDate;
+
+    [Description descr("The serial number of the software assigned by the manufacturer (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string PkgSerialNumber;
+
+    [Description descr("The name assigned to the application package by the Manufacturer (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string PkgProductName;
+
+    [Description descr("The version number assigned to the application by the Manufacturer (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string PkgVersion;
+
+    [Description descr("The Manufacturer of the application (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string PkgManufacturer;
+  } // struct sInstallation
+
+  [Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sLaunch {
+    [Description descr("The process owner's login name (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string launchUser;
+
+    [Description descr("The starting parameters for the process (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string launchParameters;
+
+    [Description descr("The time the process was started (rfc2287)."),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string launchTime;
+  } // struct sLaunch
+
+  [Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sRuntimeGeneral {
+    [Description descr("The textual identification of the contact person for this entity together with information on how to contact this person. If no contact information is known, the value is the zero-length string. (string) (snmpv3)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string SupportContact;
+
+    [Description descr("The physical location of this node (e.g., 'telephone closet, 3rd floor'). If the location is unknown, the value is the zero-length string. (string) (snmpv3)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string PhysicalLocation;
+
+    [Description descr("ID of the entity (UUID)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string ID;
+
+    [Counter cnt,
+     Description descr("number of re-initialisations of the entity since initial configuration"),
+     SpecStatus spst("1"),
+     Status st("current"),
+     StepIndex stI(1)]
+    short Boots;
+
+    [Description descr("time the last change of Entity-Boots"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime Time;
+
+    [Description descr("time since the entity is initially running"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime Uptime;
+
+    [Description descr("local time of the host/resource the entity is running on"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime LocalTime;
+
+    [Description descr("Operating system of the host the entity is running on"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tOperatingSystem OS;
+
+    [Description descr("Middleware the entity is running on"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tMiddleware Middleware;
+
+    [Description descr("ID of the host/resource the entity is running on (string/enum/IP number)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string Host;
+
+    [Description descr("actual status of the entity (int/string/enum)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tEntityStatus Status;
+  } // struct sRuntimeGeneral
+
+  [Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sRuntimeConfigUrls {
+    [Description descr("url of the configuration file of an entity (rfc1738 url)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tURL ConfigUrl;
+
+    [Description descr("url of the persistent storage of the entity (rfc1738 url)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tURL PersistentUrl;
+
+    [Description descr("url of the storage of log information (rfc1738 url)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tURL LogUrl;
+
+    [Description descr("the event server, the entity is currently using (srb-url)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tURL EventServerUrl;
+
+    [Description descr("url of the entity itself, if any (srb-url, rfc1738 url)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tURL EntityUrl;
+  } // struct sRuntimeConfigUrls
+
+  [Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sRuntimeConfigFixed {
+    [Description descr("log level of the entity (int)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    short LogLevel;
+
+    [Description descr("debug level of the entity (int)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    short DebugLevel;
+
+    [Description descr("monitoring level of the entity (int)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    short MonitoringLevel;
+
+    [Description descr("serial number of the entity or zero (long/string)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string SerialNumber;
+
+    [Description descr("vendor of the entity or zero (long/string)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string Vendor;
+
+    [Description descr("manufacturer of the entity or zero (long/string)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string Manufacturer;
+
+    [Description descr("model of the entity or zero (long/string)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string ModelName;
+
+    [Description descr("###"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string LanguageEdition;
+  } // struct sRuntimeConfigFixed
+
+  [Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sRuntimeConfigVariable {
+    [Description descr("timeout for transaction in seconds (int)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    short TransactionTimeout;
+
+    [Description descr("the security model, the entity is currently using (int/enum/string)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string SecurityModel;
+
+    [Description descr("the security level, the entity is currently using (int/enum/string)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tSecurityLevel SecurityLevel;
+
+    [Description descr("the current status of an entity (enum)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    string OperationStatus;
+
+    [Description descr("the last change of an entity (code or variables?)"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime LastChange;
+  } // struct sRuntimeConfigVariable
+
+  [Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current")]
+  struct sRuntimeLog {
+    [Description descr("the last time a request was send to the entity"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime LastRequestIn;
+
+    [Description descr("the last time a request was send by the entity"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime LastRequestOut;
+
+    [Description descr("the last time the entity received a result regarding to a prior request"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime LastResultIn;
+
+    [Description descr("the last time the entity send a result regarding to a prior request"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime LastResultOut;
+
+    [Description descr("the last time a request was rejected by the entity"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime RejectedRequestsIn;
+
+    [Description descr("the last time a request was rejected by a requested entity"),
+     SpecStatus spst("1"),
+     Status st("current")]
+    MAMA::tTime RejectedRequestsOut;
+
+    [Counter cnt,
+     Description descr("number of request send to this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spst("1"),
+     Status st("current"),
+     StepIndex stI(1)]
+    long RequestInCount;
+
+    [Counter cnt,
+     Description descr("number of request send by this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spst("1"),
+     Status st("current"),
+     StepIndex stI(1)]
+    long RequestOutCount;
+
+    [Counter cnt,
+     Description descr("number of received results by this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spst("1"),
+     Status st("current"),
+     StepIndex stI(1)]
+    long ResultInCount;
+
+    [Counter cnt,
+     Description descr("number of send results by this entity"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spst("1"),
+     Status st("current"),
+     StepIndex stI(1)]
+    long ResultOutCount;
+
+    [Counter cnt,
+     Description descr("number of rejected requests"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spst("1"),
+     Status st("current"),
+     StepIndex stI(1)]
+    long RejectedRequestsInCount;
+
+    [Counter cnt,
+     Description descr("number of rejected requests"),
+     MaxLen maxL(1000000000),
+     MinLen minL(0),
+     SpecStatus spst("1"),
+     Status st("current"),
+     StepIndex stI(1)]
+    long RejectedRequestsOutCount;
+  } // struct sRuntimeLog
+
+  [Behavior beh("###"),
+   Description descr(""),
+   SpecStatus spst("1"),
+   Status st("current"),
+   Usage usg(""),
+   Version ver(1)]
+  facility iEntityMgmt {
+  
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sCompileTime compileInformation;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sInstallation installInformation;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sLaunch launchInformation;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeGeneral runtimeGeneralInformation;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeConfigUrls configUrls;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeConfigFixed configInformationFixed;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeConfigVariable configInformationVariable;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeLog logInformation;
+  
+  } // facility iEntityMgmt
+
+  [Abstract abs,
+   Behavior beh("###"),
+   Description descr("Entity Management Object, kept abstract as base object for a managed MAMA entity"),
+   Revision rev(0),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg(""),
+   Version ver(1)]
+  element oEntityMgmt @provides MAMA::iEntityMgmt {
+  
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sCompileTime compileInformation;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sInstallation installInformation;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sLaunch launchInformation;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeGeneral runtimeGeneralInformation;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeConfigUrls configUrls;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeConfigFixed configInformationFixed;
+
+    [Description descr(""),
+     Permissions perm(0644),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeConfigVariable configInformationVariable;
+
+    [Description descr(""),
+     Permissions perm(0444),
+     SpecStatus spst("1"),
+     Status st("current")]
+    attribute MAMA::sRuntimeLog logInformation;
+  
+  } // class oEntityMgmt
+
+  [Behavior beh("###"),
+   Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tDN;
+
+  [Behavior beh("###"),
+   Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tParentDN;
+
+  [Behavior beh("###"),
+   Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tInstanceDN;
+
+  [Behavior beh("###"),
+   Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  typedef string tObjectDN;
+
+  [Behavior beh("###"),
+   Description descr(""),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg(""),
+   Version ver(1)]
+  facility iDNSS {
+  
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID getUUID();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getAttributeValue([In _i] MAMA::tDN eDN, [In _i] MAMA::tElementType eType, [In _i] string attributeName);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID setAttributeValue([In _i] MAMA::tDN eDN, [In _i] MAMA::tElementType eType, [In _i] string attributeName, [In _i] string[] attributeValue, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID deregister([In _i] MAMA::tDN instanceDN, [In _i] MAMA::tElementType entryType, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getAll();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getCount([In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tElementType entryType, [In _i] string isRecursive);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action short getEntries([In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tElementType entryType, [In _i] string isRecursive, [In _i] short fromIndex, [In _i] short toIndex);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tElementType getEntry([In _i] MAMA::tDN entryDN, [In _i] MAMA::tElementType entryType);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tSpecLanguage getObjectSpec([In _i] MAMA::tInstanceDN idname, [In _i] MAMA::tSpecLanguage formatType);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tInstanceDN getInstanceIOR([In _i] MAMA::tInstanceDN idname);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID modifyEntryName([In _i] MAMA::tInstanceDN oldEntryDN, [In _i] MAMA::tElementType entryType, [In _i] MAMA::tInstanceDN newEntryDN, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID register([In _i] MAMA::tDN entryDN, [In _i] string ior, [In _i] MAMA::tMiddlewareReference referenceKind, [In _i] MAMA::tObjectDN odname, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID registerAlias([In _i] MAMA::tDN aliasDN, [In _i] MAMA::tDN instanceDN, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID addSpecification([In _i] string specificationName, [In _i] string specification, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID addToSpecification([In _i] string newElement, [In _i] MAMA::tElementType elementType, [In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getElement([In _i] MAMA::tDN elementDN, [In _i] MAMA::tElementType elementType, [In _i] MAMA::tSpecLanguage formatType, [In _i] string compact);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getElements([In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tElementType elementType, [In _i] string isRecursive, [In _i] short fromIndex, [In _i] short toIndex, [In _i] MAMA::tSpecLanguage formatType, [In _i] string compact);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getElementsByValue([In _i] string attributeName, [In _i] string attributeValue, [In _i] MAMA::tElementType elementType, [In _i] short fromIndex, [In _i] short toIndex, [In _i] MAMA::tSpecLanguage formatType, [In _i] string compact);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tObjectDN getInstances([In _i] MAMA::tObjectDN objectDN);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID remove([In _i] MAMA::tDN elementDN, [In _i] MAMA::tElementType elementType, [In _i] MAMA::tUUID uuid);
+  
+  } // facility iDNSS
+
+  [Behavior beh("###"),
+   Description descr("Directory Naming and Specification Service"),
+   Revision rev(0),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg(""),
+   Version ver(1)]
+  element oDNSS @provides MAMA::iDNSS {
+  
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID getUUID();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getAttributeValue([In _i] MAMA::tDN eDN, [In _i] MAMA::tElementType eType, [In _i] string attributeName);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID setAttributeValue([In _i] MAMA::tDN eDN, [In _i] MAMA::tElementType eType, [In _i] string attributeName, [In _i] string[] attributeValue, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID deregister([In _i] MAMA::tDN instanceDN, [In _i] MAMA::tElementType entryType, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getAll();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getCount([In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tElementType entryType, [In _i] string isRecursive);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action short getEntries([In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tElementType entryType, [In _i] string isRecursive, [In _i] short fromIndex, [In _i] short toIndex);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tElementType getEntry([In _i] MAMA::tDN entryDN, [In _i] MAMA::tElementType entryType);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tSpecLanguage getObjectSpec([In _i] MAMA::tInstanceDN idname, [In _i] MAMA::tSpecLanguage formatType);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tInstanceDN getInstanceIOR([In _i] MAMA::tInstanceDN idname);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID modifyEntryName([In _i] MAMA::tInstanceDN oldEntryDN, [In _i] MAMA::tElementType entryType, [In _i] MAMA::tInstanceDN newEntryDN, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID register([In _i] MAMA::tDN entryDN, [In _i] string ior, [In _i] MAMA::tMiddlewareReference referenceKind, [In _i] MAMA::tObjectDN odname, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID registerAlias([In _i] MAMA::tDN aliasDN, [In _i] MAMA::tDN instanceDN, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID addSpecification([In _i] string specificationName, [In _i] string specification, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID addToSpecification([In _i] string newElement, [In _i] MAMA::tElementType elementType, [In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tUUID uuid);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getElement([In _i] MAMA::tDN elementDN, [In _i] MAMA::tElementType elementType, [In _i] MAMA::tSpecLanguage formatType, [In _i] string compact);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getElements([In _i] MAMA::tParentDN parentDN, [In _i] MAMA::tElementType elementType, [In _i] string isRecursive, [In _i] short fromIndex, [In _i] short toIndex, [In _i] MAMA::tSpecLanguage formatType, [In _i] string compact);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string getElementsByValue([In _i] string attributeName, [In _i] string attributeValue, [In _i] MAMA::tElementType elementType, [In _i] short fromIndex, [In _i] short toIndex, [In _i] MAMA::tSpecLanguage formatType, [In _i] string compact);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tObjectDN getInstances([In _i] MAMA::tObjectDN objectDN);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tUUID remove([In _i] MAMA::tDN elementDN, [In _i] MAMA::tElementType elementType, [In _i] MAMA::tUUID uuid);
+  
+  } // element oDNSS
+
+  [Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required")]
+  struct nelsSubscription {
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Values values("Consumer", "Producer", "Subscriber", "Publisher")]
+    short role;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Values values("push", "pop")]
+    short method;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    string channel;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    string objectClass;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    string objectInstance;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    MAMA::ticketCategory category;
+  } // struct nelsSubscription
+
+  [Behavior beh("###"),
+   Description descr("###"),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("###"),
+   Version ver(1)]
+  facility iNELS {
+  
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tInstanceDN subscribe([In _i] MAMA::nelsSubscription subscription, [In _i] MAMA::tInstanceDN name);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tInstanceDN unSubscribe([In _i] MAMA::nelsSubscription subscription, [In _i] MAMA::tInstanceDN name);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string[] getChannels();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sTicket submitTicket([In _i] MAMA::sTicket ticket);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showTicket();
+  
+  } // facility iNELS
+
+  [Behavior beh("###"),
+   Description descr("Even Notification and Log Service"),
+   Revision rev(0),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Usage usg("###"),
+   Version ver(1)]
+  element oNELS @provides MAMA::iNELS {
+  
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tInstanceDN subscribe([In _i] MAMA::nelsSubscription subscription, [In _i] MAMA::tInstanceDN name);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::tInstanceDN unSubscribe([In _i] MAMA::nelsSubscription subscription, [In _i] MAMA::tInstanceDN name);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string[] getChannels();
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action MAMA::sTicket submitTicket([In _i] MAMA::sTicket ticket);
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    action string showTicket();
+  
+  } // element oNELS
+
+  [Contact contact(""),
+   Description descr(""),
+   History hist(""),
+   Organization org(""),
+   Revision rev(0),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Version ver(1)]
+  package mLCMS {
+  
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    struct sInterface {
+      [Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      MAMA::tInstanceDN instanceDN;
+
+      [Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      string intReference;
+
+      [Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      MAMA::tMiddlewareReference intReferenceType;
+
+      [Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      MAMA::tDN interfaceSpec;
+    } // struct sInterface
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    typedef MAMA::mLCMS::sInterface[] interfaceList;
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    struct sObject {
+      [Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      MAMA::tInstanceDN objectDN;
+
+      [Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      MAMA::tDN objectSpec;
+
+      [Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      MAMA::mLCMS::sInterface[] interfaces;
+    } // struct sObject
+
+    [Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required")]
+    typedef MAMA::mLCMS::sObject[] objectList;
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("###"),
+     Version ver(1)]
+    facility iMamaObjectInit {
+    
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action string create();
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tNameValueList init([In _i] MAMA::tNameValueList initParams);
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action string terminate();
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action string checkpoint();
+    
+    } // facility iMamaObjectInit
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     Revision rev(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("###"),
+     Version ver(1)]
+    element oMamaObjectInit @extends MAMA::oMamaCore @provides MAMA::mLCMS::iMamaObjectInit {
+    
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action string create();
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tNameValueList init([In _i] MAMA::tNameValueList initParams);
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action string terminate();
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action string checkpoint();
+    
+    } // element oMamaObjectInit
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("###"),
+     Version ver(1)]
+    facility iClusterManagement {
+    
+      [Behavior beh("###"),
+       Description descr("###"),
+       Permissions perm(0444),
+       SpecStatus spst("current"),
+       Status st("required")]
+      attribute MAMA::mLCMS::objectList objects;
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN create([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tNameValueList init([In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tNameValueList initParams);
+
+      [Behavior beh("###"),
+       Description descr(""),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN terminate([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("Get a list of interface references of an identified CO"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN getIntRefs([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("Get all interface references known by ClusterManager"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::mLCMS::interfaceList getAllIntRefs();
+
+      [Behavior beh("###"),
+       Description descr("Get selected interface reference"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN selectIntRef([In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tDN interfaceType);
+    
+    } // facility iClusterManagement
+
+    [Behavior beh("###"),
+     Description descr("Life cycle Management"),
+     Revision rev(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("###"),
+     Version ver(1)]
+    element oClusterManager @provides MAMA::mLCMS::iClusterManagement {
+    
+      [Behavior beh("###"),
+       Description descr("###"),
+       Permissions perm(0444),
+       SpecStatus spst("current"),
+       Status st("required")]
+      attribute MAMA::mLCMS::objectList objects;
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN create([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("1"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tNameValueList init([In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tNameValueList initParams);
+
+      [Behavior beh("###"),
+       Description descr(""),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN terminate([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("Get a list of interface references of an identified CO"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN getIntRefs([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("Get all interface references known by ClusterManager"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::mLCMS::interfaceList getAllIntRefs();
+
+      [Behavior beh("###"),
+       Description descr("Get selected interface reference"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN selectIntRef([In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tDN interfaceType);
+    
+    } // element oClusterManager
+
+    [Behavior beh("###"),
+     Description descr("###"),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("###"),
+     Version ver(1)]
+    facility iCapsuleManagement @extends MAMA::mLCMS::iClusterManagement {
+    
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN setType([In _i] MAMA::tDN elementDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN delType([In _i] MAMA::tDN elementDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN getTypes();
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN create([In _i] MAMA::tDN co_type, [In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tNameValueList init([In _i] MAMA::tDN co_type, [In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tNameValueList initParams);
+
+      [Behavior beh("###"),
+       Description descr("Stop execution and delete configuration."),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN terminate([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN getIntRefs([In _i] MAMA::tDN coType, [In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN getAllIntRefs([In _i] MAMA::tDN coType, [In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN selectIntRef([In _i] MAMA::tDN co_type, [In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tDN interfaceType);
+    
+    } // facility iCapsuleManagement
+
+    [Behavior beh("###"),
+     Description descr("Configuration Management"),
+     Revision rev(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("###"),
+     Version ver(1)]
+    element oCapsuleManager @provides MAMA::mLCMS::iCapsuleManagement {
+    
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN setType([In _i] MAMA::tDN elementDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN delType([In _i] MAMA::tDN elementDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN getTypes();
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN create([In _i] MAMA::tDN co_type, [In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tNameValueList init([In _i] MAMA::tDN co_type, [In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tNameValueList initParams);
+
+      [Behavior beh("###"),
+       Description descr("Stop execution and delete configuration."),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN terminate([In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN getIntRefs([In _i] MAMA::tDN coType, [In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tInstanceDN getAllIntRefs([In _i] MAMA::tDN coType, [In _i] MAMA::tInstanceDN instanceDN);
+
+      [Behavior beh("###"),
+       Description descr("###"),
+       SpecStatus spst("current"),
+       Status st("required")]
+      action MAMA::tDN selectIntRef([In _i] MAMA::tDN co_type, [In _i] MAMA::tInstanceDN instanceDN, [In _i] MAMA::tDN interfaceType);
+
+    } // element oCapsuleManager
+  
+  } // package mLCMS
+
+  [Contact contact(""),
+   Description descr(""),
+   History hist(""),
+   Organization org(""),
+   Revision rev(0),
+   SpecStatus spst("current"),
+   Status st("required"),
+   Version ver(1)]
+  package mgmt {
+  
+    [Abstract abs,
+     Behavior beh("###"),
+     Description descr(""),
+     Revision rev(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg(""),
+     Version ver(1)]
+    element oManagedObject @extends MAMA::oEntityMgmt {
+    } // element oManagedObject
+
+    [Abstract abs,
+     Behavior beh("###"),
+     Description descr(""),
+     Revision rev(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("War hier mal"),
+     Version ver(1)]
+    element oAgent @extends MAMA::oEntityMgmt @requires MAMA::mgmt::oManagedObject {
+    } // element oAgent
+
+    [Abstract abs,
+     Behavior beh("###"),
+     Description descr(""),
+     Revision rev(0),
+     SpecStatus spst("current"),
+     Status st("required"),
+     Usage usg("Bin da jetzt"),
+     Version ver(1)]
+    element oManager @extends MAMA::oEntityMgmt {
+    
+    } // element oManager
+  
+  } // package mgmt
+
+} // package MAMA
+

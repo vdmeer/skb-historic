@@ -1,0 +1,405 @@
+/* Copyright (c) 2000-2011 Sven van der Meer (sven@vandermeer.de)
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * General example of a Cola specification for Org.SKB.Lang.Cola.Proto
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.30 build 110309 (09-Mar-11) for Cola v0.30
+ */
+
+@stage design;
+@env test;
+@clevel system;
+@language cola;
+@spec mamaj;
+
+property Abstract: @type(boolean = TRUE)
+  @scope([package:not_def] [element:optional] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/abstract.php");
+
+property ArrayType: @type(string = "bag")
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/arraytype.php");
+
+property Behavior: @type(string = NULL)
+  @scope([package:not_def] [element:required] [facility:required]
+         [action:required] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/behavior.php");
+
+property BitMap: @type(string[] = "")
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/bitmap.php")
+  @requires(Behavior);
+
+property BitValues: @type(string[] = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/bitvalues.php");
+
+property Contact: @type(string = NULL)
+  @scope([package:mandatory] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/contact.php");
+
+property Counter: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/counter.php");
+
+property Description: @type(string = NULL)
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:optional] [attribute:mandatory] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/description.php");
+
+property DisplayHint: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/displayhint.php");
+
+property DisplayName: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/displayname.php");
+
+property Group: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/group.php");
+
+property History: @type(string = NULL)
+  @scope([package:optional] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/history.php");
+
+property In: @type(boolean = TRUE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/in.php");
+
+property MaxLen: @type(long = 1024)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/maxlen.php");
+
+property MaxValue: @type(long = 1024)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/maxvalue.php");
+
+property MinLen: @type(long = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/minlen.php");
+
+property MinValue: @type(long = 0)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/minvalue.php");
+
+property Organization: @type(string = NULL)
+  @scope([package:mandatory] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/organization.php");
+
+property Out: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:not_def] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/out.php");
+
+property Owner: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/owner.php");
+
+property Permissions: @type(octet = 0755)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/permissions.php");
+
+property Quality: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:not_def] [parameter:not_def])
+  @apply(inv) @alterable
+  @description("http://www.vandermeer.de/mama/doc/q/quality.php");
+
+property RegisteredAs: @type(string = NULL)
+  @scope([package:optional] [element:optional] [facility:optional]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/registeredas.php");
+
+property Revision: @type(short = 0)
+  @scope([package:mandatory] [element:mandatory] [facility:optional]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/revision.php");
+
+property SpecStatus: @type(string = "current")
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:mandatory] [attribute:mandatory] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/specstatus.php");
+
+property Status: @type(string = "optional")
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:mandatory] [attribute:mandatory] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/status.php");
+
+property StepIndex: @type(long = 1)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/stepindex.php")
+  @requires(Counter);
+
+property Units: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/units.php");
+
+property Usage: @type(string = NULL)
+  @scope([package:not_def] [element:mandatory] [facility:mandatory]
+         [action:optional] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/usage.php");
+
+property Values: @type(string[] = NULL)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/values.php");
+
+property Version: @type(short = 0)
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
+         [action:not_def] [attribute:not_def] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/version.php");
+
+property Wildcards: @type(boolean = FALSE)
+  @scope([package:not_def] [element:not_def] [facility:not_def]
+         [action:not_def] [attribute:optional] [parameter:optional])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/wildcards.php");
+
+property xmlDTD: @type(string = NULL)
+  @scope([package:not_def] [element:not_def] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @description("http://www.vandermeer.de/mama/doc/q/xmlDTD.php");
+
+[Contact contact(""),
+ Description descr("###"),
+ History hist(""),
+ Organization org("###"),
+ Revision rev(0),
+ SpecStatus spS("current"),
+ Status stat("required"),
+ Version ver(1)]
+package P1 {
+	{@language="lads" <<?  ?>>}
+
+		[Description descr("T1inP1 Descr"),
+		 SpecStatus spS("T1inP1 SpecStatus"),
+		 Status stat("T1inP1 Status")]
+		typedef string T1inP1;
+
+	[Behavior beh("###"),
+	 Description descr(""),
+	 SpecStatus spS(""),
+	 Status stat(""),
+	 Usage usage(""),
+	 Version ver(1)]
+	facility I1inP1 {
+
+		[Description descr(""),
+		 SpecStatus spS(""),
+		 Status stat("")]
+		attribute string A1inI1inP1;
+
+		[Behavior beh("###"),
+		 SpecStatus spS(""),
+		 Status stat("")]
+		action string a1inI1inP1();
+	
+	} // facility I1inP1
+
+	[Behavior beh("###"),
+	 Description descr(""),
+	 SpecStatus spS(""),
+	 Status stat(""),
+	 Usage usage(""),
+	 Version ver(1)]
+	facility I2inP1 {
+
+		[Description descr("ATTR"),
+		 SpecStatus spS("ATTR"),
+		 Status stat("ATTR")]
+		attribute P1::T1inP1 A1inI1inP1;
+		
+		[Behavior beh("PROBLEM"),
+		 SpecStatus spS("PROBLEM"),
+		 Status stat("PROBLEM")]
+		action string a1inI1inP1();
+	
+	} // facility I2inP1
+
+	[Behavior beh("AFTER PROBLEM"),
+	 Description descr(""),
+	 Revision rev(0),
+	 SpecStatus spS(""),
+	 Status stat(""),
+	 Usage usage(""),
+	 Version ver(1)]
+	element C1inP1 {
+
+		[Description descr(""),
+		 SpecStatus spS(""),
+		 Status stat("")]
+		attribute string A1inC1inP1;
+
+		[Behavior beh("###"),
+		 SpecStatus spS(""),
+		 Status stat("")]
+		action string a1inC1inP1();
+
+		[Description descr("###"),
+		 SpecStatus spS("current"),
+		 Status stat("required")]
+		attribute string T1inC1inP1;
+
+		[Description descr("###"),
+		 SpecStatus spS("current"),
+		 Status stat("required")]
+		attribute string T2inC1inP1;
+	
+	} // element C1inP1
+
+	[Description descr("###"),
+	 SpecStatus spS("current"),
+	 Status stat("required")]
+	typedef string T2inP1;
+
+	[Contact contact("###"),
+	 Description descr("###"),
+	 History hist(""),
+	 Organization org("###"),
+	 Revision rev(0),
+	 SpecStatus spS("current"),
+	 Status stat("required"),
+	 Version ver(1)]
+	package P2 {
+
+		[Description descr("###"),
+		 SpecStatus spS("current"),
+		 Status stat("required")]
+		typedef string T1inP2 { {@language="lads" <<?  ?>>} };
+
+		[Behavior beh("###"),
+		 Description descr(""),
+		 SpecStatus spS(""),
+		 Status stat(""),
+		 Usage usage(""),
+		 Version ver(1)]
+		facility I1inP2 @extends P1::I1inP1,P1::I2inP1{
+
+			[Description descr(""),
+			 SpecStatus spS(""),
+			 Status stat("")]
+			attribute string A1inI1inP2 { {@language="lads" <<?  ?>>} };
+
+			[Behavior beh("###"),
+			 SpecStatus spS(""),
+			 Status stat("")]
+			action string a1inI1inP2(){
+				{@language="lads" <<?  ?>>}
+			};
+
+		} // facility I1inP2
+
+		[Behavior beh("###"),
+		 Description descr(""),
+		 Revision rev(0),
+		 SpecStatus spS(""),
+		 Status stat(""),
+		 Usage usage(""),
+		 Version ver(1)]
+		element C1inP2 @extends P1::C1inP1 @provides P1::P2::I1inP2, P1::I1inP1 {
+			{@language="lads" <<?  ?>>}
+
+			[Description descr(""),
+			 SpecStatus spS(""),
+			 Status stat("")]
+			attribute string A1inC1inP2 { {@language="lads" <<?  ?>>} };
+
+			[Behavior beh("###"),
+			 SpecStatus spS(""),
+			 Status stat("")]
+			action string a1inC1inP2([In _i] string test){
+				{@language="lads" <<?  ?>>}
+			};
+
+			[Description descr("###"),
+			 SpecStatus spS("current"),
+			 Status stat("required")]
+			attribute string T1inC1inP2;
+		
+		} // element C1inP2
+	
+	} // package P2
+
+} // package P1

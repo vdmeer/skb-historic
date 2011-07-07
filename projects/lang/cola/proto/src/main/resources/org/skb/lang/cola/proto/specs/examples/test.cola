@@ -1,0 +1,177 @@
+/* Copyright (c) 2010-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * General example of a Cola specification for Org.SKB.Lang.Cola.Proto
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.30 build 110309 (09-Mar-11) for Cola v0.30
+ */
+
+@stage design;
+@env test;
+@clevel system;
+@language cola;
+@spec test;
+
+property test3: @type(string="BBB")
+  @scope([package:not_def] [element:required])
+  @apply(inv)
+  @description("##");
+property test2: @type(string="112")
+  @scope([package:not_def])
+  @apply(inv)
+  @description("##");
+property tst4: @type(hex=0xff)
+  @scope([package:not_def])
+  @apply(inv)
+  @description("##");
+
+
+package myPkg{}
+
+
+typedef string t1;
+
+property myProperty: @type(string = NULL)
+  @scope([package:not_def] [element:optional] [facility:optional]
+         [action:optional] [attribute:optional] [parameter:not_def])
+  @apply(inv)
+  @visibility[@spec(myPSpecM-"1";;myPSpecP+"test","ttt"), @runtime(;TRUE;)]
+  @alterable @negotiable
+  @description("http://www.vandermeer.de/mama/doc/q/xmlDTD.php")
+  @extends(MAMA::test1 A::test2 test2)
+  @requires(test3 tst4 B::test3)
+  @priority(string = "test");
+
+typedef string t;
+
+property test: @type(integer=123)
+  @scope([package:not_def])
+  @apply(pre)
+  @description("###");
+
+[myProperty mp("test"),test3 t3("EE")]
+element Ext{
+	action void ac1(string s, integer i);
+}
+
+[myProperty mp("test"),test3 t3("r")]
+element Req{}
+
+[B::test3 bt3(3,4),MAMA::test1 t1(1)]
+facility Pro{}
+
+[B::test3 bt3(3,4),MAMA::test1 t1(1)]
+facility Pro1{}
+
+[B::test3 bt3(5,4), myProperty mp("test"),MAMA::test1 mt1(1)]
+//@visibility[@spec(specM-"1";;specP+"test","ttt"), @runtime(rtM-"1";;rtP+"test","ttt")]
+facility myFacility @extends Pro, Pro1 @requires MAMA::Pro, TEST::Pro1{
+  attribute string t;
+  action void ac1(string s, integer i);
+}
+
+
+[myProperty mp("test"),test3 t3("EE")]
+//@visibility[@spec(specM-"1";;specP+"test","ttt"), @runtime(rtM-"1";;rtP+"test","ttt")]
+element myElement @extends Pkg1::Pkg2::Ext @provides Pro, Pro1 @requires Ext, Req{
+  attribute integer myTypedef;
+}
+
+package A{
+	property test2: @type(integer=0)
+  		@scope([package:not_def])
+  	@apply(pre)
+  	@description("###");
+
+}
+package B{
+	property test3: @type(integer[]=0)
+		@scope([package:not_def] [facility:mandatory])
+		@apply(pre)
+		@description("###");
+}
+package TEST{
+	[MAMA::test1 mt1(1),B::test3 t3(4,5)]
+	facility Pro1{}
+}
+package MAMA{
+	property test1: @type(integer=0)
+  	@scope([package:not_def] [facility:mandatory])
+  	@apply(pre)
+  	@description("###");
+
+    package maA{}
+
+    [myProperty mp("test"),MAMA::test1 mt1(1),B::test3 bt3(5,4)]
+	facility Pro {
+  		attribute string t;
+  		action void ac1(string s, integer i);
+	}
+	
+	package maX{
+		package maX1{}
+		package maX2{}
+	}
+}
+
+package Pkg1{
+	property test3: @type(integer=0)
+	  @scope([package:not_def] [element:not_def])
+	  @apply(pre)
+	  @description("###");
+
+	package Pkg2{
+		[test3 b("EE")]
+		element Ext{}
+	}
+}
+
+
+[MAMA::test1 t099(1),B::test3 t99(4,5)]
+facility myFacilityOOO{}
+
+typedef integer[] myTypedef;
+
+struct myStruct{
+  pkg1::myTypedef i;
+}
+
+package pkg1{
+   property BitMap: @type(string = NULL)
+    @scope([package:not_def] [element:not_def] [facility:optional]
+           [action:optional] [attribute:optional] [parameter:not_def])
+    @apply(inv)
+    @description("http://www.vandermeer.de/mama/doc/q/xmlDTD.php");
+
+    typedef integer[] myTypedef;
+}
