@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dal
+Bundle-SymbolicName: skb.lang.dal
+Bundle-Version: 0.3.0
+Bundle-Vendor: SKB
+Export-Package: org.skb.lang.dal;version="0.3.0",
+ org.skb.lang.dal.grammars;version="0.3.0",
+ org.skb.lang.dal.internal;version="0.3.0"
+Import-Package: org.apache.commons.logging;version="[1.1.1,1.1.1]"
+Import-Bundle: com.springsource.org.apache.commons.logging;version="[1.1.1, 1.1.1]"
+

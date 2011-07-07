@@ -1,0 +1,144 @@
+/* Copyright (c) 2011-2011 Sven van der Meer (sven@vandermeer.de)
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Template file for the target sql in Org.SKB.Lang.Dal
+ *
+ * @package    org.skb.lang.dal
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for StringTemplate v3.2.1
+ */
+
+group sql;
+
+mlcomment_start(dummy) ::= "/*"
+mlcomment_end(dummy) ::= "*/"
+slcomment(comment) ::= "-- <comment>"
+
+
+dalElementTypeMap ::= [
+  "string":"TEXT",
+  default:"TEXT"
+]
+
+
+dalSpecification(definition) ::= <<
+>>
+
+dalDefinition(package) ::= <<
+>>
+
+dalPackage(name, declaration, actions, data) ::= <<
+>>
+
+dalMetaElement(ident, metadata) ::= <<
+INSERT OR IGNORE INTO pkg_fields
+    (key,
+     "core:type", "core:use", "core:entries_name", "core:http_req_name", "core:default_db", "core:explode", "core:interpreter",
+     "core:val_unset", "core:isval", "core:isval_if", "core:isval_else", "core:val_do_list", "core:description")
+   VALUES ('<ident>',
+     <metadata>
+   );
+>>
+
+
+dalElemMetaDataTypeMap ::= ["skb:entity":"entity", "skb:value":"value", default:"value"]
+dalElemMetaDataUseMap  ::= ["skb:core":"core", "skb:request":"request", default:"core,request"]
+
+dalElemMetaData(type, use, entname, httpreqname, defdb, explode, interpreter, valunset, isval, isvalif, isvalelse, dolist, descr) ::= <<
+     <if(type)>'<dalElemMetaDataTypeMap.(type)>'<else>''<endif>, <if(use)>'<dalElemMetaDataUseMap.(use); separator=",">'<else>''<endif>,
+     <if(entname)>'<entname>'<else>''<endif>, <if(httpreqname)>'<httpreqname>'<else>''<endif>, <if(defdb)>'<defdb>'<else>''<endif>,
+     <if(explode)>'<explode>'<else>''<endif>, <if(interpreter)>'<interpreter>'<else>''<endif>, <if(valunset)>'<valunset>'<else>''<endif>,
+     <if(isval)>'<isval>'<else>''<endif>, <if(isvalif)>'<isvalif>'<else>''<endif>, <if(isvalelse)>'<isvalelse>'<else>''<endif>,
+     <if(dolist)>'<dolist>'<else>''<endif>, <if(descr)>'<descr>'<else>''<endif>
+>>
+
+dalElement(ident, type, properties, metadata) ::= <<
+[<ident>] <dalElementTypeMap.(type)> <properties>
+>>
+
+dalElemProperties(size, precision, defvalue, collate, constraints) ::= <<
+<if(size)>(<size><endif><if(precision)>,<precision><endif><if(size)>)<endif>
+<if(constraints)><constraints; separator=" "><endif>
+>>
+
+
+dalElemPropConstraintReasonMap ::= [
+  "dal:constraint:pkey":"pkey",
+  "dal:constraint:nnull":"NOT NULL",
+  "dal:constraint:unique":"UNIQUE",
+  default:key
+]
+dalElemPropConstraintActionMap ::= [
+  "dal:constraint:abort":"ABORT",
+  "dal:constraint:rollback":"ROLLBACK",
+  default:key
+]
+dalElemPropConstraints(reason, action) ::= <<
+<if(reason)><if(action)><dalElemPropConstraintReasonMap.(reason)> ON CONFLICT <dalElemPropConstraintActionMap.(action)><endif><endif>
+>>
+
+
+dalElemSequence(ids) ::= <<
+>>
+
+dalActions(ins, set, add, rem, emp) ::= <<
+>>
+
+dalActionsSet(element, property, ident, ktvl) ::= <<
+>>
+
+dalActionsIns(list, ktvl) ::= <<
+>>
+
+dalActionsAdd(list, element, ktv) ::= <<
+>>
+
+dalActionsRem(list, element) ::= <<
+>>
+
+dalActionsEmp(list) ::= <<
+>>
+
+
+dalData(ktvl) ::= <<
+>>
+
+
+dalPackageName(ids) ::= <<<id; separator=":">
+>>
+
+dalKeyTypeValueList(ktv) ::= <<
+>>
+
+dalKeyTypeValue(key, type, value) ::= <<
+>>
+
+const_value(val) ::= "<val>"
