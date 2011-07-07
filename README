@@ -1,0 +1,31 @@
+Adding ANTLR Ant Task (Building with ANTLR):
+=============================================
+Download the following from antlr.org:
+
+ - Under File Sharing:
+	ANTLR v3 task for Ant (antlr-task.zip)
+
+ - Under Downloads:
+	Complete ANTLR 3.3 Java binaries jar (antlr-3.3-complete.jar)
+
+Then extract the antlr-task.zip, and copy the file ant-antlr3.jar
+and antlr-3.3-complete.jar to the $ANT_HOME/lib directory. This
+will allow the use of antlr ant task in the build system. Further
+details on using it can be seen in the documentation (.pdf) in the
+extracted zip folder.
+
+Running the Demo
+================
+
+1. Suck in the environment settings for a build
+	$> . ./env.sh
+
+2. Build a Distro
+	$> cd projects/build-distro
+	$> ant
+
+3. Run the demo
+	$> cd ../../demo
+	$> . skb.sh
+	$> runcola
+
