@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="top-level">
+
+	<import file="../multi-bundle/default.xml"/> 	
+
+	<target name="eclipse"
+			description="Updates eclipse settings.">
+		<all-bundles target="eclipse"/>
+	</target>
+
+	<target name="prepare"
+			description="Preparation for build (ANTLR/GenConstants).">
+		<all-bundles target="prepare"/>
+	</target>
+
+	<target name="version"
+			description="Version all files (@version).">
+		<all-bundles target="version"/>
+	</target>
+
+</project>

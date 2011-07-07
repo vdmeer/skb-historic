@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="skb" xmlns:ivy="antlib:org.apache.ivy.ant">
+	<import file="./common.xml"/> 	
+	<import file="./version.xml"/> 	
+</project>
+	

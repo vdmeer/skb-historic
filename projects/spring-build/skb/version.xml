@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="skb-version" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <tstamp>
+         <format property="skb.built.6d" pattern="yyMMdd" />
+         <format property="skb.built.2d3c4d" pattern="dd-MMM-yy" />
+    </tstamp>
+
+<!-- Properties -->
+	<dirname property="skb.build.dir" file="${ant.file.skb-version}"/>
+	<property environment="env"/>
+	<property file="${skb.build.dir}/version.properties"/>
+
+<!-- Versioning -->
+    <target name="version"
+		description="Updates the internal version string of all skb files">
+	<fail message="The 'version' property must be set on this project">
+		<condition>
+			<not>
+				<isset property="version"/>
+			</not>
+		</condition>
+	</fail>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.java}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.java" />
+            </fileset>
+        </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.stg}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.stg" />
+            </fileset>
+        </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.g}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.g" />
+            </fileset>
+        </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.cola}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.cola" />
+            </fileset>
+        </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.pola}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.pola" />
+            </fileset>
+        </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.glue}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.glue" />
+            </fileset>
+        </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern="// @version(.*)"/>
+            <substitution expression="// \@version    ${skb.version.long.json}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.json" />
+            </fileset>
+        </replaceregexp>
+    </target>
+</project>
