@@ -1,0 +1,92 @@
+####/##/## v#.##
+~~~~~~~~~~~~~~~~
+- added "https://" and "ftp://" check for dist/header script imports
+- updated locale files with new translations from skb-locale
+- changed css and page template to pin footer at bottom of page w/o javascript
+- fixed a problem in demo.htmlpage to return to xhtml conform code
+- changed header in dist.htmlpage  to provide utf information properly
+- changed the BibTeX template in dist/publications to produce proper entries for proceedings, inproceedings, tutorials and presentations
+- added "skb"/"targetpref" and changed Autoloader, Main and Templates to load from targetpref+target
+
+
+2011/04/05 v0.32
+~~~~~~~~~~~~~~~~
+- changed file list and build.xml for creating a distribution zip archive
+- fixed a problem in Core.HTTP (use + operator instead of array_merge)
+- fixed a problem in Core.HTTP field names (added ':' in the two status codes)
+- changed www/demo/geo adding x-skb/entries as content type
+- adapted www/demo/skbinfo and core/skbinfo to show new core table structures
+- added 'key' to result array in dist/publication author interpreter
+- changed default encoding to UTF-8
+- fixed problem in regexp escapes for natsort tables
+- changed configuration files in registry from php to jason
+- added dist.graph with graphml converter and flattening
+- added graphml output to demo/acro, demo/affil and demo/publ in www
+- changed dbpos registration prefix from pkg to reg
+- changed organisation in github repository
+- moved all build files to build/ folder
+- added phpdoctor.ini file
+- fixed a problem in dist/menu: now allows for external menu links (http:// and mailto:) again
+- fixed a problem in dist/gallery/app+pic200 that forced IE trailing every picture with a blank within the actual link
+- added "http://" check for dist/header script imports
+
+2011/02/08 v0.31
+~~~~~~~~~~~~~~~~
+- added default:source and default:target for source/target identification, i.e. in encoding transformations
+- added Core.Encoding to the required package list of SKB_Main
+- added encoding database (/database/core/encoding/encoding.db)
+- added encoding package information (/skb/repository/core/encoding)
+  + reader id, builder id, request and fields for rabit
+- added character encoding page to the demo webserver
+- changed Utils::ConversionTable to use Core.Encoding and removed misc/*
+- added a few comments for phpdoc
+- updated some locale mo files from skb-locale
+
+2011/01/28 v0.30
+~~~~~~~~~~~~~~~~
+- changed main.inc root settings to avoid dependency on $_SERVER['DOCUMENT_ROOT']
+- added $additional to SKB_Main::load_all_site_packages
+- changed the pkg_rabit fields for class/template paths
+  ** core:rabit:class:php --> core:rabit:target:class
+  ** core:rabit:file:php  --> core:rabit:target:template
+  ** both new fields explode with: $target%foo,%target2%foo2 i.e. php%class_php,java%classJava
+- changed SKB_Main and SKB_Autoloader accordingly
+- added [skb][target] to SKB_Main->configuration, set by SKB autmatically
+- removed [path][targets-php] from SKB_Main->configuration
+- moved skb/locale, skb/css, skb/misc, skb/fonts, skb/images, skb/javascript to skb/share
+- moved javascript from core.default to dist.htmlpage
+- moved images from core.default to dist.images (and created dist.images)
+- changed SKB_Main interpret algo for locale identification from :localised to string "_locale" (similar to entity keys)
+- moved the mo files for languages from de_DE, en_EN, fr_FR and nl_NL to de, en, fr, and nl, respectively
+- changed demo server for languages (see above change from de_DE to de, etc.)
+- added property files for the translations in locale
+- changed default:name to be applicable for core and request
+
+2011/01/10 v0.2.0
+~~~~~~~~~~~~~~~~~
+- fixed a problem in classes file/factory to use basename rather than simply search for '.' while tokenising filename
+- fixed some locale problems in template for core.skbinfo
+- did some more work on translations for core, dist and demo
+- in dist.acronyms: changed default:description to default:description_locale
+- added key default:country_keys to allow lists of countries
+- added currencies to distribution
+- added html page for currencies to the demo server
+- added witdh, height and length to default fields
+- added default:comment and default:comment_locale fields
+- added units to distribution package
+- added modelrailway to the distribution package
+- changed the structure of the SKB and adapted main.inc, autoloader, Main and the configuration databases
+
+2010/09/04 v0.1.1
+~~~~~~~~~~~~~~~~~
+- added builder/template/css for publication details (was missing)
+- fixed some documentation issues in most css files
+- changed the mechanism to determine paths and removed http-[local|remote] from configuration
+- fixed problem in the demo server, config package, to be flexible for different deployments
+- fixed some minor problems in the URN interpreter and the menu templates
+- removed I18N from classes, using gettext now everywhere
+- added $site_path to external site configuration
+
+2010/08/31 v0.1.0
+~~~~~~~~~~~~~~~~~
+- first release of the SKB with packages core, dist and demo

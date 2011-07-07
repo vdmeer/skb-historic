@@ -1,0 +1,16 @@
+Important tasks
+===============
+* documentation
+* tests
+
+Features to be looked at
+========================
+* modularise the HTML menu system, so that packages can add their html pages to a server
+* finish dist.units
+
+Cleanup Tasks
+=============
+* check for remaining old names in core/dist/demo rabit
+* change demo/skbconfig files to changed rabit fields
+* simplify demo/skbconfig curl mechanism (too much replication now)
+* optimise Util_ConversationTable::get_i18n_arrays removing re-inits of arrays

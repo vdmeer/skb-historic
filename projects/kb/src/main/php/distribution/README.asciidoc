@@ -1,0 +1,129 @@
+SKB-PHP -- Sven's Knowledge Base, PHP Port
+------------------------------------------
+
+*PHP access to a specific (sven's) knowledge base*
+
+*v0.32 build 110405 (04-Apr-2011) with PHP 5.3.0*
+
+
+Introduction
+------------
+This software is the PHP port of the SKB. It provides a core  implementation
+of (core), some distribution packages  (dist) and a demo server  (demo), all
+written in PHP and supported  by CSS style sheets, GNU  Getext translations,
+image libraries, font  definitions and some  Javascript. The SKB  focuses on
+structure and re-use of  code, information and subsequently  knowledge. This
+PHP port comes with  a modular (package based)  system build around a  small
+yet powerfull core class library and a few hopefully helpfull package in the
+distribution   packages,   such   as   acronyms,   date,   geographic  data,
+publications, gallery  and currencies.  The demo  server shows  most of  the
+functionality of +core+ and +dist+.
+
+
+
+Status: Alpha, Experimental
+---------------------------
+Parts of this  software, especially +core+  and older parts  of +dist+, have
+matured  over  the  past  months,   the  overall  status  of  it   is  still
+experimental. some early adaptors using it, but the usage base is not  large
+enough, and parts  of the packages  are not mature  enough to announce  beta
+status.
+
+We are using it to maintain a large  amount
+of  information  in  different  ways (from  simple  foto  albums  to complex
+applications as  well as  domain specific  language support)  and on various
+different  platforms (Windows, several Linux systems). Since we  eat our own
+dog  food, we are  fairly confident that the  software  does it's job  well.
+However, it  might or  might  not  be usefull  for you  and might  or  might
+not work  on your machine.   We   are    very   interested   in    comments,
+critic,  advice,  recommendations, complaints;  as long  as you  try to keep
+them contructive ;)
+
+
+
+Requirements
+------------
+This release has the following requirements:
+
+- Apache  2.2.x (should  run with  older versions  and Apache  1.x, but  not
+  tested)
+- PHP 5.3  (should run with  older PHP5 versions  but not tested),  with the
+  following modules being available
+  ** GNU Gettext (mandatory if you need translations only)
+  ** SQLite (mandatory, since all databases come as SQLite 3)
+  ** PDO (mandatory since access to all databases uses PDO)
+  ** CURL (used in some parts of the demo server, not in +core+ or +dist+)
+
+
+
+Contents and Installation
+-------------------------
+
+Download the php-complete  archive from the  latest release and  unzip it in
+into  the document  root of  your Apache  installation. Rename  the created
+directory +skb-php-X.XX+ to  +skb+. If you  do not change  anything else you
+can  now  use  a  web  browser and  explore  the  demo  server  and the  API
+documentation (add the configured port  number if you are not  using default
+configuration):
+
+  <http://localhost/skb/www/demo/index.php5>
+
+For  details  on  how  to  install  PHP  and  Apache,  please  refer  to the
+documentation of  these software  packages. Also:  you need  to add the file
+extentions  .php5  to  your  Appache's MIME  list  (this  might  not be  the
+default).
+
+
+
+Configuration
+-------------
+The demo server does  not need any configuration,  it should run out  of the
+box as long as your PHP and Apache installation work. If you want to have  a
+look into  the configuration  parameters, try  the demo  server; it provides
+access  to all  configuration data.  If you  want to  have a  look into  the
+databases yourself, then simply get  some software that can read  SQLite 3.0
+files and checkout skb/database/core/cfg.db and skb/database/demo/cfg.db.
+
+
+
+Where do I get it?
+------------------
+current releases at GitHub: 
+<https://github.com/vdmeer/skb-php>
+
+past releases at SourceForge: 
+<http://sourceforge.net/projects/php-skb>
+
+
+
+License
+-------
+....
+[The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+Copyright (c) 2010-2011, Sven van der Meer <sven@vandermeer.de>
+All rights reserved.
+
+Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+modification, are permitted provided that the following conditions are met:
+ 
+    + Redistributions of source code must retain the above copyright notice,
+      this list of conditions and the following disclaimer.
+    + Redistributions  in binary  form must  reproduce the  above copyright
+      notice, this list  of conditions and  the following disclaimer  in the
+      documentation and/or other materials provided with the distribution.
+    + Neither the name of the the author nor the names of its contributors
+      may be used to endorse or promote products derived from this software
+      without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+POSSIBILITY OF SUCH DAMAGE.
+....
