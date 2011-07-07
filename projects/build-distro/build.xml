@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-distro" xmlns:ivy="antlib:org.apache.ivy.ant" default="distro" >
+	<!-- List all the bundles, you wish to include in the build process here -->
+	<!-- NOTE: Beware the build order -->
+	<path id="bundles">
+		<pathelement location="../utils"/>
+		<pathelement location="../tribe"/>
+		<pathelement location="../ant"/>
+		<pathelement location="../lang/cola/proto"/>
+		<pathelement location="../lang/pola/proto"/>
+		<pathelement location="../lang/glue/proto"/>
+		<pathelement location="../kb"/>
+	</path>
+
+	<property environment="env"/>
+	<property file="${env.TINOS_HOME}/projects/build.properties"/>
+	<property file="${env.TINOS_HOME}/projects/build.versions"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/skb/top-level.xml"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-top-level.xml"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/multi-bundle/default.xml"/> 
+
+	<target name="distro" depends="prepare,clean,jar,javadoc-all,package"/>
+</project>
