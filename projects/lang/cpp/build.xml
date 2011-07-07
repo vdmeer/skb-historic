@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="skb.lang.cpp" xmlns:ivy="antlib:org.apache.ivy.ant" default="prepare">
+	<property environment="env"/>
+	<property name="disable.bundlor" value="true"/>
+
+	<property file="${env.TINOS_HOME}/projects/build.versions"/>
+	<property name="version" value="${skb.lang.cpp}"/>
+
+	<property file="${env.TINOS_HOME}/projects/build.properties"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/skb/skb.xml"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-bundle.xml"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
+
+	<target name="antlr" description="Generates java classes based on grammar" depends="antlr.clean"  >
+		<property name="grammar.dir" value="${main.java.dir}/org/skb/lang/preprocessor/grammars"/>
+		<antlr-run output.dir="${grammar.dir}" grammar.file="${grammar.dir}/Preprocessor.g"/>
+	</target>
+	
+	<target name="constants" depends="constants.init">
+	</target>
+
+	<target name="prepare" description="Prepares the project for building (jar)" depends="clean,antlr,constants"/>
+
+</project>
