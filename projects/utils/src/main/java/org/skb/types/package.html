@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+  @(#)package.html	v0.1.1 build 100904 (04-Sep-2010)
+
+  Copyright (c) 2010-2011, Sven van der Meer
+  All rights reserved.
+
+  Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+  modification, are permitted provided that the following conditions are met:
+ 
+      + Redistributions of source code must retain the above copyright notice,
+        this list of conditions and the following disclaimer.
+      + Redistributions  in binary  form must  reproduce the  above copyright
+        notice, this list  of conditions and  the following disclaimer  in the
+        documentation and/or other materials provided with the distribution.
+      + Neither  the  name  of  the  <ORGANIZATION>  nor  the  names  of   its
+        contributors may be used to  endorse or promote products derived  from
+        this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+  AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+  LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+  CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+  SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+  CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+  POSSIBILITY OF SUCH DAMAGE.
+  
+  [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+-->
+</head>
+<body bgcolor="white">
+
+Contains the SKB type library organised in the packages <code>atomic</code>, <code>base</code> and <code>util</code>. 
+
+The SKB type library implements the Composite Pattern, meaning that atomic types are atomic while composite types can contain atomic as well as composite types.
+The sub-packages provide for all types that the SKB system uses.
+<ul>
+  <li><code>base</code>:<br />
+      Contains the abstract root class (OatBase), the two base classes for atomic types (OatAtomic) and composite types (OatComposite) and the two main composite types needed (Map and Table).
+  </li>
+  <li><code>atomic</code>:<br />
+      The atomic packages has two sub-packages. First, <code>antlr</code> provides compositions for the ANTLR class Token and the StringTemplate classes StringTemplate and StringTemplate Group.
+      Second, <code>java</code> provides compositions for the basic Java types: Boolean, Byte, Double, Float, Integer, Long, Object, Short and String.
+  </li> 
+  <li><code>util</code>:<br />
+      This package contains classes that are very similar to java.utils, such as array lists (for general OatAtomic types and for Strings, map (implementing a linked hash map),
+      PDO (for a simple portable database object), property map (implementing a simple key/value map), table and table row, scope (implementing a utils class for scoped names)
+      and STGManger (providing access to the string template manager of org.skb.utils). 
+  </li>
+</ul>
+
+<!--
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><a href="">##### REFER TO NON-SPEC DOCUMENTATION HERE #####</a>
+</ul>
+-->
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>
