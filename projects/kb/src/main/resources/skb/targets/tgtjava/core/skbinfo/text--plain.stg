@@ -1,0 +1,162 @@
+/* Copyright (c) 2010-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+ */
+
+group DistAcronyms;
+
+/*
+ * report
+ * entries=entries
+ * request=request
+ */
+build(entries, request) ::= <<
+
+<if (entries.("configuration"))>
+Configuration (<length(entries.("configuration"))>)
+    <entries.("configuration").keys:{k | <k> (<length(entries.("configuration").(k))>)<\n><configuration(entries.("configuration").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+<if (entries.("registered_requests"))>
+Registered Requests (<length(entries.("registered_requests"))>)
+    <entries.("registered_requests").keys:{k | <k> <\n><registered_requests(entries.("registered_requests").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+<if (entries.("registered_readers"))>
+Registered Readers (<length(entries.("registered_readers"))>)
+    <entries.("registered_readers").keys:{k | <k> <\n><registered_rabit(entries.("registered_readers").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+<if (entries.("registered_builders"))>
+Registered Builders
+    <entries.("registered_builders").keys:{k | <k> <\n><registered_rabit(entries.("registered_builders").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+<if (entries.("registered_templates"))>
+Registered Templates
+    <entries.("registered_templates").keys:{k | <k> <\n><registered_rabit(entries.("registered_templates").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+<if (entries.("registered_applications"))>
+Registered Applications
+    <entries.("registered_applications").keys:{k | <k> <\n><registered_rabit(entries.("registered_applications").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+<if (entries.("registered_interpreters"))>
+Registered Interpreters
+    <entries.("registered_interpreters").keys:{k | <k> <\n><registered_rabit(entries.("registered_interpreters").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+<if (entries.("registered_fields"))>
+Registered Fields
+    <entries.("registered_fields").keys:{k | <k> <\n><registered_fields(entries.("registered_fields").(k))>}; separator="\n\n">
+    <\n><\n>
+<endif>
+
+>>
+
+
+
+configuration(entry) ::= <<
+<entry.keys:{k|    <k> = <entry.(k)>}; separator="\n">
+>>
+
+
+registered_requests (entry) ::= <<
+<if (entry.("core:requests:fields"))>
+    Fields: <entry.("core:requests:fields")>
+<endif>
+
+<if (entry.("core:requests:prefix"))>
+    Prefix: <entry.("core:requests:prefix")>
+<endif>
+
+<if (entry.("origin"))>
+    Origin: <entry.("origin")>
+<endif>
+
+>>
+
+
+registered_rabit(entry) ::= <<
+<if (entry.("core:rabit:target:class"))>
+    Classes:
+      -\> <entry.("core:rabit:target:class").keys:{k | <k>: <entry.("core:rabit:target:class").(k)>}; separator="\n      -\> ">
+<endif>
+
+<if (entry.("core:rabit:target:template"))>
+    Template Files:
+      -\> <entry.("core:rabit:target:template").keys:{k | <k>: <entry.("core:rabit:target:template").(k)>}; separator="\n      -\> ">
+<endif>
+
+<if (entry.("core:rabit:mime_in"))>
+    MIME in: <entry.("core:rabit:mime_in")>
+<endif>
+
+<if (entry.("core:rabit:mime_out"))>
+    MIME out: <entry.("core:rabit:mime_out")>
+<endif>
+
+<if (entry.("core:rabit:requests"))>
+    Requests: <entry.("core:rabit:requests")>
+<endif>
+
+<if (entry.("origin"))>
+    Origin: <entry.("origin")>
+<endif>
+
+>>
+
+
+
+registered_fields(entry) ::= <<
+<if (entry.("core:type"))>
+    Type: <entry.("core:type")>
+<endif>
+
+<if (entry.("core:use"))>
+    Use: <entry.("core:use")>
+<endif>
+
+<if (entry.("core:entries_name"))>
+    Entries Name: <entry.("core:entries_name")>
+<endif>
+
+<if (entry.("core:explode"))>
+    Explode: <entry.("core:explode")>
+<endif>
+
+<if (entry.("core:val_unset"))>
+    Val Unset: <entry.("core:val_unset")>
+<endif>
+
+<if (entry.("origin"))>
+    Origin: <entry.("origin")>
+<endif>
+
+>>
