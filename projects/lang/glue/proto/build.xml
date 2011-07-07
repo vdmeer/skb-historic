@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="skb.lang.glue" xmlns:ivy="antlib:org.apache.ivy.ant" default="prepare">
+	<property environment="env"/>
+	<property name="disable.bundlor" value="true"/>
+
+	<property file="${env.TINOS_HOME}/projects/build.versions"/>
+	<property name="version" value="${skb.lang.glue}"/>
+
+	<property file="${env.TINOS_HOME}/projects/build.properties"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/skb/skb.xml"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-bundle.xml"/>
+	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
+
+	<target name="antlr" description="Generates java classes based on grammar" depends="antlr.clean"  >
+		<property name="grammar.dir" value="${main.java.dir}/org/skb/lang/glue/proto/grammars"/>
+		<antlr-run output.dir="${grammar.dir}" grammar.file="${grammar.dir}/glueEbnf.g"/>
+		<antlr-run output.dir="${grammar.dir}" grammar.file="${grammar.dir}/glueAst.g"/>
+		<antlr-run output.dir="${grammar.dir}" grammar.file="${grammar.dir}/glueGen.g"/>
+	</target>
+	
+	<target name="constants" depends="constants.init">
+		<property name="json.file" value="${main.resources.dir}/org/skb/lang/glue/proto/proto.json"/>
+		<property name="dest.dir" value="${main.java.dir}/org/skb/lang/glue/proto"/>
+		<property name="pkg.name" value="org.skb.lang.glue.proto"/>
+		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
+			constants.type="tokens" class.name="GlueTokensConstants" />
+		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
+			constants.type="rules" class.name="GlueRuleConstants" />
+		<generate-constants json.file="${json.file}"  pkg.name="${pkg.name}" dest.dir="${dest.dir}"
+			constants.type="properties" class.name="GluePropertiesConstants" />
+	</target>
+
+	<target name="prepare" description="Prepares the project for building (jar)" depends="clean,antlr,constants"/>
+
+</project>
