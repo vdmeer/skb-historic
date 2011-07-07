@@ -1,0 +1,10 @@
+#foot_top {height: 3px; background: url(../../dist/htmlpage/04-footer/footer-middle.png);}
+#foot_top_content {text-align: left; font-size: 8pt; background: url(../../dist/htmlpage/04-footer/footer-content.png);}
+#foot_top_content ul {padding:1px 0 3px 0; margin:0;}
+#foot_top_content li {white-space:nowrap; padding:0 10px; margin:0; display:inline; background: url(../../dist/htmlpage/04-footer/footer-separator.png) top right no-repeat;}
+div.foot_middle {height: 2px; background: url(../../dist/htmlpage/04-footer/footer-middle.png);}
+div.foot_middle_content {font-size: 8pt; position:relative; text-align: center; background: url(../../dist/htmlpage/04-footer/footer-content.png);}
+div.foot_middle_content ul {padding:3px 0 2px 0; margin:0;}
+div.foot_middle_content li {vertical-align:top; padding:0 5px; display:inline; background: url(../../dist/htmlpage/04-footer/footer-separator.png) center right no-repeat;}
+div.foot_middle_content li img {vertical-align:top; border:0; padding-bottom: 1px; margin-right: 5px;}
+#foot_bottom {height: 3px; background: url(../../dist/htmlpage/04-footer/footer-middle.png);}

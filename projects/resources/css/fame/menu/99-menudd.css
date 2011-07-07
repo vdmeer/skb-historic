@@ -1,0 +1,163 @@
+/* ================================================================ 
+This copyright notice must be kept untouched in the stylesheet at 
+all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/image_drop.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+#multi-level {height:30px; position:relative; z-index:100; background:#fff url(menu/image_drop_back.gif) repeat-x; padding-left:20px;border:1px solid #000; border-width:0 1px;}
+
+/* The menu styling */
+/* Remove the padding, margins and bullets from the lists */
+
+.menu, .menu ul {list-style-type:none; padding:0; margin:0; font-family:Arial, sans-serif; font-size:12px;}
+
+/* Set up the size of the list items and float left to place inline */
+.menu li.top {display:block; float:left; position:relative;}
+
+/* Style and position the table so it takes no part in the menu function. The font size is necessary for IE5.5 */
+.menu table {border-collapse:collapse; width:0; height:0; position:absolute; top:0; left:0;}
+
+/* Default link styling */
+.menu li.top a.top_link {display:block; float:left; height:30px; line-height:30px; text-decoration:none; color:#fff; background: url(menu/image_drop_1a.gif); padding:0;}
+.menu li.top a.top_link span.span_top {display:block; float:left; height:30px; background: url(menu/image_drop_1a.gif) right top; padding:0 15px 0 0;}
+.menu li.top a.top_link b.b_top {display:block; float:left; height:30px; width:26px;}
+
+.menu li.top a.top_link span.drop {background: url(menu/image_drop_0a.gif) right top; padding:0 25px 0 0;}
+
+.menu li a#home     b.b_top {background:transparent url(img-famfamfam/house.png) no-repeat center center;}
+.menu li a#vdm      b.b_top {background:transparent url(../vdm/images/vdm/sm-blue-16.gif) no-repeat center center;}
+.menu li a#publ     b.b_top {background:transparent url(img-famfamfam/report.png) no-repeat center center;}
+.menu li a#gallery  b.b_top {background:transparent url(img-famfamfam/images.png) no-repeat center center;}
+.menu li a#diary    b.b_top {background:transparent url(img-famfamfam/layout_content.png) no-repeat center center;}
+.menu li a#php      b.b_top {background:transparent url(img-icon_php.png) no-repeat center center;}
+.menu li a#vermeer  b.b_top {background:transparent url(../images/vermeer/20_PearlSmall_16.gif) no-repeat center center;}
+.menu li a#research b.b_top {background:transparent url(img-famfamfam/layers.png) no-repeat center center;}
+.menu li a#sitemap  b.b_top {background:transparent url(img-famfamfam/sitemap_color.png) no-repeat center center;}
+
+/* Style the list OR link hover. Depends on which browser is used */
+.menu a:hover {visibility:visible; cursor:pointer; position:relative;}
+.menu li:hover {position:relative; z-index:200;}
+
+/* Style the top level links */
+.menu li.top a.top_link:hover,
+.menu li.top:hover a.top_link {background: url(menu/image_drop_1b.gif);}
+.menu li.top a.top_link:hover span.span_top,
+.menu li.top:hover a.top_link span.span_top {background: url(menu/image_drop_1b.gif) right top;}
+.menu li.top a.top_link:hover span.drop,
+.menu li.top:hover a.top_link span.drop {background: url(menu/image_drop_0b.gif) right top;}
+
+/* keep the 'next' level invisible by placing it off screen. */
+.menu ul, 
+.menu ul ul, 
+.menu :hover ul :hover ul ul,
+.menu :hover ul :hover ul :hover ul ul,
+.menu :hover ul :hover ul :hover ul :hover ul ul {position:absolute; left:-9999px; top:-9999px; width:0; height:0;}
+
+/* Style the drop down sub level links */
+.menu :hover ul.sub {left:0; top:25px; background: transparent url(menu/transparent.gif); padding:3px 0 0 0; white-space:nowrap; width:175px; height:auto;}
+.menu :hover ul.sub li {display:block; float:left;}
+.menu :hover ul.sub li a {display:block; float:left; height:25px; width:175px; line-height:25px; color:#000; text-decoration:none; padding:0; background: url(menu/dropa_0.gif) no-repeat;}
+
+/* All this lot is for IE6, believe it or not, to style the fly outs */
+.menu :hover ul.sub li a span,
+.menu :hover ul.sub li a.fly:hover ul li a span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a span, 
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a span
+{display:block; float:left; background: url(menu/drop_0.gif) right top; height:25px; width:130px; padding:0 10px 0 5px; font-weight:normal; color:#000;}
+
+.menu :hover ul.sub li a.fly span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly span
+{background: url(menu/dropb_0.gif) right top; color:#000;}
+
+.menu :hover ul.sub li a:hover,
+.menu :hover ul.sub li a:hover ul li a:hover,
+.menu :hover ul.sub li a:hover ul li a:hover ul li a:hover,
+.menu :hover ul.sub li a:hover ul li a:hover ul li a:hover ul li a:hover,
+.menu :hover ul.sub li a:hover ul li a:hover ul li a:hover ul li a:hover ul li a:hover
+{background: url(menu/dropba_1.gif) no-repeat; color:#fff;}
+
+.menu :hover ul.sub li a:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a:hover span
+{background: url(menu/drop_1.gif) right top; color:#fff;}
+
+.menu :hover ul.sub li a.fly:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly:hover span,
+.menu :hover ul.sub li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly:hover ul li a.fly:hover span
+{background:url(menu/dropb_1.gif) right top; color:#fff;}
+
+/* the next two lines keep the menu trail :hover state for IE7 and non-IE browsers */
+.menu :hover ul li:hover > a.fly {background:url(menu/dropba_1.gif) no-repeat; color:#fff;}
+.menu :hover ul li:hover > a.fly span {background:url(menu/dropb_1.gif) right top; color:#fff;}
+
+/* Style the images to the left of each link */
+.menu ul.sub b {display:block; float:left; background:transparent url(img-famfamfam/add.png) no-repeat center center; height:25px; width:25px;}
+.menu ul.sub b.vdm {background:transparent url(img-famfamfam/report.png) no-repeat center center;}
+.menu ul.sub b.fotos {background:transparent url(img-famfamfam/camera.png) no-repeat center center;}
+.menu ul.sub b.pictures {background:transparent url(img-famfamfam/photo.png) no-repeat center center;}
+.menu ul.sub b.diary {background:transparent url(img-famfamfam/layout_content.png) no-repeat center center;}
+.menu ul.sub b.php {background:transparent url(menu/icon_php.png) no-repeat center center;}
+.menu ul.sub b.vermeer {background:transparent url(../images/vermeer/20_PearlSmall_16g.gif) no-repeat center center;}
+.menu ul.sub b.research {background:transparent url(img-famfamfam/layers.png) no-repeat center center;}
+
+.menu ul.sub b.gen_vdm {background:transparent url(img-famfamfam/report_add.png) no-repeat center center;}
+.menu ul.sub b.gen_page_sub {background:transparent url(img-famfamfam/page_add.png) no-repeat center center;}
+.menu ul.sub b.gen_fotos {background:transparent url(img-famfamfam/camera_add.png) no-repeat center center;}
+.menu ul.sub b.gen_pictures {background:transparent url(img-famfamfam/photo_add.png) no-repeat center center;}
+
+/* Position the flyouts */
+.menu :hover ul :hover ul,
+.menu :hover ul :hover ul :hover ul,
+.menu :hover ul :hover ul :hover ul :hover ul,
+.menu :hover ul :hover ul :hover ul :hover ul :hover ul
+{left:140px; top:0; background:transparent url(menu/transparent.gif); padding:5px 5px 5px 0; white-space:nowrap; width:130px; z-index:200; height:auto;}
+
+
+/*
+ * My insert to get non-linked menu entries
+ */
+
+.menu :hover ul.sub li span.fly {display:block; float:left; height:25px; width:175px; line-height:25px; color:#000; text-decoration:none; padding:0; background: url(menu/dropba_1.gif) no-repeat;}
+
+.menu :hover ul.sub li span span,
+.menu :hover ul.sub li span.fly:hover ul li span span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span.fly:hover ul li span.fly span, 
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span.fly:hover ul li span.fly:hover ul li a span
+{display:block; float:left; background: url(menu/drop_0.gif) right top; height:25px; width:130px; padding:0 10px 0 5px; font-weight:normal; color:#000;}
+
+.menu :hover ul.sub li span.fly span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span.fly span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li a.fly:hover ul li span.fly span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li a.fly:hover ul li span.fly:hover ul li span.fly span
+{background: url(menu/dropb_0.gif) right top; color:#000;}
+
+.menu :hover ul.sub li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span.fly:hover ul li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span.fly:hover ul li span.fly:hover ul li span.fly:hover span
+{background: url(menu/ia_drop_1.png) right top; color:#fff;}
+
+.menu :hover ul.sub li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li a.fly:hover ul li a.fly:hover ul li span.fly:hover span,
+.menu :hover ul.sub li span.fly:hover ul li span.fly:hover ul li a.fly:hover ul li span.fly:hover ul li span.fly:hover span
+{background:url(menu/ia_dropb_1.png) right top; color:#fff;}
+
+.menu :hover ul li:hover > span.fly {background:url(menu/ia_dropba_1.png) no-repeat; color:#fff;}
+.menu :hover ul li:hover > span.fly span {background:url(menu/ia_dropb_1.png) right top; color:#fff;}

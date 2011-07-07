@@ -1,0 +1,42 @@
+html, body {background: #ffffff; width:100%; margin: 0; padding: 0; height: 100%;}
+body {text-align: left; font-size: 10pt; font-family: Arial, Helvetica, Tahoma, Verdana, sans-serif; font-weight: normal; color: black; margin: 0; padding: 0;}
+
+p.small, a.small {font-size: 8pt;}
+p.medium, a.medium {font-size: 9pt;}
+p.inverse {color: #ffffff;}
+p.indent {margin-left:40px;}
+p.indent-right {margin-right:10px; text-align: right;}
+h3 {font-size: 12pt; font-weight: bold; color: #000000; padding-bottom: 18px; padding-top: 18px;}
+img .img {border:0px;}
+div.center {text-align: center;}
+div.left {text-align: left;}
+div.right {text-align: right;}
+div.center table {margin: 0 auto; text-align: left;}
+
+.small {font-size: 10pt; font-weight: normal;}
+
+fieldset {padding: 10px;}
+legend {padding: 5px; margin-left: 10px;}
+
+th {padding: 4px;}
+td {padding: 4px;}
+td.gray {background: #eaeaea;}
+td.blue {background: #003261;}
+
+a, a.bold {color: #8B0000;}
+a:link, a.bold:link {text-decoration: underline;}
+a:visited, a.bold:visited {text-decoration: underline;}
+a:hover, a.bold:hover {text-decoration: none;}
+a.bold:link {font-weight: bold;}
+a.bold:visited {font-weight: bold;}
+a.bold:hover {font-weight: bold;}
+a.name {font-weight: bold; color: #000000;}
+a.nameh3 {font-size: 12pt; font-weight: bold; color: #000000;}
+
+ul.bullet {list-style: square url(../../core/_images/li_bullet.gif); margin: .5em .5em 0 50px; padding-left: 0;}
+ul.bullet li.bullet, li.bullet-table {margin-left: 0; padding-left: 0; margin-bottom: .3em;}
+li.bullet-table {margin-left: -28px;}
+li.bullet:hover{background: #eaeaea; padding: 0px !important;}
+
+p.gthumbbold {margin-left: 280px; font-weight:bold;}
+p.gthumbnorm {margin-left: 290px; font-weight:normal;}
