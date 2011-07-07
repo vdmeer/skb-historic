@@ -1,0 +1,341 @@
+# German translations for PHP-SKB package
+# German messages for PHP-SKB.
+# PHP-SKB, Packages.Dist.Publications.EntryTypes
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Dist.Publications.EntryTypes\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-13 13:22+0000\n"
+"PO-Revision-Date: 2010-08-24 13:05+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:33
+msgid "A Master&rsquo;s thesis"
+msgstr "Dimplom/Masterarbeit"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:45
+msgid "A PhD thesis"
+msgstr "Doktorarbeit"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:9
+msgid "A book with an explicit publisher"
+msgstr "ein Buch mit angegebenenm Verleger"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:15
+msgid "A collection of works. The same as proceedings"
+msgstr "eine Sammlung (Konferenzband)"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:62
+msgid "A document having an author and title, but not formally published"
+msgstr ""
+"ein Dokument mit Author und Titel, aber formal nicht ver&ouml;ffentlicht"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:6
+msgid "A journal article"
+msgstr "ein Artikel in einem Journal"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:24
+msgid "A part of a book having its own title"
+msgstr "Teil eines Buches mit einem eigenen Titel"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:21
+msgid ""
+"A part of a book, which may be a chapter (or section or whatever) and/or a "
+"range of pages"
+msgstr "Teil eines Buches (z.B. ein Kapitel) und/oder eine Reihe von Seiten"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:42
+msgid "A patent"
+msgstr "ein Patent"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:56
+msgid ""
+"A report published by a school or other institution, usually numbered within "
+"a series"
+msgstr ""
+"ein Bericht ver&ouml;ffentlicht von einer Schule oder Institution, "
+"normalerweise Teil einer Serie"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:59
+msgid "A thesis, Master or PhD"
+msgstr "eine wissenschaftliche Arbeit (Diplom, Master, Doktor)"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:12
+msgid ""
+"A work that is printed and bound, but without a named publisher or "
+"sponsoring institution."
+msgstr "ein gedruckte und gebundene Arbeit, jedoch ohne angegebenen Verleger"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:18
+msgid "An article in a conference proceedings, aka in proceedings"
+msgstr "ein Artikel in einem Konferenzband"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:27
+msgid "An article in a conference proceedingsm, aka conference"
+msgstr "ein Artikel in einem Konferenzband"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:80
+msgid "Lecture notes"
+msgstr "Vorlesungen"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:30
+msgid "Technical documentation"
+msgstr "technische Dokumentation"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:51
+msgid "The proceedings of a conference"
+msgstr "Konferenzband"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:36
+msgid "Use this type when nothing else fits"
+msgstr "f&uuml;r alles Andere"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:77
+msgid "a journal or magazine"
+msgstr "ein Journal oder Magazin"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:83
+msgid "a poster"
+msgstr "ein Poster"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:68
+msgid ""
+"a presentation, such as an invited talk or a panel or a presentation at a "
+"certain event"
+msgstr ""
+"eine Pr&auml;sentation, z.B. ein eingeladener Vortrag oder eine "
+"Podiumsdiskusion"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:65
+msgid "a standard, such as an ITU-T or ETSI or W3C or OMG standard"
+msgstr "ein Standard"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:74
+msgid "a tutorial on a conference or other events"
+msgstr "ein Tutorial"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:71
+msgid ""
+"an invited talk, such as a panel or a special keynote or a guest lecturer"
+msgstr "ein eingeladener Vortrag"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:39
+msgid "an online publication"
+msgstr "eine Onlinepublikation"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:4
+msgid "article"
+msgstr "Artikel"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:5
+msgid "articles"
+msgstr "Artikel"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:7
+msgid "book"
+msgstr "Buch"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:10
+msgid "booklet"
+msgstr "Brosch&uuml;re"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:11
+msgid "booklets"
+msgstr "Brosch&uuml;ren"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:8
+msgid "books"
+msgstr "B&uuml;cher"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:13
+msgid "collection"
+msgstr "Sammelband"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:14
+msgid "collections"
+msgstr "Sammelb&auml;nde"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:16
+msgid "conference"
+msgstr "Konferenz"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:17
+msgid "conferences"
+msgstr "Konferenzen"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:22
+msgid "in a collection"
+msgstr "in einem Sammelband"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:25
+msgid "in a proceeding"
+msgstr "Konferenzbeitrag"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:20
+msgid "in books"
+msgstr "Buchkapitel"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:23
+msgid "in collections"
+msgstr "in Sammelb&auml;nden"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:26
+msgid "in proceedings"
+msgstr "Konferenzbeitr&auml;ge"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:19
+msgid "inbook"
+msgstr "Buchkapitel"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:69
+msgid "invited talk"
+msgstr "eingeladener Vortrag"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:70
+msgid "invited talks"
+msgstr "eingeladene Vortr&auml;ge"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:75
+msgid "journal"
+msgstr "Journal"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:76
+msgid "journals"
+msgstr "Journale"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:78
+msgid "lecturenote"
+msgstr "Vorlesung"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:79
+msgid "lecturenotes"
+msgstr "Vorlesungen"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:28
+msgid "manual"
+msgstr "Handbuch"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:29
+msgid "manuals"
+msgstr "Handb&uuml;cher"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:34
+#: src/gettext/pkg.dist.publications.entrytypes.php5:35
+msgid "miscellaneous"
+msgstr "Verschiedenes"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:37
+#: src/gettext/pkg.dist.publications.entrytypes.php5:38
+msgid "online"
+msgstr "Online"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:40
+msgid "patent"
+msgstr "Patent"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:41
+msgid "patents"
+msgstr "Patente"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:46
+msgid "periodical"
+msgstr "Zeitschrift"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:47
+#: src/gettext/pkg.dist.publications.entrytypes.php5:48
+msgid "periodicals"
+msgstr "Zeitschrift"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:81
+msgid "poster"
+msgstr "Poster"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:82
+msgid "posters"
+msgstr "Posters"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:66
+msgid "presentation"
+msgstr "Pr&auml;sentation"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:67
+msgid "presentations"
+msgstr "Pr&auml;sentationen"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:49
+msgid "proceeding"
+msgstr "Konferenzband"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:50
+msgid "proceedings"
+msgstr "Konferenzb&auml;nde"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:52
+msgid "report"
+msgstr "Bericht"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:53
+msgid "reports"
+msgstr "Berichte"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:63
+msgid "standard"
+msgstr "Standard"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:64
+msgid "standards"
+msgstr "Standards"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:54
+msgid "technical report"
+msgstr "technischer Bericht"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:55
+msgid "technical reports"
+msgstr "technische Berichte"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:31
+msgid "thesis&#44; M.Sc."
+msgstr "Diplomarbeiten"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:43
+msgid "thesis&#44; PhD"
+msgstr "Dissertationen"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:57
+msgid "thesis&#44; general"
+msgstr "Dissertationen allgemein"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:32
+msgid "thesis&rsquo;s&#44; M.Sc."
+msgstr "Diplomarbeit"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:44
+msgid "thesis&rsquo;s&#44; PhD"
+msgstr "Dissertation"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:58
+msgid "thesis&rsquo;s&#44; general"
+msgstr "Thesis"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:72
+msgid "tutorial"
+msgstr "Tutorial"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:73
+msgid "tutorials"
+msgstr "Tutorials"
+
+#: src/gettext/pkg.dist.publications.entrytypes.php5:60
+#: src/gettext/pkg.dist.publications.entrytypes.php5:61
+msgid "unpublished"
+msgstr "unver&ouml;ffentlicht"

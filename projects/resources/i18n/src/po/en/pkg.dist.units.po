@@ -1,0 +1,128 @@
+# English translations for PHP-SKB package.
+# PHP-SKB, Packages.Dist.Units
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB package.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Dist.Units\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-13 13:22+0000\n"
+"PO-Revision-Date: 2010-08-24 13:06+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gettext/pkg.dist.units.php5:11 src/gettext/pkg.dist.units.php5:43
+msgid "Billiard"
+msgstr "Billiard"
+
+#: src/gettext/pkg.dist.units.php5:29 src/gettext/pkg.dist.units.php5:61
+msgid "Billiardth"
+msgstr "Billiardth"
+
+#: src/gettext/pkg.dist.units.php5:13 src/gettext/pkg.dist.units.php5:14
+#: src/gettext/pkg.dist.units.php5:45 src/gettext/pkg.dist.units.php5:46
+msgid "Billion"
+msgstr "Billion"
+
+#: src/gettext/pkg.dist.units.php5:24 src/gettext/pkg.dist.units.php5:27
+#: src/gettext/pkg.dist.units.php5:56 src/gettext/pkg.dist.units.php5:59
+msgid "Billionth"
+msgstr "Billionth"
+
+#: src/gettext/pkg.dist.units.php5:18 src/gettext/pkg.dist.units.php5:50
+msgid "Hundred"
+msgstr "Hundred"
+
+#: src/gettext/pkg.dist.units.php5:21 src/gettext/pkg.dist.units.php5:53
+msgid "Hundredth"
+msgstr "Hundredth"
+
+#: src/gettext/pkg.dist.units.php5:15 src/gettext/pkg.dist.units.php5:47
+msgid "Milliard"
+msgstr "Milliard"
+
+#: src/gettext/pkg.dist.units.php5:25 src/gettext/pkg.dist.units.php5:57
+msgid "Milliardth"
+msgstr "Milliardth"
+
+#: src/gettext/pkg.dist.units.php5:16 src/gettext/pkg.dist.units.php5:48
+msgid "Million"
+msgstr "Million"
+
+#: src/gettext/pkg.dist.units.php5:23 src/gettext/pkg.dist.units.php5:55
+msgid "Millionth"
+msgstr "Millionth"
+
+#: src/gettext/pkg.dist.units.php5:5 src/gettext/pkg.dist.units.php5:10
+#: src/gettext/pkg.dist.units.php5:37 src/gettext/pkg.dist.units.php5:42
+msgid "Quadrillion"
+msgstr "Quadrillion"
+
+#: src/gettext/pkg.dist.units.php5:28 src/gettext/pkg.dist.units.php5:35
+#: src/gettext/pkg.dist.units.php5:60 src/gettext/pkg.dist.units.php5:67
+msgid "Quadrillionth"
+msgstr "Quadrillionth"
+
+#: src/gettext/pkg.dist.units.php5:8 src/gettext/pkg.dist.units.php5:40
+msgid "Quintillion"
+msgstr "Quintillion"
+
+#: src/gettext/pkg.dist.units.php5:30 src/gettext/pkg.dist.units.php5:62
+msgid "Quintillionth"
+msgstr "Quintillionth"
+
+#: src/gettext/pkg.dist.units.php5:4 src/gettext/pkg.dist.units.php5:36
+msgid "Septillion"
+msgstr "Septillion"
+
+#: src/gettext/pkg.dist.units.php5:34 src/gettext/pkg.dist.units.php5:66
+msgid "Septillionth"
+msgstr "Septillionth"
+
+#: src/gettext/pkg.dist.units.php5:6 src/gettext/pkg.dist.units.php5:38
+msgid "Sextillion"
+msgstr "Sextillion"
+
+#: src/gettext/pkg.dist.units.php5:32 src/gettext/pkg.dist.units.php5:64
+msgid "Sextillionth"
+msgstr "Sextillionth"
+
+#: src/gettext/pkg.dist.units.php5:19 src/gettext/pkg.dist.units.php5:51
+msgid "Ten"
+msgstr "Ten"
+
+#: src/gettext/pkg.dist.units.php5:20 src/gettext/pkg.dist.units.php5:52
+msgid "Tenth"
+msgstr "Tenth"
+
+#: src/gettext/pkg.dist.units.php5:17 src/gettext/pkg.dist.units.php5:49
+msgid "Thousand"
+msgstr "Thousand"
+
+#: src/gettext/pkg.dist.units.php5:22 src/gettext/pkg.dist.units.php5:54
+msgid "Thousandth"
+msgstr "Thousandth"
+
+#: src/gettext/pkg.dist.units.php5:7 src/gettext/pkg.dist.units.php5:39
+msgid "Trilliard"
+msgstr "Trilliard"
+
+#: src/gettext/pkg.dist.units.php5:33 src/gettext/pkg.dist.units.php5:65
+msgid "Trilliardth"
+msgstr "Trilliardth"
+
+#: src/gettext/pkg.dist.units.php5:9 src/gettext/pkg.dist.units.php5:12
+#: src/gettext/pkg.dist.units.php5:41 src/gettext/pkg.dist.units.php5:44
+msgid "Trillion"
+msgstr "Trillion"
+
+#: src/gettext/pkg.dist.units.php5:26 src/gettext/pkg.dist.units.php5:31
+#: src/gettext/pkg.dist.units.php5:58 src/gettext/pkg.dist.units.php5:63
+msgid "Trillionth"
+msgstr "Trillionth"

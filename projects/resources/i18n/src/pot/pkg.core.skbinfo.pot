@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-15 17:30+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "AsciiDoc"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:548
+msgid "Character Encodings"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:55
+msgid "Configuration"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "LaTeX"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:335
+msgid "Registered Applications"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:228
+msgid "Registered Builders"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:96
+msgid "Registered Databases"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:414
+msgid "Registered Fields"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:376
+msgid "Registered Interpreters"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:179
+msgid "Registered Readers"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:129
+msgid "Registered Requests"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:472
+msgid "Registered SKB HTTP Response Headers"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:505
+msgid "Registered SKB MIME Content Types"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:277
+msgid "Registered Templates"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "SKB-LaTeX"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "ascii7"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:180
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:183
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:229
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:232
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:336
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:339
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:377
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:380
+msgid "class"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+msgid "content-sub-type"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+msgid "content-type"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:278
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:281
+msgid "css"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:180
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:183
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:229
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:232
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:278
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:281
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:336
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:339
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:377
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:380
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:415
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:418
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:473
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:476
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "description"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:473
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:476
+msgid "example"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:97
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:100
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:278
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:281
+msgid "file"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+msgid "file extensions"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:56
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:59
+msgid "group"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:473
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:476
+msgid "header"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "html"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:56
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:59
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:97
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:100
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:130
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:133
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:180
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:183
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:229
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:232
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:278
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:281
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:336
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:339
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:377
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:380
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:415
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:418
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:473
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:476
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "key"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+msgid "media-type"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:180
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:183
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:229
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:232
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:278
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:281
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:336
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:339
+msgid "mime in"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:180
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:183
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:229
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:232
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:278
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:281
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:336
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:339
+msgid "mime out"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:97
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:100
+msgid "name"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "natsort"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:97
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:100
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:130
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:133
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:180
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:183
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:229
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:232
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:278
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:281
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:336
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:339
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:377
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:380
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:415
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:418
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:473
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:476
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+msgid "origin"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:506
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:509
+msgid "source (URL)"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:97
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:100
+msgid "tables"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "text"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "unicode range"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "utf-16"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:549
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:552
+msgid "utf-8"
+msgstr ""
+
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:56
+#: /home/vdmeer/doc/skb/targets/php/core/skbinfo/application--xhtml+table.tpl:59
+msgid "value"
+msgstr ""

@@ -1,0 +1,23 @@
+# Dutch translations for PHP-SKB package
+# Engelse vertalingen voor het pakket PHP-SKB.
+# PHP-SKB, Packages.Core
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Core\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-06 22:07+0100\n"
+"PO-Revision-Date: 2010-08-24 13:06+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: /home/vdmeer/doc/skb/targets/php/core/urn.interpreter.class.php5:81
+msgid "Core.Interpreter.URN: no file extensions given"
+msgstr ""

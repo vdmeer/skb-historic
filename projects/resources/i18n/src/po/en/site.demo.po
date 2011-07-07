@@ -1,0 +1,50 @@
+# English translations for PHP-SKB package.
+# PHP-SKB, Site.Demo
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB package.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Site.Demo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-19 20:07+0000\n"
+"PO-Revision-Date: 2010-08-24 13:06+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: /home/vdmeer/doc/www/demo/dist-acronyms.php5:73
+msgid "SKB - Acronyms"
+msgstr "SKB - Acronyms"
+
+#: /home/vdmeer/doc/www/demo/dist-affiliations.php5:72
+msgid "SKB - Affiliations"
+msgstr "SKB - Affiliations"
+
+#: /home/vdmeer/doc/www/demo/dist-currencies.php5:72
+msgid "SKB - Currencies"
+msgstr "SKB - Currencies"
+
+#: /home/vdmeer/doc/www/demo/dist-date.php5:72
+msgid "SKB - Date"
+msgstr "SKB - Date"
+
+#: /home/vdmeer/doc/www/demo/dist-gallery.php5:60
+msgid "SKB - Gallery"
+msgstr "SKB - Gallery"
+
+#: /home/vdmeer/doc/www/demo/dist-geo.php5:72
+msgid "SKB - Geography"
+msgstr "SKB - Geography"
+
+#: /home/vdmeer/doc/www/demo/dist-people.php5:71
+msgid "SKB - People"
+msgstr "SKB - People"
+
+#: /home/vdmeer/doc/www/demo/dist-publications.php5:75
+msgid "SKB - Publications"
+msgstr "SKB - Publications"

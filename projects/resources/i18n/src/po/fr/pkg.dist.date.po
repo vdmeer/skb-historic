@@ -1,0 +1,291 @@
+# French translations for PHP-SKB package
+# Traductions françaises du paquet PHP-SKB.
+# PHP-SKB, Packages.Dist.Date
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Dist.Date\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-13 13:22+0000\n"
+"PO-Revision-Date: 2010-08-24 13:06+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/gettext/pkg.dist.date.php5:50
+msgid "10th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:51
+msgid "11th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:52
+msgid "12th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:53
+msgid "13th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:54
+msgid "14th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:55
+msgid "15th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:56
+msgid "16th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:57
+msgid "17th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:58
+msgid "18th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:59
+msgid "19th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:41
+msgid "1st"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:60
+msgid "20th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:61
+msgid "21st"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:62
+msgid "22nd"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:63
+msgid "23rd"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:64
+msgid "24th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:65
+msgid "25th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:66
+msgid "26th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:67
+msgid "27th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:68
+msgid "28th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:69
+msgid "29th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:42
+msgid "2nd"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:70
+msgid "30th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:71
+msgid "31st"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:43
+msgid "3rd"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:44
+msgid "4th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:45
+msgid "5th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:46
+msgid "6th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:47
+msgid "7th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:48
+msgid "8th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:49
+msgid "9th"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:11
+msgid "Apr"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:10
+msgid "April"
+msgstr "Avril"
+
+#: src/gettext/pkg.dist.date.php5:18
+msgid "Aug"
+msgstr "August"
+
+#: src/gettext/pkg.dist.date.php5:17
+msgid "August"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:26
+msgid "Dec"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:25
+msgid "December"
+msgstr "D&eacute;cembre"
+
+#: src/gettext/pkg.dist.date.php5:7
+msgid "Feb"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:6
+msgid "February"
+msgstr "F&eacute;vrier"
+
+#: src/gettext/pkg.dist.date.php5:36
+msgid "Fri"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:35
+msgid "Friday"
+msgstr "Vendredi"
+
+#: src/gettext/pkg.dist.date.php5:5
+msgid "Jan"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:4
+msgid "January"
+msgstr "Janvier"
+
+#: src/gettext/pkg.dist.date.php5:16
+msgid "Jul"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:15
+msgid "July"
+msgstr "Juillet"
+
+#: src/gettext/pkg.dist.date.php5:14
+msgid "Jun"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:13
+msgid "June"
+msgstr "Juin"
+
+#: src/gettext/pkg.dist.date.php5:9
+msgid "Mar"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:8
+msgid "March"
+msgstr "Mars"
+
+#: src/gettext/pkg.dist.date.php5:12
+msgid "May"
+msgstr "Mai"
+
+#: src/gettext/pkg.dist.date.php5:28
+msgid "Mon"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:27
+msgid "Monday"
+msgstr "Lundi"
+
+#: src/gettext/pkg.dist.date.php5:24
+msgid "Nov"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:23
+msgid "November"
+msgstr "Novembre"
+
+#: src/gettext/pkg.dist.date.php5:22
+msgid "Oct"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:21
+msgid "October"
+msgstr "Octobre"
+
+#: src/gettext/pkg.dist.date.php5:38
+msgid "Sat"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:37
+msgid "Saturday"
+msgstr "Samedi"
+
+#: src/gettext/pkg.dist.date.php5:20
+msgid "Sep"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:19
+msgid "September"
+msgstr "Septembre"
+
+#: src/gettext/pkg.dist.date.php5:40
+msgid "Sun"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:39
+msgid "Sunday"
+msgstr "Dimanche"
+
+#: src/gettext/pkg.dist.date.php5:34
+msgid "Thu"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:33
+msgid "Thursday"
+msgstr "Jeudi"
+
+#: src/gettext/pkg.dist.date.php5:30
+msgid "Tue"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:29
+msgid "Tuesday"
+msgstr "Mardi"
+
+#: src/gettext/pkg.dist.date.php5:32
+msgid "Wed"
+msgstr ""
+
+#: src/gettext/pkg.dist.date.php5:31
+msgid "Wednesday"
+msgstr "Mercredi"

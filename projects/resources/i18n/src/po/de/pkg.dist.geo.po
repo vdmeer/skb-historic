@@ -1,0 +1,1899 @@
+# German translations for PHP-SKB package
+# German messages for PHP-SKB.
+# PHP-SKB, Packages.Dist.Geo
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Dist.Geo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-13 13:22+0000\n"
+"PO-Revision-Date: 2010-08-24 13:05+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/gettext/pkg.dist.geo.php5:226
+msgid "&Aring;land Islands"
+msgstr "&Aring;land Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:227
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: src/gettext/pkg.dist.geo.php5:474
+msgid "Africa"
+msgstr "Afrika"
+
+#: src/gettext/pkg.dist.geo.php5:131
+msgid "Ai Tu"
+msgstr "Ai Tu"
+
+#: src/gettext/pkg.dist.geo.php5:228
+msgid "Albania"
+msgstr "Albanien"
+
+#: src/gettext/pkg.dist.geo.php5:229
+msgid "Algeria"
+msgstr "Algerien"
+
+#: src/gettext/pkg.dist.geo.php5:157
+msgid "Algiers"
+msgstr "Algiers"
+
+#: src/gettext/pkg.dist.geo.php5:147
+msgid "Alimatha"
+msgstr "Alimatha"
+
+#: src/gettext/pkg.dist.geo.php5:118
+msgid "Alkmaar"
+msgstr "Alkmaar"
+
+#: src/gettext/pkg.dist.geo.php5:230
+msgid "American Samoa"
+msgstr "Amerikanisch Samoa"
+
+#: src/gettext/pkg.dist.geo.php5:47
+msgid "Amsterdam"
+msgstr "Amsterdam"
+
+#: src/gettext/pkg.dist.geo.php5:231
+msgid "Andorra"
+msgstr "Andorra"
+
+#: src/gettext/pkg.dist.geo.php5:238
+msgid "Angola"
+msgstr "Amsterdam"
+
+#: src/gettext/pkg.dist.geo.php5:239
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: src/gettext/pkg.dist.geo.php5:134
+msgid "Ankor Wat"
+msgstr "Ankor Wat"
+
+#: src/gettext/pkg.dist.geo.php5:169
+msgid "Annestown"
+msgstr "Annestown"
+
+#: src/gettext/pkg.dist.geo.php5:240 src/gettext/pkg.dist.geo.php5:477
+msgid "Antarctica"
+msgstr "Antarktis"
+
+#: src/gettext/pkg.dist.geo.php5:241
+msgid "Antigua and Barbuda"
+msgstr "Antigua und Barbuda"
+
+#: src/gettext/pkg.dist.geo.php5:242
+msgid "Argentina"
+msgstr "Argentinien"
+
+#: src/gettext/pkg.dist.geo.php5:246
+msgid "Armenia"
+msgstr "Armenien"
+
+#: src/gettext/pkg.dist.geo.php5:247
+msgid "Aruba"
+msgstr "Aruba"
+
+#: src/gettext/pkg.dist.geo.php5:473
+msgid "Asia"
+msgstr "Asien"
+
+#: src/gettext/pkg.dist.geo.php5:174
+msgid "Assakrem"
+msgstr "Assakrem"
+
+#: src/gettext/pkg.dist.geo.php5:34
+msgid "Athens"
+msgstr "Athes"
+
+#: src/gettext/pkg.dist.geo.php5:217
+msgid "Atlanta"
+msgstr "Atlanta"
+
+#: src/gettext/pkg.dist.geo.php5:213
+msgid "Auckland"
+msgstr "Auckland"
+
+#: src/gettext/pkg.dist.geo.php5:248
+msgid "Australia"
+msgstr "Australien"
+
+#: src/gettext/pkg.dist.geo.php5:479
+msgid "Australia and Oceania"
+msgstr "Australien und Ozeanien"
+
+#: src/gettext/pkg.dist.geo.php5:249
+msgid "Austria"
+msgstr "&Ouml;sterreich"
+
+#: src/gettext/pkg.dist.geo.php5:250
+msgid "Azerbaijan"
+msgstr "Aserbaidschan"
+
+#: src/gettext/pkg.dist.geo.php5:251
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: src/gettext/pkg.dist.geo.php5:252
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: src/gettext/pkg.dist.geo.php5:20
+msgid "Bangkok"
+msgstr "Bangkok"
+
+#: src/gettext/pkg.dist.geo.php5:253
+msgid "Bangladesch"
+msgstr "Bangladesch"
+
+#: src/gettext/pkg.dist.geo.php5:254
+msgid "Barbados"
+msgstr "Barbados"
+
+#: src/gettext/pkg.dist.geo.php5:51
+msgid "Barcelona"
+msgstr "Barcelona"
+
+#: src/gettext/pkg.dist.geo.php5:40
+msgid "Beijing"
+msgstr "Peking"
+
+#: src/gettext/pkg.dist.geo.php5:255
+msgid "Belarus"
+msgstr "Wei&szlig;russland"
+
+#: src/gettext/pkg.dist.geo.php5:61
+msgid "Belfast"
+msgstr "Belfast"
+
+#: src/gettext/pkg.dist.geo.php5:256
+msgid "Belgium"
+msgstr "Belgien"
+
+#: src/gettext/pkg.dist.geo.php5:257
+msgid "Belize"
+msgstr "Belize"
+
+#: src/gettext/pkg.dist.geo.php5:258
+msgid "Benin"
+msgstr "Benin"
+
+#: src/gettext/pkg.dist.geo.php5:210
+msgid "Bergen"
+msgstr "Bergen"
+
+#: src/gettext/pkg.dist.geo.php5:108
+msgid "Berkeley"
+msgstr "Berkeley"
+
+#: src/gettext/pkg.dist.geo.php5:4
+msgid "Berlin"
+msgstr "Berlin"
+
+#: src/gettext/pkg.dist.geo.php5:259
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: src/gettext/pkg.dist.geo.php5:260
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: src/gettext/pkg.dist.geo.php5:161
+msgid "Blarney"
+msgstr "Blarney"
+
+#: src/gettext/pkg.dist.geo.php5:275
+msgid "Bolivia"
+msgstr "Bolivien"
+
+#: src/gettext/pkg.dist.geo.php5:106
+msgid "Bor&aring;s"
+msgstr "Bor&aring;s"
+
+#: src/gettext/pkg.dist.geo.php5:274
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnien und Herzegowina"
+
+#: src/gettext/pkg.dist.geo.php5:93
+msgid "Boston"
+msgstr "Boston"
+
+#: src/gettext/pkg.dist.geo.php5:273
+msgid "Botswana"
+msgstr "Botswana"
+
+#: src/gettext/pkg.dist.geo.php5:270
+msgid "Bouvet Island"
+msgstr "Bouvet Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:272
+msgid "Brazil"
+msgstr "Brasilien"
+
+#: src/gettext/pkg.dist.geo.php5:63
+msgid "Brighton"
+msgstr "Brighton"
+
+#: src/gettext/pkg.dist.geo.php5:24
+msgid "Brisbane"
+msgstr "Brisbane"
+
+#: src/gettext/pkg.dist.geo.php5:215
+msgid "Bristol"
+msgstr "Bristol"
+
+#: src/gettext/pkg.dist.geo.php5:271
+msgid "British Indian Ocean Territory"
+msgstr "Britisches Territorium im Indischen Ozean"
+
+#: src/gettext/pkg.dist.geo.php5:200
+msgid "Bruchsal"
+msgstr "Bruchsal"
+
+#: src/gettext/pkg.dist.geo.php5:280
+msgid "Brunei Darussalam"
+msgstr "Brunei Darussalam"
+
+#: src/gettext/pkg.dist.geo.php5:5
+msgid "Brunswik"
+msgstr "Braunschweig"
+
+#: src/gettext/pkg.dist.geo.php5:136
+msgid "Brussels"
+msgstr "Br&uuml;ssel"
+
+#: src/gettext/pkg.dist.geo.php5:28
+msgid "Bucharest"
+msgstr "Bukarest"
+
+#: src/gettext/pkg.dist.geo.php5:31
+msgid "Budapest"
+msgstr "Budapest"
+
+#: src/gettext/pkg.dist.geo.php5:281
+msgid "Bulgaria"
+msgstr "Bulkarien"
+
+#: src/gettext/pkg.dist.geo.php5:170
+msgid "Bunmahon"
+msgstr "Bunmahon"
+
+#: src/gettext/pkg.dist.geo.php5:182
+msgid "Bunratty"
+msgstr "Bunratty"
+
+#: src/gettext/pkg.dist.geo.php5:306
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: src/gettext/pkg.dist.geo.php5:307
+msgid "Burundi"
+msgstr "Burundi"
+
+#: src/gettext/pkg.dist.geo.php5:166
+msgid "Cahir"
+msgstr "Cahir"
+
+#: src/gettext/pkg.dist.geo.php5:308
+msgid "Cambodia"
+msgstr "Kambodscha"
+
+#: src/gettext/pkg.dist.geo.php5:137 src/gettext/pkg.dist.geo.php5:218
+msgid "Cambridge"
+msgstr "Cambridge"
+
+#: src/gettext/pkg.dist.geo.php5:309
+msgid "Cameroon"
+msgstr "Kamerun"
+
+#: src/gettext/pkg.dist.geo.php5:57
+msgid "Campo-Grande"
+msgstr "Campo-Grande"
+
+#: src/gettext/pkg.dist.geo.php5:310
+msgid "Canada"
+msgstr "Kanada"
+
+#: src/gettext/pkg.dist.geo.php5:115
+msgid "Cantnitz"
+msgstr "Cantnitz"
+
+#: src/gettext/pkg.dist.geo.php5:148
+msgid "Cape Canaveral"
+msgstr "Cape Canaveral"
+
+#: src/gettext/pkg.dist.geo.php5:25
+msgid "Cape Town"
+msgstr "Kapstadt"
+
+#: src/gettext/pkg.dist.geo.php5:311
+msgid "Cape Verde"
+msgstr "Kap Verde"
+
+#: src/gettext/pkg.dist.geo.php5:70
+msgid "Carlow"
+msgstr "Carlow"
+
+#: src/gettext/pkg.dist.geo.php5:167
+msgid "Cashel"
+msgstr "Cashel"
+
+#: src/gettext/pkg.dist.geo.php5:312
+msgid "Cayman Islands"
+msgstr "Cayman Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:330
+msgid "Central African Republic"
+msgstr "Zentralafrikanische Republik"
+
+#: src/gettext/pkg.dist.geo.php5:331
+msgid "Chad"
+msgstr "Tschad"
+
+#: src/gettext/pkg.dist.geo.php5:39
+msgid "Chengdu"
+msgstr "Chengdu"
+
+#: src/gettext/pkg.dist.geo.php5:103
+msgid "Chiangmai"
+msgstr "Chiangmai"
+
+#: src/gettext/pkg.dist.geo.php5:87
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/gettext/pkg.dist.geo.php5:332
+msgid "Chile"
+msgstr "Chile"
+
+#: src/gettext/pkg.dist.geo.php5:333
+msgid "China"
+msgstr "China"
+
+#: src/gettext/pkg.dist.geo.php5:141
+msgid "Chot Gerio"
+msgstr "Chot Gerio"
+
+#: src/gettext/pkg.dist.geo.php5:334
+msgid "Christmas Island"
+msgstr "Weihnachtsinseln"
+
+#: src/gettext/pkg.dist.geo.php5:86
+msgid "Cincinnati"
+msgstr "Cincinnati"
+
+#: src/gettext/pkg.dist.geo.php5:180
+msgid "Clonmacnoise"
+msgstr "Clonmacnoise"
+
+#: src/gettext/pkg.dist.geo.php5:338
+msgid "Cocos (Keeling) Islands"
+msgstr "Kokos (Keeling) Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:64
+msgid "Colchester"
+msgstr "Colchester"
+
+#: src/gettext/pkg.dist.geo.php5:212
+msgid "College Park"
+msgstr "College Park"
+
+#: src/gettext/pkg.dist.geo.php5:6
+msgid "Cologne"
+msgstr "K&ouml;ln"
+
+#: src/gettext/pkg.dist.geo.php5:339
+msgid "Colombia"
+msgstr "Kolumbien"
+
+#: src/gettext/pkg.dist.geo.php5:107
+msgid "Colorado"
+msgstr "Colorado"
+
+#: src/gettext/pkg.dist.geo.php5:95
+msgid "Colorado Springs"
+msgstr "Colorado Springs"
+
+#: src/gettext/pkg.dist.geo.php5:340
+msgid "Comoros"
+msgstr "Komoren"
+
+#: src/gettext/pkg.dist.geo.php5:345
+msgid "Congo"
+msgstr "Kongo"
+
+#: src/gettext/pkg.dist.geo.php5:344
+msgid "Congo, the Democratic Republic of the"
+msgstr "Kongo, Demokratische Republik"
+
+#: src/gettext/pkg.dist.geo.php5:346
+msgid "Cook Islands"
+msgstr "Cook Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:190
+msgid "Copenhagen"
+msgstr "Kopenhagen"
+
+#: src/gettext/pkg.dist.geo.php5:69
+msgid "Cork"
+msgstr "Cork"
+
+#: src/gettext/pkg.dist.geo.php5:347
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: src/gettext/pkg.dist.geo.php5:54
+msgid "Cracow"
+msgstr "Krakau"
+
+#: src/gettext/pkg.dist.geo.php5:349
+msgid "Croatia"
+msgstr "Kroatien"
+
+#: src/gettext/pkg.dist.geo.php5:350
+msgid "Cuba"
+msgstr "Kuba"
+
+#: src/gettext/pkg.dist.geo.php5:351
+msgid "Cyprus"
+msgstr "Zypern"
+
+#: src/gettext/pkg.dist.geo.php5:391
+msgid "Czech Republic"
+msgstr "Tschechische Republik"
+
+#: src/gettext/pkg.dist.geo.php5:85
+msgid "Dallas"
+msgstr "Dallas"
+
+#: src/gettext/pkg.dist.geo.php5:112
+msgid "Delft"
+msgstr "Delft"
+
+#: src/gettext/pkg.dist.geo.php5:369
+msgid "Denmark"
+msgstr "D&auml;nemark"
+
+#: src/gettext/pkg.dist.geo.php5:195
+msgid "Denver"
+msgstr "Denver"
+
+#: src/gettext/pkg.dist.geo.php5:84
+msgid "Detroit"
+msgstr "Detroit"
+
+#: src/gettext/pkg.dist.geo.php5:188
+msgid "Dingle"
+msgstr "Dingle"
+
+#: src/gettext/pkg.dist.geo.php5:367
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: src/gettext/pkg.dist.geo.php5:366
+msgid "Dominica"
+msgstr "Dominika"
+
+#: src/gettext/pkg.dist.geo.php5:365
+msgid "Dominican Republic"
+msgstr "Dominikanische Republik"
+
+#: src/gettext/pkg.dist.geo.php5:123
+msgid "Dong Ha"
+msgstr "Dong Ha"
+
+#: src/gettext/pkg.dist.geo.php5:97
+msgid "Dortmund"
+msgstr "Dortmund"
+
+#: src/gettext/pkg.dist.geo.php5:221
+msgid "Dortrecht"
+msgstr "Dortrecht"
+
+#: src/gettext/pkg.dist.geo.php5:142
+msgid "Douz"
+msgstr "Douz"
+
+#: src/gettext/pkg.dist.geo.php5:7
+msgid "Dresden"
+msgstr "Dresden"
+
+#: src/gettext/pkg.dist.geo.php5:68
+msgid "Dublin"
+msgstr "Dublin"
+
+#: src/gettext/pkg.dist.geo.php5:165
+msgid "Duncannon"
+msgstr "Duncannon"
+
+#: src/gettext/pkg.dist.geo.php5:120
+msgid "Dungarvan"
+msgstr "Dungarvan"
+
+#: src/gettext/pkg.dist.geo.php5:171
+msgid "Dunmore East"
+msgstr "Dunmore East"
+
+#: src/gettext/pkg.dist.geo.php5:370
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: src/gettext/pkg.dist.geo.php5:65
+msgid "Edinburgh"
+msgstr "Edinburgh"
+
+#: src/gettext/pkg.dist.geo.php5:371
+msgid "Egypt"
+msgstr "&Auml;gypten"
+
+#: src/gettext/pkg.dist.geo.php5:360
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: src/gettext/pkg.dist.geo.php5:138
+msgid "Eljem"
+msgstr "Eljem"
+
+#: src/gettext/pkg.dist.geo.php5:359
+msgid "Equatorial Guinea"
+msgstr "&Auml;quatorialguinea"
+
+#: src/gettext/pkg.dist.geo.php5:361
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: src/gettext/pkg.dist.geo.php5:146
+msgid "Essouira"
+msgstr "Essouira"
+
+#: src/gettext/pkg.dist.geo.php5:362
+msgid "Estonia"
+msgstr "Estland"
+
+#: src/gettext/pkg.dist.geo.php5:364
+msgid "Ethiopia"
+msgstr "&Auml;thiopien"
+
+#: src/gettext/pkg.dist.geo.php5:478
+msgid "Europe"
+msgstr "Europa"
+
+#: src/gettext/pkg.dist.geo.php5:96
+msgid "Evry"
+msgstr "Evry"
+
+#: src/gettext/pkg.dist.geo.php5:363
+msgid "Falkland Islands (Malvinas)"
+msgstr "Falkland Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:372
+msgid "Faroe Islands"
+msgstr "F&auml;r&ouml;er"
+
+#: src/gettext/pkg.dist.geo.php5:373
+msgid "Fiji"
+msgstr "Fiji"
+
+#: src/gettext/pkg.dist.geo.php5:374
+msgid "Finland"
+msgstr "Finnland"
+
+#: src/gettext/pkg.dist.geo.php5:128
+msgid "Fishguard"
+msgstr "Fishguard"
+
+#: src/gettext/pkg.dist.geo.php5:44
+msgid "Florence"
+msgstr "Florenz"
+
+#: src/gettext/pkg.dist.geo.php5:159
+msgid "Foggaret"
+msgstr "Foggaret"
+
+#: src/gettext/pkg.dist.geo.php5:375
+msgid "France"
+msgstr "Frankreich"
+
+#: src/gettext/pkg.dist.geo.php5:8
+msgid "Frankfort"
+msgstr "Frankfurt"
+
+#: src/gettext/pkg.dist.geo.php5:90
+msgid "Fremont"
+msgstr "Fremont"
+
+#: src/gettext/pkg.dist.geo.php5:376
+msgid "French Guiana"
+msgstr "Franz&ouml;sisch-Guiana"
+
+#: src/gettext/pkg.dist.geo.php5:377
+msgid "French Polynesia"
+msgstr "Franz&ouml;sisch-Polynesien"
+
+#: src/gettext/pkg.dist.geo.php5:378
+msgid "French Southern Territories"
+msgstr "Franz&ouml;sische S&uuml;d- und Antarktisgebiete"
+
+#: src/gettext/pkg.dist.geo.php5:379
+msgid "Gabon"
+msgstr "Gabon"
+
+#: src/gettext/pkg.dist.geo.php5:392
+msgid "Gambia"
+msgstr "Gambia"
+
+#: src/gettext/pkg.dist.geo.php5:41
+msgid "Geneva"
+msgstr "Genf"
+
+#: src/gettext/pkg.dist.geo.php5:393
+msgid "Georgia"
+msgstr "Georgien"
+
+#: src/gettext/pkg.dist.geo.php5:431
+msgid "Germany"
+msgstr "Deutschland"
+
+#: src/gettext/pkg.dist.geo.php5:432
+msgid "Ghana"
+msgstr "Ghana"
+
+#: src/gettext/pkg.dist.geo.php5:204
+msgid "Ghent"
+msgstr "Ghent"
+
+#: src/gettext/pkg.dist.geo.php5:433
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: src/gettext/pkg.dist.geo.php5:62
+msgid "Glasgow"
+msgstr "Glasgow"
+
+#: src/gettext/pkg.dist.geo.php5:187
+msgid "Glendalough"
+msgstr "Glendalough"
+
+#: src/gettext/pkg.dist.geo.php5:162
+msgid "Glengarriff"
+msgstr "Glengarriff"
+
+#: src/gettext/pkg.dist.geo.php5:75
+msgid "Gosier"
+msgstr "Gosier"
+
+#: src/gettext/pkg.dist.geo.php5:434
+msgid "Greece"
+msgstr "Griechenland"
+
+#: src/gettext/pkg.dist.geo.php5:435
+msgid "Greenland"
+msgstr "Gr&ouml;nland"
+
+#: src/gettext/pkg.dist.geo.php5:436
+msgid "Grenada"
+msgstr "Grenada"
+
+#: src/gettext/pkg.dist.geo.php5:219
+msgid "Groningen"
+msgstr "Groningen"
+
+#: src/gettext/pkg.dist.geo.php5:74 src/gettext/pkg.dist.geo.php5:437
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: src/gettext/pkg.dist.geo.php5:454
+msgid "Guam"
+msgstr "Guam"
+
+#: src/gettext/pkg.dist.geo.php5:455
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: src/gettext/pkg.dist.geo.php5:413
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: src/gettext/pkg.dist.geo.php5:456
+msgid "Guinea"
+msgstr "Guinea"
+
+#: src/gettext/pkg.dist.geo.php5:457
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: src/gettext/pkg.dist.geo.php5:412
+msgid "Guyana"
+msgstr "Guyana"
+
+#: src/gettext/pkg.dist.geo.php5:414
+msgid "Haiti"
+msgstr "Haiti"
+
+#: src/gettext/pkg.dist.geo.php5:9
+msgid "Hamburg"
+msgstr "Hamburg"
+
+#: src/gettext/pkg.dist.geo.php5:129
+msgid "Hanoi"
+msgstr "Hanoi"
+
+#: src/gettext/pkg.dist.geo.php5:415
+msgid "Heard Island and McDonald Islands"
+msgstr "Heard- und McDonald-Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:116
+msgid "Heemskerk"
+msgstr "Heemskerk"
+
+#: src/gettext/pkg.dist.geo.php5:10
+msgid "Heidelberg"
+msgstr "Heidelberg"
+
+#: src/gettext/pkg.dist.geo.php5:36
+msgid "Helsinki"
+msgstr "Helsinki"
+
+#: src/gettext/pkg.dist.geo.php5:127
+msgid "Hoek"
+msgstr "Hoek"
+
+#: src/gettext/pkg.dist.geo.php5:160
+msgid "Hoggar (Tassilli de)"
+msgstr "Hoggar"
+
+#: src/gettext/pkg.dist.geo.php5:122
+msgid "Hoi Anh"
+msgstr "Hoi Anh"
+
+#: src/gettext/pkg.dist.geo.php5:416
+msgid "Holy See (Vatican City State)"
+msgstr "Vatikanstadt"
+
+#: src/gettext/pkg.dist.geo.php5:417
+msgid "Honduras"
+msgstr "Honduras"
+
+#: src/gettext/pkg.dist.geo.php5:38 src/gettext/pkg.dist.geo.php5:418
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: src/gettext/pkg.dist.geo.php5:163
+msgid "Hook Head"
+msgstr "Hook Head"
+
+#: src/gettext/pkg.dist.geo.php5:168
+msgid "Howth"
+msgstr "Howth"
+
+#: src/gettext/pkg.dist.geo.php5:133
+msgid "Hue"
+msgstr "Hue"
+
+#: src/gettext/pkg.dist.geo.php5:419
+msgid "Hungary"
+msgstr "Ungarn"
+
+#: src/gettext/pkg.dist.geo.php5:420
+msgid "Iceland"
+msgstr "Island"
+
+#: src/gettext/pkg.dist.geo.php5:421
+msgid "India"
+msgstr "Indien"
+
+#: src/gettext/pkg.dist.geo.php5:100
+msgid "Indianapolis"
+msgstr "Indianapolis"
+
+#: src/gettext/pkg.dist.geo.php5:422
+msgid "Indonesia"
+msgstr "Indonesien"
+
+#: src/gettext/pkg.dist.geo.php5:158
+msgid "Insalah"
+msgstr "Insalah"
+
+#: src/gettext/pkg.dist.geo.php5:423
+msgid "Iran, Islamic Republic of"
+msgstr "Iran"
+
+#: src/gettext/pkg.dist.geo.php5:424
+msgid "Iraq"
+msgstr "Irak"
+
+#: src/gettext/pkg.dist.geo.php5:425
+msgid "Ireland"
+msgstr "Irland"
+
+#: src/gettext/pkg.dist.geo.php5:193
+msgid "Irvine"
+msgstr "Irvine"
+
+#: src/gettext/pkg.dist.geo.php5:458
+msgid "Isle of Man"
+msgstr "Insel Man"
+
+#: src/gettext/pkg.dist.geo.php5:459
+msgid "Israel"
+msgstr "Israel"
+
+#: src/gettext/pkg.dist.geo.php5:145
+msgid "Istanbul"
+msgstr "Istanbul"
+
+#: src/gettext/pkg.dist.geo.php5:460
+msgid "Italy"
+msgstr "Italien"
+
+#: src/gettext/pkg.dist.geo.php5:348
+msgid "Ivory Coast"
+msgstr "Elfenbeink&uuml;ste"
+
+#: src/gettext/pkg.dist.geo.php5:461
+msgid "Jamaica"
+msgstr "Jamaika"
+
+#: src/gettext/pkg.dist.geo.php5:472
+msgid "Japan"
+msgstr "Japan"
+
+#: src/gettext/pkg.dist.geo.php5:223
+msgid "Jeju Island"
+msgstr "Jeju Island"
+
+#: src/gettext/pkg.dist.geo.php5:124
+msgid "Jerpoint Abbey"
+msgstr "Jerpoint Abbey"
+
+#: src/gettext/pkg.dist.geo.php5:468
+msgid "Jersey"
+msgstr "Jersey"
+
+#: src/gettext/pkg.dist.geo.php5:465
+msgid "Jordan"
+msgstr "Jordanien"
+
+#: src/gettext/pkg.dist.geo.php5:199
+msgid "Kaiserslautern"
+msgstr "Kaiserslautern"
+
+#: src/gettext/pkg.dist.geo.php5:11
+msgid "Karlsruhe"
+msgstr "Karlsruhe"
+
+#: src/gettext/pkg.dist.geo.php5:12
+msgid "Kassel"
+msgstr "Kassel"
+
+#: src/gettext/pkg.dist.geo.php5:466
+msgid "Kazakhstan"
+msgstr "Kasachstan"
+
+#: src/gettext/pkg.dist.geo.php5:467
+msgid "Kenya"
+msgstr "Kenia"
+
+#: src/gettext/pkg.dist.geo.php5:185
+msgid "Kerry"
+msgstr "Kerry"
+
+#: src/gettext/pkg.dist.geo.php5:151
+msgid "Key Biscayne"
+msgstr "Key Biscayne"
+
+#: src/gettext/pkg.dist.geo.php5:150
+msgid "Key West"
+msgstr "Key West"
+
+#: src/gettext/pkg.dist.geo.php5:132
+msgid "Khe Shan"
+msgstr "Khe Shan"
+
+#: src/gettext/pkg.dist.geo.php5:173
+msgid "Kilkenny"
+msgstr "Kilkenny"
+
+#: src/gettext/pkg.dist.geo.php5:126
+msgid "Killarney"
+msgstr "Killarney"
+
+#: src/gettext/pkg.dist.geo.php5:184
+msgid "Kinsale"
+msgstr "Kinsale"
+
+#: src/gettext/pkg.dist.geo.php5:471
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: src/gettext/pkg.dist.geo.php5:469
+msgid "Korea, Democratic People&rsquo;s Republic of; i.e., North Korea"
+msgstr "Volksrepublik Korea"
+
+#: src/gettext/pkg.dist.geo.php5:470
+msgid "Korea, Republic of; i.e. South Korea"
+msgstr "S&uuml;d Korea"
+
+#: src/gettext/pkg.dist.geo.php5:464
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: src/gettext/pkg.dist.geo.php5:179
+msgid "Kylemore"
+msgstr "Kylemore"
+
+#: src/gettext/pkg.dist.geo.php5:463
+msgid "Kyrgyzstan"
+msgstr "Kirgisistan"
+
+#: src/gettext/pkg.dist.geo.php5:201
+msgid "Langston"
+msgstr "Langston"
+
+#: src/gettext/pkg.dist.geo.php5:119
+msgid "Lankanfinolhu"
+msgstr "Lankanfinolhu"
+
+#: src/gettext/pkg.dist.geo.php5:462
+msgid "Lao People&rsquo;s Democratic Republic"
+msgstr "Laos, Volksrepublik"
+
+#: src/gettext/pkg.dist.geo.php5:83
+msgid "Las Vegas"
+msgstr "Las Vegas"
+
+#: src/gettext/pkg.dist.geo.php5:453
+msgid "Latvia"
+msgstr "Lettland"
+
+#: src/gettext/pkg.dist.geo.php5:16
+msgid "Laxenburg"
+msgstr "Laxenburg"
+
+#: src/gettext/pkg.dist.geo.php5:452
+msgid "Lebanon"
+msgstr "Libanon"
+
+#: src/gettext/pkg.dist.geo.php5:207
+msgid "Leeds"
+msgstr "Leeds"
+
+#: src/gettext/pkg.dist.geo.php5:13
+msgid "Leipzig"
+msgstr "Leipzig"
+
+#: src/gettext/pkg.dist.geo.php5:451
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: src/gettext/pkg.dist.geo.php5:450
+msgid "Liberia"
+msgstr "Liberia"
+
+#: src/gettext/pkg.dist.geo.php5:448
+msgid "Libyan Arab Jamahiriya"
+msgstr "Libien"
+
+#: src/gettext/pkg.dist.geo.php5:449
+msgid "Lichtenstein"
+msgstr "Liechtenstein"
+
+#: src/gettext/pkg.dist.geo.php5:183
+msgid "Limerick"
+msgstr "Limerick"
+
+#: src/gettext/pkg.dist.geo.php5:30
+msgid "Lisbon"
+msgstr "Lissabon"
+
+#: src/gettext/pkg.dist.geo.php5:177
+msgid "Lismore"
+msgstr "Lismore"
+
+#: src/gettext/pkg.dist.geo.php5:447
+msgid "Lithuania"
+msgstr "Litauen"
+
+#: src/gettext/pkg.dist.geo.php5:26
+msgid "Ljubljana"
+msgstr "Ljubljana"
+
+#: src/gettext/pkg.dist.geo.php5:60 src/gettext/pkg.dist.geo.php5:66
+msgid "London"
+msgstr "London"
+
+#: src/gettext/pkg.dist.geo.php5:446
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+#: src/gettext/pkg.dist.geo.php5:71
+msgid "Lyon"
+msgstr "Lyon"
+
+#: src/gettext/pkg.dist.geo.php5:445
+msgid "Macao"
+msgstr "Macao"
+
+#: src/gettext/pkg.dist.geo.php5:444
+msgid "Macedonia, the former Yugoslav Republic of"
+msgstr "Mazedonien"
+
+#: src/gettext/pkg.dist.geo.php5:443
+msgid "Madagascar"
+msgstr "Madagaskar"
+
+#: src/gettext/pkg.dist.geo.php5:50
+msgid "Madrid"
+msgstr "Madrid"
+
+#: src/gettext/pkg.dist.geo.php5:442
+msgid "Malawi"
+msgstr "Malawi"
+
+#: src/gettext/pkg.dist.geo.php5:441
+msgid "Malaysia"
+msgstr "Malaysia"
+
+#: src/gettext/pkg.dist.geo.php5:440
+msgid "Maldives"
+msgstr "Malediven"
+
+#: src/gettext/pkg.dist.geo.php5:439
+msgid "Mali"
+msgstr "Mali"
+
+#: src/gettext/pkg.dist.geo.php5:438
+msgid "Malta"
+msgstr "Malta"
+
+#: src/gettext/pkg.dist.geo.php5:111
+msgid "Manchester"
+msgstr "Manchester"
+
+#: src/gettext/pkg.dist.geo.php5:206
+msgid "Mannheim"
+msgstr "Mannheim"
+
+#: src/gettext/pkg.dist.geo.php5:48
+msgid "Marrakech"
+msgstr "Marrakesch"
+
+#: src/gettext/pkg.dist.geo.php5:430
+msgid "Marshall Islands"
+msgstr "Marshallinseln"
+
+#: src/gettext/pkg.dist.geo.php5:428
+msgid "Martinique"
+msgstr "Martinique"
+
+#: src/gettext/pkg.dist.geo.php5:139
+msgid "Matmata"
+msgstr "Matmata"
+
+#: src/gettext/pkg.dist.geo.php5:427
+msgid "Mauritania"
+msgstr "Mauritania"
+
+#: src/gettext/pkg.dist.geo.php5:429
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: src/gettext/pkg.dist.geo.php5:202
+msgid "Maynooth"
+msgstr "Maynooth"
+
+#: src/gettext/pkg.dist.geo.php5:426
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: src/gettext/pkg.dist.geo.php5:411
+msgid "Mexico"
+msgstr "Mexiko"
+
+#: src/gettext/pkg.dist.geo.php5:82
+msgid "Miami"
+msgstr "Miami"
+
+#: src/gettext/pkg.dist.geo.php5:410
+msgid "Micronesia, Federated States of"
+msgstr "Mikronesien"
+
+#: src/gettext/pkg.dist.geo.php5:181
+msgid "Moher"
+msgstr "Moher"
+
+#: src/gettext/pkg.dist.geo.php5:409
+msgid "Moldova, Republic of"
+msgstr "Moldavien"
+
+#: src/gettext/pkg.dist.geo.php5:408
+msgid "Monaco"
+msgstr "Monaco"
+
+#: src/gettext/pkg.dist.geo.php5:394
+msgid "Mongolia"
+msgstr "Mongolei"
+
+#: src/gettext/pkg.dist.geo.php5:395
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: src/gettext/pkg.dist.geo.php5:110
+msgid "Montr&eacute;al"
+msgstr "Montr&eacute;al"
+
+#: src/gettext/pkg.dist.geo.php5:396
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: src/gettext/pkg.dist.geo.php5:397
+msgid "Morocco"
+msgstr "Marokko"
+
+#: src/gettext/pkg.dist.geo.php5:92
+msgid "Morristown"
+msgstr "Morristown"
+
+#: src/gettext/pkg.dist.geo.php5:53
+msgid "Moscow"
+msgstr "Moskau"
+
+#: src/gettext/pkg.dist.geo.php5:398
+msgid "Mozambique"
+msgstr "Mosambik"
+
+#: src/gettext/pkg.dist.geo.php5:14
+msgid "Munich"
+msgstr "M&uuml;nchen"
+
+#: src/gettext/pkg.dist.geo.php5:399
+msgid "Myanmar"
+msgstr "Myanmar"
+
+#: src/gettext/pkg.dist.geo.php5:400
+msgid "Namibia"
+msgstr "Namibia"
+
+#: src/gettext/pkg.dist.geo.php5:109
+msgid "Nashville"
+msgstr "Nashville"
+
+#: src/gettext/pkg.dist.geo.php5:401
+msgid "Nauru"
+msgstr "Nauru"
+
+#: src/gettext/pkg.dist.geo.php5:89
+msgid "Needham"
+msgstr "Needham"
+
+#: src/gettext/pkg.dist.geo.php5:402
+msgid "Nepal"
+msgstr "Nepal"
+
+#: src/gettext/pkg.dist.geo.php5:268
+msgid "Netherlands"
+msgstr "Niederlande"
+
+#: src/gettext/pkg.dist.geo.php5:403
+msgid "Netherlands Antilles"
+msgstr "Niederl&auml;ndische Antillen"
+
+#: src/gettext/pkg.dist.geo.php5:404
+msgid "New Caledonia"
+msgstr "Neukaledonien"
+
+#: src/gettext/pkg.dist.geo.php5:80
+msgid "New Jersey"
+msgstr "New Jersey"
+
+#: src/gettext/pkg.dist.geo.php5:81
+msgid "New York"
+msgstr "New York"
+
+#: src/gettext/pkg.dist.geo.php5:405
+msgid "New Zealand"
+msgstr "Neu Seeland"
+
+#: src/gettext/pkg.dist.geo.php5:94
+msgid "Newport Beach"
+msgstr "Newport Beach"
+
+#: src/gettext/pkg.dist.geo.php5:222
+msgid "Niagara Falls"
+msgstr "Niagara Falls"
+
+#: src/gettext/pkg.dist.geo.php5:406
+msgid "Nicaragua"
+msgstr "Nikaragua"
+
+#: src/gettext/pkg.dist.geo.php5:72
+msgid "Nice"
+msgstr "Nizza"
+
+#: src/gettext/pkg.dist.geo.php5:407
+msgid "Niger"
+msgstr "Niger"
+
+#: src/gettext/pkg.dist.geo.php5:390
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: src/gettext/pkg.dist.geo.php5:389
+msgid "Niue"
+msgstr "Niue"
+
+#: src/gettext/pkg.dist.geo.php5:388
+msgid "Norfolk Island"
+msgstr "Norfolkinsel"
+
+#: src/gettext/pkg.dist.geo.php5:475
+msgid "North America"
+msgstr "Nord Amerika"
+
+#: src/gettext/pkg.dist.geo.php5:387
+msgid "Northern Mariana Islands"
+msgstr "N&ouml;rdliche Marianen"
+
+#: src/gettext/pkg.dist.geo.php5:386
+msgid "Norway"
+msgstr "Norwegen"
+
+#: src/gettext/pkg.dist.geo.php5:385
+msgid "Oman"
+msgstr "Oman"
+
+#: src/gettext/pkg.dist.geo.php5:32
+msgid "Opatija"
+msgstr "Opatija"
+
+#: src/gettext/pkg.dist.geo.php5:149
+msgid "Orlando"
+msgstr "Orlando"
+
+#: src/gettext/pkg.dist.geo.php5:205
+msgid "Osaka"
+msgstr "Osaka"
+
+#: src/gettext/pkg.dist.geo.php5:49
+msgid "Oslo"
+msgstr "Oslo"
+
+#: src/gettext/pkg.dist.geo.php5:384
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: src/gettext/pkg.dist.geo.php5:382
+msgid "Palau"
+msgstr "Palau"
+
+#: src/gettext/pkg.dist.geo.php5:383
+msgid "Palestinian Territory, Occupied"
+msgstr "Pal&auml;stinensische Autonomiegebiete"
+
+#: src/gettext/pkg.dist.geo.php5:113
+msgid "Palo Alto"
+msgstr "Palo Alto"
+
+#: src/gettext/pkg.dist.geo.php5:381
+msgid "Panama"
+msgstr "Panama"
+
+#: src/gettext/pkg.dist.geo.php5:380
+msgid "Papua New Guinea"
+msgstr "Papua-Neuguinea"
+
+#: src/gettext/pkg.dist.geo.php5:358
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: src/gettext/pkg.dist.geo.php5:73
+msgid "Paris"
+msgstr "Paris"
+
+#: src/gettext/pkg.dist.geo.php5:178
+msgid "Passage East"
+msgstr "Passage East"
+
+#: src/gettext/pkg.dist.geo.php5:99
+msgid "Passau"
+msgstr "Passau"
+
+#: src/gettext/pkg.dist.geo.php5:98
+msgid "Patras"
+msgstr "Patras"
+
+#: src/gettext/pkg.dist.geo.php5:357
+msgid "Peru"
+msgstr "Peru"
+
+#: src/gettext/pkg.dist.geo.php5:56
+msgid "Petr&oacute;polis"
+msgstr "Petr&oacute;polis"
+
+#: src/gettext/pkg.dist.geo.php5:79
+msgid "Philadelphia"
+msgstr "Philadelphia"
+
+#: src/gettext/pkg.dist.geo.php5:356
+msgid "Philippines"
+msgstr "Philippinen"
+
+#: src/gettext/pkg.dist.geo.php5:135
+msgid "Phnom Phen"
+msgstr "Phnom Phen"
+
+#: src/gettext/pkg.dist.geo.php5:197
+msgid "Pinckney"
+msgstr "Pinckney"
+
+#: src/gettext/pkg.dist.geo.php5:225
+msgid "Pisa"
+msgstr "Pisa"
+
+#: src/gettext/pkg.dist.geo.php5:355
+msgid "Pitcairn"
+msgstr "Pitcairninseln"
+
+#: src/gettext/pkg.dist.geo.php5:114
+msgid "Pittsburgh"
+msgstr "Pittsburgh"
+
+#: src/gettext/pkg.dist.geo.php5:224
+msgid "Pohang"
+msgstr "Pohang"
+
+#: src/gettext/pkg.dist.geo.php5:354
+msgid "Poland"
+msgstr "Polen"
+
+#: src/gettext/pkg.dist.geo.php5:91
+msgid "Portland"
+msgstr "Portland"
+
+#: src/gettext/pkg.dist.geo.php5:191
+msgid "Portlaw"
+msgstr "Portlaw"
+
+#: src/gettext/pkg.dist.geo.php5:29
+msgid "Porto"
+msgstr "Porto"
+
+#: src/gettext/pkg.dist.geo.php5:353
+msgid "Portugal"
+msgstr "Portugal"
+
+#: src/gettext/pkg.dist.geo.php5:121
+msgid "Powerscourt"
+msgstr "Powerscourt"
+
+#: src/gettext/pkg.dist.geo.php5:352
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#: src/gettext/pkg.dist.geo.php5:343
+msgid "Qatar"
+msgstr "Katar"
+
+#: src/gettext/pkg.dist.geo.php5:342
+msgid "R&egrave;union"
+msgstr "R&egrave;union"
+
+#: src/gettext/pkg.dist.geo.php5:88
+msgid "Reading"
+msgstr "Reading"
+
+#: src/gettext/pkg.dist.geo.php5:37
+msgid "Red Sea"
+msgstr "Red Sea"
+
+#: src/gettext/pkg.dist.geo.php5:216
+msgid "Rennes"
+msgstr "Rennes"
+
+#: src/gettext/pkg.dist.geo.php5:341
+msgid "Romania"
+msgstr "Rum&auml;nien"
+
+#: src/gettext/pkg.dist.geo.php5:105
+msgid "Rome"
+msgstr "Rom"
+
+#: src/gettext/pkg.dist.geo.php5:101
+msgid "Rotterdam"
+msgstr "Rotterdam"
+
+#: src/gettext/pkg.dist.geo.php5:335
+msgid "Russian Federation"
+msgstr "Russische F&ouml;deration"
+
+#: src/gettext/pkg.dist.geo.php5:337
+msgid "Rwanda"
+msgstr "Ruanda"
+
+#: src/gettext/pkg.dist.geo.php5:323
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr "S&atilde;o Tom&eacute; und Pr&iacute;ncipe"
+
+#: src/gettext/pkg.dist.geo.php5:336
+msgid "Saint Helena"
+msgstr "St. Helena"
+
+#: src/gettext/pkg.dist.geo.php5:329
+msgid "Saint Kitts and Nevis"
+msgstr "St. Kitts und Nevis"
+
+#: src/gettext/pkg.dist.geo.php5:328
+msgid "Saint Lucia"
+msgstr "St. Lucia"
+
+#: src/gettext/pkg.dist.geo.php5:327
+msgid "Saint Pierre and Miquelon"
+msgstr "Saint-Pierre und Miquelon"
+
+#: src/gettext/pkg.dist.geo.php5:326
+msgid "Saint Vincent and the Grenadines"
+msgstr "St. Vincent und die Grenadinen"
+
+#: src/gettext/pkg.dist.geo.php5:55
+msgid "Salvador Bahia"
+msgstr "Salvador Bahia"
+
+#: src/gettext/pkg.dist.geo.php5:18
+msgid "Salzburg"
+msgstr "Salzburg"
+
+#: src/gettext/pkg.dist.geo.php5:325
+msgid "Samoa"
+msgstr "Samoa"
+
+#: src/gettext/pkg.dist.geo.php5:33
+msgid "Samos Island"
+msgstr "Samos"
+
+#: src/gettext/pkg.dist.geo.php5:77
+msgid "San Francisco"
+msgstr "San Francisco"
+
+#: src/gettext/pkg.dist.geo.php5:78
+msgid "San Jos&eacute;"
+msgstr "San Jos&eacute;"
+
+#: src/gettext/pkg.dist.geo.php5:324
+msgid "San Marino"
+msgstr "San Marino"
+
+#: src/gettext/pkg.dist.geo.php5:196
+msgid "Santa Clara"
+msgstr "Santa Clara"
+
+#: src/gettext/pkg.dist.geo.php5:322
+msgid "Saudi Arabia"
+msgstr "Saudi Arabien"
+
+#: src/gettext/pkg.dist.geo.php5:76
+msgid "Schaumburg"
+msgstr "Schaumburg"
+
+#: src/gettext/pkg.dist.geo.php5:15
+msgid "Schwerin"
+msgstr "Schwerin"
+
+#: src/gettext/pkg.dist.geo.php5:220
+msgid "Sebastopol"
+msgstr "Sebastopol"
+
+#: src/gettext/pkg.dist.geo.php5:321
+msgid "Senegal"
+msgstr "Senegal"
+
+#: src/gettext/pkg.dist.geo.php5:320
+msgid "Serbia"
+msgstr "Serbien"
+
+#: src/gettext/pkg.dist.geo.php5:319
+msgid "Seychelles"
+msgstr "Seychellen"
+
+#: src/gettext/pkg.dist.geo.php5:140
+msgid "Sfax"
+msgstr "Sfax"
+
+#: src/gettext/pkg.dist.geo.php5:208
+msgid "Siena"
+msgstr "Siena"
+
+#: src/gettext/pkg.dist.geo.php5:318
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: src/gettext/pkg.dist.geo.php5:27 src/gettext/pkg.dist.geo.php5:316
+msgid "Singapore"
+msgstr "Singapur"
+
+#: src/gettext/pkg.dist.geo.php5:176
+msgid "Sligo"
+msgstr "Sligo"
+
+#: src/gettext/pkg.dist.geo.php5:125
+msgid "Slot de Haar"
+msgstr "Slot de Haar"
+
+#: src/gettext/pkg.dist.geo.php5:314
+msgid "Slovakia"
+msgstr "Slovakia"
+
+#: src/gettext/pkg.dist.geo.php5:315
+msgid "Slovenia"
+msgstr "Slovenien"
+
+#: src/gettext/pkg.dist.geo.php5:317
+msgid "Solomon Islands"
+msgstr "Solomon Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:313
+msgid "Somalia"
+msgstr "Somalia"
+
+#: src/gettext/pkg.dist.geo.php5:305
+msgid "South Africa"
+msgstr "S&uuml;dafrika"
+
+#: src/gettext/pkg.dist.geo.php5:476
+msgid "South America"
+msgstr "S&uuml;d Amerika"
+
+#: src/gettext/pkg.dist.geo.php5:304
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "S&uuml;d Georgien und die s&uuml;dlichen Sandwich Inseln"
+
+#: src/gettext/pkg.dist.geo.php5:303
+msgid "Spain"
+msgstr "Spanien"
+
+#: src/gettext/pkg.dist.geo.php5:300
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: src/gettext/pkg.dist.geo.php5:52
+msgid "St. Petersburg"
+msgstr "St. Petersburg"
+
+#: src/gettext/pkg.dist.geo.php5:189
+msgid "Stokholm"
+msgstr "Stokholm"
+
+#: src/gettext/pkg.dist.geo.php5:301
+msgid "Sudan"
+msgstr "Sudan"
+
+#: src/gettext/pkg.dist.geo.php5:302
+msgid "Suriname"
+msgstr "Suriname"
+
+#: src/gettext/pkg.dist.geo.php5:299
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard und Jan Mayen"
+
+#: src/gettext/pkg.dist.geo.php5:298
+msgid "Swaziland"
+msgstr "Swasiland"
+
+#: src/gettext/pkg.dist.geo.php5:296
+msgid "Sweden"
+msgstr "Schweden"
+
+#: src/gettext/pkg.dist.geo.php5:297
+msgid "Switzerland"
+msgstr "Schweiz"
+
+#: src/gettext/pkg.dist.geo.php5:23
+msgid "Sydney"
+msgstr "Sidney"
+
+#: src/gettext/pkg.dist.geo.php5:291
+msgid "Syrian Arab Republic"
+msgstr "Syrische Arabische Republik"
+
+#: src/gettext/pkg.dist.geo.php5:292
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: src/gettext/pkg.dist.geo.php5:293
+msgid "Tajikistan"
+msgstr "Tadschikistan"
+
+#: src/gettext/pkg.dist.geo.php5:192
+msgid "Tamanrasset"
+msgstr "Tamanrasset"
+
+#: src/gettext/pkg.dist.geo.php5:144
+msgid "Tamerza"
+msgstr "Tamerza"
+
+#: src/gettext/pkg.dist.geo.php5:22
+msgid "Tampa"
+msgstr "Tampa"
+
+#: src/gettext/pkg.dist.geo.php5:294
+msgid "Tanzania, United Republic of"
+msgstr "Tansania, Vereinigte Republik"
+
+#: src/gettext/pkg.dist.geo.php5:209
+msgid "Tempe"
+msgstr "Tempe"
+
+#: src/gettext/pkg.dist.geo.php5:152
+msgid "Teneriffa"
+msgstr "Teneriffa"
+
+#: src/gettext/pkg.dist.geo.php5:295
+msgid "Thailand"
+msgstr "Thailand"
+
+#: src/gettext/pkg.dist.geo.php5:46
+msgid "The Hague"
+msgstr "Den Haag"
+
+#: src/gettext/pkg.dist.geo.php5:214
+msgid "Thrace"
+msgstr "Thrace"
+
+#: src/gettext/pkg.dist.geo.php5:186
+msgid "Timoleague"
+msgstr "Timoleague"
+
+#: src/gettext/pkg.dist.geo.php5:368
+msgid "Timor-Leste"
+msgstr "OstTimor"
+
+#: src/gettext/pkg.dist.geo.php5:290
+msgid "Togo"
+msgstr "Togo"
+
+#: src/gettext/pkg.dist.geo.php5:289
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: src/gettext/pkg.dist.geo.php5:45
+msgid "Tokyo"
+msgstr "Tokio"
+
+#: src/gettext/pkg.dist.geo.php5:288
+msgid "Tonga"
+msgstr "Tonga"
+
+#: src/gettext/pkg.dist.geo.php5:153
+msgid "Torbay"
+msgstr "Torbay"
+
+#: src/gettext/pkg.dist.geo.php5:59
+msgid "Toronto"
+msgstr "Toronto"
+
+#: src/gettext/pkg.dist.geo.php5:143
+msgid "Tozeur"
+msgstr "Tozeur"
+
+#: src/gettext/pkg.dist.geo.php5:172
+msgid "Tramore"
+msgstr "Tramore"
+
+#: src/gettext/pkg.dist.geo.php5:211
+msgid "Trento"
+msgstr "Trento"
+
+#: src/gettext/pkg.dist.geo.php5:287
+msgid "Trinidad and Tobago"
+msgstr "Trinidad und Tobago"
+
+#: src/gettext/pkg.dist.geo.php5:104
+msgid "Trondheim"
+msgstr "Trondheim"
+
+#: src/gettext/pkg.dist.geo.php5:19
+msgid "Tunis"
+msgstr "Tunis"
+
+#: src/gettext/pkg.dist.geo.php5:286
+msgid "Tunisia"
+msgstr "Tunesien"
+
+#: src/gettext/pkg.dist.geo.php5:285
+msgid "Turkey"
+msgstr "T&uuml;rkei"
+
+#: src/gettext/pkg.dist.geo.php5:282
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: src/gettext/pkg.dist.geo.php5:283
+msgid "Turks and Caicos Islands"
+msgstr "Turks- und Caicosinseln"
+
+#: src/gettext/pkg.dist.geo.php5:35
+msgid "Turku"
+msgstr "Turku"
+
+#: src/gettext/pkg.dist.geo.php5:284
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: src/gettext/pkg.dist.geo.php5:194
+msgid "Twente"
+msgstr "Twente"
+
+#: src/gettext/pkg.dist.geo.php5:279
+msgid "Uganda"
+msgstr "Uganda"
+
+#: src/gettext/pkg.dist.geo.php5:278
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: src/gettext/pkg.dist.geo.php5:277
+msgid "United Arab Emirates"
+msgstr "Vereinigte Arabische Emirate"
+
+#: src/gettext/pkg.dist.geo.php5:276
+msgid "United Kingdom"
+msgstr "Gro&szlig; Britannien"
+
+#: src/gettext/pkg.dist.geo.php5:266
+msgid "United States"
+msgstr "Vereinigte Staaten von Amerika"
+
+#: src/gettext/pkg.dist.geo.php5:265
+msgid "United States Minor Outlying Islands"
+msgstr "United States Minor Outlying Islands"
+
+#: src/gettext/pkg.dist.geo.php5:264
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: src/gettext/pkg.dist.geo.php5:102
+msgid "Utrecht"
+msgstr "Utrecht"
+
+#: src/gettext/pkg.dist.geo.php5:263
+msgid "Uzbekistan"
+msgstr "Usbekistan"
+
+#: src/gettext/pkg.dist.geo.php5:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#: src/gettext/pkg.dist.geo.php5:262
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: src/gettext/pkg.dist.geo.php5:261
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: src/gettext/pkg.dist.geo.php5:203
+msgid "Venice"
+msgstr "Venedig"
+
+#: src/gettext/pkg.dist.geo.php5:17
+msgid "Vienna"
+msgstr "Wien"
+
+#: src/gettext/pkg.dist.geo.php5:155
+msgid "Vientiane"
+msgstr "Vientiane"
+
+#: src/gettext/pkg.dist.geo.php5:245
+msgid "Viet Nam"
+msgstr "Vietnam"
+
+#: src/gettext/pkg.dist.geo.php5:130
+msgid "Vinh"
+msgstr "Vinh"
+
+#: src/gettext/pkg.dist.geo.php5:244
+msgid "Virgin Islands, British"
+msgstr "Jungfrau Inseln (britisch)"
+
+#: src/gettext/pkg.dist.geo.php5:243
+msgid "Virgin Islands, U.S."
+msgstr "Jungfrau Inseln (amerikanisch)"
+
+#: src/gettext/pkg.dist.geo.php5:237
+msgid "Wallis and Futuna"
+msgstr "Wallis und Futuna"
+
+#: src/gettext/pkg.dist.geo.php5:198
+msgid "Walnut Creek"
+msgstr "Walnut Creek"
+
+#: src/gettext/pkg.dist.geo.php5:21
+msgid "Washington D.C."
+msgstr "Washington D.C."
+
+#: src/gettext/pkg.dist.geo.php5:67
+msgid "Waterford"
+msgstr "Waterford"
+
+#: src/gettext/pkg.dist.geo.php5:236
+msgid "Western Sahara"
+msgstr "Westsahara"
+
+#: src/gettext/pkg.dist.geo.php5:175
+msgid "Westport"
+msgstr "Westport"
+
+#: src/gettext/pkg.dist.geo.php5:43
+msgid "Winterthur"
+msgstr "Winterthur"
+
+#: src/gettext/pkg.dist.geo.php5:154
+msgid "Woldeck"
+msgstr "Woldeck"
+
+#: src/gettext/pkg.dist.geo.php5:156
+msgid "Xiang Kuang"
+msgstr "Xiang Kuang"
+
+#: src/gettext/pkg.dist.geo.php5:235
+msgid "Yemen"
+msgstr "Jemen"
+
+#: src/gettext/pkg.dist.geo.php5:164
+msgid "Youghal"
+msgstr "Youghal"
+
+#: src/gettext/pkg.dist.geo.php5:234
+msgid "Yugoslavia"
+msgstr "Yugoslavien"
+
+#: src/gettext/pkg.dist.geo.php5:117
+msgid "Zaanse Schans"
+msgstr "Zaanse Schans"
+
+#: src/gettext/pkg.dist.geo.php5:233
+msgid "Zambia"
+msgstr "Zambia"
+
+#: src/gettext/pkg.dist.geo.php5:232
+msgid "Zimbabwe"
+msgstr "Simbabwe"
+
+#: src/gettext/pkg.dist.geo.php5:42
+msgid "Zurich"
+msgstr "Z&uuml;rich"
+
+#: src/gettext/pkg.dist.geo.php5:269
+msgid "in the Netherlands"
+msgstr "in den Niederlanden"
+
+#: src/gettext/pkg.dist.geo.php5:267
+msgid "in the United States"
+msgstr "in den Vereinigten Staaten"
