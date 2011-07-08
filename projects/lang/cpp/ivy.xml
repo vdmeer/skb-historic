@@ -17,9 +17,6 @@
 
 	<dependencies>
 
-<!--	<dependency org="skb" name="skb.utils" rev="${skb.utils}"/> -->
-<!--	<dependency org="skb" name="skb.tribe" rev="${skb.tribe}" /> -->
-
 	<dependency org="org.junit"
 		name="com.springsource.org.junit"
 		rev="${org.junit}" conf="test->runtime" />

@@ -3,8 +3,8 @@
 	<!-- List all the bundles, you wish to include in the build process here -->
 	<!-- NOTE: Beware the build order -->
 	<path id="bundles">
-		<pathelement location="../utils"/>
 		<pathelement location="../lang/cpp"/>
+		<pathelement location="../utils"/>
 		<pathelement location="../tribe"/>
 		<pathelement location="../ant"/>
 		<pathelement location="../lang/cola/proto"/>

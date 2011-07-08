@@ -7,19 +7,10 @@
 	<property name="version" value="${skb.utils}"/>
 
 	<property file="${env.TINOS_HOME}/projects/build.properties"/>
-
-
 	<import file="${env.TINOS_HOME}/projects/spring-build/skb/skb.xml"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-bundle.xml"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
-<!--
-	<target name="antlr" description="Generates java classes based on grammar" depends="antlr.clean" >
-		<antlr:ant-antlr3 xmlns:antlr="antlib:org/apache/tools/ant/antlr"
-			verbose="true"
-			outputdirectory="${main.java.dir}/org/skb/lang/preprocessor/grammars"
-			target="${main.java.dir}/org/skb/lang/preprocessor/grammars/Preprocessor.g"/>
-	</target>
--->
+
 	<target name="prepare" description="Prepares the project for building (jar)" depends="antlr,clean,jar"/>
 
 </project>
