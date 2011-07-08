@@ -18,4 +18,10 @@
 		<all-bundles target="version"/>
 	</target>
 
+	<target name="clean-gen"
+			description="Remove all generated files.">
+		<all-bundles target="clean-gen"/>
+	</target>
+
+
 </project>
