@@ -28,6 +28,7 @@
 		rev="${org.apache.log4j}" />
 
 	<dependency org="skb" name="skb.utils" rev="${skb.utils}" />
+	<dependency org="skb.lang" name="skb.lang.cpp" rev="${skb.lang.cpp}" />
 
 	<dependency org="org.junit"
 		name="com.springsource.org.junit"
