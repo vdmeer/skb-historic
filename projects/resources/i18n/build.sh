@@ -1,16 +1,22 @@
 #!/usr/bin/bash
 
-skb_directory=~/doc/skb
-src_directory=~/dev/projects/skb-php
+##skb_directory=~/doc/skb
+##lc_directory=${skb_directory}/share/locale
+##src_directory=~/dev/projects/skb-php
 
-php_target_directory=${skb_directory}/targets/tgtphp
-gettext_directory=src/gettext
+#php_target_directory=${skb_directory}/targets/tgtphp
+php_target_directory=../../kb/src/main/php/targets/tgtphp
+htdoc_directory=../../htdocs
+
+autogen_directory=src/autogen
 pot_directory=src/pot
 po_directory=src/po
 
 locale_directory=target
 
-lc_directory=${skb_directory}/share/locale
+if [ -d ${locale_directory} ]; then
+    rm -fr ${locale_directory}
+fi
 
 
 help()
@@ -37,16 +43,27 @@ do_gettext(){
         find ${dir} ${maxdepth} -type f -print |grep .php5 > files.txt
         find ${dir} ${maxdepth} -type f -print |grep .tpl >> files.txt
     fi
-    if [ -f ${gettext_directory}/${domain}.php5 ]; then
-        ls ${gettext_directory}/${domain}.php5 >> files.txt
+    if [ -f ${autogen_directory}/${domain}.php5 ]; then
+        ls ${autogen_directory}/${domain}.php5 >> files.txt
     fi
 
     xgettext -d $domain -s -o ${pot_directory}/$pot --files-from=files.txt -L php
 
+    if [ ! -d ${locale_directory} ]; then
+        mkdir ${locale_directory}
+    fi
+    if [ ! -d ${locale_directory}/mo ]; then
+        mkdir ${locale_directory}/mo
+    fi
+    if [ ! -d ${locale_directory}/properties ]; then
+        mkdir ${locale_directory}/properties
+    fi
+
+    languages=`(cd ${po_directory};find -type d -print | sed "s/^\.\///" | sed "s/^\.//")`
     for lang in $languages
     do
         if [ ! -z "$lang" ]; then
-            echo -n "$lang, " 
+            echo -n "$lang -- " 
 
             #first to the MO part
             if [ ! -d ${locale_directory}/mo/${lang} ]; then
@@ -55,15 +72,17 @@ do_gettext(){
             if [ ! -d ${locale_directory}/mo/${lang}/LC_MESSAGES/ ]; then
                 mkdir ${locale_directory}/mo/${lang}/LC_MESSAGES/
             fi
+
             msgmerge -s -U ${po_directory}/${lang}/${domain}.po ${pot_directory}/${pot}
             msgfmt -c -v -o ${locale_directory}/mo/${lang}/LC_MESSAGES/${domain}.mo ${po_directory}/${lang}/${domain}.po
-            if [ ! -d ${lc_directory}/mo/${lang} ]; then
-                mkdir ${lc_directory}/mo/${lang}
-            fi
-            if [ ! -d ${lc_directory}/mo/${lang}/LC_MESSAGES/ ]; then
-                mkdir ${lc_directory}/mo/${lang}/LC_MESSAGES/
-            fi
-            cp -r -u  ${locale_directory}/mo/${lang}/LC_MESSAGES/${domain}.mo ${lc_directory}/mo/${lang}/LC_MESSAGES/
+
+##            if [ ! -d ${lc_directory}/mo/${lang} ]; then
+##                mkdir ${lc_directory}/mo/${lang}
+##            fi
+##            if [ ! -d ${lc_directory}/mo/${lang}/LC_MESSAGES/ ]; then
+##                mkdir ${lc_directory}/mo/${lang}/LC_MESSAGES/
+##            fi
+##            cp -r -u  ${locale_directory}/mo/${lang}/LC_MESSAGES/${domain}.mo ${lc_directory}/mo/${lang}/LC_MESSAGES/
 
             #second the properties
             prop_file=`echo ${domain} | sed "s/\./\//" | sed "s/\./\//" | sed "s/\./\//"`_${lang}.properties
@@ -79,14 +98,15 @@ do_gettext(){
 
 build_locale()
 {
-    (cd ${gettext_directory};php create-dist.php5)
-    (cd ${gettext_directory};php create-demo.php5)
-    (cd ${gettext_directory};php create-vdm.php5)
+#    (cd ${autogen_directory};php create-dist.php5)
+#    (cd ${autogen_directory};php create-demo.php5)
+#    (cd ${autogen_directory};php create-vdm.php5)
 
     pot_pkg_files=`(cd ${pot_directory};ls pkg.*.pot)`
     pot_site_files=`(cd ${pot_directory};ls site.*.pot)`
-    languages=`(cd ${po_directory};find -type d -print | sed "s/^\.\///" | sed "s/^\.//")`
 
+    echo PACKAGES
+    echo
     for pot in $pot_pkg_files
     do
         domain=`echo $pot | sed "s/.pot//"`
@@ -96,12 +116,15 @@ build_locale()
         do_gettext
     done
 
+    echo
+    echo SITES
+    echo
     for pot in $pot_site_files
     do
         domain=`echo $pot | sed "s/.pot//"`
         maxdepth=
         s_dir=`echo $pot | sed "s/.pot//" | sed "s/site.//"`
-        dir=~/doc/www/${s_dir}
+        dir=${htdoc_directory}/${s_dir}
         echo ${s_dir}
         do_gettext
     done

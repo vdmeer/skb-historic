@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-15 17:30+0100\n"
+"POT-Creation-Date: 2011-07-08 17:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,42 +16,42 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gettext/pkg.demo.gallery.php5:8
+#: src/autogen/pkg.demo.gallery.php5:8
 msgid "Animals"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:10
+#: src/autogen/pkg.demo.gallery.php5:10
 msgid "Berlin, Germany"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:6
+#: src/autogen/pkg.demo.gallery.php5:6
 msgid "Cape Point"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:13
+#: src/autogen/pkg.demo.gallery.php5:13
 msgid "Cape Town"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:4
+#: src/autogen/pkg.demo.gallery.php5:4
 msgid "Douz - Camels at dawn"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:5
+#: src/autogen/pkg.demo.gallery.php5:5
 msgid "Down Town viewed from Table Mountain"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:12
+#: src/autogen/pkg.demo.gallery.php5:12
 msgid "Florida"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:11
+#: src/autogen/pkg.demo.gallery.php5:11
 msgid "Istanbul"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:9
+#: src/autogen/pkg.demo.gallery.php5:9
 msgid "Plants"
 msgstr ""
 
-#: src/gettext/pkg.demo.gallery.php5:7
+#: src/autogen/pkg.demo.gallery.php5:7
 msgid "Some Nature Shots"
 msgstr ""

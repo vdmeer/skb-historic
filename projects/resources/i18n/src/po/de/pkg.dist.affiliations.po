@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Packages.Dist.Affiliations\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-13 13:22+0000\n"
+"POT-Creation-Date: 2011-07-08 17:09+0100\n"
 "PO-Revision-Date: 2010-08-24 13:05+0100\n"
 "Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
 "Language-Team: none\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/gettext/pkg.dist.affiliations.php5:4
+#: src/autogen/pkg.dist.affiliations.php5:4
 msgid ""
 "Technical University Berlin, Computer Science, Department for Open "
 "Communication Systems"
@@ -26,22 +26,22 @@ msgstr ""
 "Technische Universit&auml;t Berlin, Fachbereich Informatik, Fachgebiet "
 "f&uuml;r Offene Kommunikationssysteme"
 
-#: src/gettext/pkg.dist.affiliations.php5:5
+#: src/autogen/pkg.dist.affiliations.php5:5
 msgid "company"
 msgstr "Firma"
 
-#: src/gettext/pkg.dist.affiliations.php5:8
+#: src/autogen/pkg.dist.affiliations.php5:8
 msgid "museum"
 msgstr "Museum"
 
-#: src/gettext/pkg.dist.affiliations.php5:7
+#: src/autogen/pkg.dist.affiliations.php5:7
 msgid "organisation"
 msgstr "Organisation"
 
-#: src/gettext/pkg.dist.affiliations.php5:9
+#: src/autogen/pkg.dist.affiliations.php5:9
 msgid "publisher"
 msgstr "Verleger"
 
-#: src/gettext/pkg.dist.affiliations.php5:6
+#: src/autogen/pkg.dist.affiliations.php5:6
 msgid "university"
 msgstr "Universit&auml;t"

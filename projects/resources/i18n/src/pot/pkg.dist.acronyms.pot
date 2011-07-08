@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-15 17:31+0100\n"
+"POT-Creation-Date: 2011-07-08 17:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gettext/pkg.dist.acronyms.php5:4
+#: src/autogen/pkg.dist.acronyms.php5:4
 msgid "Fraunhofer Institute for Open Communication Systems"
 msgstr ""
 
-#: src/gettext/pkg.dist.acronyms.php5:5
+#: src/autogen/pkg.dist.acronyms.php5:5
 msgid "GMD Institute for Open Communication Systems"
 msgstr ""
 
-#: src/gettext/pkg.dist.acronyms.php5:6
+#: src/autogen/pkg.dist.acronyms.php5:6
 msgid "Technical University Berlin"
 msgstr ""

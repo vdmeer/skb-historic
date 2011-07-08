@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Packages.Demo.Gallery\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-06 22:07+0100\n"
+"POT-Creation-Date: 2011-07-08 15:49+0100\n"
 "PO-Revision-Date: 2010-08-24 13:05+0100\n"
 "Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
 "Language-Team: none\n"
@@ -18,42 +18,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/gettext/pkg.demo.gallery.php5:8
+#: src/autogen/pkg.demo.gallery.php5:8
 msgid "Animals"
 msgstr "Tiere"
 
-#: src/gettext/pkg.demo.gallery.php5:10
+#: src/autogen/pkg.demo.gallery.php5:10
 msgid "Berlin, Germany"
 msgstr "Berlin, Deutschland"
 
-#: src/gettext/pkg.demo.gallery.php5:6
+#: src/autogen/pkg.demo.gallery.php5:6
 msgid "Cape Point"
 msgstr "Kap der Guten Hoffnung"
 
-#: src/gettext/pkg.demo.gallery.php5:13
+#: src/autogen/pkg.demo.gallery.php5:13
 msgid "Cape Town"
 msgstr "Kapstadt"
 
-#: src/gettext/pkg.demo.gallery.php5:4
+#: src/autogen/pkg.demo.gallery.php5:4
 msgid "Douz - Camels at dawn"
 msgstr "Douz - Kamele im Morgenrot"
 
-#: src/gettext/pkg.demo.gallery.php5:5
+#: src/autogen/pkg.demo.gallery.php5:5
 msgid "Down Town viewed from Table Mountain"
 msgstr "die City vom Tafelberg"
 
-#: src/gettext/pkg.demo.gallery.php5:12
+#: src/autogen/pkg.demo.gallery.php5:12
 msgid "Florida"
 msgstr "Florida"
 
-#: src/gettext/pkg.demo.gallery.php5:11
+#: src/autogen/pkg.demo.gallery.php5:11
 msgid "Istanbul"
 msgstr "Istanbul"
 
-#: src/gettext/pkg.demo.gallery.php5:9
+#: src/autogen/pkg.demo.gallery.php5:9
 msgid "Plants"
 msgstr "Pflanzen"
 
-#: src/gettext/pkg.demo.gallery.php5:7
+#: src/autogen/pkg.demo.gallery.php5:7
 msgid "Some Nature Shots"
 msgstr "ein paar Naturfotos"

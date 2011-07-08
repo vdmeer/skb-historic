@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-14 12:26+0000\n"
+"POT-Creation-Date: 2011-07-08 17:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,34 +16,34 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/vdmeer/doc/www/demo/dist-acronyms.php5:73
+#: ../../htdocs/demo/dist-acronyms.php5:74
 msgid "SKB - Acronyms"
 msgstr ""
 
-#: /home/vdmeer/doc/www/demo/dist-affiliations.php5:72
+#: ../../htdocs/demo/dist-affiliations.php5:72
 msgid "SKB - Affiliations"
 msgstr ""
 
-#: /home/vdmeer/doc/www/demo/dist-currencies.php5:72
+#: ../../htdocs/demo/dist-currencies.php5:72
 msgid "SKB - Currencies"
 msgstr ""
 
-#: /home/vdmeer/doc/www/demo/dist-date.php5:72
+#: ../../htdocs/demo/dist-date.php5:72
 msgid "SKB - Date"
 msgstr ""
 
-#: /home/vdmeer/doc/www/demo/dist-gallery.php5:60
+#: ../../htdocs/demo/dist-gallery.php5:60
 msgid "SKB - Gallery"
 msgstr ""
 
-#: /home/vdmeer/doc/www/demo/dist-geo.php5:72
+#: ../../htdocs/demo/dist-geo.php5:74
 msgid "SKB - Geography"
 msgstr ""
 
-#: /home/vdmeer/doc/www/demo/dist-people.php5:71
+#: ../../htdocs/demo/dist-people.php5:73
 msgid "SKB - People"
 msgstr ""
 
-#: /home/vdmeer/doc/www/demo/dist-publications.php5:75
+#: ../../htdocs/demo/dist-publications.php5:76
 msgid "SKB - Publications"
 msgstr ""

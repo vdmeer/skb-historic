@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-15 17:31+0100\n"
+"POT-Creation-Date: 2011-07-08 17:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,1882 +16,1882 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gettext/pkg.dist.geo.php5:226
+#: src/autogen/pkg.dist.geo.php5:226
 msgid "&Aring;land Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:227
+#: src/autogen/pkg.dist.geo.php5:227
 msgid "Afghanistan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:474
+#: src/autogen/pkg.dist.geo.php5:474
 msgid "Africa"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:131
+#: src/autogen/pkg.dist.geo.php5:131
 msgid "Ai Tu"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:228
+#: src/autogen/pkg.dist.geo.php5:228
 msgid "Albania"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:229
+#: src/autogen/pkg.dist.geo.php5:229
 msgid "Algeria"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:157
+#: src/autogen/pkg.dist.geo.php5:157
 msgid "Algiers"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:147
+#: src/autogen/pkg.dist.geo.php5:147
 msgid "Alimatha"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:118
+#: src/autogen/pkg.dist.geo.php5:118
 msgid "Alkmaar"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:230
+#: src/autogen/pkg.dist.geo.php5:230
 msgid "American Samoa"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:47
+#: src/autogen/pkg.dist.geo.php5:47
 msgid "Amsterdam"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:231
+#: src/autogen/pkg.dist.geo.php5:231
 msgid "Andorra"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:238
+#: src/autogen/pkg.dist.geo.php5:238
 msgid "Angola"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:239
+#: src/autogen/pkg.dist.geo.php5:239
 msgid "Anguilla"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:134
+#: src/autogen/pkg.dist.geo.php5:134
 msgid "Ankor Wat"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:169
+#: src/autogen/pkg.dist.geo.php5:169
 msgid "Annestown"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:240 src/gettext/pkg.dist.geo.php5:477
+#: src/autogen/pkg.dist.geo.php5:240 src/autogen/pkg.dist.geo.php5:477
 msgid "Antarctica"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:241
+#: src/autogen/pkg.dist.geo.php5:241
 msgid "Antigua and Barbuda"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:242
+#: src/autogen/pkg.dist.geo.php5:242
 msgid "Argentina"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:246
+#: src/autogen/pkg.dist.geo.php5:246
 msgid "Armenia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:247
+#: src/autogen/pkg.dist.geo.php5:247
 msgid "Aruba"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:473
+#: src/autogen/pkg.dist.geo.php5:473
 msgid "Asia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:174
+#: src/autogen/pkg.dist.geo.php5:174
 msgid "Assakrem"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:34
+#: src/autogen/pkg.dist.geo.php5:34
 msgid "Athens"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:217
+#: src/autogen/pkg.dist.geo.php5:217
 msgid "Atlanta"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:213
+#: src/autogen/pkg.dist.geo.php5:213
 msgid "Auckland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:248
+#: src/autogen/pkg.dist.geo.php5:248
 msgid "Australia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:479
+#: src/autogen/pkg.dist.geo.php5:479
 msgid "Australia and Oceania"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:249
+#: src/autogen/pkg.dist.geo.php5:249
 msgid "Austria"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:250
+#: src/autogen/pkg.dist.geo.php5:250
 msgid "Azerbaijan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:251
+#: src/autogen/pkg.dist.geo.php5:251
 msgid "Bahamas"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:252
+#: src/autogen/pkg.dist.geo.php5:252
 msgid "Bahrain"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:20
+#: src/autogen/pkg.dist.geo.php5:20
 msgid "Bangkok"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:253
+#: src/autogen/pkg.dist.geo.php5:253
 msgid "Bangladesch"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:254
+#: src/autogen/pkg.dist.geo.php5:254
 msgid "Barbados"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:51
+#: src/autogen/pkg.dist.geo.php5:51
 msgid "Barcelona"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:40
+#: src/autogen/pkg.dist.geo.php5:40
 msgid "Beijing"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:255
+#: src/autogen/pkg.dist.geo.php5:255
 msgid "Belarus"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:61
+#: src/autogen/pkg.dist.geo.php5:61
 msgid "Belfast"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:256
+#: src/autogen/pkg.dist.geo.php5:256
 msgid "Belgium"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:257
+#: src/autogen/pkg.dist.geo.php5:257
 msgid "Belize"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:258
+#: src/autogen/pkg.dist.geo.php5:258
 msgid "Benin"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:210
+#: src/autogen/pkg.dist.geo.php5:210
 msgid "Bergen"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:108
+#: src/autogen/pkg.dist.geo.php5:108
 msgid "Berkeley"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:4
+#: src/autogen/pkg.dist.geo.php5:4
 msgid "Berlin"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:259
+#: src/autogen/pkg.dist.geo.php5:259
 msgid "Bermuda"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:260
+#: src/autogen/pkg.dist.geo.php5:260
 msgid "Bhutan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:161
+#: src/autogen/pkg.dist.geo.php5:161
 msgid "Blarney"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:275
+#: src/autogen/pkg.dist.geo.php5:275
 msgid "Bolivia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:106
+#: src/autogen/pkg.dist.geo.php5:106
 msgid "Bor&aring;s"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:274
+#: src/autogen/pkg.dist.geo.php5:274
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:93
+#: src/autogen/pkg.dist.geo.php5:93
 msgid "Boston"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:273
+#: src/autogen/pkg.dist.geo.php5:273
 msgid "Botswana"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:270
+#: src/autogen/pkg.dist.geo.php5:270
 msgid "Bouvet Island"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:272
+#: src/autogen/pkg.dist.geo.php5:272
 msgid "Brazil"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:63
+#: src/autogen/pkg.dist.geo.php5:63
 msgid "Brighton"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:24
+#: src/autogen/pkg.dist.geo.php5:24
 msgid "Brisbane"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:215
+#: src/autogen/pkg.dist.geo.php5:215
 msgid "Bristol"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:271
+#: src/autogen/pkg.dist.geo.php5:271
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:200
+#: src/autogen/pkg.dist.geo.php5:200
 msgid "Bruchsal"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:280
+#: src/autogen/pkg.dist.geo.php5:280
 msgid "Brunei Darussalam"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:5
+#: src/autogen/pkg.dist.geo.php5:5
 msgid "Brunswik"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:136
+#: src/autogen/pkg.dist.geo.php5:136
 msgid "Brussels"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:28
+#: src/autogen/pkg.dist.geo.php5:28
 msgid "Bucharest"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:31
+#: src/autogen/pkg.dist.geo.php5:31
 msgid "Budapest"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:281
+#: src/autogen/pkg.dist.geo.php5:281
 msgid "Bulgaria"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:170
+#: src/autogen/pkg.dist.geo.php5:170
 msgid "Bunmahon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:182
+#: src/autogen/pkg.dist.geo.php5:182
 msgid "Bunratty"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:306
+#: src/autogen/pkg.dist.geo.php5:306
 msgid "Burkina Faso"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:307
+#: src/autogen/pkg.dist.geo.php5:307
 msgid "Burundi"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:166
+#: src/autogen/pkg.dist.geo.php5:166
 msgid "Cahir"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:308
+#: src/autogen/pkg.dist.geo.php5:308
 msgid "Cambodia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:137 src/gettext/pkg.dist.geo.php5:218
+#: src/autogen/pkg.dist.geo.php5:137 src/autogen/pkg.dist.geo.php5:218
 msgid "Cambridge"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:309
+#: src/autogen/pkg.dist.geo.php5:309
 msgid "Cameroon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:57
+#: src/autogen/pkg.dist.geo.php5:57
 msgid "Campo-Grande"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:310
+#: src/autogen/pkg.dist.geo.php5:310
 msgid "Canada"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:115
+#: src/autogen/pkg.dist.geo.php5:115
 msgid "Cantnitz"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:148
+#: src/autogen/pkg.dist.geo.php5:148
 msgid "Cape Canaveral"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:25
+#: src/autogen/pkg.dist.geo.php5:25
 msgid "Cape Town"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:311
+#: src/autogen/pkg.dist.geo.php5:311
 msgid "Cape Verde"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:70
+#: src/autogen/pkg.dist.geo.php5:70
 msgid "Carlow"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:167
+#: src/autogen/pkg.dist.geo.php5:167
 msgid "Cashel"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:312
+#: src/autogen/pkg.dist.geo.php5:312
 msgid "Cayman Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:330
+#: src/autogen/pkg.dist.geo.php5:330
 msgid "Central African Republic"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:331
+#: src/autogen/pkg.dist.geo.php5:331
 msgid "Chad"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:39
+#: src/autogen/pkg.dist.geo.php5:39
 msgid "Chengdu"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:103
+#: src/autogen/pkg.dist.geo.php5:103
 msgid "Chiangmai"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:87
+#: src/autogen/pkg.dist.geo.php5:87
 msgid "Chicago"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:332
+#: src/autogen/pkg.dist.geo.php5:332
 msgid "Chile"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:333
+#: src/autogen/pkg.dist.geo.php5:333
 msgid "China"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:141
+#: src/autogen/pkg.dist.geo.php5:141
 msgid "Chot Gerio"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:334
+#: src/autogen/pkg.dist.geo.php5:334
 msgid "Christmas Island"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:86
+#: src/autogen/pkg.dist.geo.php5:86
 msgid "Cincinnati"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:180
+#: src/autogen/pkg.dist.geo.php5:180
 msgid "Clonmacnoise"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:338
+#: src/autogen/pkg.dist.geo.php5:338
 msgid "Cocos (Keeling) Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:64
+#: src/autogen/pkg.dist.geo.php5:64
 msgid "Colchester"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:212
+#: src/autogen/pkg.dist.geo.php5:212
 msgid "College Park"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:6
+#: src/autogen/pkg.dist.geo.php5:6
 msgid "Cologne"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:339
+#: src/autogen/pkg.dist.geo.php5:339
 msgid "Colombia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:107
+#: src/autogen/pkg.dist.geo.php5:107
 msgid "Colorado"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:95
+#: src/autogen/pkg.dist.geo.php5:95
 msgid "Colorado Springs"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:340
+#: src/autogen/pkg.dist.geo.php5:340
 msgid "Comoros"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:345
+#: src/autogen/pkg.dist.geo.php5:345
 msgid "Congo"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:344
+#: src/autogen/pkg.dist.geo.php5:344
 msgid "Congo, the Democratic Republic of the"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:346
+#: src/autogen/pkg.dist.geo.php5:346
 msgid "Cook Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:190
+#: src/autogen/pkg.dist.geo.php5:190
 msgid "Copenhagen"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:69
+#: src/autogen/pkg.dist.geo.php5:69
 msgid "Cork"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:347
+#: src/autogen/pkg.dist.geo.php5:347
 msgid "Costa Rica"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:54
+#: src/autogen/pkg.dist.geo.php5:54
 msgid "Cracow"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:349
+#: src/autogen/pkg.dist.geo.php5:349
 msgid "Croatia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:350
+#: src/autogen/pkg.dist.geo.php5:350
 msgid "Cuba"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:351
+#: src/autogen/pkg.dist.geo.php5:351
 msgid "Cyprus"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:391
+#: src/autogen/pkg.dist.geo.php5:391
 msgid "Czech Republic"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:85
+#: src/autogen/pkg.dist.geo.php5:85
 msgid "Dallas"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:112
+#: src/autogen/pkg.dist.geo.php5:112
 msgid "Delft"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:369
+#: src/autogen/pkg.dist.geo.php5:369
 msgid "Denmark"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:195
+#: src/autogen/pkg.dist.geo.php5:195
 msgid "Denver"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:84
+#: src/autogen/pkg.dist.geo.php5:84
 msgid "Detroit"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:188
+#: src/autogen/pkg.dist.geo.php5:188
 msgid "Dingle"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:367
+#: src/autogen/pkg.dist.geo.php5:367
 msgid "Djibouti"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:366
+#: src/autogen/pkg.dist.geo.php5:366
 msgid "Dominica"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:365
+#: src/autogen/pkg.dist.geo.php5:365
 msgid "Dominican Republic"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:123
+#: src/autogen/pkg.dist.geo.php5:123
 msgid "Dong Ha"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:97
+#: src/autogen/pkg.dist.geo.php5:97
 msgid "Dortmund"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:221
+#: src/autogen/pkg.dist.geo.php5:221
 msgid "Dortrecht"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:142
+#: src/autogen/pkg.dist.geo.php5:142
 msgid "Douz"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:7
+#: src/autogen/pkg.dist.geo.php5:7
 msgid "Dresden"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:68
+#: src/autogen/pkg.dist.geo.php5:68
 msgid "Dublin"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:165
+#: src/autogen/pkg.dist.geo.php5:165
 msgid "Duncannon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:120
+#: src/autogen/pkg.dist.geo.php5:120
 msgid "Dungarvan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:171
+#: src/autogen/pkg.dist.geo.php5:171
 msgid "Dunmore East"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:370
+#: src/autogen/pkg.dist.geo.php5:370
 msgid "Ecuador"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:65
+#: src/autogen/pkg.dist.geo.php5:65
 msgid "Edinburgh"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:371
+#: src/autogen/pkg.dist.geo.php5:371
 msgid "Egypt"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:360
+#: src/autogen/pkg.dist.geo.php5:360
 msgid "El Salvador"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:138
+#: src/autogen/pkg.dist.geo.php5:138
 msgid "Eljem"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:359
+#: src/autogen/pkg.dist.geo.php5:359
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:361
+#: src/autogen/pkg.dist.geo.php5:361
 msgid "Eritrea"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:146
+#: src/autogen/pkg.dist.geo.php5:146
 msgid "Essouira"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:362
+#: src/autogen/pkg.dist.geo.php5:362
 msgid "Estonia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:364
+#: src/autogen/pkg.dist.geo.php5:364
 msgid "Ethiopia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:478
+#: src/autogen/pkg.dist.geo.php5:478
 msgid "Europe"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:96
+#: src/autogen/pkg.dist.geo.php5:96
 msgid "Evry"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:363
+#: src/autogen/pkg.dist.geo.php5:363
 msgid "Falkland Islands (Malvinas)"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:372
+#: src/autogen/pkg.dist.geo.php5:372
 msgid "Faroe Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:373
+#: src/autogen/pkg.dist.geo.php5:373
 msgid "Fiji"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:374
+#: src/autogen/pkg.dist.geo.php5:374
 msgid "Finland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:128
+#: src/autogen/pkg.dist.geo.php5:128
 msgid "Fishguard"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:44
+#: src/autogen/pkg.dist.geo.php5:44
 msgid "Florence"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:159
+#: src/autogen/pkg.dist.geo.php5:159
 msgid "Foggaret"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:375
+#: src/autogen/pkg.dist.geo.php5:375
 msgid "France"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:8
+#: src/autogen/pkg.dist.geo.php5:8
 msgid "Frankfort"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:90
+#: src/autogen/pkg.dist.geo.php5:90
 msgid "Fremont"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:376
+#: src/autogen/pkg.dist.geo.php5:376
 msgid "French Guiana"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:377
+#: src/autogen/pkg.dist.geo.php5:377
 msgid "French Polynesia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:378
+#: src/autogen/pkg.dist.geo.php5:378
 msgid "French Southern Territories"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:379
+#: src/autogen/pkg.dist.geo.php5:379
 msgid "Gabon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:392
+#: src/autogen/pkg.dist.geo.php5:392
 msgid "Gambia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:41
+#: src/autogen/pkg.dist.geo.php5:41
 msgid "Geneva"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:393
+#: src/autogen/pkg.dist.geo.php5:393
 msgid "Georgia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:431
+#: src/autogen/pkg.dist.geo.php5:431
 msgid "Germany"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:432
+#: src/autogen/pkg.dist.geo.php5:432
 msgid "Ghana"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:204
+#: src/autogen/pkg.dist.geo.php5:204
 msgid "Ghent"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:433
+#: src/autogen/pkg.dist.geo.php5:433
 msgid "Gibraltar"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:62
+#: src/autogen/pkg.dist.geo.php5:62
 msgid "Glasgow"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:187
+#: src/autogen/pkg.dist.geo.php5:187
 msgid "Glendalough"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:162
+#: src/autogen/pkg.dist.geo.php5:162
 msgid "Glengarriff"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:75
+#: src/autogen/pkg.dist.geo.php5:75
 msgid "Gosier"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:434
+#: src/autogen/pkg.dist.geo.php5:434
 msgid "Greece"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:435
+#: src/autogen/pkg.dist.geo.php5:435
 msgid "Greenland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:436
+#: src/autogen/pkg.dist.geo.php5:436
 msgid "Grenada"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:219
+#: src/autogen/pkg.dist.geo.php5:219
 msgid "Groningen"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:74 src/gettext/pkg.dist.geo.php5:437
+#: src/autogen/pkg.dist.geo.php5:74 src/autogen/pkg.dist.geo.php5:437
 msgid "Guadeloupe"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:454
+#: src/autogen/pkg.dist.geo.php5:454
 msgid "Guam"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:455
+#: src/autogen/pkg.dist.geo.php5:455
 msgid "Guatemala"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:413
+#: src/autogen/pkg.dist.geo.php5:413
 msgid "Guernsey"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:456
+#: src/autogen/pkg.dist.geo.php5:456
 msgid "Guinea"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:457
+#: src/autogen/pkg.dist.geo.php5:457
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:412
+#: src/autogen/pkg.dist.geo.php5:412
 msgid "Guyana"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:414
+#: src/autogen/pkg.dist.geo.php5:414
 msgid "Haiti"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:9
+#: src/autogen/pkg.dist.geo.php5:9
 msgid "Hamburg"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:129
+#: src/autogen/pkg.dist.geo.php5:129
 msgid "Hanoi"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:415
+#: src/autogen/pkg.dist.geo.php5:415
 msgid "Heard Island and McDonald Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:116
+#: src/autogen/pkg.dist.geo.php5:116
 msgid "Heemskerk"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:10
+#: src/autogen/pkg.dist.geo.php5:10
 msgid "Heidelberg"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:36
+#: src/autogen/pkg.dist.geo.php5:36
 msgid "Helsinki"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:127
+#: src/autogen/pkg.dist.geo.php5:127
 msgid "Hoek"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:160
+#: src/autogen/pkg.dist.geo.php5:160
 msgid "Hoggar (Tassilli de)"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:122
+#: src/autogen/pkg.dist.geo.php5:122
 msgid "Hoi Anh"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:416
+#: src/autogen/pkg.dist.geo.php5:416
 msgid "Holy See (Vatican City State)"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:417
+#: src/autogen/pkg.dist.geo.php5:417
 msgid "Honduras"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:38 src/gettext/pkg.dist.geo.php5:418
+#: src/autogen/pkg.dist.geo.php5:38 src/autogen/pkg.dist.geo.php5:418
 msgid "Hong Kong"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:163
+#: src/autogen/pkg.dist.geo.php5:163
 msgid "Hook Head"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:168
+#: src/autogen/pkg.dist.geo.php5:168
 msgid "Howth"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:133
+#: src/autogen/pkg.dist.geo.php5:133
 msgid "Hue"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:419
+#: src/autogen/pkg.dist.geo.php5:419
 msgid "Hungary"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:420
+#: src/autogen/pkg.dist.geo.php5:420
 msgid "Iceland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:421
+#: src/autogen/pkg.dist.geo.php5:421
 msgid "India"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:100
+#: src/autogen/pkg.dist.geo.php5:100
 msgid "Indianapolis"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:422
+#: src/autogen/pkg.dist.geo.php5:422
 msgid "Indonesia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:158
+#: src/autogen/pkg.dist.geo.php5:158
 msgid "Insalah"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:423
+#: src/autogen/pkg.dist.geo.php5:423
 msgid "Iran, Islamic Republic of"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:424
+#: src/autogen/pkg.dist.geo.php5:424
 msgid "Iraq"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:425
+#: src/autogen/pkg.dist.geo.php5:425
 msgid "Ireland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:193
+#: src/autogen/pkg.dist.geo.php5:193
 msgid "Irvine"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:458
+#: src/autogen/pkg.dist.geo.php5:458
 msgid "Isle of Man"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:459
+#: src/autogen/pkg.dist.geo.php5:459
 msgid "Israel"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:145
+#: src/autogen/pkg.dist.geo.php5:145
 msgid "Istanbul"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:460
+#: src/autogen/pkg.dist.geo.php5:460
 msgid "Italy"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:348
+#: src/autogen/pkg.dist.geo.php5:348
 msgid "Ivory Coast"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:461
+#: src/autogen/pkg.dist.geo.php5:461
 msgid "Jamaica"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:472
+#: src/autogen/pkg.dist.geo.php5:472
 msgid "Japan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:223
+#: src/autogen/pkg.dist.geo.php5:223
 msgid "Jeju Island"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:124
+#: src/autogen/pkg.dist.geo.php5:124
 msgid "Jerpoint Abbey"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:468
+#: src/autogen/pkg.dist.geo.php5:468
 msgid "Jersey"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:465
+#: src/autogen/pkg.dist.geo.php5:465
 msgid "Jordan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:199
+#: src/autogen/pkg.dist.geo.php5:199
 msgid "Kaiserslautern"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:11
+#: src/autogen/pkg.dist.geo.php5:11
 msgid "Karlsruhe"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:12
+#: src/autogen/pkg.dist.geo.php5:12
 msgid "Kassel"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:466
+#: src/autogen/pkg.dist.geo.php5:466
 msgid "Kazakhstan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:467
+#: src/autogen/pkg.dist.geo.php5:467
 msgid "Kenya"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:185
+#: src/autogen/pkg.dist.geo.php5:185
 msgid "Kerry"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:151
+#: src/autogen/pkg.dist.geo.php5:151
 msgid "Key Biscayne"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:150
+#: src/autogen/pkg.dist.geo.php5:150
 msgid "Key West"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:132
+#: src/autogen/pkg.dist.geo.php5:132
 msgid "Khe Shan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:173
+#: src/autogen/pkg.dist.geo.php5:173
 msgid "Kilkenny"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:126
+#: src/autogen/pkg.dist.geo.php5:126
 msgid "Killarney"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:184
+#: src/autogen/pkg.dist.geo.php5:184
 msgid "Kinsale"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:471
+#: src/autogen/pkg.dist.geo.php5:471
 msgid "Kiribati"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:469
+#: src/autogen/pkg.dist.geo.php5:469
 msgid "Korea, Democratic People&rsquo;s Republic of; i.e., North Korea"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:470
+#: src/autogen/pkg.dist.geo.php5:470
 msgid "Korea, Republic of; i.e. South Korea"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:464
+#: src/autogen/pkg.dist.geo.php5:464
 msgid "Kuwait"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:179
+#: src/autogen/pkg.dist.geo.php5:179
 msgid "Kylemore"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:463
+#: src/autogen/pkg.dist.geo.php5:463
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:201
+#: src/autogen/pkg.dist.geo.php5:201
 msgid "Langston"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:119
+#: src/autogen/pkg.dist.geo.php5:119
 msgid "Lankanfinolhu"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:462
+#: src/autogen/pkg.dist.geo.php5:462
 msgid "Lao People&rsquo;s Democratic Republic"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:83
+#: src/autogen/pkg.dist.geo.php5:83
 msgid "Las Vegas"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:453
+#: src/autogen/pkg.dist.geo.php5:453
 msgid "Latvia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:16
+#: src/autogen/pkg.dist.geo.php5:16
 msgid "Laxenburg"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:452
+#: src/autogen/pkg.dist.geo.php5:452
 msgid "Lebanon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:207
+#: src/autogen/pkg.dist.geo.php5:207
 msgid "Leeds"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:13
+#: src/autogen/pkg.dist.geo.php5:13
 msgid "Leipzig"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:451
+#: src/autogen/pkg.dist.geo.php5:451
 msgid "Lesotho"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:450
+#: src/autogen/pkg.dist.geo.php5:450
 msgid "Liberia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:448
+#: src/autogen/pkg.dist.geo.php5:448
 msgid "Libyan Arab Jamahiriya"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:449
+#: src/autogen/pkg.dist.geo.php5:449
 msgid "Lichtenstein"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:183
+#: src/autogen/pkg.dist.geo.php5:183
 msgid "Limerick"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:30
+#: src/autogen/pkg.dist.geo.php5:30
 msgid "Lisbon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:177
+#: src/autogen/pkg.dist.geo.php5:177
 msgid "Lismore"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:447
+#: src/autogen/pkg.dist.geo.php5:447
 msgid "Lithuania"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:26
+#: src/autogen/pkg.dist.geo.php5:26
 msgid "Ljubljana"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:60 src/gettext/pkg.dist.geo.php5:66
+#: src/autogen/pkg.dist.geo.php5:60 src/autogen/pkg.dist.geo.php5:66
 msgid "London"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:446
+#: src/autogen/pkg.dist.geo.php5:446
 msgid "Luxembourg"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:71
+#: src/autogen/pkg.dist.geo.php5:71
 msgid "Lyon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:445
+#: src/autogen/pkg.dist.geo.php5:445
 msgid "Macao"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:444
+#: src/autogen/pkg.dist.geo.php5:444
 msgid "Macedonia, the former Yugoslav Republic of"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:443
+#: src/autogen/pkg.dist.geo.php5:443
 msgid "Madagascar"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:50
+#: src/autogen/pkg.dist.geo.php5:50
 msgid "Madrid"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:442
+#: src/autogen/pkg.dist.geo.php5:442
 msgid "Malawi"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:441
+#: src/autogen/pkg.dist.geo.php5:441
 msgid "Malaysia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:440
+#: src/autogen/pkg.dist.geo.php5:440
 msgid "Maldives"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:439
+#: src/autogen/pkg.dist.geo.php5:439
 msgid "Mali"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:438
+#: src/autogen/pkg.dist.geo.php5:438
 msgid "Malta"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:111
+#: src/autogen/pkg.dist.geo.php5:111
 msgid "Manchester"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:206
+#: src/autogen/pkg.dist.geo.php5:206
 msgid "Mannheim"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:48
+#: src/autogen/pkg.dist.geo.php5:48
 msgid "Marrakech"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:430
+#: src/autogen/pkg.dist.geo.php5:430
 msgid "Marshall Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:428
+#: src/autogen/pkg.dist.geo.php5:428
 msgid "Martinique"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:139
+#: src/autogen/pkg.dist.geo.php5:139
 msgid "Matmata"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:427
+#: src/autogen/pkg.dist.geo.php5:427
 msgid "Mauritania"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:429
+#: src/autogen/pkg.dist.geo.php5:429
 msgid "Mauritius"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:202
+#: src/autogen/pkg.dist.geo.php5:202
 msgid "Maynooth"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:426
+#: src/autogen/pkg.dist.geo.php5:426
 msgid "Mayotte"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:411
+#: src/autogen/pkg.dist.geo.php5:411
 msgid "Mexico"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:82
+#: src/autogen/pkg.dist.geo.php5:82
 msgid "Miami"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:410
+#: src/autogen/pkg.dist.geo.php5:410
 msgid "Micronesia, Federated States of"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:181
+#: src/autogen/pkg.dist.geo.php5:181
 msgid "Moher"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:409
+#: src/autogen/pkg.dist.geo.php5:409
 msgid "Moldova, Republic of"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:408
+#: src/autogen/pkg.dist.geo.php5:408
 msgid "Monaco"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:394
+#: src/autogen/pkg.dist.geo.php5:394
 msgid "Mongolia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:395
+#: src/autogen/pkg.dist.geo.php5:395
 msgid "Montenegro"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:110
+#: src/autogen/pkg.dist.geo.php5:110
 msgid "Montr&eacute;al"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:396
+#: src/autogen/pkg.dist.geo.php5:396
 msgid "Montserrat"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:397
+#: src/autogen/pkg.dist.geo.php5:397
 msgid "Morocco"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:92
+#: src/autogen/pkg.dist.geo.php5:92
 msgid "Morristown"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:53
+#: src/autogen/pkg.dist.geo.php5:53
 msgid "Moscow"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:398
+#: src/autogen/pkg.dist.geo.php5:398
 msgid "Mozambique"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:14
+#: src/autogen/pkg.dist.geo.php5:14
 msgid "Munich"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:399
+#: src/autogen/pkg.dist.geo.php5:399
 msgid "Myanmar"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:400
+#: src/autogen/pkg.dist.geo.php5:400
 msgid "Namibia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:109
+#: src/autogen/pkg.dist.geo.php5:109
 msgid "Nashville"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:401
+#: src/autogen/pkg.dist.geo.php5:401
 msgid "Nauru"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:89
+#: src/autogen/pkg.dist.geo.php5:89
 msgid "Needham"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:402
+#: src/autogen/pkg.dist.geo.php5:402
 msgid "Nepal"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:268
+#: src/autogen/pkg.dist.geo.php5:268
 msgid "Netherlands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:403
+#: src/autogen/pkg.dist.geo.php5:403
 msgid "Netherlands Antilles"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:404
+#: src/autogen/pkg.dist.geo.php5:404
 msgid "New Caledonia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:80
+#: src/autogen/pkg.dist.geo.php5:80
 msgid "New Jersey"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:81
+#: src/autogen/pkg.dist.geo.php5:81
 msgid "New York"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:405
+#: src/autogen/pkg.dist.geo.php5:405
 msgid "New Zealand"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:94
+#: src/autogen/pkg.dist.geo.php5:94
 msgid "Newport Beach"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:222
+#: src/autogen/pkg.dist.geo.php5:222
 msgid "Niagara Falls"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:406
+#: src/autogen/pkg.dist.geo.php5:406
 msgid "Nicaragua"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:72
+#: src/autogen/pkg.dist.geo.php5:72
 msgid "Nice"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:407
+#: src/autogen/pkg.dist.geo.php5:407
 msgid "Niger"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:390
+#: src/autogen/pkg.dist.geo.php5:390
 msgid "Nigeria"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:389
+#: src/autogen/pkg.dist.geo.php5:389
 msgid "Niue"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:388
+#: src/autogen/pkg.dist.geo.php5:388
 msgid "Norfolk Island"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:475
+#: src/autogen/pkg.dist.geo.php5:475
 msgid "North America"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:387
+#: src/autogen/pkg.dist.geo.php5:387
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:386
+#: src/autogen/pkg.dist.geo.php5:386
 msgid "Norway"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:385
+#: src/autogen/pkg.dist.geo.php5:385
 msgid "Oman"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:32
+#: src/autogen/pkg.dist.geo.php5:32
 msgid "Opatija"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:149
+#: src/autogen/pkg.dist.geo.php5:149
 msgid "Orlando"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:205
+#: src/autogen/pkg.dist.geo.php5:205
 msgid "Osaka"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:49
+#: src/autogen/pkg.dist.geo.php5:49
 msgid "Oslo"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:384
+#: src/autogen/pkg.dist.geo.php5:384
 msgid "Pakistan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:382
+#: src/autogen/pkg.dist.geo.php5:382
 msgid "Palau"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:383
+#: src/autogen/pkg.dist.geo.php5:383
 msgid "Palestinian Territory, Occupied"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:113
+#: src/autogen/pkg.dist.geo.php5:113
 msgid "Palo Alto"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:381
+#: src/autogen/pkg.dist.geo.php5:381
 msgid "Panama"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:380
+#: src/autogen/pkg.dist.geo.php5:380
 msgid "Papua New Guinea"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:358
+#: src/autogen/pkg.dist.geo.php5:358
 msgid "Paraguay"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:73
+#: src/autogen/pkg.dist.geo.php5:73
 msgid "Paris"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:178
+#: src/autogen/pkg.dist.geo.php5:178
 msgid "Passage East"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:99
+#: src/autogen/pkg.dist.geo.php5:99
 msgid "Passau"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:98
+#: src/autogen/pkg.dist.geo.php5:98
 msgid "Patras"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:357
+#: src/autogen/pkg.dist.geo.php5:357
 msgid "Peru"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:56
+#: src/autogen/pkg.dist.geo.php5:56
 msgid "Petr&oacute;polis"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:79
+#: src/autogen/pkg.dist.geo.php5:79
 msgid "Philadelphia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:356
+#: src/autogen/pkg.dist.geo.php5:356
 msgid "Philippines"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:135
+#: src/autogen/pkg.dist.geo.php5:135
 msgid "Phnom Phen"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:197
+#: src/autogen/pkg.dist.geo.php5:197
 msgid "Pinckney"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:225
+#: src/autogen/pkg.dist.geo.php5:225
 msgid "Pisa"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:355
+#: src/autogen/pkg.dist.geo.php5:355
 msgid "Pitcairn"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:114
+#: src/autogen/pkg.dist.geo.php5:114
 msgid "Pittsburgh"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:224
+#: src/autogen/pkg.dist.geo.php5:224
 msgid "Pohang"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:354
+#: src/autogen/pkg.dist.geo.php5:354
 msgid "Poland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:91
+#: src/autogen/pkg.dist.geo.php5:91
 msgid "Portland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:191
+#: src/autogen/pkg.dist.geo.php5:191
 msgid "Portlaw"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:29
+#: src/autogen/pkg.dist.geo.php5:29
 msgid "Porto"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:353
+#: src/autogen/pkg.dist.geo.php5:353
 msgid "Portugal"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:121
+#: src/autogen/pkg.dist.geo.php5:121
 msgid "Powerscourt"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:352
+#: src/autogen/pkg.dist.geo.php5:352
 msgid "Puerto Rico"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:343
+#: src/autogen/pkg.dist.geo.php5:343
 msgid "Qatar"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:342
+#: src/autogen/pkg.dist.geo.php5:342
 msgid "R&egrave;union"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:88
+#: src/autogen/pkg.dist.geo.php5:88
 msgid "Reading"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:37
+#: src/autogen/pkg.dist.geo.php5:37
 msgid "Red Sea"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:216
+#: src/autogen/pkg.dist.geo.php5:216
 msgid "Rennes"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:341
+#: src/autogen/pkg.dist.geo.php5:341
 msgid "Romania"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:105
+#: src/autogen/pkg.dist.geo.php5:105
 msgid "Rome"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:101
+#: src/autogen/pkg.dist.geo.php5:101
 msgid "Rotterdam"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:335
+#: src/autogen/pkg.dist.geo.php5:335
 msgid "Russian Federation"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:337
+#: src/autogen/pkg.dist.geo.php5:337
 msgid "Rwanda"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:323
+#: src/autogen/pkg.dist.geo.php5:323
 msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:336
+#: src/autogen/pkg.dist.geo.php5:336
 msgid "Saint Helena"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:329
+#: src/autogen/pkg.dist.geo.php5:329
 msgid "Saint Kitts and Nevis"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:328
+#: src/autogen/pkg.dist.geo.php5:328
 msgid "Saint Lucia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:327
+#: src/autogen/pkg.dist.geo.php5:327
 msgid "Saint Pierre and Miquelon"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:326
+#: src/autogen/pkg.dist.geo.php5:326
 msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:55
+#: src/autogen/pkg.dist.geo.php5:55
 msgid "Salvador Bahia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:18
+#: src/autogen/pkg.dist.geo.php5:18
 msgid "Salzburg"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:325
+#: src/autogen/pkg.dist.geo.php5:325
 msgid "Samoa"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:33
+#: src/autogen/pkg.dist.geo.php5:33
 msgid "Samos Island"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:77
+#: src/autogen/pkg.dist.geo.php5:77
 msgid "San Francisco"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:78
+#: src/autogen/pkg.dist.geo.php5:78
 msgid "San Jos&eacute;"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:324
+#: src/autogen/pkg.dist.geo.php5:324
 msgid "San Marino"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:196
+#: src/autogen/pkg.dist.geo.php5:196
 msgid "Santa Clara"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:322
+#: src/autogen/pkg.dist.geo.php5:322
 msgid "Saudi Arabia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:76
+#: src/autogen/pkg.dist.geo.php5:76
 msgid "Schaumburg"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:15
+#: src/autogen/pkg.dist.geo.php5:15
 msgid "Schwerin"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:220
+#: src/autogen/pkg.dist.geo.php5:220
 msgid "Sebastopol"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:321
+#: src/autogen/pkg.dist.geo.php5:321
 msgid "Senegal"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:320
+#: src/autogen/pkg.dist.geo.php5:320
 msgid "Serbia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:319
+#: src/autogen/pkg.dist.geo.php5:319
 msgid "Seychelles"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:140
+#: src/autogen/pkg.dist.geo.php5:140
 msgid "Sfax"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:208
+#: src/autogen/pkg.dist.geo.php5:208
 msgid "Siena"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:318
+#: src/autogen/pkg.dist.geo.php5:318
 msgid "Sierra Leone"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:27 src/gettext/pkg.dist.geo.php5:316
+#: src/autogen/pkg.dist.geo.php5:27 src/autogen/pkg.dist.geo.php5:316
 msgid "Singapore"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:176
+#: src/autogen/pkg.dist.geo.php5:176
 msgid "Sligo"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:125
+#: src/autogen/pkg.dist.geo.php5:125
 msgid "Slot de Haar"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:314
+#: src/autogen/pkg.dist.geo.php5:314
 msgid "Slovakia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:315
+#: src/autogen/pkg.dist.geo.php5:315
 msgid "Slovenia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:317
+#: src/autogen/pkg.dist.geo.php5:317
 msgid "Solomon Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:313
+#: src/autogen/pkg.dist.geo.php5:313
 msgid "Somalia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:305
+#: src/autogen/pkg.dist.geo.php5:305
 msgid "South Africa"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:476
+#: src/autogen/pkg.dist.geo.php5:476
 msgid "South America"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:304
+#: src/autogen/pkg.dist.geo.php5:304
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:303
+#: src/autogen/pkg.dist.geo.php5:303
 msgid "Spain"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:300
+#: src/autogen/pkg.dist.geo.php5:300
 msgid "Sri Lanka"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:52
+#: src/autogen/pkg.dist.geo.php5:52
 msgid "St. Petersburg"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:189
+#: src/autogen/pkg.dist.geo.php5:189
 msgid "Stokholm"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:301
+#: src/autogen/pkg.dist.geo.php5:301
 msgid "Sudan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:302
+#: src/autogen/pkg.dist.geo.php5:302
 msgid "Suriname"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:299
+#: src/autogen/pkg.dist.geo.php5:299
 msgid "Svalbard and Jan Mayen"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:298
+#: src/autogen/pkg.dist.geo.php5:298
 msgid "Swaziland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:296
+#: src/autogen/pkg.dist.geo.php5:296
 msgid "Sweden"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:297
+#: src/autogen/pkg.dist.geo.php5:297
 msgid "Switzerland"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:23
+#: src/autogen/pkg.dist.geo.php5:23
 msgid "Sydney"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:291
+#: src/autogen/pkg.dist.geo.php5:291
 msgid "Syrian Arab Republic"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:292
+#: src/autogen/pkg.dist.geo.php5:292
 msgid "Taiwan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:293
+#: src/autogen/pkg.dist.geo.php5:293
 msgid "Tajikistan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:192
+#: src/autogen/pkg.dist.geo.php5:192
 msgid "Tamanrasset"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:144
+#: src/autogen/pkg.dist.geo.php5:144
 msgid "Tamerza"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:22
+#: src/autogen/pkg.dist.geo.php5:22
 msgid "Tampa"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:294
+#: src/autogen/pkg.dist.geo.php5:294
 msgid "Tanzania, United Republic of"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:209
+#: src/autogen/pkg.dist.geo.php5:209
 msgid "Tempe"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:152
+#: src/autogen/pkg.dist.geo.php5:152
 msgid "Teneriffa"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:295
+#: src/autogen/pkg.dist.geo.php5:295
 msgid "Thailand"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:46
+#: src/autogen/pkg.dist.geo.php5:46
 msgid "The Hague"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:214
+#: src/autogen/pkg.dist.geo.php5:214
 msgid "Thrace"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:186
+#: src/autogen/pkg.dist.geo.php5:186
 msgid "Timoleague"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:368
+#: src/autogen/pkg.dist.geo.php5:368
 msgid "Timor-Leste"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:290
+#: src/autogen/pkg.dist.geo.php5:290
 msgid "Togo"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:289
+#: src/autogen/pkg.dist.geo.php5:289
 msgid "Tokelau"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:45
+#: src/autogen/pkg.dist.geo.php5:45
 msgid "Tokyo"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:288
+#: src/autogen/pkg.dist.geo.php5:288
 msgid "Tonga"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:153
+#: src/autogen/pkg.dist.geo.php5:153
 msgid "Torbay"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:59
+#: src/autogen/pkg.dist.geo.php5:59
 msgid "Toronto"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:143
+#: src/autogen/pkg.dist.geo.php5:143
 msgid "Tozeur"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:172
+#: src/autogen/pkg.dist.geo.php5:172
 msgid "Tramore"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:211
+#: src/autogen/pkg.dist.geo.php5:211
 msgid "Trento"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:287
+#: src/autogen/pkg.dist.geo.php5:287
 msgid "Trinidad and Tobago"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:104
+#: src/autogen/pkg.dist.geo.php5:104
 msgid "Trondheim"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:19
+#: src/autogen/pkg.dist.geo.php5:19
 msgid "Tunis"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:286
+#: src/autogen/pkg.dist.geo.php5:286
 msgid "Tunisia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:285
+#: src/autogen/pkg.dist.geo.php5:285
 msgid "Turkey"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:282
+#: src/autogen/pkg.dist.geo.php5:282
 msgid "Turkmenistan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:283
+#: src/autogen/pkg.dist.geo.php5:283
 msgid "Turks and Caicos Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:35
+#: src/autogen/pkg.dist.geo.php5:35
 msgid "Turku"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:284
+#: src/autogen/pkg.dist.geo.php5:284
 msgid "Tuvalu"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:194
+#: src/autogen/pkg.dist.geo.php5:194
 msgid "Twente"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:279
+#: src/autogen/pkg.dist.geo.php5:279
 msgid "Uganda"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:278
+#: src/autogen/pkg.dist.geo.php5:278
 msgid "Ukraine"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:277
+#: src/autogen/pkg.dist.geo.php5:277
 msgid "United Arab Emirates"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:276
+#: src/autogen/pkg.dist.geo.php5:276
 msgid "United Kingdom"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:266
+#: src/autogen/pkg.dist.geo.php5:266
 msgid "United States"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:265
+#: src/autogen/pkg.dist.geo.php5:265
 msgid "United States Minor Outlying Islands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:264
+#: src/autogen/pkg.dist.geo.php5:264
 msgid "Uruguay"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:102
+#: src/autogen/pkg.dist.geo.php5:102
 msgid "Utrecht"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:263
+#: src/autogen/pkg.dist.geo.php5:263
 msgid "Uzbekistan"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:58
+#: src/autogen/pkg.dist.geo.php5:58
 msgid "Vancouver"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:262
+#: src/autogen/pkg.dist.geo.php5:262
 msgid "Vanuatu"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:261
+#: src/autogen/pkg.dist.geo.php5:261
 msgid "Venezuela"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:203
+#: src/autogen/pkg.dist.geo.php5:203
 msgid "Venice"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:17
+#: src/autogen/pkg.dist.geo.php5:17
 msgid "Vienna"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:155
+#: src/autogen/pkg.dist.geo.php5:155
 msgid "Vientiane"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:245
+#: src/autogen/pkg.dist.geo.php5:245
 msgid "Viet Nam"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:130
+#: src/autogen/pkg.dist.geo.php5:130
 msgid "Vinh"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:244
+#: src/autogen/pkg.dist.geo.php5:244
 msgid "Virgin Islands, British"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:243
+#: src/autogen/pkg.dist.geo.php5:243
 msgid "Virgin Islands, U.S."
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:237
+#: src/autogen/pkg.dist.geo.php5:237
 msgid "Wallis and Futuna"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:198
+#: src/autogen/pkg.dist.geo.php5:198
 msgid "Walnut Creek"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:21
+#: src/autogen/pkg.dist.geo.php5:21
 msgid "Washington D.C."
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:67
+#: src/autogen/pkg.dist.geo.php5:67
 msgid "Waterford"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:236
+#: src/autogen/pkg.dist.geo.php5:236
 msgid "Western Sahara"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:175
+#: src/autogen/pkg.dist.geo.php5:175
 msgid "Westport"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:43
+#: src/autogen/pkg.dist.geo.php5:43
 msgid "Winterthur"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:154
+#: src/autogen/pkg.dist.geo.php5:154
 msgid "Woldeck"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:156
+#: src/autogen/pkg.dist.geo.php5:156
 msgid "Xiang Kuang"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:235
+#: src/autogen/pkg.dist.geo.php5:235
 msgid "Yemen"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:164
+#: src/autogen/pkg.dist.geo.php5:164
 msgid "Youghal"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:234
+#: src/autogen/pkg.dist.geo.php5:234
 msgid "Yugoslavia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:117
+#: src/autogen/pkg.dist.geo.php5:117
 msgid "Zaanse Schans"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:233
+#: src/autogen/pkg.dist.geo.php5:233
 msgid "Zambia"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:232
+#: src/autogen/pkg.dist.geo.php5:232
 msgid "Zimbabwe"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:42
+#: src/autogen/pkg.dist.geo.php5:42
 msgid "Zurich"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:269
+#: src/autogen/pkg.dist.geo.php5:269
 msgid "in the Netherlands"
 msgstr ""
 
-#: src/gettext/pkg.dist.geo.php5:267
+#: src/autogen/pkg.dist.geo.php5:267
 msgid "in the United States"
 msgstr ""

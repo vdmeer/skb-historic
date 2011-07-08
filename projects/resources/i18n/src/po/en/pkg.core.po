@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Packages.Core\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-06 22:07+0100\n"
+"POT-Creation-Date: 2011-07-08 17:09+0100\n"
 "PO-Revision-Date: 2010-08-24 13:06+0100\n"
 "Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
 "Language-Team: none\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /home/vdmeer/doc/skb/targets/php/core/urn.interpreter.class.php5:81
+#: ../../kb/src/main/php/targets/tgtphp/core/urn.interpreter.class.php5:108
+#, fuzzy
+msgid "Core.Interpreter.URN: file not found for"
+msgstr "Core.Interpreter.URN: no file extensions given"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/urn.interpreter.class.php5:81
 msgid "Core.Interpreter.URN: no file extensions given"
 msgstr "Core.Interpreter.URN: no file extensions given"

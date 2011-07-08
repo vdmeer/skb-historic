@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-15 17:31+0100\n"
+"POT-Creation-Date: 2011-07-08 17:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,274 +16,274 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gettext/pkg.dist.date.php5:50
+#: src/autogen/pkg.dist.date.php5:50
 msgid "10th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:51
+#: src/autogen/pkg.dist.date.php5:51
 msgid "11th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:52
+#: src/autogen/pkg.dist.date.php5:52
 msgid "12th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:53
+#: src/autogen/pkg.dist.date.php5:53
 msgid "13th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:54
+#: src/autogen/pkg.dist.date.php5:54
 msgid "14th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:55
+#: src/autogen/pkg.dist.date.php5:55
 msgid "15th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:56
+#: src/autogen/pkg.dist.date.php5:56
 msgid "16th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:57
+#: src/autogen/pkg.dist.date.php5:57
 msgid "17th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:58
+#: src/autogen/pkg.dist.date.php5:58
 msgid "18th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:59
+#: src/autogen/pkg.dist.date.php5:59
 msgid "19th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:41
+#: src/autogen/pkg.dist.date.php5:41
 msgid "1st"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:60
+#: src/autogen/pkg.dist.date.php5:60
 msgid "20th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:61
+#: src/autogen/pkg.dist.date.php5:61
 msgid "21st"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:62
+#: src/autogen/pkg.dist.date.php5:62
 msgid "22nd"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:63
+#: src/autogen/pkg.dist.date.php5:63
 msgid "23rd"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:64
+#: src/autogen/pkg.dist.date.php5:64
 msgid "24th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:65
+#: src/autogen/pkg.dist.date.php5:65
 msgid "25th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:66
+#: src/autogen/pkg.dist.date.php5:66
 msgid "26th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:67
+#: src/autogen/pkg.dist.date.php5:67
 msgid "27th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:68
+#: src/autogen/pkg.dist.date.php5:68
 msgid "28th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:69
+#: src/autogen/pkg.dist.date.php5:69
 msgid "29th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:42
+#: src/autogen/pkg.dist.date.php5:42
 msgid "2nd"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:70
+#: src/autogen/pkg.dist.date.php5:70
 msgid "30th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:71
+#: src/autogen/pkg.dist.date.php5:71
 msgid "31st"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:43
+#: src/autogen/pkg.dist.date.php5:43
 msgid "3rd"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:44
+#: src/autogen/pkg.dist.date.php5:44
 msgid "4th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:45
+#: src/autogen/pkg.dist.date.php5:45
 msgid "5th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:46
+#: src/autogen/pkg.dist.date.php5:46
 msgid "6th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:47
+#: src/autogen/pkg.dist.date.php5:47
 msgid "7th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:48
+#: src/autogen/pkg.dist.date.php5:48
 msgid "8th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:49
+#: src/autogen/pkg.dist.date.php5:49
 msgid "9th"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:11
+#: src/autogen/pkg.dist.date.php5:11
 msgid "Apr"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:10
+#: src/autogen/pkg.dist.date.php5:10
 msgid "April"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:18
+#: src/autogen/pkg.dist.date.php5:18
 msgid "Aug"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:17
+#: src/autogen/pkg.dist.date.php5:17
 msgid "August"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:26
+#: src/autogen/pkg.dist.date.php5:26
 msgid "Dec"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:25
+#: src/autogen/pkg.dist.date.php5:25
 msgid "December"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:7
+#: src/autogen/pkg.dist.date.php5:7
 msgid "Feb"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:6
+#: src/autogen/pkg.dist.date.php5:6
 msgid "February"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:36
+#: src/autogen/pkg.dist.date.php5:36
 msgid "Fri"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:35
+#: src/autogen/pkg.dist.date.php5:35
 msgid "Friday"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:5
+#: src/autogen/pkg.dist.date.php5:5
 msgid "Jan"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:4
+#: src/autogen/pkg.dist.date.php5:4
 msgid "January"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:16
+#: src/autogen/pkg.dist.date.php5:16
 msgid "Jul"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:15
+#: src/autogen/pkg.dist.date.php5:15
 msgid "July"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:14
+#: src/autogen/pkg.dist.date.php5:14
 msgid "Jun"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:13
+#: src/autogen/pkg.dist.date.php5:13
 msgid "June"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:9
+#: src/autogen/pkg.dist.date.php5:9
 msgid "Mar"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:8
+#: src/autogen/pkg.dist.date.php5:8
 msgid "March"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:12
+#: src/autogen/pkg.dist.date.php5:12
 msgid "May"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:28
+#: src/autogen/pkg.dist.date.php5:28
 msgid "Mon"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:27
+#: src/autogen/pkg.dist.date.php5:27
 msgid "Monday"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:24
+#: src/autogen/pkg.dist.date.php5:24
 msgid "Nov"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:23
+#: src/autogen/pkg.dist.date.php5:23
 msgid "November"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:22
+#: src/autogen/pkg.dist.date.php5:22
 msgid "Oct"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:21
+#: src/autogen/pkg.dist.date.php5:21
 msgid "October"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:38
+#: src/autogen/pkg.dist.date.php5:38
 msgid "Sat"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:37
+#: src/autogen/pkg.dist.date.php5:37
 msgid "Saturday"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:20
+#: src/autogen/pkg.dist.date.php5:20
 msgid "Sep"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:19
+#: src/autogen/pkg.dist.date.php5:19
 msgid "September"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:40
+#: src/autogen/pkg.dist.date.php5:40
 msgid "Sun"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:39
+#: src/autogen/pkg.dist.date.php5:39
 msgid "Sunday"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:34
+#: src/autogen/pkg.dist.date.php5:34
 msgid "Thu"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:33
+#: src/autogen/pkg.dist.date.php5:33
 msgid "Thursday"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:30
+#: src/autogen/pkg.dist.date.php5:30
 msgid "Tue"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:29
+#: src/autogen/pkg.dist.date.php5:29
 msgid "Tuesday"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:32
+#: src/autogen/pkg.dist.date.php5:32
 msgid "Wed"
 msgstr ""
 
-#: src/gettext/pkg.dist.date.php5:31
+#: src/autogen/pkg.dist.date.php5:31
 msgid "Wednesday"
 msgstr ""

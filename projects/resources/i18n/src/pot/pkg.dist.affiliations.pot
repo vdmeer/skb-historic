@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-15 17:31+0100\n"
+"POT-Creation-Date: 2011-07-08 17:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,28 +16,28 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/gettext/pkg.dist.affiliations.php5:4
+#: src/autogen/pkg.dist.affiliations.php5:4
 msgid ""
 "Technical University Berlin, Computer Science, Department for Open "
 "Communication Systems"
 msgstr ""
 
-#: src/gettext/pkg.dist.affiliations.php5:5
+#: src/autogen/pkg.dist.affiliations.php5:5
 msgid "company"
 msgstr ""
 
-#: src/gettext/pkg.dist.affiliations.php5:8
+#: src/autogen/pkg.dist.affiliations.php5:8
 msgid "museum"
 msgstr ""
 
-#: src/gettext/pkg.dist.affiliations.php5:7
+#: src/autogen/pkg.dist.affiliations.php5:7
 msgid "organisation"
 msgstr ""
 
-#: src/gettext/pkg.dist.affiliations.php5:9
+#: src/autogen/pkg.dist.affiliations.php5:9
 msgid "publisher"
 msgstr ""
 
-#: src/gettext/pkg.dist.affiliations.php5:6
+#: src/autogen/pkg.dist.affiliations.php5:6
 msgid "university"
 msgstr ""
