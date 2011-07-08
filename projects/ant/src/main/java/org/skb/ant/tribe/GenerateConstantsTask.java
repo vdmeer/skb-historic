@@ -60,7 +60,7 @@ public class GenerateConstantsTask extends Task{
 	private String destdir=null;
 	private String destfile=null;
 
-	private String stgurl=null; //="/resources/org/skb/ant/tribe/cola.stg";
+	private String stgurl=null; //="org/skb/ant/tribe/constants.stg";
 
     public void setType(String s){
         this.type=s;

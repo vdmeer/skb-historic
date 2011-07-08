@@ -68,7 +68,7 @@
                 },
                 "tribe-generic-stg":{
                     "at:type":"oat:atomic:java:string",
-                    "value:default":"\/resources\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/internal\/generic.stg"
+                    "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
             }
         },
@@ -123,7 +123,7 @@
                 "stat-stg":{
                     "a3ds:language:target:config:constid":"keyStatStg",
                     "at:type":"oat:atomic:java:string",
-                    "value:default":"\/resources\/org\/skb\/lang\/glue\/proto\/stg\/statistics.stg",
+                    "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
                     "cli:option:arg-name":"file",
                     "cli:option:type":"oat:atomic:java:string",
@@ -134,7 +134,7 @@
                 "glue":{
                     "a3ds:language:target:name":"glue",
                     "tgt-stg":{
-                            "value:default":"\/resources\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/glue.stg"
+                            "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/glue.stg"
                     },
                     "tgt-fileext":{
                             "value:default":".glue"
@@ -180,7 +180,7 @@
                 "graphml":{
                     "a3ds:language:target:name":"graphml",
                     "tgt-stg":{
-                            "value:default":"\/resources\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/graphml.stg"
+                            "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/graphml.stg"
                     },
                     "tgt-fileext":{
                             "value:default":".graphml"
@@ -210,7 +210,7 @@
                 "sql":{
                     "a3ds:language:target:name":"sql",
                     "tgt-stg":{
-                            "value:default":"\/resources\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/sql.stg"
+                            "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
                     "tgt-fileext":{
                             "value:default":".sql"

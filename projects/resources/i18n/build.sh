@@ -1,10 +1,5 @@
 #!/usr/bin/bash
 
-##skb_directory=~/doc/skb
-##lc_directory=${skb_directory}/share/locale
-##src_directory=~/dev/projects/skb-php
-
-#php_target_directory=${skb_directory}/targets/tgtphp
 php_target_directory=../../kb/src/main/php/targets/tgtphp
 htdoc_directory=../../htdocs
 

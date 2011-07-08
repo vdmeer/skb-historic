@@ -44,7 +44,7 @@ import org.skb.tribe.TribeProperties;
 public class Pola {
 	public static void main (String[] args) {
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		cfg.read("/resources/org/skb/lang/pola/proto/proto.json");
+		cfg.read("/org/skb/lang/pola/proto/proto.json");
 
 		Tribe tribe=new Tribe();
 

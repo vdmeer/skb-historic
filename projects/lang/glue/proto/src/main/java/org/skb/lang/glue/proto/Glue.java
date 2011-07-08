@@ -44,7 +44,7 @@ import org.skb.tribe.TribeProperties;
 public class Glue {
 	public static void main (String[] args) {
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		cfg.read("/resources/org/skb/lang/glue/proto/proto.json");
+		cfg.read("/org/skb/lang/glue/proto/proto.json");
 
 		Tribe tribe=new Tribe();
 
@@ -59,7 +59,7 @@ public class Glue {
 		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
 //		prop.setValueDefault(TribeProperties.tpmKeyQuietMode, true);
 
-		prop.setValueDefault(TribeProperties.tpmKeySrcFile,   "resources/org/skb/lang/glue/proto/specs/tests/test.glue");
+		prop.setValueDefault(TribeProperties.tpmKeySrcFile,   "org/skb/lang/glue/proto/specs/tests/test.glue");
 
 		LanguageParser[] supportedLanguages={new GlueParser()};
 		tribe.start(supportedLanguages, args);

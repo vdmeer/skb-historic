@@ -68,7 +68,7 @@
                 },
                 "tribe-generic-stg":{
                     "at:type":"oat:atomic:java:string",
-                    "value:default":"\/resources\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/internal\/generic.stg"
+                    "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
             }
         },
@@ -123,7 +123,7 @@
                 "stat-stg":{
                     "a3ds:language:target:config:constid":"keyStatStg",
                     "at:type":"oat:atomic:java:string",
-                    "value:default":"\/resources\/org\/skb\/lang\/pola\/proto\/stg\/statistics.stg",
+                    "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
                     "cli:option:arg-name":"file",
                     "cli:option:type":"oat:atomic:java:string",
@@ -134,7 +134,7 @@
                 "pola":{
                     "a3ds:language:target:name":"pola",
                     "tgt-stg":{
-                            "value:default":"\/resources\/org\/skb\/langs\/pola\/proto\/stg\/codegen\/targets\/pola.stg"
+                            "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/pola.stg"
                     },
                     "tgt-fileext":{
                             "value:default":".pola"
@@ -148,7 +148,7 @@
                 "xml":{
                     "a3ds:language:target:name":"xml",
                     "tgt-stg":{
-                            "value:default":"\/resources\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/xml.stg"
+                            "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
                     "tgt-fileext":{
                             "value:default":".xml"
@@ -165,7 +165,7 @@
                 "sql":{
                     "a3ds:language:target:name":"sql",
                     "tgt-stg":{
-                            "value:default":"\/resources\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/sql.stg"
+                            "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
                     "tgt-fileext":{
                             "value:default":".sql"

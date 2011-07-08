@@ -50,7 +50,7 @@ public class Dal{
 		logger.trace("initialise tribe and properties");
 
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		cfg.read("/resources/org/a3ds/languages/dal/dal.json");
+		cfg.read("/org/skb/lang/dal/dal.json");
 
 		Tribe tribe=new Tribe();
 
@@ -71,7 +71,7 @@ public class Dal{
 		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
 		//prop.setValueDefault(TribeProperties.tpmKeyQuietMode, true);
 
-		prop.setValueDefault(TribeProperties.tpmKeySrcFile, "resources/org/a3ds/languages/dal/specs/tests/test.dal");
+		prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/dal/specs/tests/test.dal");
 
 		logger.trace("create Language[]");
 		LanguageParser[] supportedLanguages={new DalParser()};

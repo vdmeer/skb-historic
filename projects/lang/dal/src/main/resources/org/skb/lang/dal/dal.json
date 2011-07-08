@@ -68,7 +68,7 @@
                 },
                 "tribe-generic-stg":{
                     "at:type":"oat:atomic:java:string",
-                    "value:default":"\/resources\/org\/skb\/lang\/dal\/stg\/codegen\/internal\/generic.stg"
+                    "value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/internal\/generic.stg"
                 }
             }
         },
@@ -117,7 +117,7 @@
                 "stat-stg":{
                     "a3ds:language:target:config:constid":"keyStatStg",
                     "at:type":"oat:atomic:java:string",
-                    "value:default":"\/resources\/org\/skb\/lang\/dal\/stg\/statistics.stg",
+                    "value:default":"\/org\/skb\/lang\/dal\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
                     "cli:option:arg-name":"file",
                     "cli:option:type":"oat:atomic:java:string",
@@ -128,7 +128,7 @@
                 "sql":{
                     "a3ds:language:target:name":"sql",
                     "tgt-stg":{
-                            "value:default":"\/resources\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/sql.stg"
+                            "value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/sql.stg"
                     },
                     "tgt-fileext":{
                             "value:default":".sql"
