@@ -30,10 +30,13 @@
 
 package org.skb.tribe;
 
+import java.util.Properties;
+
+import org.apache.log4j.Logger;
 import org.skb.types.composite.util.OatMapLH;
 import org.skb.types.composite.util.OatPropertyMap;
 import org.skb.util.Json2Oat;
-import org.apache.log4j.Logger;
+import org.skb.util.PropertyHandler;
 
 /**
  * Singleton class maintaining all properties of the Tribe system.
@@ -43,6 +46,11 @@ import org.apache.log4j.Logger;
  */
 public class TribeProperties extends OatPropertyMap {
 	static Logger logger = Logger.getLogger("org.skb.tribe.Tribe");
+
+	/**
+	 * TribeProperty external configurations
+	 */
+	public Properties config;
 
 	/**
 	 * TribeProperty Key for the programme name
@@ -234,10 +242,23 @@ public class TribeProperties extends OatPropertyMap {
 
 		this.addRows(TribeProperties.class.getName(), "tpmKey");
 
+		PropertyHandler ph=new PropertyHandler();
+		this.config=ph.load("/org/skb/tribe/tribe.properties", "tribe");
+		String cfgFile=this.config.getProperty("org.tribe.config.jsonfile");
+
+		if(cfgFile==null){
+			System.err.println("tribe: no configuration file given in properties");
+			logger.trace("init -- out > no property for config file set");
+			return;
+		}
+
 		Json2Oat j2o=new Json2Oat();
-		OatMapLH config=j2o.read("/org/skb/tribe/config.json").getValOatMapLH();
-		if(config==null)
-			System.err.println("configuration not found");
+		OatMapLH config=j2o.read(this.config.getProperty("org.tribe.config.jsonfile")).getValOatMapLH();
+		if(config==null){
+			System.err.println("tribe: configuration not found");
+			logger.trace("init -- out > no configuration file found");
+			return;
+		}
 		else
 			this.loadFromJason(config.get("configuration").getValOatMapLH());
 		this.put(TribeProperties.tpmKeyUserDir, OatPropertyMap.pmValValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));

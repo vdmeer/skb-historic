@@ -40,6 +40,9 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.TreeSet;
 
+import org.apache.commons.cli.ParseException;
+import org.apache.log4j.Logger;
+import org.skb.lang.preprocessor.Preprocessor;
 import org.skb.types.OatValueIsNullException;
 import org.skb.types.TypeRepository.ATType;
 import org.skb.types.atomic.java.OatBoolean;
@@ -49,9 +52,6 @@ import org.skb.types.composite.util.OatPropertyMap;
 import org.skb.util.Cli;
 import org.skb.util.CliApache;
 import org.skb.util.ReportManager;
-import org.apache.commons.cli.ParseException;
-import org.apache.log4j.Logger;
-import org.skb.lang.preprocessor.Preprocessor;
 
 
 /**

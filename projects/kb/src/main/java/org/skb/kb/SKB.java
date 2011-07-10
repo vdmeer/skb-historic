@@ -107,7 +107,7 @@ public class SKB {
 
 		String root_classes = "/classes/";
 		String root_skb = "/skb";
-		String root_document = "v:/dev/projects/skb-java/src/main/resources";
+		String root_document = "v:/dev/skb-eclipse/kb/src/main/resources";
 
 		OatMapLH __cfg_array=new OatMapLH();
 		__cfg_array.put("root-document", root_document);

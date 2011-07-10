@@ -113,5 +113,4 @@ public class LanguageConfiguration {
 	public OatMapLH getLanguageRules(){
 		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangRules).getValOatMapLH();
 	}
-
 }

@@ -44,7 +44,7 @@ public class LanguageProperties {
 	private String className;
 	private String key;
 
-//	static Logger logger = Logger.getLogger("org.skb.languages.cola.base");
+//	static Logger logger = Logger.getLogger("org.skb.tribe");
 
 	private static class LanguagePropertiesHolder{
 		private final static LanguageProperties INSTANCE = new LanguageProperties();
