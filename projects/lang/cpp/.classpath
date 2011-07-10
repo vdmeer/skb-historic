@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\skb\repository\ivy-cache\repository\org.junit\com.springsource.org.junit\4.4.0\com.springsource.org.junit-sources-4.4.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\skb\repository\ivy-cache\repository\org.junit\com.springsource.org.junit\4.4.0\license-4.4.0.txt" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\skb\repository\ivy-cache\repository\org.junit\com.springsource.org.junit\4.4.0\com.springsource.org.junit-4.4.0.jar" />
+</classpath>

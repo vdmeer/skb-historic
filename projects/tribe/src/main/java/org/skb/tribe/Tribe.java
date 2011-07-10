@@ -294,7 +294,7 @@ public class Tribe {
         catch(Exception e){
         	repMgr.reportError("catched exception while parsing", "Exception: " + e.toString());
         }
-        
+
         /**
          * Cleanup, especially remove the temporary files created by the preprocessor.
          */
