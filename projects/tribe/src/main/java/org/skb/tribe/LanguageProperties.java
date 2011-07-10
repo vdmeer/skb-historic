@@ -84,16 +84,16 @@ public class LanguageProperties {
 		if(config==null)
 			System.err.println("tribe: property configuration not found");
 		else{
-			this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.A3DSLanguageConfiguration).getValOatMapLH());
-			prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.A3DSTribeConfiguration).getValOatMapLH());
+			this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration).getValOatMapLH());
+			prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration).getValOatMapLH());
 
-			if(config.containsKey(LanguageConfigurationConstants.Paths.A3DSLanguageTargets)){
+			if(config.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
 				String lang=new String();
 				try {
 					lang=prop.getValue(TribeProperties.tpmKeyTgtLanguage).toString();
 				} catch (Exception e) {}
-				this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.A3DSLanguageTargets+"/"+lang+"/"+LanguageConfigurationConstants.Fields.A3DSLanguageTargetConfigurationCli).getValOatMapLH());
-				prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.A3DSLanguageTargets+"/"+lang).getValOatMapLH());
+				this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli).getValOatMapLH());
+				prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang).getValOatMapLH());
 			}
 		}
 //		logger.trace("setOptions -- out");

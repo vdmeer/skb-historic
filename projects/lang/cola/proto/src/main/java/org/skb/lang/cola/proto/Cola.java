@@ -55,20 +55,20 @@ public class Cola{
 		Tribe tribe=new Tribe();
 
 		//overwrite standard TRIBE values for LADS
-//		TribeProperties prop=TribeProperties.getInstance();
+		TribeProperties prop=TribeProperties.getInstance();
 
-//		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/projects/a3ds-java/experiements/src");
+		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/projects/a3ds-java/experiements/src");
 
 		// overwrite this permanently, we are in LADS
-//		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "cola");
+		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "cola");
 
 		//some overwrites, for testing purpose only
-//		prop.setValueDefault(TribeProperties.tpmKeyTgtLanguage,   "sql");
+		prop.setValueDefault(TribeProperties.tpmKeyTgtLanguage,   "java");
 		//prop.setValueDefault(TribePM.tpmKeyPrStgFileTarget, true);
 
-//		prop.setValueDefault(TribeProperties.tpmKeyNoWarnings,   true);
+		prop.setValueDefault(TribeProperties.tpmKeyNoWarnings,   true);
 
-//		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
+		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
 		//prop.setValueDefault(TribeProperties.tpmKeyQuietMode, true);
 
 		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/ease/values.cola");
@@ -91,9 +91,9 @@ public class Cola{
 		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/contract.cola");
 		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/mama-j.cola");
 		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/test.cola");
-//		prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/mama.cola");
+		prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/mama.cola");
 
-//		prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/rina/cdap.cola");
+		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/rina/cdap.cola");
 
 		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/spec.cola");
 		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/cnt.cola");

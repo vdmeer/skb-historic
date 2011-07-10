@@ -121,8 +121,8 @@ public class GenerateConstantsTask extends Task{
     			Set<String> cols=map.keySet();
     			for (String s:cols){
     				try{
-    					OatString cid=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTokensConstID).getValOatAtomicString();
-    				    OatString cval=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTokensConstVal).getValOatAtomicString();
+    					OatString cid=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstID).getValOatAtomicString();
+    				    OatString cval=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal).getValOatAtomicString();
     			    	constStrings.put(cid, cval);
     			    } catch (Exception e){}
     			}
@@ -132,26 +132,26 @@ public class GenerateConstantsTask extends Task{
     		map=cfg.getLanguageRules();
     		if(map!=null&&map.size()>0){
 				for(String k:map.keySet()){
-					if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTargetConfigurationConstID))
-						constStrings.put(map.get(k+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTargetConfigurationConstID).toString(), new OatString(k));
+					if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID))
+						constStrings.put(map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new OatString(k));
 				}
     		}
     	}
     	else if(this.type.equals("properties")){
     		map=cfg.getConfiguration();
     		if(map!=null&&map.size()>0){
-				if(map.containsKey(LanguageConfigurationConstants.Paths.A3DSLanguageConfiguration)){
-					for(String s:map.get(LanguageConfigurationConstants.Paths.A3DSLanguageConfiguration).getValOatMapLH().keySet()){
-						constStrings.put(map.get(LanguageConfigurationConstants.Paths.A3DSLanguageConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTargetConfigurationConstID).toString(), s);
+				if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration)){
+					for(String s:map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration).getValOatMapLH().keySet()){
+						constStrings.put(map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), s);
 					}
 				}
 
-    			if(map.containsKey(LanguageConfigurationConstants.Paths.A3DSLanguageTargets)){
-    				for(String s:map.get(LanguageConfigurationConstants.Paths.A3DSLanguageTargets).getValOatMapLH().keySet()){
-    					OatMapLH newMap=map.get(LanguageConfigurationConstants.Paths.A3DSLanguageTargets+"/"+s+"/"+LanguageConfigurationConstants.Fields.A3DSLanguageTargetConfigurationCli).getValOatMapLH();
+    			if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
+    				for(String s:map.get(LanguageConfigurationConstants.Paths.SKBLangTargets).getValOatMapLH().keySet()){
+    					OatMapLH newMap=map.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli).getValOatMapLH();
     					for(String k:newMap.keySet()){
-    						if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTargetConfigurationConstID))
-    							constStrings.put(newMap.get(k+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTargetConfigurationConstID).toString(), new OatString(k));
+    						if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID))
+    							constStrings.put(newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new OatString(k));
     					}
     				}
     			}

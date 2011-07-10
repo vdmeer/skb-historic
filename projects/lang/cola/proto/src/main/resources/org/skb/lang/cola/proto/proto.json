@@ -39,7 +39,7 @@
 //
 
 {
-    "a3ds":{
+    "skb":{
         "tribe":{
             "configuration":{
                 "name":{
@@ -72,30 +72,30 @@
                 }
             }
         },
-        "language":{
+        "lang":{
             "configuration":{
                 "cola":{
-                    "a3ds:language:target:config:constid":"internalColaTgtCola"
+                    "skb:lang:target:config:constid":"internalColaTgtCola"
                 },
                 "java":{
-                    "a3ds:language:target:config:constid":"internalColaTgtJava"
+                    "skb:lang:target:config:constid":"internalColaTgtJava"
                 },
                 "php":{
-                    "a3ds:language:target:config:constid":"internalColaTgtPhp"
+                    "skb:lang:target:config:constid":"internalColaTgtPhp"
                 },
                 "xml":{
-                    "a3ds:language:target:config:constid":"internalColaTgtXml"
+                    "skb:lang:target:config:constid":"internalColaTgtXml"
                 },
                 "sql":{
-                    "a3ds:language:target:config:constid":"internalColaTgtSql"
+                    "skb:lang:target:config:constid":"internalColaTgtSql"
                 },
                 "internal-scope-sep":{
-                    "a3ds:language:target:config:constid":"keyScopeSep",
+                    "skb:lang:target:config:constid":"keyScopeSep",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"::"
                 },
                 "pr-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStat",
+                    "skb:lang:target:config:constid":"keyPrStat",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats",
@@ -103,7 +103,7 @@
                     "cli:usage:descr":"Show simple statistic information"
                 },
                 "pr-stats-all":{
-                    "a3ds:language:target:config:constid":"keyPrStatAll",
+                    "skb:lang:target:config:constid":"keyPrStatAll",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-all",
@@ -111,7 +111,7 @@
                     "cli:usage:descr":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
-                    "a3ds:language:target:config:constid":"keyPrStatsWScope",
+                    "skb:lang:target:config:constid":"keyPrStatsWScope",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-ws",
@@ -119,7 +119,7 @@
                     "cli:usage:descr":"No scoped names in statistics"
                 },
                 "pr-stg-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStgFileStats",
+                    "skb:lang:target:config:constid":"keyPrStgFileStats",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stg-stats",
@@ -127,7 +127,7 @@
                     "cli:usage:descr":"Print statistics string template"
                 },
                 "stat-stg":{
-                    "a3ds:language:target:config:constid":"keyStatStg",
+                    "skb:lang:target:config:constid":"keyStatStg",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
@@ -138,7 +138,7 @@
             },
             "targets":{
                 "cola":{
-                    "a3ds:language:target:name":"cola",
+                    "skb:lang:target:name":"cola",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/cola.stg"
                     },
@@ -148,9 +148,9 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -158,7 +158,7 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-split-code",
@@ -166,7 +166,7 @@
                             "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyPackage",
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-pkg",
@@ -174,7 +174,7 @@
                             "cli:usage:descr":"Split code by package"
                         },
                         "tgt-sc-by-category":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyAtomCategory",
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-category",
@@ -184,7 +184,7 @@
                     }
                 },
                 "java":{
-                    "a3ds:language:target:name":"java",
+                    "skb:lang:target:name":"java",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/java.stg"
                     },
@@ -194,9 +194,9 @@
                     "gc-scope-sep":{
                             "value:default":"."
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-imports":{
-                            "a3ds:language:target:config:constid":"keyXtDoImports",
+                            "skb:lang:target:config:constid":"keyXtDoImports",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-imports",
@@ -204,7 +204,7 @@
                             "cli:usage:descr":"Generate imports (Java style)"
                         },
                         "xt-do-element-code":{
-                            "a3ds:language:target:config:constid":"keyXtDoElementCode",
+                            "skb:lang:target:config:constid":"keyXtDoElementCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-element-code",
@@ -212,7 +212,7 @@
                             "cli:usage:descr":"Generate complete Element skeletons"
                         },
                         "xt-java-pkg":{
-                            "a3ds:language:target:config:constid":"keyXtJavaPackage",
+                            "skb:lang:target:config:constid":"keyXtJavaPackage",
                             "at:type":"oat:atomic:java:string",
                             "value:default":"",
                             "cli:option:long":"xt-java-pkg",
@@ -221,7 +221,7 @@
                             "cli:usage:descr":"Root package for java classes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":true,
                             "cli:option:long":"tgt-split-code",
@@ -229,7 +229,7 @@
                             "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyPackage",
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-pkg",
@@ -237,7 +237,7 @@
                             "cli:usage:descr":"Split code by package"
                         },
                         "tgt-sc-by-category":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyAtomCategory",
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-category",
@@ -247,7 +247,7 @@
                     }
                 },
                 "php":{
-                    "a3ds:language:target:name":"php",
+                    "skb:lang:target:name":"php",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/php.stg"
                     },
@@ -257,9 +257,9 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -267,7 +267,7 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "xt-do-element-code":{
-                            "a3ds:language:target:config:constid":"keyXtDoElementCode",
+                            "skb:lang:target:config:constid":"keyXtDoElementCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-element-code",
@@ -275,7 +275,7 @@
                             "cli:usage:descr":"Generate complete Element skeletons"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-split-code",
@@ -283,7 +283,7 @@
                             "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyPackage",
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-pkg",
@@ -291,7 +291,7 @@
                             "cli:usage:descr":"Split code by package"
                         },
                         "tgt-sc-by-category":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyAtomCategory",
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-category",
@@ -301,7 +301,7 @@
                     }
                 },
                 "xml":{
-                    "a3ds:language:target:name":"xml",
+                    "skb:lang:target:name":"xml",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
@@ -314,9 +314,9 @@
                     "tgt-stg-angle-br":{
                         "value:default":false
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -324,14 +324,14 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false
                         }
                     }
                 },
                 "sql":{
-                    "a3ds:language:target:name":"sql",
+                    "skb:lang:target:name":"sql",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
@@ -341,9 +341,9 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -351,7 +351,7 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false
                         }
@@ -361,1068 +361,1068 @@
 
             "stgchunks":{
                 "mlcomment_start":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "mlcomment_end":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "slcomment":{
-                    "a3ds:tribe:stgchunk:mandatory": ["comment"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["comment"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "colaSpecification":{
-                    "a3ds:tribe:stgchunk:mandatory": ["stage", "environment", "clevel", "language", "spec"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["stage", "environment", "clevel", "language", "spec"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "colaFunction":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "parameter", "ret_type", "ret_array"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "parameter", "ret_type", "ret_array"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaFunctionParam":{
-                    "a3ds:tribe:stgchunk:mandatory": ["type", "array", "id"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["type", "array", "id"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "colaPropertyDecl":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "propertyScope", "apply", "aExtends", "aRequires",
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "propertyScope", "apply", "aExtends", "aRequires",
                                   "alterable", "negotiable", "priorityBT", "priorityCV", "description", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "aVisibility":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "colaPropertyDefList":{
-                    "a3ds:tribe:stgchunk:mandatory": ["property"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["property"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaPropertyDef":{
-                    "a3ds:tribe:stgchunk:mandatory": ["sn", "id", "type", "val", "array", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["sn", "id", "type", "val", "array", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "colaContractDecl":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "contractScope", "description", "items" , "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "contractScope", "description", "items" , "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "contractItem":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "property", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "property", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "contractItemProp":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "rank", "apply", "alterable", "negotiable", "description", "priorityBT", "priorityCV", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "rank", "apply", "alterable", "negotiable", "description", "priorityBT", "priorityCV", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "colaContractDefList":{
-                    "a3ds:tribe:stgchunk:mandatory": ["contract", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["contract", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaContractDef":{
-                    "a3ds:tribe:stgchunk:mandatory":  ["scoped_name", "id", "items", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory":  ["scoped_name", "id", "items", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaContractItemDef":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "properties", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaItemDef":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "val", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "val", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "colaPackage":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "body", "inline_code", "properties", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "body", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaElement":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aProvides", "aRequires", "inline_code", "properties", "contracts", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aProvides", "aRequires", "inline_code", "properties", "contracts", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaFacility":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aRequires", "properties", "contracts", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aRequires", "properties", "contracts", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaAction":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "parameter", "inline_code", "properties", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "parameter", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaParameter":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaTypeDef":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "propertiesInstances", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "propertiesInstances", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaAttribute":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaStruct":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "member", "inline_code", "properties", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "member", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "colaMember":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "const_value":{
-                    "a3ds:tribe:stgchunk:mandatory": ["type", "val"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["type", "val"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "scoped_name":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "add"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "add"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "inline_code":{
-                    "a3ds:tribe:stgchunk:mandatory": ["language", "code"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["language", "code"],
+                    "skb:tribe:stgchunk:optional":  []
                 }
             },
 
             "tokens":{
                 // for parser
                 "parserARRAY":{
-                    "a3ds:language:target:tokens:cid":"parserARRAY",
-                    "a3ds:language:target:tokens:cval":"array",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserARRAY",
+                    "skb:lang:target:tokens:cval":"array",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserMEMBER":{
-                    "a3ds:language:target:tokens:cid":"parserMEMBER",
-                    "a3ds:language:target:tokens:cval":"member",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserMEMBER",
+                    "skb:lang:target:tokens:cval":"member",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserIDENTIFIER":{
-                    "a3ds:language:target:tokens:cid":"parserIDENTIFIER",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopedName":{
-                    "a3ds:language:target:tokens:cid":"parserScopedName",
-                    "a3ds:language:target:tokens:cval":"scoped_name",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopedName",
+                    "skb:lang:target:tokens:cval":"scoped_name",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserBaseType ":{
-                    "a3ds:language:target:tokens:cid":"parserBaseType ",
-                    "a3ds:language:target:tokens:cval":"base_type",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserBaseType ",
+                    "skb:lang:target:tokens:cval":"base_type",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserItemProp":{
-                    "a3ds:language:target:tokens:cid":"parserItemProp",
-                    "a3ds:language:target:tokens:cval":"item-property",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserItemProp",
+                    "skb:lang:target:tokens:cval":"item-property",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopeSep":{
-                    "a3ds:language:target:tokens:cid":"parserScopeSep",
-                    "a3ds:language:target:tokens:cval":"::",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopeSep",
+                    "skb:lang:target:tokens:cval":"::",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscParrentID":{
-                    "a3ds:language:target:tokens:cid":"gcMiscParrentID",
-                    "a3ds:language:target:tokens:cval":"parrentId",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscParrentID",
+                    "skb:lang:target:tokens:cval":"parrentId",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscParrentCat":{
-                    "a3ds:language:target:tokens:cid":"gcMiscParrentCat",
-                    "a3ds:language:target:tokens:cval":"parrentCategory",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscParrentCat",
+                    "skb:lang:target:tokens:cval":"parrentCategory",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscCurrentCat":{
-                    "a3ds:language:target:tokens:cid":"gcMiscCurrentCat",
-                    "a3ds:language:target:tokens:cval":"currentCategory",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentCat",
+                    "skb:lang:target:tokens:cval":"currentCategory",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInDefinition":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInDefinition",
-                    "a3ds:language:target:tokens:cval":"inDefinition",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInDefinition",
+                    "skb:lang:target:tokens:cval":"inDefinition",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInItem":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInItem",
-                    "a3ds:language:target:tokens:cval":"inItem",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInItem",
+                    "skb:lang:target:tokens:cval":"inItem",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInContract":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInContract",
-                    "a3ds:language:target:tokens:cval":"inContract",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInContract",
+                    "skb:lang:target:tokens:cval":"inContract",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInPackage":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInPackage",
-                    "a3ds:language:target:tokens:cval":"inPackage",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInPackage",
+                    "skb:lang:target:tokens:cval":"inPackage",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInElement":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInElement",
-                    "a3ds:language:target:tokens:cval":"inElement",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInElement",
+                    "skb:lang:target:tokens:cval":"inElement",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInFacility":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInFacility",
-                    "a3ds:language:target:tokens:cval":"inFacility",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInFacility",
+                    "skb:lang:target:tokens:cval":"inFacility",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInAction":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInAction",
-                    "a3ds:language:target:tokens:cval":"inAction",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInAction",
+                    "skb:lang:target:tokens:cval":"inAction",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInStruct":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInStruct",
-                    "a3ds:language:target:tokens:cval":"inStruct",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInStruct",
+                    "skb:lang:target:tokens:cval":"inStruct",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscSpecName":{
-                    "a3ds:language:target:tokens:cid":"gcMiscSpecName",
-                    "a3ds:language:target:tokens:cval":"specificationName",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscSpecName",
+                    "skb:lang:target:tokens:cval":"specificationName",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscCurrentScope":{
-                    "a3ds:language:target:tokens:cid":"gcMiscCurrentScope",
-                    "a3ds:language:target:tokens:cval":"currentScope",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentScope",
+                    "skb:lang:target:tokens:cval":"currentScope",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // COLA Keywords
                 "colaACTION":{
-                    "a3ds:language:target:tokens:cid":"colaACTION",
-                    "a3ds:language:target:tokens:cval":"action",
-                    "a3ds:language:target:tokens:tid":"ACTION",
-                    "a3ds:language:target:tokens:tval":"keyword 'action'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaACTION",
+                    "skb:lang:target:tokens:cval":"action",
+                    "skb:lang:target:tokens:tid":"ACTION",
+                    "skb:lang:target:tokens:tval":"keyword 'action'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaATTRIBUTE":{
-                    "a3ds:language:target:tokens:cid":"colaATTRIBUTE",
-                    "a3ds:language:target:tokens:cval":"attribute",
-                    "a3ds:language:target:tokens:tid":"ATTRIBUTE",
-                    "a3ds:language:target:tokens:tval":"keyword 'attribute'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaATTRIBUTE",
+                    "skb:lang:target:tokens:cval":"attribute",
+                    "skb:lang:target:tokens:tid":"ATTRIBUTE",
+                    "skb:lang:target:tokens:tval":"keyword 'attribute'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaCONTRACT":{
-                    "a3ds:language:target:tokens:cid":"colaCONTRACT",
-                    "a3ds:language:target:tokens:cval":"contract",
-                    "a3ds:language:target:tokens:tid":"CONTRACT",
-                    "a3ds:language:target:tokens:tval":"keyword 'contract'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaCONTRACT",
+                    "skb:lang:target:tokens:cval":"contract",
+                    "skb:lang:target:tokens:tid":"CONTRACT",
+                    "skb:lang:target:tokens:tval":"keyword 'contract'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaDEFINITION":{
-                    "a3ds:language:target:tokens:cid":"colaDEFINITION",
-                    "a3ds:language:target:tokens:cval":"definition",
-                    "a3ds:language:target:tokens:tid":"DEFINITION",
-                    "a3ds:language:target:tokens:tval":"keyword 'definition'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaDEFINITION",
+                    "skb:lang:target:tokens:cval":"definition",
+                    "skb:lang:target:tokens:tid":"DEFINITION",
+                    "skb:lang:target:tokens:tval":"keyword 'definition'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaELEMENT":{
-                    "a3ds:language:target:tokens:cid":"colaELEMENT",
-                    "a3ds:language:target:tokens:cval":"element",
-                    "a3ds:language:target:tokens:tid":"ELEMENT",
-                    "a3ds:language:target:tokens:tval":"keyword 'element'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaELEMENT",
+                    "skb:lang:target:tokens:cval":"element",
+                    "skb:lang:target:tokens:tid":"ELEMENT",
+                    "skb:lang:target:tokens:tval":"keyword 'element'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaFACILITY":{
-                    "a3ds:language:target:tokens:cid":"colaFACILITY",
-                    "a3ds:language:target:tokens:cval":"facility",
-                    "a3ds:language:target:tokens:tid":"FACILITY",
-                    "a3ds:language:target:tokens:tval":"keyword 'facility'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaFACILITY",
+                    "skb:lang:target:tokens:cval":"facility",
+                    "skb:lang:target:tokens:tid":"FACILITY",
+                    "skb:lang:target:tokens:tval":"keyword 'facility'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaFUNCTION":{
-                    "a3ds:language:target:tokens:cid":"colaFUNCTION",
-                    "a3ds:language:target:tokens:cval":"function",
-                    "a3ds:language:target:tokens:tid":"FUNCTON",
-                    "a3ds:language:target:tokens:tval":"keyword 'function'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaFUNCTION",
+                    "skb:lang:target:tokens:cval":"function",
+                    "skb:lang:target:tokens:tid":"FUNCTON",
+                    "skb:lang:target:tokens:tval":"keyword 'function'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaINV":{
-                    "a3ds:language:target:tokens:cid":"colaINV",
-                    "a3ds:language:target:tokens:cval":"inv",
-                    "a3ds:language:target:tokens:tid":"INVARIANT",
-                    "a3ds:language:target:tokens:tval":"keyword 'inv'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaINV",
+                    "skb:lang:target:tokens:cval":"inv",
+                    "skb:lang:target:tokens:tid":"INVARIANT",
+                    "skb:lang:target:tokens:tval":"keyword 'inv'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaITEM":{
-                    "a3ds:language:target:tokens:cid":"colaITEM",
-                    "a3ds:language:target:tokens:cval":"item",
-                    "a3ds:language:target:tokens:tid":"ITEM",
-                    "a3ds:language:target:tokens:tval":"keyword 'item'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaITEM",
+                    "skb:lang:target:tokens:cval":"item",
+                    "skb:lang:target:tokens:tid":"ITEM",
+                    "skb:lang:target:tokens:tval":"keyword 'item'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaMANDATORY":{
-                    "a3ds:language:target:tokens:cid":"colaMANDATORY",
-                    "a3ds:language:target:tokens:cval":"mandatory",
-                    "a3ds:language:target:tokens:tid":"MANDATORY",
-                    "a3ds:language:target:tokens:tval":"keyword 'mandatory'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaMANDATORY",
+                    "skb:lang:target:tokens:cval":"mandatory",
+                    "skb:lang:target:tokens:tid":"MANDATORY",
+                    "skb:lang:target:tokens:tval":"keyword 'mandatory'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaNOT_DEF":{
-                    "a3ds:language:target:tokens:cid":"colaNOT_DEF",
-                    "a3ds:language:target:tokens:cval":"not_def",
-                    "a3ds:language:target:tokens:tid":"NOT_DEF",
-                    "a3ds:language:target:tokens:tval":"keyword 'not_def'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaNOT_DEF",
+                    "skb:lang:target:tokens:cval":"not_def",
+                    "skb:lang:target:tokens:tid":"NOT_DEF",
+                    "skb:lang:target:tokens:tval":"keyword 'not_def'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaOPTIONAL":{
-                    "a3ds:language:target:tokens:cid":"colaOPTIONAL",
-                    "a3ds:language:target:tokens:cval":"optional",
-                    "a3ds:language:target:tokens:tid":"OPTIONAL",
-                    "a3ds:language:target:tokens:tval":"keyword 'optional'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaOPTIONAL",
+                    "skb:lang:target:tokens:cval":"optional",
+                    "skb:lang:target:tokens:tid":"OPTIONAL",
+                    "skb:lang:target:tokens:tval":"keyword 'optional'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaPACKAGE":{
-                    "a3ds:language:target:tokens:cid":"colaPACKAGE",
-                    "a3ds:language:target:tokens:cval":"package",
-                    "a3ds:language:target:tokens:tid":"PACKAGE",
-                    "a3ds:language:target:tokens:tval":"keyword 'package'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaPACKAGE",
+                    "skb:lang:target:tokens:cval":"package",
+                    "skb:lang:target:tokens:tid":"PACKAGE",
+                    "skb:lang:target:tokens:tval":"keyword 'package'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaPARAMETER":{
-                    "a3ds:language:target:tokens:cid":"colaPARAMETER",
-                    "a3ds:language:target:tokens:cval":"parameter",
-                    "a3ds:language:target:tokens:tid":"PARAMETER",
-                    "a3ds:language:target:tokens:tval":"keyword 'parameter'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaPARAMETER",
+                    "skb:lang:target:tokens:cval":"parameter",
+                    "skb:lang:target:tokens:tid":"PARAMETER",
+                    "skb:lang:target:tokens:tval":"keyword 'parameter'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaPOST":{
-                    "a3ds:language:target:tokens:cid":"colaPOST",
-                    "a3ds:language:target:tokens:cval":"post",
-                    "a3ds:language:target:tokens:tid":"POST",
-                    "a3ds:language:target:tokens:tval":"keyword 'post'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaPOST",
+                    "skb:lang:target:tokens:cval":"post",
+                    "skb:lang:target:tokens:tid":"POST",
+                    "skb:lang:target:tokens:tval":"keyword 'post'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaPRE":{
-                    "a3ds:language:target:tokens:cid":"colaPRE",
-                    "a3ds:language:target:tokens:cval":"pre",
-                    "a3ds:language:target:tokens:tid":"PRE",
-                    "a3ds:language:target:tokens:tval":"keyword 'pre'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaPRE",
+                    "skb:lang:target:tokens:cval":"pre",
+                    "skb:lang:target:tokens:tid":"PRE",
+                    "skb:lang:target:tokens:tval":"keyword 'pre'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaPROPERTY":{
-                    "a3ds:language:target:tokens:cid":"colaPROPERTY",
-                    "a3ds:language:target:tokens:cval":"property",
-                    "a3ds:language:target:tokens:tid":"PROPERTY",
-                    "a3ds:language:target:tokens:tval":"keyword 'property'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaPROPERTY",
+                    "skb:lang:target:tokens:cval":"property",
+                    "skb:lang:target:tokens:tid":"PROPERTY",
+                    "skb:lang:target:tokens:tval":"keyword 'property'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaREQUIRED":{
-                    "a3ds:language:target:tokens:cid":"colaREQUIRED",
-                    "a3ds:language:target:tokens:cval":"required",
-                    "a3ds:language:target:tokens:tid":"REQUIRED",
-                    "a3ds:language:target:tokens:tval":"keyword 'required'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaREQUIRED",
+                    "skb:lang:target:tokens:cval":"required",
+                    "skb:lang:target:tokens:tid":"REQUIRED",
+                    "skb:lang:target:tokens:tval":"keyword 'required'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaSPECIFICATION":{
-                    "a3ds:language:target:tokens:cid":"colaSPECIFICATION",
-                    "a3ds:language:target:tokens:cval":"cola-specification",
-                    "a3ds:language:target:tokens:tid":"SPECIFICATION",
-                    "a3ds:language:target:tokens:tval":"keyword 'cola-specification'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaSPECIFICATION",
+                    "skb:lang:target:tokens:cval":"cola-specification",
+                    "skb:lang:target:tokens:tid":"SPECIFICATION",
+                    "skb:lang:target:tokens:tval":"keyword 'cola-specification'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaSTRUCT":{
-                    "a3ds:language:target:tokens:cid":"colaSTRUCT",
-                    "a3ds:language:target:tokens:cval":"struct",
-                    "a3ds:language:target:tokens:tid":"STRUCT",
-                    "a3ds:language:target:tokens:tval":"keyword 'struct'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaSTRUCT",
+                    "skb:lang:target:tokens:cval":"struct",
+                    "skb:lang:target:tokens:tid":"STRUCT",
+                    "skb:lang:target:tokens:tval":"keyword 'struct'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaTYPEDEF":{
-                    "a3ds:language:target:tokens:cid":"colaTYPEDEF",
-                    "a3ds:language:target:tokens:cval":"typedef",
-                    "a3ds:language:target:tokens:tid":"TYPEDEF",
-                    "a3ds:language:target:tokens:tval":"keyword 'typedef'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaTYPEDEF",
+                    "skb:lang:target:tokens:cval":"typedef",
+                    "skb:lang:target:tokens:tid":"TYPEDEF",
+                    "skb:lang:target:tokens:tval":"keyword 'typedef'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // COLA Keywords -> TYPES
                 "colaBINARY":{
-                    "a3ds:language:target:tokens:cid":"colaBINARY",
-                    "a3ds:language:target:tokens:cval":"binary",
-                    "a3ds:language:target:tokens:tid":"BINARY",
-                    "a3ds:language:target:tokens:tval":"keyword 'binary'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaBINARY",
+                    "skb:lang:target:tokens:cval":"binary",
+                    "skb:lang:target:tokens:tid":"BINARY",
+                    "skb:lang:target:tokens:tval":"keyword 'binary'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaBOOLEAN":{
-                    "a3ds:language:target:tokens:cid":"colaBOOLEAN",
-                    "a3ds:language:target:tokens:cval":"boolean",
-                    "a3ds:language:target:tokens:tid":"BOOLEAN",
-                    "a3ds:language:target:tokens:tval":"keyword 'boolean'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaBOOLEAN",
+                    "skb:lang:target:tokens:cval":"boolean",
+                    "skb:lang:target:tokens:tid":"BOOLEAN",
+                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaCHAR":{
-                    "a3ds:language:target:tokens:cid":"colaCHAR",
-                    "a3ds:language:target:tokens:cval":"char",
-                    "a3ds:language:target:tokens:tid":"CHAR",
-                    "a3ds:language:target:tokens:tval":"keyword 'char'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaCHAR",
+                    "skb:lang:target:tokens:cval":"char",
+                    "skb:lang:target:tokens:tid":"CHAR",
+                    "skb:lang:target:tokens:tval":"keyword 'char'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaDOUBLE":{
-                    "a3ds:language:target:tokens:cid":"colaDOUBLE",
-                    "a3ds:language:target:tokens:cval":"double",
-                    "a3ds:language:target:tokens:tid":"DOUBLE",
-                    "a3ds:language:target:tokens:tval":"keyword 'double'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaDOUBLE",
+                    "skb:lang:target:tokens:cval":"double",
+                    "skb:lang:target:tokens:tid":"DOUBLE",
+                    "skb:lang:target:tokens:tval":"keyword 'double'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaFLOAT":{
-                    "a3ds:language:target:tokens:cid":"colaFLOAT",
-                    "a3ds:language:target:tokens:cval":"float",
-                    "a3ds:language:target:tokens:tid":"FLOAT",
-                    "a3ds:language:target:tokens:tval":"keyword 'float'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaFLOAT",
+                    "skb:lang:target:tokens:cval":"float",
+                    "skb:lang:target:tokens:tid":"FLOAT",
+                    "skb:lang:target:tokens:tval":"keyword 'float'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaHEX":{
-                    "a3ds:language:target:tokens:cid":"colaHEX",
-                    "a3ds:language:target:tokens:cval":"hex",
-                    "a3ds:language:target:tokens:tid":"HEX",
-                    "a3ds:language:target:tokens:tval":"keyword 'hex'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaHEX",
+                    "skb:lang:target:tokens:cval":"hex",
+                    "skb:lang:target:tokens:tid":"HEX",
+                    "skb:lang:target:tokens:tval":"keyword 'hex'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaINTEGER":{
-                    "a3ds:language:target:tokens:cid":"colaINTEGER",
-                    "a3ds:language:target:tokens:cval":"integer",
-                    "a3ds:language:target:tokens:tid":"INTEGER",
-                    "a3ds:language:target:tokens:tval":"keyword 'integer'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaINTEGER",
+                    "skb:lang:target:tokens:cval":"integer",
+                    "skb:lang:target:tokens:tid":"INTEGER",
+                    "skb:lang:target:tokens:tval":"keyword 'integer'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaLONG":{
-                    "a3ds:language:target:tokens:cid":"colaLONG",
-                    "a3ds:language:target:tokens:cval":"long",
-                    "a3ds:language:target:tokens:tid":"LONG",
-                    "a3ds:language:target:tokens:tval":"keyword 'long'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaLONG",
+                    "skb:lang:target:tokens:cval":"long",
+                    "skb:lang:target:tokens:tid":"LONG",
+                    "skb:lang:target:tokens:tval":"keyword 'long'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaOCTET":{
-                    "a3ds:language:target:tokens:cid":"colaOCTET",
-                    "a3ds:language:target:tokens:cval":"octet",
-                    "a3ds:language:target:tokens:tid":"OCTET",
-                    "a3ds:language:target:tokens:tval":"keyword 'octet'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaOCTET",
+                    "skb:lang:target:tokens:cval":"octet",
+                    "skb:lang:target:tokens:tid":"OCTET",
+                    "skb:lang:target:tokens:tval":"keyword 'octet'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaSHORT":{
-                    "a3ds:language:target:tokens:cid":"colaSHORT",
-                    "a3ds:language:target:tokens:cval":"short",
-                    "a3ds:language:target:tokens:tid":"SHORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'short'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaSHORT",
+                    "skb:lang:target:tokens:cval":"short",
+                    "skb:lang:target:tokens:tid":"SHORT",
+                    "skb:lang:target:tokens:tval":"keyword 'short'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaSTRING":{
-                    "a3ds:language:target:tokens:cid":"colaSTRING",
-                    "a3ds:language:target:tokens:cval":"string",
-                    "a3ds:language:target:tokens:tid":"STRING",
-                    "a3ds:language:target:tokens:tval":"keyword 'string'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaSTRING",
+                    "skb:lang:target:tokens:cval":"string",
+                    "skb:lang:target:tokens:tid":"STRING",
+                    "skb:lang:target:tokens:tval":"keyword 'string'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVOID":{
-                    "a3ds:language:target:tokens:cid":"colaVOID",
-                    "a3ds:language:target:tokens:cval":"void",
-                    "a3ds:language:target:tokens:tid":"VOID",
-                    "a3ds:language:target:tokens:tval":"keyword 'void'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVOID",
+                    "skb:lang:target:tokens:cval":"void",
+                    "skb:lang:target:tokens:tid":"VOID",
+                    "skb:lang:target:tokens:tval":"keyword 'void'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // COLA Keywords -> VALUES
                 "colaFALSE":{
-                    "a3ds:language:target:tokens:cid":"colaFALSE",
-                    "a3ds:language:target:tokens:cval":"FALSE",
-                    "a3ds:language:target:tokens:tid":"FALSE",
-                    "a3ds:language:target:tokens:tval":"keyword 'FALSE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaFALSE",
+                    "skb:lang:target:tokens:cval":"FALSE",
+                    "skb:lang:target:tokens:tid":"FALSE",
+                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaNULL":{
-                    "a3ds:language:target:tokens:cid":"colaNULL",
-                    "a3ds:language:target:tokens:cval":"NULL",
-                    "a3ds:language:target:tokens:tid":"NULL",
-                    "a3ds:language:target:tokens:tval":"keyword 'NULL'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaNULL",
+                    "skb:lang:target:tokens:cval":"NULL",
+                    "skb:lang:target:tokens:tid":"NULL",
+                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaTRUE":{
-                    "a3ds:language:target:tokens:cid":"colaTRUE",
-                    "a3ds:language:target:tokens:cval":"TRUE",
-                    "a3ds:language:target:tokens:tid":"TRUE",
-                    "a3ds:language:target:tokens:tval":"keyword 'TRUE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaTRUE",
+                    "skb:lang:target:tokens:cval":"TRUE",
+                    "skb:lang:target:tokens:tid":"TRUE",
+                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // COLA Keywords -> @@@
                 "colaAT_ALTERABLE":{
-                    "a3ds:language:target:tokens:cid":"colaAT_ALTERABLE",
-                    "a3ds:language:target:tokens:cval":"@alterable",
-                    "a3ds:language:target:tokens:tid":"AT_ALTERABLE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@alterable'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_ALTERABLE",
+                    "skb:lang:target:tokens:cval":"@alterable",
+                    "skb:lang:target:tokens:tid":"AT_ALTERABLE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@alterable'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_APPLY":{
-                    "a3ds:language:target:tokens:cid":"colaAT_APPLY",
-                    "a3ds:language:target:tokens:cval":"@apply",
-                    "a3ds:language:target:tokens:tid":"AT_APPLY",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@apply'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_APPLY",
+                    "skb:lang:target:tokens:cval":"@apply",
+                    "skb:lang:target:tokens:tid":"AT_APPLY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@apply'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_CLEVEL":{
-                    "a3ds:language:target:tokens:cid":"colaAT_CLEVEL",
-                    "a3ds:language:target:tokens:cval":"@clevel",
-                    "a3ds:language:target:tokens:tid":"AT_CLEVEL",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@clevel'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_CLEVEL",
+                    "skb:lang:target:tokens:cval":"@clevel",
+                    "skb:lang:target:tokens:tid":"AT_CLEVEL",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@clevel'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_CONTAINS":{
-                    "a3ds:language:target:tokens:cid":"colaAT_CONTAINS",
-                    "a3ds:language:target:tokens:cval":"@contains",
-                    "a3ds:language:target:tokens:tid":"AT_CONTAINS",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@contains'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_CONTAINS",
+                    "skb:lang:target:tokens:cval":"@contains",
+                    "skb:lang:target:tokens:tid":"AT_CONTAINS",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@contains'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_DESCRIPTION":{
-                    "a3ds:language:target:tokens:cid":"colaAT_DESCRIPTION",
-                    "a3ds:language:target:tokens:cval":"@description",
-                    "a3ds:language:target:tokens:tid":"AT_DESCRIPTION",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@description'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_DESCRIPTION",
+                    "skb:lang:target:tokens:cval":"@description",
+                    "skb:lang:target:tokens:tid":"AT_DESCRIPTION",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@description'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_EXTENDS":{
-                    "a3ds:language:target:tokens:cid":"colaAT_EXTENDS",
-                    "a3ds:language:target:tokens:cval":"@extends",
-                    "a3ds:language:target:tokens:tid":"AT_EXTENDS",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@extends'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_EXTENDS",
+                    "skb:lang:target:tokens:cval":"@extends",
+                    "skb:lang:target:tokens:tid":"AT_EXTENDS",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@extends'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_ENVIRONMENT":{
-                    "a3ds:language:target:tokens:cid":"colaAT_ENVIRONMENT",
-                    "a3ds:language:target:tokens:cval":"@environment",
-                    "a3ds:language:target:tokens:tid":"AT_ENVIRONMENT",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@environment'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_ENVIRONMENT",
+                    "skb:lang:target:tokens:cval":"@environment",
+                    "skb:lang:target:tokens:tid":"AT_ENVIRONMENT",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@environment'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_LANGUAGE":{
-                    "a3ds:language:target:tokens:cid":"colaAT_LANGUAGE",
-                    "a3ds:language:target:tokens:cval":"@language",
-                    "a3ds:language:target:tokens:tid":"AT_LANGUAGE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@language'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_LANGUAGE",
+                    "skb:lang:target:tokens:cval":"@language",
+                    "skb:lang:target:tokens:tid":"AT_LANGUAGE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@language'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_NEGOTIABLE":{
-                    "a3ds:language:target:tokens:cid":"colaAT_NEGOTIABLE",
-                    "a3ds:language:target:tokens:cval":"@negotiable",
-                    "a3ds:language:target:tokens:tid":"AT_NEGOTIABLE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@negotiable'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_NEGOTIABLE",
+                    "skb:lang:target:tokens:cval":"@negotiable",
+                    "skb:lang:target:tokens:tid":"AT_NEGOTIABLE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@negotiable'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_PRIORITY":{
-                    "a3ds:language:target:tokens:cid":"colaAT_PRIORITY",
-                    "a3ds:language:target:tokens:cval":"@priority",
-                    "a3ds:language:target:tokens:tid":"AT_PRIORITY",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@priority'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_PRIORITY",
+                    "skb:lang:target:tokens:cval":"@priority",
+                    "skb:lang:target:tokens:tid":"AT_PRIORITY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@priority'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_PROVIDES":{
-                    "a3ds:language:target:tokens:cid":"colaAT_PROVIDES",
-                    "a3ds:language:target:tokens:cval":"@provides",
-                    "a3ds:language:target:tokens:tid":"AT_PROVIDES",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@provides'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_PROVIDES",
+                    "skb:lang:target:tokens:cval":"@provides",
+                    "skb:lang:target:tokens:tid":"AT_PROVIDES",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_RANK":{
-                    "a3ds:language:target:tokens:cid":"colaAT_RANK",
-                    "a3ds:language:target:tokens:cval":"@rank",
-                    "a3ds:language:target:tokens:tid":"AT_RANK",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@rank'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_RANK",
+                    "skb:lang:target:tokens:cval":"@rank",
+                    "skb:lang:target:tokens:tid":"AT_RANK",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@rank'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_REQUIRES":{
-                    "a3ds:language:target:tokens:cid":"colaAT_REQUIRES",
-                    "a3ds:language:target:tokens:cval":"@requires",
-                    "a3ds:language:target:tokens:tid":"AT_REQUIRES",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@requires'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_REQUIRES",
+                    "skb:lang:target:tokens:cval":"@requires",
+                    "skb:lang:target:tokens:tid":"AT_REQUIRES",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@requires'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_RETURN":{
-                    "a3ds:language:target:tokens:cid":"colaAT_RETURN",
-                    "a3ds:language:target:tokens:cval":"@return",
-                    "a3ds:language:target:tokens:tid":"AT_RETURN",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@return'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_RETURN",
+                    "skb:lang:target:tokens:cval":"@return",
+                    "skb:lang:target:tokens:tid":"AT_RETURN",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@return'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_RUNTIME":{
-                    "a3ds:language:target:tokens:cid":"colaAT_RUNTIME",
-                    "a3ds:language:target:tokens:cval":"@runtime",
-                    "a3ds:language:target:tokens:tid":"AT_RUNTIME",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@runtime'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_RUNTIME",
+                    "skb:lang:target:tokens:cval":"@runtime",
+                    "skb:lang:target:tokens:tid":"AT_RUNTIME",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@runtime'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_SCOPE":{
-                    "a3ds:language:target:tokens:cid":"colaAT_SCOPE",
-                    "a3ds:language:target:tokens:cval":"@scope",
-                    "a3ds:language:target:tokens:tid":"AT_SCOPE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@scope'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_SCOPE",
+                    "skb:lang:target:tokens:cval":"@scope",
+                    "skb:lang:target:tokens:tid":"AT_SCOPE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@scope'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_SPEC":{
-                    "a3ds:language:target:tokens:cid":"colaAT_SPEC",
-                    "a3ds:language:target:tokens:cval":"@scpec",
-                    "a3ds:language:target:tokens:tid":"AT_SPEC",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@scpec'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_SPEC",
+                    "skb:lang:target:tokens:cval":"@scpec",
+                    "skb:lang:target:tokens:tid":"AT_SPEC",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@scpec'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_STAGE":{
-                    "a3ds:language:target:tokens:cid":"colaAT_STAGE",
-                    "a3ds:language:target:tokens:cval":"@stage",
-                    "a3ds:language:target:tokens:tid":"AT_STAGE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@stage'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_STAGE",
+                    "skb:lang:target:tokens:cval":"@stage",
+                    "skb:lang:target:tokens:tid":"AT_STAGE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@stage'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_TYPE":{
-                    "a3ds:language:target:tokens:cid":"colaAT_TYPE",
-                    "a3ds:language:target:tokens:cval":"@type",
-                    "a3ds:language:target:tokens:tid":"AT_TYPE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@type'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_TYPE",
+                    "skb:lang:target:tokens:cval":"@type",
+                    "skb:lang:target:tokens:tid":"AT_TYPE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@type'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_VISIBILITY":{
-                    "a3ds:language:target:tokens:cid":"colaAT_VISIBILITY",
-                    "a3ds:language:target:tokens:cval":"@visibility",
-                    "a3ds:language:target:tokens:tid":"AT_VISIBILITY",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@visibility'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaAT_VISIBILITY",
+                    "skb:lang:target:tokens:cval":"@visibility",
+                    "skb:lang:target:tokens:tid":"AT_VISIBILITY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@visibility'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 "colaCPP_DIRECTIVE":{
-                    "a3ds:language:target:tokens:cid":"colaCPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:cval":"preprocessor directive",
-                    "a3ds:language:target:tokens:tid":"CPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:tval":"preprocessor directive",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaCPP_DIRECTIVE",
+                    "skb:lang:target:tokens:cval":"preprocessor directive",
+                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
+                    "skb:lang:target:tokens:tval":"preprocessor directive",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaESC":{
-                    "a3ds:language:target:tokens:cid":"colaESC",
-                    "a3ds:language:target:tokens:cval":"escape sequence",
-                    "a3ds:language:target:tokens:tid":"ESC",
-                    "a3ds:language:target:tokens:tval":"escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaESC",
+                    "skb:lang:target:tokens:cval":"escape sequence",
+                    "skb:lang:target:tokens:tid":"ESC",
+                    "skb:lang:target:tokens:tval":"escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaFloatSuffix":{
-                    "a3ds:language:target:tokens:cid":"colaFloatSuffix",
-                    "a3ds:language:target:tokens:cval":"floating point suffix",
-                    "a3ds:language:target:tokens:tid":"FloatSuffix",
-                    "a3ds:language:target:tokens:tval":"floating point suffix",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaFloatSuffix",
+                    "skb:lang:target:tokens:cval":"floating point suffix",
+                    "skb:lang:target:tokens:tid":"FloatSuffix",
+                    "skb:lang:target:tokens:tval":"floating point suffix",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaHexDigit":{
-                    "a3ds:language:target:tokens:cid":"colaHexDigit",
-                    "a3ds:language:target:tokens:cval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:tid":"HexDigit",
-                    "a3ds:language:target:tokens:tval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaHexDigit",
+                    "skb:lang:target:tokens:cval":"hexadecimal digit",
+                    "skb:lang:target:tokens:tid":"HexDigit",
+                    "skb:lang:target:tokens:tval":"hexadecimal digit",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaIDENT":{
-                    "a3ds:language:target:tokens:cid":"colaIDENT",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:tid":"IDENT",
-                    "a3ds:language:target:tokens:tval":"an identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaIDENT",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:tid":"IDENT",
+                    "skb:lang:target:tokens:tval":"an identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaINLINE_CODE":{
-                    "a3ds:language:target:tokens:cid":"colaINLINE_CODE",
-                    "a3ds:language:target:tokens:cval":"inline code",
-                    "a3ds:language:target:tokens:tid":"INLINE_CODE",
-                    "a3ds:language:target:tokens:tval":"inline code",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaINLINE_CODE",
+                    "skb:lang:target:tokens:cval":"inline code",
+                    "skb:lang:target:tokens:tid":"INLINE_CODE",
+                    "skb:lang:target:tokens:tval":"inline code",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaML_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"colaML_COMMENT",
-                    "a3ds:language:target:tokens:cval":"multiple line comment",
-                    "a3ds:language:target:tokens:tid":"ML_COMMENT",
-                    "a3ds:language:target:tokens:tval":"multiple line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaML_COMMENT",
+                    "skb:lang:target:tokens:cval":"multiple line comment",
+                    "skb:lang:target:tokens:tid":"ML_COMMENT",
+                    "skb:lang:target:tokens:tval":"multiple line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaOctDigit":{
-                    "a3ds:language:target:tokens:cid":"colaOctDigit",
-                    "a3ds:language:target:tokens:cval":"otcal digit",
-                    "a3ds:language:target:tokens:tid":"OctDigit",
-                    "a3ds:language:target:tokens:tval":"otcal digit",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaOctDigit",
+                    "skb:lang:target:tokens:cval":"otcal digit",
+                    "skb:lang:target:tokens:tid":"OctDigit",
+                    "skb:lang:target:tokens:tval":"otcal digit",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaOctalEscape":{
-                    "a3ds:language:target:tokens:cid":"colaOctalEscape",
-                    "a3ds:language:target:tokens:cval":"octal escape sequence",
-                    "a3ds:language:target:tokens:tid":"OctalEscape",
-                    "a3ds:language:target:tokens:tval":"octal escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaOctalEscape",
+                    "skb:lang:target:tokens:cval":"octal escape sequence",
+                    "skb:lang:target:tokens:tid":"OctalEscape",
+                    "skb:lang:target:tokens:tval":"octal escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaSL_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"colaSL_COMMENT",
-                    "a3ds:language:target:tokens:cval":"single line comment",
-                    "a3ds:language:target:tokens:tid":"SL_COMMENT",
-                    "a3ds:language:target:tokens:tval":"single line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaSL_COMMENT",
+                    "skb:lang:target:tokens:cval":"single line comment",
+                    "skb:lang:target:tokens:tid":"SL_COMMENT",
+                    "skb:lang:target:tokens:tval":"single line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaUnicodeEscape":{
-                    "a3ds:language:target:tokens:cid":"colaUnicodeEscape",
-                    "a3ds:language:target:tokens:cval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:tid":"UnicodeEscape",
-                    "a3ds:language:target:tokens:tval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaUnicodeEscape",
+                    "skb:lang:target:tokens:cval":"unicode escape sequence",
+                    "skb:lang:target:tokens:tid":"UnicodeEscape",
+                    "skb:lang:target:tokens:tval":"unicode escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVAL_BINARY":{
-                    "a3ds:language:target:tokens:cid":"colaVAL_BINARY",
-                    "a3ds:language:target:tokens:cval":"binary value",
-                    "a3ds:language:target:tokens:tid":"VAL_BINARY",
-                    "a3ds:language:target:tokens:tval":"binary value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVAL_BINARY",
+                    "skb:lang:target:tokens:cval":"binary value",
+                    "skb:lang:target:tokens:tid":"VAL_BINARY",
+                    "skb:lang:target:tokens:tval":"binary value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVAL_CHAR":{
-                    "a3ds:language:target:tokens:cid":"colaVAL_CHAR",
-                    "a3ds:language:target:tokens:cval":"character value",
-                    "a3ds:language:target:tokens:tid":"VAL_CHAR",
-                    "a3ds:language:target:tokens:tval":"character value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVAL_CHAR",
+                    "skb:lang:target:tokens:cval":"character value",
+                    "skb:lang:target:tokens:tid":"VAL_CHAR",
+                    "skb:lang:target:tokens:tval":"character value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVAL_FLOAT":{
-                    "a3ds:language:target:tokens:cid":"colaVAL_FLOAT",
-                    "a3ds:language:target:tokens:cval":"floating point value",
-                    "a3ds:language:target:tokens:tid":"VAL_FLOAT",
-                    "a3ds:language:target:tokens:tval":"floating point value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVAL_FLOAT",
+                    "skb:lang:target:tokens:cval":"floating point value",
+                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
+                    "skb:lang:target:tokens:tval":"floating point value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVAL_HEX":{
-                    "a3ds:language:target:tokens:cid":"colaVAL_HEX",
-                    "a3ds:language:target:tokens:cval":"hexadecimal value",
-                    "a3ds:language:target:tokens:tid":"VAL_HEX",
-                    "a3ds:language:target:tokens:tval":"hexadecimal value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVAL_HEX",
+                    "skb:lang:target:tokens:cval":"hexadecimal value",
+                    "skb:lang:target:tokens:tid":"VAL_HEX",
+                    "skb:lang:target:tokens:tval":"hexadecimal value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVAL_INTEGER":{
-                    "a3ds:language:target:tokens:cid":"colaVAL_INTEGER",
-                    "a3ds:language:target:tokens:cval":"integer value",
-                    "a3ds:language:target:tokens:tid":"VAL_INTEGER",
-                    "a3ds:language:target:tokens:tval":"integer value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVAL_INTEGER",
+                    "skb:lang:target:tokens:cval":"integer value",
+                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
+                    "skb:lang:target:tokens:tval":"integer value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVAL_OCT":{
-                    "a3ds:language:target:tokens:cid":"colaVAL_OCT",
-                    "a3ds:language:target:tokens:cval":"octal value",
-                    "a3ds:language:target:tokens:tid":"VAL_OCT",
-                    "a3ds:language:target:tokens:tval":"octal value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVAL_OCT",
+                    "skb:lang:target:tokens:cval":"octal value",
+                    "skb:lang:target:tokens:tid":"VAL_OCT",
+                    "skb:lang:target:tokens:tval":"octal value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaVAL_STRING":{
-                    "a3ds:language:target:tokens:cid":"colaVAL_STRING",
-                    "a3ds:language:target:tokens:cval":"string value",
-                    "a3ds:language:target:tokens:tid":"VAL_STRING",
-                    "a3ds:language:target:tokens:tval":"string value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaVAL_STRING",
+                    "skb:lang:target:tokens:cval":"string value",
+                    "skb:lang:target:tokens:tid":"VAL_STRING",
+                    "skb:lang:target:tokens:tval":"string value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaWS":{
-                    "a3ds:language:target:tokens:cid":"colaWS",
-                    "a3ds:language:target:tokens:cval":"whitespace",
-                    "a3ds:language:target:tokens:tid":"WS",
-                    "a3ds:language:target:tokens:tval":"whitespace",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"colaWS",
+                    "skb:lang:target:tokens:cval":"whitespace",
+                    "skb:lang:target:tokens:tid":"WS",
+                    "skb:lang:target:tokens:tval":"whitespace",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 ";":{
-                    "a3ds:language:target:tokens:tid":"';'",
-                    "a3ds:language:target:tokens:tval":"character ';'"
+                    "skb:lang:target:tokens:tid":"';'",
+                    "skb:lang:target:tokens:tval":"character ';'"
                 },
                 "}":{
-                    "a3ds:language:target:tokens:tid":"'}'",
-                    "a3ds:language:target:tokens:tval":"character '}'"
+                    "skb:lang:target:tokens:tid":"'}'",
+                    "skb:lang:target:tokens:tval":"character '}'"
                 },
                 "=":{
-                    "a3ds:language:target:tokens:tid":"'='",
-                    "a3ds:language:target:tokens:tval":"character '='"
+                    "skb:lang:target:tokens:tid":"'='",
+                    "skb:lang:target:tokens:tval":"character '='"
                 },
                 "(":{
-                    "a3ds:language:target:tokens:tid":"'('",
-                    "a3ds:language:target:tokens:tval":"character '('"
+                    "skb:lang:target:tokens:tid":"'('",
+                    "skb:lang:target:tokens:tval":"character '('"
                 },
                 ":":{
-                    "a3ds:language:target:tokens:tid":"':'",
-                    "a3ds:language:target:tokens:tval":"character ':'"
+                    "skb:lang:target:tokens:tid":"':'",
+                    "skb:lang:target:tokens:tval":"character ':'"
                 },
                 "::":{
-                    "a3ds:language:target:tokens:tid":"'::'",
-                    "a3ds:language:target:tokens:tval":"scope operator '::'"
+                    "skb:lang:target:tokens:tid":"'::'",
+                    "skb:lang:target:tokens:tval":"scope operator '::'"
                 },
                 "[":{
-                    "a3ds:language:target:tokens:tid":"'['",
-                    "a3ds:language:target:tokens:tval":"character '['"
+                    "skb:lang:target:tokens:tid":"'['",
+                    "skb:lang:target:tokens:tval":"character '['"
                 },
                 ",":{
-                    "a3ds:language:target:tokens:tid":"','",
-                    "a3ds:language:target:tokens:tval":"character ','"
+                    "skb:lang:target:tokens:tid":"','",
+                    "skb:lang:target:tokens:tval":"character ','"
                 },
                 ")":{
-                    "a3ds:language:target:tokens:tid":"')'",
-                    "a3ds:language:target:tokens:tval":"character ')'"
+                    "skb:lang:target:tokens:tid":"')'",
+                    "skb:lang:target:tokens:tval":"character ')'"
                 },
                 "{":{
-                    "a3ds:language:target:tokens:tid":"'{'",
-                    "a3ds:language:target:tokens:tval":"character '{'"
+                    "skb:lang:target:tokens:tid":"'{'",
+                    "skb:lang:target:tokens:tval":"character '{'"
                 },
                 "]":{
-                    "a3ds:language:target:tokens:tid":"']'",
-                    "a3ds:language:target:tokens:tval":"character ']'"
+                    "skb:lang:target:tokens:tid":"']'",
+                    "skb:lang:target:tokens:tval":"character ']'"
                 }
             },
 
             "rules":{
                 "property:01":{
-                    "a3ds:language:target:config:constid":"ruleProperty01",
-                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all mandatory properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty01",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:02":{
-                    "a3ds:language:target:config:constid":"ruleProperty02",
-                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all required properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty02",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:03":{
-                    "a3ds:language:target:config:constid":"ruleProperty03",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, one empty value given",
-                    "a3ds:language:parser:rules:message:add":"required properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty03",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "skb:lang:parser:rules:message:add":"required properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:04":{
-                    "a3ds:language:target:config:constid":"ruleProperty04",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, no value given",
-                    "a3ds:language:parser:rules:message:add":"required properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty04",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "skb:lang:parser:rules:message:add":"required properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:05":{
-                    "a3ds:language:target:config:constid":"ruleProperty05",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty05",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:06":{
-                    "a3ds:language:target:config:constid":"ruleProperty06",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s>, but %s values given",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty06",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:07":{
-                    "a3ds:language:target:config:constid":"ruleProperty07",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty07",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:08":{
-                    "a3ds:language:target:config:constid":"ruleProperty08",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty08",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:09":{
-                    "a3ds:language:target:config:constid":"ruleProperty09",
-                    "a3ds:language:parser:rules:message":"used #### <%s> is not specified for <%s>",
-                    "a3ds:language:parser:rules:message:add":"note: typedef, struct and member are handled as attributes",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty09",
+                    "skb:lang:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "skb:lang:parser:rules:message:add":"note: typedef, struct and member are handled as attributes",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:10":{
-                    "a3ds:language:target:config:constid":"ruleProperty10",
-                    "a3ds:language:parser:rules:message":"declaration of unknown ####",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> is not specified",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty10",
+                    "skb:lang:parser:rules:message":"declaration of unknown ####",
+                    "skb:lang:parser:rules:message:add":"#### <%s> is not specified",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY"
                 },
                 "property:11":{
-                    "a3ds:language:target:config:constid":"ruleProperty11",
-                    "a3ds:language:parser:rules:message":"empty description in <%s> <%s>",
-                    "a3ds:language:parser:rules:message:add":"description needs to be a non-empty ####",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaSTRING"
+                    "skb:lang:target:config:constid":"ruleProperty11",
+                    "skb:lang:parser:rules:message":"empty description in <%s> <%s>",
+                    "skb:lang:parser:rules:message:add":"description needs to be a non-empty ####",
+                    "skb:lang:target:rules:message:add:insert:path":"colaSTRING"
                 },
                 "property:12":{
-                    "a3ds:language:target:config:constid":"ruleProperty12",
-                    "a3ds:language:parser:rules:message":"type mismatch for <%s> declaration <%s>",
-                    "a3ds:language:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>"
+                    "skb:lang:target:config:constid":"ruleProperty12",
+                    "skb:lang:parser:rules:message":"type mismatch for <%s> declaration <%s>",
+                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>"
                 },
                 "property:13":{
-                    "a3ds:language:target:config:constid":"ruleProperty13",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for <%s> declaration <%s>",
-                    "a3ds:language:parser:rules:message:add":"type declared is <%s>, value associated is of type %s"
+                    "skb:lang:target:config:constid":"ruleProperty13",
+                    "skb:lang:parser:rules:message":"potential type mismatch for <%s> declaration <%s>",
+                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type %s"
                 },
                 "property:14":{
-                    "a3ds:language:target:config:constid":"ruleProperty14",
-                    "a3ds:language:parser:rules:message":"#### scope <%s> redefined for #### <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty14",
+                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for #### <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
 
                 "contract:01":{
-                    "a3ds:language:target:config:constid":"ruleContract01",
-                    "a3ds:language:parser:rules:message":"#### defined more than once: <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract01",
+                    "skb:lang:parser:rules:message":"#### defined more than once: <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:02":{
-                    "a3ds:language:target:config:constid":"ruleContract02",
-                    "a3ds:language:parser:rules:message":"used #### <%s> is not specified for <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract02",
+                    "skb:lang:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:03":{
-                    "a3ds:language:target:config:constid":"ruleContract03",
-                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all mandatory contracts need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract03",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory contracts need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:04":{
-                    "a3ds:language:target:config:constid":"ruleContract04",
-                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all required contracts need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract04",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required contracts need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:05":{
-                    "a3ds:language:target:config:constid":"ruleContract05",
-                    "a3ds:language:parser:rules:message":"#### scope <%s> redefined for %s <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract05",
+                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for %s <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 
                 "item:01":{
-                    "a3ds:language:target:config:constid":"ruleItem01",
-                    "a3ds:language:parser:rules:message":"missing declared item <%s> for declared contract <%2>",
-                    "a3ds:language:parser:rules:message:add":"all declared items must be defined"
+                    "skb:lang:target:config:constid":"ruleItem01",
+                    "skb:lang:parser:rules:message":"missing declared item <%s> for declared contract <%2>",
+                    "skb:lang:parser:rules:message:add":"all declared items must be defined"
                 },
                 "item:02":{
-                    "a3ds:language:target:config:constid":"ruleItem02",
-                    "a3ds:language:parser:rules:message":"declaration of unknown ####",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> is not specified",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem02",
+                    "skb:lang:parser:rules:message":"declaration of unknown ####",
+                    "skb:lang:parser:rules:message:add":"#### <%s> is not specified",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:rules:message:add:insert:path":"parserItemProp"
                 },
                 "item:03":{
-                    "a3ds:language:target:config:constid":"ruleItem03",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem03",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:04":{
-                    "a3ds:language:target:config:constid":"ruleItem04",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem04",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:05":{
-                    "a3ds:language:target:config:constid":"ruleItem05",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s>, but %s values given",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem05",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:06":{
-                    "a3ds:language:target:config:constid":"ruleItem06",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem06",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:07":{
-                    "a3ds:language:target:config:constid":"ruleItem07",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, no value given",
-                    "a3ds:language:parser:rules:message:add":"required item-properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem07",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:08":{
-                    "a3ds:language:target:config:constid":"ruleItem08",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, one empty value given",
-                    "a3ds:language:parser:rules:message:add":"required item-properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem08",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:09":{
-                    "a3ds:language:target:config:constid":"ruleItem09",
-                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all mandatory item-properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleItem09",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory item-properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "item:10":{
-                    "a3ds:language:target:config:constid":"ruleItem10",
-                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all required item-properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleItem10",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required item-properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
 
                 "identifier:01":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier01",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> in property definitions",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserIDENTIFIER"
+                    "skb:lang:target:config:constid":"ruleIdentifier01",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"#### <%s> in property definitions",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER"
                 },
                 "identifier:02":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier02",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER"
+                    "skb:lang:target:config:constid":"ruleIdentifier02",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER"
                 },
                 "identifier:03":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier03",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> in item-property definitions",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserIDENTIFIER"
+                    "skb:lang:target:config:constid":"ruleIdentifier03",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"#### <%s> in item-property definitions",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER"
                 },
                 "identifier:04":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier04",
-                "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleIdentifier04",
+                "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserItemProp"
                 },
                 "identifier:05":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier05",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleIdentifier05",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY"
                 },
                 "identifier:06":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier06",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleIdentifier06",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"colaCONTRACT"
                 },
                 
                 "scoped-name:01":{
-                    "a3ds:language:target:config:constid":"ruleScopedName01",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName01",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:02":{
-                    "a3ds:language:target:config:constid":"ruleScopedName02",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName02",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:03":{
-                    "a3ds:language:target:config:constid":"ruleScopedName03",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName03",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:04":{
-                    "a3ds:language:target:config:constid":"ruleScopedName04",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName04",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:05":{
-                    "a3ds:language:target:config:constid":"ruleScopedName05",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName05",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:06":{
-                    "a3ds:language:target:config:constid":"ruleScopedName06",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName06",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 }
 
             }

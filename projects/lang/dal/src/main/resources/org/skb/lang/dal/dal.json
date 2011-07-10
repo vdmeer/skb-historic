@@ -39,7 +39,7 @@
 //
 
 {
-    "a3ds":{
+    "skb":{
         "tribe":{
             "configuration":{
                 "name":{
@@ -72,18 +72,18 @@
                 }
             }
         },
-        "language":{
+        "lang":{
             "configuration":{
                 "sql":{
-                    "a3ds:language:target:config:constid":"internalDalTgtSql"
+                    "skb:lang:target:config:constid":"internalDalTgtSql"
                 },
                 "internal-scope-sep":{
-                    "a3ds:language:target:config:constid":"keyScopeSep",
+                    "skb:lang:target:config:constid":"keyScopeSep",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"@@"
                 },
                 "pr-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStat",
+                    "skb:lang:target:config:constid":"keyPrStat",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats",
@@ -91,7 +91,7 @@
                     "cli:usage:descr":"Show simple statistic information"
                 },
                 "pr-stats-all":{
-                    "a3ds:language:target:config:constid":"keyPrStatAll",
+                    "skb:lang:target:config:constid":"keyPrStatAll",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-all",
@@ -99,7 +99,7 @@
                     "cli:usage:descr":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
-                    "a3ds:language:target:config:constid":"keyPrStatsWScope",
+                    "skb:lang:target:config:constid":"keyPrStatsWScope",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-ws",
@@ -107,7 +107,7 @@
                     "cli:usage:descr":"No scoped names in statistics"
                 },
                 "pr-stg-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStgFileStats",
+                    "skb:lang:target:config:constid":"keyPrStgFileStats",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stg-stats",
@@ -115,7 +115,7 @@
                     "cli:usage:descr":"Print statistics string template"
                 },
                 "stat-stg":{
-                    "a3ds:language:target:config:constid":"keyStatStg",
+                    "skb:lang:target:config:constid":"keyStatStg",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/dal\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
@@ -126,7 +126,7 @@
             },
             "targets":{
                 "sql":{
-                    "a3ds:language:target:name":"sql",
+                    "skb:lang:target:name":"sql",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/sql.stg"
                     },
@@ -136,9 +136,9 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -146,7 +146,7 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false
                         }
@@ -156,968 +156,968 @@
 
             "stgchunks":{
                 "mlcomment_start":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "mlcomment_end":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "slcomment":{
-                    "a3ds:tribe:stgchunk:mandatory": ["comment"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["comment"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
 
                 "dalSpecification":{
-                    "a3ds:tribe:stgchunk:mandatory": ["definition"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["definition"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalDefinition":{
-                    "a3ds:tribe:stgchunk:mandatory": ["package"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["package"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalPackage":{
-                    "a3ds:tribe:stgchunk:mandatory": ["name", "declaration", "actions", "data"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["name", "declaration", "actions", "data"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalMetaElement":{
-                    "a3ds:tribe:stgchunk:mandatory": ["ident", "metadata"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["ident", "metadata"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalElement":{
-                    "a3ds:tribe:stgchunk:mandatory": ["ident", "type", "properties", "metadata"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["ident", "type", "properties", "metadata"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalElemProperties":{
-                    "a3ds:tribe:stgchunk:mandatory": ["size", "precision", "defvalue", "collate", "constraints"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["size", "precision", "defvalue", "collate", "constraints"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalElemMetaData":{
-                    "a3ds:tribe:stgchunk:mandatory": ["type", "entname", "httpreqname", "defdb", "explode", "interpreter", "valunset", "isval", "isvalif", "isvalelse", "dolist", "descr"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["type", "entname", "httpreqname", "defdb", "explode", "interpreter", "valunset", "isval", "isvalif", "isvalelse", "dolist", "descr"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalElemSequence":{
-                    "a3ds:tribe:stgchunk:mandatory": ["ids"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["ids"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalActions":{
-                    "a3ds:tribe:stgchunk:mandatory": ["ins", "set", "add", "rem", "emp"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["ins", "set", "add", "rem", "emp"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalActionsSet":{
-                    "a3ds:tribe:stgchunk:mandatory": ["element", "property", "ident", "ktvl"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["element", "property", "ident", "ktvl"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalActionsIns":{
-                    "a3ds:tribe:stgchunk:mandatory": ["list", "ktvl"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["list", "ktvl"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalActionsAdd":{
-                    "a3ds:tribe:stgchunk:mandatory": ["list", "element", "ktv"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["list", "element", "ktv"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalActionsRem":{
-                    "a3ds:tribe:stgchunk:mandatory": ["list", "element"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["list", "element"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalActionsEmp":{
-                    "a3ds:tribe:stgchunk:mandatory": ["list"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["list"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalData":{
-                    "a3ds:tribe:stgchunk:mandatory": ["ktvl"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["ktvl"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalPackageName":{
-                    "a3ds:tribe:stgchunk:mandatory": ["ids"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["ids"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalKeyTypeValueList":{
-                    "a3ds:tribe:stgchunk:mandatory": ["ktv"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["ktv"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "dalKeyTypeValue":{
-                    "a3ds:tribe:stgchunk:mandatory": ["key", "type", "value"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["key", "type", "value"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "const_value":{
-                    "a3ds:tribe:stgchunk:mandatory": ["val"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["val"],
+                    "skb:tribe:stgchunk:optional":  []
                 }
             },
 
             "tokens":{
                 // for parser
                 "parserIDENTIFIER":{
-                    "a3ds:language:target:tokens:cid":"parserIDENTIFIER",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopedName":{
-                    "a3ds:language:target:tokens:cid":"parserScopedName",
-                    "a3ds:language:target:tokens:cval":"scoped_name",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopedName",
+                    "skb:lang:target:tokens:cval":"scoped_name",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserBaseType ":{
-                    "a3ds:language:target:tokens:cid":"parserBaseType ",
-                    "a3ds:language:target:tokens:cval":"base_type",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserBaseType ",
+                    "skb:lang:target:tokens:cval":"base_type",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopeSep":{
-                    "a3ds:language:target:tokens:cid":"parserScopeSep",
-                    "a3ds:language:target:tokens:cval":"::",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopeSep",
+                    "skb:lang:target:tokens:cval":"::",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // DAL Keywords -> DAL Specific
                 "DAL_TABLE":{
-                    "a3ds:language:target:tokens:cid":"DAL_TABLE",
-                    "a3ds:language:target:tokens:cval":"dal:table",
-                    "a3ds:language:target:tokens:tid":"DAL_TABLE",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:table'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_TABLE",
+                    "skb:lang:target:tokens:cval":"dal:table",
+                    "skb:lang:target:tokens:tid":"DAL_TABLE",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:table'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_REPOSITORY":{
-                    "a3ds:language:target:tokens:cid":"DAL_REPOSITORY",
-                    "a3ds:language:target:tokens:cval":"dal:repository:element",
-                    "a3ds:language:target:tokens:tid":"DAL_REPOSITORY",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:repository:element'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_REPOSITORY",
+                    "skb:lang:target:tokens:cval":"dal:repository:element",
+                    "skb:lang:target:tokens:tid":"DAL_REPOSITORY",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:repository:element'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_REPOSITORY_ELEMENT":{
-                    "a3ds:language:target:tokens:cid":"DAL_REPOSITORY_ELEMENT",
-                    "a3ds:language:target:tokens:cval":"dal:repository:element",
-                    "a3ds:language:target:tokens:tid":"DAL_REPOSITORY_ELEMENT",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:repository:element'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_REPOSITORY_ELEMENT",
+                    "skb:lang:target:tokens:cval":"dal:repository:element",
+                    "skb:lang:target:tokens:tid":"DAL_REPOSITORY_ELEMENT",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:repository:element'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_SEQUENCE":{
-                    "a3ds:language:target:tokens:cid":"DAL_SEQUENCE",
-                    "a3ds:language:target:tokens:cval":"dal:sequence",
-                    "a3ds:language:target:tokens:tid":"DAL_SEQUENCE",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:sequence'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_SEQUENCE",
+                    "skb:lang:target:tokens:cval":"dal:sequence",
+                    "skb:lang:target:tokens:tid":"DAL_SEQUENCE",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:sequence'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
                 "DAL_ACTION_ADD":{
-                    "a3ds:language:target:tokens:cid":"DAL_ACTION_ADD",
-                    "a3ds:language:target:tokens:cval":"dal:action:add",
-                    "a3ds:language:target:tokens:tid":"DAL_ACTION_ADD",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:action:add'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ACTION_ADD",
+                    "skb:lang:target:tokens:cval":"dal:action:add",
+                    "skb:lang:target:tokens:tid":"DAL_ACTION_ADD",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:action:add'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ACTION_EMP":{
-                    "a3ds:language:target:tokens:cid":"DAL_ACTION_EMP",
-                    "a3ds:language:target:tokens:cval":"dal:action:emp",
-                    "a3ds:language:target:tokens:tid":"DAL_ACTION_EMP",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:action:emp'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ACTION_EMP",
+                    "skb:lang:target:tokens:cval":"dal:action:emp",
+                    "skb:lang:target:tokens:tid":"DAL_ACTION_EMP",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:action:emp'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ACTION_INS":{
-                    "a3ds:language:target:tokens:cid":"DAL_ACTION_INS",
-                    "a3ds:language:target:tokens:cval":"dal:action:ins",
-                    "a3ds:language:target:tokens:tid":"DAL_ACTION_INS",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:action:ins'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ACTION_INS",
+                    "skb:lang:target:tokens:cval":"dal:action:ins",
+                    "skb:lang:target:tokens:tid":"DAL_ACTION_INS",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:action:ins'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ACTION_REM":{
-                    "a3ds:language:target:tokens:cid":"DAL_ACTION_REM",
-                    "a3ds:language:target:tokens:cval":"dal:action:rem",
-                    "a3ds:language:target:tokens:tid":"DAL_ACTION_REM",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:action:rem'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ACTION_REM",
+                    "skb:lang:target:tokens:cval":"dal:action:rem",
+                    "skb:lang:target:tokens:tid":"DAL_ACTION_REM",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:action:rem'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ACTION_SET":{
-                    "a3ds:language:target:tokens:cid":"DAL_ACTION_SET",
-                    "a3ds:language:target:tokens:cval":"dal:action:set",
-                    "a3ds:language:target:tokens:tid":"DAL_ACTION_SET",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:action:set'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ACTION_SET",
+                    "skb:lang:target:tokens:cval":"dal:action:set",
+                    "skb:lang:target:tokens:tid":"DAL_ACTION_SET",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:action:set'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ACTIONS":{
-                    "a3ds:language:target:tokens:cid":"DAL_ACTIONS",
-                    "a3ds:language:target:tokens:cval":"dal:actions",
-                    "a3ds:language:target:tokens:tid":"DAL_ACTIONS",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:actions'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ACTIONS",
+                    "skb:lang:target:tokens:cval":"dal:actions",
+                    "skb:lang:target:tokens:tid":"DAL_ACTIONS",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:actions'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_CONSTRAINT_ABORT":{
-                    "a3ds:language:target:tokens:cid":"DAL_CONSTRAINT_ABORT",
-                    "a3ds:language:target:tokens:cval":"dal:constraint:abort",
-                    "a3ds:language:target:tokens:tid":"DAL_CONSTRAINT_ABORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:constraint:abort'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_CONSTRAINT_ABORT",
+                    "skb:lang:target:tokens:cval":"dal:constraint:abort",
+                    "skb:lang:target:tokens:tid":"DAL_CONSTRAINT_ABORT",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:constraint:abort'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_CONSTRAINT_NNUL":{
-                    "a3ds:language:target:tokens:cid":"DAL_CONSTRAINT_NNUL",
-                    "a3ds:language:target:tokens:cval":"dal:constraint:nnull",
-                    "a3ds:language:target:tokens:tid":"DAL_CONSTRAINT_NNUL",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:constraint:nnull'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_CONSTRAINT_NNUL",
+                    "skb:lang:target:tokens:cval":"dal:constraint:nnull",
+                    "skb:lang:target:tokens:tid":"DAL_CONSTRAINT_NNUL",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:constraint:nnull'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_CONSTRAINT_PKEY":{
-                    "a3ds:language:target:tokens:cid":"DAL_CONSTRAINT_PKEY",
-                    "a3ds:language:target:tokens:cval":"dal:constraint:pkey",
-                    "a3ds:language:target:tokens:tid":"DAL_CONSTRAINT_PKEY",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:constraint:pkey'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_CONSTRAINT_PKEY",
+                    "skb:lang:target:tokens:cval":"dal:constraint:pkey",
+                    "skb:lang:target:tokens:tid":"DAL_CONSTRAINT_PKEY",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:constraint:pkey'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_CONSTRAINT_ROLLBACK":{
-                    "a3ds:language:target:tokens:cid":"DAL_CONSTRAINT_ROLLBACK",
-                    "a3ds:language:target:tokens:cval":"dal:constraint:rollback",
-                    "a3ds:language:target:tokens:tid":"DAL_CONSTRAINT_ROLLBACK",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:constraint:rollback'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_CONSTRAINT_ROLLBACK",
+                    "skb:lang:target:tokens:cval":"dal:constraint:rollback",
+                    "skb:lang:target:tokens:tid":"DAL_CONSTRAINT_ROLLBACK",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:constraint:rollback'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_CONSTRAINT_UNIQUE":{
-                    "a3ds:language:target:tokens:cid":"DAL_CONSTRAINT_UNIQUE",
-                    "a3ds:language:target:tokens:cval":"dal:constraint:unique",
-                    "a3ds:language:target:tokens:tid":"DAL_CONSTRAINT_UNIQUE",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:constraint:unique'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_CONSTRAINT_UNIQUE",
+                    "skb:lang:target:tokens:cval":"dal:constraint:unique",
+                    "skb:lang:target:tokens:tid":"DAL_CONSTRAINT_UNIQUE",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:constraint:unique'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_DATA":{
-                    "a3ds:language:target:tokens:cid":"DAL_DATA",
-                    "a3ds:language:target:tokens:cval":"dal:data",
-                    "a3ds:language:target:tokens:tid":"DAL_DATA",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:data'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_DATA",
+                    "skb:lang:target:tokens:cval":"dal:data",
+                    "skb:lang:target:tokens:tid":"DAL_DATA",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:data'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_DECLARATION":{
-                    "a3ds:language:target:tokens:cid":"DAL_DECLARATION",
-                    "a3ds:language:target:tokens:cval":"dal:declaration",
-                    "a3ds:language:target:tokens:tid":"DAL_DECLARATION",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:declaration'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_DECLARATION",
+                    "skb:lang:target:tokens:cval":"dal:declaration",
+                    "skb:lang:target:tokens:tid":"DAL_DECLARATION",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:declaration'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEM_PROP_COLLATE":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEM_PROP_COLLATE",
-                    "a3ds:language:target:tokens:cval":"dal:elem:prop:collate",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEM_PROP_COLLATE",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:elem:prop:collate'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEM_PROP_COLLATE",
+                    "skb:lang:target:tokens:cval":"dal:elem:prop:collate",
+                    "skb:lang:target:tokens:tid":"DAL_ELEM_PROP_COLLATE",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:elem:prop:collate'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEM_PROP_DEFVAL":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEM_PROP_DEFVAL",
-                    "a3ds:language:target:tokens:cval":"dal:elem:prop:def_val",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEM_PROP_DEFVAL",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:elem:prop:def_val'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEM_PROP_DEFVAL",
+                    "skb:lang:target:tokens:cval":"dal:elem:prop:def_val",
+                    "skb:lang:target:tokens:tid":"DAL_ELEM_PROP_DEFVAL",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:elem:prop:def_val'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEM_PROP_PRECISION":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEM_PROP_PRECISION",
-                    "a3ds:language:target:tokens:cval":"dal:elem:prop:precision",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEM_PROP_PRECISION",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:elem:prop:precision'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEM_PROP_PRECISION",
+                    "skb:lang:target:tokens:cval":"dal:elem:prop:precision",
+                    "skb:lang:target:tokens:tid":"DAL_ELEM_PROP_PRECISION",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:elem:prop:precision'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEM_PROP_SIZE":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEM_PROP_SIZE",
-                    "a3ds:language:target:tokens:cval":"dal:elem:prop:size",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEM_PROP_SIZE",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:elem:prop:size'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEM_PROP_SIZE",
+                    "skb:lang:target:tokens:cval":"dal:elem:prop:size",
+                    "skb:lang:target:tokens:tid":"DAL_ELEM_PROP_SIZE",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:elem:prop:size'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEMENT":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEMENT",
-                    "a3ds:language:target:tokens:cval":"dal:element",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEMENT",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:element'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEMENT",
+                    "skb:lang:target:tokens:cval":"dal:element",
+                    "skb:lang:target:tokens:tid":"DAL_ELEMENT",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:element'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEMENT_REPOSITORY":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEMENT_REPOSITORY",
-                    "a3ds:language:target:tokens:cval":"dal:element:repository",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEMENT_REPOSITORY",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:element:repository'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEMENT_REPOSITORY",
+                    "skb:lang:target:tokens:cval":"dal:element:repository",
+                    "skb:lang:target:tokens:tid":"DAL_ELEMENT_REPOSITORY",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:element:repository'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEMENT_PROPERTIES":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEMENT_PROPERTIES",
-                    "a3ds:language:target:tokens:cval":"dal:element:properties",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEMENT_PROPERTIES",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:element:properties'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEMENT_PROPERTIES",
+                    "skb:lang:target:tokens:cval":"dal:element:properties",
+                    "skb:lang:target:tokens:tid":"DAL_ELEMENT_PROPERTIES",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:element:properties'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_ELEMENT_SEQUENCE":{
-                    "a3ds:language:target:tokens:cid":"DAL_ELEMENT_SEQUENCE",
-                    "a3ds:language:target:tokens:cval":"dal:element:sequence",
-                    "a3ds:language:target:tokens:tid":"DAL_ELEMENT_SEQUENCE",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:element:sequence'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_ELEMENT_SEQUENCE",
+                    "skb:lang:target:tokens:cval":"dal:element:sequence",
+                    "skb:lang:target:tokens:tid":"DAL_ELEMENT_SEQUENCE",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:element:sequence'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "DAL_PACKAGE":{
-                    "a3ds:language:target:tokens:cid":"DAL_PACKAGE",
-                    "a3ds:language:target:tokens:cval":"dal:package",
-                    "a3ds:language:target:tokens:tid":"DAL_PACKAGE",
-                    "a3ds:language:target:tokens:tval":"keyword 'dal:package'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"DAL_PACKAGE",
+                    "skb:lang:target:tokens:cval":"dal:package",
+                    "skb:lang:target:tokens:tid":"DAL_PACKAGE",
+                    "skb:lang:target:tokens:tval":"keyword 'dal:package'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
                 // DAL Keywords -> SKB Specific
                 "SKB_CORE":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE",
-                    "a3ds:language:target:tokens:cval":"skb:core",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE",
+                    "skb:lang:target:tokens:cval":"skb:core",
+                    "skb:lang:target:tokens:tid":"SKB_CORE",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_DEFAULT_DB":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_DEFAULT_DB",
-                    "a3ds:language:target:tokens:cval":"skb:core:default_db",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_DEFAULT_DB",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:default_db'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_DEFAULT_DB",
+                    "skb:lang:target:tokens:cval":"skb:core:default_db",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_DEFAULT_DB",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:default_db'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_DESCRIPTION":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_DESCRIPTION",
-                    "a3ds:language:target:tokens:cval":"skb:core:description",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_DESCRIPTION",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:description'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_DESCRIPTION",
+                    "skb:lang:target:tokens:cval":"skb:core:description",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_DESCRIPTION",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:description'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_ENTRIES_NAME":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_ENTRIES_NAME",
-                    "a3ds:language:target:tokens:cval":"skb:core:entries_name",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_ENTRIES_NAME",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:entries_name'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_ENTRIES_NAME",
+                    "skb:lang:target:tokens:cval":"skb:core:entries_name",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_ENTRIES_NAME",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:entries_name'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_EXPLODE":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_EXPLODE",
-                    "a3ds:language:target:tokens:cval":"skb:core:explode",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_EXPLODE",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:explode'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_EXPLODE",
+                    "skb:lang:target:tokens:cval":"skb:core:explode",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_EXPLODE",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:explode'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_HTTP_REQ_NAME":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_HTTP_REQ_NAME",
-                    "a3ds:language:target:tokens:cval":"skb:core:http_req_name",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_HTTP_REQ_NAME",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:http_req_name'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_HTTP_REQ_NAME",
+                    "skb:lang:target:tokens:cval":"skb:core:http_req_name",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_HTTP_REQ_NAME",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:http_req_name'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_INTERPRETER":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_INTERPRETER",
-                    "a3ds:language:target:tokens:cval":"skb:core:interpreter",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_INTERPRETER",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:interpreter'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_INTERPRETER",
+                    "skb:lang:target:tokens:cval":"skb:core:interpreter",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_INTERPRETER",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:interpreter'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_ISVAL":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_ISVAL",
-                    "a3ds:language:target:tokens:cval":"skb:core:isval",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_ISVAL",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:isval'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_ISVAL",
+                    "skb:lang:target:tokens:cval":"skb:core:isval",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_ISVAL",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:isval'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_ISVAL_ELSE":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_ISVAL_ELSE",
-                    "a3ds:language:target:tokens:cval":"skb:core:isval_else",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_ISVAL_ELSE",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:isval_else'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_ISVAL_ELSE",
+                    "skb:lang:target:tokens:cval":"skb:core:isval_else",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_ISVAL_ELSE",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:isval_else'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_ISVAL_IF":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_ISVAL_IF",
-                    "a3ds:language:target:tokens:cval":"skb:core:isval_if",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_ISVAL_IF",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:isval_if'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_ISVAL_IF",
+                    "skb:lang:target:tokens:cval":"skb:core:isval_if",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_ISVAL_IF",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:isval_if'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_TYPE":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_TYPE",
-                    "a3ds:language:target:tokens:cval":"skb:core:type",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_TYPE",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:type'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_TYPE",
+                    "skb:lang:target:tokens:cval":"skb:core:type",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_TYPE",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:type'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_USE":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_USE",
-                    "a3ds:language:target:tokens:cval":"skb:core:use",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_USE",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:use'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_USE",
+                    "skb:lang:target:tokens:cval":"skb:core:use",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_USE",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:use'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_VAL_DO_LIST":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_VAL_DO_LIST",
-                    "a3ds:language:target:tokens:cval":"skb:core:val_do_list",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_VAL_DO_LIST",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:val_do_list'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_VAL_DO_LIST",
+                    "skb:lang:target:tokens:cval":"skb:core:val_do_list",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_VAL_DO_LIST",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:val_do_list'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_CORE_VAL_UNSET":{
-                    "a3ds:language:target:tokens:cid":"SKB_CORE_VAL_UNSET",
-                    "a3ds:language:target:tokens:cval":"skb:core:val_unset",
-                    "a3ds:language:target:tokens:tid":"SKB_CORE_VAL_UNSET",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:core:val_unset'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_CORE_VAL_UNSET",
+                    "skb:lang:target:tokens:cval":"skb:core:val_unset",
+                    "skb:lang:target:tokens:tid":"SKB_CORE_VAL_UNSET",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:core:val_unset'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_ENTITY":{
-                    "a3ds:language:target:tokens:cid":"SKB_ENTITY",
-                    "a3ds:language:target:tokens:cval":"skb:entity",
-                    "a3ds:language:target:tokens:tid":"SKB_ENTITY",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:entity'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_ENTITY",
+                    "skb:lang:target:tokens:cval":"skb:entity",
+                    "skb:lang:target:tokens:tid":"SKB_ENTITY",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:entity'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_REQUEST":{
-                    "a3ds:language:target:tokens:cid":"SKB_REQUEST",
-                    "a3ds:language:target:tokens:cval":"skb:request",
-                    "a3ds:language:target:tokens:tid":"SKB_REQUEST",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:request'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_REQUEST",
+                    "skb:lang:target:tokens:cval":"skb:request",
+                    "skb:lang:target:tokens:tid":"SKB_REQUEST",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:request'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "SKB_VALUE":{
-                    "a3ds:language:target:tokens:cid":"SKB_VALUE",
-                    "a3ds:language:target:tokens:cval":"skb:value",
-                    "a3ds:language:target:tokens:tid":"SKB_VALUE",
-                    "a3ds:language:target:tokens:tval":"keyword 'skb:value'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"SKB_VALUE",
+                    "skb:lang:target:tokens:cval":"skb:value",
+                    "skb:lang:target:tokens:tid":"SKB_VALUE",
+                    "skb:lang:target:tokens:tval":"keyword 'skb:value'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // DAL Keywords -> TYPES
                 "dalBINARY":{
-                    "a3ds:language:target:tokens:cid":"dalBINARY",
-                    "a3ds:language:target:tokens:cval":"binary",
-                    "a3ds:language:target:tokens:tid":"BINARY",
-                    "a3ds:language:target:tokens:tval":"keyword 'binary'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalBINARY",
+                    "skb:lang:target:tokens:cval":"binary",
+                    "skb:lang:target:tokens:tid":"BINARY",
+                    "skb:lang:target:tokens:tval":"keyword 'binary'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalBOOLEAN":{
-                    "a3ds:language:target:tokens:cid":"dalBOOLEAN",
-                    "a3ds:language:target:tokens:cval":"boolean",
-                    "a3ds:language:target:tokens:tid":"BOOLEAN",
-                    "a3ds:language:target:tokens:tval":"keyword 'boolean'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalBOOLEAN",
+                    "skb:lang:target:tokens:cval":"boolean",
+                    "skb:lang:target:tokens:tid":"BOOLEAN",
+                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalCHAR":{
-                    "a3ds:language:target:tokens:cid":"dalCHAR",
-                    "a3ds:language:target:tokens:cval":"char",
-                    "a3ds:language:target:tokens:tid":"CHAR",
-                    "a3ds:language:target:tokens:tval":"keyword 'char'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalCHAR",
+                    "skb:lang:target:tokens:cval":"char",
+                    "skb:lang:target:tokens:tid":"CHAR",
+                    "skb:lang:target:tokens:tval":"keyword 'char'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalDOUBLE":{
-                    "a3ds:language:target:tokens:cid":"dalDOUBLE",
-                    "a3ds:language:target:tokens:cval":"double",
-                    "a3ds:language:target:tokens:tid":"DOUBLE",
-                    "a3ds:language:target:tokens:tval":"keyword 'double'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalDOUBLE",
+                    "skb:lang:target:tokens:cval":"double",
+                    "skb:lang:target:tokens:tid":"DOUBLE",
+                    "skb:lang:target:tokens:tval":"keyword 'double'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalFLOAT":{
-                    "a3ds:language:target:tokens:cid":"dalFLOAT",
-                    "a3ds:language:target:tokens:cval":"float",
-                    "a3ds:language:target:tokens:tid":"FLOAT",
-                    "a3ds:language:target:tokens:tval":"keyword 'float'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalFLOAT",
+                    "skb:lang:target:tokens:cval":"float",
+                    "skb:lang:target:tokens:tid":"FLOAT",
+                    "skb:lang:target:tokens:tval":"keyword 'float'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalHEX":{
-                    "a3ds:language:target:tokens:cid":"dalHEX",
-                    "a3ds:language:target:tokens:cval":"hex",
-                    "a3ds:language:target:tokens:tid":"HEX",
-                    "a3ds:language:target:tokens:tval":"keyword 'hex'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalHEX",
+                    "skb:lang:target:tokens:cval":"hex",
+                    "skb:lang:target:tokens:tid":"HEX",
+                    "skb:lang:target:tokens:tval":"keyword 'hex'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalINTEGER":{
-                    "a3ds:language:target:tokens:cid":"dalINTEGER",
-                    "a3ds:language:target:tokens:cval":"integer",
-                    "a3ds:language:target:tokens:tid":"INTEGER",
-                    "a3ds:language:target:tokens:tval":"keyword 'integer'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalINTEGER",
+                    "skb:lang:target:tokens:cval":"integer",
+                    "skb:lang:target:tokens:tid":"INTEGER",
+                    "skb:lang:target:tokens:tval":"keyword 'integer'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalLONG":{
-                    "a3ds:language:target:tokens:cid":"dalLONG",
-                    "a3ds:language:target:tokens:cval":"long",
-                    "a3ds:language:target:tokens:tid":"LONG",
-                    "a3ds:language:target:tokens:tval":"keyword 'long'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalLONG",
+                    "skb:lang:target:tokens:cval":"long",
+                    "skb:lang:target:tokens:tid":"LONG",
+                    "skb:lang:target:tokens:tval":"keyword 'long'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalSHORT":{
-                    "a3ds:language:target:tokens:cid":"dalSHORT",
-                    "a3ds:language:target:tokens:cval":"short",
-                    "a3ds:language:target:tokens:tid":"SHORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'short'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalSHORT",
+                    "skb:lang:target:tokens:cval":"short",
+                    "skb:lang:target:tokens:tid":"SHORT",
+                    "skb:lang:target:tokens:tval":"keyword 'short'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalSTRING":{
-                    "a3ds:language:target:tokens:cid":"dalSTRING",
-                    "a3ds:language:target:tokens:cval":"string",
-                    "a3ds:language:target:tokens:tid":"STRING",
-                    "a3ds:language:target:tokens:tval":"keyword 'string'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalSTRING",
+                    "skb:lang:target:tokens:cval":"string",
+                    "skb:lang:target:tokens:tid":"STRING",
+                    "skb:lang:target:tokens:tval":"keyword 'string'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalVOID":{
-                    "a3ds:language:target:tokens:cid":"dalVOID",
-                    "a3ds:language:target:tokens:cval":"void",
-                    "a3ds:language:target:tokens:tid":"VOID",
-                    "a3ds:language:target:tokens:tval":"keyword 'void'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalVOID",
+                    "skb:lang:target:tokens:cval":"void",
+                    "skb:lang:target:tokens:tid":"VOID",
+                    "skb:lang:target:tokens:tval":"keyword 'void'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // DAL Keywords -> VALUES
                 "dalFALSE":{
-                    "a3ds:language:target:tokens:cid":"dalFALSE",
-                    "a3ds:language:target:tokens:cval":"FALSE",
-                    "a3ds:language:target:tokens:tid":"FALSE",
-                    "a3ds:language:target:tokens:tval":"keyword 'FALSE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalFALSE",
+                    "skb:lang:target:tokens:cval":"FALSE",
+                    "skb:lang:target:tokens:tid":"FALSE",
+                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalNULL":{
-                    "a3ds:language:target:tokens:cid":"dalNULL",
-                    "a3ds:language:target:tokens:cval":"NULL",
-                    "a3ds:language:target:tokens:tid":"NULL",
-                    "a3ds:language:target:tokens:tval":"keyword 'NULL'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalNULL",
+                    "skb:lang:target:tokens:cval":"NULL",
+                    "skb:lang:target:tokens:tid":"NULL",
+                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalTRUE":{
-                    "a3ds:language:target:tokens:cid":"dalTRUE",
-                    "a3ds:language:target:tokens:cval":"TRUE",
-                    "a3ds:language:target:tokens:tid":"TRUE",
-                    "a3ds:language:target:tokens:tval":"keyword 'TRUE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalTRUE",
+                    "skb:lang:target:tokens:cval":"TRUE",
+                    "skb:lang:target:tokens:tid":"TRUE",
+                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // DAL Keywords -> @@@
                 "dalAT_LANGUAGE":{
-                    "a3ds:language:target:tokens:cid":"dalAT_LANGUAGE",
-                    "a3ds:language:target:tokens:cval":"@language",
-                    "a3ds:language:target:tokens:tid":"AT_LANGUAGE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@language'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalAT_LANGUAGE",
+                    "skb:lang:target:tokens:cval":"@language",
+                    "skb:lang:target:tokens:tid":"AT_LANGUAGE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@language'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalAT_PROVIDES":{
-                    "a3ds:language:target:tokens:cid":"dalAT_PROVIDES",
-                    "a3ds:language:target:tokens:cval":"@provides",
-                    "a3ds:language:target:tokens:tid":"AT_PROVIDES",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@provides'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalAT_PROVIDES",
+                    "skb:lang:target:tokens:cval":"@provides",
+                    "skb:lang:target:tokens:tid":"AT_PROVIDES",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalAT_SCOPE":{
-                    "a3ds:language:target:tokens:cid":"dalAT_SCOPE",
-                    "a3ds:language:target:tokens:cval":"@scope",
-                    "a3ds:language:target:tokens:tid":"AT_SCOPE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@scope'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalAT_SCOPE",
+                    "skb:lang:target:tokens:cval":"@scope",
+                    "skb:lang:target:tokens:tid":"AT_SCOPE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@scope'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalAT_SPEC":{
-                    "a3ds:language:target:tokens:cid":"dalAT_SPEC",
-                    "a3ds:language:target:tokens:cval":"@scpec",
-                    "a3ds:language:target:tokens:tid":"AT_SPEC",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@scpec'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalAT_SPEC",
+                    "skb:lang:target:tokens:cval":"@scpec",
+                    "skb:lang:target:tokens:tid":"AT_SPEC",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@scpec'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 "dalCPP_DIRECTIVE":{
-                    "a3ds:language:target:tokens:cid":"dalCPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:cval":"preprocessor directive",
-                    "a3ds:language:target:tokens:tid":"CPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:tval":"preprocessor directive",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalCPP_DIRECTIVE",
+                    "skb:lang:target:tokens:cval":"preprocessor directive",
+                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
+                    "skb:lang:target:tokens:tval":"preprocessor directive",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalESC":{
-                    "a3ds:language:target:tokens:cid":"dalESC",
-                    "a3ds:language:target:tokens:cval":"escape sequence",
-                    "a3ds:language:target:tokens:tid":"ESC",
-                    "a3ds:language:target:tokens:tval":"escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalESC",
+                    "skb:lang:target:tokens:cval":"escape sequence",
+                    "skb:lang:target:tokens:tid":"ESC",
+                    "skb:lang:target:tokens:tval":"escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalFloatSuffix":{
-                    "a3ds:language:target:tokens:cid":"dalFloatSuffix",
-                    "a3ds:language:target:tokens:cval":"floating point suffix",
-                    "a3ds:language:target:tokens:tid":"FloatSuffix",
-                    "a3ds:language:target:tokens:tval":"floating point suffix",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalFloatSuffix",
+                    "skb:lang:target:tokens:cval":"floating point suffix",
+                    "skb:lang:target:tokens:tid":"FloatSuffix",
+                    "skb:lang:target:tokens:tval":"floating point suffix",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalHexDigit":{
-                    "a3ds:language:target:tokens:cid":"dalHexDigit",
-                    "a3ds:language:target:tokens:cval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:tid":"HexDigit",
-                    "a3ds:language:target:tokens:tval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalHexDigit",
+                    "skb:lang:target:tokens:cval":"hexadecimal digit",
+                    "skb:lang:target:tokens:tid":"HexDigit",
+                    "skb:lang:target:tokens:tval":"hexadecimal digit",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalIDENT":{
-                    "a3ds:language:target:tokens:cid":"dalIDENT",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:tid":"IDENT",
-                    "a3ds:language:target:tokens:tval":"an identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalIDENT",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:tid":"IDENT",
+                    "skb:lang:target:tokens:tval":"an identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalML_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"dalML_COMMENT",
-                    "a3ds:language:target:tokens:cval":"multiple line comment",
-                    "a3ds:language:target:tokens:tid":"ML_COMMENT",
-                    "a3ds:language:target:tokens:tval":"multiple line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalML_COMMENT",
+                    "skb:lang:target:tokens:cval":"multiple line comment",
+                    "skb:lang:target:tokens:tid":"ML_COMMENT",
+                    "skb:lang:target:tokens:tval":"multiple line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalOctalEscape":{
-                    "a3ds:language:target:tokens:cid":"dalOctalEscape",
-                    "a3ds:language:target:tokens:cval":"octal escape sequence",
-                    "a3ds:language:target:tokens:tid":"OctalEscape",
-                    "a3ds:language:target:tokens:tval":"octal escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalOctalEscape",
+                    "skb:lang:target:tokens:cval":"octal escape sequence",
+                    "skb:lang:target:tokens:tid":"OctalEscape",
+                    "skb:lang:target:tokens:tval":"octal escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalSL_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"dalSL_COMMENT",
-                    "a3ds:language:target:tokens:cval":"single line comment",
-                    "a3ds:language:target:tokens:tid":"SL_COMMENT",
-                    "a3ds:language:target:tokens:tval":"single line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalSL_COMMENT",
+                    "skb:lang:target:tokens:cval":"single line comment",
+                    "skb:lang:target:tokens:tid":"SL_COMMENT",
+                    "skb:lang:target:tokens:tval":"single line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalUnicodeEscape":{
-                    "a3ds:language:target:tokens:cid":"dalUnicodeEscape",
-                    "a3ds:language:target:tokens:cval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:tid":"UnicodeEscape",
-                    "a3ds:language:target:tokens:tval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalUnicodeEscape",
+                    "skb:lang:target:tokens:cval":"unicode escape sequence",
+                    "skb:lang:target:tokens:tid":"UnicodeEscape",
+                    "skb:lang:target:tokens:tval":"unicode escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalVAL_BINARY":{
-                    "a3ds:language:target:tokens:cid":"dalVAL_BINARY",
-                    "a3ds:language:target:tokens:cval":"binary value",
-                    "a3ds:language:target:tokens:tid":"VAL_BINARY",
-                    "a3ds:language:target:tokens:tval":"binary value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalVAL_BINARY",
+                    "skb:lang:target:tokens:cval":"binary value",
+                    "skb:lang:target:tokens:tid":"VAL_BINARY",
+                    "skb:lang:target:tokens:tval":"binary value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalVAL_CHAR":{
-                    "a3ds:language:target:tokens:cid":"dalVAL_CHAR",
-                    "a3ds:language:target:tokens:cval":"character value",
-                    "a3ds:language:target:tokens:tid":"VAL_CHAR",
-                    "a3ds:language:target:tokens:tval":"character value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalVAL_CHAR",
+                    "skb:lang:target:tokens:cval":"character value",
+                    "skb:lang:target:tokens:tid":"VAL_CHAR",
+                    "skb:lang:target:tokens:tval":"character value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalVAL_FLOAT":{
-                    "a3ds:language:target:tokens:cid":"dalVAL_FLOAT",
-                    "a3ds:language:target:tokens:cval":"floating point value",
-                    "a3ds:language:target:tokens:tid":"VAL_FLOAT",
-                    "a3ds:language:target:tokens:tval":"floating point value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalVAL_FLOAT",
+                    "skb:lang:target:tokens:cval":"floating point value",
+                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
+                    "skb:lang:target:tokens:tval":"floating point value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalVAL_HEX":{
-                    "a3ds:language:target:tokens:cid":"dalVAL_HEX",
-                    "a3ds:language:target:tokens:cval":"hexadecimal value",
-                    "a3ds:language:target:tokens:tid":"VAL_HEX",
-                    "a3ds:language:target:tokens:tval":"hexadecimal value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalVAL_HEX",
+                    "skb:lang:target:tokens:cval":"hexadecimal value",
+                    "skb:lang:target:tokens:tid":"VAL_HEX",
+                    "skb:lang:target:tokens:tval":"hexadecimal value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalVAL_INTEGER":{
-                    "a3ds:language:target:tokens:cid":"dalVAL_INTEGER",
-                    "a3ds:language:target:tokens:cval":"integer value",
-                    "a3ds:language:target:tokens:tid":"VAL_INTEGER",
-                    "a3ds:language:target:tokens:tval":"integer value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalVAL_INTEGER",
+                    "skb:lang:target:tokens:cval":"integer value",
+                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
+                    "skb:lang:target:tokens:tval":"integer value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalVAL_STRING":{
-                    "a3ds:language:target:tokens:cid":"dalVAL_STRING",
-                    "a3ds:language:target:tokens:cval":"string value",
-                    "a3ds:language:target:tokens:tid":"VAL_STRING",
-                    "a3ds:language:target:tokens:tval":"string value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalVAL_STRING",
+                    "skb:lang:target:tokens:cval":"string value",
+                    "skb:lang:target:tokens:tid":"VAL_STRING",
+                    "skb:lang:target:tokens:tval":"string value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalWS":{
-                    "a3ds:language:target:tokens:cid":"dalWS",
-                    "a3ds:language:target:tokens:cval":"whitespace",
-                    "a3ds:language:target:tokens:tid":"WS",
-                    "a3ds:language:target:tokens:tval":"whitespace",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"dalWS",
+                    "skb:lang:target:tokens:cval":"whitespace",
+                    "skb:lang:target:tokens:tid":"WS",
+                    "skb:lang:target:tokens:tval":"whitespace",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 ";":{
-                    "a3ds:language:target:tokens:tid":"';'",
-                    "a3ds:language:target:tokens:tval":"character ';'"
+                    "skb:lang:target:tokens:tid":"';'",
+                    "skb:lang:target:tokens:tval":"character ';'"
                 },
                 "}":{
-                    "a3ds:language:target:tokens:tid":"'}'",
-                    "a3ds:language:target:tokens:tval":"character '}'"
+                    "skb:lang:target:tokens:tid":"'}'",
+                    "skb:lang:target:tokens:tval":"character '}'"
                 },
                 "=":{
-                    "a3ds:language:target:tokens:tid":"'='",
-                    "a3ds:language:target:tokens:tval":"character '='"
+                    "skb:lang:target:tokens:tid":"'='",
+                    "skb:lang:target:tokens:tval":"character '='"
                 },
                 "(":{
-                    "a3ds:language:target:tokens:tid":"'('",
-                    "a3ds:language:target:tokens:tval":"character '('"
+                    "skb:lang:target:tokens:tid":"'('",
+                    "skb:lang:target:tokens:tval":"character '('"
                 },
                 ":":{
-                    "a3ds:language:target:tokens:tid":"':'",
-                    "a3ds:language:target:tokens:tval":"character ':'"
+                    "skb:lang:target:tokens:tid":"':'",
+                    "skb:lang:target:tokens:tval":"character ':'"
                 },
                 "::":{
-                    "a3ds:language:target:tokens:tid":"'::'",
-                    "a3ds:language:target:tokens:tval":"scope operator '::'"
+                    "skb:lang:target:tokens:tid":"'::'",
+                    "skb:lang:target:tokens:tval":"scope operator '::'"
                 },
                 "[":{
-                    "a3ds:language:target:tokens:tid":"'['",
-                    "a3ds:language:target:tokens:tval":"character '['"
+                    "skb:lang:target:tokens:tid":"'['",
+                    "skb:lang:target:tokens:tval":"character '['"
                 },
                 ",":{
-                    "a3ds:language:target:tokens:tid":"','",
-                    "a3ds:language:target:tokens:tval":"character ','"
+                    "skb:lang:target:tokens:tid":"','",
+                    "skb:lang:target:tokens:tval":"character ','"
                 },
                 ")":{
-                    "a3ds:language:target:tokens:tid":"')'",
-                    "a3ds:language:target:tokens:tval":"character ')'"
+                    "skb:lang:target:tokens:tid":"')'",
+                    "skb:lang:target:tokens:tval":"character ')'"
                 },
                 "{":{
-                    "a3ds:language:target:tokens:tid":"'{'",
-                    "a3ds:language:target:tokens:tval":"character '{'"
+                    "skb:lang:target:tokens:tid":"'{'",
+                    "skb:lang:target:tokens:tval":"character '{'"
                 },
                 "]":{
-                    "a3ds:language:target:tokens:tid":"']'",
-                    "a3ds:language:target:tokens:tval":"character ']'"
+                    "skb:lang:target:tokens:tid":"']'",
+                    "skb:lang:target:tokens:tval":"character ']'"
                 }
             },
 
             "rules":{
                 "property:01":{
-                    "a3ds:language:target:config:constid":"ruleProperty01",
-                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all mandatory properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty01",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:02":{
-                    "a3ds:language:target:config:constid":"ruleProperty02",
-                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all required properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty02",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:03":{
-                    "a3ds:language:target:config:constid":"ruleProperty03",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, one empty value given",
-                    "a3ds:language:parser:rules:message:add":"required properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty03",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "skb:lang:parser:rules:message:add":"required properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:04":{
-                    "a3ds:language:target:config:constid":"ruleProperty04",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, no value given",
-                    "a3ds:language:parser:rules:message:add":"required properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty04",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "skb:lang:parser:rules:message:add":"required properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:05":{
-                    "a3ds:language:target:config:constid":"ruleProperty05",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty05",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:06":{
-                    "a3ds:language:target:config:constid":"ruleProperty06",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s>, but %s values given",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty06",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:07":{
-                    "a3ds:language:target:config:constid":"ruleProperty07",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty07",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:08":{
-                    "a3ds:language:target:config:constid":"ruleProperty08",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty08",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:09":{
-                    "a3ds:language:target:config:constid":"ruleProperty09",
-                    "a3ds:language:parser:rules:message":"used #### <%s> is not specified for <%s>",
-                    "a3ds:language:parser:rules:message:add":"note: typedef, struct and member are handled as attributes",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty09",
+                    "skb:lang:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "skb:lang:parser:rules:message:add":"note: typedef, struct and member are handled as attributes",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "property:10":{
-                    "a3ds:language:target:config:constid":"ruleProperty10",
-                    "a3ds:language:parser:rules:message":"declaration of unknown ####",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> is not specified",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty10",
+                    "skb:lang:parser:rules:message":"declaration of unknown ####",
+                    "skb:lang:parser:rules:message:add":"#### <%s> is not specified",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY"
                 },
                 "property:11":{
-                    "a3ds:language:target:config:constid":"ruleProperty11",
-                    "a3ds:language:parser:rules:message":"empty description in <%s> <%s>",
-                    "a3ds:language:parser:rules:message:add":"description needs to be a non-empty ####",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaSTRING"
+                    "skb:lang:target:config:constid":"ruleProperty11",
+                    "skb:lang:parser:rules:message":"empty description in <%s> <%s>",
+                    "skb:lang:parser:rules:message:add":"description needs to be a non-empty ####",
+                    "skb:lang:target:rules:message:add:insert:path":"colaSTRING"
                 },
                 "property:12":{
-                    "a3ds:language:target:config:constid":"ruleProperty12",
-                    "a3ds:language:parser:rules:message":"type mismatch for <%s> declaration <%s>",
-                    "a3ds:language:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>"
+                    "skb:lang:target:config:constid":"ruleProperty12",
+                    "skb:lang:parser:rules:message":"type mismatch for <%s> declaration <%s>",
+                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>"
                 },
                 "property:13":{
-                    "a3ds:language:target:config:constid":"ruleProperty13",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for <%s> declaration <%s>",
-                    "a3ds:language:parser:rules:message:add":"type declared is <%s>, value associated is of type %s"
+                    "skb:lang:target:config:constid":"ruleProperty13",
+                    "skb:lang:parser:rules:message":"potential type mismatch for <%s> declaration <%s>",
+                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type %s"
                 },
                 "property:14":{
-                    "a3ds:language:target:config:constid":"ruleProperty14",
-                    "a3ds:language:parser:rules:message":"#### scope <%s> redefined for #### <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleProperty14",
+                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for #### <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
 
                 "contract:01":{
-                    "a3ds:language:target:config:constid":"ruleContract01",
-                    "a3ds:language:parser:rules:message":"#### defined more than once: <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract01",
+                    "skb:lang:parser:rules:message":"#### defined more than once: <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:02":{
-                    "a3ds:language:target:config:constid":"ruleContract02",
-                    "a3ds:language:parser:rules:message":"used #### <%s> is not specified for <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract02",
+                    "skb:lang:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:03":{
-                    "a3ds:language:target:config:constid":"ruleContract03",
-                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all mandatory contracts need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract03",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory contracts need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:04":{
-                    "a3ds:language:target:config:constid":"ruleContract04",
-                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all required contracts need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract04",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required contracts need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 "contract:05":{
-                    "a3ds:language:target:config:constid":"ruleContract05",
-                    "a3ds:language:parser:rules:message":"#### scope <%s> redefined for %s <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleContract05",
+                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for %s <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT"
                 },
                 
                 "item:01":{
-                    "a3ds:language:target:config:constid":"ruleItem01",
-                    "a3ds:language:parser:rules:message":"missing declared item <%s> for declared contract <%2>",
-                    "a3ds:language:parser:rules:message:add":"all declared items must be defined"
+                    "skb:lang:target:config:constid":"ruleItem01",
+                    "skb:lang:parser:rules:message":"missing declared item <%s> for declared contract <%2>",
+                    "skb:lang:parser:rules:message:add":"all declared items must be defined"
                 },
                 "item:02":{
-                    "a3ds:language:target:config:constid":"ruleItem02",
-                    "a3ds:language:parser:rules:message":"declaration of unknown ####",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> is not specified",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem02",
+                    "skb:lang:parser:rules:message":"declaration of unknown ####",
+                    "skb:lang:parser:rules:message:add":"#### <%s> is not specified",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:rules:message:add:insert:path":"parserItemProp"
                 },
                 "item:03":{
-                    "a3ds:language:target:config:constid":"ruleItem03",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem03",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:04":{
-                    "a3ds:language:target:config:constid":"ruleItem04",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem04",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:05":{
-                    "a3ds:language:target:config:constid":"ruleItem05",
-                    "a3ds:language:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s>, but %s values given",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem05",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:06":{
-                    "a3ds:language:target:config:constid":"ruleItem06",
-                    "a3ds:language:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "a3ds:language:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem06",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:07":{
-                    "a3ds:language:target:config:constid":"ruleItem07",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, no value given",
-                    "a3ds:language:parser:rules:message:add":"required item-properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem07",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:08":{
-                    "a3ds:language:target:config:constid":"ruleItem08",
-                    "a3ds:language:parser:rules:message":"missing value for required #### <%s>, one empty value given",
-                    "a3ds:language:parser:rules:message:add":"required item-properties must be declared non-empty",
-                    "a3ds:language:parser:rules:message:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleItem08",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp"
                 },
                 "item:09":{
-                    "a3ds:language:target:config:constid":"ruleItem09",
-                    "a3ds:language:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all mandatory item-properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleItem09",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory item-properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
                 "item:10":{
-                    "a3ds:language:target:config:constid":"ruleItem10",
-                    "a3ds:language:parser:rules:message":"missing required #### <%s> for %s <%s>",
-                    "a3ds:language:parser:rules:message:add":"all required item-properties need to be declared",
-                    "a3ds:language:parser:rules:message:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleItem10",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required item-properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY"
                 },
 
                 "identifier:01":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier01",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> in property definitions",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserIDENTIFIER"
+                    "skb:lang:target:config:constid":"ruleIdentifier01",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"#### <%s> in property definitions",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER"
                 },
                 "identifier:02":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier02",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER"
+                    "skb:lang:target:config:constid":"ruleIdentifier02",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER"
                 },
                 "identifier:03":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier03",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"#### <%s> in item-property definitions",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserIDENTIFIER"
+                    "skb:lang:target:config:constid":"ruleIdentifier03",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"#### <%s> in item-property definitions",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER"
                 },
                 "identifier:04":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier04",
-                "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"parserItemProp"
+                    "skb:lang:target:config:constid":"ruleIdentifier04",
+                "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserItemProp"
                 },
                 "identifier:05":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier05",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaPROPERTY"
+                    "skb:lang:target:config:constid":"ruleIdentifier05",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY"
                 },
                 "identifier:06":{
-                    "a3ds:language:target:config:constid":"ruleIdentifier06",
-                    "a3ds:language:parser:rules:message":"#### used more than once",
-                    "a3ds:language:parser:rules:message:add":"in #### definition: %s",
-                    "a3ds:language:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "a3ds:language:target:rules:message:add:insert:path":"colaCONTRACT"
+                    "skb:lang:target:config:constid":"ruleIdentifier06",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"colaCONTRACT"
                 },
                 
                 "scoped-name:01":{
-                    "a3ds:language:target:config:constid":"ruleScopedName01",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName01",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:02":{
-                    "a3ds:language:target:config:constid":"ruleScopedName02",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName02",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:03":{
-                    "a3ds:language:target:config:constid":"ruleScopedName03",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName03",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:04":{
-                    "a3ds:language:target:config:constid":"ruleScopedName04",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName04",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:05":{
-                    "a3ds:language:target:config:constid":"ruleScopedName05",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName05",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 },
                 "scoped-name:06":{
-                    "a3ds:language:target:config:constid":"ruleScopedName06",
-                    "a3ds:language:parser:rules:message":"",
-                    "a3ds:language:parser:rules:message:add":""
+                    "skb:lang:target:config:constid":"ruleScopedName06",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":""
                 }
 
             }

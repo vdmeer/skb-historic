@@ -66,8 +66,8 @@ public class LanguageTokens {
     		if(map!=null&&map.size()>0){
     			for(String s:map.keySet()){
     				try{
-    					OatString tid=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTokensTokenID).getValOatAtomicString();
-    				    OatString tval=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTokensTokenVal).getValOatAtomicString();
+    					OatString tid=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenID).getValOatAtomicString();
+    				    OatString tval=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenVal).getValOatAtomicString();
     				    tokenStrings.put(tid, tval);
     				} catch (Exception e){}
     			}

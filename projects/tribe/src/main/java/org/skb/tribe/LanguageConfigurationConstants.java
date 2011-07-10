@@ -41,37 +41,37 @@ public final class LanguageConfigurationConstants {
 	public LanguageConfigurationConstants(){}
 
     public static final class Fields {
-    	public final static String A3DSLanguageTargetConfigurationCli="a3ds:language:target:config:cli";
-//    	public final static String A3DSLanguageTargetConfigurationTribe="a3ds:language:target:config:tribe";
+    	public final static String SKBLangTargetConfigurationCli="skb:lang:target:config:cli";
+//    	public final static String SKBLangTargetConfigurationTribe="skb:lang:target:config:tribe";
 
-    	public final static String A3DSTLanguageTargetConfigurationConstID="a3ds:language:target:config:constid";
+    	public final static String SKBLangTargetConfigurationConstID="skb:lang:target:config:constid";
 
-    	public final static String A3DSTribeStgChunkMandatory="a3ds:tribe:stgchunk:mandatory";
-    	public final static String A3DSTribeStgChunkOptional="a3ds:tribe:stgchunk:optional";
+    	public final static String SKBTribeStgChunkMandatory="skb:tribe:stgchunk:mandatory";
+    	public final static String SKBTribeStgChunkOptional="skb:tribe:stgchunk:optional";
 
-    	public final static String A3DSTLanguageTokensConstID="a3ds:language:target:tokens:cid";
-    	public final static String A3DSTLanguageTokensConstVal="a3ds:language:target:tokens:cval";
-    	public final static String A3DSTLanguageTokensConstJavaDoc="a3ds:language:target:tokens:cjavadoc";
+    	public final static String SKBLangTokensConstID="skb:lang:target:tokens:cid";
+    	public final static String SKBLangTokensConstVal="skb:lang:target:tokens:cval";
+    	public final static String SKBLangTokensConstJavaDoc="skb:lang:target:tokens:cjavadoc";
 
-    	public final static String A3DSTLanguageTokensTokenID="a3ds:language:target:tokens:tid";
-    	public final static String A3DSTLanguageTokensTokenVal="a3ds:language:target:tokens:tval";
+    	public final static String SKBLangTokensTokenID="skb:lang:target:tokens:tid";
+    	public final static String SKBLangTokensTokenVal="skb:lang:target:tokens:tval";
 
-    	public final static String A3DSLanguageTargetName="a3ds:language:target:name";
+    	public final static String SKBLangTargetName="skb:lang:target:name";
 
-    	public final static String A3DSTLanguageRulesMessage="a3ds:language:parser:rules:message";
-    	public final static String A3DSTLanguageRulesMessageAdd="a3ds:language:parser:rules:message:add";
-    	public final static String A3DSTLanguageRulesMessageInsertPath="a3ds:language:parser:rules:message:insert:path";
-    	public final static String A3DSTLanguageRulesMessageAddInsertPath="a3ds:language:parser:rules:message:add:insert:path";
+    	public final static String SKBLangRulesMessage="skb:lang:parser:rules:message";
+    	public final static String SKBLangRulesMessageAdd="skb:lang:parser:rules:message:add";
+    	public final static String SKBLangRulesMessageInsertPath="skb:lang:parser:rules:message:insert:path";
+    	public final static String SKBLangRulesMessageAddInsertPath="skb:lang:parser:rules:message:add:insert:path";
     }
 
     public static final class Paths {
-    	public final static String A3DSTribeConfiguration="a3ds/tribe/configuration";
+    	public final static String SKBTribeConfiguration="skb/tribe/configuration";
 
-    	public final static String A3DSLanguageConfiguration="a3ds/language/configuration";
-    	public final static String A3DSLanguageTokens="a3ds/language/tokens";
-    	public final static String A3DSLanguageTargets="a3ds/language/targets";
+    	public final static String SKBLangConfiguration="skb/lang/configuration";
+    	public final static String SKBLangTokens="skb/lang/tokens";
+    	public final static String SKBLangTargets="skb/lang/targets";
 
-    	public final static String A3DSLanguageStgChunks="a3ds/language/stgchunks";
-    	public final static String A3DSLanguageRules="a3ds/language/rules";
+    	public final static String SKBLangStgChunks="skb/lang/stgchunks";
+    	public final static String SKBLangRules="skb/lang/rules";
     }
 }

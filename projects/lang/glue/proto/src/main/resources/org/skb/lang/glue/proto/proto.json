@@ -39,7 +39,7 @@
 //
 
 {
-    "a3ds":{
+    "skb":{
         "tribe":{
             "configuration":{
                 "name":{
@@ -72,24 +72,24 @@
                 }
             }
         },
-        "language":{
+        "lang":{
             "configuration":{
                 "glue":{
-                    "a3ds:language:target:config:constid":"internalGlueTgtGlue"
+                    "skb:lang:target:config:constid":"internalGlueTgtGlue"
                 },
                 "graphml":{
-                    "a3ds:language:target:config:constid":"internalGlueTgtGraphML"
+                    "skb:lang:target:config:constid":"internalGlueTgtGraphML"
                 },
                 "sql":{
-                    "a3ds:language:target:config:constid":"internalGlueTgtSql"
+                    "skb:lang:target:config:constid":"internalGlueTgtSql"
                 },
                 "internal-scope-sep":{
-                    "a3ds:language:target:config:constid":"keyScopeSep",
+                    "skb:lang:target:config:constid":"keyScopeSep",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"::"
                 },
                 "pr-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStat",
+                    "skb:lang:target:config:constid":"keyPrStat",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats",
@@ -97,7 +97,7 @@
                     "cli:usage:descr":"Show simple statistic information"
                 },
                 "pr-stats-all":{
-                    "a3ds:language:target:config:constid":"keyPrStatAll",
+                    "skb:lang:target:config:constid":"keyPrStatAll",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-all",
@@ -105,7 +105,7 @@
                     "cli:usage:descr":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
-                    "a3ds:language:target:config:constid":"keyPrStatsWScope",
+                    "skb:lang:target:config:constid":"keyPrStatsWScope",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-ws",
@@ -113,7 +113,7 @@
                     "cli:usage:descr":"No scoped names in statistics"
                 },
                 "pr-stg-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStgFileStats",
+                    "skb:lang:target:config:constid":"keyPrStgFileStats",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stg-stats",
@@ -121,7 +121,7 @@
                     "cli:usage:descr":"Print statistics string template"
                 },
                 "stat-stg":{
-                    "a3ds:language:target:config:constid":"keyStatStg",
+                    "skb:lang:target:config:constid":"keyStatStg",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
@@ -132,7 +132,7 @@
             },
             "targets":{
                 "glue":{
-                    "a3ds:language:target:name":"glue",
+                    "skb:lang:target:name":"glue",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/glue.stg"
                     },
@@ -142,9 +142,9 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -152,7 +152,7 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-split-code",
@@ -160,7 +160,7 @@
                             "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyPackage",
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-pkg",
@@ -168,7 +168,7 @@
                             "cli:usage:descr":"Split code by package"
                         },
                         "tgt-sc-by-category":{
-                            "a3ds:language:target:config:constid":"keyTgSCbyAtomCategory",
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-category",
@@ -178,7 +178,7 @@
                     }
                 },
                 "graphml":{
-                    "a3ds:language:target:name":"graphml",
+                    "skb:lang:target:name":"graphml",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/graphml.stg"
                     },
@@ -191,9 +191,9 @@
                     "tgt-stg-angle-br":{
                         "value:default":false
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -201,14 +201,14 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false
                         }
                     }
                 },
                 "sql":{
-                    "a3ds:language:target:name":"sql",
+                    "skb:lang:target:name":"sql",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
@@ -218,9 +218,9 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "a3ds:language:target:config:constid":"keyXtDoIncludes",
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
@@ -228,7 +228,7 @@
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "a3ds:language:target:config:constid":"keyTgSplitCode",
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
                             "at:type":"oat:atomic:java:boolean",
                             "value:default":false
                         }
@@ -238,514 +238,514 @@
 
             "stgchunks":{
                 "mlcomment_start":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "mlcomment_end":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "slcomment":{
-                    "a3ds:tribe:stgchunk:mandatory": ["comment"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["comment"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
 
                 "glueSpecification":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
 
                 "const_value":{
-                    "a3ds:tribe:stgchunk:mandatory": ["type", "val"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["type", "val"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "scoped_name":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "add"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "add"],
+                    "skb:tribe:stgchunk:optional":  []
                 }
             },
 
             "tokens":{
                 // for parser
                 "parserARRAY":{
-                    "a3ds:language:target:tokens:cid":"parserARRAY",
-                    "a3ds:language:target:tokens:cval":"array",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserARRAY",
+                    "skb:lang:target:tokens:cval":"array",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserIDENTIFIER":{
-                    "a3ds:language:target:tokens:cid":"parserIDENTIFIER",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopedName":{
-                    "a3ds:language:target:tokens:cid":"parserScopedName",
-                    "a3ds:language:target:tokens:cval":"scoped_name",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopedName",
+                    "skb:lang:target:tokens:cval":"scoped_name",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopeSep":{
-                    "a3ds:language:target:tokens:cid":"parserScopeSep",
-                    "a3ds:language:target:tokens:cval":"::",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopeSep",
+                    "skb:lang:target:tokens:cval":"::",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscParrentID":{
-                    "a3ds:language:target:tokens:cid":"gcMiscParrentID",
-                    "a3ds:language:target:tokens:cval":"parrentId",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscParrentID",
+                    "skb:lang:target:tokens:cval":"parrentId",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscParrentCat":{
-                    "a3ds:language:target:tokens:cid":"gcMiscParrentCat",
-                    "a3ds:language:target:tokens:cval":"parrentCategory",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscParrentCat",
+                    "skb:lang:target:tokens:cval":"parrentCategory",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscCurrentCat":{
-                    "a3ds:language:target:tokens:cid":"gcMiscCurrentCat",
-                    "a3ds:language:target:tokens:cval":"currentCategory",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentCat",
+                    "skb:lang:target:tokens:cval":"currentCategory",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInDefinition":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInDefinition",
-                    "a3ds:language:target:tokens:cval":"inDefinition",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInDefinition",
+                    "skb:lang:target:tokens:cval":"inDefinition",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInItem":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInItem",
-                    "a3ds:language:target:tokens:cval":"inItem",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInItem",
+                    "skb:lang:target:tokens:cval":"inItem",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInContract":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInContract",
-                    "a3ds:language:target:tokens:cval":"inContract",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInContract",
+                    "skb:lang:target:tokens:cval":"inContract",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInPackage":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInPackage",
-                    "a3ds:language:target:tokens:cval":"inPackage",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInPackage",
+                    "skb:lang:target:tokens:cval":"inPackage",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInElement":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInElement",
-                    "a3ds:language:target:tokens:cval":"inElement",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInElement",
+                    "skb:lang:target:tokens:cval":"inElement",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInFacility":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInFacility",
-                    "a3ds:language:target:tokens:cval":"inFacility",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInFacility",
+                    "skb:lang:target:tokens:cval":"inFacility",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInAction":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInAction",
-                    "a3ds:language:target:tokens:cval":"inAction",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInAction",
+                    "skb:lang:target:tokens:cval":"inAction",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInStruct":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInStruct",
-                    "a3ds:language:target:tokens:cval":"inStruct",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInStruct",
+                    "skb:lang:target:tokens:cval":"inStruct",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscSpecName":{
-                    "a3ds:language:target:tokens:cid":"gcMiscSpecName",
-                    "a3ds:language:target:tokens:cval":"specificationName",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscSpecName",
+                    "skb:lang:target:tokens:cval":"specificationName",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscCurrentScope":{
-                    "a3ds:language:target:tokens:cid":"gcMiscCurrentScope",
-                    "a3ds:language:target:tokens:cval":"currentScope",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentScope",
+                    "skb:lang:target:tokens:cval":"currentScope",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // GLUE Keywords
                 "glueTopology":{
-                    "a3ds:language:target:tokens:cid":"glueTopology",
-                    "a3ds:language:target:tokens:cval":"topology",
-                    "a3ds:language:target:tokens:tid":"SPECIFICATION",
-                    "a3ds:language:target:tokens:tval":"keyword 'topology'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueTopology",
+                    "skb:lang:target:tokens:cval":"topology",
+                    "skb:lang:target:tokens:tid":"SPECIFICATION",
+                    "skb:lang:target:tokens:tval":"keyword 'topology'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueNode":{
-                    "a3ds:language:target:tokens:cid":"glueNode",
-                    "a3ds:language:target:tokens:cval":"node",
-                    "a3ds:language:target:tokens:tid":"NODE",
-                    "a3ds:language:target:tokens:tval":"keyword 'node'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueNode",
+                    "skb:lang:target:tokens:cval":"node",
+                    "skb:lang:target:tokens:tid":"NODE",
+                    "skb:lang:target:tokens:tval":"keyword 'node'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueConnection":{
-                    "a3ds:language:target:tokens:cid":"glueConnection",
-                    "a3ds:language:target:tokens:cval":"connection",
-                    "a3ds:language:target:tokens:tid":"CONNECTION",
-                    "a3ds:language:target:tokens:tval":"keyword 'connection'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueConnection",
+                    "skb:lang:target:tokens:cval":"connection",
+                    "skb:lang:target:tokens:tid":"CONNECTION",
+                    "skb:lang:target:tokens:tval":"keyword 'connection'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueInterface":{
-                    "a3ds:language:target:tokens:cid":"glueInterface",
-                    "a3ds:language:target:tokens:cval":"interface",
-                    "a3ds:language:target:tokens:tid":"INTERFACE",
-                    "a3ds:language:target:tokens:tval":"keyword 'interface'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueInterface",
+                    "skb:lang:target:tokens:cval":"interface",
+                    "skb:lang:target:tokens:tid":"INTERFACE",
+                    "skb:lang:target:tokens:tval":"keyword 'interface'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueComponent":{
-                    "a3ds:language:target:tokens:cid":"glueComponent",
-                    "a3ds:language:target:tokens:cval":"component",
-                    "a3ds:language:target:tokens:tid":"COMPONENT",
-                    "a3ds:language:target:tokens:tval":"keyword 'component'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueComponent",
+                    "skb:lang:target:tokens:cval":"component",
+                    "skb:lang:target:tokens:tid":"COMPONENT",
+                    "skb:lang:target:tokens:tval":"keyword 'component'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueDirected":{
-                    "a3ds:language:target:tokens:cid":"glueDirected",
-                    "a3ds:language:target:tokens:cval":"directed",
-                    "a3ds:language:target:tokens:tid":"DIRECTED",
-                    "a3ds:language:target:tokens:tval":"keyword 'directed'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueDirected",
+                    "skb:lang:target:tokens:cval":"directed",
+                    "skb:lang:target:tokens:tid":"DIRECTED",
+                    "skb:lang:target:tokens:tval":"keyword 'directed'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueSource":{
-                    "a3ds:language:target:tokens:cid":"glueSource",
-                    "a3ds:language:target:tokens:cval":"source",
-                    "a3ds:language:target:tokens:tid":"SOURCE",
-                    "a3ds:language:target:tokens:tval":"keyword 'source'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueSource",
+                    "skb:lang:target:tokens:cval":"source",
+                    "skb:lang:target:tokens:tid":"SOURCE",
+                    "skb:lang:target:tokens:tval":"keyword 'source'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueTarget":{
-                    "a3ds:language:target:tokens:cid":"glueTarget",
-                    "a3ds:language:target:tokens:cval":"target",
-                    "a3ds:language:target:tokens:tid":"TARGET",
-                    "a3ds:language:target:tokens:tval":"keyword 'target'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueTarget",
+                    "skb:lang:target:tokens:cval":"target",
+                    "skb:lang:target:tokens:tid":"TARGET",
+                    "skb:lang:target:tokens:tval":"keyword 'target'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gluePort":{
-                    "a3ds:language:target:tokens:cid":"gluePort",
-                    "a3ds:language:target:tokens:cval":"port",
-                    "a3ds:language:target:tokens:tid":"PORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'port'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gluePort",
+                    "skb:lang:target:tokens:cval":"port",
+                    "skb:lang:target:tokens:tid":"PORT",
+                    "skb:lang:target:tokens:tval":"keyword 'port'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueSourcePort":{
-                    "a3ds:language:target:tokens:cid":"glueSourcePort",
-                    "a3ds:language:target:tokens:cval":"sourceport",
-                    "a3ds:language:target:tokens:tid":"SOURCEPORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'sourceport'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueSourcePort",
+                    "skb:lang:target:tokens:cval":"sourceport",
+                    "skb:lang:target:tokens:tid":"SOURCEPORT",
+                    "skb:lang:target:tokens:tval":"keyword 'sourceport'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueTargetPort":{
-                    "a3ds:language:target:tokens:cid":"glueTargetPort",
-                    "a3ds:language:target:tokens:cval":"targetport",
-                    "a3ds:language:target:tokens:tid":"TARGETPORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'targetport'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueTargetPort",
+                    "skb:lang:target:tokens:cval":"targetport",
+                    "skb:lang:target:tokens:tid":"TARGETPORT",
+                    "skb:lang:target:tokens:tval":"keyword 'targetport'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueDomain":{
-                    "a3ds:language:target:tokens:cid":"glueDomain",
-                    "a3ds:language:target:tokens:cval":"domain",
-                    "a3ds:language:target:tokens:tid":"DOMAIN",
-                    "a3ds:language:target:tokens:tval":"keyword 'domain'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueDomain",
+                    "skb:lang:target:tokens:cval":"domain",
+                    "skb:lang:target:tokens:tid":"DOMAIN",
+                    "skb:lang:target:tokens:tval":"keyword 'domain'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueContracts":{
-                    "a3ds:language:target:tokens:cid":"glueContracts",
-                    "a3ds:language:target:tokens:cval":"contracts",
-                    "a3ds:language:target:tokens:tid":"CONTRACTS",
-                    "a3ds:language:target:tokens:tval":"keyword 'contracts'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueContracts",
+                    "skb:lang:target:tokens:cval":"contracts",
+                    "skb:lang:target:tokens:tid":"CONTRACTS",
+                    "skb:lang:target:tokens:tval":"keyword 'contracts'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gluePolicies":{
-                    "a3ds:language:target:tokens:cid":"gluePolicies",
-                    "a3ds:language:target:tokens:cval":"policies",
-                    "a3ds:language:target:tokens:tid":"POLICIES",
-                    "a3ds:language:target:tokens:tval":"keyword 'policies'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gluePolicies",
+                    "skb:lang:target:tokens:cval":"policies",
+                    "skb:lang:target:tokens:tid":"POLICIES",
+                    "skb:lang:target:tokens:tval":"keyword 'policies'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // GLUE Keywords -> TYPES
                 "glueBINARY":{
-                    "a3ds:language:target:tokens:cid":"glueBINARY",
-                    "a3ds:language:target:tokens:cval":"binary",
-                    "a3ds:language:target:tokens:tid":"BINARY",
-                    "a3ds:language:target:tokens:tval":"keyword 'binary'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueBINARY",
+                    "skb:lang:target:tokens:cval":"binary",
+                    "skb:lang:target:tokens:tid":"BINARY",
+                    "skb:lang:target:tokens:tval":"keyword 'binary'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueBOOLEAN":{
-                    "a3ds:language:target:tokens:cid":"glueBOOLEAN",
-                    "a3ds:language:target:tokens:cval":"boolean",
-                    "a3ds:language:target:tokens:tid":"BOOLEAN",
-                    "a3ds:language:target:tokens:tval":"keyword 'boolean'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueBOOLEAN",
+                    "skb:lang:target:tokens:cval":"boolean",
+                    "skb:lang:target:tokens:tid":"BOOLEAN",
+                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueCHAR":{
-                    "a3ds:language:target:tokens:cid":"glueCHAR",
-                    "a3ds:language:target:tokens:cval":"char",
-                    "a3ds:language:target:tokens:tid":"CHAR",
-                    "a3ds:language:target:tokens:tval":"keyword 'char'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueCHAR",
+                    "skb:lang:target:tokens:cval":"char",
+                    "skb:lang:target:tokens:tid":"CHAR",
+                    "skb:lang:target:tokens:tval":"keyword 'char'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueDOUBLE":{
-                    "a3ds:language:target:tokens:cid":"glueDOUBLE",
-                    "a3ds:language:target:tokens:cval":"double",
-                    "a3ds:language:target:tokens:tid":"DOUBLE",
-                    "a3ds:language:target:tokens:tval":"keyword 'double'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueDOUBLE",
+                    "skb:lang:target:tokens:cval":"double",
+                    "skb:lang:target:tokens:tid":"DOUBLE",
+                    "skb:lang:target:tokens:tval":"keyword 'double'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueFLOAT":{
-                    "a3ds:language:target:tokens:cid":"glueFLOAT",
-                    "a3ds:language:target:tokens:cval":"float",
-                    "a3ds:language:target:tokens:tid":"FLOAT",
-                    "a3ds:language:target:tokens:tval":"keyword 'float'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueFLOAT",
+                    "skb:lang:target:tokens:cval":"float",
+                    "skb:lang:target:tokens:tid":"FLOAT",
+                    "skb:lang:target:tokens:tval":"keyword 'float'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueHEX":{
-                    "a3ds:language:target:tokens:cid":"glueHEX",
-                    "a3ds:language:target:tokens:cval":"hex",
-                    "a3ds:language:target:tokens:tid":"HEX",
-                    "a3ds:language:target:tokens:tval":"keyword 'hex'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueHEX",
+                    "skb:lang:target:tokens:cval":"hex",
+                    "skb:lang:target:tokens:tid":"HEX",
+                    "skb:lang:target:tokens:tval":"keyword 'hex'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueINTEGER":{
-                    "a3ds:language:target:tokens:cid":"glueINTEGER",
-                    "a3ds:language:target:tokens:cval":"integer",
-                    "a3ds:language:target:tokens:tid":"INTEGER",
-                    "a3ds:language:target:tokens:tval":"keyword 'integer'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueINTEGER",
+                    "skb:lang:target:tokens:cval":"integer",
+                    "skb:lang:target:tokens:tid":"INTEGER",
+                    "skb:lang:target:tokens:tval":"keyword 'integer'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueLONG":{
-                    "a3ds:language:target:tokens:cid":"glueLONG",
-                    "a3ds:language:target:tokens:cval":"long",
-                    "a3ds:language:target:tokens:tid":"LONG",
-                    "a3ds:language:target:tokens:tval":"keyword 'long'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueLONG",
+                    "skb:lang:target:tokens:cval":"long",
+                    "skb:lang:target:tokens:tid":"LONG",
+                    "skb:lang:target:tokens:tval":"keyword 'long'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueOCTET":{
-                    "a3ds:language:target:tokens:cid":"glueOCTET",
-                    "a3ds:language:target:tokens:cval":"octet",
-                    "a3ds:language:target:tokens:tid":"OCTET",
-                    "a3ds:language:target:tokens:tval":"keyword 'octet'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueOCTET",
+                    "skb:lang:target:tokens:cval":"octet",
+                    "skb:lang:target:tokens:tid":"OCTET",
+                    "skb:lang:target:tokens:tval":"keyword 'octet'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueSHORT":{
-                    "a3ds:language:target:tokens:cid":"glueSHORT",
-                    "a3ds:language:target:tokens:cval":"short",
-                    "a3ds:language:target:tokens:tid":"SHORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'short'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueSHORT",
+                    "skb:lang:target:tokens:cval":"short",
+                    "skb:lang:target:tokens:tid":"SHORT",
+                    "skb:lang:target:tokens:tval":"keyword 'short'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueSTRING":{
-                    "a3ds:language:target:tokens:cid":"glueSTRING",
-                    "a3ds:language:target:tokens:cval":"string",
-                    "a3ds:language:target:tokens:tid":"STRING",
-                    "a3ds:language:target:tokens:tval":"keyword 'string'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueSTRING",
+                    "skb:lang:target:tokens:cval":"string",
+                    "skb:lang:target:tokens:tid":"STRING",
+                    "skb:lang:target:tokens:tval":"keyword 'string'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVOID":{
-                    "a3ds:language:target:tokens:cid":"glueVOID",
-                    "a3ds:language:target:tokens:cval":"void",
-                    "a3ds:language:target:tokens:tid":"VOID",
-                    "a3ds:language:target:tokens:tval":"keyword 'void'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVOID",
+                    "skb:lang:target:tokens:cval":"void",
+                    "skb:lang:target:tokens:tid":"VOID",
+                    "skb:lang:target:tokens:tval":"keyword 'void'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // GLUE Keywords -> VALUES
                 "glueFALSE":{
-                    "a3ds:language:target:tokens:cid":"glueFALSE",
-                    "a3ds:language:target:tokens:cval":"FALSE",
-                    "a3ds:language:target:tokens:tid":"FALSE",
-                    "a3ds:language:target:tokens:tval":"keyword 'FALSE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueFALSE",
+                    "skb:lang:target:tokens:cval":"FALSE",
+                    "skb:lang:target:tokens:tid":"FALSE",
+                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueNULL":{
-                    "a3ds:language:target:tokens:cid":"glueNULL",
-                    "a3ds:language:target:tokens:cval":"NULL",
-                    "a3ds:language:target:tokens:tid":"NULL",
-                    "a3ds:language:target:tokens:tval":"keyword 'NULL'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueNULL",
+                    "skb:lang:target:tokens:cval":"NULL",
+                    "skb:lang:target:tokens:tid":"NULL",
+                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueTRUE":{
-                    "a3ds:language:target:tokens:cid":"glueTRUE",
-                    "a3ds:language:target:tokens:cval":"TRUE",
-                    "a3ds:language:target:tokens:tid":"TRUE",
-                    "a3ds:language:target:tokens:tval":"keyword 'TRUE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueTRUE",
+                    "skb:lang:target:tokens:cval":"TRUE",
+                    "skb:lang:target:tokens:tid":"TRUE",
+                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 "glueCPP_DIRECTIVE":{
-                    "a3ds:language:target:tokens:cid":"glueCPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:cval":"preprocessor directive",
-                    "a3ds:language:target:tokens:tid":"CPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:tval":"preprocessor directive",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueCPP_DIRECTIVE",
+                    "skb:lang:target:tokens:cval":"preprocessor directive",
+                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
+                    "skb:lang:target:tokens:tval":"preprocessor directive",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueESC":{
-                    "a3ds:language:target:tokens:cid":"glueESC",
-                    "a3ds:language:target:tokens:cval":"escape sequence",
-                    "a3ds:language:target:tokens:tid":"ESC",
-                    "a3ds:language:target:tokens:tval":"escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueESC",
+                    "skb:lang:target:tokens:cval":"escape sequence",
+                    "skb:lang:target:tokens:tid":"ESC",
+                    "skb:lang:target:tokens:tval":"escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueFloatSuffix":{
-                    "a3ds:language:target:tokens:cid":"glueFloatSuffix",
-                    "a3ds:language:target:tokens:cval":"floating point suffix",
-                    "a3ds:language:target:tokens:tid":"FloatSuffix",
-                    "a3ds:language:target:tokens:tval":"floating point suffix",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueFloatSuffix",
+                    "skb:lang:target:tokens:cval":"floating point suffix",
+                    "skb:lang:target:tokens:tid":"FloatSuffix",
+                    "skb:lang:target:tokens:tval":"floating point suffix",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueHexDigit":{
-                    "a3ds:language:target:tokens:cid":"glueHexDigit",
-                    "a3ds:language:target:tokens:cval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:tid":"HexDigit",
-                    "a3ds:language:target:tokens:tval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueHexDigit",
+                    "skb:lang:target:tokens:cval":"hexadecimal digit",
+                    "skb:lang:target:tokens:tid":"HexDigit",
+                    "skb:lang:target:tokens:tval":"hexadecimal digit",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueIDENT":{
-                    "a3ds:language:target:tokens:cid":"glueIDENT",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:tid":"IDENT",
-                    "a3ds:language:target:tokens:tval":"an identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueIDENT",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:tid":"IDENT",
+                    "skb:lang:target:tokens:tval":"an identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueINLINE_CODE":{
-                    "a3ds:language:target:tokens:cid":"glueINLINE_CODE",
-                    "a3ds:language:target:tokens:cval":"inline code",
-                    "a3ds:language:target:tokens:tid":"INLINE_CODE",
-                    "a3ds:language:target:tokens:tval":"inline code",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueINLINE_CODE",
+                    "skb:lang:target:tokens:cval":"inline code",
+                    "skb:lang:target:tokens:tid":"INLINE_CODE",
+                    "skb:lang:target:tokens:tval":"inline code",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueML_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"glueML_COMMENT",
-                    "a3ds:language:target:tokens:cval":"multiple line comment",
-                    "a3ds:language:target:tokens:tid":"ML_COMMENT",
-                    "a3ds:language:target:tokens:tval":"multiple line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueML_COMMENT",
+                    "skb:lang:target:tokens:cval":"multiple line comment",
+                    "skb:lang:target:tokens:tid":"ML_COMMENT",
+                    "skb:lang:target:tokens:tval":"multiple line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueOctDigit":{
-                    "a3ds:language:target:tokens:cid":"glueOctDigit",
-                    "a3ds:language:target:tokens:cval":"otcal digit",
-                    "a3ds:language:target:tokens:tid":"OctDigit",
-                    "a3ds:language:target:tokens:tval":"otcal digit",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueOctDigit",
+                    "skb:lang:target:tokens:cval":"otcal digit",
+                    "skb:lang:target:tokens:tid":"OctDigit",
+                    "skb:lang:target:tokens:tval":"otcal digit",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueOctalEscape":{
-                    "a3ds:language:target:tokens:cid":"glueOctalEscape",
-                    "a3ds:language:target:tokens:cval":"octal escape sequence",
-                    "a3ds:language:target:tokens:tid":"OctalEscape",
-                    "a3ds:language:target:tokens:tval":"octal escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueOctalEscape",
+                    "skb:lang:target:tokens:cval":"octal escape sequence",
+                    "skb:lang:target:tokens:tid":"OctalEscape",
+                    "skb:lang:target:tokens:tval":"octal escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueSL_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"glueSL_COMMENT",
-                    "a3ds:language:target:tokens:cval":"single line comment",
-                    "a3ds:language:target:tokens:tid":"SL_COMMENT",
-                    "a3ds:language:target:tokens:tval":"single line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueSL_COMMENT",
+                    "skb:lang:target:tokens:cval":"single line comment",
+                    "skb:lang:target:tokens:tid":"SL_COMMENT",
+                    "skb:lang:target:tokens:tval":"single line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueUnicodeEscape":{
-                    "a3ds:language:target:tokens:cid":"glueUnicodeEscape",
-                    "a3ds:language:target:tokens:cval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:tid":"UnicodeEscape",
-                    "a3ds:language:target:tokens:tval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueUnicodeEscape",
+                    "skb:lang:target:tokens:cval":"unicode escape sequence",
+                    "skb:lang:target:tokens:tid":"UnicodeEscape",
+                    "skb:lang:target:tokens:tval":"unicode escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVAL_BINARY":{
-                    "a3ds:language:target:tokens:cid":"glueVAL_BINARY",
-                    "a3ds:language:target:tokens:cval":"binary value",
-                    "a3ds:language:target:tokens:tid":"VAL_BINARY",
-                    "a3ds:language:target:tokens:tval":"binary value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVAL_BINARY",
+                    "skb:lang:target:tokens:cval":"binary value",
+                    "skb:lang:target:tokens:tid":"VAL_BINARY",
+                    "skb:lang:target:tokens:tval":"binary value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVAL_CHAR":{
-                    "a3ds:language:target:tokens:cid":"glueVAL_CHAR",
-                    "a3ds:language:target:tokens:cval":"character value",
-                    "a3ds:language:target:tokens:tid":"VAL_CHAR",
-                    "a3ds:language:target:tokens:tval":"character value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVAL_CHAR",
+                    "skb:lang:target:tokens:cval":"character value",
+                    "skb:lang:target:tokens:tid":"VAL_CHAR",
+                    "skb:lang:target:tokens:tval":"character value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVAL_FLOAT":{
-                    "a3ds:language:target:tokens:cid":"glueVAL_FLOAT",
-                    "a3ds:language:target:tokens:cval":"floating point value",
-                    "a3ds:language:target:tokens:tid":"VAL_FLOAT",
-                    "a3ds:language:target:tokens:tval":"floating point value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVAL_FLOAT",
+                    "skb:lang:target:tokens:cval":"floating point value",
+                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
+                    "skb:lang:target:tokens:tval":"floating point value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVAL_HEX":{
-                    "a3ds:language:target:tokens:cid":"glueVAL_HEX",
-                    "a3ds:language:target:tokens:cval":"hexadecimal value",
-                    "a3ds:language:target:tokens:tid":"VAL_HEX",
-                    "a3ds:language:target:tokens:tval":"hexadecimal value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVAL_HEX",
+                    "skb:lang:target:tokens:cval":"hexadecimal value",
+                    "skb:lang:target:tokens:tid":"VAL_HEX",
+                    "skb:lang:target:tokens:tval":"hexadecimal value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVAL_INTEGER":{
-                    "a3ds:language:target:tokens:cid":"glueVAL_INTEGER",
-                    "a3ds:language:target:tokens:cval":"integer value",
-                    "a3ds:language:target:tokens:tid":"VAL_INTEGER",
-                    "a3ds:language:target:tokens:tval":"integer value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVAL_INTEGER",
+                    "skb:lang:target:tokens:cval":"integer value",
+                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
+                    "skb:lang:target:tokens:tval":"integer value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVAL_OCT":{
-                    "a3ds:language:target:tokens:cid":"glueVAL_OCT",
-                    "a3ds:language:target:tokens:cval":"octal value",
-                    "a3ds:language:target:tokens:tid":"VAL_OCT",
-                    "a3ds:language:target:tokens:tval":"octal value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVAL_OCT",
+                    "skb:lang:target:tokens:cval":"octal value",
+                    "skb:lang:target:tokens:tid":"VAL_OCT",
+                    "skb:lang:target:tokens:tval":"octal value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueVAL_STRING":{
-                    "a3ds:language:target:tokens:cid":"glueVAL_STRING",
-                    "a3ds:language:target:tokens:cval":"string value",
-                    "a3ds:language:target:tokens:tid":"VAL_STRING",
-                    "a3ds:language:target:tokens:tval":"string value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueVAL_STRING",
+                    "skb:lang:target:tokens:cval":"string value",
+                    "skb:lang:target:tokens:tid":"VAL_STRING",
+                    "skb:lang:target:tokens:tval":"string value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "glueWS":{
-                    "a3ds:language:target:tokens:cid":"glueWS",
-                    "a3ds:language:target:tokens:cval":"whitespace",
-                    "a3ds:language:target:tokens:tid":"WS",
-                    "a3ds:language:target:tokens:tval":"whitespace",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"glueWS",
+                    "skb:lang:target:tokens:cval":"whitespace",
+                    "skb:lang:target:tokens:tid":"WS",
+                    "skb:lang:target:tokens:tval":"whitespace",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 ";":{
-                    "a3ds:language:target:tokens:tid":"';'",
-                    "a3ds:language:target:tokens:tval":"character ';'"
+                    "skb:lang:target:tokens:tid":"';'",
+                    "skb:lang:target:tokens:tval":"character ';'"
                 },
                 "}":{
-                    "a3ds:language:target:tokens:tid":"'}'",
-                    "a3ds:language:target:tokens:tval":"character '}'"
+                    "skb:lang:target:tokens:tid":"'}'",
+                    "skb:lang:target:tokens:tval":"character '}'"
                 },
                 "=":{
-                    "a3ds:language:target:tokens:tid":"'='",
-                    "a3ds:language:target:tokens:tval":"character '='"
+                    "skb:lang:target:tokens:tid":"'='",
+                    "skb:lang:target:tokens:tval":"character '='"
                 },
                 "(":{
-                    "a3ds:language:target:tokens:tid":"'('",
-                    "a3ds:language:target:tokens:tval":"character '('"
+                    "skb:lang:target:tokens:tid":"'('",
+                    "skb:lang:target:tokens:tval":"character '('"
                 },
                 ":":{
-                    "a3ds:language:target:tokens:tid":"':'",
-                    "a3ds:language:target:tokens:tval":"character ':'"
+                    "skb:lang:target:tokens:tid":"':'",
+                    "skb:lang:target:tokens:tval":"character ':'"
                 },
                 "::":{
-                    "a3ds:language:target:tokens:tid":"'::'",
-                    "a3ds:language:target:tokens:tval":"scope operator '::'"
+                    "skb:lang:target:tokens:tid":"'::'",
+                    "skb:lang:target:tokens:tval":"scope operator '::'"
                 },
                 "[":{
-                    "a3ds:language:target:tokens:tid":"'['",
-                    "a3ds:language:target:tokens:tval":"character '['"
+                    "skb:lang:target:tokens:tid":"'['",
+                    "skb:lang:target:tokens:tval":"character '['"
                 },
                 ",":{
-                    "a3ds:language:target:tokens:tid":"','",
-                    "a3ds:language:target:tokens:tval":"character ','"
+                    "skb:lang:target:tokens:tid":"','",
+                    "skb:lang:target:tokens:tval":"character ','"
                 },
                 ")":{
-                    "a3ds:language:target:tokens:tid":"')'",
-                    "a3ds:language:target:tokens:tval":"character ')'"
+                    "skb:lang:target:tokens:tid":"')'",
+                    "skb:lang:target:tokens:tval":"character ')'"
                 },
                 "{":{
-                    "a3ds:language:target:tokens:tid":"'{'",
-                    "a3ds:language:target:tokens:tval":"character '{'"
+                    "skb:lang:target:tokens:tid":"'{'",
+                    "skb:lang:target:tokens:tval":"character '{'"
                 },
                 "]":{
-                    "a3ds:language:target:tokens:tid":"']'",
-                    "a3ds:language:target:tokens:tval":"character ']'"
+                    "skb:lang:target:tokens:tid":"']'",
+                    "skb:lang:target:tokens:tval":"character ']'"
                 }
             },
 

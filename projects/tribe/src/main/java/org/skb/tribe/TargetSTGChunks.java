@@ -52,10 +52,10 @@ public class TargetSTGChunks {
 		if(map!=null){
 			OatArrayListAtomic ala;
 			for (String s:map.keySet()){
-				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTribeStgChunkMandatory).getValOatArrayListAtomic();
+				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkMandatory).getValOatArrayListAtomic();
 				if(ala!=null&&ala.size()>0)
 					this.chMan.put(s, ala);
-				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTribeStgChunkOptional).getValOatArrayListAtomic();
+				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkOptional).getValOatArrayListAtomic();
 				if(ala!=null&&ala.size()>0)
 					this.chOpt.put(s, ala);
 			}

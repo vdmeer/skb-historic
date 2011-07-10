@@ -39,7 +39,7 @@
 //
 
 {
-    "a3ds":{
+    "skb":{
         "tribe":{
             "configuration":{
                 "name":{
@@ -72,24 +72,24 @@
                 }
             }
         },
-        "language":{
+        "lang":{
             "configuration":{
                 "pola":{
-                    "a3ds:language:target:config:constid":"internalPolaTgtPola"
+                    "skb:lang:target:config:constid":"internalPolaTgtPola"
                 },
                 "xml":{
-                    "a3ds:language:target:config:constid":"internalPolaTgtXml"
+                    "skb:lang:target:config:constid":"internalPolaTgtXml"
                 },
                 "sql":{
-                    "a3ds:language:target:config:constid":"internalPolaTgtSql"
+                    "skb:lang:target:config:constid":"internalPolaTgtSql"
                 },
                 "internal-scope-sep":{
-                    "a3ds:language:target:config:constid":"keyScopeSep",
+                    "skb:lang:target:config:constid":"keyScopeSep",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"::"
                 },
                 "pr-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStat",
+                    "skb:lang:target:config:constid":"keyPrStat",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats",
@@ -97,7 +97,7 @@
                     "cli:usage:descr":"Show simple statistic information"
                 },
                 "pr-stats-all":{
-                    "a3ds:language:target:config:constid":"keyPrStatAll",
+                    "skb:lang:target:config:constid":"keyPrStatAll",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-all",
@@ -105,7 +105,7 @@
                     "cli:usage:descr":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
-                    "a3ds:language:target:config:constid":"keyPrStatsWScope",
+                    "skb:lang:target:config:constid":"keyPrStatsWScope",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-ws",
@@ -113,7 +113,7 @@
                     "cli:usage:descr":"No scoped names in statistics"
                 },
                 "pr-stg-stats":{
-                    "a3ds:language:target:config:constid":"keyPrStgFileStats",
+                    "skb:lang:target:config:constid":"keyPrStgFileStats",
                     "at:type":"oat:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stg-stats",
@@ -121,7 +121,7 @@
                     "cli:usage:descr":"Print statistics string template"
                 },
                 "stat-stg":{
-                    "a3ds:language:target:config:constid":"keyStatStg",
+                    "skb:lang:target:config:constid":"keyStatStg",
                     "at:type":"oat:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
@@ -132,7 +132,7 @@
             },
             "targets":{
                 "pola":{
-                    "a3ds:language:target:name":"pola",
+                    "skb:lang:target:name":"pola",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/pola.stg"
                     },
@@ -142,11 +142,11 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                     }
                 },
                 "xml":{
-                    "a3ds:language:target:name":"xml",
+                    "skb:lang:target:name":"xml",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
@@ -159,11 +159,11 @@
                     "tgt-stg-angle-br":{
                         "value:default":false
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                     }
                 },
                 "sql":{
-                    "a3ds:language:target:name":"sql",
+                    "skb:lang:target:name":"sql",
                     "tgt-stg":{
                             "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
@@ -173,700 +173,700 @@
                     "gc-scope-sep":{
                             "value:default":"::"
                     },
-                    "a3ds:language:target:config:cli":{
+                    "skb:lang:target:config:cli":{
                     }
                 }
             },
 
             "stgchunks":{
                 "mlcomment_start":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "mlcomment_end":{
-                    "a3ds:tribe:stgchunk:mandatory": ["dummy"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "slcomment":{
-                    "a3ds:tribe:stgchunk:mandatory": ["comment"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["comment"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
         
                 "polaSpecification":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "dialect"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "dialect"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
 
                 "const_value":{
-                    "a3ds:tribe:stgchunk:mandatory": ["type", "val"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["type", "val"],
+                    "skb:tribe:stgchunk:optional":  []
                 },
                 "scoped_name":{
-                    "a3ds:tribe:stgchunk:mandatory": ["id", "add"],
-                    "a3ds:tribe:stgchunk:optional":  []
+                    "skb:tribe:stgchunk:mandatory": ["id", "add"],
+                    "skb:tribe:stgchunk:optional":  []
                 }
             },
 
             "tokens":{
                 // for parser
                 "parserARRAY":{
-                    "a3ds:language:target:tokens:cid":"parserARRAY",
-                    "a3ds:language:target:tokens:cval":"array",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserARRAY",
+                    "skb:lang:target:tokens:cval":"array",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserMEMBER":{
-                    "a3ds:language:target:tokens:cid":"parserMEMBER",
-                    "a3ds:language:target:tokens:cval":"__member",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserMEMBER",
+                    "skb:lang:target:tokens:cval":"__member",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserIDENTIFIER":{
-                    "a3ds:language:target:tokens:cid":"parserIDENTIFIER",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopedName":{
-                    "a3ds:language:target:tokens:cid":"parserScopedName",
-                    "a3ds:language:target:tokens:cval":"scoped_name",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopedName",
+                    "skb:lang:target:tokens:cval":"scoped_name",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserBaseType ":{
-                    "a3ds:language:target:tokens:cid":"parserBaseType ",
-                    "a3ds:language:target:tokens:cval":"base_type",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserBaseType ",
+                    "skb:lang:target:tokens:cval":"base_type",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserItemProp":{
-                    "a3ds:language:target:tokens:cid":"parserItemProp",
-                    "a3ds:language:target:tokens:cval":"item-property",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserItemProp",
+                    "skb:lang:target:tokens:cval":"item-property",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "parserScopeSep":{
-                    "a3ds:language:target:tokens:cid":"parserScopeSep",
-                    "a3ds:language:target:tokens:cval":"::",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"parserScopeSep",
+                    "skb:lang:target:tokens:cval":"::",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscParrentID":{
-                    "a3ds:language:target:tokens:cid":"gcMiscParrentID",
-                    "a3ds:language:target:tokens:cval":"parrentId",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscParrentID",
+                    "skb:lang:target:tokens:cval":"parrentId",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscParrentCat":{
-                    "a3ds:language:target:tokens:cid":"gcMiscParrentCat",
-                    "a3ds:language:target:tokens:cval":"parrentCategory",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscParrentCat",
+                    "skb:lang:target:tokens:cval":"parrentCategory",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscCurrentCat":{
-                    "a3ds:language:target:tokens:cid":"gcMiscCurrentCat",
-                    "a3ds:language:target:tokens:cval":"currentCategory",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentCat",
+                    "skb:lang:target:tokens:cval":"currentCategory",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInDefinition":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInDefinition",
-                    "a3ds:language:target:tokens:cval":"inDefinition",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInDefinition",
+                    "skb:lang:target:tokens:cval":"inDefinition",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInItem":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInItem",
-                    "a3ds:language:target:tokens:cval":"inItem",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInItem",
+                    "skb:lang:target:tokens:cval":"inItem",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInContract":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInContract",
-                    "a3ds:language:target:tokens:cval":"inContract",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInContract",
+                    "skb:lang:target:tokens:cval":"inContract",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInPackage":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInPackage",
-                    "a3ds:language:target:tokens:cval":"inPackage",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInPackage",
+                    "skb:lang:target:tokens:cval":"inPackage",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInElement":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInElement",
-                    "a3ds:language:target:tokens:cval":"inElement",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInElement",
+                    "skb:lang:target:tokens:cval":"inElement",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInFacility":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInFacility",
-                    "a3ds:language:target:tokens:cval":"inFacility",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInFacility",
+                    "skb:lang:target:tokens:cval":"inFacility",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInAction":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInAction",
-                    "a3ds:language:target:tokens:cval":"inAction",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInAction",
+                    "skb:lang:target:tokens:cval":"inAction",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscInStruct":{
-                    "a3ds:language:target:tokens:cid":"gcMiscInStruct",
-                    "a3ds:language:target:tokens:cval":"inStruct",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscInStruct",
+                    "skb:lang:target:tokens:cval":"inStruct",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscSpecName":{
-                    "a3ds:language:target:tokens:cid":"gcMiscSpecName",
-                    "a3ds:language:target:tokens:cval":"specificationName",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscSpecName",
+                    "skb:lang:target:tokens:cval":"specificationName",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "gcMiscCurrentScope":{
-                    "a3ds:language:target:tokens:cid":"gcMiscCurrentScope",
-                    "a3ds:language:target:tokens:cval":"currentScope",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentScope",
+                    "skb:lang:target:tokens:cval":"currentScope",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // pola Keywords
                 "polaACTION":{
-                    "a3ds:language:target:tokens:cid":"polaACTION",
-                    "a3ds:language:target:tokens:cval":"action",
-                    "a3ds:language:target:tokens:tid":"ACTION",
-                    "a3ds:language:target:tokens:tval":"keyword 'action'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaACTION",
+                    "skb:lang:target:tokens:cval":"action",
+                    "skb:lang:target:tokens:tid":"ACTION",
+                    "skb:lang:target:tokens:tval":"keyword 'action'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaATTRIBUTE":{
-                    "a3ds:language:target:tokens:cid":"polaATTRIBUTE",
-                    "a3ds:language:target:tokens:cval":"attribute",
-                    "a3ds:language:target:tokens:tid":"ATTRIBUTE",
-                    "a3ds:language:target:tokens:tval":"keyword 'attribute'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaATTRIBUTE",
+                    "skb:lang:target:tokens:cval":"attribute",
+                    "skb:lang:target:tokens:tid":"ATTRIBUTE",
+                    "skb:lang:target:tokens:tval":"keyword 'attribute'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaCONTRACT":{
-                    "a3ds:language:target:tokens:cid":"polaCONTRACT",
-                    "a3ds:language:target:tokens:cval":"contract",
-                    "a3ds:language:target:tokens:tid":"CONTRACT",
-                    "a3ds:language:target:tokens:tval":"keyword 'contract'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaCONTRACT",
+                    "skb:lang:target:tokens:cval":"contract",
+                    "skb:lang:target:tokens:tid":"CONTRACT",
+                    "skb:lang:target:tokens:tval":"keyword 'contract'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaELEMENT":{
-                    "a3ds:language:target:tokens:cid":"polaELEMENT",
-                    "a3ds:language:target:tokens:cval":"element",
-                    "a3ds:language:target:tokens:tid":"ELEMENT",
-                    "a3ds:language:target:tokens:tval":"keyword 'element'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaELEMENT",
+                    "skb:lang:target:tokens:cval":"element",
+                    "skb:lang:target:tokens:tid":"ELEMENT",
+                    "skb:lang:target:tokens:tval":"keyword 'element'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaFACILITY":{
-                    "a3ds:language:target:tokens:cid":"polaFACILITY",
-                    "a3ds:language:target:tokens:cval":"facility",
-                    "a3ds:language:target:tokens:tid":"FACILITY",
-                    "a3ds:language:target:tokens:tval":"keyword 'facility'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaFACILITY",
+                    "skb:lang:target:tokens:cval":"facility",
+                    "skb:lang:target:tokens:tid":"FACILITY",
+                    "skb:lang:target:tokens:tval":"keyword 'facility'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaFUNCTION":{
-                    "a3ds:language:target:tokens:cid":"polaFUNCTION",
-                    "a3ds:language:target:tokens:cval":"function",
-                    "a3ds:language:target:tokens:tid":"FUNCTON",
-                    "a3ds:language:target:tokens:tval":"keyword 'function'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaFUNCTION",
+                    "skb:lang:target:tokens:cval":"function",
+                    "skb:lang:target:tokens:tid":"FUNCTON",
+                    "skb:lang:target:tokens:tval":"keyword 'function'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaITEM":{
-                    "a3ds:language:target:tokens:cid":"polaITEM",
-                    "a3ds:language:target:tokens:cval":"item",
-                    "a3ds:language:target:tokens:tid":"ITEM",
-                    "a3ds:language:target:tokens:tval":"keyword 'item'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaITEM",
+                    "skb:lang:target:tokens:cval":"item",
+                    "skb:lang:target:tokens:tid":"ITEM",
+                    "skb:lang:target:tokens:tval":"keyword 'item'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaMANDATORY":{
-                    "a3ds:language:target:tokens:cid":"polaMANDATORY",
-                    "a3ds:language:target:tokens:cval":"mandatory",
-                    "a3ds:language:target:tokens:tid":"MANDATORY",
-                    "a3ds:language:target:tokens:tval":"keyword 'mandatory'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaMANDATORY",
+                    "skb:lang:target:tokens:cval":"mandatory",
+                    "skb:lang:target:tokens:tid":"MANDATORY",
+                    "skb:lang:target:tokens:tval":"keyword 'mandatory'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaNOT_DEF":{
-                    "a3ds:language:target:tokens:cid":"polaNOT_DEF",
-                    "a3ds:language:target:tokens:cval":"not_def",
-                    "a3ds:language:target:tokens:tid":"NOT_DEF",
-                    "a3ds:language:target:tokens:tval":"keyword 'not_def'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaNOT_DEF",
+                    "skb:lang:target:tokens:cval":"not_def",
+                    "skb:lang:target:tokens:tid":"NOT_DEF",
+                    "skb:lang:target:tokens:tval":"keyword 'not_def'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaOPTIONAL":{
-                    "a3ds:language:target:tokens:cid":"polaOPTIONAL",
-                    "a3ds:language:target:tokens:cval":"optional",
-                    "a3ds:language:target:tokens:tid":"OPTIONAL",
-                    "a3ds:language:target:tokens:tval":"keyword 'optional'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaOPTIONAL",
+                    "skb:lang:target:tokens:cval":"optional",
+                    "skb:lang:target:tokens:tid":"OPTIONAL",
+                    "skb:lang:target:tokens:tval":"keyword 'optional'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaPACKAGE":{
-                    "a3ds:language:target:tokens:cid":"polaPACKAGE",
-                    "a3ds:language:target:tokens:cval":"package",
-                    "a3ds:language:target:tokens:tid":"PACKAGE",
-                    "a3ds:language:target:tokens:tval":"keyword 'package'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaPACKAGE",
+                    "skb:lang:target:tokens:cval":"package",
+                    "skb:lang:target:tokens:tid":"PACKAGE",
+                    "skb:lang:target:tokens:tval":"keyword 'package'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaPARAMETER":{
-                    "a3ds:language:target:tokens:cid":"polaPARAMETER",
-                    "a3ds:language:target:tokens:cval":"parameter",
-                    "a3ds:language:target:tokens:tid":"PARAMETER",
-                    "a3ds:language:target:tokens:tval":"keyword 'parameter'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaPARAMETER",
+                    "skb:lang:target:tokens:cval":"parameter",
+                    "skb:lang:target:tokens:tid":"PARAMETER",
+                    "skb:lang:target:tokens:tval":"keyword 'parameter'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaPROPERTY":{
-                    "a3ds:language:target:tokens:cid":"polaPROPERTY",
-                    "a3ds:language:target:tokens:cval":"property",
-                    "a3ds:language:target:tokens:tid":"PROPERTY",
-                    "a3ds:language:target:tokens:tval":"keyword 'property'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaPROPERTY",
+                    "skb:lang:target:tokens:cval":"property",
+                    "skb:lang:target:tokens:tid":"PROPERTY",
+                    "skb:lang:target:tokens:tval":"keyword 'property'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaREQUIRED":{
-                    "a3ds:language:target:tokens:cid":"polaREQUIRED",
-                    "a3ds:language:target:tokens:cval":"required",
-                    "a3ds:language:target:tokens:tid":"REQUIRED",
-                    "a3ds:language:target:tokens:tval":"keyword 'required'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaREQUIRED",
+                    "skb:lang:target:tokens:cval":"required",
+                    "skb:lang:target:tokens:tid":"REQUIRED",
+                    "skb:lang:target:tokens:tval":"keyword 'required'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaSPECIFICATION":{
-                    "a3ds:language:target:tokens:cid":"polaSPECIFICATION",
-                    "a3ds:language:target:tokens:cval":"pola-specification",
-                    "a3ds:language:target:tokens:tid":"SPECIFICATION",
-                    "a3ds:language:target:tokens:tval":"keyword 'pola-specification'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaSPECIFICATION",
+                    "skb:lang:target:tokens:cval":"pola-specification",
+                    "skb:lang:target:tokens:tid":"SPECIFICATION",
+                    "skb:lang:target:tokens:tval":"keyword 'pola-specification'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaSTRUCT":{
-                    "a3ds:language:target:tokens:cid":"polaSTRUCT",
-                    "a3ds:language:target:tokens:cval":"struct",
-                    "a3ds:language:target:tokens:tid":"STRUCT",
-                    "a3ds:language:target:tokens:tval":"keyword 'struct'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaSTRUCT",
+                    "skb:lang:target:tokens:cval":"struct",
+                    "skb:lang:target:tokens:tid":"STRUCT",
+                    "skb:lang:target:tokens:tval":"keyword 'struct'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaTYPEDEF":{
-                    "a3ds:language:target:tokens:cid":"polaTYPEDEF",
-                    "a3ds:language:target:tokens:cval":"typedef",
-                    "a3ds:language:target:tokens:tid":"TYPEDEF",
-                    "a3ds:language:target:tokens:tval":"keyword 'typedef'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaTYPEDEF",
+                    "skb:lang:target:tokens:cval":"typedef",
+                    "skb:lang:target:tokens:tid":"TYPEDEF",
+                    "skb:lang:target:tokens:tval":"keyword 'typedef'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // pola Keywords -> TYPES
                 "polaBINARY":{
-                    "a3ds:language:target:tokens:cid":"polaBINARY",
-                    "a3ds:language:target:tokens:cval":"binary",
-                    "a3ds:language:target:tokens:tid":"BINARY",
-                    "a3ds:language:target:tokens:tval":"keyword 'binary'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaBINARY",
+                    "skb:lang:target:tokens:cval":"binary",
+                    "skb:lang:target:tokens:tid":"BINARY",
+                    "skb:lang:target:tokens:tval":"keyword 'binary'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaBOOLEAN":{
-                    "a3ds:language:target:tokens:cid":"polaBOOLEAN",
-                    "a3ds:language:target:tokens:cval":"boolean",
-                    "a3ds:language:target:tokens:tid":"BOOLEAN",
-                    "a3ds:language:target:tokens:tval":"keyword 'boolean'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaBOOLEAN",
+                    "skb:lang:target:tokens:cval":"boolean",
+                    "skb:lang:target:tokens:tid":"BOOLEAN",
+                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaCHAR":{
-                    "a3ds:language:target:tokens:cid":"polaCHAR",
-                    "a3ds:language:target:tokens:cval":"char",
-                    "a3ds:language:target:tokens:tid":"CHAR",
-                    "a3ds:language:target:tokens:tval":"keyword 'char'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaCHAR",
+                    "skb:lang:target:tokens:cval":"char",
+                    "skb:lang:target:tokens:tid":"CHAR",
+                    "skb:lang:target:tokens:tval":"keyword 'char'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaDOUBLE":{
-                    "a3ds:language:target:tokens:cid":"polaDOUBLE",
-                    "a3ds:language:target:tokens:cval":"double",
-                    "a3ds:language:target:tokens:tid":"DOUBLE",
-                    "a3ds:language:target:tokens:tval":"keyword 'double'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaDOUBLE",
+                    "skb:lang:target:tokens:cval":"double",
+                    "skb:lang:target:tokens:tid":"DOUBLE",
+                    "skb:lang:target:tokens:tval":"keyword 'double'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaFLOAT":{
-                    "a3ds:language:target:tokens:cid":"polaFLOAT",
-                    "a3ds:language:target:tokens:cval":"float",
-                    "a3ds:language:target:tokens:tid":"FLOAT",
-                    "a3ds:language:target:tokens:tval":"keyword 'float'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaFLOAT",
+                    "skb:lang:target:tokens:cval":"float",
+                    "skb:lang:target:tokens:tid":"FLOAT",
+                    "skb:lang:target:tokens:tval":"keyword 'float'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaHEX":{
-                    "a3ds:language:target:tokens:cid":"polaHEX",
-                    "a3ds:language:target:tokens:cval":"hex",
-                    "a3ds:language:target:tokens:tid":"HEX",
-                    "a3ds:language:target:tokens:tval":"keyword 'hex'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaHEX",
+                    "skb:lang:target:tokens:cval":"hex",
+                    "skb:lang:target:tokens:tid":"HEX",
+                    "skb:lang:target:tokens:tval":"keyword 'hex'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaINTEGER":{
-                    "a3ds:language:target:tokens:cid":"polaINTEGER",
-                    "a3ds:language:target:tokens:cval":"integer",
-                    "a3ds:language:target:tokens:tid":"INTEGER",
-                    "a3ds:language:target:tokens:tval":"keyword 'integer'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaINTEGER",
+                    "skb:lang:target:tokens:cval":"integer",
+                    "skb:lang:target:tokens:tid":"INTEGER",
+                    "skb:lang:target:tokens:tval":"keyword 'integer'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaLONG":{
-                    "a3ds:language:target:tokens:cid":"polaLONG",
-                    "a3ds:language:target:tokens:cval":"long",
-                    "a3ds:language:target:tokens:tid":"LONG",
-                    "a3ds:language:target:tokens:tval":"keyword 'long'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaLONG",
+                    "skb:lang:target:tokens:cval":"long",
+                    "skb:lang:target:tokens:tid":"LONG",
+                    "skb:lang:target:tokens:tval":"keyword 'long'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaOCTET":{
-                    "a3ds:language:target:tokens:cid":"polaOCTET",
-                    "a3ds:language:target:tokens:cval":"octet",
-                    "a3ds:language:target:tokens:tid":"OCTET",
-                    "a3ds:language:target:tokens:tval":"keyword 'octet'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaOCTET",
+                    "skb:lang:target:tokens:cval":"octet",
+                    "skb:lang:target:tokens:tid":"OCTET",
+                    "skb:lang:target:tokens:tval":"keyword 'octet'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaSHORT":{
-                    "a3ds:language:target:tokens:cid":"polaSHORT",
-                    "a3ds:language:target:tokens:cval":"short",
-                    "a3ds:language:target:tokens:tid":"SHORT",
-                    "a3ds:language:target:tokens:tval":"keyword 'short'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaSHORT",
+                    "skb:lang:target:tokens:cval":"short",
+                    "skb:lang:target:tokens:tid":"SHORT",
+                    "skb:lang:target:tokens:tval":"keyword 'short'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaSTRING":{
-                    "a3ds:language:target:tokens:cid":"polaSTRING",
-                    "a3ds:language:target:tokens:cval":"string",
-                    "a3ds:language:target:tokens:tid":"STRING",
-                    "a3ds:language:target:tokens:tval":"keyword 'string'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaSTRING",
+                    "skb:lang:target:tokens:cval":"string",
+                    "skb:lang:target:tokens:tid":"STRING",
+                    "skb:lang:target:tokens:tval":"keyword 'string'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVOID":{
-                    "a3ds:language:target:tokens:cid":"polaVOID",
-                    "a3ds:language:target:tokens:cval":"void",
-                    "a3ds:language:target:tokens:tid":"VOID",
-                    "a3ds:language:target:tokens:tval":"keyword 'void'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVOID",
+                    "skb:lang:target:tokens:cval":"void",
+                    "skb:lang:target:tokens:tid":"VOID",
+                    "skb:lang:target:tokens:tval":"keyword 'void'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // pola Keywords -> VALUES
                 "polaFALSE":{
-                    "a3ds:language:target:tokens:cid":"polaFALSE",
-                    "a3ds:language:target:tokens:cval":"FALSE",
-                    "a3ds:language:target:tokens:tid":"FALSE",
-                    "a3ds:language:target:tokens:tval":"keyword 'FALSE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaFALSE",
+                    "skb:lang:target:tokens:cval":"FALSE",
+                    "skb:lang:target:tokens:tid":"FALSE",
+                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaNULL":{
-                    "a3ds:language:target:tokens:cid":"polaNULL",
-                    "a3ds:language:target:tokens:cval":"NULL",
-                    "a3ds:language:target:tokens:tid":"NULL",
-                    "a3ds:language:target:tokens:tval":"keyword 'NULL'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaNULL",
+                    "skb:lang:target:tokens:cval":"NULL",
+                    "skb:lang:target:tokens:tid":"NULL",
+                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaTRUE":{
-                    "a3ds:language:target:tokens:cid":"polaTRUE",
-                    "a3ds:language:target:tokens:cval":"TRUE",
-                    "a3ds:language:target:tokens:tid":"TRUE",
-                    "a3ds:language:target:tokens:tval":"keyword 'TRUE'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaTRUE",
+                    "skb:lang:target:tokens:cval":"TRUE",
+                    "skb:lang:target:tokens:tid":"TRUE",
+                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 // pola Keywords -> @@@
                 "polaAT_ALTERABLE":{
-                    "a3ds:language:target:tokens:cid":"polaAT_ALTERABLE",
-                    "a3ds:language:target:tokens:cval":"@alterable",
-                    "a3ds:language:target:tokens:tid":"AT_ALTERABLE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@alterable'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_ALTERABLE",
+                    "skb:lang:target:tokens:cval":"@alterable",
+                    "skb:lang:target:tokens:tid":"AT_ALTERABLE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@alterable'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_APPLY":{
-                    "a3ds:language:target:tokens:cid":"polaAT_APPLY",
-                    "a3ds:language:target:tokens:cval":"@apply",
-                    "a3ds:language:target:tokens:tid":"AT_APPLY",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@apply'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_APPLY",
+                    "skb:lang:target:tokens:cval":"@apply",
+                    "skb:lang:target:tokens:tid":"AT_APPLY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@apply'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_CLEVEL":{
-                    "a3ds:language:target:tokens:cid":"polaAT_CLEVEL",
-                    "a3ds:language:target:tokens:cval":"@clevel",
-                    "a3ds:language:target:tokens:tid":"AT_CLEVEL",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@clevel'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_CLEVEL",
+                    "skb:lang:target:tokens:cval":"@clevel",
+                    "skb:lang:target:tokens:tid":"AT_CLEVEL",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@clevel'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_CONTAINS":{
-                    "a3ds:language:target:tokens:cid":"polaAT_CONTAINS",
-                    "a3ds:language:target:tokens:cval":"@contains",
-                    "a3ds:language:target:tokens:tid":"AT_CONTAINS",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@contains'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_CONTAINS",
+                    "skb:lang:target:tokens:cval":"@contains",
+                    "skb:lang:target:tokens:tid":"AT_CONTAINS",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@contains'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_DESCRIPTION":{
-                    "a3ds:language:target:tokens:cid":"polaAT_DESCRIPTION",
-                    "a3ds:language:target:tokens:cval":"@description",
-                    "a3ds:language:target:tokens:tid":"AT_DESCRIPTION",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@description'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_DESCRIPTION",
+                    "skb:lang:target:tokens:cval":"@description",
+                    "skb:lang:target:tokens:tid":"AT_DESCRIPTION",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@description'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_EXTENDS":{
-                    "a3ds:language:target:tokens:cid":"polaAT_EXTENDS",
-                    "a3ds:language:target:tokens:cval":"@extends",
-                    "a3ds:language:target:tokens:tid":"AT_EXTENDS",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@extends'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_EXTENDS",
+                    "skb:lang:target:tokens:cval":"@extends",
+                    "skb:lang:target:tokens:tid":"AT_EXTENDS",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@extends'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_ENVIRONMENT":{
-                    "a3ds:language:target:tokens:cid":"polaAT_ENVIRONMENT",
-                    "a3ds:language:target:tokens:cval":"@environment",
-                    "a3ds:language:target:tokens:tid":"AT_ENVIRONMENT",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@environment'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_ENVIRONMENT",
+                    "skb:lang:target:tokens:cval":"@environment",
+                    "skb:lang:target:tokens:tid":"AT_ENVIRONMENT",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@environment'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_LANGUAGE":{
-                    "a3ds:language:target:tokens:cid":"polaAT_LANGUAGE",
-                    "a3ds:language:target:tokens:cval":"@language",
-                    "a3ds:language:target:tokens:tid":"AT_LANGUAGE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@language'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_LANGUAGE",
+                    "skb:lang:target:tokens:cval":"@language",
+                    "skb:lang:target:tokens:tid":"AT_LANGUAGE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@language'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_NEGOTIABLE":{
-                    "a3ds:language:target:tokens:cid":"polaAT_NEGOTIABLE",
-                    "a3ds:language:target:tokens:cval":"@negotiable",
-                    "a3ds:language:target:tokens:tid":"AT_NEGOTIABLE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@negotiable'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_NEGOTIABLE",
+                    "skb:lang:target:tokens:cval":"@negotiable",
+                    "skb:lang:target:tokens:tid":"AT_NEGOTIABLE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@negotiable'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_PRIORITY":{
-                    "a3ds:language:target:tokens:cid":"polaAT_PRIORITY",
-                    "a3ds:language:target:tokens:cval":"@priority",
-                    "a3ds:language:target:tokens:tid":"AT_PRIORITY",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@priority'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_PRIORITY",
+                    "skb:lang:target:tokens:cval":"@priority",
+                    "skb:lang:target:tokens:tid":"AT_PRIORITY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@priority'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_PROVIDES":{
-                    "a3ds:language:target:tokens:cid":"polaAT_PROVIDES",
-                    "a3ds:language:target:tokens:cval":"@provides",
-                    "a3ds:language:target:tokens:tid":"AT_PROVIDES",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@provides'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_PROVIDES",
+                    "skb:lang:target:tokens:cval":"@provides",
+                    "skb:lang:target:tokens:tid":"AT_PROVIDES",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_RANK":{
-                    "a3ds:language:target:tokens:cid":"polaAT_RANK",
-                    "a3ds:language:target:tokens:cval":"@rank",
-                    "a3ds:language:target:tokens:tid":"AT_RANK",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@rank'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_RANK",
+                    "skb:lang:target:tokens:cval":"@rank",
+                    "skb:lang:target:tokens:tid":"AT_RANK",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@rank'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_REQUIRES":{
-                    "a3ds:language:target:tokens:cid":"polaAT_REQUIRES",
-                    "a3ds:language:target:tokens:cval":"@requires",
-                    "a3ds:language:target:tokens:tid":"AT_REQUIRES",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@requires'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_REQUIRES",
+                    "skb:lang:target:tokens:cval":"@requires",
+                    "skb:lang:target:tokens:tid":"AT_REQUIRES",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@requires'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_RETURN":{
-                    "a3ds:language:target:tokens:cid":"polaAT_RETURN",
-                    "a3ds:language:target:tokens:cval":"@return",
-                    "a3ds:language:target:tokens:tid":"AT_RETURN",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@return'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_RETURN",
+                    "skb:lang:target:tokens:cval":"@return",
+                    "skb:lang:target:tokens:tid":"AT_RETURN",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@return'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_RUNTIME":{
-                    "a3ds:language:target:tokens:cid":"polaAT_RUNTIME",
-                    "a3ds:language:target:tokens:cval":"@runtime",
-                    "a3ds:language:target:tokens:tid":"AT_RUNTIME",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@runtime'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_RUNTIME",
+                    "skb:lang:target:tokens:cval":"@runtime",
+                    "skb:lang:target:tokens:tid":"AT_RUNTIME",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@runtime'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_SCOPE":{
-                    "a3ds:language:target:tokens:cid":"polaAT_SCOPE",
-                    "a3ds:language:target:tokens:cval":"@scope",
-                    "a3ds:language:target:tokens:tid":"AT_SCOPE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@scope'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_SCOPE",
+                    "skb:lang:target:tokens:cval":"@scope",
+                    "skb:lang:target:tokens:tid":"AT_SCOPE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@scope'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_SPEC":{
-                    "a3ds:language:target:tokens:cid":"polaAT_SPEC",
-                    "a3ds:language:target:tokens:cval":"@scpec",
-                    "a3ds:language:target:tokens:tid":"AT_SPEC",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@scpec'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_SPEC",
+                    "skb:lang:target:tokens:cval":"@scpec",
+                    "skb:lang:target:tokens:tid":"AT_SPEC",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@scpec'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_STAGE":{
-                    "a3ds:language:target:tokens:cid":"polaAT_STAGE",
-                    "a3ds:language:target:tokens:cval":"@stage",
-                    "a3ds:language:target:tokens:tid":"AT_STAGE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@stage'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_STAGE",
+                    "skb:lang:target:tokens:cval":"@stage",
+                    "skb:lang:target:tokens:tid":"AT_STAGE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@stage'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_TYPE":{
-                    "a3ds:language:target:tokens:cid":"polaAT_TYPE",
-                    "a3ds:language:target:tokens:cval":"@type",
-                    "a3ds:language:target:tokens:tid":"AT_TYPE",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@type'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_TYPE",
+                    "skb:lang:target:tokens:cval":"@type",
+                    "skb:lang:target:tokens:tid":"AT_TYPE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@type'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_VISIBILITY":{
-                    "a3ds:language:target:tokens:cid":"polaAT_VISIBILITY",
-                    "a3ds:language:target:tokens:cval":"@visibility",
-                    "a3ds:language:target:tokens:tid":"AT_VISIBILITY",
-                    "a3ds:language:target:tokens:tval":"an @ keyword '@visibility'",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaAT_VISIBILITY",
+                    "skb:lang:target:tokens:cval":"@visibility",
+                    "skb:lang:target:tokens:tid":"AT_VISIBILITY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@visibility'",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 "polaCPP_DIRECTIVE":{
-                    "a3ds:language:target:tokens:cid":"polaCPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:cval":"preprocessor directive",
-                    "a3ds:language:target:tokens:tid":"CPP_DIRECTIVE",
-                    "a3ds:language:target:tokens:tval":"preprocessor directive",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaCPP_DIRECTIVE",
+                    "skb:lang:target:tokens:cval":"preprocessor directive",
+                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
+                    "skb:lang:target:tokens:tval":"preprocessor directive",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaESC":{
-                    "a3ds:language:target:tokens:cid":"polaESC",
-                    "a3ds:language:target:tokens:cval":"escape sequence",
-                    "a3ds:language:target:tokens:tid":"ESC",
-                    "a3ds:language:target:tokens:tval":"escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaESC",
+                    "skb:lang:target:tokens:cval":"escape sequence",
+                    "skb:lang:target:tokens:tid":"ESC",
+                    "skb:lang:target:tokens:tval":"escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaFloatSuffix":{
-                    "a3ds:language:target:tokens:cid":"polaFloatSuffix",
-                    "a3ds:language:target:tokens:cval":"floating point suffix",
-                    "a3ds:language:target:tokens:tid":"FloatSuffix",
-                    "a3ds:language:target:tokens:tval":"floating point suffix",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaFloatSuffix",
+                    "skb:lang:target:tokens:cval":"floating point suffix",
+                    "skb:lang:target:tokens:tid":"FloatSuffix",
+                    "skb:lang:target:tokens:tval":"floating point suffix",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaHexDigit":{
-                    "a3ds:language:target:tokens:cid":"polaHexDigit",
-                    "a3ds:language:target:tokens:cval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:tid":"HexDigit",
-                    "a3ds:language:target:tokens:tval":"hexadecimal digit",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaHexDigit",
+                    "skb:lang:target:tokens:cval":"hexadecimal digit",
+                    "skb:lang:target:tokens:tid":"HexDigit",
+                    "skb:lang:target:tokens:tval":"hexadecimal digit",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaIDENT":{
-                    "a3ds:language:target:tokens:cid":"polaIDENT",
-                    "a3ds:language:target:tokens:cval":"identifier",
-                    "a3ds:language:target:tokens:tid":"IDENT",
-                    "a3ds:language:target:tokens:tval":"an identifier",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaIDENT",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:tid":"IDENT",
+                    "skb:lang:target:tokens:tval":"an identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaINLINE_CODE":{
-                    "a3ds:language:target:tokens:cid":"polaINLINE_CODE",
-                    "a3ds:language:target:tokens:cval":"inline code",
-                    "a3ds:language:target:tokens:tid":"INLINE_CODE",
-                    "a3ds:language:target:tokens:tval":"inline code",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaINLINE_CODE",
+                    "skb:lang:target:tokens:cval":"inline code",
+                    "skb:lang:target:tokens:tid":"INLINE_CODE",
+                    "skb:lang:target:tokens:tval":"inline code",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaML_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"polaML_COMMENT",
-                    "a3ds:language:target:tokens:cval":"multiple line comment",
-                    "a3ds:language:target:tokens:tid":"ML_COMMENT",
-                    "a3ds:language:target:tokens:tval":"multiple line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaML_COMMENT",
+                    "skb:lang:target:tokens:cval":"multiple line comment",
+                    "skb:lang:target:tokens:tid":"ML_COMMENT",
+                    "skb:lang:target:tokens:tval":"multiple line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaOctDigit":{
-                    "a3ds:language:target:tokens:cid":"polaOctDigit",
-                    "a3ds:language:target:tokens:cval":"otcal digit",
-                    "a3ds:language:target:tokens:tid":"OctDigit",
-                    "a3ds:language:target:tokens:tval":"otcal digit",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaOctDigit",
+                    "skb:lang:target:tokens:cval":"otcal digit",
+                    "skb:lang:target:tokens:tid":"OctDigit",
+                    "skb:lang:target:tokens:tval":"otcal digit",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaOctalEscape":{
-                    "a3ds:language:target:tokens:cid":"polaOctalEscape",
-                    "a3ds:language:target:tokens:cval":"octal escape sequence",
-                    "a3ds:language:target:tokens:tid":"OctalEscape",
-                    "a3ds:language:target:tokens:tval":"octal escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaOctalEscape",
+                    "skb:lang:target:tokens:cval":"octal escape sequence",
+                    "skb:lang:target:tokens:tid":"OctalEscape",
+                    "skb:lang:target:tokens:tval":"octal escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaSL_COMMENT":{
-                    "a3ds:language:target:tokens:cid":"polaSL_COMMENT",
-                    "a3ds:language:target:tokens:cval":"single line comment",
-                    "a3ds:language:target:tokens:tid":"SL_COMMENT",
-                    "a3ds:language:target:tokens:tval":"single line comment",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaSL_COMMENT",
+                    "skb:lang:target:tokens:cval":"single line comment",
+                    "skb:lang:target:tokens:tid":"SL_COMMENT",
+                    "skb:lang:target:tokens:tval":"single line comment",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaUnicodeEscape":{
-                    "a3ds:language:target:tokens:cid":"polaUnicodeEscape",
-                    "a3ds:language:target:tokens:cval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:tid":"UnicodeEscape",
-                    "a3ds:language:target:tokens:tval":"unicode escape sequence",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaUnicodeEscape",
+                    "skb:lang:target:tokens:cval":"unicode escape sequence",
+                    "skb:lang:target:tokens:tid":"UnicodeEscape",
+                    "skb:lang:target:tokens:tval":"unicode escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVAL_BINARY":{
-                    "a3ds:language:target:tokens:cid":"polaVAL_BINARY",
-                    "a3ds:language:target:tokens:cval":"binary value",
-                    "a3ds:language:target:tokens:tid":"VAL_BINARY",
-                    "a3ds:language:target:tokens:tval":"binary value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVAL_BINARY",
+                    "skb:lang:target:tokens:cval":"binary value",
+                    "skb:lang:target:tokens:tid":"VAL_BINARY",
+                    "skb:lang:target:tokens:tval":"binary value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVAL_CHAR":{
-                    "a3ds:language:target:tokens:cid":"polaVAL_CHAR",
-                    "a3ds:language:target:tokens:cval":"character value",
-                    "a3ds:language:target:tokens:tid":"VAL_CHAR",
-                    "a3ds:language:target:tokens:tval":"character value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVAL_CHAR",
+                    "skb:lang:target:tokens:cval":"character value",
+                    "skb:lang:target:tokens:tid":"VAL_CHAR",
+                    "skb:lang:target:tokens:tval":"character value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVAL_FLOAT":{
-                    "a3ds:language:target:tokens:cid":"polaVAL_FLOAT",
-                    "a3ds:language:target:tokens:cval":"floating point value",
-                    "a3ds:language:target:tokens:tid":"VAL_FLOAT",
-                    "a3ds:language:target:tokens:tval":"floating point value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVAL_FLOAT",
+                    "skb:lang:target:tokens:cval":"floating point value",
+                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
+                    "skb:lang:target:tokens:tval":"floating point value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVAL_HEX":{
-                    "a3ds:language:target:tokens:cid":"polaVAL_HEX",
-                    "a3ds:language:target:tokens:cval":"hexadecimal value",
-                    "a3ds:language:target:tokens:tid":"VAL_HEX",
-                    "a3ds:language:target:tokens:tval":"hexadecimal value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVAL_HEX",
+                    "skb:lang:target:tokens:cval":"hexadecimal value",
+                    "skb:lang:target:tokens:tid":"VAL_HEX",
+                    "skb:lang:target:tokens:tval":"hexadecimal value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVAL_INTEGER":{
-                    "a3ds:language:target:tokens:cid":"polaVAL_INTEGER",
-                    "a3ds:language:target:tokens:cval":"integer value",
-                    "a3ds:language:target:tokens:tid":"VAL_INTEGER",
-                    "a3ds:language:target:tokens:tval":"integer value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVAL_INTEGER",
+                    "skb:lang:target:tokens:cval":"integer value",
+                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
+                    "skb:lang:target:tokens:tval":"integer value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVAL_OCT":{
-                    "a3ds:language:target:tokens:cid":"polaVAL_OCT",
-                    "a3ds:language:target:tokens:cval":"octal value",
-                    "a3ds:language:target:tokens:tid":"VAL_OCT",
-                    "a3ds:language:target:tokens:tval":"octal value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVAL_OCT",
+                    "skb:lang:target:tokens:cval":"octal value",
+                    "skb:lang:target:tokens:tid":"VAL_OCT",
+                    "skb:lang:target:tokens:tval":"octal value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaVAL_STRING":{
-                    "a3ds:language:target:tokens:cid":"polaVAL_STRING",
-                    "a3ds:language:target:tokens:cval":"string value",
-                    "a3ds:language:target:tokens:tid":"VAL_STRING",
-                    "a3ds:language:target:tokens:tval":"string value",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaVAL_STRING",
+                    "skb:lang:target:tokens:cval":"string value",
+                    "skb:lang:target:tokens:tid":"VAL_STRING",
+                    "skb:lang:target:tokens:tval":"string value",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaWS":{
-                    "a3ds:language:target:tokens:cid":"polaWS",
-                    "a3ds:language:target:tokens:cval":"whitespace",
-                    "a3ds:language:target:tokens:tid":"WS",
-                    "a3ds:language:target:tokens:tval":"whitespace",
-                    "a3ds:language:target:tokens:cjavadoc":""
+                    "skb:lang:target:tokens:cid":"polaWS",
+                    "skb:lang:target:tokens:cval":"whitespace",
+                    "skb:lang:target:tokens:tid":"WS",
+                    "skb:lang:target:tokens:tval":"whitespace",
+                    "skb:lang:target:tokens:cjavadoc":""
                 },
 
 
                 //for lexer to print proper error messages
                 ";":{
-                    "a3ds:language:target:tokens:tid":"';'",
-                    "a3ds:language:target:tokens:tval":"character ';'"
+                    "skb:lang:target:tokens:tid":"';'",
+                    "skb:lang:target:tokens:tval":"character ';'"
                 },
                 "}":{
-                    "a3ds:language:target:tokens:tid":"'}'",
-                    "a3ds:language:target:tokens:tval":"character '}'"
+                    "skb:lang:target:tokens:tid":"'}'",
+                    "skb:lang:target:tokens:tval":"character '}'"
                 },
                 "=":{
-                    "a3ds:language:target:tokens:tid":"'='",
-                    "a3ds:language:target:tokens:tval":"character '='"
+                    "skb:lang:target:tokens:tid":"'='",
+                    "skb:lang:target:tokens:tval":"character '='"
                 },
                 "(":{
-                    "a3ds:language:target:tokens:tid":"'('",
-                    "a3ds:language:target:tokens:tval":"character '('"
+                    "skb:lang:target:tokens:tid":"'('",
+                    "skb:lang:target:tokens:tval":"character '('"
                 },
                 ":":{
-                    "a3ds:language:target:tokens:tid":"':'",
-                    "a3ds:language:target:tokens:tval":"character ':'"
+                    "skb:lang:target:tokens:tid":"':'",
+                    "skb:lang:target:tokens:tval":"character ':'"
                 },
                 "::":{
-                    "a3ds:language:target:tokens:tid":"'::'",
-                    "a3ds:language:target:tokens:tval":"scope operator '::'"
+                    "skb:lang:target:tokens:tid":"'::'",
+                    "skb:lang:target:tokens:tval":"scope operator '::'"
                 },
                 "[":{
-                    "a3ds:language:target:tokens:tid":"'['",
-                    "a3ds:language:target:tokens:tval":"character '['"
+                    "skb:lang:target:tokens:tid":"'['",
+                    "skb:lang:target:tokens:tval":"character '['"
                 },
                 ",":{
-                    "a3ds:language:target:tokens:tid":"','",
-                    "a3ds:language:target:tokens:tval":"character ','"
+                    "skb:lang:target:tokens:tid":"','",
+                    "skb:lang:target:tokens:tval":"character ','"
                 },
                 ")":{
-                    "a3ds:language:target:tokens:tid":"')'",
-                    "a3ds:language:target:tokens:tval":"character ')'"
+                    "skb:lang:target:tokens:tid":"')'",
+                    "skb:lang:target:tokens:tval":"character ')'"
                 },
                 "{":{
-                    "a3ds:language:target:tokens:tid":"'{'",
-                    "a3ds:language:target:tokens:tval":"character '{'"
+                    "skb:lang:target:tokens:tid":"'{'",
+                    "skb:lang:target:tokens:tval":"character '{'"
                 },
                 "]":{
-                    "a3ds:language:target:tokens:tid":"']'",
-                    "a3ds:language:target:tokens:tval":"character ']'"
+                    "skb:lang:target:tokens:tid":"']'",
+                    "skb:lang:target:tokens:tval":"character ']'"
                 }
             },
 

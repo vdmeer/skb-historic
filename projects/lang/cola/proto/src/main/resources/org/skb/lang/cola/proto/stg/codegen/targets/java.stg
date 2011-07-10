@@ -382,8 +382,6 @@ public class __<id> {
 
   public void set(<if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> _t) {this._<id>=_t;}
   public <if(type.array)>ArrayList\<<endif><typeMap.(type.base_type)><if(type.array)>\><endif> get() {return this._<id>;}
-
-  <if(inline_code)><inline_code><endif>
 }
 private __<id> <id> = new __<id>();
 public void <id>(<typeMap.(type.base_type)> _in){<id>.set(_in);}

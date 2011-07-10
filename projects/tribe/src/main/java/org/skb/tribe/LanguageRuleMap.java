@@ -70,11 +70,11 @@ public class LanguageRuleMap extends OatLanguageRuleMap {
 			OatMapLH tokens=cfg.getLanguageTokens();
 
 			for (String s:map.keySet()){
-				OatBase rm=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageRulesMessage);
-				OatBase rmIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageRulesMessageInsertPath);
+				OatBase rm=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessage);
+				OatBase rmIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageInsertPath);
 				if(rm!=null){
 					if(rmIns!=null){
-						OatBase replace=tokens.get(rmIns.toString()+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTokensConstVal);
+						OatBase replace=tokens.get(rmIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
 						if(replace!=null)
 							this.put(s, OatLanguageRuleMap.rmValRuleMessage, StringUtils.replace(rm.toString(), "####", replace.toString()));
 						else
@@ -84,11 +84,11 @@ public class LanguageRuleMap extends OatLanguageRuleMap {
 						this.put(s, OatLanguageRuleMap.rmValRuleMessage, rm.toString());
 				}
 
-				OatBase rmAdd=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageRulesMessageAdd);
-				OatBase rmAddIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageRulesMessageAddInsertPath);
+				OatBase rmAdd=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAdd);
+				OatBase rmAddIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAddInsertPath);
 				if(rmAdd!=null){
 					if(rmAddIns!=null){
-						OatBase replace=tokens.get(rmAddIns.toString()+"/"+LanguageConfigurationConstants.Fields.A3DSTLanguageTokensConstVal);
+						OatBase replace=tokens.get(rmAddIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
 						if(replace!=null)
 							this.put(s, OatLanguageRuleMap.rmValRuleAddMessage, StringUtils.replace(rmAdd.toString(), "####", replace.toString()));
 						else

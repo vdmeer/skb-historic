@@ -91,27 +91,27 @@ public class LanguageConfiguration {
 	}
 
 	public OatMapLH getTribeConfiguration(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.A3DSTribeConfiguration).getValOatMapLH();
+		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration).getValOatMapLH();
 	}
 
 	public OatMapLH getLanguageConfiguration(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.A3DSLanguageConfiguration).getValOatMapLH();
+		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration).getValOatMapLH();
 	}
 
 	public OatMapLH getLanguageTokens(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.A3DSLanguageTokens).getValOatMapLH();
+		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTokens).getValOatMapLH();
 	}
 
 	public OatMapLH getLanguageTargets(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.A3DSLanguageTargets).getValOatMapLH();
+		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTargets).getValOatMapLH();
 	}
 
 	public OatMapLH getLanguageStgChunks(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.A3DSLanguageStgChunks).getValOatMapLH();
+		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangStgChunks).getValOatMapLH();
 	}
 
 	public OatMapLH getLanguageRules(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.A3DSLanguageRules).getValOatMapLH();
+		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangRules).getValOatMapLH();
 	}
 
 }
