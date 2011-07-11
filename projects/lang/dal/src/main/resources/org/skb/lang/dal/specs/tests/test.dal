@@ -37,40 +37,40 @@
  */
 
 
-dal:repository core{
-    dal:table pkg_fields{
-        dal:repository:element core:fields.key string
-        dal:repository:element core:fields.type string (list "core" "request")
-        dal:repository:element core:fields.use string (list "entity" "value")
-        dal:repository:element core:fields.entries_name string
-        dal:repository:element core:fields.http_req_name string
-        dal:repository:element core:fields.default_table string
-        dal:repository:element core:fields.explode string (or "0" "1")
-        dal:repository:element core:fields.interpreter string
-        dal:repository:element core:fields.val_unset string
-        dal:repository:element core:fields.isval string
-        dal:repository:element core:fields.isval_if string
-        dal:repository:element core:fields.isval_else string
-        dal:repository:element core:fields.val_do_list string
-        dal:repository:element core:fields.description string
-        dal:repository:element core:fields.day.start string
-        dal:repository:element core:fields.day.end string
-        dal:repository:element core:fields.month.start string
-        dal:repository:element core:fields.month.end string
-        dal:repository:element core:fields.year.start string
-        dal:repository:element core:fields.year.end string
-        dal:repository:element core:fields.hour.start string
-        dal:repository:element core:fields.hour.end string
-        dal:repository:element core:fields.minute.start string
-        dal:repository:element core:fields.minute.end string
-        dal:repository:element core:fields.second.start string
-        dal:repository:element core:fields.second.end string
-        dal:repository:element core:fields.nano.start string
-        dal:repository:element core:fields.nano.end string
-        dal:repository:element core:fields.timezone string
-        dal:repository:element core:fields.package string
+dal_repository core{
+    dal_table pkg_fields{
+        field core:fields.key string primkey(abort) notnull(abort) unique(abort);
+        field core:fields.type string value(list "core" "request");
+        field core:fields.use string value(list "entity" "value");
+        field core:fields.entries_name string;
+        field core:fields.http_req_name string;
+        field core:fields.default_table string;
+        field core:fields.explode string value(or "0" "1");
+        field core:fields.interpreter string;
+        field core:fields.val_unset string;
+        field core:fields.isval string;
+        field core:fields.isval_if string;
+        field core:fields.isval_else string;
+        field core:fields.val_do_list string;
+        field core:fields.description string;
+        field core:fields.day.start integer size(2) precision(1);
+        field core:fields.day.end integer size(2) precision(1);
+        field core:fields.month.start integer size(2) precision(1);
+        field core:fields.month.end integer size(2) precision(1);
+        field core:fields.year.start integer size(4) precision(1);
+        field core:fields.year.end integer size(4) precision(1);
+        field core:fields.hour.start integer size(2) precision(1);
+        field core:fields.hour.end integer size(2) precision(1);
+        field core:fields.minute.start integer size(2) precision(1);
+        field core:fields.minute.end integer size(2) precision(1);
+        field core:fields.second.start integer size(2) precision(1);
+        field core:fields.second.end integer size(2) precision(1);
+        field core:fields.nano.start integer size(2) precision(1);
+        field core:fields.nano.end integer size(2) precision(1);
+        field core:fields.timezone string;
+        field core:fields.package string;
 
-        dal:sequence{core:fields.key, core:fields.type, core:fields.use, core:fields.entries_name, core:fields.http_req_name,
+        dal_sequence{core:fields.key, core:fields.type, core:fields.use, core:fields.entries_name, core:fields.http_req_name,
                      core:fields.default_table, core:fields.explode, core:fields.interpreter, core:fields.val_unset, core:fields.isval,
                      core:fields.isval_if, core:fields.isval_else, core:fields.val_do_list, core:fields.description, 
                      core:fields.day.start, core:fields.day.end, core:fields.month.start, core:fields.month.end, core:fields.year.start,
@@ -78,31 +78,31 @@ dal:repository core{
                      core:fields.second.start, core:fields.second.end, core:fields.nano.start, core:fields.nano.end, core:fields.timezone, core:fields.package}
     }
 
-    dal:table pkg_rabit{
-        dal:repository:element core:fields.key string
-        dal:repository:element core:rabit.type string
-        dal:repository:element core:rabit.target.class string
-        dal:repository:element core:rabit.target.template string
-        dal:repository:element core:rabit.mime_in string
-        dal:repository:element core:rabit.mime_out string
-        dal:repository:element core:rabit.css string
-        dal:repository:element core:rabit.requests string
-        dal:repository:element core:fields.description string
+    dal_table pkg_rabit{
+        field core:fields.key string;
+        field core:rabit.type string;
+        field core:rabit.target.class string;
+        field core:rabit.target.template string;
+        field core:rabit.mime_in string;
+        field core:rabit.mime_out string;
+        field core:rabit.css string;
+        field core:rabit.requests string;
+        field core:fields.description string;
 
-        dal:sequence{core:fields.key, core:rabit.type, core:rabit.target.class, core:rabit.target.template, core:rabit.mime_in,
+        dal_sequence{core:fields.key, core:rabit.type, core:rabit.target.class, core:rabit.target.template, core:rabit.mime_in,
                      core:rabit.mime_out, core:rabit.css, core:rabit.requests, core:fields.description}
     }
 
-    dal:table pkg_request{
-        dal:repository:element core:fields.key string
-        dal:repository:element core:requests.fields string
-        dal:repository:element core:requests.prefix string
-        dal:repository:element core:requests.formselect_fields string
-        dal:repository:element core:requests.table string
-        dal:repository:element core:requests.table_collections string
-        dal:repository:element core:fields.description string
+    dal_table pkg_request{
+        field core:fields.key string;
+        field core:requests.fields string;
+        field core:requests.prefix string;
+        field core:requests.formselect_fields string;
+        field core:requests.table string;
+        field core:requests.table_collections string;
+        field core:fields.description string;
 
-        dal:sequence{core:fields.key, core:requests.fields, core:requests.prefix, core:requests.formselect_fields, core:requests.table, core:requests.table_collections,
+        dal_sequence{core:fields.key, core:requests.fields, core:requests.prefix, core:requests.formselect_fields, core:requests.table, core:requests.table_collections,
                      core:fields.description}
     }
 }
@@ -110,69 +110,60 @@ dal:repository core{
 
 
 
+dal_package dist.acronyms{
+    dal_table acronyms{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field acronyms:long_locale string;
+        field acronyms:short string;
+        field default:url string;
+        field default:description_locale string;
 
-dal:package dist.acronyms{
-  dal:declaration acronyms{
-      dal:element key string{
-          dal:element:properties{
-              dal:constraint:pkey = dal:constraint:abort
-              dal:constraint:nnull = dal:constraint:abort
-              dal:constraint:unique = dal:constraint:abort
-          }
-      }
-      dal:element acronyms:long_locale string{
-          dal:element:properties{}
-          dal:element:repository pkg_fields{
-              core:fields.type = "value"
-              core:fields.use = "core"
-              core:fields.entries_name = "acronyms:long"
-              core:fields.http_req_name = "long"
-              core:fields.explode = 0
-              core:fields.val_unset = null
-              core:fields.description = "Long form of an acronym as locale string."
-          }
-      }
-      dal:element acronyms:short string{
-          dal:element:properties{}
-          dal:element:repository pkg_fields{
-              core:fields.type = "value"
-              core:fields.use = "core"
-              core:fields.entries_name = "acronyms:short"
-              core:fields.http_req_name = "short"
-              core:fields.explode = 0
-              core:fields.val_unset = null
-              core:fields.description = "Short form of an acronym."
-          }
-      }
-      dal:element default:url string{
-          dal:element:properties{}
-      }
-      dal:element default:description_locale string{
-          dal:element:properties{}
-      }
-      dal:repository:element default:acronym_key{
-          dal:element:repository pkg_fields{
-              core:fields.type = "entity"
-              core:fields.use = "core" "request"
-              core:fields.entries_name = "default:acronym"
-              core:fields.http_req_name = "acronym"
-              core:fields.default_table = "acronyms"
-              core:fields.explode = 0
-              core:fields.val_unset = null
-              core:fields.description = "An acronym key, i.e. a pointer to a key in the acronym database."
-          }
-      }
+        dal_sequence{key, acronyms:long_locale, acronyms:short, default:url, default:description_locale}
+    }
 
-      dal:sequence{key, acronyms:long_locale, acronyms:short, default:url, default:description_locale}
-  }
+    dal_repository core dal_table pkg_fields{
+        row acronyms:long_locale
+          core:fields.key = "acronyms:long_locale"
+          core:fields.type = "value"
+          core:fields.use = "core"
+          core:fields.entries_name = "acronyms:long"
+          core:fields.http_req_name = "long"
+          core:fields.explode = 0
+          core:fields.val_unset = null
+          core:fields.description = "Long form of an acronym as locale string."
+          core:fields.package = "dist.acronyms"
+          ;
+        row acronyms:short
+          core:fields.key = "acronyms:short"
+          core:fields.type = "value"
+          core:fields.use = "core"
+          core:fields.entries_name = "acronyms:short"
+          core:fields.http_req_name = "short"
+          core:fields.explode = 0
+          core:fields.val_unset = null
+          core:fields.description = "Short form of an acronym."
+          core:fields.package = "dist.acronyms"
+          ;
+        row default:acronym_key
+          core:fields.key = "default:acronym_key"
+          core:fields.type = "entity"
+          core:fields.use = "core" "request"
+          core:fields.entries_name = "default:acronym"
+          core:fields.http_req_name = "acronym"
+          core:fields.default_table = "acronyms"
+          core:fields.explode = 0
+          core:fields.val_unset = null
+          core:fields.description = "An acronym key, i.e. a pointer to a key in the acronym database."
+          core:fields.package = "dist.acronyms"
+          ;
+    }
 
+    dal_actions{
+        dal_action_set acronyms {key "string"}
+        dal_action_ins acronyms {key "string"}
+    }
 
-  dal:actions{
-    dal:action:set acronyms {key "string"}
-    dal:action:ins acronyms {key "string"}
-  }
-
-  dal:data {
-    acronyms {key "3GPP"}{acronyms:short "3GPP"}{acronyms:long_locale "%3rd Generation Partnership Program"}{default:url null}{default:description_locale null} 
-  }
+    dal_data {
+        acronyms {key "3GPP"}{acronyms:short "3GPP"}{acronyms:long_locale "%3rd Generation Partnership Program"}{default:url null}{default:description_locale null} 
+    }
 }

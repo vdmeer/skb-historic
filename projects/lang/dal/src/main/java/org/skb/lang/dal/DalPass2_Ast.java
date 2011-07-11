@@ -32,10 +32,10 @@ package org.skb.lang.dal;
 
 import java.util.ArrayList;
 
+import org.antlr.runtime.Token;
 import org.skb.lang.dal.internal.DalRepository;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.util.languages.AtomList;
-import org.antlr.runtime.Token;
 
 /**
  * Pass 2 of the DAL parser, mostly looking into semantic analysis.

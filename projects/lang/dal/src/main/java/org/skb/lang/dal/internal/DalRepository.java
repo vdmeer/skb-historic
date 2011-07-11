@@ -3,11 +3,11 @@ package org.skb.lang.dal.internal;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.antlr.runtime.Token;
+import org.antlr.stringtemplate.StringTemplate;
 import org.skb.types.atomic.antlr.OatAntlrToken;
 import org.skb.types.atomic.util.OatArrayListString;
 import org.skb.types.composite.util.OatMapLH;
-import org.antlr.runtime.Token;
-import org.antlr.stringtemplate.StringTemplate;
 
 public class DalRepository extends OatMapLH{
 	public static final String token="token";
@@ -16,6 +16,10 @@ public class DalRepository extends OatMapLH{
 	public static final String sequence="sequence";
 	public static final String val_exp="val_exp";
 	public static final String val="val";
+	public static final String size="size";
+	public static final String precision="precision";
+	public static final String def_val="def_val";
+	public static final String collation="collation";
 
 	private String repo;
 	private String currentRepoTable;
@@ -65,6 +69,10 @@ public class DalRepository extends OatMapLH{
 		this.currentRepoTable=new String();
 	}
 
+	public String getCurrentRepoTable(){
+		return this.currentRepoTable;
+	}
+
 	public void addRepoElement(Token element, Token type){
 		this.currentRepoElement=element.getText();
 		this.put(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+this.currentRepoElement+"/"+DalRepository.token, new OatAntlrToken(element));
@@ -80,6 +88,23 @@ public class DalRepository extends OatMapLH{
 			this.put(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+this.currentRepoElement+"/"+DalRepository.val, new OatArrayListString());
 		((OatArrayListString)this.get(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+this.currentRepoElement+"/"+DalRepository.val)).add(val.getText());
 	}	
+
+
+	public void addRepoElementSize(Token size){
+		this.put(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+this.currentRepoElement+"/"+DalRepository.size, new OatAntlrToken(size));
+	}
+
+	public void addRepoElementPrecision(Token precision){
+		this.put(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+this.currentRepoElement+"/"+DalRepository.precision, new OatAntlrToken(precision));
+	}
+
+	public void addRepoElementDefVal(Token defval){
+		this.put(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+this.currentRepoElement+"/"+DalRepository.def_val, new OatAntlrToken(defval));
+	}
+
+	public void addRepoElementCollation(Token collation){
+		this.put(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+this.currentRepoElement+"/"+DalRepository.collation, new OatAntlrToken(collation));
+	}
 
 	public void currentRepoElement(){
 		this.currentRepoElement=new String();
@@ -116,6 +141,10 @@ public class DalRepository extends OatMapLH{
 		return ret;
 	}
 
+	public OatArrayListString getRepositoryElemetSequence(){
+		return ((OatArrayListString)this.get(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.sequence));
+	}
+
 	public StringTemplate getTableST(){
 		if(!this.containsKey(this.repo+"/"+this.currentRepoTable)){
 			System.err.println("getTableST = table not found in repo = "+this.currentRepoTable);
@@ -126,9 +155,15 @@ public class DalRepository extends OatMapLH{
 		String end=");$\\n$";
 		String tpl=new String();
 
+		OatAntlrToken type;
 		OatArrayListString seq=((OatArrayListString)this.get(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.sequence));
 		for(int i=0;i<seq.size();i++){
-			tpl+="    ["+seq.get(i)+"] TEXT";
+			tpl+="    ["+seq.get(i)+"] ";
+			type=this.get(this.repo+"/"+this.currentRepoTable+"/"+DalRepository.elements+"/"+seq.get(i)+"/"+DalRepository.type).getValOatAtomicAntlrToken();
+			if(type!=null)
+				tpl+="<dalElementTypeMap.("+type.oatValue.getText()+")>";
+			else
+				tpl+="TEXT";
 			if(i<(seq.size()-1))
 				tpl+=",$\\n$";
 			else

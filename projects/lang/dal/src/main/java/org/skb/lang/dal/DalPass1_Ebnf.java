@@ -70,9 +70,7 @@ public class DalPass1_Ebnf {
 
 	//from atoms, only here for error handling
 	public void putAtom(Token tk, String category, Token type, Boolean array){
-
 		//need to check for List name against Repo table names!!!
-		
 		OatTableRow otr=this.atoms.putAtom(tk, category, type, array);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(

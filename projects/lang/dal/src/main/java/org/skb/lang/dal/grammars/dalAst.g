@@ -89,81 +89,46 @@ options
  */
 dalSpecification               @init{this.init();}
                              : ^(AT_SPEC cpp_directive dalDefinition);
+cpp_directive                : s=CPP_DIRECTIVE {this.setCppFile(s.getText());};
 dalDefinition                : dalRepository dalPackage*;
 
 
 /*
  * dalRepository == All Meta-Meta data on fields for different tables
  */
-dalRepository                 : ^(DAL_REPOSITORY id=IDENT {this.pass.atoms.scope.push(id.token);} dalRepositoryTable*)
-                                {this.pass.atoms.scope.pop();}
+dalRepository                 : ^(DAL_REPOSITORY IDENT dalRepositoryTable*)
                                 ;
-dalRepositoryTable            : ^(DAL_TABLE id=IDENT {this.pass.atoms.scope.push(id.token);}
-                                  dalRepositoryElement* dalRepositorySequence
-                                )
-                                //{System.err.println(this.pass.repo.getTableST());}
-                                {this.pass.atoms.scope.pop();}
+dalRepositoryTable            : ^(DAL_TABLE IDENT dalRepositoryField* dalRepositorySequence)
                                 ;
-dalRepositoryElement          : ^(DAL_REPOSITORY_ELEMENT IDENT dalElemPropType dalRepositoryElementValue?)
-                                ;
-dalRepositoryElementValue     : '(' (s=DAL_EXPR_AND | s=DAL_EXPR_OR | s=DAL_EXPR_XOR | s=DAL_EXPR_NOR | s=DAL_EXPR_NAND | s=DAL_EXPR_LIST)
-                                    VAL_STRING*
-                                ')';
+dalRepositoryField            : ^(DAL_FIELD IDENT base_type dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?);
+
+dalFieldValue                 : ^(DAL_VALUE VAL_STRING*);
+dalFieldPrecision             : ^(DAL_PRECISION VAL_INTEGER);
+dalFieldSize                  : ^(DAL_SIZE VAL_INTEGER);
+dalFieldCollate               : ^(DAL_COLLATE VAL_STRING);
+dalFieldDefval                : ^(DAL_DEFVAL const_value);
+dalFieldNotnull               : ^(DAL_NOTNUL DAL_ROLLBACK? DAL_ABORT?);
+dalFieldPrimkey               : ^(DAL_PRIMKEY DAL_ROLLBACK? DAL_ABORT?);
+dalFieldUnique                : ^(DAL_UNIQUE DAL_ROLLBACK? DAL_ABORT?);
 
 dalRepositorySequence        : ^(DAL_SEQUENCE IDENT*);
 
 
 
-dalPackage                   : ^(DAL_PACKAGE id=IDENT {this.pass.atoms.scope.push(id.token);} dalDeclaration* dalActions* dalData*)
-                               {this.pass.atoms.scope.pop();}
-                               ;
+dalPackage                    : ^(DAL_PACKAGE IDENT dalPackageTable* dalPackageRepository* dalActions* dalData*);
 
-cpp_directive                : s=CPP_DIRECTIVE {this.setCppFile(s.getText());};
+dalPackageTable               : ^(DAL_TABLE IDENT dalPackageTableField* dalPackageTableSequence);
 
-dalDeclaration               : ^(DAL_DECLARATION id=IDENT
-                                   {this.pass.atoms.scope.push(id.token);}
-                                   dalElement* dalMetaElement* dalSequence
-                                )
-                               {this.pass.atoms.scope.pop();}
-                               ;
+dalPackageTableField          : ^(DAL_FIELD IDENT base_type dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?);
 
+dalPackageTableSequence       : ^(DAL_SEQUENCE IDENT*);
 
-dalMetaElement               : ^(DAL_REPOSITORY_ELEMENT id=IDENT
-                                   {this.pass.atoms.scope.push(id.token);}
-                                   dalElemMetaData?
-                               )
-                               {this.pass.atoms.scope.pop();}
-                               ;
-
-dalElement                   : ^(DAL_ELEMENT id=IDENT
-                                   {this.pass.atoms.scope.push(id.token);}
-                                   dalElemPropType dalElemProperties dalElemMetaData?
-                               )
-                               {this.pass.atoms.scope.pop();}
-                               ;
-
-dalElemProperties            : ^(DAL_ELEMENT_PROPERTIES dalElemPropSize? dalElemPropPrecision? dalElemPropDefValue? dalElemPropCollate? dalElemPropConstraints*); 
-dalElemPropType              : base_type;
-dalElemPropSize              : ^(DAL_ELEM_PROP_SIZE VAL_INTEGER);
-dalElemPropPrecision         : ^(DAL_ELEM_PROP_PRECISION VAL_INTEGER);
-dalElemPropDefValue          : ^(DAL_ELEM_PROP_DEFVAL VAL_STRING);
-dalElemPropCollate           : ^(DAL_ELEM_PROP_COLLATE VAL_STRING);
-
-dalElemPropConstraints       : ^(AT_PROVIDES dalElemPropConstrReason dalElemPropConstrAction);
-dalElemPropConstrReason      : DAL_CONSTRAINT_PKEY | DAL_CONSTRAINT_NNUL | DAL_CONSTRAINT_UNIQUE;
-dalElemPropConstrAction      : DAL_CONSTRAINT_ABORT | DAL_CONSTRAINT_ROLLBACK;
+dalPackageRepository          : ^(DAL_REPOSITORY IDENT IDENT dalPackageRepositoryRow*);
+dalPackageRepositoryRow       : ^(DAL_ROW IDENT dalPackageRepositoryRowKV*);
+dalPackageRepositoryRowKV     : ^(DAL_ROW IDENT const_value*);
 
 
-dalElemMetaData              : ^(DAL_ELEMENT_REPOSITORY id=IDENT
-                                 {this.pass.atoms.scope.push(id.token);}
-                                 dalElementMetaDataKV*
-                                 {this.pass.atoms.scope.pop();}
-                               );
-dalElementMetaDataKV         : ^(AT_PROVIDES dalKey dalValue*);
 
-dalSequence                  : ^(DAL_SEQUENCE (id=IDENT {this.pass.addElemSequence(id.token);})*)
-                               {this.pass.testElemSequence();}
-                               ;
 
 dalActions                   : ^(DAL_ACTIONS dalActionsIns* dalActionsSet* dalActionsAdd* dalActionsRem* dalActionsEmp*);
 

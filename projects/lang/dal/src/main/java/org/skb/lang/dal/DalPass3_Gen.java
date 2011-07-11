@@ -32,9 +32,10 @@ package org.skb.lang.dal;
 
 import java.util.TreeMap;
 
+import org.antlr.stringtemplate.StringTemplate;
+import org.skb.lang.dal.internal.DalRepository;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
-import org.antlr.stringtemplate.StringTemplate;
 
 /**
  * Pass 3 of the DAL parser using templates to generate a target language specification.
@@ -45,6 +46,7 @@ import org.antlr.stringtemplate.StringTemplate;
 public class DalPass3_Gen {
 	public AtomList atoms=AtomList.getInstance();
 	public ScopeString sn;
+	public DalRepository repo;
 
 	//for simple_type, to get all options to all ColaAtoms
 	private TreeMap<String,String> simple_type;
@@ -56,6 +58,8 @@ public class DalPass3_Gen {
 		this._initSimple_type();
 
 		this.sn=new ScopeString();
+
+		this.repo=DalRepository.getInstance();
 	}
 
 	public void addElement(String ident, String type, StringTemplate prop){
@@ -63,7 +67,7 @@ public class DalPass3_Gen {
 	}
 
 	public void addMetaElement(String ident, StringTemplate meta){
-		
+		System.err.println(ident+"  =>  "+meta);
 	}
 
 	public String trimQuotes(String s){

@@ -45,6 +45,7 @@ slcomment(comment) ::= "-- <comment>"
 
 dalElementTypeMap ::= [
   "string":"TEXT",
+  "integer":"INT",
   default:"TEXT"
 ]
 
@@ -58,40 +59,44 @@ dalDefinition(package) ::= <<
 dalPackage(name, declaration, actions, data) ::= <<
 >>
 
-dalMetaElement(ident, metadata) ::= <<
-INSERT OR IGNORE INTO pkg_fields
-    (key,
-     "core:type", "core:use", "core:entries_name", "core:http_req_name", "core:default_db", "core:explode", "core:interpreter",
-     "core:val_unset", "core:isval", "core:isval_if", "core:isval_else", "core:val_do_list", "core:description")
-   VALUES ('<ident>',
-     <metadata>
-   );
+
+dalRepositoryTable(ident, fields) ::= <<
+CREATE TABLE [<ident>] (
+    <fields; separator=",\n">
+);
+
+>>
+
+dalRepositoryElement(ident, type, size, prec, defv, coll) ::= <<
+[<ident>] <dalElementTypeMap.(type)>
+>>
+
+dalMetaElement(ident, table, kv) ::= <<
+<table>
+    (<kv.keys:{k| "<k>"};separator=", ">)
+    VALUES(<kv.keys:{k|"<kv.(k)>"};separator=", ">);
 >>
 
 
 dalElemMetaDataTypeMap ::= ["skb:entity":"entity", "skb:value":"value", default:"value"]
 dalElemMetaDataUseMap  ::= ["skb:core":"core", "skb:request":"request", default:"core,request"]
 
-dalElemMetaData(type, use, entname, httpreqname, defdb, explode, interpreter, valunset, isval, isvalif, isvalelse, dolist, descr) ::= <<
-     <if(type)>'<dalElemMetaDataTypeMap.(type)>'<else>''<endif>, <if(use)>'<dalElemMetaDataUseMap.(use); separator=",">'<else>''<endif>,
-     <if(entname)>'<entname>'<else>''<endif>, <if(httpreqname)>'<httpreqname>'<else>''<endif>, <if(defdb)>'<defdb>'<else>''<endif>,
-     <if(explode)>'<explode>'<else>''<endif>, <if(interpreter)>'<interpreter>'<else>''<endif>, <if(valunset)>'<valunset>'<else>''<endif>,
-     <if(isval)>'<isval>'<else>''<endif>, <if(isvalif)>'<isvalif>'<else>''<endif>, <if(isvalelse)>'<isvalelse>'<else>''<endif>,
-     <if(dolist)>'<dolist>'<else>''<endif>, <if(descr)>'<descr>'<else>''<endif>
+
+dalElemMetaData(repo, table) ::= <<
+INSERT OR IGNORE INTO <table>
 >>
 
-dalElement(ident, type, properties, metadata) ::= <<
+dalElement(ident, type, properties) ::= <<
 [<ident>] <dalElementTypeMap.(type)> <properties>
 >>
 
 dalElemProperties(size, precision, defvalue, collate, constraints) ::= <<
-<if(size)>(<size><endif><if(precision)>,<precision><endif><if(size)>)<endif>
-<if(constraints)><constraints; separator=" "><endif>
+<if(size)>(<size><endif><if(precision)>,<precision><endif><if(size)>)<endif> <if(constraints)><constraints; separator=" "><endif>
 >>
 
 
 dalElemPropConstraintReasonMap ::= [
-  "dal:constraint:pkey":"pkey",
+  "dal:constraint:pkey":"PRIMARY KEY",
   "dal:constraint:nnull":"NOT NULL",
   "dal:constraint:unique":"UNIQUE",
   default:key
