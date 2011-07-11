@@ -1,0 +1,430 @@
+//
+// [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+// Copyright (c) 2010-2011, Sven van der Meer <sven@vandermeer.de>
+// All rights reserved.
+//
+// Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+// modification, are permitted provided that the following conditions are met:
+// 
+//     + Redistributions of source code must retain the above copyright notice,
+//       this list of conditions and the following disclaimer.
+//     + Redistributions  in binary  form must  reproduce the  above copyright
+//       notice, this list  of conditions and  the following disclaimer  in the
+//       documentation and/or other materials provided with the distribution.
+//     + Neither the name of the the author nor the names of its contributors
+//       may be used to endorse or promote products derived from this software
+//       without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+// AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+// LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+// CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+// SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+// CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+
+//
+// Template Configuration File for Org.SKB.Lang
+//
+// @package    org.skb.lang
+// @author     Sven van der Meer <sven@vandermeer.de>
+// @copyright  2011-2011 Sven van der Meer
+// @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+// @version    v0.30 build 110309 (09-Mar-11)
+//
+
+{
+    "skb":{
+        "tribe":{
+            "configuration":{
+                "name":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"##MYLANG##"
+                },
+                "name-lc":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"##mylang##"
+                },
+                "copyright":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"Copyright (c) ####"
+                },
+                "version":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"0.0.0"
+                },
+                "build":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"110309"
+                },
+                "build-date":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"2011-Mar-09"
+                },
+                "tribe-generic-stg":{
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"\/org\/skb\/lang\/##mylang##\/stg\/codegen\/internal\/generic.stg"
+                }
+            }
+        },
+        "lang":{
+            "configuration":{
+                "##mylang##":{
+                    "skb:lang:target:config:constid":"internal##MyLang##Tgt##MyLang##"
+                },
+                "java":{
+                    "skb:lang:target:config:constid":"internalMyLanfTgtJava"
+                },
+                "xml":{
+                    "skb:lang:target:config:constid":"internal##MyLang##TgtXml"
+                },
+                "internal-scope-sep":{
+                    "skb:lang:target:config:constid":"keyScopeSep",
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"::"
+                },
+                "pr-stats":{
+                    "skb:lang:target:config:constid":"keyPrStat",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"Show simple statistic information"
+                },
+                "pr-stats-all":{
+                    "skb:lang:target:config:constid":"keyPrStatAll",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats-all",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"Show complete statistic information"
+                },
+                "pr-stats-ws":{
+                    "skb:lang:target:config:constid":"keyPrStatsWScope",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats-ws",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"No scoped names in statistics"
+                },
+                "pr-stg-stats":{
+                    "skb:lang:target:config:constid":"keyPrStgFileStats",
+                    "at:type":"oat:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stg-stats",
+                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:usage:descr":"Print statistics string template"
+                },
+                "stat-stg":{
+                    "skb:lang:target:config:constid":"keyStatStg",
+                    "at:type":"oat:atomic:java:string",
+                    "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/statistics.stg",
+                    "cli:option:long":"stat-stg",
+                    "cli:option:arg-name":"file",
+                    "cli:option:type":"oat:atomic:java:string",
+                    "cli:usage:descr":"Group template file for statistics"
+                }
+            },
+            "targets":{
+                "##mylang##":{
+                    "skb:lang:target:name":"##mylang##",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/##mylang##\/stg\/codegen\/targets\/##mylang##.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".##mylang##"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-includes":{
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "java":{
+                    "skb:lang:target:name":"java",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/##mylang##\/stg\/codegen\/targets\/java.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".java"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"."
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-imports":{
+                            "skb:lang:target:config:constid":"keyXtDoImports",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-imports",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate imports (Java style)"
+                        },
+                        "xt-do-element-code":{
+                            "skb:lang:target:config:constid":"keyXtDoElementCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-element-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate complete Element skeletons"
+                        },
+                        "xt-java-pkg":{
+                            "skb:lang:target:config:constid":"keyXtJavaPackage",
+                            "at:type":"oat:atomic:java:string",
+                            "value:default":"",
+                            "cli:option:long":"xt-java-pkg",
+                            "cli:option:arg-name":"package",
+                            "cli:option:type":"oat:atomic:java:string",
+                            "cli:usage:descr":"Root package for java classes"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":true,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "xml":{
+                    "skb:lang:target:name":"xml",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/##mylang##\/stg\/codegen\/targets\/xml.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".xml"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "tgt-stg-angle-br":{
+                        "value:default":false
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-includes":{
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"oat:atomic:java:boolean",
+                            "value:default":false
+                        }
+                    }
+                }
+            },
+
+            "stgchunks":{
+                "mlcomment_start":{
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "mlcomment_end":{
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "slcomment":{
+                    "skb:tribe:stgchunk:mandatory": ["comment"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "##mylang##Specification":{
+                    "skb:tribe:stgchunk:mandatory": ["stage", "environment", "clevel", "language", "spec"],
+                    "skb:tribe:stgchunk:optional":  []
+                }
+            },
+
+            "tokens":{
+                // for parser
+                "parserARRAY":{
+                    "skb:lang:target:tokens:cid":"parserARRAY",
+                    "skb:lang:target:tokens:cval":"array",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "parserIDENTIFIER":{
+                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "parserScopedName":{
+                    "skb:lang:target:tokens:cid":"parserScopedName",
+                    "skb:lang:target:tokens:cval":"scoped_name",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "parserBaseType ":{
+                    "skb:lang:target:tokens:cid":"parserBaseType ",
+                    "skb:lang:target:tokens:cval":"base_type",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "parserScopeSep":{
+                    "skb:lang:target:tokens:cid":"parserScopeSep",
+                    "skb:lang:target:tokens:cval":"::",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+
+                // ##MYLANG## Keywords
+                "##mylang##PACKAGE":{
+                    "skb:lang:target:tokens:cid":"##mylang##PACKAGE",
+                    "skb:lang:target:tokens:cval":"package",
+                    "skb:lang:target:tokens:tid":"PACKAGE",
+                    "skb:lang:target:tokens:tval":"keyword 'package'",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+
+                // ##MYLANG## Keywords -> TYPES
+                "##mylang##INTEGER":{
+                    "skb:lang:target:tokens:cid":"##mylang##INTEGER",
+                    "skb:lang:target:tokens:cval":"integer",
+                    "skb:lang:target:tokens:tid":"INTEGER",
+                    "skb:lang:target:tokens:tval":"keyword 'integer'",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "##mylang##STRING":{
+                    "skb:lang:target:tokens:cid":"##mylang##STRING",
+                    "skb:lang:target:tokens:cval":"string",
+                    "skb:lang:target:tokens:tid":"STRING",
+                    "skb:lang:target:tokens:tval":"keyword 'string'",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "##mylang##VOID":{
+                    "skb:lang:target:tokens:cid":"##mylang##VOID",
+                    "skb:lang:target:tokens:cval":"void",
+                    "skb:lang:target:tokens:tid":"VOID",
+                    "skb:lang:target:tokens:tval":"keyword 'void'",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+
+                // ##MYLANG## Keywords -> VALUES
+                "##mylang##NULL":{
+                    "skb:lang:target:tokens:cid":"##mylang##NULL",
+                    "skb:lang:target:tokens:cval":"NULL",
+                    "skb:lang:target:tokens:tid":"NULL",
+                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+
+                //for lexer to print proper error messages
+                "##mylang##CPP_DIRECTIVE":{
+                    "skb:lang:target:tokens:cid":"##mylang##CPP_DIRECTIVE",
+                    "skb:lang:target:tokens:cval":"preprocessor directive",
+                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
+                    "skb:lang:target:tokens:tval":"preprocessor directive",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "##mylang##IDENT":{
+                    "skb:lang:target:tokens:cid":"##mylang##IDENT",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:tid":"IDENT",
+                    "skb:lang:target:tokens:tval":"an identifier",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "##mylang##VAL_INTEGER":{
+                    "skb:lang:target:tokens:cid":"##mylang##VAL_INTEGER",
+                    "skb:lang:target:tokens:cval":"integer value",
+                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
+                    "skb:lang:target:tokens:tval":"integer value",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "##mylang##VAL_STRING":{
+                    "skb:lang:target:tokens:cid":"##mylang##VAL_STRING",
+                    "skb:lang:target:tokens:cval":"string value",
+                    "skb:lang:target:tokens:tid":"VAL_STRING",
+                    "skb:lang:target:tokens:tval":"string value",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+                "##mylang##WS":{
+                    "skb:lang:target:tokens:cid":"##mylang##WS",
+                    "skb:lang:target:tokens:cval":"whitespace",
+                    "skb:lang:target:tokens:tid":"WS",
+                    "skb:lang:target:tokens:tval":"whitespace",
+                    "skb:lang:target:tokens:cjavadoc":""
+                },
+
+                //for lexer to print proper error messages
+                ";":{
+                    "skb:lang:target:tokens:tid":"';'",
+                    "skb:lang:target:tokens:tval":"character ';'"
+                },
+                "}":{
+                    "skb:lang:target:tokens:tid":"'}'",
+                    "skb:lang:target:tokens:tval":"character '}'"
+                }
+            },
+
+            "rules":{
+                "identifier:01":{
+                    "skb:lang:target:config:constid":"ruleIdentifier01",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"#### <%s> in property definitions",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER"
+                },
+                "identifier:02":{
+                    "skb:lang:target:config:constid":"ruleIdentifier02",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER"
+                }
+
+            }
+        }
+    }
+}
