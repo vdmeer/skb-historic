@@ -1,0 +1,84 @@
+/*
+ * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+ * Copyright (c) 2010-2010, Sven van der Meer <sven@vandermeer.de>
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/**
+ * CSS Style for the menu (brick style) for the Demo site.
+ *
+ * Note: the main part of this code is (c) Dynamic Drive CSS Library, http://www.dynamicdrive.com/style/.
+ *
+ * @package    Packages.Demo.Menu
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2010-2010 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v 1.0.0 2010/08/20
+ */
+
+#menu-top {background: url("brick/header.png") right no-repeat; background-color:black; height:86px;}
+#menu-top img {padding: 4px 0 6px 0;}
+
+#menu-sub{padding: 0;font: bold 11px Arial;background: #D25A0B; width:100%; text-align: left; height: 24px; margin-top: -11px;}
+#menu-sub ul{padding: 0 0 0 2px;}
+#menu-sub li{display: inline;padding-top: 3px;}
+#menu-sub li a, #menu1 li span{color: white;padding: 0 3px 3px 3px;text-decoration: none; border-right: 1px solid #d3bdbe; line-height: 22px;}
+#menu-sub li span{color:#d0d0d0;}
+#menu-sub li a:hover{text-decoration: underline;}
+//#menu-sub li.current {text-decoration: underline;}
+
+#menu-sub.home{background: #003261;}
+#menu-sub.area1{background: #666600;}
+#menu-sub.area2{background: #996600;}
+#menu-sub.area3{background: #336600;}
+
+#menu-sub.configuration{background: #D25A0B;}
+#menu-sub.smap{background: #003261;}
+
+#menu-bottom{padding: 0;font: bold 11px Arial;background: url("brick/menu-pad.png") bottom; width:100%; text-align: left; height: 4px;}
+
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+
+#menu-top2{padding: 0; width: 100%; height: 3px; background: url("brick/menu-pad2.png");}
+
+#menu{padding: 0; width: 100%; height: 25px;}
+#menu ul{font: bold 11px Arial; margin:0; margin-left: 0px; padding: 0; list-style: none;}
+#menu li{display: inline; margin: 0 2px 0 0; padding: 0; text-transform:uppercase;}
+#menu a, #menu span.disabled{float: left; display: block; color: white; margin: 0 1px 0 0; padding: 5px 10px; text-decoration: none; letter-spacing: 1px; background-color: black; border-bottom: 1px solid white;}
+#menu a:hover{background-color: gray;}
+#menu #current a{background-color: #D25A0B; border-color: #D25A0B;}
+
+#menu #current.home a{background-color: #003261; border-color: #003261;}
+#menu #current.area1 a{background-color: #666600; border-color: #666600;}
+#menu #current.area2 a{background-color: #996600; border-color: #996600;}
+#menu #current.area3 a{background-color: #336600; border-color: #336600;}
+
+#menu #current.configuration a{background-color: #D25A0B; border-color: #D25A0B;}
+#menu #current.smap a{background-color: #003261; border-color: #003261;}
+
+#menu li.disabled span{color: grey;}

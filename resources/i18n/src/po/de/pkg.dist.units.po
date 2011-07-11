@@ -1,0 +1,129 @@
+# German translations for PHP-SKB package
+# German messages for PHP-SKB.
+# PHP-SKB, Packages.Dist.Units
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Dist.Units\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-08 17:09+0100\n"
+"PO-Revision-Date: 2010-08-24 13:05+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/autogen/pkg.dist.units.php5:11 src/autogen/pkg.dist.units.php5:43
+msgid "Billiard"
+msgstr "Billiarde"
+
+#: src/autogen/pkg.dist.units.php5:29 src/autogen/pkg.dist.units.php5:61
+msgid "Billiardth"
+msgstr "Billiardstel"
+
+#: src/autogen/pkg.dist.units.php5:13 src/autogen/pkg.dist.units.php5:14
+#: src/autogen/pkg.dist.units.php5:45 src/autogen/pkg.dist.units.php5:46
+msgid "Billion"
+msgstr "Billion"
+
+#: src/autogen/pkg.dist.units.php5:24 src/autogen/pkg.dist.units.php5:27
+#: src/autogen/pkg.dist.units.php5:56 src/autogen/pkg.dist.units.php5:59
+msgid "Billionth"
+msgstr "Billionstel"
+
+#: src/autogen/pkg.dist.units.php5:18 src/autogen/pkg.dist.units.php5:50
+msgid "Hundred"
+msgstr "Hundert"
+
+#: src/autogen/pkg.dist.units.php5:21 src/autogen/pkg.dist.units.php5:53
+msgid "Hundredth"
+msgstr "Hundertstel"
+
+#: src/autogen/pkg.dist.units.php5:15 src/autogen/pkg.dist.units.php5:47
+msgid "Milliard"
+msgstr "Milliarde"
+
+#: src/autogen/pkg.dist.units.php5:25 src/autogen/pkg.dist.units.php5:57
+msgid "Milliardth"
+msgstr "Milliardstel"
+
+#: src/autogen/pkg.dist.units.php5:16 src/autogen/pkg.dist.units.php5:48
+msgid "Million"
+msgstr "Million"
+
+#: src/autogen/pkg.dist.units.php5:23 src/autogen/pkg.dist.units.php5:55
+msgid "Millionth"
+msgstr "Millionstel"
+
+#: src/autogen/pkg.dist.units.php5:5 src/autogen/pkg.dist.units.php5:10
+#: src/autogen/pkg.dist.units.php5:37 src/autogen/pkg.dist.units.php5:42
+msgid "Quadrillion"
+msgstr "Quadrillion"
+
+#: src/autogen/pkg.dist.units.php5:28 src/autogen/pkg.dist.units.php5:35
+#: src/autogen/pkg.dist.units.php5:60 src/autogen/pkg.dist.units.php5:67
+msgid "Quadrillionth"
+msgstr "Quadrillionstel"
+
+#: src/autogen/pkg.dist.units.php5:8 src/autogen/pkg.dist.units.php5:40
+msgid "Quintillion"
+msgstr ""
+
+#: src/autogen/pkg.dist.units.php5:30 src/autogen/pkg.dist.units.php5:62
+msgid "Quintillionth"
+msgstr ""
+
+#: src/autogen/pkg.dist.units.php5:4 src/autogen/pkg.dist.units.php5:36
+msgid "Septillion"
+msgstr ""
+
+#: src/autogen/pkg.dist.units.php5:34 src/autogen/pkg.dist.units.php5:66
+msgid "Septillionth"
+msgstr ""
+
+#: src/autogen/pkg.dist.units.php5:6 src/autogen/pkg.dist.units.php5:38
+msgid "Sextillion"
+msgstr ""
+
+#: src/autogen/pkg.dist.units.php5:32 src/autogen/pkg.dist.units.php5:64
+msgid "Sextillionth"
+msgstr ""
+
+#: src/autogen/pkg.dist.units.php5:19 src/autogen/pkg.dist.units.php5:51
+msgid "Ten"
+msgstr "Zehn"
+
+#: src/autogen/pkg.dist.units.php5:20 src/autogen/pkg.dist.units.php5:52
+msgid "Tenth"
+msgstr "Zehntel"
+
+#: src/autogen/pkg.dist.units.php5:17 src/autogen/pkg.dist.units.php5:49
+msgid "Thousand"
+msgstr "Tausend"
+
+#: src/autogen/pkg.dist.units.php5:22 src/autogen/pkg.dist.units.php5:54
+msgid "Thousandth"
+msgstr "Tausendstel"
+
+#: src/autogen/pkg.dist.units.php5:7 src/autogen/pkg.dist.units.php5:39
+msgid "Trilliard"
+msgstr "Trilliarde"
+
+#: src/autogen/pkg.dist.units.php5:33 src/autogen/pkg.dist.units.php5:65
+msgid "Trilliardth"
+msgstr "Trilliardstel"
+
+#: src/autogen/pkg.dist.units.php5:9 src/autogen/pkg.dist.units.php5:12
+#: src/autogen/pkg.dist.units.php5:41 src/autogen/pkg.dist.units.php5:44
+msgid "Trillion"
+msgstr "Trillion"
+
+#: src/autogen/pkg.dist.units.php5:26 src/autogen/pkg.dist.units.php5:31
+#: src/autogen/pkg.dist.units.php5:58 src/autogen/pkg.dist.units.php5:63
+msgid "Trillionth"
+msgstr "Trillionstel"

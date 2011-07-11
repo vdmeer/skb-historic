@@ -1,0 +1,287 @@
+# English translations for PHP-SKB package.
+# PHP-SKB, Packages.Core.SkbInfo
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB package.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Core.SkbInfo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-08 17:09+0100\n"
+"PO-Revision-Date: 2010-08-24 13:06+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "AsciiDoc"
+msgstr "AsciiDoc"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:548
+msgid "Character Encodings"
+msgstr "Character Encodings"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:55
+msgid "Configuration"
+msgstr "Configuration"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:335
+msgid "Registered Applications"
+msgstr "Registered Applications"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:228
+msgid "Registered Builders"
+msgstr "Registered Builders"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:96
+msgid "Registered Databases"
+msgstr "Registered Databases"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:414
+msgid "Registered Fields"
+msgstr "Registered Fields"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:376
+msgid "Registered Interpreters"
+msgstr "Registered Interpreters"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:179
+msgid "Registered Readers"
+msgstr "Registered Readers"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:129
+msgid "Registered Requests"
+msgstr "Registered Requests"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:472
+msgid "Registered SKB HTTP Response Headers"
+msgstr "Registered SKB HTTP Response Headers"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:505
+msgid "Registered SKB MIME Content Types"
+msgstr "Registered SKB MIME Content Types"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:277
+msgid "Registered Templates"
+msgstr "Registered Templates"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "SKB-LaTeX"
+msgstr "SKB-LaTeX"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "ascii7"
+msgstr "ascii7"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:180
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:183
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:229
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:232
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:336
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:339
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:377
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:380
+msgid "class"
+msgstr "class"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+msgid "content-sub-type"
+msgstr "content-sub-type"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+msgid "content-type"
+msgstr "content-type"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:278
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:281
+msgid "css"
+msgstr "css"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:180
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:183
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:229
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:232
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:278
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:281
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:336
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:339
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:377
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:380
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:415
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:418
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:473
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:476
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "description"
+msgstr "description"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:473
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:476
+msgid "example"
+msgstr "example"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:97
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:100
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:278
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:281
+msgid "file"
+msgstr "file"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+msgid "file extensions"
+msgstr "file extensions"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:56
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:59
+msgid "group"
+msgstr "group"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:473
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:476
+msgid "header"
+msgstr "header"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "html"
+msgstr "html"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:56
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:59
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:97
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:100
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:130
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:133
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:180
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:183
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:229
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:232
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:278
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:281
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:336
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:339
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:377
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:380
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:415
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:418
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:473
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:476
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "key"
+msgstr "key"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+msgid "media-type"
+msgstr "media-type"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:180
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:183
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:229
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:232
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:278
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:281
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:336
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:339
+msgid "mime in"
+msgstr "mime in"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:180
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:183
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:229
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:232
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:278
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:281
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:336
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:339
+msgid "mime out"
+msgstr "mime out"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:97
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:100
+msgid "name"
+msgstr "name"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "natsort"
+msgstr "natsort"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:97
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:100
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:130
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:133
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:180
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:183
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:229
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:232
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:278
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:281
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:336
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:339
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:377
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:380
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:415
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:418
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:473
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:476
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+msgid "origin"
+msgstr "origin"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:506
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:509
+msgid "source (URL)"
+msgstr "source (URL)"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:97
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:100
+msgid "tables"
+msgstr "tables"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "text"
+msgstr "text"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "unicode range"
+msgstr "unicode range"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "utf-16"
+msgstr "utf-16"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:549
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:552
+msgid "utf-8"
+msgstr "utf-8"
+
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:56
+#: ../../kb/src/main/php/targets/tgtphp/core/skbinfo/application--xhtml+table.tpl:59
+msgid "value"
+msgstr "value"

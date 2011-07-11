@@ -1,0 +1,268 @@
+# German translations for PHP-SKB package
+# German messages for PHP-SKB.
+# PHP-SKB, Packages.Demo.Menu
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Demo.Menu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-08 17:09+0100\n"
+"PO-Revision-Date: 2010-08-24 13:05+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/autogen/pkg.demo.menu.php5:18
+msgid ""
+" registered builders (used to take reader output and prepare its "
+"transformation)"
+msgstr "registrierte Builder"
+
+#: src/autogen/pkg.demo.menu.php5:59
+msgid "API Doc"
+msgstr "API Doku"
+
+#: src/autogen/pkg.demo.menu.php5:33
+msgid "Acronyms"
+msgstr "Abk&uuml;rzungen"
+
+#: src/autogen/pkg.demo.menu.php5:39
+msgid "Affiliations"
+msgstr "Affiliations"
+
+#: src/autogen/pkg.demo.menu.php5:40
+msgid "Affiliations (Dist.Affiliations)"
+msgstr "Affiliations (Dist.Affiliations)"
+
+#: src/autogen/pkg.demo.menu.php5:21
+msgid "Applications"
+msgstr "Anwendungen"
+
+#: src/autogen/pkg.demo.menu.php5:43
+msgid "Berlin"
+msgstr "Berlin"
+
+#: src/autogen/pkg.demo.menu.php5:17
+msgid "Builders"
+msgstr "Builders"
+
+#: src/autogen/pkg.demo.menu.php5:45
+msgid "Cape Town"
+msgstr "Kapstadt"
+
+#: src/autogen/pkg.demo.menu.php5:63
+msgid "Character Encodings"
+msgstr "Zeichenkodierung"
+
+#: src/autogen/pkg.demo.menu.php5:38
+msgid "Cities, Countries and Continents (Dist.Geo)"
+msgstr "St&auml;dte, L&auml;nder und Kontinente (Dist.Geo)"
+
+#: src/autogen/pkg.demo.menu.php5:9
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: src/autogen/pkg.demo.menu.php5:29
+msgid "Content Types"
+msgstr "MIME Typen"
+
+#: src/autogen/pkg.demo.menu.php5:7
+msgid "Core SkbConfig"
+msgstr "Core SkbConfig"
+
+#: src/autogen/pkg.demo.menu.php5:61
+msgid "Currencies"
+msgstr "W&auml;hrungen"
+
+#: src/autogen/pkg.demo.menu.php5:62
+msgid "Currencies (Dist.Currencies)"
+msgstr "W&auml;hrungen (Dist.Currencies)"
+
+#: src/autogen/pkg.demo.menu.php5:13
+msgid "Databases"
+msgstr "Datenbanken"
+
+#: src/autogen/pkg.demo.menu.php5:35
+msgid "Date"
+msgstr "Datum"
+
+#: src/autogen/pkg.demo.menu.php5:36
+msgid "Day of the Week/Month and Month (Dist.Date)"
+msgstr "Tag der Woche/des Monats und Monat (Dist.Date)"
+
+#: src/autogen/pkg.demo.menu.php5:8
+msgid "Demo of the Package Core.SkbConfig"
+msgstr "Demo des Paketes Core.SkbConfig"
+
+#: src/autogen/pkg.demo.menu.php5:32
+msgid "Demos of the SKB Dist Packages"
+msgstr "Demo des Paketes Dist"
+
+#: src/autogen/pkg.demo.menu.php5:31
+msgid "Dist"
+msgstr "Dist"
+
+#: src/autogen/pkg.demo.menu.php5:41
+msgid "Dist Gallery"
+msgstr "Dist Gallerie"
+
+#: src/autogen/pkg.demo.menu.php5:25
+msgid "Fields"
+msgstr "Felder"
+
+#: src/autogen/pkg.demo.menu.php5:47
+msgid "Florida"
+msgstr "Florida"
+
+#: src/autogen/pkg.demo.menu.php5:53
+msgid "Form Select"
+msgstr "Form Select"
+
+#: src/autogen/pkg.demo.menu.php5:44
+msgid "Fotos from Berlin"
+msgstr "Fotos aus Berlin"
+
+#: src/autogen/pkg.demo.menu.php5:46
+msgid "Fotos from Cape Town"
+msgstr "Fotos aus Kapstadt"
+
+#: src/autogen/pkg.demo.menu.php5:48
+msgid "Fotos from Florida"
+msgstr "Fotos aus Florida"
+
+#: src/autogen/pkg.demo.menu.php5:50
+msgid "Fotos from Istanbul"
+msgstr "Fotos aus Istanbul"
+
+#: src/autogen/pkg.demo.menu.php5:42
+msgid "Gallery (Dist.Gallery)"
+msgstr "Gallerie (Dist.Gallery)"
+
+#: src/autogen/pkg.demo.menu.php5:37
+msgid "Geo"
+msgstr "Geo"
+
+#: src/autogen/pkg.demo.menu.php5:4
+msgid "Home"
+msgstr "Home"
+
+#: src/autogen/pkg.demo.menu.php5:5
+msgid "Home, sweet Home"
+msgstr "Home, sweet Home"
+
+#: src/autogen/pkg.demo.menu.php5:23
+msgid "Interpreters"
+msgstr "Interpreter"
+
+#: src/autogen/pkg.demo.menu.php5:49
+msgid "Istanbul"
+msgstr "Istanbul"
+
+#: src/autogen/pkg.demo.menu.php5:34
+msgid "List of acronyms in different formats (Dist.Acronyms)"
+msgstr "Abk&uuml;rzungsliste in verschiedenen Formaten (Dist.Acronyms)"
+
+#: src/autogen/pkg.demo.menu.php5:51
+msgid "Nature"
+msgstr "Natur"
+
+#: src/autogen/pkg.demo.menu.php5:55
+msgid "People"
+msgstr "Personen"
+
+#: src/autogen/pkg.demo.menu.php5:56
+msgid "People (Dist.People)"
+msgstr "Personen (Dist.People)"
+
+#: src/autogen/pkg.demo.menu.php5:57
+msgid "Publications"
+msgstr "Publikationen"
+
+#: src/autogen/pkg.demo.menu.php5:58
+msgid "Publications (Dist.Publications)"
+msgstr "Publikationen (Dist.Publications)"
+
+#: src/autogen/pkg.demo.menu.php5:11
+msgid "Readers"
+msgstr "Leser"
+
+#: src/autogen/pkg.demo.menu.php5:15
+msgid "Requests"
+msgstr "Anfragen"
+
+#: src/autogen/pkg.demo.menu.php5:27
+msgid "Resp Headers"
+msgstr "Antwort Header"
+
+#: src/autogen/pkg.demo.menu.php5:60
+msgid "SKB API documenation"
+msgstr "API Dokumentation"
+
+#: src/autogen/pkg.demo.menu.php5:6
+msgid "Sitemap"
+msgstr "Sitemap"
+
+#: src/autogen/pkg.demo.menu.php5:52
+msgid "Some Animal and Plant Fotos"
+msgstr "Einige Tier- und Pflanzenfotos"
+
+#: src/autogen/pkg.demo.menu.php5:19
+msgid "Templates"
+msgstr "Vorlagen"
+
+#: src/autogen/pkg.demo.menu.php5:54
+msgid "and a FormSelect Builder"
+msgstr "und der FormSelect Builder"
+
+#: src/autogen/pkg.demo.menu.php5:64
+msgid "character encodings in Core"
+msgstr "Zeichenkodierung in Core"
+
+#: src/autogen/pkg.demo.menu.php5:10
+msgid "core SKB configuration"
+msgstr "core SKB Konfiguration"
+
+#: src/autogen/pkg.demo.menu.php5:30
+msgid "registered Content Types (MIME types, used in HTTP responses)"
+msgstr "registrierte MIME Typen"
+
+#: src/autogen/pkg.demo.menu.php5:28
+msgid "registered HTTP response headers (used in HTTP responses)"
+msgstr "registrierte HTTP Antwort Header"
+
+#: src/autogen/pkg.demo.menu.php5:22
+msgid ""
+"registered applications (providing complete handling of information for "
+"specific donains)"
+msgstr "registrierte Applikationen"
+
+#: src/autogen/pkg.demo.menu.php5:14
+msgid "registered databases, including files and tables"
+msgstr "registrierte Datenbanken"
+
+#: src/autogen/pkg.demo.menu.php5:26
+msgid "registered fields (used to direct interpreters/readers)"
+msgstr "registrierte Felder"
+
+#: src/autogen/pkg.demo.menu.php5:24
+msgid "registered interpreters (used to interpret information)"
+msgstr "registrierte Interpreter"
+
+#: src/autogen/pkg.demo.menu.php5:12
+msgid "registered readers (used to 'read' and prepare information)"
+msgstr "registrierte Leser"
+
+#: src/autogen/pkg.demo.menu.php5:16
+msgid "registered requests (used to initialise request objects)"
+msgstr "registrierte Anfragen"
+
+#: src/autogen/pkg.demo.menu.php5:20
+msgid ""
+"registered templates (used to realise the transformation of read information)"
+msgstr "registrierte Interpreter"

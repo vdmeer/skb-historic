@@ -1,0 +1,58 @@
+# English translations for PHP-SKB package.
+# PHP-SKB, Packages.Demo.Gallery
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB package.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Demo.Gallery\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-08 15:49+0100\n"
+"PO-Revision-Date: 2010-08-24 13:06+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/autogen/pkg.demo.gallery.php5:8
+msgid "Animals"
+msgstr "Animals"
+
+#: src/autogen/pkg.demo.gallery.php5:10
+msgid "Berlin, Germany"
+msgstr "Berlin, Germany"
+
+#: src/autogen/pkg.demo.gallery.php5:6
+msgid "Cape Point"
+msgstr "Cape Point"
+
+#: src/autogen/pkg.demo.gallery.php5:13
+msgid "Cape Town"
+msgstr "Cape Town"
+
+#: src/autogen/pkg.demo.gallery.php5:4
+msgid "Douz - Camels at dawn"
+msgstr "Douz - Camels at dawn"
+
+#: src/autogen/pkg.demo.gallery.php5:5
+msgid "Down Town viewed from Table Mountain"
+msgstr "Down Town viewed from Table Mountain"
+
+#: src/autogen/pkg.demo.gallery.php5:12
+msgid "Florida"
+msgstr "Florida"
+
+#: src/autogen/pkg.demo.gallery.php5:11
+msgid "Istanbul"
+msgstr "Istanbul"
+
+#: src/autogen/pkg.demo.gallery.php5:9
+msgid "Plants"
+msgstr "Plants"
+
+#: src/autogen/pkg.demo.gallery.php5:7
+msgid "Some Nature Shots"
+msgstr "Some Nature Shots"

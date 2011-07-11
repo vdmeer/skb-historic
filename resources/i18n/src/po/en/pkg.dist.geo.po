@@ -1,0 +1,1898 @@
+# English translations for PHP-SKB package.
+# PHP-SKB, Packages.Dist.Geo
+# Copyright (C) 2010 THE PHP-SKB'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PHP-SKB package.
+# Sven van der Meer <sven@vandermeer.de>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Packages.Dist.Geo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-08 17:09+0100\n"
+"PO-Revision-Date: 2010-08-24 13:06+0100\n"
+"Last-Translator: Sven van der Meer <sven@vandermeer.de>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/autogen/pkg.dist.geo.php5:226
+msgid "&Aring;land Islands"
+msgstr "&Aring;land Islands"
+
+#: src/autogen/pkg.dist.geo.php5:227
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: src/autogen/pkg.dist.geo.php5:474
+msgid "Africa"
+msgstr "Africa"
+
+#: src/autogen/pkg.dist.geo.php5:131
+msgid "Ai Tu"
+msgstr "Ai Tu"
+
+#: src/autogen/pkg.dist.geo.php5:228
+msgid "Albania"
+msgstr "Albania"
+
+#: src/autogen/pkg.dist.geo.php5:229
+msgid "Algeria"
+msgstr "Algeria"
+
+#: src/autogen/pkg.dist.geo.php5:157
+msgid "Algiers"
+msgstr "Algiers"
+
+#: src/autogen/pkg.dist.geo.php5:147
+msgid "Alimatha"
+msgstr "Alimatha"
+
+#: src/autogen/pkg.dist.geo.php5:118
+msgid "Alkmaar"
+msgstr "Alkmaar"
+
+#: src/autogen/pkg.dist.geo.php5:230
+msgid "American Samoa"
+msgstr "American Samoa"
+
+#: src/autogen/pkg.dist.geo.php5:47
+msgid "Amsterdam"
+msgstr "Amsterdam"
+
+#: src/autogen/pkg.dist.geo.php5:231
+msgid "Andorra"
+msgstr "Andorra"
+
+#: src/autogen/pkg.dist.geo.php5:238
+msgid "Angola"
+msgstr "Angola"
+
+#: src/autogen/pkg.dist.geo.php5:239
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: src/autogen/pkg.dist.geo.php5:134
+msgid "Ankor Wat"
+msgstr "Ankor Wat"
+
+#: src/autogen/pkg.dist.geo.php5:169
+msgid "Annestown"
+msgstr "Annestown"
+
+#: src/autogen/pkg.dist.geo.php5:240 src/autogen/pkg.dist.geo.php5:477
+msgid "Antarctica"
+msgstr "Antarctica"
+
+#: src/autogen/pkg.dist.geo.php5:241
+msgid "Antigua and Barbuda"
+msgstr "Antigua and Barbuda"
+
+#: src/autogen/pkg.dist.geo.php5:242
+msgid "Argentina"
+msgstr "Argentina"
+
+#: src/autogen/pkg.dist.geo.php5:246
+msgid "Armenia"
+msgstr "Armenia"
+
+#: src/autogen/pkg.dist.geo.php5:247
+msgid "Aruba"
+msgstr "Aruba"
+
+#: src/autogen/pkg.dist.geo.php5:473
+msgid "Asia"
+msgstr "Asia"
+
+#: src/autogen/pkg.dist.geo.php5:174
+msgid "Assakrem"
+msgstr "Assakrem"
+
+#: src/autogen/pkg.dist.geo.php5:34
+msgid "Athens"
+msgstr "Athens"
+
+#: src/autogen/pkg.dist.geo.php5:217
+msgid "Atlanta"
+msgstr "Atlanta"
+
+#: src/autogen/pkg.dist.geo.php5:213
+msgid "Auckland"
+msgstr "Auckland"
+
+#: src/autogen/pkg.dist.geo.php5:248
+msgid "Australia"
+msgstr "Australia"
+
+#: src/autogen/pkg.dist.geo.php5:479
+msgid "Australia and Oceania"
+msgstr "Australia and Oceania"
+
+#: src/autogen/pkg.dist.geo.php5:249
+msgid "Austria"
+msgstr "Austria"
+
+#: src/autogen/pkg.dist.geo.php5:250
+msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+#: src/autogen/pkg.dist.geo.php5:251
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: src/autogen/pkg.dist.geo.php5:252
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: src/autogen/pkg.dist.geo.php5:20
+msgid "Bangkok"
+msgstr "Bangkok"
+
+#: src/autogen/pkg.dist.geo.php5:253
+msgid "Bangladesch"
+msgstr "Bangladesch"
+
+#: src/autogen/pkg.dist.geo.php5:254
+msgid "Barbados"
+msgstr "Barbados"
+
+#: src/autogen/pkg.dist.geo.php5:51
+msgid "Barcelona"
+msgstr "Barcelona"
+
+#: src/autogen/pkg.dist.geo.php5:40
+msgid "Beijing"
+msgstr "Beijing"
+
+#: src/autogen/pkg.dist.geo.php5:255
+msgid "Belarus"
+msgstr "Belarus"
+
+#: src/autogen/pkg.dist.geo.php5:61
+msgid "Belfast"
+msgstr "Belfast"
+
+#: src/autogen/pkg.dist.geo.php5:256
+msgid "Belgium"
+msgstr "Belgium"
+
+#: src/autogen/pkg.dist.geo.php5:257
+msgid "Belize"
+msgstr "Belize"
+
+#: src/autogen/pkg.dist.geo.php5:258
+msgid "Benin"
+msgstr "Benin"
+
+#: src/autogen/pkg.dist.geo.php5:210
+msgid "Bergen"
+msgstr "Bergen"
+
+#: src/autogen/pkg.dist.geo.php5:108
+msgid "Berkeley"
+msgstr "Berkeley"
+
+#: src/autogen/pkg.dist.geo.php5:4
+msgid "Berlin"
+msgstr "Berlin"
+
+#: src/autogen/pkg.dist.geo.php5:259
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: src/autogen/pkg.dist.geo.php5:260
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: src/autogen/pkg.dist.geo.php5:161
+msgid "Blarney"
+msgstr "Blarney"
+
+#: src/autogen/pkg.dist.geo.php5:275
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#: src/autogen/pkg.dist.geo.php5:106
+msgid "Bor&aring;s"
+msgstr "Bor&aring;s"
+
+#: src/autogen/pkg.dist.geo.php5:274
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnia and Herzegovina"
+
+#: src/autogen/pkg.dist.geo.php5:93
+msgid "Boston"
+msgstr "Boston"
+
+#: src/autogen/pkg.dist.geo.php5:273
+msgid "Botswana"
+msgstr "Botswana"
+
+#: src/autogen/pkg.dist.geo.php5:270
+msgid "Bouvet Island"
+msgstr "Bouvet Island"
+
+#: src/autogen/pkg.dist.geo.php5:272
+msgid "Brazil"
+msgstr "Brazil"
+
+#: src/autogen/pkg.dist.geo.php5:63
+msgid "Brighton"
+msgstr "Brighton"
+
+#: src/autogen/pkg.dist.geo.php5:24
+msgid "Brisbane"
+msgstr "Brisbane"
+
+#: src/autogen/pkg.dist.geo.php5:215
+msgid "Bristol"
+msgstr "Bristol"
+
+#: src/autogen/pkg.dist.geo.php5:271
+msgid "British Indian Ocean Territory"
+msgstr "British Indian Ocean Territory"
+
+#: src/autogen/pkg.dist.geo.php5:200
+msgid "Bruchsal"
+msgstr "Bruchsal"
+
+#: src/autogen/pkg.dist.geo.php5:280
+msgid "Brunei Darussalam"
+msgstr "Brunei Darussalam"
+
+#: src/autogen/pkg.dist.geo.php5:5
+msgid "Brunswik"
+msgstr "Brunswik"
+
+#: src/autogen/pkg.dist.geo.php5:136
+msgid "Brussels"
+msgstr "Brussels"
+
+#: src/autogen/pkg.dist.geo.php5:28
+msgid "Bucharest"
+msgstr "Bucharest"
+
+#: src/autogen/pkg.dist.geo.php5:31
+msgid "Budapest"
+msgstr "Budapest"
+
+#: src/autogen/pkg.dist.geo.php5:281
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+#: src/autogen/pkg.dist.geo.php5:170
+msgid "Bunmahon"
+msgstr "Bunmahon"
+
+#: src/autogen/pkg.dist.geo.php5:182
+msgid "Bunratty"
+msgstr "Bunratty"
+
+#: src/autogen/pkg.dist.geo.php5:306
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: src/autogen/pkg.dist.geo.php5:307
+msgid "Burundi"
+msgstr "Burundi"
+
+#: src/autogen/pkg.dist.geo.php5:166
+msgid "Cahir"
+msgstr "Cahir"
+
+#: src/autogen/pkg.dist.geo.php5:308
+msgid "Cambodia"
+msgstr "Cambodia"
+
+#: src/autogen/pkg.dist.geo.php5:137 src/autogen/pkg.dist.geo.php5:218
+msgid "Cambridge"
+msgstr "Cambridge"
+
+#: src/autogen/pkg.dist.geo.php5:309
+msgid "Cameroon"
+msgstr "Cameroon"
+
+#: src/autogen/pkg.dist.geo.php5:57
+msgid "Campo-Grande"
+msgstr "Campo-Grande"
+
+#: src/autogen/pkg.dist.geo.php5:310
+msgid "Canada"
+msgstr "Canada"
+
+#: src/autogen/pkg.dist.geo.php5:115
+msgid "Cantnitz"
+msgstr "Cantnitz"
+
+#: src/autogen/pkg.dist.geo.php5:148
+msgid "Cape Canaveral"
+msgstr "Cape Canaveral"
+
+#: src/autogen/pkg.dist.geo.php5:25
+msgid "Cape Town"
+msgstr "Cape Town"
+
+#: src/autogen/pkg.dist.geo.php5:311
+msgid "Cape Verde"
+msgstr "Cape Verde"
+
+#: src/autogen/pkg.dist.geo.php5:70
+msgid "Carlow"
+msgstr "Carlow"
+
+#: src/autogen/pkg.dist.geo.php5:167
+msgid "Cashel"
+msgstr "Cashel"
+
+#: src/autogen/pkg.dist.geo.php5:312
+msgid "Cayman Islands"
+msgstr "Cayman Islands"
+
+#: src/autogen/pkg.dist.geo.php5:330
+msgid "Central African Republic"
+msgstr "Central African Republic"
+
+#: src/autogen/pkg.dist.geo.php5:331
+msgid "Chad"
+msgstr "Chad"
+
+#: src/autogen/pkg.dist.geo.php5:39
+msgid "Chengdu"
+msgstr "Chengdu"
+
+#: src/autogen/pkg.dist.geo.php5:103
+msgid "Chiangmai"
+msgstr "Chiangmai"
+
+#: src/autogen/pkg.dist.geo.php5:87
+msgid "Chicago"
+msgstr "Chicago"
+
+#: src/autogen/pkg.dist.geo.php5:332
+msgid "Chile"
+msgstr "Chile"
+
+#: src/autogen/pkg.dist.geo.php5:333
+msgid "China"
+msgstr "China"
+
+#: src/autogen/pkg.dist.geo.php5:141
+msgid "Chot Gerio"
+msgstr "Chot Gerio"
+
+#: src/autogen/pkg.dist.geo.php5:334
+msgid "Christmas Island"
+msgstr "Christmas Island"
+
+#: src/autogen/pkg.dist.geo.php5:86
+msgid "Cincinnati"
+msgstr "Cincinnati"
+
+#: src/autogen/pkg.dist.geo.php5:180
+msgid "Clonmacnoise"
+msgstr "Clonmacnoise"
+
+#: src/autogen/pkg.dist.geo.php5:338
+msgid "Cocos (Keeling) Islands"
+msgstr "Cocos (Keeling) Islands"
+
+#: src/autogen/pkg.dist.geo.php5:64
+msgid "Colchester"
+msgstr "Colchester"
+
+#: src/autogen/pkg.dist.geo.php5:212
+msgid "College Park"
+msgstr "College Park"
+
+#: src/autogen/pkg.dist.geo.php5:6
+msgid "Cologne"
+msgstr "Cologne"
+
+#: src/autogen/pkg.dist.geo.php5:339
+msgid "Colombia"
+msgstr "Colombia"
+
+#: src/autogen/pkg.dist.geo.php5:107
+msgid "Colorado"
+msgstr "Colorado"
+
+#: src/autogen/pkg.dist.geo.php5:95
+msgid "Colorado Springs"
+msgstr "Colorado Springs"
+
+#: src/autogen/pkg.dist.geo.php5:340
+msgid "Comoros"
+msgstr "Comoros"
+
+#: src/autogen/pkg.dist.geo.php5:345
+msgid "Congo"
+msgstr "Congo"
+
+#: src/autogen/pkg.dist.geo.php5:344
+msgid "Congo, the Democratic Republic of the"
+msgstr "Congo, the Democratic Republic of the"
+
+#: src/autogen/pkg.dist.geo.php5:346
+msgid "Cook Islands"
+msgstr "Cook Islands"
+
+#: src/autogen/pkg.dist.geo.php5:190
+msgid "Copenhagen"
+msgstr "Copenhagen"
+
+#: src/autogen/pkg.dist.geo.php5:69
+msgid "Cork"
+msgstr "Cork"
+
+#: src/autogen/pkg.dist.geo.php5:347
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: src/autogen/pkg.dist.geo.php5:54
+msgid "Cracow"
+msgstr "Cracow"
+
+#: src/autogen/pkg.dist.geo.php5:349
+msgid "Croatia"
+msgstr "Croatia"
+
+#: src/autogen/pkg.dist.geo.php5:350
+msgid "Cuba"
+msgstr "Cuba"
+
+#: src/autogen/pkg.dist.geo.php5:351
+msgid "Cyprus"
+msgstr "Cyprus"
+
+#: src/autogen/pkg.dist.geo.php5:391
+msgid "Czech Republic"
+msgstr "Czech Republic"
+
+#: src/autogen/pkg.dist.geo.php5:85
+msgid "Dallas"
+msgstr "Dallas"
+
+#: src/autogen/pkg.dist.geo.php5:112
+msgid "Delft"
+msgstr "Delft"
+
+#: src/autogen/pkg.dist.geo.php5:369
+msgid "Denmark"
+msgstr "Denmark"
+
+#: src/autogen/pkg.dist.geo.php5:195
+msgid "Denver"
+msgstr "Denver"
+
+#: src/autogen/pkg.dist.geo.php5:84
+msgid "Detroit"
+msgstr "Detroit"
+
+#: src/autogen/pkg.dist.geo.php5:188
+msgid "Dingle"
+msgstr "Dingle"
+
+#: src/autogen/pkg.dist.geo.php5:367
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: src/autogen/pkg.dist.geo.php5:366
+msgid "Dominica"
+msgstr "Dominica"
+
+#: src/autogen/pkg.dist.geo.php5:365
+msgid "Dominican Republic"
+msgstr "Dominican Republic"
+
+#: src/autogen/pkg.dist.geo.php5:123
+msgid "Dong Ha"
+msgstr "Dong Ha"
+
+#: src/autogen/pkg.dist.geo.php5:97
+msgid "Dortmund"
+msgstr "Dortmund"
+
+#: src/autogen/pkg.dist.geo.php5:221
+msgid "Dortrecht"
+msgstr "Dortrecht"
+
+#: src/autogen/pkg.dist.geo.php5:142
+msgid "Douz"
+msgstr "Douz"
+
+#: src/autogen/pkg.dist.geo.php5:7
+msgid "Dresden"
+msgstr "Dresden"
+
+#: src/autogen/pkg.dist.geo.php5:68
+msgid "Dublin"
+msgstr "Dublin"
+
+#: src/autogen/pkg.dist.geo.php5:165
+msgid "Duncannon"
+msgstr "Duncannon"
+
+#: src/autogen/pkg.dist.geo.php5:120
+msgid "Dungarvan"
+msgstr "Dungarvan"
+
+#: src/autogen/pkg.dist.geo.php5:171
+msgid "Dunmore East"
+msgstr "Dunmore East"
+
+#: src/autogen/pkg.dist.geo.php5:370
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: src/autogen/pkg.dist.geo.php5:65
+msgid "Edinburgh"
+msgstr "Edinburgh"
+
+#: src/autogen/pkg.dist.geo.php5:371
+msgid "Egypt"
+msgstr "Egypt"
+
+#: src/autogen/pkg.dist.geo.php5:360
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: src/autogen/pkg.dist.geo.php5:138
+msgid "Eljem"
+msgstr "Eljem"
+
+#: src/autogen/pkg.dist.geo.php5:359
+msgid "Equatorial Guinea"
+msgstr "Equatorial Guinea"
+
+#: src/autogen/pkg.dist.geo.php5:361
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: src/autogen/pkg.dist.geo.php5:146
+msgid "Essouira"
+msgstr "Essouira"
+
+#: src/autogen/pkg.dist.geo.php5:362
+msgid "Estonia"
+msgstr "Estonia"
+
+#: src/autogen/pkg.dist.geo.php5:364
+msgid "Ethiopia"
+msgstr "Ethiopia"
+
+#: src/autogen/pkg.dist.geo.php5:478
+msgid "Europe"
+msgstr "Europe"
+
+#: src/autogen/pkg.dist.geo.php5:96
+msgid "Evry"
+msgstr "Evry"
+
+#: src/autogen/pkg.dist.geo.php5:363
+msgid "Falkland Islands (Malvinas)"
+msgstr "Falkland Islands (Malvinas)"
+
+#: src/autogen/pkg.dist.geo.php5:372
+msgid "Faroe Islands"
+msgstr "Faroe Islands"
+
+#: src/autogen/pkg.dist.geo.php5:373
+msgid "Fiji"
+msgstr "Fiji"
+
+#: src/autogen/pkg.dist.geo.php5:374
+msgid "Finland"
+msgstr "Finland"
+
+#: src/autogen/pkg.dist.geo.php5:128
+msgid "Fishguard"
+msgstr "Fishguard"
+
+#: src/autogen/pkg.dist.geo.php5:44
+msgid "Florence"
+msgstr "Florence"
+
+#: src/autogen/pkg.dist.geo.php5:159
+msgid "Foggaret"
+msgstr "Foggaret"
+
+#: src/autogen/pkg.dist.geo.php5:375
+msgid "France"
+msgstr "France"
+
+#: src/autogen/pkg.dist.geo.php5:8
+msgid "Frankfort"
+msgstr "Frankfort"
+
+#: src/autogen/pkg.dist.geo.php5:90
+msgid "Fremont"
+msgstr "Fremont"
+
+#: src/autogen/pkg.dist.geo.php5:376
+msgid "French Guiana"
+msgstr "French Guiana"
+
+#: src/autogen/pkg.dist.geo.php5:377
+msgid "French Polynesia"
+msgstr "French Polynesia"
+
+#: src/autogen/pkg.dist.geo.php5:378
+msgid "French Southern Territories"
+msgstr "French Southern Territories"
+
+#: src/autogen/pkg.dist.geo.php5:379
+msgid "Gabon"
+msgstr "Gabon"
+
+#: src/autogen/pkg.dist.geo.php5:392
+msgid "Gambia"
+msgstr "Gambia"
+
+#: src/autogen/pkg.dist.geo.php5:41
+msgid "Geneva"
+msgstr "Geneva"
+
+#: src/autogen/pkg.dist.geo.php5:393
+msgid "Georgia"
+msgstr "Georgia"
+
+#: src/autogen/pkg.dist.geo.php5:431
+msgid "Germany"
+msgstr "Germany"
+
+#: src/autogen/pkg.dist.geo.php5:432
+msgid "Ghana"
+msgstr "Ghana"
+
+#: src/autogen/pkg.dist.geo.php5:204
+msgid "Ghent"
+msgstr "Ghent"
+
+#: src/autogen/pkg.dist.geo.php5:433
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: src/autogen/pkg.dist.geo.php5:62
+msgid "Glasgow"
+msgstr "Glasgow"
+
+#: src/autogen/pkg.dist.geo.php5:187
+msgid "Glendalough"
+msgstr "Glendalough"
+
+#: src/autogen/pkg.dist.geo.php5:162
+msgid "Glengarriff"
+msgstr "Glengarriff"
+
+#: src/autogen/pkg.dist.geo.php5:75
+msgid "Gosier"
+msgstr "Gosier"
+
+#: src/autogen/pkg.dist.geo.php5:434
+msgid "Greece"
+msgstr "Greece"
+
+#: src/autogen/pkg.dist.geo.php5:435
+msgid "Greenland"
+msgstr "Greenland"
+
+#: src/autogen/pkg.dist.geo.php5:436
+msgid "Grenada"
+msgstr "Grenada"
+
+#: src/autogen/pkg.dist.geo.php5:219
+msgid "Groningen"
+msgstr "Groningen"
+
+#: src/autogen/pkg.dist.geo.php5:74 src/autogen/pkg.dist.geo.php5:437
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: src/autogen/pkg.dist.geo.php5:454
+msgid "Guam"
+msgstr "Guam"
+
+#: src/autogen/pkg.dist.geo.php5:455
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: src/autogen/pkg.dist.geo.php5:413
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: src/autogen/pkg.dist.geo.php5:456
+msgid "Guinea"
+msgstr "Guinea"
+
+#: src/autogen/pkg.dist.geo.php5:457
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: src/autogen/pkg.dist.geo.php5:412
+msgid "Guyana"
+msgstr "Guyana"
+
+#: src/autogen/pkg.dist.geo.php5:414
+msgid "Haiti"
+msgstr "Haiti"
+
+#: src/autogen/pkg.dist.geo.php5:9
+msgid "Hamburg"
+msgstr "Hamburg"
+
+#: src/autogen/pkg.dist.geo.php5:129
+msgid "Hanoi"
+msgstr "Hanoi"
+
+#: src/autogen/pkg.dist.geo.php5:415
+msgid "Heard Island and McDonald Islands"
+msgstr "Heard Island and McDonald Islands"
+
+#: src/autogen/pkg.dist.geo.php5:116
+msgid "Heemskerk"
+msgstr "Heemskerk"
+
+#: src/autogen/pkg.dist.geo.php5:10
+msgid "Heidelberg"
+msgstr "Heidelberg"
+
+#: src/autogen/pkg.dist.geo.php5:36
+msgid "Helsinki"
+msgstr "Helsinki"
+
+#: src/autogen/pkg.dist.geo.php5:127
+msgid "Hoek"
+msgstr "Hoek"
+
+#: src/autogen/pkg.dist.geo.php5:160
+msgid "Hoggar (Tassilli de)"
+msgstr "Hoggar (Tassilli de)"
+
+#: src/autogen/pkg.dist.geo.php5:122
+msgid "Hoi Anh"
+msgstr "Hoi Anh"
+
+#: src/autogen/pkg.dist.geo.php5:416
+msgid "Holy See (Vatican City State)"
+msgstr "Holy See (Vatican City State)"
+
+#: src/autogen/pkg.dist.geo.php5:417
+msgid "Honduras"
+msgstr "Honduras"
+
+#: src/autogen/pkg.dist.geo.php5:38 src/autogen/pkg.dist.geo.php5:418
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: src/autogen/pkg.dist.geo.php5:163
+msgid "Hook Head"
+msgstr "Hook Head"
+
+#: src/autogen/pkg.dist.geo.php5:168
+msgid "Howth"
+msgstr "Howth"
+
+#: src/autogen/pkg.dist.geo.php5:133
+msgid "Hue"
+msgstr "Hue"
+
+#: src/autogen/pkg.dist.geo.php5:419
+msgid "Hungary"
+msgstr "Hungary"
+
+#: src/autogen/pkg.dist.geo.php5:420
+msgid "Iceland"
+msgstr "Iceland"
+
+#: src/autogen/pkg.dist.geo.php5:421
+msgid "India"
+msgstr "India"
+
+#: src/autogen/pkg.dist.geo.php5:100
+msgid "Indianapolis"
+msgstr "Indianapolis"
+
+#: src/autogen/pkg.dist.geo.php5:422
+msgid "Indonesia"
+msgstr "Indonesia"
+
+#: src/autogen/pkg.dist.geo.php5:158
+msgid "Insalah"
+msgstr "Insalah"
+
+#: src/autogen/pkg.dist.geo.php5:423
+msgid "Iran, Islamic Republic of"
+msgstr "Iran, Islamic Republic of"
+
+#: src/autogen/pkg.dist.geo.php5:424
+msgid "Iraq"
+msgstr "Iraq"
+
+#: src/autogen/pkg.dist.geo.php5:425
+msgid "Ireland"
+msgstr "Ireland"
+
+#: src/autogen/pkg.dist.geo.php5:193
+msgid "Irvine"
+msgstr "Irvine"
+
+#: src/autogen/pkg.dist.geo.php5:458
+msgid "Isle of Man"
+msgstr "Isle of Man"
+
+#: src/autogen/pkg.dist.geo.php5:459
+msgid "Israel"
+msgstr "Israel"
+
+#: src/autogen/pkg.dist.geo.php5:145
+msgid "Istanbul"
+msgstr "Istanbul"
+
+#: src/autogen/pkg.dist.geo.php5:460
+msgid "Italy"
+msgstr "Italy"
+
+#: src/autogen/pkg.dist.geo.php5:348
+msgid "Ivory Coast"
+msgstr "Ivory Coast"
+
+#: src/autogen/pkg.dist.geo.php5:461
+msgid "Jamaica"
+msgstr "Jamaica"
+
+#: src/autogen/pkg.dist.geo.php5:472
+msgid "Japan"
+msgstr "Japan"
+
+#: src/autogen/pkg.dist.geo.php5:223
+msgid "Jeju Island"
+msgstr "Jeju Island"
+
+#: src/autogen/pkg.dist.geo.php5:124
+msgid "Jerpoint Abbey"
+msgstr "Jerpoint Abbey"
+
+#: src/autogen/pkg.dist.geo.php5:468
+msgid "Jersey"
+msgstr "Jersey"
+
+#: src/autogen/pkg.dist.geo.php5:465
+msgid "Jordan"
+msgstr "Jordan"
+
+#: src/autogen/pkg.dist.geo.php5:199
+msgid "Kaiserslautern"
+msgstr "Kaiserslautern"
+
+#: src/autogen/pkg.dist.geo.php5:11
+msgid "Karlsruhe"
+msgstr "Karlsruhe"
+
+#: src/autogen/pkg.dist.geo.php5:12
+msgid "Kassel"
+msgstr "Kassel"
+
+#: src/autogen/pkg.dist.geo.php5:466
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+#: src/autogen/pkg.dist.geo.php5:467
+msgid "Kenya"
+msgstr "Kenya"
+
+#: src/autogen/pkg.dist.geo.php5:185
+msgid "Kerry"
+msgstr "Kerry"
+
+#: src/autogen/pkg.dist.geo.php5:151
+msgid "Key Biscayne"
+msgstr "Key Biscayne"
+
+#: src/autogen/pkg.dist.geo.php5:150
+msgid "Key West"
+msgstr "Key West"
+
+#: src/autogen/pkg.dist.geo.php5:132
+msgid "Khe Shan"
+msgstr "Khe Shan"
+
+#: src/autogen/pkg.dist.geo.php5:173
+msgid "Kilkenny"
+msgstr "Kilkenny"
+
+#: src/autogen/pkg.dist.geo.php5:126
+msgid "Killarney"
+msgstr "Killarney"
+
+#: src/autogen/pkg.dist.geo.php5:184
+msgid "Kinsale"
+msgstr "Kinsale"
+
+#: src/autogen/pkg.dist.geo.php5:471
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: src/autogen/pkg.dist.geo.php5:469
+msgid "Korea, Democratic People&rsquo;s Republic of; i.e., North Korea"
+msgstr "Korea, Democratic People&rsquo;s Republic of; i.e., North Korea"
+
+#: src/autogen/pkg.dist.geo.php5:470
+msgid "Korea, Republic of; i.e. South Korea"
+msgstr "Korea, Republic of; i.e. South Korea"
+
+#: src/autogen/pkg.dist.geo.php5:464
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: src/autogen/pkg.dist.geo.php5:179
+msgid "Kylemore"
+msgstr "Kylemore"
+
+#: src/autogen/pkg.dist.geo.php5:463
+msgid "Kyrgyzstan"
+msgstr "Kyrgyzstan"
+
+#: src/autogen/pkg.dist.geo.php5:201
+msgid "Langston"
+msgstr "Langston"
+
+#: src/autogen/pkg.dist.geo.php5:119
+msgid "Lankanfinolhu"
+msgstr "Lankanfinolhu"
+
+#: src/autogen/pkg.dist.geo.php5:462
+msgid "Lao People&rsquo;s Democratic Republic"
+msgstr "Lao People&rsquo;s Democratic Republic"
+
+#: src/autogen/pkg.dist.geo.php5:83
+msgid "Las Vegas"
+msgstr "Las Vegas"
+
+#: src/autogen/pkg.dist.geo.php5:453
+msgid "Latvia"
+msgstr "Latvia"
+
+#: src/autogen/pkg.dist.geo.php5:16
+msgid "Laxenburg"
+msgstr "Laxenburg"
+
+#: src/autogen/pkg.dist.geo.php5:452
+msgid "Lebanon"
+msgstr "Lebanon"
+
+#: src/autogen/pkg.dist.geo.php5:207
+msgid "Leeds"
+msgstr "Leeds"
+
+#: src/autogen/pkg.dist.geo.php5:13
+msgid "Leipzig"
+msgstr "Leipzig"
+
+#: src/autogen/pkg.dist.geo.php5:451
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: src/autogen/pkg.dist.geo.php5:450
+msgid "Liberia"
+msgstr "Liberia"
+
+#: src/autogen/pkg.dist.geo.php5:448
+msgid "Libyan Arab Jamahiriya"
+msgstr "Libyan Arab Jamahiriya"
+
+#: src/autogen/pkg.dist.geo.php5:449
+msgid "Lichtenstein"
+msgstr "Lichtenstein"
+
+#: src/autogen/pkg.dist.geo.php5:183
+msgid "Limerick"
+msgstr "Limerick"
+
+#: src/autogen/pkg.dist.geo.php5:30
+msgid "Lisbon"
+msgstr "Lisbon"
+
+#: src/autogen/pkg.dist.geo.php5:177
+msgid "Lismore"
+msgstr "Lismore"
+
+#: src/autogen/pkg.dist.geo.php5:447
+msgid "Lithuania"
+msgstr "Lithuania"
+
+#: src/autogen/pkg.dist.geo.php5:26
+msgid "Ljubljana"
+msgstr "Ljubljana"
+
+#: src/autogen/pkg.dist.geo.php5:60 src/autogen/pkg.dist.geo.php5:66
+msgid "London"
+msgstr "London"
+
+#: src/autogen/pkg.dist.geo.php5:446
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#: src/autogen/pkg.dist.geo.php5:71
+msgid "Lyon"
+msgstr "Lyon"
+
+#: src/autogen/pkg.dist.geo.php5:445
+msgid "Macao"
+msgstr "Macao"
+
+#: src/autogen/pkg.dist.geo.php5:444
+msgid "Macedonia, the former Yugoslav Republic of"
+msgstr "Macedonia, the former Yugoslav Republic of"
+
+#: src/autogen/pkg.dist.geo.php5:443
+msgid "Madagascar"
+msgstr "Madagascar"
+
+#: src/autogen/pkg.dist.geo.php5:50
+msgid "Madrid"
+msgstr "Madrid"
+
+#: src/autogen/pkg.dist.geo.php5:442
+msgid "Malawi"
+msgstr "Malawi"
+
+#: src/autogen/pkg.dist.geo.php5:441
+msgid "Malaysia"
+msgstr "Malaysia"
+
+#: src/autogen/pkg.dist.geo.php5:440
+msgid "Maldives"
+msgstr "Maldives"
+
+#: src/autogen/pkg.dist.geo.php5:439
+msgid "Mali"
+msgstr "Mali"
+
+#: src/autogen/pkg.dist.geo.php5:438
+msgid "Malta"
+msgstr "Malta"
+
+#: src/autogen/pkg.dist.geo.php5:111
+msgid "Manchester"
+msgstr "Manchester"
+
+#: src/autogen/pkg.dist.geo.php5:206
+msgid "Mannheim"
+msgstr "Mannheim"
+
+#: src/autogen/pkg.dist.geo.php5:48
+msgid "Marrakech"
+msgstr "Marrakech"
+
+#: src/autogen/pkg.dist.geo.php5:430
+msgid "Marshall Islands"
+msgstr "Marshall Islands"
+
+#: src/autogen/pkg.dist.geo.php5:428
+msgid "Martinique"
+msgstr "Martinique"
+
+#: src/autogen/pkg.dist.geo.php5:139
+msgid "Matmata"
+msgstr "Matmata"
+
+#: src/autogen/pkg.dist.geo.php5:427
+msgid "Mauritania"
+msgstr "Mauritania"
+
+#: src/autogen/pkg.dist.geo.php5:429
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: src/autogen/pkg.dist.geo.php5:202
+msgid "Maynooth"
+msgstr "Maynooth"
+
+#: src/autogen/pkg.dist.geo.php5:426
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: src/autogen/pkg.dist.geo.php5:411
+msgid "Mexico"
+msgstr "Mexico"
+
+#: src/autogen/pkg.dist.geo.php5:82
+msgid "Miami"
+msgstr "Miami"
+
+#: src/autogen/pkg.dist.geo.php5:410
+msgid "Micronesia, Federated States of"
+msgstr "Micronesia, Federated States of"
+
+#: src/autogen/pkg.dist.geo.php5:181
+msgid "Moher"
+msgstr "Moher"
+
+#: src/autogen/pkg.dist.geo.php5:409
+msgid "Moldova, Republic of"
+msgstr "Moldova, Republic of"
+
+#: src/autogen/pkg.dist.geo.php5:408
+msgid "Monaco"
+msgstr "Monaco"
+
+#: src/autogen/pkg.dist.geo.php5:394
+msgid "Mongolia"
+msgstr "Mongolia"
+
+#: src/autogen/pkg.dist.geo.php5:395
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: src/autogen/pkg.dist.geo.php5:110
+msgid "Montr&eacute;al"
+msgstr "Montr&eacute;al"
+
+#: src/autogen/pkg.dist.geo.php5:396
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: src/autogen/pkg.dist.geo.php5:397
+msgid "Morocco"
+msgstr "Morocco"
+
+#: src/autogen/pkg.dist.geo.php5:92
+msgid "Morristown"
+msgstr "Morristown"
+
+#: src/autogen/pkg.dist.geo.php5:53
+msgid "Moscow"
+msgstr "Moscow"
+
+#: src/autogen/pkg.dist.geo.php5:398
+msgid "Mozambique"
+msgstr "Mozambique"
+
+#: src/autogen/pkg.dist.geo.php5:14
+msgid "Munich"
+msgstr "Munich"
+
+#: src/autogen/pkg.dist.geo.php5:399
+msgid "Myanmar"
+msgstr "Myanmar"
+
+#: src/autogen/pkg.dist.geo.php5:400
+msgid "Namibia"
+msgstr "Namibia"
+
+#: src/autogen/pkg.dist.geo.php5:109
+msgid "Nashville"
+msgstr "Nashville"
+
+#: src/autogen/pkg.dist.geo.php5:401
+msgid "Nauru"
+msgstr "Nauru"
+
+#: src/autogen/pkg.dist.geo.php5:89
+msgid "Needham"
+msgstr "Needham"
+
+#: src/autogen/pkg.dist.geo.php5:402
+msgid "Nepal"
+msgstr "Nepal"
+
+#: src/autogen/pkg.dist.geo.php5:268
+msgid "Netherlands"
+msgstr "Netherlands"
+
+#: src/autogen/pkg.dist.geo.php5:403
+msgid "Netherlands Antilles"
+msgstr "Netherlands Antilles"
+
+#: src/autogen/pkg.dist.geo.php5:404
+msgid "New Caledonia"
+msgstr "New Caledonia"
+
+#: src/autogen/pkg.dist.geo.php5:80
+msgid "New Jersey"
+msgstr "New Jersey"
+
+#: src/autogen/pkg.dist.geo.php5:81
+msgid "New York"
+msgstr "New York"
+
+#: src/autogen/pkg.dist.geo.php5:405
+msgid "New Zealand"
+msgstr "New Zealand"
+
+#: src/autogen/pkg.dist.geo.php5:94
+msgid "Newport Beach"
+msgstr "Newport Beach"
+
+#: src/autogen/pkg.dist.geo.php5:222
+msgid "Niagara Falls"
+msgstr "Niagara Falls"
+
+#: src/autogen/pkg.dist.geo.php5:406
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: src/autogen/pkg.dist.geo.php5:72
+msgid "Nice"
+msgstr "Nice"
+
+#: src/autogen/pkg.dist.geo.php5:407
+msgid "Niger"
+msgstr "Niger"
+
+#: src/autogen/pkg.dist.geo.php5:390
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: src/autogen/pkg.dist.geo.php5:389
+msgid "Niue"
+msgstr "Niue"
+
+#: src/autogen/pkg.dist.geo.php5:388
+msgid "Norfolk Island"
+msgstr "Norfolk Island"
+
+#: src/autogen/pkg.dist.geo.php5:475
+msgid "North America"
+msgstr "North America"
+
+#: src/autogen/pkg.dist.geo.php5:387
+msgid "Northern Mariana Islands"
+msgstr "Northern Mariana Islands"
+
+#: src/autogen/pkg.dist.geo.php5:386
+msgid "Norway"
+msgstr "Norway"
+
+#: src/autogen/pkg.dist.geo.php5:385
+msgid "Oman"
+msgstr "Oman"
+
+#: src/autogen/pkg.dist.geo.php5:32
+msgid "Opatija"
+msgstr "Opatija"
+
+#: src/autogen/pkg.dist.geo.php5:149
+msgid "Orlando"
+msgstr "Orlando"
+
+#: src/autogen/pkg.dist.geo.php5:205
+msgid "Osaka"
+msgstr "Osaka"
+
+#: src/autogen/pkg.dist.geo.php5:49
+msgid "Oslo"
+msgstr "Oslo"
+
+#: src/autogen/pkg.dist.geo.php5:384
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: src/autogen/pkg.dist.geo.php5:382
+msgid "Palau"
+msgstr "Palau"
+
+#: src/autogen/pkg.dist.geo.php5:383
+msgid "Palestinian Territory, Occupied"
+msgstr "Palestinian Territory, Occupied"
+
+#: src/autogen/pkg.dist.geo.php5:113
+msgid "Palo Alto"
+msgstr "Palo Alto"
+
+#: src/autogen/pkg.dist.geo.php5:381
+msgid "Panama"
+msgstr "Panama"
+
+#: src/autogen/pkg.dist.geo.php5:380
+msgid "Papua New Guinea"
+msgstr "Papua New Guinea"
+
+#: src/autogen/pkg.dist.geo.php5:358
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: src/autogen/pkg.dist.geo.php5:73
+msgid "Paris"
+msgstr "Paris"
+
+#: src/autogen/pkg.dist.geo.php5:178
+msgid "Passage East"
+msgstr "Passage East"
+
+#: src/autogen/pkg.dist.geo.php5:99
+msgid "Passau"
+msgstr "Passau"
+
+#: src/autogen/pkg.dist.geo.php5:98
+msgid "Patras"
+msgstr "Patras"
+
+#: src/autogen/pkg.dist.geo.php5:357
+msgid "Peru"
+msgstr "Peru"
+
+#: src/autogen/pkg.dist.geo.php5:56
+msgid "Petr&oacute;polis"
+msgstr "Petr&oacute;polis"
+
+#: src/autogen/pkg.dist.geo.php5:79
+msgid "Philadelphia"
+msgstr "Philadelphia"
+
+#: src/autogen/pkg.dist.geo.php5:356
+msgid "Philippines"
+msgstr "Philippines"
+
+#: src/autogen/pkg.dist.geo.php5:135
+msgid "Phnom Phen"
+msgstr "Phnom Phen"
+
+#: src/autogen/pkg.dist.geo.php5:197
+msgid "Pinckney"
+msgstr "Pinckney"
+
+#: src/autogen/pkg.dist.geo.php5:225
+msgid "Pisa"
+msgstr "Pisa"
+
+#: src/autogen/pkg.dist.geo.php5:355
+msgid "Pitcairn"
+msgstr "Pitcairn"
+
+#: src/autogen/pkg.dist.geo.php5:114
+msgid "Pittsburgh"
+msgstr "Pittsburgh"
+
+#: src/autogen/pkg.dist.geo.php5:224
+msgid "Pohang"
+msgstr "Pohang"
+
+#: src/autogen/pkg.dist.geo.php5:354
+msgid "Poland"
+msgstr "Poland"
+
+#: src/autogen/pkg.dist.geo.php5:91
+msgid "Portland"
+msgstr "Portland"
+
+#: src/autogen/pkg.dist.geo.php5:191
+msgid "Portlaw"
+msgstr "Portlaw"
+
+#: src/autogen/pkg.dist.geo.php5:29
+msgid "Porto"
+msgstr "Porto"
+
+#: src/autogen/pkg.dist.geo.php5:353
+msgid "Portugal"
+msgstr "Portugal"
+
+#: src/autogen/pkg.dist.geo.php5:121
+msgid "Powerscourt"
+msgstr "Powerscourt"
+
+#: src/autogen/pkg.dist.geo.php5:352
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#: src/autogen/pkg.dist.geo.php5:343
+msgid "Qatar"
+msgstr "Qatar"
+
+#: src/autogen/pkg.dist.geo.php5:342
+msgid "R&egrave;union"
+msgstr "R&egrave;union"
+
+#: src/autogen/pkg.dist.geo.php5:88
+msgid "Reading"
+msgstr "Reading"
+
+#: src/autogen/pkg.dist.geo.php5:37
+msgid "Red Sea"
+msgstr "Red Sea"
+
+#: src/autogen/pkg.dist.geo.php5:216
+msgid "Rennes"
+msgstr "Rennes"
+
+#: src/autogen/pkg.dist.geo.php5:341
+msgid "Romania"
+msgstr "Romania"
+
+#: src/autogen/pkg.dist.geo.php5:105
+msgid "Rome"
+msgstr "Rome"
+
+#: src/autogen/pkg.dist.geo.php5:101
+msgid "Rotterdam"
+msgstr "Rotterdam"
+
+#: src/autogen/pkg.dist.geo.php5:335
+msgid "Russian Federation"
+msgstr "Russian Federation"
+
+#: src/autogen/pkg.dist.geo.php5:337
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: src/autogen/pkg.dist.geo.php5:323
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+msgstr "S&atilde;o Tom&eacute; and Pr&iacute;ncipe"
+
+#: src/autogen/pkg.dist.geo.php5:336
+msgid "Saint Helena"
+msgstr "Saint Helena"
+
+#: src/autogen/pkg.dist.geo.php5:329
+msgid "Saint Kitts and Nevis"
+msgstr "Saint Kitts and Nevis"
+
+#: src/autogen/pkg.dist.geo.php5:328
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#: src/autogen/pkg.dist.geo.php5:327
+msgid "Saint Pierre and Miquelon"
+msgstr "Saint Pierre and Miquelon"
+
+#: src/autogen/pkg.dist.geo.php5:326
+msgid "Saint Vincent and the Grenadines"
+msgstr "Saint Vincent and the Grenadines"
+
+#: src/autogen/pkg.dist.geo.php5:55
+msgid "Salvador Bahia"
+msgstr "Salvador Bahia"
+
+#: src/autogen/pkg.dist.geo.php5:18
+msgid "Salzburg"
+msgstr "Salzburg"
+
+#: src/autogen/pkg.dist.geo.php5:325
+msgid "Samoa"
+msgstr "Samoa"
+
+#: src/autogen/pkg.dist.geo.php5:33
+msgid "Samos Island"
+msgstr "Samos Island"
+
+#: src/autogen/pkg.dist.geo.php5:77
+msgid "San Francisco"
+msgstr "San Francisco"
+
+#: src/autogen/pkg.dist.geo.php5:78
+msgid "San Jos&eacute;"
+msgstr "San Jos&eacute;"
+
+#: src/autogen/pkg.dist.geo.php5:324
+msgid "San Marino"
+msgstr "San Marino"
+
+#: src/autogen/pkg.dist.geo.php5:196
+msgid "Santa Clara"
+msgstr "Santa Clara"
+
+#: src/autogen/pkg.dist.geo.php5:322
+msgid "Saudi Arabia"
+msgstr "Saudi Arabia"
+
+#: src/autogen/pkg.dist.geo.php5:76
+msgid "Schaumburg"
+msgstr "Schaumburg"
+
+#: src/autogen/pkg.dist.geo.php5:15
+msgid "Schwerin"
+msgstr "Schwerin"
+
+#: src/autogen/pkg.dist.geo.php5:220
+msgid "Sebastopol"
+msgstr "Sebastopol"
+
+#: src/autogen/pkg.dist.geo.php5:321
+msgid "Senegal"
+msgstr "Senegal"
+
+#: src/autogen/pkg.dist.geo.php5:320
+msgid "Serbia"
+msgstr "Serbia"
+
+#: src/autogen/pkg.dist.geo.php5:319
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#: src/autogen/pkg.dist.geo.php5:140
+msgid "Sfax"
+msgstr "Sfax"
+
+#: src/autogen/pkg.dist.geo.php5:208
+msgid "Siena"
+msgstr "Siena"
+
+#: src/autogen/pkg.dist.geo.php5:318
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: src/autogen/pkg.dist.geo.php5:27 src/autogen/pkg.dist.geo.php5:316
+msgid "Singapore"
+msgstr "Singapore"
+
+#: src/autogen/pkg.dist.geo.php5:176
+msgid "Sligo"
+msgstr "Sligo"
+
+#: src/autogen/pkg.dist.geo.php5:125
+msgid "Slot de Haar"
+msgstr "Slot de Haar"
+
+#: src/autogen/pkg.dist.geo.php5:314
+msgid "Slovakia"
+msgstr "Slovakia"
+
+#: src/autogen/pkg.dist.geo.php5:315
+msgid "Slovenia"
+msgstr "Slovenia"
+
+#: src/autogen/pkg.dist.geo.php5:317
+msgid "Solomon Islands"
+msgstr "Solomon Islands"
+
+#: src/autogen/pkg.dist.geo.php5:313
+msgid "Somalia"
+msgstr "Somalia"
+
+#: src/autogen/pkg.dist.geo.php5:305
+msgid "South Africa"
+msgstr "South Africa"
+
+#: src/autogen/pkg.dist.geo.php5:476
+msgid "South America"
+msgstr "South America"
+
+#: src/autogen/pkg.dist.geo.php5:304
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "South Georgia and the South Sandwich Islands"
+
+#: src/autogen/pkg.dist.geo.php5:303
+msgid "Spain"
+msgstr "Spain"
+
+#: src/autogen/pkg.dist.geo.php5:300
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: src/autogen/pkg.dist.geo.php5:52
+msgid "St. Petersburg"
+msgstr "St. Petersburg"
+
+#: src/autogen/pkg.dist.geo.php5:189
+msgid "Stokholm"
+msgstr "Stokholm"
+
+#: src/autogen/pkg.dist.geo.php5:301
+msgid "Sudan"
+msgstr "Sudan"
+
+#: src/autogen/pkg.dist.geo.php5:302
+msgid "Suriname"
+msgstr "Suriname"
+
+#: src/autogen/pkg.dist.geo.php5:299
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard and Jan Mayen"
+
+#: src/autogen/pkg.dist.geo.php5:298
+msgid "Swaziland"
+msgstr "Swaziland"
+
+#: src/autogen/pkg.dist.geo.php5:296
+msgid "Sweden"
+msgstr "Sweden"
+
+#: src/autogen/pkg.dist.geo.php5:297
+msgid "Switzerland"
+msgstr "Switzerland"
+
+#: src/autogen/pkg.dist.geo.php5:23
+msgid "Sydney"
+msgstr "Sydney"
+
+#: src/autogen/pkg.dist.geo.php5:291
+msgid "Syrian Arab Republic"
+msgstr "Syrian Arab Republic"
+
+#: src/autogen/pkg.dist.geo.php5:292
+msgid "Taiwan"
+msgstr "Taiwan"
+
+#: src/autogen/pkg.dist.geo.php5:293
+msgid "Tajikistan"
+msgstr "Tajikistan"
+
+#: src/autogen/pkg.dist.geo.php5:192
+msgid "Tamanrasset"
+msgstr "Tamanrasset"
+
+#: src/autogen/pkg.dist.geo.php5:144
+msgid "Tamerza"
+msgstr "Tamerza"
+
+#: src/autogen/pkg.dist.geo.php5:22
+msgid "Tampa"
+msgstr "Tampa"
+
+#: src/autogen/pkg.dist.geo.php5:294
+msgid "Tanzania, United Republic of"
+msgstr "Tanzania, United Republic of"
+
+#: src/autogen/pkg.dist.geo.php5:209
+msgid "Tempe"
+msgstr "Tempe"
+
+#: src/autogen/pkg.dist.geo.php5:152
+msgid "Teneriffa"
+msgstr "Teneriffa"
+
+#: src/autogen/pkg.dist.geo.php5:295
+msgid "Thailand"
+msgstr "Thailand"
+
+#: src/autogen/pkg.dist.geo.php5:46
+msgid "The Hague"
+msgstr "The Hague"
+
+#: src/autogen/pkg.dist.geo.php5:214
+msgid "Thrace"
+msgstr "Thrace"
+
+#: src/autogen/pkg.dist.geo.php5:186
+msgid "Timoleague"
+msgstr "Timoleague"
+
+#: src/autogen/pkg.dist.geo.php5:368
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#: src/autogen/pkg.dist.geo.php5:290
+msgid "Togo"
+msgstr "Togo"
+
+#: src/autogen/pkg.dist.geo.php5:289
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: src/autogen/pkg.dist.geo.php5:45
+msgid "Tokyo"
+msgstr "Tokyo"
+
+#: src/autogen/pkg.dist.geo.php5:288
+msgid "Tonga"
+msgstr "Tonga"
+
+#: src/autogen/pkg.dist.geo.php5:153
+msgid "Torbay"
+msgstr "Torbay"
+
+#: src/autogen/pkg.dist.geo.php5:59
+msgid "Toronto"
+msgstr "Toronto"
+
+#: src/autogen/pkg.dist.geo.php5:143
+msgid "Tozeur"
+msgstr "Tozeur"
+
+#: src/autogen/pkg.dist.geo.php5:172
+msgid "Tramore"
+msgstr "Tramore"
+
+#: src/autogen/pkg.dist.geo.php5:211
+msgid "Trento"
+msgstr "Trento"
+
+#: src/autogen/pkg.dist.geo.php5:287
+msgid "Trinidad and Tobago"
+msgstr "Trinidad and Tobago"
+
+#: src/autogen/pkg.dist.geo.php5:104
+msgid "Trondheim"
+msgstr "Trondheim"
+
+#: src/autogen/pkg.dist.geo.php5:19
+msgid "Tunis"
+msgstr "Tunis"
+
+#: src/autogen/pkg.dist.geo.php5:286
+msgid "Tunisia"
+msgstr "Tunisia"
+
+#: src/autogen/pkg.dist.geo.php5:285
+msgid "Turkey"
+msgstr "Turkey"
+
+#: src/autogen/pkg.dist.geo.php5:282
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: src/autogen/pkg.dist.geo.php5:283
+msgid "Turks and Caicos Islands"
+msgstr "Turks and Caicos Islands"
+
+#: src/autogen/pkg.dist.geo.php5:35
+msgid "Turku"
+msgstr "Turku"
+
+#: src/autogen/pkg.dist.geo.php5:284
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: src/autogen/pkg.dist.geo.php5:194
+msgid "Twente"
+msgstr "Twente"
+
+#: src/autogen/pkg.dist.geo.php5:279
+msgid "Uganda"
+msgstr "Uganda"
+
+#: src/autogen/pkg.dist.geo.php5:278
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: src/autogen/pkg.dist.geo.php5:277
+msgid "United Arab Emirates"
+msgstr "United Arab Emirates"
+
+#: src/autogen/pkg.dist.geo.php5:276
+msgid "United Kingdom"
+msgstr "United Kingdom"
+
+#: src/autogen/pkg.dist.geo.php5:266
+msgid "United States"
+msgstr "United States"
+
+#: src/autogen/pkg.dist.geo.php5:265
+msgid "United States Minor Outlying Islands"
+msgstr "United States Minor Outlying Islands"
+
+#: src/autogen/pkg.dist.geo.php5:264
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: src/autogen/pkg.dist.geo.php5:102
+msgid "Utrecht"
+msgstr "Utrecht"
+
+#: src/autogen/pkg.dist.geo.php5:263
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: src/autogen/pkg.dist.geo.php5:58
+msgid "Vancouver"
+msgstr "Vancouver"
+
+#: src/autogen/pkg.dist.geo.php5:262
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: src/autogen/pkg.dist.geo.php5:261
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: src/autogen/pkg.dist.geo.php5:203
+msgid "Venice"
+msgstr "Venice"
+
+#: src/autogen/pkg.dist.geo.php5:17
+msgid "Vienna"
+msgstr "Vienna"
+
+#: src/autogen/pkg.dist.geo.php5:155
+msgid "Vientiane"
+msgstr "Vientiane"
+
+#: src/autogen/pkg.dist.geo.php5:245
+msgid "Viet Nam"
+msgstr "Viet Nam"
+
+#: src/autogen/pkg.dist.geo.php5:130
+msgid "Vinh"
+msgstr "Vinh"
+
+#: src/autogen/pkg.dist.geo.php5:244
+msgid "Virgin Islands, British"
+msgstr "Virgin Islands, British"
+
+#: src/autogen/pkg.dist.geo.php5:243
+msgid "Virgin Islands, U.S."
+msgstr "Virgin Islands, U.S."
+
+#: src/autogen/pkg.dist.geo.php5:237
+msgid "Wallis and Futuna"
+msgstr "Wallis and Futuna"
+
+#: src/autogen/pkg.dist.geo.php5:198
+msgid "Walnut Creek"
+msgstr "Walnut Creek"
+
+#: src/autogen/pkg.dist.geo.php5:21
+msgid "Washington D.C."
+msgstr "Washington D.C."
+
+#: src/autogen/pkg.dist.geo.php5:67
+msgid "Waterford"
+msgstr "Waterford"
+
+#: src/autogen/pkg.dist.geo.php5:236
+msgid "Western Sahara"
+msgstr "Western Sahara"
+
+#: src/autogen/pkg.dist.geo.php5:175
+msgid "Westport"
+msgstr "Westport"
+
+#: src/autogen/pkg.dist.geo.php5:43
+msgid "Winterthur"
+msgstr "Winterthur"
+
+#: src/autogen/pkg.dist.geo.php5:154
+msgid "Woldeck"
+msgstr "Woldeck"
+
+#: src/autogen/pkg.dist.geo.php5:156
+msgid "Xiang Kuang"
+msgstr "Xiang Kuang"
+
+#: src/autogen/pkg.dist.geo.php5:235
+msgid "Yemen"
+msgstr "Yemen"
+
+#: src/autogen/pkg.dist.geo.php5:164
+msgid "Youghal"
+msgstr "Youghal"
+
+#: src/autogen/pkg.dist.geo.php5:234
+msgid "Yugoslavia"
+msgstr "Yugoslavia"
+
+#: src/autogen/pkg.dist.geo.php5:117
+msgid "Zaanse Schans"
+msgstr "Zaanse Schans"
+
+#: src/autogen/pkg.dist.geo.php5:233
+msgid "Zambia"
+msgstr "Zambia"
+
+#: src/autogen/pkg.dist.geo.php5:232
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: src/autogen/pkg.dist.geo.php5:42
+msgid "Zurich"
+msgstr "Zurich"
+
+#: src/autogen/pkg.dist.geo.php5:269
+msgid "in the Netherlands"
+msgstr "in the Netherlands"
+
+#: src/autogen/pkg.dist.geo.php5:267
+msgid "in the United States"
+msgstr "in the United States"
