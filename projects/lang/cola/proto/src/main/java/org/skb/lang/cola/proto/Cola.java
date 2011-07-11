@@ -57,7 +57,7 @@ public class Cola{
 		//overwrite standard TRIBE values for LADS
 		TribeProperties prop=TribeProperties.getInstance();
 
-		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/projects/a3ds-java/experiements/src");
+		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/skb/autogen-local/src");
 
 		// overwrite this permanently, we are in LADS
 		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "cola");

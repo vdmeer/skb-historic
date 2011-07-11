@@ -51,7 +51,7 @@ public class Glue {
 		TribeProperties prop=TribeProperties.getInstance();
 		prop.setValueDefault(TribeProperties.tpmKeyNoCPP, true); // no CPP for glue
 
-		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/projects/a3ds-java/experiements/src");
+		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/skb/autogen-local/src");
 		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "glue");
 		prop.setValueDefault(TribeProperties.tpmKeyTgtLanguage,   "graphml");
 //		prop.setValueDefault(TribePM.tpmKeyPrStgFileTarget, true);

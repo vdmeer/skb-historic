@@ -968,9 +968,9 @@
                 },
                 "colaAT_SPEC":{
                     "skb:lang:target:tokens:cid":"colaAT_SPEC",
-                    "skb:lang:target:tokens:cval":"@scpec",
+                    "skb:lang:target:tokens:cval":"@spec",
                     "skb:lang:target:tokens:tid":"AT_SPEC",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@scpec'",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@spec'",
                     "skb:lang:target:tokens:cjavadoc":""
                 },
                 "colaAT_STAGE":{

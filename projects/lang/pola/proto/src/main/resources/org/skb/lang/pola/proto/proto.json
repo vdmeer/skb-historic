@@ -659,9 +659,9 @@
                 },
                 "polaAT_SPEC":{
                     "skb:lang:target:tokens:cid":"polaAT_SPEC",
-                    "skb:lang:target:tokens:cval":"@scpec",
+                    "skb:lang:target:tokens:cval":"@spec",
                     "skb:lang:target:tokens:tid":"AT_SPEC",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@scpec'",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@spec'",
                     "skb:lang:target:tokens:cjavadoc":""
                 },
                 "polaAT_STAGE":{
