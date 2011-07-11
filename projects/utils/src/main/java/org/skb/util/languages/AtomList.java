@@ -197,6 +197,14 @@ public class AtomList extends OatTable {
 	}
 
 	/**
+	 * Get the scope separator.
+	 * return the current scope separator
+	 */
+	public String getScopeSeparator(){
+		return this.scope.separator();
+	}
+
+	/**
 	 * Add a new atom to the list.
 	 * @param tk the ANTLR token of the atom 
 	 * @param category the category the atom should be filed at
