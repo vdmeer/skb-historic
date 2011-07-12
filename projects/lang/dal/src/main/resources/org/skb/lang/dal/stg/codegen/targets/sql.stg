@@ -56,94 +56,89 @@ dalSpecification(definition) ::= <<
 dalDefinition(package) ::= <<
 >>
 
-dalPackage(name, declaration, actions, data) ::= <<
+dalPackage(ident, empty, tables, repos, actions, data) ::= <<
+<empty>
+<tables;separator="\n\n">
+<repos;separator="\n\n">
+<actions;separator="\n\n">
+<data;separator="\n\n">
 >>
 
 
-dalRepositoryTable(ident, fields) ::= <<
+
+dalRepository(ident, tables) ::= <<
+<tables;separator="\n\n">
+
+>>
+
+dalTable(ident, fields) ::= <<
 CREATE TABLE [<ident>] (
     <fields; separator=",\n">
 );
-
 >>
 
-dalRepositoryElement(ident, type, size, prec, defv, coll) ::= <<
-[<ident>] <dalElementTypeMap.(type)>
+dalField(ident, type, constraints, size, precision, others) ::= <<
+[<ident>] <dalElementTypeMap.(type)> <if(constraints)><constraints; separator=" "><endif> <if(size)>(<size><endif><if(precision)>,<precision><endif><if(size)>)<endif> <others; separator=" ">
 >>
 
-dalMetaElement(ident, table, kv) ::= <<
-<table>
-    (<kv.keys:{k| "<k>"};separator=", ">)
-    VALUES(<kv.keys:{k|"<kv.(k)>"};separator=", ">);
->>
-
-
-dalElemMetaDataTypeMap ::= ["skb:entity":"entity", "skb:value":"value", default:"value"]
-dalElemMetaDataUseMap  ::= ["skb:core":"core", "skb:request":"request", default:"core,request"]
-
-
-dalElemMetaData(repo, table) ::= <<
-INSERT OR IGNORE INTO <table>
->>
-
-dalElement(ident, type, properties) ::= <<
-[<ident>] <dalElementTypeMap.(type)> <properties>
->>
-
-dalElemProperties(size, precision, defvalue, collate, constraints) ::= <<
-<if(size)>(<size><endif><if(precision)>,<precision><endif><if(size)>)<endif> <if(constraints)><constraints; separator=" "><endif>
->>
-
-
-dalElemPropConstraintReasonMap ::= [
-  "dal:constraint:pkey":"PRIMARY KEY",
-  "dal:constraint:nnull":"NOT NULL",
-  "dal:constraint:unique":"UNIQUE",
+dalFieldConstraintReasonMap ::= [
+  "primkey":"PRIMARY KEY",
+  "notnull":"NOT NULL",
+  "unique":"UNIQUE",
   default:key
 ]
-dalElemPropConstraintActionMap ::= [
-  "dal:constraint:abort":"ABORT",
-  "dal:constraint:rollback":"ROLLBACK",
+dalFieldConstraintActionMap ::= [
+  "abort":"ABORT",
+  "rollback":"ROLLBACK",
   default:key
 ]
-dalElemPropConstraints(reason, action) ::= <<
-<if(reason)><if(action)><dalElemPropConstraintReasonMap.(reason)> ON CONFLICT <dalElemPropConstraintActionMap.(action)><endif><endif>
+
+dalFieldConstraint(reason, action) ::= <<
+<if(reason)><if(action)><dalFieldConstraintReasonMap.(reason)> ON CONFLICT <dalFieldConstraintActionMap.(action)><endif><endif>
+>>
+
+dalSequence(ids) ::= <<
 >>
 
 
-dalElemSequence(ids) ::= <<
+dalPackageRepository(repo, table, kv) ::= <<
+INSERT OR REPLACE INTO <table> <kv>
 >>
 
-dalActions(ins, set, add, rem, emp) ::= <<
->>
-
-dalActionsSet(element, property, ident, ktvl) ::= <<
->>
-
-dalActionsIns(list, ktvl) ::= <<
->>
-
-dalActionsAdd(list, element, ktv) ::= <<
->>
-
-dalActionsRem(list, element) ::= <<
->>
-
-dalActionsEmp(list) ::= <<
+dalPackageRepositoryRow(kv) ::= <<
+(<kv.keys:{k| "<k>"};separator=", ">) VALUES(<kv.keys:{k|"<kv.(k)>"};separator=", ">);
 >>
 
 
-dalData(ktvl) ::= <<
+dalActions(insert, remove, empty) ::= <<
+<empty; separator="\n">
+<remove; separator="\n">
+<insert; separator="\n">
+>>
+
+dalActionsInsert(table, kvl) ::= <<
+INSERT OR REPLACE INTO <table> (<kvl.keys:{k| "<k>"};separator=", ">) VALUES(<kvl.keys:{k|"<kvl.(k)>"};separator=", ">);
+>>
+
+dalActionsRemove(table, kv) ::= <<
+<if(kv)>DELETE FROM <table> WHERE <kv.keys:{k| "<k>" = "<kv.(k)>"};separator=" AND ">;<else>DROP TABLE <table>;<endif>
+>>
+
+dalActionsEmpty(table) ::= <<
+DELETE FROM <table>;
 >>
 
 
-dalPackageName(ids) ::= <<<id; separator=":">
+
+
+
+dalData(rows) ::= <<
+<rows;separator="\n">
 >>
 
-dalKeyTypeValueList(ktv) ::= <<
+dalDataRow(table, kvl) ::= <<
+INSERT OR REPLACE INTO <table> (<kvl.keys:{k| "<k>"};separator=", ">) VALUES(<kvl.keys:{k|"<kvl.(k)>"};separator=", ">);
 >>
 
-dalKeyTypeValue(key, type, value) ::= <<
->>
 
 const_value(val) ::= "<val>"

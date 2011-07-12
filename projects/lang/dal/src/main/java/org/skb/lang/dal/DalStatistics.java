@@ -35,6 +35,8 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import org.antlr.stringtemplate.StringTemplate;
+import org.antlr.stringtemplate.StringTemplateGroup;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.TypeRepository;
 import org.skb.types.atomic.java.OatBoolean;
@@ -45,8 +47,6 @@ import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.stringtemplate.STGWriterXtoY;
-import org.antlr.stringtemplate.StringTemplate;
-import org.antlr.stringtemplate.StringTemplateGroup;
 
 /**
  * Class implementing statistic methods for Cola parser.

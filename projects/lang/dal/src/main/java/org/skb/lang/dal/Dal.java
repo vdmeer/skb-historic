@@ -30,11 +30,11 @@
 
 package org.skb.lang.dal;
 
+import org.apache.log4j.Logger;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
 import org.skb.tribe.TribeProperties;
-import org.apache.log4j.Logger;
 
 /**
  * General entry point for Dal parsing.

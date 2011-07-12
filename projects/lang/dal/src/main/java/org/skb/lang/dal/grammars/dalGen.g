@@ -63,8 +63,13 @@ options
 @members{
   private DalPass3_Gen pass;
 
+  private String curRepo;
+  private String curTable;
+  private LinkedHashMap<String, List<StringTemplate>> tmpKV;
+
   public void init() {
     this.pass=new DalPass3_Gen();
+    this.tmpKV=new LinkedHashMap<String, List<StringTemplate>>();
   }
 }
 
@@ -74,64 +79,96 @@ options
 dalSpecification               @init{this.init();}
                              : ^(AT_SPEC cpp_directive dalDefinition);
 cpp_directive                : CPP_DIRECTIVE;
-dalDefinition                : dalRepository dalPackage*;
+dalDefinition                : dalRepository {this.pass.addST($dalRepository.st);}
+                               (dalPackage {this.pass.addST($dalPackage.st);})*;
 
 
 /*
  * dalRepository == All Meta-Meta data on fields for different tables
  */
-dalRepository                 : ^(DAL_REPOSITORY IDENT dalRepositoryTable*)
-                                ;
-dalRepositoryTable            : ^(DAL_TABLE IDENT dalRepositoryField* dalRepositorySequence)
-                                ;
-dalRepositoryField            : ^(DAL_FIELD IDENT base_type dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?);
+dalRepository                : ^(DAL_REPOSITORY id=IDENT
+                                 {this.pass.atoms.scope.push($id.token);}
+                                 {this.curRepo=$id.text;}
+                                 (tables+=dalTable)*)
+                                 {this.curRepo=null;}
+                               -> dalRepository(ident={$id.text}, tables={$tables});
+dalTable                     : ^(DAL_TABLE id=IDENT (fields+=dalField)* dalSequence)
+                               ->dalTable(ident={$id.text}, fields={this.pass.sequenceFields(this.curRepo, $id.text, $fields)});
+dalField                     : ^(DAL_FIELD id=IDENT type=base_type
+                                 {ArrayList<StringTemplate> cons=new ArrayList<StringTemplate>();}
+                                 {ArrayList<StringTemplate> others=new ArrayList<StringTemplate>();}
+                                 dalFieldValue?
+                                 (dalFieldPrimkey {cons.add($dalFieldPrimkey.st);})?
+                                 (dalFieldNotnull {cons.add($dalFieldNotnull.st);})?
+                                 (dalFieldUnique {cons.add($dalFieldUnique.st);})?
+                                 dalFieldSize? dalFieldPrecision?
+                                 (dalFieldDefval {others.add($dalFieldDefval.st);})?
+                                 (dalFieldCollate {others.add($dalFieldCollate.st);})?
+                               )
+                               -> dalField(ident={$id.text}, type={$type.text}, constraints={cons}, size={$dalFieldSize.st}, precision={$dalFieldPrecision.st}, others={others});
 
-dalFieldValue                 : ^(DAL_VALUE VAL_STRING*);
-dalFieldPrecision             : ^(DAL_PRECISION VAL_INTEGER);
-dalFieldSize                  : ^(DAL_SIZE VAL_INTEGER);
-dalFieldCollate               : ^(DAL_COLLATE VAL_STRING);
-dalFieldDefval                : ^(DAL_DEFVAL const_value);
-dalFieldNotnull               : ^(DAL_NOTNUL DAL_ROLLBACK? DAL_ABORT?);
-dalFieldPrimkey               : ^(DAL_PRIMKEY DAL_ROLLBACK? DAL_ABORT?);
-dalFieldUnique                : ^(DAL_UNIQUE DAL_ROLLBACK? DAL_ABORT?);
+dalFieldValue                : ^(DAL_VALUE VAL_STRING*);
+dalFieldSize                 : ^(DAL_SIZE VAL_INTEGER)       -> template(token={$VAL_INTEGER}) "<token>";
+dalFieldPrecision            : ^(DAL_PRECISION VAL_INTEGER)  -> template(token={$VAL_INTEGER}) "<token>";
+dalFieldCollate              : ^(DAL_COLLATE VAL_STRING)     -> template(token={$VAL_STRING}) "<token>";
+dalFieldDefval               : ^(DAL_DEFVAL const_value)     -> template(token={$const_value.st}) "<token>";
+dalFieldNotnull              : ^(reason=DAL_NOTNUL (action=DAL_ROLLBACK)? (action=DAL_ABORT)?)
+                               -> dalFieldConstraint(reason={$reason.text}, action={$action.text});
+dalFieldPrimkey              : ^(reason=DAL_PRIMKEY (action=DAL_ROLLBACK)? (action=DAL_ABORT)?)
+                               -> dalFieldConstraint(reason={$reason.text}, action={$action.text});
+dalFieldUnique               : ^(reason=DAL_UNIQUE (action=DAL_ROLLBACK)? (action=DAL_ABORT)?)
+                               -> dalFieldConstraint(reason={$reason.text}, action={$action.text});
 
-dalRepositorySequence        : ^(DAL_SEQUENCE IDENT*);
-
-
-dalPackage                    : ^(DAL_PACKAGE IDENT dalPackageTable* dalPackageRepository* dalActions* dalData*);
-
-dalPackageTable               : ^(DAL_TABLE IDENT dalPackageTableField* dalPackageTableSequence);
-
-dalPackageTableField          : ^(DAL_FIELD IDENT base_type dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?);
-
-dalPackageTableSequence       : ^(DAL_SEQUENCE IDENT*);
-
-dalPackageRepository          : ^(DAL_REPOSITORY IDENT IDENT dalPackageRepositoryRow*);
-dalPackageRepositoryRow       : ^(DAL_ROW IDENT dalPackageRepositoryRowKV*);
-dalPackageRepositoryRowKV     : ^(DAL_ROW IDENT const_value*);
+dalSequence                  : ^(DAL_SEQUENCE (id+=IDENT)*)
+                               -> dalSequence(ids={$id});
 
 
-dalActions                   : ^(s=DAL_ACTIONS dalActionsIns* dalActionsSet* dalActionsAdd* dalActionsRem* dalActionsEmp*)
+dalPackage                   : ^(DAL_PACKAGE id=IDENT
+                                 {this.curRepo=$id.text;}
+                                 {this.pass.atoms.scope.push($id.token);}
+                                 dalActionsEmpty? (tables+=dalTable)* (repos+=dalPackageRepository)* (actions+=dalActions)* (data+=dalData)*)
+                                 {this.curRepo=null;}
+                               ->dalPackage(ident={$id.text}, empty={$dalActionsEmpty.st}, tables={$tables}, repos={$repos}, actions={$actions}, data={$data});
+
+dalPackageRepository         : ^(DAL_REPOSITORY repo=IDENT table=IDENT
+                                 dalPackageRepositoryRow*
+                               )
+                               -> dalPackageRepository(repo={$repo.text}, table={$table.text}, kv={$dalPackageRepositoryRow.st});
+dalPackageRepositoryRow      : ^(DAL_ROW IDENT
+                                 {this.tmpKV.clear();}
+                                 dalPackageRepositoryRowKV*
+                               )
+                               -> dalPackageRepositoryRow(kv={this.pass.fixKV(this.tmpKV)});
+dalPackageRepositoryRowKV    : ^(DAL_ROW id=IDENT (cv+=const_value)*)
+                               {this.tmpKV.put($id.text, $cv);}
                                ;
 
-dalActionsSet                : DAL_ACTION_SET dalListIdent dalKeyTypeValueList;
-dalActionsIns                : DAL_ACTION_INS dalListIdent dalKeyTypeValueList;
-dalActionsAdd                : DAL_ACTION_ADD dalListIdent dalElementIdent dalKeyTypeValue;
-dalActionsRem                : DAL_ACTION_REM dalListIdent dalKeyIdent;
-dalActionsEmp                : DAL_ACTION_EMP dalListIdent;
 
-dalData                      : ^(s=DAL_DATA dalDataElement*)
+dalActions                   : ^(s=DAL_ACTIONS (insert+=dalActionsInsert)* (remove+=dalActionsRemove)* (empty+=dalActionsEmpty)*)
+                               -> dalActions(insert={$insert}, remove={$remove}, empty={$empty});
+
+dalActionsInsert             : DAL_ACTION_INSERT table=dalTableIdent {this.tmpKV.clear();} dalKV*
+                               -> dalActionsInsert(table={$table.st}, kvl={this.pass.fixKV(this.tmpKV)});
+dalActionsRemove             : DAL_ACTION_REMOVE table=dalTableIdent {this.tmpKV.clear();} dalKV?
+                               -> dalActionsRemove(table={$table.st}, kv={this.pass.fixKV(this.tmpKV)});
+dalActionsEmpty              : DAL_ACTION_EMPTY table=dalTableIdent
+                               ->dalActionsEmpty(table={$table.st});
+
+
+dalData                      : ^(DAL_DATA (rows+=dalDataRow)*)
+                               -> dalData(rows={$rows});
+dalDataRow                   : id=dalTableIdent
+                               {this.tmpKV.clear();}
+                               dalKV*
+                               -> dalDataRow(table={$id.st}, kvl={this.pass.fixKV(this.tmpKV)});
+
+dalTableIdent                : id=IDENT -> template(token={$id}) "<token>";
+
+
+dalKV                        : ^(DAL_DATA id=IDENT cv+=const_value)
+                               {this.tmpKV.put($id.text, $cv);}
                                ;
-dalDataElement               : dalListIdent dalKeyTypeValueList;
 
-dalListIdent                 : IDENT;
-dalElementIdent              : IDENT;
-dalKeyIdent                  : IDENT;
-
-dalKeyTypeValueList          : ^(AT_PROVIDES dalKeyTypeValue*);
-dalKeyTypeValue              : dalKey dalType? const_value;
-dalKey                       : id=IDENT -> template(token={$id.text}) "<token>";
-dalType                      : base_type;
 
 void_type               : t=VOID -> template(token={$t}) "<token>";
 base_type               : SHORT | INTEGER | LONG | HEX | BINARY | FLOAT | DOUBLE | CHAR | STRING | BOOLEAN;

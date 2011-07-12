@@ -108,62 +108,138 @@ dal_repository core{
 }
 
 
-
-
 dal_package dist.acronyms{
     dal_table acronyms{
-        field key string primkey(abort) notnull(abort) unique(abort);
+        field core:fields.key string primkey(abort) notnull(abort) unique(abort);
         field acronyms:long_locale string;
         field acronyms:short string;
         field default:url string;
         field default:description_locale string;
 
-        dal_sequence{key, acronyms:long_locale, acronyms:short, default:url, default:description_locale}
+        dal_sequence{core:fields.key, acronyms:long_locale, acronyms:short, default:url, default:description_locale}
     }
 
     dal_repository core dal_table pkg_fields{
         row acronyms:long_locale
-          core:fields.key = "acronyms:long_locale"
-          core:fields.type = "value"
-          core:fields.use = "core"
-          core:fields.entries_name = "acronyms:long"
-          core:fields.http_req_name = "long"
-          core:fields.explode = 0
-          core:fields.val_unset = null
-          core:fields.description = "Long form of an acronym as locale string."
-          core:fields.package = "dist.acronyms"
-          ;
+            core:fields.key = "acronyms:long_locale"
+            core:fields.type = "value"
+            core:fields.use = "core"
+            core:fields.entries_name = "acronyms:long"
+            core:fields.http_req_name = "long"
+            core:fields.explode = 0
+            core:fields.val_unset = null
+            core:fields.description = "Long form of an acronym as locale string."
+            core:fields.package = "dist.acronyms"
+            ;
         row acronyms:short
-          core:fields.key = "acronyms:short"
-          core:fields.type = "value"
-          core:fields.use = "core"
-          core:fields.entries_name = "acronyms:short"
-          core:fields.http_req_name = "short"
-          core:fields.explode = 0
-          core:fields.val_unset = null
-          core:fields.description = "Short form of an acronym."
-          core:fields.package = "dist.acronyms"
-          ;
+            core:fields.key = "acronyms:short"
+            core:fields.type = "value"
+            core:fields.use = "core"
+            core:fields.entries_name = "acronyms:short"
+            core:fields.http_req_name = "short"
+            core:fields.explode = 0
+            core:fields.val_unset = null
+            core:fields.description = "Short form of an acronym."
+            core:fields.package = "dist.acronyms"
+            ;
         row default:acronym_key
-          core:fields.key = "default:acronym_key"
-          core:fields.type = "entity"
-          core:fields.use = "core" "request"
-          core:fields.entries_name = "default:acronym"
-          core:fields.http_req_name = "acronym"
-          core:fields.default_table = "acronyms"
-          core:fields.explode = 0
-          core:fields.val_unset = null
-          core:fields.description = "An acronym key, i.e. a pointer to a key in the acronym database."
-          core:fields.package = "dist.acronyms"
-          ;
+            core:fields.key = "default:acronym_key"
+            core:fields.type = "entity"
+            core:fields.use = "core" "request"
+            core:fields.entries_name = "default:acronym"
+            core:fields.http_req_name = "acronym"
+            core:fields.default_table = "acronyms"
+            core:fields.explode = 0
+            core:fields.val_unset = null
+            core:fields.description = "An acronym key, i.e. a pointer to a key in the acronym database."
+            core:fields.package = "dist.acronyms"
+            ;
     }
 
     dal_actions{
-        dal_action_set acronyms {key "string"}
-        dal_action_ins acronyms {key "string"}
+        //insert acronyms {key "string"}
+        //remove acronyms {core:fields.key "3GPP"}
+        //remove acronyms
+        //empty acronyms
     }
 
     dal_data {
-        acronyms {key "3GPP"}{acronyms:short "3GPP"}{acronyms:long_locale "%3rd Generation Partnership Program"}{default:url null}{default:description_locale null} 
+        acronyms {core:fields.key "A3DS"}{acronyms:short "A<sup>3</sup>DS"}{acronyms:long_locale "%Architectural Artefacts for Autonomic Distributed Systems"}
+        acronyms {core:fields.key "ADSL"}{acronyms:short "ADSL"}{acronyms:long_locale "%Asymmetric Digital Subscriber Line"}
+        acronyms {core:fields.key "ANTLR"}{acronyms:short "ANTLR"}{acronyms:long_locale "%ANother Tool for Language Recognition"}
+        acronyms {core:fields.key "API"}{acronyms:short "API"}{acronyms:long_locale "%Application Programming Interface"}
+        acronyms {core:fields.key "ASCII"}{acronyms:short "ASCII"}{acronyms:long_locale "%American Standard Code for Information Interchange"}
+        acronyms {core:fields.key "VM"}{acronyms:short "VM"}{acronyms:long_locale "%Virtual Machine"}
+        acronyms {core:fields.key "UUID"}{acronyms:short "UUID"}{acronyms:long_locale "%Universally Unified Identifier"}
+        acronyms {core:fields.key "IETF:URL"}{acronyms:short "URL"}{acronyms:long_locale "%Uniform Resource Locator"}
+        acronyms {core:fields.key "BNF"}{acronyms:short "BNF"}{acronyms:long_locale "%Backus-Naur Form"}
+        acronyms {core:fields.key "C++"}{acronyms:short "C++"}{acronyms:long_locale "%Programming Language (originally &ldquo;C with Classes&rdquo;)"}
+        acronyms {core:fields.key "TINA:CMC"}{acronyms:short "CMC"}{acronyms:long_locale "%Computational Modelling"}
+        acronyms {core:fields.key "ITU:CMIP"}{acronyms:short "CMIP"}{acronyms:long_locale "%Common Management Information Protocol"}
+        acronyms {core:fields.key "OMG:CORBA"}{acronyms:short "CORBA"}{acronyms:long_locale "%Common Object Request Broker Architecture"}
+        acronyms {core:fields.key "organisation:TINA-C"}{acronyms:short "TINA-C"}{acronyms:long_locale "%Telecommunication Information Networking Architecture Consortium"}
+        acronyms {core:fields.key "organisation:TM-Forum"}{acronyms:short "TM Forum"}{acronyms:long_locale "%TeleManagement Forum"}
+        acronyms {core:fields.key "IETF:SNMP"}{acronyms:short "SNMP"}{acronyms:long_locale "%Simple Network Management Protocol"}
+        acronyms {core:fields.key "DEN-ng"}{acronyms:short "DEN-ng"}{acronyms:long_locale "%Directory Enabled Network - next generation"}
+        acronyms {core:fields.key "W3C:DTD"}{acronyms:short "DTD"}{acronyms:long_locale "%Document Type Definition"}
+        acronyms {core:fields.key "ITU:SDU"}{acronyms:short "SDU"}{acronyms:long_locale "%Service Data Unit"}
+        acronyms {core:fields.key "QoS"}{acronyms:short "QoS"}{acronyms:long_locale "%Quality of Service"}
+        acronyms {core:fields.key "PSTN"}{acronyms:short "PSTN"}{acronyms:long_locale "%Public Switched Telephone Network"}
+        acronyms {core:fields.key "DbC"}{acronyms:short "DbC"}{acronyms:long_locale "%Design by Contract&copy;"}
+        acronyms {core:fields.key "EBNF"}{acronyms:short "EBNF"}{acronyms:long_locale "%Extended Backus-Naur Form"}
+        acronyms {core:fields.key "FCAPS"}{acronyms:short "FCAPS"}{acronyms:long_locale "%Fault&#44; Configuration&#44; Accounting&#44; Performance and Security"}
+        acronyms {core:fields.key "FOCALE"}{acronyms:short "FOCALE"}{acronyms:long_locale "%Foundation&#44; Observation&#44; Comparison&#44; Action and Learning Environment"}
+        acronyms {core:fields.key "GPRS"}{acronyms:short "GPRS"}{acronyms:long_locale "%General Packet Radio System"}
+        acronyms {core:fields.key "GSM"}{acronyms:short "GSM"}{acronyms:long_locale "%Global System for Mobile communications"}
+        acronyms {core:fields.key "GUID"}{acronyms:short "GUID"}{acronyms:long_locale "%Globally Unified Identifier"}
+        acronyms {core:fields.key "company:HP"}{acronyms:short "HP"}{acronyms:long_locale "%Hewlett Packard"}
+        acronyms {core:fields.key "organisation:IEEE"}{acronyms:short "IEEE"}{acronyms:long_locale "%Institute of Electrical and Electronic Engineers"}
+        acronyms {core:fields.key "PHP"}{acronyms:short "PHP"}{acronyms:long_locale "%PHP Hypertext Preprocessor"}
+        acronyms {core:fields.key "ITU:PDU"}{acronyms:short "PDU"}{acronyms:long_locale "%Protocol Data Unit"}
+        acronyms {core:fields.key "JTC"}{acronyms:short "JTC"}{acronyms:long_locale "%Joint Technical Committee"}
+        acronyms {core:fields.key "organisation:OMG"}{acronyms:short "OMG"}{acronyms:long_locale "%Object Management Group"}
+        acronyms {core:fields.key "organisation:IETF"}{acronyms:short "IETF"}{acronyms:long_locale "%Internet Engineering Task Force"}
+        acronyms {core:fields.key "MIB"}{acronyms:short "MIB"}{acronyms:long_locale "%Management Information Base"}
+        acronyms {core:fields.key "JAVA:J2EE"}{acronyms:short "J2EE"}{acronyms:long_locale "%Java 2 Platform&#44; Enterprise Edition"}
+        acronyms {core:fields.key "A3DS:COLA"}{acronyms:short "COLA"}{acronyms:long_locale "%A<sup>3</sup>DS Contract Language"}
+        acronyms {core:fields.key "organisation:ISO"}{acronyms:short "ISO"}{acronyms:long_locale "%International Standardisation Organisation"}
+        acronyms {core:fields.key "organisation:ITU"}{acronyms:short "ITU"}{acronyms:long_locale "%International Telecommunication Unit"}
+        acronyms {core:fields.key "LLC"}{acronyms:short "LLC"}{acronyms:long_locale "%Logical Link Control"}
+        acronyms {core:fields.key "MAC"}{acronyms:short "MAC"}{acronyms:long_locale "%Medium Access Control"}
+        acronyms {core:fields.key "MAN"}{acronyms:short "MAN"}{acronyms:long_locale "%Metropolitan Area Network"}
+        acronyms {core:fields.key "conference:S3"}{acronyms:short "S3"}{acronyms:long_locale "%Motorola Symposium on Software&#44; System and Simulation"}
+        acronyms {core:fields.key "conference:HP-SUA"}{acronyms:short "HP-SUA"}{acronyms:long_locale "%Workshop of the HP Software University Association"}
+        acronyms {core:fields.key "conference:EASe"}{acronyms:short "EASe"}{acronyms:long_locale "%Workshop on Engineering of Autonomic and Autonomous Systems"}
+        acronyms {core:fields.key "organisation:ACM"}{acronyms:short "ACM"}{acronyms:long_locale "%Association for Computing Machinery"}
+        acronyms {core:fields.key "organisation:FhG:FOKUS"}{acronyms:short "FhG FOKUS"}{acronyms:long_locale "pkg.dist.acronyms%%Fraunhofer Institute for Open Communication Systems"}
+        acronyms {core:fields.key "organisation:GMD:FOKUS"}{acronyms:short "GMD FOKUS"}{acronyms:long_locale "pkg.dist.acronyms%%GMD Institute for Open Communication Systems"}
+        acronyms {core:fields.key "organisation:TSSG"}{acronyms:short "TSSG"}{acronyms:long_locale "%Telecommunications Software &amp; Systems Group"}
+        acronyms {core:fields.key "university:TUB"}{acronyms:short "TUB"}{acronyms:long_locale "pkg.dist.acronyms%%Technical University Berlin"}
+        acronyms {core:fields.key "university:WIT"}{acronyms:short "WIT"}{acronyms:long_locale "%Waterford Institute of Technology"}
+        acronyms {core:fields.key "organisation:IEEE:CS"}{acronyms:short "CS"}{acronyms:long_locale "%IEEE Computer Society"}
+        acronyms {core:fields.key "journal:TAC"}{acronyms:short "TAC"}{acronyms:long_locale "%Transactions on Computers"}
+        acronyms {core:fields.key "conference:SESS"}{acronyms:short "SESS"}{acronyms:long_locale "%Software Engineering Standards Symposium"}
+        acronyms {core:fields.key "university:DCU"}{acronyms:short "DCU"}{acronyms:long_locale "%Dublin City University"}
+        acronyms {core:fields.key "company:ZIFA"}{acronyms:short "ZIFA"}{acronyms:long_locale "%Zachman Institute for Framework Advancement"}
+        acronyms {core:fields.key "conference:ICUFN"}{acronyms:short "ICUFN"}{acronyms:long_locale "%International Conference on Ubiquitous and Future Networks"}
+        acronyms {core:fields.key "university:POSTECH"}{acronyms:short "POSTECH"}{acronyms:long_locale "%Pohang University of Science and Technology"}
+        acronyms {core:fields.key "journal:SigplanNotices"}{acronyms:short "Sigplan Not."}{acronyms:long_locale "%ACM SIGPLAN Notices"}
+        acronyms {core:fields.key "journal:TCS"}{acronyms:short "TCS"}{acronyms:long_locale "%ACM Transaction in Computer Systems"}
+        acronyms {core:fields.key "organisation:PSOC"}{acronyms:short "PSOC"}{acronyms:long_locale "%Pouzin Society"}{default:url "http://www.pouzinsociety.org/"}
+        acronyms {core:fields.key "TeX:CTAN"}{acronyms:short "CTAN"}{acronyms:long_locale "%the Comprehensice TeX Archive Network"}{default:url "http://www.ctan.org/"}
+        acronyms {core:fields.key "TeX:TDS"}{acronyms:short "TDS"}{acronyms:long_locale "%TeX Directory Structure"}
+        acronyms {core:fields.key "A3DS:SKB"}{acronyms:short "SKB"}{acronyms:long_locale "%Sven&#39;s Knowledge Base"}
+        acronyms {core:fields.key "JPEG"}{acronyms:short "JPEG"}{acronyms:long_locale "%Joint Photographic Experts Group"}
+        acronyms {core:fields.key "Springer:LNCS"}{acronyms:short "LNCS"}{acronyms:long_locale "%Lecture Notes in Computer Science"}
+        acronyms {core:fields.key "SDO"}{acronyms:short "SDO"}{acronyms:long_locale "%Standard Defining Organisation"}
+        acronyms {core:fields.key "ISO:SQL"}{acronyms:short "SQL"}{acronyms:long_locale "%Structured Query Language"}
+        acronyms {core:fields.key "W3C:SVG"}{acronyms:short "SVG"}{acronyms:long_locale "%Scalable Vector Graphics"}
+        acronyms {core:fields.key "LAMP"}{acronyms:short "LAMP"}{acronyms:long_locale "%Linux, Apache, MySQL and PHP"}
+        acronyms {core:fields.key "PSOC:RINA"}{acronyms:short "RINA"}{acronyms:long_locale "%Recursive InterNet Architecture"}
+        acronyms {core:fields.key "PSOC:TINOS"}{acronyms:short "TINOS"}{acronyms:long_locale "%The InterNet Operating System"}
+        acronyms {core:fields.key "conference:ICODP"}{acronyms:short "ICODP"}{acronyms:long_locale "%International Conference on Open Distributed Processing"}
+        acronyms {core:fields.key "university:NPL"}{acronyms:short "NPL"}{acronyms:long_locale "%National Physical Laboratory"}
+        acronyms {core:fields.key "organisation:IMF"}{acronyms:short "IMF"}{acronyms:long_locale "%International Monetary Fund"}{default:url "http://www.imf.org"}
+        acronyms {core:fields.key "organisation:UIC"}{acronyms:short "UIC"}{acronyms:long_locale "%International Union of Railways"}{default:url "http://www.uic.org"} 
     }
 }

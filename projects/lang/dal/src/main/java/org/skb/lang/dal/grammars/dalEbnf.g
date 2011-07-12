@@ -125,50 +125,63 @@ dalDefinition                : dalRepository dalPackage*;
 /*
  * dalRepository == All Meta-Meta data on fields for different tables
  */
-dalRepository                 : DAL_REPOSITORY IDENT '{' dalRepositoryTable* '}'
-                                -> ^(DAL_REPOSITORY IDENT dalRepositoryTable*);
-dalRepositoryTable            : DAL_TABLE IDENT '{' dalRepositoryField* dalRepositorySequence '}'
-                                -> ^(DAL_TABLE IDENT dalRepositoryField* dalRepositorySequence);
+dalRepository                 : DAL_REPOSITORY id=IDENT 
+                                {this.pass.putAtom(id,DalTokensConstants.dalREPOSITORY);}
+                                {this.pass.tables.curRepoSet(id);}
+                                '{' dalTable* '}'
+                                {this.pass.atoms.scope.pop();}
+                                {this.pass.tables.curRepoClear();}
+                                -> ^(DAL_REPOSITORY IDENT dalTable*);
+dalTable                      : DAL_TABLE id=IDENT
+                                {this.pass.putAtom(id,DalTokensConstants.dalTABLE);}
+                                {this.pass.tables.curTableSet(id);}
+                                '{' dalField* dalSequence '}'
+                                {this.pass.atoms.scope.pop();}
+                                {this.pass.tables.curTableClear();}
+                                -> ^(DAL_TABLE IDENT dalField* dalSequence);
 //field IDENT TYPE value(VALUE) primkey(abort) notnull(abort) unique(abort) size(2) precision(1) defval("") collate("");
-dalRepositoryField            : DAL_FIELD IDENT base_type
+dalField                      : DAL_FIELD id=IDENT base_type
+                                {this.pass.putAtom(id,DalTokensConstants.dalFIELD, this.base_type);}
+                                {this.pass.tables.curTableAddField(id, this.base_type);}
                                 dalFieldValue?
                                 dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? 
                                 (dalFieldSize dalFieldPrecision?)? dalFieldDefval? dalFieldCollate?
                                 ';'
+                                {this.pass.atoms.scope.pop();}
+                                {this.pass.tables.curFieldClear();}
                                 -> ^(DAL_FIELD IDENT base_type dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?);
 
 dalFieldValue                 : DAL_VALUE '(' (DAL_EXPR_AND | DAL_EXPR_OR | DAL_EXPR_XOR | DAL_EXPR_NOR | DAL_EXPR_NAND | DAL_EXPR_LIST) VAL_STRING* ')'
                                 -> ^(DAL_VALUE VAL_STRING*);
-dalFieldPrecision             : DAL_PRECISION '(' VAL_INTEGER ')' -> ^(DAL_PRECISION VAL_INTEGER);
-dalFieldSize                  : DAL_SIZE  '(' VAL_INTEGER ')' -> ^(DAL_SIZE VAL_INTEGER);
-dalFieldCollate               : DAL_COLLATE '(' VAL_STRING ')' -> ^(DAL_COLLATE VAL_STRING);
-dalFieldDefval                : DAL_DEFVAL '(' const_value ')' -> ^(DAL_DEFVAL const_value);
-dalFieldNotnull               : DAL_NOTNUL '(' (DAL_ROLLBACK | DAL_ABORT) ')' -> ^(DAL_NOTNUL DAL_ROLLBACK? DAL_ABORT?);
-dalFieldPrimkey               : DAL_PRIMKEY '(' (DAL_ROLLBACK | DAL_ABORT) ')' -> ^(DAL_PRIMKEY DAL_ROLLBACK? DAL_ABORT?);
-dalFieldUnique                : DAL_UNIQUE '(' (DAL_ROLLBACK | DAL_ABORT) ')' -> ^(DAL_UNIQUE DAL_ROLLBACK? DAL_ABORT?);
+dalFieldSize                  : DAL_SIZE  '(' VAL_INTEGER ')'
+                                -> ^(DAL_SIZE VAL_INTEGER);
+dalFieldPrecision             : DAL_PRECISION '(' VAL_INTEGER ')'
+                                -> ^(DAL_PRECISION VAL_INTEGER);
+dalFieldCollate               : DAL_COLLATE '(' VAL_STRING ')'
+                                -> ^(DAL_COLLATE VAL_STRING);
+dalFieldDefval                : DAL_DEFVAL '(' const_value ')'
+                                -> ^(DAL_DEFVAL const_value);
+dalFieldNotnull               : DAL_NOTNUL '(' (DAL_ROLLBACK | DAL_ABORT) ')'
+                                -> ^(DAL_NOTNUL DAL_ROLLBACK? DAL_ABORT?);
+dalFieldPrimkey               : DAL_PRIMKEY '(' (DAL_ROLLBACK | DAL_ABORT) ')'
+                                -> ^(DAL_PRIMKEY DAL_ROLLBACK? DAL_ABORT?);
+dalFieldUnique                : DAL_UNIQUE '(' (DAL_ROLLBACK | DAL_ABORT) ')'
+                                -> ^(DAL_UNIQUE DAL_ROLLBACK? DAL_ABORT?);
 
-dalRepositorySequence         : DAL_SEQUENCE '{' (id=IDENT
-                                (',' (id=IDENT))*)? '}'
+dalSequence                   : s=DAL_SEQUENCE 
+                                {this.pass.putAtom(s,DalTokensConstants.dalSEQUENCE);}
+                                '{' ( (id=IDENT {this.pass.tables.curTableSequenceAdd(id);}) (',' (id=IDENT {this.pass.tables.curTableSequenceAdd(id);}))*)? '}'
+                                {this.pass.atoms.scope.pop();}
                                  -> ^(DAL_SEQUENCE IDENT*);
 
 
-dalPackage                    : DAL_PACKAGE s=IDENT
-                                '{' dalPackageTable* dalPackageRepository* dalActions* dalData* '}'
-                                -> ^(DAL_PACKAGE IDENT dalPackageTable* dalPackageRepository* dalActions* dalData*);
-
-dalPackageTable               : DAL_TABLE IDENT '{' dalPackageTableField* dalPackageTableSequence '}'
-                                -> ^(DAL_TABLE IDENT dalPackageTableField* dalPackageTableSequence);
-
-dalPackageTableField          : DAL_FIELD IDENT base_type
-                                dalFieldValue?
-                                dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? 
-                                (dalFieldSize dalFieldPrecision?)? dalFieldDefval? dalFieldCollate?
-                                ';'
-                                -> ^(DAL_FIELD IDENT base_type dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?);
-
-dalPackageTableSequence       : DAL_SEQUENCE '{' (id=IDENT
-                                (',' (id=IDENT))*)? '}'
-                                -> ^(DAL_SEQUENCE IDENT*);
+dalPackage                    : DAL_PACKAGE id=IDENT
+                                {this.pass.putAtom(id,DalTokensConstants.dalPACKAGE);}
+                                {this.pass.tables.curRepoSet(id);}
+                                '{' dalActionsEmpty? dalTable* dalPackageRepository* dalActions* dalData* '}'
+                                {this.pass.atoms.scope.pop();}
+                                {this.pass.tables.curRepoClear();}
+                                -> ^(DAL_PACKAGE IDENT dalActionsEmpty? dalTable* dalPackageRepository* dalActions* dalData*);
 
 dalPackageRepository          : DAL_REPOSITORY IDENT DAL_TABLE IDENT '{' dalPackageRepositoryRow* '}'
                                 -> ^(DAL_REPOSITORY IDENT IDENT dalPackageRepositoryRow*);
@@ -177,34 +190,25 @@ dalPackageRepositoryRow       : DAL_ROW IDENT dalPackageRepositoryRowKV* ';'
 dalPackageRepositoryRowKV     : IDENT '=' const_value* -> ^(DAL_ROW IDENT const_value*);
 
 dalActions                   : s=DAL_ACTIONS
-                               {this.pass.putAtom(s,DalTokensConstants.DAL_ACTIONS);}
-                               '{' (dalActionsSet | dalActionsIns | dalActionsAdd | dalActionsRem | dalActionsEmp)* '}'
+                               {this.pass.putAtom(s,DalTokensConstants.dalACTIONS);}
+                               '{' (dalActionsInsert | dalActionsRemove | dalActionsEmpty)* '}'
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_ACTIONS dalActionsIns* dalActionsSet* dalActionsAdd* dalActionsRem* dalActionsEmp*);
+                               -> ^(DAL_ACTIONS dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
 
-dalActionsSet                : DAL_ACTION_SET dalListIdent dalKeyTypeValueList;
-dalActionsIns                : DAL_ACTION_INS dalListIdent dalKeyTypeValueList;
-dalActionsAdd                : DAL_ACTION_ADD dalListIdent dalElementIdent dalKeyTypeValue;
-dalActionsRem                : DAL_ACTION_REM dalListIdent dalKeyIdent;
-dalActionsEmp                : DAL_ACTION_EMP dalListIdent;
+dalActionsInsert             : DAL_ACTION_INSERT dalTableIdent dalKV*;
+dalActionsRemove             : DAL_ACTION_REMOVE dalTableIdent dalKV?;
+dalActionsEmpty              : DAL_ACTION_EMPTY dalTableIdent;
 
 dalData                      : s=DAL_DATA
-                               {this.pass.putAtom(s,DalTokensConstants.DAL_DATA);}
-                               '{' dalDataElement* '}'
+                               {this.pass.putAtom(s,DalTokensConstants.dalDATA);}
+                               '{' dalDataRow* '}'
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_DATA dalDataElement*);
-dalDataElement               : dalListIdent dalKeyTypeValueList;
+                               -> ^(DAL_DATA dalDataRow*);
+dalDataRow                   : dalTableIdent dalKV*;
 
-dalListIdent                 : IDENT;
-dalElementIdent              : IDENT;
-dalKeyIdent                  : IDENT;
+dalTableIdent                : IDENT;
 
-dalKeyTypeValueList          : ('{' dalKeyTypeValue '}')* -> ^(AT_PROVIDES dalKeyTypeValue*);
-dalKeyTypeValue              : dalKey dalType? dalValue;
-dalKey                       : IDENT;
-dalType                      : base_type;
-dalValue                     : const_value;
-
+dalKV                        : '{' IDENT const_value '}' -> ^(DAL_DATA IDENT const_value);
 
 base_type               : (s=SHORT | s=INTEGER | s=LONG | s=HEX | s=BINARY | s=FLOAT | s=DOUBLE | s=CHAR | s=STRING | s=BOOLEAN)
                           {this.base_type=s;}
@@ -230,7 +234,6 @@ AT_SPEC            : '@spec';
 //DAL Keywords -> DAL specific
 DAL_TABLE              : 'dal_table';
 DAL_REPOSITORY         : 'dal_repository';
-DAL_REPOSITORY_ELEMENT : 'dal_repository_element';
 DAL_SEQUENCE           : 'dal_sequence';
 
 DAL_FIELD              : 'field';
@@ -256,12 +259,9 @@ DAL_EXPR_NOR           : 'nor';
 DAL_EXPR_NAND          : 'nand';
 DAL_EXPR_LIST          : 'list';
 
-DAL_ACTION_ADD         : 'dal_action_add';
-DAL_ACTION_EMP         : 'dal_action_emp';
-DAL_ACTION_INS         : 'dal_action_ins';
-DAL_ACTION_REM         : 'dal_action_rem';
-DAL_ACTION_SET         : 'dal_action_set';
-
+DAL_ACTION_EMPTY       : 'empty';
+DAL_ACTION_REMOVE      : 'remove';
+DAL_ACTION_INSERT      : 'insert';
 
 
 // DAL Keywords -> TYPES

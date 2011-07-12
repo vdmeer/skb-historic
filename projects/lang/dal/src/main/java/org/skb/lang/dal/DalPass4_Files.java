@@ -31,10 +31,8 @@
 package org.skb.lang.dal;
 
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 import org.skb.tribe.TribeProperties;
-import org.skb.types.atomic.java.OatBoolean;
 import org.skb.util.languages.AtomList;
 import org.skb.util.stringtemplate.FileTemplateList;
 
@@ -53,165 +51,43 @@ public class DalPass4_Files {
 		this.ftl=new FileTemplateList();
 		this.atoms=AtomList.getInstance();
 		this.prop=TribeProperties.getInstance();
-//System.err.println(this.atoms.getValue());
 	}
 
 	public FileTemplateList getFileTemplateList(){
 		String fn;
-		//now we do have a list (not tree) of all declared COLA atoms
-		//parameters and members are already in action/structure -> pass3 is taking care of that
-		//now we need to check the code generation options
+		//remove everything but the dalRepository and the dalPackage
+		ArrayList<String> del=new ArrayList<String>();
+		del.add(DalTokensConstants.dalACTIONS);
+		del.add(DalTokensConstants.dalSEQUENCE);
+		del.add(DalTokensConstants.dalFIELD);
+		del.add(DalTokensConstants.dalDATA);
+		del.add(DalTokensConstants.dalTABLE);
+		this.removeEntries(del);
 
-		// start looking at keyXtDoElementCode["xt-do-element-code"], means we need to add Facility code to elements
-		//we do this operation in any case, it will transfer the imports and generate code only if the option is set
-		this._keyXtDoElementCode();
+		fn=this.prop.getValue(TribeProperties.tpmKeyTgtFile).toString();
+		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
+		Integer size=rows.size();
+		for(int i=0;i<size;i++)
+			this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
 
-		//now we can add Attributes/Actions to Elements/Facilities
-		//this should remove all Actions and Attributes, plus all propertyDecl, itemDecl, contractDecl contained in Elements/Facilities
-
-//private void _processAtomChildren(String processParrentCat, String processParrent, String excludeCategory){
-//		this._processAtomChildren(DalTokensConstants.colaSTRUCT, null, null);
-//		this._processAtomChildren(DalTokensConstants.colaACTION, null, null);
-
-//		this._processAtomChildren(DalTokensConstants.colaFACILITY, null, null);
-//		this._processAtomChildren(DalTokensConstants.colaELEMENT, null, null);
-
-		//the list now has only packages, elements, facilities, typedefs and structures left
-		//the rest is dependent on the code-split options
-
-		//split code is either not set at all (like for XML) or set to false
-		Boolean tgtSplitCode=false;
-		Boolean tgtByPkg=false;
-		Boolean tgtByAtomCat=false;
-		try {
-			tgtSplitCode=((OatBoolean)this.prop.getValue(DalPropertiesConstants.keyTgSplitCode)).getValue();
-//			tgtByPkg=((OatBoolean)this.prop.getValue(DalPropertiesConstants.keyTgSCbyPackage)).getValue();
-//			tgtByAtomCat=((OatBoolean)this.prop.getValue(DalPropertiesConstants.keyTgSCbyAtomCategory)).getValue();
-		} catch (Exception e) {}
-
-		if(tgtSplitCode==false){
-			//no split, so go through the atoms, put all children into the body of their parent
-			//add the final template to the ftl and give back
-			fn=this.prop.getValue(TribeProperties.tpmKeyTgtFile).toString();
-
-			//now we only have root elements and packages (including their children)
-			//let's do the packages, if their are not root, from the inner to the outer
-			//i.e. longest scoped_name first
-			this._processPackages(null);
-
-			//final cleanup, like remove all functions if we're not in cola target mode
-			this.removeFunctions();
-
-			ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
-			Integer size=rows.size();
-			for(int i=0;i<size;i++)
-				this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
-		}
-		else{
-			//now check the split code options. default is by AtomInstance (else part)
-			//if byPackage is set, it overwrites byAtomCategory
-			if(tgtByPkg==true){
-				//split packages only = 1 file per package (in directory with same name as package
-//				this._processPackages(DalTokensConstants.colaPACKAGE);
-
-				//final cleanup, like remove all functions if we're not in cola target mode
-				this.removeFunctions();
-
-				//now we have only atoms in the default package (root/void) and packages in the list
-				//default filename is this
-				ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
-				Integer size=rows.size();
-				for(int i=1;i<size;i++){
-//					if(this.atoms.get(rows.get(i), AtomList.alValCategory).equals(DalTokensConstants.colaPACKAGE))
-//						fn=rows.get(i).replace(this.prop.getValue(TribeProperties.tpmKeyGCScopeSep).toString(), "_"); 
-//					else{
-//						File f=new File(this.prop.getValue(TribeProperties.tpmKeySrcFile).toString());
-//						fn=f.getName();
-//						fn=fn.substring(0, fn.lastIndexOf(this.prop.getValue(TribeProperties.tpmKeyTgtFileExt).toString()));
-//					}
-//					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
-				}
-			}
-			else if(tgtByAtomCat==true){
-				//split category = split package + 1 file per atom category, name of file is atom category (it's a keyword!)
-				//final cleanup, like remove all functions if we're not in cola target mode
-				this.removeFunctions();
-
-				ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
-				Integer size=rows.size();
-				String category;
-				for(int i=0;i<size;i++){
-					category=rows.get(i);
-					if(category.lastIndexOf(DalTokensConstants.parserScopeSep)!=-1)
-						category=category.substring(0,category.lastIndexOf(DalTokensConstants.parserScopeSep));
-					else
-						category="";
-					category=category.replace(DalTokensConstants.parserScopeSep, System.getProperty("file.separator"));
-					if(category.length()>0)
-						category+=System.getProperty("file.separator");
-					fn=category+this.atoms.get(rows.get(i), AtomList.alValCategory);
-					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
-				}
-			}
-			else{
-				//split atoms = split package + 1 file per atom instance
-				//final cleanup, like remove all functions if we're not in cola target mode
-				this.removeFunctions();
-
-//				OatBaseAtomic defP=this.prop.getValue(DalPropertiesConstants.keyXtJavaPackage);
-//				String defPkg;
-//				if(defP==null)
-//					defPkg="";
-//				else defPkg=defP.toString();
-
-				String calcPkg;
-
-				ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
-				Integer size=rows.size();
-				for(int i=0;i<size;i++){
-					fn=rows.get(i).replace(DalTokensConstants.parserScopeSep, System.getProperty("file.separator"));
-					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
-				}
-			}
-		}
 		return this.ftl;
 	}
 
-	private void _keyXtDoElementCode(){
-	}
-
-	private void _processAtomChildren(String processParrentCat, String processParrent, String excludeCategory){
-	}
-
-	private void _processPackages(String excludeCategory){
-	}
-
-	private static int countIndexOf(String content, String search) {
-		int ctr = -1;
-		int total = 0;
-		while (true) {
-			if (ctr == -1) ctr = content.indexOf(search);
-			else ctr = content.indexOf(search, ctr);
-
-		    if (ctr == -1) {
-		    	break;
-		    }
-		    else {
-		    	total++;
-		    	ctr += search.length();
-		    }
+	private void removeEntries(ArrayList<String> categories){
+		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
+		ArrayList<String>removeList=new ArrayList<String>();
+		Integer size=rows.size();
+		String current;
+		String cat;
+		for(int i=0;i<size;i++){
+			current=rows.get(i);
+			cat=this.atoms.get(current,AtomList.alValCategory).toString();
+			if(categories.contains(cat))
+				removeList.add(current);
 		}
-		return total;
-	}
-
-	private void removeFunctions(){
-	}
-
-	public TreeMap<String,String> genMiscAttribute(){return this. genMiscAttribute(null, null);}
-
-  	//keep key and cat null if you want to use current values or use overload function below
-	  public TreeMap<String,String> genMiscAttribute(String key, String cat){
-		TreeMap<String,String>ret=new TreeMap<String,String>();
-		return ret;
+		//now remove the processed atoms
+		size=removeList.size();
+        for(int i=0;i<size;i++)
+        	this.atoms.remove(removeList.get(i));
 	}
 }

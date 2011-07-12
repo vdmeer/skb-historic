@@ -180,66 +180,6 @@
                     "skb:tribe:stgchunk:mandatory": ["name", "declaration", "actions", "data"],
                     "skb:tribe:stgchunk:optional":  []
                 },
-                "dalMetaElement":{
-                    "skb:tribe:stgchunk:mandatory": ["ident", "metadata"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalElement":{
-                    "skb:tribe:stgchunk:mandatory": ["ident", "type", "properties", "metadata"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalElemProperties":{
-                    "skb:tribe:stgchunk:mandatory": ["size", "precision", "defvalue", "collate", "constraints"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalElemMetaData":{
-                    "skb:tribe:stgchunk:mandatory": ["type", "entname", "httpreqname", "defdb", "explode", "interpreter", "valunset", "isval", "isvalif", "isvalelse", "dolist", "descr"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalElemSequence":{
-                    "skb:tribe:stgchunk:mandatory": ["ids"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalActions":{
-                    "skb:tribe:stgchunk:mandatory": ["ins", "set", "add", "rem", "emp"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalActionsSet":{
-                    "skb:tribe:stgchunk:mandatory": ["element", "property", "ident", "ktvl"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalActionsIns":{
-                    "skb:tribe:stgchunk:mandatory": ["list", "ktvl"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalActionsAdd":{
-                    "skb:tribe:stgchunk:mandatory": ["list", "element", "ktv"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalActionsRem":{
-                    "skb:tribe:stgchunk:mandatory": ["list", "element"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalActionsEmp":{
-                    "skb:tribe:stgchunk:mandatory": ["list"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalData":{
-                    "skb:tribe:stgchunk:mandatory": ["ktvl"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalPackageName":{
-                    "skb:tribe:stgchunk:mandatory": ["ids"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalKeyTypeValueList":{
-                    "skb:tribe:stgchunk:mandatory": ["ktv"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
-                "dalKeyTypeValue":{
-                    "skb:tribe:stgchunk:mandatory": ["key", "type", "value"],
-                    "skb:tribe:stgchunk:optional":  []
-                },
                 "const_value":{
                     "skb:tribe:stgchunk:mandatory": ["val"],
                     "skb:tribe:stgchunk:optional":  []

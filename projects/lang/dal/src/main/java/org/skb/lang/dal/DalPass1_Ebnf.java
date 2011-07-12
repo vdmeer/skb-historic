@@ -30,13 +30,13 @@
 
 package org.skb.lang.dal;
 
-import org.skb.lang.dal.internal.DalRepository;
+import org.antlr.runtime.Token;
+import org.skb.lang.dal.internal.DalTables;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.composite.util.OatTableRow;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
-import org.antlr.runtime.Token;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -46,7 +46,7 @@ import org.antlr.runtime.Token;
  */
 public class DalPass1_Ebnf {
 	public AtomList atoms;
-	public DalRepository repo;
+	public DalTables tables;
 	private LanguageRuleMap cr;
 
 	public DalPass1_Ebnf(){
@@ -58,20 +58,11 @@ public class DalPass1_Ebnf {
 		this.atoms=AtomList.getInstance();
 		this.atoms.setScopeSeparator(TribeProperties.getInstance().getValueDefault("internal-scope-sep").toString());
 
-		//initialise the AtomList with spec
-//		this.atoms.addRow(DalTokensConstants.colaSPECIFICATION);
-//		this.atoms.put(DalTokensConstants.colaSPECIFICATION, AtomList.alValCategory, DalTokensConstants.colaVOID);
-//		this.atoms.put(DalTokensConstants.colaSPECIFICATION, AtomList.alValType, DalTokensConstants.colaVOID);
-
-//		this.atoms.setDefaultCategory(DalTokensConstants.colaDEFINITION);
-
-		this.repo=DalRepository.getInstance();
+		this.tables=DalTables.getInstance();
 	}
 
-	//from atoms, only here for error handling
-	public void putAtom(Token tk, String category, Token type, Boolean array){
-		//need to check for List name against Repo table names!!!
-		OatTableRow otr=this.atoms.putAtom(tk, category, type, array);
+	public void putAtom(Token tk, String category, Token type){
+		OatTableRow otr=this.atoms.putAtom(tk, category, type);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(
 					DalTokensConstants.parserIDENTIFIER+" used more than once",
@@ -84,7 +75,4 @@ public class DalPass1_Ebnf {
 		this.putAtom(tk, category, null);
 	}
 
-	public void putAtom(Token tk, String category, Token type){
-		this.putAtom(tk, category, type, false);
-	}
 }

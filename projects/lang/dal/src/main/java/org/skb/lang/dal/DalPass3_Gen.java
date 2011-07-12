@@ -30,10 +30,17 @@
 
 package org.skb.lang.dal;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
-import org.skb.lang.dal.internal.DalRepository;
+import org.apache.commons.lang.StringUtils;
+import org.skb.lang.dal.internal.DalTables;
+import org.skb.types.atomic.util.OatArrayListString;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
 
@@ -46,7 +53,7 @@ import org.skb.util.languages.ScopeString;
 public class DalPass3_Gen {
 	public AtomList atoms=AtomList.getInstance();
 	public ScopeString sn;
-	public DalRepository repo;
+	public DalTables tables;
 
 	//for simple_type, to get all options to all ColaAtoms
 	private TreeMap<String,String> simple_type;
@@ -59,15 +66,7 @@ public class DalPass3_Gen {
 
 		this.sn=new ScopeString();
 
-		this.repo=DalRepository.getInstance();
-	}
-
-	public void addElement(String ident, String type, StringTemplate prop){
-		System.err.println(ident+" -- "+type+" -- "+prop);
-	}
-
-	public void addMetaElement(String ident, StringTemplate meta){
-		System.err.println(ident+"  =>  "+meta);
+		this.tables=DalTables.getInstance();
 	}
 
 	public String trimQuotes(String s){
@@ -105,5 +104,45 @@ public class DalPass3_Gen {
 	public void addST(StringTemplate st){
 		this.atoms.addST(st); //atoms knows the scope already, grammar needs to push for that
 		this.atoms.scope.pop();
+	}
+
+	public ArrayList<StringTemplate> sequenceFields(String repo, String table, List<StringTemplate> fields) {
+		ArrayList<StringTemplate> ret=new ArrayList<StringTemplate>();
+
+		//extract keys from fields (grammar)
+		LinkedHashMap<String, StringTemplate> ordered=new LinkedHashMap<String, StringTemplate>();
+		for (Iterator<StringTemplate> it=fields.iterator(); it.hasNext();){
+			StringTemplate st=it.next();
+			ordered.put(st.getAttribute("ident").toString(), st);
+		}
+
+		//go through sequence and add st in correct order to return list
+		OatArrayListString seq=this.tables.tableSequenceGet(repo, table);
+		for(int i=0;i<seq.size();i++){
+			String field=seq.get(i).toString();
+			if(ordered.containsKey(field))
+				ret.add(ordered.get(field));
+
+		}
+		return ret;
+	}
+
+	public LinkedHashMap<String, String> fixKV(LinkedHashMap<String, List<StringTemplate>> kv){
+		LinkedHashMap<String, String> ret=new LinkedHashMap<String, String>();
+		String key;
+		Set<String> o_set = kv.keySet();
+		Iterator<String> key_it = o_set.iterator();
+		while(key_it.hasNext()){
+			key=key_it.next();
+			String value="";
+			List<StringTemplate> list=kv.get(key);
+			for(int i=0;i<list.size();i++){
+				if(value.length()>0)
+					value+=", ";
+				value+=StringUtils.removeEnd(StringUtils.removeStart(list.get(i).toString(), "\""), "\"");
+			}
+			ret.put(key, value);
+		}
+		return ret;
 	}
 }

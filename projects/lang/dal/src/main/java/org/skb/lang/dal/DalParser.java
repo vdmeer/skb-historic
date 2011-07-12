@@ -35,6 +35,11 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.antlr.runtime.ANTLRInputStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.apache.log4j.Logger;
 import org.skb.lang.dal.grammars.dalAst;
 import org.skb.lang.dal.grammars.dalEbnfLexer;
 import org.skb.lang.dal.grammars.dalEbnfParser;
@@ -55,11 +60,6 @@ import org.skb.util.ReportManager;
 import org.skb.util.stringtemplate.FileManager;
 import org.skb.util.stringtemplate.FileTemplateList;
 import org.skb.util.stringtemplate.STGManager;
-import org.antlr.runtime.ANTLRInputStream;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.CommonTreeNodeStream;
-import org.apache.log4j.Logger;
 
 /**
  * The core of the Dal parser implementing the whole parsing process.

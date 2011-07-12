@@ -33,7 +33,7 @@ package org.skb.lang.dal;
 import java.util.ArrayList;
 
 import org.antlr.runtime.Token;
-import org.skb.lang.dal.internal.DalRepository;
+import org.skb.lang.dal.internal.DalTables;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.util.languages.AtomList;
 
@@ -45,7 +45,7 @@ import org.skb.util.languages.AtomList;
  */
 public class DalPass2_Ast {
 	public AtomList atoms;
-	public DalRepository repo;
+	public DalTables tables;
 	private LanguageRuleMap cr;
 
 	//token list for dalElemSequence
@@ -68,7 +68,8 @@ public class DalPass2_Ast {
 
 		this.elemSeq=new ArrayList<Token>();
 
-		this.repo=DalRepository.getInstance();
+		this.tables=DalTables.getInstance();
+//System.err.println(this.tables);
 	}
 
 	public void addElemSequence(Token tk){
@@ -100,8 +101,8 @@ public class DalPass2_Ast {
 		String tKey=this.atoms.scope.toString()+this.atoms.scope.separator()+tk.getText();
 
 		String scl=this.atoms.scope.lastElement();
-		if(this.repo.get(this.repo.getCurrentRepo()+"/"+scl)!=null){
-			if(this.repo.checkElement(scl, tk.getText())==false)
+		if(this.tables.get(this.tables.curRepoGet()+"/"+scl)!=null){
+			if(this.tables.curFieldCheck(scl, tk.getText())==false)
 				System.err.println(tKey+" not part of this repo");
 		}
 		else{
