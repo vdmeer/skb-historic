@@ -95,8 +95,8 @@ glueTopology       : ^(TOPOLOGY (id=IDENT)? (snl=scoped_name_lang)? (d+=glueDoma
 glueDomain         : ^(DOMAIN (id=IDENT)? (snl=scoped_name_lang)? (dom+=glueDomain)* (node+=glueNode)* (conn+=glueConnection)* (port+=gluePort)* (con+=glueContracts)? (pol+=gluePolicies)? (kvl+=key_value_list)?)
                      -> glueDomain(id={$id.text}, idlang={$snl.st}, domains={$dom}, nodes={$node}, connections={$conn}, ports={$port}, contracts={$con}, policies={$pol}, kvl={$kvl});
 
-glueNode           : ^(NODE (id=IDENT)? (snl=scoped_name_lang)? (com+=glueComponent)* (con+=glueConnection)* (p+=gluePort)* (con+=glueContracts)? (pol+=gluePolicies)? (kvl+=key_value_list)?)
-                     -> glueNode(id={$id.text}, idlang={$snl.st}, components={$com}, connections={$con}, ports={$p}, contracts={$con}, policies={$pol}, kvl={$kvl});
+glueNode           : ^(NODE (id=IDENT)? (snl=scoped_name_lang)? (com+=glueComponent)* (conn+=glueConnection)* (p+=gluePort)* (con+=glueContracts)? (pol+=gluePolicies)? (kvl+=key_value_list)?)
+                     -> glueNode(id={$id.text}, idlang={$snl.st}, components={$com}, connections={$conn}, ports={$p}, contracts={$con}, policies={$pol}, kvl={$kvl});
 
 glueConnection     : ^(CONNECTION id=IDENT DIRECTED? src+=glueSource tgt+=glueTarget)
                      -> glueConnection(id={$id.text}, directed={$DIRECTED.text}, source={$src}, target={$tgt});
