@@ -38,12 +38,14 @@ import java.util.LinkedHashMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import org.antlr.stringtemplate.StringTemplate;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.atomic.java.OatBoolean;
 import org.skb.types.base.OatBaseAtomic;
 import org.skb.util.languages.AtomList;
 import org.skb.util.stringtemplate.FileTemplateList;
-import org.antlr.stringtemplate.StringTemplate;
+
+import antlr.CommonToken;
 
 /**
  * Pass 4 of the Cola Parser, generating files for output.
@@ -75,7 +77,6 @@ public class ColaPass4_Files {
 		//now we can add Attributes/Actions to Elements/Facilities
 		//this should remove all Actions and Attributes, plus all propertyDecl, itemDecl, contractDecl contained in Elements/Facilities
 
-//private void _processAtomChildren(String processParrentCat, String processParrent, String excludeCategory){
 		this._processAtomChildren(ColaTokensConstants.colaSTRUCT, null, null);
 		this._processAtomChildren(ColaTokensConstants.colaACTION, null, null);
 
@@ -423,5 +424,11 @@ public class ColaPass4_Files {
 		else
 			ret.put(ColaTokensConstants.gcMiscInDefinition, "true");
 		return ret;
+	}
+
+	public void testtest(){
+		CommonToken t=new CommonToken(0, "test");
+		int a=5;
+		String s=new String(Integer.toString(a));
 	}
 }
