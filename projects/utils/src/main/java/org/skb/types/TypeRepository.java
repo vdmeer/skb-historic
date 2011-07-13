@@ -401,7 +401,7 @@ public class TypeRepository {
 
 	/**
 	 * Returns the string version of a type given as string or OAT_UNKNOWN. 
-	 * @param s the string version of the type
+	 * @param b the OatBase version of the type
 	 * @return the string version of the type or OAT_UNKNOWN
 	 */
 	public final static String type(OatBase b){
