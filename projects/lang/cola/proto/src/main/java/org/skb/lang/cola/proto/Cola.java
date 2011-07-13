@@ -30,11 +30,10 @@
 
 package org.skb.lang.cola.proto;
 
+import org.apache.log4j.Logger;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
-import org.skb.tribe.TribeProperties;
-import org.apache.log4j.Logger;
 
 /**
  * General entry point for Cola parsing.
@@ -43,9 +42,12 @@ import org.apache.log4j.Logger;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class Cola{
-	static Logger logger = Logger.getLogger("org.skb.lang.cola.base");
+	static Logger logger;
 
 	public static void main (String[] args) {
+		System.setProperty("log4j.configuration", "org/skb/lang/cola/proto/log4/log4j.xml");
+		logger=Logger.getLogger(Cola.class);
+
 		logger.trace("main -- in");
 		logger.trace("initialise tribe and properties");
 
@@ -53,51 +55,6 @@ public class Cola{
 		cfg.read("/org/skb/lang/cola/proto/proto.json");
 
 		Tribe tribe=new Tribe();
-
-		//overwrite standard TRIBE values for LADS
-		TribeProperties prop=TribeProperties.getInstance();
-
-		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/skb/autogen-local/src");
-
-		// overwrite this permanently, we are in LADS
-		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "cola");
-
-		//some overwrites, for testing purpose only
-		prop.setValueDefault(TribeProperties.tpmKeyTgtLanguage,   "java");
-		//prop.setValueDefault(TribePM.tpmKeyPrStgFileTarget, true);
-
-		prop.setValueDefault(TribeProperties.tpmKeyNoWarnings,   true);
-
-		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
-		//prop.setValueDefault(TribeProperties.tpmKeyQuietMode, true);
-
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/ease/values.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/ease/car.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/ease/entitymgmt.cola");
-
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/appendix-conventions.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/cont-decl-car.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/cont-def-car.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/item-decl-car.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/name-scope.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/prop-decl-contact.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/prop-decl-counter.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/prop-def-struct-date.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples-doc/prop-def-values.cola");
-
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/tests/property.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/tests/test.cola");
-
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/contract.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/mama-j.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/test.cola");
-		prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/mama.cola");
-
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/rina/cdap.cola");
-
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/spec.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/cnt.cola");
-		//prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/cola/proto/specs/examples/contract_text.cola");
 
 		logger.trace("create Language[]");
 		LanguageParser[] supportedLanguages={new ColaParser()};
