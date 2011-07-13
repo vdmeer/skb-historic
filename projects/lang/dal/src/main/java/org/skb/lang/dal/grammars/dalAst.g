@@ -117,22 +117,20 @@ dalFieldUnique                : ^(DAL_UNIQUE DAL_ROLLBACK? DAL_ABORT?);
 dalSequence                   : ^(DAL_SEQUENCE IDENT*);
 
 
-dalPackage                    : ^(DAL_PACKAGE IDENT dalActionsEmpty? dalTable* dalPackageRepository* dalActions* dalData*);
+dalPackage                    : ^(DAL_PACKAGE IDENT dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData*);
 
 dalPackageRepository          : ^(DAL_REPOSITORY IDENT IDENT dalPackageRepositoryRow*);
 dalPackageRepositoryRow       : ^(DAL_ROW IDENT dalPackageRepositoryRowKV*);
 dalPackageRepositoryRowKV     : ^(DAL_ROW IDENT const_value*);
 
 
-dalActions                   : ^(DAL_ACTIONS dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
-
-dalActionsInsert             : DAL_ACTION_INSERT dalTableIdent dalKV*;
-dalActionsRemove             : DAL_ACTION_REMOVE dalTableIdent dalKV?;
-dalActionsEmpty              : DAL_ACTION_EMPTY dalTableIdent;
-
+dalActions                   : ^(DAL_ACTIONS IDENT dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
+dalActionsInsert             : ^(DAL_ACTION_INSERT IDENT dalTableIdent dalKV*);
+dalActionsRemove             : ^(DAL_ACTION_REMOVE IDENT dalTableIdent dalKV?);
+dalActionsEmpty              : ^(DAL_ACTION_EMPTY IDENT dalTableIdent);
 
 dalData                      : ^(DAL_DATA dalDataRow*);
-dalDataRow                   : dalTableIdent dalKV*;
+dalDataRow                   : ^(DAL_ROW IDENT dalTableIdent dalKV*);
 
 dalTableIdent                : IDENT;
 

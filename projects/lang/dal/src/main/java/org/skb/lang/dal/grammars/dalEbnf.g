@@ -74,10 +74,14 @@ options
   private Token base_type;
   private Token value;
 
+  private int internalID;
+
   public void init() {
     this.pass=new DalPass1_Ebnf();
     this.myTokens = new LanguageTokens();
     this.myTokens.addTokens(tokenNames);
+
+    this.internalID=0;
   }
 
   public void setFilename(String f){ReportManager.getInstance().setFileName(f);}
@@ -178,10 +182,10 @@ dalSequence                   : s=DAL_SEQUENCE
 dalPackage                    : DAL_PACKAGE id=IDENT
                                 {this.pass.putAtom(id,DalTokensConstants.dalPACKAGE);}
                                 {this.pass.tables.curRepoSet(id);}
-                                '{' dalActionsEmpty? dalTable* dalPackageRepository* dalActions* dalData* '}'
+                                '{' dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData* '}'
                                 {this.pass.atoms.scope.pop();}
                                 {this.pass.tables.curRepoClear();}
-                                -> ^(DAL_PACKAGE IDENT dalActionsEmpty? dalTable* dalPackageRepository* dalActions* dalData*);
+                                -> ^(DAL_PACKAGE IDENT dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData*);
 
 dalPackageRepository          : DAL_REPOSITORY IDENT DAL_TABLE IDENT '{' dalPackageRepositoryRow* '}'
                                 -> ^(DAL_REPOSITORY IDENT IDENT dalPackageRepositoryRow*);
@@ -189,24 +193,48 @@ dalPackageRepositoryRow       : DAL_ROW IDENT dalPackageRepositoryRowKV* ';'
                                 -> ^(DAL_ROW IDENT dalPackageRepositoryRowKV*);
 dalPackageRepositoryRowKV     : IDENT '=' const_value* -> ^(DAL_ROW IDENT const_value*);
 
-dalActions                   : s=DAL_ACTIONS
-                               {this.pass.putAtom(s,DalTokensConstants.dalACTIONS);}
-                               '{' (dalActionsInsert | dalActionsRemove | dalActionsEmpty)* '}'
+dalActions                   : DAL_ACTIONS
+                               id=dalActionsID
+                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               (dalActionsInsert | dalActionsRemove | dalActionsEmpty)* '}'
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_ACTIONS dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
+                               -> ^(DAL_ACTIONS dalActionsID dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
 
-dalActionsInsert             : DAL_ACTION_INSERT dalTableIdent dalKV*;
-dalActionsRemove             : DAL_ACTION_REMOVE dalTableIdent dalKV?;
-dalActionsEmpty              : DAL_ACTION_EMPTY dalTableIdent;
+dalActionsID                 : '{' -> ^({new CommonTree(new CommonToken(IDENT,"internal"+Integer.toString(this.internalID++)))});
+
+dalActionsInsert             : DAL_ACTION_INSERT
+                               id=internalID
+                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               dalTableIdent dalKV*
+                               {this.pass.atoms.scope.pop();}
+                               -> ^(DAL_ACTION_INSERT internalID dalTableIdent dalKV*);
+dalActionsRemove             : DAL_ACTION_REMOVE
+                               id=internalID
+                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               dalTableIdent dalKV?
+                               {this.pass.atoms.scope.pop();}
+                               -> ^(DAL_ACTION_REMOVE internalID dalTableIdent dalKV?);
+dalActionsEmpty              : DAL_ACTION_EMPTY
+                               id=internalID
+                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               dalTableIdent
+                               {this.pass.atoms.scope.pop();}
+                               -> ^(DAL_ACTION_EMPTY internalID dalTableIdent);
 
 dalData                      : s=DAL_DATA
                                {this.pass.putAtom(s,DalTokensConstants.dalDATA);}
                                '{' dalDataRow* '}'
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_DATA dalDataRow*);
-dalDataRow                   : dalTableIdent dalKV*;
+dalDataRow                   : id=internalID
+                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalROW);}
+                               dalTableIdent dalKV*
+                               {this.pass.atoms.scope.pop();}
+                               -> ^(DAL_ROW internalID dalTableIdent dalKV*);
 
 dalTableIdent                : IDENT;
+
+internalID                   : DAL_TABLE -> ^({new CommonTree(new CommonToken(IDENT,"internal"+Integer.toString(this.internalID++)))});
 
 dalKV                        : '{' IDENT const_value '}' -> ^(DAL_DATA IDENT const_value);
 
@@ -232,9 +260,9 @@ AT_PROVIDES        : '@provides';
 AT_SPEC            : '@spec';
 
 //DAL Keywords -> DAL specific
-DAL_TABLE              : 'dal_table';
-DAL_REPOSITORY         : 'dal_repository';
-DAL_SEQUENCE           : 'dal_sequence';
+DAL_TABLE              : 'table';
+DAL_REPOSITORY         : 'repository';
+DAL_SEQUENCE           : 'sequence';
 
 DAL_FIELD              : 'field';
 DAL_VALUE              : 'value';
@@ -248,9 +276,9 @@ DAL_PRIMKEY            : 'primkey';
 DAL_ROLLBACK           : 'rollback';
 DAL_UNIQUE             : 'unique';
 DAL_ROW                : 'row';
-DAL_ACTIONS            : 'dal_actions';
-DAL_DATA               : 'dal_data';
-DAL_PACKAGE            : 'dal_package';
+DAL_ACTIONS            : 'actions';
+DAL_DATA               : 'data';
+DAL_PACKAGE            : 'package';
 
 DAL_EXPR_AND           : 'and';
 DAL_EXPR_OR            : 'or';
