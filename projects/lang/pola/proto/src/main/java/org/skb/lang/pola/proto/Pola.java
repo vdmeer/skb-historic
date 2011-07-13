@@ -30,10 +30,10 @@
 
 package org.skb.lang.pola.proto;
 
+import org.apache.log4j.Logger;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
-import org.skb.tribe.TribeProperties;
 
 /**
  * General entry point for Pola parsing.
@@ -42,29 +42,16 @@ import org.skb.tribe.TribeProperties;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class Pola {
+	static Logger logger;
+
 	public static void main (String[] args) {
+		System.setProperty("log4j.configuration", "org/skb/lang/pola/proto/log4/log4j.xml");
+		logger=Logger.getLogger(Pola.class);
+
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
 		cfg.read("/org/skb/lang/pola/proto/proto.json");
 
 		Tribe tribe=new Tribe();
-
-		//overwrite standard TRIBE values for LADS
-		TribeProperties prop=TribeProperties.getInstance();
-
-		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/skb/autogen-local/src");
-
-		// overwrite this permanently, we are in LADS
-		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "pola");
-
-		//some overwrites, for testing purpose only
-		prop.setValueDefault(TribeProperties.tpmKeyTgtLanguage,   "pola");
-		//prop.setValueDefault(TribePM.tpmKeyPrStgFileTarget, true);
-
-		prop.setValueDefault(TribeProperties.tpmKeyNoWarnings,   true);
-
-		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
-
-		prop.setValueDefault(TribeProperties.tpmKeySrcFile,   "org/skb/lang/pola/proto/specs/t1.pola");
 
 		LanguageParser[] supportedLanguages={new PolaParser()};
 
