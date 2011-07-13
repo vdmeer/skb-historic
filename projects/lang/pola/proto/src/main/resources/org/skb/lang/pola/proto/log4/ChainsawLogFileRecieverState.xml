@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd"> 
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+
+   <plugin name="logFileReceiver" class="org.apache.log4j.varia.LogFilePatternReceiver">
+     <param name="fileURL" value="file:///v:/dev/projects/skb/skb-git/autogen-local/logs/pola-proto.log" />
+     <param name="timestampFormat" value="yyyy-MM-d HH:mm:ss,SSS"/> 
+     <param name="logFormat" value="LOGGER TIMESTAMP LEVEL [THREAD] CLASS (FILE=METHOD:LINE) - MESSAGE"/> 
+     <param name="name" value="SKB Logger" />
+     <param name="tailing" value="true" /> 
+   </plugin>
+
+<!--   <logger name="org.skb.tribe"><level value="trace"/></logger> -->
+<!--   <logger name="org.skb.lang.pola.proto"><level value="trace"/></logger> -->
+<!--   <root><level value="ERROR" /></root> -->
+
+</log4j:configuration>
+
+<!-- 
+TIMESTAMP
+LOGGER
+LEVEL
+THREAD
+CLASS
+FILE
+LINE
+METHOD
+RELATIVETIME
+MESSAGE
+NDC
+PROP(key)
+ -->
