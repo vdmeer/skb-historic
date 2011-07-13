@@ -30,10 +30,10 @@
 
 package org.skb.lang.glue.proto;
 
+import org.apache.log4j.Logger;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
-import org.skb.tribe.TribeProperties;
 
 /**
  * General entry point for Glue parsing.
@@ -42,24 +42,16 @@ import org.skb.tribe.TribeProperties;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class Glue {
+	static Logger logger;
+
 	public static void main (String[] args) {
+		System.setProperty("log4j.configuration", "org/skb/lang/glue/proto/log4/log4j.xml");
+		logger=Logger.getLogger(Glue.class);
+
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
 		cfg.read("/org/skb/lang/glue/proto/proto.json");
 
 		Tribe tribe=new Tribe();
-
-		TribeProperties prop=TribeProperties.getInstance();
-		prop.setValueDefault(TribeProperties.tpmKeyNoCPP, true); // no CPP for glue
-
-		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/skb/autogen-local/src");
-		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "glue");
-		prop.setValueDefault(TribeProperties.tpmKeyTgtLanguage,   "graphml");
-//		prop.setValueDefault(TribePM.tpmKeyPrStgFileTarget, true);
-//		prop.setValueDefault(TribeProperties.tpmKeyNoWarnings, true);
-		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
-//		prop.setValueDefault(TribeProperties.tpmKeyQuietMode, true);
-
-		prop.setValueDefault(TribeProperties.tpmKeySrcFile,   "org/skb/lang/glue/proto/specs/tests/test.glue");
 
 		LanguageParser[] supportedLanguages={new GlueParser()};
 		tribe.start(supportedLanguages, args);
