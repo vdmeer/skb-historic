@@ -258,9 +258,18 @@ public class Tribe {
          */
         logger.trace("save current configuration, if requested");
         if(prop.getValueCli(TribeProperties.tpmKeyCfgSave)!=null){
-        	OatBoolean sTest=prop.getValueCli(TribeProperties.tpmKeyCfgSave).getValOatAtomicBoolean();
-        	if(sTest!=null)
-        		repMgr.reportError(sTest+", trying to continue");
+			OatString cl=(OatString)prop.getValueCli(TribeProperties.tpmKeyCfgSave);
+//			String _cret="";
+			try {
+				prop.writeToFile(cl.getValue());
+			} catch (Exception e) {}
+
+//			if(_cret!=null)
+//				repMgr.reportError(_cret+", trying to continue");
+
+
+//        	if(sTest!=null)
+//        		repMgr.reportError(sTest+", trying to continue");
 		}
 
         /**
@@ -403,13 +412,14 @@ public class Tribe {
 
 		if(prop.getValueCli(TribeProperties.tpmKeyCfgLoad)!=null){
 			OatString cl=(OatString)prop.getValueCli(TribeProperties.tpmKeyCfgLoad);
-			String _cret="";
+			String ret=null;
 			try {
-				prop.loadFromFile(cl.getValue());
-			} catch (Exception e) {}
-
-			if(_cret!=null)
-				repMgr.reportError(_cret+", trying to continue");
+				ret=prop.loadFromFile(cl.getValue());
+			} catch (Exception e) {
+				repMgr.reportError("tribe: problems loading configuration file<"+cl+">, trying to continue");
+			}
+			if(ret!=null)
+				repMgr.reportError("tribe: problems loading configuration file<"+cl+">, "+ret+", trying to continue");
 		}
 	}
 
@@ -425,8 +435,8 @@ public class Tribe {
 	}
 	
 	private void footer(){
-		OatString footer=prop.get(TribeProperties.tpmKeyAdditional, OatPropertyMap.pmValValueDefault).getValOatAtomicString();
-		if(footer!=null){
+		System.out.println();
+		if(prop.get(TribeProperties.tpmKeyAdditional, OatPropertyMap.pmValValueDefault)!=null){
 			System.out.println();
 			System.out.println(prop.get(TribeProperties.tpmKeyAdditional, OatPropertyMap.pmValValueDefault).toString());
 		}

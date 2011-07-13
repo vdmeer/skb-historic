@@ -35,11 +35,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
-import org.skb.types.composite.util.OatMapLH;
-import org.skb.types.composite.util.OatPropertyMap;
-import org.skb.types.composite.util.OatTableRow;
 import org.apache.commons.configuration.AbstractConfiguration;
 import org.apache.commons.configuration.INIConfiguration;
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -223,23 +219,27 @@ public class OatPropertyMap extends OatBaseTable{
 			if(!file.canRead())
 				return "can't read configuration file <" + fn +">";
 
-			TreeSet<String> rows=new TreeSet<String>(this.getRows());
-	        for (Iterator<String> i = rows.iterator(); i.hasNext(); i.hasNext()){
-	        	String row=i.next();
-	        	if((OatBaseAtomic)this.get(row, OatPropertyMap.pmValCliOptionShort)==null&&(OatBaseAtomic)this.get(row, OatPropertyMap.pmValCliOptionLong)!=null){
-//still dependend on manual extenstion, still not supporting full atomic list
-	        		if(this.get(row, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_STRING))
-	        			this.put(row, OatPropertyMap.pmValValueFile, cfg.getString(prefix+row));
-	        		else if(this.get(row, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_BOOLEAN))
-	        			this.put(row, OatPropertyMap.pmValValueFile, cfg.getBoolean(prefix+row, false));
-	        		else if(this.get(row, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_INTEGER))
-	        			this.put(row, OatPropertyMap.pmValValueFile, cfg.getInteger(prefix+row, 0));
-        			else if(this.get(row, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_DOUBLE))
-	        			this.put(row, OatPropertyMap.pmValValueFile, cfg.getDouble(prefix+row));
-	        		else if(this.get(row, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_LONG))
-	        			this.put(row, OatPropertyMap.pmValValueFile, cfg.getLong(prefix+row, 0));
-	        	}
-	        }
+			Iterator<?> it;
+			if(prefix!="")
+				it=cfg.getKeys(prefix);
+			else
+				it=cfg.getKeys();
+			while(it.hasNext()){
+				String p=it.next().toString();
+				if(this.containsKey(p)){
+	        		if(this.get(p, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_STRING))
+	        			this.put(p, OatPropertyMap.pmValValueFile, cfg.getString(p));
+	        		else if(this.get(p, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_BOOLEAN))
+	        			this.put(p, OatPropertyMap.pmValValueFile, cfg.getBoolean(p, false));
+	        		else if(this.get(p, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_INTEGER))
+	        			this.put(p, OatPropertyMap.pmValValueFile, cfg.getInteger(p, 0));
+        			else if(this.get(p, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_DOUBLE))
+	        			this.put(p, OatPropertyMap.pmValValueFile, cfg.getDouble(p));
+	        		else if(this.get(p, OatPropertyMap.pmValType).getValue().equals(TypeRepository.OAT_ATOMIC_LONG))
+	        			this.put(p, OatPropertyMap.pmValValueFile, cfg.getLong(p, 0));
+				}
+
+			}
 		} catch (Exception e) {
 //        	ReportManager repMgr=ReportManager.getInstance();
 //        	repMgr.reportErrorNoFile(e.toString());
