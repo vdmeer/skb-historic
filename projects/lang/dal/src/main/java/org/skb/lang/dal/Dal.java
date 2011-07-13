@@ -34,7 +34,6 @@ import org.apache.log4j.Logger;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
-import org.skb.tribe.TribeProperties;
 
 /**
  * General entry point for Dal parsing.
@@ -43,9 +42,12 @@ import org.skb.tribe.TribeProperties;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class Dal{
-	static Logger logger = Logger.getLogger("org.a3ds.languages.dal.base");
+	static Logger logger;
 
 	public static void main (String[] args) {
+		System.setProperty("log4j.configuration", "org/skb/lang/dal/log4/log4j.xml");
+		logger=Logger.getLogger(Dal.class);
+
 		logger.trace("main -- in");
 		logger.trace("initialise tribe and properties");
 
@@ -53,25 +55,6 @@ public class Dal{
 		cfg.read("/org/skb/lang/dal/dal.json");
 
 		Tribe tribe=new Tribe();
-
-		//overwrite standard TRIBE values for LADS
-		TribeProperties prop=TribeProperties.getInstance();
-
-		prop.setValueDefault(TribeProperties.tpmKeyTgtDir, "V:/dev/skb/autogen-local/src");
-
-		// overwrite this permanently, we are in LADS
-		prop.setValueDefault(TribeProperties.tpmKeySrcLanguage,   "dal");
-
-		//some overwrites, for testing purpose only
-		prop.setValueDefault(TribeProperties.tpmKeyTgtLanguage,   "sql");
-		//prop.setValueDefault(TribePM.tpmKeyPrStgFileTarget, true);
-
-		prop.setValueDefault(TribeProperties.tpmKeyNoWarnings,   true);
-
-		prop.setValueDefault(TribeProperties.tpmKeyGC, true);
-		//prop.setValueDefault(TribeProperties.tpmKeyQuietMode, true);
-
-		prop.setValueDefault(TribeProperties.tpmKeySrcFile, "org/skb/lang/dal/specs/tests/test.dal");
 
 		logger.trace("create Language[]");
 		LanguageParser[] supportedLanguages={new DalParser()};
