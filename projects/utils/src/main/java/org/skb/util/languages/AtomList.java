@@ -394,7 +394,6 @@ public class AtomList extends OatTable {
 		String ret=s;
 		if(ret==null)
 			ret=this.scope.toString();
-		//this must be a package then ladsPACKAGE
 		if(ret.lastIndexOf(this.scope.separator())==-1)
 			return this.defaultCategory;
 		String par=ret.substring(0,ret.lastIndexOf(this.scope.separator()));
