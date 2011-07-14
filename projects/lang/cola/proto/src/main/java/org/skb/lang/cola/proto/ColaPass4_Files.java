@@ -39,6 +39,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.atomic.java.OatBoolean;
 import org.skb.types.base.OatBaseAtomic;
@@ -54,6 +55,8 @@ import antlr.CommonToken;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class ColaPass4_Files {
+	static Logger logger = Logger.getLogger(ColaPass4_Files.class);
+
 	private FileTemplateList ftl;
 	private AtomList atoms;
 	private TribeProperties prop;

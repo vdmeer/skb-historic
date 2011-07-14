@@ -40,6 +40,7 @@ import org.skb.types.base.OatBaseAtomic;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
 import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 
 /**
  * Pass 3 of the Cola parser using templates to generate a target language specification.
@@ -48,6 +49,8 @@ import org.antlr.stringtemplate.StringTemplate;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class ColaPass3_Gen {
+	static Logger logger = Logger.getLogger(ColaPass3_Gen.class);
+
 	public AtomList atoms=AtomList.getInstance();
 	public ScopeString sn;
 

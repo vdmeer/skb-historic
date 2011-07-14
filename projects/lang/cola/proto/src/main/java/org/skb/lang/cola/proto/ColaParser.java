@@ -68,10 +68,10 @@ import org.skb.lang.cola.proto.grammars.colaGen;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class ColaParser extends LanguageParser{
+	static Logger logger = Logger.getLogger(ColaParser.class);
+
 	private TargetSTG target;
 	private ColaStatistics stats;
-
-	static Logger logger = Logger.getLogger("org.skb.languages.cola.base");
 
 	public OatPropertyMap getMap(){
 		return LanguageProperties.getInstance().getMap();

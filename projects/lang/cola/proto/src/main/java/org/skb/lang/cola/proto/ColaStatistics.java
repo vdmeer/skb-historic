@@ -47,6 +47,7 @@ import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.stringtemplate.STGWriterXtoY;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
+import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 
 /**
@@ -56,6 +57,8 @@ import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class ColaStatistics {
+	static Logger logger = Logger.getLogger(ColaStatistics.class);
+
 	private STGManager stgl=null;
 	private StringTemplateGroup stg;
 	boolean loaded=false;

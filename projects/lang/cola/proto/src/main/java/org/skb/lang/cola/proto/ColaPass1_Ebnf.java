@@ -38,6 +38,7 @@ import org.skb.types.composite.util.OatTableRow;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
 import org.antlr.runtime.Token;
+import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 
@@ -48,6 +49,8 @@ import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class ColaPass1_Ebnf {
+	static Logger logger = Logger.getLogger(ColaPass1_Ebnf.class);
+
 	public AtomList atoms=AtomList.getInstance();
 
 	private LanguageRuleMap cr;
