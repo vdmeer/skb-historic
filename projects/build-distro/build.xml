@@ -10,7 +10,7 @@
 		<pathelement location="../lang/cola/proto"/>
 		<pathelement location="../lang/pola/proto"/>
 		<pathelement location="../lang/glue/proto"/>
-		<pathelement location="../lang/dal"/>
+<!--		<pathelement location="../lang/dal"/> -->
 		<pathelement location="../kb"/>
 	</path>
 
