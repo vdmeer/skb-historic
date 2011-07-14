@@ -32,6 +32,8 @@ package org.skb.lang.dal;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+import org.skb.lang.dal.constants.DalConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.stringtemplate.FileTemplateList;
@@ -43,6 +45,8 @@ import org.skb.util.stringtemplate.FileTemplateList;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class DalPass4_Files {
+	static Logger logger = Logger.getLogger(DalPass4_Files.class);
+
 	private FileTemplateList ftl;
 	private AtomList atoms;
 	private TribeProperties prop;
@@ -57,11 +61,11 @@ public class DalPass4_Files {
 		String fn;
 		//remove everything but the dalRepository and the dalPackage
 		ArrayList<String> del=new ArrayList<String>();
-		del.add(DalTokensConstants.dalACTIONS);
-		del.add(DalTokensConstants.dalSEQUENCE);
-		del.add(DalTokensConstants.dalFIELD);
-		del.add(DalTokensConstants.dalDATA);
-		del.add(DalTokensConstants.dalTABLE);
+		del.add(DalConstants.Tokens.dalACTIONS);
+		del.add(DalConstants.Tokens.dalSEQUENCE);
+		del.add(DalConstants.Tokens.dalFIELD);
+		del.add(DalConstants.Tokens.dalDATA);
+		del.add(DalConstants.Tokens.dalTABLE);
 		this.removeEntries(del);
 
 		fn=this.prop.getValue(TribeProperties.tpmKeyTgtFile).toString();

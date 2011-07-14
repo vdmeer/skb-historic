@@ -56,7 +56,7 @@ options
   import java.util.LinkedHashMap;
 
   import org.skb.lang.dal.DalPass3_Gen;
-  import org.skb.lang.dal.DalTokensConstants;
+  import org.skb.lang.dal.constants.DalConstants;
   import org.skb.util.ReportManager;
 }
 

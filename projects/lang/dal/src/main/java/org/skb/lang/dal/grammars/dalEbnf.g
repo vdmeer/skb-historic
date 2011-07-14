@@ -54,8 +54,8 @@ options
   import java.util.LinkedHashMap;
 
   import org.skb.lang.dal.DalPass1_Ebnf;
+  import org.skb.lang.dal.constants.DalConstants;
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.dal.DalTokensConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -64,7 +64,7 @@ options
   package org.skb.lang.dal.grammars;
 
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.dal.DalTokensConstants;
+  import org.skb.lang.dal.constants.DalConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -130,14 +130,14 @@ dalDefinition                : dalRepository dalPackage*;
  * dalRepository == All Meta-Meta data on fields for different tables
  */
 dalRepository                 : DAL_REPOSITORY id=IDENT 
-                                {this.pass.putAtom(id,DalTokensConstants.dalREPOSITORY);}
+                                {this.pass.putAtom(id,DalConstants.Tokens.dalREPOSITORY);}
                                 {this.pass.tables.curRepoSet(id);}
                                 '{' dalTable* '}'
                                 {this.pass.atoms.scope.pop();}
                                 {this.pass.tables.curRepoClear();}
                                 -> ^(DAL_REPOSITORY IDENT dalTable*);
 dalTable                      : DAL_TABLE id=IDENT
-                                {this.pass.putAtom(id,DalTokensConstants.dalTABLE);}
+                                {this.pass.putAtom(id,DalConstants.Tokens.dalTABLE);}
                                 {this.pass.tables.curTableSet(id);}
                                 '{' dalField* dalSequence '}'
                                 {this.pass.atoms.scope.pop();}
@@ -145,7 +145,7 @@ dalTable                      : DAL_TABLE id=IDENT
                                 -> ^(DAL_TABLE IDENT dalField* dalSequence);
 //field IDENT TYPE value(VALUE) primkey(abort) notnull(abort) unique(abort) size(2) precision(1) defval("") collate("");
 dalField                      : DAL_FIELD id=IDENT base_type
-                                {this.pass.putAtom(id,DalTokensConstants.dalFIELD, this.base_type);}
+                                {this.pass.putAtom(id,DalConstants.Tokens.dalFIELD, this.base_type);}
                                 {this.pass.tables.curTableAddField(id, this.base_type);}
                                 dalFieldValue?
                                 dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? 
@@ -173,14 +173,14 @@ dalFieldUnique                : DAL_UNIQUE '(' (DAL_ROLLBACK | DAL_ABORT) ')'
                                 -> ^(DAL_UNIQUE DAL_ROLLBACK? DAL_ABORT?);
 
 dalSequence                   : s=DAL_SEQUENCE 
-                                {this.pass.putAtom(s,DalTokensConstants.dalSEQUENCE);}
+                                {this.pass.putAtom(s,DalConstants.Tokens.dalSEQUENCE);}
                                 '{' ( (id=IDENT {this.pass.tables.curTableSequenceAdd(id);}) (',' (id=IDENT {this.pass.tables.curTableSequenceAdd(id);}))*)? '}'
                                 {this.pass.atoms.scope.pop();}
                                  -> ^(DAL_SEQUENCE IDENT*);
 
 
 dalPackage                    : DAL_PACKAGE id=IDENT
-                                {this.pass.putAtom(id,DalTokensConstants.dalPACKAGE);}
+                                {this.pass.putAtom(id,DalConstants.Tokens.dalPACKAGE);}
                                 {this.pass.tables.curRepoSet(id);}
                                 '{' dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData* '}'
                                 {this.pass.atoms.scope.pop();}
@@ -195,7 +195,7 @@ dalPackageRepositoryRowKV     : IDENT '=' const_value* -> ^(DAL_ROW IDENT const_
 
 dalActions                   : DAL_ACTIONS
                                id=dalActionsID
-                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
                                (dalActionsInsert | dalActionsRemove | dalActionsEmpty)* '}'
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_ACTIONS dalActionsID dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
@@ -204,30 +204,30 @@ dalActionsID                 : '{' -> ^({new CommonTree(new CommonToken(IDENT,"i
 
 dalActionsInsert             : DAL_ACTION_INSERT
                                id=internalID
-                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
                                dalTableIdent dalKV*
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_ACTION_INSERT internalID dalTableIdent dalKV*);
 dalActionsRemove             : DAL_ACTION_REMOVE
                                id=internalID
-                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
                                dalTableIdent dalKV?
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_ACTION_REMOVE internalID dalTableIdent dalKV?);
 dalActionsEmpty              : DAL_ACTION_EMPTY
                                id=internalID
-                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalACTIONS);}
+                               {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
                                dalTableIdent
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_ACTION_EMPTY internalID dalTableIdent);
 
 dalData                      : s=DAL_DATA
-                               {this.pass.putAtom(s,DalTokensConstants.dalDATA);}
+                               {this.pass.putAtom(s,DalConstants.Tokens.dalDATA);}
                                '{' dalDataRow* '}'
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_DATA dalDataRow*);
 dalDataRow                   : id=internalID
-                               {this.pass.putAtom(id.tree.getToken(),DalTokensConstants.dalROW);}
+                               {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalROW);}
                                dalTableIdent dalKV*
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_ROW internalID dalTableIdent dalKV*);

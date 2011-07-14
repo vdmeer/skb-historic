@@ -20,14 +20,10 @@
 	
 	<target name="constants" depends="constants.init">
 		<property name="json.file" value="${main.resources.dir}/org/skb/lang/dal/dal.json"/>
-		<property name="dest.dir" value="${main.java.dir}/org/skb/lang/dal"/>
-		<property name="pkg.name" value="org.skb.lang.dal"/>
+		<property name="dest.dir" value="${main.java.dir}/org/skb/lang/dal/constants"/>
+		<property name="pkg.name" value="org.skb.lang.dal.constants"/>
 		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="tokens" class.name="DalTokensConstants" />
-		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="rules" class.name="DalRuleConstants" />
-		<generate-constants json.file="${json.file}"  pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="properties" class.name="DalPropertiesConstants" />
+			class.name="DalConstants" />
 	</target>
 
 	<target name="prepare" description="Prepares the project for building (jar)" depends="clean,antlr,constants"/>

@@ -21,16 +21,20 @@
                 </layout>    
         </appender>
 
+        <logger name="org.apache.commons">
+                <level value="off"/>
+        </logger>
+
         <logger name="org.skb.tribe">
-                <level value="trace"/>
+                <level value="off"/>
         </logger>
 
         <logger name="org.skb.lang.dal">
-                <level value="trace"/>
+                <level value="debug"/>
         </logger>
 
         <root>
-                <level value="ERROR" />
+                <level value="trace" />
                 <appender-ref ref="R"/>
                 <appender-ref ref="stdout"/>
         </root>

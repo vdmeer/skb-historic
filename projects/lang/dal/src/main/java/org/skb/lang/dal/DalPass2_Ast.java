@@ -33,6 +33,8 @@ package org.skb.lang.dal;
 import java.util.ArrayList;
 
 import org.antlr.runtime.Token;
+import org.apache.log4j.Logger;
+import org.skb.lang.dal.constants.DalConstants;
 import org.skb.lang.dal.internal.DalTables;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.util.languages.AtomList;
@@ -44,6 +46,8 @@ import org.skb.util.languages.AtomList;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class DalPass2_Ast {
+	static Logger logger = Logger.getLogger(DalPass2_Ast.class);
+
 	public AtomList atoms;
 	public DalTables tables;
 	private LanguageRuleMap cr;
@@ -62,7 +66,7 @@ public class DalPass2_Ast {
 //System.err.println(this.atoms.getValue());
 
 		this.cr=new LanguageRuleMap();
-		this.cr.setClassName(DalRuleConstants.class.getName());
+		this.cr.setClassName(DalConstants.Rules.class.getName());
 		this.cr.setKey("rule");
 		this.cr.loadRules();
 

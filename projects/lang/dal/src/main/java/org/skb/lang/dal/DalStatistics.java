@@ -37,6 +37,8 @@ import java.util.LinkedHashMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
+import org.apache.log4j.Logger;
+import org.skb.lang.dal.constants.DalConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.TypeRepository;
 import org.skb.types.atomic.java.OatBoolean;
@@ -55,6 +57,8 @@ import org.skb.util.stringtemplate.STGWriterXtoY;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class DalStatistics {
+	static Logger logger = Logger.getLogger(DalStatistics.class);
+
 	private STGManager stgl=null;
 	private StringTemplateGroup stg;
 	boolean loaded=false;
@@ -76,8 +80,8 @@ public class DalStatistics {
 		this.stgl.setMandatoryChunks(chMan);
 		this.stgl.setApplicationName(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyNameLC).getValOatAtomicString());
 
-		this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(DalPropertiesConstants.keyStatStg));
-		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(DalPropertiesConstants.keyStatStg));
+		this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(DalConstants.Properties.keyStatStg));
+		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(DalConstants.Properties.keyStatStg));
 		this.stgl.loadSTG("templates for printing statistics", "");
 
 		if(this.stgl.testChunks()){
@@ -132,7 +136,7 @@ public class DalStatistics {
 			boolean scope=false;
 
 			try {
-				OatBaseAtomic ata=prop.getValue(DalPropertiesConstants.keyPrStatsWScope);
+				OatBaseAtomic ata=prop.getValue(DalConstants.Properties.keyPrStatsWScope);
 				if(ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN))
 						scope=((OatBoolean)ata).getValue();
 			} catch (Exception e) {}

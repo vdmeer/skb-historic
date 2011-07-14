@@ -40,6 +40,7 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.apache.log4j.Logger;
+import org.skb.lang.dal.constants.DalConstants;
 import org.skb.lang.dal.grammars.dalAst;
 import org.skb.lang.dal.grammars.dalEbnfLexer;
 import org.skb.lang.dal.grammars.dalEbnfParser;
@@ -68,10 +69,10 @@ import org.skb.util.stringtemplate.STGManager;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class DalParser extends LanguageParser{
+	static Logger logger = Logger.getLogger(DalParser.class);
+
 	private TargetSTG target;
 	private DalStatistics stats;
-
-	static Logger logger = Logger.getLogger("org.a3ds.languages.dal.base");
 
 	public OatPropertyMap getMap(){
 		return LanguageProperties.getInstance().getMap();
@@ -93,7 +94,7 @@ public class DalParser extends LanguageParser{
 	public void setOptions(){
 		logger.trace("setOptions -- in");
 		LanguageProperties lp=LanguageProperties.getInstance();
-		lp.setClassName(DalPropertiesConstants.class.getName());
+		lp.setClassName(DalConstants.Properties.class.getName());
 		lp.setKey("key");
 		lp.setOptions();
 		super.setOptions();
@@ -167,12 +168,12 @@ public class DalParser extends LanguageParser{
 			if(!quietMode)
 				repMgr.reportMessageNoFile(msg);
 
-			OatBaseAtomic ata=this.prop.getValue(DalPropertiesConstants.keyPrStat);
+			OatBaseAtomic ata=this.prop.getValue(DalConstants.Properties.keyPrStat);
 			if(!quietMode){
 				this.stats=new DalStatistics();
 				if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 					stats.genSimpleStats();
-				ata=this.prop.getValue(DalPropertiesConstants.keyPrStatAll);
+				ata=this.prop.getValue(DalConstants.Properties.keyPrStatAll);
 				if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 					stats.genCompleteStats();
 			}
@@ -210,10 +211,10 @@ public class DalParser extends LanguageParser{
 					repMgr.reportMessageNoFile(msg);
 			}
 			// print stats if wanted
-			ata=this.prop.getValue(DalPropertiesConstants.keyPrStat);
+			ata=this.prop.getValue(DalConstants.Properties.keyPrStat);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printSimpleStatistic();
-			ata=this.prop.getValue(DalPropertiesConstants.keyPrStatAll);
+			ata=this.prop.getValue(DalConstants.Properties.keyPrStatAll);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printCompleteStatistic();
 

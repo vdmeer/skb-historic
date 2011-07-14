@@ -31,6 +31,8 @@
 package org.skb.lang.dal;
 
 import org.antlr.runtime.Token;
+import org.apache.log4j.Logger;
+import org.skb.lang.dal.constants.DalConstants;
 import org.skb.lang.dal.internal.DalTables;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.tribe.TribeProperties;
@@ -45,13 +47,15 @@ import org.skb.util.languages.AtomList;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class DalPass1_Ebnf {
+	static Logger logger = Logger.getLogger(DalPass1_Ebnf.class);
+
 	public AtomList atoms;
 	public DalTables tables;
 	private LanguageRuleMap cr;
 
 	public DalPass1_Ebnf(){
 		this.cr=new LanguageRuleMap();
-		this.cr.setClassName(DalRuleConstants.class.getName());
+		this.cr.setClassName(DalConstants.Rules.class.getName());
 		this.cr.setKey("rule");
 		this.cr.loadRules();		
 
@@ -65,9 +69,9 @@ public class DalPass1_Ebnf {
 		OatTableRow otr=this.atoms.putAtom(tk, category, type);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(
-					DalTokensConstants.parserIDENTIFIER+" used more than once",
+					DalConstants.Tokens.parserIDENTIFIER+" used more than once",
 					tk,
-					DalTokensConstants.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
+					DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
 		}
 	}
 

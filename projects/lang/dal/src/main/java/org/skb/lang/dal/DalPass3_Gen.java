@@ -39,6 +39,8 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
+import org.skb.lang.dal.constants.DalConstants;
 import org.skb.lang.dal.internal.DalTables;
 import org.skb.types.atomic.util.OatArrayListString;
 import org.skb.util.languages.AtomList;
@@ -51,6 +53,8 @@ import org.skb.util.languages.ScopeString;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class DalPass3_Gen {
+	static Logger logger = Logger.getLogger(DalPass3_Gen.class);
+
 	public AtomList atoms=AtomList.getInstance();
 	public ScopeString sn;
 	public DalTables tables;
@@ -83,20 +87,20 @@ public class DalPass3_Gen {
 
 	private void _initSimple_type(){
 		this.simple_type.clear();
-		this.simple_type.put(DalTokensConstants.parserScopedName, null);
-		this.simple_type.put(DalTokensConstants.parserBaseType, null);
-		this.simple_type.put(DalTokensConstants.dalVOID, null);
+		this.simple_type.put(DalConstants.Tokens.parserScopedName, null);
+		this.simple_type.put(DalConstants.Tokens.parserBaseType, null);
+		this.simple_type.put(DalConstants.Tokens.dalVOID, null);
 	}
 	public void simple_typeClear(){this._initSimple_type();}
 	public void simple_type(StringTemplate sc, String bt, String ar){
 		if(sc!=null)
-			this.simple_type.put(DalTokensConstants.parserScopedName, sc.toString());
-		this.simple_type.put(DalTokensConstants.parserBaseType, bt);
+			this.simple_type.put(DalConstants.Tokens.parserScopedName, sc.toString());
+		this.simple_type.put(DalConstants.Tokens.parserBaseType, bt);
 	}
 	public void simple_typeVoid(){
 		this._initSimple_type();
-		this.simple_type.put(DalTokensConstants.parserBaseType, DalTokensConstants.dalVOID);
-		this.simple_type.put(DalTokensConstants.dalVOID, DalTokensConstants.dalVOID);
+		this.simple_type.put(DalConstants.Tokens.parserBaseType, DalConstants.Tokens.dalVOID);
+		this.simple_type.put(DalConstants.Tokens.dalVOID, DalConstants.Tokens.dalVOID);
 	}
 	public TreeMap<String,String> simple_type(){return new TreeMap<String,String>(this.simple_type);}
 

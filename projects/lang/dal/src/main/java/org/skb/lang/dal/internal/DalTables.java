@@ -3,7 +3,7 @@ package org.skb.lang.dal.internal;
 import java.util.Set;
 
 import org.antlr.runtime.Token;
-import org.skb.lang.dal.DalTokensConstants;
+import org.skb.lang.dal.constants.DalConstants;
 import org.skb.types.atomic.antlr.OatAntlrToken;
 import org.skb.types.atomic.util.OatArrayListString;
 import org.skb.types.composite.util.OatMapLH;
@@ -76,37 +76,37 @@ public class DalTables extends OatMapLH{
 
 	public void curTableAddField(Token element, Token type){
 		this.curField=element.getText();
-		this.put(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+this.curField+"/"+DalTables.token, new OatAntlrToken(element));
-		this.put(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+this.curField+"/"+DalTables.type, new OatAntlrToken(type));
+		this.put(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+this.curField+"/"+DalTables.token, new OatAntlrToken(element));
+		this.put(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+this.curField+"/"+DalTables.type, new OatAntlrToken(type));
 	}
 
 	public void curFieldValueExprSet(Token expr){
-		this.put(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+this.curField+"/"+DalTables.val_exp, new OatAntlrToken(expr));
+		this.put(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+this.curField+"/"+DalTables.val_exp, new OatAntlrToken(expr));
 	}
 
 	public void curFieldValueSet(Token val){
-		if(!this.containsKey(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+this.curField+"/"+DalTokensConstants.dalVALUE))
-			this.put(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+this.curField+"/"+DalTokensConstants.dalVALUE, new OatArrayListString());
-		((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+this.curField+"/"+DalTokensConstants.dalVALUE)).add(val.getText());
+		if(!this.containsKey(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+this.curField+"/"+DalConstants.Tokens.dalVALUE))
+			this.put(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+this.curField+"/"+DalConstants.Tokens.dalVALUE, new OatArrayListString());
+		((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+this.curField+"/"+DalConstants.Tokens.dalVALUE)).add(val.getText());
 	}	
 
 	public void curFieldPropertySet(String prop, Token tk){
-		this.put(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+this.curField+"/"+prop, new OatAntlrToken(tk));
+		this.put(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+this.curField+"/"+prop, new OatAntlrToken(tk));
 	}
 
 	public void curTableSequenceAdd(Token seq){
-		if(!this.containsKey(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD+"/"+seq.getText()))
+		if(!this.containsKey(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD+"/"+seq.getText()))
 			System.err.println(curRepo+"."+curTable+" = does NOT contain element == "+seq.getText());
 
-		if(!this.containsKey(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalSEQUENCE))
-			this.put(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalSEQUENCE, new OatArrayListString());
-		((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalSEQUENCE)).add(seq.getText());
+		if(!this.containsKey(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalSEQUENCE))
+			this.put(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalSEQUENCE, new OatArrayListString());
+		((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalSEQUENCE)).add(seq.getText());
 	}
 
 /*
 	public void curTableSequenceCheck(){
-		OatArrayListString als=((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalSEQUENCE));
-		Set<String> keys=((OatMapLH)this.get(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalFIELD)).keySet();
+		OatArrayListString als=((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalSEQUENCE));
+		Set<String> keys=((OatMapLH)this.get(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalFIELD)).keySet();
 
 		Iterator<String>it=keys.iterator();
 		while(it.hasNext()){
@@ -119,19 +119,19 @@ public class DalTables extends OatMapLH{
 
 	public boolean curFieldCheck(String table, String elem){
 		boolean ret=false;
-		if(this.get(this.curRepo+"/"+table+"/"+DalTokensConstants.dalFIELD)==null)
+		if(this.get(this.curRepo+"/"+table+"/"+DalConstants.Tokens.dalFIELD)==null)
 			return false;
-		Set<String> keys=((OatMapLH)this.get(this.curRepo+"/"+table+"/"+DalTokensConstants.dalFIELD)).keySet();
+		Set<String> keys=((OatMapLH)this.get(this.curRepo+"/"+table+"/"+DalConstants.Tokens.dalFIELD)).keySet();
 		if(keys.contains(elem))
 			ret=true;
 		return ret;
 	}
 /*
 	public OatArrayListString curTableSequenceGet(){
-		return ((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalTokensConstants.dalSEQUENCE));
+		return ((OatArrayListString)this.get(this.curRepo+"/"+this.curTable+"/"+DalConstants.Tokens.dalSEQUENCE));
 	}
 */
 	public OatArrayListString tableSequenceGet(String repo, String table){
-		return ((OatArrayListString)this.get(repo+"/"+table+"/"+DalTokensConstants.dalSEQUENCE));
+		return ((OatArrayListString)this.get(repo+"/"+table+"/"+DalConstants.Tokens.dalSEQUENCE));
 	}
 }
