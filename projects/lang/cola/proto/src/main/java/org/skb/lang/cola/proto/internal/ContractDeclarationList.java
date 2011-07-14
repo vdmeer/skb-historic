@@ -35,7 +35,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-import org.skb.lang.cola.proto.ColaTokensConstants;
+import org.skb.lang.cola.proto.constants.ColaConstants;
 
 /**
  * Internal class maintaining a list of contract declarations.
@@ -52,21 +52,21 @@ public class ContractDeclarationList {
 
 		this.contractScopesDeclMap=new LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>>();
 
-		this.contractScopesDeclMap.put(ColaTokensConstants.colaREQUIRED, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
+		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaREQUIRED, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 
-		this.contractScopesDeclMap.put(ColaTokensConstants.colaMANDATORY, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
+		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaMANDATORY, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 
-		this.contractScopesDeclMap.put(ColaTokensConstants.colaOPTIONAL, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
+		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaOPTIONAL, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 
-		this.contractScopesDeclMap.put(ColaTokensConstants.colaNOT_DEF, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
+		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaNOT_DEF, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 	}
 
 	private static class ContractDeclarationListHolder{private final static ContractDeclarationList INSTANCE = new ContractDeclarationList();}

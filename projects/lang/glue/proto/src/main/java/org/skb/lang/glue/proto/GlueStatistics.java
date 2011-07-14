@@ -33,6 +33,7 @@ package org.skb.lang.glue.proto;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.lang.glue.proto.constants.GlueConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.atomic.util.OatArrayListString;
 import org.skb.types.base.OatBaseAtomic;
@@ -70,10 +71,10 @@ public class GlueStatistics {
 		this.stgl=new STGManager();
 		this.stgl.setMandatoryChunks(chMan);
 
-		OatBaseAtomic statStg=TribeProperties.getInstance().getValueCli(GluePropertiesConstants.keyStatStg);
+		OatBaseAtomic statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);
 		if(statStg!=null)
 			this.stgl.setSTGFileName(statStg.toString());
-		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(GluePropertiesConstants.keyStatStg));
+		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(GlueConstants.Properties.keyStatStg));
 
 		this.stgl.loadSTG("templates for printing statistics", "");
 

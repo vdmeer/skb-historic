@@ -40,6 +40,7 @@ import java.util.TreeSet;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
+import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.atomic.java.OatBoolean;
 import org.skb.types.base.OatBaseAtomic;
@@ -80,11 +81,11 @@ public class ColaPass4_Files {
 		//now we can add Attributes/Actions to Elements/Facilities
 		//this should remove all Actions and Attributes, plus all propertyDecl, itemDecl, contractDecl contained in Elements/Facilities
 
-		this._processAtomChildren(ColaTokensConstants.colaSTRUCT, null, null);
-		this._processAtomChildren(ColaTokensConstants.colaACTION, null, null);
+		this._processAtomChildren(ColaConstants.Tokens.colaSTRUCT, null, null);
+		this._processAtomChildren(ColaConstants.Tokens.colaACTION, null, null);
 
-		this._processAtomChildren(ColaTokensConstants.colaFACILITY, null, null);
-		this._processAtomChildren(ColaTokensConstants.colaELEMENT, null, null);
+		this._processAtomChildren(ColaConstants.Tokens.colaFACILITY, null, null);
+		this._processAtomChildren(ColaConstants.Tokens.colaELEMENT, null, null);
 
 		//the list now has only packages, elements, facilities, typedefs and structures left
 		//the rest is dependent on the code-split options
@@ -94,9 +95,9 @@ public class ColaPass4_Files {
 		Boolean tgtByPkg=false;
 		Boolean tgtByAtomCat=false;
 		try {
-			tgtSplitCode=((OatBoolean)this.prop.getValue(ColaPropertiesConstants.keyTgSplitCode)).getValue();
-			tgtByPkg=((OatBoolean)this.prop.getValue(ColaPropertiesConstants.keyTgSCbyPackage)).getValue();
-			tgtByAtomCat=((OatBoolean)this.prop.getValue(ColaPropertiesConstants.keyTgSCbyAtomCategory)).getValue();
+			tgtSplitCode=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSplitCode)).getValue();
+			tgtByPkg=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSCbyPackage)).getValue();
+			tgtByAtomCat=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSCbyAtomCategory)).getValue();
 		} catch (Exception e) {}
 
 		if(tgtSplitCode==false){
@@ -122,7 +123,7 @@ public class ColaPass4_Files {
 			//if byPackage is set, it overwrites byAtomCategory
 			if(tgtByPkg==true){
 				//split packages only = 1 file per package (in directory with same name as package
-				this._processPackages(ColaTokensConstants.colaPACKAGE);
+				this._processPackages(ColaConstants.Tokens.colaPACKAGE);
 
 				//final cleanup, like remove all functions if we're not in cola target mode
 				this.removeFunctions();
@@ -132,7 +133,7 @@ public class ColaPass4_Files {
 				ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 				Integer size=rows.size();
 				for(int i=1;i<size;i++){
-					if(this.atoms.get(rows.get(i), AtomList.alValCategory).equals(ColaTokensConstants.colaPACKAGE))
+					if(this.atoms.get(rows.get(i), AtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE))
 						fn=rows.get(i).replace(this.prop.getValue(TribeProperties.tpmKeyGCScopeSep).toString(), "_"); 
 					else{
 						File f=new File(this.prop.getValue(TribeProperties.tpmKeySrcFile).toString());
@@ -152,11 +153,11 @@ public class ColaPass4_Files {
 				String category;
 				for(int i=0;i<size;i++){
 					category=rows.get(i);
-					if(category.lastIndexOf(ColaTokensConstants.parserScopeSep)!=-1)
-						category=category.substring(0,category.lastIndexOf(ColaTokensConstants.parserScopeSep));
+					if(category.lastIndexOf(ColaConstants.Tokens.parserScopeSep)!=-1)
+						category=category.substring(0,category.lastIndexOf(ColaConstants.Tokens.parserScopeSep));
 					else
 						category="";
-					category=category.replace(ColaTokensConstants.parserScopeSep, System.getProperty("file.separator"));
+					category=category.replace(ColaConstants.Tokens.parserScopeSep, System.getProperty("file.separator"));
 					if(category.length()>0)
 						category+=System.getProperty("file.separator");
 					fn=category+this.atoms.get(rows.get(i), AtomList.alValCategory);
@@ -168,7 +169,7 @@ public class ColaPass4_Files {
 				//final cleanup, like remove all functions if we're not in cola target mode
 				this.removeFunctions();
 
-				OatBaseAtomic defP=this.prop.getValue(ColaPropertiesConstants.keyXtJavaPackage);
+				OatBaseAtomic defP=this.prop.getValue(ColaConstants.Properties.keyXtJavaPackage);
 				String defPkg;
 				if(defP==null)
 					defPkg="";
@@ -179,17 +180,17 @@ public class ColaPass4_Files {
 				ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 				Integer size=rows.size();
 				for(int i=0;i<size;i++){
-					fn=rows.get(i).replace(ColaTokensConstants.parserScopeSep, System.getProperty("file.separator"));
+					fn=rows.get(i).replace(ColaConstants.Tokens.parserScopeSep, System.getProperty("file.separator"));
 					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
-					if(this.prop.getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaPropertiesConstants.internalColaTgtJava)){
+					if(this.prop.getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
 						if(defPkg.length()>0)
-							calcPkg=new String(defPkg)+this.prop.getValue(ColaPropertiesConstants.keyScopeSep);
+							calcPkg=new String(defPkg)+this.prop.getValue(ColaConstants.Properties.keyScopeSep);
 						else
 							calcPkg=new String();
 
-						if(rows.get(i).contains(ColaTokensConstants.parserScopeSep)){
-							calcPkg+=rows.get(i).substring(0, rows.get(i).lastIndexOf(ColaTokensConstants.parserScopeSep));
-							calcPkg=calcPkg.replace(ColaTokensConstants.parserScopeSep,this.prop.getValue(TribeProperties.tpmKeyGCScopeSep).toString());
+						if(rows.get(i).contains(ColaConstants.Tokens.parserScopeSep)){
+							calcPkg+=rows.get(i).substring(0, rows.get(i).lastIndexOf(ColaConstants.Tokens.parserScopeSep));
+							calcPkg=calcPkg.replace(ColaConstants.Tokens.parserScopeSep,this.prop.getValue(TribeProperties.tpmKeyGCScopeSep).toString());
 						}
 
 						if(calcPkg.length()>0)
@@ -213,10 +214,10 @@ public class ColaPass4_Files {
 			for(int i=0;i<size;i++){
 				currentElem=rows.get(i);
 				//not contained in any other Atom? go to the next one
-				if(currentElem.lastIndexOf(ColaTokensConstants.parserScopeSep)==-1)
+				if(currentElem.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
 					continue;
 				//not an element, then continue
-				if(!this.atoms.get(currentElem,AtomList.alValCategory).equals(ColaTokensConstants.colaELEMENT))
+				if(!this.atoms.get(currentElem,AtomList.alValCategory).equals(ColaConstants.Tokens.colaELEMENT))
 					continue;
 				else{
 					map=this.atoms.getImports(currentElem);
@@ -225,7 +226,7 @@ public class ColaPass4_Files {
 						String currentFac=it.next();
 						String cat=map.get(currentFac);
 						//no facility, then continue
-						if(!cat.equals(ColaTokensConstants.colaFACILITY))
+						if(!cat.equals(ColaConstants.Tokens.colaFACILITY))
 							continue;
 						//we are in an element that has a dependency (requires) a facility
 						//this can only be by @provides, so we can generate the attribute/action code
@@ -237,9 +238,9 @@ public class ColaPass4_Files {
 						String entryParID;
 						for(int k=0;k<fSize;k++){
 							entry=rows.get(k);
-							if(entry.lastIndexOf(ColaTokensConstants.parserScopeSep)==-1)
+							if(entry.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
 								continue;
-							entryParID=entry.substring(0,entry.lastIndexOf(ColaTokensConstants.parserScopeSep));
+							entryParID=entry.substring(0,entry.lastIndexOf(ColaConstants.Tokens.parserScopeSep));
 							if(currentFac.equals(entryParID))
 								inFac.add(entry);
 						}
@@ -253,18 +254,18 @@ public class ColaPass4_Files {
 							//if we should do Element code, do it
 							Boolean xtDoElemCode=false;
 							try {
-								xtDoElemCode=((OatBoolean)this.prop.getValue(ColaPropertiesConstants.keyXtDoElementCode)).getValue();
+								xtDoElemCode=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyXtDoElementCode)).getValue();
 							} catch (Exception e) {}
 
 							if(xtDoElemCode==true){
 								body=this.atoms.getST(inFac.get(k));
 								//first set misc/inElement
 								body.removeAttribute("misc");
-								body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaTokensConstants.colaELEMENT));
+								body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaConstants.Tokens.colaELEMENT));
 								elem.setAttribute("body", this.atoms.getST(inFac.get(k)).toString());
 								//and now retour
 								body.removeAttribute("misc");
-								body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaTokensConstants.colaFACILITY));								
+								body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaConstants.Tokens.colaFACILITY));								
 							}
 							//in any case, we have to do set imports for the elements
 //this.atoms.addImportsAll(currentElem, this.atoms.getImports(inFac.get(k)));
@@ -290,15 +291,15 @@ public class ColaPass4_Files {
 			for(int i=0;i<size;i++){
 				current=rows.get(i);
 				//not contained in any other Atom? go to the next one
-				if(current.lastIndexOf(ColaTokensConstants.parserScopeSep)==-1)
+				if(current.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
 					continue;
-				parrent=current.substring(0,current.lastIndexOf(ColaTokensConstants.parserScopeSep));
+				parrent=current.substring(0,current.lastIndexOf(ColaConstants.Tokens.parserScopeSep));
 				parrentCat=this.atoms.get(parrent,AtomList.alValCategory).toString();
 				if(processParrentCat!=null&&processParrentCat.equals(parrentCat)){
 					//now, if we should process a generic parent category, let's do that
-					if(processParrentCat!=null&&processParrentCat.equals(ColaTokensConstants.colaSTRUCT))
+					if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaSTRUCT))
 						this.atoms.getST(parrent).setAttribute("member", this.atoms.getST(current).toString());
-					else if(processParrentCat!=null&&processParrentCat.equals(ColaTokensConstants.colaACTION))
+					else if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaACTION))
 						this.atoms.getST(parrent).setAttribute("parameter", this.atoms.getST(current).toString());
 					else
 						this.atoms.getST(parrent).setAttribute("body", this.atoms.getST(current).toString());
@@ -310,9 +311,9 @@ public class ColaPass4_Files {
 					//now check if we have to exclude the found child's category
 					if(excludeCategory!=null&&excludeCategory.equals(this.atoms.get(current,AtomList.alValCategory)))
 						continue;
-					if(processParrentCat!=null&&processParrentCat.equals(ColaTokensConstants.colaSTRUCT))
+					if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaSTRUCT))
 						this.atoms.getST(parrent).setAttribute("member", this.atoms.getST(current).toString());
-					else if(processParrentCat!=null&&processParrentCat.equals(ColaTokensConstants.colaACTION))
+					else if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaACTION))
 						this.atoms.getST(parrent).setAttribute("parameter", this.atoms.getST(current).toString());
 					else
 						this.atoms.getST(parrent).setAttribute("body", this.atoms.getST(current).toString());
@@ -335,8 +336,8 @@ public class ColaPass4_Files {
 		Integer size=_r.size();
 		for(int i=0;i<size;i++){
 			current=_r.get(i);
-			if(this.atoms.get(current,AtomList.alValCategory).equals(ColaTokensConstants.colaPACKAGE)){
-				Integer count=ColaPass4_Files.countIndexOf(current, ColaTokensConstants.parserScopeSep);
+			if(this.atoms.get(current,AtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE)){
+				Integer count=ColaPass4_Files.countIndexOf(current, ColaConstants.Tokens.parserScopeSep);
 				if(!pkgMap.containsKey(count))
 					pkgMap.put(count, new ArrayList<String>());
 				pkgMap.get(count).add(current);
@@ -376,7 +377,7 @@ public class ColaPass4_Files {
 	}
 
 	private void removeFunctions(){
-		if(this.prop.getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaPropertiesConstants.internalColaTgtCola))
+		if(this.prop.getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaConstants.Properties.internalColaTgtCola))
 			return;
 		ArrayList<String>removeList=new ArrayList<String>();
 		String current;
@@ -387,7 +388,7 @@ public class ColaPass4_Files {
 		if(size>0){
 			for(int i=0;i<size;i++){
 				current=rows.get(i);
-				if(this.atoms.get(current,AtomList.alValCategory).equals(ColaTokensConstants.colaFUNCTION))
+				if(this.atoms.get(current,AtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
 					removeList.add(current);
 			}
 		}
@@ -401,31 +402,31 @@ public class ColaPass4_Files {
   	//keep key and cat null if you want to use current values or use overload function below
 	  public TreeMap<String,String> genMiscAttribute(String key, String cat){
 		TreeMap<String,String>ret=new TreeMap<String,String>();
-		ret.put(ColaTokensConstants.gcMiscParrentID, this.atoms.getParrentId(key));
-		ret.put(ColaTokensConstants.gcMiscParrentCat, this.atoms.getParrentCategory(key));
-		ret.put(ColaTokensConstants.gcMiscSpecName, this.atoms.specificationName());
-		ret.put(ColaTokensConstants.gcMiscCurrentScope, this.atoms.scope.toString());
-		ret.put(ColaTokensConstants.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
+		ret.put(ColaConstants.Tokens.gcMiscParrentID, this.atoms.getParrentId(key));
+		ret.put(ColaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
+		ret.put(ColaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
+		ret.put(ColaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
+		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)
 			cmpCat=this.atoms.getParrentCategory(key);
-		if(cmpCat.equals(ColaTokensConstants.colaCONTRACT))
-			ret.put(ColaTokensConstants.gcMiscInContract, "true");
-		if(cmpCat.equals(ColaTokensConstants.colaITEM))
-			ret.put(ColaTokensConstants.gcMiscInItem, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaPACKAGE))
-			ret.put(ColaTokensConstants.gcMiscInPackage, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaELEMENT))
-			ret.put(ColaTokensConstants.gcMiscInElement, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaFACILITY))
-			ret.put(ColaTokensConstants.gcMiscInFacility, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaACTION))
-			ret.put(ColaTokensConstants.gcMiscInAction, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaSTRUCT))
-			ret.put(ColaTokensConstants.gcMiscInStruct, "true");
+		if(cmpCat.equals(ColaConstants.Tokens.colaCONTRACT))
+			ret.put(ColaConstants.Tokens.gcMiscInContract, "true");
+		if(cmpCat.equals(ColaConstants.Tokens.colaITEM))
+			ret.put(ColaConstants.Tokens.gcMiscInItem, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaPACKAGE))
+			ret.put(ColaConstants.Tokens.gcMiscInPackage, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaELEMENT))
+			ret.put(ColaConstants.Tokens.gcMiscInElement, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaFACILITY))
+			ret.put(ColaConstants.Tokens.gcMiscInFacility, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaACTION))
+			ret.put(ColaConstants.Tokens.gcMiscInAction, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaSTRUCT))
+			ret.put(ColaConstants.Tokens.gcMiscInStruct, "true");
 		else
-			ret.put(ColaTokensConstants.gcMiscInDefinition, "true");
+			ret.put(ColaConstants.Tokens.gcMiscInDefinition, "true");
 		return ret;
 	}
 

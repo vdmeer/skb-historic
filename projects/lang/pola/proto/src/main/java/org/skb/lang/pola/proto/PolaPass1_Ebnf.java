@@ -35,6 +35,7 @@ import java.util.LinkedHashMap;
 
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
+import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
 
@@ -77,7 +78,7 @@ public class PolaPass1_Ebnf {
 	//add propertyDeclarationScope atoms and rank, check that atom is not redefined
 	public void addPropertyDeclScopeAtom(Token atom){
 		if(this.propertyDeclScope.containsKey(atom.getText()))
-			ReportManager.getInstance().reportError(PolaTokensConstants.polaPROPERTY + " scope <" + atom.getText() + "> redefined for " + PolaTokensConstants.polaPROPERTY + " <" + this.atoms.scope.toString() + ">",atom);
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.polaPROPERTY + " scope <" + atom.getText() + "> redefined for " + PolaConstants.Tokens.polaPROPERTY + " <" + this.atoms.scope.toString() + ">",atom);
 		else
 			lastPropertyDeclScopeAtom=atom.getText();
 	}
@@ -106,7 +107,7 @@ public class PolaPass1_Ebnf {
 	//and now the contract scopes
 	public void addContractDeclScopeAtom(Token atom){
 		if(this.contractDeclScope.containsKey(atom.getText()))
-			ReportManager.getInstance().reportError(PolaTokensConstants.polaCONTRACT + " scope <" + atom.getText() + "> redefined for " + PolaTokensConstants.polaCONTRACT + " <" + this.atoms.scope.toString() +">",atom);
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.polaCONTRACT + " scope <" + atom.getText() + "> redefined for " + PolaConstants.Tokens.polaCONTRACT + " <" + this.atoms.scope.toString() +">",atom);
 		else
 			lastContractDeclScopeAtom=atom.getText();
 	}
@@ -132,13 +133,13 @@ public class PolaPass1_Ebnf {
 
 	public void identsAddItemDef(Token tk){
 		if(this.tempIdents.contains(tk.getText()))
-			ReportManager.getInstance().reportError(PolaTokensConstants.parserIDENTIFIER + " used more than once","in " + PolaTokensConstants.parserItemProp + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once","in " + PolaConstants.Tokens.parserItemProp + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
 		else
 			this._identsAdd(tk);
 	}
 	public void identsAddPropDef(Token tk){
 		if(this.tempIdents.contains(tk.getText()))
-			ReportManager.getInstance().reportError(PolaTokensConstants.parserIDENTIFIER + " used more than once","in " + PolaTokensConstants.polaPROPERTY + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once","in " + PolaConstants.Tokens.polaPROPERTY + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
 		else
 			this._identsAdd(tk);
 	}
@@ -146,7 +147,7 @@ public class PolaPass1_Ebnf {
 	public void contIdentsStart(){this.tempContIdents.clear();}
 	public void contIdentsAdd(Token tk){
 		if(this.tempContIdents.contains(tk.getText()))
-			ReportManager.getInstance().reportError(PolaTokensConstants.parserIDENTIFIER + " used more than once","in " + PolaTokensConstants.polaCONTRACT + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once","in " + PolaConstants.Tokens.polaCONTRACT + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
 		else
 			this.tempContIdents.add(tk.getText());
 	}

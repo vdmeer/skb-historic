@@ -35,6 +35,16 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.antlr.runtime.ANTLRInputStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.apache.log4j.Logger;
+import org.skb.lang.glue.proto.constants.GlueConstants;
+import org.skb.lang.glue.proto.grammars.glueAst;
+import org.skb.lang.glue.proto.grammars.glueEbnfLexer;
+import org.skb.lang.glue.proto.grammars.glueEbnfParser;
+import org.skb.lang.glue.proto.grammars.glueGen;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.LanguageProperties;
@@ -51,15 +61,6 @@ import org.skb.util.ReportManager;
 import org.skb.util.stringtemplate.FileManager;
 import org.skb.util.stringtemplate.FileTemplateList;
 import org.skb.util.stringtemplate.STGManager;
-import org.antlr.runtime.ANTLRInputStream;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.CommonTreeNodeStream;
-import org.apache.log4j.Logger;
-import org.skb.lang.glue.proto.grammars.glueAst;
-import org.skb.lang.glue.proto.grammars.glueEbnfLexer;
-import org.skb.lang.glue.proto.grammars.glueEbnfParser;
-import org.skb.lang.glue.proto.grammars.glueGen;
 
 /**
  * The core of the Glue parser implementing the whole parsing process.
@@ -85,16 +86,12 @@ public class GlueParser extends LanguageParser{
 		Iterator<String> it=lang.iterator();
 		while(it.hasNext())
 			this.xt.add(it.next().toString());
-
-//			this.xt.add(GluePropertiesConstants.internalGlueTgtGlue);
-//			this.xt.add(GluePropertiesConstants.internalGlueTgtGraphML);
-//			this.xt.add(GluePropertiesConstants.internalGlueTgtSql);
 	}
 
 	public void setOptions(){
 //		logger.trace("setOptions -- in");
 		LanguageProperties lp=LanguageProperties.getInstance();
-		lp.setClassName(GluePropertiesConstants.class.getName());
+		lp.setClassName(GlueConstants.Properties.class.getName());
 		lp.setKey("key");
 		lp.setOptions();
 		super.setOptions();
@@ -147,10 +144,10 @@ public class GlueParser extends LanguageParser{
 
 			this.stats=new GlueStatistics();
 
-			OatBaseAtomic ata=this.prop.getValue(GluePropertiesConstants.keyPrStat);
+			OatBaseAtomic ata=this.prop.getValue(GlueConstants.Properties.keyPrStat);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.genSimpleStats();
-			ata=this.prop.getValue(GluePropertiesConstants.keyPrStatAll);
+			ata=this.prop.getValue(GlueConstants.Properties.keyPrStatAll);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.genCompleteStats();
 
@@ -182,10 +179,10 @@ public class GlueParser extends LanguageParser{
 				repMgr.reportMessageNoFile(msg);
 			}
 			// print stats if wanted
-			ata=this.prop.getValue(GluePropertiesConstants.keyPrStat);
+			ata=this.prop.getValue(GlueConstants.Properties.keyPrStat);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printSimpleStatistic();
-			ata=this.prop.getValue(GluePropertiesConstants.keyPrStatAll);
+			ata=this.prop.getValue(GlueConstants.Properties.keyPrStatAll);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printCompleteStatistic();
 

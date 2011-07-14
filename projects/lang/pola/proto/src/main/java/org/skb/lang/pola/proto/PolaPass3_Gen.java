@@ -34,6 +34,7 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
+import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
 
@@ -63,22 +64,22 @@ public class PolaPass3_Gen {
 
 	private void _initSimple_type(){
 		this.simple_type.clear();
-		this.simple_type.put(PolaTokensConstants.parserScopedName, null);
-		this.simple_type.put(PolaTokensConstants.parserBaseType, null);
-		this.simple_type.put(PolaTokensConstants.parserARRAY, null);
-		this.simple_type.put(PolaTokensConstants.polaVOID, null);
+		this.simple_type.put(PolaConstants.Tokens.parserScopedName, null);
+		this.simple_type.put(PolaConstants.Tokens.parserBaseType, null);
+		this.simple_type.put(PolaConstants.Tokens.parserARRAY, null);
+		this.simple_type.put(PolaConstants.Tokens.polaVOID, null);
 	}
 	public void simple_typeClear(){this._initSimple_type();}
 	public void simple_type(StringTemplate sc, String bt, String ar){
 		if(sc!=null)
-			this.simple_type.put(PolaTokensConstants.parserScopedName, sc.toString());
-		this.simple_type.put(PolaTokensConstants.parserBaseType, bt);
-		this.simple_type.put(PolaTokensConstants.parserARRAY, ar);
+			this.simple_type.put(PolaConstants.Tokens.parserScopedName, sc.toString());
+		this.simple_type.put(PolaConstants.Tokens.parserBaseType, bt);
+		this.simple_type.put(PolaConstants.Tokens.parserARRAY, ar);
 	}
 	public void simple_typeVoid(){
 		this._initSimple_type();
-		this.simple_type.put(PolaTokensConstants.parserBaseType, PolaTokensConstants.polaVOID);
-		this.simple_type.put(PolaTokensConstants.polaVOID, PolaTokensConstants.polaVOID);
+		this.simple_type.put(PolaConstants.Tokens.parserBaseType, PolaConstants.Tokens.polaVOID);
+		this.simple_type.put(PolaConstants.Tokens.polaVOID, PolaConstants.Tokens.polaVOID);
 	}
 	public TreeMap<String,String> simple_type(){return new TreeMap<String,String>(this.simple_type);}
 
@@ -95,38 +96,38 @@ public class PolaPass3_Gen {
 	//keep key and cat null if you want to use current values or use overload function below
 	public TreeMap<String,String> genMiscAttribute(String key, String cat){
 		TreeMap<String,String>ret=new TreeMap<String,String>();
-		ret.put(PolaTokensConstants.gcMiscParrentID, this.atoms.getParrentId(key));
-		ret.put(PolaTokensConstants.gcMiscParrentCat, this.atoms.getParrentCategory(key));
-		ret.put(PolaTokensConstants.gcMiscSpecName, this.atoms.specificationName());
-		ret.put(PolaTokensConstants.gcMiscCurrentScope, this.atoms.scope.toString());
-		ret.put(PolaTokensConstants.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
+		ret.put(PolaConstants.Tokens.gcMiscParrentID, this.atoms.getParrentId(key));
+		ret.put(PolaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
+		ret.put(PolaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
+		ret.put(PolaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
+		ret.put(PolaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)
 			cmpCat=this.atoms.getParrentCategory(key);
-		if(cmpCat.equals(PolaTokensConstants.polaCONTRACT))
-			ret.put(PolaTokensConstants.gcMiscInContract, "true");
-		if(cmpCat.equals(PolaTokensConstants.polaITEM))
-			ret.put(PolaTokensConstants.gcMiscInItem, "true");
-		else if(cmpCat.equals(PolaTokensConstants.polaPACKAGE))
-			ret.put(PolaTokensConstants.gcMiscInPackage, "true");
-		else if(cmpCat.equals(PolaTokensConstants.polaELEMENT))
-			ret.put(PolaTokensConstants.gcMiscInElement, "true");
-		else if(cmpCat.equals(PolaTokensConstants.polaFACILITY))
-			ret.put(PolaTokensConstants.gcMiscInFacility, "true");
-		else if(cmpCat.equals(PolaTokensConstants.polaACTION))
-			ret.put(PolaTokensConstants.gcMiscInAction, "true");
-		else if(cmpCat.equals(PolaTokensConstants.polaSTRUCT))
-			ret.put(PolaTokensConstants.gcMiscInStruct, "true");
+		if(cmpCat.equals(PolaConstants.Tokens.polaCONTRACT))
+			ret.put(PolaConstants.Tokens.gcMiscInContract, "true");
+		if(cmpCat.equals(PolaConstants.Tokens.polaITEM))
+			ret.put(PolaConstants.Tokens.gcMiscInItem, "true");
+		else if(cmpCat.equals(PolaConstants.Tokens.polaPACKAGE))
+			ret.put(PolaConstants.Tokens.gcMiscInPackage, "true");
+		else if(cmpCat.equals(PolaConstants.Tokens.polaELEMENT))
+			ret.put(PolaConstants.Tokens.gcMiscInElement, "true");
+		else if(cmpCat.equals(PolaConstants.Tokens.polaFACILITY))
+			ret.put(PolaConstants.Tokens.gcMiscInFacility, "true");
+		else if(cmpCat.equals(PolaConstants.Tokens.polaACTION))
+			ret.put(PolaConstants.Tokens.gcMiscInAction, "true");
+		else if(cmpCat.equals(PolaConstants.Tokens.polaSTRUCT))
+			ret.put(PolaConstants.Tokens.gcMiscInStruct, "true");
 		else
-			ret.put(PolaTokensConstants.gcMiscInDefinition, "true");
+			ret.put(PolaConstants.Tokens.gcMiscInDefinition, "true");
 		return ret;
 	}
 
 	public String scopeTgtLangAdd(){
 		String ret=null;
 		//if function then no add...
-		if(this.atoms.get(this.toString(),AtomList.alValCategory).equals(PolaTokensConstants.polaFUNCTION))
+		if(this.atoms.get(this.toString(),AtomList.alValCategory).equals(PolaConstants.Tokens.polaFUNCTION))
 			return ret;
 		return ret;
 	}

@@ -35,6 +35,16 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.antlr.runtime.ANTLRInputStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.apache.log4j.Logger;
+import org.skb.lang.pola.proto.constants.PolaConstants;
+import org.skb.lang.pola.proto.grammars.polaAst;
+import org.skb.lang.pola.proto.grammars.polaEbnfLexer;
+import org.skb.lang.pola.proto.grammars.polaEbnfParser;
+import org.skb.lang.pola.proto.grammars.polaGen;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.LanguageProperties;
@@ -51,15 +61,6 @@ import org.skb.util.ReportManager;
 import org.skb.util.stringtemplate.FileManager;
 import org.skb.util.stringtemplate.FileTemplateList;
 import org.skb.util.stringtemplate.STGManager;
-import org.antlr.runtime.ANTLRInputStream;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.CommonTreeNodeStream;
-import org.apache.log4j.Logger;
-import org.skb.lang.pola.proto.grammars.polaAst;
-import org.skb.lang.pola.proto.grammars.polaEbnfLexer;
-import org.skb.lang.pola.proto.grammars.polaEbnfParser;
-import org.skb.lang.pola.proto.grammars.polaGen;
 
 /**
  * The core of the Pola parser implementing the whole parsing process.
@@ -94,7 +95,7 @@ public class PolaParser extends LanguageParser{
 	public void setOptions(){
 //		logger.trace("setOptions -- in");
 		LanguageProperties lp=LanguageProperties.getInstance();
-		lp.setClassName(PolaPropertiesConstants.class.getName());
+		lp.setClassName(PolaConstants.Properties.class.getName());
 		lp.setKey("key");
 		lp.setOptions();
 		super.setOptions();
@@ -147,10 +148,10 @@ public class PolaParser extends LanguageParser{
 
 			this.stats=new PolaStatistics();
 
-			OatBaseAtomic ata=this.prop.getValue(PolaPropertiesConstants.keyPrStat);
+			OatBaseAtomic ata=this.prop.getValue(PolaConstants.Properties.keyPrStat);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.genSimpleStats();
-			ata=this.prop.getValue(PolaPropertiesConstants.keyPrStatAll);
+			ata=this.prop.getValue(PolaConstants.Properties.keyPrStatAll);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.genCompleteStats();
 
@@ -183,10 +184,10 @@ public class PolaParser extends LanguageParser{
 				repMgr.reportMessageNoFile(msg);
 			}
 			// print stats if wanted
-			ata=this.prop.getValue(PolaPropertiesConstants.keyPrStat);
+			ata=this.prop.getValue(PolaConstants.Properties.keyPrStat);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printSimpleStatistic();
-			ata=this.prop.getValue(PolaPropertiesConstants.keyPrStatAll);
+			ata=this.prop.getValue(PolaConstants.Properties.keyPrStatAll);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printCompleteStatistic();
 

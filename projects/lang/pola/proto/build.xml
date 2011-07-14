@@ -20,14 +20,10 @@
 	
 	<target name="constants" depends="constants.init">
 		<property name="json.file" value="${main.resources.dir}/org/skb/lang/pola/proto/proto.json"/>
-		<property name="dest.dir" value="${main.java.dir}/org/skb/lang/pola/proto"/>
-		<property name="pkg.name" value="org.skb.lang.pola.proto"/>
+		<property name="dest.dir" value="${main.java.dir}/org/skb/lang/pola/proto/constants"/>
+		<property name="pkg.name" value="org.skb.lang.pola.proto.constants"/>
 		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="tokens" class.name="PolaTokensConstants" />
-		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="rules" class.name="PolaRuleConstants" />
-		<generate-constants json.file="${json.file}"  pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="properties" class.name="PolaPropertiesConstants" />
+			class.name="PolaConstants" />
 	</target>
 
 	<target name="prepare" description="Prepares the project for building (jar)" depends="clean,antlr,constants"/>

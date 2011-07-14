@@ -33,14 +33,15 @@ package org.skb.lang.cola.proto;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import org.antlr.runtime.Token;
+import org.apache.log4j.Logger;
+import org.skb.lang.cola.proto.constants.ColaConstants;
+import org.skb.lang.cola.proto.internal.ContractDeclarationList;
+import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.types.composite.util.OatTableRow;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
-import org.antlr.runtime.Token;
-import org.apache.log4j.Logger;
-import org.skb.lang.cola.proto.internal.ContractDeclarationList;
-import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -83,36 +84,36 @@ public class ColaPass1_Ebnf {
 		this.contractDeclScope=new LinkedHashMap<String,String>();
 
 		this.cr=new LanguageRuleMap();
-		this.cr.setClassName(ColaRuleConstants.class.getName());
+		this.cr.setClassName(ColaConstants.Rules.class.getName());
 		this.cr.setKey("rule");
 		this.cr.loadRules();		
 
 		//initialise the AtomList with spec
-		this.atoms.addRow(ColaTokensConstants.colaSPECIFICATION);
-		this.atoms.put(ColaTokensConstants.colaSPECIFICATION, AtomList.alValCategory, ColaTokensConstants.colaVOID);
-		this.atoms.put(ColaTokensConstants.colaSPECIFICATION, AtomList.alValType, ColaTokensConstants.colaVOID);
+		this.atoms.addRow(ColaConstants.Tokens.colaSPECIFICATION);
+		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValCategory, ColaConstants.Tokens.colaVOID);
+		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValType, ColaConstants.Tokens.colaVOID);
 
-		this.atoms.setDefaultCategory(ColaTokensConstants.colaDEFINITION);
+		this.atoms.setDefaultCategory(ColaConstants.Tokens.colaDEFINITION);
 	}
 
 	//add propertyDeclarationScope atoms and rank, check that atom is not redefined
 	public void addPropertyDeclScopeAtom(Token atom){
 		if(this.propertyDeclScope.containsKey(atom.getText()))
 			ReportManager.getInstance().reportError(
-					this.cr.getRule(ColaRuleConstants.ruleProperty14, new String[]{atom.getText(), this.atoms.scope.toString()}),
+					this.cr.getRule(ColaConstants.Rules.ruleProperty14, new String[]{atom.getText(), this.atoms.scope.toString()}),
 					atom);
 		else
 			lastPropertyDeclScopeAtom=atom.getText();
 	}
 	public void addPropertyDeclScopeRank(Token rank){this.propertyDeclScope.put(this.lastPropertyDeclScopeAtom,rank.getText());}
 	public void propertyDeclScopeFinish(){
-		this.propertyDeclList.add(this._getPropertyRankForScope(ColaTokensConstants.colaCONTRACT),  ColaTokensConstants.colaCONTRACT,  this.atoms.scope.toString());
-		this.propertyDeclList.add(this._getPropertyRankForScope(ColaTokensConstants.colaPACKAGE),   ColaTokensConstants.colaPACKAGE,   this.atoms.scope.toString());
-		this.propertyDeclList.add(this._getPropertyRankForScope(ColaTokensConstants.colaELEMENT),   ColaTokensConstants.colaELEMENT,   this.atoms.scope.toString());
-		this.propertyDeclList.add(this._getPropertyRankForScope(ColaTokensConstants.colaFACILITY),  ColaTokensConstants.colaFACILITY,  this.atoms.scope.toString());
-		this.propertyDeclList.add(this._getPropertyRankForScope(ColaTokensConstants.colaACTION),    ColaTokensConstants.colaACTION,    this.atoms.scope.toString());
-		this.propertyDeclList.add(this._getPropertyRankForScope(ColaTokensConstants.colaATTRIBUTE), ColaTokensConstants.colaATTRIBUTE, this.atoms.scope.toString());
-		this.propertyDeclList.add(this._getPropertyRankForScope(ColaTokensConstants.colaPARAMETER), ColaTokensConstants.colaPARAMETER, this.atoms.scope.toString());
+		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaCONTRACT),  ColaConstants.Tokens.colaCONTRACT,  this.atoms.scope.toString());
+		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaPACKAGE),   ColaConstants.Tokens.colaPACKAGE,   this.atoms.scope.toString());
+		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaELEMENT),   ColaConstants.Tokens.colaELEMENT,   this.atoms.scope.toString());
+		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaFACILITY),  ColaConstants.Tokens.colaFACILITY,  this.atoms.scope.toString());
+		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaACTION),    ColaConstants.Tokens.colaACTION,    this.atoms.scope.toString());
+		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaATTRIBUTE), ColaConstants.Tokens.colaATTRIBUTE, this.atoms.scope.toString());
+		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaPARAMETER), ColaConstants.Tokens.colaPARAMETER, this.atoms.scope.toString());
 		this.propertyDeclScope.clear();
 	}
 	private String _getPropertyRankForScope(String scope){
@@ -120,7 +121,7 @@ public class ColaPass1_Ebnf {
 		if(this.propertyDeclScope.containsKey(scope))
 			ret=this.propertyDeclScope.get(scope);
 		else
-			ret=ColaTokensConstants.colaNOT_DEF;
+			ret=ColaConstants.Tokens.colaNOT_DEF;
 		return ret;
 	}
 
@@ -128,7 +129,7 @@ public class ColaPass1_Ebnf {
 	public void addContractDeclScopeAtom(Token atom){
 		if(this.contractDeclScope.containsKey(atom.getText()))
 			ReportManager.getInstance().reportError(
-					this.cr.getRule(ColaRuleConstants.ruleContract05, new String[]{atom.getText(), this.atoms.scope.toString()}),
+					this.cr.getRule(ColaConstants.Rules.ruleContract05, new String[]{atom.getText(), this.atoms.scope.toString()}),
 					atom);
 		else
 			lastContractDeclScopeAtom=atom.getText();
@@ -137,8 +138,8 @@ public class ColaPass1_Ebnf {
 		this.contractDeclScope.put(this.lastContractDeclScopeAtom,rank.getText());
 	}
 	public void contractDeclScopeFinish(){
-		this.contractDeclList.add(this._getContractRankForScope(ColaTokensConstants.colaELEMENT),   ColaTokensConstants.colaELEMENT,   this.atoms.scope.toString());
-		this.contractDeclList.add(this._getContractRankForScope(ColaTokensConstants.colaFACILITY),  ColaTokensConstants.colaFACILITY,  this.atoms.scope.toString());
+		this.contractDeclList.add(this._getContractRankForScope(ColaConstants.Tokens.colaELEMENT),   ColaConstants.Tokens.colaELEMENT,   this.atoms.scope.toString());
+		this.contractDeclList.add(this._getContractRankForScope(ColaConstants.Tokens.colaFACILITY),  ColaConstants.Tokens.colaFACILITY,  this.atoms.scope.toString());
 		this.contractDeclScope.clear();
 	}
 	private String _getContractRankForScope(String scope){
@@ -146,7 +147,7 @@ public class ColaPass1_Ebnf {
 		if(this.contractDeclScope.containsKey(scope))
 			ret=this.contractDeclScope.get(scope);
 		else
-			ret=ColaTokensConstants.colaNOT_DEF;
+			ret=ColaConstants.Tokens.colaNOT_DEF;
 		return ret;
 	}
 
@@ -156,8 +157,8 @@ public class ColaPass1_Ebnf {
 	public void identsAddItemDef(Token tk){
 		if(this.tempIdents.contains(tk.getText()))
 			ReportManager.getInstance().reportError(
-					this.cr.getRule(ColaRuleConstants.ruleIdentifier04),
-					this.cr.getRuleAdd(ColaRuleConstants.ruleIdentifier04, new String[]{tk.getText()}),
+					this.cr.getRule(ColaConstants.Rules.ruleIdentifier04),
+					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier04, new String[]{tk.getText()}),
 					tk.getLine(),
 					tk.getCharPositionInLine());
 		else
@@ -166,8 +167,8 @@ public class ColaPass1_Ebnf {
 	public void identsAddPropDef(Token tk){
 		if(this.tempIdents.contains(tk.getText()))
 			ReportManager.getInstance().reportError(
-					this.cr.getRule(ColaRuleConstants.ruleIdentifier05),
-					this.cr.getRuleAdd(ColaRuleConstants.ruleIdentifier05, new String[]{tk.getText()}),
+					this.cr.getRule(ColaConstants.Rules.ruleIdentifier05),
+					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier05, new String[]{tk.getText()}),
 					tk.getLine(),
 					tk.getCharPositionInLine());
 		else
@@ -178,8 +179,8 @@ public class ColaPass1_Ebnf {
 	public void contIdentsAdd(Token tk){
 		if(this.tempContIdents.contains(tk.getText()))
 			ReportManager.getInstance().reportError(
-					this.cr.getRule(ColaRuleConstants.ruleIdentifier06),
-					this.cr.getRuleAdd(ColaRuleConstants.ruleIdentifier06, new String[]{tk.getText()}),
+					this.cr.getRule(ColaConstants.Rules.ruleIdentifier06),
+					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier06, new String[]{tk.getText()}),
 					tk.getLine(),
 					tk.getCharPositionInLine());
 		else
@@ -199,9 +200,9 @@ public class ColaPass1_Ebnf {
 		OatTableRow otr=this.atoms.putAtom(tk, category, type, array);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(
-					ColaTokensConstants.parserIDENTIFIER+" used more than once",
+					ColaConstants.Tokens.parserIDENTIFIER+" used more than once",
 					tk,
-					ColaTokensConstants.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
+					ColaConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
 		}
 	}
 

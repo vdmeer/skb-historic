@@ -55,7 +55,7 @@ options
   import org.skb.util.languages.AtomList;
   import org.skb.lang.cola.proto.ColaPass2_Ast;
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.cola.proto.ColaTokensConstants;
+  import org.skb.lang.cola.proto.constants.ColaConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -92,20 +92,20 @@ colaFunctionParam       : ^(PARAMETER base_type ARRAY? IDENT);
 
 colaPropertyDecl        : ^(PROPERTY s=IDENT ^(AT_TYPE base_type const_value ARRAY?)
                             {this.pass.atoms.scope.push(s.token);}
-                            {this.pass.testBaseTypeWithConstValue(ColaTokensConstants.colaPROPERTY);}
+                            {this.pass.testBaseTypeWithConstValue(ColaConstants.Tokens.colaPROPERTY);}
                             ^(AT_SCOPE propertyScope*)
-                            ^(AT_APPLY (^(PRE (scoped_name {this.pass.testSN(ColaTokensConstants.colaFUNCTION, null);})*))? (^(POST (scoped_name {this.pass.testSN(ColaTokensConstants.colaFUNCTION, null);})*))? (^(INV (scoped_name {this.pass.testSN(ColaTokensConstants.colaFUNCTION, null);})*))? )
+                            ^(AT_APPLY (^(PRE (scoped_name {this.pass.testSN(ColaConstants.Tokens.colaFUNCTION, null);})*))? (^(POST (scoped_name {this.pass.testSN(ColaConstants.Tokens.colaFUNCTION, null);})*))? (^(INV (scoped_name {this.pass.testSN(ColaConstants.Tokens.colaFUNCTION, null);})*))? )
                             atVisibility? AT_ALTERABLE? AT_NEGOTIABLE? atDescription
-                            {this.pass.eprStart(ColaTokensConstants.colaPROPERTY);} aExtends? aRequires?
-                            (^(AT_PRIORITY base_type const_value {this.pass.testBaseTypeWithConstValue(ColaTokensConstants.colaAT_PRIORITY);}))?
+                            {this.pass.eprStart(ColaConstants.Tokens.colaPROPERTY);} aExtends? aRequires?
+                            (^(AT_PRIORITY base_type const_value {this.pass.testBaseTypeWithConstValue(ColaConstants.Tokens.colaAT_PRIORITY);}))?
                           )
                           {this.pass.atoms.scope.pop();};
 propertyScope           : ^(propertyScopeAtom propertyScopeRank);
 propertyScopeAtom       : PACKAGE | ELEMENT | FACILITY | ACTION | ATTRIBUTE | PARAMETER;
 propertyScopeRank       : REQUIRED | MANDATORY | OPTIONAL | NOT_DEF;
-aExtends                : ^(AT_EXTENDS  {this.pass.eprCategory(ColaTokensConstants.colaAT_EXTENDS);}  (scoped_name {this.pass.eprAdd($scoped_name.text);})*);
-aProvides               : ^(AT_PROVIDES {this.pass.eprCategory(ColaTokensConstants.colaAT_PROVIDES);} (scoped_name {this.pass.eprAdd($scoped_name.text);})*);
-aRequires               : ^(AT_REQUIRES {this.pass.eprCategory(ColaTokensConstants.colaAT_REQUIRES);} (scoped_name {this.pass.eprAdd($scoped_name.text);})*);
+aExtends                : ^(AT_EXTENDS  {this.pass.eprCategory(ColaConstants.Tokens.colaAT_EXTENDS);}  (scoped_name {this.pass.eprAdd($scoped_name.text);})*);
+aProvides               : ^(AT_PROVIDES {this.pass.eprCategory(ColaConstants.Tokens.colaAT_PROVIDES);} (scoped_name {this.pass.eprAdd($scoped_name.text);})*);
+aRequires               : ^(AT_REQUIRES {this.pass.eprCategory(ColaConstants.Tokens.colaAT_REQUIRES);} (scoped_name {this.pass.eprAdd($scoped_name.text);})*);
 
 atVisibility            : ^(AT_VISIBILITY ^(AT_SPEC atVisibilityData) ^(AT_RUNTIME atVisibilityData));
 atVisibilityData        : '(' 
@@ -129,11 +129,11 @@ contractScopeRank       : REQUIRED | MANDATORY | OPTIONAL | NOT_DEF;
 contractItem            : ^(ITEM s=IDENT {this.pass.atoms.scope.push(s.token);} contractItemProp+) {this.pass.atoms.scope.pop();};
 contractItemProp        : ^(PROPERTY s=IDENT ^(AT_TYPE base_type const_value ARRAY?)
                             {this.pass.atoms.scope.push(s.token);}
-                            {this.pass.testBaseTypeWithConstValue(ColaTokensConstants.parserItemProp);}
+                            {this.pass.testBaseTypeWithConstValue(ColaConstants.Tokens.parserItemProp);}
                              contractItemPropRank
-                             ^(AT_APPLY (^(PRE (scoped_name {this.pass.testSN(ColaTokensConstants.colaFUNCTION, null);})*))? (^(POST (scoped_name {this.pass.testSN(ColaTokensConstants.colaFUNCTION, null);})*))? (^(INV (scoped_name {this.pass.testSN(ColaTokensConstants.colaFUNCTION, null);})*))? )
+                             ^(AT_APPLY (^(PRE (scoped_name {this.pass.testSN(ColaConstants.Tokens.colaFUNCTION, null);})*))? (^(POST (scoped_name {this.pass.testSN(ColaConstants.Tokens.colaFUNCTION, null);})*))? (^(INV (scoped_name {this.pass.testSN(ColaConstants.Tokens.colaFUNCTION, null);})*))? )
                              AT_ALTERABLE? AT_NEGOTIABLE? atDescription
-                            (^(AT_PRIORITY base_type const_value {this.pass.testBaseTypeWithConstValue(ColaTokensConstants.parserItemProp);}))?)
+                            (^(AT_PRIORITY base_type const_value {this.pass.testBaseTypeWithConstValue(ColaConstants.Tokens.parserItemProp);}))?)
                           {this.pass.atoms.scope.pop();};
 contractItemPropRank    : (s=REQUIRED | s=MANDATORY | s=OPTIONAL);
 
@@ -153,27 +153,27 @@ colaElement             : ^(ELEMENT s=IDENT {this.pass.atoms.scope.push(s.token)
                              {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();}
                              {this.pass.contDefListStart();} colaContractDef* {this.pass.contDefListFinish();}
                              atVisibility?
-                             {this.pass.eprStart(ColaTokensConstants.colaELEMENT);} aExtends? aProvides? aRequires?
+                             {this.pass.eprStart(ColaConstants.Tokens.colaELEMENT);} aExtends? aProvides? aRequires?
                              elementBody*
                           ) {this.pass.atoms.scope.pop();};
 elementBody             : elementContains | colaAttribute | colaAction | inline_code;
-elementContains         : ^(AT_CONTAINS s=IDENT {this.pass.atoms.scope.push(s.token);} scoped_name {this.pass.testSN(ColaTokensConstants.colaELEMENT, ColaTokensConstants.colaAT_CONTAINS);} {this.pass.atoms.scope.pop();});
+elementContains         : ^(AT_CONTAINS s=IDENT {this.pass.atoms.scope.push(s.token);} scoped_name {this.pass.testSN(ColaConstants.Tokens.colaELEMENT, ColaConstants.Tokens.colaAT_CONTAINS);} {this.pass.atoms.scope.pop();});
 
 colaFacility            : ^(FACILITY s=IDENT {this.pass.atoms.scope.push(s.token);}
                              {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();}
                              {this.pass.contDefListStart();} colaContractDef* {this.pass.contDefListFinish();}
                              atVisibility?
-                             {this.pass.eprStart(ColaTokensConstants.colaFACILITY);} aExtends? aRequires?
+                             {this.pass.eprStart(ColaConstants.Tokens.colaFACILITY);} aExtends? aRequires?
                              facilityBody*
                           ) {this.pass.atoms.scope.pop();};
 facilityBody            : colaAttribute | colaAction;
 
-colaAction              : ^(ACTION    s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();} (simple_type {this.pass.testSN(ColaTokensConstants.colaACTION, null);})? void_type? {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();} colaParameter* inline_code*) {this.pass.atoms.scope.pop();};
-colaParameter           : ^(PARAMETER s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaTokensConstants.colaPARAMETER, null);}           {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();})                             {this.pass.atoms.scope.pop();};
-colaTypeDef             : ^(TYPEDEF   s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaTokensConstants.colaTYPEDEF, null);}             {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();}                inline_code*) {this.pass.atoms.scope.pop();};
-colaAttribute           : ^(ATTRIBUTE s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaTokensConstants.colaATTRIBUTE, null);}           {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();}                inline_code*) {this.pass.atoms.scope.pop();};
+colaAction              : ^(ACTION    s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();} (simple_type {this.pass.testSN(ColaConstants.Tokens.colaACTION, null);})? void_type? {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();} colaParameter* inline_code*) {this.pass.atoms.scope.pop();};
+colaParameter           : ^(PARAMETER s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaConstants.Tokens.colaPARAMETER, null);}           {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();})                             {this.pass.atoms.scope.pop();};
+colaTypeDef             : ^(TYPEDEF   s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaConstants.Tokens.colaTYPEDEF, null);}             {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();}                inline_code*) {this.pass.atoms.scope.pop();};
+colaAttribute           : ^(ATTRIBUTE s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaConstants.Tokens.colaATTRIBUTE, null);}           {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();}                inline_code*) {this.pass.atoms.scope.pop();};
 colaStruct              : ^(STRUCT    s=IDENT {this.pass.atoms.scope.push(s.token);}                                                                                        {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();} colaMember*    inline_code*) {this.pass.atoms.scope.pop();};
-colaMember              : ^(MEMBER    s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaTokensConstants.parserMEMBER, null);}            {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();})                             {this.pass.atoms.scope.pop();};
+colaMember              : ^(MEMBER    s=IDENT {this.pass.atoms.scope.push(s.token);this.pass.sn.clear();}  simple_type {this.pass.testSN(ColaConstants.Tokens.parserMEMBER, null);}            {this.pass.propDefListStart();} colaPropertyDef* {this.pass.propDefListFinish();})                             {this.pass.atoms.scope.pop();};
 
 scoped_name             : ^(AT_SCOPE {this.pass.sn.clear();} (s=IDENT {this.pass.sn.push(s.token);})*);
 

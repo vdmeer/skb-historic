@@ -35,6 +35,16 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.antlr.runtime.ANTLRInputStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.apache.log4j.Logger;
+import org.skb.lang.cola.proto.constants.ColaConstants;
+import org.skb.lang.cola.proto.grammars.colaAst;
+import org.skb.lang.cola.proto.grammars.colaEbnfLexer;
+import org.skb.lang.cola.proto.grammars.colaEbnfParser;
+import org.skb.lang.cola.proto.grammars.colaGen;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.LanguageProperties;
@@ -51,15 +61,6 @@ import org.skb.util.ReportManager;
 import org.skb.util.stringtemplate.FileManager;
 import org.skb.util.stringtemplate.FileTemplateList;
 import org.skb.util.stringtemplate.STGManager;
-import org.antlr.runtime.ANTLRInputStream;
-import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.CommonTreeNodeStream;
-import org.apache.log4j.Logger;
-import org.skb.lang.cola.proto.grammars.colaAst;
-import org.skb.lang.cola.proto.grammars.colaEbnfLexer;
-import org.skb.lang.cola.proto.grammars.colaEbnfParser;
-import org.skb.lang.cola.proto.grammars.colaGen;
 
 /**
  * The core of the Cola parser implementing the whole parsing process.
@@ -87,19 +88,13 @@ public class ColaParser extends LanguageParser{
 		while(it.hasNext())
 			this.xt.add(it.next().toString());
 
-//		this.xt.add(ColaPropertiesConstants.internalColaTgtCola);
-//		this.xt.add(ColaPropertiesConstants.internalColaTgtJava);
-//		this.xt.add(ColaPropertiesConstants.internalColaTgtPhp);
-//		this.xt.add(ColaPropertiesConstants.internalColaTgtXml);
-//		this.xt.add(ColaPropertiesConstants.internalColaTgtSql);
-
 		logger.trace("constructor -- out");
 	}
 
 	public void setOptions(){
 		logger.trace("setOptions -- in");
 		LanguageProperties lp=LanguageProperties.getInstance();
-		lp.setClassName(ColaPropertiesConstants.class.getName());
+		lp.setClassName(ColaConstants.Properties.class.getName());
 		lp.setKey("key");
 		lp.setOptions();
 		super.setOptions();
@@ -173,12 +168,12 @@ public class ColaParser extends LanguageParser{
 			if(!quietMode)
 				repMgr.reportMessageNoFile(msg);
 
-			OatBaseAtomic ata=this.prop.getValue(ColaPropertiesConstants.keyPrStat);
+			OatBaseAtomic ata=this.prop.getValue(ColaConstants.Properties.keyPrStat);
 			if(!quietMode){
 				this.stats=new ColaStatistics();
 				if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 					stats.genSimpleStats();
-				ata=this.prop.getValue(ColaPropertiesConstants.keyPrStatAll);
+				ata=this.prop.getValue(ColaConstants.Properties.keyPrStatAll);
 				if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 					stats.genCompleteStats();
 			}
@@ -216,10 +211,10 @@ public class ColaParser extends LanguageParser{
 					repMgr.reportMessageNoFile(msg);
 			}
 			// print stats if wanted
-			ata=this.prop.getValue(ColaPropertiesConstants.keyPrStat);
+			ata=this.prop.getValue(ColaConstants.Properties.keyPrStat);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printSimpleStatistic();
-			ata=this.prop.getValue(ColaPropertiesConstants.keyPrStatAll);
+			ata=this.prop.getValue(ColaConstants.Properties.keyPrStatAll);
 			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
 				stats.printCompleteStatistic();
 

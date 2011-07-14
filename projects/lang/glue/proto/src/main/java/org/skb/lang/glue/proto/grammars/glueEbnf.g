@@ -56,7 +56,7 @@ options
   import org.skb.util.languages.AtomList;
   import org.skb.lang.glue.proto.GluePass1_Ebnf;
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.glue.proto.GlueTokensConstants;
+  import org.skb.lang.glue.proto.constants.GlueConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -64,7 +64,7 @@ options
 {
   package org.skb.lang.glue.proto.grammars;
 
-  import org.skb.lang.glue.proto.GlueTokensConstants;
+  import org.skb.lang.glue.proto.constants.GlueConstants;
   import org.skb.util.ReportManager;
 }
 

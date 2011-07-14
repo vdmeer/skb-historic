@@ -55,7 +55,7 @@ options
   import org.skb.util.languages.AtomList;
   import org.skb.lang.pola.proto.PolaPass2_Ast;
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.pola.proto.PolaTokensConstants;
+  import org.skb.lang.pola.proto.constants.PolaConstants;
   import org.skb.util.ReportManager;
 }
 

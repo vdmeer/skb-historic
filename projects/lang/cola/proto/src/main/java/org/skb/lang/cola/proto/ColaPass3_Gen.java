@@ -34,13 +34,14 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
+import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
+import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.TypeRepository;
 import org.skb.types.base.OatBaseAtomic;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
-import org.antlr.stringtemplate.StringTemplate;
-import org.apache.log4j.Logger;
 
 /**
  * Pass 3 of the Cola parser using templates to generate a target language specification.
@@ -79,13 +80,13 @@ public class ColaPass3_Gen {
 
 	private void _initPropertyScope(){
 		this.propertyScope.clear();
-		this.propertyScope.put(ColaTokensConstants.colaCONTRACT,  ColaTokensConstants.colaNOT_DEF);
-		this.propertyScope.put(ColaTokensConstants.colaPACKAGE,   ColaTokensConstants.colaNOT_DEF);
-		this.propertyScope.put(ColaTokensConstants.colaELEMENT,   ColaTokensConstants.colaNOT_DEF);
-		this.propertyScope.put(ColaTokensConstants.colaFACILITY,  ColaTokensConstants.colaNOT_DEF);
-		this.propertyScope.put(ColaTokensConstants.colaACTION,    ColaTokensConstants.colaNOT_DEF);
-		this.propertyScope.put(ColaTokensConstants.colaATTRIBUTE, ColaTokensConstants.colaNOT_DEF);
-		this.propertyScope.put(ColaTokensConstants.colaPARAMETER, ColaTokensConstants.colaNOT_DEF);
+		this.propertyScope.put(ColaConstants.Tokens.colaCONTRACT,  ColaConstants.Tokens.colaNOT_DEF);
+		this.propertyScope.put(ColaConstants.Tokens.colaPACKAGE,   ColaConstants.Tokens.colaNOT_DEF);
+		this.propertyScope.put(ColaConstants.Tokens.colaELEMENT,   ColaConstants.Tokens.colaNOT_DEF);
+		this.propertyScope.put(ColaConstants.Tokens.colaFACILITY,  ColaConstants.Tokens.colaNOT_DEF);
+		this.propertyScope.put(ColaConstants.Tokens.colaACTION,    ColaConstants.Tokens.colaNOT_DEF);
+		this.propertyScope.put(ColaConstants.Tokens.colaATTRIBUTE, ColaConstants.Tokens.colaNOT_DEF);
+		this.propertyScope.put(ColaConstants.Tokens.colaPARAMETER, ColaConstants.Tokens.colaNOT_DEF);
 	}
 	public void clearPropertyScope(){this._initPropertyScope();}
 	public void addPropertyScope(StringTemplate atom, StringTemplate rank){this.propertyScope.put(atom.toString(), rank.toString());}
@@ -108,22 +109,22 @@ public class ColaPass3_Gen {
 
 	private void _initSimple_type(){
 		this.simple_type.clear();
-		this.simple_type.put(ColaTokensConstants.parserScopedName, null);
-		this.simple_type.put(ColaTokensConstants.parserBaseType, null);
-		this.simple_type.put(ColaTokensConstants.parserARRAY, null);
-		this.simple_type.put(ColaTokensConstants.colaVOID, null);
+		this.simple_type.put(ColaConstants.Tokens.parserScopedName, null);
+		this.simple_type.put(ColaConstants.Tokens.parserBaseType, null);
+		this.simple_type.put(ColaConstants.Tokens.parserARRAY, null);
+		this.simple_type.put(ColaConstants.Tokens.colaVOID, null);
 	}
 	public void simple_typeClear(){this._initSimple_type();}
 	public void simple_type(StringTemplate sc, String bt, String ar){
 		if(sc!=null)
-			this.simple_type.put(ColaTokensConstants.parserScopedName, sc.toString());
-		this.simple_type.put(ColaTokensConstants.parserBaseType, bt);
-		this.simple_type.put(ColaTokensConstants.parserARRAY, ar);
+			this.simple_type.put(ColaConstants.Tokens.parserScopedName, sc.toString());
+		this.simple_type.put(ColaConstants.Tokens.parserBaseType, bt);
+		this.simple_type.put(ColaConstants.Tokens.parserARRAY, ar);
 	}
 	public void simple_typeVoid(){
 		this._initSimple_type();
-		this.simple_type.put(ColaTokensConstants.parserBaseType, ColaTokensConstants.colaVOID);
-		this.simple_type.put(ColaTokensConstants.colaVOID, ColaTokensConstants.colaVOID);
+		this.simple_type.put(ColaConstants.Tokens.parserBaseType, ColaConstants.Tokens.colaVOID);
+		this.simple_type.put(ColaConstants.Tokens.colaVOID, ColaConstants.Tokens.colaVOID);
 	}
 	public TreeMap<String,String> simple_type(){return new TreeMap<String,String>(this.simple_type);}
 
@@ -143,7 +144,7 @@ public class ColaPass3_Gen {
 
 	public String inline_codeLanguage(String lang){
 		OatBaseAtomic ata=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage);
-		if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_STRING)&&ata.toString().equals(ColaPropertiesConstants.internalColaTgtCola))
+		if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola))
 			return lang;
 
 		String ret=lang.replace("\"", "");
@@ -161,42 +162,42 @@ public class ColaPass3_Gen {
   	//keep key and cat null if you want to use current values or use overload function below
 	public TreeMap<String,String> genMiscAttribute(String key, String cat){
 		TreeMap<String,String>ret=new TreeMap<String,String>();
-		ret.put(ColaTokensConstants.gcMiscParrentID, this.atoms.getParrentId(key));
-		ret.put(ColaTokensConstants.gcMiscParrentCat, this.atoms.getParrentCategory(key));
-		ret.put(ColaTokensConstants.gcMiscSpecName, this.atoms.specificationName());
-		ret.put(ColaTokensConstants.gcMiscCurrentScope, this.atoms.scope.toString());
-		ret.put(ColaTokensConstants.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
+		ret.put(ColaConstants.Tokens.gcMiscParrentID, this.atoms.getParrentId(key));
+		ret.put(ColaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
+		ret.put(ColaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
+		ret.put(ColaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
+		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)
 			cmpCat=this.atoms.getParrentCategory(key);
-		if(cmpCat.equals(ColaTokensConstants.colaCONTRACT))
-			ret.put(ColaTokensConstants.gcMiscInContract, "true");
-		if(cmpCat.equals(ColaTokensConstants.colaITEM))
-			ret.put(ColaTokensConstants.gcMiscInItem, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaPACKAGE))
-			ret.put(ColaTokensConstants.gcMiscInPackage, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaELEMENT))
-			ret.put(ColaTokensConstants.gcMiscInElement, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaFACILITY))
-			ret.put(ColaTokensConstants.gcMiscInFacility, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaACTION))
-			ret.put(ColaTokensConstants.gcMiscInAction, "true");
-		else if(cmpCat.equals(ColaTokensConstants.colaSTRUCT))
-			ret.put(ColaTokensConstants.gcMiscInStruct, "true");
+		if(cmpCat.equals(ColaConstants.Tokens.colaCONTRACT))
+			ret.put(ColaConstants.Tokens.gcMiscInContract, "true");
+		if(cmpCat.equals(ColaConstants.Tokens.colaITEM))
+			ret.put(ColaConstants.Tokens.gcMiscInItem, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaPACKAGE))
+			ret.put(ColaConstants.Tokens.gcMiscInPackage, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaELEMENT))
+			ret.put(ColaConstants.Tokens.gcMiscInElement, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaFACILITY))
+			ret.put(ColaConstants.Tokens.gcMiscInFacility, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaACTION))
+			ret.put(ColaConstants.Tokens.gcMiscInAction, "true");
+		else if(cmpCat.equals(ColaConstants.Tokens.colaSTRUCT))
+			ret.put(ColaConstants.Tokens.gcMiscInStruct, "true");
 		else
-			ret.put(ColaTokensConstants.gcMiscInDefinition, "true");
+			ret.put(ColaConstants.Tokens.gcMiscInDefinition, "true");
 		return ret;
 	}
 
 	public String scopeTgtLangAdd(){
 		String ret=null;
-		if(this.atoms.get(this.sn.toString(),AtomList.alValCategory).equals(ColaTokensConstants.colaFUNCTION))
+		if(this.atoms.get(this.sn.toString(),AtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
 			return ret;
-		if(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaPropertiesConstants.internalColaTgtJava)){
-			OatBaseAtomic javaPkg=TribeProperties.getInstance().getValue(ColaPropertiesConstants.keyXtJavaPackage);
+		if(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
+			OatBaseAtomic javaPkg=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage);
 			if(javaPkg!=null&&javaPkg.toString().length()>0)
-				ret=TribeProperties.getInstance().getValue(ColaPropertiesConstants.keyXtJavaPackage).toString();
+				ret=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage).toString();
 		}
 		return ret;
 	}

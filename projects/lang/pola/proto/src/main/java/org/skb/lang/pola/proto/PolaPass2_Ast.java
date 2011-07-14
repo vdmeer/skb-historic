@@ -35,6 +35,7 @@ import java.util.LinkedHashMap;
 
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
+import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
@@ -99,7 +100,7 @@ public class PolaPass2_Ast {
 	public void eprAdd(String epr){
 		if(this.eprList.containsKey(epr)==true){
 			Token tk=this.sn.get(this.sn.size()-1);
-			ReportManager.getInstance().reportError(PolaTokensConstants.parserIDENTIFIER + " used more than once","in " + this.eprCategory + " declaration for " + this.eprAtom + ": " + epr + " (previously used in " + this.eprList.get(epr) + ")",tk.getLine(),tk.getCharPositionInLine());
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once","in " + this.eprCategory + " declaration for " + this.eprAtom + ": " + epr + " (previously used in " + this.eprList.get(epr) + ")",tk.getLine(),tk.getCharPositionInLine());
 			return;
 		}
 		else if(this.testSN(this.eprAtom, this.eprCategory)==false)
@@ -118,8 +119,8 @@ public class PolaPass2_Ast {
 		String base_type=this.lastBaseType.getText().toLowerCase();
 		String const_valueType=this.lastCommonValueType.getText().toLowerCase();
 		if(!base_type.equals(const_valueType)){
-			if((base_type.equals(PolaTokensConstants.polaINTEGER)||base_type.equals(PolaTokensConstants.polaSHORT)||base_type.equals(PolaTokensConstants.polaLONG))&&
-			   (const_valueType.equals(PolaTokensConstants.polaINTEGER)||const_valueType.equals(PolaTokensConstants.polaSHORT)||const_valueType.equals(PolaTokensConstants.polaLONG))
+			if((base_type.equals(PolaConstants.Tokens.polaINTEGER)||base_type.equals(PolaConstants.Tokens.polaSHORT)||base_type.equals(PolaConstants.Tokens.polaLONG))&&
+			   (const_valueType.equals(PolaConstants.Tokens.polaINTEGER)||const_valueType.equals(PolaConstants.Tokens.polaSHORT)||const_valueType.equals(PolaConstants.Tokens.polaLONG))
 			)
 				ReportManager.getInstance().reportWarning("potential type mismatch for " + t + " declaration " + this.atoms.scope.toString(),"type declared is " + base_type + ", value associated is of type " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 			else
@@ -131,8 +132,8 @@ public class PolaPass2_Ast {
 	public void testPropDeclDescription(){
 		String val=this.lastCommonValue.getText();
 		val=val.replace('"', ' ');
-		if(val.equals(PolaTokensConstants.polaNULL)||val.trim().length()==0)
-			ReportManager.getInstance().reportError("empty description in " + this.atoms.get(this.atoms.scope.toString(),AtomList.alValCategory) + " " + this.atoms.scope.toString(),"description needs to be a non-empty " + PolaTokensConstants.polaSTRING, this.lastCommonValue.getLine(),this.lastCommonValue.getCharPositionInLine());
+		if(val.equals(PolaConstants.Tokens.polaNULL)||val.trim().length()==0)
+			ReportManager.getInstance().reportError("empty description in " + this.atoms.get(this.atoms.scope.toString(),AtomList.alValCategory) + " " + this.atoms.scope.toString(),"description needs to be a non-empty " + PolaConstants.Tokens.polaSTRING, this.lastCommonValue.getLine(),this.lastCommonValue.getCharPositionInLine());
 	}
 
 
@@ -142,12 +143,12 @@ public class PolaPass2_Ast {
 		String scoped=this.sn.toString();
 		//propDef not declared
 		if(this.atoms.containsKey(scoped)==false){
-			ReportManager.getInstance().reportError("declaration of unknown " + PolaTokensConstants.polaPROPERTY,PolaTokensConstants.polaPROPERTY + " " + scoped + " is not specified",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
+			ReportManager.getInstance().reportError("declaration of unknown " + PolaConstants.Tokens.polaPROPERTY,PolaConstants.Tokens.polaPROPERTY + " " + scoped + " is not specified",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
 			add=false;
 		}
 		//used once or more?
 		if(this.propDefList.containsKey(scoped)){
-			ReportManager.getInstance().reportError(PolaTokensConstants.parserIDENTIFIER + " used more than once",PolaTokensConstants.parserIDENTIFIER + " " + scoped + " in property definitions",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once",PolaConstants.Tokens.parserIDENTIFIER + " " + scoped + " in property definitions",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
 			add=false;
 		}
 
@@ -175,12 +176,12 @@ public class PolaPass2_Ast {
 		String type=this.atoms.getToken(scoped,AtomList.alValType).getText();
 		String const_valueType=this.lastCommonValueType.getText().toLowerCase();
 		if(!type.equals(const_valueType)){
-			if((type.equals(PolaTokensConstants.polaINTEGER)||type.equals(PolaTokensConstants.polaSHORT)||type.equals(PolaTokensConstants.polaLONG))&&
-			   (const_valueType.equals(PolaTokensConstants.polaINTEGER)||const_valueType.equals(PolaTokensConstants.polaSHORT)||const_valueType.equals(PolaTokensConstants.polaLONG))
+			if((type.equals(PolaConstants.Tokens.polaINTEGER)||type.equals(PolaConstants.Tokens.polaSHORT)||type.equals(PolaConstants.Tokens.polaLONG))&&
+			   (const_valueType.equals(PolaConstants.Tokens.polaINTEGER)||const_valueType.equals(PolaConstants.Tokens.polaSHORT)||const_valueType.equals(PolaConstants.Tokens.polaLONG))
 			)
-				ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaTokensConstants.polaPROPERTY + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+				ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaConstants.Tokens.polaPROPERTY + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 			else
-				ReportManager.getInstance().reportError("type mismatch for " + PolaTokensConstants.polaPROPERTY + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+				ReportManager.getInstance().reportError("type mismatch for " + PolaConstants.Tokens.polaPROPERTY + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 		}
 		this.propDefListValues++;
 
@@ -194,11 +195,11 @@ public class PolaPass2_Ast {
 		String type=this.atoms.getToken(scoped,AtomList.alValType).getText();
 
 		//error, type is not array but more than one value given
-		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaTokensConstants.polaFALSE)&&this.propDefListValues>1)
-			ReportManager.getInstance().reportError  ("type mismatch for " + PolaTokensConstants.polaPROPERTY + " definition " + scoped,"type expected is " + type + ", but " + this.propDefListValues + " values given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaConstants.Tokens.polaFALSE)&&this.propDefListValues>1)
+			ReportManager.getInstance().reportError  ("type mismatch for " + PolaConstants.Tokens.polaPROPERTY + " definition " + scoped,"type expected is " + type + ", but " + this.propDefListValues + " values given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 		//warning, type is array but only one value given
-		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaTokensConstants.polaTRUE)&&(this.propDefListValues==0||this.propDefListValues==1))
-			ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaTokensConstants.polaPROPERTY + " definition " + scoped,"type expected is " + type + "[], but only " + this.propDefListValues + " value given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaConstants.Tokens.polaTRUE)&&(this.propDefListValues==0||this.propDefListValues==1))
+			ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaConstants.Tokens.polaPROPERTY + " definition " + scoped,"type expected is " + type + "[], but only " + this.propDefListValues + " value given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 
 		//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
 //		String category=this.atoms.get(this.atoms.scope.toString(),AtomList.alValCategory).toString();
@@ -257,7 +258,7 @@ public class PolaPass2_Ast {
 
 		//check if the scoped_name of contract is declared already (can use contract only once)
 		if(this.contDefList.containsKey(scoped))
-			ReportManager.getInstance().reportError(PolaTokensConstants.polaCONTRACT + " defined more than once: " + scoped,tk);
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.polaCONTRACT + " defined more than once: " + scoped,tk);
 
 		//contract is declared, and defined only once. let's see if we can add it (scope is set to our current element category)
 		//if contract is declared not_def for category, that's an error
@@ -315,12 +316,12 @@ public class PolaPass2_Ast {
 		String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
 		//itemDef not declared
 		if(this.atoms.containsKey(scoped)==false){
-			ReportManager.getInstance().reportError("declaration of unknown " + PolaTokensConstants.parserItemProp,PolaTokensConstants.parserItemProp + " " + scoped + " is not specified",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
+			ReportManager.getInstance().reportError("declaration of unknown " + PolaConstants.Tokens.parserItemProp,PolaConstants.Tokens.parserItemProp + " " + scoped + " is not specified",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
 			add=false;
 		}
 		//used once or more?
 		if(this.itemDefList.containsKey(scoped)){
-			ReportManager.getInstance().reportError(PolaTokensConstants.parserIDENTIFIER + " used more than once",PolaTokensConstants.parserIDENTIFIER + " " + scoped + " in item-property definitions",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
+			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once",PolaConstants.Tokens.parserIDENTIFIER + " " + scoped + " in item-property definitions",this.sn.get(this.sn.size()-1).getLine(),this.sn.get(this.sn.size()-1).getCharPositionInLine());
 			add=false;
 		}
 
@@ -339,12 +340,12 @@ public class PolaPass2_Ast {
 		String type=this.atoms.getToken(scoped,AtomList.alValType).getText();
 		String const_valueType=this.lastCommonValueType.getText().toLowerCase();
 		if(!type.equals(const_valueType)){
-			if((type.equals(PolaTokensConstants.polaINTEGER)||type.equals(PolaTokensConstants.polaSHORT)||type.equals(PolaTokensConstants.polaLONG))&&
-			   (const_valueType.equals(PolaTokensConstants.polaINTEGER)||const_valueType.equals(PolaTokensConstants.polaSHORT)||const_valueType.equals(PolaTokensConstants.polaLONG))
+			if((type.equals(PolaConstants.Tokens.polaINTEGER)||type.equals(PolaConstants.Tokens.polaSHORT)||type.equals(PolaConstants.Tokens.polaLONG))&&
+			   (const_valueType.equals(PolaConstants.Tokens.polaINTEGER)||const_valueType.equals(PolaConstants.Tokens.polaSHORT)||const_valueType.equals(PolaConstants.Tokens.polaLONG))
 			)
-				ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaTokensConstants.parserItemProp + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+				ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaConstants.Tokens.parserItemProp + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 			else
-				ReportManager.getInstance().reportError("type mismatch for " + PolaTokensConstants.parserItemProp + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+				ReportManager.getInstance().reportError("type mismatch for " + PolaConstants.Tokens.parserItemProp + " definition " + scoped, "expected " + type + ", found " + const_valueType, this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 		}
 		this.itemDefListValues++;
 
@@ -358,11 +359,11 @@ public class PolaPass2_Ast {
 		String type=this.atoms.getToken(scoped,AtomList.alValType).getText();
 
 		//error, type is not array but more than one value given
-		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaTokensConstants.polaFALSE)&&this.itemDefListValues>1)
-			ReportManager.getInstance().reportError  ("type mismatch for " + PolaTokensConstants.parserItemProp + " definition " + scoped,"type expected is " + type + ", but " + this.itemDefListValues + " values given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaConstants.Tokens.polaFALSE)&&this.itemDefListValues>1)
+			ReportManager.getInstance().reportError  ("type mismatch for " + PolaConstants.Tokens.parserItemProp + " definition " + scoped,"type expected is " + type + ", but " + this.itemDefListValues + " values given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 		//warning, type is array but only one value given
-		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaTokensConstants.polaTRUE)&&(this.itemDefListValues==0||this.itemDefListValues==1))
-			ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaTokensConstants.parserItemProp + " definition " + scoped,"type expected is " + type + "[], but only " + this.itemDefListValues + " value given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+		if(this.atoms.get(scoped,AtomList.alValTypeArray).equals(PolaConstants.Tokens.polaTRUE)&&(this.itemDefListValues==0||this.itemDefListValues==1))
+			ReportManager.getInstance().reportWarning("potential type mismatch for " + PolaConstants.Tokens.parserItemProp + " definition " + scoped,"type expected is " + type + "[], but only " + this.itemDefListValues + " value given", this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
 
 		//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
 //		String category=this.atoms.get(this.atoms.scope.toString(),AtomList.alValCategory).toString();
@@ -388,7 +389,7 @@ public class PolaPass2_Ast {
 	}
 
 	public void itemDefListFinish(){
-//		String category=PolaTokensConstants.polaITEM;
+//		String category=PolaConstants.Tokens.polaITEM;
 //		String scoped_add=this.sn.toString()+"::"+this.currentItemDef.getText()+"::";
 		//now we need to check if all mandatory and required item-properties have been defined
 		//let's start with the mandatory properties
@@ -417,7 +418,7 @@ public class PolaPass2_Ast {
 		for (int i=0; i<this.sn.size()-1; i++){
 			Token tk=this.sn.get(i);
 			if(scoped.length()>0)
-				scoped+=TribeProperties.getInstance().getValue(PolaPropertiesConstants.keyScopeSep).toString();
+				scoped+=TribeProperties.getInstance().getValue(PolaConstants.Properties.keyScopeSep).toString();
 			scoped+=this.sn.get(i).getText();
 			//first check if there is any Atom registered, if so the test node category to be valid scoped_name node
 			if(this.atoms.containsKey(scoped)==false){
@@ -426,9 +427,9 @@ public class PolaPass2_Ast {
 			}
 			else{
 				String leafCat=this.atoms.get(scoped, AtomList.alValCategory).toString();
-				if(!leafCat.equals(PolaTokensConstants.polaPACKAGE)&&
-				   !leafCat.equals(PolaTokensConstants.polaELEMENT)&&
-				   !leafCat.equals(PolaTokensConstants.polaFACILITY)
+				if(!leafCat.equals(PolaConstants.Tokens.polaPACKAGE)&&
+				   !leafCat.equals(PolaConstants.Tokens.polaELEMENT)&&
+				   !leafCat.equals(PolaConstants.Tokens.polaFACILITY)
 				  ){
 					ReportManager.getInstance().reportError("invalid scoped name (" + scoped + ")",scoped + " of type " + leafCat + " can't be used as part of scoped names",tk.getLine(),tk.getCharPositionInLine());
 					ret=false;
@@ -437,7 +438,7 @@ public class PolaPass2_Ast {
 		}
 		//now test if the leaf is valid, if so, check also if it points to the correct Atom category
 		if(scoped.length()>0)
-			scoped+=TribeProperties.getInstance().getValue(PolaPropertiesConstants.keyScopeSep).toString();
+			scoped+=TribeProperties.getInstance().getValue(PolaConstants.Properties.keyScopeSep).toString();
 		scoped+=this.sn.get(this.sn.size()-1).getText();
 		Token tk=this.sn.get(this.sn.size()-1);
 		if(this.atoms.containsKey(scoped)==false){
@@ -446,51 +447,51 @@ public class PolaPass2_Ast {
 		}
 		else{
 			String leafCat=this.atoms.get(scoped, AtomList.alValCategory).toString();
-			if(leafCat.equals(PolaTokensConstants.polaPARAMETER)||leafCat.equals(PolaTokensConstants.polaACTION)){
+			if(leafCat.equals(PolaConstants.Tokens.polaPARAMETER)||leafCat.equals(PolaConstants.Tokens.polaACTION)){
 				ReportManager.getInstance().reportError("invalid scoped name <" + scoped + ">","cannot scope "+leafCat+"s",tk.getLine(),tk.getCharPositionInLine());
 				ret=false;
 			}
-			else if(leafCat.equals(PolaTokensConstants.parserMEMBER)){
+			else if(leafCat.equals(PolaConstants.Tokens.parserMEMBER)){
 				ReportManager.getInstance().reportError("invalid scoped name <" + scoped + ">","cannot scope members",tk.getLine(),tk.getCharPositionInLine());
 				ret=false;
 			}
 			else{
 				boolean errLeaf=false;
 				//properties first
-				if(category.equals(PolaTokensConstants.polaPROPERTY)&&!leafCat.equals(PolaTokensConstants.polaPROPERTY))
+				if(category.equals(PolaConstants.Tokens.polaPROPERTY)&&!leafCat.equals(PolaConstants.Tokens.polaPROPERTY))
 					errLeaf=true;
 				//now contracts
-				if(category.equals(PolaTokensConstants.polaCONTRACT)&&!leafCat.equals(PolaTokensConstants.polaCONTRACT))
+				if(category.equals(PolaConstants.Tokens.polaCONTRACT)&&!leafCat.equals(PolaConstants.Tokens.polaCONTRACT))
 					errLeaf=true;
 				//property used in items
-				if(category.equals(PolaTokensConstants.polaITEM)&&!leafCat.equals(PolaTokensConstants.polaITEM))
+				if(category.equals(PolaConstants.Tokens.polaITEM)&&!leafCat.equals(PolaConstants.Tokens.polaITEM))
 					errLeaf=true;
 				//now facilities
-				if(category.equals(PolaTokensConstants.polaFACILITY)&&!leafCat.equals(PolaTokensConstants.polaFACILITY))
+				if(category.equals(PolaConstants.Tokens.polaFACILITY)&&!leafCat.equals(PolaConstants.Tokens.polaFACILITY))
 					errLeaf=true;
 				//now elements only
-				if(catElem!=null&&category.equals(PolaTokensConstants.polaELEMENT)){
+				if(catElem!=null&&category.equals(PolaConstants.Tokens.polaELEMENT)){
 					//first check category extends, means elements only
-					if(catElem.equals(PolaTokensConstants.polaAT_EXTENDS)&&!leafCat.equals(PolaTokensConstants.polaELEMENT))
+					if(catElem.equals(PolaConstants.Tokens.polaAT_EXTENDS)&&!leafCat.equals(PolaConstants.Tokens.polaELEMENT))
 						errLeaf=true;
 					//now check provides, means facilities only
-					if(catElem.equals(PolaTokensConstants.polaAT_PROVIDES)&&!leafCat.equals(PolaTokensConstants.polaFACILITY))
+					if(catElem.equals(PolaConstants.Tokens.polaAT_PROVIDES)&&!leafCat.equals(PolaConstants.Tokens.polaFACILITY))
 						errLeaf=true;
 					//now go into requires, can be elements or facilities
-					if(catElem.equals(PolaTokensConstants.polaAT_REQUIRES)){
-						if(!leafCat.equals(PolaTokensConstants.polaFACILITY)&&!leafCat.equals(PolaTokensConstants.polaELEMENT))
+					if(catElem.equals(PolaConstants.Tokens.polaAT_REQUIRES)){
+						if(!leafCat.equals(PolaConstants.Tokens.polaFACILITY)&&!leafCat.equals(PolaConstants.Tokens.polaELEMENT))
 							errLeaf=true;
 					}
 					//now go into contains, can be elements only
-					if(catElem.equals(PolaTokensConstants.polaAT_CONTAINS)){
-						if(!leafCat.equals(PolaTokensConstants.polaELEMENT))
+					if(catElem.equals(PolaConstants.Tokens.polaAT_CONTAINS)){
+						if(!leafCat.equals(PolaConstants.Tokens.polaELEMENT))
 							errLeaf=true;
 					}
 				}
 				//last not least action, parameter, attribute, typedef, member
 				//for them, the scoped name cannot be Property, Item, Contract, Package, Element, Facility
-				if(category.equals(PolaTokensConstants.polaACTION)||category.equals(PolaTokensConstants.polaPARAMETER)||category.equals(PolaTokensConstants.polaATTRIBUTE)||category.equals(PolaTokensConstants.polaTYPEDEF)||category.equals(PolaTokensConstants.parserMEMBER)){
-					if(leafCat.equals(PolaTokensConstants.polaPROPERTY)||leafCat.equals(PolaTokensConstants.polaITEM)||leafCat.equals(PolaTokensConstants.polaCONTRACT)||leafCat.equals(PolaTokensConstants.polaPACKAGE)||leafCat.equals(PolaTokensConstants.polaELEMENT)||leafCat.equals(PolaTokensConstants.polaFACILITY))
+				if(category.equals(PolaConstants.Tokens.polaACTION)||category.equals(PolaConstants.Tokens.polaPARAMETER)||category.equals(PolaConstants.Tokens.polaATTRIBUTE)||category.equals(PolaConstants.Tokens.polaTYPEDEF)||category.equals(PolaConstants.Tokens.parserMEMBER)){
+					if(leafCat.equals(PolaConstants.Tokens.polaPROPERTY)||leafCat.equals(PolaConstants.Tokens.polaITEM)||leafCat.equals(PolaConstants.Tokens.polaCONTRACT)||leafCat.equals(PolaConstants.Tokens.polaPACKAGE)||leafCat.equals(PolaConstants.Tokens.polaELEMENT)||leafCat.equals(PolaConstants.Tokens.polaFACILITY))
 						errLeaf=true;
 				}
 				if(errLeaf==true){

@@ -55,7 +55,7 @@ options
 
   import org.skb.lang.cola.proto.ColaPass1_Ebnf;
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.cola.proto.ColaTokensConstants;
+  import org.skb.lang.cola.proto.constants.ColaConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -64,7 +64,7 @@ options
   package org.skb.lang.cola.proto.grammars;
 
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.cola.proto.ColaTokensConstants;
+  import org.skb.lang.cola.proto.constants.ColaConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -117,7 +117,7 @@ a3dsEnvironment         : 'production' | 'test' | 'demonstrator';
 a3dsCLevel              : 'business' | 'system' | 'element';
 
 colaFunction            : FUNCTION s=IDENT ':' AT_LANGUAGE '=' string_value PARAMETER '(' colaFunctionParam* ')' AT_RETURN '(' base_type array? ')' ';'
-                          {this.pass.putAtom(s,ColaTokensConstants.colaFUNCTION, this.base_type, this.isArray);}
+                          {this.pass.putAtom(s,ColaConstants.Tokens.colaFUNCTION, this.base_type, this.isArray);}
                           {this.pass.atoms.scope.pop();}
                           -> ^(FUNCTION IDENT colaFunctionParam* base_type array? ^(AT_LANGUAGE string_value))
                           ;
@@ -126,7 +126,7 @@ colaFunctionParam       : '[' base_type array? IDENT ']'
 
 colaPropertyDecl        : PROPERTY s=IDENT ':'
                           AT_TYPE '(' base_type array? '=' const_value ')'
-                          {this.pass.putAtom(s,ColaTokensConstants.colaPROPERTY, this.base_type, this.isArray);}
+                          {this.pass.putAtom(s,ColaConstants.Tokens.colaPROPERTY, this.base_type, this.isArray);}
                           {this.isArray=false;}
                           AT_SCOPE '(' propertyScope+ ')'
                           {this.pass.propertyDeclScopeFinish();}
@@ -169,7 +169,7 @@ colaPropertyDef         : scoped_name s=IDENT {this.pass.identsAddPropDef(s);} (
                           //{this.pass.atoms.definedProperties();}
                           -> ^(PROPERTY IDENT scoped_name const_value*);
 
-colaContractDecl        : CONTRACT s=IDENT ':' {this.pass.putAtom(s,ColaTokensConstants.colaCONTRACT);}
+colaContractDecl        : CONTRACT s=IDENT ':' {this.pass.putAtom(s,ColaConstants.Tokens.colaCONTRACT);}
                           {this.pass.lastContract();}
                           AT_SCOPE '(' contractScope+ ')'
                           {this.pass.contractDeclScopeFinish();}
@@ -183,7 +183,7 @@ contractScopeAtom       : (s=ELEMENT | s=FACILITY)
 contractScopeRank       : (s=REQUIRED | s=MANDATORY | s=OPTIONAL | s=NOT_DEF)
                           {this.pass.addContractDeclScopeRank(s);};
 
-contractItem            : ITEM s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaITEM);}
+contractItem            : ITEM s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaITEM);}
                           {this.pass.identsStart();}
                           {this.pass.lastItem();}
                           '{' contractItemProp (',' contractItemProp)* '}'
@@ -191,7 +191,7 @@ contractItem            : ITEM s=IDENT {this.pass.putAtom(s,ColaTokensConstants.
                           -> ^(ITEM IDENT contractItemProp+);
 contractItemProp        : '[' s=IDENT ':'
                               AT_TYPE '(' base_type array? '=' const_value ')'
-                              {this.pass.putAtom(s,ColaTokensConstants.parserItemProp, this.base_type, this.isArray);}
+                              {this.pass.putAtom(s,ColaConstants.Tokens.parserItemProp, this.base_type, this.isArray);}
                               {this.isArray=false;}
                               AT_RANK '(' contractItemPropRank ')'
                               propertyApply AT_ALTERABLE? AT_NEGOTIABLE? atDescription
@@ -219,14 +219,14 @@ colaDefinition          : colaFunction | colaPropertyDecl | colaContractDecl | c
 
 cpp_directive           : s=CPP_DIRECTIVE {this.setCppFile(s.getText());};
 
-colaPackage             : colaPropertyDefList? PACKAGE s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaPACKAGE);}
+colaPackage             : colaPropertyDefList? PACKAGE s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaPACKAGE);}
                           '{' (colaDefinition | inline_code)* '}'
                           {this.pass.atoms.scope.pop();}
                           -> ^(PACKAGE IDENT colaPropertyDefList? colaDefinition* inline_code*)
                           ;
 colaElement             : colaPropertyDefList? colaContractDefList? atVisibility?
                           ELEMENT s=IDENT
-                          {this.pass.putAtom(s,ColaTokensConstants.colaELEMENT);}
+                          {this.pass.putAtom(s,ColaConstants.Tokens.colaELEMENT);}
                           (AT_EXTENDS elemExt=scoped_name)?
                           (AT_PROVIDES elemPro+=scoped_name (',' elemPro+=scoped_name)*)?
                           (AT_REQUIRES elemReq+=scoped_name (',' elemReq+=scoped_name)*)?
@@ -238,11 +238,11 @@ colaElement             : colaPropertyDefList? colaContractDefList? atVisibility
                              )
                           ;
 elementBody             : elementContains | colaAttribute | colaAction | inline_code;
-elementContains         : AT_CONTAINS s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaAT_CONTAINS);} elemCont+=scoped_name ';' {this.pass.atoms.scope.pop();}
+elementContains         : AT_CONTAINS s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaAT_CONTAINS);} elemCont+=scoped_name ';' {this.pass.atoms.scope.pop();}
                           -> ^(AT_CONTAINS IDENT $elemCont);
 colaFacility            : colaPropertyDefList? colaContractDefList? atVisibility?
                           FACILITY s=IDENT
-                          {this.pass.putAtom(s,ColaTokensConstants.colaFACILITY);}
+                          {this.pass.putAtom(s,ColaConstants.Tokens.colaFACILITY);}
                           (AT_EXTENDS ext+=scoped_name (',' ext+=scoped_name)*)?
                           (AT_REQUIRES req+=scoped_name (',' req+=scoped_name)*)?
                           '{' facilityBody* '}'
@@ -252,31 +252,31 @@ colaFacility            : colaPropertyDefList? colaContractDefList? atVisibility
                              )
                           ;
 facilityBody            : colaAttribute | colaAction;
-colaAction              : colaPropertyDefList? ACTION (simple_type|void_type) s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaACTION);}
+colaAction              : colaPropertyDefList? ACTION (simple_type|void_type) s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaACTION);}
                           '(' (colaParameter(',' colaParameter)*)? ')'
                           ('{' inline_code* '}')? ';'
                           {this.pass.atoms.scope.pop();}
                           -> ^(ACTION IDENT simple_type? void_type? colaPropertyDefList? colaParameter* inline_code*)
                           ;
-colaParameter           : colaPropertyDefList? simple_type s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaPARAMETER);} {this.pass.atoms.scope.pop();}
+colaParameter           : colaPropertyDefList? simple_type s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaPARAMETER);} {this.pass.atoms.scope.pop();}
                           -> ^(PARAMETER IDENT simple_type colaPropertyDefList?);
 colaTypeDef             : colaPropertyDefList?
-                          TYPEDEF simple_type s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaTYPEDEF);}
+                          TYPEDEF simple_type s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaTYPEDEF);}
                           ('{' inline_code* '}')? ';'
                           {this.pass.atoms.scope.pop();}
                           -> ^(TYPEDEF IDENT simple_type colaPropertyDefList? inline_code*)
                           ;
-colaAttribute           : colaPropertyDefList? ATTRIBUTE simple_type s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaATTRIBUTE);}
+colaAttribute           : colaPropertyDefList? ATTRIBUTE simple_type s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaATTRIBUTE);}
                           ('{' inline_code* '}')? ';'
                           {this.pass.atoms.scope.pop();}
                           -> ^(ATTRIBUTE IDENT simple_type colaPropertyDefList? inline_code*)
                           ;
-colaStruct              : colaPropertyDefList? STRUCT s=IDENT {this.pass.putAtom(s,ColaTokensConstants.colaSTRUCT);}
+colaStruct              : colaPropertyDefList? STRUCT s=IDENT {this.pass.putAtom(s,ColaConstants.Tokens.colaSTRUCT);}
                           '{' (colaMember | inline_code)* '}'
                           {this.pass.atoms.scope.pop();}
                           -> ^(STRUCT IDENT colaPropertyDefList? colaMember* inline_code*)
                           ;
-colaMember              : colaPropertyDefList? simple_type s=IDENT ';' {this.pass.putAtom(s,ColaTokensConstants.parserMEMBER);} {this.pass.atoms.scope.pop();}
+colaMember              : colaPropertyDefList? simple_type s=IDENT ';' {this.pass.putAtom(s,ColaConstants.Tokens.parserMEMBER);} {this.pass.atoms.scope.pop();}
                           -> ^(MEMBER IDENT simple_type colaPropertyDefList?);
 
 scoped_name             : (s=IDENT ('::' s=IDENT)* '::')? s=IDENT -> ^(AT_SCOPE IDENT*);

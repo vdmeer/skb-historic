@@ -57,7 +57,7 @@ options
 
   import org.skb.util.languages.AtomList;
   import org.skb.lang.pola.proto.PolaPass3_Gen;
-  import org.skb.lang.pola.proto.PolaTokensConstants;
+  import org.skb.lang.pola.proto.constants.PolaConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -80,7 +80,7 @@ polaSpecification @init{this.init();}
                           ^(AT_SPEC id=IDENT
                            {StringTemplate spec=templateLib.getInstanceOf("polaSpecification");
                             spec.setAttribute("id", $id);
-                            this.atoms.addST(PolaTokensConstants.polaSPECIFICATION,spec);
+                            this.atoms.addST(PolaConstants.Tokens.polaSPECIFICATION,spec);
                            })
                            cpp_directive (def+=polaDefinition)*
                           )

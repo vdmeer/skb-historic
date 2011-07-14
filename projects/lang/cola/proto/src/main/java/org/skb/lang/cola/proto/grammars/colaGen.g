@@ -56,7 +56,7 @@ options
   import java.util.LinkedHashMap;
 
   import org.skb.lang.cola.proto.ColaPass3_Gen;
-  import org.skb.lang.cola.proto.ColaTokensConstants;
+  import org.skb.lang.cola.proto.constants.ColaConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -169,7 +169,7 @@ colaSpecification @init{this.init();}
                             spec.setAttribute("clevel", $clevel.text);
                             spec.setAttribute("language", $lang.text);
                             spec.setAttribute("spec", $s);
-                            this.pass.atoms.addST(ColaTokensConstants.colaSPECIFICATION,spec);
+                            this.pass.atoms.addST(ColaConstants.Tokens.colaSPECIFICATION,spec);
                            })
                            cpp_directive (def+=colaDefinition)*
                           )

@@ -33,7 +33,7 @@ package org.skb.lang.cola.proto.internal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-import org.skb.lang.cola.proto.ColaTokensConstants;
+import org.skb.lang.cola.proto.constants.ColaConstants;
 
 /**
  * Internal class maintaining a list of property declarations.
@@ -47,41 +47,41 @@ public class PropertyDeclarationList {
 	public PropertyDeclarationList(){
 		this.propertyDeclMap=new LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>>();
 
-		this.propertyDeclMap.put(ColaTokensConstants.colaREQUIRED, new LinkedHashMap<String, ArrayList<String>>());
-	    this.propertyDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaCONTRACT, new ArrayList<String>());
-	    this.propertyDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaPACKAGE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaACTION, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaATTRIBUTE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaREQUIRED).put(ColaTokensConstants.colaPARAMETER, new ArrayList<String>());
+		this.propertyDeclMap.put(ColaConstants.Tokens.colaREQUIRED, new LinkedHashMap<String, ArrayList<String>>());
+	    this.propertyDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaCONTRACT, new ArrayList<String>());
+	    this.propertyDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaPACKAGE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaACTION, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaATTRIBUTE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaPARAMETER, new ArrayList<String>());
 
-		this.propertyDeclMap.put(ColaTokensConstants.colaMANDATORY, new LinkedHashMap<String, ArrayList<String>>());
-	    this.propertyDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaCONTRACT, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaPACKAGE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaACTION, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaATTRIBUTE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaMANDATORY).put(ColaTokensConstants.colaPARAMETER, new ArrayList<String>());
+		this.propertyDeclMap.put(ColaConstants.Tokens.colaMANDATORY, new LinkedHashMap<String, ArrayList<String>>());
+	    this.propertyDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaCONTRACT, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaPACKAGE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaACTION, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaATTRIBUTE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaPARAMETER, new ArrayList<String>());
 
-		this.propertyDeclMap.put(ColaTokensConstants.colaOPTIONAL, new LinkedHashMap<String, ArrayList<String>>());
-	    this.propertyDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaCONTRACT, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaPACKAGE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaACTION, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaATTRIBUTE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaOPTIONAL).put(ColaTokensConstants.colaPARAMETER, new ArrayList<String>());
+		this.propertyDeclMap.put(ColaConstants.Tokens.colaOPTIONAL, new LinkedHashMap<String, ArrayList<String>>());
+	    this.propertyDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaCONTRACT, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaPACKAGE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaACTION, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaATTRIBUTE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaPARAMETER, new ArrayList<String>());
 
-		this.propertyDeclMap.put(ColaTokensConstants.colaNOT_DEF, new LinkedHashMap<String, ArrayList<String>>());
-	    this.propertyDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaCONTRACT, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaPACKAGE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaELEMENT, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaFACILITY, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaACTION, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaATTRIBUTE, new ArrayList<String>());
-		this.propertyDeclMap.get(ColaTokensConstants.colaNOT_DEF).put(ColaTokensConstants.colaPARAMETER, new ArrayList<String>());
+		this.propertyDeclMap.put(ColaConstants.Tokens.colaNOT_DEF, new LinkedHashMap<String, ArrayList<String>>());
+	    this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaCONTRACT, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaPACKAGE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaACTION, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaATTRIBUTE, new ArrayList<String>());
+		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaPARAMETER, new ArrayList<String>());
 	}
 
 	private static class PropertyDeclarationListHolder{

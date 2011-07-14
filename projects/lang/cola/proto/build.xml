@@ -20,14 +20,10 @@
 	
 	<target name="constants" depends="constants.init">
 		<property name="json.file" value="${main.resources.dir}/org/skb/lang/cola/proto/proto.json"/>
-		<property name="dest.dir" value="${main.java.dir}/org/skb/lang/cola/proto"/>
-		<property name="pkg.name" value="org.skb.lang.cola.proto"/>
+		<property name="dest.dir" value="${main.java.dir}/org/skb/lang/cola/proto/constants"/>
+		<property name="pkg.name" value="org.skb.lang.cola.proto.constants"/>
 		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="tokens" class.name="ColaTokensConstants" />
-		<generate-constants json.file="${json.file}" pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="rules" class.name="ColaRuleConstants" />
-		<generate-constants json.file="${json.file}"  pkg.name="${pkg.name}" dest.dir="${dest.dir}"
-			constants.type="properties" class.name="ColaPropertiesConstants" />
+			class.name="ColaConstants" />
 	</target>
 
 	<target name="prepare" description="Prepares the project for building (jar)" depends="clean,antlr,constants"/>

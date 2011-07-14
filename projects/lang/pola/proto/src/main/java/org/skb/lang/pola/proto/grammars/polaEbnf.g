@@ -55,7 +55,7 @@ options
 
   import org.skb.lang.pola.proto.PolaPass1_Ebnf;
   import org.skb.tribe.LanguageTokens;
-  import org.skb.lang.pola.proto.PolaTokensConstants;
+  import org.skb.lang.pola.proto.constants.PolaConstants;
   import org.skb.util.ReportManager;
 }
 
@@ -64,7 +64,7 @@ options
   package org.skb.lang.pola.proto.grammars;
 
   import org.skb.util.ReportManager;
-  import org.skb.lang.pola.proto.PolaTokensConstants;
+  import org.skb.lang.pola.proto.constants.PolaConstants;
 }
 
 @members{
