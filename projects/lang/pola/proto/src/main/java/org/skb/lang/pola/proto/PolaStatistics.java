@@ -30,6 +30,8 @@
 
 package org.skb.lang.pola.proto;
 
+import org.apache.log4j.Logger;
+
 /**
  * Class handling statistic information for the Pola parser.
  *
@@ -37,6 +39,7 @@ package org.skb.lang.pola.proto;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class PolaStatistics {
+	static Logger logger = Logger.getLogger(PolaStatistics.class);
 
 	public PolaStatistics(){
 	}

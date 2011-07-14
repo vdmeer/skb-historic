@@ -33,9 +33,10 @@ package org.skb.lang.pola.proto;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import org.antlr.runtime.Token;
+import org.apache.log4j.Logger;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
-import org.antlr.runtime.Token;
 
 /**
  * Pass 1 of the Pola parser, syntax checks and building a symbol table.
@@ -44,6 +45,8 @@ import org.antlr.runtime.Token;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class PolaPass1_Ebnf {
+	static Logger logger = Logger.getLogger(PolaPass1_Ebnf.class);
+
 	public AtomList atoms=AtomList.getInstance();
 //	private ScopedName sn=ScopedName.getInstance();
 

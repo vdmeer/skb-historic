@@ -32,9 +32,10 @@ package org.skb.lang.pola.proto;
 
 import java.util.TreeMap;
 
+import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
-import org.antlr.stringtemplate.StringTemplate;
 
 /**
  * Pass 3 of the Pola parser using templates to generate target language specifications.
@@ -43,6 +44,8 @@ import org.antlr.stringtemplate.StringTemplate;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class PolaPass3_Gen {
+	static Logger logger = Logger.getLogger(PolaPass3_Gen.class);
+
 	private AtomList atoms=AtomList.getInstance();
 	public ScopeString sn;
 

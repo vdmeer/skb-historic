@@ -33,11 +33,12 @@ package org.skb.lang.pola.proto;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import org.antlr.runtime.Token;
+import org.apache.log4j.Logger;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeToken;
-import org.antlr.runtime.Token;
 
 /**
  * Pass 2 of the Pola parser mostly doing semantic analysis.
@@ -46,6 +47,8 @@ import org.antlr.runtime.Token;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class PolaPass2_Ast {
+	static Logger logger = Logger.getLogger(PolaPass2_Ast.class);
+
 	private AtomList atoms=AtomList.getInstance();
 	public ScopeToken sn;
 //	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();

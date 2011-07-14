@@ -21,12 +21,16 @@
                 </layout>    
         </appender>
 
+        <logger name="org.apache.commons">
+                <level value="off"/>
+        </logger>
+
         <logger name="org.skb.tribe">
-                <level value="trace"/>
+                <level value="debug"/>
         </logger>
 
         <logger name="org.skb.lang.pola.proto">
-                <level value="trace"/>
+                <level value="debug"/>
         </logger>
 
         <root>

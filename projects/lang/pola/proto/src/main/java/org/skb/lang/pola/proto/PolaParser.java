@@ -55,6 +55,7 @@ import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.grammars.polaAst;
 import org.skb.lang.pola.proto.grammars.polaEbnfLexer;
 import org.skb.lang.pola.proto.grammars.polaEbnfParser;
@@ -67,6 +68,8 @@ import org.skb.lang.pola.proto.grammars.polaGen;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class PolaParser extends LanguageParser{
+	static Logger logger = Logger.getLogger(PolaParser.class);
+
 	private TargetSTG target;
 	private PolaStatistics stats;
 
@@ -162,9 +165,6 @@ public class PolaParser extends LanguageParser{
 				gen.setTemplateLib(this.stgl.getSTG());
 				gen.polaSpecification();
 
-//ladsGen.ladsSpecification_return fromGen = gen.ladsSpecification();
-//StringTemplate output = (StringTemplate)fromGen.getTemplate();
-//System.out.println(output.toString());				
 				msg="success  in pass 3 (Code Generation)";
 				repMgr.reportMessageNoFile(msg);
 				PolaPass4_Files cfm=new PolaPass4_Files();
