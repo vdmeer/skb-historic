@@ -30,6 +30,9 @@
 
 package org.skb.lang.glue.proto;
 
+import org.antlr.stringtemplate.StringTemplate;
+import org.antlr.stringtemplate.StringTemplateGroup;
+import org.apache.log4j.Logger;
 import org.skb.tribe.TribeProperties;
 import org.skb.types.atomic.util.OatArrayListString;
 import org.skb.types.base.OatBaseAtomic;
@@ -37,8 +40,6 @@ import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
 import org.skb.util.stringtemplate.STGManager;
-import org.antlr.stringtemplate.StringTemplate;
-import org.antlr.stringtemplate.StringTemplateGroup;
 
 /**
  * Class handling statistic information about a Glue specification.
@@ -47,6 +48,8 @@ import org.antlr.stringtemplate.StringTemplateGroup;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class GlueStatistics {
+	static Logger logger = Logger.getLogger(GlueStatistics.class);
+
 	private STGManager stgl=null;
 	private StringTemplateGroup stg;
 	boolean loaded=false;

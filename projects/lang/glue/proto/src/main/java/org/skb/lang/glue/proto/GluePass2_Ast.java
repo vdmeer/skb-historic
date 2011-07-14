@@ -30,6 +30,8 @@
 
 package org.skb.lang.glue.proto;
 
+import org.apache.log4j.Logger;
+
 /**
  * Pass 2 of the Glue parser mostly doing semantic analysis.
  *
@@ -37,5 +39,6 @@ package org.skb.lang.glue.proto;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class GluePass2_Ast {
+	static Logger logger = Logger.getLogger(GluePass2_Ast.class);
 
 }

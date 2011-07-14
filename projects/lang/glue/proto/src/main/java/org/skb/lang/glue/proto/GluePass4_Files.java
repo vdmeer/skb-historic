@@ -30,6 +30,7 @@
 
 package org.skb.lang.glue.proto;
 
+import org.apache.log4j.Logger;
 import org.skb.util.stringtemplate.FileTemplateList;
 
 /**
@@ -39,6 +40,7 @@ import org.skb.util.stringtemplate.FileTemplateList;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class GluePass4_Files {
+	static Logger logger = Logger.getLogger(GluePass4_Files.class);
 
 	public FileTemplateList getFileTemplateList(){
 		return new FileTemplateList();

@@ -55,6 +55,7 @@ import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.apache.log4j.Logger;
 import org.skb.lang.glue.proto.grammars.glueAst;
 import org.skb.lang.glue.proto.grammars.glueEbnfLexer;
 import org.skb.lang.glue.proto.grammars.glueEbnfParser;
@@ -67,6 +68,8 @@ import org.skb.lang.glue.proto.grammars.glueGen;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class GlueParser extends LanguageParser{
+	static Logger logger = Logger.getLogger(GlueParser.class);
+
 	private TargetSTG target;
 	private GlueStatistics stats;
 
