@@ -38,7 +38,7 @@
 
 group colaproto;
 
-doConstants(package, classname, constants, origfile) ::= <<
+doConstants(package, classname, properties, rules, tokens, origfile) ::= <<
 /* Copyright (c) 2011-2011 Sven van der Meer (sven@vandermeer.de)
  * All rights reserved.
  *
@@ -80,8 +80,17 @@ doConstants(package, classname, constants, origfile) ::= <<
 package $package$;
 
 public final class $classname$ {
-    public $classname$(){}
 
-    $constants.keys:{k | public final static String $k$ = "$constants.(k)$";}; separator="\n"$
+    public static final class Properties {
+        $properties.keys:{k | public final static String $k$ = "$properties.(k)$";}; separator="\n"$
+    }
+
+    public static final class Rules {
+        $rules.keys:{k | public final static String $k$ = "$rules.(k)$";}; separator="\n"$
+    }
+
+    public static final class Tokens {
+        $tokens.keys:{k | public final static String $k$ = "$tokens.(k)$";}; separator="\n"$
+    }
 }
 >>

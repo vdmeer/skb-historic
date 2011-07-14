@@ -53,7 +53,6 @@ import org.apache.tools.ant.Task;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class GenerateConstantsTask extends Task{
-	private String type=null;
 	private String pkgname=null;
 	private String classname=null;
 	private String jsonfile=null;
@@ -61,10 +60,6 @@ public class GenerateConstantsTask extends Task{
 	private String destfile=null;
 
 	private String stgurl=null; //="org/skb/ant/tribe/constants.stg";
-
-    public void setType(String s){
-        this.type=s;
-    }
 
     public void setPkgname(String s){
         this.pkgname=s;
@@ -91,8 +86,6 @@ public class GenerateConstantsTask extends Task{
     }
 
     public void execute() throws BuildException {
-    	if(this.type==null)
-    		throw new BuildException("no type given, please use one of: tokens, rules, properties");
     	if(this.pkgname==null)
     		throw new BuildException("no package name given");
     	if(this.classname==null)
@@ -104,61 +97,57 @@ public class GenerateConstantsTask extends Task{
     	if(this.destfile==null)
     		throw new BuildException("no destination file given");
 
-    	if(!this.type.equals("tokens")&&!this.type.equals("rules")&&!this.type.equals("properties"))
-    		throw new BuildException("unknown type given <"+this.type+">, please use one of: tokens, rules, properties");
-
     	File jfh=new File(this.jsonfile);
     	if(!jfh.canRead())
     		throw new BuildException("cannot read the json file <"+this.jsonfile+">");
 
-    	OatMapLH constStrings=new OatMapLH();
+    	OatMapLH constProperties=new OatMapLH();
+    	OatMapLH constRules=new OatMapLH();
+    	OatMapLH constTokens=new OatMapLH();
+
     	LanguageConfiguration cfg=LanguageConfiguration.getInstance();
    		cfg.read(jfh);
     	OatMapLH map=null;
-    	if(this.type.equals("tokens")){
-    		map=cfg.getLanguageTokens();
-    		if(map!=null&&map.size()>0){
-    			Set<String> cols=map.keySet();
-    			for (String s:cols){
-    				try{
-    					OatString cid=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstID).getValOatAtomicString();
-    				    OatString cval=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal).getValOatAtomicString();
-    			    	constStrings.put(cid, cval);
-    			    } catch (Exception e){}
-    			}
+    	map=cfg.getLanguageTokens();
+    	if(map!=null&&map.size()>0){
+    		Set<String> cols=map.keySet();
+    		for (String s:cols){
+    			try{
+    				OatString cid=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstID).getValOatAtomicString();
+    			    OatString cval=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal).getValOatAtomicString();
+    		    	constTokens.put(cid, cval);
+    		    } catch (Exception e){}
     		}
     	}
-    	else if(this.type.equals("rules")){
-    		map=cfg.getLanguageRules();
-    		if(map!=null&&map.size()>0){
+
+    	map=cfg.getLanguageRules();
+    	if(map!=null&&map.size()>0){
 				for(String k:map.keySet()){
 					if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID))
-						constStrings.put(map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new OatString(k));
+						constRules.put(map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new OatString(k));
 				}
-    		}
     	}
-    	else if(this.type.equals("properties")){
-    		map=cfg.getConfiguration();
-    		if(map!=null&&map.size()>0){
-				if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration)){
-					for(String s:map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration).getValOatMapLH().keySet()){
-						constStrings.put(map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), s);
-					}
-				}
 
-    			if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
-    				for(String s:map.get(LanguageConfigurationConstants.Paths.SKBLangTargets).getValOatMapLH().keySet()){
-    					OatMapLH newMap=map.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli).getValOatMapLH();
-    					for(String k:newMap.keySet()){
-    						if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID))
-    							constStrings.put(newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new OatString(k));
-    					}
-    				}
+    	map=cfg.getConfiguration();
+    	if(map!=null&&map.size()>0){
+			if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration)){
+				for(String s:map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration).getValOatMapLH().keySet()){
+					constProperties.put(map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), s);
+				}
+			}
+
+    	if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
+    		for(String s:map.get(LanguageConfigurationConstants.Paths.SKBLangTargets).getValOatMapLH().keySet()){
+    			OatMapLH newMap=map.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli).getValOatMapLH();
+    			for(String k:newMap.keySet()){
+    				if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID))
+    					constProperties.put(newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new OatString(k));
     			}
     		}
     	}
-    	else
-    		throw new BuildException("no tokens returned from configuration");
+    }
+
+
 
 		StringTemplateGroup stg=null;
 		try{
@@ -173,7 +162,9 @@ public class GenerateConstantsTask extends Task{
 		template=stg.getInstanceOf("doConstants");
 		template.setAttribute("package", this.pkgname);
 		template.setAttribute("classname", this.classname);
-		template.setAttribute("constants", constStrings);
+		template.setAttribute("properties", constProperties);
+		template.setAttribute("rules", constRules);
+		template.setAttribute("tokens", constTokens);
 		template.setAttribute("origfile", this.jsonfile);
 		File outputFile=new File(this.destdir+"/"+this.destfile);
 		FileWriter aout;
