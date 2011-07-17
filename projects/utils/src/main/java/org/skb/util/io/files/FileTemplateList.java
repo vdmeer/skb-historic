@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.stringtemplate;
+package org.skb.util.io.files;
 
 import java.io.File;
 import java.util.Collection;
@@ -36,7 +36,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
-import org.skb.types.atomic.java.OatString;
+import org.skb.util.types.atomic.java.OatString;
 
 /**
  * A list of file templates that a parser/compiler can use/generate to produce output files.

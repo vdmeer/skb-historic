@@ -27,31 +27,58 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.types.atomic.util;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import java.sql.Connection;
+
+import org.skb.util.sql.PDO;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.util.OatPDO;
+import org.skb.util.types.base.OatBaseAtomic;
 
 /**
- * Interface for a reader.
+ * A wrapper for a PDO object.
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public interface Reader {
+public class OatPDO extends OatBaseAtomic {
+	public PDO oatValue=null;
+	
+	public OatPDO(){
+		super();
+		this.init();
+		this.oatValue=new PDO();
+	}
 
-	public void set_builder(Builder builder);
+	public OatPDO(Connection c){
+		super();
+		this.init();
+		this.oatValue=new PDO(c);
+	}
 
-	public void prepare_and_execute(Request request);
+	private void init(){
+		this.typeString.add(TypeRepository.OAT_PDO);
+		this.typeEnum.add(ATType.OAT_PDO);
+	}
 
-	public void prepare(Request request);
+	/**
+	 * Return the stringified representation of the local object
+	 * @return String stringified representation of the local object if instantiated, "" otherwise
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString(){
+		if(this.oatValue!=null)
+			return this.oatValue.toString();
+		return null;
+	}
 
-	public OatMapLH get_entries();
+	public OatPDO getValOatPdo(){
+		return this;
+	}
 
-	//public abstract void prepare_loop(Request request, OatString table, OatString table_collections);
-
-	public void execute(Request request);
-
-	//public abstract void execute_loop(Request request);
+	public OatBaseAtomic getValOatAtomic(){
+		return this;
+	}
 }

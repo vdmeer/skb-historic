@@ -37,10 +37,10 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.skb.util.sql.PDO;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.atomic.util.OatPDO;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.atomic.util.OatPDO;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Implementation of a PDO object for the SKB.

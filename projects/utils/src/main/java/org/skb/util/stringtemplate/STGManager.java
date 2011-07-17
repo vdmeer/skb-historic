@@ -39,11 +39,11 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
-import org.skb.types.TypeRepository.ATType;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBaseAtomic;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * A manager for String Template Groups, including chunk tests.

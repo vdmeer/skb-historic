@@ -27,31 +27,73 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.types.atomic.antlr;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.antlr.runtime.Token;
+import org.skb.util.types.OatValueIsNullException;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.base.OatBaseAtomic;
 
 /**
- * Interface for a reader.
- *  
+ * This class provides am OatBaseAtomic wrapper for the ANTLR runtime class Token.
+ * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public interface Reader {
+public class OatAntlrToken extends OatBaseAtomic {
+	/**
+	 * The local value of an ANTLR runtime Token.
+	 */
+	public Token oatValue=null;
 
-	public void set_builder(Builder builder);
+	public OatAntlrToken(OatAntlrToken k) {
+		super();
+		this.init();
+		try{
+			this.oatValue=k.getValue();
+		} catch (Exception e){}
+	}
 
-	public void prepare_and_execute(Request request);
+	public OatAntlrToken(OatBaseAtomic oba) {
+		super();
+		this.init();
+		try{
+			if(oba.getTypeEnum()==this.getTypeEnum())
+				this.oatValue=((OatAntlrToken)oba).getValue();
+		} catch (Exception e) {}
+	}
 
-	public void prepare(Request request);
+	public OatAntlrToken(Token k) {
+		super();
+		this.init();
+		try{
+			this.oatValue=k;
+		} catch (Exception e){}
+	}
 
-	public OatMapLH get_entries();
+	/**
+	 * Returns the oatValue object.
+	 * @return token The local oatValue object.
+	 * @throws OatValueIsNullException 
+	 */
+	public Token getValue() throws OatValueIsNullException{
+		if(this.oatValue!=null)
+			return this.oatValue;
+		throw new OatValueIsNullException(this.getTypeEnum());
+	}
 
-	//public abstract void prepare_loop(Request request, OatString table, OatString table_collections);
+	/** @ignore */
+	private void init(){
+		this.typeString.add(TypeRepository.OAT_ATOMIC_ANTLR_TOKEN);
+		this.typeEnum.add(ATType.OAT_ATOMIC_ANTLR_TOKEN);
+	}
 
-	public void execute(Request request);
+	public OatAntlrToken getValOatAtomicAntlrToken(){
+		return this;
+	}
 
-	//public abstract void execute_loop(Request request);
+	public OatBaseAtomic getValOatAtomic(){
+		return this;
+	}
 }

@@ -39,19 +39,19 @@ import java.util.TreeMap;
 
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
-import org.skb.types.OatValueIsNullException;
-import org.skb.types.TypeRepository;
-import org.skb.types.atomic.antlr.OatAntlrToken;
-import org.skb.types.atomic.antlr.OatStringTemplate;
-import org.skb.types.base.OatBaseAtomic;
-import org.skb.types.composite.util.OatTable;
-import org.skb.types.composite.util.OatTableRow;
-import org.skb.util.ReportManager;
+import org.skb.util.misc.ReportManager;
+import org.skb.util.types.OatValueIsNullException;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.atomic.antlr.OatAntlrToken;
+import org.skb.util.types.atomic.antlr.OatStringTemplate;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.composite.util.OatTable;
+import org.skb.util.types.composite.util.OatTableRow;
 
 /**
  * Provides a table that compilers/parsers can use to maintain a list of language elements.
  *
- * This class is based on {@link org.skb.types.composite.util.OatTable} using a pre-defined column structure
+ * This class is based on {@link org.skb.util.types.composite.util.OatTable} using a pre-defined column structure
  * suitable for compilers and parsers. The columns are
  * <ul>
  *   <li>category - general separation of language atoms</li>

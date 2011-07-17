@@ -27,13 +27,20 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util;
+package org.skb.util.cli;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
-import org.skb.util.Cli;
+import org.skb.util.cli.Cli;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.atomic.java.OatDouble;
+import org.skb.util.types.atomic.java.OatInteger;
+import org.skb.util.types.atomic.java.OatLong;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.composite.util.OatPropertyMap;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -41,13 +48,6 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
-import org.skb.types.TypeRepository;
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.atomic.java.OatDouble;
-import org.skb.types.atomic.java.OatInteger;
-import org.skb.types.atomic.java.OatLong;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.composite.util.OatPropertyMap;
 
 /**
  * Implementation of the CLI interface using Apache Commons cli.

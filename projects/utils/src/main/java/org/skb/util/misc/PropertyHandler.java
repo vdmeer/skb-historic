@@ -1,4 +1,4 @@
-package org.skb.util;
+package org.skb.util.misc;
 
 import java.io.IOException;
 import java.util.Properties;

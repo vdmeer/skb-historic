@@ -1,4 +1,4 @@
-/* Copyright (c) 2010-2011 Sven van der Meer
+/* Copyright (c) 2011-2011 Sven van der Meer
  * All rights reserved.
  *
  * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
@@ -27,31 +27,58 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.misc;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import java.util.LinkedHashMap;
+import java.util.Locale;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 /**
- * Interface for a reader.
- *  
+ * A class handling internationalisation using properties.
+ *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public interface Reader {
+public class I18NManager {
+	LinkedHashMap <String, ResourceBundle> entries;
+	private String currentDomain;
 
-	public void set_builder(Builder builder);
+	public I18NManager(){
+		this.entries=new LinkedHashMap <String, ResourceBundle>();
+		currentDomain=new String();
+	}
 
-	public void prepare_and_execute(Request request);
+	public void addDomain(String pkg, Locale locale){
+		ResourceBundle rb;
+		try{
+			if(locale==null)
+				rb=PropertyResourceBundle.getBundle(pkg);
+			else
+				rb=PropertyResourceBundle.getBundle(pkg, locale);
+			this.entries.put(pkg, rb);
 
-	public void prepare(Request request);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-	public OatMapLH get_entries();
+	public void setTextDomain(String pkg){
+		if(pkg!=null)
+			this .currentDomain=pkg;
+	}
 
-	//public abstract void prepare_loop(Request request, OatString table, OatString table_collections);
+	public String _(String key){
+		if(this.currentDomain!=null)
+			return this.entries.get(this.currentDomain).getString(key);
+		else
+			return "";
+	}
 
-	public void execute(Request request);
-
-	//public abstract void execute_loop(Request request);
+	public String _(String domain, String key){
+		if(this.entries.containsKey(domain))
+			return this.entries.get(domain).getString(key);
+		else
+			return "";
+	}
 }

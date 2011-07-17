@@ -29,7 +29,7 @@
 
 package org.skb.util.pattern;
 
-import org.skb.types.atomic.util.OatSTGManager;
+import org.skb.util.types.atomic.util.OatSTGManager;
 
 /**
  * A class managing templates for a builder.

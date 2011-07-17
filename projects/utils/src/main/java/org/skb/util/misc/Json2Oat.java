@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util;
+package org.skb.util.misc;
 
 import java.io.File;
 import java.util.Iterator;
@@ -36,16 +36,16 @@ import java.util.Scanner;
 import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.atomic.java.OatDouble;
-import org.skb.types.atomic.java.OatFloat;
-import org.skb.types.atomic.java.OatInteger;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.atomic.util.OatArrayListAtomic;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBase;
-import org.skb.types.base.OatBaseArrayList;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.atomic.java.OatDouble;
+import org.skb.util.types.atomic.java.OatFloat;
+import org.skb.util.types.atomic.java.OatInteger;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.util.OatArrayListAtomic;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBase;
+import org.skb.util.types.base.OatBaseArrayList;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Class that reads a json file and transforms it into an OatMapLH.

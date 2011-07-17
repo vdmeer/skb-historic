@@ -30,7 +30,7 @@
 package org.skb.util.pattern;
 
 import org.skb.util.pattern.Request;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Interface for a builder.

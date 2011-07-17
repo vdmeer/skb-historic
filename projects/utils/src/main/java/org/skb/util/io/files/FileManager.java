@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.stringtemplate;
+package org.skb.util.io.files;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -41,9 +41,9 @@ import java.util.TimeZone;
 import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
-import org.skb.types.OatValueIsNullException;
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.atomic.java.OatString;
+import org.skb.util.types.OatValueIsNullException;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.atomic.java.OatString;
 
 /**
  * A manager for file lists to prepare output.

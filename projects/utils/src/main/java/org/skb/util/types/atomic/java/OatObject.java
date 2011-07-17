@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2011 Sven van der Meer
+/* Copyright (c) 2010-2011 Sven van der Meer
  * All rights reserved.
  *
  * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
@@ -27,58 +27,81 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util;
+package org.skb.util.types.atomic.java;
 
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.java.OatObject;
+import org.skb.util.types.base.OatBaseAtomic;
 
 /**
- * A class handling internationalisation using properties.
- *
+ * A wrapper for java.lang.String.Object.
+ * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public class I18NManager {
-	LinkedHashMap <String, ResourceBundle> entries;
-	private String currentDomain;
+public class OatObject extends OatBaseAtomic {
 
-	public I18NManager(){
-		this.entries=new LinkedHashMap <String, ResourceBundle>();
-		currentDomain=new String();
+	/**
+	 * The local object
+	 */
+	protected Object oatValue=null;
+
+	/**
+	 * Creates a new OatObject with oatValue=null.
+	 */
+	public OatObject() {
+		super();
+		this.init();
 	}
 
-	public void addDomain(String pkg, Locale locale){
-		ResourceBundle rb;
+	/**
+	 * Creates a new OatObject from the specified OatObject.
+	 * 
+	 * The default oatValue is null.
+	 * @param o OatObject to be used in initialisation
+	 */
+	public OatObject(OatObject o) {
+		super();
+		this.init();
 		try{
-			if(locale==null)
-				rb=PropertyResourceBundle.getBundle(pkg);
-			else
-				rb=PropertyResourceBundle.getBundle(pkg, locale);
-			this.entries.put(pkg, rb);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			this.oatValue=o.getValue();
+		} catch (Exception e){}
 	}
 
-	public void setTextDomain(String pkg){
-		if(pkg!=null)
-			this .currentDomain=pkg;
+	/**
+	 * Creates a new OatObject from the specified Object.
+	 * 
+	 * The default oatValue is null.
+	 * @param o Object to be used in initialisation
+	 */
+	public OatObject(Object o) {
+		super();
+		this.init();
+		this.oatValue=o;
 	}
 
-	public String _(String key){
-		if(this.currentDomain!=null)
-			return this.entries.get(this.currentDomain).getString(key);
-		else
-			return "";
+	/**
+	 * Creates a new OatObject from the specified OatBaseAtomic.
+	 * 
+	 * The default oatValue is null.
+	 * @param oba OatBaseAtomic to be used in initialisation
+	 */
+	public OatObject(OatBaseAtomic oba) {
+		super();
+		this.init();
+		try{
+			if(oba.getTypeEnum()==this.getTypeEnum())
+				this.oatValue=oba.getValue();
+		} catch (Exception e) {}
 	}
 
-	public String _(String domain, String key){
-		if(this.entries.containsKey(domain))
-			return this.entries.get(domain).getString(key);
-		else
-			return "";
+	private void init(){
+		this.typeString.add(TypeRepository.OAT_ATOMIC_OBJECT);
+		this.typeEnum.add(ATType.OAT_ATOMIC_OBJECT);
+	}
+
+	public OatBaseAtomic getValOatAtomic(){
+		return this;
 	}
 }

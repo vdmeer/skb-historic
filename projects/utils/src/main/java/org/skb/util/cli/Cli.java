@@ -27,11 +27,11 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util;
+package org.skb.util.cli;
 
 import org.apache.commons.cli.ParseException;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.composite.util.OatPropertyMap;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.composite.util.OatPropertyMap;
 
 /**
  * Interface for CLI processing.

@@ -27,15 +27,15 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util;
+package org.skb.util.misc;
 
 import java.io.File;
 
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * A report manager with extended functionality for parsers/compilers.

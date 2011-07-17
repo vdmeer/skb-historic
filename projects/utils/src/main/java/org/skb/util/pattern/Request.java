@@ -33,13 +33,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.skb.types.OatValueIsNullException;
-import org.skb.types.TypeRepository.ATType;
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBase;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.OatValueIsNullException;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBase;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Generic implementation of a request object.

@@ -27,51 +27,39 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.stringtemplate;
+package org.skb.util.types.atomic.util;
 
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-
-import org.antlr.stringtemplate.StringTemplate;
+import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.util.OatSTGManager;
+import org.skb.util.types.base.OatBaseAtomic;
 
 /**
- * A single file template maintaining everything necessary to write a file.
- *
+ * A wrapper for an STG Manager.
+ *  
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public class FileTemplateSingle {
-	LinkedHashSet<StringTemplate> templates;
-	LinkedHashSet<String> imports;
-	LinkedHashMap<String, String> misc;
-
-	public FileTemplateSingle(){
-		this.templates=new LinkedHashSet<StringTemplate>();
-		this.imports=new LinkedHashSet<String>();
-		this.misc=new LinkedHashMap<String, String>();
+public class OatSTGManager extends OatBaseAtomic {
+	public STGManager oatValue=null;
+	
+	public OatSTGManager(){
+		super();
+		this.init();
+		this.oatValue=new STGManager();
 	}
 
-	public FileTemplateSingle(LinkedHashSet<StringTemplate> lhsST, LinkedHashSet<String> lhsIM, LinkedHashMap<String, String> lhsMisc){
-		this.templates=new LinkedHashSet<StringTemplate>(lhsST);
-		this.imports=new LinkedHashSet<String>(lhsIM);
-		this.misc=new LinkedHashMap<String, String>(lhsMisc);
+	private void init(){
+		this.typeString.add(TypeRepository.OAT_ATOMIC_STG_MANAGER);
+		this.typeEnum.add(ATType.OAT_ATOMIC_STG_MANAGER);
 	}
 
-	public void addTemplate(StringTemplate st){this.templates.add(st);}
-	public void addImport(String im){this.imports.add(im);}
-	public void addMisc(String k, String v){this.misc.put(k,v);}
+	public OatSTGManager getValOatAtomicSTGManager(){
+		return this;
+	}
 
-	public boolean addAllTemplates(Collection <StringTemplate> ts){return this.templates.addAll(ts);};
-	public boolean addAllImports(Collection <String> ts){return this.imports.addAll(ts);};
-	public void putAllMisc(Map <String, String> ms){this.misc.putAll(ms);};
-
-	public LinkedHashSet<StringTemplate> getTemplates(){return this.templates;}
-	public LinkedHashSet<String> getImports(){return this.imports;}
-	public LinkedHashMap<String, String> getMisc(){return this.misc;}
-
-	public int sizeTemplates(){return this.templates.size();}
-	public int sizeImports(){return this.imports.size();}
-	public int sizeMisc(){return this.misc.size();}
+	public OatBaseAtomic getValOatAtomic(){
+		return this;
+	}
 }

@@ -27,31 +27,54 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.types.atomic.util;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import java.util.Stack;
+
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.util.OatScope;
+import org.skb.util.types.base.OatBaseAtomic;
 
 /**
- * Interface for a reader.
+ * A wrapper for a scope object.
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public interface Reader {
+public class OatScope extends OatBaseAtomic{
+	protected Stack<String> scope;
 
-	public void set_builder(Builder builder);
+	public OatScope(){
+		super();
+		this.init();
 
-	public void prepare_and_execute(Request request);
+		this.scope=new Stack<String>();
+	}
 
-	public void prepare(Request request);
+	private void init(){
+		this.typeString.add(TypeRepository.OAT_SCOPE);
+		this.typeEnum.add(ATType.OAT_SCOPE);
+	}
 
-	public OatMapLH get_entries();
+	public boolean push(String key, String value){
+		if(this.scope.contains(key+"@"+value))
+			return false;
+		this.scope.push(key+"@"+value);
+		return true;
+	}
 
-	//public abstract void prepare_loop(Request request, OatString table, OatString table_collections);
+	public void pop(){this.scope.pop();}
+	public void reset(){this.scope.clear();}
 
-	public void execute(Request request);
+	public Stack<String> as_array(){return this.scope;}
+	public String as_string(){return this.scope.toString();}
 
-	//public abstract void execute_loop(Request request);
+	public OatScope getValOatScope(){
+		return this;
+	}
+
+	public OatBaseAtomic getValOatAtomic(){
+		return this;
+	}
 }

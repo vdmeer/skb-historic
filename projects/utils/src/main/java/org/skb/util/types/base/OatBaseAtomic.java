@@ -27,31 +27,69 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.types.base;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.OatValueIsNullException;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.base.OatBase;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.base.OatBaseComposite;
 
 /**
- * Interface for a reader.
- *  
+ * The base class for all SKB Atomic types.
+ * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public interface Reader {
+public class OatBaseAtomic extends OatBase {
 
-	public void set_builder(Builder builder);
+	protected OatBaseAtomic(){
+		this.typeString.add(TypeRepository.OAT_BASE_ATOMIC);
+		this.typeEnum.add(ATType.OAT_BASE_ATOMIC);
+	}
 
-	public void prepare_and_execute(Request request);
+	@Override
+	public boolean isAtomic() {
+		return true;
+	}
 
-	public void prepare(Request request);
+	@Override
+	public boolean isComposite() {
+		return false;
+	}
 
-	public OatMapLH get_entries();
+	@Override
+	public void clean() {
+	}
 
-	//public abstract void prepare_loop(Request request, OatString table, OatString table_collections);
+	@Override
+	public void trim() {
+	}
 
-	public void execute(Request request);
+	/**
+	 * Alter oatValue.
+	 */
+	public void setValue(OatBaseAtomic obj) {
+		this.oatValue=obj;
+	}
 
-	//public abstract void execute_loop(Request request);
+	/**
+	 * Returns oatValue.
+	 * @return Object The local object.
+	 * @throws OatValueIsNullException 
+	 */
+	public Object getValue() throws OatValueIsNullException{
+		if(this.oatValue!=null)
+			return this.oatValue;
+		throw new OatValueIsNullException(this.getTypeEnum());
+	}
+
+	public OatBaseAtomic getValAtomic(){
+		return (OatBaseAtomic)this.oatValue;
+	}
+
+	public OatBaseComposite getValComposite(){
+		return null;
+	}
 }

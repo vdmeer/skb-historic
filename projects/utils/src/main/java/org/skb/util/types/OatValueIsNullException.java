@@ -27,31 +27,26 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.types;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.TypeRepository;
 
 /**
- * Interface for a reader.
+ * The standard exception if an accessed type is not a class but a null pointer.
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public interface Reader {
+public class OatValueIsNullException extends Exception {
 
-	public void set_builder(Builder builder);
+	/** @ignore */
+	private static final long serialVersionUID = 6007349987509855789L;
 
-	public void prepare_and_execute(Request request);
-
-	public void prepare(Request request);
-
-	public OatMapLH get_entries();
-
-	//public abstract void prepare_loop(Request request, OatString table, OatString table_collections);
-
-	public void execute(Request request);
-
-	//public abstract void execute_loop(Request request);
+	/**
+	 * The exception string.
+	 * @param type the enumerate version of the type
+	 */
+	public OatValueIsNullException(TypeRepository.ATType type){
+		super("field is null in "+TypeRepository.type(type));
+	}
 }
