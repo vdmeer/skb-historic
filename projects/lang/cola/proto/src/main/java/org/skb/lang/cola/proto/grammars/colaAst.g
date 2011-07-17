@@ -56,7 +56,7 @@ options
   import org.skb.lang.cola.proto.ColaPass2_Ast;
   import org.skb.tribe.LanguageTokens;
   import org.skb.lang.cola.proto.constants.ColaConstants;
-  import org.skb.util.ReportManager;
+  import org.skb.util.misc.ReportManager;
 }
 
 @members{

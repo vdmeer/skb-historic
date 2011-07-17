@@ -56,7 +56,7 @@ options
   import org.skb.lang.dal.DalPass2_Ast;
   import org.skb.tribe.LanguageTokens;
   import org.skb.lang.dal.constants.DalConstants;
-  import org.skb.util.ReportManager;
+  import org.skb.util.misc.ReportManager;
 }
 
 @members{

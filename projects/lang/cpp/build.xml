@@ -12,8 +12,8 @@
 	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
 
 	<target name="antlr" description="Generates java classes based on grammar" depends="antlr.clean"  >
-		<property name="grammar.dir" value="${main.java.dir}/org/skb/lang/preprocessor/grammars"/>
-		<antlr-run output.dir="${grammar.dir}" grammar.file="${grammar.dir}/Preprocessor.g"/>
+		<property name="grammar.dir" value="${main.java.dir}/org/skb/lang/cpp/grammars"/>
+		<antlr-run output.dir="${grammar.dir}" grammar.file="${grammar.dir}/CPP.g"/>
 	</target>
 
 	<target name="prepare" description="Prepares the project for building (jar)" depends="antlr,clean,jar"/>

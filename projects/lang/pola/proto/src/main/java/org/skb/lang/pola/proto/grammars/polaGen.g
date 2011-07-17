@@ -58,7 +58,7 @@ options
   import org.skb.util.languages.AtomList;
   import org.skb.lang.pola.proto.PolaPass3_Gen;
   import org.skb.lang.pola.proto.constants.PolaConstants;
-  import org.skb.util.ReportManager;
+  import org.skb.util.misc.ReportManager;
 }
 
 @members{

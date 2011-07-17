@@ -127,7 +127,7 @@
         },
         "repmgr-stg":{
             "at:type":"oat:atomic:java:string",
-            "value:default":"/org/skb/util/ReportManager.stg",
+            "value:default":"/org/skb/util/misc/ReportManager.stg",
             "cli:option:long":"repmgr-stg",
             "cli:option:arg-name":"file",
             "cli:option:type":"oat:atomic:java:string",

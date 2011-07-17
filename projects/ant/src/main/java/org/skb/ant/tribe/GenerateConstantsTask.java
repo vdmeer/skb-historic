@@ -38,8 +38,8 @@ import java.util.Set;
 
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageConfigurationConstants;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.composite.util.OatMapLH;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
