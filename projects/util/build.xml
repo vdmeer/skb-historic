@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="skb.utils" xmlns:ivy="antlib:org.apache.ivy.ant" default="antlr">
+<project name="skb.util" xmlns:ivy="antlib:org.apache.ivy.ant" default="antlr">
 	<property environment="env"/>
 	<property name="disable.bundlor" value="true"/>
 
 	<property file="${env.TINOS_HOME}/projects/build.versions"/>
-	<property name="version" value="${skb.utils}"/>
+	<property name="version" value="${skb.util}"/>
 
 	<property file="${env.TINOS_HOME}/projects/build.properties"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/skb/skb.xml"/>

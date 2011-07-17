@@ -23,7 +23,7 @@
 			name="com.springsource.org.apache.tools.ant"
 			rev="${org.apache.ant}" />
 
-		<dependency org="skb" name="skb.utils" rev="${skb.utils}" />
+		<dependency org="skb" name="skb.util" rev="${skb.util}" />
 		<dependency org="skb" name="skb.tribe" rev="${skb.tribe}" />
 
 		<dependency org="org.junit"

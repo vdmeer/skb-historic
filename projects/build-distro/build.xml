@@ -4,7 +4,7 @@
 	<!-- NOTE: Beware the build order -->
 	<path id="bundles">
 		<pathelement location="../lang/cpp"/>
-		<pathelement location="../utils"/>
+		<pathelement location="../util"/>
 		<pathelement location="../tribe"/>
 		<pathelement location="../ant"/>
 		<pathelement location="../lang/cola/proto"/>
