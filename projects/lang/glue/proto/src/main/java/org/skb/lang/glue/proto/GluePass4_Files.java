@@ -31,7 +31,7 @@
 package org.skb.lang.glue.proto;
 
 import org.apache.log4j.Logger;
-import org.skb.util.stringtemplate.FileTemplateList;
+import org.skb.util.io.files.FileTemplateList;
 
 /**
  * Pass 4 of the Glue parser generating output files.

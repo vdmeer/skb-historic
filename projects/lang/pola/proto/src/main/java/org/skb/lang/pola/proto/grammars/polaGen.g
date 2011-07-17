@@ -71,12 +71,12 @@ options
   }
 }
 
-a3dsStage               : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
-a3dsEnvironment         : 'production' | 'test' | 'demonstrator';
-a3dsCLevel              : 'business' | 'system' | 'element';
+skbStage                : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
+skbEnvironment          : 'production' | 'test' | 'demonstrator';
+skbCLevel               : 'business' | 'system' | 'element';
 
 polaSpecification @init{this.init();}
-                        : ^(AT_SPEC a3dsStage a3dsEnvironment a3dsCLevel ^(AT_LANGUAGE IDENT)
+                        : ^(AT_SPEC skbStage skbEnvironment skbCLevel ^(AT_LANGUAGE IDENT)
                           ^(AT_SPEC id=IDENT
                            {StringTemplate spec=templateLib.getInstanceOf("polaSpecification");
                             spec.setAttribute("id", $id);

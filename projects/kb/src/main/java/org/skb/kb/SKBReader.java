@@ -30,11 +30,11 @@
 
 package org.skb.kb;
 
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.pattern.Builder;
 import org.skb.util.pattern.Reader;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public abstract class SKBReader implements Reader {
 	protected Builder builder=null;

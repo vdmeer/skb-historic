@@ -30,8 +30,8 @@
 
 package org.skb.kb;
 
-import org.skb.types.base.OatBase;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.base.OatBase;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public interface SKBInterpreterEntries extends SKBInterpreter{
 	public static String type="entries";

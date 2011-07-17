@@ -32,8 +32,8 @@ package org.skb.tribe;
 
 import java.util.TreeMap;
 
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Class that reads language tokens from the configuration and processes them for parser/lexer.

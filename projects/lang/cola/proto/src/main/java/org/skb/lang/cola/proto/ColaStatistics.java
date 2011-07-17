@@ -41,15 +41,15 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.TribeProperties;
-import org.skb.types.TypeRepository;
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBaseAtomic;
-import org.skb.types.composite.util.OatMapLH;
-import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
+import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.stringtemplate.STGWriterXtoY;
+import org.skb.util.types.TypeRepository;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Class implementing statistic methods for Cola parser.

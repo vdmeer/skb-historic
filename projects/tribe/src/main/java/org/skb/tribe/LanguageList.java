@@ -35,13 +35,13 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.TreeMap;
 
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBaseAtomic;
-import org.skb.types.composite.util.OatTable;
-import org.skb.types.composite.util.OatTableRow;
-import org.skb.util.ReportManager;
+import org.skb.util.misc.ReportManager;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.composite.util.OatTable;
+import org.skb.util.types.composite.util.OatTableRow;
 
 /**
  * Tribes interface to language parsers.

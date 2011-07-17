@@ -35,8 +35,8 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.tribe.TribeProperties;
+import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
-import org.skb.util.stringtemplate.FileTemplateList;
 
 /**
  * Pass 4 of the DAL Parser, generating files for output.

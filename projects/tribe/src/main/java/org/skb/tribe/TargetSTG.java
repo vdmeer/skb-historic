@@ -30,9 +30,9 @@
 
 package org.skb.tribe;
 
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.composite.util.OatMapLH;
 import org.antlr.stringtemplate.StringTemplate;
 
 /**

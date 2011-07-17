@@ -30,9 +30,9 @@
 
 package org.skb.kb;
 
-import org.skb.types.atomic.util.OatSTGManager;
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.pattern.TemplateManager;
+import org.skb.util.types.atomic.util.OatSTGManager;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public class SKBTemplateManager implements TemplateManager {
 	protected OatMapLH templates=new OatMapLH();

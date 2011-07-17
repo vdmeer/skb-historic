@@ -32,10 +32,10 @@ package org.skb.tribe;
 
 import java.io.InputStream;
 
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBaseAtomic;
-import org.skb.types.composite.util.OatPropertyMap;
 import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.composite.util.OatPropertyMap;
 
 /**
  * Abstract class containing a language parser.

@@ -30,8 +30,8 @@
 
 package org.skb.tribe;
 
-import org.skb.types.composite.util.OatMapLH;
-import org.skb.types.composite.util.OatPropertyMap;
+import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.composite.util.OatPropertyMap;
 
 /**
  * Class that reads properties (any configuration information) of a parser.

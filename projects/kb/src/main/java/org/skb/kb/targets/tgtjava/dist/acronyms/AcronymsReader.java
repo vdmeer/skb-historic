@@ -36,9 +36,9 @@ import java.util.Arrays;
 
 import org.skb.kb.SKB;
 import org.skb.kb.SKBReader;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.atomic.util.OatPDO;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.util.OatPDO;
 
 public class AcronymsReader extends SKBReader {
 

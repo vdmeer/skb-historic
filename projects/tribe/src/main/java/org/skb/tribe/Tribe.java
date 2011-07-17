@@ -42,16 +42,16 @@ import java.util.TreeSet;
 
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
-import org.skb.lang.preprocessor.Preprocessor;
-import org.skb.types.OatValueIsNullException;
-import org.skb.types.TypeRepository.ATType;
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.base.OatBaseAtomic;
-import org.skb.types.composite.util.OatPropertyMap;
-import org.skb.util.Cli;
-import org.skb.util.CliApache;
-import org.skb.util.ReportManager;
+import org.skb.lang.cpp.CPP;
+import org.skb.util.cli.Cli;
+import org.skb.util.cli.CliApache;
+import org.skb.util.misc.ReportManager;
+import org.skb.util.types.OatValueIsNullException;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.composite.util.OatPropertyMap;
 
 
 /**
@@ -285,7 +285,7 @@ public class Tribe {
         		File temp=File.createTempFile("_tribe", "cpp");
         	    temp.deleteOnExit();
 				PrintWriter pw=new PrintWriter(new FileWriter(temp));
-				Preprocessor prep=new Preprocessor();
+				CPP prep=new CPP();
 				prep.parse(prop.getValue(TribeProperties.tpmKeySrcFile).toString(), pw);
 				logger.trace("finished cpp, create input stream");
 				tribeIS=new FileInputStream(temp);

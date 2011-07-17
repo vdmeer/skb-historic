@@ -35,12 +35,12 @@ import java.util.Set;
 
 import org.skb.kb.SKB;
 import org.skb.kb.SKBReader;
-import org.skb.types.TypeRepository.ATType;
-import org.skb.types.atomic.java.OatString;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBase;
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.TypeRepository.ATType;
+import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBase;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public class SkbInfoReader extends SKBReader {
 

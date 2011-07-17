@@ -3,8 +3,8 @@ package org.skb.kb.tests;
 import org.skb.kb.SKB;
 import org.skb.kb.SKBBuilder;
 import org.skb.kb.SKBReader;
-import org.skb.types.atomic.java.OatString;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.atomic.java.OatString;
 
 public class Tool {
 

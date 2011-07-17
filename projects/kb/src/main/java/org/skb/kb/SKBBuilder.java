@@ -30,9 +30,9 @@
 
 package org.skb.kb;
 
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.pattern.Builder;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public abstract class SKBBuilder implements Builder {
 	protected SKBTemplateManager templates=new SKBTemplateManager();

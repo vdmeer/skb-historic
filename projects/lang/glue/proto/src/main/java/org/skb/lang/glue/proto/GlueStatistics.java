@@ -35,12 +35,12 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.lang.glue.proto.constants.GlueConstants;
 import org.skb.tribe.TribeProperties;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.base.OatBaseAtomic;
-import org.skb.types.composite.util.OatMapLH;
-import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
+import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Class handling statistic information about a Glue specification.

@@ -111,14 +111,14 @@ options
   }
 }
 
-a3dsStage               : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
-a3dsEnvironment         : 'production' | 'test' | 'demonstrator';
-a3dsCLevel              : 'business' | 'system' | 'element';
+skbStage                : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
+skbEnvironment          : 'production' | 'test' | 'demonstrator';
+skbCLevel               : 'business' | 'system' | 'element';
 
 polaSpecification         @init{this.init();}
                         : 
-                          cpp_directive AT_STAGE a3dsStage ';' AT_ENVIRONMENT a3dsEnvironment ';' AT_CLEVEL a3dsCLevel ';' AT_LANGUAGE l=IDENT ';' AT_SPEC spec=IDENT ';' {this.pass.atoms.specificationName(spec);} polaDefinition* EOF
-                          -> ^(AT_SPEC a3dsStage a3dsEnvironment a3dsCLevel ^(AT_LANGUAGE $l) ^(AT_SPEC $spec) cpp_directive polaDefinition*);                          
+                          cpp_directive AT_STAGE skbStage ';' AT_ENVIRONMENT skbEnvironment ';' AT_CLEVEL skbCLevel ';' AT_LANGUAGE l=IDENT ';' AT_SPEC spec=IDENT ';' {this.pass.atoms.specificationName(spec);} polaDefinition* EOF
+                          -> ^(AT_SPEC skbStage skbEnvironment skbCLevel ^(AT_LANGUAGE $l) ^(AT_SPEC $spec) cpp_directive polaDefinition*);                          
 polaDefinition          : cpp_directive | managementPolicy;
 
 cpp_directive           : s=CPP_DIRECTIVE {this.setCppFile(s.getText());};

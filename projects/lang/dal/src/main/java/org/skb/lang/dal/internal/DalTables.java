@@ -4,9 +4,9 @@ import java.util.Set;
 
 import org.antlr.runtime.Token;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.types.atomic.antlr.OatAntlrToken;
-import org.skb.types.atomic.util.OatArrayListString;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.antlr.OatAntlrToken;
+import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public class DalTables extends OatMapLH{
 	public static final String token="token";

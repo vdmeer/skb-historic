@@ -42,9 +42,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.lang.dal.internal.DalTables;
-import org.skb.types.atomic.util.OatArrayListString;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
+import org.skb.util.types.atomic.util.OatArrayListString;
 
 /**
  * Pass 3 of the DAL parser using templates to generate a target language specification.

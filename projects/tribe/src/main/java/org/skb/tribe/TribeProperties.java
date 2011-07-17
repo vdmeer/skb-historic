@@ -33,10 +33,10 @@ package org.skb.tribe;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
-import org.skb.types.composite.util.OatMapLH;
-import org.skb.types.composite.util.OatPropertyMap;
-import org.skb.util.Json2Oat;
-import org.skb.util.PropertyHandler;
+import org.skb.util.misc.Json2Oat;
+import org.skb.util.misc.PropertyHandler;
+import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.composite.util.OatPropertyMap;
 
 /**
  * Singleton class maintaining all properties of the Tribe system.

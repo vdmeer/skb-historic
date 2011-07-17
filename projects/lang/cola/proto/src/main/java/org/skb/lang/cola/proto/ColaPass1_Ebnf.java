@@ -39,9 +39,9 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.LanguageRuleMap;
-import org.skb.types.composite.util.OatTableRow;
-import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
+import org.skb.util.misc.ReportManager;
+import org.skb.util.types.composite.util.OatTableRow;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.

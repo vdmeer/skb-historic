@@ -31,8 +31,8 @@
 package org.skb.kb.targets.tgtjava.core.def;
 
 import org.skb.kb.SKBBuilder;
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public class DefaultBuilder extends SKBBuilder{
 

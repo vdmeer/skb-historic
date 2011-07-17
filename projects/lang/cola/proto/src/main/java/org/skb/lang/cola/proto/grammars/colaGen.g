@@ -68,9 +68,9 @@ options
   }
 }
 
-a3dsStage               : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
-a3dsEnvironment         : 'production' | 'test' | 'demonstrator';
-a3dsCLevel              : 'business' | 'system' | 'element';
+skbStage                : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
+skbEnvironment          : 'production' | 'test' | 'demonstrator';
+skbCLevel               : 'business' | 'system' | 'element';
 
 colaFunction            : ^(FUNCTION id=IDENT par+=colaFunctionParam* bt=base_type ARRAY? ^(AT_LANGUAGE string_value)) {this.pass.atoms.scope.push($id.token);}
                           -> colaFunction(id={$id}, parameter={$par}, ret_type={$bt.text}, ret_array={$ARRAY.text});
@@ -161,7 +161,7 @@ colaItemDef             : ^(IDENT id=IDENT val+=const_value*)
                           -> colaItemDef(id={$id.text}, val={$val}, misc={this.pass.misc()});
 
 colaSpecification @init{this.init();}
-                        : ^(AT_SPEC stage=a3dsStage env=a3dsEnvironment clevel=a3dsCLevel ^(AT_LANGUAGE lang=IDENT)
+                        : ^(AT_SPEC stage=skbStage env=skbEnvironment clevel=skbCLevel ^(AT_LANGUAGE lang=IDENT)
                           ^(AT_SPEC s=IDENT
                            {StringTemplate spec=templateLib.getInstanceOf("colaSpecification");
                             spec.setAttribute("stage", $stage.text);

@@ -34,8 +34,8 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 import org.skb.tribe.TribeProperties;
+import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
-import org.skb.util.stringtemplate.FileTemplateList;
 
 /**
  * Pass 4 of the Pola parser generating output files.

@@ -42,10 +42,10 @@ import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.tribe.TribeProperties;
-import org.skb.types.OatValueIsNullException;
-import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeToken;
+import org.skb.util.misc.ReportManager;
+import org.skb.util.types.OatValueIsNullException;
 
 /**
  * Pass 2 of the Cola parser, mostly looking into semantic analysis.

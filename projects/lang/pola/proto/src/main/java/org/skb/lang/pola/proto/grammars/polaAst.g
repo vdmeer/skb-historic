@@ -85,12 +85,12 @@ options
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){ReportManager.getInstance().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);}
 }
 
-a3dsStage               : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
-a3dsEnvironment         : 'production' | 'test' | 'demonstrator';
-a3dsCLevel              : 'business' | 'system' | 'element';
+skbStage                : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
+skbEnvironment          : 'production' | 'test' | 'demonstrator';
+skbCLevel               : 'business' | 'system' | 'element';
 
 polaSpecification @init{this.init();}
-                        : ^(AT_SPEC a3dsStage a3dsEnvironment a3dsCLevel ^(AT_LANGUAGE IDENT) ^(AT_SPEC IDENT) cpp_directive polaDefinition*);
+                        : ^(AT_SPEC skbStage skbEnvironment skbCLevel ^(AT_LANGUAGE IDENT) ^(AT_SPEC IDENT) cpp_directive polaDefinition*);
 polaDefinition          : managementPolicy | cpp_directive;
 
 cpp_directive           : s=CPP_DIRECTIVE {setCppFile(s.getText());};

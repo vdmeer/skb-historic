@@ -112,9 +112,9 @@ options
   }
 }
 
-a3dsStage               : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
-a3dsEnvironment         : 'production' | 'test' | 'demonstrator';
-a3dsCLevel              : 'business' | 'system' | 'element';
+skbStage                : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
+skbEnvironment          : 'production' | 'test' | 'demonstrator';
+skbCLevel               : 'business' | 'system' | 'element';
 
 colaFunction            : FUNCTION s=IDENT ':' AT_LANGUAGE '=' string_value PARAMETER '(' colaFunctionParam* ')' AT_RETURN '(' base_type array? ')' ';'
                           {this.pass.putAtom(s,ColaConstants.Tokens.colaFUNCTION, this.base_type, this.isArray);}
@@ -213,8 +213,8 @@ colaItemDef             : IDENT s=IDENT {this.pass.identsAddItemDef(s);} ('(' co
                           -> ^(IDENT IDENT const_value*);
 
 colaSpecification         @init{this.init();}
-                        : cpp_directive AT_STAGE a3dsStage ';' AT_ENVIRONMENT a3dsEnvironment ';' AT_CLEVEL a3dsCLevel ';' AT_LANGUAGE l=IDENT ';' AT_SPEC s=IDENT ';' {this.pass.atoms.specificationName(s);} colaDefinition* EOF
-                          -> ^(AT_SPEC a3dsStage a3dsEnvironment a3dsCLevel ^(AT_LANGUAGE $l) ^(AT_SPEC $s) cpp_directive colaDefinition*);
+                        : cpp_directive AT_STAGE skbStage ';' AT_ENVIRONMENT skbEnvironment ';' AT_CLEVEL skbCLevel ';' AT_LANGUAGE l=IDENT ';' AT_SPEC s=IDENT ';' {this.pass.atoms.specificationName(s);} colaDefinition* EOF
+                          -> ^(AT_SPEC skbStage skbEnvironment skbCLevel ^(AT_LANGUAGE $l) ^(AT_SPEC $s) cpp_directive colaDefinition*);
 colaDefinition          : colaFunction | colaPropertyDecl | colaContractDecl | colaPackage | colaElement | colaFacility | colaTypeDef | colaStruct | cpp_directive;
 
 cpp_directive           : s=CPP_DIRECTIVE {this.setCppFile(s.getText());};

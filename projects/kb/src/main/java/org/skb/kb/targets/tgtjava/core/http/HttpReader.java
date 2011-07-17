@@ -31,8 +31,8 @@
 package org.skb.kb.targets.tgtjava.core.http;
 
 import org.skb.kb.SKBReader;
-import org.skb.types.atomic.java.OatString;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.atomic.java.OatString;
 
 public class HttpReader extends SKBReader{
 

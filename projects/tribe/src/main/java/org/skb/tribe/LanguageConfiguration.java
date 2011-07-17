@@ -32,8 +32,8 @@ package org.skb.tribe;
 
 import java.io.File;
 
-import org.skb.types.composite.util.OatMapLH;
-import org.skb.util.Json2Oat;
+import org.skb.util.misc.Json2Oat;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Read the json configuration of a parser and provide filtered access to it.

@@ -33,9 +33,9 @@ package org.skb.kb.targets.tgtjava.dist.acronyms;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.skb.kb.SKBBuilder;
-import org.skb.types.atomic.util.OatSTGManager;
-import org.skb.types.composite.util.OatMapLH;
 import org.skb.util.pattern.Request;
+import org.skb.util.types.atomic.util.OatSTGManager;
+import org.skb.util.types.composite.util.OatMapLH;
 
 public class TextPlainBuilder extends SKBBuilder{
 	protected String tpl_list="Dist.Acronyms.Entries2Text-Plain:Template";

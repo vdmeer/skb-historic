@@ -36,8 +36,8 @@ import java.util.LinkedHashMap;
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
-import org.skb.util.ReportManager;
 import org.skb.util.languages.AtomList;
+import org.skb.util.misc.ReportManager;
 
 /**
  * Pass 1 of the Pola parser, syntax checks and building a symbol table.

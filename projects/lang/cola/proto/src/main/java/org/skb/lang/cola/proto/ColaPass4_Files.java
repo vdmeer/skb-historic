@@ -42,12 +42,10 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
-import org.skb.types.atomic.java.OatBoolean;
-import org.skb.types.base.OatBaseAtomic;
+import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
-import org.skb.util.stringtemplate.FileTemplateList;
-
-import antlr.CommonToken;
+import org.skb.util.types.atomic.java.OatBoolean;
+import org.skb.util.types.base.OatBaseAtomic;
 
 /**
  * Pass 4 of the Cola Parser, generating files for output.
@@ -428,11 +426,5 @@ public class ColaPass4_Files {
 		else
 			ret.put(ColaConstants.Tokens.gcMiscInDefinition, "true");
 		return ret;
-	}
-
-	public void testtest(){
-		CommonToken t=new CommonToken(0, "test");
-		int a=5;
-		String s=new String(Integer.toString(a));
 	}
 }

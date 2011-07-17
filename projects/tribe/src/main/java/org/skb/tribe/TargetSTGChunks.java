@@ -30,8 +30,8 @@
 
 package org.skb.tribe;
 
-import org.skb.types.atomic.util.OatArrayListAtomic;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.util.OatArrayListAtomic;
+import org.skb.util.types.composite.util.OatMapLH;
 
 /**
  * Class that checks the chunks of a given string template with a required list.

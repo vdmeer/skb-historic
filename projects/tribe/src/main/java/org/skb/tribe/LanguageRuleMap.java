@@ -30,9 +30,9 @@
 
 package org.skb.tribe;
 
-import org.skb.types.base.OatBase;
-import org.skb.types.composite.util.OatLanguageRuleMap;
-import org.skb.types.composite.util.OatMapLH;
+import org.skb.util.types.base.OatBase;
+import org.skb.util.types.composite.util.OatLanguageRuleMap;
+import org.skb.util.types.composite.util.OatMapLH;
 import org.apache.commons.lang.StringUtils;
 
 /**
