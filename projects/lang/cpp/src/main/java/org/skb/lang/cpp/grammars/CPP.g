@@ -29,16 +29,16 @@
  */
 
 /*
- * EBNF ANTLR grammar for Org.SKB.Lang.Preprocessor
+ * EBNF ANTLR grammar for Org.SKB.Lang.CPP
  *
- * @package    org.skb.lang.preprocessor
+ * @package    org.skb.lang.cpp
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @copyright  2011-2011 Sven van der Meer
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v0.31 build 110208 (08-Feb-11)
  */
 
-grammar Preprocessor;
+grammar CPP;
 
 options
 {
@@ -48,11 +48,11 @@ options
 }
 
 @header{
-  package org.skb.lang.preprocessor.grammars;
+  package org.skb.lang.cpp.grammars;
 }
 
 @lexer::header{
-  package org.skb.lang.preprocessor.grammars;
+  package org.skb.lang.cpp.grammars;
 }
 
 @members{

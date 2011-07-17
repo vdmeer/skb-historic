@@ -28,7 +28,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.lang.preprocessor;
+package org.skb.lang.cpp;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -37,11 +37,11 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-import org.skb.lang.preprocessor.grammars.PreprocessorLexer;
-import org.skb.lang.preprocessor.grammars.PreprocessorParser;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.tree.Tree;
+import org.skb.lang.cpp.grammars.CPPLexer;
+import org.skb.lang.cpp.grammars.CPPParser;
 
 /**
  * This class is the Tribe preprocessor. It is automatically called if preprocessing is requested.
@@ -58,13 +58,13 @@ import org.antlr.runtime.tree.Tree;
  * @author     Sven van der Meer
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public class Preprocessor {
+public class CPP {
     public void parse(String fin, PrintWriter fout) {
     	try {
     		int curLine=1;
-    		PreprocessorLexer lexer = new PreprocessorLexer();
+    		CPPLexer lexer = new CPPLexer();
     		CommonTokenStream tokens = new CommonTokenStream(lexer);
-    		PreprocessorParser parser = new PreprocessorParser(tokens);
+    		CPPParser parser = new CPPParser(tokens);
 
     		FileInputStream fstream = new FileInputStream(fin);
     	    DataInputStream in = new DataInputStream(fstream);
@@ -78,14 +78,14 @@ public class Preprocessor {
     	    		lexer.reset();
     	    		lexer.setCharStream(new ANTLRStringStream(line));
     	    		tokens = new CommonTokenStream(lexer);
-    	    		parser = new PreprocessorParser(tokens);
-    	    		PreprocessorParser.start_return result = parser.start();
+    	    		parser = new CPPParser(tokens);
+    	    		CPPParser.start_return result = parser.start();
     	    		Tree t = (Tree)result.getTree();
     	    		String _switch=t.getText();
     	    		if(_switch.equalsIgnoreCase("include")){
     	    			String fn=t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1);
     	    			fout.flush();
-    	    			Preprocessor _cpp=new Preprocessor();
+    	    			CPP _cpp=new CPP();
     	    			_cpp.parse(fn, fout);
     	    			fout.println("#file \""+fin+":"+curLine+"\"");
     	    		}
