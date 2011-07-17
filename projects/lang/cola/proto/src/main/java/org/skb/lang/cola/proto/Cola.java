@@ -53,6 +53,12 @@ public class Cola{
 
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
 		cfg.read("/org/skb/lang/cola/proto/proto.json");
+//		cfg.read(new String[] {"/org/skb/lang/cola/proto/proto.json",
+//   	                           "/org/skb/lang/cola/proto/lang-rules.json",
+//	                           "/org/skb/lang/cola/proto/lang-tokens.json"
+//                               }
+//		);
+
 
 		Tribe tribe=new Tribe();
 
