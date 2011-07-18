@@ -28,9 +28,9 @@
  */
 
 /*
- * Template for the SKB Report Manager in Org.SKB.Util
+ * Template for the SKB Report Manager in Org.SKB.Util.Misc
  *
- * @package    org.skb.util
+ * @package    org.skb.util.misc
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @copyright  2011-2011 Sven van der Meer
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
