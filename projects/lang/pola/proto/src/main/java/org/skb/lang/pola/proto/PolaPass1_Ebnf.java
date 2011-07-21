@@ -73,6 +73,11 @@ public class PolaPass1_Ebnf {
 
 		this.lastContractDeclScopeAtom="";
 		this.contractDeclScope=new LinkedHashMap<String,String>();
+
+		//initialise the AtomList with spec
+		this.atoms.addRow(PolaConstants.Tokens.polaSPECIFICATION);
+		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValCategory, PolaConstants.Tokens.polaVOID);
+		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValType, PolaConstants.Tokens.polaVOID);
 	}
 
 	//add propertyDeclarationScope atoms and rank, check that atom is not redefined

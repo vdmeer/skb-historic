@@ -32,11 +32,11 @@ package org.skb.kb;
 
 import org.skb.util.pattern.Builder;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public abstract class SKBBuilder implements Builder {
 	protected SKBTemplateManager templates=new SKBTemplateManager();
-	protected OatMapLH registered_templates=null;
+	protected TSMapLH registered_templates=null;
 
 	public SKBBuilder(){}
 
@@ -47,12 +47,12 @@ public abstract class SKBBuilder implements Builder {
 			this.templates.set_header();
 	}
 
-	public final void execute(Request request, OatMapLH entries){
+	public final void execute(Request request, TSMapLH entries){
 		if(this.isInitialised())
 			this.execute_loop(request, entries);
 	}
 
-	abstract protected void execute_loop(Request request, OatMapLH entries);
+	abstract protected void execute_loop(Request request, TSMapLH entries);
 
 	public final boolean isInitialised(){
 		if(this.templates!=null)

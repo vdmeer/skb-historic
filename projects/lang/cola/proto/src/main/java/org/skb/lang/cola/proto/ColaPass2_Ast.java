@@ -45,7 +45,6 @@ import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeToken;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.OatValueIsNullException;
 
 /**
  * Pass 2 of the Cola parser, mostly looking into semantic analysis.
@@ -302,32 +301,22 @@ public class ColaPass2_Ast {
 		int size=al.size();
 		for(int i=0; i<size; i++){
 			if(!this.propDefList.containsKey(al.get(i))){
-				try {
-					ReportManager.getInstance().reportError(
-							this.cr.getRule(ColaConstants.Rules.ruleProperty01, new String[]{al.get(i), category, this.atoms.scope.toString()}),
-							this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty01),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).getValue(),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).getValue());
-				} catch (OatValueIsNullException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ReportManager.getInstance().reportError(
+						this.cr.getRule(ColaConstants.Rules.ruleProperty01, new String[]{al.get(i), category, this.atoms.scope.toString()}),
+						this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty01),
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).tsvalue,
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).tsvalue);
 			}
 		}
 		al=this.propertyDeclList.get(ColaConstants.Tokens.colaREQUIRED,category);
 		size=al.size();
 		for(int i=0; i<size; i++){
 			if(!this.propDefList.containsKey(al.get(i))){
-				try {
-					ReportManager.getInstance().reportError(
-							this.cr.getRule(ColaConstants.Rules.ruleProperty02, new String[]{al.get(i), category, this.atoms.scope.toString()}),
-							this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty02),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).getValue(),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).getValue());
-				} catch (OatValueIsNullException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ReportManager.getInstance().reportError(
+						this.cr.getRule(ColaConstants.Rules.ruleProperty02, new String[]{al.get(i), category, this.atoms.scope.toString()}),
+						this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty02),
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).tsvalue,
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).tsvalue);
 			}
 		}
 	}
@@ -368,16 +357,11 @@ public class ColaPass2_Ast {
 		int size=al.size();
 		for(int i=0; i<size; i++){
 			if(!this.contDefList.containsKey(al.get(i))){
-				try {
-					ReportManager.getInstance().reportError(
-							this.cr.getRule(ColaConstants.Rules.ruleContract03, new String[]{al.get(i), category, this.atoms.scope.toString()}),
-							this.cr.getRuleAdd(ColaConstants.Rules.ruleContract03),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).getValue(),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).getValue());
-				} catch (OatValueIsNullException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ReportManager.getInstance().reportError(
+						this.cr.getRule(ColaConstants.Rules.ruleContract03, new String[]{al.get(i), category, this.atoms.scope.toString()}),
+						this.cr.getRuleAdd(ColaConstants.Rules.ruleContract03),
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).tsvalue,
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).tsvalue);
 			}
 		}
 
@@ -386,16 +370,11 @@ public class ColaPass2_Ast {
 		size=al.size();
 		for(int i=0; i<size; i++){
 			if(!this.contDefList.containsKey(al.get(i))){
-				try {
-					ReportManager.getInstance().reportError(
-							this.cr.getRule(ColaConstants.Rules.ruleContract04, new String[]{al.get(i), category, this.atoms.scope.toString()}),
-							this.cr.getRuleAdd(ColaConstants.Rules.ruleContract04),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).getValue(),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).getValue());
-				} catch (OatValueIsNullException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ReportManager.getInstance().reportError(
+						this.cr.getRule(ColaConstants.Rules.ruleContract04, new String[]{al.get(i), category, this.atoms.scope.toString()}),
+						this.cr.getRuleAdd(ColaConstants.Rules.ruleContract04),
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).tsvalue,
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).tsvalue);
 			}
 		}
 
@@ -546,16 +525,11 @@ public class ColaPass2_Ast {
 		int size=al.size();
 		for(int i=0; i<size; i++){
 			if(!this.itemDefList.containsKey(scoped_add+al.get(i))){
-				try {
 					ReportManager.getInstance().reportError(
-							this.cr.getRule(ColaConstants.Rules.ruleItem09, new String[]{al.get(i), category, this.atoms.scope.toString()}),
-							this.cr.getRuleAdd(ColaConstants.Rules.ruleItem09),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).getValue(),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).getValue());
-				} catch (OatValueIsNullException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+						this.cr.getRule(ColaConstants.Rules.ruleItem09, new String[]{al.get(i), category, this.atoms.scope.toString()}),
+						this.cr.getRuleAdd(ColaConstants.Rules.ruleItem09),
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).tsvalue,
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).tsvalue);
 			}
 		}
 
@@ -563,16 +537,11 @@ public class ColaPass2_Ast {
 		size=al.size();
 		for(int i=0; i<size; i++){
 			if(!this.itemDefList.containsKey(scoped_add+al.get(i))){
-				try {
-					ReportManager.getInstance().reportError(
-							this.cr.getRule(ColaConstants.Rules.ruleItem10, new String[]{al.get(i), category, this.atoms.scope.toString()}),
-							this.cr.getRuleAdd(ColaConstants.Rules.ruleItem10),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).getValue(),
-							this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).getValue());
-				} catch (OatValueIsNullException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ReportManager.getInstance().reportError(
+						this.cr.getRule(ColaConstants.Rules.ruleItem10, new String[]{al.get(i), category, this.atoms.scope.toString()}),
+						this.cr.getRuleAdd(ColaConstants.Rules.ruleItem10),
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValLine).tsvalue,
+						this.atoms.getInteger(this.atoms.scope.toString(),AtomList.alValColumn).tsvalue);
 			}
 		}
 		this.currentItemDef=null;

@@ -46,34 +46,34 @@ import org.skb.util.misc.Json2Oat;
 import org.skb.util.pattern.Request;
 import org.skb.util.sql.DBPDOs;
 import org.skb.util.sql.PDOConnect;
-import org.skb.util.types.TypeRepository.ATType;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.atomic.util.OatPDO;
-import org.skb.util.types.atomic.util.OatScope;
-import org.skb.util.types.base.OatBase;
-import org.skb.util.types.base.OatBaseArrayList;
-import org.skb.util.types.base.OatBaseMap;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.db.TSPDO;
+import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.atomic.util.TSScope;
+import org.skb.util.types.composite.util.TSArrayList;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public class SKB {
 	private String lang;
 	public static String site_id;
 
-	public OatMapLH configuration;
+	public TSMapLH configuration;
 
 	private DBPDOs dbpdos;
 
-	private OatArrayListString registered_packages; 
+	private TSArrayListString registered_packages; 
 
-	private OatMapLH registered_fields;
-	private OatMapLH registered_requests;
-	private OatMapLH registered_readers;
-	private OatMapLH registered_builders;
-	private OatMapLH registered_templates;
-	private OatMapLH registered_interpreters;
-	private OatMapLH registered_applications;
+	private TSMapLH registered_fields;
+	private TSMapLH registered_requests;
+	private TSMapLH registered_readers;
+	private TSMapLH registered_builders;
+	private TSMapLH registered_templates;
+	private TSMapLH registered_interpreters;
+	private TSMapLH registered_applications;
 
 	private I18NManager i18n; 
 
@@ -86,17 +86,17 @@ public class SKB {
 	}
 
 	private SKB(){
-		this.configuration=new OatMapLH();
+		this.configuration=new TSMapLH();
 		this.dbpdos=new DBPDOs();
-		this.registered_packages=new OatArrayListString();
+		this.registered_packages=new TSArrayListString();
 
-		this.registered_fields=new OatMapLH();
-		this.registered_requests=new OatMapLH();
-		this.registered_readers=new OatMapLH();
-		this.registered_builders=new OatMapLH();
-		this.registered_templates=new OatMapLH();
-		this.registered_interpreters=new OatMapLH();
-		this.registered_applications=new OatMapLH();
+		this.registered_fields=new TSMapLH();
+		this.registered_requests=new TSMapLH();
+		this.registered_readers=new TSMapLH();
+		this.registered_builders=new TSMapLH();
+		this.registered_templates=new TSMapLH();
+		this.registered_interpreters=new TSMapLH();
+		this.registered_applications=new TSMapLH();
 
 		this.i18n=new I18NManager(); 
 
@@ -107,9 +107,9 @@ public class SKB {
 
 		String root_classes = "/classes/";
 		String root_skb = "/skb";
-		String root_document = "v:/dev/skb-eclipse/kb/src/main/resources";
+		String root_document = "V:/dev/projects/skb/skb-eclipse/kb/src/main/resources";
 
-		OatMapLH __cfg_array=new OatMapLH();
+		TSMapLH __cfg_array=new TSMapLH();
 		__cfg_array.put("root-document", root_document);
 		__cfg_array.put("root-skb", root_skb);
 		__cfg_array.put("root-classes", root_classes);
@@ -129,57 +129,57 @@ public class SKB {
 			ResultSet rs;
 
 			//load the skb configuration
-			o=new PDOConnect(((OatString)__cfg_array.get("config-core")).oatValue);
+			o=new PDOConnect(((TSString)__cfg_array.get("config-core")).tsvalue);
 			c=o.connection;
 			try{
 				rs=c.createStatement().executeQuery("SELECT * FROM skb_cfg");
 				String collection;
 				String part;
-				OatString value;
+				TSString value;
 				Boolean explode;
 				while (rs.next()) {
 					collection=rs.getString("collection");
 					part=rs.getString("part");
-					value=new OatString(rs.getString("value"));
+					value=new TSString(rs.getString("value"));
 				explode=rs.getBoolean("field_explodes");
 
 					if(!this.configuration.containsKey(collection)){
-						this.configuration.put(collection, new OatMapLH());
+						this.configuration.put(collection, new TSMapLH());
 					}
 
 					if(explode)
-						this.configuration.put(collection+"/"+part, value.explode());
+						this.configuration.put(collection+"/"+part, value.tsExplode());
 					else
 						this.configuration.put(collection+"/"+part, value);
 				}
 				this.configuration.put("skb/site-id", __cfg_array.get("skb_site_id"));
 				SKB.site_id=this.configuration.get("skb/site-id").toString();
-				this.dbpdos.pdo_add("core:cfg", __cfg_array.get("config-core").getValue().toString(), new OatArrayListString("skb_cfg"), new OatPDO(c), "core:cfg");
+				this.dbpdos.pdo_add("core:cfg", __cfg_array.get("config-core").toString(), new TSArrayListString("skb_cfg"), new TSPDO(c), "core:cfg");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 			//load the site specific configuration
-			o=new PDOConnect(((OatString)__cfg_array.get("config-site")).oatValue);
+			o=new PDOConnect(((TSString)__cfg_array.get("config-site")).tsvalue);
 			c=o.connection;
 			try{
 				rs=c.createStatement().executeQuery("SELECT * FROM configuration");
 				String collection;
 				String part;
-				OatString value;
+				TSString value;
 				Boolean explode;
 				while (rs.next()) {
 					collection=rs.getString("collection");
 					part=rs.getString("part");
-					value=new OatString(rs.getString("value"));
+					value=new TSString(rs.getString("value"));
 					explode=rs.getBoolean("field_explodes");
 
 					if(!this.configuration.containsKey(collection)){
-						this.configuration.put(collection, new OatMapLH());
+						this.configuration.put(collection, new TSMapLH());
 					}
 
 					if(explode)
-						this.configuration.put(collection+"/"+part, value.explode());
+						this.configuration.put(collection+"/"+part, value.tsExplode());
 					else
 						this.configuration.put(collection+"/"+part, value);
 				}
@@ -193,7 +193,7 @@ public class SKB {
 				this.configuration.put("skb/target",            "java");
 
 				this.configuration.put("server/root-fs",        __cfg_array.get("root-document"));
-				this.configuration.put("server/access-remote",  new OatBoolean(true));
+				this.configuration.put("server/access-remote",  new TSBoolean(true));
 
 				this.configuration.put("server/root-http",      this.configuration.get("skb/root-skb").toString());
 
@@ -232,13 +232,14 @@ public class SKB {
 					this.configuration.remove("path/figures-local");
 				}
 
-				this.dbpdos.pdo_add("site:cfg", __cfg_array.get("config-site").getValue().toString(), new OatArrayListString("skb_cfg"), new OatPDO(c), "site:cfg");
+				this.dbpdos.pdo_add("site:cfg", __cfg_array.get("config-site").toString(), new TSArrayListString("skb_cfg"), new TSPDO(c), "site:cfg");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 
-System.out.println("original now");
+//System.out.println("original now");
+//System.err.println(this.configuration);
 /*
         $this->db_scope=SKB_DBScope::get_instance();
 
@@ -315,20 +316,20 @@ System.out.println("original now");
 			System.exit(-10);
 		}
 
-		OatPDO pdo;
+		TSPDO pdo;
 		ResultSet rs;
 		ArrayList<String> cols=null;
 
 		File pkg_file_db_fh=new File(pkg_file_db);
 		if(pkg_file_db_fh.canRead()){
-			pdo=new OatPDO(new PDOConnect(pkg_file_db).connection);
+			pdo=new TSPDO(new PDOConnect(pkg_file_db).connection);
 			ArrayList<String> tables=new ArrayList<String>();
 
 			//package fields
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_fields")){
 				tables.add(pkg+":pkg_fields");
-				rs=pdo.oatValue.query("*", "pkg_fields", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_fields", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						for(int i=1;i<cols.size();i++)
@@ -343,8 +344,8 @@ System.out.println("original now");
 			//package requests
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_requests")){
 				tables.add(pkg+":pkg_requests");
-				rs=pdo.oatValue.query("*", "pkg_requests", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_requests", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						//if(SKB_LOAD_PACKAGE_NOTICE===true){
@@ -364,12 +365,12 @@ System.out.println("original now");
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_rabit")){
 				tables.add(pkg+":pkg_rabit");
 
-				rs=pdo.oatValue.query("*", "pkg_rabit", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_rabit", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						if(cols.contains("core:rabit:type")){
-							OatMapLH tmap=null;
+							TSMapLH tmap=null;
 							String type=rs.getString("core:rabit:type");
 							if(type.equals("reader"))
 								tmap=this.registered_readers;
@@ -385,14 +386,14 @@ System.out.println("original now");
 								System.err.println("SKB_Main: Unknown RABIT type: "+type);
 
 							if(tmap!=null){
-								OatString t;
+								TSString t;
 								for(int i=1;i<cols.size();i++){
 									// TODO if(SKB_LOAD_PACKAGE_NOTICE===true){
 									if(cols.get(i).equals("core:rabit:target:class")||cols.get(i).equals("core:rabit:target:template")){
 										t=null;
-										t=new OatString(rs.getString(cols.get(i)));
-										if(t!=null&&t.oatValue!=null)
-											tmap.put(rs.getString("key")+"/"+cols.get(i), t.explode());
+										t=new TSString(rs.getString(cols.get(i)));
+										if(t!=null&&t.tsvalue!=null)
+											tmap.put(rs.getString("key")+"/"+cols.get(i), t.tsExplode());
 									}
 									else
 										tmap.put(rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
@@ -406,15 +407,15 @@ System.out.println("original now");
 				}
 			}
 
-			OatMapLH http_ar=new OatMapLH();
+			TSMapLH http_ar=new TSMapLH();
 
 			//http_status_codes
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_status_codes")){
 				tables.add(pkg+":pkg_http_status_codes");
-				http_ar.put("http_status_codes", new OatMapLH());
+				http_ar.put("http_status_codes", new TSMapLH());
 
-				rs=pdo.oatValue.query("*", "pkg_http_status_codes", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_http_status_codes", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						for(int i=1;i<cols.size();i++)
@@ -429,10 +430,10 @@ System.out.println("original now");
 			//http_headers_request
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_headers_request")){
 				tables.add(pkg+":pkg_http_headers_request");
-				http_ar.put("http_headers_request", new OatMapLH());
+				http_ar.put("http_headers_request", new TSMapLH());
 
-				rs=pdo.oatValue.query("*", "pkg_http_headers_request", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_http_headers_request", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						for(int i=1;i<cols.size();i++)
@@ -447,10 +448,10 @@ System.out.println("original now");
 			//http_headers_response
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_headers_response")){
 				tables.add(pkg+":pkg_http_headers_response");
-				http_ar.put("http_headers_response", new OatMapLH());
+				http_ar.put("http_headers_response", new TSMapLH());
 
-				rs=pdo.oatValue.query("*", "pkg_http_headers_response", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_http_headers_response", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						for(int i=1;i<cols.size();i++)
@@ -465,10 +466,10 @@ System.out.println("original now");
 			//http_request_methods
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_request_methods")){
 				tables.add(pkg+":pkg_http_request_methods");
-				http_ar.put("http_request_methods", new OatMapLH());
+				http_ar.put("http_request_methods", new TSMapLH());
 
-				rs=pdo.oatValue.query("*", "pkg_http_request_methods", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_http_request_methods", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						for(int i=1;i<cols.size();i++)
@@ -483,10 +484,10 @@ System.out.println("original now");
 			//mime_content_types
 			if(this.dbpdos.pdo_table_exists(pdo, "pkg_mime_content_types")){
 				tables.add(pkg+":pkg_mime_content_types");
-				http_ar.put("mime_content_types", new OatMapLH());
+				http_ar.put("mime_content_types", new TSMapLH());
 
-				rs=pdo.oatValue.query("*", "pkg_mime_content_types", null, null);
-				cols=pdo.oatValue.get_columns();
+				rs=pdo.query("*", "pkg_mime_content_types", null, null);
+				cols=pdo.get_columns();
 				try{
 					while(rs.next()){
 						for(int i=1;i<cols.size();i++)
@@ -504,35 +505,39 @@ System.out.println("original now");
 			}
 
 			//register pdo
-			this.dbpdos.pdo_add("reg:"+pkg, pkg_file_db, new OatArrayListString(tables), pdo, "reg:"+pkg);
+			this.dbpdos.pdo_add("reg:"+pkg, pkg_file_db, new TSArrayListString(tables), pdo, "reg:"+pkg);
 		}
 
 		//if file_exists pkg.json load file
 		File pkg_json_fn=new File(pkg_file_json);
 		if(pkg_json_fn.canRead()){
 			Json2Oat j2o=new Json2Oat();
-			OatMapLH res=j2o.read(pkg_json_fn).getValOatMapLH();
+			TSBase _t=j2o.read(pkg_json_fn);
+			TSMapLH res=new TSMapLH();
+			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+				res=(TSMapLH)_t;
+
 			if(res!=null){
 				if(res.containsKey("require_package")){
-					OatBase reqpkg=(res).get("require_package");
-					if(reqpkg.getTypeEnum()==ATType.OAT_ATOMIC_STRING)
-						reqpkg=((OatString)res.get("require_package")).explode();
-					if(reqpkg.getTypeEnum()==ATType.OAT_ARRAYLIST_STRING){
-						for(int i=0;i<((OatArrayListString)reqpkg).size();i++){
-							this.requirePackage(((OatArrayListString)reqpkg).get(i).toString());
+					TSBase reqpkg=(res).get("require_package");
+					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+						reqpkg=((TSString)res.get("require_package")).tsExplode();
+					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
+						for(int i=0;i<((TSArrayListString)reqpkg).size();i++){
+							this.requirePackage(((TSArrayListString)reqpkg).get(i).toString());
 						}
 					}
 				}
 				if(res.containsKey("load_database")){
-					OatBaseArrayList ar=res.get("load_database").getValOatArrayList();
+					TSArrayList ar=(TSArrayList)res.get("load_database");
 					if(ar!=null){
 						for(int i=0;i<ar.size();i++){
-							OatMapLH ld=ar.get(i).getValOatMapLH();
+							TSMapLH ld=(TSMapLH)ar.get(i);
 							if(ld!=null){
 								if(ld.containsKey("fn")&&ld.containsKey("tables")){
-									OatBase tables=((OatString)ld.get("tables")).explode();
-									if(tables.getTypeEnum()==ATType.OAT_ARRAYLIST_STRING)
-										this.loadDatabase(ld.get("fn").toString(), (OatArrayListString)tables, pkg, null);
+									TSBase tables=((TSString)ld.get("tables")).tsExplode();
+									if(tables.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING))
+										this.loadDatabase(ld.get("fn").toString(), (TSArrayListString)tables, pkg, null);
 								}
 							}
 						}
@@ -540,10 +545,10 @@ System.out.println("original now");
 				}
 			}
 			if(res.containsKey("text_domain")){
-				OatBaseArrayList ar=res.get("text_domain").getValOatArrayList();
+				TSArrayList ar=(TSArrayList)res.get("text_domain");
 				if(ar!=null){
 					for(int i=0;i<ar.size();i++){
-						OatMapLH ld=((OatBaseArrayList)ar).get(i).getValOatMapLH();
+						TSMapLH ld=(TSMapLH)((TSArrayList)ar).get(i);
 						if(ld!=null)
 							if(ld.containsKey("domain"))
 								this.i18n.addDomain(ld.get("domain").toString(), new Locale(this.configuration.get("system/lang").toString()));
@@ -555,12 +560,12 @@ System.out.println("original now");
 		this.registered_packages.add(pkg);
 
 		//clean the local maps, i.e. remove all zero/null entries
-		this.registered_requests.clean();
-		this.registered_readers.clean();
-		this.registered_applications.clean();
-		this.registered_builders.clean();
-		this.registered_interpreters.clean();
-		this.registered_templates.clean();
+		this.registered_requests.tsClean();
+		this.registered_readers.tsClean();
+		this.registered_applications.tsClean();
+		this.registered_builders.tsClean();
+		this.registered_interpreters.tsClean();
+		this.registered_templates.tsClean();
 		//add SKB_LOAD_PACKAGE_NOTICE===true echo(pkg loaded)
 	}
 
@@ -604,14 +609,14 @@ System.out.println("original now");
 	  * @param pkg name as package for the PDO repository or null if simple name is used
 	  * @param name simple name for the PDO repository
 	  */
-	public void loadDatabase(String fn, OatArrayListString tables, String pkg, String name){
+	public void loadDatabase(String fn, TSArrayListString tables, String pkg, String name){
 		String key;
 		if(name!=null)
 			key=name;
 		else
 			key="pkg:"+pkg;
 		String dbFile=this.configuration.get("path/database")+fn+".db";
-		OatPDO pdo=new OatPDO(new PDOConnect(dbFile).connection);
+		TSPDO pdo=new TSPDO(new PDOConnect(dbFile).connection);
 		for(int i=1;i<tables.size();i++){
 			if(this.dbpdos.pdo_table_exists(pdo, tables.get(i).toString())==false){
 				//TODO trigger_error('SKB_Main: Database Table not found: '.$tables[$_keys[$i]].' in '.$db_file, E_USER_ERROR);
@@ -627,7 +632,7 @@ System.out.println("original now");
 	 * 
 	 * @return the current configuration array
 	 */
-	public OatMapLH getConfiguration(){
+	public TSMapLH getConfiguration(){
 		return this.configuration;
 	}
 
@@ -638,7 +643,7 @@ System.out.println("original now");
 	 * @param key name of the requested key; if null then the group is returned
 	 * @return the configuration value if it exists
 	 */
-	public OatBase getConfiguration(String group, String key){
+	public TSBase getConfiguration(String group, String key){
 		if(key==null)
 			return this.configuration.get(group);
 		else
@@ -651,7 +656,7 @@ System.out.println("original now");
 	 * 
 	 * @return list of all registered fields
 	 */
-	public OatMapLH getRegisteredFields(){
+	public TSMapLH getRegisteredFields(){
 		return this.registered_fields; 				
 	}
 
@@ -661,7 +666,7 @@ System.out.println("original now");
 	 * @param key name of the field
 	 * @return field entry if it exists null otherwise
 	 */
-	public OatBase getRegisteredFields(String key){
+	public TSBase getRegisteredFields(String key){
 		if(this.registered_fields.containsKey(key))
 			return this.registered_fields.get(key);
 		return null;
@@ -673,7 +678,7 @@ System.out.println("original now");
 	 * 
 	 * @return list of all registered requests
 	 */
-	public OatMapLH getRegisteredRequests(){
+	public TSMapLH getRegisteredRequests(){
 		return this.registered_requests; 				
 	}
 
@@ -683,7 +688,7 @@ System.out.println("original now");
 	 * @param key name of the requests
 	 * @return requests entry if it exists null otherwise
 	 */
-	public OatBase getRegisteredRequests(String key){
+	public TSBase getRegisteredRequests(String key){
 		if(this.registered_requests.containsKey(key))
 			return this.registered_requests.get(key);
 		return null;
@@ -694,7 +699,7 @@ System.out.println("original now");
 	 * 
 	 * @return list of all registered readers
 	 */
-	public OatMapLH getRegisteredReaders(){return this.registered_readers;}
+	public TSMapLH getRegisteredReaders(){return this.registered_readers;}
 
 	/**
 	 * Return the specified reader.
@@ -702,9 +707,9 @@ System.out.println("original now");
 	 * @param key name of the reader
 	 * @return reader entry if it exists null otherwise
 	 */
-	public OatMapLH getRegisteredReaders(String key){
+	public TSMapLH getRegisteredReaders(String key){
 		if(this.registered_readers.containsKey(key))
-			return (OatMapLH)this.registered_readers.get(key);
+			return (TSMapLH)this.registered_readers.get(key);
 		return null;
 	}
 
@@ -713,7 +718,7 @@ System.out.println("original now");
 	 * 
 	 * @return list of all registered builders
 	 */
-	public OatMapLH getRegisteredBuilders(){return this.registered_builders;}
+	public TSMapLH getRegisteredBuilders(){return this.registered_builders;}
 
 	/**
 	 * Return the specified builder.
@@ -721,9 +726,9 @@ System.out.println("original now");
 	 * @param key name of the builder
 	 * @return builder entry if it exists null otherwise
 	 */
-	public OatMapLH getRegisteredBuilders(String key){
+	public TSMapLH getRegisteredBuilders(String key){
 		if(this.registered_builders.containsKey(key))
-			return (OatMapLH)this.registered_builders.get(key);
+			return (TSMapLH)this.registered_builders.get(key);
 		return null;
 	}
 
@@ -732,7 +737,7 @@ System.out.println("original now");
 	 * 
 	 * @return list of all registered templates
 	 */
-	public OatMapLH getRegisteredTemplates(){return this.registered_templates;}
+	public TSMapLH getRegisteredTemplates(){return this.registered_templates;}
 
 	/**
 	 * Return the specified template.
@@ -740,9 +745,9 @@ System.out.println("original now");
 	 * @param key name of the template
 	 * @return template entry if it exists null otherwise
 	 */
-	public OatMapLH getRegisteredTemplates(String key){
+	public TSMapLH getRegisteredTemplates(String key){
 		if(this.registered_templates.containsKey(key))
-			return (OatMapLH)this.registered_templates.get(key);
+			return (TSMapLH)this.registered_templates.get(key);
 		return null;
 	}
 
@@ -751,7 +756,7 @@ System.out.println("original now");
 	 * 
 	 * @return list of all registered interpreters
 	 */
-	public OatMapLH getRegisteredInterpreters(){return this.registered_interpreters;}
+	public TSMapLH getRegisteredInterpreters(){return this.registered_interpreters;}
 
 	/**
 	 * Return the specified interpreter.
@@ -759,9 +764,9 @@ System.out.println("original now");
 	 * @param key name of the interpreter
 	 * @return interpreter entry if it exists null otherwise
 	 */
-	public OatMapLH getRegisteredInterpreters(String key){
+	public TSMapLH getRegisteredInterpreters(String key){
 		if(this.registered_interpreters.containsKey(key))
-			return (OatMapLH)this.registered_interpreters.get(key);
+			return (TSMapLH)this.registered_interpreters.get(key);
 		return null;
 	}
 
@@ -770,7 +775,7 @@ System.out.println("original now");
 	 * 
 	 * @return list of all registered applications
 	 */
-	public OatMapLH getRegisteredApplications(){return this.registered_applications;}
+	public TSMapLH getRegisteredApplications(){return this.registered_applications;}
 
 	/**
 	 * Return the specified application.
@@ -778,9 +783,9 @@ System.out.println("original now");
 	 * @param key name of the application
 	 * @return interpreter entry if it exists null otherwise
 	 */
-	public OatMapLH getRegisteredApplications(String key){
+	public TSMapLH getRegisteredApplications(String key){
 		if(this.registered_applications.containsKey(key))
-			return (OatMapLH)this.registered_applications.get(key);
+			return (TSMapLH)this.registered_applications.get(key);
 		return null;
 	}
 
@@ -795,7 +800,7 @@ System.out.println("original now");
 			type="Core.Default";
 		if(this.registered_requests.containsKey(type)){
 			Request ret=new Request();
-			ret.setRequestType(type, (OatMapLH)this.registered_requests.get(type), this.registered_fields);
+			ret.setRequestType(type, (TSMapLH)this.registered_requests.get(type), this.registered_fields);
 			return ret;
 		}
 		System.err.println("SKB_Main: request not found: {"+type+"}\n--> USER ERROR");;
@@ -811,7 +816,7 @@ System.out.println("original now");
 	public SKBReader getReader(String key){
 		if(this.registered_readers.containsKey(key)){
 			try{
-				Class<?> theClass=Class.forName((String)this.registered_readers.get(key+"/core:rabit:target:class/java").getValue());
+				Class<?> theClass=Class.forName((String)this.registered_readers.get(key+"/core:rabit:target:class/java").toString());
 				SKBReader ret=(SKBReader)theClass.newInstance();
 				return ret;
 			} catch (Exception e) {
@@ -831,7 +836,7 @@ System.out.println("original now");
 	public SKBBuilder getBuilder(String key){
 		if(this.registered_builders.containsKey(key)){
 			try{
-				Class<?> theClass=Class.forName((String)this.registered_builders.get(key+"/core:rabit:target:class/java").getValue());
+				Class<?> theClass=Class.forName((String)this.registered_builders.get(key+"/core:rabit:target:class/java").toString());
 				SKBBuilder ret=(SKBBuilder)theClass.newInstance();
 				ret.set_templates();
 				return ret;
@@ -852,7 +857,7 @@ System.out.println("original now");
 	public SKBInterpreter getInterpreter(String key){
 		if(this.registered_interpreters.containsKey(key)){
 			try{
-				Class<?> theClass=Class.forName((String)this.registered_interpreters.get(key+"/core:rabit:target:class/java").getValue());
+				Class<?> theClass=Class.forName((String)this.registered_interpreters.get(key+"/core:rabit:target:class/java").toString());
 				SKBInterpreter ret=(SKBInterpreter)theClass.newInstance();
 				return ret;
 			} catch (Exception e) {
@@ -876,9 +881,9 @@ System.out.println("original now");
 	 * @param request request object for parametrisation
 	 * @return interpreted value
 	 */
-	public OatBase interpretData(String id, OatBase val, String table, Request request){
+	public TSBase interpretData(String id, TSBase val, String table, Request request){
 		try{
-			Class<?> theClass=Class.forName((String)this.registered_interpreters.get(id+"/core:rabit:target:class/java").getValue());
+			Class<?> theClass=Class.forName((String)this.registered_interpreters.get(id+"/core:rabit:target:class/java").toString());
 			SKBInterpreter inter=(SKBInterpreter)theClass.newInstance();
 			String type=this.registered_interpreters.get("id/core:rabit:type").toString();
 			if(type.equals("interpreter:core"))
@@ -888,7 +893,7 @@ System.out.println("original now");
 			else if(type.equals("interpreter:value"))
 				((SKBInterpreterValue)inter).interpret(val.toString());
 			else if(type.equals("interpreter:entries"))
-				((SKBInterpreterEntries)inter).interpret((OatMapLH)val, table);
+				((SKBInterpreterEntries)inter).interpret((TSMapLH)val, table);
 			else
 				return null;
 
@@ -909,7 +914,7 @@ System.out.println("original now");
 	public SKBApplication getApplication(String key){
 		if(this.registered_applications.containsKey(key)){
 			try{
-				Class<?> theClass=Class.forName((String)this.registered_applications.get(key+"/core:rabit:target:class/java").getValue());
+				Class<?> theClass=Class.forName((String)this.registered_applications.get(key+"/core:rabit:target:class/java").toString());
 				SKBApplication ret=(SKBApplication)theClass.newInstance();
 				return ret;
 			} catch (Exception e) {
@@ -935,34 +940,34 @@ System.out.println("original now");
 	  }
 */
 
-	public void interpretMap(OatMapLH map, String table){
+	public void interpretMap(TSMapLH map, String table){
 		if(map==null||map.size()==0)
 			return;
-		map.clean();
+		map.tsClean();
 		if(map.size()==0)
 			return;
 
-		this.interpret_map(map, new OatScope());
+		this.interpret_map(map, new TSScope());
 	}
 
-	protected void interpret_map(OatBaseMap map, OatScope scope){
+	protected void interpret_map(TSMapLH map, TSScope scope){
 		if(map==null||map.size()==0)
 			return;
 
 		ArrayList<String> listRemove=new ArrayList<String>();
-		OatMapLH mergeMap=new OatMapLH();
+		TSMapLH mergeMap=new TSMapLH();
 
 		String key;
 		Set<String> o_set = map.keySet();
 		Iterator<String> key_it = o_set.iterator();
 		while(key_it.hasNext()){
 			key=key_it.next();
-			OatBase val=map.get(key);
-			switch(val.getTypeEnum()){
-				case OAT_COMPOSITE_MAP_LH:
-					this.interpret_map((OatBaseMap)val, scope);
+			TSBase val=map.get(key);
+			switch(val.tsGetTypeEnum()){
+				case TS_COMPOSITE_MAP_LH:
+					this.interpret_map((TSMapLH)val, scope);
 					break;
-				case OAT_ATOMIC_STRING:
+				case TS_ATOMIC_JAVA_STRING:
 					if(this.registered_fields.containsKey(key)){
 						String name=this.registered_fields.get(key+"/core:entries_name").toString();
 						String type=this.registered_fields.get(key+"/core:type").toString();
@@ -976,12 +981,12 @@ System.out.println("original now");
 							if(this.registered_fields.get(key+"/core:interpreter")==null){
 								String exp=this.registered_fields.get(key+"/core:explode").toString();
 								if(exp.equals("1")){
-									OatBase newVal=((OatString)val).explode();
-									if(newVal.getTypeEnum().equals(ATType.OAT_ARRAYLIST_STRING)){
-										mergeMap.put(name, new OatMapLH());
-										OatArrayListString m=(OatArrayListString)newVal;
+									TSBase newVal=((TSString)val).tsExplode();
+									if(newVal.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
+										mergeMap.put(name, new TSMapLH());
+										TSArrayListString m=(TSArrayListString)newVal;
 										for(Integer i=0;i<m.size();i++){
-											OatMapLH _t=new OatMapLH();
+											TSMapLH _t=new TSMapLH();
 											_t.put(name+"_key", m.get(i));
 											this.interpret_map(_t, scope);
 											mergeMap.put(name+"/"+i.toString(), _t);
@@ -993,12 +998,12 @@ System.out.println("original now");
 									if(scope.push(table,val.toString())==true){
 										ResultSet rs=null;
 										ArrayList<String> cols=null;
-										OatPDO pdo=null;
+										TSPDO pdo=null;
 	
-										OatMapLH _t=new OatMapLH();
+										TSMapLH _t=new TSMapLH();
 										pdo=this.dbpdos.pdo_select(table);
-										rs=pdo.oatValue.query("*", table, "key = '"+val+"'", null);
-										cols=pdo.oatValue.get_columns();
+										rs=pdo.query("*", table, "key = '"+val+"'", null);
+										cols=pdo.get_columns();
 	
 										try{
 											while(rs.next()){
@@ -1009,7 +1014,7 @@ System.out.println("original now");
 										} catch (Exception e) {
 											e.printStackTrace();
 										}
-										_t.clean();
+										_t.tsClean();
 										this.interpret_map(_t, scope);
 										mergeMap.putAll(_t);
 										listRemove.add(key);
@@ -1030,15 +1035,15 @@ System.out.println("original now");
 						else if (type.equals("value")){
 							String exp=this.registered_fields.get(key+"/core:explode").toString();
 							if(key.endsWith("_locale")){
-								if(((OatString)val).oatValue.contains("%%")){
-									String split[]=((OatString)val).oatValue.split("%%");
+								if(((TSString)val).tsvalue.contains("%%")){
+									String split[]=((TSString)val).tsvalue.split("%%");
 									mergeMap.put(name,this.i18n._(split[0], split[1]));
 									listRemove.add(key);
 								}
-								else if(((OatString)val).oatValue.contains("%")){
-									OatBase newVal=((OatString)val).explode();
-									if(newVal.getTypeEnum().equals(ATType.OAT_COMPOSITE_MAP_LH)){
-										OatMapLH m=(OatMapLH)newVal;
+								else if(((TSString)val).tsvalue.contains("%")){
+									TSBase newVal=((TSString)val).tsExplode();
+									if(newVal.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+										TSMapLH m=(TSMapLH)newVal;
 										String lang=this.lang;
 										if(m.get(lang)!=null)
 											mergeMap.put(name,m.get(lang));
@@ -1051,7 +1056,7 @@ System.out.println("original now");
 								}
 							}
 							else if(exp.equals("1")){
-								mergeMap.put(name,((OatString)val).explode());
+								mergeMap.put(name,((TSString)val).tsExplode());
 								listRemove.add(key);
 							}
 						}
@@ -1073,9 +1078,9 @@ System.out.println("original now");
 		//$this->db_scope->reset();
 	}
 
-	public OatMapLH getFieldSettings(String field){
+	public TSMapLH getFieldSettings(String field){
 		if(this.registered_fields.containsKey(field))
-			return (OatMapLH)this.registered_fields.get(field);
+			return (TSMapLH)this.registered_fields.get(field);
 		return null;
 	}
 
@@ -1083,7 +1088,7 @@ System.out.println("original now");
 	 * Return registered PDOs.
 	 * @return the currently registered PDOs
 	 */
-	public OatMapLH getRegisteredPDOs(){
+	public TSMapLH getRegisteredPDOs(){
 		return this.dbpdos.get_registered_pdos();
 	}
 
@@ -1094,7 +1099,7 @@ System.out.println("original now");
 	 * @param key specific id within a group
 	 * @return map with all information
 	 */
-	public OatMapLH getRegisteredPDOs(String group, String key){
+	public TSMapLH getRegisteredPDOs(String group, String key){
 		return this.dbpdos.get_registered_pdos(group, key);
 	}
 
@@ -1108,11 +1113,11 @@ System.out.println("original now");
 	 * @param order the SQL order string
 	 * @return resulting ResultSet
 	 */
-	public ResultSet sql_query(OatPDO pdo, String select, String table, String where, String order){
+	public ResultSet sql_query(TSPDO pdo, String select, String table, String where, String order){
 		return this.dbpdos.sql_query(pdo, select, table, where, order);
 	}
 
-	public OatPDO pdoSelect(String table){
+	public TSPDO pdoSelect(String table){
 		return this.dbpdos.pdo_select(table);
 	}
 }

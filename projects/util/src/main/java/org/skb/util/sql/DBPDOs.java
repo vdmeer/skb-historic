@@ -36,11 +36,10 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.skb.util.sql.PDO;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.atomic.util.OatPDO;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.db.TSPDO;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Implementation of a PDO object for the SKB.
@@ -52,7 +51,7 @@ public class DBPDOs {
 	/**
 	 * The local array maintaining all PDO objects.
 	 */
-	private OatMapLH db_pdos=new OatMapLH();
+	private TSMapLH db_pdos=new TSMapLH();
 	
 	public DBPDOs(){}
 
@@ -68,12 +67,12 @@ public class DBPDOs {
 	 * @param pdo the actual PDO object
 	 * @param origin string indicating where this PDO information comes form, i.e. from which package
 	 */
-	public void pdo_add(String key, String fn, OatArrayListString tables, OatPDO pdo, String origin){
+	public void pdo_add(String key, String fn, TSArrayListString tables, TSPDO pdo, String origin){
 		int _size=tables.size();
 		for(int i=0;i<_size;i++)
 			this.table_remove(tables.get(i),key);
 
-		this.db_pdos.put(key, new OatMapLH());
+		this.db_pdos.put(key, new TSMapLH());
 		this.db_pdos.put(new ArrayList<String>(Arrays.asList(key, "file")), fn);
 		this.db_pdos.put(new ArrayList<String>(Arrays.asList(key, "pdo")), pdo);
 		this.db_pdos.put(new ArrayList<String>(Arrays.asList(key, "origin")), origin);
@@ -89,8 +88,8 @@ public class DBPDOs {
 	 * @param table to test for
 	 * @return true if table exists, false otherwise
 	 */
-	public boolean pdo_table_exists(OatPDO pdo, String table){
-		return this.pdo_table_exists(pdo.oatValue, table);
+	public boolean pdo_table_exists(TSPDO pdo, String table){
+		return this.pdo_table_exists(pdo.get_core(), table);
 	}
 
 	/**
@@ -136,15 +135,15 @@ public class DBPDOs {
 	 * @param table table to look for
 	 * @return PDO object
 	 */
-	public OatPDO pdo_select(String table){
+	public TSPDO pdo_select(String table){
 		String key;
 		Set<String> o_set = this.db_pdos.keySet();
 		Iterator<String> key_it = o_set.iterator();
 		while(key_it.hasNext()){
 			key=key_it.next();
-			OatArrayListString val=this.db_pdos.get(new ArrayList<String>(Arrays.asList(key, "tables"))).getValOatArrayListString();
+			TSArrayListString val=(TSArrayListString)this.db_pdos.get(new ArrayList<String>(Arrays.asList(key, "tables")));
 			if(val!=null&&val.contains(table))
-				return this.db_pdos.get(key+"/"+"pdo").getValOatPdo();
+				return (TSPDO)this.db_pdos.get(key+"/"+"pdo");
 		}
 		return null;
 	}
@@ -157,16 +156,16 @@ public class DBPDOs {
 	 * @param table table to be removed
 	 * @param who string to indicate who initiated the removal (overwrite effectively), i.e. package name
 	 */
-	private void table_remove(OatString table, String who){
+	private void table_remove(TSString table, String who){
 		String key;
 		Set<String> o_set = this.db_pdos.keySet();
 		Iterator<String> key_it = o_set.iterator();
 		while(key_it.hasNext()){
 			key=key_it.next();
-			OatArrayListString val=this.db_pdos.get(new ArrayList<String>(Arrays.asList(key, "tables"))).getValOatArrayListString();
+			TSArrayListString val=(TSArrayListString)this.db_pdos.get(new ArrayList<String>(Arrays.asList(key, "tables")));
 			if(val!=null&&val.contains(table)){
-				this.db_pdos.get(key+"/"+"tables").getValOatArrayListString().remove(table);
-				this.db_pdos.get(key+"/"+"tables").getValOatArrayListString().add("["+table+" overwritten by "+who+"]");
+				((TSArrayListString)this.db_pdos.get(key+"/"+"tables")).remove(table);
+				((TSArrayListString)this.db_pdos.get(key+"/"+"tables")).add("["+table+" overwritten by "+who+"]");
 			}
 		}
 	}
@@ -184,25 +183,25 @@ public class DBPDOs {
 	 * @param order parameters to the SQL command ORDER (empty on default)
 	 * @return ResultSet object or null if not successful
 	 */
-	public ResultSet sql_query(OatPDO pdo, String select, String table, String where, String order){
+	public ResultSet sql_query(TSPDO pdo, String select, String table, String where, String order){
 		if(pdo==null)
 			pdo=this.pdo_select(table);
-		return pdo.oatValue.query(select, table, where, order);
+		return pdo.query(select, table, where, order);
 	}
 
 	/**
 	 * Return the complete array of registered PDOs.
 	 * @return a map with all currently registered PDO objects
 	 */
-	public OatMapLH get_registered_pdos(){
+	public TSMapLH get_registered_pdos(){
 		return this.db_pdos;
 	}
 
-	public OatMapLH get_registered_pdos(String group, String key){
+	public TSMapLH get_registered_pdos(String group, String key){
 		if(key==null)
-			return this.db_pdos.get("group").getValOatMapLH();
+			return (TSMapLH)this.db_pdos.get("group");
 		else
-			return this.db_pdos.get(group+"/"+key).getValOatMapLH();
+			return (TSMapLH)this.db_pdos.get(group+"/"+key);
 	}
 
 

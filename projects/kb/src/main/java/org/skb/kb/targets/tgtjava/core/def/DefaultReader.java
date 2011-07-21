@@ -32,13 +32,13 @@ package org.skb.kb.targets.tgtjava.core.def;
 
 import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.java.TSString;
 
 public class DefaultReader extends SKBReader {
 
 	@Override
-	protected void prepare_loop(Request request, OatString table,
-			OatString tableCollections) {
+	protected void prepare_loop(Request request, TSString table,
+			TSString tableCollections) {
 		// TODO Auto-generated method stub
 System.err.println("Reader: prepare_loop");		
 	}

@@ -33,6 +33,7 @@ package org.skb.lang.dal;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.antlr.runtime.ANTLRInputStream;
@@ -54,13 +55,13 @@ import org.skb.util.io.files.FileManager;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.TypeRepository;
-import org.skb.util.types.TypeRepository.ATType;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatMapLH;
-import org.skb.util.types.composite.util.OatPropertyMap;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * The core of the Dal parser implementing the whole parsing process.
@@ -74,14 +75,14 @@ public class DalParser extends LanguageParser{
 	private TargetSTG target;
 	private DalStatistics stats;
 
-	public OatPropertyMap getMap(){
+	public TSPropertyMap getMap(){
 		return LanguageProperties.getInstance().getMap();
 	}
 
 	public DalParser(){
 		logger.trace("constructor -- in");
 		this.xs="dal";
-		this.xt=new OatArrayListString();
+		this.xt=new TSArrayListString();
 
 		Set<String> lang=LanguageConfiguration.getInstance().getLanguageTargets().keySet();
 		Iterator<String> it=lang.iterator();
@@ -108,7 +109,7 @@ public class DalParser extends LanguageParser{
 
 		Boolean quietMode=false;
 		try {
-			quietMode=((OatBoolean)prop.getValue(TribeProperties.tpmKeyQuietMode)).getValue();
+			quietMode=((TSBoolean)prop.getValue(TribeProperties.tpmKeyQuietMode)).tsvalue;
 		}
 		catch(Exception e){
 			logger.trace("quiet mode not set in tribe, default false");
@@ -168,18 +169,18 @@ public class DalParser extends LanguageParser{
 			if(!quietMode)
 				repMgr.reportMessageNoFile(msg);
 
-			OatBaseAtomic ata=this.prop.getValue(DalConstants.Properties.keyPrStat);
+			TSBase ata=this.prop.getValue(DalConstants.Properties.keyPrStat);
 			if(!quietMode){
 				this.stats=new DalStatistics();
-				if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
+				if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 					stats.genSimpleStats();
 				ata=this.prop.getValue(DalConstants.Properties.keyPrStatAll);
-				if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
+				if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 					stats.genCompleteStats();
 			}
 
 			ata=this.prop.getValue(TribeProperties.tpmKeyGC);
-			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true){
+			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
 				//repMgr.resetNoOfErrors();
 				CommonTree treeForGen=(CommonTree)fromAst.getTree();
 				CommonTreeNodeStream nodesForGen = new CommonTreeNodeStream(treeForGen);
@@ -196,14 +197,14 @@ public class DalParser extends LanguageParser{
 				DalPass4_Files cfm=new DalPass4_Files();
 
 				FileTemplateList ftl=cfm.getFileTemplateList();
-				ftl.init(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtDir).getValOatAtomicString());
+				ftl.init(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtDir));
 
 				FileManager fm=new FileManager(this.target.getStdHeaderST(), this.target.getFileStartST(), this.target.getFileEndST());
-				fm.init(TribeProperties.getInstance().getValue(TribeProperties.tpmKeySrcLanguage).getValOatAtomicString(),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeySrcFile).getValOatAtomicString(),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage).getValOatAtomicString(),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtFileExt).getValOatAtomicString(),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyGC).getValOatAtomicBoolean());
+				fm.init(TribeProperties.getInstance().getValue(TribeProperties.tpmKeySrcLanguage),
+						TribeProperties.getInstance().getValue(TribeProperties.tpmKeySrcFile),
+						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage),
+						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtFileExt),
+						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyGC));
 				fm.writeList(ftl);
 
 				msg="success  in pass 4 (Write Files)";
@@ -212,10 +213,10 @@ public class DalParser extends LanguageParser{
 			}
 			// print stats if wanted
 			ata=this.prop.getValue(DalConstants.Properties.keyPrStat);
-			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
+			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 				stats.printSimpleStatistic();
 			ata=this.prop.getValue(DalConstants.Properties.keyPrStatAll);
-			if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN)&&((OatBoolean)ata).getValue()==true)
+			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 				stats.printCompleteStatistic();
 
 		}
@@ -239,25 +240,23 @@ public class DalParser extends LanguageParser{
 	public void loadStg(){
 		this.stgl=new STGManager();
 
-		OatBaseAtomic obt=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtStgAngleBr);
+		TSBase obt=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtStgAngleBr);
 		Boolean _t=false;
-		try {
-			if(obt.getTypeEnum().equals(ATType.OAT_ATOMIC_BOOLEAN))
-				_t=((OatBoolean)obt).getValue();
-		} catch (Exception e) {}
+		if(obt.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+			_t=((TSBoolean)obt).tsvalue;
 
 		if(Boolean.TRUE.equals(_t))
 			this.stgl.useLexerAngelB();
 		else
 			this.stgl.useLexerDefault();
 
-		this.stgl.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC).getValOatAtomicString());
+		this.stgl.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
 		this.stgl.setSTGFileName(prop.getValueCli(TribeProperties.tpmKeyTgtStg));
 		this.stgl.setSTGUrlName(prop.getValueDefault(TribeProperties.tpmKeyTgtStg));
 		this.stgl.loadSTG("code generation", prop.getValue(TribeProperties.tpmKeyTgtLanguage));
 
-		OatMapLH chMan=this.target.getMandatory();
-		OatMapLH chOpt=this.target.getOptional();
+		TSMapLH chMan=this.target.getMandatory();
+		TSMapLH chOpt=this.target.getOptional();
 		this.stgl.setChunks(chMan, chOpt);
 		if(this.stgl.testChunks()==false)
 			System.exit(-10);
@@ -266,5 +265,77 @@ public class DalParser extends LanguageParser{
 	public void printStg(){
 		if(this.stgl!=null)
 			System.out.println(this.stgl.getSTG().toString());
+	}
+
+	@Override
+	public void tsClean() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TEnum tsGetTypeEnum() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<TEnum> tsGetTypeEnumSet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String tsGetTypeString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> tsGetTypeStringList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean tsIsAtomic() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean tsIsComposite() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean tsIsType(String t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean tsIsType(TEnum t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void tsPlus(TSBase tb) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String tsToString(int indent) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void tsTrim() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -30,10 +30,10 @@
 
 package org.skb.kb;
 
-import org.skb.util.types.base.OatBase;
+import org.skb.util.types.api.TSBase;
 
 public interface SKBInterpreterValue extends SKBInterpreter{
 	public static String type="value";
 
-	public OatBase interpret(String str);
+	public TSBase interpret(String str);
 }

@@ -41,9 +41,8 @@ import java.util.TimeZone;
 import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
-import org.skb.util.types.OatValueIsNullException;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSBoolean;
 
 /**
  * A manager for file lists to prepare output.
@@ -56,34 +55,34 @@ public class FileManager {
 	private StringTemplate fileStart;
 	private StringTemplate fileEnd;
 
-	private OatString sourceLanguage=null;
-	private OatString sourceFile=null;
-	private OatString targetLanguage=null;
-	private OatString targetFileExtension=null;
-	private OatBoolean canPrint;
+	private String sourceLanguage=null;
+	private String sourceFile=null;
+	private String targetLanguage=null;
+	private String targetFileExtension=null;
+	private TSBoolean canPrint;
 
 	public FileManager(StringTemplate codeHeader, StringTemplate fileStart, StringTemplate fileEnd){
 		this.codeHeader=codeHeader;
 		this.fileStart=fileStart;
 		this.fileEnd=fileEnd;
 
-		this.canPrint=new OatBoolean((false));
+		this.canPrint=new TSBoolean((false));
 	}
 
-	public void init(OatString srcLang, OatString srcFile, OatString tgtLang, OatString tgtFileExt, OatBoolean canPrint){
+	public void init(TSBase srcLang, TSBase srcFile, TSBase tgtLang, TSBase tgtFileExt, TSBase canPrint){
 		if(srcLang!=null)
-			this.sourceLanguage=(OatString)srcLang;
+			this.sourceLanguage=srcLang.toString();
 		if(srcFile!=null)
-			this.sourceFile=(OatString)srcFile;
+			this.sourceFile=srcFile.toString();
 		if(tgtLang!=null)
-			this.targetLanguage=(OatString)tgtLang;
+			this.targetLanguage=tgtLang.toString();
 		if(tgtFileExt!=null)
-			this.targetFileExtension=(OatString)tgtFileExt;
+			this.targetFileExtension=tgtFileExt.toString();
 		if(canPrint!=null)
-			this.canPrint=(OatBoolean)canPrint;
+			this.canPrint=(TSBoolean)canPrint;
 
 		if(this.sourceLanguage==null||this.sourceFile==null||this.targetLanguage==null||this.targetFileExtension==null)
-			this.canPrint=new OatBoolean((false));
+			this.canPrint=new TSBoolean((false));
 	}
 
 	public boolean writeList(FileTemplateList list){
@@ -128,11 +127,7 @@ public class FileManager {
 	}
 
 	public boolean canPrint(){
-		try {
-			return this.canPrint.getValue();
-		} catch (OatValueIsNullException e) {
-			return false;
-		}
+		return this.canPrint.tsvalue;
 	}
 
 	private String stdHeader(LinkedHashMap<String, String> ms){

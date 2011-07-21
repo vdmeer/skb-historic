@@ -37,24 +37,24 @@ import java.util.Arrays;
 import org.skb.kb.SKB;
 import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.atomic.util.OatPDO;
+import org.skb.util.types.atomic.db.TSPDO;
+import org.skb.util.types.atomic.java.TSString;
 
 public class AcronymsReader extends SKBReader {
 
 	@Override
-	protected void prepare_loop(Request request, OatString table, OatString tableCollections) {
+	protected void prepare_loop(Request request, TSString table, TSString tableCollections) {
 		// TODO Auto-generated method stub
 		SKB mySKB=SKB.getInstance();
 
 		ResultSet rs;
 		ArrayList<String> cols;
-		OatPDO pdo;
+		TSPDO pdo;
 
 		pdo=mySKB.pdoSelect("acronyms");
 
-		rs=pdo.oatValue.query("*", "acronyms", null, "acronyms:short");
-		cols=pdo.oatValue.get_columns();
+		rs=pdo.query("*", "acronyms", null, "acronyms:short");
+		cols=pdo.get_columns();
 		try{
 			while(rs.next()){
 				for(int i=0;i<cols.size();i++){

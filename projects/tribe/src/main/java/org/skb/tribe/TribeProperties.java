@@ -35,8 +35,10 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.misc.PropertyHandler;
-import org.skb.util.types.composite.util.OatMapLH;
-import org.skb.util.types.composite.util.OatPropertyMap;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * Singleton class maintaining all properties of the Tribe system.
@@ -44,7 +46,7 @@ import org.skb.util.types.composite.util.OatPropertyMap;
  * @author     Sven van der Meer
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
-public class TribeProperties extends OatPropertyMap {
+public class TribeProperties extends TSPropertyMap {
 	static Logger logger = Logger.getLogger("org.skb.tribe.Tribe");
 
 	/**
@@ -253,16 +255,19 @@ public class TribeProperties extends OatPropertyMap {
 		}
 
 		Json2Oat j2o=new Json2Oat();
-		OatMapLH config=j2o.read(this.config.getProperty("org.tribe.config.jsonfile")).getValOatMapLH();
+		TSBase c=j2o.read(this.config.getProperty("org.tribe.config.jsonfile"));
+		TSMapLH config=null;
+		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+			config=(TSMapLH)c;
 		if(config==null){
 			System.err.println("tribe: configuration not found");
 			logger.trace("init -- out > no configuration file found");
 			return;
 		}
 		else
-			this.loadFromJason(config.get("configuration").getValOatMapLH());
-		this.put(TribeProperties.tpmKeyUserDir, OatPropertyMap.pmValValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
-		this.put(TribeProperties.tpmKeyTgtDir, OatPropertyMap.pmValValueDefault, System.getProperty("user.dir"));
+			this.loadFromJason(((TSMapLH)config.get("configuration")));
+		this.put(TribeProperties.tpmKeyUserDir, TSPropertyMap.pmValValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
+		this.put(TribeProperties.tpmKeyTgtDir, TSPropertyMap.pmValValueDefault, System.getProperty("user.dir"));
 
 		logger.trace("init -- out");
 	}

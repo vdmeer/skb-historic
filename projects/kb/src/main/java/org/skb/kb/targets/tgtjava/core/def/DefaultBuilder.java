@@ -32,7 +32,7 @@ package org.skb.kb.targets.tgtjava.core.def;
 
 import org.skb.kb.SKBBuilder;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public class DefaultBuilder extends SKBBuilder{
 
@@ -43,7 +43,7 @@ System.err.println("Reader: set_templates");
 	}
 
 	@Override
-	protected void execute_loop(Request request, OatMapLH entries) {
+	protected void execute_loop(Request request, TSMapLH entries) {
 		// TODO Auto-generated method stub
 System.err.println("Reader: execute_loop");	
 	}

@@ -39,11 +39,13 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
-import org.skb.util.types.TypeRepository.ATType;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSAtomic;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * A manager for String Template Groups, including chunk tests.
@@ -53,15 +55,13 @@ import org.skb.util.types.composite.util.OatMapLH;
  */
 public class STGManager {
 	protected StringTemplateGroup stg=null;
-	protected OatString stgFileName=null;
-	protected OatString stgUrlName=null;
+	protected TSString stgFileName=null;
+	protected TSString stgUrlName=null;
 
-	protected OatString applicationName=null;
+	protected TSString applicationName=null;
 
-	//protected OatString stgLanguage=null;
-
-	protected OatMapLH chunksMandatory=null;
-	protected OatMapLH chunksOptional=null;
+	protected TSMapLH chunksMandatory=null;
+	protected TSMapLH chunksOptional=null;
 
 	protected boolean loaded=false;
 	protected boolean useLexerAngelB;
@@ -78,17 +78,17 @@ public class STGManager {
 		return this.loaded;
 	}
 
-	public void setApplicationName(OatString name){
-		if(name!=null)
-			this.applicationName=name;		
+	public void setApplicationName(TSBase name){
+		if(name!=null&&name.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING))
+			this.applicationName=(TSString)name;		
 	}
 
 	public void setApplicationName(String name){
 		if(name!=null)
-			this.applicationName=new OatString(name);		
+			this.applicationName=new TSString(name);		
 	}
 
-	public boolean loadSTG(OatBaseAtomic purpose, OatBaseAtomic targetLang){
+	public boolean loadSTG(TSBase purpose, TSBase targetLang){
 		if(purpose==null&&targetLang==null)
 			return this.loadSTG("", "");
 		if(purpose!=null&&targetLang==null)
@@ -96,7 +96,7 @@ public class STGManager {
 		return false;
 	}
 
-	public boolean loadSTG(String purpose, OatBaseAtomic targetLang){
+	public boolean loadSTG(String purpose, TSBase targetLang){
 		if(targetLang==null)
 			return this.loadSTG(purpose, "");
 		else
@@ -160,51 +160,61 @@ public class STGManager {
 		return this.testChunks();
 	}
 
-	public void putMandatoryChunks(String key, OatArrayListString value){
+	public void putMandatoryChunks(String key, TSArrayListString value){
 		this.chunksMandatory.put(key, value);
 	}
 
-	public void putOptionalChunks(String key, OatArrayListString value){
+	public void putOptionalChunks(String key, TSArrayListString value){
 		this.chunksOptional.put(key, value);
 	}
 
-	public void setChunks(OatMapLH mandatory, OatMapLH optional){
+	public void setChunks(TSMapLH mandatory, TSMapLH optional){
 		this.chunksMandatory=mandatory;
 		this.chunksOptional=optional;
 	}
 
-	public void setMandatoryChunks(OatMapLH mandatory){
+	public void setMandatoryChunks(TSMapLH mandatory){
 		this.chunksMandatory=mandatory;
 	}
 
-	public void setOptionalChunks(OatMapLH optional){
+	public void setOptionalChunks(TSMapLH optional){
 		this.chunksOptional=optional;
 	}
 
 	public void setSTGFileName(String fn){
-		this.stgFileName=new OatString(fn);
+		this.stgFileName=new TSString(fn);
 	}
 
-	public void setSTGFileName(OatString fn){
+	public void setSTGFileName(TSString fn){
 		this.stgFileName=fn;
 	}
 
-	public void setSTGFileName(OatBaseAtomic fn){
-		if(fn!=null&&fn.isType(ATType.OAT_ATOMIC_STRING))
-			this.stgFileName=(OatString)fn;
+	public void setSTGFileName(TSAtomic fn){
+		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+			this.stgFileName=(TSString)fn;
 	}
 
-	public void setSTGUrlName(String fn){
-		this.stgUrlName=new OatString(fn);
+	public void setSTGFileName(TSBase fn){
+		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+			this.stgFileName=(TSString)fn;
 	}
 
-	public void setSTGUrlName(OatString fn){
-		this.stgUrlName=fn;
+	public void setSTGUrlName(String url){
+		this.stgUrlName=new TSString(url);
 	}
 
-	public void setSTGUrlName(OatBaseAtomic fn){
-		if(fn!=null&&fn.isType(ATType.OAT_ATOMIC_STRING))
-			this.stgUrlName=(OatString)fn;
+	public void setSTGUrlName(TSString url){
+		this.stgUrlName=url;
+	}
+
+	public void setSTGUrlName(TSAtomic url){
+		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+			this.stgUrlName=(TSString)url;
+	}
+
+	public void setSTGUrlName(TSBase url){
+		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+			this.stgUrlName=(TSString)url;
 	}
 
 	public boolean testChunks(){
@@ -224,14 +234,17 @@ public class STGManager {
 		for (String s:this.chunksMandatory.keySet()){
 			//check if our Templates exist
 			if(stNames.contains(s)){
-				OatArrayListString val=this.chunksMandatory.get(s).getValOatArrayListString();
+				TSBase _b=this.chunksMandatory.get(s);
+				TSArrayListString val=null;
+				if(_b.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING))
+					val=(TSArrayListString)_b;
 				if(val==null)
 					continue;
 				//Template exists, check for Arguments existence
 				st=this.stg.getInstanceOf(s);
 				Map<?,?> stm=st.getFormalArguments();
 				for (int i=0;i<val.size();i++){
-					if(!stm.containsKey(val.get(i))){
+					if(!stm.containsKey(val.get(i).toString())){
 						//Template Argument doesn't exist, notify and exit
 						System.err.println(this.applicationName+": template group <"+this.stgFileName+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
 //						System.err.println("exception: " + e);
@@ -259,13 +272,16 @@ public class STGManager {
 		else if(this.chunksOptional.size()==0)
 			return true;
 
-		OatArrayListString tempList = new OatArrayListString();
+		TSArrayListString tempList = new TSArrayListString();
 		Set<?> tName=this.stg.getTemplateNames();
 		StringTemplate st;
 		for (String s:this.chunksOptional.keySet()){
 			//check if our Templates exist
 			if(tName.contains(s)){
-				OatArrayListString val=this.chunksMandatory.get(s).getValOatArrayListString();
+				TSBase _b=this.chunksMandatory.get(s);
+				TSArrayListString val=null;
+				if(_b.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING))
+					val=(TSArrayListString)_b;
 				if(val==null)
 					continue;
 				//Template exists, check for optional Arguments existence
@@ -273,7 +289,7 @@ public class STGManager {
 				Map<?,?> stm=st.getFormalArguments();
 				tempList.clear();
 				for (int i = 0; i < val.size(); i++){
-					if(stm.containsKey(val.get(i)))
+					if(stm.containsKey(val.get(i).toString()))
 						tempList.add(val.get(i));
 				}
 				if(tempList.isEmpty()){

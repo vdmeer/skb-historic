@@ -30,8 +30,8 @@
 
 package org.skb.tribe;
 
-import org.skb.util.types.composite.util.OatMapLH;
-import org.skb.util.types.composite.util.OatPropertyMap;
+import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * Class that reads properties (any configuration information) of a parser.
@@ -40,7 +40,7 @@ import org.skb.util.types.composite.util.OatPropertyMap;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class LanguageProperties {
-	private OatPropertyMap opm;
+	private TSPropertyMap opm;
 	private String className;
 	private String key;
 
@@ -57,7 +57,7 @@ public class LanguageProperties {
 
 	public LanguageProperties(){
 //		logger.trace("creating properties");
-		this.opm=new OatPropertyMap();
+		this.opm=new TSPropertyMap();
 	}
 
 	public void setClassName(String s){
@@ -79,27 +79,27 @@ public class LanguageProperties {
 		TribeProperties prop=TribeProperties.getInstance();
 
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		OatMapLH config=cfg.getConfiguration();
+		TSMapLH config=cfg.getConfiguration();
 
 		if(config==null)
 			System.err.println("tribe: property configuration not found");
 		else{
-			this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration).getValOatMapLH());
-			prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration).getValOatMapLH());
+			this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration));
+			prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration));
 
 			if(config.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
 				String lang=new String();
 				try {
 					lang=prop.getValue(TribeProperties.tpmKeyTgtLanguage).toString();
 				} catch (Exception e) {}
-				this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli).getValOatMapLH());
-				prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang).getValOatMapLH());
+				this.opm.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli)).tsGetValue());
+				prop.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang)).tsGetValue());
 			}
 		}
 //		logger.trace("setOptions -- out");
 	}
 
-	public OatPropertyMap getMap(){
+	public TSPropertyMap getMap(){
 		return this.opm;
 	}
 }

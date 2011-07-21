@@ -31,17 +31,25 @@
 package org.skb.tribe;
 
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.Vector;
 
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatTable;
-import org.skb.util.types.composite.util.OatTableRow;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSAtomic;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSTableRowAPI;
+import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSTable;
 
 /**
  * Tribes interface to language parsers.
@@ -53,11 +61,14 @@ import org.skb.util.types.composite.util.OatTableRow;
  * @author vdmeer
  *
  */
-public class LanguageList extends OatBaseAtomic {
+public class LanguageList implements TSAtomic {
+	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+
 	private TribeProperties prop=TribeProperties.getInstance();
 	private ReportManager repMgr=ReportManager.getInstance();
 
-	private OatTable llist=null;
+	private TSTable llist=null;
 
 	/**
 	 * String constant to access a specific language 
@@ -81,7 +92,13 @@ public class LanguageList extends OatBaseAtomic {
 	 * Class Constructor initialising local tables 
 	 */
 	public LanguageList(){
-		this.llist=new OatTable();
+		this.typeString.add(TSRepository.TString.TS_ATOMIC);
+		this.typeEnum.add(TEnum.TS_ATOMIC);
+
+		this.typeString.add(TSRepository.TString.TS_UNKNOWN); // TODO add proper type
+		this.typeEnum.add(TEnum.TS_UNKNOWN);
+
+		this.llist=new TSTable();
 		this.llist.setColumns(LanguageList.class.getName(), "llVal");
 	}
 
@@ -102,12 +119,12 @@ public class LanguageList extends OatBaseAtomic {
 	 * Get mappings supported by registered language parsers
 	 * @return TreeMap map of source languages with associated target languages
 	 */
-	public TreeMap<OatString, OatArrayListString> getMappings(){
-		TreeMap<OatString, OatArrayListString> ret=new TreeMap<OatString, OatArrayListString>();
+	public TreeMap<TSString, TSArrayListString> getMappings(){
+		TreeMap<TSString, TSArrayListString> ret=new TreeMap<TSString, TSArrayListString>();
 		Collection<String> keys = this.llist.keySet();
 		for (Iterator<String> i = keys.iterator(); i.hasNext(); ){
-			OatTableRow row=this.llist.get(i.next());
-			ret.put((OatString)row.get(LanguageList.llValXS), (OatArrayListString)row.get(LanguageList.llValXT));
+			TSTableRowAPI row=this.llist.get(i.next());
+			ret.put((TSString)row.get(LanguageList.llValXS), (TSArrayListString)row.get(LanguageList.llValXT));
 		}
 		return ret;
 	}
@@ -122,21 +139,19 @@ public class LanguageList extends OatBaseAtomic {
     	return ret;
 	}
 
-	public Boolean setSelectedLanguage(OatString srcLang, OatString tgtLang, Boolean gc){
-		try {
-			this.srcLanguage=srcLang.getValue();
-			this.tgtLanguage=tgtLang.getValue();
-		} catch (Exception e){
-			return false;
-		}
-
+	public Boolean setSelectedLanguage(TSBase srcLang, TSBase tgtLang, Boolean gc){
+		if(srcLang!=null&&!srcLang.tsIsType(TEnum.TS_NULL))
+			this.srcLanguage=srcLang.toString();
+		if(tgtLang!=null&&!tgtLang.tsIsType(TEnum.TS_NULL))
+			this.tgtLanguage=tgtLang.toString();
 		if(gc==true&&this.tgtLanguage==null)
 			return false;
 		if(!this.llist.containsKey(this.srcLanguage))
 			return false;
+
 		if(this.tgtLanguage!=null){
-			OatArrayListString ols=this.llist.get(this.srcLanguage, LanguageList.llValXT).getValOatArrayListString();
-			if(!ols.contains(this.tgtLanguage))
+			TSBase ols=this.llist.get(this.srcLanguage, LanguageList.llValXT);
+			if(ols.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING)&&!((TSArrayListString)ols).contains(this.tgtLanguage))
 				return false;
 		}
 
@@ -154,7 +169,7 @@ public class LanguageList extends OatBaseAtomic {
 
         Boolean gc=false;
 		try {
-			gc=((OatBoolean)prop.getValue(TribeProperties.tpmKeyGC)).getValue();
+			gc=((TSBoolean)prop.getValue(TribeProperties.tpmKeyGC)).tsvalue;
 		} catch (Exception e) {}
 
 		if(gc==true&&this.tgtLanguage==null){
@@ -166,7 +181,7 @@ public class LanguageList extends OatBaseAtomic {
 			return false;
 		}
 		if(this.tgtLanguage!=null){
-			OatArrayListString ols=(OatArrayListString)this.llist.get(this.srcLanguage, LanguageList.llValXT);
+			TSArrayListString ols=(TSArrayListString)this.llist.get(this.srcLanguage, LanguageList.llValXT);
 			if(!ols.contains(this.tgtLanguage)){
 				this.repMgr.reportError("target language <" + this.tgtLanguage + "> not supported for source language <" + this.srcLanguage + ">");
 				return false;
@@ -185,5 +200,65 @@ public class LanguageList extends OatBaseAtomic {
 
 	public void parse(InputStream is){
 		((LanguageParser)this.llist.get(this.srcLanguage, LanguageList.llValLang)).parse(is);
+	}
+
+	@Override
+	public void tsClean(){
+		//TODO implement
+	}
+
+	@Override
+	public final TEnum tsGetTypeEnum(){
+		return TSRepository.type(this.typeString.lastElement());
+	}
+
+	@Override
+	public final Set<TEnum> tsGetTypeEnumSet(){
+		return this.typeEnum;
+	}
+
+	@Override
+	public final java.lang.String tsGetTypeString(){
+		return this.typeString.lastElement();
+	}
+
+	@Override
+	public final List<String> tsGetTypeStringList(){
+		return this.typeString;
+	}
+
+	@Override
+	public boolean tsIsAtomic(){
+		return true;
+	}
+
+	@Override
+	public boolean tsIsComposite(){
+		return false;
+	}
+
+	@Override
+	public final boolean tsIsType(String t){
+		return this.typeString.contains(t);
+	}
+
+	@Override
+	public final boolean tsIsType(TEnum t){
+		return this.typeEnum.contains(t);
+	}
+
+	@Override
+	public void tsPlus(TSBase tb){
+	}
+
+	@Override
+	public java.lang.String tsToString(int indent){
+		//TODO implements
+		return "";
+	}
+
+	@Override
+	public void tsTrim(){
+		//TODO not yet implemented
 	}
 }

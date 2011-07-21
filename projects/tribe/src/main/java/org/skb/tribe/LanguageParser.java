@@ -33,9 +33,9 @@ package org.skb.tribe;
 import java.io.InputStream;
 
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatPropertyMap;
+import org.skb.util.types.api.TSAtomic;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * Abstract class containing a language parser.
@@ -43,17 +43,17 @@ import org.skb.util.types.composite.util.OatPropertyMap;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
-public abstract class LanguageParser extends OatBaseAtomic {
+public abstract class LanguageParser implements TSAtomic {
 	protected TribeProperties prop=TribeProperties.getInstance();
 	protected STGManager stgl=null;
 
 	protected String xs;
-	protected OatArrayListString xt;
+	protected TSArrayListString xt;
 
 	public String xs(){return this.xs;}
-	public OatArrayListString xt(){return this.xt;}
+	public TSArrayListString xt(){return this.xt;}
 
-	abstract public OatPropertyMap getMap();
+	abstract public TSPropertyMap getMap();
 
 	public void setOptions(){}
 

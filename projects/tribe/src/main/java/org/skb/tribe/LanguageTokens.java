@@ -32,8 +32,8 @@ package org.skb.tribe;
 
 import java.util.TreeMap;
 
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class that reads language tokens from the configuration and processes them for parser/lexer.
@@ -59,16 +59,16 @@ public class LanguageTokens {
     	this.tokens = new TreeMap<String, String>();
 
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		OatMapLH map=cfg.getLanguageTokens();
+		TSMapLH map=cfg.getLanguageTokens();
 
     	if(map!=null){
-    		OatMapLH tokenStrings=new OatMapLH();
+    		TSMapLH tokenStrings=new TSMapLH();
     		if(map!=null&&map.size()>0){
     			for(String s:map.keySet()){
     				try{
-    					OatString tid=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenID).getValOatAtomicString();
-    				    OatString tval=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenVal).getValOatAtomicString();
-    				    tokenStrings.put(tid, tval);
+    					TSBase tid=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenID);
+    					TSBase tval=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenVal);
+    				    tokenStrings.put(tid.toString(), tval.toString());
     				} catch (Exception e){}
     			}
     		}

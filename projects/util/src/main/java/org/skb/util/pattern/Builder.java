@@ -29,8 +29,7 @@
 
 package org.skb.util.pattern;
 
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Interface for a builder.
@@ -40,15 +39,15 @@ import org.skb.util.types.composite.util.OatMapLH;
  */
 public interface Builder {
 
-	//public void setRegisteredTemplates(OatMapLH regTemplates);
+	//public void setRegisteredTemplates(TSMapLH regTemplates);
 
 	abstract public void set_templates();
 
 	public void set_header();
 
-	public void execute(Request request, OatMapLH entries);
+	public void execute(Request request, TSMapLH entries);
 
-	//abstract public void execute_loop(SKBRequest request, OatMapLH entries);
+	//abstract public void execute_loop(SKBRequest request, TSMapLH entries);
 
 	public boolean isInitialised();
 }

@@ -33,7 +33,9 @@ package org.skb.tribe;
 import java.io.File;
 
 import org.skb.util.misc.Json2Oat;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Read the json configuration of a parser and provide filtered access to it.
@@ -42,7 +44,7 @@ import org.skb.util.types.composite.util.OatMapLH;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class LanguageConfiguration {
-	private OatMapLH configuration;
+	private TSMapLH configuration;
 
 	private static class LanguageConfigurationHolder{
 		private final static LanguageConfiguration INSTANCE = new LanguageConfiguration();
@@ -57,24 +59,27 @@ public class LanguageConfiguration {
 	}
 
 	private LanguageConfiguration(){
-		this.configuration=new OatMapLH();
+		this.configuration=new TSMapLH();
 	}
 
 	public void read(String[] url){
-		try{
-			Json2Oat j2o=new Json2Oat();
-			for(int i=0;i<url.length;i++)
-				this.configuration.merge(j2o.read(url[i]).getValOatMapLH());
-		}
-		catch (Exception e){
-			System.err.println("LanguageConfiguration: "+e);
-		}
+		//TODO not implemented yet
+//		try{
+//			Json2Oat j2o=new Json2Oat();
+//			for(int i=0;i<url.length;i++)
+//				this.configuration.merge(j2o.read(url[i]).getValOatMapLH());
+//		}
+//		catch (Exception e){
+//			System.err.println("LanguageConfiguration: "+e);
+//		}
 	}
 
 	public void read(String url){
 		try{
 			Json2Oat j2o=new Json2Oat();
-			this.configuration=j2o.read(url).getValOatMapLH();
+			TSBase c=j2o.read(url);
+			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+				this.configuration=(TSMapLH)c;
 		}
 		catch (Exception e){
 			System.err.println("LanguageConfiguration: "+e);
@@ -84,7 +89,9 @@ public class LanguageConfiguration {
 	public void read(File file){
 		try{
 			Json2Oat j2o=new Json2Oat();
-			this.configuration=j2o.read(file).getValOatMapLH();
+			TSBase c=j2o.read(file);
+			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+				this.configuration=(TSMapLH)c;
 		}
 		catch (Exception e){
 			System.err.println("LanguageConfiguration: "+e);
@@ -92,34 +99,34 @@ public class LanguageConfiguration {
 	}
 
 	public void validate(){
-		
+		//TODO nyi
 	}
 
-	public OatMapLH getConfiguration(){
+	public TSMapLH getConfiguration(){
 		return this.configuration;
 	}
 
-	public OatMapLH getTribeConfiguration(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration).getValOatMapLH();
+	public TSMapLH getTribeConfiguration(){
+		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration)).tsGetValue();
 	}
 
-	public OatMapLH getLanguageConfiguration(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration).getValOatMapLH();
+	public TSMapLH getLanguageConfiguration(){
+		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration)).tsGetValue();
 	}
 
-	public OatMapLH getLanguageTokens(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTokens).getValOatMapLH();
+	public TSMapLH getLanguageTokens(){
+		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTokens)).tsGetValue();
 	}
 
-	public OatMapLH getLanguageTargets(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTargets).getValOatMapLH();
+	public TSMapLH getLanguageTargets(){
+		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTargets)).tsGetValue();
 	}
 
-	public OatMapLH getLanguageStgChunks(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangStgChunks).getValOatMapLH();
+	public TSMapLH getLanguageStgChunks(){
+		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangStgChunks)).tsGetValue();
 	}
 
-	public OatMapLH getLanguageRules(){
-		return this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangRules).getValOatMapLH();
+	public TSMapLH getLanguageRules(){
+		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangRules)).tsGetValue();
 	}
 }

@@ -30,8 +30,8 @@
 package org.skb.util.cli;
 
 import org.apache.commons.cli.ParseException;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.composite.util.OatPropertyMap;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * Interface for CLI processing.
@@ -41,16 +41,16 @@ import org.skb.util.types.composite.util.OatPropertyMap;
  */
 public interface Cli {
 
-	public abstract void setApplicationName(OatString appName);
+	public abstract void setApplicationName(TSBase appName);
 
 	public abstract void setApplicationName(String appName);
 
-	public abstract void setPropOptions(OatPropertyMap prop);
+	public abstract void setPropOptions(TSPropertyMap prop);
 
 	public abstract void parse(String[] args) throws ParseException;
 
 	public abstract void usage();
 
-	public abstract void setOptions(OatPropertyMap prop);
+	public abstract void setOptions(TSPropertyMap prop);
 
 }

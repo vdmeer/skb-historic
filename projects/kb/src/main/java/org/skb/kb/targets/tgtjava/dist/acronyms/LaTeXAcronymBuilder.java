@@ -34,8 +34,8 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.skb.kb.SKBBuilder;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.util.OatSTGManager;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public class LaTeXAcronymBuilder extends SKBBuilder{
 	protected String tpl_list="Dist.Acronyms.Entries2LaTeX-Acronym:Template";
@@ -47,9 +47,9 @@ public class LaTeXAcronymBuilder extends SKBBuilder{
 	}
 
 	@Override
-	protected void execute_loop(Request request, OatMapLH entries) {
-		OatSTGManager stgm=this.templates.get_template_object("tpl");
-		StringTemplateGroup stg=stgm.oatValue.getSTG();
+	protected void execute_loop(Request request, TSMapLH entries) {
+		TSSTGManager stgm=this.templates.get_template_object("tpl");
+		StringTemplateGroup stg=stgm.getSTG();
 		StringTemplate template=stg.getInstanceOf("build");
 
 		entries.h2l();

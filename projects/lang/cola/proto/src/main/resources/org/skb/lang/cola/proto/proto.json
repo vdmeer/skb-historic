@@ -43,31 +43,31 @@
         "tribe":{
             "configuration":{
                 "name":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"COLA"
                 },
                 "name-lc":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"cola"
                 },
                 "copyright":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"Copyright (c) 2002-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
                 "version":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"0.30"
                 },
                 "build":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"110309"
                 },
                 "build-date":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"2011-Mar-09"
                 },
                 "tribe-generic-stg":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
             }
@@ -91,48 +91,48 @@
                 },
                 "internal-scope-sep":{
                     "skb:lang:target:config:constid":"keyScopeSep",
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"::"
                 },
                 "pr-stats":{
                     "skb:lang:target:config:constid":"keyPrStat",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"Show simple statistic information"
                 },
                 "pr-stats-all":{
                     "skb:lang:target:config:constid":"keyPrStatAll",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-all",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
                     "skb:lang:target:config:constid":"keyPrStatsWScope",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-ws",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"No scoped names in statistics"
                 },
                 "pr-stg-stats":{
                     "skb:lang:target:config:constid":"keyPrStgFileStats",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stg-stats",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"Print statistics string template"
                 },
                 "stat-stg":{
                     "skb:lang:target:config:constid":"keyStatStg",
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
                     "cli:option:arg-name":"file",
-                    "cli:option:type":"oat:atomic:java:string",
+                    "cli:option:type":"ts:atomic:java:string",
                     "cli:usage:descr":"Group template file for statistics"
                 }
             },
@@ -151,34 +151,34 @@
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
                             "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
                             "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-split-code",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
                             "skb:lang:target:config:constid":"keyTgSCbyPackage",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-pkg",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code by package"
                         },
                         "tgt-sc-by-category":{
                             "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-category",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
                         }
                     }
@@ -197,51 +197,51 @@
                     "skb:lang:target:config:cli":{
                         "xt-do-imports":{
                             "skb:lang:target:config:constid":"keyXtDoImports",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-imports",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate imports (Java style)"
                         },
                         "xt-do-element-code":{
                             "skb:lang:target:config:constid":"keyXtDoElementCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-element-code",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate complete Element skeletons"
                         },
                         "xt-java-pkg":{
                             "skb:lang:target:config:constid":"keyXtJavaPackage",
-                            "at:type":"oat:atomic:java:string",
+                            "at:type":"ts:atomic:java:string",
                             "value:default":"",
                             "cli:option:long":"xt-java-pkg",
                             "cli:option:arg-name":"package",
-                            "cli:option:type":"oat:atomic:java:string",
+                            "cli:option:type":"ts:atomic:java:string",
                             "cli:usage:descr":"Root package for java classes"
                         },
                         "tgt-split-code":{
                             "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":true,
                             "cli:option:long":"tgt-split-code",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
                             "skb:lang:target:config:constid":"keyTgSCbyPackage",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-pkg",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code by package"
                         },
                         "tgt-sc-by-category":{
                             "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-category",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
                         }
                     }
@@ -260,42 +260,42 @@
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
                             "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate includes"
                         },
                         "xt-do-element-code":{
                             "skb:lang:target:config:constid":"keyXtDoElementCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-element-code",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate complete Element skeletons"
                         },
                         "tgt-split-code":{
                             "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-split-code",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
                             "skb:lang:target:config:constid":"keyTgSCbyPackage",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-pkg",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code by package"
                         },
                         "tgt-sc-by-category":{
                             "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"tgt-sc-by-category",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Split code by atom category (i.e. element, struct)"
                         }
                     }
@@ -317,15 +317,15 @@
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
                             "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
                             "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false
                         }
                     }
@@ -344,15 +344,15 @@
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
                             "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
                             "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false
                         }
                     }

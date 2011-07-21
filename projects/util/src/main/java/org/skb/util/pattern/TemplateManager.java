@@ -29,7 +29,7 @@
 
 package org.skb.util.pattern;
 
-import org.skb.util.types.atomic.util.OatSTGManager;
+import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
 
 /**
  * A class managing templates for a builder.
@@ -43,7 +43,7 @@ public interface TemplateManager {
 
 	public void set_header();
 
-	public OatSTGManager get_template_object(String key);
+	public TSSTGManager get_template_object(String key);
 
 	public String get_template_path(String key);
 

@@ -33,14 +33,14 @@ package org.skb.kb;
 import org.skb.util.pattern.Builder;
 import org.skb.util.pattern.Reader;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public abstract class SKBReader implements Reader {
 	protected Builder builder=null;
 	protected boolean is_prepared=false;
 
-	protected OatMapLH entries=null;
+	protected TSMapLH entries=null;
 
 	public SKBReader(){}
 
@@ -56,21 +56,21 @@ public abstract class SKBReader implements Reader {
 
 	public final void prepare(Request request){
 		if(request.isActivated()==true){
-			OatString table=request.getTable();
-			OatString table_collections=request.getTableCollections();
-			this.entries=new OatMapLH();
+			TSString table=request.getTable();
+			TSString table_collections=request.getTableCollections();
+			this.entries=new TSMapLH();
 			this.prepare_loop(request, table, table_collections);
 			this.is_prepared=true;
 		}
 	}
 
-	public final OatMapLH get_entries(){
+	public final TSMapLH get_entries(){
 		if(this.is_prepared==true)
 			return this.entries;
 		return null;
 	}
 
-	protected abstract void prepare_loop(Request request, OatString table, OatString table_collections);
+	protected abstract void prepare_loop(Request request, TSString table, TSString table_collections);
 
 	public final void execute(Request request){
 		if(this.is_prepared==false)

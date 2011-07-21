@@ -30,10 +30,10 @@
 
 package org.skb.tribe;
 
-import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.composite.util.OatMapLH;
 import org.antlr.stringtemplate.StringTemplate;
+import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class that handles target string template groups for the parser.
@@ -43,21 +43,21 @@ import org.antlr.stringtemplate.StringTemplate;
  */
 public class TargetSTG {
 	private boolean initialised;
-	private OatMapLH chMan;
-	private OatMapLH chOpt;
+	private TSMapLH chMan;
+	private TSMapLH chOpt;
 
 	private STGManager stdHeader;
 
 	public TargetSTG(){
 		this.initialised=false;
-		this.chMan=new OatMapLH();
-		this.chOpt=new OatMapLH();
+		this.chMan=new TSMapLH();
+		this.chOpt=new TSMapLH();
 
-		OatMapLH stdHeaderChunks=new OatMapLH();
-		stdHeaderChunks.put("std",	     new OatArrayListString(new String[]{"source", "target", "file", "day", "time", "misc"}));
-		stdHeaderChunks.put("fImport",   new OatArrayListString(new String[]{"target", "import"}));
-		stdHeaderChunks.put("fileStart", new OatArrayListString(new String[]{"target"}));
-		stdHeaderChunks.put("fileEnd",   new OatArrayListString(new String[]{"target"}));
+		TSMapLH stdHeaderChunks=new TSMapLH();
+		stdHeaderChunks.put("std",	     new TSArrayListString(new String[]{"source", "target", "file", "day", "time", "misc"}));
+		stdHeaderChunks.put("fImport",   new TSArrayListString(new String[]{"target", "import"}));
+		stdHeaderChunks.put("fileStart", new TSArrayListString(new String[]{"target"}));
+		stdHeaderChunks.put("fileEnd",   new TSArrayListString(new String[]{"target"}));
 
 		this.stdHeader=new STGManager();
 		this.stdHeader.setMandatoryChunks(stdHeaderChunks);
@@ -67,7 +67,7 @@ public class TargetSTG {
 		this.chOpt.putAll(chunks.getOptional());
 
 		this.stdHeader.useLexerDefault();
-		this.stdHeader.setApplicationName(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyNameLC).getValOatAtomicString());
+		this.stdHeader.setApplicationName(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyNameLC));
 		this.stdHeader.setSTGUrlName(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyGenericSTG).toString());
 		this.stdHeader.loadSTG("string template for generic header", "");
 
@@ -75,8 +75,8 @@ public class TargetSTG {
 	}
 
 	public boolean isInitialised(){return this.initialised;}
-	public OatMapLH getMandatory(){return this.chMan;}
-	public OatMapLH getOptional(){return this.chOpt;}
+	public TSMapLH getMandatory(){return this.chMan;}
+	public TSMapLH getOptional(){return this.chOpt;}
 
 	public StringTemplate getStdHeaderST(){return this.stdHeader.getSTG().getInstanceOf("std");}
 	public StringTemplate getFileStartST(){return this.stdHeader.getSTG().getInstanceOf("fileStart");}

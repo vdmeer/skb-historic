@@ -30,8 +30,9 @@
 
 package org.skb.tribe;
 
-import org.skb.util.types.atomic.util.OatArrayListAtomic;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class that checks the chunks of a given string template with a required list.
@@ -40,28 +41,28 @@ import org.skb.util.types.composite.util.OatMapLH;
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
 public class TargetSTGChunks {
-	private OatMapLH chMan;
-	private OatMapLH chOpt;
+	private TSMapLH chMan;
+	private TSMapLH chOpt;
 
 	public TargetSTGChunks(){
-		this.chMan=new OatMapLH();
-		this.chOpt=new OatMapLH();
+		this.chMan=new TSMapLH();
+		this.chOpt=new TSMapLH();
 
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		OatMapLH map=cfg.getLanguageStgChunks();
+		TSMapLH map=cfg.getLanguageStgChunks();
 		if(map!=null){
-			OatArrayListAtomic ala;
+			TSBase ala;
 			for (String s:map.keySet()){
-				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkMandatory).getValOatArrayListAtomic();
-				if(ala!=null&&ala.size()>0)
+				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkMandatory);
+				if(ala!=null&&!ala.tsIsType(TEnum.TS_NULL))
 					this.chMan.put(s, ala);
-				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkOptional).getValOatArrayListAtomic();
-				if(ala!=null&&ala.size()>0)
+				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkOptional);
+				if(ala!=null&&!ala.tsIsType(TEnum.TS_NULL))
 					this.chOpt.put(s, ala);
 			}
 		}
 	}
 
-	public OatMapLH getMandatory(){return this.chMan;}
-	public OatMapLH getOptional(){return this.chOpt;}
+	public TSMapLH getMandatory(){return this.chMan;}
+	public TSMapLH getOptional(){return this.chOpt;}
 }

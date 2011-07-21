@@ -38,7 +38,7 @@ import org.skb.tribe.LanguageRuleMap;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.composite.util.OatTableRow;
+import org.skb.util.types.api.TSTableRowAPI;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -66,7 +66,7 @@ public class DalPass1_Ebnf {
 	}
 
 	public void putAtom(Token tk, String category, Token type){
-		OatTableRow otr=this.atoms.putAtom(tk, category, type);
+		TSTableRowAPI otr=this.atoms.putAtom(tk, category, type);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(
 					DalConstants.Tokens.parserIDENTIFIER+" used more than once",

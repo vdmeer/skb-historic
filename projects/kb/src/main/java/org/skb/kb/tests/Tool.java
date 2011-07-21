@@ -4,7 +4,7 @@ import org.skb.kb.SKB;
 import org.skb.kb.SKBBuilder;
 import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.atomic.java.TSString;
 
 public class Tool {
 
@@ -28,7 +28,7 @@ System.out.println("...start:    ");
 		def.initPlain();
 		def.activate();
 
-		def.setValue("request:entry", new OatString("readers"));
+		def.setValue("request:entry", new TSString("readers"));
 
 		SKBReader r=mySKB.getReader("Dist.Acronyms.DB2Entries");
 		SKBBuilder b=mySKB.getBuilder("Dist.Acronyms.Entries2Text-Plain"); 

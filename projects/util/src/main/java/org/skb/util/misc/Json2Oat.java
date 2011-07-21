@@ -36,19 +36,17 @@ import java.util.Scanner;
 import org.apache.commons.lang.StringUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.java.OatDouble;
-import org.skb.util.types.atomic.java.OatFloat;
-import org.skb.util.types.atomic.java.OatInteger;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.atomic.util.OatArrayListAtomic;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBase;
-import org.skb.util.types.base.OatBaseArrayList;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.types.atomic.java.TSDouble;
+import org.skb.util.types.atomic.java.TSFloat;
+import org.skb.util.types.atomic.java.TSInteger;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.composite.util.TSArrayList;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
- * Class that reads a json file and transforms it into an OatMapLH.
+ * Class that reads a json file and transforms it into an TSMapLH.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
@@ -57,7 +55,7 @@ public class Json2Oat {
 
 	public Json2Oat(){}
 
-	public OatBase read(File file){
+	public TSBase read(File file){
 		if(file.canRead()){
 			try{
 				return this.read(new Scanner(file));
@@ -67,13 +65,13 @@ public class Json2Oat {
 		return null;
 	}
 
-	public OatBase read(String url){
+	public TSBase read(String url){
 		try{
 			return this.read(new Scanner(getClass().getResourceAsStream(url)));
 		}catch(Exception e){return null;}
 	}
 
-	public OatBase read(Scanner input){
+	public TSBase read(Scanner input){
 		String content=new String();
 		try{
 			while(input.hasNextLine()){
@@ -86,7 +84,7 @@ public class Json2Oat {
 		return this.s2o(content);
 	}
 
-	public OatBase s2o(String content){
+	public TSBase s2o(String content){
 		try{
 			ObjectMapper mapper=new ObjectMapper();
 			JsonNode rootNode=mapper.readValue(content, JsonNode.class);
@@ -96,23 +94,16 @@ public class Json2Oat {
 		return null;
 	}
 
-	private OatBase traverse(JsonNode node){
+	private TSBase traverse(JsonNode node){
 		if(node.isArray()){
-			OatBaseArrayList ret=new OatBaseArrayList();
+			TSArrayList ret=new TSArrayList();
 			Iterator<JsonNode> valFields = node.getElements();
 			while(valFields.hasNext())
 				ret.add(this.traverse(valFields.next()));
-			if(ret.isAtomicList())
-				return new OatArrayListAtomic(ret);
-			else if(ret.isStringList())
-				return new OatArrayListString(ret);
-//			else if(ret.isMapLH())
-//				return new OatMapLH(ret);
-			else
-				return ret;
+			return ret;
 		}
 		else if(node.isObject()){
-			OatMapLH ret=new OatMapLH();
+			TSMapLH ret=new TSMapLH();
 			Iterator<JsonNode> valFields = node.getElements();
 			Iterator<String> keyFields = node.getFieldNames();
 			while(keyFields.hasNext()&&valFields.hasNext())
@@ -120,17 +111,17 @@ public class Json2Oat {
 			return ret;
 		}
 		else if(node.isTextual())
-			return new OatString(node.getTextValue());
+			return new TSString(node.getTextValue());
 		else if(node.isBoolean())
-			return new OatBoolean(node.getBooleanValue());
+			return new TSBoolean(node.getBooleanValue());
 		else if(node.isIntegralNumber())
-			return new OatInteger(node.getIntValue());
+			return new TSInteger(node.getIntValue());
 		else if(node.isDouble())
-			return new OatDouble(node.getDoubleValue());
+			return new TSDouble(node.getDoubleValue());
 		else if(node.isFloatingPointNumber())
-			return new OatFloat(node.getDoubleValue());
+			return new TSFloat(node.getDoubleValue());
 		else if(node.isNull())
-			return new OatString("");
+			return new TSString("");
 System.err.println("nothing for");
 		return null;
 	}

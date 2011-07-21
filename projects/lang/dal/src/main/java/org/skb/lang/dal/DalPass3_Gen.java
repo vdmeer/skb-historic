@@ -44,7 +44,7 @@ import org.skb.lang.dal.constants.DalConstants;
 import org.skb.lang.dal.internal.DalTables;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
-import org.skb.util.types.atomic.util.OatArrayListString;
+import org.skb.util.types.atomic.util.TSArrayListString;
 
 /**
  * Pass 3 of the DAL parser using templates to generate a target language specification.
@@ -121,7 +121,7 @@ public class DalPass3_Gen {
 		}
 
 		//go through sequence and add st in correct order to return list
-		OatArrayListString seq=this.tables.tableSequenceGet(repo, table);
+		TSArrayListString seq=this.tables.tableSequenceGet(repo, table);
 		for(int i=0;i<seq.size();i++){
 			String field=seq.get(i).toString();
 			if(ordered.containsKey(field))

@@ -36,7 +36,8 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
-import org.skb.util.types.atomic.java.OatString;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSString;
 
 /**
  * A list of file templates that a parser/compiler can use/generate to produce output files.
@@ -46,7 +47,7 @@ import org.skb.util.types.atomic.java.OatString;
  */
 public class FileTemplateList {
 	private TreeMap<String, FileTemplateSingle> templates;
-	private OatString targetDirectory=null;
+	private TSString targetDirectory=null;
 
 	public FileTemplateList(){
 		this.templates=new TreeMap<String, FileTemplateSingle>();
@@ -56,9 +57,9 @@ public class FileTemplateList {
 		this.templates=new TreeMap<String, FileTemplateSingle>(ftl);
 	}
 
-	public void init(OatString targetDir){
+	public void init(TSBase targetDir){
 		if(targetDir!=null)
-			this.targetDirectory=targetDir;
+			this.targetDirectory=new TSString(targetDir.toString());
 	}
 
 	public boolean containsKey(String k){return this.templates.containsKey(k);}

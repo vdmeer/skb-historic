@@ -38,9 +38,9 @@ import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class handling statistic information about a Glue specification.
@@ -60,18 +60,18 @@ public class GlueStatistics {
 //	private StringTemplate completeStatPrintArray=null;
 
 	public GlueStatistics(){
-		OatMapLH chMan=new OatMapLH();
+		TSMapLH chMan=new TSMapLH();
 
-		chMan.put("simpleStat", new OatArrayListString(new String[]{"file", "ids", "properties", "items", "contracts", "packages", "elements", "facilities", "actions"}));
-		chMan.put("simpleStat", new OatArrayListString(new String[]{"attributes", "parameters", "structs", "members", "typedefs"}));
+		chMan.put("simpleStat", new TSArrayListString(new String[]{"file", "ids", "properties", "items", "contracts", "packages", "elements", "facilities", "actions"}));
+		chMan.put("simpleStat", new TSArrayListString(new String[]{"attributes", "parameters", "structs", "members", "typedefs"}));
 
-		chMan.put("completeStatStart",      new OatArrayListString(new String[]{"file"}));
-		chMan.put("completeStatPrintArray", new OatArrayListString(new String[]{"text", "size", "array"}));
+		chMan.put("completeStatStart",      new TSArrayListString(new String[]{"file"}));
+		chMan.put("completeStatPrintArray", new TSArrayListString(new String[]{"text", "size", "array"}));
 
 		this.stgl=new STGManager();
 		this.stgl.setMandatoryChunks(chMan);
 
-		OatBaseAtomic statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);
+		TSBase statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);
 		if(statStg!=null)
 			this.stgl.setSTGFileName(statStg.toString());
 		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(GlueConstants.Properties.keyStatStg));

@@ -36,28 +36,28 @@ import java.util.Set;
 import org.skb.kb.SKB;
 import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.TypeRepository.ATType;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBase;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public class SkbInfoReader extends SKBReader {
 
 	@Override
-	protected void prepare_loop(Request request, OatString table, OatString tableCollections) {
-		OatBase todo=request.getValue("request:entry");
+	protected void prepare_loop(Request request, TSString table, TSString tableCollections) {
+		TSBase todo=request.getValue("request:entry");
 		String doto=null;
 		String select=null;
-		switch(todo.getTypeEnum()){
-			case OAT_ATOMIC_STRING:
+		switch(todo.tsGetTypeEnum()){
+			case TS_ATOMIC_JAVA_STRING:
 				doto=todo.toString();
 				if(doto.length()<1)
 					doto=null;
 
 				break;
-			case OAT_ARRAYLIST_STRING:
-				doto=((OatArrayListString)todo).get(0).toString();
+			case TS_ATOMIC_ARRAYLIST_STRING:
+				doto=((TSArrayListString)todo).get(0).toString();
 				if(doto.contains(":")){
 					String[] ar=doto.split(":");
 					if(ar[0].length()>0)
@@ -112,21 +112,21 @@ public class SkbInfoReader extends SKBReader {
 			String key;
 			while(key_it.hasNext()){
 				key=key_it.next();
-				OatBase val=this.entries.get(key);
-				if(val.getTypeEnum().equals(ATType.OAT_COMPOSITE_MAP_LH)){
-					Set<String> t_set = ((OatMapLH)val).keySet();
+				TSBase val=this.entries.get(key);
+				if(val.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+					Set<String> t_set = ((TSMapLH)val).keySet();
 					Iterator<String> t_it = t_set.iterator();
 					String t_key;
 					while(t_it.hasNext()){
 						t_key=t_it.next();
-						if(((OatMapLH)val).containsKey("origin")&&!((OatMapLH)val).get("origin").toString().equals(select)){
-							((OatMapLH)val).remove(t_key);
+						if(((TSMapLH)val).containsKey("origin")&&!((TSMapLH)val).get("origin").toString().equals(select)){
+							((TSMapLH)val).remove(t_key);
 						}
 					}
 				}
 			}
 		}
-		this.entries.clean();
+		this.entries.tsClean();
 	}
 
 	@Override

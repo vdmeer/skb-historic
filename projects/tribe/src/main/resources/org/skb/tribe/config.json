@@ -41,211 +41,211 @@
 {
     "configuration":{
         "name":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"TRIBE"
         },
         "name-lc":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"tribe"
         },
         "copyright":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"Copyright (c) 2002-2008 Sven van der Meer <sven@vandermeer.de>"
         },
         "build-with":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"  Eclipse 3.6, (c) the Eclipse Foundation (www.eclipse.org)\n  TRIBE 0.10, (c) Sven van der Meer\n  ANTLR 3.3, (c) Terence Parr <http://www.ANTLR.org>\n  StringTemplate 3.2.1, (c) Terence Parr <http://www.stringtemplate.org>\n  ANTLR IDE <http://antlrv3ide.sourceforge.net/>\n  Apache Commons, (c) The Apache Software Foundation <http://commons.apache.org/>\n  Apache log4j, (c) The Apache Software Foundation <http://logging.apache.org>\n"
         },
         "additional":{
-            "at:type":"oat:atomic:java:string"
+            "at:type":"ts:atomic:java:string"
 //            "value:default":"cpp handles #define/#undef, #ifdef/#elsif/#else/#endif, and #include\n    but does miss some of the simpler directives\n    and doesn't follow the cpp spec perfectly\nno support for function overloading yet\n'generate_impl_code' not recursive\n\n"
         },
         "version":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"0.30"
         },
         "build":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"110309"
         },
         "build-date":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"2011-Mar-09"
         },
         "show-version":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:short":"v",
             "cli:option:long":"show-version",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"show version information"
         },
         "show-help":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:short":"h",
             "cli:option:long":"show-help",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Show usage/help information"
         },
         "show-languages":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:short":"l",
             "cli:option:long":"show-languages",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Show supported languages"
         },
         "cfg-load":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:short":"c",
             "cli:option:long":"cfg-load",
             "cli:option:arg-name":"file",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Load configuration options from file (.ini, .xml, .properties)"
         },
         "cfg-save":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:short":"w",
             "cli:option:long":"cfg-save",
             "cli:option:arg-name":"file",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Save configuration options to file (.ini, .xml, .properties)"
         },
         "default-options":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:short":"d",
             "cli:option:long":"default-options",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Show current values for configuration options (config file or command-line)"
         },
         "languages":{
             "at:type":"Languages"
         },
         "repmgr-stg":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"/org/skb/util/misc/ReportManager.stg",
             "cli:option:long":"repmgr-stg",
             "cli:option:arg-name":"file",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Group template file for tribe messages"
         },
         "pr-stg-tribe":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:long":"pr-stg-tribe",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Print parser string template"
         },
         "pr-stg-target":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:long":"pr-stg-target",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Print code string template"
             },
         "no-warnings":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:long":"no-warnings",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Do not show compiler warnings"
         },
         "no-errors":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:long":"no-errors",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Do not show compiler warnings"
         },
         "no-cpp":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:long":"no-cpp",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Do not use build in CPP"
         },
         "be-quiet":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:short":"q",
             "cli:option:long":"be-quiet",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Quiet mode, no compiler messages to stdout/stderr"
         },
         "gc":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":false,
             "cli:option:long":"gc",
-            "cli:option:type":"oat:atomic:java:boolean",
+            "cli:option:type":"ts:atomic:java:boolean",
             "cli:usage:descr":"Generate code"
         },
         "gc-scope-sep":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"::",
             "cli:option:long":"gc-scope-sep",
             "cli:option:arg-name":"sep",
-            "cli:option:type":"oat:atomic:java:string",
-            "cli:usage:descr":"oat:atomic:java:string"
+            "cli:option:type":"ts:atomic:java:string",
+            "cli:usage:descr":"ts:atomic:java:string"
         },
         "src-lang":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "cli:option:short":"s",
             "cli:option:long":"src-lang",
             "cli:option:arg-name":"lang",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Source language"
         },
         "src-file":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "cli:option:short":"f",
             "cli:option:long":"src-file",
             "cli:option:arg-name":"file",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Source file"
         },
         "tgt-lang":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "cli:option:short":"t",
             "cli:option:long":"tgt-lang",
             "cli:option:arg-name":"lang",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Target language"
         },
         "tgt-dir":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "cli:option:long":"tgt-dir",
             "cli:option:arg-name":"dir",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Target directory"
         },
         "tgt-fileext":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "cli:option:long":"tgt-fileext",
             "cli:option:arg-name":"ext",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Target file extension (i.e. java, php5, etc.)"
         },
         "tgt-file":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "value:default":"default-tgt",
             "cli:option:long":"tgt-file",
             "cli:option:arg-name":"file",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Target file"
         },
         "tgt-stg":{
-            "at:type":"oat:atomic:java:string",
+            "at:type":"ts:atomic:java:string",
             "cli:option:long":"tgt-stg",
             "cli:option:arg-name":"file",
-            "cli:option:type":"oat:atomic:java:string",
+            "cli:option:type":"ts:atomic:java:string",
             "cli:usage:descr":"Target stg file"
         },
         "tgt-stg-angle-br":{
-            "at:type":"oat:atomic:java:boolean",
+            "at:type":"ts:atomic:java:boolean",
             "value:default":true
         }
     }

@@ -30,10 +30,10 @@
 
 package org.skb.tribe;
 
-import org.skb.util.types.base.OatBase;
-import org.skb.util.types.composite.util.OatLanguageRuleMap;
-import org.skb.util.types.composite.util.OatMapLH;
 import org.apache.commons.lang.StringUtils;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.composite.util.TSLangRuleMap;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class that reads parser rules and provides them for pass1/2 of parsers.
@@ -41,7 +41,7 @@ import org.apache.commons.lang.StringUtils;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
  */
-public class LanguageRuleMap extends OatLanguageRuleMap {
+public class LanguageRuleMap extends TSLangRuleMap {
 	private String className;
 	private String key;
 
@@ -64,38 +64,38 @@ public class LanguageRuleMap extends OatLanguageRuleMap {
 		this.addRows(this.className, this.key);
 
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		OatMapLH map=cfg.getLanguageRules();
+		TSMapLH map=cfg.getLanguageRules();
 
 		if(map!=null){
-			OatMapLH tokens=cfg.getLanguageTokens();
+			TSMapLH tokens=cfg.getLanguageTokens();
 
 			for (String s:map.keySet()){
-				OatBase rm=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessage);
-				OatBase rmIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageInsertPath);
+				TSBase rm=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessage);
+				TSBase rmIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageInsertPath);
 				if(rm!=null){
 					if(rmIns!=null){
-						OatBase replace=tokens.get(rmIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
+						TSBase replace=tokens.get(rmIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
 						if(replace!=null)
-							this.put(s, OatLanguageRuleMap.rmValRuleMessage, StringUtils.replace(rm.toString(), "####", replace.toString()));
+							this.put(s, TSLangRuleMap.rmValRuleMessage, StringUtils.replace(rm.toString(), "####", replace.toString()));
 						else
-							this.put(s, OatLanguageRuleMap.rmValRuleMessage, rm.toString());
+							this.put(s, TSLangRuleMap.rmValRuleMessage, rm.toString());
 					}
 					else
-						this.put(s, OatLanguageRuleMap.rmValRuleMessage, rm.toString());
+						this.put(s, TSLangRuleMap.rmValRuleMessage, rm.toString());
 				}
 
-				OatBase rmAdd=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAdd);
-				OatBase rmAddIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAddInsertPath);
+				TSBase rmAdd=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAdd);
+				TSBase rmAddIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAddInsertPath);
 				if(rmAdd!=null){
 					if(rmAddIns!=null){
-						OatBase replace=tokens.get(rmAddIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
+						TSBase replace=tokens.get(rmAddIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
 						if(replace!=null)
-							this.put(s, OatLanguageRuleMap.rmValRuleAddMessage, StringUtils.replace(rmAdd.toString(), "####", replace.toString()));
+							this.put(s, TSLangRuleMap.rmValRuleAddMessage, StringUtils.replace(rmAdd.toString(), "####", replace.toString()));
 						else
-							this.put(s, OatLanguageRuleMap.rmValRuleAddMessage, rmAdd.toString());
+							this.put(s, TSLangRuleMap.rmValRuleAddMessage, rmAdd.toString());
 					}
 					else
-						this.put(s, OatLanguageRuleMap.rmValRuleAddMessage, rmAdd.toString());
+						this.put(s, TSLangRuleMap.rmValRuleAddMessage, rmAdd.toString());
 				}
 
 			}

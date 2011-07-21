@@ -43,31 +43,31 @@
         "tribe":{
             "configuration":{
                 "name":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"DAL"
                 },
                 "name-lc":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"dal"
                 },
                 "copyright":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"Copyright (c) 2011-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
                 "version":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"0.01"
                 },
                 "build":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"110309"
                 },
                 "build-date":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"2011-Mar-09"
                 },
                 "tribe-generic-stg":{
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/internal\/generic.stg"
                 }
             }
@@ -79,48 +79,48 @@
                 },
                 "internal-scope-sep":{
                     "skb:lang:target:config:constid":"keyScopeSep",
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"@@"
                 },
                 "pr-stats":{
                     "skb:lang:target:config:constid":"keyPrStat",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"Show simple statistic information"
                 },
                 "pr-stats-all":{
                     "skb:lang:target:config:constid":"keyPrStatAll",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-all",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
                     "skb:lang:target:config:constid":"keyPrStatsWScope",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stats-ws",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"No scoped names in statistics"
                 },
                 "pr-stg-stats":{
                     "skb:lang:target:config:constid":"keyPrStgFileStats",
-                    "at:type":"oat:atomic:java:boolean",
+                    "at:type":"ts:atomic:java:boolean",
                     "value:default":false,
                     "cli:option:long":"pr-stg-stats",
-                    "cli:option:type":"oat:atomic:java:boolean",
+                    "cli:option:type":"ts:atomic:java:boolean",
                     "cli:usage:descr":"Print statistics string template"
                 },
                 "stat-stg":{
                     "skb:lang:target:config:constid":"keyStatStg",
-                    "at:type":"oat:atomic:java:string",
+                    "at:type":"ts:atomic:java:string",
                     "value:default":"\/org\/skb\/lang\/dal\/stg\/statistics.stg",
                     "cli:option:long":"stat-stg",
                     "cli:option:arg-name":"file",
-                    "cli:option:type":"oat:atomic:java:string",
+                    "cli:option:type":"ts:atomic:java:string",
                     "cli:usage:descr":"Group template file for statistics"
                 }
             },
@@ -139,15 +139,15 @@
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
                             "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false,
                             "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"oat:atomic:java:boolean",
+                            "cli:option:type":"ts:atomic:java:boolean",
                             "cli:usage:descr":"Generate includes"
                         },
                         "tgt-split-code":{
                             "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"oat:atomic:java:boolean",
+                            "at:type":"ts:atomic:java:boolean",
                             "value:default":false
                         }
                     }

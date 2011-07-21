@@ -41,7 +41,7 @@ import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.composite.util.OatTableRow;
+import org.skb.util.types.api.TSTableRowAPI;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -197,7 +197,7 @@ public class ColaPass1_Ebnf {
 
 	//from atoms, only here for error handling
 	public void putAtom(Token tk, String category, Token type, Boolean array){
-		OatTableRow otr=this.atoms.putAtom(tk, category, type, array);
+		TSTableRowAPI otr=this.atoms.putAtom(tk, category, type, array);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(
 					ColaConstants.Tokens.parserIDENTIFIER+" used more than once",

@@ -31,11 +31,11 @@
 package org.skb.kb;
 
 import org.skb.util.pattern.TemplateManager;
-import org.skb.util.types.atomic.util.OatSTGManager;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public class SKBTemplateManager implements TemplateManager {
-	protected OatMapLH templates=new OatMapLH();
+	protected TSMapLH templates=new TSMapLH();
 
 	public SKBTemplateManager(){
 	}
@@ -52,11 +52,11 @@ public class SKBTemplateManager implements TemplateManager {
 		SKB mySKB=SKB.getInstance();
 		String file=mySKB.configuration.get(new String[] {"path", "targets"}).toString()+mySKB.configuration.get(new String[] {"skb", "targetpref"}).toString()+mySKB.configuration.get(new String[] {"skb", "target"}).toString()+"/"+mySKB.getRegisteredTemplates(key).get(new String[] {"core:rabit:target:template", "java"}).toString()+".stg";
 
-		OatSTGManager stgm=new OatSTGManager();
-		stgm.oatValue.setApplicationName("skb");
-		stgm.oatValue.setSTGFileName(file);
-		stgm.oatValue.useLexerAngelB();
-		stgm.oatValue.loadSTG("builder template", "skb");
+		TSSTGManager stgm=new TSSTGManager();
+		stgm.setApplicationName("skb");
+		stgm.setSTGFileName(file);
+		stgm.useLexerAngelB();
+		stgm.loadSTG("builder template", "skb");
 
 		//TreeMap<String, ArrayList<String>> chunks=new TreeMap<String, ArrayList<String>>();
 		//stgm.field.setChunks(chunks, chunks);
@@ -66,12 +66,12 @@ public class SKBTemplateManager implements TemplateManager {
 
 	public void set_header(){}
 
-	public OatSTGManager get_template_object(String key){
+	public TSSTGManager get_template_object(String key){
 		if(!this.isInitialised())
 			return null;
 
 		if(this.templates.containsKey(key))
-			return (OatSTGManager)this.templates.get(new String[] {key, "stgm"});
+			return (TSSTGManager)this.templates.get(new String[] {key, "stgm"});
 
 		return null;
 	}

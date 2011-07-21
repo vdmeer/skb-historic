@@ -30,11 +30,11 @@
 
 package org.skb.kb;
 
-import org.skb.util.types.base.OatBase;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.composite.util.TSMapLH;
 
 public interface SKBInterpreterEntries extends SKBInterpreter{
 	public static String type="entries";
 
-	public OatBase interpret(OatMapLH entries, String table);
+	public TSBase interpret(TSMapLH entries, String table);
 }

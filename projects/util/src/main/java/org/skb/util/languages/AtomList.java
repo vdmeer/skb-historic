@@ -40,18 +40,18 @@ import java.util.TreeMap;
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.OatValueIsNullException;
-import org.skb.util.types.TypeRepository;
-import org.skb.util.types.atomic.antlr.OatAntlrToken;
-import org.skb.util.types.atomic.antlr.OatStringTemplate;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatTable;
-import org.skb.util.types.composite.util.OatTableRow;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSTableRowAPI;
+import org.skb.util.types.atomic.antlr.TSToken;
+import org.skb.util.types.atomic.stringtemplate.TSST;
+import org.skb.util.types.composite.util.TSTable;
+import org.skb.util.types.composite.util.TSTableRow;
 
 /**
  * Provides a table that compilers/parsers can use to maintain a list of language elements.
  *
- * This class is based on {@link org.skb.util.types.composite.util.OatTable} using a pre-defined column structure
+ * This class is based on {@link org.skb.util.typesOLD.composite.util.TSTable} using a pre-defined column structure
  * suitable for compilers and parsers. The columns are
  * <ul>
  *   <li>category - general separation of language atoms</li>
@@ -69,9 +69,9 @@ import org.skb.util.types.composite.util.OatTableRow;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
-public class AtomList extends OatTable {
+public class AtomList extends TSTable {
 	//need treemap since the insertion of elements determines their position
-	protected TreeMap<String, OatTableRow> oatValue=null;
+	protected TreeMap<String, TSTableRow> oatValue=null;
 
 	/**
 	 * Column identifier for the category
@@ -134,27 +134,27 @@ public class AtomList extends OatTable {
 
 	public AtomList(){
 		super();
-		this.init();
+		this._init();
 	}
 
 	public AtomList(HashSet<String>rows){
 		super();
-		this.init();
+		this._init();
 		this.addRows(rows);
 	}
 
 	public AtomList(String ref_class, String rowPrefix){
 		super();
-		this.init();
+		this._init();
 		this.addRows(ref_class, rowPrefix);
 	}
 
 	/**
 	 * Initialise the atom list, create the table and set default values.
 	 */
-	protected void init(){
-		super.init();
-		this.oatValue=new TreeMap <String, OatTableRow>();
+	protected void _init(){
+		super._init();
+		this.oatValue=new TreeMap <String, TSTableRow>();
 		this.setColumns(AtomList.class.getName(), "alVal");
 		this.addRows(AtomList.class.getName(), "alKey");
 
@@ -211,7 +211,7 @@ public class AtomList extends OatTable {
 	 * @return null if successful, row containing existing atom otherwise
 	 * @see java.util.Map#put(java.lang.Object, java.lang.Object)
 	 */
-	public OatTableRow putAtom(Token tk, String category){
+	public TSTableRowAPI putAtom(Token tk, String category){
 		return this.putAtom(tk, category, null);
 	}
 
@@ -223,7 +223,7 @@ public class AtomList extends OatTable {
 	 * @return null if successful, row containing existing atom otherwise
 	 * @see java.util.Map#put(java.lang.Object, java.lang.Object)
 	 */
-	public OatTableRow putAtom(Token tk, String category, Token type){
+	public TSTableRowAPI putAtom(Token tk, String category, Token type){
 		return this.putAtom(tk, category, type, false);
 	}
 
@@ -236,13 +236,16 @@ public class AtomList extends OatTable {
 	 * @return null if successful, row containing existing atom otherwise
 	 * @see java.util.Map#put(java.lang.Object, java.lang.Object)
 	 */
-	public OatTableRow putAtom(Token tk, String category, Token type, Boolean array){
+	public TSTableRowAPI putAtom(Token tk, String category, Token type, Boolean array){
 		this.scope.push(tk);
 		String id=this.scope.toString();
 		if(this.containsKey(id)==false){
 			this.addRow(id);
 			this.put(id, AtomList.alValCategory, category);
-			this.put(id, AtomList.alValType, new OatAntlrToken(type));
+			if(type!=null)
+				this.put(id, AtomList.alValType, new TSToken(type));
+			else
+				this.put(id, AtomList.alValType, new TSToken());
 			if(array==false)
 				this.put(id, AtomList.alValTypeArray, false);
 			else
@@ -283,7 +286,7 @@ public class AtomList extends OatTable {
 	 */
 	public void addST(String row, StringTemplate st){
 		if(st!=null)
-			this.put(row, AtomList.alValST, new OatStringTemplate(st));
+			this.put(row, AtomList.alValST, new TSST(st));
 	}
 
 	/**
@@ -360,12 +363,10 @@ public class AtomList extends OatTable {
 	 * @return the current set string template
 	 */
 	public StringTemplate getST(String row){
-		OatBaseAtomic st=this.get(row, AtomList.alValST);
+		TSBase st=this.get(row, AtomList.alValST);
 		StringTemplate ret=new StringTemplate("");
-		if(st!=null&&st.isType(TypeRepository.OAT_ATOMIC_ANTLR_ST))
-			try {
-				ret=((OatStringTemplate)st).getValue();
-			} catch (OatValueIsNullException e) {}
+		if(st!=null&&st.tsIsType(TSRepository.TEnum.TS_ATOMIC_ST_ST))
+			ret=((TSST)st);
 		return ret;
 	}
 
@@ -376,13 +377,11 @@ public class AtomList extends OatTable {
 	 * @return an ANTLR runtime token
 	 */
 	public Token getToken(String row, String column){
-		Token ret=null;
-		OatBaseAtomic ata=this.get(row, column);
-		if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_ANTLR_TOKEN))
-			try {
-				ret=((OatAntlrToken)ata).getValue();
-			} catch (OatValueIsNullException e) {}
-		return ret;
+		TSToken ret=null;
+		TSBase ata=this.get(row, column);
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_ANTLR_TOKEN))
+			ret=((TSToken)ata);
+		return (Token)ret;
 	}
 
 	/**

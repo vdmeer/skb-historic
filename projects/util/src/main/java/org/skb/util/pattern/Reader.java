@@ -29,9 +29,7 @@
 
 package org.skb.util.pattern;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Interface for a reader.
@@ -47,9 +45,9 @@ public interface Reader {
 
 	public void prepare(Request request);
 
-	public OatMapLH get_entries();
+	public TSMapLH get_entries();
 
-	//public abstract void prepare_loop(Request request, OatString table, OatString table_collections);
+	//public abstract void prepare_loop(Request request, TSString table, TSString table_collections);
 
 	public void execute(Request request);
 

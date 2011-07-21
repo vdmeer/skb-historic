@@ -34,8 +34,8 @@ import java.io.File;
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * A report manager with extended functionality for parsers/compilers.
@@ -55,11 +55,11 @@ public class ReportManager extends STGManager{
 
 	private ReportManager() {
 		super();
-		this.chunksMandatory=new OatMapLH();
-		this.chunksOptional=new OatMapLH();
+		this.chunksMandatory=new TSMapLH();
+		this.chunksOptional=new TSMapLH();
 
-		this.chunksMandatory.put("report",    new OatArrayListString(new String[]{"name", "file", "line", "column", "message", "type"}));
-		this.chunksMandatory.put("error100",  new OatArrayListString(new String[]{"name"}));
+		this.chunksMandatory.put("report",    new TSArrayListString(new String[]{"name", "file", "line", "column", "message", "type"}));
+		this.chunksMandatory.put("error100",  new TSArrayListString(new String[]{"name"}));
 
 		this.setFileName("");
 		this.progName="tribe";

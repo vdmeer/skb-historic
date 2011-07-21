@@ -31,10 +31,10 @@
 package org.skb.kb;
 
 import org.skb.util.pattern.Request;
-import org.skb.util.types.base.OatBase;
+import org.skb.util.types.api.TSBase;
 
 public interface SKBInterpreterCore extends SKBInterpreter{
 	public static String type="core";
 
-	public OatBase interpret(String key, Request request);
+	public TSBase interpret(String key, Request request);
 }

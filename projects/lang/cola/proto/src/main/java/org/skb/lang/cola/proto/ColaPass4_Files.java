@@ -44,8 +44,8 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSBoolean;
 
 /**
  * Pass 4 of the Cola Parser, generating files for output.
@@ -93,9 +93,9 @@ public class ColaPass4_Files {
 		Boolean tgtByPkg=false;
 		Boolean tgtByAtomCat=false;
 		try {
-			tgtSplitCode=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSplitCode)).getValue();
-			tgtByPkg=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSCbyPackage)).getValue();
-			tgtByAtomCat=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSCbyAtomCategory)).getValue();
+			tgtSplitCode=((TSBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSplitCode)).tsvalue;
+			tgtByPkg=((TSBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSCbyPackage)).tsvalue;
+			tgtByAtomCat=((TSBoolean)this.prop.getValue(ColaConstants.Properties.keyTgSCbyAtomCategory)).tsvalue;
 		} catch (Exception e) {}
 
 		if(tgtSplitCode==false){
@@ -167,7 +167,7 @@ public class ColaPass4_Files {
 				//final cleanup, like remove all functions if we're not in cola target mode
 				this.removeFunctions();
 
-				OatBaseAtomic defP=this.prop.getValue(ColaConstants.Properties.keyXtJavaPackage);
+				TSBase defP=this.prop.getValue(ColaConstants.Properties.keyXtJavaPackage);
 				String defPkg;
 				if(defP==null)
 					defPkg="";
@@ -252,7 +252,7 @@ public class ColaPass4_Files {
 							//if we should do Element code, do it
 							Boolean xtDoElemCode=false;
 							try {
-								xtDoElemCode=((OatBoolean)this.prop.getValue(ColaConstants.Properties.keyXtDoElementCode)).getValue();
+								xtDoElemCode=((TSBoolean)this.prop.getValue(ColaConstants.Properties.keyXtDoElementCode)).tsvalue;
 							} catch (Exception e) {}
 
 							if(xtDoElemCode==true){

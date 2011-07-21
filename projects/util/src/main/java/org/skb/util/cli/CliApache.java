@@ -33,14 +33,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
-import org.skb.util.cli.Cli;
-import org.skb.util.types.TypeRepository;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.java.OatDouble;
-import org.skb.util.types.atomic.java.OatInteger;
-import org.skb.util.types.atomic.java.OatLong;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.composite.util.OatPropertyMap;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -48,6 +40,15 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.types.atomic.java.TSDouble;
+import org.skb.util.types.atomic.java.TSInteger;
+import org.skb.util.types.atomic.java.TSLong;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * Implementation of the CLI interface using Apache Commons cli.
@@ -56,23 +57,23 @@ import org.apache.commons.cli.PosixParser;
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
 public class CliApache implements Cli {
-	private OatString applicationName;
+	private TSString applicationName;
 	private Options options;
 	private CommandLine line;
 	private LinkedHashMap<String, String> optionList;
 
 	public CliApache() {
-		this.applicationName=new OatString();
+		this.applicationName=new TSString();
 		this.options=new Options();
 		this.optionList=new LinkedHashMap<String, String>();
 	}
 
 	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#setApplicationName(org.skb.types.base.OatBaseAtomic)
+	 * @see org.skb.util.Cli#setApplicationName(org.skb.types.base.TSAtomic)
 	 */
-	public void setApplicationName(OatString appName){
-		if(appName!=null)
-			this.applicationName=(OatString)appName;
+	public void setApplicationName(TSBase appName){
+		if(appName!=null&&appName.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING))
+			this.applicationName=(TSString)appName;
 	}
 
 	/* (non-Javadoc)
@@ -80,17 +81,17 @@ public class CliApache implements Cli {
 	 */
 	public void setApplicationName(String appName){
 		if(appName!=null)
-			this.applicationName=new OatString(appName);
+			this.applicationName=new TSString(appName);
 	}
 
 	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#setPropOptions(org.skb.types.util.OatPropertyMap)
+	 * @see org.skb.util.Cli#setPropOptions(org.skb.types.util.TSPropertyMap)
 	 */
-	public void setPropOptions(OatPropertyMap prop){
+	public void setPropOptions(TSPropertyMap prop){
 		HashSet<String> ts=new HashSet<String>(prop.getRows());
         for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
         	String current=i.next();
-        	if(prop.get(current, OatPropertyMap.pmValCliOptionType)!=null){
+        	if(prop.get(current, TSPropertyMap.pmValCliOptionType)!=null){
         		String optType;
         		String optShort;
         		String optLong;
@@ -98,39 +99,39 @@ public class CliApache implements Cli {
         		String optArgName;
 
         		try{
-        			optType=prop.get(current, OatPropertyMap.pmValCliOptionType).toString();
+        			optType=prop.get(current, TSPropertyMap.pmValCliOptionType).toString();
         		} catch (Exception e) {
         			optType=null;
         		}
 
         		try{
-        			optShort=prop.get(current, OatPropertyMap.pmValCliOptionShort).toString();
+        			optShort=prop.get(current, TSPropertyMap.pmValCliOptionShort).toString();
         		} catch (Exception e) {
         			optShort=null;
         		}
 
         		try{
-        			optLong=prop.get(current, OatPropertyMap.pmValCliOptionLong).toString();
+        			optLong=prop.get(current, TSPropertyMap.pmValCliOptionLong).toString();
         		} catch (Exception e) {
         			optLong=null;
         		}
 
         		try{
-        			optDescr=prop.get(current, OatPropertyMap.pmValCliUsageDescr).toString();
+        			optDescr=prop.get(current, TSPropertyMap.pmValCliUsageDescr).toString();
         		} catch (Exception e) {
         			optDescr=null;
         		}
 
         		try{
-        			optArgName=prop.get(current, OatPropertyMap.pmValCliUsageDescrAdd).toString();
+        			optArgName=prop.get(current, TSPropertyMap.pmValCliUsageDescrAdd).toString();
         		} catch (Exception e) {
         			optArgName=null;
         		}
 
-        		if(  optType.equals(TypeRepository.OAT_ATOMIC_STRING)||
-        		     optType.equals(TypeRepository.OAT_ATOMIC_INTEGER)||
-        		     optType.equals(TypeRepository.OAT_ATOMIC_DOUBLE)||
-                	 optType.equals(TypeRepository.OAT_ATOMIC_LONG)
+        		if(  optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING)||
+        		     optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER)||
+        		     optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE)||
+                	 optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_LONG)
         		  ){
         			if(optShort!=null&&optLong!=null){
         				OptionBuilder.hasArg();
@@ -149,7 +150,7 @@ public class CliApache implements Cli {
 						this.optionList.put(current, optLong);
         			}
         		}
-        		else if(optType.equals(TypeRepository.OAT_ATOMIC_BOOLEAN)){
+        		else if(optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN)){
         			if(optShort!=null&&optLong!=null){
         				OptionBuilder.withDescription(optDescr);
 						OptionBuilder.withLongOpt(optLong);
@@ -165,7 +166,6 @@ public class CliApache implements Cli {
         		}
 			}
 		}
-		//this.setOptions();
 	}
 
 	/* (non-Javadoc)
@@ -190,42 +190,27 @@ public class CliApache implements Cli {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#setOptions(org.skb.types.util.OatPropertyMap)
+	 * @see org.skb.util.Cli#setOptions(org.skb.types.util.TSPropertyMap)
 	 */
-	public void setOptions(OatPropertyMap prop){
+	public void setOptions(TSPropertyMap prop){
 		String val;
         for(String key:this.optionList.keySet()){
         	val=this.optionList.get(key);
         	if(this.line.hasOption(val)){
         		String valType;
         		try {
-        			valType=prop.get(key, OatPropertyMap.pmValCliOptionType).toString();
+        			valType=prop.get(key, TSPropertyMap.pmValCliOptionType).toString();
         		} catch (Exception e) {
         			valType="";
         		}
-        		switch(TypeRepository.type(valType)){
-        			case OAT_ATOMIC_STRING:  prop.setValueCli(key, new OatString(line.getOptionValue(val))); break;
-        			case OAT_ATOMIC_BOOLEAN: prop.setValueCli(key, new OatBoolean(true)); break;
-        			case OAT_ATOMIC_INTEGER: prop.setValueCli(key, new OatInteger(line.getOptionValue(val))); break;
-        			case OAT_ATOMIC_DOUBLE:  prop.setValueCli(key, new OatDouble(line.getOptionValue(val))); break;
-        			case OAT_ATOMIC_LONG:    prop.setValueCli(key, new OatLong(line.getOptionValue(val))); break;
-        			default: System.err.println("UNKNOWN TYPE");
-        		
+        		switch(TSRepository.type(valType)){
+        			case TS_ATOMIC_JAVA_STRING:  prop.setValueCli(key, new TSString(line.getOptionValue(val))); break;
+        			case TS_ATOMIC_JAVA_BOOLEAN: prop.setValueCli(key, new TSBoolean(true)); break;
+        			case TS_ATOMIC_JAVA_INTEGER: prop.setValueCli(key, new TSInteger(line.getOptionValue(val))); break;
+        			case TS_ATOMIC_JAVA_DOUBLE:  prop.setValueCli(key, new TSDouble(line.getOptionValue(val))); break;
+        			case TS_ATOMIC_JAVA_LONG:    prop.setValueCli(key, new TSLong(line.getOptionValue(val))); break;
+        			default: //System.err.println("Apache CL, UNKNOWN TYPE for <"+key+"> <"+valType+">");
         		}
-/*
-        		if(valType.equals(TypeRepository.OAT_ATOMIC_STRING))
-        			prop.setValueCli(key, new OatString(line.getOptionValue(val)));
-        		else if(valType.equals(TypeRepository.OAT_ATOMIC_BOOLEAN))
-        			prop.setValueCli(key, new OatBoolean(true));
-        		else if(valType.equals(TypeRepository.OAT_ATOMIC_INTEGER))
-        			prop.setValueCli(key, new OatInteger(line.getOptionValue(val)));
-        		else if(valType.equals(TypeRepository.OAT_ATOMIC_DOUBLE))
-        			prop.setValueCli(key, new OatDouble(line.getOptionValue(val)));
-        		else if(valType.equals(TypeRepository.OAT_ATOMIC_LONG))
-        			prop.setValueCli(key, new OatLong(line.getOptionValue(val)));
-        		else
-        			System.err.println("UNKNOWN TYPE");
-*/
         	}
         }
 	}

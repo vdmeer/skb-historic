@@ -46,13 +46,13 @@ import org.skb.lang.cpp.CPP;
 import org.skb.util.cli.Cli;
 import org.skb.util.cli.CliApache;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.OatValueIsNullException;
-import org.skb.util.types.TypeRepository.ATType;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.java.OatString;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatPropertyMap;
-
+import org.skb.util.types.TSNull;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.TSRepository.TEnum;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * This is the main Tribe class, it does all the magic.
@@ -88,7 +88,7 @@ public class Tribe {
 	public void start (LanguageParser[] supportedLanguages, String[] args){
 		logger.trace("start -- in");
 
-		cli.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC).getValOatAtomicString());
+		cli.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
 
 		/**
 		 * Create an object for the supported language and set the property for languages
@@ -103,8 +103,8 @@ public class Tribe {
 		 * Get an instance of the report manager, to be able to write output, and give it the standard stg.
 		 */
 		logger.trace("set report manager");
-		repMgr.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC).getValOatAtomicString());
-		repMgr.setSTGUrlName(prop.get(TribeProperties.tpmKeyReportManagerStg, OatPropertyMap.pmValValueDefault));
+		repMgr.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
+		repMgr.setSTGUrlName(prop.get(TribeProperties.tpmKeyReportManagerStg, TSPropertyMap.pmValValueDefault));
 		repMgr.loadSTG("Report Manager String Template Group", "");
 
 		/**
@@ -116,17 +116,17 @@ public class Tribe {
 		logger.trace("cli propOptions and setOptions pass 1");
 		this.cli.setPropOptions(this.prop);
 		this.setOptions(args, languages);
-
+//System.err.println(prop);
 		/**
 		 * If there is a new stg given, instruct the report manager to load it. Checks on the content of the
 		 * new stg file will be handled by the report manager.
 		 */
-        if (prop.getValueCli(TribeProperties.tpmKeyReportManagerStg)!=null){
+        if (!(prop.getValueCli(TribeProperties.tpmKeyReportManagerStg)).tsIsType(TEnum.TS_NULL)){
         	logger.trace("changed tribe stg");
         	repMgr.setSTGFileName(prop.getValueCli(TribeProperties.tpmKeyReportManagerStg));
         	repMgr.loadSTG("Tribe report stg", "");
         }
-
+//System.err.println(prop);
         /**
          * Check if the selected source and/or target language are valid. If they are not valid, check
          * if other CLI options still need to be addressed (such as -help or -version). If there are options
@@ -135,19 +135,17 @@ public class Tribe {
          */
         logger.trace("testing source and target languages pass1");
         Boolean gc=false;
-        OatString srcLang=new OatString();
-        OatString tgtLang=new OatString();
-		try {
-			gc=((OatBoolean)prop.getValue(TribeProperties.tpmKeyGC)).getValue();
-			srcLang=prop.getValue(TribeProperties.tpmKeySrcLanguage).getValOatAtomicString();
-			tgtLang=prop.getValue(TribeProperties.tpmKeyTgtLanguage).getValOatAtomicString();
-		} catch (Exception e) {}
+        TSBase srcLang=new TSNull();
+        TSBase tgtLang=new TSNull();
+		srcLang=prop.getValue(TribeProperties.tpmKeySrcLanguage);
+		tgtLang=prop.getValue(TribeProperties.tpmKeyTgtLanguage);
+		gc=((TSBoolean)prop.getValue(TribeProperties.tpmKeyGC)).tsvalue;
 
-		if(prop.getValue(TribeProperties.tpmKeySrcLanguage)!=null)
+		if(!(prop.getValue(TribeProperties.tpmKeySrcLanguage)).tsIsType(TEnum.TS_NULL)) //TODO fill
 			;
 		Boolean ssl=languages.setSelectedLanguage(srcLang, tgtLang, gc);
 		this.cli.setPropOptions(this.prop);
-		cli.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC).getValOatAtomicString());
+		cli.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
         if(ssl==false)
 			this.doExitOptions(1);
 
@@ -157,7 +155,7 @@ public class Tribe {
 		 */
 		logger.trace("cli pass 2");
 		this.setOptions(args, languages);
-
+//System.err.println(prop);
 		/**
 		 * Now, if we have problems with the selected source and/or target language, exit with an error. 
 		 */
@@ -166,13 +164,13 @@ public class Tribe {
 		ssl=languages.checkSelectedLanguage();
 		if(ssl==false)
 			System.exit(3);
-
+//System.err.println(prop);
 		/**
 		 * Now do the language specific exit options (such as print an stg).
 		 */
 		logger.trace("exitOptions pass2");
 		this.doExitOptions(2);
-
+//System.err.println(prop);
 		/**
 		 * If we do not have any input file, exit now. All other CLI options that do not need an input file need to be processed
 		 * before this line!
@@ -188,11 +186,9 @@ public class Tribe {
          */
 		logger.trace("end of option look up, starting processing");
 
-		try {
-			repMgr.doErrors(((OatBoolean)this.prop.getValue(TribeProperties.tpmKeyNoErrors)).getValue());
-			repMgr.doWarnings(((OatBoolean)this.prop.getValue(TribeProperties.tpmKeyNoWarnings)).getValue());
-			repMgr.setProgrammeName(((OatString)this.prop.getValue(TribeProperties.tpmKeyNameLC)).getValue());
-		} catch (OatValueIsNullException e1) {}
+		repMgr.doErrors(((TSBoolean)this.prop.getValue(TribeProperties.tpmKeyNoErrors)).tsvalue);
+		repMgr.doWarnings(((TSBoolean)this.prop.getValue(TribeProperties.tpmKeyNoWarnings)).tsvalue);
+		repMgr.setProgrammeName(((TSString)this.prop.getValue(TribeProperties.tpmKeyNameLC)).tsvalue);
 
 		/**
          * Everything is set, so start loading the stg for the target file. If the stg should only be printed, print and exit.
@@ -200,11 +196,9 @@ public class Tribe {
 		logger.trace("load language stg");
 		gc=false;
 		Boolean prStgFileTgt=false;
-		try {
-			gc=((OatBoolean)prop.getValue(TribeProperties.tpmKeyGC)).getValue();
-			prStgFileTgt=((OatBoolean)prop.getValue(TribeProperties.tpmKeyPrStgFileTarget)).getValue();
-		} catch (Exception e) {}
-
+		gc=((TSBoolean)prop.getValue(TribeProperties.tpmKeyGC)).tsvalue;
+		prStgFileTgt=((TSBoolean)prop.getValue(TribeProperties.tpmKeyPrStgFileTarget)).tsvalue;
+//System.err.println(prop);
 		if(gc==true){
 			languages.loadStg();
 			if(prStgFileTgt==true){
@@ -230,11 +224,11 @@ public class Tribe {
         			System.exit(1);
         		}
         		else
-        			prop.put(TribeProperties.tpmKeySrcFile, OatPropertyMap.pmValValueCli, fnTest.getAbsolutePath());
+        			prop.put(TribeProperties.tpmKeySrcFile, TSPropertyMap.pmValValueCli, fnTest.getAbsolutePath());
         	}
 
-        	OatBaseAtomic ata=prop.getValue(TribeProperties.tpmKeyGC);
-        	if(ata!=null&&ata.isType(ATType.OAT_ATOMIC_BOOLEAN)&&(Boolean)ata.getValue()==true){
+        	TSBase ata=prop.getValue(TribeProperties.tpmKeyGC);
+        	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
         		fnTest=new File(prop.getValue(TribeProperties.tpmKeyTgtDir).toString());
         		if (fnTest.canWrite()==false){
         			repMgr.reportError("can't write in target directory <" + prop.getValue(TribeProperties.tpmKeyTgtDir) + ">");
@@ -257,11 +251,11 @@ public class Tribe {
          * Save the current configuration.
          */
         logger.trace("save current configuration, if requested");
-        if(prop.getValueCli(TribeProperties.tpmKeyCfgSave)!=null){
-			OatString cl=(OatString)prop.getValueCli(TribeProperties.tpmKeyCfgSave);
+        if(!(prop.getValueCli(TribeProperties.tpmKeyCfgSave)).tsIsType(TEnum.TS_NULL)){
+			TSString cl=(TSString)prop.getValueCli(TribeProperties.tpmKeyCfgSave);
 //			String _cret="";
 			try {
-				prop.writeToFile(cl.getValue());
+				prop.writeToFile(cl.tsvalue);
 			} catch (Exception e) {}
 
 //			if(_cret!=null)
@@ -279,8 +273,8 @@ public class Tribe {
         logger.trace("rock'n roll, creating input stream");
         try{
         	InputStream tribeIS;
-        	OatBaseAtomic ata=prop.getValue(TribeProperties.tpmKeyNoCPP);
-        	if(ata!=null&&ata.isType(ATType.OAT_ATOMIC_BOOLEAN)&&(Boolean)ata.getValue()==false){
+        	TSBase ata=prop.getValue(TribeProperties.tpmKeyNoCPP);
+        	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==false){
         		logger.trace("use build-in cpp");
         		File temp=File.createTempFile("_tribe", "cpp");
         	    temp.deleteOnExit();
@@ -321,17 +315,17 @@ public class Tribe {
 	private void doExitOptions(int pass){
 		TribeProperties prop=TribeProperties.getInstance();
 
-        if(pass==1&&prop.getValueCli(TribeProperties.tpmKeyTgtLanguage)!=null)
+        if(pass==1&&!(prop.getValueCli(TribeProperties.tpmKeyTgtLanguage)).tsIsType(TEnum.TS_NULL))
             return;
 
-        if(pass==1&&prop.getValueCli(TribeProperties.tpmKeySrcLanguage)!=null)
+        if(pass==1&&!(prop.getValueCli(TribeProperties.tpmKeySrcLanguage)).tsIsType(TEnum.TS_NULL))
             return;
 
 		ReportManager repMgr=ReportManager.getInstance();
 
 		Boolean defOpt=false;
 		try {
-			defOpt=((OatBoolean)prop.getValue(TribeProperties.tpmKeyDefaultOptions)).getValue();
+			defOpt=((TSBoolean)prop.getValue(TribeProperties.tpmKeyDefaultOptions)).tsvalue;
 		} catch (Exception e) {}
 		if(defOpt==true){
 			System.out.println("Default Configuration:");
@@ -342,8 +336,8 @@ public class Tribe {
 			TreeSet<String> ts=new TreeSet<String>(this.prop.getRows());
 	        for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
 	        	String current=i.next();
-	        	if(prop.get(current, OatPropertyMap.pmValCliOptionType)!=null){
-	        		if(prop.get(current, OatPropertyMap.pmValValueFile)!=null||prop.get(current, OatPropertyMap.pmValValueCli)!=null)
+	        	if(!(prop.get(current, TSPropertyMap.pmValCliOptionType)).tsIsType(TEnum.TS_NULL)){
+	        		if(!(prop.get(current, TSPropertyMap.pmValValueFile)).tsIsType(TEnum.TS_NULL)||!(prop.get(current, TSPropertyMap.pmValValueCli)).tsIsType(TEnum.TS_NULL))
 	        			System.out.println("    "+current+" = "+prop.getValue(current));
 	        		else
 	        			System.out.println("    "+current+" = "+prop.getValueDefault(current));
@@ -355,7 +349,7 @@ public class Tribe {
 
 		Boolean showHelp=false;
 		try {
-			showHelp=((OatBoolean)prop.getValue(TribeProperties.tpmKeyShowHelp)).getValue();
+			showHelp=((TSBoolean)prop.getValue(TribeProperties.tpmKeyShowHelp)).tsvalue;
 		} catch (Exception e) {}
 
         if(showHelp==true){
@@ -367,7 +361,7 @@ public class Tribe {
 
 		Boolean showVersion=false;
 		try {
-			showVersion=((OatBoolean)prop.getValue(TribeProperties.tpmKeyShowVersion)).getValue();
+			showVersion=((TSBoolean)prop.getValue(TribeProperties.tpmKeyShowVersion)).tsvalue;
 		} catch (Exception e) {}
 
         if(showVersion==true){
@@ -377,7 +371,7 @@ public class Tribe {
 
 		Boolean showLang=false;
 		try {
-			showLang=((OatBoolean)prop.getValue(TribeProperties.tpmKeyShowLanguages)).getValue();
+			showLang=((TSBoolean)prop.getValue(TribeProperties.tpmKeyShowLanguages)).tsvalue;
 		} catch (Exception e) {}
 
         if(showLang==true){
@@ -385,7 +379,7 @@ public class Tribe {
         	System.exit(0);
         }
 
-        if(prop.getValueCli(TribeProperties.tpmKeyPrStgFileTribe)!=null){
+        if(!(prop.getValueCli(TribeProperties.tpmKeyPrStgFileTribe)).tsIsType(TEnum.TS_NULL)){
         	System.out.println(repMgr.toString());
             System.exit(0);
         }		
@@ -410,11 +404,11 @@ public class Tribe {
 
         cli.setOptions(this.prop);
 
-		if(prop.getValueCli(TribeProperties.tpmKeyCfgLoad)!=null){
-			OatString cl=(OatString)prop.getValueCli(TribeProperties.tpmKeyCfgLoad);
+		if(!(prop.getValueCli(TribeProperties.tpmKeyCfgLoad)).tsIsType(TEnum.TS_NULL)){
+			TSBase cl=(TSString)prop.getValueCli(TribeProperties.tpmKeyCfgLoad);
 			String ret=null;
 			try {
-				ret=prop.loadFromFile(cl.getValue());
+				ret=prop.loadFromFile(cl);
 			} catch (Exception e) {
 				repMgr.reportError("tribe: problems loading configuration file<"+cl+">, trying to continue");
 			}
@@ -424,21 +418,21 @@ public class Tribe {
 	}
 
 	private void header(){
-		System.out.println(prop.get(TribeProperties.tpmKeyName, OatPropertyMap.pmValValueDefault)+", version "+
-		           prop.get(TribeProperties.tpmKeyVersion, OatPropertyMap.pmValValueDefault)+", build "+
-		           prop.get(TribeProperties.tpmKeyBuild, OatPropertyMap.pmValValueDefault)+", "+
-		           prop.get(TribeProperties.tpmKeyBuildDate, OatPropertyMap.pmValValueDefault));
-		System.out.println(prop.get(TribeProperties.tpmKeyCopyright, OatPropertyMap.pmValValueDefault));
+		System.out.println(prop.get(TribeProperties.tpmKeyName, TSPropertyMap.pmValValueDefault)+", version "+
+		           prop.get(TribeProperties.tpmKeyVersion, TSPropertyMap.pmValValueDefault)+", build "+
+		           prop.get(TribeProperties.tpmKeyBuild, TSPropertyMap.pmValValueDefault)+", "+
+		           prop.get(TribeProperties.tpmKeyBuildDate, TSPropertyMap.pmValValueDefault));
+		System.out.println(prop.get(TribeProperties.tpmKeyCopyright, TSPropertyMap.pmValValueDefault));
 		System.out.println();
-		System.out.println(prop.get(TribeProperties.tpmKeyBuildWith, OatPropertyMap.pmValValueDefault));
+		System.out.println(prop.get(TribeProperties.tpmKeyBuildWith, TSPropertyMap.pmValValueDefault));
 		System.out.println();
 	}
 	
 	private void footer(){
 		System.out.println();
-		if(prop.get(TribeProperties.tpmKeyAdditional, OatPropertyMap.pmValValueDefault)!=null){
+		if(!prop.get(TribeProperties.tpmKeyAdditional, TSPropertyMap.pmValValueDefault).tsIsType(TEnum.TS_NULL)){
 			System.out.println();
-			System.out.println(prop.get(TribeProperties.tpmKeyAdditional, OatPropertyMap.pmValValueDefault).toString());
+			System.out.println(prop.get(TribeProperties.tpmKeyAdditional, TSPropertyMap.pmValValueDefault).toString());
 		}
 	}
 }

@@ -40,8 +40,8 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
-import org.skb.util.types.TypeRepository;
-import org.skb.util.types.base.OatBaseAtomic;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.api.TSBase;
 
 /**
  * Pass 3 of the Cola parser using templates to generate a target language specification.
@@ -143,14 +143,14 @@ public class ColaPass3_Gen {
 
 
 	public String inline_codeLanguage(String lang){
-		OatBaseAtomic ata=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage);
-		if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola))
+		TSBase ata=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage);
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola))
 			return lang;
 
 		String ret=lang.replace("\"", "");
 		ret.replace("\"", "");
 		ata=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage);
-		if(ata!=null&&ata.isType(TypeRepository.OAT_ATOMIC_STRING)&&ata.toString().equals(ret))
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ret))
 			return ret;
 		else
 			return null;
@@ -195,7 +195,7 @@ public class ColaPass3_Gen {
 		if(this.atoms.get(this.sn.toString(),AtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
 			return ret;
 		if(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
-			OatBaseAtomic javaPkg=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage);
+			TSBase javaPkg=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage);
 			if(javaPkg!=null&&javaPkg.toString().length()>0)
 				ret=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage).toString();
 		}

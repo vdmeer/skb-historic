@@ -45,11 +45,11 @@ import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.stringtemplate.STGWriterXtoY;
-import org.skb.util.types.TypeRepository;
-import org.skb.util.types.atomic.java.OatBoolean;
-import org.skb.util.types.atomic.util.OatArrayListString;
-import org.skb.util.types.base.OatBaseAtomic;
-import org.skb.util.types.composite.util.OatMapLH;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.api.TSBase;
+import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class implementing statistic methods for Cola parser.
@@ -69,17 +69,17 @@ public class ColaStatistics {
 	private StringTemplate completeStatPrintArray=null;
 
 	public ColaStatistics(){
-		OatMapLH chMan=new OatMapLH();
+		TSMapLH chMan=new TSMapLH();
 
-		chMan.put("simpleStat", new OatArrayListString(new String[]{"file", "ids", "properties", "items", "contracts", "packages", "elements", "facilities", "actions"}));
-		chMan.put("simpleStat", new OatArrayListString(new String[]{"attributes", "parameters", "structs", "members", "typedefs"}));
+		chMan.put("simpleStat", new TSArrayListString(new String[]{"file", "ids", "properties", "items", "contracts", "packages", "elements", "facilities", "actions"}));
+		chMan.put("simpleStat", new TSArrayListString(new String[]{"attributes", "parameters", "structs", "members", "typedefs"}));
 
-		chMan.put("completeStatStart",      new OatArrayListString(new String[]{"file"}));
-		chMan.put("completeStatPrintArray", new OatArrayListString(new String[]{"text", "size", "array"}));
+		chMan.put("completeStatStart",      new TSArrayListString(new String[]{"file"}));
+		chMan.put("completeStatPrintArray", new TSArrayListString(new String[]{"text", "size", "array"}));
 
 		this.stgl=new STGManager();
 		this.stgl.setMandatoryChunks(chMan);
-		this.stgl.setApplicationName(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyNameLC).getValOatAtomicString());
+		this.stgl.setApplicationName(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyNameLC));
 
 		this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(ColaConstants.Properties.keyStatStg));
 		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(ColaConstants.Properties.keyStatStg));
@@ -139,9 +139,9 @@ public class ColaStatistics {
 			boolean scope=false;
 
 			try {
-				OatBaseAtomic ata=prop.getValue(ColaConstants.Properties.keyPrStatsWScope);
-				if(ata.isType(TypeRepository.OAT_ATOMIC_BOOLEAN))
-						scope=((OatBoolean)ata).getValue();
+				TSBase ata=prop.getValue(ColaConstants.Properties.keyPrStatsWScope);
+				if(ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+						scope=((TSBoolean)ata).tsvalue;
 			} catch (Exception e) {}
 
 			_printCompleteStatisticArray("Properties required for contracts",   properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaCONTRACT),   completeStatPrintArray, scope);
