@@ -141,12 +141,13 @@ public class Tribe {
 		tgtLang=prop.getValue(TribeProperties.tpmKeyTgtLanguage);
 		gc=((TSBoolean)prop.getValue(TribeProperties.tpmKeyGC)).tsvalue;
 
-		if(!(prop.getValue(TribeProperties.tpmKeySrcLanguage)).tsIsType(TEnum.TS_NULL)) //TODO fill
-			;
+//		if(!(prop.getValue(TribeProperties.tpmKeySrcLanguage)).tsIsType(TEnum.TS_NULL)) //TODO fill
+//			;
 		Boolean ssl=languages.setSelectedLanguage(srcLang, tgtLang, gc);
 		this.cli.setPropOptions(this.prop);
 		cli.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
-        if(ssl==false)
+//System.err.println(prop);
+		if(ssl==false)
 			this.doExitOptions(1);
 
 		/**
@@ -169,8 +170,9 @@ public class Tribe {
 		 * Now do the language specific exit options (such as print an stg).
 		 */
 		logger.trace("exitOptions pass2");
-		this.doExitOptions(2);
 //System.err.println(prop);
+		this.doExitOptions(2);
+
 		/**
 		 * If we do not have any input file, exit now. All other CLI options that do not need an input file need to be processed
 		 * before this line!

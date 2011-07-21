@@ -88,45 +88,27 @@ public class CliApache implements Cli {
 	 * @see org.skb.util.Cli#setPropOptions(org.skb.types.util.TSPropertyMap)
 	 */
 	public void setPropOptions(TSPropertyMap prop){
+		String optType;
+		String optShort;
+		String optLong;
+		String optDescr;
+		String optArgName;
+
 		HashSet<String> ts=new HashSet<String>(prop.getRows());
         for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
         	String current=i.next();
         	if(prop.get(current, TSPropertyMap.pmValCliOptionType)!=null){
-        		String optType;
-        		String optShort;
-        		String optLong;
-        		String optDescr;
-        		String optArgName;
-
-        		try{
-        			optType=prop.get(current, TSPropertyMap.pmValCliOptionType).toString();
-        		} catch (Exception e) {
-        			optType=null;
-        		}
-
-        		try{
-        			optShort=prop.get(current, TSPropertyMap.pmValCliOptionShort).toString();
-        		} catch (Exception e) {
-        			optShort=null;
-        		}
-
-        		try{
-        			optLong=prop.get(current, TSPropertyMap.pmValCliOptionLong).toString();
-        		} catch (Exception e) {
-        			optLong=null;
-        		}
-
-        		try{
-        			optDescr=prop.get(current, TSPropertyMap.pmValCliUsageDescr).toString();
-        		} catch (Exception e) {
-        			optDescr=null;
-        		}
-
-        		try{
-        			optArgName=prop.get(current, TSPropertyMap.pmValCliUsageDescrAdd).toString();
-        		} catch (Exception e) {
-        			optArgName=null;
-        		}
+       			optType=prop.get(current, TSPropertyMap.pmValCliOptionType).toString();
+       			if(!(prop.get(current, TSPropertyMap.pmValCliOptionShort)).tsIsType(TEnum.TS_NULL))
+       				optShort=prop.get(current, TSPropertyMap.pmValCliOptionShort).toString();
+       			else
+       				optShort=null;
+       			if(!(prop.get(current, TSPropertyMap.pmValCliOptionLong)).tsIsType(TEnum.TS_NULL))
+       				optLong=prop.get(current, TSPropertyMap.pmValCliOptionLong).toString();
+       			else
+       				optLong=null;
+       			optDescr=prop.get(current, TSPropertyMap.pmValCliUsageDescr).toString();
+       			optArgName=prop.get(current, TSPropertyMap.pmValCliUsageDescrAdd).toString();
 
         		if(  optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING)||
         		     optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER)||

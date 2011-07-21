@@ -342,9 +342,12 @@ public class TSPropertyMap extends TSTable{
 		    		this.put(key,s,val);
 		    }
 
-			if((val=map.get(key+"/"+TSPropertyMap.pmValType))!=null)
+		    val=map.get(key+"/"+TSPropertyMap.pmValType);
+			if(val!=null&&!val.tsIsType(TEnum.TS_NULL))
 				this.put(key,TSPropertyMap.pmValType,TSRepository.type(val));
-			if((val=map.get(key+"/"+TSPropertyMap.pmValCliOptionType))!=null)
+
+			val=map.get(key+"/"+TSPropertyMap.pmValCliOptionType);
+			if(val!=null&&!val.tsIsType(TEnum.TS_NULL))
 				this.put(key,TSPropertyMap.pmValCliOptionType,TSRepository.type(val));
 
 			//remove the key from cfg_ar to allow test for unknown options

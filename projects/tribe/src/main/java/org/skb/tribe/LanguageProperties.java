@@ -30,6 +30,7 @@
 
 package org.skb.tribe;
 
+import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.composite.util.TSMapLH;
 import org.skb.util.types.composite.util.TSPropertyMap;
 
@@ -86,14 +87,13 @@ public class LanguageProperties {
 		else{
 			this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration));
 			prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration));
-
 			if(config.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
 				String lang=new String();
-				try {
+				if(!prop.getValue(TribeProperties.tpmKeyTgtLanguage).tsIsType(TEnum.TS_NULL)){
 					lang=prop.getValue(TribeProperties.tpmKeyTgtLanguage).toString();
-				} catch (Exception e) {}
-				this.opm.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli)).tsGetValue());
-				prop.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang)).tsGetValue());
+					this.opm.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli)).tsGetValue());
+					prop.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang)).tsGetValue());
+				}
 			}
 		}
 //		logger.trace("setOptions -- out");
