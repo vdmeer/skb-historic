@@ -119,7 +119,12 @@ dalFieldPrimkey              : ^(reason=DAL_PRIMKEY (action=DAL_ROLLBACK)? (acti
 dalFieldUnique               : ^(reason=DAL_UNIQUE (action=DAL_ROLLBACK)? (action=DAL_ABORT)?)
                                -> dalFieldConstraint(reason={$reason.text}, action={$action.text});
 
-dalSequence                  : ^(DAL_SEQUENCE (id+=IDENT)*)
+dalSequence                  : ^(DAL_SEQUENCE IDENT
+                                 (
+                                   id+=IDENT
+                                   {this.pass.addToSequence(id.token);}
+                                 )*
+                               )
                                -> dalSequence(ids={$id});
 
 
@@ -155,7 +160,7 @@ dalActionsEmpty              : ^(DAL_ACTION_EMPTY IDENT table=dalTableIdent)
                                ->dalActionsEmpty(table={$table.st});
 
 
-dalData                      : ^(DAL_DATA (rows+=dalDataRow)*)
+dalData                      : ^(DAL_DATA IDENT (rows+=dalDataRow)*)
                                -> dalData(rows={$rows});
 dalDataRow                   : ^(DAL_ROW
                                  id=IDENT

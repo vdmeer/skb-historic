@@ -33,7 +33,6 @@ package org.skb.lang.dal;
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.lang.dal.internal.DalTables;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
@@ -50,7 +49,6 @@ public class DalPass1_Ebnf {
 	static Logger logger = Logger.getLogger(DalPass1_Ebnf.class);
 
 	public AtomList atoms;
-	public DalTables tables;
 	private LanguageRuleMap cr;
 
 	public DalPass1_Ebnf(){
@@ -61,8 +59,6 @@ public class DalPass1_Ebnf {
 
 		this.atoms=AtomList.getInstance();
 		this.atoms.setScopeSeparator(TribeProperties.getInstance().getValueDefault("internal-scope-sep").toString());
-
-		this.tables=DalTables.getInstance();
 	}
 
 	public void putAtom(Token tk, String category, Token type){

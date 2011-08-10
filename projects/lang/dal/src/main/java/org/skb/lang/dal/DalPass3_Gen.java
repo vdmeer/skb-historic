@@ -37,11 +37,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
 
+import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.lang.dal.internal.DalTables;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
 import org.skb.util.types.atomic.util.TSArrayListString;
@@ -57,10 +57,12 @@ public class DalPass3_Gen {
 
 	public AtomList atoms=AtomList.getInstance();
 	public ScopeString sn;
-	public DalTables tables;
 
 	//for simple_type, to get all options to all ColaAtoms
 	private TreeMap<String,String> simple_type;
+
+	//for temporary sequence lists
+	TSArrayListString tempSeq;
 
 	public DalPass3_Gen(){
 		this.atoms.scope.clear();
@@ -70,7 +72,7 @@ public class DalPass3_Gen {
 
 		this.sn=new ScopeString();
 
-		this.tables=DalTables.getInstance();
+		this.tempSeq=new TSArrayListString();
 	}
 
 	public String trimQuotes(String s){
@@ -112,23 +114,25 @@ public class DalPass3_Gen {
 
 	public ArrayList<StringTemplate> sequenceFields(String repo, String table, List<StringTemplate> fields) {
 		ArrayList<StringTemplate> ret=new ArrayList<StringTemplate>();
-
 		//extract keys from fields (grammar)
 		LinkedHashMap<String, StringTemplate> ordered=new LinkedHashMap<String, StringTemplate>();
 		for (Iterator<StringTemplate> it=fields.iterator(); it.hasNext();){
 			StringTemplate st=it.next();
 			ordered.put(st.getAttribute("ident").toString(), st);
 		}
-
 		//go through sequence and add st in correct order to return list
-		TSArrayListString seq=this.tables.tableSequenceGet(repo, table);
-		for(int i=0;i<seq.size();i++){
-			String field=seq.get(i).toString();
+		for(int i=0;i<this.tempSeq.size();i++){
+			String field=this.tempSeq.get(i).toString();
 			if(ordered.containsKey(field))
 				ret.add(ordered.get(field));
 
 		}
+		this.tempSeq.clear();
 		return ret;
+	}
+
+	public void addToSequence(Token tk){
+		this.tempSeq.add(tk.getText());
 	}
 
 	public LinkedHashMap<String, String> fixKV(LinkedHashMap<String, List<StringTemplate>> kv){

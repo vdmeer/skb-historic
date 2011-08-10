@@ -96,13 +96,28 @@ dalDefinition                : dalRepository dalPackage*;
 /*
  * dalRepository == All Meta-Meta data on fields for different tables
  */
-dalRepository                 : ^(DAL_REPOSITORY IDENT dalTable*)
+dalRepository                 : ^(DAL_REPOSITORY
+                                  id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  dalTable*
+                                  {this.pass.atoms.scope.pop();}
+                                )
                                 ;
-dalTable                      : ^(DAL_TABLE IDENT dalField* dalSequence)
+dalTable                      : ^(DAL_TABLE
+                                  id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  dalField* dalSequence
+                                  {this.pass.atoms.scope.pop();}
+                                )
                                 ;
-dalField                      : ^(DAL_FIELD IDENT base_type
+dalField                      : ^(DAL_FIELD
+                                  id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  base_type
                                   dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique?
-                                  dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?)
+                                  dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?
+                                  {this.pass.atoms.scope.pop();}
+                                )
                                 ;
 
 dalFieldValue                 : ^(DAL_VALUE VAL_STRING*);
@@ -114,27 +129,95 @@ dalFieldNotnull               : ^(DAL_NOTNUL DAL_ROLLBACK? DAL_ABORT?);
 dalFieldPrimkey               : ^(DAL_PRIMKEY DAL_ROLLBACK? DAL_ABORT?);
 dalFieldUnique                : ^(DAL_UNIQUE DAL_ROLLBACK? DAL_ABORT?);
 
-dalSequence                   : ^(DAL_SEQUENCE IDENT*);
+dalSequence                   : ^(DAL_SEQUENCE id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  (id=IDENT
+                                   {this.pass.testAtom(id.token);}
+                                   {this.pass.atoms.scope.pop();}
+                                  )*
+                                  {this.pass.atoms.scope.pop();}
+                                )
+                                ;
 
 
-dalPackage                    : ^(DAL_PACKAGE IDENT dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData*);
+dalPackage                    : ^(DAL_PACKAGE id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData*
+                                  {this.pass.atoms.scope.pop();}
+                                );
 
-dalPackageRepository          : ^(DAL_REPOSITORY IDENT IDENT dalPackageRepositoryRow*);
-dalPackageRepositoryRow       : ^(DAL_ROW IDENT dalPackageRepositoryRowKV*);
-dalPackageRepositoryRowKV     : ^(DAL_ROW IDENT const_value*);
+dalPackageRepository          : ^(DAL_REPOSITORY
+                                  id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  dalPackageRepositoryRow*
+                                  {this.pass.atoms.scope.pop();}
+                                  {this.pass.atoms.scope.pop();}
+                                );
+dalPackageRepositoryRow       : ^(DAL_ROW id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  dalPackageRepositoryRowKV*
+                                  {this.pass.atoms.scope.pop();}
+                                );
+dalPackageRepositoryRowKV     : ^(DAL_ROW id=IDENT
+                                  {this.pass.testAtom(id.token);}
+                                  const_value*
+                                  {this.pass.atoms.scope.pop();}
+                                );
 
 
-dalActions                   : ^(DAL_ACTIONS IDENT dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
-dalActionsInsert             : ^(DAL_ACTION_INSERT IDENT dalTableIdent dalKV*);
-dalActionsRemove             : ^(DAL_ACTION_REMOVE IDENT dalTableIdent dalKV?);
-dalActionsEmpty              : ^(DAL_ACTION_EMPTY IDENT dalTableIdent);
+dalActions                   : ^(DAL_ACTIONS id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 dalActionsInsert* dalActionsRemove* dalActionsEmpty*
+                                 {this.pass.atoms.scope.pop();}
+                               );
+dalActionsInsert             : ^(DAL_ACTION_INSERT id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 tabid=dalTableIdent
+                                 {this.pass.testAtom(tabid.tree.getToken());}
+                                 dalKV*
+                                 {this.pass.atoms.scope.pop();}
+                                 {this.pass.atoms.scope.pop();}
+                               );
+dalActionsRemove             : ^(DAL_ACTION_REMOVE id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 tabid=dalTableIdent
+                                 {this.pass.testAtom(tabid.tree.getToken());}
+                                 dalKV?
+                                 {this.pass.atoms.scope.pop();}
+                                 {this.pass.atoms.scope.pop();}
+                               );
+dalActionsEmpty              : ^(DAL_ACTION_EMPTY id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 tabid=dalTableIdent
+                                 {this.pass.testAtom(tabid.tree.getToken());}
+                                 {this.pass.atoms.scope.pop();}
+                                 {this.pass.atoms.scope.pop();}
+                               );
 
-dalData                      : ^(DAL_DATA dalDataRow*);
-dalDataRow                   : ^(DAL_ROW IDENT dalTableIdent dalKV*);
+dalData                      : ^(DAL_DATA id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 dalDataRow*
+                                 {this.pass.atoms.scope.pop();}
+                               );
+dalDataRow                   : ^(DAL_ROW id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 tabid=dalTableIdent
+                                 {this.pass.testAtom(tabid.tree.getToken());}
+                                 dalKV*
+                                 {this.pass.atoms.scope.pop();}
+                                 {this.pass.atoms.scope.pop();}
+                               );
 
 dalTableIdent                : IDENT;
 
-dalKV                        : ^(DAL_DATA IDENT const_value);
+dalKV                        : ^(DAL_DATA
+                                 id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 const_value
+                                 {this.pass.atoms.scope.pop();}
+                               );
 
 
 void_type                    : VOID;
