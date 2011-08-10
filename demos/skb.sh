@@ -27,5 +27,3 @@ alias pola="java -classpath \"$JAVA_CLASSPATH\" org.a3ds.languages.pola.proto.Po
 alias glue="java -classpath \"$JAVA_CLASSPATH\" org.a3ds.languages.glue.proto.Glue"
 
 alias runcola="cola -s cola -t sql  -f mama.cola --no-warnings --gc --tgt-dir ./gc/"
-
-
