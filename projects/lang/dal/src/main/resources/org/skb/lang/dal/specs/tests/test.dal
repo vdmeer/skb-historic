@@ -157,8 +157,8 @@ package dist.acronyms{
     }
 
     actions{
-        insert table acronyms {key "string"}
-        insert table acronyms {key "string"}
+        insert table acronyms {core:fields.key "string"}
+        insert table acronyms {core:fields.key "string"}
         remove table acronyms {core:fields.key "3GPP"}
         remove table acronyms
         empty table acronyms

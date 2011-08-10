@@ -177,9 +177,62 @@
                     "skb:tribe:stgchunk:optional":  []
                 },
                 "dalPackage":{
-                    "skb:tribe:stgchunk:mandatory": ["name", "declaration", "actions", "data"],
+                    "skb:tribe:stgchunk:mandatory": ["ident", "empty", "tables", "repos", "actions", "data"],
                     "skb:tribe:stgchunk:optional":  []
                 },
+                "dalRepository":{
+                    "skb:tribe:stgchunk:mandatory": ["ident", "tables"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalTable":{
+                    "skb:tribe:stgchunk:mandatory": ["ident", "fields"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalField":{
+                    "skb:tribe:stgchunk:mandatory": ["ident", "type", "constraints", "size", "precision", "others"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalFieldConstraint":{
+                    "skb:tribe:stgchunk:mandatory": ["reason", "action"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalSequence":{
+                    "skb:tribe:stgchunk:mandatory": ["ids"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalPackageRepository":{
+                    "skb:tribe:stgchunk:mandatory": ["repo", "table", "kv"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalPackageRepositoryRow":{
+                    "skb:tribe:stgchunk:mandatory": ["kv"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalActions":{
+                    "skb:tribe:stgchunk:mandatory": ["insert", "remove", "empty"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalActionsInsert":{
+                    "skb:tribe:stgchunk:mandatory": ["table", "kvl"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalActionsRemove":{
+                    "skb:tribe:stgchunk:mandatory": ["table", "kv"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalActionsEmpty":{
+                    "skb:tribe:stgchunk:mandatory": ["table"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalData":{
+                    "skb:tribe:stgchunk:mandatory": ["rows"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalDataRow":{
+                    "skb:tribe:stgchunk:mandatory": ["table", "kvl"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+
                 "const_value":{
                     "skb:tribe:stgchunk:mandatory": ["val"],
                     "skb:tribe:stgchunk:optional":  []

@@ -65,7 +65,6 @@ dalPackage(ident, empty, tables, repos, actions, data) ::= <<
 >>
 
 
-
 dalRepository(ident, tables) ::= <<
 <tables;separator="\n\n">
 
@@ -100,7 +99,6 @@ dalFieldConstraint(reason, action) ::= <<
 dalSequence(ids) ::= <<
 >>
 
-
 dalPackageRepository(repo, table, kv) ::= <<
 INSERT OR REPLACE INTO <table> <kv>
 >>
@@ -108,7 +106,6 @@ INSERT OR REPLACE INTO <table> <kv>
 dalPackageRepositoryRow(kv) ::= <<
 (<kv.keys:{k| "<k>"};separator=", ">) VALUES(<kv.keys:{k|"<kv.(k)>"};separator=", ">);
 >>
-
 
 dalActions(insert, remove, empty) ::= <<
 <empty; separator="\n">
@@ -128,10 +125,6 @@ dalActionsEmpty(table) ::= <<
 DELETE FROM <table>;
 >>
 
-
-
-
-
 dalData(rows) ::= <<
 <rows;separator="\n">
 >>
@@ -139,6 +132,5 @@ dalData(rows) ::= <<
 dalDataRow(table, kvl) ::= <<
 INSERT OR REPLACE INTO <table> (<kvl.keys:{k| "<k>"};separator=", ">) VALUES(<kvl.keys:{k|"<kvl.(k)>"};separator=", ">);
 >>
-
 
 const_value(val) ::= "<val>"
