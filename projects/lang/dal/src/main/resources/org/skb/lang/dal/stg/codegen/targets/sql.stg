@@ -50,16 +50,14 @@ dalElementTypeMap ::= [
 ]
 
 
-dalSpecification(definition) ::= <<
->>
+dalSpecification(definition) ::= ""
 
-dalDefinition(package) ::= <<
->>
+dalDefinition(package) ::= ""
 
-dalPackage(ident, empty, tables, repos, actions, data) ::= <<
+dalPackage(ident, empty, repos, tables, actions, data) ::= <<
 <empty>
-<tables;separator="\n\n">
 <repos;separator="\n\n">
+<tables;separator="\n\n">
 <actions;separator="\n\n">
 <data;separator="\n\n">
 >>
@@ -67,10 +65,10 @@ dalPackage(ident, empty, tables, repos, actions, data) ::= <<
 
 dalRepository(ident, tables) ::= <<
 <tables;separator="\n\n">
-
 >>
 
 dalTable(ident, fields) ::= <<
+DROP TABLE IF EXISTS <ident>;
 CREATE TABLE [<ident>] (
     <fields; separator=",\n">
 );
@@ -99,9 +97,14 @@ dalFieldConstraint(reason, action) ::= <<
 dalSequence(ids) ::= <<
 >>
 
-dalPackageRepository(repo, table, kv) ::= <<
-INSERT OR REPLACE INTO <table> <kv>
+dalPackageRepository(repo, tables) ::= <<
+<tables; separator="\n">
 >>
+
+dalPackageRepositoryTable(table, kv) ::= <<
+<kv:{ kv | INSERT OR REPLACE INTO <table> <kv>};separator="\n">
+>>
+
 
 dalPackageRepositoryRow(kv) ::= <<
 (<kv.keys:{k| "<k>"};separator=", ">) VALUES(<kv.keys:{k|"<kv.(k)>"};separator=", ">);

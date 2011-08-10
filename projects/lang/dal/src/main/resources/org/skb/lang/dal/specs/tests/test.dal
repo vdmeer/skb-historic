@@ -36,7 +36,6 @@
  * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
  */
 
-
 repository core{
     table pkg_fields{
         field core:fields.key string primkey(abort) notnull(abort) unique(abort);
@@ -109,41 +108,58 @@ repository core{
 
 
 package dist.acronyms{
-    repository core table pkg_fields{
-        row acronyms:long_locale
-            core:fields.key = "acronyms:long_locale"
-            core:fields.type = "value"
-            core:fields.use = "core"
-            core:fields.entries_name = "acronyms:long"
-            core:fields.http_req_name = "long"
-            core:fields.explode = 0
-            core:fields.val_unset = null
-            core:fields.description = "Long form of an acronym as locale string."
-            core:fields.package = "dist.acronyms"
-            ;
-        row acronyms:short
-            core:fields.key = "acronyms:short"
-            core:fields.type = "value"
-            core:fields.use = "core"
-            core:fields.entries_name = "acronyms:short"
-            core:fields.http_req_name = "short"
-            core:fields.explode = 0
-            core:fields.val_unset = null
-            core:fields.description = "Short form of an acronym."
-            core:fields.package = "dist.acronyms"
-            ;
-        row default:acronym_key
-            core:fields.key = "default:acronym_key"
-            core:fields.type = "entity"
-            core:fields.use = "core" "request"
-            core:fields.entries_name = "default:acronym"
-            core:fields.http_req_name = "acronym"
-            core:fields.default_table = "acronyms"
-            core:fields.explode = 0
-            core:fields.val_unset = null
-            core:fields.description = "An acronym key, i.e. a pointer to a key in the acronym database."
-            core:fields.package = "dist.acronyms"
-            ;
+    repository core{
+        table pkg_fields{
+            row acronyms:long_locale
+                core:fields.key = "acronyms:long_locale"
+                core:fields.type = "value"
+                core:fields.use = "core"
+                core:fields.entries_name = "acronyms:long"
+                core:fields.http_req_name = "long"
+                core:fields.explode = 0
+                core:fields.val_unset = null
+                core:fields.description = "Long form of an acronym as locale string."
+                core:fields.package = "dist.acronyms"
+                ;
+            row acronyms:short
+                core:fields.key = "acronyms:short"
+                core:fields.type = "value"
+                core:fields.use = "core"
+                core:fields.entries_name = "acronyms:short"
+                core:fields.http_req_name = "short"
+                core:fields.explode = 0
+                core:fields.val_unset = null
+                core:fields.description = "Short form of an acronym."
+                core:fields.package = "dist.acronyms"
+                ;
+            row default:acronym_key
+                core:fields.key = "default:acronym_key"
+                core:fields.type = "entity"
+                core:fields.use = "core" "request"
+                core:fields.entries_name = "default:acronym"
+                core:fields.http_req_name = "acronym"
+                core:fields.default_table = "acronyms"
+                core:fields.explode = 0
+                core:fields.val_unset = null
+                core:fields.description = "An acronym key, i.e. a pointer to a key in the acronym database."
+                core:fields.package = "dist.acronyms"
+                ;
+        }
+        table pkg_rabit{
+            row Dist.Acronyms.Entries2LaTeX-Acronym
+                core:fields.key = "Dist.Acronyms.Entries2LaTeX-Acronym"
+                core:rabit.type = "builder"
+                core:rabit.target.class = "php%pkg_dist__acronyms___application__x_latex__acronym___builder,java%org.skb.targets.java.dist.acronyms.LaTeXAcronymBuilder"
+                core:rabit.mime_in = "x-skb/entries+acronyms"
+                core:rabit.mime_out = "x-skb/entries+acronyms"
+                core:rabit.requests = "skb:default"
+                ;
+            row bla
+                core:fields.key = "bla"
+                core:rabit.type = "builder"
+                core:rabit.target.class = "foo"
+                ;
+        }
     }
 
     table acronyms{
@@ -157,10 +173,10 @@ package dist.acronyms{
     }
 
     actions{
-        insert table acronyms {core:fields.key "string"}
-        insert table acronyms {core:fields.key "string"}
-        remove table acronyms {core:fields.key "3GPP"}
-        remove table acronyms
+        //insert table acronyms {core:fields.key "string"}
+        //insert table acronyms {core:fields.key "string"}
+        //remove table acronyms {core:fields.key "3GPP"}
+        //remove table acronyms
         empty table acronyms
     }
 

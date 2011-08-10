@@ -77,9 +77,10 @@ options
  * dalSpecification/Definition == Start of every DAL spec
  */
 dalSpecification               @init{this.init();}
-                             : ^(AT_SPEC cpp_directive dalDefinition);
+                             : ^(AT_SPEC cpp_directive* dalDefinition);
 cpp_directive                : CPP_DIRECTIVE;
 dalDefinition                : dalRepository {this.pass.addST($dalRepository.st);}
+                               cpp_directive*
                                (dalPackage {this.pass.addST($dalPackage.st);})*;
 
 
@@ -131,14 +132,21 @@ dalSequence                  : ^(DAL_SEQUENCE IDENT
 dalPackage                   : ^(DAL_PACKAGE id=IDENT
                                  {this.curRepo=$id.text;}
                                  {this.pass.atoms.scope.push($id.token);}
-                                 dalActionsEmpty? dalActionsRemove? (repos+=dalPackageRepository)* (tables+=dalTable)* (actions+=dalActions)* (data+=dalData)*)
+                                 dalActionsEmpty? dalActionsRemove?
+                                 dalPackageRepository
+                                 {this.pass.addST($dalPackageRepository.st);}
+                                 (tables+=dalTable)* (actions+=dalActions)* (data+=dalData)*)
                                  {this.curRepo=null;}
-                               ->dalPackage(ident={$id.text}, empty={$dalActionsEmpty.st}, tables={$tables}, repos={$repos}, actions={$actions}, data={$data});
+                               ->dalPackage(ident={$id.text}, empty={$dalActionsEmpty.st}, tables={$tables}, actions={$actions}, data={$data});
 
-dalPackageRepository         : ^(DAL_REPOSITORY repo=IDENT table=IDENT
-                                 dalPackageRepositoryRow*
+
+dalPackageRepository         : ^(DAL_REPOSITORY repo=IDENT
+                                 {this.pass.atoms.scope.push($repo.token);}
+                                 (tables+=dalPackageRepositoryTable)*
                                )
-                               -> dalPackageRepository(repo={$repo.text}, table={$table.text}, kv={$dalPackageRepositoryRow.st});
+                               -> dalPackageRepository(repo={$repo.text}, tables={$tables});
+dalPackageRepositoryTable    : ^(DAL_TABLE table=IDENT (kvs+=dalPackageRepositoryRow)*)
+                               -> dalPackageRepositoryTable(table={$table.text}, kv={$kvs});
 dalPackageRepositoryRow      : ^(DAL_ROW IDENT
                                  {this.tmpKV.clear();}
                                  dalPackageRepositoryRowKV*

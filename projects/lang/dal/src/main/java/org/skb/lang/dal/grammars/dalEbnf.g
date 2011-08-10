@@ -120,10 +120,10 @@ options
  * dalSpecification/Definition == Start of every DAL spec
  */
 dalSpecification               @init{this.init();}
-                             : cpp_directive dalDefinition EOF
-                               -> ^(AT_SPEC cpp_directive dalDefinition);
+                             : cpp_directive* dalDefinition EOF
+                               -> ^(AT_SPEC cpp_directive* dalDefinition);
 cpp_directive                : s=CPP_DIRECTIVE {this.setCppFile(s.getText());};
-dalDefinition                : dalRepository dalPackage*;
+dalDefinition                : dalRepository cpp_directive* dalPackage*;
 
 
 /*
@@ -180,18 +180,20 @@ dalSequence                   : s=internalSeqID
 
 dalPackage                    : DAL_PACKAGE id=IDENT
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalPACKAGE);}
-                                '{' dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData* '}'
+                                '{' dalActionsEmpty? dalActionsRemove? dalPackageRepository dalTable* dalActions* dalData* '}'
                                 {this.pass.atoms.scope.pop();}
-                                -> ^(DAL_PACKAGE IDENT dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData*);
+                                -> ^(DAL_PACKAGE IDENT dalActionsEmpty? dalActionsRemove? dalPackageRepository dalTable* dalActions* dalData*);
 
 dalPackageRepository          : DAL_REPOSITORY id=IDENT
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalREPOSITORY);}
-                                DAL_TABLE id=IDENT
+                                '{' dalPackageRepositoryTable* '}'
+                                {this.pass.atoms.scope.pop();}
+                                -> ^(DAL_REPOSITORY IDENT dalPackageRepositoryTable*);
+dalPackageRepositoryTable     : DAL_TABLE id=IDENT
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalTABLE);}
                                 '{' dalPackageRepositoryRow* '}'
                                 {this.pass.atoms.scope.pop();}
-                                {this.pass.atoms.scope.pop();}
-                                -> ^(DAL_REPOSITORY IDENT IDENT dalPackageRepositoryRow*);
+                                -> ^(DAL_TABLE IDENT dalPackageRepositoryRow*);
 dalPackageRepositoryRow       : DAL_ROW id=IDENT
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalROW);}
                                 dalPackageRepositoryRowKV* ';'
@@ -371,7 +373,7 @@ VAL_FLOAT     :   ('0'..'9')+ '.' ('0'..'9')* Exponent? FloatSuffix?
                 | ('0'..'9')+ Exponent? FloatSuffix
                 ;
 
-IDENT         : ('a'..'z') ('a'..'z'|':'|'_'|'.'|'0'..'9')*;
+IDENT         : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|':'|'_'|'.'|'-'|'0'..'9')*;
 
 // originally = CPP_FILENAME !
 CPP_DIRECTIVE : '#' 'file' ' ' CPP_FILENAME '\r'? '\n' {this.setCppFileandLine($CPP_FILENAME.getText());};

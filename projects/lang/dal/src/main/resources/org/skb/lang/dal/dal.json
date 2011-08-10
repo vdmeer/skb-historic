@@ -137,18 +137,20 @@
                             "value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
-                        "xt-do-includes":{
-                            "skb:lang:target:config:constid":"keyXtDoIncludes",
+                        "tgt-split-repository":{
+                            "skb:lang:target:config:constid":"keyTgSplitRepository",
                             "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"ts:atomic:java:boolean",
-                            "cli:usage:descr":"Generate includes"
+                            "value:default":true
                         },
-                        "tgt-split-code":{
-                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                        "tgt-ignore-empty-st":{
+                            "skb:lang:target:config:constid":"keyTgIgnoreEmptyST",
                             "at:type":"ts:atomic:java:boolean",
-                            "value:default":false
+                            "value:default":true
+                        },
+                        "tgt-repo-fileadd":{
+                            "skb:lang:target:config:constid":"keyTgRepoFileAdd",
+                            "at:type":"ts:atomic:java:string",
+                            "value:default":"-repo"
                         }
                     }
                 }
@@ -177,7 +179,7 @@
                     "skb:tribe:stgchunk:optional":  []
                 },
                 "dalPackage":{
-                    "skb:tribe:stgchunk:mandatory": ["ident", "empty", "tables", "repos", "actions", "data"],
+                    "skb:tribe:stgchunk:mandatory": ["ident", "empty", "repos", "tables", "actions", "data"],
                     "skb:tribe:stgchunk:optional":  []
                 },
                 "dalRepository":{
@@ -201,7 +203,11 @@
                     "skb:tribe:stgchunk:optional":  []
                 },
                 "dalPackageRepository":{
-                    "skb:tribe:stgchunk:mandatory": ["repo", "table", "kv"],
+                    "skb:tribe:stgchunk:mandatory": ["repo", "tables"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "dalPackageRepositoryTable":{
+                    "skb:tribe:stgchunk:mandatory": ["table", "kv"],
                     "skb:tribe:stgchunk:optional":  []
                 },
                 "dalPackageRepositoryRow":{

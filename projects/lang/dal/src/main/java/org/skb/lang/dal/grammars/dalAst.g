@@ -88,9 +88,9 @@ options
  * dalSpecification/Definition == Start of every DAL spec
  */
 dalSpecification               @init{this.init();}
-                             : ^(AT_SPEC cpp_directive dalDefinition);
+                             : ^(AT_SPEC cpp_directive* dalDefinition);
 cpp_directive                : s=CPP_DIRECTIVE {this.setCppFile(s.getText());};
-dalDefinition                : dalRepository dalPackage*;
+dalDefinition                : dalRepository cpp_directive* dalPackage*;
 
 
 /*
@@ -142,17 +142,20 @@ dalSequence                   : ^(DAL_SEQUENCE id=IDENT
 
 dalPackage                    : ^(DAL_PACKAGE id=IDENT
                                   {this.pass.testAtom(id.token);}
-                                  dalActionsEmpty? dalActionsRemove? dalPackageRepository* dalTable* dalActions* dalData*
+                                  dalActionsEmpty? dalActionsRemove? dalPackageRepository dalTable* dalActions* dalData*
                                   {this.pass.atoms.scope.pop();}
                                 );
 
 dalPackageRepository          : ^(DAL_REPOSITORY
                                   id=IDENT
                                   {this.pass.testAtom(id.token);}
+                                  dalPackageRepositoryTable*
+                                  {this.pass.atoms.scope.pop();}
+                                );
+dalPackageRepositoryTable     : ^(DAL_TABLE
                                   id=IDENT
                                   {this.pass.testAtom(id.token);}
                                   dalPackageRepositoryRow*
-                                  {this.pass.atoms.scope.pop();}
                                   {this.pass.atoms.scope.pop();}
                                 );
 dalPackageRepositoryRow       : ^(DAL_ROW id=IDENT
