@@ -51,6 +51,7 @@ This release has the following requirements:
   following modules being available
   ** GNU Gettext (mandatory if you need translations only)
   ** SQLite (mandatory, since all databases come as SQLite 3)
+  ** JSON (mandatory, most configuration is done using JSON)
   ** PDO (mandatory since access to all databases uses PDO)
   ** CURL (used in some parts of the demo server, not in +core+ or +dist+)
 

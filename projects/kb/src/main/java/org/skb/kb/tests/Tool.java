@@ -28,10 +28,10 @@ System.out.println("...start:    ");
 		def.initPlain();
 		def.activate();
 
-		def.setValue("request:entry", new TSString("readers"));
+		//def.setValue("request:entry", new TSString("readers"));
 
 		SKBReader r=mySKB.getReader("Dist.Acronyms.DB2Entries");
-		SKBBuilder b=mySKB.getBuilder("Dist.Acronyms.Entries2Text-Plain"); 
+		SKBBuilder b=mySKB.getBuilder("Dist.Acronyms.Entries2LaTeX-Table"); 
 			//Dist.Acronyms.Entries2LaTeX-Acronym
 			//Dist.Acronyms.Entries2LaTeX-Table
 			//Dist.Acronyms.Entries2Text-Plain
