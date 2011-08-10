@@ -1,31 +1,79 @@
-Adding ANTLR Ant Task (Building with ANTLR):
-=============================================
-Download the following from antlr.org:
+Cloning and building the Java port of the SKB, including util, tribe and all language compilers:
 
- - Under File Sharing:
-	ANTLR v3 task for Ant (antlr-task.zip)
+Assumption: you are using CygWin on a windows machine! If not, then the path in line 5 of Phase IV is the same as the path in line 3 of Phase IV.
 
- - Under Downloads:
-	Complete ANTLR 3.3 Java binaries jar (antlr-3.3-complete.jar)
 
-Then extract the antlr-task.zip, and copy the file ant-antlr3.jar
-and antlr-3.3-complete.jar to the $ANT_HOME/lib directory. This
-will allow the use of antlr ant task in the build system. Further
-details on using it can be seen in the documentation (.pdf) in the
-extracted zip folder.
+Phase I: get the source code from GitHub
+  + Prerequisites: web access, git installed (preferably using CygWin)
 
-Running the Demo
-================
+  1. Go to github: "https://github.com/vdmeer/skb/"
+  2. Copy the GIT-ReadOnly Git access URL: "git://github.com/vdmeer/skb.git"
+  3. Open a new shell, and create a folder where the code should recide on your local machine
+  4. Clone the github repository
+  5. Clone the repository: "git clone git://github.com/vdmeer/skb.git"
+  6. Go into the newly created folder "skb"
+  7. Go to github: "https://github.com/vdmeer/skb-dependencies"
+  8. Cope the GIT_ReadOnly Git access URL: "git://github.com/vdmeer/skb-dependencies.git"
+  9. Clone the dependencies repo: "git clone git://github.com/vdmeer/skb-dependencies.git"
+  10. Move the folder skb-dependencies/repository to the current path: "mv skb-dependencies/repository ."
+  11. Remove the folder "skb-dependencies"
 
-1. Suck in the environment settings for a build
-	$> . ./env.sh
+--> result is a clone of the whole SKB Repo (repository) on your local machine
 
-2. Build a Distro
-	$> cd projects/build-distro
-	$> ant
 
-3. Run the demo
-	$> cd ../../demo
-	$> . skb.sh
-	$> runcola
+Phase II: get all other tools required
+  + Prerequisites: ant installed, web access
+
+  1. Get the ANTLR Ant Task
+     + go to the ANTLR website, file sharing: http://www.antlr.org/share/list
+     + download: ANTLR v3 task for Ant, by Juergen Pfundt, last version known Mon May 16, 2011 14:34
+     + from the downloaded archive, copy the file antlr3-task/ant-antlr3.jar into your local ant directory/lib: "$ANT_HOME/lib"
+  2. Get the complete ANTLR 3 jar file
+     + go to the ANTLR website, download: http://www.antlr.org/download
+     + download: antlr-3.3-complete.jar (might work with 3.4 as well, but not yet tested)
+     + copy the downloaded jar into your local ant directory/lib: "$ANT_HOME/lib"
+
+--> we now have all external tools downloaded for building
+
+
+Phase III: some local copying to configure ivy
+  + Prerequisites: none
+
+  1. Copy all contents of "projects\spring-build\lib\ivy" into "$ANT_HOME/lib"
+     + cp projects\spring-build\lib\ivy $ANT_HOME/lib
+
+--> now we are almost ready to build
+
+
+Phase IV: configuration of the repository
+  + Prerequisites: use tcsh (or convert commands to bash format)
+
+  1. Create a file called env-tcsh.sh: "touch env-tcsh.sh"
+  2. Add the following lines to the newly created file
+     1 ] # Development Environment Settings
+     2 ] setenv DEV_HOME /dev/demo
+     3 ] setenv TINOS_HOME $DEV_HOME/skb
+     4 ]
+     5 ] setenv IVY_HOME v:/dev/demo/skb
+     6 ]
+     7 ] # Ant Settings
+     8 ] setenv ANT_HOME /cygdrive/v/dev/bin/ant
+     9 ] setenv ANT_OPTS "-Xms64m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=756m"
+  3. Change the paths on the lines 2,3,5,8 to your local paths
+     + line 2 to the retuls of this command: `(cd..;pwd)` without the cygwin path prefix, i.e. "/dev/demo"
+     + line 3 to: $DEV_HOME/skb
+     + line 5 to a WINDOWS path to same directory as line 3 points to, i.e.: v:/dev/demo/skb
+     + line 8 to your local ANT installation
+
+--> all done and we are prepared for building the skb
+
+
+Phase V: build the SKB (everything!)
+  + Prerequisites: Phase I-IV completed, web access (for first build, since ivy will download all dependencies)
+
+  1. change directory to projects/build-distro: "cd projects/build-distro"
+  2. source the file env-tcsh.sh: "source ../../env-tcsh.sh"
+  3. start building by simply calling ant: "ant"
+
+--> SKB Java port built
 
