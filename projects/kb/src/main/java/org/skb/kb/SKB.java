@@ -908,8 +908,8 @@ public class SKB {
 	/**
 	 * Return a Application object for the given key.
 	 * 
-	 * @param type name of the requested application
-	 * @return and SKBApplications if found, null otherwise
+	 * @param key name of the requested application
+	 * @return an SKBApplications if found, null otherwise
 	 */
 	public SKBApplication getApplication(String key){
 		if(this.registered_applications.containsKey(key)){
@@ -925,11 +925,6 @@ public class SKB {
 		return null;
 	}
 
-	/**
-	   * 
-	   * 
-	   * @param string key 
-	   */
 /*
 	  public function get_application($type){
 	  	$target=$this->configuration->get_group("skb", "target");
