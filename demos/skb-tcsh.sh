@@ -1,4 +1,4 @@
-#!/usr/bash
+#!/bin/bash
 
 # External Libs
 #run_dir=`pwd`
