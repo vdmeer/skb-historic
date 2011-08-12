@@ -1,0 +1,109 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * SKB Core repository table definitions
+ *
+ * @package    Packages.Core
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+repository skb.core{
+    table pkg_fields{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field core:type string setvalue(list "core" "request");
+        field core:use string setvalue(list "entity" "value");
+        field core:entries_name string;
+        field core:http_req_name string;
+        field core:default_db string;
+        field core:explode string setvalue(or "0" "1");
+        field core:interpreter string;
+        field core:val_unset string;
+        field core:isval string;
+        field core:isval_if string;
+        field core:isval_else string;
+        field core:val_do_list string;
+        field core:description string;
+
+        sequence{key, core:type, core:use, core:entries_name, core:http_req_name,
+                 core:default_db, core:explode, core:interpreter, core:val_unset, core:isval,
+                 core:isval_if, core:isval_else, core:val_do_list, core:description}
+    }
+
+    table pkg_rabit{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field core:rabit:type string;
+        field core:rabit:target:class string;
+        field core:rabit:target:template string;
+        field core:rabit:mime_in string;
+        field core:rabit:mime_out string;
+        field core:rabit:css string;
+        field core:rabit:requests string;
+        field default:description_locale string;
+
+        sequence{key, core:rabit:type, core:rabit:target:class, core:rabit:target:template, core:rabit:mime_in,
+                 core:rabit:mime_out, core:rabit:css, core:rabit:requests, default:description_locale}
+    }
+
+    table pkg_request{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field core:requests:fields string;
+        field core:requests:prefix string;
+        field core:requests:formselect_fields string;
+        field core:requests:table string;
+        field core:requests:table_collections string;
+        field core:description string;
+
+        sequence{key, core:requests:fields, core:requests:prefix, core:requests:formselect_fields, core:requests:table, core:requests:table_collections,
+                 core:description}
+    }
+
+    table pkg_http_headers_response{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field http:header string;
+        field default:example string;
+        field default:description_locale string;
+
+        sequence{key, http:header, default:example, default:description_locale}
+    }
+
+    table pkg_mime_content_types{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field mime:media:type string;
+        field mime:type string;
+        field mime:sub:type string;
+        field mime:file:extensions string;
+        field mime:source:url string;
+        field default:description string;
+
+        sequence{key, mime:media:type, mime:type, mime:sub:type, mime:file:extensions, mime:source:url, default:description}
+    }
+}

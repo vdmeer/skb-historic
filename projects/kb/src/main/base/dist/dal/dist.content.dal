@@ -1,0 +1,216 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Content.
+ *
+ * @package    Packages.Dist.Content
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#include "../../repository.dal"
+
+package dist.content{
+    repository skb.core{
+        table pkg_fields{
+            row content:url:url_locale
+                key = "content:url:url_locale"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "content:url:url"
+                core:http_req_name = "url"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:url:url_request_locale
+                key = "content:url:url_request_locale"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "content:url:url_request"
+                core:http_req_name = "url_request"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:url_keys
+                key = "content:url_keys"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "content:url"
+                core:http_req_name = "content_url"
+                core:default_db = "content_urls"
+                core:explode = "1"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:url_key
+                key = "content:url_key"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "content:url"
+                core:http_req_name = "content_url"
+                core:default_db = "content_urls"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:foto_keys
+                key = "content:foto_keys"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "content:foto"
+                core:http_req_name = "content_foto"
+                core:default_db = "gallery_fotos"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:title
+                key = "content:title"
+                core:type = "value"
+                core:use = "request"
+                core:entries_name = "content:title"
+                core:http_req_name = "title"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:subtitle
+                key = "content:subtitle"
+                core:type = "value"
+                core:use = "request"
+                core:entries_name = "content:subtitle"
+                core:http_req_name = "subtitle"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:graphic_keys
+                key = "content:graphic_keys"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "content:graphic"
+                core:http_req_name = "content_graphic"
+                core:default_db = "gallery_graphics"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row content:wherepublished_key
+                key = "content:wherepublished_key"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "content:wherepublished"
+                core:http_req_name = "wherepublished"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+        }
+
+        table pkg_rabit{
+            row Dist.Content.DB2Entries
+                key = "Dist.Content.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__content___content___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+content"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:content"
+                default:description_locale = ""
+                ;
+            row Dist.Content.Application
+                key = "Dist.Content.Application"
+                core:rabit:type = "application"
+                core:rabit:target:class = "php%pkg_dist__content___content___application"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "application/xhtml+xml"
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+        }
+
+    }
+}

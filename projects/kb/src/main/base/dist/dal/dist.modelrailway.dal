@@ -1,0 +1,465 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Modelrailway.
+ *
+ * @package    Packages.Dist.Modelrailway
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#include "../../repository.dal"
+
+package dist.modelrailway{
+    repository skb.core{
+        table pkg_fields{
+            row dist:modelrailway:category_key
+                key = "dist:modelrailway:category_key"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:category"
+                core:http_req_name = "mr_category"
+                core:default_db = "mr_categories"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:type1_key
+                key = "dist:modelrailway:type1_key"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:type1"
+                core:http_req_name = "mr_type1"
+                core:default_db = "mr_categories"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:operator
+                key = "dist:modelrailway:operator"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:operator"
+                core:http_req_name = "mr_operator"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:manufacturer
+                key = "dist:modelrailway:manufacturer"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:manufacturer"
+                core:http_req_name = "mr_manufacturer"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:catalogue
+                key = "dist:modelrailway:catalogue"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:catalogue"
+                core:http_req_name = "mr_catalogue"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:articel_no
+                key = "dist:modelrailway:articel_no"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:articel_no"
+                core:http_req_name = "mr_articelno"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:price:retail
+                key = "dist:modelrailway:price:retail"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:price:retail"
+                core:http_req_name = "mr_price_retail"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:price:retail:currency
+                key = "dist:modelrailway:price:retail:currency"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:price:retail:currency"
+                core:http_req_name = "mr_price_retail_currency"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:equivalent_key
+                key = "dist:modelrailway:equivalent_key"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:equivalent"
+                core:http_req_name = "mr_equivalent"
+                core:default_db = "mr_inventory"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:inventory
+                key = "dist:modelrailway:inventory"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:inventory"
+                core:http_req_name = "mr_inventory"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:condition_locale
+                key = "dist:modelrailway:condition_locale"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:condition_locale"
+                core:http_req_name = "mr_condition"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:period
+                key = "dist:modelrailway:period"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:period"
+                core:http_req_name = "mr_period"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:coupling
+                key = "dist:modelrailway:coupling"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:coupling"
+                core:http_req_name = "mr_coupling"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:catalogue:page
+                key = "dist:modelrailway:catalogue:page"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:catalogue:page"
+                core:http_req_name = "mr_catalogue_page"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:partof_key
+                key = "dist:modelrailway:partof_key"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:partof"
+                core:http_req_name = "mr_partof"
+                core:default_db = "mr_inventory"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:price:paid
+                key = "dist:modelrailway:price:paid"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:price:paid"
+                core:http_req_name = "mr_price_paid"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:price:paid:currency
+                key = "dist:modelrailway:price:paid:currency"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:price:paid:currency"
+                core:http_req_name = "mr_price_paid_currency"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:gauge
+                key = "dist:modelrailway:gauge"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:gauge"
+                core:http_req_name = "mr_gauge"
+                core:default_db = "mr_gauge"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:type2_key
+                key = "dist:modelrailway:type2_key"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:type2"
+                core:http_req_name = "mr_type2"
+                core:default_db = "mr_categories"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row dist:modelrailway:type3_key
+                key = "dist:modelrailway:type3_key"
+                core:type = "entity"
+                core:use = "core"
+                core:entries_name = "dist:modelrailway:type3"
+                core:http_req_name = "mr_type3"
+                core:default_db = "mr_categories"
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+        }
+
+        table pkg_rabit{
+            row Dist.ModelRailway.Inventory.Entries2XHTML-Table
+                key = "Dist.ModelRailway.Inventory.Entries2XHTML-Table"
+                core:rabit:type = "builder"
+                core:rabit:target:class = "php%pkg_dist__modelrailway__inventory___application__xhtml__table___builder"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/entries+modelrailway-inventory"
+                core:rabit:mime_out = "x-skb/entries+modelrailway-inventory"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.ModelRailway.Inventory.Entries2XHTML-Table:Template
+                key = "Dist.ModelRailway.Inventory.Entries2XHTML-Table:Template"
+                core:rabit:type = "template"
+                core:rabit:target:class = ""
+                core:rabit:target:template = "php%dist/modelrailway/inventory/application--xhtml+table"
+                core:rabit:mime_in = "x-skb/entries+modelrailway-inventory"
+                core:rabit:mime_out = "application/xhtml+xml"
+                core:rabit:css = "dist/table-widegrey"
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+            row Dist.ModelRailway.Inventory.DB2Entries
+                key = "Dist.ModelRailway.Inventory.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__modelrailway__inventory___inventory___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+modelrailway-inventory"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+        }
+
+    }
+    table mr_gauge{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field default:name_locale string;
+
+        sequence{key,default:name_locale}
+    }
+
+    table mr_categories{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field default:name_locale string;
+
+        sequence{key,default:name_locale}
+    }
+
+    data{
+        table mr_gauge {key "tt"} {default:name_locale "%TT"}
+        table mr_gauge {key "ho_tt"} {default:name_locale "%H0 and TT"}
+        table mr_gauge {key "ho"} {default:name_locale "%H0"}
+        table mr_gauge {key "n"} {default:name_locale "%N"}
+        table mr_categories {key "rolling_stock"} {default:name_locale "pkg.dist.modelrailway%%Rolling Stock"}
+        table mr_categories {key "building"} {default:name_locale "pkg.dist.modelrailway%%Building"}
+        table mr_categories {key "industrial"} {default:name_locale "pkg.dist.modelrailway%%Industrial"}
+        table mr_categories {key "railway_building"} {default:name_locale "pkg.dist.modelrailway%%Railway Building"}
+        table mr_categories {key "station"} {default:name_locale "pkg.dist.modelrailway%%Station"}
+        table mr_categories {key "set"} {default:name_locale "pkg.dist.modelrailway%%Set"}
+        table mr_categories {key "ancilliary_buildings"} {default:name_locale "pkg.dist.modelrailway%%Ancilliary Building"}
+        table mr_categories {key "maintenance_facility
+"} {default:name_locale "pkg.dist.modelrailway%%Maintenance Facility"}
+        table mr_categories {key "goods_stations"} {default:name_locale "pkg.dist.modelrailway%%Goods stations"}
+        table mr_categories {key "town_country"} {default:name_locale "pkg.dist.modelrailway%%Town &amp; Country"}
+        table mr_categories {key "locomotive"} {default:name_locale "pkg.dist.modelrailway%%Locomotive"}
+        table mr_categories {key "passenger_coach"} {default:name_locale "pkg.dist.modelrailway%%Passenger Coach"}
+        table mr_categories {key "freight_car"} {default:name_locale "pkg.dist.modelrailway%%Freight Car"}
+        table mr_categories {key "diesel_locomotive"} {default:name_locale "pkg.dist.modelrailway%%Diesel Locomotive"}
+        table mr_categories {key "steam_locomotive"} {default:name_locale "pkg.dist.modelrailway%%Steam Locomotive"}
+        table mr_categories {key "tank_wagon"} {default:name_locale "pkg.dist.modelrailway%%Tank Wagon"}
+        table mr_categories {key "coach_type_y"} {default:name_locale "pkg.dist.modelrailway%%Coach Type Y"}
+        table mr_categories {key "rebuilt_coach"} {default:name_locale "pkg.dist.modelrailway%%Rebuilt Coach"}
+        table mr_categories {key "sleeping_car"} {default:name_locale "pkg.dist.modelrailway%%Sleeping Car"}
+        table mr_categories {key "dining_car"} {default:name_locale "pkg.dist.modelrailway%%Dining Car"}
+        table mr_categories {key "double_deck_coach"} {default:name_locale "pkg.dist.modelrailway%%Double-deck Coach"}
+        table mr_categories {key "standard_coaches"} {default:name_locale "pkg.dist.modelrailway%%Standard Coaches"}
+        table mr_categories {key "coach_type_m"} {default:name_locale "pkg.dist.modelrailway%%Coach Type m"}
+        table mr_categories {key "container_wagon"} {default:name_locale "pkg.dist.modelrailway%%Container Wagon"}
+        table mr_categories {key "refrigerator_wagon"} {default:name_locale "pkg.dist.modelrailway%%Refrigerator Wagon"}
+        table mr_categories {key "box_car"} {default:name_locale "pkg.dist.modelrailway%%Box Car"}
+        table mr_categories {key "storrage_bin_wagon"} {default:name_locale "pkg.dist.modelrailway%%Storrage Bin Wagon"}
+        table mr_categories {key "stake_wagon"} {default:name_locale "pkg.dist.modelrailway%%Stake Wagon"}
+        table mr_categories {key "low_side_wagon"} {default:name_locale "pkg.dist.modelrailway%%Low Side Wagon"}
+        table mr_categories {key "hinged_cover_wagon"} {default:name_locale "pkg.dist.modelrailway%%Hinged Cover Wagon"}
+        table mr_categories {key "highboard_wagon"} {default:name_locale "pkg.dist.modelrailway%%Highboard Wagon"}
+        table mr_categories {key "high_capacity_hopper"} {default:name_locale "pkg.dist.modelrailway%%High Capacity Hopper"}
+        table mr_categories {key "bakery"} {default:name_locale "pkg.dist.modelrailway%%Bakery"}
+        table mr_categories {key "black_smith"} {default:name_locale "pkg.dist.modelrailway%%Black Smith"}
+        table mr_categories {key "residential_building"} {default:name_locale "pkg.dist.modelrailway%%Residential Building"}
+        table mr_categories {key "freight_shed"} {default:name_locale "pkg.dist.modelrailway%%Freight Shed"}
+        table mr_categories {key "factory"} {default:name_locale "pkg.dist.modelrailway%%Factory"}
+        table mr_categories {key "mechanic_workshop"} {default:name_locale "pkg.dist.modelrailway%%Mechanic's Workshop"}
+        table mr_categories {key "service_station"} {default:name_locale "pkg.dist.modelrailway%%Service Station"}
+        table mr_categories {key "sawmill"} {default:name_locale "pkg.dist.modelrailway%%Sawmill"}
+        table mr_categories {key "gasworks"} {default:name_locale "pkg.dist.modelrailway%%Gasworks"}
+    }
+}

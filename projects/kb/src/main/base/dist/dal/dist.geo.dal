@@ -1,0 +1,810 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Geo.
+ *
+ * @package    Packages.Dist.Geo
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#include "../../repository.dal"
+
+package dist.geo{
+    repository skb.core{
+        table pkg_fields{
+            row geo:wac
+                key = "geo:wac"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:wac"
+                core:http_req_name = "wac"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:iata
+                key = "geo:iata"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:iata"
+                core:http_req_name = "wac"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:icao
+                key = "geo:icao"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:icao"
+                core:http_req_name = "wac"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:region
+                key = "geo:region"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:region"
+                core:http_req_name = "region"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:state
+                key = "geo:state"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:state"
+                core:http_req_name = "state"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:county
+                key = "geo:county"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:county"
+                core:http_req_name = "county"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:alpha2_3166_1
+                key = "geo:alpha2_3166_1"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:alpha2_3166_1"
+                core:http_req_name = "alpha2_3166_1"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:alpha3_3166_1
+                key = "geo:alpha3_3166_1"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:alpha3_3166_1"
+                core:http_req_name = "alpha3_3166_1"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:numeric_3166_1
+                key = "geo:numeric_3166_1"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:numeric_3166_1"
+                core:http_req_name = "numeric_3166_1"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:e164
+                key = "geo:e164"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:e164"
+                core:http_req_name = "e164"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:ccTLD
+                key = "geo:ccTLD"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:ccTLD"
+                core:http_req_name = "ccTLD"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row geo:im_locale
+                key = "geo:im_locale"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "geo:im"
+                core:http_req_name = "im"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+        }
+
+        table pkg_rabit{
+            row Dist.Geo.Cities.DB2Entries
+                key = "Dist.Geo.Cities.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__geo___geo_cities___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+geo"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Geo.Countries.DB2Entries
+                key = "Dist.Geo.Countries.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__geo___geo_countries___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+geo"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Geo.Continents.DB2Entries
+                key = "Dist.Geo.Continents.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__geo___geo_continents___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+geo"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Geo.Entries2XHTML-Table
+                key = "Dist.Geo.Entries2XHTML-Table"
+                core:rabit:type = "builder"
+                core:rabit:target:class = "php%pkg_dist__geo___application__xhtml__table___builder"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/entries+geo"
+                core:rabit:mime_out = "x-skb/entries+geo"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Geo.Entries2XHTML-Table:Template
+                key = "Dist.Geo.Entries2XHTML-Table:Template"
+                core:rabit:type = "template"
+                core:rabit:target:class = ""
+                core:rabit:target:template = "php%dist/geo/application--xhtml+table"
+                core:rabit:mime_in = "x-skb/entries+geo"
+                core:rabit:mime_out = "application/xhtml+xml"
+                core:rabit:css = "dist/table-widegrey"
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+        }
+
+    }
+    table geo_cities{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field default:name_locale string;
+        field default:country_key string;
+        field geo:wac string;
+        field geo:iata string;
+        field geo:icao string;
+        field geo:region string;
+        field geo:state string;
+        field geo:county string;
+        field default:url string;
+
+        sequence{key,default:name_locale,default:country_key,geo:wac,geo:iata,geo:icao,geo:region,geo:state,geo:county,default:url}
+    }
+
+    table geo_countries{
+        field key string size(3) precision(2) primkey(abort) notnull(abort) unique(abort);
+        field default:name_locale string;
+        field default:continent_key string;
+        field geo:alpha2_3166_1 string size(3) precision(2);
+        field geo:alpha3_3116_1 string size(4) precision(3);
+        field geo:numeric_3166_1 string size(10);
+        field geo:e164 string size(10);
+        field geo:ccTLD string size(10);
+        field geo:im_locale string;
+
+        sequence{key,default:name_locale,default:continent_key,geo:alpha2_3166_1,geo:alpha3_3116_1,geo:numeric_3166_1,geo:e164,geo:ccTLD,geo:im_locale}
+    }
+
+    table geo_continents{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field default:name_locale string;
+
+        sequence{key,default:name_locale}
+    }
+
+    data{
+        table geo_cities {key "berlin:de"} {default:name_locale "pkg.dist.geo%%Berlin"} {default:country_key "de"} {geo:wac "429"} {geo:iata "BER"} {geo:icao "EDDT"} {geo:region ""} {geo:state "Berlin"} {geo:county ""} {default:url "www.berlin.de"}
+        table geo_cities {key "braunschweig:de"} {default:name_locale "pkg.dist.geo%%Brunswik"} {default:country_key "de"} {geo:wac "429"} {geo:iata "BWE"} {geo:icao "EDVE"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "cologne:de"} {default:name_locale "pkg.dist.geo%%Cologne"} {default:country_key "de"} {geo:wac "429"} {geo:iata "CGN"} {geo:icao "EDDK"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "dresden:de"} {default:name_locale "pkg.dist.geo%%Dresden"} {default:country_key "de"} {geo:wac "429"} {geo:iata "DRS"} {geo:icao "EDDC"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "frankfort-mm:de"} {default:name_locale "pkg.dist.geo%%Frankfort"} {default:country_key "de"} {geo:wac "429"} {geo:iata "FRA"} {geo:icao "EDDF"} {geo:region ""} {geo:state "Hessen"} {geo:county ""} {default:url ""}
+        table geo_cities {key "hamburg:de"} {default:name_locale "pkg.dist.geo%%Hamburg"} {default:country_key "de"} {geo:wac "429"} {geo:iata "HAM"} {geo:icao "EDDH"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "heidelberg:de"} {default:name_locale "pkg.dist.geo%%Heidelberg"} {default:country_key "de"} {geo:wac "429"} {geo:iata "HDB"} {geo:icao "ETIE"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "karlsruhe:de"} {default:name_locale "pkg.dist.geo%%Karlsruhe"} {default:country_key "de"} {geo:wac "429"} {geo:iata "FKB"} {geo:icao "EDSB"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "kassel:de"} {default:name_locale "pkg.dist.geo%%Kassel"} {default:country_key "de"} {geo:wac "429"} {geo:iata "KSF"} {geo:icao "EDVK"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "leipzig:de"} {default:name_locale "pkg.dist.geo%%Leipzig"} {default:country_key "de"} {geo:wac "429"} {geo:iata "LEJ"} {geo:icao "EDDP"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "munich:de"} {default:name_locale "pkg.dist.geo%%Munich"} {default:country_key "de"} {geo:wac "429"} {geo:iata "MUC"} {geo:icao "EDDM"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "schwerin:de"} {default:name_locale "pkg.dist.geo%%Schwerin"} {default:country_key "de"} {geo:wac "429"} {geo:iata "SZW"} {geo:icao "EDOP"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "laxenburg:at"} {default:name_locale "pkg.dist.geo%%Laxenburg"} {default:country_key "at"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "vienna:at"} {default:name_locale "pkg.dist.geo%%Vienna"} {default:country_key "at"} {geo:wac "403"} {geo:iata "VIE"} {geo:icao "LOAN"} {geo:region ""} {geo:state "Wien"} {geo:county ""} {default:url "http://info.wien.at/"}
+        table geo_cities {key "salzburg:at"} {default:name_locale "pkg.dist.geo%%Salzburg"} {default:country_key "at"} {geo:wac "403"} {geo:iata "SZG"} {geo:icao "LOWS"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "tunis:tn"} {default:name_locale "pkg.dist.geo%%Tunis"} {default:country_key "tn"} {geo:wac "588"} {geo:iata "TUN"} {geo:icao "DTTC"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "bangkok:th"} {default:name_locale "pkg.dist.geo%%Bangkok"} {default:country_key "th"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "washington:dc:us"} {default:name_locale "pkg.dist.geo%%Washington D.C."} {default:country_key "us"} {geo:wac "67"} {geo:iata "WSG"} {geo:icao "K09W"} {geo:region ""} {geo:state "DC"} {geo:county ""} {default:url ""}
+        table geo_cities {key "tampa:fl:us"} {default:name_locale "pkg.dist.geo%%Tampa"} {default:country_key "us"} {geo:wac "67"} {geo:iata "TPA"} {geo:icao "KTPA"} {geo:region ""} {geo:state "FL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "sydney:au"} {default:name_locale "pkg.dist.geo%%Sydney"} {default:country_key "au"} {geo:wac "802"} {geo:iata "SYD"} {geo:icao "YSSY"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "brisbane:au"} {default:name_locale "pkg.dist.geo%%Brisbane"} {default:country_key "au"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "cape_town:za"} {default:name_locale "pkg.dist.geo%%Cape Town"} {default:country_key "za"} {geo:wac "562"} {geo:iata "CPT"} {geo:icao "FACT"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "ljubljana:si"} {default:name_locale "pkg.dist.geo%%Ljubljana"} {default:country_key "si"} {geo:wac "481"} {geo:iata "LJU"} {geo:icao "LJLJ"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "singapore:sg"} {default:name_locale "pkg.dist.geo%%Singapore"} {default:country_key "sg"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "bucharest:ro"} {default:name_locale "pkg.dist.geo%%Bucharest"} {default:country_key "ro"} {geo:wac "473"} {geo:iata "OTP"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "porto:pt"} {default:name_locale "pkg.dist.geo%%Porto"} {default:country_key "pt"} {geo:wac "469"} {geo:iata "OPO"} {geo:icao "LPPR"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "lisbon:pt"} {default:name_locale "pkg.dist.geo%%Lisbon"} {default:country_key "pt"} {geo:wac "351"} {geo:iata "LIS"} {geo:icao "LPPT"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "budapest:hu"} {default:name_locale "pkg.dist.geo%%Budapest"} {default:country_key "hu"} {geo:wac "437"} {geo:iata "BUD"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "opatija:hr"} {default:name_locale "pkg.dist.geo%%Opatija"} {default:country_key "hr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "samos:gr"} {default:name_locale "pkg.dist.geo%%Samos Island"} {default:country_key "gr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "athens:gr"} {default:name_locale "pkg.dist.geo%%Athens"} {default:country_key "gr"} {geo:wac "433"} {geo:iata "ATH"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "turku:fi"} {default:name_locale "pkg.dist.geo%%Turku"} {default:country_key "fi"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "helsinki:fi"} {default:name_locale "pkg.dist.geo%%Helsinki"} {default:country_key "fi"} {geo:wac "425"} {geo:iata "HEL"} {geo:icao "EFHY"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "red_sea:eg"} {default:name_locale "pkg.dist.geo%%Red Sea"} {default:country_key "eg"} {geo:wac "591"} {geo:iata "SSH"} {geo:icao "HESH"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "hongkong:cn"} {default:name_locale "pkg.dist.geo%%Hong Kong"} {default:country_key "cn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "chengdu:cn"} {default:name_locale "pkg.dist.geo%%Chengdu"} {default:country_key "cn"} {geo:wac "713"} {geo:iata "CTU"} {geo:icao "ZUDS"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "beijing:cn"} {default:name_locale "pkg.dist.geo%%Beijing"} {default:country_key "cn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "geneva:ch"} {default:name_locale "pkg.dist.geo%%Geneva"} {default:country_key "ch"} {geo:wac "486"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "zurich:ch"} {default:name_locale "pkg.dist.geo%%Zurich"} {default:country_key "ch"} {geo:wac "486"} {geo:iata "ZRH"} {geo:icao "LSZH"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "winterthur:ch"} {default:name_locale "pkg.dist.geo%%Winterthur"} {default:country_key "ch"} {geo:wac "486"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "florence:it"} {default:name_locale "pkg.dist.geo%%Florence"} {default:country_key "it"} {geo:wac "450"} {geo:iata "FLR"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "tokyo:jp"} {default:name_locale "pkg.dist.geo%%Tokyo"} {default:country_key "jp"} {geo:wac "763"} {geo:iata "NRT"} {geo:icao "RJTT"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "the_hague:nl"} {default:name_locale "pkg.dist.geo%%The Hague"} {default:country_key "nl"} {geo:wac "461"} {geo:iata "ZYH"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "amsterdam:nl"} {default:name_locale "pkg.dist.geo%%Amsterdam"} {default:country_key "nl"} {geo:wac "461"} {geo:iata "AMS"} {geo:icao "EHXX"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "marrakech:ma"} {default:name_locale "pkg.dist.geo%%Marrakech"} {default:country_key "ma"} {geo:wac "548"} {geo:iata "RAK"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "oslo:no"} {default:name_locale "pkg.dist.geo%%Oslo"} {default:country_key "no"} {geo:wac "465"} {geo:iata "OSL"} {geo:icao "ENOS"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "madrid:es"} {default:name_locale "pkg.dist.geo%%Madrid"} {default:country_key "es"} {geo:wac "482"} {geo:iata "MAD"} {geo:icao "LEGM"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "barcelona:es"} {default:name_locale "pkg.dist.geo%%Barcelona"} {default:country_key "es"} {geo:wac "482"} {geo:iata "BCN"} {geo:icao "LEBL"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "st_petersburg:ru"} {default:name_locale "pkg.dist.geo%%St. Petersburg"} {default:country_key "ru"} {geo:wac "770"} {geo:iata "RVH"} {geo:icao "ULLL"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "moscow:ru"} {default:name_locale "pkg.dist.geo%%Moscow"} {default:country_key "ru"} {geo:wac "770"} {geo:iata "SVO"} {geo:icao "UUUU"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "cracow:po"} {default:name_locale "pkg.dist.geo%%Cracow"} {default:country_key "po"} {geo:wac "467"} {geo:iata "KRK"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "salvador:br"} {default:name_locale "pkg.dist.geo%%Salvador Bahia"} {default:country_key "br"} {geo:wac "316"} {geo:iata "SSA"} {geo:icao "SBXS"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "petropolis:br"} {default:name_locale "pkg.dist.geo%%Petr&oacute;polis"} {default:country_key "br"} {geo:wac "316"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "campo-grande:br"} {default:name_locale "pkg.dist.geo%%Campo-Grande"} {default:country_key "br"} {geo:wac "316"} {geo:iata "CGR"} {geo:icao "SBCG"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "vancouver:ca"} {default:name_locale "pkg.dist.geo%%Vancouver"} {default:country_key "ca"} {geo:wac "906"} {geo:iata "YVR"} {geo:icao "CYVR"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "toronto:ca"} {default:name_locale "pkg.dist.geo%%Toronto"} {default:country_key "ca"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "london:ca"} {default:name_locale "pkg.dist.geo%%London"} {default:country_key "ca"} {geo:wac "906"} {geo:iata "YXU"} {geo:icao "CYXU"} {geo:region "Ontario"} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "belfast:gb"} {default:name_locale "pkg.dist.geo%%Belfast"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "glasgow:gb"} {default:name_locale "pkg.dist.geo%%Glasgow"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "brighton:gb"} {default:name_locale "pkg.dist.geo%%Brighton"} {default:country_key "gb"} {geo:wac "493"} {geo:iata "BSH"} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "colchester:gb"} {default:name_locale "pkg.dist.geo%%Colchester"} {default:country_key "gb"} {geo:wac "493"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "edinburgh:gb"} {default:name_locale "pkg.dist.geo%%Edinburgh"} {default:country_key "gb"} {geo:wac "493"} {geo:iata "EDI"} {geo:icao "EGPH"} {geo:region "Scottland"} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "london:gb"} {default:name_locale "pkg.dist.geo%%London"} {default:country_key "gb"} {geo:wac "493"} {geo:iata "LHR"} {geo:icao "EGGO"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "waterford:ie"} {default:name_locale "pkg.dist.geo%%Waterford"} {default:country_key "ie"} {geo:wac "441"} {geo:iata "WAT"} {geo:icao "EIWF"} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "dublin:ie"} {default:name_locale "pkg.dist.geo%%Dublin"} {default:country_key "ie"} {geo:wac "441"} {geo:iata "DUB"} {geo:icao "EIDW"} {geo:region ""} {geo:state ""} {geo:county "Dublin"} {default:url ""}
+        table geo_cities {key "cork:ie"} {default:name_locale "pkg.dist.geo%%Cork"} {default:country_key "ie"} {geo:wac "441"} {geo:iata "ORK"} {geo:icao "EICK"} {geo:region ""} {geo:state ""} {geo:county "Cork"} {default:url ""}
+        table geo_cities {key "carlow:ie"} {default:name_locale "pkg.dist.geo%%Carlow"} {default:country_key "ie"} {geo:wac "441"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Carlow"} {default:url ""}
+        table geo_cities {key "lyon:fr"} {default:name_locale "pkg.dist.geo%%Lyon"} {default:country_key "fr"} {geo:wac "427"} {geo:iata "LYN"} {geo:icao "LFKL"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "nice:fr"} {default:name_locale "pkg.dist.geo%%Nice"} {default:country_key "fr"} {geo:wac "427"} {geo:iata "NCE"} {geo:icao "LFMJ"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "paris:fr"} {default:name_locale "pkg.dist.geo%%Paris"} {default:country_key "fr"} {geo:wac "427"} {geo:iata "CDG"} {geo:icao "LFPS"} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "guadeloupe:fr"} {default:name_locale "pkg.dist.geo%%Guadeloupe"} {default:country_key "fr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "gosier:fr"} {default:name_locale "pkg.dist.geo%%Gosier"} {default:country_key "fr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "schaumburg:il:us"} {default:name_locale "pkg.dist.geo%%Schaumburg"} {default:country_key "us"} {geo:wac "67"} {geo:iata "JHM"} {geo:icao "K06C"} {geo:region ""} {geo:state "IL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "san_francisco:ca:us"} {default:name_locale "pkg.dist.geo%%San Francisco"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "san_jose:ca:us"} {default:name_locale "pkg.dist.geo%%San Jos&eacute;"} {default:country_key "us"} {geo:wac "67"} {geo:iata "SJC"} {geo:icao "KSJC"} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "philadelphia:pa:us"} {default:name_locale "pkg.dist.geo%%Philadelphia"} {default:country_key "us"} {geo:wac "67"} {geo:iata "PHL"} {geo:icao "KPHL"} {geo:region ""} {geo:state "PA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "new_jersey:nj:us"} {default:name_locale "pkg.dist.geo%%New Jersey"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "NJ"} {geo:county ""} {default:url ""}
+        table geo_cities {key "new_york:ny:us"} {default:name_locale "pkg.dist.geo%%New York"} {default:country_key "us"} {geo:wac "67"} {geo:iata "JFK"} {geo:icao "KJFK"} {geo:region ""} {geo:state "NY"} {geo:county ""} {default:url ""}
+        table geo_cities {key "miami:fl:us"} {default:name_locale "pkg.dist.geo%%Miami"} {default:country_key "us"} {geo:wac "67"} {geo:iata "MIA"} {geo:icao "KMIA"} {geo:region ""} {geo:state "FL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "las_vegas:nv:us"} {default:name_locale "pkg.dist.geo%%Las Vegas"} {default:country_key "us"} {geo:wac "67"} {geo:iata "LAS"} {geo:icao "KLAS"} {geo:region ""} {geo:state "NV"} {geo:county ""} {default:url ""}
+        table geo_cities {key "detroit:mi:us"} {default:name_locale "pkg.dist.geo%%Detroit"} {default:country_key "us"} {geo:wac "67"} {geo:iata "DET"} {geo:icao ""} {geo:region ""} {geo:state "MI"} {geo:county ""} {default:url ""}
+        table geo_cities {key "dallas:tx:us"} {default:name_locale "pkg.dist.geo%%Dallas"} {default:country_key "us"} {geo:wac "67"} {geo:iata "DFW"} {geo:icao "KAQN"} {geo:region ""} {geo:state "TX"} {geo:county ""} {default:url ""}
+        table geo_cities {key "cincinnati:mi:us"} {default:name_locale "pkg.dist.geo%%Cincinnati"} {default:country_key "us"} {geo:wac "67"} {geo:iata "LUK"} {geo:icao "KDXO"} {geo:region ""} {geo:state "MI"} {geo:county ""} {default:url ""}
+        table geo_cities {key "chicago:il:us"} {default:name_locale "pkg.dist.geo%%Chicago"} {default:country_key "us"} {geo:wac "67"} {geo:iata "ORD"} {geo:icao "KORD"} {geo:region ""} {geo:state "IL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "reading:ma:us"} {default:name_locale "pkg.dist.geo%%Reading"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "MA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "needham:ma:us"} {default:name_locale "pkg.dist.geo%%Needham"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "MA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "fremont:ca:us"} {default:name_locale "pkg.dist.geo%%Fremont"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "portland:or:us"} {default:name_locale "pkg.dist.geo%%Portland"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "OR"} {geo:county ""} {default:url ""}
+        table geo_cities {key "morristown:nj:us"} {default:name_locale "pkg.dist.geo%%Morristown"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "NJ"} {geo:county ""} {default:url ""}
+        table geo_cities {key "boston:ma:us"} {default:name_locale "pkg.dist.geo%%Boston"} {default:country_key "us"} {geo:wac "67"} {geo:iata "BOS"} {geo:icao "KBOS"} {geo:region ""} {geo:state "MA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "newport_beach:ca:us"} {default:name_locale "pkg.dist.geo%%Newport Beach"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "colorado_springs:co:us"} {default:name_locale "pkg.dist.geo%%Colorado Springs"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CO"} {geo:county ""} {default:url ""}
+        table geo_cities {key "evry:fr"} {default:name_locale "pkg.dist.geo%%Evry"} {default:country_key "fr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "dortmund:de"} {default:name_locale "pkg.dist.geo%%Dortmund"} {default:country_key "de"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "patras:gr"} {default:name_locale "pkg.dist.geo%%Patras"} {default:country_key "gr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "passau:de"} {default:name_locale "pkg.dist.geo%%Passau"} {default:country_key "de"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "indianapolis:in:us"} {default:name_locale "pkg.dist.geo%%Indianapolis"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "IN"} {geo:county ""} {default:url ""}
+        table geo_cities {key "rotterdam:nl"} {default:name_locale "pkg.dist.geo%%Rotterdam"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "utrecht:nl"} {default:name_locale "pkg.dist.geo%%Utrecht"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "chiangmai:th"} {default:name_locale "pkg.dist.geo%%Chiangmai"} {default:country_key "th"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "trondheim:no"} {default:name_locale "pkg.dist.geo%%Trondheim"} {default:country_key "no"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "rome:it"} {default:name_locale "pkg.dist.geo%%Rome"} {default:country_key "it"} {geo:wac "450"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "boras:se"} {default:name_locale "pkg.dist.geo%%Bor&aring;s"} {default:country_key "se"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "colorado:co:us"} {default:name_locale "pkg.dist.geo%%Colorado"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CO"} {geo:county ""} {default:url ""}
+        table geo_cities {key "berkeley:ca:us"} {default:name_locale "pkg.dist.geo%%Berkeley"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "nashville:tn:us"} {default:name_locale "pkg.dist.geo%%Nashville"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "TN"} {geo:county ""} {default:url ""}
+        table geo_cities {key "montreal:ca"} {default:name_locale "pkg.dist.geo%%Montr&eacute;al"} {default:country_key "ca"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region "Ontario"} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "manchester:gb"} {default:name_locale "pkg.dist.geo%%Manchester"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "delft:nl"} {default:name_locale "pkg.dist.geo%%Delft"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "palo_alto:ca:us"} {default:name_locale "pkg.dist.geo%%Palo Alto"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "pittsburgh:pa:us"} {default:name_locale "pkg.dist.geo%%Pittsburgh"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "PA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "cantnitz:de"} {default:name_locale "pkg.dist.geo%%Cantnitz"} {default:country_key "de"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "neubrandenburg:de"} {default:name_locale "pkgdist.geo%%Neubrandenburg"} {default:country_key "de"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "heemskerk:nl"} {default:name_locale "pkg.dist.geo%%Heemskerk"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "zaanse_schans:nl"} {default:name_locale "pkg.dist.geo%%Zaanse Schans"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "alkmaar:nl"} {default:name_locale "pkg.dist.geo%%Alkmaar"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "lankanfinolhu:mv"} {default:name_locale "pkg.dist.geo%%Lankanfinolhu"} {default:country_key "mv"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "dungarvan:ie"} {default:name_locale "pkg.dist.geo%%Dungarvan"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "powerscourt:ie"} {default:name_locale "pkg.dist.geo%%Powerscourt"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Wicklow"} {default:url ""}
+        table geo_cities {key "hoi-anh:vn"} {default:name_locale "pkg.dist.geo%%Hoi Anh"} {default:country_key "vn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "dong-ha:vn"} {default:name_locale "pkg.dist.geo%%Dong Ha"} {default:country_key "vn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "jerpoint_abbey:ie"} {default:name_locale "pkg.dist.geo%%Jerpoint Abbey"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Kilkenny"} {default:url ""}
+        table geo_cities {key "slotdehaar:nl"} {default:name_locale "pkg.dist.geo%%Slot de Haar"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "killarney:ie"} {default:name_locale "pkg.dist.geo%%Killarney"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Kerry"} {default:url ""}
+        table geo_cities {key "hoek:nl"} {default:name_locale "pkg.dist.geo%%Hoek"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "fishguard:gb"} {default:name_locale "pkg.dist.geo%%Fishguard"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "hanoi:vn"} {default:name_locale "pkg.dist.geo%%Hanoi"} {default:country_key "vn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "vinh:vn"} {default:name_locale "pkg.dist.geo%%Vinh"} {default:country_key "vn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "ai-tu:vn"} {default:name_locale "pkg.dist.geo%%Ai Tu"} {default:country_key "vn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "khe-shan:vn"} {default:name_locale "pkg.dist.geo%%Khe Shan"} {default:country_key "vn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "hue:vn"} {default:name_locale "pkg.dist.geo%%Hue"} {default:country_key "vn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "ankor-wat:kh"} {default:name_locale "pkg.dist.geo%%Ankor Wat"} {default:country_key "kh"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "phnom-phen:kh"} {default:name_locale "pkg.dist.geo%%Phnom Phen"} {default:country_key "kh"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "brussels:be"} {default:name_locale "pkg.dist.geo%%Brussels"} {default:country_key "be"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "cambridge:ma:us"} {default:name_locale "pkg.dist.geo%%Cambridge"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "MA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "eljem:tn"} {default:name_locale "pkg.dist.geo%%Eljem"} {default:country_key "tn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "matmata:tn"} {default:name_locale "pkg.dist.geo%%Matmata"} {default:country_key "tn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "sfax:tn"} {default:name_locale "pkg.dist.geo%%Sfax"} {default:country_key "tn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "chot_gerio:tn"} {default:name_locale "pkg.dist.geo%%Chot Gerio"} {default:country_key "tn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "douz:tn"} {default:name_locale "pkg.dist.geo%%Douz"} {default:country_key "tn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "tozeur:tn"} {default:name_locale "pkg.dist.geo%%Tozeur"} {default:country_key "tn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "tamerza:tn"} {default:name_locale "pkg.dist.geo%%Tamerza"} {default:country_key "tn"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "istanbul:tr"} {default:name_locale "pkg.dist.geo%%Istanbul"} {default:country_key "tr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "essouira:ma"} {default:name_locale "pkg.dist.geo%%Essouira"} {default:country_key "ma"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "alimatha:mv"} {default:name_locale "pkg.dist.geo%%Alimatha"} {default:country_key "mv"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "cape_canaveral:fl:us"} {default:name_locale "pkg.dist.geo%%Cape Canaveral"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "FL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "orlando:fl:us"} {default:name_locale "pkg.dist.geo%%Orlando"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "FL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "key_west:fl:us"} {default:name_locale "pkg.dist.geo%%Key West"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "FL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "key_biscayne:fl:us"} {default:name_locale "pkg.dist.geo%%Key Biscayne"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "FL"} {geo:county ""} {default:url ""}
+        table geo_cities {key "teneriffa:es"} {default:name_locale "pkg.dist.geo%%Teneriffa"} {default:country_key "es"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "torbay:gb"} {default:name_locale "pkg.dist.geo%%Torbay"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "woldeck:de"} {default:name_locale "pkg.dist.geo%%Woldeck"} {default:country_key "de"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "vientiane:la"} {default:name_locale "pkg.dist.geo%%Vientiane"} {default:country_key "la"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "xiangkuang:la"} {default:name_locale "pkg.dist.geo%%Xiang Kuang"} {default:country_key "la"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "algiers:dz"} {default:name_locale "pkg.dist.geo%%Algiers"} {default:country_key "dz"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "insalah:dz"} {default:name_locale "pkg.dist.geo%%Insalah"} {default:country_key "dz"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "foggaret:dz"} {default:name_locale "pkg.dist.geo%%Foggaret"} {default:country_key "dz"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "hoggar:dz"} {default:name_locale "pkg.dist.geo%%Hoggar (Tassilli de)"} {default:country_key "dz"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "blarney:ie"} {default:name_locale "pkg.dist.geo%%Blarney"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Cork"} {default:url ""}
+        table geo_cities {key "glengarriff:ie"} {default:name_locale "pkg.dist.geo%%Glengarriff"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Cork"} {default:url ""}
+        table geo_cities {key "hook_head:ie"} {default:name_locale "pkg.dist.geo%%Hook Head"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Wexford"} {default:url ""}
+        table geo_cities {key "youghal:ie"} {default:name_locale "pkg.dist.geo%%Youghal"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Cork"} {default:url ""}
+        table geo_cities {key "duncannon:ie"} {default:name_locale "pkg.dist.geo%%Duncannon"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Wexford"} {default:url ""}
+        table geo_cities {key "cahir:ie"} {default:name_locale "pkg.dist.geo%%Cahir"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Tiperary"} {default:url ""}
+        table geo_cities {key "cashel:ie"} {default:name_locale "pkg.dist.geo%%Cashel"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Tiperary"} {default:url ""}
+        table geo_cities {key "howth:ie"} {default:name_locale "pkg.dist.geo%%Howth"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Dublin"} {default:url ""}
+        table geo_cities {key "annestown:ie"} {default:name_locale "pkg.dist.geo%%Annestown"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "bunmahon:ie"} {default:name_locale "pkg.dist.geo%%Bunmahon"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "dunmore_east:ie"} {default:name_locale "pkg.dist.geo%%Dunmore East"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "tramore:ie"} {default:name_locale "pkg.dist.geo%%Tramore"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "kilkenny:ie"} {default:name_locale "pkg.dist.geo%%Kilkenny"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Kilkenny"} {default:url ""}
+        table geo_cities {key "assakrem:dz"} {default:name_locale "pkg.dist.geo%%Assakrem"} {default:country_key "dz"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "westport:ie"} {default:name_locale "pkg.dist.geo%%Westport"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Mayo"} {default:url ""}
+        table geo_cities {key "sligo:ie"} {default:name_locale "pkg.dist.geo%%Sligo"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Sligo"} {default:url ""}
+        table geo_cities {key "lismore:ie"} {default:name_locale "pkg.dist.geo%%Lismore"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "passage_east:ie"} {default:name_locale "pkg.dist.geo%%Passage East"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "kylemore:ie"} {default:name_locale "pkg.dist.geo%%Kylemore"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Galway"} {default:url ""}
+        table geo_cities {key "clonmacnoise:ie"} {default:name_locale "pkg.dist.geo%%Clonmacnoise"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "West Meath"} {default:url ""}
+        table geo_cities {key "moher:ie"} {default:name_locale "pkg.dist.geo%%Moher"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Clare"} {default:url ""}
+        table geo_cities {key "bunratty:ie"} {default:name_locale "pkg.dist.geo%%Bunratty"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "limerick:ie"} {default:name_locale "pkg.dist.geo%%Limerick"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Limerick"} {default:url ""}
+        table geo_cities {key "kinsale:ie"} {default:name_locale "pkg.dist.geo%%Kinsale"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "kerry:ie"} {default:name_locale "pkg.dist.geo%%Kerry"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Kerry"} {default:url ""}
+        table geo_cities {key "timoleague:ie"} {default:name_locale "pkg.dist.geo%%Timoleague"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Cork"} {default:url ""}
+        table geo_cities {key "glendalough:ie"} {default:name_locale "pkg.dist.geo%%Glendalough"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Wicklow"} {default:url ""}
+        table geo_cities {key "dingle:ie"} {default:name_locale "pkg.dist.geo%%Dingle"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "stokholm:se"} {default:name_locale "pkg.dist.geo%%Stokholm"} {default:country_key "se"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "copenhagen:dk"} {default:name_locale "pkg.dist.geo%%Copenhagen"} {default:country_key "dk"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "portlaw:ie"} {default:name_locale "pkg.dist.geo%%Portlaw"} {default:country_key "ie"} {geo:wac "441"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county "Waterford"} {default:url ""}
+        table geo_cities {key "tamanrasset:dz"} {default:name_locale "pkg.dist.geo%%Tamanrasset"} {default:country_key "dz"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "irvine:ca:us"} {default:name_locale "pkg.dist.geo%%Irvine"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "twente:nl"} {default:name_locale "pkg.dist.geo%%Twente"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "denver:co:us"} {default:name_locale "pkg.dist.geo%%Denver"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CO"} {geo:county ""} {default:url ""}
+        table geo_cities {key "santa_clara:ca:us"} {default:name_locale "pkg.dist.geo%%Santa Clara"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "pinckney:mi:us"} {default:name_locale "pkg.dist.geo%%Pinckney"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "MI"} {geo:county ""} {default:url ""}
+        table geo_cities {key "walnut_creek:ca:us"} {default:name_locale "pkg.dist.geo%%Walnut Creek"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "kaiserslautern:de"} {default:name_locale "pkg.dist.geo%%Kaiserslautern"} {default:country_key "de"} {geo:wac "429"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "bruchsal:de"} {default:name_locale "pkg.dist.geo%%Bruchsal"} {default:country_key "de"} {geo:wac "429"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "langston:ok:us"} {default:name_locale "pkg.dist.geo%%Langston"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "OK"} {geo:county ""} {default:url ""}
+        table geo_cities {key "maynooth:ie"} {default:name_locale "pkg.dist.geo%%Maynooth"} {default:country_key "ie"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "venice:it"} {default:name_locale "pkg.dist.geo%%Venice"} {default:country_key "it"} {geo:wac "450"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "ghent:be"} {default:name_locale "pkg.dist.geo%%Ghent"} {default:country_key "be"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "osaka:jp"} {default:name_locale "pkg.dist.geo%%Osaka"} {default:country_key "jp"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "mannheim:de"} {default:name_locale "pkg.dist.geo%%Mannheim"} {default:country_key "de"} {geo:wac "429"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "leeds:gb"} {default:name_locale "pkg.dist.geo%%Leeds"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "siena:it"} {default:name_locale "pkg.dist.geo%%Siena"} {default:country_key "it"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "tempe:az:us"} {default:name_locale "pkg.dist.geo%%Tempe"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "AZ"} {geo:county ""} {default:url ""}
+        table geo_cities {key "bergen:no"} {default:name_locale "pkg.dist.geo%%Bergen"} {default:country_key "no"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "trento:it"} {default:name_locale "pkg.dist.geo%%Trento"} {default:country_key "it"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "college-park:md:us"} {default:name_locale "pkg.dist.geo%%College Park"} {default:country_key "us"} {geo:wac "67"} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "MD"} {geo:county ""} {default:url ""}
+        table geo_cities {key "auckland:nz"} {default:name_locale "pkg.dist.geo%%Auckland"} {default:country_key "nz"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "thrace:gr"} {default:name_locale "pkg.dist.geo%%Thrace"} {default:country_key "gr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "bristol:gb"} {default:name_locale "pkg.dist.geo%%Bristol"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "rennes:fr"} {default:name_locale "pkg.dist.geo%%Rennes"} {default:country_key "fr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "atlanta:ga:us"} {default:name_locale "pkg.dist.geo%%Atlanta"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "GA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "cambridge:gb"} {default:name_locale "pkg.dist.geo%%Cambridge"} {default:country_key "gb"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "groningen:nl"} {default:name_locale "pkg.dist.geo%%Groningen"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "sebastopol:ca:us"} {default:name_locale "pkg.dist.geo%%Sebastopol"} {default:country_key "us"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state "CA"} {geo:county ""} {default:url ""}
+        table geo_cities {key "dortrecht:nl"} {default:name_locale "pkg.dist.geo%%Dortrecht"} {default:country_key "nl"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "niagara_falls:ca"} {default:name_locale "pkg.dist.geo%%Niagara Falls"} {default:country_key "ca"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "jeju:kr"} {default:name_locale "pkg.dist.geo%%Jeju Island"} {default:country_key "kr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "pohang:kr"} {default:name_locale "pkg.dist.geo%%Pohang"} {default:country_key "kr"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_cities {key "pisa:it"} {default:name_locale "pkg.dist.geo%%Pisa"} {default:country_key "it"} {geo:wac ""} {geo:iata ""} {geo:icao ""} {geo:region ""} {geo:state ""} {geo:county ""} {default:url ""}
+        table geo_countries {key "ax"} {default:name_locale "pkg.dist.geo%%&Aring;land Islands"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ax"} {geo:alpha3_3116_1 "ALA"} {geo:numeric_3166_1 "248"} {geo:e164 ""} {geo:ccTLD "ax"} {geo:im_locale ""}
+        table geo_countries {key "af"} {default:name_locale "pkg.dist.geo%%Afghanistan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "af"} {geo:alpha3_3116_1 "AFG"} {geo:numeric_3166_1 "004"} {geo:e164 "93"} {geo:ccTLD "af"} {geo:im_locale ""}
+        table geo_countries {key "al"} {default:name_locale "pkg.dist.geo%%Albania"} {default:continent_key "europe"} {geo:alpha2_3166_1 "al"} {geo:alpha3_3116_1 "ALB"} {geo:numeric_3166_1 "008"} {geo:e164 "355"} {geo:ccTLD "al"} {geo:im_locale ""}
+        table geo_countries {key "dz"} {default:name_locale "pkg.dist.geo%%Algeria"} {default:continent_key "africa"} {geo:alpha2_3166_1 "dz"} {geo:alpha3_3116_1 "DZA"} {geo:numeric_3166_1 "012"} {geo:e164 "213"} {geo:ccTLD "dz"} {geo:im_locale ""}
+        table geo_countries {key "as"} {default:name_locale "pkg.dist.geo%%American Samoa"} {default:continent_key "australia"} {geo:alpha2_3166_1 "as"} {geo:alpha3_3116_1 "ASM"} {geo:numeric_3166_1 "016"} {geo:e164 "1-684"} {geo:ccTLD "as"} {geo:im_locale ""}
+        table geo_countries {key "ad"} {default:name_locale "pkg.dist.geo%%Andorra"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ad"} {geo:alpha3_3116_1 "AND"} {geo:numeric_3166_1 "020"} {geo:e164 "376"} {geo:ccTLD "ad"} {geo:im_locale ""}
+        table geo_countries {key "zw"} {default:name_locale "pkg.dist.geo%%Zimbabwe"} {default:continent_key "africa"} {geo:alpha2_3166_1 "zw"} {geo:alpha3_3116_1 "ZWE"} {geo:numeric_3166_1 "716"} {geo:e164 "263"} {geo:ccTLD "zw"} {geo:im_locale ""}
+        table geo_countries {key "zm"} {default:name_locale "pkg.dist.geo%%Zambia"} {default:continent_key "africa"} {geo:alpha2_3166_1 "zm"} {geo:alpha3_3116_1 "ZMB"} {geo:numeric_3166_1 "894"} {geo:e164 "260"} {geo:ccTLD "zm"} {geo:im_locale ""}
+        table geo_countries {key "yu"} {default:name_locale "pkg.dist.geo%%Yugoslavia"} {default:continent_key "europe"} {geo:alpha2_3166_1 "yu"} {geo:alpha3_3116_1 ""} {geo:numeric_3166_1 ""} {geo:e164 "389"} {geo:ccTLD "yu"} {geo:im_locale ""}
+        table geo_countries {key "ye"} {default:name_locale "pkg.dist.geo%%Yemen"} {default:continent_key "asia"} {geo:alpha2_3166_1 "ye"} {geo:alpha3_3116_1 "YEM"} {geo:numeric_3166_1 "887"} {geo:e164 "967"} {geo:ccTLD "ye"} {geo:im_locale ""}
+        table geo_countries {key "eh"} {default:name_locale "pkg.dist.geo%%Western Sahara"} {default:continent_key "africa"} {geo:alpha2_3166_1 "eh"} {geo:alpha3_3116_1 "ESH"} {geo:numeric_3166_1 "732"} {geo:e164 ""} {geo:ccTLD "eh"} {geo:im_locale ""}
+        table geo_countries {key "wf"} {default:name_locale "pkg.dist.geo%%Wallis and Futuna"} {default:continent_key "australia"} {geo:alpha2_3166_1 "wf"} {geo:alpha3_3116_1 "WLF"} {geo:numeric_3166_1 "876"} {geo:e164 "681"} {geo:ccTLD "wf"} {geo:im_locale ""}
+        table geo_countries {key "ao"} {default:name_locale "pkg.dist.geo%%Angola"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ao"} {geo:alpha3_3116_1 "AGO"} {geo:numeric_3166_1 "024"} {geo:e164 "244"} {geo:ccTLD "ao"} {geo:im_locale ""}
+        table geo_countries {key "ai"} {default:name_locale "pkg.dist.geo%%Anguilla"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "ai"} {geo:alpha3_3116_1 "AIA"} {geo:numeric_3166_1 "660"} {geo:e164 "1-264"} {geo:ccTLD "ai"} {geo:im_locale ""}
+        table geo_countries {key "aq"} {default:name_locale "pkg.dist.geo%%Antarctica"} {default:continent_key "antarctica"} {geo:alpha2_3166_1 "aq"} {geo:alpha3_3116_1 "ATA"} {geo:numeric_3166_1 "010"} {geo:e164 ""} {geo:ccTLD "aq"} {geo:im_locale ""}
+        table geo_countries {key "ag"} {default:name_locale "pkg.dist.geo%%Antigua and Barbuda"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "ag"} {geo:alpha3_3116_1 "ATG"} {geo:numeric_3166_1 "028"} {geo:e164 "1-268"} {geo:ccTLD "ag"} {geo:im_locale ""}
+        table geo_countries {key "ar"} {default:name_locale "pkg.dist.geo%%Argentina"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "ar"} {geo:alpha3_3116_1 "ARG"} {geo:numeric_3166_1 "032"} {geo:e164 "54"} {geo:ccTLD "ar"} {geo:im_locale ""}
+        table geo_countries {key "vi"} {default:name_locale "pkg.dist.geo%%Virgin Islands, U.S."} {default:continent_key "n_america"} {geo:alpha2_3166_1 "vi"} {geo:alpha3_3116_1 "VIR"} {geo:numeric_3166_1 "850"} {geo:e164 "1-340"} {geo:ccTLD "vi"} {geo:im_locale ""}
+        table geo_countries {key "vg"} {default:name_locale "pkg.dist.geo%%Virgin Islands, British"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "vg"} {geo:alpha3_3116_1 "VGB"} {geo:numeric_3166_1 "092"} {geo:e164 "1-284"} {geo:ccTLD "vg"} {geo:im_locale ""}
+        table geo_countries {key "vn"} {default:name_locale "pkg.dist.geo%%Viet Nam"} {default:continent_key "asia"} {geo:alpha2_3166_1 "vn"} {geo:alpha3_3116_1 "VNM"} {geo:numeric_3166_1 "704"} {geo:e164 "84"} {geo:ccTLD "vn"} {geo:im_locale ""}
+        table geo_countries {key "am"} {default:name_locale "pkg.dist.geo%%Armenia"} {default:continent_key "asia"} {geo:alpha2_3166_1 "am"} {geo:alpha3_3116_1 "ARM"} {geo:numeric_3166_1 "051"} {geo:e164 "374"} {geo:ccTLD "am"} {geo:im_locale ""}
+        table geo_countries {key "aw"} {default:name_locale "pkg.dist.geo%%Aruba"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "aw"} {geo:alpha3_3116_1 "ABW"} {geo:numeric_3166_1 "533"} {geo:e164 "297"} {geo:ccTLD "aw"} {geo:im_locale ""}
+        table geo_countries {key "au"} {default:name_locale "pkg.dist.geo%%Australia"} {default:continent_key "australia"} {geo:alpha2_3166_1 "au"} {geo:alpha3_3116_1 "AUS"} {geo:numeric_3166_1 "036"} {geo:e164 "61"} {geo:ccTLD "au"} {geo:im_locale ""}
+        table geo_countries {key "at"} {default:name_locale "pkg.dist.geo%%Austria"} {default:continent_key "europe"} {geo:alpha2_3166_1 "at"} {geo:alpha3_3116_1 "AUT"} {geo:numeric_3166_1 "040"} {geo:e164 "43"} {geo:ccTLD "at"} {geo:im_locale ""}
+        table geo_countries {key "az"} {default:name_locale "pkg.dist.geo%%Azerbaijan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "az"} {geo:alpha3_3116_1 "AZE"} {geo:numeric_3166_1 "031"} {geo:e164 "994"} {geo:ccTLD "az"} {geo:im_locale ""}
+        table geo_countries {key "bs"} {default:name_locale "pkg.dist.geo%%Bahamas"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "bs"} {geo:alpha3_3116_1 "BHS"} {geo:numeric_3166_1 "044"} {geo:e164 "1-242"} {geo:ccTLD "bs"} {geo:im_locale ""}
+        table geo_countries {key "bh"} {default:name_locale "pkg.dist.geo%%Bahrain"} {default:continent_key "asia"} {geo:alpha2_3166_1 "bh"} {geo:alpha3_3116_1 "BHR"} {geo:numeric_3166_1 "048"} {geo:e164 "973"} {geo:ccTLD "bh"} {geo:im_locale ""}
+        table geo_countries {key "bd"} {default:name_locale "pkg.dist.geo%%Bangladesch"} {default:continent_key "asia"} {geo:alpha2_3166_1 "bd"} {geo:alpha3_3116_1 "BGD"} {geo:numeric_3166_1 "050"} {geo:e164 "880"} {geo:ccTLD "bd"} {geo:im_locale ""}
+        table geo_countries {key "bb"} {default:name_locale "pkg.dist.geo%%Barbados"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "bb"} {geo:alpha3_3116_1 "BRB"} {geo:numeric_3166_1 "052"} {geo:e164 "1-246"} {geo:ccTLD "bb"} {geo:im_locale ""}
+        table geo_countries {key "by"} {default:name_locale "pkg.dist.geo%%Belarus"} {default:continent_key "europe"} {geo:alpha2_3166_1 "by"} {geo:alpha3_3116_1 "BLR"} {geo:numeric_3166_1 "112"} {geo:e164 "375"} {geo:ccTLD "by"} {geo:im_locale ""}
+        table geo_countries {key "be"} {default:name_locale "pkg.dist.geo%%Belgium"} {default:continent_key "europe"} {geo:alpha2_3166_1 "be"} {geo:alpha3_3116_1 "BEL"} {geo:numeric_3166_1 "056"} {geo:e164 "32"} {geo:ccTLD "be"} {geo:im_locale ""}
+        table geo_countries {key "bz"} {default:name_locale "pkg.dist.geo%%Belize"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "bz"} {geo:alpha3_3116_1 "BLZ"} {geo:numeric_3166_1 "084"} {geo:e164 "501"} {geo:ccTLD "bz"} {geo:im_locale ""}
+        table geo_countries {key "bj"} {default:name_locale "pkg.dist.geo%%Benin"} {default:continent_key "africa"} {geo:alpha2_3166_1 "bj"} {geo:alpha3_3116_1 "BEN"} {geo:numeric_3166_1 "204"} {geo:e164 "229"} {geo:ccTLD "bj"} {geo:im_locale ""}
+        table geo_countries {key "bm"} {default:name_locale "pkg.dist.geo%%Bermuda"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "bm"} {geo:alpha3_3116_1 "BMU"} {geo:numeric_3166_1 "060"} {geo:e164 "1-441"} {geo:ccTLD "bm"} {geo:im_locale ""}
+        table geo_countries {key "bt"} {default:name_locale "pkg.dist.geo%%Bhutan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "bt"} {geo:alpha3_3116_1 "BTN"} {geo:numeric_3166_1 "064"} {geo:e164 "975"} {geo:ccTLD "bt"} {geo:im_locale ""}
+        table geo_countries {key "ve"} {default:name_locale "pkg.dist.geo%%Venezuela"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "ve"} {geo:alpha3_3116_1 "VEN"} {geo:numeric_3166_1 "862"} {geo:e164 "58"} {geo:ccTLD "ve"} {geo:im_locale ""}
+        table geo_countries {key "vu"} {default:name_locale "pkg.dist.geo%%Vanuatu"} {default:continent_key "australia"} {geo:alpha2_3166_1 "vu"} {geo:alpha3_3116_1 "VUT"} {geo:numeric_3166_1 "548"} {geo:e164 "678"} {geo:ccTLD "vu"} {geo:im_locale ""}
+        table geo_countries {key "uz"} {default:name_locale "pkg.dist.geo%%Uzbekistan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "uz"} {geo:alpha3_3116_1 "UZB"} {geo:numeric_3166_1 "860"} {geo:e164 "998"} {geo:ccTLD "uz"} {geo:im_locale ""}
+        table geo_countries {key "uy"} {default:name_locale "pkg.dist.geo%%Uruguay"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "uy"} {geo:alpha3_3116_1 "URY"} {geo:numeric_3166_1 "858"} {geo:e164 "598"} {geo:ccTLD "uy"} {geo:im_locale ""}
+        table geo_countries {key "um"} {default:name_locale "pkg.dist.geo%%United States Minor Outlying Islands"} {default:continent_key "australia"} {geo:alpha2_3166_1 "um"} {geo:alpha3_3116_1 "UMI"} {geo:numeric_3166_1 "581"} {geo:e164 "1"} {geo:ccTLD "um"} {geo:im_locale ""}
+        table geo_countries {key "us"} {default:name_locale "pkg.dist.geo%%United States"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "us"} {geo:alpha3_3116_1 "USA"} {geo:numeric_3166_1 "840"} {geo:e164 "1"} {geo:ccTLD "us"} {geo:im_locale "pkg.dist.geo%%in the United States"}
+        table geo_countries {key "nl"} {default:name_locale "pkg.dist.geo%%Netherlands"} {default:continent_key "europe"} {geo:alpha2_3166_1 "nl"} {geo:alpha3_3116_1 "NLD"} {geo:numeric_3166_1 "528"} {geo:e164 "31"} {geo:ccTLD "nl"} {geo:im_locale "pkg.dist.geo%%in the Netherlands"}
+        table geo_countries {key "bv"} {default:name_locale "pkg.dist.geo%%Bouvet Island"} {default:continent_key "antarctica"} {geo:alpha2_3166_1 "bv"} {geo:alpha3_3116_1 "BVT"} {geo:numeric_3166_1 "074"} {geo:e164 ""} {geo:ccTLD "bv"} {geo:im_locale ""}
+        table geo_countries {key "io"} {default:name_locale "pkg.dist.geo%%British Indian Ocean Territory"} {default:continent_key "asia"} {geo:alpha2_3166_1 "io"} {geo:alpha3_3116_1 "IOT"} {geo:numeric_3166_1 "086"} {geo:e164 ""} {geo:ccTLD "io"} {geo:im_locale ""}
+        table geo_countries {key "br"} {default:name_locale "pkg.dist.geo%%Brazil"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "br"} {geo:alpha3_3116_1 "BRA"} {geo:numeric_3166_1 "076"} {geo:e164 "55"} {geo:ccTLD "br"} {geo:im_locale ""}
+        table geo_countries {key "bw"} {default:name_locale "pkg.dist.geo%%Botswana"} {default:continent_key "africa"} {geo:alpha2_3166_1 "bw"} {geo:alpha3_3116_1 "BWA"} {geo:numeric_3166_1 "072"} {geo:e164 "267"} {geo:ccTLD "bw"} {geo:im_locale ""}
+        table geo_countries {key "ba"} {default:name_locale "pkg.dist.geo%%Bosnia and Herzegovina"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ba"} {geo:alpha3_3116_1 "BIH"} {geo:numeric_3166_1 "070"} {geo:e164 "387"} {geo:ccTLD "ba"} {geo:im_locale ""}
+        table geo_countries {key "bo"} {default:name_locale "pkg.dist.geo%%Bolivia"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "bo"} {geo:alpha3_3116_1 "BOL"} {geo:numeric_3166_1 "068"} {geo:e164 "591"} {geo:ccTLD "bo"} {geo:im_locale ""}
+        table geo_countries {key "gb"} {default:name_locale "pkg.dist.geo%%United Kingdom"} {default:continent_key "europe"} {geo:alpha2_3166_1 "gb"} {geo:alpha3_3116_1 "GBR"} {geo:numeric_3166_1 "826"} {geo:e164 "44"} {geo:ccTLD "uk"} {geo:im_locale ""}
+        table geo_countries {key "ae"} {default:name_locale "pkg.dist.geo%%United Arab Emirates"} {default:continent_key "asia"} {geo:alpha2_3166_1 "ae"} {geo:alpha3_3116_1 "ARE"} {geo:numeric_3166_1 "784"} {geo:e164 "971"} {geo:ccTLD "ae"} {geo:im_locale ""}
+        table geo_countries {key "ua"} {default:name_locale "pkg.dist.geo%%Ukraine"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ua"} {geo:alpha3_3116_1 "UKR"} {geo:numeric_3166_1 "804"} {geo:e164 "380"} {geo:ccTLD "ua"} {geo:im_locale ""}
+        table geo_countries {key "ug"} {default:name_locale "pkg.dist.geo%%Uganda"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ug"} {geo:alpha3_3116_1 "UGA"} {geo:numeric_3166_1 "800"} {geo:e164 "256"} {geo:ccTLD "ug"} {geo:im_locale ""}
+        table geo_countries {key "bn"} {default:name_locale "pkg.dist.geo%%Brunei Darussalam"} {default:continent_key "asia"} {geo:alpha2_3166_1 "bn"} {geo:alpha3_3116_1 "BRN"} {geo:numeric_3166_1 "096"} {geo:e164 "673"} {geo:ccTLD "bn"} {geo:im_locale ""}
+        table geo_countries {key "bg"} {default:name_locale "pkg.dist.geo%%Bulgaria"} {default:continent_key "europe"} {geo:alpha2_3166_1 "bg"} {geo:alpha3_3116_1 "BGR"} {geo:numeric_3166_1 "100"} {geo:e164 "359"} {geo:ccTLD "bg"} {geo:im_locale ""}
+        table geo_countries {key "tm"} {default:name_locale "pkg.dist.geo%%Turkmenistan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "tm"} {geo:alpha3_3116_1 "TKM"} {geo:numeric_3166_1 "795"} {geo:e164 "993"} {geo:ccTLD "tm"} {geo:im_locale ""}
+        table geo_countries {key "tc"} {default:name_locale "pkg.dist.geo%%Turks and Caicos Islands"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "tc"} {geo:alpha3_3116_1 "TCA"} {geo:numeric_3166_1 "796"} {geo:e164 "1-649"} {geo:ccTLD "tc"} {geo:im_locale ""}
+        table geo_countries {key "tv"} {default:name_locale "pkg.dist.geo%%Tuvalu"} {default:continent_key "australia"} {geo:alpha2_3166_1 "tv"} {geo:alpha3_3116_1 "TUV"} {geo:numeric_3166_1 "798"} {geo:e164 "688"} {geo:ccTLD "tv"} {geo:im_locale ""}
+        table geo_countries {key "tr"} {default:name_locale "pkg.dist.geo%%Turkey"} {default:continent_key "asia"} {geo:alpha2_3166_1 "tr"} {geo:alpha3_3116_1 "TUR"} {geo:numeric_3166_1 "792"} {geo:e164 "90"} {geo:ccTLD "tr"} {geo:im_locale ""}
+        table geo_countries {key "tn"} {default:name_locale "pkg.dist.geo%%Tunisia"} {default:continent_key "africa"} {geo:alpha2_3166_1 "tn"} {geo:alpha3_3116_1 "TUN"} {geo:numeric_3166_1 "788"} {geo:e164 "216"} {geo:ccTLD "tn"} {geo:im_locale ""}
+        table geo_countries {key "tt"} {default:name_locale "pkg.dist.geo%%Trinidad and Tobago"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "tt"} {geo:alpha3_3116_1 "TTO"} {geo:numeric_3166_1 "780"} {geo:e164 "1-868"} {geo:ccTLD "tt"} {geo:im_locale ""}
+        table geo_countries {key "to"} {default:name_locale "pkg.dist.geo%%Tonga"} {default:continent_key "australia"} {geo:alpha2_3166_1 "to"} {geo:alpha3_3116_1 "TON"} {geo:numeric_3166_1 "776"} {geo:e164 "676"} {geo:ccTLD "to"} {geo:im_locale ""}
+        table geo_countries {key "tk"} {default:name_locale "pkg.dist.geo%%Tokelau"} {default:continent_key "australia"} {geo:alpha2_3166_1 "tk"} {geo:alpha3_3116_1 "TKL"} {geo:numeric_3166_1 "772"} {geo:e164 "690"} {geo:ccTLD "tk"} {geo:im_locale ""}
+        table geo_countries {key "tg"} {default:name_locale "pkg.dist.geo%%Togo"} {default:continent_key "africa"} {geo:alpha2_3166_1 "tg"} {geo:alpha3_3116_1 "TGO"} {geo:numeric_3166_1 "768"} {geo:e164 "228"} {geo:ccTLD "tg"} {geo:im_locale ""}
+        table geo_countries {key "sy"} {default:name_locale "pkg.dist.geo%%Syrian Arab Republic"} {default:continent_key "asia"} {geo:alpha2_3166_1 "sy"} {geo:alpha3_3116_1 "SYR"} {geo:numeric_3166_1 "760"} {geo:e164 "963"} {geo:ccTLD "sy"} {geo:im_locale ""}
+        table geo_countries {key "tw"} {default:name_locale "pkg.dist.geo%%Taiwan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "tw"} {geo:alpha3_3116_1 "TWN"} {geo:numeric_3166_1 "158"} {geo:e164 "886"} {geo:ccTLD "tw"} {geo:im_locale ""}
+        table geo_countries {key "tj"} {default:name_locale "pkg.dist.geo%%Tajikistan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "tj"} {geo:alpha3_3116_1 "TJK"} {geo:numeric_3166_1 "762"} {geo:e164 "992"} {geo:ccTLD "tj"} {geo:im_locale ""}
+        table geo_countries {key "tz"} {default:name_locale "pkg.dist.geo%%Tanzania, United Republic of"} {default:continent_key "africa"} {geo:alpha2_3166_1 "tz"} {geo:alpha3_3116_1 "TZA"} {geo:numeric_3166_1 "834"} {geo:e164 "255"} {geo:ccTLD "tz"} {geo:im_locale ""}
+        table geo_countries {key "th"} {default:name_locale "pkg.dist.geo%%Thailand"} {default:continent_key "asia"} {geo:alpha2_3166_1 "th"} {geo:alpha3_3116_1 "THA"} {geo:numeric_3166_1 "764"} {geo:e164 "66"} {geo:ccTLD "th"} {geo:im_locale ""}
+        table geo_countries {key "se"} {default:name_locale "pkg.dist.geo%%Sweden"} {default:continent_key "europe"} {geo:alpha2_3166_1 "se"} {geo:alpha3_3116_1 "SWE"} {geo:numeric_3166_1 "752"} {geo:e164 "46"} {geo:ccTLD "se"} {geo:im_locale ""}
+        table geo_countries {key "ch"} {default:name_locale "pkg.dist.geo%%Switzerland"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ch"} {geo:alpha3_3116_1 "CHE"} {geo:numeric_3166_1 "756"} {geo:e164 "41"} {geo:ccTLD "ch"} {geo:im_locale ""}
+        table geo_countries {key "sz"} {default:name_locale "pkg.dist.geo%%Swaziland"} {default:continent_key "africa"} {geo:alpha2_3166_1 "sz"} {geo:alpha3_3116_1 "SWZ"} {geo:numeric_3166_1 "748"} {geo:e164 "268"} {geo:ccTLD "sz"} {geo:im_locale ""}
+        table geo_countries {key "sj"} {default:name_locale "pkg.dist.geo%%Svalbard and Jan Mayen"} {default:continent_key "europe"} {geo:alpha2_3166_1 "sj"} {geo:alpha3_3116_1 "SJM"} {geo:numeric_3166_1 "744"} {geo:e164 ""} {geo:ccTLD "sj"} {geo:im_locale ""}
+        table geo_countries {key "lk"} {default:name_locale "pkg.dist.geo%%Sri Lanka"} {default:continent_key "asia"} {geo:alpha2_3166_1 "lk"} {geo:alpha3_3116_1 "LKA"} {geo:numeric_3166_1 "144"} {geo:e164 "94"} {geo:ccTLD "lk"} {geo:im_locale ""}
+        table geo_countries {key "sd"} {default:name_locale "pkg.dist.geo%%Sudan"} {default:continent_key "africa"} {geo:alpha2_3166_1 "sd"} {geo:alpha3_3116_1 "SDN"} {geo:numeric_3166_1 "736"} {geo:e164 "249"} {geo:ccTLD "sd"} {geo:im_locale ""}
+        table geo_countries {key "sr"} {default:name_locale "pkg.dist.geo%%Suriname"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "sr"} {geo:alpha3_3116_1 "SUR"} {geo:numeric_3166_1 "740"} {geo:e164 "597"} {geo:ccTLD "sr"} {geo:im_locale ""}
+        table geo_countries {key "es"} {default:name_locale "pkg.dist.geo%%Spain"} {default:continent_key "europe"} {geo:alpha2_3166_1 "es"} {geo:alpha3_3116_1 "ESP"} {geo:numeric_3166_1 "724"} {geo:e164 "34"} {geo:ccTLD "es"} {geo:im_locale ""}
+        table geo_countries {key "gs"} {default:name_locale "pkg.dist.geo%%South Georgia and the South Sandwich Islands"} {default:continent_key "africa"} {geo:alpha2_3166_1 "gs"} {geo:alpha3_3116_1 "SGS"} {geo:numeric_3166_1 "239"} {geo:e164 ""} {geo:ccTLD "gs"} {geo:im_locale ""}
+        table geo_countries {key "za"} {default:name_locale "pkg.dist.geo%%South Africa"} {default:continent_key "africa"} {geo:alpha2_3166_1 "za"} {geo:alpha3_3116_1 "ZAF"} {geo:numeric_3166_1 "710"} {geo:e164 "27"} {geo:ccTLD "za"} {geo:im_locale ""}
+        table geo_countries {key "bf"} {default:name_locale "pkg.dist.geo%%Burkina Faso"} {default:continent_key "africa"} {geo:alpha2_3166_1 "bf"} {geo:alpha3_3116_1 "BFA"} {geo:numeric_3166_1 "854"} {geo:e164 "226"} {geo:ccTLD "bf"} {geo:im_locale ""}
+        table geo_countries {key "bi"} {default:name_locale "pkg.dist.geo%%Burundi"} {default:continent_key "africa"} {geo:alpha2_3166_1 "bi"} {geo:alpha3_3116_1 "BDI"} {geo:numeric_3166_1 "108"} {geo:e164 "257"} {geo:ccTLD "bi"} {geo:im_locale ""}
+        table geo_countries {key "kh"} {default:name_locale "pkg.dist.geo%%Cambodia"} {default:continent_key "asia"} {geo:alpha2_3166_1 "kh"} {geo:alpha3_3116_1 "KHM"} {geo:numeric_3166_1 "116"} {geo:e164 "855"} {geo:ccTLD "kh"} {geo:im_locale ""}
+        table geo_countries {key "cm"} {default:name_locale "pkg.dist.geo%%Cameroon"} {default:continent_key "africa"} {geo:alpha2_3166_1 "cm"} {geo:alpha3_3116_1 "CMR"} {geo:numeric_3166_1 "120"} {geo:e164 "237"} {geo:ccTLD "cm"} {geo:im_locale ""}
+        table geo_countries {key "ca"} {default:name_locale "pkg.dist.geo%%Canada"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "ca"} {geo:alpha3_3116_1 "CAN"} {geo:numeric_3166_1 "124"} {geo:e164 "1"} {geo:ccTLD "ca"} {geo:im_locale ""}
+        table geo_countries {key "cv"} {default:name_locale "pkg.dist.geo%%Cape Verde"} {default:continent_key "africa"} {geo:alpha2_3166_1 "cv"} {geo:alpha3_3116_1 "CPV"} {geo:numeric_3166_1 "132"} {geo:e164 "238"} {geo:ccTLD "cv"} {geo:im_locale ""}
+        table geo_countries {key "ky"} {default:name_locale "pkg.dist.geo%%Cayman Islands"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "ky"} {geo:alpha3_3116_1 "CYM"} {geo:numeric_3166_1 "136"} {geo:e164 "1-345"} {geo:ccTLD "ky"} {geo:im_locale ""}
+        table geo_countries {key "so"} {default:name_locale "pkg.dist.geo%%Somalia"} {default:continent_key "africa"} {geo:alpha2_3166_1 "so"} {geo:alpha3_3116_1 "SOM"} {geo:numeric_3166_1 "706"} {geo:e164 "252"} {geo:ccTLD "so"} {geo:im_locale ""}
+        table geo_countries {key "sk"} {default:name_locale "pkg.dist.geo%%Slovakia"} {default:continent_key "europe"} {geo:alpha2_3166_1 "sk"} {geo:alpha3_3116_1 "SVK"} {geo:numeric_3166_1 "703"} {geo:e164 "421"} {geo:ccTLD "sk"} {geo:im_locale ""}
+        table geo_countries {key "si"} {default:name_locale "pkg.dist.geo%%Slovenia"} {default:continent_key "europe"} {geo:alpha2_3166_1 "si"} {geo:alpha3_3116_1 "SVN"} {geo:numeric_3166_1 "705"} {geo:e164 "386"} {geo:ccTLD "si"} {geo:im_locale ""}
+        table geo_countries {key "sg"} {default:name_locale "pkg.dist.geo%%Singapore"} {default:continent_key "asia"} {geo:alpha2_3166_1 "sg"} {geo:alpha3_3116_1 "SGP"} {geo:numeric_3166_1 "702"} {geo:e164 "65"} {geo:ccTLD "sg"} {geo:im_locale ""}
+        table geo_countries {key "sb"} {default:name_locale "pkg.dist.geo%%Solomon Islands"} {default:continent_key "australia"} {geo:alpha2_3166_1 "sb"} {geo:alpha3_3116_1 "SLB"} {geo:numeric_3166_1 "090"} {geo:e164 "677"} {geo:ccTLD "sb"} {geo:im_locale ""}
+        table geo_countries {key "sl"} {default:name_locale "pkg.dist.geo%%Sierra Leone"} {default:continent_key "africa"} {geo:alpha2_3166_1 "sl"} {geo:alpha3_3116_1 "SLE"} {geo:numeric_3166_1 "694"} {geo:e164 "232"} {geo:ccTLD "sl"} {geo:im_locale ""}
+        table geo_countries {key "sc"} {default:name_locale "pkg.dist.geo%%Seychelles"} {default:continent_key "africa"} {geo:alpha2_3166_1 "sc"} {geo:alpha3_3116_1 "SYC"} {geo:numeric_3166_1 "690"} {geo:e164 "248"} {geo:ccTLD "sc"} {geo:im_locale ""}
+        table geo_countries {key "rs"} {default:name_locale "pkg.dist.geo%%Serbia"} {default:continent_key "europe"} {geo:alpha2_3166_1 "rs"} {geo:alpha3_3116_1 "SRB"} {geo:numeric_3166_1 "688"} {geo:e164 "381"} {geo:ccTLD "rs"} {geo:im_locale ""}
+        table geo_countries {key "sn"} {default:name_locale "pkg.dist.geo%%Senegal"} {default:continent_key "africa"} {geo:alpha2_3166_1 "sn"} {geo:alpha3_3116_1 "SEN"} {geo:numeric_3166_1 "686"} {geo:e164 "221"} {geo:ccTLD "sn"} {geo:im_locale ""}
+        table geo_countries {key "sa"} {default:name_locale "pkg.dist.geo%%Saudi Arabia"} {default:continent_key "asia"} {geo:alpha2_3166_1 "sa"} {geo:alpha3_3116_1 "SAU"} {geo:numeric_3166_1 "682"} {geo:e164 "966"} {geo:ccTLD "sa"} {geo:im_locale ""}
+        table geo_countries {key "st"} {default:name_locale "pkg.dist.geo%%S&atilde;o Tom&eacute; and Pr&iacute;ncipe"} {default:continent_key "africa"} {geo:alpha2_3166_1 "st"} {geo:alpha3_3116_1 "STP"} {geo:numeric_3166_1 "678"} {geo:e164 "239"} {geo:ccTLD "st"} {geo:im_locale ""}
+        table geo_countries {key "sm"} {default:name_locale "pkg.dist.geo%%San Marino"} {default:continent_key "europe"} {geo:alpha2_3166_1 "sm"} {geo:alpha3_3116_1 "SMR"} {geo:numeric_3166_1 "674"} {geo:e164 "378"} {geo:ccTLD "sm"} {geo:im_locale ""}
+        table geo_countries {key "ws"} {default:name_locale "pkg.dist.geo%%Samoa"} {default:continent_key "australia"} {geo:alpha2_3166_1 "ws"} {geo:alpha3_3116_1 "WSM"} {geo:numeric_3166_1 "882"} {geo:e164 "685"} {geo:ccTLD "ws"} {geo:im_locale ""}
+        table geo_countries {key "vc"} {default:name_locale "pkg.dist.geo%%Saint Vincent and the Grenadines"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "vc"} {geo:alpha3_3116_1 "VCT"} {geo:numeric_3166_1 "670"} {geo:e164 "1-784"} {geo:ccTLD "vc"} {geo:im_locale ""}
+        table geo_countries {key "pm"} {default:name_locale "pkg.dist.geo%%Saint Pierre and Miquelon"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "pm"} {geo:alpha3_3116_1 "SPM"} {geo:numeric_3166_1 "666"} {geo:e164 "508"} {geo:ccTLD "pm"} {geo:im_locale ""}
+        table geo_countries {key "lc"} {default:name_locale "pkg.dist.geo%%Saint Lucia"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "lc"} {geo:alpha3_3116_1 "LCA"} {geo:numeric_3166_1 "662"} {geo:e164 "1-758"} {geo:ccTLD "lc"} {geo:im_locale ""}
+        table geo_countries {key "kn"} {default:name_locale "pkg.dist.geo%%Saint Kitts and Nevis"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "kn"} {geo:alpha3_3116_1 "KNA"} {geo:numeric_3166_1 "659"} {geo:e164 "1-869"} {geo:ccTLD "kn"} {geo:im_locale ""}
+        table geo_countries {key "cf"} {default:name_locale "pkg.dist.geo%%Central African Republic"} {default:continent_key "africa"} {geo:alpha2_3166_1 "cf"} {geo:alpha3_3116_1 "CAF"} {geo:numeric_3166_1 "140"} {geo:e164 "236"} {geo:ccTLD "cf"} {geo:im_locale ""}
+        table geo_countries {key "td"} {default:name_locale "pkg.dist.geo%%Chad"} {default:continent_key "africa"} {geo:alpha2_3166_1 "td"} {geo:alpha3_3116_1 "TCD"} {geo:numeric_3166_1 "148"} {geo:e164 "235"} {geo:ccTLD "td"} {geo:im_locale ""}
+        table geo_countries {key "cl"} {default:name_locale "pkg.dist.geo%%Chile"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "cl"} {geo:alpha3_3116_1 "CHL"} {geo:numeric_3166_1 "152"} {geo:e164 "56"} {geo:ccTLD "cl"} {geo:im_locale ""}
+        table geo_countries {key "cn"} {default:name_locale "pkg.dist.geo%%China"} {default:continent_key "asia"} {geo:alpha2_3166_1 "cn"} {geo:alpha3_3116_1 "CHN"} {geo:numeric_3166_1 "156"} {geo:e164 "86"} {geo:ccTLD "cn"} {geo:im_locale ""}
+        table geo_countries {key "cx"} {default:name_locale "pkg.dist.geo%%Christmas Island"} {default:continent_key "asia"} {geo:alpha2_3166_1 "cx"} {geo:alpha3_3116_1 "CXR"} {geo:numeric_3166_1 "162"} {geo:e164 "61"} {geo:ccTLD "cx"} {geo:im_locale ""}
+        table geo_countries {key "ru"} {default:name_locale "pkg.dist.geo%%Russian Federation"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ru"} {geo:alpha3_3116_1 "RUS"} {geo:numeric_3166_1 "643"} {geo:e164 "7"} {geo:ccTLD "ru"} {geo:im_locale ""}
+        table geo_countries {key "sh"} {default:name_locale "pkg.dist.geo%%Saint Helena"} {default:continent_key "africa"} {geo:alpha2_3166_1 "sh"} {geo:alpha3_3116_1 "SHN"} {geo:numeric_3166_1 "654"} {geo:e164 "290"} {geo:ccTLD "sh"} {geo:im_locale ""}
+        table geo_countries {key "rw"} {default:name_locale "pkg.dist.geo%%Rwanda"} {default:continent_key "africa"} {geo:alpha2_3166_1 "rw"} {geo:alpha3_3116_1 "RWA"} {geo:numeric_3166_1 "646"} {geo:e164 "250"} {geo:ccTLD "rw"} {geo:im_locale ""}
+        table geo_countries {key "cc"} {default:name_locale "pkg.dist.geo%%Cocos (Keeling) Islands"} {default:continent_key "asia"} {geo:alpha2_3166_1 "cc"} {geo:alpha3_3116_1 "CCK"} {geo:numeric_3166_1 "166"} {geo:e164 "61"} {geo:ccTLD "cc"} {geo:im_locale ""}
+        table geo_countries {key "co"} {default:name_locale "pkg.dist.geo%%Colombia"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "co"} {geo:alpha3_3116_1 "COL"} {geo:numeric_3166_1 "170"} {geo:e164 "57"} {geo:ccTLD "co"} {geo:im_locale ""}
+        table geo_countries {key "km"} {default:name_locale "pkg.dist.geo%%Comoros"} {default:continent_key "africa"} {geo:alpha2_3166_1 "km"} {geo:alpha3_3116_1 "COM"} {geo:numeric_3166_1 "174"} {geo:e164 "269"} {geo:ccTLD "km"} {geo:im_locale ""}
+        table geo_countries {key "ro"} {default:name_locale "pkg.dist.geo%%Romania"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ro"} {geo:alpha3_3116_1 "ROU"} {geo:numeric_3166_1 "642"} {geo:e164 "40"} {geo:ccTLD "ro"} {geo:im_locale ""}
+        table geo_countries {key "re"} {default:name_locale "pkg.dist.geo%%R&egrave;union"} {default:continent_key "africa"} {geo:alpha2_3166_1 "re"} {geo:alpha3_3116_1 "REU"} {geo:numeric_3166_1 "638"} {geo:e164 "262"} {geo:ccTLD "re"} {geo:im_locale ""}
+        table geo_countries {key "qa"} {default:name_locale "pkg.dist.geo%%Qatar"} {default:continent_key "asia"} {geo:alpha2_3166_1 "qa"} {geo:alpha3_3116_1 "QAT"} {geo:numeric_3166_1 "634"} {geo:e164 "974"} {geo:ccTLD "qa"} {geo:im_locale ""}
+        table geo_countries {key "cd"} {default:name_locale "pkg.dist.geo%%Congo, the Democratic Republic of the"} {default:continent_key "africa"} {geo:alpha2_3166_1 "cd"} {geo:alpha3_3116_1 "COD"} {geo:numeric_3166_1 "180"} {geo:e164 "243"} {geo:ccTLD "cd"} {geo:im_locale ""}
+        table geo_countries {key "cg"} {default:name_locale "pkg.dist.geo%%Congo"} {default:continent_key "africa"} {geo:alpha2_3166_1 "cg"} {geo:alpha3_3116_1 "COG"} {geo:numeric_3166_1 "178"} {geo:e164 "242"} {geo:ccTLD "cg"} {geo:im_locale ""}
+        table geo_countries {key "ck"} {default:name_locale "pkg.dist.geo%%Cook Islands"} {default:continent_key "australia"} {geo:alpha2_3166_1 "ck"} {geo:alpha3_3116_1 "COK"} {geo:numeric_3166_1 "184"} {geo:e164 "682"} {geo:ccTLD "ck"} {geo:im_locale ""}
+        table geo_countries {key "cr"} {default:name_locale "pkg.dist.geo%%Costa Rica"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "cr"} {geo:alpha3_3116_1 "CRI"} {geo:numeric_3166_1 "188"} {geo:e164 "506"} {geo:ccTLD "cr"} {geo:im_locale ""}
+        table geo_countries {key "ci"} {default:name_locale "pkg.dist.geo%%Ivory Coast"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ci"} {geo:alpha3_3116_1 "CIV"} {geo:numeric_3166_1 "384"} {geo:e164 "225"} {geo:ccTLD "ci"} {geo:im_locale ""}
+        table geo_countries {key "hr"} {default:name_locale "pkg.dist.geo%%Croatia"} {default:continent_key "europe"} {geo:alpha2_3166_1 "hr"} {geo:alpha3_3116_1 "HRV"} {geo:numeric_3166_1 "191"} {geo:e164 "385"} {geo:ccTLD "hr"} {geo:im_locale ""}
+        table geo_countries {key "cu"} {default:name_locale "pkg.dist.geo%%Cuba"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "cu"} {geo:alpha3_3116_1 "CUB"} {geo:numeric_3166_1 "192"} {geo:e164 "53"} {geo:ccTLD "cu"} {geo:im_locale ""}
+        table geo_countries {key "cy"} {default:name_locale "pkg.dist.geo%%Cyprus"} {default:continent_key "asia"} {geo:alpha2_3166_1 "cy"} {geo:alpha3_3116_1 "CYP"} {geo:numeric_3166_1 "196"} {geo:e164 "357"} {geo:ccTLD "cy"} {geo:im_locale ""}
+        table geo_countries {key "pr"} {default:name_locale "pkg.dist.geo%%Puerto Rico"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "pr"} {geo:alpha3_3116_1 "PRI"} {geo:numeric_3166_1 "630"} {geo:e164 "1-787 "} {geo:ccTLD "pr"} {geo:im_locale ""}
+        table geo_countries {key "pt"} {default:name_locale "pkg.dist.geo%%Portugal"} {default:continent_key "europe"} {geo:alpha2_3166_1 "pt"} {geo:alpha3_3116_1 "PRT"} {geo:numeric_3166_1 "620"} {geo:e164 "351"} {geo:ccTLD "pt"} {geo:im_locale ""}
+        table geo_countries {key "po"} {default:name_locale "pkg.dist.geo%%Poland"} {default:continent_key "europe"} {geo:alpha2_3166_1 "po"} {geo:alpha3_3116_1 "POL"} {geo:numeric_3166_1 "616"} {geo:e164 "48"} {geo:ccTLD "po"} {geo:im_locale ""}
+        table geo_countries {key "pn"} {default:name_locale "pkg.dist.geo%%Pitcairn"} {default:continent_key "australia"} {geo:alpha2_3166_1 "pn"} {geo:alpha3_3116_1 "PCN"} {geo:numeric_3166_1 "612"} {geo:e164 ""} {geo:ccTLD "pn"} {geo:im_locale ""}
+        table geo_countries {key "ph"} {default:name_locale "pkg.dist.geo%%Philippines"} {default:continent_key "asia"} {geo:alpha2_3166_1 "ph"} {geo:alpha3_3116_1 "PHL"} {geo:numeric_3166_1 "608"} {geo:e164 "63"} {geo:ccTLD "ph"} {geo:im_locale ""}
+        table geo_countries {key "pe"} {default:name_locale "pkg.dist.geo%%Peru"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "pe"} {geo:alpha3_3116_1 "PER"} {geo:numeric_3166_1 "604"} {geo:e164 "51"} {geo:ccTLD "pe"} {geo:im_locale ""}
+        table geo_countries {key "py"} {default:name_locale "pkg.dist.geo%%Paraguay"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "py"} {geo:alpha3_3116_1 "PRY"} {geo:numeric_3166_1 "600"} {geo:e164 "595"} {geo:ccTLD "py"} {geo:im_locale ""}
+        table geo_countries {key "gq"} {default:name_locale "pkg.dist.geo%%Equatorial Guinea"} {default:continent_key "africa"} {geo:alpha2_3166_1 "gq"} {geo:alpha3_3116_1 "GNQ"} {geo:numeric_3166_1 "226"} {geo:e164 "240"} {geo:ccTLD "gq"} {geo:im_locale ""}
+        table geo_countries {key "sv"} {default:name_locale "pkg.dist.geo%%El Salvador"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "sv"} {geo:alpha3_3116_1 "SLV"} {geo:numeric_3166_1 "222"} {geo:e164 "503"} {geo:ccTLD "sv"} {geo:im_locale ""}
+        table geo_countries {key "er"} {default:name_locale "pkg.dist.geo%%Eritrea"} {default:continent_key "africa"} {geo:alpha2_3166_1 "er"} {geo:alpha3_3116_1 "ERI"} {geo:numeric_3166_1 "232"} {geo:e164 "291"} {geo:ccTLD "er"} {geo:im_locale ""}
+        table geo_countries {key "ee"} {default:name_locale "pkg.dist.geo%%Estonia"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ee"} {geo:alpha3_3116_1 "EST"} {geo:numeric_3166_1 "233"} {geo:e164 "372"} {geo:ccTLD "ee"} {geo:im_locale ""}
+        table geo_countries {key "fk"} {default:name_locale "pkg.dist.geo%%Falkland Islands (Malvinas)"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "fk"} {geo:alpha3_3116_1 "FLK"} {geo:numeric_3166_1 "238"} {geo:e164 "500"} {geo:ccTLD "fk"} {geo:im_locale ""}
+        table geo_countries {key "et"} {default:name_locale "pkg.dist.geo%%Ethiopia"} {default:continent_key "africa"} {geo:alpha2_3166_1 "et"} {geo:alpha3_3116_1 "ETH"} {geo:numeric_3166_1 "231"} {geo:e164 "251"} {geo:ccTLD "et"} {geo:im_locale ""}
+        table geo_countries {key "do"} {default:name_locale "pkg.dist.geo%%Dominican Republic"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "do"} {geo:alpha3_3116_1 "DOM"} {geo:numeric_3166_1 "214"} {geo:e164 "8[0/2]9"} {geo:ccTLD "do"} {geo:im_locale ""}
+        table geo_countries {key "dm"} {default:name_locale "pkg.dist.geo%%Dominica"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "dm"} {geo:alpha3_3116_1 "DMA"} {geo:numeric_3166_1 "212"} {geo:e164 "767"} {geo:ccTLD "dm"} {geo:im_locale ""}
+        table geo_countries {key "dj"} {default:name_locale "pkg.dist.geo%%Djibouti"} {default:continent_key "africa"} {geo:alpha2_3166_1 "dj"} {geo:alpha3_3116_1 "DJI"} {geo:numeric_3166_1 "262"} {geo:e164 "253"} {geo:ccTLD "dj"} {geo:im_locale ""}
+        table geo_countries {key "tl"} {default:name_locale "pkg.dist.geo%%Timor-Leste"} {default:continent_key "asia"} {geo:alpha2_3166_1 "tl"} {geo:alpha3_3116_1 "TLS"} {geo:numeric_3166_1 "626"} {geo:e164 "670"} {geo:ccTLD "tl"} {geo:im_locale ""}
+        table geo_countries {key "dk"} {default:name_locale "pkg.dist.geo%%Denmark"} {default:continent_key "europe"} {geo:alpha2_3166_1 "dk"} {geo:alpha3_3116_1 "DNK"} {geo:numeric_3166_1 "208"} {geo:e164 "45"} {geo:ccTLD "dk"} {geo:im_locale ""}
+        table geo_countries {key "ec"} {default:name_locale "pkg.dist.geo%%Ecuador"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "ec"} {geo:alpha3_3116_1 "ECU"} {geo:numeric_3166_1 "218"} {geo:e164 "593"} {geo:ccTLD "ec"} {geo:im_locale ""}
+        table geo_countries {key "eg"} {default:name_locale "pkg.dist.geo%%Egypt"} {default:continent_key "africa"} {geo:alpha2_3166_1 "eg"} {geo:alpha3_3116_1 "EGY"} {geo:numeric_3166_1 "818"} {geo:e164 "20"} {geo:ccTLD "eg"} {geo:im_locale ""}
+        table geo_countries {key "fo"} {default:name_locale "pkg.dist.geo%%Faroe Islands"} {default:continent_key "europe"} {geo:alpha2_3166_1 "fo"} {geo:alpha3_3116_1 "FRO"} {geo:numeric_3166_1 "234"} {geo:e164 "298"} {geo:ccTLD "fo"} {geo:im_locale ""}
+        table geo_countries {key "fj"} {default:name_locale "pkg.dist.geo%%Fiji"} {default:continent_key "australia"} {geo:alpha2_3166_1 "fj"} {geo:alpha3_3116_1 "FJI"} {geo:numeric_3166_1 "242"} {geo:e164 "679"} {geo:ccTLD "fj"} {geo:im_locale ""}
+        table geo_countries {key "fi"} {default:name_locale "pkg.dist.geo%%Finland"} {default:continent_key "europe"} {geo:alpha2_3166_1 "fi"} {geo:alpha3_3116_1 "FIN"} {geo:numeric_3166_1 "246"} {geo:e164 "358"} {geo:ccTLD "fi"} {geo:im_locale ""}
+        table geo_countries {key "fr"} {default:name_locale "pkg.dist.geo%%France"} {default:continent_key "europe"} {geo:alpha2_3166_1 "fr"} {geo:alpha3_3116_1 "FRA"} {geo:numeric_3166_1 "250"} {geo:e164 "33"} {geo:ccTLD "fr"} {geo:im_locale ""}
+        table geo_countries {key "gf"} {default:name_locale "pkg.dist.geo%%French Guiana"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "gf"} {geo:alpha3_3116_1 "GUF"} {geo:numeric_3166_1 "254"} {geo:e164 "594"} {geo:ccTLD "gf"} {geo:im_locale ""}
+        table geo_countries {key "pf"} {default:name_locale "pkg.dist.geo%%French Polynesia"} {default:continent_key "australia"} {geo:alpha2_3166_1 "pf"} {geo:alpha3_3116_1 "PYF"} {geo:numeric_3166_1 "258"} {geo:e164 "689"} {geo:ccTLD "pf"} {geo:im_locale ""}
+        table geo_countries {key "tf"} {default:name_locale "pkg.dist.geo%%French Southern Territories"} {default:continent_key "antarctica"} {geo:alpha2_3166_1 "tf"} {geo:alpha3_3116_1 "ATF"} {geo:numeric_3166_1 "260"} {geo:e164 ""} {geo:ccTLD "tf"} {geo:im_locale ""}
+        table geo_countries {key "ga"} {default:name_locale "pkg.dist.geo%%Gabon"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ga"} {geo:alpha3_3116_1 "GAB"} {geo:numeric_3166_1 "266"} {geo:e164 "241"} {geo:ccTLD "ga"} {geo:im_locale ""}
+        table geo_countries {key "pg"} {default:name_locale "pkg.dist.geo%%Papua New Guinea"} {default:continent_key "australia"} {geo:alpha2_3166_1 "pg"} {geo:alpha3_3116_1 "PNG"} {geo:numeric_3166_1 "598"} {geo:e164 "675"} {geo:ccTLD "pg"} {geo:im_locale ""}
+        table geo_countries {key "pa"} {default:name_locale "pkg.dist.geo%%Panama"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "pa"} {geo:alpha3_3116_1 "PAN"} {geo:numeric_3166_1 "591"} {geo:e164 "507"} {geo:ccTLD "pa"} {geo:im_locale ""}
+        table geo_countries {key "pw"} {default:name_locale "pkg.dist.geo%%Palau"} {default:continent_key "australia"} {geo:alpha2_3166_1 "pw"} {geo:alpha3_3116_1 "PLW"} {geo:numeric_3166_1 "585"} {geo:e164 "680"} {geo:ccTLD "pw"} {geo:im_locale ""}
+        table geo_countries {key "ps"} {default:name_locale "pkg.dist.geo%%Palestinian Territory, Occupied"} {default:continent_key "asia"} {geo:alpha2_3166_1 "ps"} {geo:alpha3_3116_1 "PSE"} {geo:numeric_3166_1 "275"} {geo:e164 "970"} {geo:ccTLD "ps"} {geo:im_locale ""}
+        table geo_countries {key "pk"} {default:name_locale "pkg.dist.geo%%Pakistan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "pk"} {geo:alpha3_3116_1 "PAK"} {geo:numeric_3166_1 "586"} {geo:e164 "92"} {geo:ccTLD "pk"} {geo:im_locale ""}
+        table geo_countries {key "om"} {default:name_locale "pkg.dist.geo%%Oman"} {default:continent_key "asia"} {geo:alpha2_3166_1 "om"} {geo:alpha3_3116_1 "OMN"} {geo:numeric_3166_1 "512"} {geo:e164 "968"} {geo:ccTLD "om"} {geo:im_locale ""}
+        table geo_countries {key "no"} {default:name_locale "pkg.dist.geo%%Norway"} {default:continent_key "europe"} {geo:alpha2_3166_1 "no"} {geo:alpha3_3116_1 "NOR"} {geo:numeric_3166_1 "578"} {geo:e164 "47"} {geo:ccTLD "no"} {geo:im_locale ""}
+        table geo_countries {key "mp"} {default:name_locale "pkg.dist.geo%%Northern Mariana Islands"} {default:continent_key "australia"} {geo:alpha2_3166_1 "mp"} {geo:alpha3_3116_1 "MNP"} {geo:numeric_3166_1 "580"} {geo:e164 "1-670"} {geo:ccTLD "mp"} {geo:im_locale ""}
+        table geo_countries {key "nf"} {default:name_locale "pkg.dist.geo%%Norfolk Island"} {default:continent_key "australia"} {geo:alpha2_3166_1 "nf"} {geo:alpha3_3116_1 "NFK"} {geo:numeric_3166_1 "574"} {geo:e164 "672"} {geo:ccTLD "nf"} {geo:im_locale ""}
+        table geo_countries {key "nu"} {default:name_locale "pkg.dist.geo%%Niue"} {default:continent_key "australia"} {geo:alpha2_3166_1 "nu"} {geo:alpha3_3116_1 "NIU"} {geo:numeric_3166_1 "570"} {geo:e164 "683"} {geo:ccTLD "nu"} {geo:im_locale ""}
+        table geo_countries {key "ng"} {default:name_locale "pkg.dist.geo%%Nigeria"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ng"} {geo:alpha3_3116_1 "NGA"} {geo:numeric_3166_1 "566"} {geo:e164 "234"} {geo:ccTLD "ng"} {geo:im_locale ""}
+        table geo_countries {key "cz"} {default:name_locale "pkg.dist.geo%%Czech Republic"} {default:continent_key "europe"} {geo:alpha2_3166_1 "cz"} {geo:alpha3_3116_1 "CZE"} {geo:numeric_3166_1 "203"} {geo:e164 "420"} {geo:ccTLD "cz"} {geo:im_locale ""}
+        table geo_countries {key "gm"} {default:name_locale "pkg.dist.geo%%Gambia"} {default:continent_key "africa"} {geo:alpha2_3166_1 "gm"} {geo:alpha3_3116_1 "GMB"} {geo:numeric_3166_1 "270"} {geo:e164 "220"} {geo:ccTLD "gm"} {geo:im_locale ""}
+        table geo_countries {key "ge"} {default:name_locale "pkg.dist.geo%%Georgia"} {default:continent_key "asia"} {geo:alpha2_3166_1 "ge"} {geo:alpha3_3116_1 "GEO"} {geo:numeric_3166_1 "268"} {geo:e164 "995"} {geo:ccTLD "ge"} {geo:im_locale ""}
+        table geo_countries {key "mn"} {default:name_locale "pkg.dist.geo%%Mongolia"} {default:continent_key "asia"} {geo:alpha2_3166_1 "mn"} {geo:alpha3_3116_1 "MNG"} {geo:numeric_3166_1 "496"} {geo:e164 "976"} {geo:ccTLD "mn"} {geo:im_locale ""}
+        table geo_countries {key "me"} {default:name_locale "pkg.dist.geo%%Montenegro"} {default:continent_key "europe"} {geo:alpha2_3166_1 "me"} {geo:alpha3_3116_1 "MNE"} {geo:numeric_3166_1 "499"} {geo:e164 "382"} {geo:ccTLD "me"} {geo:im_locale ""}
+        table geo_countries {key "ms"} {default:name_locale "pkg.dist.geo%%Montserrat"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "ms"} {geo:alpha3_3116_1 "MSR"} {geo:numeric_3166_1 "500"} {geo:e164 "1-664"} {geo:ccTLD "ms"} {geo:im_locale ""}
+        table geo_countries {key "ma"} {default:name_locale "pkg.dist.geo%%Morocco"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ma"} {geo:alpha3_3116_1 "MAR"} {geo:numeric_3166_1 "504"} {geo:e164 "212"} {geo:ccTLD "ma"} {geo:im_locale ""}
+        table geo_countries {key "mz"} {default:name_locale "pkg.dist.geo%%Mozambique"} {default:continent_key "africa"} {geo:alpha2_3166_1 "mz"} {geo:alpha3_3116_1 "MOZ"} {geo:numeric_3166_1 "508"} {geo:e164 "258"} {geo:ccTLD "mz"} {geo:im_locale ""}
+        table geo_countries {key "mm"} {default:name_locale "pkg.dist.geo%%Myanmar"} {default:continent_key "asia"} {geo:alpha2_3166_1 "mm"} {geo:alpha3_3116_1 "MMR"} {geo:numeric_3166_1 "104"} {geo:e164 "95"} {geo:ccTLD "mm"} {geo:im_locale ""}
+        table geo_countries {key "na"} {default:name_locale "pkg.dist.geo%%Namibia"} {default:continent_key "africa"} {geo:alpha2_3166_1 "na"} {geo:alpha3_3116_1 "NAM"} {geo:numeric_3166_1 "516"} {geo:e164 "264"} {geo:ccTLD "na"} {geo:im_locale ""}
+        table geo_countries {key "nr"} {default:name_locale "pkg.dist.geo%%Nauru"} {default:continent_key "australia"} {geo:alpha2_3166_1 "nr"} {geo:alpha3_3116_1 "NRU"} {geo:numeric_3166_1 "520"} {geo:e164 "674"} {geo:ccTLD "nr"} {geo:im_locale ""}
+        table geo_countries {key "np"} {default:name_locale "pkg.dist.geo%%Nepal"} {default:continent_key "asia"} {geo:alpha2_3166_1 "np"} {geo:alpha3_3116_1 "NPL"} {geo:numeric_3166_1 "524"} {geo:e164 "977"} {geo:ccTLD "np"} {geo:im_locale ""}
+        table geo_countries {key "an"} {default:name_locale "pkg.dist.geo%%Netherlands Antilles"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "an"} {geo:alpha3_3116_1 "ANT"} {geo:numeric_3166_1 "530"} {geo:e164 "599"} {geo:ccTLD "an"} {geo:im_locale ""}
+        table geo_countries {key "nc"} {default:name_locale "pkg.dist.geo%%New Caledonia"} {default:continent_key "australia"} {geo:alpha2_3166_1 "nc"} {geo:alpha3_3116_1 "NCL"} {geo:numeric_3166_1 "540"} {geo:e164 "687"} {geo:ccTLD "nc"} {geo:im_locale ""}
+        table geo_countries {key "nz"} {default:name_locale "pkg.dist.geo%%New Zealand"} {default:continent_key "australia"} {geo:alpha2_3166_1 "nz"} {geo:alpha3_3116_1 "NZL"} {geo:numeric_3166_1 "554"} {geo:e164 "64"} {geo:ccTLD "nz"} {geo:im_locale ""}
+        table geo_countries {key "ni"} {default:name_locale "pkg.dist.geo%%Nicaragua"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "ni"} {geo:alpha3_3116_1 "NIC"} {geo:numeric_3166_1 "558"} {geo:e164 "505"} {geo:ccTLD "ni"} {geo:im_locale ""}
+        table geo_countries {key "ne"} {default:name_locale "pkg.dist.geo%%Niger"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ne"} {geo:alpha3_3116_1 "NER"} {geo:numeric_3166_1 "562"} {geo:e164 "227"} {geo:ccTLD "ne"} {geo:im_locale ""}
+        table geo_countries {key "mc"} {default:name_locale "pkg.dist.geo%%Monaco"} {default:continent_key "europe"} {geo:alpha2_3166_1 "mc"} {geo:alpha3_3116_1 "MCO"} {geo:numeric_3166_1 "492"} {geo:e164 "377"} {geo:ccTLD "mc"} {geo:im_locale ""}
+        table geo_countries {key "md"} {default:name_locale "pkg.dist.geo%%Moldova, Republic of"} {default:continent_key "europe"} {geo:alpha2_3166_1 "md"} {geo:alpha3_3116_1 "MDA"} {geo:numeric_3166_1 "498"} {geo:e164 "373"} {geo:ccTLD "md"} {geo:im_locale ""}
+        table geo_countries {key "fm"} {default:name_locale "pkg.dist.geo%%Micronesia, Federated States of"} {default:continent_key "australia"} {geo:alpha2_3166_1 "fm"} {geo:alpha3_3116_1 "FSM"} {geo:numeric_3166_1 "583"} {geo:e164 "691"} {geo:ccTLD "fm"} {geo:im_locale ""}
+        table geo_countries {key "mx"} {default:name_locale "pkg.dist.geo%%Mexico"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "mx"} {geo:alpha3_3116_1 "MEX"} {geo:numeric_3166_1 "484"} {geo:e164 "52"} {geo:ccTLD "mx"} {geo:im_locale ""}
+        table geo_countries {key "gy"} {default:name_locale "pkg.dist.geo%%Guyana"} {default:continent_key "s_america"} {geo:alpha2_3166_1 "gy"} {geo:alpha3_3116_1 "GUY"} {geo:numeric_3166_1 "328"} {geo:e164 "592"} {geo:ccTLD "gy"} {geo:im_locale ""}
+        table geo_countries {key "gg"} {default:name_locale "pkg.dist.geo%%Guernsey"} {default:continent_key "europe"} {geo:alpha2_3166_1 "gg"} {geo:alpha3_3116_1 "GGY"} {geo:numeric_3166_1 "831"} {geo:e164 ""} {geo:ccTLD "gg"} {geo:im_locale ""}
+        table geo_countries {key "ht"} {default:name_locale "pkg.dist.geo%%Haiti"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "ht"} {geo:alpha3_3116_1 "HTI"} {geo:numeric_3166_1 "332"} {geo:e164 "509"} {geo:ccTLD "ht"} {geo:im_locale ""}
+        table geo_countries {key "hm"} {default:name_locale "pkg.dist.geo%%Heard Island and McDonald Islands"} {default:continent_key "antarctica"} {geo:alpha2_3166_1 "hm"} {geo:alpha3_3116_1 "HMD"} {geo:numeric_3166_1 "334"} {geo:e164 ""} {geo:ccTLD "hm"} {geo:im_locale ""}
+        table geo_countries {key "va"} {default:name_locale "pkg.dist.geo%%Holy See (Vatican City State)"} {default:continent_key "europe"} {geo:alpha2_3166_1 "va"} {geo:alpha3_3116_1 "VAT"} {geo:numeric_3166_1 "336"} {geo:e164 "39"} {geo:ccTLD "va"} {geo:im_locale ""}
+        table geo_countries {key "hn"} {default:name_locale "pkg.dist.geo%%Honduras"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "hn"} {geo:alpha3_3116_1 "HND"} {geo:numeric_3166_1 "340"} {geo:e164 "504"} {geo:ccTLD ""} {geo:im_locale ""}
+        table geo_countries {key "hk"} {default:name_locale "pkg.dist.geo%%Hong Kong"} {default:continent_key "asia"} {geo:alpha2_3166_1 "hk"} {geo:alpha3_3116_1 "HKG"} {geo:numeric_3166_1 "344"} {geo:e164 "852"} {geo:ccTLD "hk"} {geo:im_locale ""}
+        table geo_countries {key "hu"} {default:name_locale "pkg.dist.geo%%Hungary"} {default:continent_key "europe"} {geo:alpha2_3166_1 "hu"} {geo:alpha3_3116_1 "HUN"} {geo:numeric_3166_1 "348"} {geo:e164 "36"} {geo:ccTLD "hu"} {geo:im_locale ""}
+        table geo_countries {key "is"} {default:name_locale "pkg.dist.geo%%Iceland"} {default:continent_key "europe"} {geo:alpha2_3166_1 "is"} {geo:alpha3_3116_1 "ISL"} {geo:numeric_3166_1 "352"} {geo:e164 "354"} {geo:ccTLD "is"} {geo:im_locale ""}
+        table geo_countries {key "in"} {default:name_locale "pkg.dist.geo%%India"} {default:continent_key "asia"} {geo:alpha2_3166_1 "in"} {geo:alpha3_3116_1 "IND"} {geo:numeric_3166_1 "356"} {geo:e164 "91"} {geo:ccTLD "in"} {geo:im_locale ""}
+        table geo_countries {key "id"} {default:name_locale "pkg.dist.geo%%Indonesia"} {default:continent_key "asia"} {geo:alpha2_3166_1 "id"} {geo:alpha3_3116_1 "IDN"} {geo:numeric_3166_1 "360"} {geo:e164 "62"} {geo:ccTLD "id"} {geo:im_locale ""}
+        table geo_countries {key "ir"} {default:name_locale "pkg.dist.geo%%Iran, Islamic Republic of"} {default:continent_key "asia"} {geo:alpha2_3166_1 "irir"} {geo:alpha3_3116_1 "IRN"} {geo:numeric_3166_1 "364"} {geo:e164 "98"} {geo:ccTLD "ir"} {geo:im_locale ""}
+        table geo_countries {key "iq"} {default:name_locale "pkg.dist.geo%%Iraq"} {default:continent_key "asia"} {geo:alpha2_3166_1 "iq"} {geo:alpha3_3116_1 "IRQ"} {geo:numeric_3166_1 "368"} {geo:e164 "964"} {geo:ccTLD "iq"} {geo:im_locale ""}
+        table geo_countries {key "ie"} {default:name_locale "pkg.dist.geo%%Ireland"} {default:continent_key "europe"} {geo:alpha2_3166_1 "ie"} {geo:alpha3_3116_1 "IRL"} {geo:numeric_3166_1 "372"} {geo:e164 "353"} {geo:ccTLD "ie"} {geo:im_locale ""}
+        table geo_countries {key "yt"} {default:name_locale "pkg.dist.geo%%Mayotte"} {default:continent_key "africa"} {geo:alpha2_3166_1 "yt"} {geo:alpha3_3116_1 "MYT"} {geo:numeric_3166_1 "175"} {geo:e164 "262"} {geo:ccTLD "yt"} {geo:im_locale ""}
+        table geo_countries {key "mr"} {default:name_locale "pkg.dist.geo%%Mauritania"} {default:continent_key "africa"} {geo:alpha2_3166_1 "mr"} {geo:alpha3_3116_1 "MRT"} {geo:numeric_3166_1 "478"} {geo:e164 "222"} {geo:ccTLD "mr"} {geo:im_locale ""}
+        table geo_countries {key "mq"} {default:name_locale "pkg.dist.geo%%Martinique"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "mq"} {geo:alpha3_3116_1 "MTQ"} {geo:numeric_3166_1 "474"} {geo:e164 "596"} {geo:ccTLD "mq"} {geo:im_locale ""}
+        table geo_countries {key "mu"} {default:name_locale "pkg.dist.geo%%Mauritius"} {default:continent_key "africa"} {geo:alpha2_3166_1 "mu"} {geo:alpha3_3116_1 "MUS"} {geo:numeric_3166_1 "480"} {geo:e164 "230"} {geo:ccTLD "mu"} {geo:im_locale ""}
+        table geo_countries {key "mh"} {default:name_locale "pkg.dist.geo%%Marshall Islands"} {default:continent_key "australia"} {geo:alpha2_3166_1 "mh"} {geo:alpha3_3116_1 "MHL"} {geo:numeric_3166_1 "584"} {geo:e164 "692"} {geo:ccTLD "mh"} {geo:im_locale ""}
+        table geo_countries {key "de"} {default:name_locale "pkg.dist.geo%%Germany"} {default:continent_key "europe"} {geo:alpha2_3166_1 "de"} {geo:alpha3_3116_1 "DEU"} {geo:numeric_3166_1 "276"} {geo:e164 "49"} {geo:ccTLD "de"} {geo:im_locale ""}
+        table geo_countries {key "gh"} {default:name_locale "pkg.dist.geo%%Ghana"} {default:continent_key "africa"} {geo:alpha2_3166_1 "gh"} {geo:alpha3_3116_1 "GHA"} {geo:numeric_3166_1 "288"} {geo:e164 "233"} {geo:ccTLD "gh"} {geo:im_locale ""}
+        table geo_countries {key "gi"} {default:name_locale "pkg.dist.geo%%Gibraltar"} {default:continent_key "europe"} {geo:alpha2_3166_1 "gi"} {geo:alpha3_3116_1 "GIB"} {geo:numeric_3166_1 "292"} {geo:e164 "350"} {geo:ccTLD "gi"} {geo:im_locale ""}
+        table geo_countries {key "gr"} {default:name_locale "pkg.dist.geo%%Greece"} {default:continent_key "europe"} {geo:alpha2_3166_1 "gr"} {geo:alpha3_3116_1 "GRC"} {geo:numeric_3166_1 "300"} {geo:e164 "30"} {geo:ccTLD "gr"} {geo:im_locale ""}
+        table geo_countries {key "gl"} {default:name_locale "pkg.dist.geo%%Greenland"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "gl"} {geo:alpha3_3116_1 "GRL"} {geo:numeric_3166_1 "304"} {geo:e164 "299"} {geo:ccTLD "gl"} {geo:im_locale ""}
+        table geo_countries {key "gd"} {default:name_locale "pkg.dist.geo%%Grenada"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "gd"} {geo:alpha3_3116_1 "GRD"} {geo:numeric_3166_1 "308"} {geo:e164 "1-473"} {geo:ccTLD "gd"} {geo:im_locale ""}
+        table geo_countries {key "gp"} {default:name_locale "pkg.dist.geo%%Guadeloupe"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "gp"} {geo:alpha3_3116_1 "GLP"} {geo:numeric_3166_1 "312"} {geo:e164 "590"} {geo:ccTLD "gp"} {geo:im_locale ""}
+        table geo_countries {key "mt"} {default:name_locale "pkg.dist.geo%%Malta"} {default:continent_key "europe"} {geo:alpha2_3166_1 "mt"} {geo:alpha3_3116_1 "MLT"} {geo:numeric_3166_1 "470"} {geo:e164 "356"} {geo:ccTLD "mt"} {geo:im_locale ""}
+        table geo_countries {key "ml"} {default:name_locale "pkg.dist.geo%%Mali"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ml"} {geo:alpha3_3116_1 "MLI"} {geo:numeric_3166_1 "223"} {geo:e164 ""} {geo:ccTLD "ml"} {geo:im_locale ""}
+        table geo_countries {key "mv"} {default:name_locale "pkg.dist.geo%%Maldives"} {default:continent_key "asia"} {geo:alpha2_3166_1 "mv"} {geo:alpha3_3116_1 "MDV"} {geo:numeric_3166_1 "462"} {geo:e164 "960"} {geo:ccTLD "mv"} {geo:im_locale ""}
+        table geo_countries {key "my"} {default:name_locale "pkg.dist.geo%%Malaysia"} {default:continent_key "asia"} {geo:alpha2_3166_1 "my"} {geo:alpha3_3116_1 "MYS"} {geo:numeric_3166_1 "458"} {geo:e164 "60"} {geo:ccTLD "my"} {geo:im_locale ""}
+        table geo_countries {key "mw"} {default:name_locale "pkg.dist.geo%%Malawi"} {default:continent_key "africa"} {geo:alpha2_3166_1 "mw"} {geo:alpha3_3116_1 "MWI"} {geo:numeric_3166_1 "454"} {geo:e164 "265"} {geo:ccTLD "mw"} {geo:im_locale ""}
+        table geo_countries {key "mg"} {default:name_locale "pkg.dist.geo%%Madagascar"} {default:continent_key "africa"} {geo:alpha2_3166_1 "mg"} {geo:alpha3_3116_1 "MDG"} {geo:numeric_3166_1 "450"} {geo:e164 "261"} {geo:ccTLD "mg"} {geo:im_locale ""}
+        table geo_countries {key "mk"} {default:name_locale "pkg.dist.geo%%Macedonia, the former Yugoslav Republic of"} {default:continent_key "europe"} {geo:alpha2_3166_1 "mk"} {geo:alpha3_3116_1 "MKD"} {geo:numeric_3166_1 "807"} {geo:e164 ""} {geo:ccTLD "mk"} {geo:im_locale ""}
+        table geo_countries {key "mo"} {default:name_locale "pkg.dist.geo%%Macao"} {default:continent_key "asia"} {geo:alpha2_3166_1 "mo"} {geo:alpha3_3116_1 "MAC"} {geo:numeric_3166_1 "446"} {geo:e164 "853"} {geo:ccTLD "mo"} {geo:im_locale ""}
+        table geo_countries {key "lu"} {default:name_locale "pkg.dist.geo%%Luxembourg"} {default:continent_key "europe"} {geo:alpha2_3166_1 "lu"} {geo:alpha3_3116_1 "LUX"} {geo:numeric_3166_1 "442"} {geo:e164 "352"} {geo:ccTLD "lu"} {geo:im_locale ""}
+        table geo_countries {key "lt"} {default:name_locale "pkg.dist.geo%%Lithuania"} {default:continent_key "europe"} {geo:alpha2_3166_1 "lt"} {geo:alpha3_3116_1 "LTU"} {geo:numeric_3166_1 "440"} {geo:e164 "370"} {geo:ccTLD "lt"} {geo:im_locale ""}
+        table geo_countries {key "ly"} {default:name_locale "pkg.dist.geo%%Libyan Arab Jamahiriya"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ly"} {geo:alpha3_3116_1 "LBY"} {geo:numeric_3166_1 "434"} {geo:e164 "218"} {geo:ccTLD "ly"} {geo:im_locale ""}
+        table geo_countries {key "li"} {default:name_locale "sapkg.dist.geo%%Lichtenstein"} {default:continent_key "europe"} {geo:alpha2_3166_1 "li"} {geo:alpha3_3116_1 "LIE"} {geo:numeric_3166_1 "438"} {geo:e164 "423"} {geo:ccTLD "li"} {geo:im_locale ""}
+        table geo_countries {key "lr"} {default:name_locale "pkg.dist.geo%%Liberia"} {default:continent_key "africa"} {geo:alpha2_3166_1 "lr"} {geo:alpha3_3116_1 "LBR"} {geo:numeric_3166_1 "430"} {geo:e164 "231"} {geo:ccTLD "lr"} {geo:im_locale ""}
+        table geo_countries {key "ls"} {default:name_locale "pkg.dist.geo%%Lesotho"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ls"} {geo:alpha3_3116_1 "LSO"} {geo:numeric_3166_1 "426"} {geo:e164 "266"} {geo:ccTLD "ls"} {geo:im_locale ""}
+        table geo_countries {key "lb"} {default:name_locale "pkg.dist.geo%%Lebanon"} {default:continent_key "asia"} {geo:alpha2_3166_1 "lb"} {geo:alpha3_3116_1 "LBN"} {geo:numeric_3166_1 "422"} {geo:e164 "961"} {geo:ccTLD "lb"} {geo:im_locale ""}
+        table geo_countries {key "lv"} {default:name_locale "pkg.dist.geo%%Latvia"} {default:continent_key "europe"} {geo:alpha2_3166_1 "lv"} {geo:alpha3_3116_1 "LVA"} {geo:numeric_3166_1 "428"} {geo:e164 "371"} {geo:ccTLD "lv"} {geo:im_locale ""}
+        table geo_countries {key "gu"} {default:name_locale "pkg.dist.geo%%Guam"} {default:continent_key "australia"} {geo:alpha2_3166_1 "gu"} {geo:alpha3_3116_1 "GUM"} {geo:numeric_3166_1 "316"} {geo:e164 "1-671"} {geo:ccTLD "gu"} {geo:im_locale ""}
+        table geo_countries {key "gt"} {default:name_locale "pkg.dist.geo%%Guatemala"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "gt"} {geo:alpha3_3116_1 "GTM"} {geo:numeric_3166_1 "320"} {geo:e164 "502"} {geo:ccTLD "gt"} {geo:im_locale ""}
+        table geo_countries {key "gn"} {default:name_locale "pkg.dist.geo%%Guinea"} {default:continent_key "africa"} {geo:alpha2_3166_1 "gn"} {geo:alpha3_3116_1 "GIN"} {geo:numeric_3166_1 "324"} {geo:e164 "224"} {geo:ccTLD "gn"} {geo:im_locale ""}
+        table geo_countries {key "gw"} {default:name_locale "pkg.dist.geo%%Guinea-Bissau"} {default:continent_key "africa"} {geo:alpha2_3166_1 "gw"} {geo:alpha3_3116_1 "GNB"} {geo:numeric_3166_1 "624"} {geo:e164 "245"} {geo:ccTLD "gw"} {geo:im_locale ""}
+        table geo_countries {key "im"} {default:name_locale "pkg.dist.geo%%Isle of Man"} {default:continent_key "europe"} {geo:alpha2_3166_1 "im"} {geo:alpha3_3116_1 "IMN"} {geo:numeric_3166_1 "833"} {geo:e164 "44"} {geo:ccTLD "im"} {geo:im_locale ""}
+        table geo_countries {key "il"} {default:name_locale "pkg.dist.geo%%Israel"} {default:continent_key "asia"} {geo:alpha2_3166_1 "il"} {geo:alpha3_3116_1 "ISR"} {geo:numeric_3166_1 "376"} {geo:e164 "972"} {geo:ccTLD "il"} {geo:im_locale ""}
+        table geo_countries {key "it"} {default:name_locale "pkg.dist.geo%%Italy"} {default:continent_key "europe"} {geo:alpha2_3166_1 "it"} {geo:alpha3_3116_1 "ITA"} {geo:numeric_3166_1 "380"} {geo:e164 "39"} {geo:ccTLD "it"} {geo:im_locale ""}
+        table geo_countries {key "jm"} {default:name_locale "pkg.dist.geo%%Jamaica"} {default:continent_key "n_america"} {geo:alpha2_3166_1 "jm"} {geo:alpha3_3116_1 "JAM"} {geo:numeric_3166_1 "388"} {geo:e164 "1-876"} {geo:ccTLD "jm"} {geo:im_locale ""}
+        table geo_countries {key "la"} {default:name_locale "pkg.dist.geo%%Lao People&rsquo;s Democratic Republic"} {default:continent_key "asia"} {geo:alpha2_3166_1 "la"} {geo:alpha3_3116_1 "LAO"} {geo:numeric_3166_1 "418"} {geo:e164 "856"} {geo:ccTLD "la"} {geo:im_locale ""}
+        table geo_countries {key "kg"} {default:name_locale "pkg.dist.geo%%Kyrgyzstan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "kg"} {geo:alpha3_3116_1 "KGZ"} {geo:numeric_3166_1 "417"} {geo:e164 "996"} {geo:ccTLD "kg"} {geo:im_locale ""}
+        table geo_countries {key "kw"} {default:name_locale "pkg.dist.geo%%Kuwait"} {default:continent_key "asia"} {geo:alpha2_3166_1 "kw"} {geo:alpha3_3116_1 "KWT"} {geo:numeric_3166_1 "414"} {geo:e164 "965"} {geo:ccTLD "kw"} {geo:im_locale ""}
+        table geo_countries {key "jo"} {default:name_locale "pkg.dist.geo%%Jordan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "jo"} {geo:alpha3_3116_1 "JOR"} {geo:numeric_3166_1 "400"} {geo:e164 "962"} {geo:ccTLD "jo"} {geo:im_locale ""}
+        table geo_countries {key "kz"} {default:name_locale "pkg.dist.geo%%Kazakhstan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "kz"} {geo:alpha3_3116_1 "KAZ"} {geo:numeric_3166_1 "398"} {geo:e164 "7"} {geo:ccTLD "kz"} {geo:im_locale ""}
+        table geo_countries {key "ke"} {default:name_locale "pkg.dist.geo%%Kenya"} {default:continent_key "africa"} {geo:alpha2_3166_1 "ke"} {geo:alpha3_3116_1 "KEN"} {geo:numeric_3166_1 "404"} {geo:e164 "254"} {geo:ccTLD "ke"} {geo:im_locale ""}
+        table geo_countries {key "je"} {default:name_locale "pkg.dist.geo%%Jersey"} {default:continent_key "europe"} {geo:alpha2_3166_1 "je"} {geo:alpha3_3116_1 "JEY"} {geo:numeric_3166_1 "832"} {geo:e164 "44"} {geo:ccTLD "je"} {geo:im_locale ""}
+        table geo_countries {key "kp"} {default:name_locale "pkg.dist.geo%%Korea, Democratic People&rsquo;s Republic of; i.e., North Korea"} {default:continent_key "asia"} {geo:alpha2_3166_1 "kp"} {geo:alpha3_3116_1 "PRK"} {geo:numeric_3166_1 "408"} {geo:e164 "850"} {geo:ccTLD "kp"} {geo:im_locale ""}
+        table geo_countries {key "kr"} {default:name_locale "pkg.dist.geo%%Korea, Republic of; i.e. South Korea"} {default:continent_key "asia"} {geo:alpha2_3166_1 "kr"} {geo:alpha3_3116_1 "KOR"} {geo:numeric_3166_1 "410"} {geo:e164 "82"} {geo:ccTLD "kr"} {geo:im_locale ""}
+        table geo_countries {key "ki"} {default:name_locale "pkg.dist.geo%%Kiribati"} {default:continent_key "australia"} {geo:alpha2_3166_1 "ki"} {geo:alpha3_3116_1 "KIR"} {geo:numeric_3166_1 "296"} {geo:e164 "686"} {geo:ccTLD "ki"} {geo:im_locale ""}
+        table geo_countries {key "jp"} {default:name_locale "pkg.dist.geo%%Japan"} {default:continent_key "asia"} {geo:alpha2_3166_1 "jp"} {geo:alpha3_3116_1 "JPN"} {geo:numeric_3166_1 "392"} {geo:e164 "81"} {geo:ccTLD "jp"} {geo:im_locale ""}
+        table geo_continents {key "asia"} {default:name_locale "pkg.dist.geo%%Asia"}
+        table geo_continents {key "africa"} {default:name_locale "pkg.dist.geo%%Africa"}
+        table geo_continents {key "n_america"} {default:name_locale "pkg.dist.geo%%North America"}
+        table geo_continents {key "s_america"} {default:name_locale "pkg.dist.geo%%South America"}
+        table geo_continents {key "antarctica"} {default:name_locale "pkg.dist.geo%%Antarctica"}
+        table geo_continents {key "europe"} {default:name_locale "pkg.dist.geo%%Europe"}
+        table geo_continents {key "australia"} {default:name_locale "pkg.dist.geo%%Australia and Oceania"}
+    }
+}
