@@ -120,7 +120,7 @@ dalField                      : ^(DAL_FIELD
                                 )
                                 ;
 
-dalFieldValue                 : ^(DAL_VALUE VAL_STRING*);
+dalFieldValue                 : ^(DAL_SETVALUE VAL_STRING*);
 dalFieldSize                  : ^(DAL_SIZE val=VAL_INTEGER);
 dalFieldPrecision             : ^(DAL_PRECISION val=VAL_INTEGER);
 dalFieldCollate               : ^(DAL_COLLATE val=VAL_STRING);

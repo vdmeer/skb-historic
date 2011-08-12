@@ -403,11 +403,11 @@
                     "skb:lang:target:tokens:tval":"keyword 'row'",
                     "skb:lang:target:tokens:cjavadoc":""
                 },
-                "dalVALUE":{
-                    "skb:lang:target:tokens:cid":"dalVALUE",
-                    "skb:lang:target:tokens:cval":"value",
-                    "skb:lang:target:tokens:tid":"DAL_VALUE",
-                    "skb:lang:target:tokens:tval":"keyword 'value'",
+                "dalDEFVALUE":{
+                    "skb:lang:target:tokens:cid":"dalDEFVALUE",
+                    "skb:lang:target:tokens:cval":"defvalue",
+                    "skb:lang:target:tokens:tid":"DAL_DEFVALUE",
+                    "skb:lang:target:tokens:tval":"keyword 'defvalue'",
                     "skb:lang:target:tokens:cjavadoc":""
                 },
                 "dalFIELD":{

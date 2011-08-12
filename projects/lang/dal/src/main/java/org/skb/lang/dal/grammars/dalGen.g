@@ -108,7 +108,7 @@ dalField                     : ^(DAL_FIELD id=IDENT type=base_type
                                )
                                -> dalField(ident={$id.text}, type={$type.text}, constraints={cons}, size={$dalFieldSize.st}, precision={$dalFieldPrecision.st}, others={others});
 
-dalFieldValue                : ^(DAL_VALUE VAL_STRING*);
+dalFieldValue                : ^(DAL_SETVALUE VAL_STRING*);
 dalFieldSize                 : ^(DAL_SIZE VAL_INTEGER)       -> template(token={$VAL_INTEGER}) "<token>";
 dalFieldPrecision            : ^(DAL_PRECISION VAL_INTEGER)  -> template(token={$VAL_INTEGER}) "<token>";
 dalFieldCollate              : ^(DAL_COLLATE VAL_STRING)     -> template(token={$VAL_STRING}) "<token>";

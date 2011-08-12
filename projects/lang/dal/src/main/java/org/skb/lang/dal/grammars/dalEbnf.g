@@ -142,15 +142,16 @@ dalTable                      : DAL_TABLE id=IDENT
 
 dalField                      : DAL_FIELD id=IDENT base_type
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalFIELD, this.base_type);}
+                                (dalFieldSize dalFieldPrecision?)?
                                 dalFieldValue?
                                 dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? 
-                                (dalFieldSize dalFieldPrecision?)? dalFieldDefval? dalFieldCollate?
+                                dalFieldDefval? dalFieldCollate?
                                 ';'
                                 {this.pass.atoms.scope.pop();}
                                 -> ^(DAL_FIELD IDENT base_type dalFieldValue? dalFieldPrimkey? dalFieldNotnull? dalFieldUnique? dalFieldSize? dalFieldPrecision? dalFieldDefval? dalFieldCollate?);
 
-dalFieldValue                 : DAL_VALUE '(' (DAL_EXPR_AND | DAL_EXPR_OR | DAL_EXPR_XOR | DAL_EXPR_NOR | DAL_EXPR_NAND | DAL_EXPR_LIST) VAL_STRING* ')'
-                                -> ^(DAL_VALUE VAL_STRING*);
+dalFieldValue                 : DAL_SETVALUE '(' (DAL_EXPR_AND | DAL_EXPR_OR | DAL_EXPR_XOR | DAL_EXPR_NOR | DAL_EXPR_NAND | DAL_EXPR_LIST) VAL_STRING* ')'
+                                -> ^(DAL_SETVALUE VAL_STRING*);
 dalFieldSize                  : DAL_SIZE  '(' VAL_INTEGER ')'
                                 -> ^(DAL_SIZE VAL_INTEGER);
 dalFieldPrecision             : DAL_PRECISION '(' VAL_INTEGER ')'
@@ -296,7 +297,7 @@ DAL_REPOSITORY         : 'repository';
 DAL_SEQUENCE           : 'sequence';
 
 DAL_FIELD              : 'field';
-DAL_VALUE              : 'value';
+DAL_SETVALUE           : 'setvalue';
 DAL_PRECISION          : 'precision';
 DAL_SIZE               : 'size';
 DAL_COLLATE            : 'collate';
@@ -373,7 +374,8 @@ VAL_FLOAT     :   ('0'..'9')+ '.' ('0'..'9')* Exponent? FloatSuffix?
                 | ('0'..'9')+ Exponent? FloatSuffix
                 ;
 
-IDENT         : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|':'|'_'|'.'|'-'|'0'..'9')*;
+//IDENT         : ('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|':'|'_'|'.'|'-'|'/'|'+'|'*'|'%'|'&'|'^'|'<'|'>'|'0'..'9')*;
+IDENT         : ('a'..'z'|'A'..'Z'|':'|'_'|'.'|'-'|'/'|'+'|'*'|'%'|'&'|'^'|'<'|'>'|'0'..'9')*;
 
 // originally = CPP_FILENAME !
 CPP_DIRECTIVE : '#' 'file' ' ' CPP_FILENAME '\r'? '\n' {this.setCppFileandLine($CPP_FILENAME.getText());};

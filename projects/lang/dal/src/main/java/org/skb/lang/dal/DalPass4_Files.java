@@ -89,25 +89,28 @@ public class DalPass4_Files {
 		Integer size=rows.size();
 		//we start at 1 to deal with repository (0) separately
 		for(int i=1;i<size;i++){
-			if(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(i)).toString().length()==0)
-				continue;
-
 			if(tgtSplitRepo==true){
 				if(this.atoms.get(rows.get(i)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
 					fn=rows.get(i);
 					pkg=fn;
-					//create the file with the core defs
-					this.ftl.addTemplate(fn+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString(),this.atoms.getST(rows.get(0)));
+					//create the file with the core defs, if they are not empty
+					if(this.atoms.get(rows.get(0)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
+						if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(0)).toString().length()>0))
+							this.ftl.addTemplate(fn+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString(),this.atoms.getST(rows.get(0)));
+					}
 				}
 				else if(this.atoms.get(rows.get(i)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
-					fn=pkg+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString();
+					if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(0)).toString().length()>0))
+						fn=pkg+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString();
 				}
 			}
 			else{
 				//if no split for repos, and just started, then add the repo to the current fn
-				if(i==1)
+				if(i==1&&this.atoms.get(rows.get(0)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY))
 					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(0)));
 			}
+			if(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(i)).toString().length()==0)
+				continue;
 			this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
 		}
 
