@@ -69,13 +69,11 @@ dalRepository(ident, tables) ::= <<
 
 dalTable(ident, fields) ::= <<
 DROP TABLE IF EXISTS <ident>;
-CREATE TABLE [<ident>] (
-    <fields; separator=",\n">
-);
+CREATE TABLE [<ident>] (<fields; separator=", ">);
 >>
 
 dalField(ident, type, constraints, size, precision, others) ::= <<
-[<ident>] <dalElementTypeMap.(type)> <if(constraints)><constraints; separator=" "><endif> <if(size)>(<size><endif><if(precision)>,<precision><endif><if(size)>)<endif> <others; separator=" ">
+[<ident>] <dalElementTypeMap.(type)><if(size)> (<size><endif><if(precision)>,<precision><endif><if(size)>)<endif><if(constraints)> <constraints; separator=" "><endif><if(constraints)> <others; separator=" "><endif>
 >>
 
 dalFieldConstraintReasonMap ::= [
