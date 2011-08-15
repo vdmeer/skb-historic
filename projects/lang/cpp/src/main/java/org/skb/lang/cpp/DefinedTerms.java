@@ -1,4 +1,4 @@
-/* Copyright (c) 2001-2011 Sven van der Meer (sven@vandermeer.de)
+/* Copyright (c) 2011-2011 Sven van der Meer (sven@vandermeer.de)
  * All rights reserved.
  *
  * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
@@ -29,7 +29,7 @@
  */
 
 /*
- * EBNF ANTLR grammar for the SKB Preprocessor
+ * Static Class maintaing the list of defined terms for CPP
  *
  * @package    org.skb.lang.cpp
  * @author     Sven van der Meer <sven@vandermeer.de>
@@ -38,39 +38,23 @@
  * @version    v0.31 build 110208 (08-Feb-11)
  */
 
-grammar CPP;
+package org.skb.lang.cpp;
 
-options
-{
-  language=Java;
-  output=AST;
-  ASTLabelType=CommonTree;
+import java.util.ArrayList;
+
+
+public class DefinedTerms {
+	public ArrayList<String> defs;
+
+	private static class DefinedTermsHolder{
+		private final static DefinedTerms INSTANCE = new DefinedTerms();
+	}
+
+	public static DefinedTerms getInstance(){
+		return DefinedTermsHolder.INSTANCE;
+	}
+
+	public DefinedTerms(){
+		this.defs=new ArrayList<String>();
+	}
 }
-
-@header{
-  package org.skb.lang.cpp.grammars;
-}
-
-@lexer::header{
-  package org.skb.lang.cpp.grammars;
-}
-
-@members{
-  Boolean error=false;
-  public void displayRecognitionError(String[] tokenNames, RecognitionException re){this.error=true;}
-}
-
-start      : '#' WS WS* (rule ->^(rule) | empty_rule ->^(empty_rule)) (('\r'? '\n') | EOF)!; 
-rule       : (c=CPP_INCLUDE | c=CPP_DEFINE | c=CPP_UNDEF | c=CPP_IFDEF | c=CPP_IFNDEF | c=CPP_ELSIF) WS STRING -> ^($c STRING);
-empty_rule : CPP_ELSE | CPP_ENDIF;
-CPP_INCLUDE: 'include';
-CPP_DEFINE : 'define';
-CPP_UNDEF  : 'undef';
-CPP_IFDEF  : 'ifdef';
-CPP_IFNDEF : 'ifndef';
-CPP_ELSE   : 'else';
-CPP_ELSIF  : 'elsif';
-CPP_ENDIF  : 'endif';
-
-WS         : (' '|'\t') {$channel=HIDDEN;};
-STRING     : '"' ( '\\' . | ~('"') )* '"';

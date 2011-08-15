@@ -71,6 +71,9 @@ public class CPP {
     	    BufferedReader br = new BufferedReader(new InputStreamReader(in));
     	    String line;
 
+    	    DefinedTerms definitions=DefinedTerms.getInstance();
+    	    boolean ignoreUntilEndif=false;
+
     	    fout.println("#file \""+fin+":"+curLine+"\"");
     	    while ((line = br.readLine()) != null){
     	    	curLine++;
@@ -83,30 +86,71 @@ public class CPP {
     	    		Tree t = (Tree)result.getTree();
     	    		String _switch=t.getText();
     	    		if(_switch.equalsIgnoreCase("include")){
-    	    			String fn=t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1);
-    	    			fout.flush();
-    	    			CPP _cpp=new CPP();
-    	    			_cpp.parse(fn, fout);
-    	    			fout.println("#file \""+fin+":"+curLine+"\"");
+    	    			if(ignoreUntilEndif==true)
+    	    				continue;
+    	    			if(t.getChildCount()==0)
+    	    				System.err.println("cpp: include without an include file");
+    	    			else{
+    	    				String fn=fin.substring(0,fin.lastIndexOf("/")+1)+t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1);
+    	    				fout.flush();
+    	    				CPP _cpp=new CPP();
+    	    				_cpp.parse(fn, fout);
+    	    				fout.println("#file \""+fin+":"+curLine+"\"");
+    	    			}
     	    		}
     	    		else if(_switch.equalsIgnoreCase("define")){
-    	    			//System.out.println("define var "+t.getChild(0));
+    	    			if(ignoreUntilEndif==true)
+    	    				continue;
+    	    			if(t.getChildCount()==0)
+    	    				System.err.println("cpp: #define without definition");
+    	    			else
+    	    				definitions.defs.add(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1));
     	    		}
     	    		else if(_switch.equalsIgnoreCase("undef")){
-    	    			//System.out.println("un-define var "+t.getChild(0));
+    	    			if(ignoreUntilEndif==true)
+    	    				continue;
+    	    			if(t.getChildCount()==0)
+    	    				System.err.println("cpp: #undef without definition");
+    	    			else
+    	    				definitions.defs.remove(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1));
+    	    		}
+    	    		else if(_switch.equalsIgnoreCase("ifdef")){
+    	    			if(ignoreUntilEndif==true)
+    	    				continue;
+    	    			if(t.getChildCount()==0)
+    	    				System.err.println("cpp: #ifdef without a term");
+    	    			else{
+    	    				if(!definitions.defs.contains(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1)))
+    	    					ignoreUntilEndif=true;
+    	    			}
+    	    		}
+    	    		else if(_switch.equalsIgnoreCase("ifndef")){
+    	    			if(ignoreUntilEndif==true)
+    	    				continue;
+    	    			if(t.getChildCount()==0)
+    	    				System.err.println("cpp: #ifndef without a term");
+    	    			else{
+    	    				if(definitions.defs.contains(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1)))
+	    						ignoreUntilEndif=true;
+    	    			}
+    	    		}
+    	    		else if(_switch.equalsIgnoreCase("endif")){
+    	    			ignoreUntilEndif=false;
+    	    			continue;
     	    		}
     	    	}
-    	    	else
-    	    		fout.println(line);
+    	    	else{
+    	    		if(ignoreUntilEndif==false)
+    	    			fout.println(line);
+    	    	}
     	    }
     	    in.close();
     	    fout.flush();
         } catch (FileNotFoundException fn) {
         	System.err.println("cpp: can't open include file <" + fin + ">");
-        	System.err.println("cpp: " + fn.toString());
+        	//System.err.println("cpp: " + fn.toString());
         	System.exit(-9);
-        }
-    	  catch(Exception e) {
+        } catch(Exception e) {
         	System.err.println("cpp: "+e.toString());
         }
     }
