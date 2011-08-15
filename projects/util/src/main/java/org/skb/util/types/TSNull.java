@@ -108,6 +108,10 @@ public class TSNull implements TSBase, TSAtomic, TSComposite {
 	public void tsSetValue(TSBase val){
 	}
 
+	public java.lang.String toString(){
+		return "";
+	}
+
 	public java.lang.String tsToString(int indent){
 		return "";
 	}
