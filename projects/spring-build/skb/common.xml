@@ -29,13 +29,13 @@
 			<fileset dir="${main.java.dir}" includes="**/proto/*Constants.java" />
 		</delete>
 		<echo message="Resolving GenerateConstantsTask"/>
-                <ivy:cachepath resolveId="skb.ant.path" pathid="skb.ant.path"
-			organisation="skb" module="skb.ant" revision="${skb.ant}"
+                <ivy:cachepath resolveId="skb.ant.tribe.path" pathid="skb.ant.tribe.path"
+			organisation="skb" module="skb.ant.tribe" revision="${skb.ant.tribe}"
 			conf="runtime" type="jar" inline="true" log="download-only" />
 		<taskdef name="skb-genconst"
 			classname="org.skb.ant.tribe.GenerateConstantsTask"
-			classpathref="skb.ant.path"/>
-        </target>
+			classpathref="skb.ant.tribe.path"/>
+	</target>
 
 	<target name="constants" description="Generates Constant classes based on grammar"/>
 
@@ -52,6 +52,33 @@
 				classname="@{class.name}"
 				destdir="@{dest.dir}"
 				destfile="@{class.name}.java"/>
+		</sequential>
+	</macrodef>
+
+	<target name="dal2sql.init" depends="ivy.init">
+		<echo message="Removing generated SQL files"/>
+		<delete verbose="true">
+			<fileset dir="${target.dir}" includes="**/base/*.sql" />
+		</delete>
+		<echo message="Resolving Dal2SqlTask"/>
+                <ivy:cachepath resolveId="skb.ant.dal.path" pathid="skb.ant.dal.path"
+			organisation="skb" module="skb.ant.dal" revision="${skb.ant.dal}"
+			conf="runtime" type="jar" inline="true" log="download-only" />
+		<taskdef name="skb-dal2sql"
+			classname="org.skb.ant.dal.Dal2SqlTask"
+			classpathref="skb.ant.dal.path"/>
+	</target>
+
+  <target name="dal2sql" description="Generates SQL from DAL source"/>
+
+	<macrodef name="generate-dal2sql">
+		<attribute name="dest.dir"/>
+		<element name="dal-files" implicit="yes"/>
+		<sequential>
+		  <mkdir dir="@{dest.dir}"/>
+			<skb-dal2sql destdir="@{dest.dir}">
+			  <dal-files/>
+			</skb-dal2sql>
 		</sequential>
 	</macrodef>
 

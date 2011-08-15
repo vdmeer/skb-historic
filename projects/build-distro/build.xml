@@ -6,11 +6,12 @@
 		<pathelement location="../lang/cpp"/>
 		<pathelement location="../util"/>
 		<pathelement location="../tribe"/>
-		<pathelement location="../ant"/>
+		<pathelement location="../ant/tribe"/>
 		<pathelement location="../lang/cola/proto"/>
 		<pathelement location="../lang/pola/proto"/>
 		<pathelement location="../lang/glue/proto"/>
 		<pathelement location="../lang/dal"/>
+		<pathelement location="../ant/dal"/>
 		<pathelement location="../kb"/>
 	</path>
 
