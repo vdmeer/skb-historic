@@ -206,7 +206,7 @@ package core.http{
                 key = "Content-Disposition"
                 http:header = "Content-Disposition"
                 default:example = "Content-Disposition: attachment; filename=fname.ext"
-                default:description_locale = "%An opportunity to raise a \"File Download\" dialogue box for a known MIME type"
+                default:description_locale = "%An opportunity to raise a 'File Download' dialogue box for a known MIME type"
                 ;
             row Content-MD5
                 key = "Content-MD5"
@@ -235,7 +235,7 @@ package core.http{
             row ETag
                 key = "ETag"
                 http:header = "ETag"
-                default:example = "ETag: \"737060cd8c284d8af7ad3082f209582d\""
+                default:example = "ETag: '737060cd8c284d8af7ad3082f209582d'"
                 default:description_locale = "%An identifier for a specific version of a resource, often a Message Digest"
                 ;
             row Expires

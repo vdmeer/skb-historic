@@ -73,7 +73,7 @@ package dist.graph{
                 mime:sub:type = "x-graphml"
                 mime:file:extensions = "graphml"
                 mime:source:url = ""
-                default:description = "SKB uses that to indicate GraphML output, since there is no IANA type for that."
+                default:description_locale = "%SKB uses that to indicate GraphML output, since there is no IANA type for that."
                 ;
         }
 

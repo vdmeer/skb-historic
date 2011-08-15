@@ -102,8 +102,8 @@ repository skb.core{
         field mime:sub:type string;
         field mime:file:extensions string;
         field mime:source:url string;
-        field default:description string;
+        field default:description_locale string;
 
-        sequence{key, mime:media:type, mime:type, mime:sub:type, mime:file:extensions, mime:source:url, default:description}
+        sequence{key, mime:media:type, mime:type, mime:sub:type, mime:file:extensions, mime:source:url, default:description_locale}
     }
 }

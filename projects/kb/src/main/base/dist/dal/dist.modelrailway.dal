@@ -426,8 +426,7 @@ package dist.modelrailway{
         table mr_categories {key "station"} {default:name_locale "pkg.dist.modelrailway%%Station"}
         table mr_categories {key "set"} {default:name_locale "pkg.dist.modelrailway%%Set"}
         table mr_categories {key "ancilliary_buildings"} {default:name_locale "pkg.dist.modelrailway%%Ancilliary Building"}
-        table mr_categories {key "maintenance_facility
-"} {default:name_locale "pkg.dist.modelrailway%%Maintenance Facility"}
+        table mr_categories {key "maintenance_facility"} {default:name_locale "pkg.dist.modelrailway%%Maintenance Facility"}
         table mr_categories {key "goods_stations"} {default:name_locale "pkg.dist.modelrailway%%Goods stations"}
         table mr_categories {key "town_country"} {default:name_locale "pkg.dist.modelrailway%%Town &amp; Country"}
         table mr_categories {key "locomotive"} {default:name_locale "pkg.dist.modelrailway%%Locomotive"}

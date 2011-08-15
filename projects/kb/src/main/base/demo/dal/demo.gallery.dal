@@ -107,43 +107,11 @@ package demo.gallery{
         table gallery_fotos {key "barcelona08-9843"} {core:urn "gallery:foto:barcelona08:barcelona08-9843"} {gallery:fotographer_key "vandermeer:sven"} {default:day ""} {default:month_key ""} {default:year "2008"} {default:city_key "barcelona:es"} {default:country_key "es"} {default:description_locale ""} {gallery:w_200 "200"} {gallery:h_200 "150"} {gallery:w_600 "800"} {gallery:h_600 "601"}
         table gallery_fotos {key "berlin05-2800"} {core:urn "gallery:foto:berlin:berlin05-2800"} {gallery:fotographer_key "vandermeer:sven"} {default:day ""} {default:month_key ""} {default:year "2005"} {default:city_key "berlin:de"} {default:country_key "de"} {default:description_locale ""} {gallery:w_200 "150"} {gallery:h_200 "200"} {gallery:w_600 "450"} {gallery:h_600 "600"}
         table gallery_fotos_collections {key "nature:nature"} {request:collection "nature"} {request:part "nature"} {request:seq_no "0"} {request:hbr "1"} {default:name_locale "pkg.demo.gallery%%Some Nature Shots"} {request:element_keys ""} {request:show ""}
-        table gallery_fotos_collections {key "nature:animals"} {request:collection "nature"} {request:part "animals"} {request:seq_no "1"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Animals"} {request:element_keys "barcelona08-9843%0,
-capetown00-G27%0,
-florida00-J22%0,
-florida00-K03%0,
-sanfrancisco07-6317%0,
-paris08-may-9271%0,
-paris08-may-9382%0,
-paris08-may-9389%0,
-florida00-E03%0,
-tunesia98-2-04%0"} {request:show "1"}
-        table gallery_fotos_collections {key "nature:plants"} {request:collection "nature"} {request:part "plants"} {request:seq_no "2"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Plants"} {request:element_keys "barcelona08-9819%0,
-garden07-09-sep-6081%0,
-garden08-03-mar-8948%1,
-garden08-04-apr-9221%0,
-vancouver06-1639%0,
-vancouver06-1648%1"} {request:show "1"}
-        table gallery_fotos_collections {key "berlin:berlin"} {request:collection "berlin"} {request:part "berlin"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Berlin, Germany"} {request:element_keys "berlin06-aug-2486%0,
-berlin05-2800%0,
-berlin06-mar-1480%0,
-berlin06-aug-2562%0,
-berlin06-jan-1206%1,"} {request:show "1"}
-        table gallery_fotos_collections {key "istanbul:istanbul"} {request:collection "istanbul"} {request:part "istanbul"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Istanbul"} {request:element_keys "istanbul09-2400%0,
-istanbul09-2107%0,
-istanbul09-1717%0,
-istanbul09-2364%1,
-"} {request:show "1"}
-        table gallery_fotos_collections {key "florida:florida"} {request:collection "florida"} {request:part "florida"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Florida"} {request:element_keys "florida00-A08%0,
-florida00-G25%0,
-florida00-J27%0,
-florida00-C08a%1,
-florida00-J22%0,
-florida00-E03%0,
-florida00-K03%1"} {request:show "1"}
-        table gallery_fotos_collections {key "capetown:capetown"} {request:collection "capetown"} {request:part "capetown"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Cape Town"} {request:element_keys "capetown00-A17%0,
-capetown00-A18%0,
-capetown00-D23%1,
-capetown00-F11a%0,
-capetown00-G27%1"} {request:show "1"}
+        table gallery_fotos_collections {key "nature:animals"} {request:collection "nature"} {request:part "animals"} {request:seq_no "1"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Animals"} {request:element_keys "barcelona08-9843%0,capetown00-G27%0,florida00-J22%0,florida00-K03%0,sanfrancisco07-6317%0,paris08-may-9271%0,paris08-may-9382%0,paris08-may-9389%0,florida00-E03%0,tunesia98-2-04%0"} {request:show "1"}
+        table gallery_fotos_collections {key "nature:plants"} {request:collection "nature"} {request:part "plants"} {request:seq_no "2"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Plants"} {request:element_keys "barcelona08-9819%0,garden07-09-sep-6081%0,garden08-03-mar-8948%1,garden08-04-apr-9221%0,vancouver06-1639%0,vancouver06-1648%1"} {request:show "1"}
+        table gallery_fotos_collections {key "berlin:berlin"} {request:collection "berlin"} {request:part "berlin"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Berlin, Germany"} {request:element_keys "berlin06-aug-2486%0,berlin05-2800%0,berlin06-mar-1480%0,berlin06-aug-2562%0,berlin06-jan-1206%1,"} {request:show "1"}
+        table gallery_fotos_collections {key "istanbul:istanbul"} {request:collection "istanbul"} {request:part "istanbul"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Istanbul"} {request:element_keys "istanbul09-2400%0,istanbul09-2107%0,istanbul09-1717%0,istanbul09-2364%1,"} {request:show "1"}
+        table gallery_fotos_collections {key "florida:florida"} {request:collection "florida"} {request:part "florida"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Florida"} {request:element_keys "florida00-A08%0,florida00-G25%0,florida00-J27%0,florida00-C08a%1,florida00-J22%0,florida00-E03%0,florida00-K03%1"} {request:show "1"}
+        table gallery_fotos_collections {key "capetown:capetown"} {request:collection "capetown"} {request:part "capetown"} {request:seq_no "0"} {request:hbr "0"} {default:name_locale "pkg.demo.gallery%%Cape Town"} {request:element_keys "capetown00-A17%0,capetown00-A18%0,capetown00-D23%1,capetown00-F11a%0,capetown00-G27%1"} {request:show "1"}
     }
 }
