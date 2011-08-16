@@ -73,4 +73,4 @@ CPP_ELSIF  : 'elsif';
 CPP_ENDIF  : 'endif';
 
 WS         : (' '|'\t') {$channel=HIDDEN;};
-STRING     : '"' ( '\\' . | ~('"') )* '"';
+STRING     : '"' ( options {greedy=false;}: ~('"') )* '"';

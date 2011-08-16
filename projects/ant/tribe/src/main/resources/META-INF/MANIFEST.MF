@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Tribe Ant Task
-Bundle-SymbolicName: skb.ant
+Bundle-SymbolicName: skb.ant.tribe
 Bundle-Version: 0.3.0
 Bundle-Vendor: SKB
 Export-Package: org.skb.ant.tribe;version="0.3.0"

@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tribe Ant Task
-Bundle-SymbolicName: skb.ant
+Bundle-Name: Dal Ant Task
+Bundle-SymbolicName: skb.ant.dal
 Bundle-Version: 0.3.0
 Bundle-Vendor: SKB
-Export-Package: org.skb.ant.tribe;version="0.3.0"
+Export-Package: org.skb.ant.dal;version="0.3.0"
 

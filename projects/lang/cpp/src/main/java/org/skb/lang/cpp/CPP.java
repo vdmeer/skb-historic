@@ -62,34 +62,35 @@ public class CPP {
     public void parse(String fin, PrintWriter fout) {
     	try {
     		int curLine=1;
-    		CPPLexer lexer = new CPPLexer();
-    		CommonTokenStream tokens = new CommonTokenStream(lexer);
-    		CPPParser parser = new CPPParser(tokens);
+    		CPPLexer lexer=new CPPLexer();
+    		CommonTokenStream tokens=new CommonTokenStream(lexer);
+    		CPPParser parser=new CPPParser(tokens);
 
-    		FileInputStream fstream = new FileInputStream(fin);
-    	    DataInputStream in = new DataInputStream(fstream);
-    	    BufferedReader br = new BufferedReader(new InputStreamReader(in));
+    		FileInputStream fstream=new FileInputStream(fin);
+    	    DataInputStream in=new DataInputStream(fstream);
+    	    BufferedReader br=new BufferedReader(new InputStreamReader(in));
     	    String line;
 
     	    DefinedTerms definitions=DefinedTerms.getInstance();
     	    boolean ignoreUntilEndif=false;
 
     	    fout.println("#file \""+fin+":"+curLine+"\"");
-    	    while ((line = br.readLine()) != null){
+    	    while((line=br.readLine())!=null){
     	    	curLine++;
     	    	if(line.startsWith("#")){
     	    		lexer.reset();
     	    		lexer.setCharStream(new ANTLRStringStream(line));
-    	    		tokens = new CommonTokenStream(lexer);
-    	    		parser = new CPPParser(tokens);
-    	    		CPPParser.start_return result = parser.start();
-    	    		Tree t = (Tree)result.getTree();
+    	    		tokens=new CommonTokenStream(lexer);
+    	    		parser=new CPPParser(tokens);
+    	    		CPPParser.start_return result=parser.start();
+    	    		Tree t=(Tree)result.getTree();
     	    		String _switch=t.getText();
     	    		if(_switch.equalsIgnoreCase("include")){
     	    			if(ignoreUntilEndif==true)
     	    				continue;
-    	    			if(t.getChildCount()==0)
+    	    			if(t.getChildCount()==0){
     	    				System.err.println("cpp: include without an include file");
+    	    			}
     	    			else{
     	    				String fn=fin.substring(0,fin.lastIndexOf("/")+1)+t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1);
     	    				fout.flush();

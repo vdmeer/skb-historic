@@ -30,7 +30,6 @@
 		name="com.springsource.org.apache.commons.collections"
 		rev="${org.apache.commons.collections}" />
 
-
 	<dependency org="skb" name="skb.util" rev="${skb.util}" />
 	<dependency org="skb.lang" name="skb.lang.cpp" rev="${skb.lang.cpp}" />
 

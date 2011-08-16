@@ -30,7 +30,6 @@
 
 package org.skb.ant.dal;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -65,21 +64,19 @@ public class Dal2SqlTask extends Task {
     	if(this.destdir==null)
     		throw new BuildException("no destination directory given");
 
-    	ArrayList<String> dals=new ArrayList<String>();
         for(Iterator<FileSet> itFSets=filesets.iterator(); itFSets.hasNext();){
             FileSet fs = (FileSet)itFSets.next();
             DirectoryScanner ds = fs.getDirectoryScanner(getProject());
             String[] includedFiles = ds.getIncludedFiles();
             for(int i=0; i<includedFiles.length; i++){
-                String filename = includedFiles[i].replace('\\','/');
+            	String filename = includedFiles[i].replace('\\','/');
                 //filename = filename.substring(filename.lastIndexOf("/")+1);
                 String dir=ds.getBasedir().getAbsolutePath();
                 dir=dir.replace('\\','/');
-                dals.add(filename);
-                System.out.println("Converting "+dir+"/"+filename);
+
+                System.err.println("converting "+dir+"/"+filename);
                 Dal.main(new String[]{"--src-lang", "dal", "--tgt-lang", "sql", "--no-warnings", "--gc", "--tgt-dir", this.destdir, "--src-file", dir+"/"+filename});
             }
         }
-//System.err.println(dals);
     }
 }
