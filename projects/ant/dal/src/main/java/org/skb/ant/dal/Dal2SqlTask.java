@@ -47,7 +47,6 @@ import org.skb.lang.dal.Dal;
  */
 public class Dal2SqlTask extends Task {
 	private Vector<FileSet> filesets = new Vector<FileSet>();
-
 	private String destdir=null;
 
     public void setDestdir(String s){
@@ -65,16 +64,16 @@ public class Dal2SqlTask extends Task {
     		throw new BuildException("no destination directory given");
 
         for(Iterator<FileSet> itFSets=filesets.iterator(); itFSets.hasNext();){
-            FileSet fs = (FileSet)itFSets.next();
-            DirectoryScanner ds = fs.getDirectoryScanner(getProject());
-            String[] includedFiles = ds.getIncludedFiles();
+            FileSet fs=(FileSet)itFSets.next();
+            DirectoryScanner ds=fs.getDirectoryScanner(getProject());
+            String[] includedFiles=ds.getIncludedFiles();
             for(int i=0; i<includedFiles.length; i++){
-            	String filename = includedFiles[i].replace('\\','/');
+            	String filename=includedFiles[i].replace('\\','/');
                 //filename = filename.substring(filename.lastIndexOf("/")+1);
                 String dir=ds.getBasedir().getAbsolutePath();
                 dir=dir.replace('\\','/');
 
-                System.err.println("converting "+dir+"/"+filename);
+                System.err.println("converting "+filename);
                 Dal.main(new String[]{"--src-lang", "dal", "--tgt-lang", "sql", "--no-warnings", "--gc", "--tgt-dir", this.destdir, "--src-file", dir+"/"+filename});
             }
         }
