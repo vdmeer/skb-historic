@@ -1,0 +1,63 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Units.
+ *
+ * @package    Packages.Dist.Units
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "DIST_UNITS_DATA"
+    data{
+        table units_prefix_si {key "yotta"} {units:prefix "yotta"} {units:symbol "Y"} {units:1000m "8"} {units:10n "24"} {units:decimal "1000000000000000000000000"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Septillion"} {units:scale:long_locale "pkg.dist.units%%Quadrillion"} {default:year_start "1991"}
+        table units_prefix_si {key "zetta"} {units:prefix "zetta"} {units:symbol "Z"} {units:1000m "7"} {units:10n "21"} {units:decimal "1000000000000000000000"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Sextillion"} {units:scale:long_locale "pkg.dist.units%%Trilliard"} {default:year_start "1991"}
+        table units_prefix_si {key "exa"} {units:prefix "exa"} {units:symbol "E"} {units:1000m "6"} {units:10n "18"} {units:decimal "1000000000000000000"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Quintillion"} {units:scale:long_locale "pkg.dist.units%%Trillion"} {default:year_start "1975"}
+        table units_prefix_si {key "peta"} {units:prefix "peta"} {units:symbol "P"} {units:1000m "5"} {units:10n "15"} {units:decimal "1000000000000000"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Quadrillion"} {units:scale:long_locale "pkg.dist.units%%Billiard"} {default:year_start "1975"}
+        table units_prefix_si {key "tera"} {units:prefix "tera"} {units:symbol "T"} {units:1000m "4"} {units:10n "12"} {units:decimal "1000000000000"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Trillion"} {units:scale:long_locale "pkg.dist.units%%Billion"} {default:year_start "1960"}
+        table units_prefix_si {key "giga"} {units:prefix "giga"} {units:symbol "G"} {units:1000m "3"} {units:10n "9"} {units:decimal "1000000000"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Billion"} {units:scale:long_locale "pkg.dist.units%%Milliard"} {default:year_start "1960"}
+        table units_prefix_si {key "mega"} {units:prefix "mega"} {units:symbol "M"} {units:1000m "2"} {units:10n "6"} {units:decimal "1000000"} {units:scale_locale "pkg.dist.units%%Million"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1960"}
+        table units_prefix_si {key "kilo"} {units:prefix "kilo"} {units:symbol "k"} {units:1000m "1"} {units:10n "3"} {units:decimal "1000"} {units:scale_locale "pkg.dist.units%%Thousand"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1795"}
+        table units_prefix_si {key "hecto"} {units:prefix "hecto"} {units:symbol "h"} {units:1000m "2/3"} {units:10n "2"} {units:decimal "100"} {units:scale_locale "pkg.dist.units%%Hundred"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1795"}
+        table units_prefix_si {key "deca"} {units:prefix "deca"} {units:symbol "d"} {units:1000m "1/3"} {units:10n "1"} {units:decimal "10"} {units:scale_locale "pkg.dist.units%%Ten"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1795"}
+        table units_prefix_si {key "deci"} {units:prefix "deci"} {units:symbol "d"} {units:1000m "-1/3"} {units:10n "-1"} {units:decimal "0.1"} {units:scale_locale "pkg.dist.units%%Tenth"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1795"}
+        table units_prefix_si {key "centi"} {units:prefix "centi"} {units:symbol "c"} {units:1000m "-2/3"} {units:10n "-2"} {units:decimal "0.01"} {units:scale_locale "pkg.dist.units%%Hundredth"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1795"}
+        table units_prefix_si {key "milli"} {units:prefix "milli"} {units:symbol "m"} {units:1000m "-1"} {units:10n "-3"} {units:decimal "0.001"} {units:scale_locale "pkg.dist.units%%Thousandth"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1795"}
+        table units_prefix_si {key "micro"} {units:prefix "micro"} {units:symbol ""} {units:1000m "-2"} {units:10n "-6"} {units:decimal "0.000001 "} {units:scale_locale "pkg.dist.units%%Millionth"} {units:scale:short_locale ""} {units:scale:long_locale ""} {default:year_start "1960"}
+        table units_prefix_si {key "nano"} {units:prefix "nano"} {units:symbol "n"} {units:1000m "-3"} {units:10n "-9"} {units:decimal "0.000000001"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Billionth"} {units:scale:long_locale "pkg.dist.units%%Milliardth"} {default:year_start "1960"}
+        table units_prefix_si {key "pico"} {units:prefix "pico"} {units:symbol "p"} {units:1000m "-4"} {units:10n "-12"} {units:decimal "0.000000000001"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Trillionth"} {units:scale:long_locale "pkg.dist.units%%Billionth"} {default:year_start "1960"}
+        table units_prefix_si {key "femto"} {units:prefix "femto"} {units:symbol "f"} {units:1000m "-5"} {units:10n "-15"} {units:decimal "0.000000000000001"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Quadrillionth"} {units:scale:long_locale "pkg.dist.units%%Billiardth"} {default:year_start "1964"}
+        table units_prefix_si {key "atto"} {units:prefix "atto"} {units:symbol "a"} {units:1000m "-6"} {units:10n "-18"} {units:decimal "0.000000000000000001"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Quintillionth"} {units:scale:long_locale "pkg.dist.units%%Trillionth"} {default:year_start "1964"}
+        table units_prefix_si {key "zepto"} {units:prefix "zepto"} {units:symbol "z"} {units:1000m "-7"} {units:10n "-21"} {units:decimal "0.000000000000000000001"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Sextillionth"} {units:scale:long_locale "pkg.dist.units%%Trilliardth"} {default:year_start "1991"}
+        table units_prefix_si {key "yocto"} {units:prefix "yocto"} {units:symbol "y"} {units:1000m "-8"} {units:10n "-24"} {units:decimal "0.000000000000000000000001"} {units:scale_locale ""} {units:scale:short_locale "pkg.dist.units%%Septillionth"} {units:scale:long_locale "pkg.dist.units%%Quadrillionth"} {default:year_start "1991"}
+    }
+#endif
+#define "DIST_UNITS_DATA"

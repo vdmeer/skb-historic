@@ -1,0 +1,169 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Date.
+ *
+ * @package    Packages.Dist.Date
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "DIST_DATE_REPO"
+    repository skb.core{
+        table pkg_fields{
+            row date:short_locale
+                key = "date:short_locale"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "date:short"
+                core:http_req_name = "short"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row date:number
+                key = "date:number"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "date:number"
+                core:http_req_name = "number"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+        }
+
+        table pkg_rabit{
+            row Dist.Date.Interpreter.String
+                key = "Dist.Date.Interpreter.String"
+                core:rabit:type = "interpreter:value"
+                core:rabit:target:class = "php%pkg_dist__date___string___interpreter"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = ""
+                core:rabit:mime_out = ""
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+            row Dist.Date.Interpreter.PeriodString
+                key = "Dist.Date.Interpreter.PeriodString"
+                core:rabit:type = "interpreter:value"
+                core:rabit:target:class = "php%pkg_dist__date___period_string___interpreter"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = ""
+                core:rabit:mime_out = ""
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+            row Dist.Date.Interpreter.Mktime
+                key = "Dist.Date.Interpreter.Mktime"
+                core:rabit:type = "interpreter:value"
+                core:rabit:target:class = "php%pkg_dist__date___mktime___interpreter"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = ""
+                core:rabit:mime_out = ""
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+            row Dist.Date.DOW.DB2Entries
+                key = "Dist.Date.DOW.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__date___date_dow___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+date"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Date.DOM.DB2Entries
+                key = "Dist.Date.DOM.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__date___date_dom___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+date"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Date.Month.DB2Entries
+                key = "Dist.Date.Month.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_dist__date___date_month___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+date"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Date.Entries2XHTML-Table
+                key = "Dist.Date.Entries2XHTML-Table"
+                core:rabit:type = "builder"
+                core:rabit:target:class = "php%pkg_dist__date___application__xhtml__table___builder"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/entries+date"
+                core:rabit:mime_out = "x-skb/entries+date"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Dist.Date.Entries2XHTML-Table:Template
+                key = "Dist.Date.Entries2XHTML-Table:Template"
+                core:rabit:type = "template"
+                core:rabit:target:class = ""
+                core:rabit:target:template = "php%dist/date/application--xhtml+table"
+                core:rabit:mime_in = "x-skb/entries+date"
+                core:rabit:mime_out = "application/xhtml+xml"
+                core:rabit:css = "dist/table-widegrey"
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+        }
+
+    }
+#endif
+#define "DIST_DATE_REPO"

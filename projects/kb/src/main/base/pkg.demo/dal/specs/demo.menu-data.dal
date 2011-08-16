@@ -1,0 +1,74 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Demo.Menu.
+ *
+ * @package    Packages.Demo.Menu
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "DEMO_MENU_DATA"
+    data{
+        table menu {key "/00"} {menu:title_locale "pkg.demo.menu%%Home"} {menu:navbar_locale "%home"} {menu:name_link_locale ""} {menu:url "index.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area1"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Home, sweet Home"}
+        table menu {key "/99"} {menu:title_locale "pkg.demo.menu%%Sitemap"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "sitemap.php5"} {menu:image ""} {menu:options ""} {menu:class_b "smap"} {menu:id_a ""} {menu:text_sitemap_locale ""}
+        table menu {key "/02"} {menu:title_locale "pkg.demo.menu%%Core SkbConfig"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "core-skbcfg.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Demo of the Package Core.SkbConfig"}
+        table menu {key "/02/01"} {menu:title_locale "pkg.demo.menu%%Configuration"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/configuration.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%core SKB configuration"}
+        table menu {key "/02/04"} {menu:title_locale "pkg.demo.menu%%Readers"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/readers.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered readers (used to 'read' and prepare information)"}
+        table menu {key "/02/02"} {menu:title_locale "pkg.demo.menu%%Databases"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/dbpdos.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered databases, including files and tables"}
+        table menu {key "/02/03"} {menu:title_locale "pkg.demo.menu%%Requests"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/requests.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered requests (used to initialise request objects)"}
+        table menu {key "/02/05"} {menu:title_locale "pkg.demo.menu%%Builders"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/builders.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%% registered builders (used to take reader output and prepare its transformation)"}
+        table menu {key "/02/06"} {menu:title_locale "pkg.demo.menu%%Templates"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/templates.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered templates (used to realise the transformation of read information)"}
+        table menu {key "/02/07"} {menu:title_locale "pkg.demo.menu%%Applications"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/applications.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered applications (providing complete handling of information for specific donains)"}
+        table menu {key "/02/08"} {menu:title_locale "pkg.demo.menu%%Interpreters"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/interpreters.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered interpreters (used to interpret information)"}
+        table menu {key "/02/09"} {menu:title_locale "pkg.demo.menu%%Fields"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/fields.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered fields (used to direct interpreters/readers)"}
+        table menu {key "/02/10"} {menu:title_locale "pkg.demo.menu%%Resp Headers"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/http_resp_headers.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered HTTP response headers (used in HTTP responses)"}
+        table menu {key "/02/11"} {menu:title_locale "pkg.demo.menu%%Content Types"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/content_types.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%registered Content Types (MIME types, used in HTTP responses)"}
+        table menu {key "/03"} {menu:title_locale "pkg.demo.menu%%Dist"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Demos of the SKB Dist Packages"}
+        table menu {key "/03/01"} {menu:title_locale "pkg.demo.menu%%Acronyms"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-acronyms.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%List of acronyms in different formats (Dist.Acronyms)"}
+        table menu {key "/03/02"} {menu:title_locale "pkg.demo.menu%%Date"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-date.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Day of the Week/Month and Month (Dist.Date)"}
+        table menu {key "/03/03"} {menu:title_locale "pkg.demo.menu%%Geo"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-geo.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Cities, Countries and Continents (Dist.Geo)"}
+        table menu {key "/03/04"} {menu:title_locale "pkg.demo.menu%%Affiliations"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-affiliations.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Affiliations (Dist.Affiliations)"}
+        table menu {key "/04"} {menu:title_locale "pkg.demo.menu%%Dist Gallery"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-gallery.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area2"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Gallery (Dist.Gallery)"}
+        table menu {key "/04/01"} {menu:title_locale "pkg.demo.menu%%Berlin"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "gallery/berlin.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area2"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Fotos from Berlin"}
+        table menu {key "/04/02"} {menu:title_locale "pkg.demo.menu%%Cape Town"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "gallery/capetown.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area2"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Fotos from Cape Town"}
+        table menu {key "/04/03"} {menu:title_locale "pkg.demo.menu%%Florida"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "gallery/florida.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area2"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Fotos from Florida"}
+        table menu {key "/04/05"} {menu:title_locale "pkg.demo.menu%%Istanbul"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "gallery/istanbul.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area2"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Fotos from Istanbul"}
+        table menu {key "/04/06"} {menu:title_locale "pkg.demo.menu%%Nature"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "gallery/nature.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area2"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Some Animal and Plant Fotos"}
+        table menu {key "/04/07"} {menu:title_locale "pkg.demo.menu%%Form Select"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "gallery/formselect.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area2"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%and a FormSelect Builder"}
+        table menu {key "/03/05"} {menu:title_locale "pkg.demo.menu%%People"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-people.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%People (Dist.People)"}
+        table menu {key "/03/08"} {menu:title_locale "pkg.demo.menu%%Publications"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-publications.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Publications (Dist.Publications)"}
+        table menu {key "/80"} {menu:title_locale "pkg.demo.menu%%API Doc"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "../../skb/doc/php/apidoc/index.html"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%SKB API documenation"}
+        table menu {key "/03/06"} {menu:title_locale "pkg.demo.menu%%Currencies"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "dist-currencies.php5"} {menu:image ""} {menu:options ""} {menu:class_b "area3"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%Currencies (Dist.Currencies)"}
+        table menu {key "/02/12"} {menu:title_locale "pkg.demo.menu%%Character Encodings"} {menu:navbar_locale ""} {menu:name_link_locale ""} {menu:url "skbcfg/enc_char.php5"} {menu:image ""} {menu:options ""} {menu:class_b "configuration"} {menu:id_a ""} {menu:text_sitemap_locale "pkg.demo.menu%%character encodings in Core"}
+    }
+#endif
+#define "DEMO_MENU_DATA"

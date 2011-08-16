@@ -1,0 +1,120 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Acronyms.
+ *
+ * @package    Packages.Dist.Acronyms
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "DIST_ACRONYMS_DATA"
+    data{
+        table acronyms {key "A3DS"} {acronyms:short "A<sup>3</sup>DS"} {acronyms:long_locale "%Architectural Artefacts for Autonomic Distributed Systems"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "ADSL"} {acronyms:short "ADSL"} {acronyms:long_locale "%Asymmetric Digital Subscriber Line"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "ANTLR"} {acronyms:short "ANTLR"} {acronyms:long_locale "%ANother Tool for Language Recognition"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "API"} {acronyms:short "API"} {acronyms:long_locale "%Application Programming Interface"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "ASCII"} {acronyms:short "ASCII"} {acronyms:long_locale "%American Standard Code for Information Interchange"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "VM"} {acronyms:short "VM"} {acronyms:long_locale "%Virtual Machine"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "UUID"} {acronyms:short "UUID"} {acronyms:long_locale "%Universally Unified Identifier"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "IETF:URL"} {acronyms:short "URL"} {acronyms:long_locale "%Uniform Resource Locator"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "BNF"} {acronyms:short "BNF"} {acronyms:long_locale "%Backus-Naur Form"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "C++"} {acronyms:short "C++"} {acronyms:long_locale "%Programming Language (originally &ldquo;C with Classes&rdquo;)"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "TINA:CMC"} {acronyms:short "CMC"} {acronyms:long_locale "%Computational Modelling"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "ITU:CMIP"} {acronyms:short "CMIP"} {acronyms:long_locale "%Common Management Information Protocol"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "OMG:CORBA"} {acronyms:short "CORBA"} {acronyms:long_locale "%Common Object Request Broker Architecture"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:TINA-C"} {acronyms:short "TINA-C"} {acronyms:long_locale "%Telecommunication Information Networking Architecture Consortium"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:TM-Forum"} {acronyms:short "TM Forum"} {acronyms:long_locale "%TeleManagement Forum"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "IETF:SNMP"} {acronyms:short "SNMP"} {acronyms:long_locale "%Simple Network Management Protocol"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "DEN-ng"} {acronyms:short "DEN-ng"} {acronyms:long_locale "%Directory Enabled Network - next generation"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "W3C:DTD"} {acronyms:short "DTD"} {acronyms:long_locale "%Document Type Definition"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "ITU:SDU"} {acronyms:short "SDU"} {acronyms:long_locale "%Service Data Unit"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "QoS"} {acronyms:short "QoS"} {acronyms:long_locale "%Quality of Service"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "PSTN"} {acronyms:short "PSTN"} {acronyms:long_locale "%Public Switched Telephone Network"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "DbC"} {acronyms:short "DbC"} {acronyms:long_locale "%Design by Contract&copy;"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "EBNF"} {acronyms:short "EBNF"} {acronyms:long_locale "%Extended Backus-Naur Form"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "FCAPS"} {acronyms:short "FCAPS"} {acronyms:long_locale "%Fault&#44; Configuration&#44; Accounting&#44; Performance and Security"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "FOCALE"} {acronyms:short "FOCALE"} {acronyms:long_locale "%Foundation&#44; Observation&#44; Comparison&#44; Action and Learning Environment"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "GPRS"} {acronyms:short "GPRS"} {acronyms:long_locale "%General Packet Radio System"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "GSM"} {acronyms:short "GSM"} {acronyms:long_locale "%Global System for Mobile communications"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "GUID"} {acronyms:short "GUID"} {acronyms:long_locale "%Globally Unified Identifier"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "company:HP"} {acronyms:short "HP"} {acronyms:long_locale "%Hewlett Packard"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:IEEE"} {acronyms:short "IEEE"} {acronyms:long_locale "%Institute of Electrical and Electronic Engineers"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "PHP"} {acronyms:short "PHP"} {acronyms:long_locale "%PHP Hypertext Preprocessor"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "ITU:PDU"} {acronyms:short "PDU"} {acronyms:long_locale "%Protocol Data Unit"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "JTC"} {acronyms:short "JTC"} {acronyms:long_locale "%Joint Technical Committee"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:OMG"} {acronyms:short "OMG"} {acronyms:long_locale "%Object Management Group"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:IETF"} {acronyms:short "IETF"} {acronyms:long_locale "%Internet Engineering Task Force"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "MIB"} {acronyms:short "MIB"} {acronyms:long_locale "%Management Information Base"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "JAVA:J2EE"} {acronyms:short "J2EE"} {acronyms:long_locale "%Java 2 Platform&#44; Enterprise Edition"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "A3DS:COLA"} {acronyms:short "COLA"} {acronyms:long_locale "%A<sup>3</sup>DS Contract Language"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:ISO"} {acronyms:short "ISO"} {acronyms:long_locale "%International Standardisation Organisation"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:ITU"} {acronyms:short "ITU"} {acronyms:long_locale "%International Telecommunication Unit"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "LLC"} {acronyms:short "LLC"} {acronyms:long_locale "%Logical Link Control"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "MAC"} {acronyms:short "MAC"} {acronyms:long_locale "%Medium Access Control"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "MAN"} {acronyms:short "MAN"} {acronyms:long_locale "%Metropolitan Area Network"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "conference:S3"} {acronyms:short "S3"} {acronyms:long_locale "%Motorola Symposium on Software&#44; System and Simulation"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "conference:HP-SUA"} {acronyms:short "HP-SUA"} {acronyms:long_locale "%Workshop of the HP Software University Association"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "conference:EASe"} {acronyms:short "EASe"} {acronyms:long_locale "%Workshop on Engineering of Autonomic and Autonomous Systems"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:ACM"} {acronyms:short "ACM"} {acronyms:long_locale "%Association for Computing Machinery"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:FhG:FOKUS"} {acronyms:short "FhG FOKUS"} {acronyms:long_locale "pkg.dist.acronyms%%Fraunhofer Institute for Open Communication Systems"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:GMD:FOKUS"} {acronyms:short "GMD FOKUS"} {acronyms:long_locale "pkg.dist.acronyms%%GMD Institute for Open Communication Systems"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:TSSG"} {acronyms:short "TSSG"} {acronyms:long_locale "%Telecommunications Software &amp; Systems Group"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "university:TUB"} {acronyms:short "TUB"} {acronyms:long_locale "pkg.dist.acronyms%%Technical University Berlin"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "university:WIT"} {acronyms:short "WIT"} {acronyms:long_locale "%Waterford Institute of Technology"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:IEEE:CS"} {acronyms:short "CS"} {acronyms:long_locale "%IEEE Computer Society"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "journal:TAC"} {acronyms:short "TAC"} {acronyms:long_locale "%Transactions on Computers"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "conference:SESS"} {acronyms:short "SESS"} {acronyms:long_locale "%Software Engineering Standards Symposium"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "university:DCU"} {acronyms:short "DCU"} {acronyms:long_locale "%Dublin City University"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "company:ZIFA"} {acronyms:short "ZIFA"} {acronyms:long_locale "%Zachman Institute for Framework Advancement"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "conference:ICUFN"} {acronyms:short "ICUFN"} {acronyms:long_locale "%International Conference on Ubiquitous and Future Networks"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "university:POSTECH"} {acronyms:short "POSTECH"} {acronyms:long_locale "%Pohang University of Science and Technology"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "journal:SigplanNotices"} {acronyms:short "Sigplan Not."} {acronyms:long_locale "%ACM SIGPLAN Notices"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "journal:TCS"} {acronyms:short "TCS"} {acronyms:long_locale "%ACM Transaction in Computer Systems"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:PSOC"} {acronyms:short "PSOC"} {acronyms:long_locale "%Pouzin Society"} {default:url "http://www.pouzinsociety.org/"} {default:description_locale ""}
+        table acronyms {key "TeX:CTAN"} {acronyms:short "CTAN"} {acronyms:long_locale "%the Comprehensice TeX Archive Network"} {default:url "http://www.ctan.org/"} {default:description_locale ""}
+        table acronyms {key "TeX:TDS"} {acronyms:short "TDS"} {acronyms:long_locale "%TeX Directory Structure"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "A3DS:SKB"} {acronyms:short "SKB"} {acronyms:long_locale "%Sven&#39;s Knowledge Base"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "JPEG"} {acronyms:short "JPEG"} {acronyms:long_locale "%Joint Photographic Experts Group"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "Springer:LNCS"} {acronyms:short "LNCS"} {acronyms:long_locale "%Lecture Notes in Computer Science"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "SDO"} {acronyms:short "SDO"} {acronyms:long_locale "%Standard Defining Organisation"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "ISO:SQL"} {acronyms:short "SQL"} {acronyms:long_locale "%Structured Query Language"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "W3C:SVG"} {acronyms:short "SVG"} {acronyms:long_locale "%Scalable Vector Graphics"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "LAMP"} {acronyms:short "LAMP"} {acronyms:long_locale "%Linux, Apache, MySQL and PHP"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "PSOC:RINA"} {acronyms:short "RINA"} {acronyms:long_locale "%Recursive InterNet Architecture"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "PSOC:TINOS"} {acronyms:short "TINOS"} {acronyms:long_locale "%The InterNet Operating System"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "conference:ICODP"} {acronyms:short "ICODP"} {acronyms:long_locale "%International Conference on Open Distributed Processing"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "university:NPL"} {acronyms:short "NPL"} {acronyms:long_locale "%National Physical Laboratory"} {default:url ""} {default:description_locale ""}
+        table acronyms {key "organisation:IMF"} {acronyms:short "IMF"} {acronyms:long_locale "%International Monetary Fund"} {default:url "http://www.imf.org"} {default:description_locale ""}
+        table acronyms {key "organisation:UIC"} {acronyms:short "UIC"} {acronyms:long_locale "%International Union of Railways"} {default:url "http://www.uic.org"} {default:description_locale ""}
+    }
+#endif
+#define "DIST_ACRONYMS_DATA"

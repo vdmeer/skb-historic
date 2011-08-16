@@ -1,0 +1,332 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Core.Http.
+ *
+ * @package    Packages.Core.Http
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "CORE_HTTP_REPO"
+    repository skb.core{
+        table pkg_fields{
+            row http:header
+                key = "http:header"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "http:header"
+                core:http_req_name = "http_header"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row http:method
+                key = "http:method"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "http:method"
+                core:http_req_name = "http_method"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row http:statuscode:text
+                key = "http:statuscode:text"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "http:statuscode:text"
+                core:http_req_name = "http_statuscode_text"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row http:statuscode
+                key = "http:statuscode"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "http:statuscode"
+                core:http_req_name = "http_statuscode"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row http:category
+                key = "http:category"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "http:category"
+                core:http_req_name = "http_category"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row http:protocol
+                key = "http:protocol"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "http:protocol"
+                core:http_req_name = "http_protocol"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+        }
+
+        table pkg_rabit{
+            row Core.HTTP.DB2Entries
+                key = "Core.HTTP.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_core__http___http___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+http"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+        }
+
+        table pkg_http_headers_response{
+            row Accept-Ranges
+                key = "Accept-Ranges"
+                http:header = "Accept-Ranges"
+                default:example = "Accept-Ranges: bytes"
+                default:description_locale = "%What partial content range types this server supports"
+                ;
+            row Age
+                key = "Age"
+                http:header = "Age"
+                default:example = "Age: 12"
+                default:description_locale = "%The age the object has been in a proxy cache in seconds"
+                ;
+            row Allow
+                key = "Allow"
+                http:header = "Allow"
+                default:example = "Allow: GET, HEAD"
+                default:description_locale = "%Valid actions for a specified resource. To be used for a 405 Method not allowed"
+                ;
+            row Cache-Control
+                key = "Cache-Control"
+                http:header = "Cache-Control"
+                default:example = "Cache-Control: no-cache"
+                default:description_locale = "%Tells all caching mechanisms from server to client whether they may cache this object"
+                ;
+            row Content-Encoding
+                key = "Content-Encoding"
+                http:header = "Content-Encoding"
+                default:example = "Content-Encoding: gzip"
+                default:description_locale = "%The type of encoding used on the data"
+                ;
+            row Content-Language
+                key = "Content-Language"
+                http:header = "Content-Language"
+                default:example = "Content-Language: da"
+                default:description_locale = "%The language the content is in"
+                ;
+            row Content-Length
+                key = "Content-Length"
+                http:header = "Content-Length"
+                default:example = "Content-Length: 348"
+                default:description_locale = "%The length of the response body in octets (8-bit bytes)"
+                ;
+            row Content-Location
+                key = "Content-Location"
+                http:header = "Content-Location"
+                default:example = "Content-Location: /index.htm"
+                default:description_locale = "%An alternate location for the returned data"
+                ;
+            row Content-Disposition
+                key = "Content-Disposition"
+                http:header = "Content-Disposition"
+                default:example = "Content-Disposition: attachment; filename=fname.ext"
+                default:description_locale = "%An opportunity to raise a 'File Download' dialogue box for a known MIME type"
+                ;
+            row Content-MD5
+                key = "Content-MD5"
+                http:header = "Content-MD5"
+                default:example = "Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ=="
+                default:description_locale = "%A Base64-encoded binary MD5 sum of the content of the response"
+                ;
+            row Content-Range
+                key = "Content-Range"
+                http:header = "Content-Range"
+                default:example = "Content-Range: bytes 21010-47021/47022"
+                default:description_locale = "%Where in a full body message this partial message belongs"
+                ;
+            row Content-Type
+                key = "Content-Type"
+                http:header = "Content-Type"
+                default:example = "Content-Type: text/html; charset=utf-8"
+                default:description_locale = "%The mime type of this content"
+                ;
+            row Date
+                key = "Date"
+                http:header = "Date"
+                default:example = "Date: Tue, 15 Nov 1994 08:12:31 GMT"
+                default:description_locale = "%The date and time that the message was sent"
+                ;
+            row ETag
+                key = "ETag"
+                http:header = "ETag"
+                default:example = "ETag: '737060cd8c284d8af7ad3082f209582d'"
+                default:description_locale = "%An identifier for a specific version of a resource, often a Message Digest"
+                ;
+            row Expires
+                key = "Expires"
+                http:header = "Expires"
+                default:example = "Expires: Thu, 01 Dec 1994 16:00:00 GMT"
+                default:description_locale = "%Gives the date/time after which the response is considered stale"
+                ;
+            row Last-Modified
+                key = "Last-Modified"
+                http:header = "Last-Modified"
+                default:example = "Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT"
+                default:description_locale = "%The last modified date for the requested object, in RFC 2822 format"
+                ;
+            row Location
+                key = "Location"
+                http:header = "Location"
+                default:example = "Location: http://www.w3.org/pub/WWW/People.html"
+                default:description_locale = "%Used in redirection, or when a new resource has been created."
+                ;
+            row Pragma
+                key = "Pragma"
+                http:header = "Pragma"
+                default:example = "Pragma: no-cache"
+                default:description_locale = "%Implementation-specific headers that may have various effects anywhere along the request-response chain."
+                ;
+            row Proxy-Authenticate
+                key = "Proxy-Authenticate"
+                http:header = "Proxy-Authenticate"
+                default:example = "Proxy-Authenticate: Basic"
+                default:description_locale = "%Request authentication to access the proxy."
+                ;
+            row Refresh
+                key = "Refresh"
+                http:header = "Refresh"
+                default:example = "Refresh: 5; url=http://www.w3.org/pub/WWW/People.html"
+                default:description_locale = "%Used in redirection, or when a new resource has been created. This refresh redirects after 5 seconds. (This is a proprietary/non-standard header extension introduced by Netscape and supported by most web browsers.)"
+                ;
+            row Retry-After
+                key = "Retry-After"
+                http:header = "Retry-After"
+                default:example = "Retry-After: 120"
+                default:description_locale = "%If an entity is temporarily unavailable, this instructs the client to try again after a specified period of time."
+                ;
+            row Server
+                key = "Server"
+                http:header = "Server"
+                default:example = "Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)"
+                default:description_locale = "%A name for the server"
+                ;
+            row Set-Cookie
+                key = "Set-Cookie"
+                http:header = "Set-Cookie"
+                default:example = "Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1"
+                default:description_locale = "%an HTTP cookie"
+                ;
+            row Trailer
+                key = "Trailer"
+                http:header = "Trailer"
+                default:example = "Trailer: Max-Forwards"
+                default:description_locale = "%The Trailer general field value indicates that the given set of header fields is present in the trailer of a message encoded with chunked transfer-coding."
+                ;
+            row Transfer-Encoding
+                key = "Transfer-Encoding"
+                http:header = "Transfer-Encoding"
+                default:example = "Transfer-Encoding: chunked"
+                default:description_locale = "%The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+                ;
+            row Vary
+                key = "Vary"
+                http:header = "Vary"
+                default:example = "Vary: *"
+                default:description_locale = "%Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+                ;
+            row Via
+                key = "Via"
+                http:header = "Via"
+                default:example = "Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)"
+                default:description_locale = "%Informs the client of proxies through which the response was sent."
+                ;
+            row Warning
+                key = "Warning"
+                http:header = "Warning"
+                default:example = "Warning: 199 Miscellaneous warning"
+                default:description_locale = "%A general warning about possible problems with the entity body."
+                ;
+            row WWW-Authenticate
+                key = "WWW-Authenticate"
+                http:header = "WWW-Authenticate"
+                default:example = "WWW-Authenticate: Basic"
+                default:description_locale = "%Indicates the authentication scheme that should be used to access the requested entity."
+                ;
+        }
+    }
+#endif
+#define "CORE_HTTP_REPO"

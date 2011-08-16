@@ -1,0 +1,73 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.People.
+ *
+ * @package    Packages.Dist.People
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "DIST_PEOPLE_DATA"
+    data{
+        table people {key "fleck:joel"} {people:first "Joel J."} {people:middle ""} {people:last "Fleck II"} {people:affiliation_keys "1%hp:us"} {people:name "Joel J. Fleck II"}
+        table people {key "vandermeer:sven"} {people:first "Sven"} {people:middle ""} {people:last "van der Meer"} {people:affiliation_keys "1%tub:de,2%gmd:fokus:de,3%fhg:fokus:de,4%tssg:ie"} {people:name "Sven van der Meer"}
+        table people {key "jennings:brendan"} {people:first "Brendan"} {people:middle ""} {people:last "Jennings"} {people:affiliation_keys "1%tssg:ie,2%dcu:ie"} {people:name "Brendan Jennings"}
+        table people {key "strassner:john"} {people:first "John"} {people:middle ""} {people:last "Strassner"} {people:affiliation_keys "1%cisco:us,2%intelliden:us,3%motorola-labs:us,4%tssg:ie,5%postech:kr"} {people:name "John Strassner"}
+        table people {key "tanenbaum:andrew"} {people:first "Andrew S."} {people:middle ""} {people:last "Tanenbaum"} {people:affiliation_keys ""} {people:name "Andrew S. Tanenbaum"}
+        table people {key "raymond:kerry"} {people:first "Kerry"} {people:middle ""} {people:last "Raymond"} {people:affiliation_keys ""} {people:name "Kerry Raymond"}
+        table people {key "ritchie:dennis"} {people:first "Dennis M."} {people:middle ""} {people:last "Ritchie"} {people:affiliation_keys ""} {people:name "Dennis M. Ritchie"}
+        table people {key "parr:terence"} {people:first "Terence"} {people:middle ""} {people:last "Parr"} {people:affiliation_keys "1%usf:us"} {people:name "Terence Parr"}
+        table people {key "kernighan:brian"} {people:first "Brian W."} {people:middle ""} {people:last "Kernighan"} {people:affiliation_keys ""} {people:name "Brian W. Kernighan"}
+        table people {key "holland:ian"} {people:first "Ian"} {people:middle "M."} {people:last "Holland"} {people:affiliation_keys "1%northeastern:us"} {people:name "Ian M. Holland"}
+        table people {key "boyd:john"} {people:first "John"} {people:middle "R."} {people:last "Boyd"} {people:affiliation_keys ""} {people:name "John r. Boyd"}
+        table people {key "holzmann:gerard"} {people:first "Gerard"} {people:middle "J."} {people:last "Holzmann"} {people:affiliation_keys "1%duot:nl"} {people:name "Gerard J. Holzman"}
+        table people {key "scowen:rs"} {people:first "R.S."} {people:middle ""} {people:last "Scowen"} {people:affiliation_keys "1%npl:gb"} {people:name "R.S. Scowen"}
+        table people {key "bachmann:felix"} {people:first "Felix"} {people:middle ""} {people:last "Bachmann"} {people:affiliation_keys "1%cm-sei:us"} {people:name "Felix Bachmann"}
+        table people {key "bass:len"} {people:first "Len"} {people:middle ""} {people:last "Bass"} {people:affiliation_keys "1%cm-sei:us"} {people:name "Len Bass"}
+        table people {key "buhman:charles"} {people:first "Charles"} {people:middle ""} {people:last "Buhman"} {people:affiliation_keys "1%cm-sei:us"} {people:name "Charles Buhman"}
+        table people {key "comella-dorda:santiago"} {people:first "Santiago"} {people:middle ""} {people:last "Comella-Dorda"} {people:affiliation_keys "1%cm-sei:us"} {people:name "Santiago Comella-Dorda"}
+        table people {key "long:fred"} {people:first "Fred"} {people:middle ""} {people:last "Long"} {people:affiliation_keys "1%cm-sei:us"} {people:name "Fred Long"}
+        table people {key "robert:john"} {people:first "John"} {people:middle ""} {people:last "Robert"} {people:affiliation_keys "1%cm-sei:us"} {people:name "John Robert"}
+        table people {key "seacord:robert"} {people:first "Robert"} {people:middle ""} {people:last "Seacord"} {people:affiliation_keys "1%cm-sei:us"} {people:name "Robert Seacord"}
+        table people {key "wallnau:kurt"} {people:first "Kurt"} {people:middle ""} {people:last "Wallnau"} {people:affiliation_keys "1%cm-sei:us"} {people:name "Kurt Wallnau"}
+        table people {key "lamport:leslie"} {people:first "Leslie"} {people:middle ""} {people:last "Lamport"} {people:affiliation_keys ""} {people:name "Leslie Lamport"}
+        table people {key "gamma:erich"} {people:first "Erich"} {people:middle ""} {people:last "Gamma"} {people:affiliation_keys ""} {people:name "Erich Gamma"}
+        table people {key "helm:richard"} {people:first "Richard"} {people:middle ""} {people:last "Helm"} {people:affiliation_keys "1%ibm:tjw:us"} {people:name "Richard Helm"}
+        table people {key "johnson:ralph"} {people:first "Ralph"} {people:middle ""} {people:last "Johnson"} {people:affiliation_keys ""} {people:name "Ralph Johnson"}
+        table people {key "vlissides:john"} {people:first "John"} {people:middle ""} {people:last "Vlissides"} {people:affiliation_keys ""} {people:name "John Vlissides"}
+        table people {key "gangopadhyay:dipayan"} {people:first "Dipayan"} {people:middle ""} {people:last "Gangopadhyay"} {people:affiliation_keys "1%northeastern:us"} {people:name "Dipayan Gangopadhyay"}
+        table people {key "clark:dave"} {people:first "Dave"} {people:middle ""} {people:last "Clarke"} {people:affiliation_keys ""} {people:name "Dave Clarke"}
+        table people {key "saltzer:j"} {people:first "J."} {people:middle ""} {people:last "Saltzer"} {people:affiliation_keys ""} {people:name "J. Saltzer"}
+        table people {key "reed:d"} {people:first "D."} {people:middle ""} {people:last "Reed"} {people:affiliation_keys ""} {people:name "D. Reed"}
+    }
+#endif
+#define "DIST_PEOPLE_DATA"

@@ -1,0 +1,174 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Publications.
+ *
+ * @package    Packages.Dist.Publications
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "DIST_PUBLICATIONS_TABLES"
+    table conferences{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field default:acronym_key string;
+        field publications:iteration integer;
+        field default:organization_keys string;
+        field default:sponsor_keys string;
+        field default:city_key string;
+        field default:day integer size(3) precision(2);
+        field default:day_start integer size(3) precision(2);
+        field default:day_end integer size(3) precision(2);
+        field default:month_key string;
+        field default:month_start_key string;
+        field default:month_end_key string;
+        field default:year integer size(5) precision(4);
+        field publications:note string;
+        field default:institution_key string;
+        field default:publisher_key string;
+        field publications:publishedin_key string;
+        field default:url string;
+        field default:url_day integer size(3) precision(2);
+        field default:url_month_key string;
+        field default:url_year integer size(5) precision(4);
+        field publications:label string;
+        field publications:tags string;
+        field publications:keywords string;
+        field publications:part_of_key string;
+
+        sequence{key,default:acronym_key,publications:iteration,default:organization_keys,default:sponsor_keys,default:city_key,default:day,default:day_start,default:day_end,default:month_key,default:month_start_key,default:month_end_key,default:year,publications:note,default:institution_key,default:publisher_key,publications:publishedin_key,default:url,default:url_day,default:url_month_key,default:url_year,publications:label,publications:tags,publications:keywords,publications:part_of_key}
+    }
+
+    table events{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field default:name string;
+        field publications:iteration string;
+        field default:organization_keys string;
+        field default:sponsor_keys string;
+        field default:city_key string;
+        field default:day integer size(3);
+        field default:day_start integer size(3);
+        field default:day_end integer size(3);
+        field default:month_key string;
+        field default:month_start_key string;
+        field default:month_end_key string;
+        field default:year integer size(5) precision(4);
+        field publications:note string;
+        field default:institution_key string;
+        field default:publisher_key string;
+        field publications:publishedin_key string;
+        field default:url string;
+        field default:url_day integer size(3);
+        field default:url_month_key string;
+        field default:url_year integer size(5) precision(4);
+        field publications:label string;
+        field publications:tags string;
+        field publications:keywords string;
+        field publications:part_of_key string;
+
+        sequence{key,default:name,publications:iteration,default:organization_keys,default:sponsor_keys,default:city_key,default:day,default:day_start,default:day_end,default:month_key,default:month_start_key,default:month_end_key,default:year,publications:note,default:institution_key,default:publisher_key,publications:publishedin_key,default:url,default:url_day,default:url_month_key,default:url_year,publications:label,publications:tags,publications:keywords,publications:part_of_key}
+    }
+
+    table journals{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field default:acronym_key string;
+        field default:publisher_key string;
+        field default:url string;
+        field publications:issn_print string;
+        field publications:issn_online string;
+
+        sequence{key,default:acronym_key,default:publisher_key,default:url,publications:issn_print,publications:issn_online}
+    }
+
+    table publications{
+        field key string primkey(abort) notnull(abort) unique(abort);
+        field publications:entry_type_key string;
+        field publications:conference_key string;
+        field publications:journal_key string;
+        field publications:publishedin_key string;
+        field publications:event_key string;
+        field core:urn string;
+        field publications:tags string;
+        field publications:author_keys string;
+        field publications:chapter string;
+        field default:day integer size(3);
+        field default:day_start integer size(3);
+        field default:day_end integer size(3);
+        field publications:doi string;
+        field publications:edition string;
+        field publications:editor_keys string;
+        field publications:howpublished string;
+        field default:institution_keys string;
+        field publications:isbn string;
+        field publications:isbn_10 string;
+        field publications:isbn_13 string;
+        field publications:issue string;
+        field publications:issuesubtitle string;
+        field publications:issuetitle string;
+        field publications:key_bibtex string;
+        field publications:keywords string;
+        field publications:label string;
+        field language_key string;
+        field publications:location string;
+        field publications:mainsubtitle string;
+        field publications:maintitle string;
+        field publications:maintitleaddon string;
+        field default:month_key string;
+        field default:month_start_key string;
+        field default:month_end_key string;
+        field publications:note string;
+        field publications:number string;
+        field default:organization_keys string;
+        field publications:pages string;
+        field publications:pagetotal string;
+        field publications:part string;
+        field default:publisher_key string;
+        field publications:school string;
+        field publications:series string;
+        field publications:subtitle string;
+        field publications:title string;
+        field publications:titleaddon string;
+        field publications:type string;
+        field default:url string;
+        field default:url_day integer size(3);
+        field default:url_month_key string;
+        field default:url_year integer size(5) precision(4);
+        field publications:venue string;
+        field publications:version string;
+        field publications:volume string;
+        field publications:volumes string;
+        field default:year integer size(5) precision(4);
+        field publications:abstract string;
+
+        sequence{key,publications:entry_type_key,publications:conference_key,publications:journal_key,publications:publishedin_key,publications:event_key,core:urn,publications:tags,publications:author_keys,publications:chapter,default:day,default:day_start,default:day_end,publications:doi,publications:edition,publications:editor_keys,publications:howpublished,default:institution_keys,publications:isbn,publications:isbn_10,publications:isbn_13,publications:issue,publications:issuesubtitle,publications:issuetitle,publications:key_bibtex,publications:keywords,publications:label,language_key,publications:location,publications:mainsubtitle,publications:maintitle,publications:maintitleaddon,default:month_key,default:month_start_key,default:month_end_key,publications:note,publications:number,default:organization_keys,publications:pages,publications:pagetotal,publications:part,default:publisher_key,publications:school,publications:series,publications:subtitle,publications:title,publications:titleaddon,publications:type,default:url,default:url_day,default:url_month_key,default:url_year,publications:venue,publications:version,publications:volume,publications:volumes,default:year,publications:abstract}
+    }
+#endif
+#define "DIST_PUBLICATIONS_TABLES"

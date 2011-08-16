@@ -1,0 +1,230 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Core.Encoding.
+ *
+ * @package    Packages.Core.Encoding
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "CORE_ENCODING_REPO"
+    repository skb.core{
+        table pkg_fields{
+            row core:encoding:text
+                key = "core:encoding:text"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:text"
+                core:http_req_name = "en_text"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:html
+                key = "core:encoding:html"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:html"
+                core:http_req_name = "en_html"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:ascii7
+                key = "core:encoding:ascii7"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:ascii7"
+                core:http_req_name = "en_ascii7"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:natsort
+                key = "core:encoding:natsort"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:ascii8"
+                core:http_req_name = "en_ascii8"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:utf8
+                key = "core:encoding:utf8"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:utf8"
+                core:http_req_name = "en_utf8"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:utf16
+                key = "core:encoding:utf16"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:utf16"
+                core:http_req_name = "en_utf16"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:latex
+                key = "core:encoding:latex"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:latex"
+                core:http_req_name = "en_latex"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:asciidoc
+                key = "core:encoding:asciidoc"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:asciidoc"
+                core:http_req_name = "en_asciidoc"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:latex:skb
+                key = "core:encoding:latex:skb"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:latex:skb"
+                core:http_req_name = "en_latex_skb"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+            row core:encoding:unicode:range
+                key = "core:encoding:unicode:range"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:encoding:unicode:range"
+                core:http_req_name = "en_unicode_range"
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+        }
+
+        table pkg_rabit{
+            row Core.Encoding.DB2Entries
+                key = "Core.Encoding.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_core__encoding___encoding___reader"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+encoding"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row Core.Encoding.Entries2Entries
+                key = "Core.Encoding.Entries2Entries"
+                core:rabit:type = "builder"
+                core:rabit:target:class = "php%pkg_core__encoding___encoding___builder,java%org.skb.targets.java.core.def.EncodingBuilder"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+encoding"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+        }
+    }
+#endif
+#define "CORE_ENCODING_REPO"

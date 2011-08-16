@@ -1,0 +1,313 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Core.
+ *
+ * @package    Packages.Core
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "CORE_REPO"
+    repository skb.core{
+        table pkg_fields{
+            row core:urn
+                key = "core:urn"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:urn"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "The URN of a resource, usually a file. Should not contain file extensions (use a request for that). Can link to one of the SKB cofiguration paths by simple prefixing the URN with it. Core comes with a URN interpreter, which provides more documentation on this field."
+                ;
+            row core:requests:table
+                key = "core:requests:table"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:requests:table"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "This field can be used to specify the table a reader has to use for database requests."
+                ;
+            row core:requests:table_collections
+                key = "core:requests:table_collections"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:requests:table_collections"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "This field can be used to specify the table a reader has to use to look for collections."
+                ;
+            row core:requests:fields
+                key = "core:requests:fields"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:requests:fields"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "Every request can maintain a set of specific fields, which are accessed with this field."
+                ;
+            row core:requests:prefix
+                key = "core:requests:prefix"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:requests:prefix"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "The prefix a request should use to look for HTTP GET or POST variables of its fields for initialisation. This serves the purpose of separating requests from each other in the same HTTP request."
+                ;
+            row core:requests:formselect_fields
+                key = "core:requests:formselect_fields"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:requests:formselect_fields"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "This list specifies fields a reader should consider when collecting lists for select forms."
+                ;
+            row core:rabit:mime_in
+                key = "core:rabit:mime_in"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:rabit:mime_in"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "Every RABIT table define MIME types for readers/builders and templates. This is the accepted input MIME content type."
+                ;
+            row core:rabit:mime_out
+                key = "core:rabit:mime_out"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:rabit:mime_out"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "Every RABIT table define MIME types for readers/builders and templates. This is the accepted output MIME content type."
+                ;
+            row core:rabit:requests
+                key = "core:rabit:requests"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:rabit:requests"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "In a RABIT table, this field specifies the request(s) a reader/builder can handle."
+                ;
+            row core:rabit:type
+                key = "core:rabit:type"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:rabit:type"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "In a RABIT table this field defines the type of the entry being: reader, application, builder, interpreter, or template."
+                ;
+            row core:rabit:target:class
+                key = "core:rabit:target:class"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:rabit:class"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "1"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "For application/reader/builder this field specifies the name of the PHP class implementing it."
+                ;
+            row core:rabit:css
+                key = "core:rabit:css"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:rabit:css"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "0"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "In a RABIT table, this field specifies the CSS definitions that a builder/template requires. Defining them here allows to load them in the HTML header if the builder/template is loaded before any other HTML output."
+                ;
+            row core:rabit:target:template
+                key = "core:rabit:target:template"
+                core:type = "value"
+                core:use = "core"
+                core:entries_name = "core:rabit:target:template"
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = "1"
+                core:interpreter = ""
+                core:val_unset = "null"
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = "For a template this field specifies the name of the template file to use."
+                ;
+        }
+
+        table pkg_rabit{
+            row Core.Interpreter.URN
+                key = "Core.Interpreter.URN"
+                core:rabit:type = "interpreter:core"
+                core:rabit:target:class = "php%pkg_core___urn___interpreter"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = ""
+                core:rabit:mime_out = ""
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+        }
+
+        table pkg_http_headers_response{
+            row X-SKB-Accept
+                key = "X-SKB-Accept"
+                http:header = "X-SKB-Accept"
+                default:example = "X-SKB-Accept: application/x-skb-enties, application/xhtml+xml"
+                default:description_locale = "%Send a list of accepted Content-types back in combination with a 415 message (Unsupported Media Type)"
+                ;
+            row X-SKB
+                key = "X-SKB"
+                http:header = "X-SKB"
+                default:example = "X-SKB: v1.0"
+                default:description_locale = "%SKB Version"
+                ;
+        }
+
+        table pkg_mime_content_types{
+            row x-skb/entries
+                key = "x-skb/entries"
+                mime:media:type = "x-skb/entries"
+                mime:type = "x-skb"
+                mime:sub:type = "entries"
+                mime:file:extensions = "entries.skb"
+                mime:source:url = ""
+                default:description_locale = "%Result of a reader::prepare call"
+                ;
+            row text/x-latex+table
+                key = "text/x-latex+table"
+                mime:media:type = "text/x-latex+table"
+                mime:type = "text"
+                mime:sub:type = "x-latex+table"
+                mime:file:extensions = "tex"
+                mime:source:url = ""
+                default:description_locale = ""
+                ;
+            row application/x-latex+table
+                key = "application/x-latex+table"
+                mime:media:type = "application/x-latex+table"
+                mime:type = "application"
+                mime:sub:type = "x-latex+table"
+                mime:file:extensions = "tex"
+                mime:source:url = ""
+                default:description_locale = ""
+                ;
+        }
+
+    }
+#endif
+#define "CORE_REPO"

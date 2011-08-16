@@ -1,0 +1,86 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Database and Repository specification for SKB Package Dist.Affiliations.
+ *
+ * @package    Packages.Dist.Affiliations
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ */
+
+#ifndef "DIST_AFFILIATIONS_DATA"
+    data{
+        table affiliations {key "cisco:us"} {default:name_locale "%Cisco"} {affiliations:short "Cisco"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "company"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "hp:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "company:HP"} {affiliations:address "Bridgewater, NJ"} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "company"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "intelliden:us"} {default:name_locale "%Intelliden Coorporation"} {affiliations:short "Intelliden"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key "colorado_springs:co:us"} {affiliations:type_key "company"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "motorola-labs:us"} {default:name_locale "%Motorola Labs"} {affiliations:short "Motorola"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key "schaumburg:il:us"} {affiliations:type_key "company"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "acm:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:ACM"} {affiliations:address ""} {default:country_key "us"} {default:city_key "new_york:ny:us"} {affiliations:type_key "organisation"} {default:url "http://www.acm.org"} {affiliations:im_locale ""}
+        table affiliations {key "fhg:fokus:de"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:FhG:FOKUS"} {affiliations:address ""} {default:country_key "de"} {default:city_key "berlin:de"} {affiliations:type_key "organisation"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "gmd:fokus:de"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:GMD:FOKUS"} {affiliations:address ""} {default:country_key "de"} {default:city_key "berlin:de"} {affiliations:type_key "organisation"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "ieee:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:IEEE"} {affiliations:address ""} {default:country_key "us"} {default:city_key "new_york:ny:us"} {affiliations:type_key "organisation"} {default:url "http://www.ieee.org"} {affiliations:im_locale ""}
+        table affiliations {key "tssg:ie"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:TSSG"} {affiliations:address ""} {default:country_key "ie"} {default:city_key "waterford:ie"} {affiliations:type_key "organisation"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "tub:de"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "university:TUB"} {affiliations:address ""} {default:country_key "de"} {default:city_key "berlin:de"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "wit:ie"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "university:WIT"} {affiliations:address ""} {default:country_key "ie"} {default:city_key "waterford:ie"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "usf:us"} {default:name_locale "%University of San Francisco"} {affiliations:short "USF"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key "san_francisco:ca:us"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "postech:kr"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "university:POSTECH"} {affiliations:address ""} {default:country_key "kr"} {default:city_key "pohang:kr"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "northeastern:us"} {default:name_locale "%Northeastern University"} {affiliations:short "NE"} {default:acronym_key ""} {affiliations:address "360 Huntington Ave., Boston, MA, 02115"} {default:country_key "us"} {default:city_key "boston:ma:us"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "duot:nl"} {default:name_locale "%Delft University of Technology"} {affiliations:short ""} {default:acronym_key ""} {affiliations:address ""} {default:country_key "nl"} {default:city_key "delft:nl"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "npl:gb"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "university:NPL"} {affiliations:address "Teddington, Middlesex"} {default:country_key "gb"} {default:city_key ""} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "tub-oks:de"} {default:name_locale "pkg.dist.affiliations%%Technical University Berlin, Computer Science, Department for Open Communication Systems"} {affiliations:short "TUB/OKS"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "de"} {default:city_key "berlin:de"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "cm-sei:us"} {default:name_locale "%Carnegie Mellon, Software Engineering Institute"} {affiliations:short ""} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key "pittsburgh:pa:us"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "dcu:ie"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "university:DCU"} {affiliations:address ""} {default:country_key "ie"} {default:city_key "dublin:ie"} {affiliations:type_key "university"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "ieee:cs:us"} {default:name_locale "%IEEE Computer Society"} {affiliations:short ""} {default:acronym_key "organisation:IEEE:CS"} {affiliations:address "USA"} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "publisher"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "ieee:cs-press:us"} {default:name_locale "%IEEE Computer Society Press"} {affiliations:short ""} {default:acronym_key ""} {affiliations:address "USA"} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "publisher"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "prentice:sw:us"} {default:name_locale "%Prentice Hall Software"} {affiliations:short ""} {default:acronym_key ""} {affiliations:address "Englewood Cliffs, N.J."} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "publisher"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "prentice:us"} {default:name_locale "%Prentice Hall"} {affiliations:short ""} {default:acronym_key ""} {affiliations:address "Englewood Cliffs, N.J."} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "publisher"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "pragmatic:us"} {default:name_locale "%The Pragmatic Bookshelf"} {affiliations:short ""} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "publisher"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "aw"} {default:name_locale "%Addison Wesley"} {affiliations:short ""} {default:acronym_key ""} {affiliations:address ""} {default:country_key ""} {default:city_key ""} {affiliations:type_key "publisher"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "ibm:tjw:us"} {default:name_locale "%IBM, T. J. Watson Research Center"} {affiliations:short "IBM"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "company"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "tmf:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:TM-Forum"} {affiliations:address ""} {default:country_key "us"} {default:city_key "morristown:nj:us"} {affiliations:type_key "organisation"} {default:url "http://www.tmforum.org"} {affiliations:im_locale ""}
+        table affiliations {key "sun:us"} {default:name_locale "%Sun Microsystems, Inc."} {affiliations:short "Sun"} {default:acronym_key ""} {affiliations:address "4150 Network Circle, Santa Clara, CA 95054"} {default:country_key "us"} {default:city_key "santa_clara:ca:us"} {affiliations:type_key "company"} {default:url "http://www.sun.com"} {affiliations:im_locale ""}
+        table affiliations {key "zifa:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "company:ZIFA"} {affiliations:address ""} {default:country_key "us"} {default:city_key "pinckney:mi:us"} {affiliations:type_key "company"} {default:url "http://www.zifa.com"} {affiliations:im_locale ""}
+        table affiliations {key "wildpackets:us"} {default:name_locale "%WildPackets Inc."} {affiliations:short "WildPackets"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key "walnut_creek:ca:us"} {affiliations:type_key "company"} {default:url "http://www.wildpackets.com"} {affiliations:im_locale ""}
+        table affiliations {key "iso:ch"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:ISO"} {affiliations:address ""} {default:country_key "ch"} {default:city_key "geneva:ch"} {affiliations:type_key "organisation"} {default:url "www.iso.org"} {affiliations:im_locale ""}
+        table affiliations {key "tina-c:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:TINA-C"} {affiliations:address ""} {default:country_key "us"} {default:city_key "new_jersey:nj:us"} {affiliations:type_key "organisation"} {default:url "http://www.tinac.com"} {affiliations:im_locale ""}
+        table affiliations {key "open_group:us"} {default:name_locale "%Open Group"} {affiliations:short "Open Group"} {default:acronym_key ""} {affiliations:address ""} {default:country_key "us"} {default:city_key "san_francisco:ca:us"} {affiliations:type_key "organisation"} {default:url "http://www.opengroup.org"} {affiliations:im_locale ""}
+        table affiliations {key "omg:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:OMG"} {affiliations:address ""} {default:country_key "us"} {default:city_key "needham:ma:us"} {affiliations:type_key "organisation"} {default:url "http://www.omg.org"} {affiliations:im_locale ""}
+        table affiliations {key "itu:ch"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:ITU"} {affiliations:address ""} {default:country_key "ch"} {default:city_key "geneva:ch"} {affiliations:type_key "organisation"} {default:url "www.itu.int"} {affiliations:im_locale ""}
+        table affiliations {key "ietf:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:IETF"} {affiliations:address ""} {default:country_key "us"} {default:city_key "fremont:ca:us"} {affiliations:type_key "organisation"} {default:url "http://www.ietf.org"} {affiliations:im_locale ""}
+        table affiliations {key "imf:us"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:IMF"} {affiliations:address ""} {default:country_key "us"} {default:city_key ""} {affiliations:type_key "organisation"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations {key "uic:fr"} {default:name_locale ""} {affiliations:short ""} {default:acronym_key "organisation:UIC"} {affiliations:address ""} {default:country_key "fr"} {default:city_key ""} {affiliations:type_key "organisation"} {default:url ""} {affiliations:im_locale ""}
+        table affiliations_type {key "company"} {default:name_locale "pkg.dist.affiliations%%company"}
+        table affiliations_type {key "university"} {default:name_locale "pkg.dist.affiliations%%university"}
+        table affiliations_type {key "organisation"} {default:name_locale "pkg.dist.affiliations%%organisation"}
+        table affiliations_type {key "museum"} {default:name_locale "pkg.dist.affiliations%%museum"}
+        table affiliations_type {key "publisher"} {default:name_locale "pkg.dist.affiliations%%publisher"}
+    }
+#endif
+#define "DIST_AFFILIATIONS_DATA"
