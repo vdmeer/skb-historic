@@ -57,7 +57,7 @@ public class DalPass1_Ebnf {
 		this.cr.setKey("rule");
 		this.cr.loadRules();		
 
-		this.atoms=AtomList.getInstance();
+		this.atoms=AtomList.getInstanceInit();
 		this.atoms.setScopeSeparator(TribeProperties.getInstance().getValueDefault("internal-scope-sep").toString());
 	}
 

@@ -51,7 +51,7 @@ public class Dal{
 		logger.trace("main -- in");
 		logger.trace("initialise tribe and properties");
 
-		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
+		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
 		cfg.read("/org/skb/lang/dal/dal.json");
 
 		Tribe tribe=new Tribe();
