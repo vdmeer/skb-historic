@@ -56,8 +56,18 @@ public class LanguageProperties {
 		return LanguagePropertiesHolder.INSTANCE;
 	}
 
+	public static LanguageProperties getInstanceInit(){
+//		logger.trace("returning instance");
+		LanguagePropertiesHolder.INSTANCE._init();
+		return LanguagePropertiesHolder.INSTANCE;
+	}
+
 	public LanguageProperties(){
 //		logger.trace("creating properties");
+		this._init();
+	}
+
+	private void _init(){
 		this.opm=new TSPropertyMap();
 	}
 

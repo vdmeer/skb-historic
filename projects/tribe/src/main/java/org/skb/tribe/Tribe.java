@@ -73,8 +73,8 @@ public class Tribe {
 	 */
 	public Tribe(){
 		logger.trace("init -- in");
-		this.prop=TribeProperties.getInstance();
-		this.repMgr=ReportManager.getInstance();
+		this.prop=TribeProperties.getInstanceInit();
+		this.repMgr=ReportManager.getInstanceInit();
 		this.cli=new CliApache();
 		logger.trace("init -- out");
 	}
@@ -279,10 +279,10 @@ public class Tribe {
         	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==false){
         		logger.trace("use build-in cpp");
         		File temp=File.createTempFile("_tribe", "cpp");
-        	    temp.deleteOnExit();
+        		temp.deleteOnExit();
 				PrintWriter pw=new PrintWriter(new FileWriter(temp));
 				CPP prep=new CPP();
-				prep.parse(prop.getValue(TribeProperties.tpmKeySrcFile).toString(), pw);
+				prep.parse_initial(prop.getValue(TribeProperties.tpmKeySrcFile).toString(), pw);
 				logger.trace("finished cpp, create input stream");
 				tribeIS=new FileInputStream(temp);
 			}

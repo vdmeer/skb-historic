@@ -52,7 +52,7 @@ import org.skb.util.types.api.TSTableRowAPI;
 public class ColaPass1_Ebnf {
 	static Logger logger = Logger.getLogger(ColaPass1_Ebnf.class);
 
-	public AtomList atoms=AtomList.getInstance();
+	public AtomList atoms;
 
 	private LanguageRuleMap cr;
 
@@ -89,6 +89,7 @@ public class ColaPass1_Ebnf {
 		this.cr.loadRules();		
 
 		//initialise the AtomList with spec
+		this.atoms=AtomList.getInstanceInit();
 		this.atoms.addRow(ColaConstants.Tokens.colaSPECIFICATION);
 		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValCategory, ColaConstants.Tokens.colaVOID);
 		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValType, ColaConstants.Tokens.colaVOID);

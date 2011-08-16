@@ -48,7 +48,7 @@ import org.skb.util.misc.ReportManager;
 public class PolaPass1_Ebnf {
 	static Logger logger = Logger.getLogger(PolaPass1_Ebnf.class);
 
-	public AtomList atoms=AtomList.getInstance();
+	public AtomList atoms;
 //	private ScopedName sn=ScopedName.getInstance();
 
 //	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();
@@ -75,6 +75,7 @@ public class PolaPass1_Ebnf {
 		this.contractDeclScope=new LinkedHashMap<String,String>();
 
 		//initialise the AtomList with spec
+		this.atoms=AtomList.getInstanceInit();
 		this.atoms.addRow(PolaConstants.Tokens.polaSPECIFICATION);
 		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValCategory, PolaConstants.Tokens.polaVOID);
 		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValType, PolaConstants.Tokens.polaVOID);

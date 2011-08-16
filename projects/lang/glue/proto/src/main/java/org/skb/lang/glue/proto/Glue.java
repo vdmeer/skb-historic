@@ -48,7 +48,7 @@ public class Glue {
 		System.setProperty("log4j.configuration", "org/skb/lang/glue/proto/log4/log4j.xml");
 		logger=Logger.getLogger(Glue.class);
 
-		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
+		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
 		cfg.read("/org/skb/lang/glue/proto/proto.json");
 
 		Tribe tribe=new Tribe();

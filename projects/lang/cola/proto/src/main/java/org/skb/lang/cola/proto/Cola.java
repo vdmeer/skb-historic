@@ -51,7 +51,7 @@ public class Cola{
 		logger.trace("main -- in");
 		logger.trace("initialise tribe and properties");
 
-		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
+		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
 		cfg.read("/org/skb/lang/cola/proto/proto.json");
 //		cfg.read(new String[] {"/org/skb/lang/cola/proto/proto.json",
 //   	                           "/org/skb/lang/cola/proto/lang-rules.json",

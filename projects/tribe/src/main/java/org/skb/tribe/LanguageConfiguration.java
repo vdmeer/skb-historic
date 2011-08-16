@@ -58,7 +58,20 @@ public class LanguageConfiguration {
 		return LanguageConfigurationHolder.INSTANCE;
 	}
 
+	/**
+	 * Singleton getInstance with default initialisation
+	 * @return pointer to the LanguageConfiguration instance
+	 */
+	public static LanguageConfiguration getInstanceInit(){
+		LanguageConfigurationHolder.INSTANCE._init();
+		return LanguageConfigurationHolder.INSTANCE;
+	}
+
 	private LanguageConfiguration(){
+		this._init();
+	}
+
+	private void _init(){
 		this.configuration=new TSMapLH();
 	}
 

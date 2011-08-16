@@ -132,6 +132,15 @@ public class AtomList extends TSTable {
 		return AtomListHolder.INSTANCE;
 	}
 
+	/**
+	 * Return a pointer to the instance of the atom list (singleton) and perform a re-initialisation
+	 * @return the pointer to the instance
+	 */
+	public static AtomList getInstanceInit(){
+		AtomListHolder.INSTANCE._init();
+		return AtomListHolder.INSTANCE;
+	}
+
 	public AtomList(){
 		super();
 		this._init();

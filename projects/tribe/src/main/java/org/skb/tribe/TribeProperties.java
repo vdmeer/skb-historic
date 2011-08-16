@@ -238,8 +238,21 @@ public class TribeProperties extends TSPropertyMap {
 		return TribePropertiesHolder.INSTANCE;
 	}
 
+	/**
+	 * Singleton getInstance with default initialisation
+	 * @return pointer to the TribeProperty instance
+	 */
+	public static TribeProperties getInstanceInit(){
+		TribePropertiesHolder.INSTANCE._trInit();
+		return TribePropertiesHolder.INSTANCE;
+	}
+
 	private TribeProperties(){
 		super();
+		this._trInit();
+	}
+
+	private void _trInit(){
 		logger.trace("init -- in");
 
 		this.addRows(TribeProperties.class.getName(), "tpmKey");

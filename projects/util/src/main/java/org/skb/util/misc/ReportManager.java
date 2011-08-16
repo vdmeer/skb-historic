@@ -55,6 +55,10 @@ public class ReportManager extends STGManager{
 
 	private ReportManager() {
 		super();
+		this._init();
+	}
+
+	private void _init(){
 		this.chunksMandatory=new TSMapLH();
 		this.chunksOptional=new TSMapLH();
 
@@ -67,7 +71,7 @@ public class ReportManager extends STGManager{
 		this.noErrors=false;
 		this.noWarnings=false;
 
-		this.useLexerAngelB=true;
+		this.useLexerAngelB=true;		
 	}
 
 	private static class ReportManagerHolder{
@@ -75,6 +79,11 @@ public class ReportManager extends STGManager{
 	}
 
 	public static ReportManager getInstance(){
+		return ReportManagerHolder.INSTANCE;
+	}
+
+	public static ReportManager getInstanceInit(){
+		ReportManagerHolder.INSTANCE._init();
 		return ReportManagerHolder.INSTANCE;
 	}
 
