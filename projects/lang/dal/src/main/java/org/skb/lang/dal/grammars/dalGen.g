@@ -129,7 +129,7 @@ dalSequence                  : ^(DAL_SEQUENCE IDENT
                                -> dalSequence(ids={$id});
 
 
-dalPackage                   : ^(DAL_PACKAGE id=IDENT
+dalPackage                   : ^(DAL_PACKAGE id=IDENT cpp_directive*
                                  {this.curRepo=$id.text;}
                                  {this.pass.atoms.scope.push($id.token);}
                                  dalActionsEmpty? dalActionsRemove?

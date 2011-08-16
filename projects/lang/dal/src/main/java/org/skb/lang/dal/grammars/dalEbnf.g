@@ -179,11 +179,12 @@ dalSequence                   : s=internalSeqID
                                  -> ^(DAL_SEQUENCE internalSeqID IDENT*);
 
 
-dalPackage                    : DAL_PACKAGE id=IDENT
+dalPackage                    : DAL_PACKAGE id=IDENT 
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalPACKAGE);}
-                                '{' dalActionsEmpty? dalActionsRemove? dalPackageRepository dalTable* dalActions* dalData* '}'
+                                '{' dalActionsEmpty? dalActionsRemove? cpp_directive* dalPackageRepository (cpp_directive|dalTable|dalActions|dalData)* '}'
                                 {this.pass.atoms.scope.pop();}
-                                -> ^(DAL_PACKAGE IDENT dalActionsEmpty? dalActionsRemove? dalPackageRepository dalTable* dalActions* dalData*);
+                                cpp_directive*
+                                -> ^(DAL_PACKAGE IDENT cpp_directive* dalActionsEmpty? dalActionsRemove? dalPackageRepository dalTable* dalActions* dalData*);
 
 dalPackageRepository          : DAL_REPOSITORY id=IDENT
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalREPOSITORY);}
