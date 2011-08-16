@@ -55,32 +55,7 @@
 		</sequential>
 	</macrodef>
 
-	<target name="dal2sql.init" depends="ivy.init">
-		<echo message="Removing generated SQL files"/>
-		<delete verbose="true">
-			<fileset dir="${target.dir}" includes="**/base/*.sql" />
-		</delete>
-		<echo message="Resolving Dal2SqlTask"/>
-                <ivy:cachepath resolveId="skb.ant.dal.path" pathid="skb.ant.dal.path"
-			organisation="skb" module="skb.ant.dal" revision="${skb.ant.dal}"
-			conf="runtime" type="jar" inline="true" log="download-only" />
-		<taskdef name="skb-dal2sql"
-			classname="org.skb.ant.dal.Dal2SqlTask"
-			classpathref="skb.ant.dal.path"/>
-	</target>
-
-  <target name="dal2sql" description="Generates SQL from DAL source"/>
-
-	<macrodef name="generate-dal2sql">
-		<attribute name="dest.dir"/>
-		<element name="dal-files" implicit="yes"/>
-		<sequential>
-		  <mkdir dir="@{dest.dir}"/>
-			<skb-dal2sql destdir="@{dest.dir}">
-			  <dal-files/>
-			</skb-dal2sql>
-		</sequential>
-	</macrodef>
+  <import file="./common-ant-dal.xml"/> 	
 
 	<target name="prepare" description="Prepares an SKB project for building"/>
 
