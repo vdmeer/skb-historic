@@ -59,7 +59,13 @@ import org.skb.lang.cpp.grammars.CPPParser;
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
 public class CPP {
-    public void parse(String fin, PrintWriter fout) {
+	public void parse_initial(String fin, PrintWriter fout) {
+		DefinedTerms definitions=DefinedTerms.getInstance();
+		definitions.defs.clear();
+		this.parse(fin, fout);
+	}
+
+	public void parse(String fin, PrintWriter fout) {
     	try {
     		int curLine=1;
     		CPPLexer lexer=new CPPLexer();
@@ -84,60 +90,64 @@ public class CPP {
     	    		parser=new CPPParser(tokens);
     	    		CPPParser.start_return result=parser.start();
     	    		Tree t=(Tree)result.getTree();
-    	    		String _switch=t.getText();
-    	    		if(_switch.equalsIgnoreCase("include")){
-    	    			if(ignoreUntilEndif==true)
-    	    				continue;
-    	    			if(t.getChildCount()==0){
-    	    				System.err.println("cpp: include without an include file");
-    	    			}
-    	    			else{
-    	    				String fn=fin.substring(0,fin.lastIndexOf("/")+1)+t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1);
-    	    				fout.flush();
-    	    				CPP _cpp=new CPP();
-    	    				_cpp.parse(fn, fout);
-    	    				fout.println("#file \""+fin+":"+curLine+"\"");
-    	    			}
-    	    		}
-    	    		else if(_switch.equalsIgnoreCase("define")){
-    	    			if(ignoreUntilEndif==true)
-    	    				continue;
-    	    			if(t.getChildCount()==0)
-    	    				System.err.println("cpp: #define without definition");
-    	    			else
-    	    				definitions.defs.add(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1));
-    	    		}
-    	    		else if(_switch.equalsIgnoreCase("undef")){
-    	    			if(ignoreUntilEndif==true)
-    	    				continue;
-    	    			if(t.getChildCount()==0)
-    	    				System.err.println("cpp: #undef without definition");
-    	    			else
-    	    				definitions.defs.remove(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1));
-    	    		}
-    	    		else if(_switch.equalsIgnoreCase("ifdef")){
-    	    			if(ignoreUntilEndif==true)
-    	    				continue;
-    	    			if(t.getChildCount()==0)
-    	    				System.err.println("cpp: #ifdef without a term");
-    	    			else{
-    	    				if(!definitions.defs.contains(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1)))
-    	    					ignoreUntilEndif=true;
-    	    			}
-    	    		}
-    	    		else if(_switch.equalsIgnoreCase("ifndef")){
-    	    			if(ignoreUntilEndif==true)
-    	    				continue;
-    	    			if(t.getChildCount()==0)
-    	    				System.err.println("cpp: #ifndef without a term");
-    	    			else{
-    	    				if(definitions.defs.contains(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1)))
-	    						ignoreUntilEndif=true;
-    	    			}
-    	    		}
-    	    		else if(_switch.equalsIgnoreCase("endif")){
-    	    			ignoreUntilEndif=false;
-    	    			continue;
+    	    		if(t.getText()=="CPP_RULE"&&t.getChildCount()>0){
+    	    			t=t.getChild(0);
+    	    			String _switch=t.getText();
+
+    	    			if(_switch.equalsIgnoreCase("include")){
+        	    			if(ignoreUntilEndif==true)
+        	    				continue;
+        	    			if(t.getChildCount()==0){
+        	    				System.err.println("cpp: include without an include file");
+        	    			}
+        	    			else{
+        	    				String fn=fin.substring(0,fin.lastIndexOf("/")+1)+t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1);
+        	    				fout.flush();
+        	    				CPP _cpp=new CPP();
+        	    				_cpp.parse(fn, fout);
+        	    				fout.println("#file \""+fin+":"+curLine+"\"");
+        	    			}
+        	    		}
+        	    		else if(_switch.equalsIgnoreCase("define")){
+        	    			if(ignoreUntilEndif==true)
+        	    				continue;
+        	    			if(t.getChildCount()==0)
+        	    				System.err.println("cpp: #define without definition");
+        	    			else
+        	    				definitions.defs.add(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1));
+        	    		}
+        	    		else if(_switch.equalsIgnoreCase("undef")){
+        	    			if(ignoreUntilEndif==true)
+        	    				continue;
+        	    			if(t.getChildCount()==0)
+        	    				System.err.println("cpp: #undef without definition");
+        	    			else
+        	    				definitions.defs.remove(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1));
+        	    		}
+        	    		else if(_switch.equalsIgnoreCase("ifdef")){
+        	    			if(ignoreUntilEndif==true)
+        	    				continue;
+        	    			if(t.getChildCount()==0)
+        	    				System.err.println("cpp: #ifdef without a term");
+        	    			else{
+        	    				if(!definitions.defs.contains(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1)))
+        	    					ignoreUntilEndif=true;
+        	    			}
+        	    		}
+        	    		else if(_switch.equalsIgnoreCase("ifndef")){
+        	    			if(ignoreUntilEndif==true)
+        	    				continue;
+        	    			if(t.getChildCount()==0)
+        	    				System.err.println("cpp: #ifndef without a term");
+        	    			else{
+        	    				if(definitions.defs.contains(t.getChild(0).toString().substring(1,t.getChild(0).toString().length()-1)))
+    	    						ignoreUntilEndif=true;
+        	    			}
+        	    		}
+        	    		else if(_switch.equalsIgnoreCase("endif")){
+        	    			ignoreUntilEndif=false;
+        	    			continue;
+        	    		}
     	    		}
     	    	}
     	    	else{

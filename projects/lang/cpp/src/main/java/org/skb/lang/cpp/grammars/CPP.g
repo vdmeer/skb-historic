@@ -60,7 +60,7 @@ options
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){this.error=true;}
 }
 
-start      : '#' WS WS* (rule ->^(rule) | empty_rule ->^(empty_rule)) (('\r'? '\n') | EOF)!; 
+start      : '#' WS WS* (rule | empty_rule) (('\r'? '\n') | EOF)! -> ^(CPP_RULE rule? empty_rule?); 
 rule       : (c=CPP_INCLUDE | c=CPP_DEFINE | c=CPP_UNDEF | c=CPP_IFDEF | c=CPP_IFNDEF | c=CPP_ELSIF) WS STRING -> ^($c STRING);
 empty_rule : CPP_ELSE | CPP_ENDIF;
 CPP_INCLUDE: 'include';
@@ -71,6 +71,8 @@ CPP_IFNDEF : 'ifndef';
 CPP_ELSE   : 'else';
 CPP_ELSIF  : 'elsif';
 CPP_ENDIF  : 'endif';
+
+CPP_RULE   : 'rule';
 
 WS         : (' '|'\t') {$channel=HIDDEN;};
 STRING     : '"' ( options {greedy=false;}: ~('"') )* '"';
