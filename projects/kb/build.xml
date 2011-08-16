@@ -14,10 +14,10 @@
 	<target name="dal2sql" depends="dal2sql.init">
 		<property name="dest.dir" value="${target.dir}/base/sql"/>
 		<generate-dal2sql dest.dir="${dest.dir}">
-		  <fileset dir="${basedir}/src/main/base/core" includes="**/*.dal"/>
-		  <fileset dir="${basedir}/src/main/base/dist" includes="**/*.dal"/>
-		  <fileset dir="${basedir}/src/main/base/demo" includes="**/*.dal"/>
-		  <fileset dir="${basedir}/src/main/base/site-configurations" includes="**/*.dal"/>
+		  <fileset dir="${basedir}/src/main/base/pkg.core" includes="**/*.dal" excludes="**/specs/*.dal" />
+		  <fileset dir="${basedir}/src/main/base/pkg.dist" includes="**/*.dal" excludes="**/specs/*.dal" />
+		  <fileset dir="${basedir}/src/main/base/pkg.demo" includes="**/*.dal" excludes="**/specs/*.dal" />
+		  <fileset dir="${basedir}/src/main/base/cfg" includes="**/*.dal"/>
 		</generate-dal2sql>
 	</target>
 

@@ -116,7 +116,7 @@ public class STGManager {
 			return false;
 		}
 
-		if(this.stgFileName==null){
+		if(this.stgUrlName!=null){
 			try{
 				InputStream in=getClass().getResourceAsStream(this.stgUrlName.toString());
 				InputStreamReader isr=new InputStreamReader(in);
@@ -127,7 +127,6 @@ public class STGManager {
 				this.stgFileName=this.stgUrlName;
 			} catch (Exception e) {
 				System.err.println(this.applicationName+": can't read internal string template <"+this.stgUrlName+">"+purpose);
-				//System.exit(10);
 				return false;
 			}
 		}
@@ -139,7 +138,6 @@ public class STGManager {
 					this.stg=new StringTemplateGroup(new FileReader(this.stgFileName.toString()), DefaultTemplateLexer.class);
 			} catch (Exception e1) {
 				System.err.println(this.applicationName+": can't find external string template <" + this.stgFileName + ">"+purpose);
-				//System.exit(10);
 				return false;
 /*
 				try{
@@ -183,38 +181,46 @@ public class STGManager {
 
 	public void setSTGFileName(String fn){
 		this.stgFileName=new TSString(fn);
+//		System.err.println("STGMan, got FILE ("+fn.toString()+") of type (String)");
 	}
 
 	public void setSTGFileName(TSString fn){
 		this.stgFileName=fn;
+//		System.err.println("STGMan, got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
 	}
 
 	public void setSTGFileName(TSAtomic fn){
 		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
 			this.stgFileName=(TSString)fn;
+//		System.err.println("STGMan, got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
 	}
 
 	public void setSTGFileName(TSBase fn){
 		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
 			this.stgFileName=(TSString)fn;
+//		System.err.println("STGMan, got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
 	}
 
 	public void setSTGUrlName(String url){
 		this.stgUrlName=new TSString(url);
+//		System.err.println("STGMan, got URL ("+url.toString()+") of type (String)");
 	}
 
 	public void setSTGUrlName(TSString url){
 		this.stgUrlName=url;
+//		System.err.println("STGMan, got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
 	}
 
 	public void setSTGUrlName(TSAtomic url){
 		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
 			this.stgUrlName=(TSString)url;
+//		System.err.println("STGMan, got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
 	}
 
 	public void setSTGUrlName(TSBase url){
 		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
 			this.stgUrlName=(TSString)url;
+//		System.err.println("STGMan, got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
 	}
 
 	public boolean testChunks(){
