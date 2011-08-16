@@ -10,4 +10,19 @@
 	<import file="${env.TINOS_HOME}/projects/spring-build/skb/skb.xml"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-bundle.xml"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
+
+	<target name="dal2sql" depends="dal2sql.init">
+		<property name="dest.dir" value="${target.dir}/base/sql"/>
+		<generate-dal2sql dest.dir="${dest.dir}">
+		  <fileset dir="${basedir}/src/main/base/core" includes="**/*.dal"/>
+		  <fileset dir="${basedir}/src/main/base/dist" includes="**/*.dal"/>
+		  <fileset dir="${basedir}/src/main/base/demo" includes="**/*.dal"/>
+		  <fileset dir="${basedir}/src/main/base/site-configurations" includes="**/*.dal"/>
+		</generate-dal2sql>
+	</target>
+
+<!--
+	<target name="prepare" description="Prepares the project for building (jar)" depends="dal2sql"/>
+-->
+
 </project>
