@@ -84,7 +84,10 @@ public class DalParser extends LanguageParser{
 		this.xs="dal";
 		this.xt=new TSArrayListString();
 
-		Set<String> lang=LanguageConfiguration.getInstance().getLanguageTargets().keySet();
+		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
+		cfg.read("/org/skb/lang/dal/dal.json");
+
+		Set<String> lang=cfg.getLanguageTargets().keySet();
 		Iterator<String> it=lang.iterator();
 		while(it.hasNext())
 			this.xt.add(it.next().toString());

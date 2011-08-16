@@ -68,8 +68,11 @@ dalRepository(ident, tables) ::= <<
 >>
 
 dalTable(ident, fields) ::= <<
+#ifndef "TABLE_<ident>"
 DROP TABLE IF EXISTS <ident>;
 CREATE TABLE [<ident>] (<fields; separator=", ">);
+#endif
+#define "TABLE_<ident>"
 >>
 
 dalField(ident, type, constraints, size, precision, others) ::= <<
