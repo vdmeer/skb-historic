@@ -84,7 +84,15 @@ public class ColaParser extends LanguageParser{
 		this.xs="cola";
 		this.xt=new TSArrayListString();
 
-		Set<String> lang=LanguageConfiguration.getInstance().getLanguageTargets().keySet();
+		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
+		cfg.read("/org/skb/lang/cola/proto/proto.json");
+//		cfg.read(new String[] {"/org/skb/lang/cola/proto/proto.json",
+//   	                           "/org/skb/lang/cola/proto/lang-rules.json",
+//	                           "/org/skb/lang/cola/proto/lang-tokens.json"
+//                               }
+//		);
+
+		Set<String> lang=cfg.getLanguageTargets().keySet();
 		Iterator<String> it=lang.iterator();
 		while(it.hasNext())
 			this.xt.add(it.next().toString());

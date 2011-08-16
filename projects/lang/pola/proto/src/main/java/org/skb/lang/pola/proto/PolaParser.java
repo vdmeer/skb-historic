@@ -83,7 +83,10 @@ public class PolaParser extends LanguageParser{
 		this.xs="pola";
 		this.xt=new TSArrayListString();
 
-		Set<String> lang=LanguageConfiguration.getInstance().getLanguageTargets().keySet();
+		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
+		cfg.read("/org/skb/lang/pola/proto/proto.json");
+
+		Set<String> lang=cfg.getLanguageTargets().keySet();
 		Iterator<String> it=lang.iterator();
 		while(it.hasNext())
 			this.xt.add(it.next().toString());

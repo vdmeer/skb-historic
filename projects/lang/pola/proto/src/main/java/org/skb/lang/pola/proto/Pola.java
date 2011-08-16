@@ -48,9 +48,6 @@ public class Pola {
 		System.setProperty("log4j.configuration", "org/skb/lang/pola/proto/log4/log4j.xml");
 		logger=Logger.getLogger(Pola.class);
 
-		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
-		cfg.read("/org/skb/lang/pola/proto/proto.json");
-
 		Tribe tribe=new Tribe();
 
 		LanguageParser[] supportedLanguages={new PolaParser()};
