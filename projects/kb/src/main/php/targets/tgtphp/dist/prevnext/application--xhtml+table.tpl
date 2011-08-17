@@ -42,12 +42,12 @@
  */
 ?>
 <div class="center">
-  <div class="table-gallery-list">
-    <br />
-    <table width="50%">
-      <tbody>
-        <tr>
-          <td class="active">
+	<div class="table-gallery-list">
+		<br />
+		<table width="50%">
+			<tbody>
+				<tr>
+					<td class="active">
 <?php
   if($prev==null&&$next==null){
 ?>
@@ -81,10 +81,10 @@
   	}
   }
 ?>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 <br />
 </div>

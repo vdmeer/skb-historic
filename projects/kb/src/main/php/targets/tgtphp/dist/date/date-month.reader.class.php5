@@ -39,34 +39,28 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 class pkg_dist__date___date_month___reader extends SKB_Reader{
-  /**
-   * An empty constructor.
-   */
-  public function __construct(){}
+	/**
+	 * An empty constructor.
+	 */
+	public function __construct(){
+	}
 
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
-   */
-  public function prepare_loop(SKB_Request $request, $table, $table_collections){
-    $mySKB=SKB_Main::get_instance();
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
+	 */
+	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+		$myDM=SKB_DataManager::get_instance();
+		$this->entries=$myDM->query_data_object($myDM->prepare_query("skb:date:month",null,null,"date:number",null,null,true,true))->ar;
+	}
 
-  	$pdos=$mySKB->sql_query(null, array('*'), array("date_month"), null, '"date:number"');
-  	if(!is_object($pdos)&&$pdos==-1)
-  	  return;
-
-    while($row=$pdos->fetch(PDO::FETCH_ASSOC))
-      $this->entries[]=$mySKB->interpret(new Util_ArBase($row), 'date_month')->ar;
-
-    $this->entries=Util_Interpreter::interpret("array:clean", $this->entries);
-  }
-
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
-   */
-  public function execute_loop(SKB_Request $request){}
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
+	 */
+	public function execute_loop(SKB_Request $request){
+	}
 }
 ?>

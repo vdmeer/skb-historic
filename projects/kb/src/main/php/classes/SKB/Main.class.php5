@@ -163,7 +163,7 @@ class SKB_Main{
         $this->db_scope=SKB_DBScope::get_instance();
 
         //load the skb configuration
-        $o=new Util_PDOConnect($__cfg_array["config-core"]);
+        $o=new Database_PDOConnect($__cfg_array["config-core"]);
         $sth=$o->pdo->prepare("SELECT * FROM skb_cfg");
         if($sth->execute()){
           while($row=$sth->fetch(PDO::FETCH_ASSOC)){
@@ -180,7 +180,7 @@ class SKB_Main{
         }
 
         //load the site specific configuration
-        $o=new Util_PDOConnect($__cfg_array["config-site"]);
+        $o=new Database_PDOConnect($__cfg_array["config-site"]);
         $sth=$o->pdo->prepare("SELECT * FROM configuration");
         if($sth->execute()){
           while($row=$sth->fetch(PDO::FETCH_ASSOC)){
@@ -321,7 +321,7 @@ class SKB_Main{
       trigger_error('SKB_Main: package not found or not correctly installed: '.$package.' in '.$pkg_dir, E_USER_ERROR);
 
     if(file_exists($pkg_file_db)){
-      $o=new Util_PDOConnect($pkg_file_db);
+      $o=new Database_PDOConnect($pkg_file_db);
       $tables=array();
 
       //package fields
@@ -551,7 +551,6 @@ class SKB_Main{
   public function load_from_json($json_fn, $package){
   	if(file_exists($json_fn)){
   		$js=file($json_fn);
-
   		foreach($js as $ln=>$line){
   			if(strlen($line)==0)
   			  unset($js[$ln]);
@@ -580,6 +579,16 @@ class SKB_Main{
       	    bind_textdomain_codeset($td['domain'],$td['codeset']);
       	}
       }
+
+			if(isset($ar['load_data_object'])){
+				foreach($ar['load_data_object'] as $ln=>$dos){
+					if(isset($dos['sema_tag'])&&isset($dos['type'])&&isset($dos['handle'])&&isset($dos['tables'])&&isset($dos['filter_id'])){
+						SKB_DataManager::get_instance()->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package);
+						//print_r(SKB_DataManager::get_instance()->get_data_objects());
+					}
+				}
+			}
+
   	}
   }
 
@@ -641,13 +650,13 @@ class SKB_Main{
       $tables=Util_Interpreter::interpret("array:explode", $tables);
 
     $db_file=$this->configuration->get_group("path", "database").$fn.".db";
-    $o=new Util_PDOConnect($db_file);
+    $o=new Database_PDOConnect($db_file);
 
     $_keys=array_keys($tables);
     $_size=count($_keys);
     for($i=0;$i<$_size;$i++){
       if($this->dbpdos->pdo_table_exists($o->pdo,$tables[$_keys[$i]])==false)
-      trigger_error('SKB_Main: Database Table not found: '.$tables[$_keys[$i]].' in '.$db_file, E_USER_ERROR);
+	      trigger_error('SKB_Main: Database Table not found: '.$tables[$_keys[$i]].' in '.$db_file, E_USER_ERROR);
     }
     $this->dbpdos->pdo_add($key,$db_file,$tables,$o->pdo,$key);
   }
@@ -1036,7 +1045,7 @@ class SKB_Main{
   /**
    * Generate an SQL query on a given PDO object.
    * 
-   * @param Util_PDOConnect pdo the PDO object to be used for the query
+   * @param Database_PDOConnect pdo the PDO object to be used for the query
    * @param string select the SQL select string
    * @param array tables an array of tables to be used for the query
    * @param string where the SQL where string
@@ -1044,6 +1053,10 @@ class SKB_Main{
    */
   public function sql_query($pdo, $select, $tables, $where=null, $order=null){
     return $this->dbpdos->sql_query($pdo, $select, $tables, $where, $order);
+  }
+
+  public function get_lang(){
+  	return $this->lang;
   }
 }
 ?>

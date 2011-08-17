@@ -346,7 +346,7 @@ class pkg_dist__gallery___gallery___application{
       $this->request->activate();
     }
 
-	  $this->gallery_part_reader->prepare($this->request);
+    $this->gallery_part_reader->prepare($this->request);
     $this->gallery_reader->prepare($this->request);
   }
 

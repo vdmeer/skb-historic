@@ -59,15 +59,11 @@ class pkg_core___urn___interpreter implements SKB_InterpreterCore{
    */
   static public function interpret($key, SKB_Request $request){
     $mySKB=SKB_Main::get_instance();
+    $myDM=SKB_DataManager::get_instance();
     $ret=array();
 
     $table=$request->get_table();
-
-    $pdos=$mySKB->sql_query(null, array('*'), array($table), "key = '{$key}'");
-
-    if(!is_object($pdos)&&$pdos==-1)
-      return;
-    $key=Util_Interpreter::interpret("array:clean", $pdos->fetch(PDO::FETCH_ASSOC));
+    $key=$myDM->query_data_object($myDM->prepare_query($table,"*",array("key"=>$key),null,null,false,true))->ar;
 
     $start=strtok($key['core:urn'], ":");
     $urn=str_replace($start.":","",$key['core:urn']);

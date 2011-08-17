@@ -306,50 +306,5 @@ class SKB_DBPDOs{
       }
     }
   }
-
-
-
-//  private function keys($table){
-//    $sql="SELECT key FROM {$table} ORDER BY key";
-//    $r=array();
-//    $pdo=$this->select_pdo($table);
-//    foreach ($pdo->query($sql) as $row)
-//      $r[]=$row['key'];
-//    return new Util_ArBase($r);
-//  }
-//
-//  public function has_key($key, $table){
-//    $ret=true;
-//    $sql="SELECT key FROM {$table} WHERE key = '{$key}'";
-//    $pdo=$this->select_pdo($table);
-//    $sth=$pdo->prepare($sql);
-//    $sth->execute();
-//    $res=$sth->fetchAll(PDO::FETCH_ASSOC);
-//    if(count($res)==0)
-//      $ret=false;
-//    return $ret;
-//  }
-//
-//  public function table_exists($table){
-//  	$_keys=array_keys($this->db_pdos);
-//  	$_size=count($_keys);
-//  	for($i=0;$i<$_size;$i++){
-//  		if(in_array($table, $this->db_pdos[$_keys[$i]]['tables']))
-//  		  return true;
-//  	}
-//    return false;
-//  }
-//
-//  private function test_pdo($table){
-//  	$_keys=array_keys($this->db_pdos);
-//  	$_size=count($_keys);
-//  	for($i=0;$i<$_size;$i++){
-//  		if(in_array($table, $this->db_pdos[$_keys[$i]]['tables']))
-//  		  return true;
-//  	}
-//    return false;
-//  }
-
-
 }
 ?>

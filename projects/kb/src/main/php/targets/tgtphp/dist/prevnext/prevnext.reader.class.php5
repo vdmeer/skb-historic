@@ -39,31 +39,33 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 class pkg_dist__prevnext___prevnext___reader extends SKB_Reader{
-  /**
-   * An empty constructor.
-   */
-  public function __construct(){}
-
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
-   */
-  public function prepare_loop(SKB_Request $request, $table, $table_collections){}
-
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
-   */
-  public function execute_loop(SKB_Request $request){
-    $ar=$request->get_value("request:element_keys");
-    if(count($ar)>0){
-    	$c_current_element=$request->get_value("request:entry");
-    	$pn_ar=Util_Interpreter::interpret("paging:prevnext", $c_current_element[0], $ar);
-    	$this->entries['prev']=(isset($pn_ar['prev']))?$pn_ar['prev']:null;
-    	$this->entries['next']=(isset($pn_ar['next']))?$pn_ar['next']:null;
-    }
-  }
+	/**
+	 * An empty constructor.
+	 */
+	public function __construct(){
+	}
+	
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
+	 */
+	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+	}
+	
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
+	 */
+	public function execute_loop(SKB_Request $request){
+		$ar=$request->get_value("request:element_keys");
+		if(count($ar)>0){
+			$c_current_element=$request->get_value("request:entry");
+			$pn_ar=Util_Interpreter::interpret("paging:prevnext", $c_current_element[0], $ar);
+			$this->entries['prev']=(isset($pn_ar['prev']))?$pn_ar['prev']:null;
+			$this->entries['next']=(isset($pn_ar['next']))?$pn_ar['next']:null;
+		}
+	}
 }
 ?>

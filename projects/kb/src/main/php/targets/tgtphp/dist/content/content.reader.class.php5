@@ -39,49 +39,54 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 class pkg_dist__content___content___reader extends SKB_Reader{
-  /**
-   * An empty constructor.
-   */
-  public function __construct(){}
+	/**
+	 * An empty constructor.
+	 */
+	public function __construct(){
+	}
 
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
-   */
-  public function prepare_loop(SKB_Request $request, $table, $table_collections){
-    $mySKB=SKB_Main::get_instance();
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
+	 */
+	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+		$mySKB=SKB_Main::get_instance();
+		$myDM=SKB_DataManager::get_instance();
 
-    $skb_collection=$request->get_value('request:collection');
-    $skb_part=$request->get_value('request:part');
+		$skb_collection=$request->get_value('request:collection');
+		$skb_part=$request->get_value('request:part');
 
-    if(count($skb_collection)==0
-     ||count($skb_part)==0)
-      return;
+		if(count($skb_collection)==0
+				||count($skb_part)==0)
+			return;
 
-    $skb_collection=$skb_collection[0];
-    $skb_part=$skb_part[0];
+		$skb_collection=$skb_collection[0];
+		$skb_part=$skb_part[0];
 
-    $pdos=$mySKB->sql_query(null, array('key','"request:collection"','"request:part"','"request:element_keys"'), array($table_collections), '"request:collection"="'.$skb_collection.'" AND "request:part"="'.$skb_part.'"');
-    $row=$pdos->fetch(PDO::FETCH_ASSOC);
-    $content=Util_Interpreter::interpret("array:explode", $row['request:element_keys']);
+		//$pdos=$mySKB->sql_query(null, array('key','"request:collection"','"request:part"','"request:element_keys"'), array($table_collections), '"request:collection"="'.$skb_collection.'" AND "request:part"="'.$skb_part.'"');
+		//$row=$pdos->fetch(PDO::FETCH_ASSOC);
+		$row=$myDM->query_data_object($myDM->prepare_query($table_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$skb_collection,"request:part"=>$skb_part),null,null,null,false,false))->ar;
+		$content=Util_Interpreter::interpret("array:explode", $row['request:element_keys']);
 
-    $_keys=array_keys($content);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      $pdos=$mySKB->sql_query(null, array('*'), array($table), "key = '{$content[$_keys[$i]]}'", null, '"seq_no"');
-      $row=$pdos->fetch(PDO::FETCH_ASSOC);
-      $ar=Util_Interpreter::interpret("array:clean", $row);
-      $ar=$mySKB->interpret(new Util_ArBase($ar), $table)->ar;
-      $this->entries[]=$ar;
-    }
-  }
+		$_keys=array_keys($content);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++){
+			//$pdos=$mySKB->sql_query(null, array('*'), array($table), "key = '{$content[$_keys[$i]]}'", null, '"seq_no"');
+			//$row=$pdos->fetch(PDO::FETCH_ASSOC);
+			//$ar=Util_Interpreter::interpret("array:clean", $row);
+			//$ar=$mySKB->interpret(new Util_ArBase($ar), $table)->ar;
+			$ar=$myDM->query_data_object($myDM->prepare_query($table,"*",array("key"=>$content[$_keys[$i]]),"seq_no",null,null,true,true))->ar;
+			$this->entries[]=$ar;
+		}
+	}
 
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
-   */
-  public function execute_loop(SKB_Request $request){}
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
+	 */
+	public function execute_loop(SKB_Request $request){
+	}
 }
 ?>

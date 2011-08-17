@@ -39,35 +39,32 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 class pkg_dist__publications___author___interpreter implements SKB_InterpreterEntity{
-  public function __construct(){}
+	public function __construct(){
+	}
+	
+	static public function interpret($key, $table=null){
+		$ret=array();
+		if($table==null)
+			$table="skb:people";
 
-  static public function interpret($key, $table=null){
-  	$ret=array();
-    if($table==null)
-      $table="people";
-
-    $ar=Util_Interpreter::interpret("array:explode", $key);
-    $name=Util_Interpreter::interpret("array:clean", array_keys($ar));
-    $aff=Util_Interpreter::interpret("array:clean", array_values($ar));
-
-    $mySKB=SKB_Main::get_instance();
-
-    if(count($aff)>0&&count($name)>0){
-      $pdos=$mySKB->sql_query(null, array('"people:first"','"people:last"','"people:affiliation_keys"'), array($table), "key = '{$name[0]}'");
-      $ret=Util_Interpreter::interpret("array:clean", $pdos->fetch(PDO::FETCH_ASSOC));
-
-      $aff_array=Util_Interpreter::interpret("array:explode", $ret['people:affiliation_keys']);
-      if(isset($aff_array[$aff[0]])){
-        unset($ret['people:affiliation_keys']);
-        $ret['affiliation']=$mySKB->interpret_next(new Util_ArBase(array('people:affiliation_key'=>$aff_array[$aff[0]])))->ar['people:affiliation'];
-      }
-    }
-    else{
-      $pdos=$mySKB->sql_query(null, array('"people:first"','"people:last"'), array($table), "key = '{$name[0]}'");
-      $ret=Util_Interpreter::interpret("array:clean", $pdos->fetch(PDO::FETCH_ASSOC));
-    }
-    $ret['key']=$name[0];
-    return new Util_ArBase($ret);
-  }
+		$ar=Util_Interpreter::interpret("array:explode", $key);
+		$name=Util_Interpreter::interpret("array:clean", array_keys($ar));
+		$aff=Util_Interpreter::interpret("array:clean", array_values($ar));
+	
+		$myDM=SKB_DataManager::get_instance();
+		if(count($aff)>0&&count($name)>0){
+			$ret=$myDM->query_data_object($myDM->prepare_query($table, array('"people:first"','"people:last"','"people:affiliation_keys"'), array("key"=>$name[0]), null, null, null, false, true))->ar;
+			$aff_array=Util_Interpreter::interpret("array:explode", $ret['people:affiliation_keys']);
+			if(isset($aff_array[$aff[0]])){
+				unset($ret['people:affiliation_keys']);
+				$ret['affiliation']=$myDM->interpret_loop(new Util_ArBase(array('people:affiliation_key'=>$aff_array[$aff[0]])))->ar['people:affiliation'];
+			}
+		}
+		else{
+			$ret=$myDM->query_data_object($myDM->prepare_query($table, array('"people:first"','"people:last"'), array("key"=>$name[0]), null, null, null, false, true))->ar;
+		}
+		$ret['key']=$name[0];
+		return new Util_ArBase($ret);
+	}
 }
 ?>

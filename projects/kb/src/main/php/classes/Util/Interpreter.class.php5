@@ -209,6 +209,11 @@ class Util_Interpreter{
 
 
   private static function value_is_empty($var){
+    if(is_object($var)){
+      if(count($var)==0)
+        return true;
+      return false;
+    }
     if(is_array($var)){
       if(empty($var))
         return true;
