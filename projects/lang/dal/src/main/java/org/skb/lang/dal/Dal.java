@@ -31,7 +31,6 @@
 package org.skb.lang.dal;
 
 import org.apache.log4j.Logger;
-import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
 
