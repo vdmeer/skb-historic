@@ -32,8 +32,11 @@ package org.skb.lang.cpp;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
@@ -59,6 +62,58 @@ import org.skb.lang.cpp.grammars.CPPParser;
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
 public class CPP {
+	public static void main (String[] args) throws IOException {
+		String fin=null;
+		String fout=null;
+		PrintWriter cppOut;
+
+		if(args.length>2){
+			System.err.println("cpp: to many arguments");
+			CPP.usage();
+			return;
+		}
+//		else if(args.length==0){
+//			System.err.println("cpp: to few arguments");
+//			CPP.usage();
+//			return;
+//		}
+		else if(args.length==1){
+			fin=args[0];
+		}
+		else if(args.length==2){
+			fin=args[0];
+			fout=args[1];
+		}
+
+		if(fin==null){
+    		File temp=File.createTempFile("_cpp_fin", "cpp");
+    		temp.deleteOnExit();
+    		PrintWriter pwOut=new PrintWriter(new FileWriter(temp));
+
+			BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+			String s;
+			while ((s=in.readLine())!=null)
+				pwOut.println(s);
+			pwOut.flush();
+			pwOut.close();
+			fin=temp.getAbsolutePath();
+		}
+
+		if(fout!=null){
+    		File temp=new File(fout);
+			cppOut=new PrintWriter(new FileWriter(temp));
+		}
+		else{
+			cppOut=new PrintWriter(System.out);
+		}
+
+		new CPP().parse_initial(fin, cppOut);
+	}
+
+	public static void usage(){
+		
+	}
+
 	public void parse_initial(String fin, PrintWriter fout) {
 		DefinedTerms definitions=DefinedTerms.getInstance();
 		definitions.defs.clear();
