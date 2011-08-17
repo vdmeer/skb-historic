@@ -39,8 +39,10 @@
 #
 
 {
-	"load_database":[
-		{"fn":"dist\/geo\/geo","tables":"geo_cities,geo_continents,geo_countries"}
+	"load_data_object":[
+		{"sema_tag":"skb:geo:cities","type":"sqlite","handle":"dist\/geo\/geo","tables":"geo_cities","filter_id":"dist.geo"},
+		{"sema_tag":"skb:geo:continents","type":"sqlite","handle":"dist\/geo\/geo","tables":"geo_continents","filter_id":"dist.geo"},
+		{"sema_tag":"skb:geo:countries","type":"sqlite","handle":"dist\/geo\/geo","tables":"geo_countries","filter_id":"dist.geo"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.geo","path":"mo","codeset":"UTF-8"}

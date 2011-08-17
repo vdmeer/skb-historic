@@ -39,8 +39,8 @@
 #
 
 {
-	"load_database":[
-		{"fn":"dist\/acronyms\/acronyms","tables":"acronyms"}
+	"load_data_object":[
+		{"sema_tag":"skb:acronyms","type":"sqlite","handle":"dist\/acronyms\/acronyms","tables":"acronyms","filter_id":"dist.acronyms"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.acronyms","path":"mo","codeset":"UTF-8"}

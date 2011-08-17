@@ -40,8 +40,8 @@
 
 {
 	"require_package":["dist.geo", "dist.date", "dist.affiliations"],
-	"load_database":[
-		{"fn":"dist\/currencies\/currencies","tables":"currencies"}
+	"load_data_object":[
+		{"sema_tag":"skb:currencies","type":"sqlite","handle":"dist\/currencies\/currencies","tables":"currencies","filter_id":"dist.currencies"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.currencies","path":"mo","codeset":"UTF-8"}

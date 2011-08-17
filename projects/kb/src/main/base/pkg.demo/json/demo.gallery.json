@@ -43,6 +43,10 @@
 	"load_database":[
 		{"fn":"demo\/gallery\/gallery","tables":"gallery_fotos,gallery_fotos_collections"}
 	],
+	"load_data_object":[
+		{"sema_tag":"skb:gallery:fotos","type":"sqlite","handle":"demo\/gallery\/gallery","tables":"gallery_fotos","filter_id":"demo.gallery"},
+		{"sema_tag":"skb:gallery:fotos:collections","type":"sqlite","handle":"demo\/gallery\/gallery","tables":"gallery_fotos_collections","filter_id":"demo.gallery"}
+	],
 	"text_domain":[
 		{"domain":"pkg.demo.gallery","path":"mo","codeset":"UTF-8"}
 	]

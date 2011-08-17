@@ -39,8 +39,10 @@
 #
 
 {
-	"load_database":[
-		{"fn":"dist\/date\/date","tables":"date_dom,date_dow,date_month"}
+	"load_data_object":[
+		{"sema_tag":"skb:date:dom","type":"sqlite","handle":"dist\/date\/date","tables":"date_dom","filter_id":"dist.date"},
+		{"sema_tag":"skb:date:dow","type":"sqlite","handle":"dist\/date\/date","tables":"date_dow","filter_id":"dist.date"},
+		{"sema_tag":"skb:date:month","type":"sqlite","handle":"dist\/date\/date","tables":"date_month","filter_id":"dist.date"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.date","path":"mo","codeset":"UTF-8"}

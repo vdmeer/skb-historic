@@ -39,8 +39,8 @@
 #
 
 {
-	"load_database":[
-		{"fn":"dist\/publications\/entrytypes\/entrytypes","tables":"entrytypes"}
+	"load_data_object":[
+		{"sema_tag":"skb:publications:entrytypes","type":"sqlite","handle":"dist\/publications\/entrytypes\/entrytypes","tables":"entrytypes","filter_id":"dist.publications.entrytypes"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.publications.entrytypes","path":"mo","codeset":"UTF-8"}

@@ -40,7 +40,10 @@
 
 {
 	"require_package":["dist.people", "dist.affiliations", "dist.acronyms", "dist.date", "dist.geo", "dist.publications.entrytypes"],
-	"load_database":[
-		{"fn":"dist\/publications\/publications","tables":"conferences,events,journals,publications"}
+	"load_data_object":[
+		{"sema_tag":"skb:publications:conferences","type":"sqlite","handle":"dist\/publications\/publications","tables":"conferences","filter_id":"dist.publications"},
+		{"sema_tag":"skb:publications:events","type":"sqlite","handle":"dist\/publications\/publications","tables":"events","filter_id":"dist.publications"},
+		{"sema_tag":"skb:publications:journals","type":"sqlite","handle":"dist\/publications\/publications","tables":"journals","filter_id":"dist.publications"},
+		{"sema_tag":"skb:publications:publications","type":"sqlite","handle":"dist\/publications\/publications","tables":"publications","filter_id":"dist.publications"}
 	]
 }
