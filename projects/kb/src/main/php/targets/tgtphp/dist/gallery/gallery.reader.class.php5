@@ -50,7 +50,7 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
 		$myDM=SKB_DataManager::get_instance();
 
 		//get values
@@ -100,12 +100,12 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 			case "coll_n_part":
 					$skb_collection=$skb_collection[0];
 					$skb_part=$skb_part[0];
-					$row=$this->entries=$myDM->query_data_object($myDM->prepare_query($table_collections, array('key','"request:collection"','"request:part"','"request:element_keys"'), array("request:collection"=>$skb_collection,"request:part"=>$skb_part), null, null, null, false, false))->ar;
+					$row=$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag_collections, array('key','"request:collection"','"request:part"','"request:element_keys"'), array("request:collection"=>$skb_collection,"request:part"=>$skb_part), null, null, null, false, false))->ar;
 					$fotos=Util_Interpreter::interpret("array:explode", $row['request:element_keys']);
 					$_keys=array_keys($fotos);
 					$_size=count($_keys);
 					for($i=0;$i<$_size;$i++){
-						$ar=$myDM->query_data_object($myDM->prepare_query($table,"*",array("key"=>$_keys[$i]),null,null,null,true,true))->ar;
+						$ar=$myDM->query_data_object($myDM->prepare_query($sematag,"*",array("key"=>$_keys[$i]),null,null,null,true,true))->ar;
 						$ar['file']=$myDM->interpret_data('Core.Interpreter.URN', $_keys[$i], null, $request)->ar;
 						$ar['request:seq_no']=$i;
 						if($fotos[$_keys[$i]]==1)
@@ -116,7 +116,7 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 
 			case "single_key":
 					$skb_key=$skb_key[0];
-					$ar=$myDM->query_data_object($myDM->prepare_query($table,"*",array("key"=>$skb_key),null,null,null,true,true))->ar;
+					$ar=$myDM->query_data_object($myDM->prepare_query($sematag,"*",array("key"=>$skb_key),null,null,null,true,true))->ar;
 					$ar['file']=$myDM->interpret_data('Core.Interpreter.URN', $skb_key, null, $request)->ar;
 					$this->entries[]=$ar;
 					break;
@@ -125,7 +125,7 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 					$_keys=array_keys($skb_key_list);
 					$_size=count($_keys);
 					for($i=0;$i<$_size;$i++){
-						$ar=$myDM->query_data_object($myDM->prepare_query($table,"*",array("key"=>$skb_key_list[$_keys[$i]]),null,null,null,true,true))->ar;
+						$ar=$myDM->query_data_object($myDM->prepare_query($sematag,"*",array("key"=>$skb_key_list[$_keys[$i]]),null,null,null,true,true))->ar;
 						$ar['file']=$myDM->interpret_data('Core.Interpreter.URN', $skb_key_list[$_keys[$i]], null, $request)->ar;
 						$this->entries[]=$ar;
 					}
@@ -136,7 +136,7 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 					$_keys=array_keys($fotos);
 					$_size=count($_keys);
 					for($i=0;$i<$_size;$i++){
-						$ar=$myDM->query_data_object($myDM->prepare_query($table,"*",array("key"=>$_keys[$i]),null,null,null,true,true))->ar;
+						$ar=$myDM->query_data_object($myDM->prepare_query($sematag,"*",array("key"=>$_keys[$i]),null,null,null,true,true))->ar;
 						$ar['file']=$myDM->interpret_data('Core.Interpreter.URN', $_keys[$i], null, $request)->ar;
 						$ar['request:seq_no']=$i;
 						if($fotos[$_keys[$i]]==1)
@@ -151,12 +151,12 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 					if($skb_collection_count==1&&$skb_part_count==1){
 						$coll=$skb_collection[0];
 						$part=$skb_part[0];
-						$row=$myDM->query_data_object($myDM->prepare_query($table_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$coll,"request:part"=>$part),null,null,null,false,false))->ar;
+						$row=$myDM->query_data_object($myDM->prepare_query($sematag_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$coll,"request:part"=>$part),null,null,null,false,false))->ar;
 						$fotos=array_keys(Util_Interpreter::interpret("array:explode", $row['request:element_keys']));
 						$fotos_count=count($fotos);
 					}
 
-					$rows=$myDM->query_data_object($myDM->prepare_query($table,"*",null,null,null,null,false,false))->ar;
+					$rows=$myDM->query_data_object($myDM->prepare_query($sematag,"*",null,null,null,null,false,false))->ar;
 					foreach($rows as $row){
 						//we've had a collection/part, but key is not in it
 						if($fotos_count>0&&!in_array($row['key'],$fotos))
@@ -193,7 +193,7 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 										continue;
 								}
 
-								$ar=$myDM->interpret_do(new Util_ArBase(array("gallery:museum_key"=>$row['gallery:museum_key'])), null, $table)->ar['gallery:museum'];
+								$ar=$myDM->interpret_do(new Util_ArBase(array("gallery:museum_key"=>$row['gallery:museum_key'])), null, $sematag)->ar['gallery:museum'];
 								if(isset($ar['default:city']['key'])&&$skb_city_count>0&&!in_array($ar['default:city']['key'],$skb_city))
 									continue;
 								if(isset($ar['default:country']['key'])&&$skb_country_count>0&&!in_array($ar['default:country']['key'],$skb_country))
@@ -204,7 +204,7 @@ class pkg_dist__gallery___gallery___reader extends SKB_Reader{
 						}
 
 						$ar=Util_Interpreter::interpret("array:clean", $row);
-						$ar=$myDM->interpret_do(new Util_ArBase($ar), null, $table)->ar;
+						$ar=$myDM->interpret_do(new Util_ArBase($ar), null, $sematag)->ar;
 						$ar['file']=$myDM->interpret_data('Core.Interpreter.URN', $row['key'], null, $request)->ar;
 						$this->entries[]=$ar;
 					}

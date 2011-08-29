@@ -32,7 +32,7 @@
 /**
  * SKB Core Interpreter for converting URNs into filenames, SKB Package Core.
  *
- * This interpreter reads the table provided in the request and reads information for $key.
+ * This interpreter reads the semantic tag provided in the request and reads information for $key.
  * Then it creates information about absolute and relative paths to the filename from the SKB URN.
  *
  * @package    Packages.Core
@@ -47,7 +47,7 @@ class pkg_core___urn___interpreter implements SKB_InterpreterCore{
   /**
    * Interpret the given key using the given request.
    *
-   * The paramter key will be used to query the table named in the parameter request. This table 
+   * The paramter key will be used to query the semantic tag named in the parameter request. This semantic tag 
    * should hold information about the URN for interpretation, currently the actual URN only. Furthermore,
    * the entry "request:file_ext" in the parameter request must indicate what file extensions the interpreter 
    * should look for (i.e.: "jpg", "gif"). Path names will then be created using the SKB configuraton information for 
@@ -62,8 +62,8 @@ class pkg_core___urn___interpreter implements SKB_InterpreterCore{
     $myDM=SKB_DataManager::get_instance();
     $ret=array();
 
-    $table=$request->get_table();
-    $key=$myDM->query_data_object($myDM->prepare_query($table,"*",array("key"=>$key),null,null,false,true))->ar;
+    $sematag=$request->get_sematag();
+    $key=$myDM->query_data_object($myDM->prepare_query($sematag,"*",array("key"=>$key),null,null,false,true))->ar;
 
     $start=strtok($key['core:urn'], ":");
     $urn=str_replace($start.":","",$key['core:urn']);

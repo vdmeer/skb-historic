@@ -39,56 +39,56 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 abstract class SKB_Builder{
-  /**
-   * The templates linked to the builder
-   * @var SKB_BuilderTemplates
-   */
-  protected $templates;
+	/**
+	 * The templates linked to the builder
+	 * @var SKB_BuilderTemplates
+	 */
+	protected $templates;
 
 
-  /**
-   * Class constructor.
-   * 
-   * The class constructor only initialises the local variable templates.
-   */
-  public function __construct(){
-    $this->templates=new SKB_BuilderTemplates();
-  }
+	/**
+	 * Class constructor.
+	 * 
+	 * The class constructor only initialises the local variable templates.
+	 */
+	public function __construct(){
+		$this->templates=new SKB_BuilderTemplates();
+	}
 
 
-  /**
-   * Add CSS and Mime Content Type information to the global SKB configuration.
-   * 
-   * This function is usefull if one wants to manually add CSS files or Mime Content Type information to the global SKB configuration.
-   */
-  public function set_header(){
-    $this->templates->set_header();
-  }
+	/**
+	 * Add CSS and Mime Content Type information to the global SKB configuration.
+	 * 
+	 * This function is usefull if one wants to manually add CSS files or Mime Content Type information to the global SKB configuration.
+	 */
+	public function set_header(){
+		$this->templates->set_header();
+	}
 
 
-  /**
-   * Execute the Builder's main functionality.
-   * 
-   * This function is called by the reader in the execution state. When you write your own builder,
-   * simply implement the function execute_loop and it is called automatically at the right time.
-   *
-   * @param SKB_Request request the original request object
-   * @param Util_ArBase entries the original array with collected information from the reader
-   */
-  public function execute(SKB_Request $request, Util_ArBase $entries){
-    $this->execute_loop($request, $entries);
-  }
+	/**
+	 * Execute the Builder's main functionality.
+	 * 
+	 * This function is called by the reader in the execution state. When you write your own builder,
+	 * simply implement the function execute_loop and it is called automatically at the right time.
+	 *
+	 * @param SKB_Request request the original request object
+	 * @param Util_ArBase entries the original array with collected information from the reader
+	 */
+	public function execute(SKB_Request $request, Util_ArBase $entries){
+		$this->execute_loop($request, $entries);
+	}
 
 
-  /**
-   * Execute the Builder's main functionality.
-   * 
-   * This function is called by the builder base class in the execution state. When you write your own builder,
-   * simply implement your functionality here and it is called automatically at the right time.
-   *
-   * @param SKB_Request request the original request object
-   * @param Util_ArBase entries the original array with collected information from the reader
-   */
-  abstract public function execute_loop(SKB_Request $request, Util_ArBase $entries);
+	/**
+	 * Execute the Builder's main functionality.
+	 * 
+	 * This function is called by the builder base class in the execution state. When you write your own builder,
+	 * simply implement your functionality here and it is called automatically at the right time.
+	 *
+	 * @param SKB_Request request the original request object
+	 * @param Util_ArBase entries the original array with collected information from the reader
+	 */
+	abstract public function execute_loop(SKB_Request $request, Util_ArBase $entries);
 }
 ?>

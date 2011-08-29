@@ -50,10 +50,10 @@ class pkg_core__encoding___encoding___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare()}
 	 */
-	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
 		$mySKB=SKB_Main::get_instance();
 
-		$table="encoding_characters";
+		$sematag="encoding_characters";
 
 		$myDM=SKB_DataManager::get_instance();
 		$this->entry_list=$myDM->query_data_object($myDM->prepare_query("skb:encoding",null,null,null,null,null,true,true))->ar;

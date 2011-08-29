@@ -49,7 +49,7 @@ class pkg_dist__modelrailway__inventory___inventory___reader extends SKB_Reader{
    *
    * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
    */
-  public function prepare_loop(SKB_Request $request, $table, $table_collections){
+  public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
     $mySKB=SKB_Main::get_instance();
 
   	$pdos=$mySKB->sql_query(null, array('*'), array("mr_inventory"), null, '"key"');

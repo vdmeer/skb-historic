@@ -39,93 +39,85 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 class SKB_Main{
-  /**
-   * The SKB configuration.
-   * @var Util_ArType
-   */
-  public $configuration=null;
+	/**
+	 * The SKB configuration.
+	 * @var Util_ArType
+	 */
+	public $configuration=null;
 
 
-  /**
-   * Pointer to the singleton instance of the SKB
-   * @var object
-   */
-  private static $instance=null;
+	/**
+	 * Pointer to the singleton instance of the SKB
+	 * @var object
+	 */
+	private static $instance=null;
 
-  /**
-   * String internally being used  for initial construction.
-   * @var string
-   */
-  private static $cKey="beef";
-
-
-  /**
-   * Currently set language
-   * @var string
-   */
-  private $lang;
-
-  /**
-   * The ID of the current site
-   * @var string
-   */
-  private  static $site_id;
+	/**
+	 * String internally being used  for initial construction.
+	 * @var string
+	 */
+	private static $cKey="beef";
 
 
+	/**
+	 * Currently set language
+	 * @var string
+	 */
+	private $lang;
 
-  /**
-   * Registered fields
-   * @var array
-   */
-  private $registered_fields=array();
-  /**
-   * Registered requests
-   * @var array
-   */
-  private $registered_requests=array();
-  /**
-   * Registered readers
-   * @var array
-   */
-  private $registered_readers=array();
-  /**
-   * Registered builders
-   * @var array
-   */
-  private $registered_builders=array();
-  /**
-   * Registered templates
-   * @var array
-   */
-  private $registered_templates=array();
-  /**
-   * Registered interpreters
-   * @var array
-   */
-  private $registered_interpreters=array();
-  /**
-   * Registered applications
-   * @var array
-   */
-  private $registered_applications=array();
-  /**
-   * Registered packages
-   * @var array
-   */
-  private $registered_packages=array();
+	/**
+	 * The ID of the current site
+	 * @var string
+	 */
+	private  static $site_id;
 
+	/**
+	 * Registered fields
+	 * @var array
+	 */
+	private $registered_fields=array();
 
-  /**
-   * Object maintaining list of all connected PDOs and handling SQL requests
-   * @var SKB_DBPDOs
-   */
-  private $dbpdos;
+	/**
+	 * Registered requests
+	 * @var array
+	 */
+	private $registered_requests=array();
 
-  /**
-   * Object implementing a stack for detecing loops while interpreting data
-   * @var SKB_DBScope
-   */
-  private $db_scope;
+	/**
+	 * Registered readers
+	 * @var array
+	 */
+	private $registered_readers=array();
+
+	/**
+	 * Registered builders
+	 * @var array
+	 */
+	private $registered_builders=array();
+
+	/**
+	 * Registered templates
+	 * @var array
+	 */
+	private $registered_templates=array();
+
+	/**
+	 * Registered interpreters
+	 * @var array
+	 */
+	private $registered_interpreters=array();
+
+	/**
+	 * Registered applications
+	 * @var array
+	 */
+	private $registered_applications=array();
+
+	/**
+	 * Registered packages
+	 * @var array
+	 */
+	private $registered_packages=array();
 
 
 	/**
@@ -159,9 +151,6 @@ class SKB_Main{
 			if(!isset($__cfg_array["skb_site_id"]))
 				trigger_error("SKB_Main: invalid configuration", E_USER_ERROR);
 			else{
-				$this->dbpdos=new SKB_DBPDOs();
-				$this->db_scope=SKB_DBScope::get_instance();
-
 				//load the skb configuration
 				$myDM=SKB_DataManager::get_instance();
 				$myDM->load_data_object("skb:core:config", "sqlite", "config://".$__cfg_array["config-core"], "skb_cfg", "skb:core:config", "core");
@@ -265,6 +254,7 @@ class SKB_Main{
 		}
 	}
 
+
 	/**
 	 * Loads the core packages.
 	 * 
@@ -285,6 +275,7 @@ class SKB_Main{
 		$myHttp=SKB_Http::get_instance();
 		$myHttp->response_send_header("X-SKB", "v1.0");
 	}
+
 
 	/**
 	 * Loads a Package (.db and .php file in packages).
@@ -333,6 +324,7 @@ class SKB_Main{
 		if(SKB_LOAD_PACKAGE_NOTICE===true)
 			trigger_error("SKB_Main: package loaded and registered: $package", E_USER_NOTICE);
 	}
+
 
 	/**
 	 * Read a JSON file and execute the required functions (i.e. load_database, bind text domain).
@@ -388,6 +380,7 @@ class SKB_Main{
 			}
 		}
 	}
+
 
 	/**
 	 * Loads all repository information of a required package
@@ -553,437 +546,310 @@ class SKB_Main{
 	}
 
 
-  /**
-   * Loads all available packages for the current site.
-   * 
-   * This function loads all available (installed) packages for the current site ($site_id).
-   * This can be practical when loading individual packages is inconvenient. It is used for 
-   * viewing configuration by the Core.SkbConfig package.
-   *
-   * @param array additional array of additional packages, using '/' as separator (not the usual '.')
-   */
-  public function load_all_site_packages($additional=array()){
-    $pkg_dir=$this->configuration->get_group("path", "repository");
-    $site_id=$this->configuration->get_group("skb", "site-id");
-    $pkg_ar=$this->walk_package_dir($this->configuration->get_group("path", "repository"));
-    foreach($pkg_ar as $pkg){
-      if(strpos($pkg,"/core")!==false||strpos($pkg,"/dist")!==false||strpos($pkg,"/".$site_id)!==false||in_array(str_replace($pkg_dir,"",$pkg),$additional)){
-        $pkg_name=str_replace("/",".",str_replace($pkg_dir,"",$pkg));
-        $this->require_package($pkg_name);
-      }
-    }
-  }
-
-  /** @ignore */
-  private function walk_package_dir($pwd){
-    $ret=array();
-    if(false!=($ar=@scandir($pwd))){
-      foreach($ar as &$file){
-        if($file!="."&&$file!=".."&&@scandir($pwd.$file)!=false){
-          $ret[]=$pwd.$file;
-          $ret=array_merge($ret, $this->walk_package_dir($pwd.$file."/"));
-        }
-      }
-    }
-    return $ret;
-  }
-
-  /**
-   * Return the current configuration array.
-   */
-  public function get_configuration(){
-    return $this->configuration->get();
-  }
-
-  /**
-   * Return the specified registration field or a complete group of fields.
-   * 
-   * @param string group name of the requested group
-   * @param string key name of the requested key; if null then the group is returned
-   */
-  public function get_configuration_by_key($group, $key=null){
-    return $this->configuration->get_group($group, $key);
-  }
-
-  /**
-   * Return all currently registered fields.
-   */
-  public function get_registered__fields(){
-    return $this->registered_fields;
-  }
-
-  /**
-   * Return the specified field.
-   * 
-   * @param string key name of the field
-   */
-  public function get_registered__fields_by_key($key){
-    if(array_key_exists($key, $this->registered_fields))
-      return $this->registered_fields[$key];
-    return -1;
-  }
-
-  /**
-   * Return all currently registered requests.
-   */
-  public function get_registered_requests(){
-    return $this->registered_requests;
-  }
-
-  /**
-   * Return the specified request.
-   * 
-   * @param string key name of the request
-   */
-  public function get_registered_requests_by_key($key){
-    if(array_key_exists($key, $this->registered_requests))
-      return $this->registered_requests[$key];
-    return -1;
-  }
-
-  /**
-   * Return all currently registered readers.
-   */
-  public function get_registered_readers(){
-    return $this->registered_readers;
-  }
-
-  /**
-   * Return the specified reader.
-   * 
-   * @param string key name of the reader
-   */
-  public function get_registered_readers_by_key($key){
-    if(array_key_exists($key, $this->registered_readers))
-      return $this->registered_readers[$key];
-    return -1;
-  }
-
-  /**
-   * Return all currently registered builders.
-   */
-  public function get_registered_builders(){
-    return $this->registered_builders;
-  }
-
-  /**
-   * Return the specified builder.
-   * 
-   * @param string key name of the builder
-   */
-  public function get_registered_builders_by_key($key){
-    if(array_key_exists($key, $this->registered_builders))
-      return $this->registered_builders[$key];
-    return -1;
-  }
-
-  /**
-   * Return all currently registered templates.
-   */
-  public function get_registered_templates(){
-    return $this->registered_templates;
-  }
-
-  /**
-   * Return the specified template.
-   * 
-   * @param string key name of the template
-   */
-  public function get_registered_templates_by_key($key){
-    if(array_key_exists($key, $this->registered_templates))
-      return $this->registered_templates[$key];
-    return -1;
-  }
-
-  /**
-   * Return all currently registered interpreters.
-   */
-  public function get_registered_interpreters(){
-    return $this->registered_interpreters;
-  }
-
-  /**
-   * Return the specified interpreter.
-   * 
-   * @param string key name of the interpreter
-   */
-  public function get_registered_interpreters_by_key($key){
-    if(array_key_exists($key, $this->registered_interpreters))
-      return $this->registered_interpreters[$key];
-    return -1;
-  }
-
-  /**
-   * Return all currently registered applications.
-   */
-  public function get_registered_applications(){return $this->registered_applications;}
-
-  /**
-   * Return the specified application.
-   * 
-   * @param string key name of the application
-   */
-  public function get_registered_applications_by_key($key){
-    if(array_key_exists($key, $this->registered_applications))
-      return $this->registered_applications[$key];
-    return -1;
-  }
+	/**
+	 * Loads all available packages for the current site.
+	 * 
+	 * This function loads all available (installed) packages for the current site ($site_id).
+	 * This can be practical when loading individual packages is inconvenient. It is used for 
+	 * viewing configuration by the Core.SkbConfig package.
+	 *
+	 * @param array additional array of additional packages, using '/' as separator (not the usual '.')
+	 */
+	public function load_all_site_packages($additional=array()){
+		$pkg_dir=$this->configuration->get_group("path", "repository");
+		$site_id=$this->configuration->get_group("skb", "site-id");
+		$pkg_ar=$this->walk_package_dir($this->configuration->get_group("path", "repository"));
+		foreach($pkg_ar as $pkg){
+			if(strpos($pkg,"/core")!==false||strpos($pkg,"/dist")!==false||strpos($pkg,"/".$site_id)!==false||in_array(str_replace($pkg_dir,"",$pkg),$additional)){
+				$pkg_name=str_replace("/",".",str_replace($pkg_dir,"",$pkg));
+				$this->require_package($pkg_name);
+			}
+		}
+	}
 
 
-  /**
-   * Return a Request object for the given key.
-   * 
-   * @param string key name of the requested request
-   */
-  public function get_request($type=null){
-    if($type==null)
-      $type="Core.Default";
-    if(array_key_exists($type, $this->registered_requests))
-      return new SKB_Request($this->registered_requests[$type]['key']);
-    else
-      trigger_error("SKB_Main: request not found: {$type}", E_USER_ERROR);
-  }
+	/** @ignore */
+	private function walk_package_dir($pwd){
+		$ret=array();
+		if(false!=($ar=@scandir($pwd))){
+			foreach($ar as &$file){
+				if($file!="."&&$file!=".."&&@scandir($pwd.$file)!=false){
+					$ret[]=$pwd.$file;
+					$ret=array_merge($ret, $this->walk_package_dir($pwd.$file."/"));
+				}
+			}
+		}
+		return $ret;
+	}
 
-  /**
-   * Return a Reader object for the given key.
-   * 
-   * @param string key name of the requested reader
-   */
-  public function get_reader($type){
-  	$target=$this->configuration->get_group("skb", "target");
-    if(array_key_exists($type, $this->registered_readers))
-      return new $this->registered_readers[$type]['core:rabit:target:class'][$target];
-    else
-      trigger_error("SKB_Main: reader not found: {$type} for target {$target}", E_USER_ERROR);
-  }
 
-  /**
-   * Return a Builder object for the given key.
-   * 
-   * @param string key name of the requested builder
-   */
-  public function get_builder($type){
-  	$target=$this->configuration->get_group("skb", "target");
-    if(array_key_exists($type, $this->registered_builders))
-      return new $this->registered_builders[$type]['core:rabit:target:class'][$target];
-    else
-      trigger_error("SKB_Main: builder not found: {$type} for target {$target}", E_USER_ERROR);
-  }
+	/**
+	 * Return the current configuration array.
+	 */
+	public function get_configuration(){
+		return $this->configuration->get();
+	}
 
-  /**
-   * Return a Interpreter object for the given key.
-   * 
-   * @param string key name of the requested interpreter
-   */
-  public function get_interpreter($type){
-  	$target=$this->configuration->get_group("skb", "target");
-    if(array_key_exists($type, $this->registered_interpreter))
-      return new $this->registered_interpreter[$type]['core:rabit:target:class'][$target];
-    else
-      trigger_error("SKB_Main: interpreter not found: {$type} for target {$target}", E_USER_ERROR);
-  }
 
-  /**
-   * Interpret data using registered interpreters.
-   * 
-   * This function supports all types of registered interpreters (core, entity, value and entries).
-   * Each of them requires a slightly different set of parameters.
-   *
-   * @param string id identifier for the interpreter
-   * @param val value to be interpreted
-   * @param table database table to be used during interpretation
-   * @param SKB_Request request object for parametrisation
-   */
-  public function interpret_data($id, $val=null, $table=null, SKB_Request $request=null){
-  	$target=$this->configuration->get_group("skb", "target");
-    if(array_key_exists($id, $this->registered_interpreters)){
-      $class=$this->registered_interpreters[$id]['core:rabit:target:class'][$target];
-      switch($this->registered_interpreters[$id]['core:rabit:type']){
-        case "interpreter:core":    $c=new $class; return $c->interpret($val, $request);
-        case "interpreter:entity":  $c=new $class; return $c->interpret($val, $table);
-        case "interpreter:value":   $c=new $class; return $c->interpret($val);
-        case "interpreter:entries": $c=new $class; return $c->interpret($val, $table);
-      }
-      return;
-    }
-    trigger_error("SKB_Main: interpreter not found: {$id} for target {$target}", E_USER_ERROR);
-  }
+	/**
+	 * Return the specified registration field or a complete group of fields.
+	 * 
+	 * @param string group name of the requested group
+	 * @param string key name of the requested key; if null then the group is returned
+	 */
+	public function get_configuration_by_key($group, $key=null){
+		return $this->configuration->get_group($group, $key);
+	}
 
-  /**
-   * Return a Application object for the given key.
-   * 
-   * @param string key name of the requested application
-   */
-  public function get_application($type){
-  	$target=$this->configuration->get_group("skb", "target");
-    if(array_key_exists($type, $this->registered_applications))
-      return new $this->registered_applications[$type]['core:rabit:target:class'][$target];
-    else
-      trigger_error("SKB_Main: application not found: {$type} for target {$target}", E_USER_ERROR);
-  }
 
-  /**
-   * Start interpreting a data array created by a Reader.
-   * 
-   * @param Util_ArBase entries the data array to be interpreted
-   * @param string table database table to be used as starting point for interpretation  
-   */
-  public function interpret(Util_ArBase $entries, $table){
-    $this->db_scope->reset();
-    if(isset($entries->ar['key']))
-      $this->db_scope->push($table,$entries->ar['key']);
-    return $this->interpret_next($entries);
-  }
+	/**
+	 * Return all currently registered fields.
+	 */
+	public function get_registered__fields(){
+		return $this->registered_fields;
+	}
 
-  /**
-   * Loop for interpreting a data array created by a Reader.
-   * 
-   * @param Util_ArBase entries the data array to be interpreted
-   */
-  public function interpret_next(Util_ArBase $entries){
-    $table=null;
-    $test_ar=Util_Interpreter::interpret("array:clean", $entries->ar);
-    if(count($test_ar)==0) // empty array, nothing to be done
-      return $entries;
-    elseif(!is_array($test_ar)) // no array, nothing to be done
-      return $entries;
-    elseif(count($test_ar)==1){ // array with 1 member, main process initiated
-      $key=array_keys($test_ar);
-      $key=$key[0];
-      $val=array_values($test_ar);
-      $val=$val[0];
 
-      // we only process if the key is known and meta data (an entry in the fields table) for it exist
-      if(array_key_exists($key, $this->registered_fields)){
-        $testAr=$this->registered_fields[$key];
+	/**
+	 * Return the specified field.
+	 * 
+	 * @param string key name of the field
+	 */
+	public function get_registered__fields_by_key($key){
+		if(array_key_exists($key, $this->registered_fields))
+			return $this->registered_fields[$key];
+		return -1;
+	}
 
-        // check for entity or value, if neither of them do not process entry
-        if($testAr['core:type']=="entity"){
-          // we have an entity, so test for links to other tables or interpreters to be called
-          if($table==null&&isset($testAr['core:default_db']))
-            $table=$testAr['core:default_db'];
-          if($table!=null&&!isset($testAr['core:interpreter'])){
-            if($testAr['core:explode']==true){
-              $ar=Util_Interpreter::interpret("array:explode", $val);
-              $_Lkeys=array_keys($ar);
-              $_Lsize=count($_Lkeys);
-              for($l=0;$l<$_Lsize;$l++){
-                $entries->ar[$testAr['core:entries_name']][]=$this->interpret_next(new Util_ArBase(array($testAr['core:entries_name']."_key"=>$ar[$_Lkeys[$l]])))->ar[$testAr['core:entries_name']];
-              }
-              unset($entries->ar[$key]);
-            }
-            else{
-              $entries->ar=array();
-              if($this->db_scope->push($table,$val)==true){
-                $pdos=$this->sql_query(null, array('*'), array($table), "key = '{$val}'");
-                $ret=Util_Interpreter::interpret("array:clean", $pdos->fetch(PDO::FETCH_ASSOC));
-                $entries->ar[$testAr['core:entries_name']]=$this->interpret_next(new Util_ArBase($ret))->ar;
-                //echo "+++ ";$this->db_scope->print_r();
-                $this->db_scope->pop();
-              }
-              else{
-                $entries->ar[$testAr['core:entries_name']]=array();
-                //echo "### ";$this->db_scope->print_r();
-              }
-            }
-          }
-          else{
-            $entries->ar[$testAr['core:entries_name']]=$this->interpret_data($testAr['core:interpreter'], $val)->ar;
-            unset($entries->ar[$key]);
-          }
-        }
-        elseif($testAr['core:type']=="value"){
-          // we have a value, which can be localised or exploded (create an array from a list)
-          // first the locale, identified by ending on "_locale"
-          if(substr_compare($key, "_locale", -strlen("_locale"), strlen("_locale"))===0){
-            //old test was on test field localised: if($testAr['core:localised']==true){
-            $lang=$this->lang;
 
-            //new i18n method, using gettext: domain%%text
-            if(strpos($val,"%%")!==false){
-              $domain=strtok($val,"%%");
-              $text=strtok("%%");
-              $entries->ar[$testAr['core:entries_name']]=dgettext($domain, $text);
-            }
-            //old i18n method: de%Deutsch,en%English
-            elseif(strpos($val,"%")!==false){
-              $ar=Util_Interpreter::interpret("array:explode", $val);
-              $entries->ar=array();
-              if(isset($ar[$lang]))
-                $entries->ar[$testAr['core:entries_name']]=$ar[$lang];
-              elseif(isset($ar[""]))
-                $entries->ar[$testAr['core:entries_name']]=$ar[""];
-              else
-                $entries->ar[$testAr['core:entries_name']]=-1;
-            }
-            else
-              $entries->ar[$testAr['core:entries_name']]=-1;
-          }
-          elseif($testAr['core:explode']==true){
-            $entries->ar=array();
-            $entries->ar[$testAr['core:entries_name']]=Util_Interpreter::interpret("array:explode", $val);
-          }
-        }
-      }
-    }
-    else{ // array with more than one member, loop through the array
-      $newAr=array();
-      $_keys=array_keys($entries->ar);
-      $_size=count($_keys);
-      for($i=0;$i<$_size;$i++){
-        $reAr=new Util_ArBase(array($_keys[$i]=>$entries->ar[$_keys[$i]]));
-        $newAr=array_merge($newAr, $this->interpret_next($reAr)->ar);
-      }
-      unset($entries->ar);
-      $entries->ar=$newAr;
-    }
-    return $entries;
-  }
+	/**
+	 * Return all currently registered requests.
+	 */
+	public function get_registered_requests(){
+		return $this->registered_requests;
+	}
 
-  /**
-   * Reset DB Scope, which is used in the interpreter loop to detect and avoid reference loops in the databases
-   */
-  public function reset_scope(){$this->db_scope->reset();}
 
-  public function get_field_settings($field){
-    if(isset($this->registered_fields[$field]))
-      return $this->registered_fields[$field];
-    else
-      return array();
-  }
+	/**
+	 * Return the specified request.
+	 * 
+	 * @param string key name of the request
+	 */
+	public function get_registered_requests_by_key($key){
+		if(array_key_exists($key, $this->registered_requests))
+			return $this->registered_requests[$key];
+		return -1;
+	}
 
-  /**
-   * Return registered PDOs.
-   */
-  public function get_registered_pdos(){
-    return $this->dbpdos->get_registered_pdos();
-  }
 
-  /**
-   * Return specific PDO.
-   * 
-   * @param string group of PDOs
-   * @param string key specific id within a group
-   */
-  public function get_registered_pdos_by_key($group, $key=null){
-    return $this->dbpdos->get_registered_pdos_by_key($group, $key);
-  }
+	/**
+	 * Return all currently registered readers.
+	 */
+	public function get_registered_readers(){
+		return $this->registered_readers;
+	}
 
-  /**
-   * Generate an SQL query on a given PDO object.
-   * 
-   * @param Database_PDOConnect pdo the PDO object to be used for the query
-   * @param string select the SQL select string
-   * @param array tables an array of tables to be used for the query
-   * @param string where the SQL where string
-   * @param string order the SQL order string
-   */
-  public function sql_query($pdo, $select, $tables, $where=null, $order=null){
-    return $this->dbpdos->sql_query($pdo, $select, $tables, $where, $order);
-  }
 
-  public function get_lang(){
-  	return $this->lang;
-  }
+	/**
+	 * Return the specified reader.
+	 * 
+	 * @param string key name of the reader
+	 */
+	public function get_registered_readers_by_key($key){
+		if(array_key_exists($key, $this->registered_readers))
+			return $this->registered_readers[$key];
+		return -1;
+	}
+
+
+	/**
+	 * Return all currently registered builders.
+	 */
+	public function get_registered_builders(){
+		return $this->registered_builders;
+	}
+
+
+	/**
+	 * Return the specified builder.
+	 * 
+	 * @param string key name of the builder
+	 */
+	public function get_registered_builders_by_key($key){
+		if(array_key_exists($key, $this->registered_builders))
+			return $this->registered_builders[$key];
+		return -1;
+	}
+
+
+	/**
+	 * Return all currently registered templates.
+	 */
+	public function get_registered_templates(){
+		return $this->registered_templates;
+	}
+
+
+	/**
+	 * Return the specified template.
+	 * 
+	 * @param string key name of the template
+	 */
+	public function get_registered_templates_by_key($key){
+		if(array_key_exists($key, $this->registered_templates))
+			return $this->registered_templates[$key];
+		return -1;
+	}
+
+
+	/**
+	 * Return all currently registered interpreters.
+	 */
+	public function get_registered_interpreters(){
+		return $this->registered_interpreters;
+	}
+
+
+	/**
+	 * Return the specified interpreter.
+	 * 
+	 * @param string key name of the interpreter
+	 */
+	public function get_registered_interpreters_by_key($key){
+		if(array_key_exists($key, $this->registered_interpreters))
+			return $this->registered_interpreters[$key];
+		return -1;
+	}
+
+
+	/**
+	 * Return all currently registered applications.
+	 */
+	public function get_registered_applications(){
+		return $this->registered_applications;
+	}
+
+
+	/**
+	 * Return the specified application.
+	 * 
+	 * @param string key name of the application
+	 */
+	public function get_registered_applications_by_key($key){
+		if(array_key_exists($key, $this->registered_applications))
+			return $this->registered_applications[$key];
+		return -1;
+	}
+
+
+	/**
+	 * Return a Request object for the given key.
+	 * 
+	 * @param string key name of the requested request
+	 */
+	public function get_request($type=null){
+		if($type==null)
+			$type="Core.Default";
+		if(array_key_exists($type, $this->registered_requests))
+			return new SKB_Request($this->registered_requests[$type]['key']);
+		else
+			trigger_error("SKB_Main: request not found: {$type}", E_USER_ERROR);
+	}
+
+
+	/**
+	 * Return a Reader object for the given key.
+	 * 
+	 * @param string key name of the requested reader
+	 */
+	public function get_reader($type){
+		$target=$this->configuration->get_group("skb", "target");
+		if(array_key_exists($type, $this->registered_readers))
+			return new $this->registered_readers[$type]['core:rabit:target:class'][$target];
+		else
+			trigger_error("SKB_Main: reader not found: {$type} for target {$target}", E_USER_ERROR);
+	}
+
+
+	/**
+	 * Return a Builder object for the given key.
+	 * 
+	 * @param string key name of the requested builder
+	 */
+	public function get_builder($type){
+		$target=$this->configuration->get_group("skb", "target");
+		if(array_key_exists($type, $this->registered_builders))
+			return new $this->registered_builders[$type]['core:rabit:target:class'][$target];
+		else
+			trigger_error("SKB_Main: builder not found: {$type} for target {$target}", E_USER_ERROR);
+	}
+
+
+	/**
+	 * Return a Interpreter object for the given key.
+	 * 
+	 * @param string key name of the requested interpreter
+	 */
+	public function get_interpreter($type){
+		$target=$this->configuration->get_group("skb", "target");
+		if(array_key_exists($type, $this->registered_interpreter))
+			return new $this->registered_interpreter[$type]['core:rabit:target:class'][$target];
+		else
+			trigger_error("SKB_Main: interpreter not found: {$type} for target {$target}", E_USER_ERROR);
+	}
+
+
+	/**
+	 * Interpret data using registered interpreters.
+	 * 
+	 * This function supports all types of registered interpreters (core, entity, value and entries).
+	 * Each of them requires a slightly different set of parameters.
+	 *
+	 * @param string id identifier for the interpreter
+	 * @param val value to be interpreted
+	 * @param table database table to be used during interpretation
+	 * @param SKB_Request request object for parametrisation
+	 */
+	public function interpret_data($id, $val=null, $table=null, SKB_Request $request=null){
+		$target=$this->configuration->get_group("skb", "target");
+		if(array_key_exists($id, $this->registered_interpreters)){
+			$class=$this->registered_interpreters[$id]['core:rabit:target:class'][$target];
+			switch($this->registered_interpreters[$id]['core:rabit:type']){
+				case "interpreter:core":    $c=new $class; return $c->interpret($val, $request);
+				case "interpreter:entity":  $c=new $class; return $c->interpret($val, $table);
+				case "interpreter:value":   $c=new $class; return $c->interpret($val);
+				case "interpreter:entries": $c=new $class; return $c->interpret($val, $table);
+			}
+			return;
+		}
+		trigger_error("SKB_Main: interpreter not found: {$id} for target {$target}", E_USER_ERROR);
+	}
+
+
+	/**
+	 * Return a Application object for the given key.
+	 * 
+	 * @param string key name of the requested application
+	 */
+	public function get_application($type){
+		$target=$this->configuration->get_group("skb", "target");
+		if(array_key_exists($type, $this->registered_applications))
+			return new $this->registered_applications[$type]['core:rabit:target:class'][$target];
+		else
+			trigger_error("SKB_Main: application not found: {$type} for target {$target}", E_USER_ERROR);
+	}
+
+
+	public function get_field_settings($field){
+		if(isset($this->registered_fields[$field]))
+			return $this->registered_fields[$field];
+		else
+			return array();
+	}
+
+
+	public function get_lang(){
+		return $this->lang;
+	}
 }
 ?>

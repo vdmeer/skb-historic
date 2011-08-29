@@ -45,11 +45,13 @@ class SKB_DataManager{
      */
      private static $instance=null;
 
+
 	/**
 	 * Registered data objects
 	 * @var array
 	 */
 	private $registered_dos;
+
 
 	/**
 	 * String internally being used  for initial construction.
@@ -57,11 +59,13 @@ class SKB_DataManager{
 	 */
 	private static $cKey="beef";
 
+
 	/**
 	 * Object implementing a stack for detecing loops while interpreting data
 	 * @var SKB_DBScope
 	 */
 	private $interpret_scope;
+
 
 	/**
 	 * Return the instance of SKB_DataManager (Singleton).
@@ -71,6 +75,7 @@ class SKB_DataManager{
 			self::$instance=new SKB_DataManager(self::$cKey);
 		return self::$instance;
 	}
+
 
 	/**
 	 * Cloning is not allowed, since SKB_DataManager is a Singleton.
@@ -92,6 +97,7 @@ class SKB_DataManager{
 		}
 	}
 
+
 	/**
 	 * Return current set of data objects.
 	 *
@@ -99,7 +105,8 @@ class SKB_DataManager{
 	public function get_data_objects(){
 		return $this->registered_dos;
 	}
-
+                     
+                     
 	/**
 	 * Load and register a new data object (i.e. database tables, data file)
 	 * 
@@ -189,6 +196,7 @@ class SKB_DataManager{
 		}
 	}
 
+
 	/**
 	 * Prepares a query object that query_data_object can process
 	 *
@@ -205,7 +213,8 @@ class SKB_DataManager{
 		$ret['clean']=$clean;
 		return $ret;
 	}
-
+                         
+                         
 	public function test_query($query){
 		if(!isset($query['sema_tag']))
 			trigger_error("SKB_DataManager: no sema tag set in query request", E_USER_ERROR);
@@ -231,6 +240,7 @@ class SKB_DataManager{
 			$query['clean']=false;
 		return $query;
 	}
+
 
 	public function query_data_object($query){
 		$ret=array();
@@ -301,6 +311,7 @@ class SKB_DataManager{
 		return new Util_ArBase($ret);
 	}
 
+
 	/**
 	 * Interpret data, i.e. resolve all internal links, do i18n translations
 	 *
@@ -314,6 +325,7 @@ class SKB_DataManager{
 			$this->interpret_scope->push($table,$entries->ar['key']);
 		return $this->interpret_loop($entries);
 	}
+
 
 	/**
 	 * Loop for interpreting data
@@ -422,6 +434,7 @@ class SKB_DataManager{
 		return $entries;
 	}
 
+
 	/**
 	 * Interpret data using registered interpreters.
 	 * 
@@ -450,5 +463,12 @@ class SKB_DataManager{
 		}
 		trigger_error("SKB_Main: interpreter not found: {$id} for target {$target}", E_USER_ERROR);
 	}
+
+
+//	/**
+//	 * Reset DB Scope, which is used in the interpreter loop to detect and avoid reference loops in the databases
+//	 */
+//	public function reset_scope(){$this->db_scope->reset();}
+
 }
 ?>

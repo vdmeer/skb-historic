@@ -33,7 +33,7 @@
  * Reader for the SKB Package Core.Default.
  *
  * This is the default reader of the SKB. It provides no extra functionality, beside reading
- * the contents of the table given in the request. To instantiate a default reader do the following:.<br />
+ * the contents of the semantic tag given in the request. To instantiate a default reader do the following:.<br />
  *   <span style="font-family:monospace;color:DarkGreen">&#160;&#160;$reader=$mySKB->get_reader("<span style="font-weight:bold;">Core.Default.DB2Entries</span>");</span><br />
  *
  *
@@ -44,38 +44,33 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 class pkg_core__default___default___reader extends SKB_Reader{
-  /**
-   * An empty constructor.
-   */
-  public function __construct(){}
+	/**
+	 * An empty constructor.
+	 */
+	public function __construct(){}
 
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare()}
-   */
-  public function prepare_loop(SKB_Request $request, $table, $table_collections){
-    $mySKB=SKB_Main::get_instance();
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare()}
+	 */
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+		$mySKB=SKB_Main::get_instance();
+	
+		$skb_collection=$request->get_value('request:collection');
+	
+		$myDM=SKB_DataManager::get_instance();
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,null,null,null,true,true))->ar;
+		foreach($this->entry_list as $entry)
+			$this->entries[$entry['key']]=$entry;
+	}
 
-    $skb_collection=$request->get_value('request:collection');
-
-//	$myDM=SKB_DataManager::get_instance();
-//	$this->entry_list=$myDM->query_data_object($myDM->prepare_query("skb:encoding",null,null,null,null,null,true,true))->ar;
-
-  	$pdos=$mySKB->sql_query(null, array('*'), array($table));
-  	while($row=$pdos->fetch(PDO::FETCH_ASSOC)){
-      $ar=Util_Interpreter::interpret("array:clean", $row);
-      $ar=$mySKB->interpret(new Util_ArBase($ar), $table)->ar;
-      $this->entries[$ar['key']]=$ar;
-  	}
-  	$this->entries=Util_Interpreter::interpret("array:clean", $this->entries);
-  }
-
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute()}
-   */
-  public function execute_loop(SKB_Request $request){}
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute()}
+	 */
+	public function execute_loop(SKB_Request $request){
+	}
 }
 ?>

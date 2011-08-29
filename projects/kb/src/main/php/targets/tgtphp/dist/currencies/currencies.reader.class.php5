@@ -49,7 +49,7 @@ class pkg_dist__currencies___currencies___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
 		$myDM=SKB_DataManager::get_instance();
 		$this->entries=$myDM->query_data_object($myDM->prepare_query("skb:currencies",null,null,"currencies:code",null,null,true,false))->ar;
 	}

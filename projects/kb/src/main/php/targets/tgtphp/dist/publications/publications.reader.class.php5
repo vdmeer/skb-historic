@@ -50,7 +50,7 @@ class pkg_dist__publications___publications___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
 //		$mySKB=SKB_Main::get_instance();
 		
 		$skb_year=$request->get_value("default:year");
@@ -128,7 +128,7 @@ class pkg_dist__publications___publications___reader extends SKB_Reader{
 				continue;
 
 			$ar=Util_Interpreter::interpret("array:clean", $row);
-			$ar=$myDM->interpret_do(new Util_ArBase($ar), null, $table)->ar;
+			$ar=$myDM->interpret_do(new Util_ArBase($ar), null, $sematag)->ar;
 
 			$this->entries[$ar['key']]=$ar;
 		}

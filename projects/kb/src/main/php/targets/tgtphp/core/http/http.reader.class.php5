@@ -45,61 +45,62 @@
  * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
  */
 class pkg_core__http___http___reader extends SKB_Reader{
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare()}
+	 */
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+		$this->_get("http_status_codes");
+		$this->_get("http_headers_request");
+	
+		$this->_get("http_headers_response");
+		$this->_get("core_http_headers_response", "http_headers_response_skb", "skb");
+		$this->_get("site_http_headers_response", "http_headers_response_skb", "site");
+	
+		$this->_get("mime_content_types", null, "std");
+		$this->_get("core_mime_content_types", "mime_content_types", "skb");
+		$this->_get("site_mime_content_types", "mime_content_types", "site");
+	
+		$this->_get("http_request_methods");
+	}
 
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare()}
-   */
-  public function prepare_loop(SKB_Request $request, $table, $table_collections){
-    $this->_get("http_status_codes");
-    $this->_get("http_headers_request");
 
-    $this->_get("http_headers_response");
-    $this->_get("core_http_headers_response", "http_headers_response_skb", "skb");
-    $this->_get("site_http_headers_response", "http_headers_response_skb", "site");
+	/** @ignore */
+	private function _get($sematag, $entry_key=null, $origin=null){
+		$mySKB=SKB_Main::get_instance();
+		if(!$mySKB->sematag_exists($sematag))
+			return;
 
-    $this->_get("mime_content_types", null, "std");
-    $this->_get("core_mime_content_types", "mime_content_types", "skb");
-    $this->_get("site_mime_content_types", "mime_content_types", "site");
+		$myDM=SKB_DataManager::get_instance();
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"'key'",null,null,true,true))->ar;
 
-    $this->_get("http_request_methods");
-  }
+		$pdos=$mySKB->sql_query(null, array('*'), array($sematag), null, "'key'");
+		if(!is_object($pdos)&&$pdos==-1)
+			return;
 
-  /** @ignore */
-  private function _get($table, $entry_key=null, $origin=null){
-  	$mySKB=SKB_Main::get_instance();
-  	if(!$mySKB->table_exists($table))
-  	  return;
+		if($entry_key==null)
+			$entry_key=$sematag;
 
-//	$myDM=SKB_DataManager::get_instance();
-//	$this->entry_list=$myDM->query_data_object($myDM->prepare_query("skb:encoding",null,null,null,null,null,true,true))->ar;
+		if(!isset($this->entries[$entry_key]))
+			$this->entries[$entry_key]=array();
+		foreach($this->entry_list as $row){
+			if(isset($row['key'])){
+				$this->entries[$entry_key][$row['key']]=$row;
+				if($origin!=null)
+					$this->entries[$entry_key][$row['key']]['origin']=$origin;     	    
+				unset($this->entries[$entry_key][$row['key']]['key']);
+			}
+		}
+	}
 
-   	$pdos=$mySKB->sql_query(null, array('*'), array($table), null, "'key'");
-    if(!is_object($pdos)&&$pdos==-1)
-      return;
 
-    if($entry_key==null)
-      $entry_key=$table;
-
-    if(!isset($this->entries[$entry_key]))
-      $this->entries[$entry_key]=array();
-    while($row=$pdos->fetch(PDO::FETCH_ASSOC)){
-     	$ar=$mySKB->interpret(new Util_ArBase($row), $table)->ar;
-     	if(isset($ar['key'])){
-     	  $this->entries[$entry_key][$ar['key']]=$ar;
-     	  if($origin!=null)
-     	    $this->entries[$entry_key][$ar['key']]['origin']=$origin;     	    
-     	  unset($this->entries[$entry_key][$ar['key']]['key']);
-     	}
-    }
-  }
-
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute()}
-   */
-  public function execute_loop(SKB_Request $request){}
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute()}
+	 */
+	public function execute_loop(SKB_Request $request){
+	}
 }
 ?>

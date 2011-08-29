@@ -50,15 +50,11 @@ class pkg_dist__collections___collections___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $table, $table_collections){
-		$mySKB=SKB_Main::get_instance();
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
 		$myDM=SKB_DataManager::get_instance();
 
 		$skb_collection=$request->get_value('request:collection');
-//		$pdos=$mySKB->sql_query(null, array('*'), array($table_collections), '', '"request:seq_no"');
-		$rows=$myDM->query_data_object($myDM->prepare_query($table_collections,null,null,"request:seq_no",null,null,false,false))->ar;
-
-//		while($row=$pdos->fetch(PDO::FETCH_ASSOC)){
+		$rows=$myDM->query_data_object($myDM->prepare_query($sematag_collections,null,null,"request:seq_no",null,null,false,false))->ar;
 		foreach($rows as $row){
 			if(Util_Interpreter::interpret("value:is_empty", $skb_collection)==true||$skb_collection==-1)
 				continue;
@@ -68,7 +64,7 @@ class pkg_dist__collections___collections___reader extends SKB_Reader{
 				continue;
 			if(!isset($this->entries[$row['request:collection']]))
 				$this->entries[$row['request:collection']]=array();
-			$this->entries[$row['request:collection']][$row['request:part']]=$mySKB->interpret(new Util_ArBase($row), $table_collections)->ar;
+			$this->entries[$row['request:collection']][$row['request:part']]=$myDM->interpret_do(new Util_ArBase($row), $sematag_collections, null)->ar;
 		}
 	}
 	

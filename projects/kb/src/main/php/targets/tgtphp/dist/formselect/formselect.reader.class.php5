@@ -49,19 +49,19 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
 		$mySKB=SKB_Main::get_instance();
 		$myDM=SKB_DataManager::get_instance();
 
 		$todo=$request->get_form_select_keys();
-		$table_fields=array();
-//		$table_collections_fields=array();
+		$sematag_fields=array();
+//		$sematag_collections_fields=array();
 		$_keys=array_keys($todo);
 		$_size=count($_keys);
 		for($i=0;$i<$_size;$i++){
 			$this->entries[$_keys[$i]]=array();
 			if($todo[$_keys[$i]]=="table")
-				$table_fields[$_keys[$i]]=$mySKB->get_field_settings($_keys[$i]);
+				$sematag_fields[$_keys[$i]]=$mySKB->get_field_settings($_keys[$i]);
 //			elseif($todo[$_keys[$i]]=="table_collections")
 //				$table_collections_fields[$_keys[$i]]=$mySKB->get_field_settings($_keys[$i]);
 		}
@@ -73,23 +73,23 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 			if(is_array($part)&&isset($part[0])){
 				$coll=$coll[0];
 				$part=$part[0];
-				$row=$myDM->query_data_object($myDM->prepare_query($table_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$coll,"request:part"=>$part),null,null,null,false,false))->ar;
+				$row=$myDM->query_data_object($myDM->prepare_query($sematag_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$coll,"request:part"=>$part),null,null,null,false,false))->ar;
 				$test_key_ar=Util_Interpreter::interpret("array:explode", $row['request:element_keys']);
 				$test_key_ar=array_keys($test_key_ar);
 			}
 		}
 
-		$rows=$myDM->query_data_object($myDM->prepare_query($table,"*",null,null,null,null,false,false))->ar;
+		$rows=$myDM->query_data_object($myDM->prepare_query($sematag,"*",null,null,null,null,false,false))->ar;
 		foreach($rows as $row){
 			//first, if we have a selection array, check if the key is in there
 			if(count($test_key_ar)>0&&!in_array($row['key'],$test_key_ar))
 				continue;
 
-			$_keys=array_keys($table_fields);
+			$_keys=array_keys($sematag_fields);
 			$_size=count($_keys);
 			for($i=0;$i<$_size;$i++){
 				//first case, field does not explode
-				if($table_fields[$_keys[$i]]['core:explode']==0){
+				if($sematag_fields[$_keys[$i]]['core:explode']==0){
 					if(isset($this->entries[$_keys[$i]])&&isset($row[$_keys[$i]])&&Util_Interpreter::interpret("value:is_empty", $row[$_keys[$i]])==false)
 						$this->entries[$_keys[$i]][$row[$_keys[$i]]]=$row[$_keys[$i]];
 					//special case for journals and conferences
@@ -116,7 +116,7 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 				else{
 					if(isset($this->entries[$_keys[$i]])&&isset($row[$_keys[$i]])&&Util_Interpreter::interpret("value:is_empty", $row[$_keys[$i]])==false){
 						$tmp_ar=Util_Interpreter::interpret("array:explode", $row[$_keys[$i]]);
-						if(isset($table_fields[$_keys[$i]]['core:interpreter']))
+						if(isset($sematag_fields[$_keys[$i]]['core:interpreter']))
 							$this->entries[$_keys[$i]]=array_merge($this->entries[$_keys[$i]], array_combine(array_keys($tmp_ar),array_keys($tmp_ar)));
 						else
 							$this->entries[$_keys[$i]]=array_merge($this->entries[$_keys[$i]], array_combine(array_values($tmp_ar),array_values($tmp_ar)));
@@ -144,13 +144,13 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 		$_keys=array_keys($this->entries);
 		$_size=count($_keys);
 		for($i=0;$i<$_size;$i++){
-			if(isset($table_fields[$_keys[$i]]['core:default_db'])){
+			if(isset($sematag_fields[$_keys[$i]]['core:default_db'])){
 				$ar=$this->entries[$_keys[$i]];
 				$_keys_ex=array_keys($ar);
 				$_size_ex=count($_keys_ex);
 				for($k=0;$k<$_size_ex;$k++){
-					$row_locale=$myDM->query_data_object($myDM->prepare_query($table_fields[$_keys[$i]]['core:default_db'],"*",array("key"=>$ar[$_keys_ex[$k]]),null,null,null,false,true))->ar;
-					$row_locale=$myDM->interpret_do(new Util_ArBase($row_locale), null, $table_fields[$_keys[$i]]['core:default_db'])->ar;
+					$row_locale=$myDM->query_data_object($myDM->prepare_query($sematag_fields[$_keys[$i]]['core:default_db'],"*",array("key"=>$ar[$_keys_ex[$k]]),null,null,null,false,true))->ar;
+					$row_locale=$myDM->interpret_do(new Util_ArBase($row_locale), null, $sematag_fields[$_keys[$i]]['core:default_db'])->ar;
 					//special case for people, here we want last name and then first name
 					if($_keys[$i]=="publications:author_keys"||$_keys[$i]=="publications:editor_keys"||$_keys[$i]=="gallery:fotographer_key")
 						$this->entries[$_keys[$i]][$ar[$_keys_ex[$k]]]=$row_locale['people:last'] . ", ". $row_locale['people:first'];

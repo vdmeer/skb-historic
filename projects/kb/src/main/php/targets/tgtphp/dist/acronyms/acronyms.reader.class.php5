@@ -32,7 +32,7 @@
 /**
  * Reader for the SKB Package Dist.Acronyms.
  *
- * Reads the acronym table and prepares an array with all found acronyms.
+ * Reads the acronym semantic tag and prepares an array with all found acronyms.
  * This reader does not check the request object for further parametrisation.
  * The following code sequence will simply print an HTML table with all acronyms:<br />
  *   <span style="font-family:monospace;color:DarkGreen">&#160;&#160;$mySKB=SKB_Main::get_instance();</span><br />
@@ -74,7 +74,7 @@ class pkg_dist__acronyms___acronyms___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $table, $table_collections){
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
 		$myDM=SKB_DataManager::get_instance();
 		$this->entries=$myDM->query_data_object($myDM->prepare_query("skb:acronyms",null,null,"acronyms:short",null,null,true,true))->ar;
 	}
