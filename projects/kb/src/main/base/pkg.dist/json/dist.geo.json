@@ -39,10 +39,14 @@
 #
 
 {
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/geo\/dist.geo","tables":"pkg_rabit","filter_id":"dist.geo"},
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/geo\/dist.geo","tables":"pkg_fields","filter_id":"dist.geo"}
+	],
 	"load_data_object":[
-		{"sema_tag":"skb:geo:cities","type":"sqlite","handle":"dist\/geo\/geo","tables":"geo_cities","filter_id":"dist.geo"},
-		{"sema_tag":"skb:geo:continents","type":"sqlite","handle":"dist\/geo\/geo","tables":"geo_continents","filter_id":"dist.geo"},
-		{"sema_tag":"skb:geo:countries","type":"sqlite","handle":"dist\/geo\/geo","tables":"geo_countries","filter_id":"dist.geo"}
+		{"sema_tag":"skb:geo:cities","type":"sqlite","handle":"data:\/\/dist\/geo\/geo","tables":"geo_cities","filter_id":"dist.geo"},
+		{"sema_tag":"skb:geo:continents","type":"sqlite","handle":"data:\/\/dist\/geo\/geo","tables":"geo_continents","filter_id":"dist.geo"},
+		{"sema_tag":"skb:geo:countries","type":"sqlite","handle":"data:\/\/dist\/geo\/geo","tables":"geo_countries","filter_id":"dist.geo"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.geo","path":"mo","codeset":"UTF-8"}

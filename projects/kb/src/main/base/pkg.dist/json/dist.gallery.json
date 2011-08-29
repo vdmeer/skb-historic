@@ -39,5 +39,10 @@
 #
 
 {
-	"require_package":["dist.prevnext", "dist.collections", "dist.people", "dist.affiliations", "dist.date"]
+	"require_package":["dist.prevnext", "dist.collections", "dist.people", "dist.affiliations", "dist.date"],
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/gallery\/dist.gallery","tables":"pkg_rabit","filter_id":"dist.gallery"},
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/gallery\/dist.gallery","tables":"pkg_fields","filter_id":"dist.gallery"},
+		{"sema_tag":"skb:repository:requests","type":"sqlite","handle":"repo:\/\/dist\/gallery\/dist.gallery","tables":"pkg_requests","filter_id":"dist.gallery"}
+	]
 }

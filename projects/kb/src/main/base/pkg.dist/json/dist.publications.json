@@ -40,10 +40,15 @@
 
 {
 	"require_package":["dist.people", "dist.affiliations", "dist.acronyms", "dist.date", "dist.geo", "dist.publications.entrytypes"],
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/publications\/dist.publications","tables":"pkg_rabit","filter_id":"dist.publications"},
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/publications\/dist.publications","tables":"pkg_fields","filter_id":"dist.publications"},
+		{"sema_tag":"skb:repository:requests","type":"sqlite","handle":"repo:\/\/dist\/publications\/dist.publications","tables":"pkg_requests","filter_id":"dist.publications"}
+	],
 	"load_data_object":[
-		{"sema_tag":"skb:publications:conferences","type":"sqlite","handle":"dist\/publications\/publications","tables":"conferences","filter_id":"dist.publications"},
-		{"sema_tag":"skb:publications:events","type":"sqlite","handle":"dist\/publications\/publications","tables":"events","filter_id":"dist.publications"},
-		{"sema_tag":"skb:publications:journals","type":"sqlite","handle":"dist\/publications\/publications","tables":"journals","filter_id":"dist.publications"},
-		{"sema_tag":"skb:publications:publications","type":"sqlite","handle":"dist\/publications\/publications","tables":"publications","filter_id":"dist.publications"}
+		{"sema_tag":"skb:publications:conferences","type":"sqlite","handle":"data:\/\/dist\/publications\/publications","tables":"conferences","filter_id":"dist.publications"},
+		{"sema_tag":"skb:publications:events","type":"sqlite","handle":"data:\/\/dist\/publications\/publications","tables":"events","filter_id":"dist.publications"},
+		{"sema_tag":"skb:publications:journals","type":"sqlite","handle":"data:\/\/dist\/publications\/publications","tables":"journals","filter_id":"dist.publications"},
+		{"sema_tag":"skb:publications:publications","type":"sqlite","handle":"data:\/\/dist\/publications\/publications","tables":"publications","filter_id":"dist.publications"}
 	]
 }

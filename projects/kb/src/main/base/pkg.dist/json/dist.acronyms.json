@@ -39,8 +39,12 @@
 #
 
 {
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/acronyms\/dist.acronyms","tables":"pkg_fields","filter_id":"dist.acronyms"},
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/acronyms\/dist.acronyms","tables":"pkg_rabit","filter_id":"dist.acronyms"}
+	],
 	"load_data_object":[
-		{"sema_tag":"skb:acronyms","type":"sqlite","handle":"dist\/acronyms\/acronyms","tables":"acronyms","filter_id":"dist.acronyms"}
+		{"sema_tag":"skb:acronyms","type":"sqlite","handle":"data:\/\/dist\/acronyms\/acronyms","tables":"acronyms","filter_id":"dist.acronyms"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.acronyms","path":"mo","codeset":"UTF-8"}

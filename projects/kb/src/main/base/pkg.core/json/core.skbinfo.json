@@ -39,6 +39,9 @@
 #
 
 {
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/core\/skbinfo\/core.skbinfo","tables":"pkg_rabit","filter_id":"core.skbinfo"}
+	],
 	"text_domain":[
 		{"domain":"pkg.core.skbinfo","path":"mo","codeset":"UTF-8"}
 	]

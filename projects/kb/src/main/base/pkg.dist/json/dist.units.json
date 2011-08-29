@@ -39,6 +39,10 @@
 #
 
 {
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/units\/dist.units","tables":"pkg_rabit","filter_id":"dist.units"},
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/units\/dist.units","tables":"pkg_fields","filter_id":"dist.units"}
+	],
 	"load_database":[
 		{"fn":"dist\/units\/units","tables":"units_si,units_prefix_si,units_prefix_binary"}
 	]

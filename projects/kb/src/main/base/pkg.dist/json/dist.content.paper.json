@@ -39,5 +39,9 @@
 #
 
 {
-	"require_package":["dist.content", "dist.collections", "dist.gallery", "dist.publications"]
+	"require_package":["dist.content", "dist.collections", "dist.gallery", "dist.publications"],
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/content\/paper\/dist.content.paper","tables":"pkg_rabit","filter_id":"dist.content.paper"},
+		{"sema_tag":"skb:repository:requests","type":"sqlite","handle":"repo:\/\/dist\/content\/paper\/dist.content.paper","tables":"pkg_requests","filter_id":"dist.content.paper"}
+	]
 }

@@ -40,12 +40,13 @@
 
 {
 	"require_package":["dist.acronyms", "dist.geo"],
-	"load_database":[
-		{"fn":"dist\/affiliations\/affiliations","tables":"affiliations,affiliations_type"}
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/affiliations\/dist.affiliations","tables":"pkg_rabit","filter_id":"dist.affiliations"},
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/affiliations\/dist.affiliations","tables":"pkg_fields","filter_id":"dist.affiliations"}
 	],
 	"load_data_object":[
-		{"sema_tag":"skb:affiliations","type":"sqlite","handle":"dist\/affiliations\/affiliations","tables":"affiliations","filter_id":"dist.affiliations"},
-		{"sema_tag":"skb:affiliations:type","type":"sqlite","handle":"dist\/affiliations\/affiliations","tables":"affiliations_type","filter_id":"dist.affiliations"}
+		{"sema_tag":"skb:affiliations","type":"sqlite","handle":"data:\/\/dist\/affiliations\/affiliations","tables":"affiliations","filter_id":"dist.affiliations"},
+		{"sema_tag":"skb:affiliations:type","type":"sqlite","handle":"data:\/\/dist\/affiliations\/affiliations","tables":"affiliations_type","filter_id":"dist.affiliations"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.affiliations","path":"mo","codeset":"UTF-8"}

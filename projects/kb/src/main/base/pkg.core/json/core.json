@@ -39,6 +39,13 @@
 #
 
 {
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/core\/core","tables":"pkg_fields","filter_id":"core"},
+#		{"sema_tag":"skb:repository:requests","type":"sqlite","handle":"repo:\/\/core\/core","tables":"pkg_requests","filter_id":"core"},
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/core\/core","tables":"pkg_rabit","filter_id":"core"},
+		{"sema_tag":"skb:repository:http_headers_response","type":"sqlite","handle":"repo:\/\/core\/core","tables":"pkg_http_headers_response","filter_id":"core"},
+		{"sema_tag":"skb:repository:mime_ct","type":"sqlite","handle":"repo:\/\/core\/core","tables":"pkg_mime_content_types","filter_id":"core"}
+	],
 	"text_domain":[
 		{"domain":"pkg.core","path":"mo","codeset":"UTF-8"}
 	]

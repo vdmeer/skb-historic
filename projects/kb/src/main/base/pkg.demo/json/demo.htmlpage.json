@@ -39,5 +39,8 @@
 #
 
 {
-	"require_package":["dist.htmlpage", "demo.menu"]
+	"require_package":["dist.htmlpage", "demo.menu"],
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/demo\/htmlpage\/demo.htmlpage","tables":"pkg_rabit","filter_id":"demo.htmlpage"}
+	]
 }

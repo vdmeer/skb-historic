@@ -39,6 +39,11 @@
 #
 
 {
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/dist\/modelrailway\/dist.modelrailway","tables":"pkg_rabit","filter_id":"dist.modelrailway"},
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/modelrailway\/dist.modelrailway","tables":"pkg_fields","filter_id":"dist.modelrailway"},
+		{"sema_tag":"skb:repository:requests","type":"sqlite","handle":"repo:\/\/dist\/modelrailway\/dist.modelrailway","tables":"pkg_requests","filter_id":"dist.modelrailway"}
+	],
 	"load_database":[
 		{"fn":"dist\/modelrailway\/modelrailway","tables":"mr_gauge,mr_categories"}
 	],

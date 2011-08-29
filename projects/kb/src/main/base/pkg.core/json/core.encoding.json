@@ -39,7 +39,12 @@
 #
 
 {
-	"load_database":[
-		{"fn":"core\/encoding\/encoding","tables":"encoding_characters"}
+	"load_repository_object":[
+		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/core\/encoding\/core.encoding","tables":"pkg_fields","filter_id":"core.encoding"},
+		{"sema_tag":"skb:repository:requests","type":"sqlite","handle":"repo:\/\/core\/encoding\/core.encoding","tables":"pkg_requests","filter_id":"core.encoding"},
+		{"sema_tag":"skb:repository:rabit","type":"sqlite","handle":"repo:\/\/core\/encoding\/core.encoding","tables":"pkg_rabit","filter_id":"core.encoding"}
+	],
+	"load_data_object":[
+		{"sema_tag":"skb:encoding","type":"sqlite","handle":"data:\/\/core\/encoding\/encoding","tables":"encoding_characters","filter_id":"core.encoding"}
 	]
 }

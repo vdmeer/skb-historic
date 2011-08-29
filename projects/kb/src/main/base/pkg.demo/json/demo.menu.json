@@ -40,7 +40,7 @@
 
 {
 	"load_data_object":[
-		{"sema_tag":"skb:menu","type":"sqlite","handle":"demo\/menu\/menu","tables":"menu","filter_id":"demo.menu"}
+		{"sema_tag":"skb:menu","type":"sqlite","handle":"data:\/\/demo\/menu\/menu","tables":"menu","filter_id":"demo.menu"}
 	],
 	"text_domain":[
 		{"domain":"pkg.demo.menu","path":"mo","codeset":"UTF-8"}
