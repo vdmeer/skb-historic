@@ -50,7 +50,7 @@ div.skbinfo table tbody th {background: #dddddd; color:black; font-weight: bold;
 
 div.skbinfo table.configuration tbody td {padding:4px; background: #003261; color:white;}
 
-div.skbinfo table.dbpdos tbody td {background: #8B4513; color:white; font-weight: normal;}
+div.skbinfo table.dos tbody td {background: #8B4513; color:white; font-weight: normal;}
 div.skbinfo table.requests tbody td {background: #666600; color:white; font-weight: normal;}
 div.skbinfo table.readers tbody td {background: #336600; color:white; font-weight: normal;}
 div.skbinfo table.builders tbody td {background: #996600; color:white; font-weight: normal;}

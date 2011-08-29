@@ -89,32 +89,39 @@
   <?php
   }
 
-  if(isset($entries['dbpos'])){
+  if(isset($entries['registered_dos'])){
   ?>
-    <p><table class="dbpdos">
+    <p><table class="dos">
       <thead>
-        <tr><td colspan="8"><?php echo dgettext('pkg.core.skbinfo', "Registered Databases"); ?></td></tr>
-        <tr><td><?php echo dgettext('pkg.core.skbinfo', "key"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "origin"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "name"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "file"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "tables"); ?></td></tr>
+        <tr><td colspan="6"><?php echo dgettext('pkg.core.skbinfo', "Registered Semantic Tags"); ?></td></tr>
+        <tr><td><?php echo dgettext('pkg.core.skbinfo', "semantic tag"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "type"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "handle"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "tables"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "filter"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "package"); ?></td></tr>
       </thead>
       <tfoot>
-        <tr><td><?php echo dgettext('pkg.core.skbinfo', "key"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "origin"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "name"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "file"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "tables"); ?></td></tr>
+        <tr><td><?php echo dgettext('pkg.core.skbinfo', "semantic tag"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "type"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "handle"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "tables"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "filter"); ?></td><td><?php echo dgettext('pkg.core.skbinfo', "package"); ?></td></tr>
       </tfoot>
       <tbody>
         <?php
-          $cfg=$entries['dbpos'];
+          $cfg=$entries['registered_dos'];
           ksort($cfg);
           $_keys=array_keys($cfg);
           $_size=count($_keys);
           for($i=0;$i<$_size;$i++){
-          	if($select!=null&&isset($cfg[$_keys[$i]]['origin'])&&$select!=$cfg[$_keys[$i]]['origin'])
-          	  continue;
+          	$rowspan=count($cfg[$_keys[$i]])+1;
           	echo "            <tr>";
-          	echo "<th>" . $_keys[$i] . "</th>";
-          	echo (isset($cfg[$_keys[$i]]['origin']))?"<td>{$cfg[$_keys[$i]]['origin']}</td>":"<td>&#160;</td>";
-          	echo (isset($cfg[$_keys[$i]]['name']))?"<td>{$cfg[$_keys[$i]]['name']}</td>":"<td>&#160;</td>";
-          	echo (isset($cfg[$_keys[$i]]['file']))?"<td>{$cfg[$_keys[$i]]['file']}</td>":"<td>&#160;</td>";
-            echo (isset($cfg[$_keys[$i]]['tables']))?"<td>".implode("<br />",$cfg[$_keys[$i]]['tables'])."</td>":"<td>&#160;</td>";
+          	echo '<th rowspan="'.$rowspan.'">' . $_keys[$i] . "</th>";
           	echo "</tr>\n";
+          	foreach($cfg[$_keys[$i]] as $sema){
+       			echo "            <tr>";
+          		echo (isset($sema['type']))?"<td>{$sema['type']}</td>":"<td>&#160;</td>";
+          		echo (isset($sema['handle']))?"<td>{$sema['handle']}</td>":"<td>&#160;</td>";
+          		if(isset($sema['tables']))
+          			echo "<td>".implode(", ",$sema['tables'])."</td>";
+          		else
+          			echo "<td>&#160;</td>";
+          		echo (isset($sema['filter_id']))?"<td>{$sema['filter_id']}</td>":"<td>&#160;</td>";
+          		echo (isset($sema['package']))?"<td>{$sema['package']}</td>":"<td>&#160;</td>";
+       			echo "            </tr>";
+          	}
           }
         ?>
       </tbody>

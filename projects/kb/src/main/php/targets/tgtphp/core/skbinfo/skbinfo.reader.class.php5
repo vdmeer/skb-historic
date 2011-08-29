@@ -115,9 +115,9 @@ class pkg_core__skbinfo___skbinfo___reader extends SKB_Reader{
       $this->entries['configuration']=$mySKB->get_configuration();
       ksort($this->entries['configuration']);
     }
-    if($todo==null||$todo=="dbpdos"){
-      $this->entries['dbpos']=$mySKB->get_registered_pdos();
-      ksort($this->entries['dbpos']);
+    if($todo==null||$todo=="registered_dos"){
+      $this->entries['registered_dos']=SKB_DataManager::get_instance()->get_data_objects();
+      ksort($this->entries['registered_dos']);
     }
     if($todo==null||$todo=="requests"){
       $this->entries['registered_requests']=$mySKB->get_registered_requests();
