@@ -128,469 +128,430 @@ class SKB_Main{
   private $db_scope;
 
 
-  /**
-   * Return the instance of SKB_Main (Singleton).
-   */
-  public static function get_instance(){
-    if(self::$instance===null)
-      self::$instance=new SKB_Main(self::$cKey);
-    return self::$instance;
-  }
+	/**
+	 * Return the instance of SKB_Main (Singleton).
+	 */
+	public static function get_instance(){
+		if(self::$instance===null)
+			self::$instance=new SKB_Main(self::$cKey);
+		return self::$instance;
+	}
 
 
-  /**
-   * Cloning is not allowed, since SKB_Main is a Singleton.
-   */
-  public function __clone(){
-    trigger_error('SKB_Main: Clone is not allowed.', E_USER_ERROR);
-  }
+	/**
+	 * Cloning is not allowed, since SKB_Main is a Singleton.
+	 */
+	public function __clone(){
+		trigger_error('SKB_Main: Clone is not allowed.', E_USER_ERROR);
+	}
 
 
-  /**
-   * The class constructor, which cannot be called directly since SKB_Main is a singleton.
-   */
-  private function __construct($_c){
-    if($_c!=self::$cKey)
-      trigger_error('SKB_Main: Direct creation of object is not allowed, please use get_instance().', E_USER_ERROR);
-    else{
-      global $__cfg_array;
-      mb_internal_encoding("UTF-8");
+	/**
+	 * The class constructor, which cannot be called directly since SKB_Main is a singleton.
+	 */
+	private function __construct($_c){
+		if($_c!=self::$cKey)
+			trigger_error('SKB_Main: Direct creation of object is not allowed, please use get_instance().', E_USER_ERROR);
+		else{
+			global $__cfg_array;
+			mb_internal_encoding("UTF-8");
 
-      if(!isset($__cfg_array["skb_site_id"]))
-        trigger_error("SKB_Main: invalid configuration", E_USER_ERROR);
-      else{
-        $this->dbpdos=new SKB_DBPDOs();
-        $this->db_scope=SKB_DBScope::get_instance();
+			if(!isset($__cfg_array["skb_site_id"]))
+				trigger_error("SKB_Main: invalid configuration", E_USER_ERROR);
+			else{
+				$this->dbpdos=new SKB_DBPDOs();
+				$this->db_scope=SKB_DBScope::get_instance();
 
-        //load the skb configuration
-        $o=new Database_PDOConnect($__cfg_array["config-core"]);
-        $sth=$o->pdo->prepare("SELECT * FROM skb_cfg");
-        if($sth->execute()){
-          while($row=$sth->fetch(PDO::FETCH_ASSOC)){
-            if(!isset($this->configuration[$row['collection']]))
-              $this->configuration[$row['collection']]=array();
-            if($row['field_explodes']==true)
-              $this->configuration[$row['collection']][$row['part']]=Util_Interpreter::interpret("array:explode", $row['value']);
-            else
-              $this->configuration[$row['collection']][$row['part']]=$row['value'];
-          }
-          $this->configuration['skb']['site-id']=$__cfg_array["skb_site_id"];
-          self::$site_id=$this->configuration['skb']['site-id'];
-          $this->dbpdos->pdo_add("core:cfg",$__cfg_array["config-core"],array("skb_cfg"),$o->pdo,"core:cfg");
-        }
+				//load the skb configuration
+				$myDM=SKB_DataManager::get_instance();
+				$myDM->load_data_object("skb:core:config", "sqlite", "config://".$__cfg_array["config-core"], "skb_cfg", "skb:core:config", "core");
+				$__cfg=$myDM->query_data_object($myDM->prepare_query("skb:core:config",null,null,null,null,null,false,false))->ar;
+				foreach($__cfg as $row){
+					if(!isset($this->configuration[$row['collection']]))
+						$this->configuration[$row['collection']]=array();
+					if($row['field_explodes']==true)
+						$this->configuration[$row['collection']][$row['part']]=Util_Interpreter::interpret("array:explode", $row['value']);
+					else
+						$this->configuration[$row['collection']][$row['part']]=$row['value'];
+				}
+				$this->configuration['skb']['site-id']=$__cfg_array["skb_site_id"];
+				self::$site_id=$this->configuration['skb']['site-id'];
 
-        //load the site specific configuration
-        $o=new Database_PDOConnect($__cfg_array["config-site"]);
-        $sth=$o->pdo->prepare("SELECT * FROM configuration");
-        if($sth->execute()){
-          while($row=$sth->fetch(PDO::FETCH_ASSOC)){
-            if(!isset($this->configuration[$row['collection']]))
-              $this->configuration[$row['collection']]=array();
-            if($row['field_explodes']==true)
-              $this->configuration[$row['collection']][$row['part']]=Util_Interpreter::interpret("array:explode", $row['value']);
-            else
-              $this->configuration[$row['collection']][$row['part']]=$row['value'];
-          }
+				//load the site specific configuration
+				$myDM->load_data_object("skb:core:config:site", "sqlite", "config://".$__cfg_array["config-site"], "configuration", "skb:core:config:site", "site");
+				$__cfg=$myDM->query_data_object($myDM->prepare_query("skb:core:config:site",null,null,null,null,null,false,false))->ar;
+				if(true){
+					foreach($__cfg as $row){
+						if(!isset($this->configuration[$row['collection']]))
+							$this->configuration[$row['collection']]=array();
+						if($row['field_explodes']==true)
+							$this->configuration[$row['collection']][$row['part']]=Util_Interpreter::interpret("array:explode", $row['value']);
+						else
+							$this->configuration[$row['collection']][$row['part']]=$row['value'];
+					}
 
-          $this->configuration["skb"]["root-document"] = $__cfg_array["root-document"];
-          $this->configuration["skb"]["root-skb"]      = $__cfg_array["root-skb"];
-          $this->configuration["skb"]["root-classes"]  = $__cfg_array["root-classes"];
-          $this->configuration["path"]["skb"]          = $__cfg_array["root-document"].$__cfg_array["root-skb"];
+					$this->configuration["skb"]["root-document"] = $__cfg_array["root-document"];
+					$this->configuration["skb"]["root-skb"]      = $__cfg_array["root-skb"];
+					$this->configuration["skb"]["root-classes"]  = $__cfg_array["root-classes"];
+					$this->configuration["path"]["skb"]          = $__cfg_array["root-document"].$__cfg_array["root-skb"];
 
 					$this->configuration["skb"]["target"]        = "php";
 
-          $this->configuration["server"]["root-fs"]=$__cfg_array["root-document"];
+					$this->configuration["server"]["root-fs"]=$__cfg_array["root-document"];
 
-          if(isset($_SERVER["REMOTE_ADDR"])&&strcmp($_SERVER["REMOTE_ADDR"], "127.0.0.1")!=0){
-            $this->configuration["server"]["access-remote"]=true;
-          }
-          else
-            $this->configuration["server"]["access-remote"]=false;
+					if(isset($_SERVER["REMOTE_ADDR"])&&strcmp($_SERVER["REMOTE_ADDR"], "127.0.0.1")!=0)
+						$this->configuration["server"]["access-remote"]=true;
+					else
+						$this->configuration["server"]["access-remote"]=false;
 
-          $this->configuration["server"]["root-http"]   = $this->configuration["skb"]["root-skb"];
+					$this->configuration["server"]["root-http"]   = $this->configuration["skb"]["root-skb"];
 
-          $this->configuration["path"]["classes"]       = $this->configuration["path"]["skb"].$__cfg_array["root-classes"];
-          $this->configuration["path"]["site"]          = $__cfg_array["site_path"];
-          $this->configuration["path"]["database"]      = $this->configuration["path"]["skb"] . $this->configuration["path"]["database"];
-          $this->configuration["path"]["config"]        = $this->configuration["path"]["skb"] . $this->configuration["path"]["config"];
-          $this->configuration["path"]["repository"]    = $this->configuration["path"]["skb"] . $this->configuration["path"]["repository"];
-          $this->configuration["path"]["locale"]        = $this->configuration["path"]["skb"] . $this->configuration["path"]["locale"];
+					$this->configuration["path"]["classes"]       = $this->configuration["path"]["skb"].$__cfg_array["root-classes"];
+					$this->configuration["path"]["site"]          = $__cfg_array["site_path"];
+					$this->configuration["path"]["database"]      = $this->configuration["path"]["skb"] . $this->configuration["path"]["database"];
+					$this->configuration["path"]["config"]        = $this->configuration["path"]["skb"] . $this->configuration["path"]["config"];
+					$this->configuration["path"]["repository"]    = $this->configuration["path"]["skb"] . $this->configuration["path"]["repository"];
+					$this->configuration["path"]["locale"]        = $this->configuration["path"]["skb"] . $this->configuration["path"]["locale"];
 
-          $this->configuration["path"]["targets"]       = $this->configuration["path"]["skb"] . $this->configuration["path"]["targets"];
+					$this->configuration["path"]["targets"]       = $this->configuration["path"]["skb"] . $this->configuration["path"]["targets"];
 
-          $this->configuration["path"]["images"]        = $this->configuration["server"]["root-http"] . $this->configuration["path"]["images"];
-          $this->configuration["path"]["css"]           = $this->configuration["server"]["root-http"] . $this->configuration["path"]["css"];
-          $this->configuration["path"]["javascript"]    = $this->configuration["server"]["root-http"] . $this->configuration["path"]["javascript"];
+					$this->configuration["path"]["images"]        = $this->configuration["server"]["root-http"] . $this->configuration["path"]["images"];
+					$this->configuration["path"]["css"]           = $this->configuration["server"]["root-http"] . $this->configuration["path"]["css"];
+					$this->configuration["path"]["javascript"]    = $this->configuration["server"]["root-http"] . $this->configuration["path"]["javascript"];
 
-          $this->configuration["path"]["library-abs"]   = $this->configuration["path"]["skb"] . $this->configuration["path"]["library"];
-          $this->configuration["path"]["library-rel"]   = $this->configuration["server"]["root-http"] . $this->configuration["path"]["library"];
-          unset($this->configuration["path"]["library"]);
+					$this->configuration["path"]["library-abs"]   = $this->configuration["path"]["skb"] . $this->configuration["path"]["library"];
+					$this->configuration["path"]["library-rel"]   = $this->configuration["server"]["root-http"] . $this->configuration["path"]["library"];
+					unset($this->configuration["path"]["library"]);
 
-          $this->configuration["path"]["gallery-abs"]   = $this->configuration["path"]["skb"] . $this->configuration["path"]["gallery"];
-          $this->configuration["path"]["gallery-rel"]   = $this->configuration["server"]["root-http"] . $this->configuration["path"]["gallery"];
-          unset($this->configuration["path"]["gallery"]);
+					$this->configuration["path"]["gallery-abs"]   = $this->configuration["path"]["skb"] . $this->configuration["path"]["gallery"];
+					$this->configuration["path"]["gallery-rel"]   = $this->configuration["server"]["root-http"] . $this->configuration["path"]["gallery"];
+					unset($this->configuration["path"]["gallery"]);
 
-          $this->configuration["path"]["figures-abs"]   = $this->configuration["path"]["skb"] . $this->configuration["path"]["figures"];
-          $this->configuration["path"]["figures-rel"]   = $this->configuration["server"]["root-http"] . $this->configuration["path"]["figures"];
-          unset($this->configuration["path"]["figures"]);
+					$this->configuration["path"]["figures-abs"]   = $this->configuration["path"]["skb"] . $this->configuration["path"]["figures"];
+					$this->configuration["path"]["figures-rel"]   = $this->configuration["server"]["root-http"] . $this->configuration["path"]["figures"];
+					unset($this->configuration["path"]["figures"]);
 
-          $this->configuration["php"]["file"]           = $_SERVER["PHP_SELF"];
-          $this->configuration["php"]["filename"]       = strtok(basename($_SERVER["PHP_SELF"]),".");
+					$this->configuration["php"]["file"]           = $_SERVER["PHP_SELF"];
+					$this->configuration["php"]["filename"]       = strtok(basename($_SERVER["PHP_SELF"]),".");
 
-          if(isset($this->configuration["path"]["figures-local"])){
-            $this->configuration["path"]["figures-local-abs"]   = $_SERVER["DOCUMENT_ROOT"] . $this->configuration["path"]["site"] . $this->configuration["path"]["figures-local"] . "/";
-            $this->configuration["path"]["figures-local-rel"]   = $this->configuration["path"]["site"]. $this->configuration["path"]["figures-local"] . "/";
-            unset($this->configuration["path"]["figures-local"]);
-          }
-          $this->dbpdos->pdo_add("site:cfg",$__cfg_array["config-site"],array("skb_cfg"),$o->pdo,"site:cfg");
-        }
+					if(isset($this->configuration["path"]["figures-local"])){
+						$this->configuration["path"]["figures-local-abs"]   = $_SERVER["DOCUMENT_ROOT"] . $this->configuration["path"]["site"] . $this->configuration["path"]["figures-local"] . "/";
+						$this->configuration["path"]["figures-local-rel"]   = $this->configuration["path"]["site"]. $this->configuration["path"]["figures-local"] . "/";
+						unset($this->configuration["path"]["figures-local"]);
+					}
+				}
 
-        $this->configuration=new Util_ArType($this->configuration);
+				$this->configuration=new Util_ArType($this->configuration);
 
-        // set locale
-        if(isset($_REQUEST['lang'])){
-          $dir=$this->configuration->get_group("path", "locale")."mo";
-          $supported=array();
-          $handle=opendir($dir);
-          while(false!==($file=readdir($handle))){
-            if($file!="."&&$file!="..")
-              $supported[]=$file;
-          }
-          closedir($handle);
-          if(in_array($_REQUEST['lang'],$supported))
-            $this->configuration->set_2_array("system", "lang", $_REQUEST['lang']);
-        }
-        $lang=$this->configuration->get_group("system", "lang");
-        $this->lang=$this->configuration->get_group("system", "lang");
-        putenv("LANG=$lang");
-        putenv("LC_ALL=$lang");
-        setlocale(LC_ALL, $lang);
-      }
-    }
-  }
+				// set locale
+				if(isset($_REQUEST['lang'])){
+					$dir=$this->configuration->get_group("path", "locale")."mo";
+					$supported=array();
+					$handle=opendir($dir);
+					while(false!==($file=readdir($handle))){
+						if($file!="."&&$file!="..")
+						$supported[]=$file;
+					}
+					closedir($handle);
+					if(in_array($_REQUEST['lang'],$supported))
+						$this->configuration->set_2_array("system", "lang", $_REQUEST['lang']);
+				}
+				$lang=$this->configuration->get_group("system", "lang");
+				$this->lang=$this->configuration->get_group("system", "lang");
+				putenv("LANG=$lang");
+				putenv("LC_ALL=$lang");
+				setlocale(LC_ALL, $lang);
+			}
+		}
+	}
 
-  /**
-   * Loads the core packages.
-   * 
-   * This function loads the core packages. We cannot do this in the constructor, since the packages
-   * might need access to the SKB_Main instance. This function is called from main.inc.php5 right after
-   * creating the SKB_Main singleton. It should not be called by anyone else later. However, packages 
-   * already loaded will not be processed again by require_package, so calling this function here more than
-   * once should not have any unwanted side effects.
-   */
-  public function load_core_packages(){
-    $this->require_package("core");
-    $this->require_package("core.encoding");
-    $this->require_package("core.request");
-    $this->require_package("core.default");
-    $this->require_package("core.mime");
-    $this->require_package("core.http");
+	/**
+	 * Loads the core packages.
+	 * 
+	 * This function loads the core packages. We cannot do this in the constructor, since the packages
+	 * might need access to the SKB_Main instance. This function is called from main.inc.php5 right after
+	 * creating the SKB_Main singleton. It should not be called by anyone else later. However, packages 
+	 * already loaded will not be processed again by require_package, so calling this function here more than
+	 * once should not have any unwanted side effects.
+	 */
+	public function load_core_packages(){
+		$this->require_package("core");
+		$this->require_package("core.encoding");
+		$this->require_package("core.request");
+		$this->require_package("core.default");
+		$this->require_package("core.mime");
+		$this->require_package("core.http");
 
-    $myHttp=SKB_Http::get_instance();
-    $myHttp->response_send_header("X-SKB", "v1.0");
-  }
+		$myHttp=SKB_Http::get_instance();
+		$myHttp->response_send_header("X-SKB", "v1.0");
+	}
 
-  /**
-   * Loads a Package (.db and .php file in packages).
-   * 
-   * This function loads a package. It will check for the existence of packages/[package_name]/[package_name].db
-   * and packages/[package_name], with '.' replaced by directory separators. If either the database or 
-   * the folder does not exist, it throws a USER ERROR. If the package is already loaded, nothing 
-   * will be done here. Otherwise the database is analysed and all known tables will be read and the 
-   * respective values being registered. Currently supported tables are: pkg_fields, pkg_requests, 
-   * pkg_rabit, pkg_http_status_codes, pkg_http_headers_request, pkg_http_headers_response and pkg_http_request_methods.
-   * The package database will be registered in the PDO repository.
-   *
-   * @param string package the packages name, i.e. core.skbinfo or mysite.mypackage
-   */
-  public function require_package($package){
-    if(in_array($package,$this->registered_packages)){
-      if(SKB_LOAD_PACKAGE_NOTICE===true)
-        trigger_error("SKB_Main: package already loaded: $package", E_USER_NOTICE);
-      return;
-    }
+	/**
+	 * Loads a Package (.db and .php file in packages).
+	 * 
+	 * This function loads a package. It will check for the existence of packages/[package_name]/[package_name].db
+	 * and packages/[package_name], with '.' replaced by directory separators. If either the database or 
+	 * the folder does not exist, it throws a USER ERROR. If the package is already loaded, nothing 
+	 * will be done here. Otherwise the database is analysed and all known tables will be read and the 
+	 * respective values being registered. Currently supported tables are: pkg_fields, pkg_requests, 
+	 * pkg_rabit, pkg_http_status_codes, pkg_http_headers_request, pkg_http_headers_response and pkg_http_request_methods.
+	 * The package database will be registered in the PDO repository.
+	 *
+	 * @param string package the packages name, i.e. core.skbinfo or mysite.mypackage
+	 */
+	public function require_package($package){
+		if(in_array($package,$this->registered_packages)){
+			if(SKB_LOAD_PACKAGE_NOTICE===true)
+				trigger_error("SKB_Main: package already loaded: $package", E_USER_NOTICE);
+			return;
+		}
 
-    $pkg_dir=$this->configuration->get_group("path", "repository");
-    $pkg_dir=$pkg_dir.str_replace(".","/",$package);
+		$pkg_dir=$this->configuration->get_group("path", "repository");
+		$pkg_dir=$pkg_dir.str_replace(".","/",$package);
 
-    $pkg_file_db=$pkg_dir."/".$package.".db";
-    $pkg_file_php=$pkg_dir."/".$package.".".$this->configuration->get_group("php", "extension");
-    $pkg_file_json=$pkg_dir."/".$package.".json";
+		$pkg_file_db=$pkg_dir."/".$package.".db";
+		$pkg_file_php=$pkg_dir."/".$package.".".$this->configuration->get_group("php", "extension");
+		$pkg_file_json=$pkg_dir."/".$package.".json";
 
-    if(!file_exists($pkg_dir))
-      trigger_error('SKB_Main: package not found or not correctly installed: '.$package.' in '.$pkg_dir, E_USER_ERROR);
+		if(!file_exists($pkg_dir))
+			trigger_error('SKB_Main: package not found or not correctly installed: '.$package.' in '.$pkg_dir, E_USER_ERROR);
 
-    if(file_exists($pkg_file_db)){
-      $o=new Database_PDOConnect($pkg_file_db);
-      $tables=array();
+		if(file_exists($pkg_file_json)){
+			$this->load_from_json($pkg_file_json, $package);
+			if(SKB_LOAD_PACKAGE_NOTICE===true)
+				trigger_error("SKB_Main: package PHP loaded: $package", E_USER_NOTICE);
+		}
 
-      //package fields
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_fields")){
-        $tables[]=$package.":pkg_fields";
+		if(file_exists($pkg_file_php)){
+			require_once($pkg_file_php);
+			if(SKB_LOAD_PACKAGE_NOTICE===true)
+				trigger_error("SKB_Main: package PHP loaded: $package", E_USER_NOTICE);
+		}
 
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_fields');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          if(SKB_LOAD_PACKAGE_NOTICE===true){
-            if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_fields))
-              trigger_error("SKB_Main: redefinitions of field: {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-          }
-          $this->registered_fields[$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-          $this->registered_fields[$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-        }
-      }
+		$this->registered_packages[]=$package;
 
-      //package requests
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_requests")){
-        $tables[]=$package.":pkg_requests";
+		if(SKB_LOAD_PACKAGE_NOTICE===true)
+			trigger_error("SKB_Main: package loaded and registered: $package", E_USER_NOTICE);
+	}
 
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_requests');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          if(SKB_LOAD_PACKAGE_NOTICE===true){
-            if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_requests))
-              trigger_error("SKB_Main: redefinitions of registered request: {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-          }
-          $this->registered_requests[$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-          $this->registered_requests[$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-        }
-      }
+	/**
+	 * Read a JSON file and execute the required functions (i.e. load_database, bind text domain).
+	 *
+	 * @param sting json_fn the complete path and file name for the JSON file
+	 */
+	public function load_from_json($json_fn, $package){
+		if(file_exists($json_fn)){
+			$myDM=SKB_DataManager::get_instance();
 
-      //package rabit
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_rabit")){
-        $tables[]=$package.":pkg_rabit";
+			$js=file($json_fn);
+			foreach($js as $ln=>$line){
+				if(strlen($line)==0)
+					unset($js[$ln]);
+				elseif(strlen($line)>0&&$line[0]=='#')
+					unset($js[$ln]);
+			}
+			$ar=json_decode(implode($js), true);
 
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_rabit');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          if(isset($ar[$_keys[$i]]['core:rabit:type'])){
-            switch($ar[$_keys[$i]]['core:rabit:type']){
-              case "reader":
-                                         if(SKB_LOAD_PACKAGE_NOTICE===true){
-                                           if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_readers))
-                                             trigger_error("SKB_Main: redefinitions of registered rabit (reader): {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-                                         }
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:class']))
-                                           $ar[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:class']);
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:template']))
-                                           $ar[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:template']);
-                                         $this->registered_readers[$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-                                         $this->registered_readers[$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-                                         break;
-              case "builder":
-                                         if(SKB_LOAD_PACKAGE_NOTICE===true){
-                                           if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_builders))
-                                             trigger_error("SKB_Main: redefinitions of registered rabit (builder): {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-                                         }
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:class']))
-                                           $ar[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:class']);
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:template']))
-                                           $ar[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:template']);
-                                         $this->registered_builders[$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-                                         $this->registered_builders[$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-                                         break;
-              case "interpreter:core":
-              case "interpreter:value":
-              case "interpreter:entries":
-              case "interpreter:entity":
-                                         if(SKB_LOAD_PACKAGE_NOTICE===true){
-                                           if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_interpreters))
-                                             trigger_error("SKB_Main: redefinitions of registered rabit (interpreter): {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-                                         }
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:class']))
-                                           $ar[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:class']);
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:template']))
-                                           $ar[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:template']);
-                                         $this->registered_interpreters[$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-                                         $this->registered_interpreters[$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-                                         break;
-              case "template":
-                                         if(SKB_LOAD_PACKAGE_NOTICE===true){
-                                           if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_templates))
-                                             trigger_error("SKB_Main: redefinitions of registered rabit (template): {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-                                         }
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:class']))
-                                           $ar[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:class']);
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:template']))
-                                           $ar[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:template']);
-                                         $this->registered_templates[$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-                                         $this->registered_templates[$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-                                         break;
-              case "application":
-                                         if(SKB_LOAD_PACKAGE_NOTICE===true){
-                                           if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_applications))
-                                             trigger_error("SKB_Main: redefinitions of registered rabit (application): {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-                                         }
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:class']))
-                                           $ar[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:class']);
-                                         if(isset($ar[$_keys[$i]]['core:rabit:target:template']))
-                                           $ar[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $ar[$_keys[$i]]['core:rabit:target:template']);
-                                         $this->registered_applications[$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-                                         $this->registered_applications[$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-                                         break;
-              default: break;
-            }
-          }
-        }
-      }
-
-      $http_ar=array();
-
-      //http_status_codes
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_http_status_codes")){
-        $tables[]=$package.":pkg_http_status_codes";
-        $http_ar['http_status_codes']=array();
-
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_http_status_codes');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          $http_ar['http_status_codes'][$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-          $http_ar['http_status_codes'][$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-        }
-      }
-
-      //http_headers_request
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_http_headers_request")){
-        $tables[]=$package.":pkg_http_headers_request";
-        $http_ar['http_headers_request']=array();
-
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_http_headers_request');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          $http_ar['http_headers_request'][$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-          $http_ar['http_headers_request'][$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-        }
-      }
-
-      //http_headers_response
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_http_headers_response")){
-        $tables[]=$package.":pkg_http_headers_response";
-        $http_ar['http_headers_response']=array();
-
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_http_headers_response');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          $http_ar['http_headers_response'][$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-          $http_ar['http_headers_response'][$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-        }
-      }
-
-      //http_request_methods
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_http_request_methods")){
-        $tables[]=$package.":pkg_http_request_methods";
-        $http_ar['http_request_methods']=array();
-
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_http_request_methods');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          $http_ar['http_request_methods'][$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-          $http_ar['http_request_methods'][$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-        }
-      }
-
-      //mime_content_types
-      if($this->dbpdos->pdo_table_exists($o->pdo,"pkg_mime_content_types")){
-        $tables[]=$package.":pkg_mime_content_types";
-        $http_ar['mime_content_types']=array();
-
-        $pdos=$this->dbpdos->sql_query($o->pdo,"*",'pkg_mime_content_types');
-        $ar=Util_Interpreter::interpret("array:clean", $pdos->fetchAll(PDO::FETCH_ASSOC));
-        $_keys=array_keys($ar);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          $http_ar['mime_content_types'][$ar[$_keys[$i]]['key']]=$ar[$_keys[$i]];
-          $http_ar['mime_content_types'][$ar[$_keys[$i]]['key']]['origin']="pkg:".$package;
-        }
-      }
-
-      if(count($http_ar)>0){
-        $myHttp=SKB_Http::get_instance();
-        $myHttp->set_data($http_ar);
-      }
-
-      //register pdo
-      $this->dbpdos->pdo_add("reg:".$package,$pkg_file_db,$tables,$o->pdo,"reg:".$package);
-    }
-
-    if(file_exists($pkg_file_json)){
-      $this->load_from_json($pkg_file_json, $package);
-      if(SKB_LOAD_PACKAGE_NOTICE===true)
-        trigger_error("SKB_Main: package PHP loaded: $package", E_USER_NOTICE);
-    }
-    if(file_exists($pkg_file_php)){
-      require_once($pkg_file_php);
-      if(SKB_LOAD_PACKAGE_NOTICE===true)
-        trigger_error("SKB_Main: package PHP loaded: $package", E_USER_NOTICE);
-    }
-
-    $this->registered_packages[]=$package;
-
-    if(SKB_LOAD_PACKAGE_NOTICE===true)
-      trigger_error("SKB_Main: package loaded and registered: $package", E_USER_NOTICE);
-  }
-
-  /**
-   * Read a JSON file and execute the required functions (i.e. load_database, bind text domain).
-   *
-   * @param sting json_fn the complete path and file name for the JSON file
-   */
-  public function load_from_json($json_fn, $package){
-  	if(file_exists($json_fn)){
-  		$js=file($json_fn);
-  		foreach($js as $ln=>$line){
-  			if(strlen($line)==0)
-  			  unset($js[$ln]);
-  			elseif(strlen($line)>0&&$line[0]=='#')
-  			  unset($js[$ln]);
-  		}
-  		$ar=json_decode(implode($js), true);
-
-      if(isset($ar['require_package'])){
-      	foreach($ar['require_package'] as $pkg){
-      		if(strlen($pkg)>0)
-      		  $this->require_package($pkg);
-      	}
-      }
-      if(isset($ar['load_database'])){
-      	foreach($ar['load_database'] as $ln=>$db){
-      		if(isset($db['fn'])&&isset($db['tables']))
-      		  $this->load_database($db['fn'], $db['tables'], $package);
-      	}
-      }
-      if(isset($ar['text_domain'])){
-      	foreach($ar['text_domain'] as $ln=>$td){
-      		if(isset($td['domain'])&&isset($td['path']))
-      		  bindtextdomain($td['domain'], $this->configuration->get_group("path", "locale").$td['path']);
-      	  if(isset($td['codeset']))
-      	    bind_textdomain_codeset($td['domain'],$td['codeset']);
-      	}
-      }
-
-			if(isset($ar['load_data_object'])){
-				foreach($ar['load_data_object'] as $ln=>$dos){
+			if(isset($ar['load_repository_object'])){
+				foreach($ar['load_repository_object'] as $ln=>$dos){
 					if(isset($dos['sema_tag'])&&isset($dos['type'])&&isset($dos['handle'])&&isset($dos['tables'])&&isset($dos['filter_id'])){
-						SKB_DataManager::get_instance()->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package);
-						//print_r(SKB_DataManager::get_instance()->get_data_objects());
+						$myDM->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package);
+						$data=$myDM->query_data_object($myDM->prepare_query($dos['sema_tag'],null,null,null,$dos['filter_id'],$package,false,true))->ar;
+						$this->load_repository_info($dos['sema_tag'], $data, $dos['filter_id'], $package);
 					}
 				}
 			}
 
-  	}
-  }
+			if(isset($ar['require_package'])){
+				foreach($ar['require_package'] as $pkg){
+					if(strlen($pkg)>0)
+						$this->require_package($pkg);
+				}
+			}
+
+			if(isset($ar['text_domain'])){
+				foreach($ar['text_domain'] as $ln=>$td){
+					if(isset($td['domain'])&&isset($td['path']))
+						bindtextdomain($td['domain'], $this->configuration->get_group("path", "locale").$td['path']);
+					if(isset($td['codeset']))
+						bind_textdomain_codeset($td['domain'],$td['codeset']);
+				}
+			}
+
+			if(isset($ar['load_data_object'])){
+				foreach($ar['load_data_object'] as $ln=>$dos){
+					if(isset($dos['sema_tag'])&&isset($dos['type'])&&isset($dos['handle'])&&isset($dos['tables'])&&isset($dos['filter_id'])){
+						$myDM->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package);
+						//$myDM->get_data_objects());
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Loads all repository information of a required package
+	 *
+	 */
+	private function load_repository_info($sema_tag, $data, $filter, $package){
+		$http_ar=array();
+		if(isset($data['key'])){
+			$_t[]=$data;
+			$data=$_t;
+		}
+		switch($sema_tag){
+			case "":
+					break;
+
+			case "skb:repository:fields":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						if(SKB_LOAD_PACKAGE_NOTICE===true){
+							if(array_key_exists($data[$_keys[$i]]['key'], $this->registered_fields))
+								trigger_error("SKB_Main: redefinitions of field: {$data[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
+						}
+						$this->registered_fields[$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+						$this->registered_fields[$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+					}
+					break;
+			case "skb:repository:requests":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						if(SKB_LOAD_PACKAGE_NOTICE===true){
+							if(array_key_exists($data[$_keys[$i]]['key'], $this->registered_requests))
+								trigger_error("SKB_Main: redefinitions of registered request: {$data[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
+						}
+						$this->registered_requests[$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+						$this->registered_requests[$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+					}
+					break;
+			case "skb:repository:rabit":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						if(isset($data[$_keys[$i]]['core:rabit:type'])){
+							switch($data[$_keys[$i]]['core:rabit:type']){
+								case "reader":
+										if(SKB_LOAD_PACKAGE_NOTICE===true){
+											if(array_key_exists($data[$_keys[$i]]['key'], $this->registered_readers))
+												trigger_error("SKB_Main: redefinitions of registered rabit (reader): {$data[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
+										}
+										if(isset($data[$_keys[$i]]['core:rabit:target:class']))
+											$data[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:class']);
+										if(isset($data[$_keys[$i]]['core:rabit:target:template']))
+											$data[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:template']);
+										$this->registered_readers[$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+										$this->registered_readers[$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+										break;
+								case "builder":
+										if(SKB_LOAD_PACKAGE_NOTICE===true){
+											if(array_key_exists($data[$_keys[$i]]['key'], $this->registered_builders))
+												trigger_error("SKB_Main: redefinitions of registered rabit (builder): {$data[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
+										}
+										if(isset($data[$_keys[$i]]['core:rabit:target:class']))
+											$data[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:class']);
+										if(isset($data[$_keys[$i]]['core:rabit:target:template']))
+											$data[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:template']);
+										$this->registered_builders[$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+										$this->registered_builders[$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+										break;
+								case "interpreter:core":
+								case "interpreter:value":
+								case "interpreter:entries":
+								case "interpreter:entity":
+										if(SKB_LOAD_PACKAGE_NOTICE===true){
+											if(array_key_exists($data[$_keys[$i]]['key'], $this->registered_interpreters))
+												trigger_error("SKB_Main: redefinitions of registered rabit (interpreter): {$data[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
+										}
+										if(isset($data[$_keys[$i]]['core:rabit:target:class']))
+											$data[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:class']);
+										if(isset($data[$_keys[$i]]['core:rabit:target:template']))
+											$data[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:template']);
+										$this->registered_interpreters[$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+										$this->registered_interpreters[$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+										break;
+								case "template":
+										if(SKB_LOAD_PACKAGE_NOTICE===true){
+											if(array_key_exists($data[$_keys[$i]]['key'], $this->registered_templates))
+												trigger_error("SKB_Main: redefinitions of registered rabit (template): {$data[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
+										}
+										if(isset($data[$_keys[$i]]['core:rabit:target:class']))
+											$data[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:class']);
+										if(isset($data[$_keys[$i]]['core:rabit:target:template']))
+											$data[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:template']);
+										$this->registered_templates[$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+										$this->registered_templates[$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+										break;
+								case "application":
+										if(SKB_LOAD_PACKAGE_NOTICE===true){
+											if(array_key_exists($data[$_keys[$i]]['key'], $this->registered_applications))
+												trigger_error("SKB_Main: redefinitions of registered rabit (application): {$data[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
+										}
+										if(isset($data[$_keys[$i]]['core:rabit:target:class']))
+											$data[$_keys[$i]]['core:rabit:target:class']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:class']);
+										if(isset($data[$_keys[$i]]['core:rabit:target:template']))
+											$data[$_keys[$i]]['core:rabit:target:template']=Util_Interpreter::interpret("array:explode", $data[$_keys[$i]]['core:rabit:target:template']);
+										$this->registered_applications[$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+										$this->registered_applications[$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+										break;
+								default: break;
+							}
+						}
+					}
+					break;
+
+			case "skb:repository:http_headers_response":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						$http_ar['http_headers_response'][$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+						$http_ar['http_headers_response'][$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+					}
+					break;
+			case "skb:repository:http_request_methods":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						$http_ar['http_request_methods'][$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+						$http_ar['http_request_methods'][$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+					}
+					break;
+			case "skb:repository:http_headers_request":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						$http_ar['http_headers_request'][$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+						$http_ar['http_headers_request'][$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+					}
+					break;
+			case "skb:repository:http_status_codes":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						$http_ar['http_status_codes'][$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+						$http_ar['http_status_codes'][$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+					}
+					break;
+			case "skb:repository:mime_ct":
+					$_keys=array_keys($data);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						$http_ar['mime_content_types'][$data[$_keys[$i]]['key']]=$data[$_keys[$i]];
+						$http_ar['mime_content_types'][$data[$_keys[$i]]['key']]['origin']="pkg:".$package;
+					}
+					break;
+
+			default:
+					break;
+		}
+
+		if(count($http_ar)>0){
+			SKB_Http::get_instance()->set_data($http_ar);
+		}
+	}
+
 
   /**
    * Loads all available packages for the current site.
@@ -625,40 +586,6 @@ class SKB_Main{
       }
     }
     return $ret;
-  }
-
-  /**
-   * Register a Database (from database/) in the PDO repository.
-   * 
-   * This function creates a PDO object for the given database and registered the tables in the PDO
-   * repository. One can provide a package name or a simple name, the difference being that using a package name 
-   * the registration will prefix it with "pkg:".
-   *
-   * @param string fn the filename of the database, assuming it is on the directory database/
-   * @param array tables the tables to be registered, can be array or comma-separated list as string 
-   * @param string package name as package for the PDO repository or null if simple name is used
-   * @param string name simple name for the PDO repository
-   */
-  public function load_database($fn, $tables, $package, $name=null){
-    $key="";
-    if($name!=null)
-      $key=$name;
-    else
-      $key="pkg:".$package;
-
-    if(!is_array($tables))
-      $tables=Util_Interpreter::interpret("array:explode", $tables);
-
-    $db_file=$this->configuration->get_group("path", "database").$fn.".db";
-    $o=new Database_PDOConnect($db_file);
-
-    $_keys=array_keys($tables);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      if($this->dbpdos->pdo_table_exists($o->pdo,$tables[$_keys[$i]])==false)
-	      trigger_error('SKB_Main: Database Table not found: '.$tables[$_keys[$i]].' in '.$db_file, E_USER_ERROR);
-    }
-    $this->dbpdos->pdo_add($key,$db_file,$tables,$o->pdo,$key);
   }
 
   /**

@@ -59,6 +59,9 @@ class pkg_core__default___default___reader extends SKB_Reader{
 
     $skb_collection=$request->get_value('request:collection');
 
+//	$myDM=SKB_DataManager::get_instance();
+//	$this->entry_list=$myDM->query_data_object($myDM->prepare_query("skb:encoding",null,null,null,null,null,true,true))->ar;
+
   	$pdos=$mySKB->sql_query(null, array('*'), array($table));
   	while($row=$pdos->fetch(PDO::FETCH_ASSOC)){
       $ar=Util_Interpreter::interpret("array:clean", $row);

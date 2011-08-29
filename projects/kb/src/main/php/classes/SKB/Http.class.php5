@@ -227,7 +227,7 @@ class SKB_Http{
     elseif(array_key_exists($header,$this->headers_response_skb))
       header($header.": ".$value, $replace);
     else
-      trigger_error("SKB_Http: unknown header {$header} or status code: {$status}.", E_USER_ERROR);
+      trigger_error("SKB_Http: unknown header <{$header}> or status code: <{$status}> with value <{$value}>.", E_USER_ERROR);
   }
 
   public function register_callback($http_methods, $header_accept, $f_name){
@@ -303,6 +303,7 @@ class SKB_Http{
       $priority[$val]=array();
       $priority[$val][]=$key;
     }
+
     //now sort the priorities, that'll bring and */* (IE) and app/xhtml to the front
     foreach($priority as $key=>$val){
       sort($priority[$key]);

@@ -114,14 +114,25 @@ class SKB_DataManager{
 	 * @param string package the package that registeres the data object
 	 */
 	public function load_data_object($sema_tag, $type, $handle, $tables, $filter_id, $package){
-		$mySKB=SKB_Main::get_instance();
 		$do_reg=true;
 		$dos=array();
+
 		switch($type){
 			case "sqlite":
 					if(!is_array($tables))
 						$tables=Util_Interpreter::interpret("array:explode", $tables);
-					$sqlite_file=$mySKB->configuration->get_group("path", "database").$handle.".db";
+
+					$sqlite_file=null;
+					if(strpos($handle,"config://")!==false){
+						$sqlite_file=str_replace("config://", "", $handle);
+					}
+					else if(strpos($handle,"repo://")!==false){
+						$sqlite_file=SKB_Main::get_instance()->configuration->get_group("path", "repository").str_replace("repo://", "", $handle).".db";
+					}
+					else if(strpos($handle,"data://")!==false){
+						$sqlite_file=SKB_Main::get_instance()->configuration->get_group("path", "database").str_replace("data://", "", $handle).".db";
+					}
+
 					if(!file_exists($sqlite_file)){
 						trigger_error("SKB_DataManager: SQLite database {$sqlite_file} not found for sema tag {$sema_tag} in package {$package}", E_USER_WARNING);
 						$do_reg=false;
@@ -233,6 +244,13 @@ class SKB_DataManager{
 		$_keys=array_keys($todo);
 		$_size=count($_keys);
 		for($i=0;$i<$_size;$i++){
+			if($query['filter_id']!=""&&isset($todo[$_keys[$i]]['filter_id'])&&strcmp($query['filter_id'], $todo[$_keys[$i]]['filter_id'])!=0){
+				continue;
+			}
+			if($query['package']!=""&&isset($todo[$_keys[$i]]['package'])&&strcmp($query['package'], $todo[$_keys[$i]]['package'])!=0){
+				continue;
+			}
+
 			switch($todo[$_keys[$i]]['type']){
 				case "sqlite":
 						if(is_array($query['find'])&&count($query['find'])>0)

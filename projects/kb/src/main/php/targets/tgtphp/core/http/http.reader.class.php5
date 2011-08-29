@@ -72,6 +72,9 @@ class pkg_core__http___http___reader extends SKB_Reader{
   	if(!$mySKB->table_exists($table))
   	  return;
 
+//	$myDM=SKB_DataManager::get_instance();
+//	$this->entry_list=$myDM->query_data_object($myDM->prepare_query("skb:encoding",null,null,null,null,null,true,true))->ar;
+
    	$pdos=$mySKB->sql_query(null, array('*'), array($table), null, "'key'");
     if(!is_object($pdos)&&$pdos==-1)
       return;
