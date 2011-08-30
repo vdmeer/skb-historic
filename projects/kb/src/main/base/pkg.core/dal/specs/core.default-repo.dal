@@ -776,7 +776,7 @@
             row Core.Default.Entries2Entries
                 key = "Core.Default.Entries2Entries"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_core__default___default___builder,java%org.skb.targets.java.core.def.DefaultBuilder"
+                core:rabit:target:class = "php%pkg_core__default___default___builder,java%org.skb.kb.targets.tgtjava.core.def.DefaultBuilder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/db"
                 core:rabit:mime_out = "x-skb/entries+default"

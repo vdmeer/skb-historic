@@ -42,7 +42,7 @@
             row Core.SkbInfo.DB2Entries
                 key = "Core.SkbInfo.DB2Entries"
                 core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_core__skbinfo___skbinfo___reader,java%org.skb.targets.java.core.skbinfo.SkbInfoReader"
+                core:rabit:target:class = "php%pkg_core__skbinfo___skbinfo___reader,java%org.skb.kb.targets.tgtjava.core.skbinfo.SkbInfoReader"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/db"
                 core:rabit:mime_out = "x-skb/entries+skbinfo"
@@ -75,7 +75,7 @@
             row Core.SkbInfo.Entries2Text-Plain
                 key = "Core.SkbInfo.Entries2Text-Plain"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "java%org.skb.targets.java.core.skbinfo.TextPlainBuilder"
+                core:rabit:target:class = "java%org.skb.targets.tgtjava.core.skbinfo.TextPlainBuilder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/entries+skbinfo"
                 core:rabit:mime_out = "x-skb/entries+skbinfo"

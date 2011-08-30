@@ -216,7 +216,7 @@
             row Core.Encoding.Entries2Entries
                 key = "Core.Encoding.Entries2Entries"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_core__encoding___encoding___builder,java%org.skb.targets.java.core.def.EncodingBuilder"
+                core:rabit:target:class = "php%pkg_core__encoding___encoding___builder,java%org.skb.kb.targets.tgtjava.core.def.EncodingBuilder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/db"
                 core:rabit:mime_out = "x-skb/entries+encoding"

@@ -93,7 +93,7 @@
             row Dist.Acronyms.Entries2LaTeX-Acronym
                 key = "Dist.Acronyms.Entries2LaTeX-Acronym"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__acronyms___application__x_latex__acronym___builder,java%org.skb.targets.java.dist.acronyms.LaTeXAcronymBuilder"
+                core:rabit:target:class = "php%pkg_dist__acronyms___application__x_latex__acronym___builder,java%org.skb.kb.targets.tgtjava.dist.acronyms.LaTeXAcronymBuilder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/entries+acronyms"
                 core:rabit:mime_out = "x-skb/entries+acronyms"
@@ -115,7 +115,7 @@
             row Dist.Acronyms.Entries2XHTML-Table
                 key = "Dist.Acronyms.Entries2XHTML-Table"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__acronyms___application__xhtml__table___builder,java%org.skb.rabit.xskb.entries.acronyms.ApplicationXhtml_Table"
+                core:rabit:target:class = "php%pkg_dist__acronyms___application__xhtml__table___builder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/entries+acronyms"
                 core:rabit:mime_out = "x-skb/entries+acronyms"
@@ -137,7 +137,7 @@
             row Dist.Acronyms.Entries2Text-Plain
                 key = "Dist.Acronyms.Entries2Text-Plain"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__acronyms___text__plain___builder,java%org.skb.targets.java.dist.acronyms.TextPlainBuilder"
+                core:rabit:target:class = "php%pkg_dist__acronyms___text__plain___builder,java%org.skb.kb.targets.tgtjava.dist.acronyms.TextPlainBuilder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/entries+acronyms"
                 core:rabit:mime_out = "x-skb/entries+acronyms"
@@ -159,7 +159,7 @@
             row Dist.Acronyms.Entries2LaTeX-Table
                 key = "Dist.Acronyms.Entries2LaTeX-Table"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__acronyms___application__x_latex__table___builder,java%org.skb.targets.java.dist.acronyms.LaTeXTableBuilder"
+                core:rabit:target:class = "php%pkg_dist__acronyms___application__x_latex__table___builder,java%org.skb.kb.targets.tgtjava.dist.acronyms.LaTeXTableBuilder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/entries+acronyms"
                 core:rabit:mime_out = "x-skb/entries+acronyms"
@@ -181,7 +181,7 @@
             row Dist.Acronyms.DB2Entries
                 key = "Dist.Acronyms.DB2Entries"
                 core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__acronyms___acronyms___reader,java%org.skb.targets.java.dist.acronyms.AcronymsReader"
+                core:rabit:target:class = "php%pkg_dist__acronyms___acronyms___reader,java%org.skb.kb.targets.tgtjava.dist.acronyms.AcronymsReader"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/db"
                 core:rabit:mime_out = "x-skb/entries+acronyms"
