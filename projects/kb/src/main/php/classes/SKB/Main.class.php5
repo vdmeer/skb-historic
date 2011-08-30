@@ -300,7 +300,6 @@ class SKB_Main{
 		$pkg_dir=$this->configuration->get_group("path", "repository");
 		$pkg_dir=$pkg_dir.str_replace(".","/",$package);
 
-		$pkg_file_db=$pkg_dir."/".$package.".db";
 		$pkg_file_php=$pkg_dir."/".$package.".".$this->configuration->get_group("php", "extension");
 		$pkg_file_json=$pkg_dir."/".$package.".json";
 
@@ -329,7 +328,8 @@ class SKB_Main{
 	/**
 	 * Read a JSON file and execute the required functions (i.e. load_database, bind text domain).
 	 *
-	 * @param sting json_fn the complete path and file name for the JSON file
+	 * @param string json_fn the complete path and file name for the JSON file
+	 * @param string package the name of the package the JSON file belongs to
 	 */
 	public function load_from_json($json_fn, $package){
 		if(file_exists($json_fn)){

@@ -100,7 +100,6 @@ function __autoload($class){SKB_Autoloader::autoload($class);}
 //$__cfg_request->init_http(array("lang" => array("core:val_unset" => $skb_lang)));
 
 $skb_main=SKB_Main::get_instance();
-$skb_dos_manager=SKB_DataManager::get_instance();
 $skb_main->load_core_packages();
 $skb_loaded=true;
 $url_add=$skb_main->configuration->get_group("html","url-add");

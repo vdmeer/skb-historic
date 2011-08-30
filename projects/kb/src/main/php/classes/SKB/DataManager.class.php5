@@ -254,12 +254,10 @@ class SKB_DataManager{
 		$_keys=array_keys($todo);
 		$_size=count($_keys);
 		for($i=0;$i<$_size;$i++){
-			if($query['filter_id']!=""&&isset($todo[$_keys[$i]]['filter_id'])&&strcmp($query['filter_id'], $todo[$_keys[$i]]['filter_id'])!=0){
+			if($query['filter_id']!=""&&isset($todo[$_keys[$i]]['filter_id'])&&strcmp($query['filter_id'], $todo[$_keys[$i]]['filter_id'])!=0)
 				continue;
-			}
-			if($query['package']!=""&&isset($todo[$_keys[$i]]['package'])&&strcmp($query['package'], $todo[$_keys[$i]]['package'])!=0){
+			if($query['package']!=""&&isset($todo[$_keys[$i]]['package'])&&strcmp($query['package'], $todo[$_keys[$i]]['package'])!=0)
 				continue;
-			}
 
 			switch($todo[$_keys[$i]]['type']){
 				case "sqlite":
@@ -463,12 +461,5 @@ class SKB_DataManager{
 		}
 		trigger_error("SKB_Main: interpreter not found: {$id} for target {$target}", E_USER_ERROR);
 	}
-
-
-//	/**
-//	 * Reset DB Scope, which is used in the interpreter loop to detect and avoid reference loops in the databases
-//	 */
-//	public function reset_scope(){$this->db_scope->reset();}
-
 }
 ?>
