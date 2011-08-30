@@ -55,7 +55,7 @@ public class TextPlainBuilder extends SKBBuilder{
 
 		template.setAttribute("entries", entries);
 		template.setAttribute("request", request);
-//		System.out.println(template.toString());
+		System.out.println(template.toString());
 //		System.err.println(entries);
 	}
 }

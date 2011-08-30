@@ -2,9 +2,9 @@ package org.skb.kb.tests;
 
 import org.skb.kb.SKB;
 import org.skb.kb.SKBBuilder;
+import org.skb.kb.SKBInit;
 import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.java.TSString;
 
 public class Tool {
 
@@ -13,16 +13,25 @@ public class Tool {
 	 */
 	public static void main(String[] args) {
 System.out.println("...initial:  ");
+		SKBInit.init();
 		SKB mySKB=SKB.getInstance();
 System.out.println("...start:    ");
 //Date d=new Date();
 //System.out.println(d.getTime());
 
-//		mySKB.requirePackage("core.skbinfo");
+		mySKB.requirePackage("core.skbinfo");
 		mySKB.requirePackage("dist.acronyms");
-//		mySKB.requirePackage("dist.geo");
-//		mySKB.requirePackage("dist.affiliations");
+		mySKB.requirePackage("dist.geo");
+		mySKB.requirePackage("dist.affiliations");
 //mySKB.loadAllSitePackages(null);
+
+//System.err.println(SKBDataManager.getInstance().getDataObjects());
+//System.err.println(SKB.getInstance().getRegisteredFields());
+//System.err.println(SKB.getInstance().getRegisteredRequests());
+//System.err.println(SKB.getInstance().getRegisteredReaders());
+//System.err.println(SKB.getInstance().getRegisteredBuilders());
+//System.err.println(SKB.getInstance().getRegisteredTemplates());
+//System.exit(0);
 
 		Request def=mySKB.getRequest("Core.Default");
 		def.initPlain();

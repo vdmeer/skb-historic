@@ -31,8 +31,6 @@
 package org.skb.kb;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,16 +42,12 @@ import org.skb.util.io.dirwalker.FindPackageDirectories;
 import org.skb.util.misc.I18NManager;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.pattern.Request;
-import org.skb.util.sql.DBPDOs;
-import org.skb.util.sql.PDOConnect;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSBase;
-import org.skb.util.types.atomic.db.TSPDO;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.atomic.util.TSArrayListString;
-import org.skb.util.types.atomic.util.TSScope;
 import org.skb.util.types.composite.util.TSArrayList;
 import org.skb.util.types.composite.util.TSMapLH;
 
@@ -62,8 +56,6 @@ public class SKB {
 	public static String site_id;
 
 	public TSMapLH configuration;
-
-	private DBPDOs dbpdos;
 
 	private TSArrayListString registered_packages; 
 
@@ -87,7 +79,6 @@ public class SKB {
 
 	private SKB(){
 		this.configuration=new TSMapLH();
-		this.dbpdos=new DBPDOs();
 		this.registered_packages=new TSArrayListString();
 
 		this.registered_fields=new TSMapLH();
@@ -98,16 +89,17 @@ public class SKB {
 		this.registered_interpreters=new TSMapLH();
 		this.registered_applications=new TSMapLH();
 
-		this.i18n=new I18NManager(); 
+		this.i18n=I18NManager.getInstance();
 
 		//try for the main variables we'll need set (similar to main.inc.php)
-		//String site_id = System.getenv("site_id");           //id for the website
-		String site_id = "default";           //id for the website
-		String site_path = "www/demo";     //path to the website
+		//String site_id = System.getenv("site_id");     //id for the website
+		String site_id = "default";                      //id for the website
+		String site_path = "www/demo";                   //path to the website
 
 		String root_classes = "/classes/";
 		String root_skb = "/skb";
-		String root_document = "V:/dev/projects/skb/skb-eclipse/kb/src/main/resources";
+		//String root_document = "V:/dev/projects/skb/skb-eclipse/kb/src/main/resources";
+		String root_document = "V:/dev/projects/skb/skb-git/htdocs";
 
 		TSMapLH __cfg_array=new TSMapLH();
 		__cfg_array.put("root-document", root_document);
@@ -124,125 +116,108 @@ public class SKB {
 			System.exit(-1);
 		}
 		else{
-			Connection c;
-			PDOConnect o;
-			ResultSet rs;
+			SKBDataManager myDM=SKBDataManager.getInstance();
 
 			//load the skb configuration
-			o=new PDOConnect(((TSString)__cfg_array.get("config-core")).tsvalue);
-			c=o.connection;
-			try{
-				rs=c.createStatement().executeQuery("SELECT * FROM skb_cfg");
-				String collection;
-				String part;
-				TSString value;
-				Boolean explode;
-				while (rs.next()) {
-					collection=rs.getString("collection");
-					part=rs.getString("part");
-					value=new TSString(rs.getString("value"));
-				explode=rs.getBoolean("field_explodes");
+			myDM.loadDataObject("skb:core:config", "sqlite", "config://"+__cfg_array.get("config-core").toString(), "skb_cfg", "skb:core:config", "core");
+			TSMapLH __cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config",null,null,null,null,null,false,false));
+			Set<String> o_set = __cfg.keySet();
+			Iterator<String> key_it = o_set.iterator();
+			while(key_it.hasNext()){
+				String key=key_it.next();
+				TSMapLH val=(TSMapLH)__cfg.get(key);
 
-					if(!this.configuration.containsKey(collection)){
-						this.configuration.put(collection, new TSMapLH());
-					}
+				String collection=val.get("collection").toString();
+				String part=val.get("part").toString();
+				TSString value=new TSString(val.get("value"));
+				String explode=val.get("field_explodes").toString();
 
-					if(explode)
-						this.configuration.put(collection+"/"+part, value.tsExplode());
-					else
-						this.configuration.put(collection+"/"+part, value);
-				}
-				this.configuration.put("skb/site-id", __cfg_array.get("skb_site_id"));
-				SKB.site_id=this.configuration.get("skb/site-id").toString();
-				this.dbpdos.pdo_add("core:cfg", __cfg_array.get("config-core").toString(), new TSArrayListString("skb_cfg"), new TSPDO(c), "core:cfg");
-			} catch (Exception e) {
-				e.printStackTrace();
+				if(!this.configuration.containsKey(collection))
+					this.configuration.put(collection, new TSMapLH());
+
+				if(explode.equals("1"))
+					this.configuration.put(collection+"/"+part, value.tsExplode());
+				else
+					this.configuration.put(collection+"/"+part, value);
 			}
+			this.configuration.put("skb/site-id", __cfg_array.get("skb_site_id"));
+			SKB.site_id=this.configuration.get("skb/site-id").toString();
 
 			//load the site specific configuration
-			o=new PDOConnect(((TSString)__cfg_array.get("config-site")).tsvalue);
-			c=o.connection;
-			try{
-				rs=c.createStatement().executeQuery("SELECT * FROM configuration");
-				String collection;
-				String part;
-				TSString value;
-				Boolean explode;
-				while (rs.next()) {
-					collection=rs.getString("collection");
-					part=rs.getString("part");
-					value=new TSString(rs.getString("value"));
-					explode=rs.getBoolean("field_explodes");
+			myDM.loadDataObject("skb:core:config:site", "sqlite", "config://"+__cfg_array.get("config-site").toString(), "configuration", "skb:core:config:site", "site");
+			__cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config:site",null,null,null,null,null,false,false));
+			o_set = __cfg.keySet();
+			key_it = o_set.iterator();
+			while(key_it.hasNext()){
+				String key=key_it.next();
+				TSMapLH val=(TSMapLH)__cfg.get(key);
 
-					if(!this.configuration.containsKey(collection)){
-						this.configuration.put(collection, new TSMapLH());
-					}
+				String collection=val.get("collection").toString();
+				String part=val.get("part").toString();
+				TSString value=new TSString(val.get("value"));
+				String explode=val.get("field_explodes").toString();
 
-					if(explode)
-						this.configuration.put(collection+"/"+part, value.tsExplode());
-					else
-						this.configuration.put(collection+"/"+part, value);
-				}
+				if(!this.configuration.containsKey(collection))
+					this.configuration.put(collection, new TSMapLH());
 
-				this.configuration.put("skb/root-document",     __cfg_array.get("root-document"));
+				if(explode.equals("1"))
+					this.configuration.put(collection+"/"+part, value.tsExplode());
+				else
+					this.configuration.put(collection+"/"+part, value);
+			}
 
-				this.configuration.put("skb/root-skb",          __cfg_array.get("root-skb"));
-				this.configuration.put("skb/root-classes",      __cfg_array.get("root-classes"));
-				this.configuration.put("path/skb",              __cfg_array.get("root-document").toString()+__cfg_array.get("root-skb").toString());
+			this.configuration.put("skb/root-document",     __cfg_array.get("root-document"));
 
-				this.configuration.put("skb/target",            "java");
+			this.configuration.put("skb/root-skb",          __cfg_array.get("root-skb"));
+			this.configuration.put("skb/root-classes",      __cfg_array.get("root-classes"));
+			this.configuration.put("path/skb",              __cfg_array.get("root-document").toString()+__cfg_array.get("root-skb").toString());
 
-				this.configuration.put("server/root-fs",        __cfg_array.get("root-document"));
-				this.configuration.put("server/access-remote",  new TSBoolean(true));
+			this.configuration.put("skb/target",            "java");
 
-				this.configuration.put("server/root-http",      this.configuration.get("skb/root-skb").toString());
+			this.configuration.put("server/root-fs",        __cfg_array.get("root-document"));
+			this.configuration.put("server/access-remote",  new TSBoolean(true));
 
-				this.configuration.put("path/classes",          this.configuration.get("path/skb").toString()+__cfg_array.get("root-classes"));
-				this.configuration.put("path/site",             __cfg_array.get("site_path"));
-				this.configuration.put("path/database",         this.configuration.get("path/skb").toString()+this.configuration.get("path/database").toString());
+			this.configuration.put("server/root-http",      this.configuration.get("skb/root-skb").toString());
 
-				this.configuration.put("path/config",           this.configuration.get("path/skb").toString()+this.configuration.get("path/config").toString());
-				this.configuration.put("path/repository",       this.configuration.get("path/skb").toString()+this.configuration.get("path/repository").toString());
-				this.configuration.put("path/locale",           this.configuration.get("path/skb").toString()+this.configuration.get("path/locale").toString());
+			this.configuration.put("path/classes",          this.configuration.get("path/skb").toString()+__cfg_array.get("root-classes"));
+			this.configuration.put("path/site",             __cfg_array.get("site_path"));
+			this.configuration.put("path/database",         this.configuration.get("path/skb").toString()+this.configuration.get("path/database").toString());
 
-				this.configuration.put("path/targets",          this.configuration.get("path/skb").toString()+this.configuration.get("path/targets").toString());
+			this.configuration.put("path/config",           this.configuration.get("path/skb").toString()+this.configuration.get("path/config").toString());
+			this.configuration.put("path/repository",       this.configuration.get("path/skb").toString()+this.configuration.get("path/repository").toString());
+			this.configuration.put("path/locale",           this.configuration.get("path/skb").toString()+this.configuration.get("path/locale").toString());
 
-				this.configuration.put("path/images",           this.configuration.get("server/root-http").toString()+this.configuration.get("path/images").toString());
-				this.configuration.put("path/css",              this.configuration.get("server/root-http").toString()+this.configuration.get("path/css").toString());
-				this.configuration.put("path/javascript",       this.configuration.get("server/root-http").toString()+this.configuration.get("path/javascript").toString());
+			this.configuration.put("path/targets",          this.configuration.get("path/skb").toString()+this.configuration.get("path/targets").toString());
 
-				this.configuration.put("path/library-abs",      this.configuration.get("path/skb").toString()+this.configuration.get("path/library").toString());
-				this.configuration.put("path/library-rel",      this.configuration.get("server/root-http").toString()+this.configuration.get("path/library").toString());
-				this.configuration.remove("path/library");
+			this.configuration.put("path/images",           this.configuration.get("server/root-http").toString()+this.configuration.get("path/images").toString());
+			this.configuration.put("path/css",              this.configuration.get("server/root-http").toString()+this.configuration.get("path/css").toString());
+			this.configuration.put("path/javascript",       this.configuration.get("server/root-http").toString()+this.configuration.get("path/javascript").toString());
 
-				this.configuration.put("path/gallery-abs",      this.configuration.get("path/skb").toString()+this.configuration.get("path/gallery").toString());
-				this.configuration.put("path/gallery-rel",      this.configuration.get("server/root-http").toString()+this.configuration.get("path/gallery").toString());
-				this.configuration.remove("path/gallery");
+			this.configuration.put("path/library-abs",      this.configuration.get("path/skb").toString()+this.configuration.get("path/library").toString());
+			this.configuration.put("path/library-rel",      this.configuration.get("server/root-http").toString()+this.configuration.get("path/library").toString());
+			this.configuration.remove("path/library");
 
-				this.configuration.put("path/figures-abs",      this.configuration.get("path/skb").toString()+this.configuration.get("path/figures").toString());
-				this.configuration.put("path/figures-rel",      this.configuration.get("server/root-http").toString()+this.configuration.get("path/figures").toString());
-				this.configuration.remove("path/figures");
+			this.configuration.put("path/gallery-abs",      this.configuration.get("path/skb").toString()+this.configuration.get("path/gallery").toString());
+			this.configuration.put("path/gallery-rel",      this.configuration.get("server/root-http").toString()+this.configuration.get("path/gallery").toString());
+			this.configuration.remove("path/gallery");
 
-				this.configuration.put("php/file",     "[unset]");
-				this.configuration.put("php/filename", "[unset]");
+			this.configuration.put("path/figures-abs",      this.configuration.get("path/skb").toString()+this.configuration.get("path/figures").toString());
+			this.configuration.put("path/figures-rel",      this.configuration.get("server/root-http").toString()+this.configuration.get("path/figures").toString());
+			this.configuration.remove("path/figures");
 
-				if(this.configuration.containsKey("path/figures-local")){
-					this.configuration.put("path/figures-local-abs",      this.configuration.get("server/root-fs").toString()+this.configuration.get("path/figures-local").toString());
-					this.configuration.put("path/figures-local-rel",      __cfg_array.get("root-http").toString()+this.configuration.get("path/figures-local").toString());
-					this.configuration.remove("path/figures-local");
-				}
+			this.configuration.put("php/file",     "[unset]");
+			this.configuration.put("php/filename", "[unset]");
 
-				this.dbpdos.pdo_add("site:cfg", __cfg_array.get("config-site").toString(), new TSArrayListString("skb_cfg"), new TSPDO(c), "site:cfg");
-			} catch (Exception e) {
-				e.printStackTrace();
+			if(this.configuration.containsKey("path/figures-local")){
+				this.configuration.put("path/figures-local-abs",      this.configuration.get("server/root-fs").toString()+this.configuration.get("path/figures-local").toString());
+				this.configuration.put("path/figures-local-rel",      __cfg_array.get("root-http").toString()+this.configuration.get("path/figures-local").toString());
+				this.configuration.remove("path/figures-local");
 			}
 		}
 
 //System.out.println("original now");
 //System.err.println(this.configuration);
 /*
-        $this->db_scope=SKB_DBScope::get_instance();
-
         if(isset($_REQUEST['lang'])){
           $dir=$this->configuration->get_group("path", "locale");
           $supported=array();
@@ -262,8 +237,6 @@ public class SKB {
         setlocale(LC_ALL, $lang);
       }
 */
-
-		this.load_core_packages();
 	}
 
 	/**
@@ -303,258 +276,19 @@ public class SKB {
 		if(this.registered_packages.contains(pkg)){
 			//if(SKB_LOAD_PACKAGE_NOTICE===true)
 	        //  trigger_error("SKB_Main: package already loaded: $package", E_USER_NOTICE);
+			System.err.println("SKB_Main: package already loaded: "+pkg);
 			return;
 		}
 
 		String pkg_dir=this.configuration.get("path/repository").toString()+pkg.replace(".", "/");
-		String pkg_file_db=pkg_dir+"/"+pkg+".db";
 		String pkg_file_json=pkg_dir+"/"+pkg+".json";
 
-		File pkg_dir_fh=new File(pkg_dir);
-		if(!pkg_dir_fh.canRead()){
-			System.err.println("SKB_Main: package not found or not correctly installed: "+pkg+" in "+pkg_file_db+" and "+pkg_dir);
-			System.exit(-10);
-		}
-
-		TSPDO pdo;
-		ResultSet rs;
-		ArrayList<String> cols=null;
-
-		File pkg_file_db_fh=new File(pkg_file_db);
-		if(pkg_file_db_fh.canRead()){
-			pdo=new TSPDO(new PDOConnect(pkg_file_db).connection);
-			ArrayList<String> tables=new ArrayList<String>();
-
-			//package fields
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_fields")){
-				tables.add(pkg+":pkg_fields");
-				rs=pdo.query("*", "pkg_fields", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						for(int i=1;i<cols.size();i++)
-							this.registered_fields.put(rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-						this.registered_fields.put(rs.getString("key")+"/origin", "pkg:"+pkg);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			//package requests
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_requests")){
-				tables.add(pkg+":pkg_requests");
-				rs=pdo.query("*", "pkg_requests", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						//if(SKB_LOAD_PACKAGE_NOTICE===true){
-						//  if(array_key_exists($ar[$_keys[$i]]['key'], $this->registered_requests))
-						//    trigger_error("SKB_Main: redefinitions of registered request: {$ar[$_keys[$i]]['key']} by $package", E_USER_NOTICE);
-						//}
-						for(int i=1;i<cols.size();i++)
-							this.registered_requests.put(rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-						this.registered_requests.put(rs.getString("key")+"/origin", "pkg:"+pkg);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			//package rabit
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_rabit")){
-				tables.add(pkg+":pkg_rabit");
-
-				rs=pdo.query("*", "pkg_rabit", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						if(cols.contains("core:rabit:type")){
-							TSMapLH tmap=null;
-							String type=rs.getString("core:rabit:type");
-							if(type.equals("reader"))
-								tmap=this.registered_readers;
-							else if(type.equals("builder"))
-								tmap=this.registered_builders;
-							else if(type.equals("interpreter:core")||type.equals("interpreter:value")||type.equals("interpreter:entries")||type.equals("interpreter:entity"))
-								tmap=this.registered_interpreters;
-							else if(type.equals("template"))
-								tmap=this.registered_templates;
-							else if(type.equals("application"))
-								tmap=this.registered_applications;
-							else
-								System.err.println("SKB_Main: Unknown RABIT type: "+type);
-
-							if(tmap!=null){
-								TSString t;
-								for(int i=1;i<cols.size();i++){
-									// TODO if(SKB_LOAD_PACKAGE_NOTICE===true){
-									if(cols.get(i).equals("core:rabit:target:class")||cols.get(i).equals("core:rabit:target:template")){
-										t=null;
-										t=new TSString(rs.getString(cols.get(i)));
-										if(t!=null&&t.tsvalue!=null)
-											tmap.put(rs.getString("key")+"/"+cols.get(i), t.tsExplode());
-									}
-									else
-										tmap.put(rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-								}
-								tmap.put(rs.getString("key")+"/origin", "pkg:"+pkg);
-							}
-						}
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			TSMapLH http_ar=new TSMapLH();
-
-			//http_status_codes
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_status_codes")){
-				tables.add(pkg+":pkg_http_status_codes");
-				http_ar.put("http_status_codes", new TSMapLH());
-
-				rs=pdo.query("*", "pkg_http_status_codes", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						for(int i=1;i<cols.size();i++)
-							http_ar.put("http_status_codes/"+rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-						http_ar.put("http_status_codes/"+rs.getString("key")+"/origin", "pkg:"+pkg);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			//http_headers_request
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_headers_request")){
-				tables.add(pkg+":pkg_http_headers_request");
-				http_ar.put("http_headers_request", new TSMapLH());
-
-				rs=pdo.query("*", "pkg_http_headers_request", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						for(int i=1;i<cols.size();i++)
-							http_ar.put("http_headers_request/"+rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-						http_ar.put("http_headers_request/"+rs.getString("key")+"/origin", "pkg:"+pkg);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			//http_headers_response
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_headers_response")){
-				tables.add(pkg+":pkg_http_headers_response");
-				http_ar.put("http_headers_response", new TSMapLH());
-
-				rs=pdo.query("*", "pkg_http_headers_response", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						for(int i=1;i<cols.size();i++)
-							http_ar.put("http_headers_response/"+rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-						http_ar.put("http_headers_response/"+rs.getString("key")+ "/origin", "pkg:"+pkg);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			//http_request_methods
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_http_request_methods")){
-				tables.add(pkg+":pkg_http_request_methods");
-				http_ar.put("http_request_methods", new TSMapLH());
-
-				rs=pdo.query("*", "pkg_http_request_methods", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						for(int i=1;i<cols.size();i++)
-							http_ar.put("http_request_methods/"+rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-						http_ar.put("http_request_methods/"+rs.getString("key")+"/origin", "pkg:"+pkg);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			//mime_content_types
-			if(this.dbpdos.pdo_table_exists(pdo, "pkg_mime_content_types")){
-				tables.add(pkg+":pkg_mime_content_types");
-				http_ar.put("mime_content_types", new TSMapLH());
-
-				rs=pdo.query("*", "pkg_mime_content_types", null, null);
-				cols=pdo.get_columns();
-				try{
-					while(rs.next()){
-						for(int i=1;i<cols.size();i++)
-							http_ar.put("mime_content_types/"+rs.getString("key")+"/"+cols.get(i), rs.getString(cols.get(i)));
-						http_ar.put("mime_content_types/"+rs.getString("key")+"/origin", "pkg:"+pkg);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			if(http_ar.size()>0){
-//		          $myHttp=SKB_Http::get_instance();
-//		          $myHttp->set_data($http_ar);				
-			}
-
-			//register pdo
-			this.dbpdos.pdo_add("reg:"+pkg, pkg_file_db, new TSArrayListString(tables), pdo, "reg:"+pkg);
-		}
-
 		//if file_exists pkg.json load file
-		File pkg_json_fn=new File(pkg_file_json);
-		if(pkg_json_fn.canRead()){
-			Json2Oat j2o=new Json2Oat();
-			TSBase _t=j2o.read(pkg_json_fn);
-			TSMapLH res=new TSMapLH();
-			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-				res=(TSMapLH)_t;
-
-			if(res!=null){
-				if(res.containsKey("require_package")){
-					TSBase reqpkg=(res).get("require_package");
-					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
-						reqpkg=((TSString)res.get("require_package")).tsExplode();
-					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
-						for(int i=0;i<((TSArrayListString)reqpkg).size();i++){
-							this.requirePackage(((TSArrayListString)reqpkg).get(i).toString());
-						}
-					}
-				}
-				if(res.containsKey("load_database")){
-					TSArrayList ar=(TSArrayList)res.get("load_database");
-					if(ar!=null){
-						for(int i=0;i<ar.size();i++){
-							TSMapLH ld=(TSMapLH)ar.get(i);
-							if(ld!=null){
-								if(ld.containsKey("fn")&&ld.containsKey("tables")){
-									TSBase tables=((TSString)ld.get("tables")).tsExplode();
-									if(tables.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING))
-										this.loadDatabase(ld.get("fn").toString(), (TSArrayListString)tables, pkg, null);
-								}
-							}
-						}
-					}
-				}
-			}
-			if(res.containsKey("text_domain")){
-				TSArrayList ar=(TSArrayList)res.get("text_domain");
-				if(ar!=null){
-					for(int i=0;i<ar.size();i++){
-						TSMapLH ld=(TSMapLH)((TSArrayList)ar).get(i);
-						if(ld!=null)
-							if(ld.containsKey("domain"))
-								this.i18n.addDomain(ld.get("domain").toString(), new Locale(this.configuration.get("system/lang").toString()));
-					}
-				}
-			}
+		File pkgJsonFN=new File(pkg_file_json);
+		if(pkgJsonFN.canRead()){
+			this.load_from_json(pkg_file_json, pkg);
+//			if(SKB_LOAD_PACKAGE_NOTICE===true)
+//				trigger_error("SKB_Main: package PHP loaded: $package", E_USER_NOTICE);
 		}
 
 		this.registered_packages.add(pkg);
@@ -567,6 +301,178 @@ public class SKB {
 		this.registered_interpreters.tsClean();
 		this.registered_templates.tsClean();
 		//add SKB_LOAD_PACKAGE_NOTICE===true echo(pkg loaded)
+	}
+
+	/**
+	 * Read a JSON file and execute the required functions (i.e. load_database, bind text domain).
+	 *
+	 * @param jsonFN the complete path and file name for the JSON file
+	 * @param pkg the name of the package the JSON file belongs to
+	 */
+	public void load_from_json(String jsonFN, String pkg){
+		File pkgJson=new File(jsonFN);
+		if(pkgJson.canRead()){
+			SKBDataManager myDM=SKBDataManager.getInstance();
+
+			Json2Oat j2o=new Json2Oat();
+			TSBase _t=j2o.read(pkgJson);
+			TSMapLH res=new TSMapLH();
+			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+				res=(TSMapLH)_t;
+
+			if(res!=null){
+				if(res.containsKey("load_repository_object")){
+					TSBase loadrepo=(res).get("load_repository_object");
+					if(loadrepo.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
+						for(TSBase dos : (TSArrayList)loadrepo){
+							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+								TSMapLH repo=(TSMapLH)dos;
+								if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
+									myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
+									TSMapLH data=myDM.queryDataObject(myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
+									this.load_repository_info(repo.get("sema_tag").toString(), data, repo.get("filter_id").toString(), pkg);
+								}
+							}
+						}
+					}
+				}
+				if(res.containsKey("require_package")){
+					TSBase reqpkg=(res).get("require_package");
+					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+						reqpkg=((TSString)res.get("require_package")).tsExplode();
+					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
+						for(int i=0;i<((TSArrayListString)reqpkg).size();i++){
+							this.requirePackage(((TSArrayListString)reqpkg).get(i).toString());
+						}
+					}
+				}
+//				if(res.containsKey("load_database")){
+//					TSArrayList ar=(TSArrayList)res.get("load_database");
+//					if(ar!=null){
+//						for(int i=0;i<ar.size();i++){
+//							TSMapLH ld=(TSMapLH)ar.get(i);
+//							if(ld!=null){
+//								if(ld.containsKey("fn")&&ld.containsKey("tables")){
+//									TSBase tables=((TSString)ld.get("tables")).tsExplode();
+//									if(tables.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING))
+//										this.loadDatabase(ld.get("fn").toString(), (TSArrayListString)tables, pkg, null);
+//								}
+//							}
+//						}
+//					}
+//				}
+				if(res.containsKey("text_domain")){
+					TSArrayList ar=(TSArrayList)res.get("text_domain");
+					if(ar!=null){
+						for(int i=0;i<ar.size();i++){
+							TSMapLH ld=(TSMapLH)((TSArrayList)ar).get(i);
+							if(ld!=null)
+								if(ld.containsKey("domain"))
+									this.i18n.addDomain(ld.get("domain").toString(), new Locale(this.configuration.get("system/lang").toString()));
+						}
+					}
+				}
+				if(res.containsKey("load_data_object")){
+					TSBase loaddata=(res).get("load_data_object");
+					if(loaddata.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
+						for(TSBase dos : (TSArrayList)loaddata){
+							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+								TSMapLH data=(TSMapLH)dos;
+								if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id"))
+									myDM.loadDataObject(data.get("sema_tag").toString(), data.get("type").toString(), data.get("handle").toString(), data.get("tables").toString(), data.get("filter_id").toString(), pkg);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	/**
+	 * Loads all repository information of a required package
+	 *
+	 */
+	private void load_repository_info(String semaTag, TSMapLH data, String filter, String pkg){
+//		TSMapLH http_ar=new TSMapLH();
+
+		if(semaTag==""){
+
+		}
+		else if(semaTag.equals("skb:repository:fields")){
+			Set<String> o_set = data.keySet();
+			Iterator<String> key_it = o_set.iterator();
+			while(key_it.hasNext()){
+				String key=key_it.next();
+				TSBase val=data.get(key);
+				this.registered_fields.put(key, val);
+			}
+		}
+		else if(semaTag.equals("skb:repository:requests")){
+			Set<String> o_set = data.keySet();
+			Iterator<String> key_it = o_set.iterator();
+			while(key_it.hasNext()){
+				String key=key_it.next();
+				TSBase val=data.get(key);
+				this.registered_requests.put(key, val);
+			}
+		}
+		else if(semaTag.equals("skb:repository:rabit")){
+			Set<String> o_set = data.keySet();
+			Iterator<String> key_it = o_set.iterator();
+			while(key_it.hasNext()){
+				String key=key_it.next();
+				TSMapLH val=(TSMapLH)data.get(key);
+				if(val.containsKey("core:rabit:type")){
+					TSMapLH tmap=null;
+					String type=val.get("core:rabit:type").toString();
+					if(type.equals("reader"))
+						tmap=this.registered_readers;
+					else if(type.equals("builder"))
+						tmap=this.registered_builders;
+					else if(type.equals("interpreter:core")||type.equals("interpreter:value")||type.equals("interpreter:entries")||type.equals("interpreter:entity"))
+						tmap=this.registered_interpreters;
+					else if(type.equals("template"))
+						tmap=this.registered_templates;
+					else if(type.equals("application"))
+						tmap=this.registered_applications;
+					else
+						System.err.println("SKB_Main: Unknown RABIT type: "+type);
+
+					if(tmap!=null){
+						tmap.put(key, val);
+						if(val.containsKey("core:rabit:target:class")){
+							TSString _ts=(TSString)val.get("core:rabit:target:class");
+							if(_ts!=null&&_ts.tsvalue!=null)
+								tmap.put(key+"/core:rabit:target:class", _ts.tsExplode());
+						}
+						if(val.containsKey("core:rabit:target:template")){
+							TSString _ts=(TSString)val.get("core:rabit:target:template");
+							if(_ts!=null&&_ts.tsvalue!=null)
+								tmap.put(key+"/core:rabit:target:template", _ts.tsExplode());
+						}
+					}
+				}
+			}
+		}
+		else if(semaTag.equals("skb:repository:http_headers_response")){
+			
+		}
+		else if(semaTag.equals("skb:repository:http_request_methods")){
+			
+		}
+		else if(semaTag.equals("skb:repository:http_headers_request")){
+			
+		}
+		else if(semaTag.equals("skb:repository:http_status_codes")){
+			
+		}
+		else if(semaTag.equals("skb:repository:mime_ct")){
+			
+		}
+		else{
+
+		}
 	}
 
 
@@ -609,22 +515,22 @@ public class SKB {
 	  * @param pkg name as package for the PDO repository or null if simple name is used
 	  * @param name simple name for the PDO repository
 	  */
-	public void loadDatabase(String fn, TSArrayListString tables, String pkg, String name){
-		String key;
-		if(name!=null)
-			key=name;
-		else
-			key="pkg:"+pkg;
-		String dbFile=this.configuration.get("path/database")+fn+".db";
-		TSPDO pdo=new TSPDO(new PDOConnect(dbFile).connection);
-		for(int i=1;i<tables.size();i++){
-			if(this.dbpdos.pdo_table_exists(pdo, tables.get(i).toString())==false){
-				//TODO trigger_error('SKB_Main: Database Table not found: '.$tables[$_keys[$i]].' in '.$db_file, E_USER_ERROR);
-				System.err.println("SKB_Main: table "+tables.get(i)+" not found in db "+fn);
-			}
-		}
-		this.dbpdos.pdo_add(key, dbFile, tables, pdo, key);
-	}
+//	public void loadDatabase(String fn, TSArrayListString tables, String pkg, String name){
+//		String key;
+//		if(name!=null)
+//			key=name;
+//		else
+//			key="pkg:"+pkg;
+//		String dbFile=this.configuration.get("path/database")+fn+".db";
+//		TSPDO pdo=new TSPDO(new PDOConnect(dbFile).connection);
+//		for(int i=1;i<tables.size();i++){
+//			if(this.dbpdos.pdo_table_exists(pdo, tables.get(i).toString())==false){
+//				//TODO trigger_error('SKB_Main: Database Table not found: '.$tables[$_keys[$i]].' in '.$db_file, E_USER_ERROR);
+//				System.err.println("SKB_Main: table "+tables.get(i)+" not found in db "+fn);
+//			}
+//		}
+//		this.dbpdos.pdo_add(key, dbFile, tables, pdo, key);
+//	}
 
 
 	/**
@@ -848,6 +754,7 @@ public class SKB {
 		return null;
 	}
 
+
 	/**
 	 * Return a Builder object for the given key.
 	 * 
@@ -865,42 +772,6 @@ public class SKB {
 			}
 		}
 		System.err.println("ERROR, Interpreter not found");
-		return null;
-	}
-
-
-	/**
-	 * Interpret data using registered interpreters.
-	 * 
-	 * This function supports all types of registered interpreters (core, entity, value and entries).
-	 * Each of them requires a slightly different set of parameters.
-	 * 
-	 * @param id identifier for the interpreter
-	 * @param val value to be interpreted
-	 * @param table database table to be used during interpretation
-	 * @param request request object for parametrisation
-	 * @return interpreted value
-	 */
-	public TSBase interpretData(String id, TSBase val, String table, Request request){
-		try{
-			Class<?> theClass=Class.forName((String)this.registered_interpreters.get(id+"/core:rabit:target:class/java").toString());
-			SKBInterpreter inter=(SKBInterpreter)theClass.newInstance();
-			String type=this.registered_interpreters.get("id/core:rabit:type").toString();
-			if(type.equals("interpreter:core"))
-				((SKBInterpreterCore)inter).interpret(val.toString(), request);
-			else if(type.equals("interpreter:entity"))
-				((SKBInterpreterEntity)inter).interpret(val.toString(), table);
-			else if(type.equals("interpreter:value"))
-				((SKBInterpreterValue)inter).interpret(val.toString());
-			else if(type.equals("interpreter:entries"))
-				((SKBInterpreterEntries)inter).interpret((TSMapLH)val, table);
-			else
-				return null;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		//trigger_error("SKB_Main: interpreter not found: {$id} for target {$target}", E_USER_ERROR);
 		return null;
 	}
 
@@ -925,194 +796,13 @@ public class SKB {
 		return null;
 	}
 
-/*
-	  public function get_application($type){
-	  	$target=$this->configuration->get_group("skb", "target");
-	    if(array_key_exists($type, $this->registered_applications))
-	      return new $this->registered_applications[$type]['core:rabit:target:class'][$target];
-	    else
-	      trigger_error("SKB_Main: application not found: {$type} for target {$target}", E_USER_ERROR);
-	  }
-*/
-
-	public void interpretMap(TSMapLH map, String table){
-		if(map==null||map.size()==0)
-			return;
-		map.tsClean();
-		if(map.size()==0)
-			return;
-
-		this.interpret_map(map, new TSScope());
-	}
-
-	protected void interpret_map(TSMapLH map, TSScope scope){
-		if(map==null||map.size()==0)
-			return;
-
-		ArrayList<String> listRemove=new ArrayList<String>();
-		TSMapLH mergeMap=new TSMapLH();
-
-		String key;
-		Set<String> o_set = map.keySet();
-		Iterator<String> key_it = o_set.iterator();
-		while(key_it.hasNext()){
-			key=key_it.next();
-			TSBase val=map.get(key);
-			switch(val.tsGetTypeEnum()){
-				case TS_COMPOSITE_MAP_LH:
-					this.interpret_map((TSMapLH)val, scope);
-					break;
-				case TS_ATOMIC_JAVA_STRING:
-					if(this.registered_fields.containsKey(key)){
-						String name=this.registered_fields.get(key+"/core:entries_name").toString();
-						String type=this.registered_fields.get(key+"/core:type").toString();
-						if(type.equals("entity")){
-							String table=null;
-							if(this.registered_fields.get(key+"/core:default_db")!=null)
-								table=this.registered_fields.get(key+"/core:default_db").toString();
-							if(table==null)
-								continue;
-
-							if(this.registered_fields.get(key+"/core:interpreter")==null){
-								String exp=this.registered_fields.get(key+"/core:explode").toString();
-								if(exp.equals("1")){
-									TSBase newVal=((TSString)val).tsExplode();
-									if(newVal.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
-										mergeMap.put(name, new TSMapLH());
-										TSArrayListString m=(TSArrayListString)newVal;
-										for(Integer i=0;i<m.size();i++){
-											TSMapLH _t=new TSMapLH();
-											_t.put(name+"_key", m.get(i));
-											this.interpret_map(_t, scope);
-											mergeMap.put(name+"/"+i.toString(), _t);
-										}
-									}
-									listRemove.add(key);
-								}
-								else{
-									if(scope.push(table,val.toString())==true){
-										ResultSet rs=null;
-										ArrayList<String> cols=null;
-										TSPDO pdo=null;
-	
-										TSMapLH _t=new TSMapLH();
-										pdo=this.dbpdos.pdo_select(table);
-										rs=pdo.query("*", table, "key = '"+val+"'", null);
-										cols=pdo.get_columns();
-	
-										try{
-											while(rs.next()){
-												for(int i=0;i<cols.size();i++){
-													_t.put(name+"/"+cols.get(i), rs.getString(cols.get(i)));
-												}
-											}
-										} catch (Exception e) {
-											e.printStackTrace();
-										}
-										_t.tsClean();
-										this.interpret_map(_t, scope);
-										mergeMap.putAll(_t);
-										listRemove.add(key);
-										scope.pop();
-									}
-									else{
-										listRemove.add(key);
-									}
-								}
-							}
-							else{
-					            //$entries->ar[$testAr['core:entries_name']]=
-								//$this->interpret_data($testAr['core:interpreter'], $val)->ar;
-
-								//listRemove.add(key);
-							}
-						}
-						else if (type.equals("value")){
-							String exp=this.registered_fields.get(key+"/core:explode").toString();
-							if(key.endsWith("_locale")){
-								if(((TSString)val).tsvalue.contains("%%")){
-									String split[]=((TSString)val).tsvalue.split("%%");
-									mergeMap.put(name,this.i18n._(split[0], split[1]));
-									listRemove.add(key);
-								}
-								else if(((TSString)val).tsvalue.contains("%")){
-									TSBase newVal=((TSString)val).tsExplode();
-									if(newVal.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-										TSMapLH m=(TSMapLH)newVal;
-										String lang=this.lang;
-										if(m.get(lang)!=null)
-											mergeMap.put(name,m.get(lang));
-										else if(m.get("")!=null)
-											mergeMap.put(name,m.get(""));
-										else
-											mergeMap.put(name,"");
-										listRemove.add(key);
-									}
-								}
-							}
-							else if(exp.equals("1")){
-								mergeMap.put(name,((TSString)val).tsExplode());
-								listRemove.add(key);
-							}
-						}
-					}
-					break;
-				default:
-					break;
-			}
-		}
-		for(int i=0;i<listRemove.size();i++)
-			map.remove(listRemove.get(i));
-		map.putAll(mergeMap);
-	}
-
-	/**
-	 * Reset DB Scope, which is used in the interpreter loop to detect and avoid reference loops in the databases
-	 */
-	public void resetScope(){
-		//$this->db_scope->reset();
-	}
-
 	public TSMapLH getFieldSettings(String field){
 		if(this.registered_fields.containsKey(field))
 			return (TSMapLH)this.registered_fields.get(field);
 		return null;
 	}
 
-	/**
-	 * Return registered PDOs.
-	 * @return the currently registered PDOs
-	 */
-	public TSMapLH getRegisteredPDOs(){
-		return this.dbpdos.get_registered_pdos();
-	}
-
-	/**
-	 * Return specific PDO.
-	 * 
-	 * @param group of PDOs
-	 * @param key specific id within a group
-	 * @return map with all information
-	 */
-	public TSMapLH getRegisteredPDOs(String group, String key){
-		return this.dbpdos.get_registered_pdos(group, key);
-	}
-
-	/**
-	 * Generate an SQL query on a given PDO object.
-	 * 
-	 * @param pdo the PDO object to be used for the query
-	 * @param select the SQL select string
-	 * @param table an array of tables to be used for the query
-	 * @param where the SQL where string
-	 * @param order the SQL order string
-	 * @return resulting ResultSet
-	 */
-	public ResultSet sql_query(TSPDO pdo, String select, String table, String where, String order){
-		return this.dbpdos.sql_query(pdo, select, table, where, order);
-	}
-
-	public TSPDO pdoSelect(String table){
-		return this.dbpdos.pdo_select(table);
+	public String getLang(){
+		return this.lang;
 	}
 }

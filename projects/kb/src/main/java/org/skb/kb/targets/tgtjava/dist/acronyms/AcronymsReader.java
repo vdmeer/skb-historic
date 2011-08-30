@@ -30,41 +30,17 @@
 
 package org.skb.kb.targets.tgtjava.dist.acronyms;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.skb.kb.SKB;
+import org.skb.kb.SKBDataManager;
 import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.db.TSPDO;
 import org.skb.util.types.atomic.java.TSString;
 
 public class AcronymsReader extends SKBReader {
 
 	@Override
 	protected void prepare_loop(Request request, TSString table, TSString tableCollections) {
-		// TODO Auto-generated method stub
-		SKB mySKB=SKB.getInstance();
-
-		ResultSet rs;
-		ArrayList<String> cols;
-		TSPDO pdo;
-
-		pdo=mySKB.pdoSelect("acronyms");
-
-		rs=pdo.query("*", "acronyms", null, "acronyms:short");
-		cols=pdo.get_columns();
-		try{
-			while(rs.next()){
-				for(int i=0;i<cols.size();i++){
-					this.entries.put(new ArrayList<String>(Arrays.asList(rs.getString("key"), cols.get(i))), rs.getString(cols.get(i)));
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		mySKB.interpretMap(this.entries, "acronyms");
+		SKBDataManager myDM=SKBDataManager.getInstance();
+		this.entries=myDM.queryDataObject(myDM.prepareQuery("skb:acronyms",null,null,"acronyms:short",null,null,true,true));
 	}
 
 	@Override
