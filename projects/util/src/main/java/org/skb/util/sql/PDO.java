@@ -36,6 +36,15 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.apache.commons.lang.StringUtils;
+import org.skb.util.types.TSRepository;
+import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.types.composite.util.TSArrayList;
+import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Implementation of a PDO object.
@@ -161,6 +170,45 @@ public class PDO {
 			e.printStackTrace();
 		}
 		return this.result_set;
+	}
+
+	public TSMapLH semanticQuery(TSMapLH query, String from){
+		TSMapLH ret=new TSMapLH();
+
+		//select string
+		if(query.get("find").tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)&&((TSArrayList)query.get("find")).size()>0)
+			query.put("find", new TSString(StringUtils.join(((TSArrayList)query.get("find")).toArray(),",")));
+		if(!(query.get("find").toString().length()>0))
+			query.put("find", new TSString("*"));
+
+		//where string
+		String where="";
+		if(query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)&&((TSArrayList)query.get("equals")).size()>0){
+			TSMapLH _a=(TSMapLH)query.get("equals");
+			Set<String> o_set = _a.keySet();
+			Iterator<String> key_it = o_set.iterator();
+			while(key_it.hasNext()){
+				String key=key_it.next();
+				String val=_a.get(key).toString();
+				where+=" \""+key+"\" = \""+val+"\"";
+			}
+		}
+
+		//order string
+		String order=query.get("sort").toString();
+
+		ResultSet rs=this.query(query.get("find").toString(), from, where, order);
+		ArrayList<String> cols=this.get_columns();
+		try{
+			while(rs.next()){
+				for(int i=0;i<cols.size();i++){
+					ret.put(new ArrayList<String>(Arrays.asList(rs.getString("key"), cols.get(i))), rs.getString(cols.get(i)));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ret;
 	}
 
 	public ArrayList<String> get_columns(){

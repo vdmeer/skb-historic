@@ -44,7 +44,15 @@ public class I18NManager {
 	LinkedHashMap <String, ResourceBundle> entries;
 	private String currentDomain;
 
-	public I18NManager(){
+	private static class XtI18NManager_MainHolder{
+		private final static I18NManager INSTANCE = new I18NManager();
+	}
+
+	public static I18NManager getInstance(){
+		return XtI18NManager_MainHolder.INSTANCE;
+	}
+
+	private I18NManager(){
 		this.entries=new LinkedHashMap <String, ResourceBundle>();
 		currentDomain=new String();
 	}

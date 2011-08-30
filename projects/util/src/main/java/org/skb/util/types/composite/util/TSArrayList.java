@@ -359,8 +359,6 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 
 	@Override
 	public String tsToString(int indent) {
-		//TODO not yet implemented
-/*
 		indent+=4;
 		String indentation=new String();
 		for(int i=1;i<=indent;i++)
@@ -368,32 +366,13 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 
 		String ret = new String();
 
-		for(int i=0;i<this.tsvalue.size();i++){
-			switch(this.tsvalue.get(i).getTypeEnum()){
-				case OAT_BASE_COMPOSITE_MAP:
-				case OAT_COMPOSITE_MAP_LH:
-					ret+=indentation+"["+i+"::Map] => \n"+indentation+"    (\n"+((TSBaseMap)this.tsvalue.get(i)).toString(indent+4)+indentation+indentation+")\n";
-					break;
-				case OAT_ARRAYLIST:
-					ret+=indentation+"["+i+"::Map] => \n"+indentation+"    (\n"+((TSBaseArrayList)this.tsvalue.get(i)).toString(indent+4)+indentation+indentation+")\n";
-					break;
-//				case OAT_LIST_COMPOSITE:
-//					ret+=indentation+"["+i+"::List] => "+this.field.get(key)+"\n";
-//					break;
-				case OAT_ARRAYLIST_ATOMIC:
-					ret+=indentation+"["+i+"::List<Atomic>] => "+this.tsvalue.get(i)+"\n";
-					break;
-				case OAT_ARRAYLIST_STRING:
-					ret+=indentation+"["+i+"::List<String>] => "+this.tsvalue.get(i)+"\n";
-					break;
-				default:
-					ret+=indentation+"["+i+"] => "+this.tsvalue.get(i)+"\n";
-					break;
-			}
+		for(TSBase val : this.tsvalue){
+			if(val.tsIsType(TSRepository.TEnum.TS_COMPOSITE))
+				ret+=indentation+" <"+val.tsGetTypeString()+"> => \n"+val.tsToString(indent)+"\n";
+			else
+				ret+=indentation+" <"+val.tsGetTypeString()+"> => "+val.toString()+"\n";
 		}
 		return ret;
-*/
-		return "";
 	}
 
 	@Override
