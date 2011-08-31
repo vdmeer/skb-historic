@@ -31,9 +31,9 @@
 package org.skb.lang.glue.proto;
 
 import org.apache.log4j.Logger;
-import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
+import org.skb.util.log.LogManager;
 
 /**
  * General entry point for Glue parsing.
@@ -45,7 +45,7 @@ public class Glue {
 	static Logger logger;
 
 	public static void main (String[] args) {
-		System.setProperty("log4j.configuration", "org/skb/lang/glue/proto/log4/log4j.xml");
+		LogManager.init();
 		logger=Logger.getLogger(Glue.class);
 
 		Tribe tribe=new Tribe();

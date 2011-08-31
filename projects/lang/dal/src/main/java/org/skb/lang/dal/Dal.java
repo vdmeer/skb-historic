@@ -33,6 +33,7 @@ package org.skb.lang.dal;
 import org.apache.log4j.Logger;
 import org.skb.tribe.LanguageParser;
 import org.skb.tribe.Tribe;
+import org.skb.util.log.LogManager;
 
 /**
  * General entry point for Dal parsing.
@@ -44,7 +45,7 @@ public class Dal{
 	static Logger logger;
 
 	public static void main (String[] args) {
-		System.setProperty("log4j.configuration", "org/skb/lang/dal/log4/log4j.xml");
+		LogManager.init();
 		logger=Logger.getLogger(Dal.class);
 
 		logger.trace("main -- in");
