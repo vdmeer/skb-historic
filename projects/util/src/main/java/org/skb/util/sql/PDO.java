@@ -183,7 +183,7 @@ public class PDO {
 
 		//where string
 		String where="";
-		if(query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)&&((TSArrayList)query.get("equals")).size()>0){
+		if(query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)&&((TSMapLH)query.get("equals")).size()>0){
 			TSMapLH _a=(TSMapLH)query.get("equals");
 			Set<String> o_set = _a.keySet();
 			Iterator<String> key_it = o_set.iterator();
@@ -202,7 +202,11 @@ public class PDO {
 		try{
 			while(rs.next()){
 				for(int i=0;i<cols.size();i++){
-					ret.put(new ArrayList<String>(Arrays.asList(rs.getString("key"), cols.get(i))), rs.getString(cols.get(i)));
+					//if we don't look for anything, create a list, otherwise, only the columns of the searched row(s)
+					if(where=="")
+						ret.put(new ArrayList<String>(Arrays.asList(rs.getString("key"), cols.get(i))), rs.getString(cols.get(i)));
+					else
+						ret.put(new ArrayList<String>(Arrays.asList(cols.get(i))), rs.getString(cols.get(i)));
 				}
 			}
 		} catch (Exception e) {

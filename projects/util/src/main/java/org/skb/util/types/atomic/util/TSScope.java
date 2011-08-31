@@ -48,6 +48,7 @@ public class TSScope implements TSAtomic {
 	protected Stack<String> scope;
 
 	public TSScope(){
+		this.scope=new Stack<String>();
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 

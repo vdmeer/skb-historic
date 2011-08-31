@@ -68,8 +68,8 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 
 	public TSMapLH(TSMapLH map){
 		this._init();
-//		if(map!=null)
-//			this.tsvalue=new LinkedHashMap<String, TSBase>(map);
+		if(map!=null)
+			this.tsvalue=new LinkedHashMap<String, TSBase>(map);
 	}
 
 	protected void _init(){
