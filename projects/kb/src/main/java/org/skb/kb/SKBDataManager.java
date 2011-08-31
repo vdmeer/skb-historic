@@ -139,7 +139,6 @@ public class SKBDataManager {
 						try{
 							ResultSet rs=connection.createStatement().executeQuery("SELECT * FROM "+tab.get(i));
 							rs.next();
-
 						} catch (Exception e) {
 							//trigger_error("SKB_DataManager: table {$tables[$_keys[$i]]} does not exist in SQLite database {$sqlite_file} for sema tag {$sema_tag} in package {$package}", E_USER_ERROR);
 							doReg=false;
@@ -150,7 +149,6 @@ public class SKBDataManager {
 					}
 				}
 			}
-
 		}
 		else{
 			//trigger_error("SKB_DataManager: unknown type {$type} for sema tag {$sema_tag} in package {$package}", E_USER_ERROR);
@@ -326,12 +324,12 @@ public class SKBDataManager {
 						String type=registered_fields.get(key+"/core:type").toString();
 						if(type.equals("entity")){
 							String table=null;
-							if(registered_fields.get(key+"/core:default_db")!=null)
+							if(registered_fields.get(key+"/core:default_db").toString().length()!=0)
 								table=registered_fields.get(key+"/core:default_db").toString();
 							if(table==null)
 								continue;
 
-							if(registered_fields.get(key+"/core:interpreter")==null){
+							if(registered_fields.get(key+"/core:interpreter").toString().length()==0){
 								String exp=registered_fields.get(key+"/core:explode").toString();
 								if(exp.equals("1")){
 									TSBase newVal=((TSString)val).tsExplode();
@@ -351,7 +349,7 @@ public class SKBDataManager {
 									if(scope.push(table,val.toString())==true){
 										TSMapLH equals=new TSMapLH();
 										equals.put("key", val);
-										mergeMap=this.queryDataObject(this.queryDataObject(this.prepareQuery(table,"*",equals,null,null,null,true,true)));
+										mergeMap.put(name, this.queryDataObject(this.prepareQuery(table,"*",equals,null,null,null,true,true)));
 										listRemove.add(key);
 										scope.pop();
 									}

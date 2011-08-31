@@ -237,7 +237,7 @@
             row Dist.Geo.Cities.DB2Entries
                 key = "Dist.Geo.Cities.DB2Entries"
                 core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__geo___geo_cities___reader"
+                core:rabit:target:class = "php%pkg_dist__geo___geo_cities___reader,java%org.skb.kb.targets.tgtjava.dist.geo.GeoReaderCities"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/db"
                 core:rabit:mime_out = "x-skb/entries+geo"
@@ -248,7 +248,7 @@
             row Dist.Geo.Countries.DB2Entries
                 key = "Dist.Geo.Countries.DB2Entries"
                 core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__geo___geo_countries___reader"
+                core:rabit:target:class = "php%pkg_dist__geo___geo_countries___reader,java%org.skb.kb.targets.tgtjava.dist.geo.GeoReaderCountries"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/db"
                 core:rabit:mime_out = "x-skb/entries+geo"
@@ -259,7 +259,7 @@
             row Dist.Geo.Continents.DB2Entries
                 key = "Dist.Geo.Continents.DB2Entries"
                 core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__geo___geo_continents___reader"
+                core:rabit:target:class = "php%pkg_dist__geo___geo_continents___reader,java%org.skb.kb.targets.tgtjava.dist.geo.GeoReaderContinents"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/db"
                 core:rabit:mime_out = "x-skb/entries+geo"

@@ -38,6 +38,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.log4j.Logger;
 import org.skb.util.io.dirwalker.FindPackageDirectories;
 import org.skb.util.misc.I18NManager;
 import org.skb.util.misc.Json2Oat;
@@ -52,6 +53,8 @@ import org.skb.util.types.composite.util.TSArrayList;
 import org.skb.util.types.composite.util.TSMapLH;
 
 public class SKB {
+	static Logger logger;
+
 	private String lang;
 	public static String site_id;
 
@@ -78,9 +81,15 @@ public class SKB {
 	}
 
 	private SKB(){
+		logger=Logger.getLogger(SKB.class);
+
+		logger.trace("initialising SKB");
+
+		logger.trace("-> configuration, registered packages");
 		this.configuration=new TSMapLH();
 		this.registered_packages=new TSArrayListString();
 
+		logger.trace("-> registered fields, requests,  readers, builders, templates, interpreters, applications");
 		this.registered_fields=new TSMapLH();
 		this.registered_requests=new TSMapLH();
 		this.registered_readers=new TSMapLH();
@@ -89,8 +98,10 @@ public class SKB {
 		this.registered_interpreters=new TSMapLH();
 		this.registered_applications=new TSMapLH();
 
+		logger.trace("-> I18NManager");
 		this.i18n=I18NManager.getInstance();
 
+		logger.trace("-> start values (not in property files yet)");
 		//try for the main variables we'll need set (similar to main.inc.php)
 		//String site_id = System.getenv("site_id");     //id for the website
 		String site_id = "default";                      //id for the website
@@ -101,6 +112,7 @@ public class SKB {
 		//String root_document = "V:/dev/projects/skb/skb-eclipse/kb/src/main/resources";
 		String root_document = "V:/dev/projects/skb/skb-git/htdocs";
 
+		logger.trace("-> __cfg_array");
 		TSMapLH __cfg_array=new TSMapLH();
 		__cfg_array.put("root-document", root_document);
 		__cfg_array.put("root-skb", root_skb);
@@ -112,13 +124,17 @@ public class SKB {
 		__cfg_array.put("php_extension", ".php5");
 
 		if(!__cfg_array.containsKey("skb_site_id")){
-			System.err.println("SKB_Main: given configuration not valid");
-			System.exit(-1);
+			logger.error("SKB: given configuration not valid - missing Site ID");
+			logger.trace("SKB: given configuration not valid - missing Site ID, trying to continue");
+			//System.exit(-1);
 		}
 		else{
+			logger.trace("starting to load configuration data");
+
+			logger.trace("get DataManager Instance");
 			SKBDataManager myDM=SKBDataManager.getInstance();
 
-			//load the skb configuration
+			logger.trace("load skb core config from "+__cfg_array.get("config-core"));
 			myDM.loadDataObject("skb:core:config", "sqlite", "config://"+__cfg_array.get("config-core").toString(), "skb_cfg", "skb:core:config", "core");
 			TSMapLH __cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config",null,null,null,null,null,false,false));
 			Set<String> o_set = __cfg.keySet();
@@ -139,11 +155,12 @@ public class SKB {
 					this.configuration.put(collection+"/"+part, value.tsExplode());
 				else
 					this.configuration.put(collection+"/"+part, value);
+				logger.trace("added core config key <"+key+"> with value <"+value+">");
 			}
 			this.configuration.put("skb/site-id", __cfg_array.get("skb_site_id"));
 			SKB.site_id=this.configuration.get("skb/site-id").toString();
 
-			//load the site specific configuration
+			logger.trace("load skb site config from "+__cfg_array.get("config-site"));
 			myDM.loadDataObject("skb:core:config:site", "sqlite", "config://"+__cfg_array.get("config-site").toString(), "configuration", "skb:core:config:site", "site");
 			__cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config:site",null,null,null,null,null,false,false));
 			o_set = __cfg.keySet();
@@ -164,8 +181,10 @@ public class SKB {
 					this.configuration.put(collection+"/"+part, value.tsExplode());
 				else
 					this.configuration.put(collection+"/"+part, value);
+				logger.trace("added site config key <"+key+"> with value <"+value+">");
 			}
 
+			logger.trace("calculating skb and path values");
 			this.configuration.put("skb/root-document",     __cfg_array.get("root-document"));
 
 			this.configuration.put("skb/root-skb",          __cfg_array.get("root-skb"));
@@ -215,8 +234,6 @@ public class SKB {
 			}
 		}
 
-//System.out.println("original now");
-//System.err.println(this.configuration);
 /*
         if(isset($_REQUEST['lang'])){
           $dir=$this->configuration->get_group("path", "locale");
@@ -237,6 +254,7 @@ public class SKB {
         setlocale(LC_ALL, $lang);
       }
 */
+		logger.trace("return, initialisation successful");
 	}
 
 	/**
@@ -249,14 +267,16 @@ public class SKB {
 	 * once should not have any unwanted side effects.
 	 */
 	public void load_core_packages(){
+		logger.trace("loading core packages: core, request, default, mime, http");
 		this.requirePackage("core");
 		this.requirePackage("core.request");
 		this.requirePackage("core.default");
 		this.requirePackage("core.mime");
-
 		this.requirePackage("core.http");
+
 //		myHttp=SKB_Http::get_instance();
 //		myHttp->response_send_header("X-SKB", "v1.0");
+		logger.trace("return, loaded core packages");
 	}
 
 
@@ -273,34 +293,40 @@ public class SKB {
 	 * @param pkg the packages name, i.e. core.skbinfo or mysite.mypackage
 	 */
 	public void requirePackage(String pkg){
+		logger.trace("["+pkg+"] "+"loading");
+
 		if(this.registered_packages.contains(pkg)){
-			//if(SKB_LOAD_PACKAGE_NOTICE===true)
-	        //  trigger_error("SKB_Main: package already loaded: $package", E_USER_NOTICE);
-			System.err.println("SKB_Main: package already loaded: "+pkg);
+			logger.trace("NOTICE: package <"+pkg+"> already loaded");
+			logger.trace("return, doing nothing");
 			return;
 		}
 
 		String pkg_dir=this.configuration.get("path/repository").toString()+pkg.replace(".", "/");
 		String pkg_file_json=pkg_dir+"/"+pkg+".json";
+		logger.trace("["+pkg+"] "+"directory: <"+pkg_dir+">");
+		logger.trace("["+pkg+"] "+"JSON file: <"+pkg_file_json+">");
 
 		//if file_exists pkg.json load file
 		File pkgJsonFN=new File(pkg_file_json);
 		if(pkgJsonFN.canRead()){
 			this.load_from_json(pkg_file_json, pkg);
-//			if(SKB_LOAD_PACKAGE_NOTICE===true)
-//				trigger_error("SKB_Main: package PHP loaded: $package", E_USER_NOTICE);
+			logger.trace("["+pkg+"] "+"loaded from JSON");
+		}
+		else{
+			logger.trace("["+pkg+"] "+"package JSON file does not exist, nothing loaded");
 		}
 
 		this.registered_packages.add(pkg);
 
-		//clean the local maps, i.e. remove all zero/null entries
+		logger.trace("cleaning private maps");
+		this.registered_fields.tsClean();
 		this.registered_requests.tsClean();
 		this.registered_readers.tsClean();
 		this.registered_applications.tsClean();
 		this.registered_builders.tsClean();
 		this.registered_interpreters.tsClean();
 		this.registered_templates.tsClean();
-		//add SKB_LOAD_PACKAGE_NOTICE===true echo(pkg loaded)
+		logger.trace("["+pkg+"] "+"loaded");
 	}
 
 	/**
@@ -312,6 +338,7 @@ public class SKB {
 	public void load_from_json(String jsonFN, String pkg){
 		File pkgJson=new File(jsonFN);
 		if(pkgJson.canRead()){
+			logger.trace("["+pkg+"] "+"loading from JSON file <"+pkgJson+">");
 			SKBDataManager myDM=SKBDataManager.getInstance();
 
 			Json2Oat j2o=new Json2Oat();
@@ -320,8 +347,10 @@ public class SKB {
 			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 				res=(TSMapLH)_t;
 
+			logger.trace("["+pkg+"] "+"read file, testing for contents");
 			if(res!=null){
 				if(res.containsKey("load_repository_object")){
+					logger.trace("["+pkg+"] "+"found <load_repository_object>");
 					TSBase loadrepo=(res).get("load_repository_object");
 					if(loadrepo.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 						for(TSBase dos : (TSArrayList)loadrepo){
@@ -337,6 +366,7 @@ public class SKB {
 					}
 				}
 				if(res.containsKey("require_package")){
+					logger.trace("["+pkg+"] "+"found <require_package>");
 					TSBase reqpkg=(res).get("require_package");
 					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
 						reqpkg=((TSString)res.get("require_package")).tsExplode();
@@ -346,22 +376,8 @@ public class SKB {
 						}
 					}
 				}
-//				if(res.containsKey("load_database")){
-//					TSArrayList ar=(TSArrayList)res.get("load_database");
-//					if(ar!=null){
-//						for(int i=0;i<ar.size();i++){
-//							TSMapLH ld=(TSMapLH)ar.get(i);
-//							if(ld!=null){
-//								if(ld.containsKey("fn")&&ld.containsKey("tables")){
-//									TSBase tables=((TSString)ld.get("tables")).tsExplode();
-//									if(tables.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING))
-//										this.loadDatabase(ld.get("fn").toString(), (TSArrayListString)tables, pkg, null);
-//								}
-//							}
-//						}
-//					}
-//				}
 				if(res.containsKey("text_domain")){
+					logger.trace("["+pkg+"] "+"found <text_domain>");
 					TSArrayList ar=(TSArrayList)res.get("text_domain");
 					if(ar!=null){
 						for(int i=0;i<ar.size();i++){
@@ -373,6 +389,7 @@ public class SKB {
 					}
 				}
 				if(res.containsKey("load_data_object")){
+					logger.trace("["+pkg+"] "+"found <load_data_object>");
 					TSBase loaddata=(res).get("load_data_object");
 					if(loaddata.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 						for(TSBase dos : (TSArrayList)loaddata){
@@ -385,6 +402,9 @@ public class SKB {
 					}
 				}
 			}
+		}
+		else{
+			logger.trace("["+pkg+"] "+"cant' read JSON file <"+pkgJson+">");
 		}
 	}
 
@@ -404,7 +424,8 @@ public class SKB {
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				String key=key_it.next();
-				TSBase val=data.get(key);
+				TSMapLH val=(TSMapLH)data.get(key);
+				val.put("package", pkg);
 				this.registered_fields.put(key, val);
 			}
 		}
@@ -413,7 +434,8 @@ public class SKB {
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				String key=key_it.next();
-				TSBase val=data.get(key);
+				TSMapLH val=(TSMapLH)data.get(key);
+				val.put("package", pkg);
 				this.registered_requests.put(key, val);
 			}
 		}
@@ -423,6 +445,7 @@ public class SKB {
 			while(key_it.hasNext()){
 				String key=key_it.next();
 				TSMapLH val=(TSMapLH)data.get(key);
+				val.put("package", pkg);
 				if(val.containsKey("core:rabit:type")){
 					TSMapLH tmap=null;
 					String type=val.get("core:rabit:type").toString();

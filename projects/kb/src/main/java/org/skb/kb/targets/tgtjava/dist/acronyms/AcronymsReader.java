@@ -45,7 +45,5 @@ public class AcronymsReader extends SKBReader {
 
 	@Override
 	protected void execute_loop(Request request) {
-		// TODO Auto-generated method stub
-
 	}
 }
