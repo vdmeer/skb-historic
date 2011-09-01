@@ -177,7 +177,7 @@
 
 	<!-- ORG.SKB.UTIL -->
         <logger name="org.skb.util">
-                <level value="debug"/>
+                <level value="all"/>
                 <appender-ref ref="Org.Skb.Util"/>
                 <!--<appender-ref ref="stdout"/>-->
         </logger>

@@ -34,6 +34,8 @@ import java.util.Locale;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import org.apache.log4j.Logger;
+
 /**
  * A class handling internationalisation using properties.
  *
@@ -41,6 +43,8 @@ import java.util.ResourceBundle;
  * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
  */
 public class I18NManager {
+	public final static Logger logger = Logger.getLogger(I18NManager.class);
+
 	LinkedHashMap <String, ResourceBundle> entries;
 	private String currentDomain;
 
@@ -67,7 +71,8 @@ public class I18NManager {
 			this.entries.put(pkg, rb);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("catched exception: "+e.toString());
+			//e.printStackTrace();
 		}
 	}
 
