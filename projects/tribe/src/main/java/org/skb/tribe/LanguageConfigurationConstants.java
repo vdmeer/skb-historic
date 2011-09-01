@@ -34,7 +34,7 @@ package org.skb.tribe;
  * Constants for reading a json configuration file of a parser.
  *
  * @author     Sven van der Meer
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 
 public final class LanguageConfigurationConstants {

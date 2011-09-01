@@ -38,7 +38,7 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  * Class that reads properties (any configuration information) of a parser.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class LanguageProperties {
 	private TSPropertyMap opm;
