@@ -77,12 +77,32 @@
         </replaceregexp>
 
         <replaceregexp byline="false">
-        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
-            <regexp pattern="// @version(.*)"/>
-            <substitution expression="// \@version    ${skb.version.long.json}"/>
+        	  <!-- sed "s/^ \# @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern="# @version(.*)"/>
+            <substitution expression="# \@version    ${skb.version.long.json}"/>
             <fileset dir="./" >
                 <include name="src/**/*.json" />
             </fileset>
         </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.dal}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.dal" />
+            </fileset>
+        </replaceregexp>
+
+        <replaceregexp byline="false">
+        	  <!-- sed "s/^ \* @version.*$/ \* @version    ${version}/" -->
+            <regexp pattern=" \* @version(.*)"/>
+            <substitution expression=" \* \@version    ${skb.version.long.php}"/>
+            <fileset dir="./" >
+                <include name="src/**/*.php5" />
+                <include name="src/**/*.tpl" />
+            </fileset>
+        </replaceregexp>
+
     </target>
 </project>
