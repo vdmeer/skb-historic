@@ -38,7 +38,7 @@
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @copyright  2010-2011 Sven van der Meer
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
- * @version    v0.32 build 110405 (05-Apr-11) with PHP 5.3.0
+ * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__acronyms___application__xhtml__table___builder extends SKB_Builder{
   /**

@@ -33,7 +33,7 @@
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @copyright  2011-2011 Sven van der Meer
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
- * @version    v0.01 build 110309 (09-Mar-11) for DAL v0.01
+ * @version    v1.0.0 build 110901 (01-Sep-11) for Dal v1.0.0
  */
 
 #ifndef "DEMO_MENU_DATA"
