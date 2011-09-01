@@ -45,7 +45,7 @@ import org.skb.util.types.api.TSBase;
  * This class provides am OatBaseAtomic wrapper for the ANTLR runtime class Token.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSToken extends ClassicToken implements TSAtomic {
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));

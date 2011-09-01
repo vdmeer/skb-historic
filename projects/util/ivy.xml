@@ -40,6 +40,9 @@
 	<dependency org="org.codehaus.jackson"
 		name="com.springsource.org.codehaus.jackson.mapper"
 		rev="${org.codehaus.jackson}" />
+	<dependency org="org.apache.log4j"
+		name="com.springsource.org.apache.log4j"
+		rev="${org.apache.log4j}" />
 	<dependency org="org.junit"
 		name="com.springsource.org.junit"
 		rev="${org.junit}" conf="test->runtime" />

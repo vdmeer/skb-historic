@@ -40,7 +40,7 @@ import org.antlr.stringtemplate.StringTemplate;
  * A single file template maintaining everything necessary to write a file.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class FileTemplateSingle {
 	LinkedHashSet<StringTemplate> templates;

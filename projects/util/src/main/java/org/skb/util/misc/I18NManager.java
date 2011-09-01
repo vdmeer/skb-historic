@@ -40,7 +40,7 @@ import org.apache.log4j.Logger;
  * A class handling internationalisation using properties.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class I18NManager {
 	public final static Logger logger = Logger.getLogger(I18NManager.class);

@@ -46,7 +46,7 @@ import org.apache.commons.lang.StringUtils;
  * Walk a directory and find entries, specifically for the SKB.
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 @SuppressWarnings(value={"all"})
 public class FindPackageDirectories extends DirectoryWalker {

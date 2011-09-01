@@ -48,7 +48,7 @@ import org.skb.util.types.api.TSComposite;
  * An Array list of TSBase types.
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase> {
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
