@@ -39,12 +39,12 @@
 repository core{
     table pkg_fields{
         field core:fields.key string primkey(abort) notnull(abort) unique(abort);
-        field core:fields.type string value(list "core" "request");
-        field core:fields.use string value(list "entity" "value");
+        field core:fields.type string;
+        field core:fields.use string;
         field core:fields.entries_name string;
         field core:fields.http_req_name string;
         field core:fields.default_table string;
-        field core:fields.explode string value(or "0" "1");
+        field core:fields.explode string;
         field core:fields.interpreter string;
         field core:fields.val_unset string;
         field core:fields.isval string;

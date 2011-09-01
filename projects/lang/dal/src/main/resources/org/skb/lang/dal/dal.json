@@ -122,6 +122,14 @@
                     "cli:option:arg-name":"file",
                     "cli:option:type":"ts:atomic:java:string",
                     "cli:usage:descr":"Group template file for statistics"
+                },
+                "print-repo-fields":{
+                    "skb:lang:target:config:constid":"keyPrintRepoFields",
+                    "at:type":"ts:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"print-repo-fields",
+                    "cli:option:type":"ts:atomic:java:boolean",
+                    "cli:usage:descr":"Print the Repository Fieldnames to stderr"
                 }
             },
             "targets":{

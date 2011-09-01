@@ -96,6 +96,7 @@ dalRepository                : ^(DAL_REPOSITORY id=IDENT
 dalTable                     : ^(DAL_TABLE id=IDENT (fields+=dalField)* dalSequence)
                                ->dalTable(ident={$id.text}, fields={this.pass.sequenceFields(this.curRepo, $id.text, $fields)});
 dalField                     : ^(DAL_FIELD id=IDENT type=base_type
+                                 {this.pass.addFieldName(id.token);}
                                  {ArrayList<StringTemplate> cons=new ArrayList<StringTemplate>();}
                                  {ArrayList<StringTemplate> others=new ArrayList<StringTemplate>();}
                                  dalFieldValue?

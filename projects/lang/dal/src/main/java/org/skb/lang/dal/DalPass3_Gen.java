@@ -42,8 +42,10 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
+import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
+import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.util.TSArrayListString;
 
 /**
@@ -64,6 +66,9 @@ public class DalPass3_Gen {
 	//for temporary sequence lists
 	TSArrayListString tempSeq;
 
+	//collect constants, i.e. column name of repository fields
+	TSArrayListString fieldNames;
+
 	public DalPass3_Gen(){
 		this.atoms.scope.clear();
 
@@ -73,6 +78,8 @@ public class DalPass3_Gen {
 		this.sn=new ScopeString();
 
 		this.tempSeq=new TSArrayListString();
+
+		this.fieldNames=new TSArrayListString();
 	}
 
 	public String trimQuotes(String s){
@@ -152,5 +159,14 @@ public class DalPass3_Gen {
 			ret.put(key, value);
 		}
 		return ret;
+	}
+
+	public void addFieldName(Token id){
+		Boolean printRepoFields=false;
+		try {
+			printRepoFields=((TSBoolean)TribeProperties.getInstance().getValue(DalConstants.Properties.keyPrintRepoFields)).tsvalue;
+		} catch (Exception e) {}
+		if(printRepoFields==true)
+			System.err.println(id.getText());
 	}
 }
