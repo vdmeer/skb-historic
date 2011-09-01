@@ -47,7 +47,7 @@ import org.skb.util.types.api.TSBase;
  * Pass 3 of the Cola parser using templates to generate a target language specification.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaPass3_Gen {
 	static Logger logger = Logger.getLogger(ColaPass3_Gen.class);

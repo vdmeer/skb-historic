@@ -50,7 +50,7 @@ import org.skb.util.misc.ReportManager;
  * Pass 2 of the Cola parser, mostly looking into semantic analysis.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaPass2_Ast {
 	static Logger logger = Logger.getLogger(ColaPass2_Ast.class);

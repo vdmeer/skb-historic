@@ -51,7 +51,7 @@ import org.skb.util.types.atomic.java.TSBoolean;
  * Pass 4 of the Cola Parser, generating files for output.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaPass4_Files {
 	static Logger logger = Logger.getLogger(ColaPass4_Files.class);
