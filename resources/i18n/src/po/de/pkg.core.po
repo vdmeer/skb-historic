@@ -19,9 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../../kb/src/main/php/targets/tgtphp/core/urn.interpreter.class.php5:108
-#, fuzzy
 msgid "Core.Interpreter.URN: file not found for"
-msgstr "Core.Interpreter.URN: keine Dateiendung angegeben"
+msgstr "Core.Interpreter.URN: keine Datei gefunden f&uuml;r"
 
 #: ../../kb/src/main/php/targets/tgtphp/core/urn.interpreter.class.php5:81
 msgid "Core.Interpreter.URN: no file extensions given"

@@ -93,8 +93,8 @@ do_gettext(){
 
 build_locale()
 {
-#    (cd ${autogen_directory};php create-dist.php5)
-#    (cd ${autogen_directory};php create-demo.php5)
+    (cd ${autogen_directory};php create-dist.php5)
+    (cd ${autogen_directory};php create-demo.php5)
 #    (cd ${autogen_directory};php create-vdm.php5)
 
     pot_pkg_files=`(cd ${pot_directory};ls pkg.*.pot)`
