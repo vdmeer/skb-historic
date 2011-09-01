@@ -37,7 +37,7 @@ import org.skb.util.io.files.FileTemplateList;
  * Pass 4 of the Glue parser generating output files.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class GluePass4_Files {
 	static Logger logger = Logger.getLogger(GluePass4_Files.class);
