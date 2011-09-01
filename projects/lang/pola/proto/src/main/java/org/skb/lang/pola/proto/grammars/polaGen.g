@@ -35,7 +35,7 @@
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @copyright  2011-2011 Sven van der Meer
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
- * @version    v0.30 build 110309 (09-Mar-11) for ANTLR v3.3
+ * @version    v1.0.0 build 110901 (01-Sep-11) for ANTLR v3.1.3
  */
 
 tree grammar polaGen;

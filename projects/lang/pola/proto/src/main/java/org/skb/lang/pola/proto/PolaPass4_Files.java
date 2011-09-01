@@ -41,7 +41,7 @@ import org.skb.util.languages.AtomList;
  * Pass 4 of the Pola parser generating output files.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PolaPass4_Files {
 	static Logger logger = Logger.getLogger(PolaPass4_Files.class);

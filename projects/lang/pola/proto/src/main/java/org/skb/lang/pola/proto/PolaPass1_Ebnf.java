@@ -43,7 +43,7 @@ import org.skb.util.misc.ReportManager;
  * Pass 1 of the Pola parser, syntax checks and building a symbol table.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
- * @version    v0.30 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PolaPass1_Ebnf {
 	static Logger logger = Logger.getLogger(PolaPass1_Ebnf.class);
