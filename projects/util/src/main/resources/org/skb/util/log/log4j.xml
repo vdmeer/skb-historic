@@ -139,7 +139,7 @@
         <logger name="org.skb.lang.cola.proto">
                 <level value="trace"/>
                 <appender-ref ref="Org.Skb.Lang.Cola.Proto"/>
-                <appender-ref ref="stdout"/>
+                <!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.LANG.COLA.PROTO -->
 
@@ -147,7 +147,7 @@
         <logger name="org.skb.lang.pola.proto">
                 <level value="debug"/>
                 <appender-ref ref="Org.Skb.Lang.Pola.Proto"/>
-                <appender-ref ref="stdout"/>
+                <!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.LANG.POLA.PROTO -->
 
@@ -155,7 +155,7 @@
         <logger name="org.skb.lang.dal">
                 <level value="trace"/>
                 <appender-ref ref="Org.Skb.Lang.Dal"/>
-                <appender-ref ref="stdout"/>
+                <!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.LANG.DAL -->
 
@@ -163,7 +163,7 @@
         <logger name="org.skb.lang.glue.proto">
                 <level value="trace"/>
                 <appender-ref ref="Org.Skb.Lang.Glue.Proto"/>
-                <appender-ref ref="stdout"/>
+                <!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.LANG.GLUE.PROTO -->
 
@@ -171,7 +171,7 @@
         <logger name="org.skb.tribe">
                 <level value="trace"/>
                 <appender-ref ref="Org.Skb.Tribe"/>
-                <appender-ref ref="stdout"/>
+                <!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.TRIBE -->
 

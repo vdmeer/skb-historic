@@ -156,7 +156,7 @@ public class CliApache implements Cli {
 	public void parse(String[] args) throws ParseException {
         CommandLineParser parser=new PosixParser();
         try {
-            this.line=parser.parse(this.options, args, false);
+            this.line=parser.parse(this.options, args, true);
         }
         catch(ParseException exp){
             throw exp;

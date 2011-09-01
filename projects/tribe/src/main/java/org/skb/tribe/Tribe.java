@@ -117,6 +117,7 @@ public class Tribe {
 		this.cli.setPropOptions(this.prop);
 		this.setOptions(args, languages);
 //System.err.println(prop);
+
 		/**
 		 * If there is a new stg given, instruct the report manager to load it. Checks on the content of the
 		 * new stg file will be handled by the report manager.
@@ -400,8 +401,8 @@ public class Tribe {
 			this.cli.parse(args);
         }
         catch(ParseException e){
-        	repMgr.reportError(e.getMessage());
-        	System.exit(2);
+       		repMgr.reportError(e.getMessage());
+       		System.exit(2);
         }
 
         cli.setOptions(this.prop);
