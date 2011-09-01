@@ -59,7 +59,7 @@ import org.skb.lang.cpp.grammars.CPPParser;
  * the calling class as PrintWriter.
  *  
  * @author     Sven van der Meer
- * @version    v0.20 build 110309 (09-Mar-11) with Java 1.6
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class CPP {
 	public static void main (String[] args) throws IOException {
