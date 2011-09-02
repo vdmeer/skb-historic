@@ -94,12 +94,12 @@ public class SKBDataManager {
 	 * This method loads a data object (i.e. SQLite database with tables) and registers it in the local
 	 * DO registry.
 	 *
-	 * @param string sema_tag the semantic tag to be used to access the data object
-	 * @param string type the type of the data object, i.e. sqlite
-	 * @param string handle a handle to access the data object, i.e. a file name for sqlite
-	 * @param string tables tables the data object maintains (currently for databases only), will be exploded
-	 * @param string filter_id a specific filter attached to the data object, can be used in queueing methods
-	 * @param string package the package that registers the data object
+	 * @param semaTag the semantic tag to be used to access the data object
+	 * @param type the type of the data object, i.e. sqlite
+	 * @param handle a handle to access the data object, i.e. a file name for sqlite
+	 * @param tables tables the data object maintains (currently for databases only), will be exploded
+	 * @param filterID a specific filter attached to the data object, can be used in queueing methods
+	 * @param pkg the package that registers the data object
 	 */
 	public void loadDataObject(String semaTag, String type, String handle, String tables, String filterID, String pkg){
 		boolean doReg=true;
@@ -292,11 +292,10 @@ public class SKBDataManager {
 		this.interpretLoop(map, new TSScope());
 	}
 
-
 	/**
 	 * Loop for interpreting data
-	 * 
-	 * @param Util_ArBase entries the data array to be interpreted
+	 * @param map entries the data array to be interpreted
+	 * @param scope stack that is used to avoid loops
 	 */
 	protected void interpretLoop(TSMapLH map, TSScope scope){
 		if(map==null||map.size()==0)
