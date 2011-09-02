@@ -38,7 +38,7 @@ import java.util.Set;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.antlr.stringtemplate.language.DefaultTemplateLexer;
+import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 import org.skb.tribe.LanguageConfiguration;
@@ -59,7 +59,7 @@ public class GenerateConstantsTask extends Task{
 	private String destdir=null;
 	private String destfile=null;
 
-	private String stgurl=null; //="org/skb/ant/tribe/constants.stg";
+	private String stgurl=null; //="/org/skb/ant/tribe/constants.stg";
 
     public void setPkgname(String s){
         this.pkgname=s;
@@ -115,7 +115,12 @@ public class GenerateConstantsTask extends Task{
     			try{
     				TSString cid=(TSString)map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstID);
     			    TSString cval=(TSString)map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
-    		    	constTokens.put(cid, cval);
+    			    TSString jdoc=(TSString)map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstJavaDoc);
+
+    			    TSMapLH _put=new TSMapLH();
+					_put.put("value", cval);
+					_put.put("javadoc", jdoc);
+    			    constTokens.put(cid, _put);
     		    } catch (Exception e){}
     		}
     	}
@@ -123,8 +128,13 @@ public class GenerateConstantsTask extends Task{
     	map=cfg.getLanguageRules();
     	if(map!=null&&map.size()>0){
 				for(String k:map.keySet()){
-					if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID))
-						constRules.put(map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new TSString(k));
+					if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID)){
+						TSMapLH _put=new TSMapLH();
+						_put.put("value", new TSString(k));
+						if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc))
+							_put.put("javadoc", map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc).toString());
+						constRules.put(map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), _put);
+					}
 				}
     	}
 
@@ -133,17 +143,27 @@ public class GenerateConstantsTask extends Task{
 			if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration)){
 				TSMapLH _m=(TSMapLH)map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration);
 				for(String s:_m.keySet()){
-					constProperties.put(map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), s);
+					if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID)){
+						TSMapLH _put=new TSMapLH();
+						_put.put("value", s);
+						if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc))
+							_put.put("javadoc", map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc).toString());
+						constProperties.put(map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), _put);
+					}
 				}
 			}
-
 			if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
 				TSMapLH _m=(TSMapLH)map.get(LanguageConfigurationConstants.Paths.SKBLangTargets);
 				for(String s:_m.keySet()){
 					TSMapLH newMap=(TSMapLH)map.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli);
 					for(String k:newMap.keySet()){
-						if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID))
-							constProperties.put(newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), new TSString(k));
+						if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID)){
+							TSMapLH _put=new TSMapLH();
+							_put.put("value", new TSString(k));
+							if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc))
+								_put.put("javadoc", newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc));
+							constProperties.put(newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), _put);
+						}
 					}
 				}
 			}
@@ -153,7 +173,7 @@ public class GenerateConstantsTask extends Task{
 		try{
 			InputStream in=this.getClass().getResourceAsStream(this.stgurl);
 			InputStreamReader isr=new InputStreamReader(in);
-			stg=new StringTemplateGroup(isr, DefaultTemplateLexer.class);
+			stg=new StringTemplateGroup(isr, AngleBracketTemplateLexer.class);
 		} catch (Exception e) {
 			throw new BuildException("can't read string template group from URL <"+this.stgurl+">");
 		}
@@ -175,7 +195,7 @@ public class GenerateConstantsTask extends Task{
 			aout.flush();
 			aout.close();
 		}catch(Exception e){
-			throw new BuildException("cannot write to output file <"+this.destfile+"> in directory <"+this.destdir+">");
+			throw new BuildException("cannot write to output file <"+this.destfile+"> in directory <"+this.destdir+">\n"+e);
 		}
     }
 }
