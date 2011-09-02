@@ -41,34 +41,37 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__menu___application__xhtml__sitemap___builder extends pkg_dist__menu___application__xhtml__dd___builder{
-  /**
-   * The template for the start of the sitemap.
-   *
-   * @var $tpl_start
-   */
-  protected $tpl_start="Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Start";
+	/**
+	 * The template for the start of the sitemap.
+	 *
+	 * @var $tpl_start
+	 */
+	protected $tpl_start="Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Start";
 
-  /**
-   * The template for the list of entries.
-   *
-   * @var $tpl_list
-   */
-  protected $tpl_list="Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-List";
 
-  /**
-   * The template for a single entry.
-   *
-   * @var $tpl_single
-   */
-  protected $tpl_single="Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Entry";
+	/**
+	 * The template for the list of entries.
+	 *
+	 * @var $tpl_list
+	 */
+	protected $tpl_list="Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-List";
 
-  /**
-   * Class Constructor.
-   *
-   * Only calls the parent constructor.
-   */
-  function __construct(){
-  	parent::__construct();
-  }
+
+	/**
+	 * The template for a single entry.
+	 *
+	 * @var $tpl_single
+	 */
+	protected $tpl_single="Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Entry";
+
+
+	/**
+	 * Class Constructor.
+	 *
+	 * Only calls the parent constructor.
+	 */
+	function __construct(){
+		parent::__construct();
+	}
 }
 ?>

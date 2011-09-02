@@ -41,17 +41,17 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-  <div class="center">
-    <br />
+<div class="center">
+	<br />
 <?php
-    $ar=$entries->ar;
-    $_keys=array_keys($ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      $tpl=new Util_Template($tplSingle);
-      $tpl->set("entry", $ar[$_keys[$i]]);
-      $tpl->set("request", $request);
-      $tpl->printT();
-    }
+	$ar=$entries->ar;
+	$_keys=array_keys($ar);
+	$_size=count($_keys);
+	for($i=0;$i<$_size;$i++){
+		$tpl=new Util_Template($tplSingle);
+		$tpl->set("entry", $ar[$_keys[$i]]);
+		$tpl->set("request", $request);
+		$tpl->printT();
+	}
 ?>
-  </div>
+</div>

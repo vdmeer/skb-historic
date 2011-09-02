@@ -40,26 +40,26 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-  $name=(isset($entries['menu:linkname']))?$entries['menu:linkname']:"";
-  if($name=="")
-    $name=(isset($entries['menu:title']))?$entries['menu:title']:"";
-  if($name=="")
-    trigger_error("[Menu] - no name or linkname found, item '{$this->id}' might not be shown", E_USER_NOTICE);
+	$name=(isset($entries['menu:linkname']))?$entries['menu:linkname']:"";
+	if($name=="")
+		$name=(isset($entries['menu:title']))?$entries['menu:title']:"";
+	if($name=="")
+		trigger_error("[Menu] - no name or linkname found, item '{$this->id}' might not be shown", E_USER_NOTICE);
 
-  $link="";
-  if(isset($entries["menu:url"])){
-    $link=$entries["menu:url"];
-    if(strstr($entries["menu:url"],"://")==false)
-      $link=Util_Interpreter::interpret("url:build", $entries["menu:url"]);
-  }
+	$link="";
+	if(isset($entries["menu:url"])){
+		$link=$entries["menu:url"];
+		if(strstr($entries["menu:url"],"://")==false)
+			$link=Util_Interpreter::interpret("url:build", $entries["menu:url"]);
+	}
 
-  if($link!="")
-    echo "<a href=\"{$link}\">";
-  echo $name;
-  if($link!="")
-    echo "</a>";
+	if($link!="")
+		echo "<a href=\"{$link}\">";
+	echo $name;
+	if($link!="")
+		echo "</a>";
 
-  $sitemap_name=isset($entries['menu:text_sitemap'])?$entries['menu:text_sitemap']:"";
-  if($entries['level']>1&&$sitemap_name!="")
-    echo "<div class=\"comment\">{$sitemap_name}</div>\n\n";
+	$sitemap_name=isset($entries['menu:text_sitemap'])?$entries['menu:text_sitemap']:"";
+	if($entries['level']>1&&$sitemap_name!="")
+		echo "<div class=\"comment\">{$sitemap_name}</div>\n\n";
 ?>

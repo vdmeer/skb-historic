@@ -39,19 +39,21 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__people___string___interpreter implements SKB_InterpreterValue{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($ar){
-    $ret="";
-    if(is_array($ar)){
-      $_keys=array_keys($ar);
-      $_size=count($_keys);
-      for($i=0;$i<$_size;$i++){
-      	if(isset($ar[$_keys[$i]]["people:first"])&&isset($ar[$_keys[$i]]["people:last"]))
-          $ret.=Util_Interpreter::interpret("add:char:comma-blank", $ret) . $ar[$_keys[$i]]["people:first"] . " " . $ar[$_keys[$i]]["people:last"];
-      }
-    }
-    return $ret;
-  }
+
+	static public function interpret($ar){
+		$ret="";
+		if(is_array($ar)){
+			$_keys=array_keys($ar);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++){
+				if(isset($ar[$_keys[$i]]["people:first"])&&isset($ar[$_keys[$i]]["people:last"]))
+					$ret.=Util_Interpreter::interpret("add:char:comma-blank", $ret) . $ar[$_keys[$i]]["people:first"] . " " . $ar[$_keys[$i]]["people:last"];
+			}
+		}
+		return $ret;
+	}
 }
 ?>

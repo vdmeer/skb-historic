@@ -43,16 +43,16 @@ class Util_ArBase{
 	 * The array itself
 	 * @var array $ar
 	 */
-  public $ar;
+	public $ar;
 
-  /**
-   * The constructor of the wrapper.
-   *
-   * @param array $a an initial array or left empty.
-   */
-  public function __construct($a=array()){
-  	$this->ar=$a;
-  }
+	/**
+	 * The constructor of the wrapper.
+	 *
+	 * @param array $a an initial array or left empty.
+	 */
+	public function __construct($a=array()){
+		$this->ar=$a;
+	}
 }
 
 ?>

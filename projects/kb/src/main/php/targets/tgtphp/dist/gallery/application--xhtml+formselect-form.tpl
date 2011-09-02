@@ -42,45 +42,45 @@
  */
 ?>
 <div class="form-frame">
-  <form name="options" method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-    <input type="hidden" name="<?php echo $request->get_form_name("active"); ?>" value="true" />
-    <div class="center">
-      <br />
+	<form name="options" method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+		<input type="hidden" name="<?php echo $request->get_form_name("active"); ?>" value="true" />
+		<div class="center">
+			<br />
 <?php
-    $ar=$entries->ar;
-    $_keys=array_keys($ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      $tpl=new Util_Template($tplSingle);
-      $tpl->set("entry", $ar[$_keys[$i]]);
-      $tpl->set("request", $request);
-      $tpl->printT();
-    }
+	$ar=$entries->ar;
+	$_keys=array_keys($ar);
+	$_size=count($_keys);
+	for($i=0;$i<$_size;$i++){
+		$tpl=new Util_Template($tplSingle);
+		$tpl->set("entry", $ar[$_keys[$i]]);
+		$tpl->set("request", $request);
+		$tpl->printT();
+	}
 ?>
-    </div>
+		</div>
 
-    <br /><br />
-    <fieldset>
-      <legend>[ <b>Options</b> ]</legend>
-      <?php echo $form_data; ?>
-      <br /><br />
+		<br /><br />
+		<fieldset>
+			<legend>[ <b>Options</b> ]</legend>
+			<?php echo $form_data; ?>
+			<br /><br />
 
-      <div class="form-button"><input type="submit" value=" &rsaquo;&rsaquo; Submit Changes &rsaquo;&rsaquo; " /></div>
-<!--      <div class="form-button"><button onclick="return toggleHelp('options_help')">&rsaquo;&rsaquo; Explain Select Boxes</button></div> -->
-      <br /><br />
+			<div class="form-button"><input type="submit" value=" &rsaquo;&rsaquo; Submit Changes &rsaquo;&rsaquo; " /></div>
+<!--			<div class="form-button"><button onclick="return toggleHelp('options_help')">&rsaquo;&rsaquo; Explain Select Boxes</button></div> -->
+			<br /><br />
 
 <!--
-      <div class="help" id="help_options_help">
-        <p>
-          Use the select boxes to minimise your search space. All boxes allow multiple selections. Use &lt;shift&gt; and &lt;ctrl&gt; to select/unselect items. The boxes will be logically combined as follows:<br />
-          <code style="margin-left:25px;">(Category  XOR EntryType) . ) AND Year AND ReferenceCategory AND (Journal XOR Conference)</code><br />
-          The two XOR combinations are processed as follows<br />
-          <code style="margin-left:25px;">- nothing selected in neither of the 2 boxes, show all references</code><br />
-          <code style="margin-left:25px;">- selection in only one of the 2 boxes, is the selection</code><br />
-          <code style="margin-left:25px;">- selections in both of the 2 boxes, show all references</code><br />
-        </p>
-      </div>
+			<div class="help" id="help_options_help">
+				<p>
+					Use the select boxes to minimise your search space. All boxes allow multiple selections. Use &lt;shift&gt; and &lt;ctrl&gt; to select/unselect items. The boxes will be logically combined as follows:<br />
+					<code style="margin-left:25px;">(Category  XOR EntryType) . ) AND Year AND ReferenceCategory AND (Journal XOR Conference)</code><br />
+					The two XOR combinations are processed as follows<br />
+					<code style="margin-left:25px;">- nothing selected in neither of the 2 boxes, show all references</code><br />
+					<code style="margin-left:25px;">- selection in only one of the 2 boxes, is the selection</code><br />
+					<code style="margin-left:25px;">- selections in both of the 2 boxes, show all references</code><br />
+				</p>
+			</div>
 -->
-    </fieldset>
-  </form>
+		</fieldset>
+	</form>
 </div>

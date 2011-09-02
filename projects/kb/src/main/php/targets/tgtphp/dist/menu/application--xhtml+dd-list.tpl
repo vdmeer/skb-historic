@@ -44,37 +44,37 @@
 
 
 <?php
-  if($entries['level']==1)
-    echo "<li class=\"top\">";
-  else
-    echo "<li>";
+	if($entries['level']==1)
+		echo "<li class=\"top\">";
+	else
+		echo "<li>";
 
-  $tpl=new Util_Template($tpl_entry);
-  $tpl->set("entries", $entries);
-  $tpl->set("tpl_list", $tpl_list);
-  $tpl->set("tpl_entry", $tpl_entry);
-  $tpl->printT();
+	$tpl=new Util_Template($tpl_entry);
+	$tpl->set("entries", $entries);
+	$tpl->set("tpl_list", $tpl_list);
+	$tpl->set("tpl_entry", $tpl_entry);
+	$tpl->printT();
 
-  $next_level=$entries['level']+1;
+	$next_level=$entries['level']+1;
 
-  if(isset($entries['_children'])&&pkg_dist__menu___helpers::check_print_levels($levels,$next_level)==true){
-    echo "\n<ul";
-    if($entries['level']==1)
-      echo " class=\"sub\"";
-    echo ">";
+	if(isset($entries['_children'])&&pkg_dist__menu___helpers::check_print_levels($levels,$next_level)==true){
+		echo "\n<ul";
+		if($entries['level']==1)
+			echo " class=\"sub\"";
+		echo ">";
 
-    $_keys=array_keys($entries['_children']);
-    $_size=count($_keys);
+		$_keys=array_keys($entries['_children']);
+		$_size=count($_keys);
 
-    for($i=0;$i<$_size;$i++){
-      $tpl=new Util_Template($tpl_list);
-      $tpl->set("levels", $levels);
-      $tpl->set("entries", $entries['_children'][$_keys[$i]]);
-      $tpl->set("tpl_list", $tpl_list);
-      $tpl->set("tpl_entry", $tpl_entry);
-      $tpl->printT();
-    }
-    echo "</ul>\n\n";
-  }
-  echo "</li>\n";
+		for($i=0;$i<$_size;$i++){
+			$tpl=new Util_Template($tpl_list);
+			$tpl->set("levels", $levels);
+			$tpl->set("entries", $entries['_children'][$_keys[$i]]);
+			$tpl->set("tpl_list", $tpl_list);
+			$tpl->set("tpl_entry", $tpl_entry);
+			$tpl->printT();
+		}
+		echo "</ul>\n\n";
+	}
+	echo "</li>\n";
 ?>

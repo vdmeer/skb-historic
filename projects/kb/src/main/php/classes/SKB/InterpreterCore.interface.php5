@@ -39,15 +39,15 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 interface SKB_InterpreterCore{
-  /**
-   * Interprete data in the SKB Core.
-   * 
-   * This interface is used in the SKB Core to, for instance, interprete URNs and map them 
-   * to folders and files.
-   *
-   * @param string key the string or key to be interpreted
-   * @param SKB_Request request a request object to parameterise the function call
-   */
-  static public function interpret($key, SKB_Request $request);
+	/**
+	 * Interprete data in the SKB Core.
+	 * 
+	 * This interface is used in the SKB Core to, for instance, interprete URNs and map them 
+	 * to folders and files.
+	 *
+	 * @param string key the string or key to be interpreted
+	 * @param SKB_Request request a request object to parameterise the function call
+	 */
+	static public function interpret($key, SKB_Request $request);
 }
 ?>

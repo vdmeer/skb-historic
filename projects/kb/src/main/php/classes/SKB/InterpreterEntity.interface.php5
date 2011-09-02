@@ -39,15 +39,15 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 interface SKB_InterpreterEntity{
-  /**
-   * Interprete data for an entity.
-   * 
-   * Entities need to be interpreted to collect data from other sources, similar to SQL
-   * foreign keys.
-   *
-   * @param string key key of the entity to interprete
-   * @param string table table for the entity lookup, leave empty if default should be used
-   */
-  static public function interpret($key, $table=null);
+	/**
+	 * Interprete data for an entity.
+	 * 
+	 * Entities need to be interpreted to collect data from other sources, similar to SQL
+	 * foreign keys.
+	 *
+	 * @param string key key of the entity to interprete
+	 * @param string table table for the entity lookup, leave empty if default should be used
+	 */
+	static public function interpret($key, $table=null);
 }
 ?>

@@ -42,52 +42,52 @@
  */
 ?>
 <div class="center">
-  <div class="table-gallery-list">
-    <table>
-      <tbody>
+	<div class="table-gallery-list">
+		<table>
+			<tbody>
 <?php
-  $mySKB=SKB_Main::get_instance();
-  $reqBuildUrl=$mySKB->get_request($request->get_key());
-  $reqBuildUrl->init_plain();
-  $reqBuildUrl->activate();
+	$mySKB=SKB_Main::get_instance();
+	$reqBuildUrl=$mySKB->get_request($request->get_key());
+	$reqBuildUrl->init_plain();
+	$reqBuildUrl->activate();
 
-  $cfg=$entries->ar;
+	$cfg=$entries->ar;
 
-  $reqCur=$mySKB->get_request($request->get_key());
-  $reqCur->init_http();
-  $reqGPart=$reqCur->get_value("request:part");
-  (is_array($reqGPart)&&isset($reqGPart[0]))?$reqGPart=$reqGPart[0]:"";
-  (is_array($reqGPart)&&!isset($reqGPart[0]))?$reqGPart=null:"";
+	$reqCur=$mySKB->get_request($request->get_key());
+	$reqCur->init_http();
+	$reqGPart=$reqCur->get_value("request:part");
+	(is_array($reqGPart)&&isset($reqGPart[0]))?$reqGPart=$reqGPart[0]:"";
+	(is_array($reqGPart)&&!isset($reqGPart[0]))?$reqGPart=null:"";
   
-  while(list($keyColl, $valColl) = each($cfg)){
-  	$reqBuildUrl->set_value('request:collection',$keyColl);
-    $tr=Html4_Element::factory("tr");
-    while(list($key, $val) = each($valColl)){
-      $reqBuildUrl->set_value('request:part',$key);
-      $a=Html4_Element::factory("a", array("href"=>$reqBuildUrl->build_url($_SERVER["PHP_SELF"])), $val["default:name"]);
-      $add=array();
-      if($keyColl==$key){
-      	if(count($valColl)-1>0)
-          $add["colspan"]=count($valColl)-1;
-        else
-          $add["colspan"]=1;
-      }
-      if($reqGPart==$key){
-      	$add["class"]="active";
-        $td=Html4_Element::factory("td", $add, "<span>{$val["default:name"]}</span>");
-      }
-      else
-        $td=Html4_Element::factory("td", $add, $a);
-      $tr->add_child($td);
-      if($val["request:hbr"]==1){
-      	echo $tr->to_string();
-        $tr=Html4_Element::factory("tr");
-      }
-    }
-    echo $tr->to_string();
-  }
+	while(list($keyColl, $valColl) = each($cfg)){
+		$reqBuildUrl->set_value('request:collection',$keyColl);
+		$tr=Html4_Element::factory("tr");
+		while(list($key, $val) = each($valColl)){
+			$reqBuildUrl->set_value('request:part',$key);
+			$a=Html4_Element::factory("a", array("href"=>$reqBuildUrl->build_url($_SERVER["PHP_SELF"])), $val["default:name"]);
+			$add=array();
+			if($keyColl==$key){
+				if(count($valColl)-1>0)
+					$add["colspan"]=count($valColl)-1;
+				else
+					$add["colspan"]=1;
+			}
+			if($reqGPart==$key){
+				$add["class"]="active";
+				$td=Html4_Element::factory("td", $add, "<span>{$val["default:name"]}</span>");
+			}
+			else
+				$td=Html4_Element::factory("td", $add, $a);
+			$tr->add_child($td);
+			if($val["request:hbr"]==1){
+				echo $tr->to_string();
+				$tr=Html4_Element::factory("tr");
+			}
+		}
+		echo $tr->to_string();
+	}
 ?>
-      </tbody>
-    </table>
-  </div>
+			</tbody>
+		</table>
+	</div>
 </div>

@@ -39,47 +39,49 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Util_IniFile{
-  public function read_file($fn){
-    $ret=new Util_ArBase();
-    $ret->ar=parse_ini_file($fn, true);
-    return $ret;
-  }
+	public function read_file($fn){
+		$ret=new Util_ArBase();
+		$ret->ar=parse_ini_file($fn, true);
+		return $ret;
+	}
 
-  public function read_dir($dir){
-    $mySKB=SKB_Main::get_instance();
 
-    $ret=new Util_ArBase();
+	public function read_dir($dir){
+		$mySKB=SKB_Main::get_instance();
 
-    $dir=$dir;
-    if(!is_dir($dir))
-      $dir=$mySKB->configuration->getGroup("path","database") . $directory;
+		$ret=new Util_ArBase();
 
-    if(is_dir($dir)){
-      if($dh=opendir($dir)){
-        while(($file=readdir($dh))!==false)
-          if($file!=".."&&$file!="."&&$file[0]!="#")
-            $ret->ar=array_merge($ret->ar, self::read_File($dir."/".$file)->ar);
-        closedir($dh);
-      }
-    }
-    return $ret;
-  }
+		$dir=$dir;
+		if(!is_dir($dir))
+		  $dir=$mySKB->configuration->getGroup("path","database") . $directory;
 
-  public function find_duplicates($file){
-    $mySKB=SKB_Main::get_instance();
-    $file=$mySKB->configuration->getGroup("path","database") . $file;
-    $testAr=array();
-    $ar=explode("\n", file_get_contents($file));
-    $_keys=array_keys($ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      if(isset($ar[$_keys[$i]][0])&&$ar[$_keys[$i]][0]=="["){
-        if(!isset($testAr[$ar[$_keys[$i]]]))
-          $testAr[$ar[$_keys[$i]]]=0;
-        else
-          echo "Found duplicate: {$file}, line $i = {$ar[$_keys[$i]]}\n";
-      }
-    }
-  }
+		if(is_dir($dir)){
+			if($dh=opendir($dir)){
+				while(($file=readdir($dh))!==false)
+					if($file!=".."&&$file!="."&&$file[0]!="#")
+						$ret->ar=array_merge($ret->ar, self::read_File($dir."/".$file)->ar);
+				closedir($dh);
+			}
+		}
+		return $ret;
+	}
+
+
+	public function find_duplicates($file){
+		$mySKB=SKB_Main::get_instance();
+		$file=$mySKB->configuration->getGroup("path","database") . $file;
+		$testAr=array();
+		$ar=explode("\n", file_get_contents($file));
+		$_keys=array_keys($ar);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++){
+			if(isset($ar[$_keys[$i]][0])&&$ar[$_keys[$i]][0]=="["){
+				if(!isset($testAr[$ar[$_keys[$i]]]))
+					$testAr[$ar[$_keys[$i]]]=0;
+				else
+					echo "Found duplicate: {$file}, line $i = {$ar[$_keys[$i]]}\n";
+			}
+		}
+	}
 }
 ?>

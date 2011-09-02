@@ -40,44 +40,44 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-    $req=clone $request;
-    $req->set_value("request:entry", $entry['key']);
-    $href=$req->build_url($_SERVER["PHP_SELF"]);
+	$req=clone $request;
+	$req->set_value("request:entry", $entry['key']);
+	$href=$req->build_url($_SERVER["PHP_SELF"]);
 
-    $source=null;
-    if(isset($entry['file']['jpg']))
-      $source=$entry['file']['jpg'];
-    elseif(isset($entry['file']['jpeg']))
-      $source=$entry['file']['jpeg'];
-    elseif(isset($entry['file']['gif']))
-      $source=$entry['file']['gif'];
-    elseif(isset($entry['file']['png']))
-      $source=$entry['file']['png'];
+	$source=null;
+	if(isset($entry['file']['jpg']))
+		$source=$entry['file']['jpg'];
+	elseif(isset($entry['file']['jpeg']))
+		$source=$entry['file']['jpeg'];
+	elseif(isset($entry['file']['gif']))
+		$source=$entry['file']['gif'];
+	elseif(isset($entry['file']['png']))
+		$source=$entry['file']['png'];
 
-    if($source==null)
-      return;
+	if($source==null)
+		return;
 
-    if(!isset($entry['default:description']))
-      $entry['default:description']="";
+	if(!isset($entry['default:description']))
+		$entry['default:description']="";
 
-    if(isset($source['small'])){
+	if(isset($source['small'])){
 ?>
-    <div class="img-frame-link"><?php if(isset($source['full'])): ?><a href="<?php echo $href ;?>"><?php endif; ?><img src="<?php echo $source['small']['rel'];?>" width="<?php echo $source['small']['width'];?>" height="<?php echo $source['small']['height'];?>" alt="<?php echo $entry['default:description'] ;?>" /><?php if(isset($source['full'])): ?></a><?php endif; ?><?php if(isset($entry['request:hbr'])): echo "<br />\n"; endif; ?></div>
+	<div class="img-frame-link"><?php if(isset($source['full'])): ?><a href="<?php echo $href ;?>"><?php endif; ?><img src="<?php echo $source['small']['rel'];?>" width="<?php echo $source['small']['width'];?>" height="<?php echo $source['small']['height'];?>" alt="<?php echo $entry['default:description'] ;?>" /><?php if(isset($source['full'])): ?></a><?php endif; ?><?php if(isset($entry['request:hbr'])): echo "<br />\n"; endif; ?></div>
 <?php
-    }
-    elseif(isset($source['full'])){
+	}
+	elseif(isset($source['full'])){
 ?>
-    <div class="center" style="padding-top:10px;">
-      <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td>
-            <div class="img-shadow">
-              <img src="<?php echo $source['full']['rel'];?>" width="<?php echo $source['full']['width'];?>" height="<?php echo $source['full']['height'];?>" alt="<?php echo $entry['default:description'] ;?>" />
-            </div>
-          </td>
-        </tr>
-      </table>
-    </div>
+	<div class="center" style="padding-top:10px;">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<div class="img-shadow">
+						<img src="<?php echo $source['full']['rel'];?>" width="<?php echo $source['full']['width'];?>" height="<?php echo $source['full']['height'];?>" alt="<?php echo $entry['default:description'] ;?>" />
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
 <?php
-    }
+	}
 ?>

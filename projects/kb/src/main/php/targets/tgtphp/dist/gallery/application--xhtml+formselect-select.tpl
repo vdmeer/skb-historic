@@ -40,56 +40,56 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-    function my_sort($a, $b){
-  	  $mySKB=SKB_Main::get_instance();
-      $lang=$mySKB->configuration->get_group("system","lang");
-    	return Util_Interpreter::interpret("array:sort:nat", $a, $b, $lang);
-    }
+	function my_sort($a, $b){
+		$mySKB=SKB_Main::get_instance();
+		$lang=$mySKB->configuration->get_group("system","lang");
+		return Util_Interpreter::interpret("array:sort:nat", $a, $b, $lang);
+	}
 
-	  $mySKB=SKB_Main::get_instance();
-    $lang=$mySKB->configuration->get_group("system","lang");
+	$mySKB=SKB_Main::get_instance();
+	$lang=$mySKB->configuration->get_group("system","lang");
 
-    $gettext=array(
-      "default:city_key"        => dgettext('dist.gallery', "Cities"),         // St&auml;dte
-      "default:country_key"     => dgettext('dist.gallery', "Countries"),      // L&auml;nder
-      "default:year"            => dgettext('dist.gallery', "Year"),           // Jahr
-      "gallery:fotographer_key" => dgettext('dist.gallery', "Photographer"),   // Fotograf
-      "selected"        => dgettext('dist.gallery', "selected"),        // ausgew&auml;hlt
-    );
+	$gettext=array(
+		"default:city_key"			=> dgettext('dist.gallery', "Cities"),			// St&auml;dte
+		"default:country_key"		=> dgettext('dist.gallery', "Countries"),		// L&auml;nder
+		"default:year"				=> dgettext('dist.gallery', "Year"),			// Jahr
+		"gallery:fotographer_key"	=> dgettext('dist.gallery', "Photographer"),	// Fotograf
+		"selected"					=> dgettext('dist.gallery', "selected"),		// ausgew&auml;hlt
+	);
 
-    echo '<div class="form-select"><table><tr>';
+	echo '<div class="form-select"><table><tr>';
 
-    $entries=$entries->ar;
-    $_keys=array_keys($entries);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-    	uasort($entries[$_keys[$i]], "my_sort");
-      $hSelect=Html4_Element::factory("select",array("size"=>"{$size}","multiple"=>"multiple","name"=>$request->get_form_name($_keys[$i])."[]"));
+	$entries=$entries->ar;
+	$_keys=array_keys($entries);
+	$_size=count($_keys);
+	for($i=0;$i<$_size;$i++){
+		uasort($entries[$_keys[$i]], "my_sort");
+		$hSelect=Html4_Element::factory("select",array("size"=>"{$size}","multiple"=>"multiple","name"=>$request->get_form_name($_keys[$i])."[]"));
 
-      $selected=0;
+		$selected=0;
 
-      $_keysSelect=array_keys($entries[$_keys[$i]]);
-      $_sizeSelect=count($_keysSelect);
-      for($k=0;$k<$_sizeSelect;$k++){
-        $opt=array();
-        $opt['value']=$_keysSelect[$k];
-        $ar=$request->get_value($_keys[$i]);
-        if($ar!=-1&&Util_Interpreter::interpret("value:is_empty", $ar)==false){
-        	if(!is_array($ar))
-        	  $ar=array($ar);
-          if(in_array($_keysSelect[$k],$ar)){
-            $opt['selected']="selected";
-            $selected++;
-          }
-        }
-        $hSelect->add_child(Html4_Element::factory("option",$opt,"&#160;".$entries[$_keys[$i]][$_keysSelect[$k]]."&#160;"));
-      }
-      if($selected>0)
-        $selected="<i>".$gettext["selected"].":&#160;".$selected."</i>";
-      else
-        $selected="";
-      echo '<td><b>' . $gettext[$_keys[$i]] .'</b><br />' . $selected . "<br />" . $hSelect->to_string() . "</td>\n\n";
-      //echo '<div class="form-select"><table><tr>' . $hSelect->to_string() . "</tr></table></div>\n\n";
-    }
-    echo '</tr></table></div>';
+		$_keysSelect=array_keys($entries[$_keys[$i]]);
+		$_sizeSelect=count($_keysSelect);
+		for($k=0;$k<$_sizeSelect;$k++){
+			$opt=array();
+			$opt['value']=$_keysSelect[$k];
+			$ar=$request->get_value($_keys[$i]);
+			if($ar!=-1&&Util_Interpreter::interpret("value:is_empty", $ar)==false){
+				if(!is_array($ar))
+				  $ar=array($ar);
+				if(in_array($_keysSelect[$k],$ar)){
+					$opt['selected']="selected";
+					$selected++;
+				}
+			}
+			$hSelect->add_child(Html4_Element::factory("option",$opt,"&#160;".$entries[$_keys[$i]][$_keysSelect[$k]]."&#160;"));
+		}
+		if($selected>0)
+			$selected="<i>".$gettext["selected"].":&#160;".$selected."</i>";
+		else
+			$selected="";
+		echo '<td><b>' . $gettext[$_keys[$i]] .'</b><br />' . $selected . "<br />" . $hSelect->to_string() . "</td>\n\n";
+		//echo '<div class="form-select"><table><tr>' . $hSelect->to_string() . "</tr></table></div>\n\n";
+	}
+	echo '</tr></table></div>';
 ?>

@@ -39,11 +39,11 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class SKB_DataManager{
-    /**
-     * Pointer to the singleton instance of the SKB
-     * @var object
-     */
-     private static $instance=null;
+	/**
+	 * Pointer to the singleton instance of the SKB
+	 * @var object
+	 */
+	private static $instance=null;
 
 
 	/**
@@ -105,8 +105,8 @@ class SKB_DataManager{
 	public function get_data_objects(){
 		return $this->registered_dos;
 	}
-                     
-                     
+
+
 	/**
 	 * Load and register a new data object (i.e. database tables, data file)
 	 * 

@@ -40,20 +40,20 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-
 class pkg_dist__publications___application__xhtml__entry_lncs___builder extends SKB_Builder{
-  protected $tpl_single="Dist.Publications.Entries2XHTML-Entry-LNCS:Template";
+	protected $tpl_single="Dist.Publications.Entries2XHTML-Entry-LNCS:Template";
 
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("single", $this->tpl_single);
-  }
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("single", $this->tpl_single);
+	}
 
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-    $tpl=$this->templates->get_template_object("single");
-    $tpl->set("request", $request);
-    $tpl->set("entries", $entries);
-    $tpl->printT();
-  }
+
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=$this->templates->get_template_object("single");
+		$tpl->set("request", $request);
+		$tpl->set("entries", $entries);
+		$tpl->printT();
+	}
 }
 ?>

@@ -39,32 +39,33 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__date___mktime___interpreter implements SKB_InterpreterValue{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($ar){
-  	$hour=0;
-  	$minute=0;
-  	$second=0;
-  	$month=0;
-  	$day=0;
-  	$year=0;
+	static public function interpret($ar){
+		$hour=0;
+		$minute=0;
+		$second=0;
+		$month=0;
+		$day=0;
+		$year=0;
 
-    $ret="";
+		$ret="";
 
-    if(isset($ar["default:month"]))
-      $month=$ar["default:month"]['date:number'];
-    else if(isset($ar["default:month_start"]))
-      $month=$ar["default:month_start"]['date:number'];
+		if(isset($ar["default:month"]))
+			$month=$ar["default:month"]['date:number'];
+		else if(isset($ar["default:month_start"]))
+			$month=$ar["default:month_start"]['date:number'];
 
-    if(isset($ar["default:day"]))
-      $day=$ar["default:day"];
-    else if(isset($ar["default:day_start"]))
-      $day=$ar["default:day_start"];
+		if(isset($ar["default:day"]))
+			$day=$ar["default:day"];
+		else if(isset($ar["default:day_start"]))
+			$day=$ar["default:day_start"];
 
-    if(isset($ar["default:year"]))
-      $year=$ar["default:year"];
+		if(isset($ar["default:year"]))
+			$year=$ar["default:year"];
 
-    return mktime($hour,$minute,$second,$month,$day,$year);
-  }
+		return mktime($hour,$minute,$second,$month,$day,$year);
+	}
 }
 ?>

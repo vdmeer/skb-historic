@@ -39,58 +39,60 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__menu___helpers{
+	public static function alter_positions($pos, $size, $count=-1){
+		if($pos!=""){
+			$_change="";
+			if($pos[strlen($pos)-1]=='l')
+				$_change='n';
+			else
+				$_change='v';
+		
+			$pos=str_replace("l",$_change,$pos);
+			$pos=str_replace("m","v",$pos);
+		}
+		return $pos;
+	}
 
-  public static function alter_positions($pos, $size, $count=-1){
-    if($pos!=""){
-      $_change="";
-      if($pos[strlen($pos)-1]=='l')
-        $_change='n';
-      else
-        $_change='v';
 
-      $pos=str_replace("l",$_change,$pos);
-      $pos=str_replace("m","v",$pos);
-    }
-    return $pos;
-  }
-  
-  public static function set_position($size, $count){
-    $ret='';
-    if($count<$size)
-      $ret='m';
-    if($count==($size-1))
-      $ret='l';
-    return $ret;
-  }
+	public static function set_position($size, $count){
+		$ret='';
+		if($count<$size)
+			$ret='m';
+		if($count==($size-1))
+			$ret='l';
+		return $ret;
+	}
 
-  public static function check_print_levels($levels, $level){
-    $ret=false;
-    $levAr=explode("-",$levels);
-    if(count($levAr)<2)
-      return false;
-    $min=0+$levAr[0];
-    $max=0+$levAr[1];
-    if($level>=$min&&$level<=$max)
-        return true;
-    return $ret;
-  }
 
-  public static function sitemap_li($pos, $level){
-    ob_start();
-    echo "<li>";
-    for($i=0;$i<strlen($pos);$i++){
-      if($level>1&&$pos[$i]=="n")
-        echo '<span class="none">&#160;</span>';
-      if($level>1&&$pos[$i]=="v")
-        echo '<span class="vert">&#160;</span>';
-      if($level>1&&$pos[$i]=="m")
-        echo '<span class="midd">&#160;</span>';
-      if($level>1&&$pos[$i]=="l")
-        echo '<span class="last">&#160;</span>';
-    }
-    $ret=ob_get_contents();
-    ob_end_clean();
-    return $ret;
-  }
+	public static function check_print_levels($levels, $level){
+		$ret=false;
+		$levAr=explode("-",$levels);
+		if(count($levAr)<2)
+			return false;
+		$min=0+$levAr[0];
+		$max=0+$levAr[1];
+		if($level>=$min&&$level<=$max)
+			return true;
+		return $ret;
+	}
+
+
+	public static function sitemap_li($pos, $level){
+		ob_start();
+		echo "<li>";
+		for($i=0;$i<strlen($pos);$i++){
+			if($level>1&&$pos[$i]=="n")
+				echo '<span class="none">&#160;</span>';
+			if($level>1&&$pos[$i]=="v")
+				echo '<span class="vert">&#160;</span>';
+			if($level>1&&$pos[$i]=="m")
+				echo '<span class="midd">&#160;</span>';
+			if($level>1&&$pos[$i]=="l")
+				echo '<span class="last">&#160;</span>';
+		}
+		$ret=ob_get_contents();
+		ob_end_clean();
+		return $ret;
+	}
 }
 ?>

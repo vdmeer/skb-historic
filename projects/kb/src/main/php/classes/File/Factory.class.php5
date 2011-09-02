@@ -39,36 +39,35 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class File_Factory{
-
-  /**
-   * Factory operation that will create a specific File object.
-   *
-   * Currently implemented are JPEG (JPG), PNG and SVG file objects. This operation gets a file 
-   * name (if null, then "default" will be used), extracts the file extension and selects the appropriate 
-   * implementation. For instance, the a filename with the extensions "svg" and "svgz" will result in the 
-   * creation of an SVG specific file object. Equially "jpg" and "jpeg" for JPEG and "png" for PNG. In case 
-   * of an unknown file extension, this function will trigger an E_USER_ERROR.
-   */
-  public static function get_file($file=null){
-  	if($file==null)
-  	  $select="default";
-    else{
-    	$select=strtok(basename($file),".");
-    	$select=strtok(".");
-    }
-
-  	switch($select){
-  		case "svg":
-  		case "svgz":
-  		  return new File_SVG($file, $select); break;
-  		case "jpg":
-  		case "jpeg":
-  		  return new File_JPEG($file, $select); break;
-  		case "png":
-  		  return new File_PNG($file, $select); break;
-  		default:
-  		  trigger_error("File_Factory: unknown file type requested -> {$select} for {$file}", E_USER_ERROR); break;
-  	}
-  }
+	/**
+	 * Factory operation that will create a specific File object.
+	 *
+	 * Currently implemented are JPEG (JPG), PNG and SVG file objects. This operation gets a file 
+	 * name (if null, then "default" will be used), extracts the file extension and selects the appropriate 
+	 * implementation. For instance, the a filename with the extensions "svg" and "svgz" will result in the 
+	 * creation of an SVG specific file object. Equially "jpg" and "jpeg" for JPEG and "png" for PNG. In case 
+	 * of an unknown file extension, this function will trigger an E_USER_ERROR.
+	 */
+	public static function get_file($file=null){
+		if($file==null)
+			$select="default";
+		else{
+			$select=strtok(basename($file),".");
+			$select=strtok(".");
+		}
+	
+		switch($select){
+			case "svg":
+			case "svgz":
+				return new File_SVG($file, $select); break;
+			case "jpg":
+			case "jpeg":
+				return new File_JPEG($file, $select); break;
+			case "png":
+				return new File_PNG($file, $select); break;
+			default:
+				trigger_error("File_Factory: unknown file type requested -> {$select} for {$file}", E_USER_ERROR); break;
+		}
+	}
 }
 ?>

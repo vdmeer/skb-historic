@@ -39,18 +39,19 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__publications___author_list___interpreter implements SKB_InterpreterEntity{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($key, $table=null){
-  	$ret=array();
-  	$mySKB=SKB_Main::get_instance();
-
-  	$ar=Util_Interpreter::interpret("array:explode", $key);
-    $_keys=array_keys($ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++)
-    	$ret[$i]=$mySKB->interpret_data('Dist.Publication.Interpreter.Author', $_keys[$i]."%".$ar[$_keys[$i]])->ar;
-    return new Util_ArBase($ret);
-  }
+	static public function interpret($key, $table=null){
+		$ret=array();
+		$mySKB=SKB_Main::get_instance();
+	
+		$ar=Util_Interpreter::interpret("array:explode", $key);
+		$_keys=array_keys($ar);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++)
+			$ret[$i]=$mySKB->interpret_data('Dist.Publication.Interpreter.Author', $_keys[$i]."%".$ar[$_keys[$i]])->ar;
+		return new Util_ArBase($ret);
+	}
 }
 ?>

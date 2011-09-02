@@ -39,85 +39,89 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__htmlpage___htmlpage___reader extends SKB_Reader{
-  /**
-   * An empty constructor.
-   */
-  public function __construct(){}
+	/**
+	 * An empty constructor.
+	 */
+	public function __construct(){
+	}
+                
+                
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
+	 */
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+		global $skb_menu_reader;
+		$mySKB=SKB_Main::get_instance();
 
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
-   */
-  public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
-  	global $skb_menu_reader;
-    $mySKB=SKB_Main::get_instance();
+		if($mySKB->configuration->get_group("header","pre-title")!=-1)
+			$this->entries['title']=$mySKB->configuration->get_group("header","pre-title").$skb_menu_reader->get_title_string(" -> ");
+		else
+			$this->entries['title']==$skb_menu_reader->get_title_string(" -> ");
 
-    if($mySKB->configuration->get_group("header","pre-title")!=-1)
-      $this->entries['title']=$mySKB->configuration->get_group("header","pre-title").$skb_menu_reader->get_title_string(" -> ");
-    else
-      $this->entries['title']==$skb_menu_reader->get_title_string(" -> ");
+		$description=$request->get_value("htmlpage:description");
+		if($description==-1)
+			$description=$mySKB->configuration->get_group("header","description");
+		if($description!=-1)
+			$this->entries['meta'][]='name="description" content="'.implode(",",$description).'"';
 
-    $description=$request->get_value("htmlpage:description");
-    if($description==-1)
-      $description=$mySKB->configuration->get_group("header","description");
-    if($description!=-1)
-      $this->entries['meta'][]='name="description" content="'.implode(",",$description).'"';
+		$keywords=$request->get_value("htmlpage:keywords");
+		if($keywords==-1)
+			$keywords=$mySKB->configuration->get_group("header","keywords");
+		if($keywords!=-1)
+			$this->entries['meta'][]='name="keywords" content="'.implode(",",$keywords).'"';
 
-    $keywords=$request->get_value("htmlpage:keywords");
-    if($keywords==-1)
-      $keywords=$mySKB->configuration->get_group("header","keywords");
-    if($keywords!=-1)
-      $this->entries['meta'][]='name="keywords" content="'.implode(",",$keywords).'"';
+		//if($mySKB->configuration->get_group("header","base-target")!=-1)
+		//  $head->addChild(new Html4_Base(array("target"=>$mySKB->configuration->get_group("header","base-target"))));
 
-    //if($mySKB->configuration->get_group("header","base-target")!=-1)
-    //  $head->addChild(new Html4_Base(array("target"=>$mySKB->configuration->get_group("header","base-target"))));
+		$this->entries['style']=array();
+		if($mySKB->configuration->get_group("request","layout")!=-1)
+			$this->entries['style'][]=array("type"=>"text/css","media"=>"all","__content"=>" @import \"" . $mySKB->configuration->get_group("path","prefix") . $mySKB->configuration->get_group("request","layout") . ".css\";");
+		else if($mySKB->configuration->get_group("header","std-css")!=-1){
+			$list=explode(",", $mySKB->configuration->get_group("header","std-css"));
+			$list=array_unique($list);
+			$_keys=array_keys($list);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++)
+				$this->entries['style'][]=array("type"=>"text/css","media"=>"all","__content"=>" @import \"" . $mySKB->configuration->get_group("path","css") . $list[$_keys[$i]] . ".css\";");
+		}
 
-    $this->entries['style']=array();
-    if($mySKB->configuration->get_group("request","layout")!=-1)
-      $this->entries['style'][]=array("type"=>"text/css","media"=>"all","__content"=>" @import \"" . $mySKB->configuration->get_group("path","prefix") . $mySKB->configuration->get_group("request","layout") . ".css\";");
-    else if($mySKB->configuration->get_group("header","std-css")!=-1){
-    	$list=explode(",", $mySKB->configuration->get_group("header","std-css"));
-    	$list=array_unique($list);
-	    $_keys=array_keys($list);
-  	  $_size=count($_keys);
-    	for($i=0;$i<$_size;$i++)
-    	  $this->entries['style'][]=array("type"=>"text/css","media"=>"all","__content"=>" @import \"" . $mySKB->configuration->get_group("path","css") . $list[$_keys[$i]] . ".css\";");
-    }
+		$this->entries['additional']=array();
+		$additional=$request->get_value("htmlpage:additional");
+		if($additional!=""&&is_object($additional))
+			$this->entries['additional'][]=$additional->toString();
+		else if($additional!=""&&is_array($additional)){
+			$_size=count($additional);
+			for($i=0;$i<$_size;$i++)
+				$this->entries['additional'][]=$additional[$i];
+		}
+		else if($additional!="")
+			$this->entries['additional'][]=$additional;
 
-    $this->entries['additional']=array();
-    $additional=$request->get_value("htmlpage:additional");
-    if($additional!=""&&is_object($additional))
-      $this->entries['additional'][]=$additional->toString();
-    else if($additional!=""&&is_array($additional)){
-  	  $_size=count($additional);
-      for($i=0;$i<$_size;$i++)
-        $this->entries['additional'][]=$additional[$i];
-    }
-    else if($additional!="")
-      $this->entries['additional'][]=$additional;
+		$this->entries['script']=array();
+		$_js=$mySKB->configuration->get_group("header","std-js");
+		if($_js!=-1&&$_js!=null){
+			$list=explode(",", $_js);
+			$list=array_unique($list);
+			$_keys=array_keys($list);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++){
+				if(strpos($list[$_keys[$i]],"http://")===false)
+					$this->entries['script'][]=array("type"=>"text/javascript","src"=>$mySKB->configuration->get_group("path","javascript") . $list[$_keys[$i]] . ".js");
+				else
+					$this->entries['script'][]=array("type"=>"text/javascript","src"=>$list[$_keys[$i]]);
+			}
+		}
+  	}
 
-    $this->entries['script']=array();
-    $_js=$mySKB->configuration->get_group("header","std-js");
-    if($_js!=-1&&$_js!=null){
-    	$list=explode(",", $_js);
-    	$list=array_unique($list);
-	    $_keys=array_keys($list);
-  	  $_size=count($_keys);
-    	for($i=0;$i<$_size;$i++){
-    	  if(strpos($list[$_keys[$i]],"http://")===false)
-    	    $this->entries['script'][]=array("type"=>"text/javascript","src"=>$mySKB->configuration->get_group("path","javascript") . $list[$_keys[$i]] . ".js");
-    	  else
-    	    $this->entries['script'][]=array("type"=>"text/javascript","src"=>$list[$_keys[$i]]);
-    	}
-    }
-  }
 
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
-   */
-  public function execute_loop(SKB_Request $request){}
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
+	 */
+	public function execute_loop(SKB_Request $request){
+	}
 }
 ?>

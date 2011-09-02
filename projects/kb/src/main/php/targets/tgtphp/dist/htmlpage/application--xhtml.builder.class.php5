@@ -42,61 +42,65 @@
  */
 
 class pkg_dist__htmlpage___application__xhtml___builder extends SKB_Builder{
-  /**
-   * The template for the head of the html page
-   *
-   * @var $tpl_head
-   */
-  protected $tpl_head="Dist.HtmlPage.Entries2XHTML-Page:Template:Head";
+	/**
+	 * The template for the head of the html page
+	 *
+	 * @var $tpl_head
+	 */
+	protected $tpl_head="Dist.HtmlPage.Entries2XHTML-Page:Template:Head";
 
-  /**
-   * The template for the start of the body, left empty to be overwritten by children.
-   *
-   * @var $tpl_bodystart
-   */
-  protected $tpl_bodystart="";
 
-  /**
-   * The template for the end of the bodt, left empty to be overwriteen by children.
-   *
-   * @var $tpl_bodyend
-   */
-  protected $tpl_bodyend="";
+	/**
+	 * The template for the start of the body, left empty to be overwritten by children.
+	 *
+	 * @var $tpl_bodystart
+	 */
+	protected $tpl_bodystart="";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("head", $this->tpl_head);
-  	$this->templates->add_template("bodystart", $this->tpl_bodystart);
-  	$this->templates->add_template("bodyend", $this->tpl_bodyend);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-  	$tpl=null;
-    $todo=$request->get_value("htmlpage:execute_todo");
-    if(is_array($todo)&&count($todo)>0){
-    	$todo=$todo[0];
-      switch($todo){
-      	case "head":      $tpl=$this->templates->get_template_object("head"); break;
-      	case "bodystart": $tpl=$this->templates->get_template_object("bodystart"); break;
-    	  case "bodyend":   $tpl=$this->templates->get_template_object("bodyend"); break;
-      }
-      if($tpl!=null){
-        $tpl->set("request", $request);
-        $tpl->set("entries", $entries);
-        $tpl->printT();
-      }
-    }
-  }
+	/**
+	 * The template for the end of the bodt, left empty to be overwriteen by children.
+	 *
+	 * @var $tpl_bodyend
+	 */
+	protected $tpl_bodyend="";
+
+
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("head", $this->tpl_head);
+		$this->templates->add_template("bodystart", $this->tpl_bodystart);
+		$this->templates->add_template("bodyend", $this->tpl_bodyend);
+	}
+
+
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=null;
+		$todo=$request->get_value("htmlpage:execute_todo");
+		if(is_array($todo)&&count($todo)>0){
+			$todo=$todo[0];
+			switch($todo){
+				case "head":      $tpl=$this->templates->get_template_object("head"); break;
+				case "bodystart": $tpl=$this->templates->get_template_object("bodystart"); break;
+				case "bodyend":   $tpl=$this->templates->get_template_object("bodyend"); break;
+			}
+			if($tpl!=null){
+				$tpl->set("request", $request);
+				$tpl->set("entries", $entries);
+				$tpl->printT();
+			}
+		}
+	}
 }
 ?>

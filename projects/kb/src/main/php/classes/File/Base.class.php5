@@ -42,55 +42,59 @@ abstract class File_Base{
 	protected $fn=null;
 	protected $type=null;
 
-  /**
-   * Class constructor.
-   *
-   * The constructor only sets the internal values for filename ($fn) and type ($type). The available types 
-   * will be managed by the factory.
-   *
-   * @param string fn the file name
-   * @param string type the file type
-   */
-  public function __construct($fn, $type){
-  	$this->fn=$fn;
-  	$this->type=$type;
-  }
 
-  /**
-   * Retrieve content from a file.
-   *
-   * This function returns a Util_ArBase array with the content of the file. Any child class needs to 
-   * implement the protected function _get_content() to realise the type specific operations.
-   * @return Util_ArBase array content
-   */
-  public function get_content(){
-  	$ret=new Util_ArBase();
-  	if($this->fn==null)
-  	  return $ret;
-  	else
-  	  return $this->_get_content();
-  }
+	/**
+	 * Class constructor.
+	 *
+	 * The constructor only sets the internal values for filename ($fn) and type ($type). The available types 
+	 * will be managed by the factory.
+	 *
+	 * @param string fn the file name
+	 * @param string type the file type
+	 */
+	public function __construct($fn, $type){
+		$this->fn=$fn;
+		$this->type=$type;
+	}
 
-  /**
-   * File type specific content retrieval function.
-   */
-  protected abstract function _get_content();
 
-  /**
-   * Return meta data available for the file.
-   *
-   * This function returns a Util_ArBase array with the meta data for the file. Any child class needs to 
-   * implement the protected function _get_meta_data() to realise the type specific operations.
-   * @return Util_ArBase array content
-   */
-  public function get_meta_data(){
-  	$ret=new Util_ArBase();
-  	if($this->fn==null)
-  	  return $ret;
-  	else
-  	  return $this->_get_meta_data();
-  }
+	/**
+	 * Retrieve content from a file.
+	 *
+	 * This function returns a Util_ArBase array with the content of the file. Any child class needs to 
+	 * implement the protected function _get_content() to realise the type specific operations.
+	 * @return Util_ArBase array content
+	 */
+	public function get_content(){
+		$ret=new Util_ArBase();
+		if($this->fn==null)
+			return $ret;
+		else
+			return $this->_get_content();
+	}
 
-  protected abstract function _get_meta_data();
+
+	/**
+	 * File type specific content retrieval function.
+	 */
+	protected abstract function _get_content();
+
+
+	/**
+	 * Return meta data available for the file.
+	 *
+	 * This function returns a Util_ArBase array with the meta data for the file. Any child class needs to 
+	 * implement the protected function _get_meta_data() to realise the type specific operations.
+	 * @return Util_ArBase array content
+	 */
+	public function get_meta_data(){
+		$ret=new Util_ArBase();
+		if($this->fn==null)
+			return $ret;
+		else
+			return $this->_get_meta_data();
+	}
+
+	protected abstract function _get_meta_data();
 }
 ?>

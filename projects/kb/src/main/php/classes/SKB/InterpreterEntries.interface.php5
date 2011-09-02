@@ -39,14 +39,14 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 interface SKB_InterpreterEntries{
-  /**
-   * Interprete reader entries.
-   * 
-   * This interface is for interpreters that process reader entry arrays.
-   *
-   * @param Util_ArBase entries the entries to be processed
-   * @param string table database table to be used, leave empty for default
-   */
-  static public function interpret(Util_ArBase $entries, $table=null);
+	/**
+	 * Interprete reader entries.
+	 * 
+	 * This interface is for interpreters that process reader entry arrays.
+	 *
+	 * @param Util_ArBase entries the entries to be processed
+	 * @param string table database table to be used, leave empty for default
+	 */
+	static public function interpret(Util_ArBase $entries, $table=null);
 }
 ?>

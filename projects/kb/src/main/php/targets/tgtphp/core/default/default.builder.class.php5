@@ -43,18 +43,18 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_core__default___default___builder extends SKB_Builder{
-  /**
-   * Class constructor.
-   */
-  function __construct(){
-    parent::__construct();
-  }
+	/**
+	 * Class constructor.
+	 */
+	function __construct(){
+		parent::__construct();
+	}
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){}
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){}
 }
 ?>

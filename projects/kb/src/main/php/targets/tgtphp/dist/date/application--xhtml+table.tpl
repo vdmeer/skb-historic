@@ -41,36 +41,36 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-    <div class="center">
-      <br />
-      <div class="table-widegrey">
-        <table style="width:auto;">
-          <?php
-            echo "              <thead><tr>";
-            if(isset($entries->ar[0]['date:number']))
-              echo "                <th>Number</th>\n";
-            if(isset($entries->ar[0]['default:name']))
-              echo "                <th>Name</th>\n";
-            if(isset($entries->ar[0]['date:short']))
-              echo "                <th>Short</th>\n";
-            echo "              </tr></thead>";
+	<div class="center">
+		<br />
+		<div class="table-widegrey">
+			<table style="width:auto;">
+				<?php
+					echo "				<thead><tr>";
+					if(isset($entries->ar[0]['date:number']))
+						echo "					<th>Number</th>\n";
+					if(isset($entries->ar[0]['default:name']))
+						echo "					<th>Name</th>\n";
+					if(isset($entries->ar[0]['date:short']))
+						echo "					<th>Short</th>\n";
+					echo "				</tr></thead>";
 
-            echo "              <tbody>";
-            $_keys=array_keys($entries->ar);
-            $_size=count($_keys);
-            for($i=0;$i<$_size;$i++){
-              echo "              <tr>";
-              if(isset($entries->ar[$_keys[$i]]['date:number']))
-                echo '                <th>'.$entries->ar[$_keys[$i]]['date:number'].'</th>'."\n";
-              if(isset($entries->ar[$_keys[$i]]['default:name']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['default:name'].'</td>'."\n";
-              if(isset($entries->ar[$_keys[$i]]['date:short']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['date:short'].'</td>'."\n";
-              echo "              </tr>";
-            }
-            echo "              </tbody>";
-          ?>
-        </table>
-      </div>
-      <br />
-    </div>
+					echo "			<tbody>";
+					$_keys=array_keys($entries->ar);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						echo "              <tr>";
+						if(isset($entries->ar[$_keys[$i]]['date:number']))
+							echo '					<th>'.$entries->ar[$_keys[$i]]['date:number'].'</th>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['default:name']))
+							echo '					<td>'.$entries->ar[$_keys[$i]]['default:name'].'</td>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['date:short']))
+							echo '					<td>'.$entries->ar[$_keys[$i]]['date:short'].'</td>'."\n";
+						echo "				</tr>";
+					}
+					echo "			</tbody>";
+				?>
+			</table>
+		</div>
+		<br />
+	</div>

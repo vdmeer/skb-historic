@@ -41,78 +41,78 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-    <div class="center">
-      <br />
-      <div class="table-widegrey">
-        <table style="width:auto;">
-          <?php
-            echo "              <thead><tr>";
-            echo "                <th>Name</th>\n";
-            echo "                <th>Acronym</th>\n";
-            echo "                <th>Address</th>\n";
-            echo "                <th>City</th>\n";
-            echo "                <th>Country</th>\n";
-            echo "                <th>Type</th>\n";
-            echo "                <th>URL</th>\n";
-            echo "              </tr></thead>";
+	<div class="center">
+		<br />
+		<div class="table-widegrey">
+			<table style="width:auto;">
+				<?php
+					echo "				<thead><tr>";
+					echo "					<th>Name</th>\n";
+					echo "					<th>Acronym</th>\n";
+					echo "					<th>Address</th>\n";
+					echo "					<th>City</th>\n";
+					echo "					<th>Country</th>\n";
+					echo "					<th>Type</th>\n";
+					echo "					<th>URL</th>\n";
+					echo "				</tr></thead>";
+					
+					echo "				<tbody>";
+					$_keys=array_keys($entries->ar);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						echo "					<tr>";
 
-            echo "              <tbody>";
-            $_keys=array_keys($entries->ar);
-            $_size=count($_keys);
-            for($i=0;$i<$_size;$i++){
-              echo "              <tr>";
+						if(isset($entries->ar[$_keys[$i]]['default:name']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['default:name'].'</td>'."\n";
+						elseif(isset($entries->ar[$_keys[$i]]['default:acronym']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['default:acronym']['acronyms:long'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              if(isset($entries->ar[$_keys[$i]]['default:name']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['default:name'].'</td>'."\n";
-              elseif(isset($entries->ar[$_keys[$i]]['default:acronym']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['default:acronym']['acronyms:long'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['default:acronym']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['default:acronym']['acronyms:short'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
+						
+						if(isset($entries->ar[$_keys[$i]]['default:address']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['default:address'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              if(isset($entries->ar[$_keys[$i]]['default:acronym']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['default:acronym']['acronyms:short'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['default:city'])){
+							if(isset($entries->ar[$_keys[$i]]['default:city']['default:name']))
+								echo '						<td>'.$entries->ar[$_keys[$i]]['default:city']['default:name'].'</td>'."\n";
+							else
+								echo '						<td>&#160;</td>'."\n";
+							if(isset($entries->ar[$_keys[$i]]['default:city']['default:country']['default:name']))
+								echo '						<td>'.$entries->ar[$_keys[$i]]['default:city']['default:country']['default:name'].'</td>'."\n";
+							else
+								echo '						<td>&#160;</td>'."\n";
+						}
+						elseif(isset($entries->ar[$_keys[$i]]['default:country']['default:name'])){
+							echo '						<td>&#160;</td>'."\n";
+							echo '						<td>'.$entries->ar[$_keys[$i]]['default:country']['default:name'].'</td>'."\n";
+						}
+						else{
+							echo '						<td>&#160;</td>'."\n";
+							echo '						<td>&#160;</td>'."\n";
+						}
 
-              if(isset($entries->ar[$_keys[$i]]['default:address']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['default:address'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['affiliations:type']['default:name']))
+						  echo '						<td>'.$entries->ar[$_keys[$i]]['affiliations:type']['default:name'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              if(isset($entries->ar[$_keys[$i]]['default:city'])){
-                if(isset($entries->ar[$_keys[$i]]['default:city']['default:name']))
-                  echo '                <td>'.$entries->ar[$_keys[$i]]['default:city']['default:name'].'</td>'."\n";
-                else
-                  echo '                <td>&#160;</td>'."\n";
-                if(isset($entries->ar[$_keys[$i]]['default:city']['default:country']['default:name']))
-                  echo '                <td>'.$entries->ar[$_keys[$i]]['default:city']['default:country']['default:name'].'</td>'."\n";
-                else
-                  echo '                <td>&#160;</td>'."\n";
-              }
-              elseif(isset($entries->ar[$_keys[$i]]['default:country']['default:name'])){
-                echo '                <td>&#160;</td>'."\n";
-                echo '                <td>'.$entries->ar[$_keys[$i]]['default:country']['default:name'].'</td>'."\n";
-              }
-              else{
-                echo '                <td>&#160;</td>'."\n";
-                echo '                <td>&#160;</td>'."\n";
-              }
+						if(isset($entries->ar[$_keys[$i]]['default:url']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['default:url'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              if(isset($entries->ar[$_keys[$i]]['affiliations:type']['default:name']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['affiliations:type']['default:name'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
-
-              if(isset($entries->ar[$_keys[$i]]['default:url']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['default:url'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
-
-              echo "              </tr>";
-            }
-            echo "              </tbody>";
-          ?>
-        </table>
-      </div>
-      <br />
-    </div>
+						echo "					</tr>";
+					}
+					echo "					</tbody>";
+				?>
+			</table>
+		</div>
+		<br />
+	</div>

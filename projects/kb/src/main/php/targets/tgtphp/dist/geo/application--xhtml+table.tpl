@@ -41,20 +41,20 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-    <div class="center">
-      <br />
-      <div class="table-widegrey">
-        <table style="width:auto;">
-          <?php
-            echo "              <thead><tr><th>$heading</th></tr></thead>\n";
-            echo "              <tbody>";
-            $_keys=array_keys($entries);
-            $_size=count($_keys);
-            for($i=0;$i<$_size;$i++)
-              echo "              <tr><td>{$entries[$_keys[$i]]}</td></tr>";
-            echo "              </tbody>";
-          ?>
-        </table>
-      </div>
-      <br />
-    </div>
+	<div class="center">
+		<br />
+		<div class="table-widegrey">
+			<table style="width:auto;">
+				<?php
+					echo "				<thead><tr><th>$heading</th></tr></thead>\n";
+					echo "				<tbody>";
+					$_keys=array_keys($entries);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++)
+						echo "					<tr><td>{$entries[$_keys[$i]]}</td></tr>";
+					echo "				</tbody>";
+				?>
+			</table>
+		</div>
+		<br />
+	</div>

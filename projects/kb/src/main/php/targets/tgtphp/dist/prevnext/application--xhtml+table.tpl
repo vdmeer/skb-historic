@@ -49,42 +49,42 @@
 				<tr>
 					<td class="active">
 <?php
-  if($prev==null&&$next==null){
+	if($prev==null&&$next==null){
 ?>
-  <li class="descr"><?php echo $alt; ?></li>
+						<li class="descr"><?php echo $alt; ?></li>
 <?php
-  }
-  else{
-  	if($prev==null)
-  	  echo ' <li class="text">prev</li> ';
-  	else{
-      $req=$request->get_value('request:request');
-      $req=$req[0];
-      $req->set_value("request:entry", $prev);
-      $href=$req->build_url($_SERVER["PHP_SELF"]);
-  		echo ' <li class="link"><a href="' . $href . '">prev</a></li> ';
-  	}
+	}
+	else{
+		if($prev==null)
+			echo '						<li class="text">prev</li> ';
+		else{
+			$req=$request->get_value('request:request');
+			$req=$req[0];
+			$req->set_value("request:entry", $prev);
+			$href=$req->build_url($_SERVER["PHP_SELF"]);
+			echo '						<li class="link"><a href="' . $href . '">prev</a></li> ';
+		}
 
-    if($alt==null)
-      echo ' <li>&#124;</li> ';
-    else
-      echo ' <li class="descr"> &#160;&#160;&#160;&lsaquo;&lsaquo;&#160;&#160;&#160; ' . $alt . ' &#160;&#160;&#160;&rsaquo;&rsaquo;&#160;&#160;&#160; </li> ';
+		if($alt==null)
+			echo '						<li>&#124;</li> ';
+		else
+			echo '						<li class="descr"> &#160;&#160;&#160;&lsaquo;&lsaquo;&#160;&#160;&#160; ' . $alt . ' &#160;&#160;&#160;&rsaquo;&rsaquo;&#160;&#160;&#160; </li> ';
 
-  	if($next==null)
-  	  echo ' <li class="text">next</li> ';
-  	else{
-      $req=$request->get_value('request:request');
-      $req=$req[0];
-      $req->set_value("request:entry", $next);
-      $href=$req->build_url($_SERVER["PHP_SELF"]);
-  		echo ' <li class="link"><a href="' . $href . '">next</a></li> ';
-  	}
-  }
+		if($next==null)
+			echo '						<li class="text">next</li> ';
+		else{
+			$req=$request->get_value('request:request');
+			$req=$req[0];
+			$req->set_value("request:entry", $next);
+			$href=$req->build_url($_SERVER["PHP_SELF"]);
+			echo '						<li class="link"><a href="' . $href . '">next</a></li> ';
+		}
+	}
 ?>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-<br />
+	<br />
 </div>

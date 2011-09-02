@@ -40,48 +40,48 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-  $name=(isset($entries['menu:linkname']))?$entries['menu:linkname']:"";
-  if($name=="")
-    $name=(isset($entries['menu:title']))?$entries['menu:title']:"";
-  if($name=="")
-    trigger_error("[Menu] - no name or linkname found, item '{$this->id}' might not be shown", E_USER_NOTICE);
+	$name=(isset($entries['menu:linkname']))?$entries['menu:linkname']:"";
+	if($name=="")
+		$name=(isset($entries['menu:title']))?$entries['menu:title']:"";
+	if($name=="")
+		trigger_error("[Menu] - no name or linkname found, item '{$this->id}' might not be shown", E_USER_NOTICE);
 
-  $link="";
-  if(isset($entries["menu:url"])){
-    $link=$entries["menu:url"];
-    if(strstr($entries["menu:url"],"://")==false)
-      $link=Util_Interpreter::interpret("url:build", $entries["menu:url"]);
-  }
+	$link="";
+	if(isset($entries["menu:url"])){
+		$link=$entries["menu:url"];
+		if(strstr($entries["menu:url"],"://")==false)
+			$link=Util_Interpreter::interpret("url:build", $entries["menu:url"]);
+	}
 
-  $child="";
-  $ret="";
-  $close="";
+	$child="";
+	$ret="";
+	$close="";
 
-  if(isset($entries["menu:class_b"]))
-    $child.="<b class=\"{$entries["menu:class_b"]}\"></b>";
-  if($entries['level']==1&&isset($entries['_children']))
-    $child.="<span class=\"span_top drop\">$name</span>";
-  else if($entries['level']==1)
-    $child.="<span class=\"span_top\">$name</span>";
-  else
-    $child.="<span>$name</span>";
+	if(isset($entries["menu:class_b"]))
+		$child.="<b class=\"{$entries["menu:class_b"]}\"></b>";
+	if($entries['level']==1&&isset($entries['_children']))
+		$child.="<span class=\"span_top drop\">$name</span>";
+	else if($entries['level']==1)
+		$child.="<span class=\"span_top\">$name</span>";
+	else
+		$child.="<span>$name</span>";
 
-  if($link!=""){
-    $ret="<a href=\"$link\"";
-    $close="</a>";
-  }
-  else{
-    $ret="<span";
-    $close="</span>";
-  }
+	if($link!=""){
+			$ret="<a href=\"$link\"";
+			$close="</a>";
+	}
+	else{
+			$ret="<span";
+			$close="</span>";
+	}
 
-  if($entries['level']==1)
-    $ret.=" class=\"top_link\"";
-  else if(isset($entries['_children']))
-    $ret.=" class=\"fly\"";
+	if($entries['level']==1)
+		$ret.=" class=\"top_link\"";
+	else if(isset($entries['_children']))
+		$ret.=" class=\"fly\"";
 
-  if(isset($entries["menu:id_a"]))
-    $ret.=" id=\"{$entries["menu:id_a"]}\"";
+	if(isset($entries["menu:id_a"]))
+		$ret.=" id=\"{$entries["menu:id_a"]}\"";
 
-  echo $ret.">".$child.$close;
+	echo $ret.">".$child.$close;
 ?>

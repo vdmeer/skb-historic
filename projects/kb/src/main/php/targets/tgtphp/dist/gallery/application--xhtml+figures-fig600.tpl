@@ -40,33 +40,33 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-  $source=null;
-  if(isset($entry['file']['svg']))
-    $source=$entry['file']['svg'];
-  elseif(isset($entry['file']['svgz']))
-    $source=$entry['file']['svgz'];
+	$source=null;
+	if(isset($entry['file']['svg']))
+		$source=$entry['file']['svg'];
+	elseif(isset($entry['file']['svgz']))
+		$source=$entry['file']['svgz'];
 
-  if($source==null)
-    return;
+	if($source==null)
+		return;
 
-  if(isset($source['full'])){
+	if(isset($source['full'])){
 ?>
-          <div class="center" style="padding-top:10px;">
-            <table border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td>
-                  <div class="img-shadow">
+	<div class="center" style="padding-top:10px;">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<div class="img-shadow">
 <?php
-    $fn=File_Factory::get_file($source['full']['abs']);
-    $ar=$fn->get_content_scale(1)->ar;
-    foreach ($ar as $line_num => $line)
-      echo $line;
+		$fn=File_Factory::get_file($source['full']['abs']);
+		$ar=$fn->get_content_scale(1)->ar;
+		foreach ($ar as $line_num => $line)
+		echo $line;
 ?>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
 <?php
-  }
+	}
 ?>

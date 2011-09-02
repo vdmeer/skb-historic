@@ -41,43 +41,45 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__publications___application__x_bibtex___builder extends SKB_Builder{
-  /**
-   * The template id for the builder.
-   *
-   * @var $tpl_single
-   */
-  protected $tpl_single="Dist.Publications.Entries2BibTeX:Template:Entry";
+	/**
+	 * The template id for the builder.
+	 *
+	 * @var $tpl_single
+	 */
+	protected $tpl_single="Dist.Publications.Entries2BibTeX:Template:Entry";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("single", $this->tpl_single);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder::execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-  	$mySKB=SKB_Main::get_instance();
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("single", $this->tpl_single);
+	}
 
-    $_keys=array_keys($entries->ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++)
-      $entries->ar[$_keys[$i]]=$mySKB->interpret_data("Dist.Publication.Interpreter.Entry-BibLaTeX", $entries->ar[$_keys[$i]]);
 
-    for($i=0;$i<$_size;$i++){
-      $tpl=$this->templates->get_template_object("single");
-      $tpl->set("request", $request);
-    	$tpl->set("entry", $entries->ar[$_keys[$i]]);
-    	$tpl->printT();
-    }
-  }
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder::execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$mySKB=SKB_Main::get_instance();
+
+		$_keys=array_keys($entries->ar);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++)
+			$entries->ar[$_keys[$i]]=$mySKB->interpret_data("Dist.Publication.Interpreter.Entry-BibLaTeX", $entries->ar[$_keys[$i]]);
+
+		for($i=0;$i<$_size;$i++){
+			$tpl=$this->templates->get_template_object("single");
+			$tpl->set("request", $request);
+			$tpl->set("entry", $entries->ar[$_keys[$i]]);
+			$tpl->printT();
+		}
+	}
 }
 ?>

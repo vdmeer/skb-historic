@@ -42,21 +42,21 @@
  */
 ?>
 <ul class="menu">
-<?php
-  $entries=$entries->ar;
-  if(isset($entries['/']['_children'])){
-    $_keys=array_keys($entries['/']['_children']);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      $tpl=new Util_Template($tpl_list);
-
-      $tpl->set("levels", $levels);
-
-      $tpl->set("entries", $entries['/']['_children'][$_keys[$i]]);
-      $tpl->set("tpl_list", $tpl_list);
-      $tpl->set("tpl_entry", $tpl_entry);
-      $tpl->printT();
-    }
-  }
-?>
+	<?php
+		$entries=$entries->ar;
+		if(isset($entries['/']['_children'])){
+			$_keys=array_keys($entries['/']['_children']);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++){
+				$tpl=new Util_Template($tpl_list);
+	
+				$tpl->set("levels", $levels);
+	
+				$tpl->set("entries", $entries['/']['_children'][$_keys[$i]]);
+				$tpl->set("tpl_list", $tpl_list);
+				$tpl->set("tpl_entry", $tpl_entry);
+				$tpl->printT();
+			}
+		}
+	?>
 </ul>

@@ -39,21 +39,20 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Html4_Element{
-
-  /**
-   *  HTML4 Factory.
-   *
-   *  This funcion will return a new HTML4_Base object, instantiated as the requested HTML 4.0 element.
-   *
-   *  @param strin $type the HTML4 type to be used
-   *  @param mixed $attributes attributes for the HTML element
-   *  @param mixed $content content for the HTML element
-   *  @param array $parameters parameters for the HTML element
-   *  @param mixed $objID an object ID for the HTML element
-   */
-  public static function factory($type, $attributes=false, $content=false, $parameters=array(), $objID=false){
-  	return new Html4_Base($type, $attributes, $content, $parameters, $objID);
-  }
+	/**
+	 *  HTML4 Factory.
+	 *
+	 *  This funcion will return a new HTML4_Base object, instantiated as the requested HTML 4.0 element.
+	 *
+	 *  @param strin $type the HTML4 type to be used
+	 *  @param mixed $attributes attributes for the HTML element
+	 *  @param mixed $content content for the HTML element
+	 *  @param array $parameters parameters for the HTML element
+	 *  @param mixed $objID an object ID for the HTML element
+	 */
+	public static function factory($type, $attributes=false, $content=false, $parameters=array(), $objID=false){
+		return new Html4_Base($type, $attributes, $content, $parameters, $objID);
+	}
 }
 
 ?>

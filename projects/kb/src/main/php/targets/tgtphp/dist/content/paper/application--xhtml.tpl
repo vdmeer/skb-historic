@@ -49,103 +49,102 @@ $gallery_request->init_http();
 
 $title=$request->get_value('title');
 if(Util_Interpreter::interpret("value:is_empty", $title)!=true)
-  $title=$title[0];
+	$title=$title[0];
 else
-  $title=null;
+	$title=null;
 $subtitle=$request->get_value('subtitle');
 if(Util_Interpreter::interpret("value:is_empty", $subtitle)!=true)
-  $subtitle=$subtitle[0];
+	$subtitle=$subtitle[0];
 else
-  $subtitle=null;
+	$subtitle=null;
 
 
 $elem=$gallery_request->get_value("request:entry");
 if(count($elem)==0){
 ?>
-  <div class="center">
-    <div class="diary-outer">
-      <br />
-      <div id="paper">
-      <p class="title"><?php echo $title ?><br /><?php echo $subtitle ?></p>
+	<div class="center">
+		<div class="diary-outer">
+			<br />
+			<div id="paper">
+				<p class="title"><?php echo $title ?><br /><?php echo $subtitle ?></p>
 <?php
-          $ar=$entries->ar;
-          $_keys=array_keys($ar);
-          $_size=count($_keys);
-          for($i=0;$i<$_size;$i++){
-          	if(isset($ar[$_keys[$i]]['request:url_frag']))
-          	  echo '<a id="'.$ar[$_keys[$i]]['request:url_frag'].'"></a>';
-          	echo '<p class="h1">'.$ar[$_keys[$i]]['default:name'].'</p>';
-            echo $ar[$_keys[$i]]['default:description'];
+	$ar=$entries->ar;
+	$_keys=array_keys($ar);
+	$_size=count($_keys);
+	for($i=0;$i<$_size;$i++){
+		if(isset($ar[$_keys[$i]]['request:url_frag']))
+			echo '<a id="'.$ar[$_keys[$i]]['request:url_frag'].'"></a>';
+		echo '<p class="h1">'.$ar[$_keys[$i]]['default:name'].'</p>';
+		echo $ar[$_keys[$i]]['default:description'];
 
-            if(isset($ar[$_keys[$i]]['content:foto_keys'])){
-            	$gallery_request=$mySKB->get_request("gallery:fotos");
-            	$gallery_request->init_plain();
-            	$gallery_request->set_value("request:file_ext",array("jpg"));
-            	$gallery_request->set_value("request:part",$request->get_value("request:part"));
-            	$gallery_request->set_value("request:element_keys",$ar[$_keys[$i]]['content:foto_keys']);
-            	$gallery_request->activate();
-            	$gallery_reader=$mySKB->get_reader($gallery_request);
-            	$gallery_reader->set_builder($mySKB->get_builder($gallery_request));
-            	$gallery_reader->prepare($gallery_request);
-            	$gallery_reader->execute($gallery_request);
-            }
-            elseif(isset($ar[$_keys[$i]]['content:graphic_keys'])){
-            	$gallery_request=$mySKB->get_request("Dist.Gallery.Graphics");
-            	$gallery_request->init_plain();
-            	$gallery_request->set_value("request:file_ext",array("png"));
-            	$gallery_request->set_value("request:part",$request->get_value("request:part"));
-            	$gallery_request->set_value("request:element_keys",$ar[$_keys[$i]]['content:graphic_keys']);
-            	$gallery_request->activate();
-            	$gallery_reader=$mySKB->get_reader("Dist.Gallery.DB2Entries");
-            	$gallery_reader->set_builder($mySKB->get_builder("Dist.Gallery.Entries2XHTML"));
-            	$gallery_reader->prepare($gallery_request);
-            	$gallery_reader->execute($gallery_request);
-            }
-            echo "\n\n";
-          }
+		if(isset($ar[$_keys[$i]]['content:foto_keys'])){
+			$gallery_request=$mySKB->get_request("gallery:fotos");
+			$gallery_request->init_plain();
+			$gallery_request->set_value("request:file_ext",array("jpg"));
+			$gallery_request->set_value("request:part",$request->get_value("request:part"));
+			$gallery_request->set_value("request:element_keys",$ar[$_keys[$i]]['content:foto_keys']);
+			$gallery_request->activate();
+			$gallery_reader=$mySKB->get_reader($gallery_request);
+			$gallery_reader->set_builder($mySKB->get_builder($gallery_request));
+			$gallery_reader->prepare($gallery_request);
+			$gallery_reader->execute($gallery_request);
+		}
+		elseif(isset($ar[$_keys[$i]]['content:graphic_keys'])){
+			$gallery_request=$mySKB->get_request("Dist.Gallery.Graphics");
+			$gallery_request->init_plain();
+			$gallery_request->set_value("request:file_ext",array("png"));
+			$gallery_request->set_value("request:part",$request->get_value("request:part"));
+			$gallery_request->set_value("request:element_keys",$ar[$_keys[$i]]['content:graphic_keys']);
+			$gallery_request->activate();
+			$gallery_reader=$mySKB->get_reader("Dist.Gallery.DB2Entries");
+			$gallery_reader->set_builder($mySKB->get_builder("Dist.Gallery.Entries2XHTML"));
+			$gallery_reader->prepare($gallery_request);
+			$gallery_reader->execute($gallery_request);
+		}
+		echo "\n\n";
+	}
 
-    $collection=$request->get_value("request:collection");
-    $collection=$collection[0];
-    $part=$request->get_value("request:part");
-    $part=$part[0];
+	$collection=$request->get_value("request:collection");
+	$collection=$collection[0];
+	$part=$request->get_value("request:part");
+	$part=$part[0];
 
-    $cp_reader=$mySKB->get_reader("Dist.Collections.DB2Entries");
-    $cp_reader->set_builder($mySKB->get_builder("Core.Default.Entries2Entries"));
-    $cp_reader->prepare($request);
-    $cp_entries=$cp_reader->get_entries()->ar;
+	$cp_reader=$mySKB->get_reader("Dist.Collections.DB2Entries");
+	$cp_reader->set_builder($mySKB->get_builder("Core.Default.Entries2Entries"));
+	$cp_reader->prepare($request);
+	$cp_entries=$cp_reader->get_entries()->ar;
 
-    if(isset($cp_entries[$collection][$part]['content:wherepublished_key'])){
-    	$ref_request=$mySKB->get_request("Dist.Publications");
-    	$ref_request->init_plain();
-    	$ref_request->set_value("publications:key",$cp_entries[$collection][$part]['content:wherepublished_key']);
-    	$ref_request->activate();
-    	$ref_reader=$mySKB->get_reader("Dist.Publications.DB2Entries");
-    	$ref_reader->set_builder($mySKB->get_builder("Dist.Publications.Entries2XHTML-OL"));
-    	$ref_reader->prepare($ref_request);
-
-      echo '<hr />';
-    	$ref_reader->execute($ref_request);
-
-    	$ref_reader->set_builder($mySKB->get_builder("Dist.Publications.Entries2BibTeX"));
-    	echo '<div class="publications"><ol><li><pre>';
-    	$ref_reader->execute($ref_request);
-    	echo '</pre></li></ol></div>';
-    }
-    if(isset($cp_entries['used_reference_keys'])){
-    }
-
+	if(isset($cp_entries[$collection][$part]['content:wherepublished_key'])){
+		$ref_request=$mySKB->get_request("Dist.Publications");
+		$ref_request->init_plain();
+		$ref_request->set_value("publications:key",$cp_entries[$collection][$part]['content:wherepublished_key']);
+		$ref_request->activate();
+		$ref_reader=$mySKB->get_reader("Dist.Publications.DB2Entries");
+		$ref_reader->set_builder($mySKB->get_builder("Dist.Publications.Entries2XHTML-OL"));
+		$ref_reader->prepare($ref_request);
+	
+	  echo '<hr />';
+		$ref_reader->execute($ref_request);
+	
+		$ref_reader->set_builder($mySKB->get_builder("Dist.Publications.Entries2BibTeX"));
+		echo '<div class="publications"><ol><li><pre>';
+		$ref_reader->execute($ref_request);
+		echo '</pre></li></ol></div>';
+	}
+	if(isset($cp_entries['used_reference_keys'])){
+	}
 ?>
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 <?php
 }
 else{
 	$gallery_request->set_value("request:file_ext",array("jpg","png"));
-  $gallery_request->activate();
-  $gallery_reader=$mySKB->get_reader("Dist.Gallery.DB2Entries");
-  $gallery_reader->set_builder($mySKB->get_builder("Dist.Gallery.Entries2XHTML"));
-  $gallery_reader->prepare($gallery_request);
-  $gallery_reader->execute($gallery_request);
+	$gallery_request->activate();
+	$gallery_reader=$mySKB->get_reader("Dist.Gallery.DB2Entries");
+	$gallery_reader->set_builder($mySKB->get_builder("Dist.Gallery.Entries2XHTML"));
+	$gallery_reader->prepare($gallery_request);
+	$gallery_reader->execute($gallery_request);
 }
 ?>

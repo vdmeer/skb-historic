@@ -41,71 +41,74 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__geo___application__xhtml__table___builder extends SKB_Builder{
-  /**
-   * The template id for the builder.
-   *
-   * @var $tpl_list
-   */
-  protected $tpl_list="Dist.Geo.Entries2XHTML-Table:Template";
+	/**
+	 * The template id for the builder.
+	 *
+	 * @var $tpl_list
+	 */
+	protected $tpl_list="Dist.Geo.Entries2XHTML-Table:Template";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("list", $this->tpl_list);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-  	$ar=array();
-    $_keys=array_keys($entries->ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      if(isset($entries->ar[$_keys[$i]]['default:name'])){
-      	$_t=$entries->ar[$_keys[$i]]['default:name'];
-        if(isset($entries->ar[$_keys[$i]]['geo:region']))
-          $_t.=', '.$entries->ar[$_keys[$i]]['geo:region'];
-        if(isset($entries->ar[$_keys[$i]]['geo:state']))
-          $_t.=', '.$entries->ar[$_keys[$i]]['geo:state'];
-        if(isset($entries->ar[$_keys[$i]]['geo:county']))
-          $_t.=', Co. '.$entries->ar[$_keys[$i]]['geo:county'];
-        if(isset($entries->ar[$_keys[$i]]['default:country']))
-          $_t.=', '.$entries->ar[$_keys[$i]]['default:country']['default:name'];
-        if(isset($entries->ar[$_keys[$i]]['default:continent']))
-          $_t.=' ('.$entries->ar[$_keys[$i]]['default:continent']['default:name'].')';
-        if(isset($entries->ar[$_keys[$i]]['geo:ccTLD']))
-          $_t.=', TDL = '.$entries->ar[$_keys[$i]]['geo:ccTLD'];
-        $ar[]=$_t;
-      }
-    }
-  	uasort($ar, "pkg_dist__geo___application__xhtml__table___builder::my_sort");
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("list", $this->tpl_list);
+	}
 
-    $heading="";
-    if(isset($entries->ar[0]['default:country']))
-      $heading="Cities";
-    elseif(isset($entries->ar[0]['default:continent']))
-      $heading="Countries";
-    else
-      $heading="Continents";
 
-    $tpl=$this->templates->get_template_object("list");
-    $tpl->set("entries", $ar);
-    $tpl->set("heading", $heading);
-    $tpl->printT();
-  }
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$ar=array();
+		$_keys=array_keys($entries->ar);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++){
+			if(isset($entries->ar[$_keys[$i]]['default:name'])){
+				$_t=$entries->ar[$_keys[$i]]['default:name'];
+				if(isset($entries->ar[$_keys[$i]]['geo:region']))
+					$_t.=', '.$entries->ar[$_keys[$i]]['geo:region'];
+				if(isset($entries->ar[$_keys[$i]]['geo:state']))
+					$_t.=', '.$entries->ar[$_keys[$i]]['geo:state'];
+				if(isset($entries->ar[$_keys[$i]]['geo:county']))
+					$_t.=', Co. '.$entries->ar[$_keys[$i]]['geo:county'];
+				if(isset($entries->ar[$_keys[$i]]['default:country']))
+					$_t.=', '.$entries->ar[$_keys[$i]]['default:country']['default:name'];
+				if(isset($entries->ar[$_keys[$i]]['default:continent']))
+					$_t.=' ('.$entries->ar[$_keys[$i]]['default:continent']['default:name'].')';
+				if(isset($entries->ar[$_keys[$i]]['geo:ccTLD']))
+					$_t.=', TDL = '.$entries->ar[$_keys[$i]]['geo:ccTLD'];
+				$ar[]=$_t;
+			}
+		}
+		uasort($ar, "pkg_dist__geo___application__xhtml__table___builder::my_sort");
+	
+		$heading="";
+		if(isset($entries->ar[0]['default:country']))
+			$heading="Cities";
+		elseif(isset($entries->ar[0]['default:continent']))
+			$heading="Countries";
+		else
+		$heading="Continents";
+	
+		$tpl=$this->templates->get_template_object("list");
+		$tpl->set("entries", $ar);
+		$tpl->set("heading", $heading);
+		$tpl->printT();
+	}
 
-  private static function my_sort($a, $b){
-  	  $mySKB=SKB_Main::get_instance();
-      $lang=$mySKB->configuration->get_group("system","lang");
-    	return Util_Interpreter::interpret("array:sort:nat", $a, $b, $lang);
-  }
+
+	private static function my_sort($a, $b){
+		$mySKB=SKB_Main::get_instance();
+		$lang=$mySKB->configuration->get_group("system","lang");
+		return Util_Interpreter::interpret("array:sort:nat", $a, $b, $lang);
+	}
 }
 ?>

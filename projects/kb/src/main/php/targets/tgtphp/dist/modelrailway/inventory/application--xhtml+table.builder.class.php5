@@ -41,34 +41,36 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__modelrailway__inventory___application__xhtml__table___builder extends SKB_Builder{
-  /**
-   * The template id for the builder.
-   *
-   * @var $tpl_list
-   */
-  protected $tpl_list="Dist.ModelRailway.Inventory.Entries2XHTML-Table:Template";
+	/**
+	 * The template id for the builder.
+	 *
+	 * @var $tpl_list
+	 */
+	protected $tpl_list="Dist.ModelRailway.Inventory.Entries2XHTML-Table:Template";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("list", $this->tpl_list);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-    $tpl=$this->templates->get_template_object("list");
-    $tpl->set("entries", $entries);
-    $tpl->set("request", $request);
-    $tpl->printT();
-  }
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("list", $this->tpl_list);
+	}
+
+
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=$this->templates->get_template_object("list");
+		$tpl->set("entries", $entries);
+		$tpl->set("request", $request);
+		$tpl->printT();
+	}
 }
 ?>

@@ -41,57 +41,60 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__menu___application__xhtml__dd___builder extends SKB_Builder{
-  /**
-   * The template for the start of the menu.
-   *
-   * @var $tpl_start
-   */
-  protected $tpl_start="Dist.Menu.Entries2XHTML-Menu:Template:DD-Start";
+	/**
+	 * The template for the start of the menu.
+	 *
+	 * @var $tpl_start
+	 */
+	protected $tpl_start="Dist.Menu.Entries2XHTML-Menu:Template:DD-Start";
+	
+	/**
+	 * The template for the list of entries.
+	 *
+	 * @var $tpl_list
+	 */
+	protected $tpl_list="Dist.Menu.Entries2XHTML-Menu:Template:DD-List";
 
-  /**
-   * The template for the list of entries.
-   *
-   * @var $tpl_list
-   */
-  protected $tpl_list="Dist.Menu.Entries2XHTML-Menu:Template:DD-List";
 
-  /**
-   * The template for a single entry.
-   *
-   * @var $tpl_single
-   */
-  protected $tpl_single="Dist.Menu.Entries2XHTML-Menu:Template:DD-Entry";
+	/**
+	 * The template for a single entry.
+	 *
+	 * @var $tpl_single
+	 */
+	protected $tpl_single="Dist.Menu.Entries2XHTML-Menu:Template:DD-Entry";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("start", $this->tpl_start);
-  	$this->templates->add_template("list", $this->tpl_list);
-  	$this->templates->add_template("single", $this->tpl_single);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-    $tpl=$this->templates->get_template_object("start");
-    $levels=$request->get_value("menu:levels");
-    if(count($levels)==0)
-      $levels=false;
-    else
-      $levels=$levels[0];
-    $tpl->set("levels", $levels);
-    $tpl->set("entries", $entries);
-    $tpl->set("tpl_list", $this->templates->get_template_path("list"));
-    $tpl->set("tpl_entry", $this->templates->get_template_path("single"));
-    $tpl->printT();
-  }
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("start", $this->tpl_start);
+		$this->templates->add_template("list", $this->tpl_list);
+		$this->templates->add_template("single", $this->tpl_single);
+	}
+
+
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=$this->templates->get_template_object("start");
+		$levels=$request->get_value("menu:levels");
+		if(count($levels)==0)
+			$levels=false;
+		else
+			$levels=$levels[0];
+		$tpl->set("levels", $levels);
+		$tpl->set("entries", $entries);
+		$tpl->set("tpl_list", $this->templates->get_template_path("list"));
+		$tpl->set("tpl_entry", $this->templates->get_template_path("single"));
+		$tpl->printT();
+	}
 }
 ?>

@@ -39,67 +39,70 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class File_SVG extends File_Base{
+	public function __construct($fn, $type){
+		parent::__construct($fn, $type);
+	}
 
-  public function __construct($fn, $type){
-  	parent::__construct($fn, $type);
-  }
 
-  protected function _get_content(){return $this->get_content_scale();}
+	protected function _get_content(){
+		return $this->get_content_scale();
+	}
 
-  /*
-   * SVG specific get_content() function.
-   *
-   * This function gets a scale factor (default=5) and returns altered SVG content adding the scale factor to 
-   * the width and height of the SVG graphic.
-   *
-   * @param int scale_factor the scale factor to be used, default is 5
-   * @return Util_ArBase content array
-   */
-  public function get_content_scale($scale_factor=5){
-    $ret=new Util_ArBase();
 
-    if($this->type=="svg")
-      $lines=file($this->fn);
-    else
-    	$lines=gzfile($this->fn);
+	/*
+	 * SVG specific get_content() function.
+	 *
+	 * This function gets a scale factor (default=5) and returns altered SVG content adding the scale factor to 
+	 * the width and height of the SVG graphic.
+	 *
+	 * @param int scale_factor the scale factor to be used, default is 5
+	 * @return Util_ArBase content array
+	 */
+	public function get_content_scale($scale_factor=5){
+		$ret=new Util_ArBase();
 
-    $width=0;
-    $height=0;
-    $change=false;
-    foreach ($lines as $line_num => $line){
-      if(strpos($line, "<?xml")===false&&strpos($line, "<!--")===false){
-        if(strpos($line, "<svg")!==false)
-          $change=true;
-        if(strpos($line, ">")!==false)
-          $change=false;
+		if($this->type=="svg")
+			$lines=file($this->fn);
+		else
+			$lines=gzfile($this->fn);
+		
+		$width=0;
+		$height=0;
+		$change=false;
+		foreach ($lines as $line_num => $line){
+			if(strpos($line, "<?xml")===false&&strpos($line, "<!--")===false){
+				if(strpos($line, "<svg")!==false)
+					$change=true;
+				if(strpos($line, ">")!==false)
+					$change=false;
+				
+				if($change==true){
+					if(strpos($line, "width=")!==false){
+						$width=intval(str_replace("width=","",str_replace('"',"",$line))/$scale_factor);
+						$ret->ar[]="   width=\"{$width}\"\n";
+					}
+					elseif(strpos($line, "height=")!==false){
+						$height=intval(str_replace("height=","",str_replace('"',"",$line))/$scale_factor);
+						$ret->ar[]="   height=\"{$height}\"\n";
+					}
+					else
+					  $ret->ar[]=$line;
+					if($width!=0&&$height!=0){
+						$ret->ar[]='   viewBox="0 0 '.intval($width*$scale_factor) . ' ' . intval($height*$scale_factor) . '"'."\n";
+						$width=0;
+						$height=0;
+					}
+				}
+				else
+					$ret->ar[]=$line;
+			}
+		}
+		return $ret;
+	}
 
-        if($change==true){
-          if(strpos($line, "width=")!==false){
-            $width=intval(str_replace("width=","",str_replace('"',"",$line))/$scale_factor);
-            $ret->ar[]="   width=\"{$width}\"\n";
-          }
-          elseif(strpos($line, "height=")!==false){
-            $height=intval(str_replace("height=","",str_replace('"',"",$line))/$scale_factor);
-            $ret->ar[]="   height=\"{$height}\"\n";
-          }
-          else
-            $ret->ar[]=$line;
-          if($width!=0&&$height!=0){
-          	$ret->ar[]='   viewBox="0 0 '.intval($width*$scale_factor) . ' ' . intval($height*$scale_factor) . '"'."\n";
-          	$width=0;
-          	$height=0;
-          }
-        }
-        else
-          $ret->ar[]=$line;
-      }
-    }
-    return $ret;
-  }
-
-  protected function _get_meta_data(){
-  	$ret=new Util_ArBase();
-  	return $ret;
-  }
+	protected function _get_meta_data(){
+		$ret=new Util_ArBase();
+		return $ret;
+	}
 }
 ?>

@@ -40,13 +40,12 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-
 class pkg_demo__htmlpage___application__xhtml___builder extends pkg_dist__htmlpage___application__xhtml___builder{
-  function __construct(){
-    $this->tpl_bodystart="Demo.HtmlPage.Entries2XHTML-Page:Template:Body-Start";
-    $this->tpl_bodyend="Demo.HtmlPage.Entries2XHTML-Page:Template:Body-End";
+	function __construct(){
+		$this->tpl_bodystart="Demo.HtmlPage.Entries2XHTML-Page:Template:Body-Start";
+		$this->tpl_bodyend="Demo.HtmlPage.Entries2XHTML-Page:Template:Body-End";
 
-  	parent::__construct();
-  }
+		parent::__construct();
+	}
 }
 ?>

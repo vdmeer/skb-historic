@@ -41,34 +41,36 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__content__paper___application__xhtml___builder extends SKB_Builder{
-  /**
-   * The template id for the builder.
-   *
-   * @var $tpl_entry
-   */
-  protected $tpl_entry="Dist.Content.Paper.Entries2XHTML:Template";
+	/**
+	 * The template id for the builder.
+	 *
+	 * @var $tpl_entry
+	 */
+	protected $tpl_entry="Dist.Content.Paper.Entries2XHTML:Template";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("entry", $this->tpl_entry);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-    $tpl=$this->templates->get_template_object("entry");
-    $tpl->set("entries", $entries);
-    $tpl->set("request", $request);
-    $tpl->printT();
-  }
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("entry", $this->tpl_entry);
+	}
+
+
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=$this->templates->get_template_object("entry");
+		$tpl->set("entries", $entries);
+		$tpl->set("request", $request);
+		$tpl->printT();
+	}
 }
 ?>

@@ -39,14 +39,14 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 interface SKB_InterpreterValue{
-  /**
-   * Interprete data for a value.
-   * 
-   * Values might contain data that can be further interpreted, such as a list of items or 
-   * localised data.
-   *
-   * @param string str string to be interpreted
-   */
-  static public function interpret($str);
+	/**
+	 * Interprete data for a value.
+	 * 
+	 * Values might contain data that can be further interpreted, such as a list of items or 
+	 * localised data.
+	 *
+	 * @param string str string to be interpreted
+	 */
+	static public function interpret($str);
 }
 ?>

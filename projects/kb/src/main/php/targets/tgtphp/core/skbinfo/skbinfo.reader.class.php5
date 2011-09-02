@@ -82,120 +82,124 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_core__skbinfo___skbinfo___reader extends SKB_Reader{
-  /**
-   * An empty constructor.
-   */
-  public function __construct(){}
+	/**
+	 * An empty constructor.
+	 */
+	public function __construct(){
+	}
 
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
-   */
-  public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
-    $todo=$request->get_value("request:entry");
-    $select=null;
-    if(count($todo)>0){
-      $todo=$todo[0];
-      if(strpos($todo,":")!==false){
-      	$ar=explode(":",$todo);
-      	if(strlen($ar[0])>0)
-      	  $todo=$ar[0];
-      	else
-      	  $todo=null;
-      	$select=$ar[1];
-      }
-    }
-    else{
-      $todo=null;
-    }
 
-  	$mySKB=SKB_Main::get_instance();
-    if($todo==null||$todo=="configuration"){
-      $this->entries['configuration']=$mySKB->get_configuration();
-      ksort($this->entries['configuration']);
-    }
-    if($todo==null||$todo=="registered_dos"){
-      $this->entries['registered_dos']=SKB_DataManager::get_instance()->get_data_objects();
-      ksort($this->entries['registered_dos']);
-    }
-    if($todo==null||$todo=="requests"){
-      $this->entries['registered_requests']=$mySKB->get_registered_requests();
-      ksort($this->entries['registered_requests']);
-    }
-    if($todo==null||$todo=="readers"){
-      $this->entries['registered_readers']=$mySKB->get_registered_readers();
-      ksort($this->entries['registered_readers']);
-    }
-    if($todo==null||$todo=="builders"){
-      $this->entries['registered_builders']=$mySKB->get_registered_builders();
-      ksort($this->entries['registered_builders']);
-    }
-    if($todo==null||$todo=="templates"){
-      $this->entries['registered_templates']=$mySKB->get_registered_templates();
-      ksort($this->entries['registered_templates']);
-    }
-    if($todo==null||$todo=="applications"){
-      $this->entries['registered_applications']=$mySKB->get_registered_applications();
-      ksort($this->entries['registered_applications']);
-    }
-    if($todo==null||$todo=="interpreters"){
-      $this->entries['registered_interpreters']=$mySKB->get_registered_interpreters();
-      ksort($this->entries['registered_interpreters']);
-    }
-    if($todo==null||$todo=="fields"){
-      $this->entries['registered_fields']=$mySKB->get_registered__fields();
-      ksort($this->entries['registered_fields']);
-    }
-    if($todo==null||$todo=="enc_char"){
-    	$req=$mySKB->get_request("Core.Encoding");
-    	$req->init_plain();
-    	$req->activate();
-    	$red=$mySKB->get_reader("Core.Encoding.DB2Entries");
-    	$bui=$mySKB->get_builder("Core.Encoding.Entries2Entries");
-    	$red->set_builder($bui);
-    	$red->prepare($req);
-    	$this->entries['enc_char']=$red->get_entries()->ar;
-      ksort($this->entries['enc_char']);
-    }
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
+	 */
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+		$todo=$request->get_value("request:entry");
+		$select=null;
+		if(count($todo)>0){
+			$todo=$todo[0];
+			if(strpos($todo,":")!==false){
+				$ar=explode(":",$todo);
+				if(strlen($ar[0])>0)
+					$todo=$ar[0];
+				else
+					$todo=null;
+				$select=$ar[1];
+			}
+		}
+		else{
+			$todo=null;
+		}
 
-    $myHTTP=SKB_Http::get_instance();
-    if($todo==null||$todo=="mime_content_types"){
-      $this->entries['mime_content_types']=$myHTTP->get_skb_mime_content_types();
-      ksort($this->entries['mime_content_types']);
-    }
-    if($todo==null||$todo=="http_headers_response"){
-      $this->entries['http_headers_response']=$myHTTP->get_skb_http_headers_response();
-      ksort($this->entries['http_headers_response']);
-    }
+		$mySKB=SKB_Main::get_instance();
+		if($todo==null||$todo=="configuration"){
+			$this->entries['configuration']=$mySKB->get_configuration();
+			ksort($this->entries['configuration']);
+		}
+		if($todo==null||$todo=="registered_dos"){
+			$this->entries['registered_dos']=SKB_DataManager::get_instance()->get_data_objects();
+			ksort($this->entries['registered_dos']);
+		}
+		if($todo==null||$todo=="requests"){
+			$this->entries['registered_requests']=$mySKB->get_registered_requests();
+			ksort($this->entries['registered_requests']);
+		}
+		if($todo==null||$todo=="readers"){
+			$this->entries['registered_readers']=$mySKB->get_registered_readers();
+			ksort($this->entries['registered_readers']);
+		}
+		if($todo==null||$todo=="builders"){
+			$this->entries['registered_builders']=$mySKB->get_registered_builders();
+			ksort($this->entries['registered_builders']);
+		}
+		if($todo==null||$todo=="templates"){
+			$this->entries['registered_templates']=$mySKB->get_registered_templates();
+			ksort($this->entries['registered_templates']);
+		}
+		if($todo==null||$todo=="applications"){
+			$this->entries['registered_applications']=$mySKB->get_registered_applications();
+			ksort($this->entries['registered_applications']);
+		}
+		if($todo==null||$todo=="interpreters"){
+			$this->entries['registered_interpreters']=$mySKB->get_registered_interpreters();
+			ksort($this->entries['registered_interpreters']);
+		}
+		if($todo==null||$todo=="fields"){
+			$this->entries['registered_fields']=$mySKB->get_registered__fields();
+			ksort($this->entries['registered_fields']);
+		}
+		if($todo==null||$todo=="enc_char"){
+			$req=$mySKB->get_request("Core.Encoding");
+			$req->init_plain();
+			$req->activate();
+			$red=$mySKB->get_reader("Core.Encoding.DB2Entries");
+			$bui=$mySKB->get_builder("Core.Encoding.Entries2Entries");
+			$red->set_builder($bui);
+			$red->prepare($req);
+			$this->entries['enc_char']=$red->get_entries()->ar;
+			ksort($this->entries['enc_char']);
+		}
 
-    $this->entries['todo']=$todo;
-    $this->entries['select']=$select;
+		$myHTTP=SKB_Http::get_instance();
+		if($todo==null||$todo=="mime_content_types"){
+			$this->entries['mime_content_types']=$myHTTP->get_skb_mime_content_types();
+			ksort($this->entries['mime_content_types']);
+		}
+		if($todo==null||$todo=="http_headers_response"){
+			$this->entries['http_headers_response']=$myHTTP->get_skb_http_headers_response();
+			ksort($this->entries['http_headers_response']);
+		}
 
-    //remove all non selected
-    if($select!=null){
-      $_keys=array_keys($this->entries);
-      $_size=count($_keys);
-      for($i=0;$i<$_size;$i++){
-      	if(is_array($this->entries[$_keys[$i]])){
-        	$ar=$this->entries[$_keys[$i]];
-        	$_keysD=array_keys($ar);
-        	$_sizeD=count($_keysD);
-        	for($k=0;$k<$_sizeD;$k++){
-        		if(isset($ar[$_keysD[$k]]['origin'])&&$ar[$_keysD[$k]]['origin']!=$select){
-        		  unset($this->entries[$_keys[$i]][$_keysD[$k]]);
-        		}
-      	  }
-      	}
-      }
-    }
-  }
+		$this->entries['todo']=$todo;
+		$this->entries['select']=$select;
 
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
-   */
-  public function execute_loop(SKB_Request $request){}
+		//remove all non selected
+		if($select!=null){
+				$_keys=array_keys($this->entries);
+				$_size=count($_keys);
+				for($i=0;$i<$_size;$i++){
+					if(is_array($this->entries[$_keys[$i]])){
+						$ar=$this->entries[$_keys[$i]];
+						$_keysD=array_keys($ar);
+						$_sizeD=count($_keysD);
+						for($k=0;$k<$_sizeD;$k++){
+							if(isset($ar[$_keysD[$k]]['origin'])&&$ar[$_keysD[$k]]['origin']!=$select){
+								unset($this->entries[$_keys[$i]][$_keysD[$k]]);
+							}
+						}
+					}
+				}
+		}
+	}
+
+
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
+	 */
+	public function execute_loop(SKB_Request $request){
+	}
 }
 ?>

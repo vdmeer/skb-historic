@@ -41,15 +41,15 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 
-   	if(count($request->get_value("publications:show_abstract"))==0)
-   	  unset($entry['abstract']);
-
-   	echo "\n@" . $entry['publications:entry_type'] . '{' . $entry['key'] . ",\n";
-    $_keys=array_keys($entry);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-    	if($_keys[$i]!="key"&&$_keys[$i]!="publications:entry_type"&&!is_array($entry[$_keys[$i]]))
-    	  echo Util_Interpreter::interpret("bibtex:field", $_keys[$i], $entry[$_keys[$i]]);
-    }
-    echo "}\n\n";
+	if(count($request->get_value("publications:show_abstract"))==0)
+		unset($entry['abstract']);
+	
+	echo "\n@" . $entry['publications:entry_type'] . '{' . $entry['key'] . ",\n";
+	$_keys=array_keys($entry);
+	$_size=count($_keys);
+	for($i=0;$i<$_size;$i++){
+		if($_keys[$i]!="key"&&$_keys[$i]!="publications:entry_type"&&!is_array($entry[$_keys[$i]]))
+			echo Util_Interpreter::interpret("bibtex:field", $_keys[$i], $entry[$_keys[$i]]);
+	}
+	echo "}\n\n";
 ?>

@@ -41,64 +41,69 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__gallery___application__xhtml___builder extends SKB_Builder{
-  /**
-   * The template for thumbnails
-   *
-   * @var $tpl200
-   */
-  protected $tpl200="Dist.Gallery.Entries2XHTML:Template:Pic200";
+	/**
+	 * The template for thumbnails
+	 *
+	 * @var $tpl200
+	 */
+	protected $tpl200="Dist.Gallery.Entries2XHTML:Template:Pic200";
 
-  /**
-   * The template for full size pictures
-   *
-   * @var $tpl600
-   */
-  protected $tpl600="Dist.Gallery.Entries2XHTML:Template:Pic600";
 
-  /**
-   * The template for list of pictures.
-   *
-   * @var $tplList
-   */
-  protected $tplList="Dist.Gallery.Entries2XHTML:Template:DIV";
+	/**
+	 * The template for full size pictures
+	 *
+	 * @var $tpl600
+	 */
+	protected $tpl600="Dist.Gallery.Entries2XHTML:Template:Pic600";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("tpl200", $this->tpl200);
-  	$this->templates->add_template("tpl600", $this->tpl600);
-  	$this->templates->add_template("tplList", $this->tplList);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-  	$tpl=$this->templates->get_template_object("tplList");
-    $tpl->set("request", $request);
-    $tpl->set("entries", $entries);
-    $this->execute_add($request, $tpl);
+	/**
+	 * The template for list of pictures.
+	 *
+	 * @var $tplList
+	 */
+	protected $tplList="Dist.Gallery.Entries2XHTML:Template:DIV";
 
-    $pics=$request->get_value("request:entry");
-    if(Util_Interpreter::interpret("value:is_empty", $pics)==false)
-      $tpl->set("tplSingle", $this->templates->get_template_path("tpl600"));
-    else
-      $tpl->set("tplSingle", $this->templates->get_template_path("tpl200"));
-    $tpl->printT();
-  }
 
-  /**
-   * Function that integrates specific processing into the parent's execution loop.
-   *
-   * Automatically called by {@link pkg_dist__gallery___application__xhtml___builder#execute_loop() this->execute_loop}
-   */
-  protected function execute_add(SKB_Request $request, Util_Template $tpl){}
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("tpl200", $this->tpl200);
+		$this->templates->add_template("tpl600", $this->tpl600);
+		$this->templates->add_template("tplList", $this->tplList);
+	}
+
+
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=$this->templates->get_template_object("tplList");
+		$tpl->set("request", $request);
+		$tpl->set("entries", $entries);
+		$this->execute_add($request, $tpl);
+
+		$pics=$request->get_value("request:entry");
+		if(Util_Interpreter::interpret("value:is_empty", $pics)==false)
+			$tpl->set("tplSingle", $this->templates->get_template_path("tpl600"));
+		else
+			$tpl->set("tplSingle", $this->templates->get_template_path("tpl200"));
+		$tpl->printT();
+	}
+
+	/**
+	 * Function that integrates specific processing into the parent's execution loop.
+	 *
+	 * Automatically called by {@link pkg_dist__gallery___application__xhtml___builder#execute_loop() this->execute_loop}
+	 */
+	protected function execute_add(SKB_Request $request, Util_Template $tpl){
+	}
 }
 ?>

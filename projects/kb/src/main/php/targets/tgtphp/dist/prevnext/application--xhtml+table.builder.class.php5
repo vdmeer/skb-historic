@@ -41,47 +41,49 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__prevnext___application__xhtml__table___builder extends SKB_Builder{
-  /**
-   * The template id for the builder.
-   *
-   * @var $tpl
-   */
-  protected $tpl="Dist.PrevNext.Entries2XHTML-Table:Template";
+	/**
+	 * The template id for the builder.
+	 *
+	 * @var $tpl
+	 */
+	protected $tpl="Dist.PrevNext.Entries2XHTML-Table:Template";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("entry", $this->tpl);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-    $tpl=$this->templates->get_template_object("entry");
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("entry", $this->tpl);
+	}
 
-    $tpl->set("request", $request);
 
-    $t_coll=$request->get_value('request:collection');
-    $tpl->set("coll", (count($t_coll)>0)?$t_coll[0]:null);
-
-    $t_part=$request->get_value('request:part');
-    $tpl->set("part", (count($t_part)>0)?$t_part[0]:null);
-
-    $t_descr=$request->get_value('default:description');
-    $tpl->set("alt", (count($t_descr)>0)?$t_descr[0]:null);
-
-    $tpl->set("prev", (isset($entries->ar['prev']))?$entries->ar['prev']:null);
-    $tpl->set("next", (isset($entries->ar['next']))?$entries->ar['next']:null);
-
-    $tpl->printT();
-  }
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=$this->templates->get_template_object("entry");
+	
+		$tpl->set("request", $request);
+	
+		$t_coll=$request->get_value('request:collection');
+		$tpl->set("coll", (count($t_coll)>0)?$t_coll[0]:null);
+	
+		$t_part=$request->get_value('request:part');
+		$tpl->set("part", (count($t_part)>0)?$t_part[0]:null);
+	
+		$t_descr=$request->get_value('default:description');
+		$tpl->set("alt", (count($t_descr)>0)?$t_descr[0]:null);
+	
+		$tpl->set("prev", (isset($entries->ar['prev']))?$entries->ar['prev']:null);
+		$tpl->set("next", (isset($entries->ar['next']))?$entries->ar['next']:null);
+	
+		$tpl->printT();
+	}
 }
 ?>

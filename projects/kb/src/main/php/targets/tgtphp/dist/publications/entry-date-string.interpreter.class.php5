@@ -39,43 +39,44 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__publications___entry_date_string___interpreter implements SKB_InterpreterValue{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($entry){
-    $mySKB=SKB_Main::get_instance();
-    $date="";
+	static public function interpret($entry){
+		$mySKB=SKB_Main::get_instance();
+		$date="";
 
-    switch($entry['publications:entry_type']['key']){
-      case "article":
-      case "book":
-      case "collection":
-      case "mastersthesis":
-      case "phdthesis":
-      case "proceedings":
-      case "report":
-      case "standard":
-      case "techreport":
-      case "thesis":
-        $date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry);
-        break;
+		switch($entry['publications:entry_type']['key']){
+			case "article":
+			case "book":
+			case "collection":
+			case "mastersthesis":
+			case "phdthesis":
+			case "proceedings":
+			case "report":
+			case "standard":
+			case "techreport":
+			case "thesis":
+				$date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry);
+				break;
 
-      case "inbook":
-      case "incollection":
-        $date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry['publications:published_in']);
-        break;
+			case "inbook":
+			case "incollection":
+				$date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry['publications:published_in']);
+				break;
 
-      case "conference":
-      case "inproceedings":
-      case "poster":
-      case "tutorial":
-      case "presentation":
-        if(isset($entry['publications:conference']))
-          $date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry['publications:conference']);
-        elseif(isset($entry['publications:event']))
-          $date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry['publications:event']);
-        break;
-    }
-    return $date;
-  }
+			case "conference":
+			case "inproceedings":
+			case "poster":
+			case "tutorial":
+			case "presentation":
+				if(isset($entry['publications:conference']))
+					$date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry['publications:conference']);
+				elseif(isset($entry['publications:event']))
+					$date=$mySKB->interpret_data("Dist.Date.Interpreter.String", $entry['publications:event']);
+				break;
+		}
+		return $date;
+	}
 }
 ?>

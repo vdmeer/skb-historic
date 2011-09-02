@@ -39,19 +39,20 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__people___name___interpreter implements SKB_InterpreterEntity{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($key, $table=null){
-  	$ret=array();
-  	if($table==null)
-  	  $table="people";
 
-  	$mySKB=SKB_Main::get_instance();
-  	$pdos=$mySKB->sql_query(null, array('"people:first"','"people:last"'), array($table), "key = '{$key}'");
-    $ret=Util_Interpreter::interpret("array:clean", $pdos->fetch(PDO::FETCH_ASSOC));
+	static public function interpret($key, $table=null){
+		$ret=array();
+		if($table==null)
+			$table="people";
 
-    return new Util_ArBase($ret);
-  }
+		$mySKB=SKB_Main::get_instance();
+		$pdos=$mySKB->sql_query(null, array('"people:first"','"people:last"'), array($table), "key = '{$key}'");
+		$ret=Util_Interpreter::interpret("array:clean", $pdos->fetch(PDO::FETCH_ASSOC));
 
+		return new Util_ArBase($ret);
+	}
 }
 ?>

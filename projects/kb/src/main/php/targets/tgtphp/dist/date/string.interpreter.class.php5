@@ -39,36 +39,37 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__date___string___interpreter implements SKB_InterpreterValue{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($ar){
-    $ret="";
+	static public function interpret($ar){
+		$ret="";
 
-    if(isset($ar["default:month"]))
-      $ret.=$ar["default:month"]['default:name'];
-    else if(isset($ar["default:month_start"]))
-      $ret.=$ar["default:month_start"]['default:name'];
+		if(isset($ar["default:month"]))
+			$ret.=$ar["default:month"]['default:name'];
+		else if(isset($ar["default:month_start"]))
+			$ret.=$ar["default:month_start"]['default:name'];
 
-    if(isset($ar["default:day"]))
-      $ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day"];
-    else{
-      if(!isset($ar["default:month_end"])){
-        if(isset($ar["default:day_start"]))
-          $ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day_start"];
-        if(isset($ar["default:day_end"]))
-          $ret.=Util_Interpreter::interpret("add:char:hyphen", $ret) . $ar["default:day_end"];
-      }
-      else{
-       if(isset($ar["default:day_start"]))
-          $ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day_start"];
-        $ret.=Util_Interpreter::interpret("add:char:blank", $ret) . Util_Interpreter::interpret("add:char:hyphen-blank", $ret) . $ar["default:month_end"]['default:name'];
-        if(isset($ar["default:day_end"]))
-          $ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day_end"];
-      }
-    }
-    if(isset($ar["default:year"]))
-      $ret.=Util_Interpreter::interpret("add:char:comma-blank", $ret) . $ar["default:year"];
-    return $ret;
-  }
+		if(isset($ar["default:day"]))
+		  $ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day"];
+		else{
+			if(!isset($ar["default:month_end"])){
+				if(isset($ar["default:day_start"]))
+					$ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day_start"];
+				if(isset($ar["default:day_end"]))
+					$ret.=Util_Interpreter::interpret("add:char:hyphen", $ret) . $ar["default:day_end"];
+			}
+			else{
+				if(isset($ar["default:day_start"]))
+					$ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day_start"];
+				$ret.=Util_Interpreter::interpret("add:char:blank", $ret) . Util_Interpreter::interpret("add:char:hyphen-blank", $ret) . $ar["default:month_end"]['default:name'];
+				if(isset($ar["default:day_end"]))
+					$ret.=Util_Interpreter::interpret("add:char:blank", $ret) . $ar["default:day_end"];
+			}
+		}
+		if(isset($ar["default:year"]))
+			$ret.=Util_Interpreter::interpret("add:char:comma-blank", $ret) . $ar["default:year"];
+		return $ret;
+	}
 }
 ?>

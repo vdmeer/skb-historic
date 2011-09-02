@@ -39,17 +39,19 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class File_PNG extends File_Base{
+	public function __construct($fn, $type){
+		parent::__construct($fn, $type);
+	}
 
-  public function __construct($fn, $type){
-  	parent::__construct($fn, $type);
-  }
+	protected function _get_content(){
+		return new Util_ArBase();
+	}
 
-  protected function _get_content(){return new Util_ArBase();}
 
-  protected function _get_meta_data(){
-  	$ret=new Util_ArBase();
+	protected function _get_meta_data(){
+		$ret=new Util_ArBase();
 		return $ret;
-  }
+	}
 
 }
 ?>

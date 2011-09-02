@@ -70,28 +70,28 @@ $root_document=str_replace("\\","/",array_pop($gif));
 $root_document=substr($root_document,0,strpos($root_document,$root_skb.$root_classes."main.inc.php5"));
 
 if(!isset($site_id)){
-  trigger_error("No site_id set", E_USER_ERROR);
+	trigger_error("No site_id set", E_USER_ERROR);
 }
 if(!isset($site_path)){
-  trigger_error("No site_path set", E_USER_ERROR);
+	trigger_error("No site_path set", E_USER_ERROR);
 }
 
 $skb_loaded=false;
 
 $__cfg_array=array(
-  "root-document" => $root_document,
-  "root-skb"      => $root_skb,
-  "root-classes"  => $root_classes,
-  "config-core"   => $root_document.$root_skb."/config/core.db",
-  "config-site"   => $root_document.$root_skb."/config/".$site_id.".db",
-  "site_path"     => $site_path,
-  "skb_site_id"   => $site_id,
-  "php_extension" => ".php5",
+	"root-document" => $root_document,
+	"root-skb"      => $root_skb,
+	"root-classes"  => $root_classes,
+	"config-core"   => $root_document.$root_skb."/config/core.db",
+	"config-site"   => $root_document.$root_skb."/config/".$site_id.".db",
+	"site_path"     => $site_path,
+	"skb_site_id"   => $site_id,
+	"php_extension" => ".php5",
 );
 
 
 if(!file_exists($__cfg_array['config-site'])){
-  trigger_error("Unknown site configuration\n --> did not find ".$__cfg_array['config-site'], E_USER_ERROR);
+	trigger_error("Unknown site configuration\n --> did not find ".$__cfg_array['config-site'], E_USER_ERROR);
 }
 
 require_once($__cfg_array["root-document"].$__cfg_array["root-skb"].$__cfg_array["root-classes"]."SKB/Autoloader.class".$__cfg_array["php_extension"]);
@@ -105,8 +105,8 @@ $skb_loaded=true;
 $url_add=$skb_main->configuration->get_group("html","url-add");
 $skb_main->configuration->add("request", array());
 if(count($url_add)>0){
-  //$url_req=$__cfg_request->get_requests();
-  $url_req=(array("lang" => $skb_main->configuration->get_group("system", "lang")));
+	//$url_req=$__cfg_request->get_requests();
+	$url_req=(array("lang" => $skb_main->configuration->get_group("system", "lang")));
 	$_keys=array_keys($url_req);
 	$_size=count($_keys);
 	for($i=0;$i<$_size;$i++){
@@ -117,17 +117,17 @@ if(count($url_add)>0){
 
 //if $_SERVER["REQUEST_URI"] is not set, we are in CMD mode
 if($skb_main->configuration->get_group("menu","load")=="true"&&isset($_SERVER["REQUEST_URI"])){
-  //we no longer load the menu automatically, but provide for global access via these ids
-  $skb_menu_request=null;
-  $skb_menu_reader=null;
+	//we no longer load the menu automatically, but provide for global access via these ids
+	$skb_menu_request=null;
+	$skb_menu_reader=null;
 }
 
 $__htmlStd="";
 if($skb_main->configuration->get_group("html4","load")=="true"){
-  if($skb_main->configuration->get_group("html4","server-active")=="true"){
-    $__htmlStd=$skb_main->configuration->get_group("html4","server-active");
-    $$__htmlStd=new Html4_Standard($skb_main->configuration->get_group("html4","dtd"));
-  }
+	if($skb_main->configuration->get_group("html4","server-active")=="true"){
+		$__htmlStd=$skb_main->configuration->get_group("html4","server-active");
+		$$__htmlStd=new Html4_Standard($skb_main->configuration->get_group("html4","dtd"));
+	}
 }
 $http_request=SKB_Http::get_instance();
 ?>

@@ -42,61 +42,59 @@
  */
 ?>
 <div id="menu">
-  <ul>
-<?php
-
-  $entries=$entries->ar;
-  if(isset($entries['/']['_children'])){
-    $ar=$entries['/']['_children'];
-    $_keys=array_keys($ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++)
-      _do_entry($ar[$_keys[$i]]);
-  }
-?>
-  </ul>
+	<ul>
+		<?php
+			$entries=$entries->ar;
+			if(isset($entries['/']['_children'])){
+				$ar=$entries['/']['_children'];
+				$_keys=array_keys($ar);
+				$_size=count($_keys);
+				for($i=0;$i<$_size;$i++)
+					_do_entry($ar[$_keys[$i]]);
+			}
+		?>
+	</ul>
 </div>
 
 <?php
-  echo '<div id="menu-sub" class="' . $entries['/']['current-parameters']['menu:class_b'] . '">'."\n";
-  echo '  <ul>'."\n";
-  if(!isset($entries['/']['_children'][$entries['/']['current-position'][0]]['_children']))
-    echo "&#160;";
-  else{
-    $ar=$entries['/']['_children'][$entries['/']['current-position'][0]]['_children'];
-    $_keys=array_keys($ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++)
-      _do_entry($ar[$_keys[$i]],false);
-  }
-  echo '  </ul>'."\n";
-  echo '</div>'."\n";
-//Util_Debug::print_r($entries);
+	echo '<div id="menu-sub" class="' . $entries['/']['current-parameters']['menu:class_b'] . '">'."\n";
+	echo '  <ul>'."\n";
+	if(!isset($entries['/']['_children'][$entries['/']['current-position'][0]]['_children']))
+		echo "&#160;";
+	else{
+		$ar=$entries['/']['_children'][$entries['/']['current-position'][0]]['_children'];
+		$_keys=array_keys($ar);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++)
+			_do_entry($ar[$_keys[$i]],false);
+	}
+	echo '  </ul>'."\n";
+	echo '</div>'."\n";
+//	Util_Debug::print_r($entries);
 ?>
 <div id="menu-bottom">
-  &#160;
+	&#160;
 </div>
 
-
 <?php
-function _do_entry($ar, $top=true){
-  $name=(isset($ar['menu:linkname']))?$ar['menu:linkname']:"";
-  if($name=="")
-    $name=(isset($ar['menu:title']))?$ar['menu:title']:"";
-  if($name=="")
-    trigger_error("[Menu] - no name or linkname found, item '{$ar['key']}' might not be shown", E_USER_NOTICE);
-  $link="";
-  if(isset($ar["menu:url"])){
-    $link=$ar["menu:url"];
-    if(strstr($ar["menu:url"],"://")==false)
-      $link=Util_Interpreter::interpret("url:build", $ar["menu:url"]);
-  }
+	function _do_entry($ar, $top=true){
+		$name=(isset($ar['menu:linkname']))?$ar['menu:linkname']:"";
+		if($name=="")
+			$name=(isset($ar['menu:title']))?$ar['menu:title']:"";
+		if($name=="")
+			trigger_error("[Menu] - no name or linkname found, item '{$ar['key']}' might not be shown", E_USER_NOTICE);
+		$link="";
+		if(isset($ar["menu:url"])){
+			$link=$ar["menu:url"];
+			if(strstr($ar["menu:url"],"://")==false)
+				$link=Util_Interpreter::interpret("url:build", $ar["menu:url"]);
+		}
 
-  echo "<li";
-  if($top==true&&isset($ar['active']))
-    echo ' id="current" class="' . $ar['menu:class_b'] . '"';
-  if($top==false&&isset($ar['active']))
-    echo ' class="current"';
-  echo "><a href=\"{$link}\">{$name}</a></li>\n";  
-}
+		echo "<li";
+		if($top==true&&isset($ar['active']))
+			echo ' id="current" class="' . $ar['menu:class_b'] . '"';
+		if($top==false&&isset($ar['active']))
+			echo ' class="current"';
+		echo "><a href=\"{$link}\">{$name}</a></li>\n";  
+	}
 ?>

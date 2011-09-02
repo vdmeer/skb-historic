@@ -39,17 +39,19 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__people___string__bibtex___interpreter implements SKB_InterpreterValue{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($ar){
-    $ret="";
-    if(is_array($ar)){
-      $_keys=array_keys($ar);
-      $_size=count($_keys);
-      for($i=0;$i<$_size;$i++)
-        $ret.=Util_Interpreter::interpret("add:string", $ret, " and ") . Util_Interpreter::interpret("convert_text:h2l", $ar[$_keys[$i]]["people:last"]) . ", " . Util_Interpreter::interpret("convert_text:h2l", $ar[$_keys[$i]]["people:first"]);
-    }
-    return $ret;
-  }
+
+	static public function interpret($ar){
+		$ret="";
+		if(is_array($ar)){
+			$_keys=array_keys($ar);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++)
+				$ret.=Util_Interpreter::interpret("add:string", $ret, " and ") . Util_Interpreter::interpret("convert_text:h2l", $ar[$_keys[$i]]["people:last"]) . ", " . Util_Interpreter::interpret("convert_text:h2l", $ar[$_keys[$i]]["people:first"]);
+		}
+		return $ret;
+	}
 }
 ?>

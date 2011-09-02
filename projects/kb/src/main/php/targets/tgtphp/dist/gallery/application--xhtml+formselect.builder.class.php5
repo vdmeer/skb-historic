@@ -41,47 +41,50 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__gallery___application__xhtml__formselect___builder extends pkg_dist__gallery___application__xhtml___builder{
-  /**
-   * The template for the form.
-   *
-   * @var $tpl_form
-   */
+	/**
+	 * The template for the form.
+	 *
+	 * @var $tpl_form
+	 */
 	protected $tpl_form="Dist.Gallery.Entries2XHTML-FormSelect:Template:Form";
 
-  /**
-   * The template for the select part of the form.
-   *
-   * @var $tpl_from_select
-   */
-  protected $tpl_form_select="Dist.Gallery.Entries2XHTML-FormSelect:Template:Select";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	$this->tplList=$this->tpl_form;
-  	parent::__construct();
-  	$this->templates->add_template("tplFormSelect", $this->tpl_form_select);
-  }
+	/**
+	 * The template for the select part of the form.
+	 *
+	 * @var $tpl_from_select
+	 */
+	protected $tpl_form_select="Dist.Gallery.Entries2XHTML-FormSelect:Template:Select";
 
-  /**
-   * Function that integrates specific processing into the parent's execution loop.
-   *
-   * Automatically called by {@link SKB_Builder#execute_loop() }
-   */
-  protected function execute_add(SKB_Request $request, Util_Template $tpl){
-  	$mySKB=SKB_Main::get_instance();
-  	$reader=$mySKB->get_reader("Dist.FormSelect.DB2Entries");
-  	$reader->prepare($request);
 
-  	$formTpl=$this->templates->get_template_object("tplFormSelect");
-    $formTpl->set("entries", $reader->get_entries());
-    $formTpl->set("request", $request);
-    $formTpl->set("size", 20);
-    $tpl->set("form_data", $formTpl->fetch());
-  }
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		$this->tplList=$this->tpl_form;
+		parent::__construct();
+		$this->templates->add_template("tplFormSelect", $this->tpl_form_select);
+	}
+
+
+	/**
+	 * Function that integrates specific processing into the parent's execution loop.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute_loop() }
+	 */
+	protected function execute_add(SKB_Request $request, Util_Template $tpl){
+		$mySKB=SKB_Main::get_instance();
+		$reader=$mySKB->get_reader("Dist.FormSelect.DB2Entries");
+		$reader->prepare($request);
+	
+		$formTpl=$this->templates->get_template_object("tplFormSelect");
+		$formTpl->set("entries", $reader->get_entries());
+		$formTpl->set("request", $request);
+		$formTpl->set("size", 20);
+		$tpl->set("form_data", $formTpl->fetch());
+	}
 }
 ?>

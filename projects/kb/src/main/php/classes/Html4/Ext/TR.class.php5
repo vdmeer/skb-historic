@@ -39,91 +39,101 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Html4_Ext_TR extends Html4_Base{
-  /**
-   * Constructor for the extended table row element.
-   *
-   * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
-   * set to tr (so it's not part of this constructor. Furthermore, three attributes are set in the constructor:
-   * <ul>
-   *  <li>sort_value - for using sort function</li>
-   *  <li>normaliseValue - for normalising values in the table row</li>
-   *  <li>optimise - is set to false since optimisation of the HTML4 package doesn't work well with the extra functionality</li>
-   * </ul>
-   *
-   * @param array attributes HTML attributes as array("attribute" => "value")
-   * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
-   * @param array parameters configuration parameters array("parameter" => "value")
-   * @param string obj_id identifier the instance
-   */
-  public function __construct($attributes="", $content=false, $objID=false){
-  	parent::__construct("tr", $attributes, $content, array("sort_value"=>array("value"=>false),"normaliseValue"=>array("value"=>false),"optimise"=>false), $objID);
-  }
+	/**
+	 * Constructor for the extended table row element.
+	 *
+	 * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
+	 * set to tr (so it's not part of this constructor. Furthermore, three attributes are set in the constructor:
+	 * <ul>
+	 *  <li>sort_value - for using sort function</li>
+	 *  <li>normaliseValue - for normalising values in the table row</li>
+	 *  <li>optimise - is set to false since optimisation of the HTML4 package doesn't work well with the extra functionality</li>
+	 * </ul>
+	 *
+	 * @param array attributes HTML attributes as array("attribute" => "value")
+	 * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
+	 * @param array parameters configuration parameters array("parameter" => "value")
+	 * @param string obj_id identifier the instance
+	 */
+	public function __construct($attributes="", $content=false, $objID=false){
+		parent::__construct("tr", $attributes, $content, array("sort_value"=>array("value"=>false),"normaliseValue"=>array("value"=>false),"optimise"=>false), $objID);
+	}
 
-  /**
-   *  Set the cell's alignement
-   *
-   *  @param string $va the requested alignement as one of: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
-   */
-  public function set_align($va="top-left"){
-    $valueMap=array("top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right");
-    if(isset($valueMap[$va])){
-      $this->set("valign",strtok($va,"-"));
-      $this->set("align",strtok("-"));
-    }
-  }
 
-  /**
-   *  Compare two rows using a sort value
-   *
-   *  @param Html4_Base $a left part of the comparision
-   *  @param Html4_Base $b right part of the comparision
-   */
-  public function compare($a, $b){return strcmp($a->get("sortValue"), $b->get("sort_value"));}
+	/**
+	 *  Set the cell's alignement
+	 *
+	 *  @param string $va the requested alignement as one of: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
+	 */
+	public function set_align($va="top-left"){
+		$valueMap=array("top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right");
+		if(isset($valueMap[$va])){
+			$this->set("valign",strtok($va,"-"));
+			$this->set("align",strtok("-"));
+		}
+	}
 
-  /**
-   *  Sort the cells in a table row.
-   */
-  public function u_sort(){usort($this->content, array("Html4_Ext_TD", "compare"));}
 
-  /**
-   *  Sort the cells using the keys.
-   */
-  public function ksort(){
-    if(is_array($this->content))
-      ksort($this->content, SORT_STRING);
-  }
+	/**
+	 *  Compare two rows using a sort value
+	 *
+	 *  @param Html4_Base $a left part of the comparision
+	 *  @param Html4_Base $b right part of the comparision
+	 */
+	public function compare($a, $b){
+		return strcmp($a->get("sortValue"), $b->get("sort_value"));
+	}
 
-  /**
-   *  Normalise the rows of the table body.
-   *
-   *  @param ar $ar array to normalise
-   */
-  public function normalise($ar){
-    $cmpAr=array_diff_key($ar->ar,$this->_get_normalise_ar()->ar);
-    $_keys=array_keys($cmpAr);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      $val=$cmpAr[$_keys[$i]];
-      $td=new Html4_Ext_TD(array("sort_value"=>$val["sort"]));
-      $td->emptyContent();
-      $this->add_child($td);
-    }
-    $this->USort();
-  }
 
-  /** @ignore */
-  private function _get_normalise_ar(){
-    $ret=new Util_ArBase();
+	/**
+	 *  Sort the cells in a table row.
+	 */
+	public function u_sort(){
+		usort($this->content, array("Html4_Ext_TD", "compare"));
+	}
 
-    $_keys=array_keys($this->content);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-      $_norm=$this->content[$_keys[$i]]->get("normalise_value");
-      if($_norm!=-1&&$_norm!="")
-        $ret->ar[$_norm]=true;
-    }
-    return $ret;
-  }
+
+	/**
+	 *  Sort the cells using the keys.
+	 */
+	public function ksort(){
+		if(is_array($this->content))
+			ksort($this->content, SORT_STRING);
+	}
+
+
+	/**
+	 *  Normalise the rows of the table body.
+	 *
+	 *  @param ar $ar array to normalise
+	 */
+	public function normalise($ar){
+		$cmpAr=array_diff_key($ar->ar,$this->_get_normalise_ar()->ar);
+		$_keys=array_keys($cmpAr);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++){
+			$val=$cmpAr[$_keys[$i]];
+			$td=new Html4_Ext_TD(array("sort_value"=>$val["sort"]));
+			$td->emptyContent();
+			$this->add_child($td);
+		}
+		$this->USort();
+	}
+
+
+	/** @ignore */
+	private function _get_normalise_ar(){
+		$ret=new Util_ArBase();
+
+		$_keys=array_keys($this->content);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++){
+			$_norm=$this->content[$_keys[$i]]->get("normalise_value");
+			if($_norm!=-1&&$_norm!="")
+				$ret->ar[$_norm]=true;
+		}
+		return $ret;
+	}
 }
 
 ?>

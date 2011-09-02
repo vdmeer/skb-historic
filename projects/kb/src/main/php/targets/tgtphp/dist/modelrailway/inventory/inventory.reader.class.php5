@@ -39,32 +39,36 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__modelrailway__inventory___inventory___reader extends SKB_Reader{
-  /**
-   * An empty constructor.
-   */
-  public function __construct(){}
+	/**
+	 * An empty constructor.
+	 */
+	public function __construct(){
+	}
 
-  /**
-   * The reader specific prepare function.
-   *
-   * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
-   */
-  public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
-    $mySKB=SKB_Main::get_instance();
 
-  	$pdos=$mySKB->sql_query(null, array('*'), array("mr_inventory"), null, '"key"');
-  	if(!is_object($pdos)&&$pdos==-1)
-  	  return;
+	/**
+	 * The reader specific prepare function.
+	 *
+	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
+	 */
+	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+		$mySKB=SKB_Main::get_instance();
 
-    while($row=$pdos->fetch(PDO::FETCH_ASSOC))
-      $this->entries[]=$mySKB->interpret(new Util_ArBase($row), 'mr_inventory')->ar;
-  }
+		$pdos=$mySKB->sql_query(null, array('*'), array("mr_inventory"), null, '"key"');
+		if(!is_object($pdos)&&$pdos==-1)
+			return;
 
-  /**
-   * The reader specific execute function.
-   *
-   * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
-   */
-  public function execute_loop(SKB_Request $request){}
+		while($row=$pdos->fetch(PDO::FETCH_ASSOC))
+			$this->entries[]=$mySKB->interpret(new Util_ArBase($row), 'mr_inventory')->ar;
+	}
+
+
+	/**
+	 * The reader specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Reader#execute() SKB_Reader->execute}.
+	 */
+	public function execute_loop(SKB_Request $request){
+	}
 }
 ?>

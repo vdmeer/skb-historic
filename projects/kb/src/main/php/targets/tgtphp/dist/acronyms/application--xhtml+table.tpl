@@ -41,30 +41,30 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-    <div class="center">
-      <br />
-      <div class="table-widegrey">
-        <table style="width:auto;">
-          <?php
-            echo "              <thead><tr>";
-            echo "                <th>Short</th>\n";
-            echo "                <th>Long</th>\n";
-            echo "              </tr></thead>";
-            echo "              <tbody>";
-
-            $_keys=array_keys($entries->ar);
-            $_size=count($_keys);
-            for($i=0;$i<$_size;$i++){
-          ?>
-              <tr>
-                <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['acronyms:short']?></td>
-                <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['acronyms:long'] ?></td>
-              </tr>
-          <?php
-            }
-            echo "              </tbody>";
-          ?>
-        </table>
-      </div>
-      <br />
-    </div>
+	<div class="center">
+		<br />
+		<div class="table-widegrey">
+			<table style="width:auto;">
+				<?php
+					echo "              <thead><tr>";
+					echo "                <th>Short</th>\n";
+					echo "                <th>Long</th>\n";
+					echo "              </tr></thead>";
+					echo "              <tbody>";
+				
+					$_keys=array_keys($entries->ar);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+				?>
+				<tr>
+					<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['acronyms:short']?></td>
+					<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['acronyms:long'] ?></td>
+				</tr>
+				<?php
+					}
+					echo "              </tbody>";
+				?>
+			</table>
+		</div>
+		<br />
+	</div>

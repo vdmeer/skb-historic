@@ -39,118 +39,118 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class SKB_DBScope{
-  /**
-   * Local instance holder for singleton implementation.
-   * @var string
-   */
-  private static $instance=null;
+	/**
+	 * Local instance holder for singleton implementation.
+	 * @var string
+	 */
+	private static $instance=null;
 
-  /**
-   * Local static string to test for initialisation.
-   * @var Util_ArType
-   */
-  private static $cKey="beef";
+	/**
+	 * Local static string to test for initialisation.
+	 * @var Util_ArType
+	 */
+	private static $cKey="beef";
 
-  /**
-   * The local array maintaining all scopes.
-   * @var array
-   */
-  private $scope=array();
-
-
-  /**
-   * The (empty) class constructor, which cannot be called directly since SKB_DBScope is a singleton.
-   */
-  public function __construct($_c){
-    if($_c!=self::$cKey)
-      trigger_error("SKB_DBScope: Direct creation of object is not allowed, please use get_instance().", E_USER_ERROR);
-    else{
-    }
-  }
+	/**
+	 * The local array maintaining all scopes.
+	 * @var array
+	 */
+	private $scope=array();
 
 
-  /**
-   * Return the instance of SKB_DBScope (Singleton).
-   */
-  public static function get_instance(){
-    if(null===self::$instance)
-      self::$instance=new SKB_DBScope("beef");
-    return self::$instance;
-  }
+	/**
+	 * The (empty) class constructor, which cannot be called directly since SKB_DBScope is a singleton.
+	 */
+	public function __construct($_c){
+		if($_c!=self::$cKey)
+			trigger_error("SKB_DBScope: Direct creation of object is not allowed, please use get_instance().", E_USER_ERROR);
+		else{
+		}
+	}
 
 
-  /**
-   * Cloning is not allowed, since SKB_Main is a Singleton.
-   */
-  public function __clone(){
-  	trigger_error("SKB_DBScope: Clone is not allowed.", E_USER_ERROR);
-  }
+	/**
+	 * Return the instance of SKB_DBScope (Singleton).
+	 */
+	public static function get_instance(){
+		if(null===self::$instance)
+			self::$instance=new SKB_DBScope("beef");
+		return self::$instance;
+	}
 
 
-  /**
-   * Push a scope using key and value.
-   * 
-   * Internally, the scopes are handled as entries in the local scope array in the form of "$k.'@'.$v".
-   * If the given scope does not exist, this functions adds it and returns true. In all other cases it returns false.
-   *
-   * @param string k key of the scope
-   * @param string v value of the scope
-   */
-  public function push($k,$v){
-    if(in_array($k."@".$v,$this->scope))
-      return false;
-    $this->scope[]=$k."@".$v;
-    return true;
-  }
+	/**
+	 * Cloning is not allowed, since SKB_Main is a Singleton.
+	 */
+	public function __clone(){
+		trigger_error("SKB_DBScope: Clone is not allowed.", E_USER_ERROR);
+	}
 
 
-  /**
-   * Pop a scope from the top of the array.
-   * 
-   * This function uses array_pop to pop the top scope off the local scope array.
-   */
-  public function pop(){
-  	array_pop($this->scope);
-  }
+	/**
+	 * Push a scope using key and value.
+	 * 
+	 * Internally, the scopes are handled as entries in the local scope array in the form of "$k.'@'.$v".
+	 * If the given scope does not exist, this functions adds it and returns true. In all other cases it returns false.
+	 *
+	 * @param string k key of the scope
+	 * @param string v value of the scope
+	 */
+	public function push($k,$v){
+		if(in_array($k."@".$v,$this->scope))
+			return false;
+		$this->scope[]=$k."@".$v;
+		return true;
+	}
 
 
-  /**
-   * Empty the local scope array.
-   */
-  public function reset(){
-    $this->scope=array();
-  }
+	/**
+	 * Pop a scope from the top of the array.
+	 * 
+	 * This function uses array_pop to pop the top scope off the local scope array.
+	 */
+	public function pop(){
+		array_pop($this->scope);
+	}
 
 
-  /**
-   * Return the local scope array as PHP array.
-   */
-  public function as_array(){
-  	return $this->scope;
-  }
+	/**
+	 * Empty the local scope array.
+	 */
+	public function reset(){
+		$this->scope=array();
+	}
 
 
-  /**
-   * Return the local scope array as string using implode("->",...).
-   */
-  public function as_string(){
-  	return implode("->",$this->scope);
-  }
+	/**
+	 * Return the local scope array as PHP array.
+	 */
+	public function as_array(){
+		return $this->scope;
+	}
 
 
-  /**
-   * Return the local scope array as string using implode("->",...).
-   */
-  public function to_string(){
-  	$this->as_string();
-  }
+	/**
+	 * Return the local scope array as string using implode("->",...).
+	 */
+	public function as_string(){
+		return implode("->",$this->scope);
+	}
 
 
-  /**
-   * Calls as_string and echos the return plus two HTML line breaks.
-   */
-  public function print_r(){
-  	echo $this->as_string()."<br />\n"."<br />\n";
-  }
+	/**
+	 * Return the local scope array as string using implode("->",...).
+	 */
+	public function to_string(){
+		$this->as_string();
+	}
+
+
+	/**
+	 * Calls as_string and echos the return plus two HTML line breaks.
+	 */
+	public function print_r(){
+		echo $this->as_string()."<br />\n"."<br />\n";
+	}
 }
 ?>

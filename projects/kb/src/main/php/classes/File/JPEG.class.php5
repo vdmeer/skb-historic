@@ -39,40 +39,42 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class File_JPEG extends File_Base{
+	public function __construct($fn, $type){
+		parent::__construct($fn, $type);
+	}
 
-  public function __construct($fn, $type){
-  	parent::__construct($fn, $type);
-  }
 
-  protected function _get_content(){return new Util_ArBase();}
+	protected function _get_content(){
+		return new Util_ArBase();
+	}
 
-  protected function _get_meta_data(){
-  	$ret=new Util_ArBase();
-    if(file_exists($this->fn)){
-	  	$exifAr=exif_read_data($this->fn);
-		  if(isset($exifAr["Model"]))
-		    $ret->ar['Model']=$exifAr["Model"];
-  		if(isset($exifAr["DateTimeOriginal"]))
-	  	  $ret->ar['DateTimeOriginal']=$exifAr["DateTimeOriginal"];
-		  if(isset($exifAr["ExposureTime"]))
-		    $ret->ar['ExposureTime']=$exifAr["ExposureTime"];
-  		if(isset($exifAr["FNumber"]))
-	  	  $ret->ar['FNumber']=$exifAr["FNumber"];
-		  if(isset($exifAr["FocalLength"]))
-		    $ret->ar['FocalLength']=$exifAr["FocalLength"];
-  		if(isset($exifAr["ExposureProgram"]))
-	  	  $ret->ar['ExposureProgram']=$exifAr["ExposureProgram"];
-		  if(isset($exifAr["ISOSpeedRatings"]))
-		    $ret->ar['ISOSpeedRatings']=$exifAr["ISOSpeedRatings"];
+	protected function _get_meta_data(){
+		$ret=new Util_ArBase();
+		if(file_exists($this->fn)){
+			$exifAr=exif_read_data($this->fn);
+			if(isset($exifAr["Model"]))
+				$ret->ar['Model']=$exifAr["Model"];
+			if(isset($exifAr["DateTimeOriginal"]))
+				$ret->ar['DateTimeOriginal']=$exifAr["DateTimeOriginal"];
+			if(isset($exifAr["ExposureTime"]))
+				$ret->ar['ExposureTime']=$exifAr["ExposureTime"];
+			if(isset($exifAr["FNumber"]))
+				$ret->ar['FNumber']=$exifAr["FNumber"];
+			if(isset($exifAr["FocalLength"]))
+				$ret->ar['FocalLength']=$exifAr["FocalLength"];
+			if(isset($exifAr["ExposureProgram"]))
+				$ret->ar['ExposureProgram']=$exifAr["ExposureProgram"];
+			if(isset($exifAr["ISOSpeedRatings"]))
+				$ret->ar['ISOSpeedRatings']=$exifAr["ISOSpeedRatings"];
 
-  		if(isset($exifAr["COMPUTED"]["Height"]))
-	  	  $ret->ar['Height']=$exifAr["COMPUTED"]["Height"];
-		  if(isset($exifAr["COMPUTED"]["Width"]))
-        $ret->ar['Width']=$exifAr["COMPUTED"]["Width"];
-  		if(isset($exifAr["COMPUTED"]["CCDWidth"]))
-	  		$ret->ar['CCDWidth']=$exifAr["COMPUTED"]["CCDWidth"];
-		  if(isset($exifAr["COMPUTED"]["ApertureFNumber"]))
-			  $ret->ar['ApertureFNumber']=$exifAr["COMPUTED"]["ApertureFNumber"];
+			if(isset($exifAr["COMPUTED"]["Height"]))
+				$ret->ar['Height']=$exifAr["COMPUTED"]["Height"];
+			if(isset($exifAr["COMPUTED"]["Width"]))
+				$ret->ar['Width']=$exifAr["COMPUTED"]["Width"];
+			if(isset($exifAr["COMPUTED"]["CCDWidth"]))
+				$ret->ar['CCDWidth']=$exifAr["COMPUTED"]["CCDWidth"];
+			if(isset($exifAr["COMPUTED"]["ApertureFNumber"]))
+				$ret->ar['ApertureFNumber']=$exifAr["COMPUTED"]["ApertureFNumber"];
 		}
 		return $ret;
   }

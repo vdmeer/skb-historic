@@ -41,41 +41,43 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__menu___application__xhtml__dd_navbar___builder extends SKB_Builder{
-  /**
-   * The template id for the builder.
-   *
-   * @var $tpl
-   */
-  protected $tpl="Dist.Menu.Entries2XHTML-Menu:Template:DD-Navbar";
+	/**
+	 * The template id for the builder.
+	 *
+	 * @var $tpl
+	 */
+	protected $tpl="Dist.Menu.Entries2XHTML-Menu:Template:DD-Navbar";
 
-  /**
-   * Class Constructor.
-   *
-   * It calls the parent class to instantiate the template repository and then 
-   * adds the local template to it.
-   */
-  function __construct(){
-  	parent::__construct();
-  	$this->templates->add_template("navbar", $this->tpl);
-  }
 
-  /**
-   * The builder specific execute function.
-   *
-   * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
-   */
-  public function execute_loop(SKB_Request $request, Util_ArBase $entries){
-    $tpl=$this->templates->get_template_object("navbar");
-    $tpl->set("request", $request);
-    $ar=$entries->ar;
-    $tpl->set("entries", $ar['/']);
-    if(isset($ar['/']['current-position']))
-      $tpl->set("current_position", $ar['/']['current-position']);
-    $first=$request->get_value("menu:navbar_first_key");
-    if(count($first)>0)
-      $tpl->set("first_key", $first[0]);
-    $tpl->set("tpl", $this->templates->get_template_path("navbar"));
-    $tpl->printT();
-  }
+	/**
+	 * Class Constructor.
+	 *
+	 * It calls the parent class to instantiate the template repository and then 
+	 * adds the local template to it.
+	 */
+	function __construct(){
+		parent::__construct();
+		$this->templates->add_template("navbar", $this->tpl);
+	}
+
+
+	/**
+	 * The builder specific execute function.
+	 *
+	 * Automatically called by {@link SKB_Builder#execute() SKB_Builder->execute}
+	 */
+	public function execute_loop(SKB_Request $request, Util_ArBase $entries){
+		$tpl=$this->templates->get_template_object("navbar");
+		$tpl->set("request", $request);
+		$ar=$entries->ar;
+		$tpl->set("entries", $ar['/']);
+		if(isset($ar['/']['current-position']))
+			$tpl->set("current_position", $ar['/']['current-position']);
+		$first=$request->get_value("menu:navbar_first_key");
+		if(count($first)>0)
+			$tpl->set("first_key", $first[0]);
+		$tpl->set("tpl", $this->templates->get_template_path("navbar"));
+		$tpl->printT();
+	}
 }
 ?>

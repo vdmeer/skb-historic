@@ -40,61 +40,60 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-    $source=null;
-    if(isset($entry['file']['jpg']))
-      $source=$entry['file']['jpg'];
-    elseif(isset($entry['file']['jpeg']))
-      $source=$entry['file']['jpeg'];
-    elseif(isset($entry['file']['gif']))
-      $source=$entry['file']['gif'];
-    elseif(isset($entry['file']['png']))
-      $source=$entry['file']['png'];
+	$source=null;
+	if(isset($entry['file']['jpg']))
+		$source=$entry['file']['jpg'];
+	elseif(isset($entry['file']['jpeg']))
+		$source=$entry['file']['jpeg'];
+	elseif(isset($entry['file']['gif']))
+		$source=$entry['file']['gif'];
+	elseif(isset($entry['file']['png']))
+		$source=$entry['file']['png'];
 
+	if($source==null)
+		return;
 
-    if($source==null)
-      return;
+	if(!isset($entry['default:description']))
+		$entry['default:description']="";
 
-    if(!isset($entry['default:description']))
-      $entry['default:description']="";
-
-    if(isset($source['full'])){
+	if(isset($source['full'])){
 ?>
-          <div class="center" style="padding-top:10px;">
-            <table border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td>
-                  <div class="img-shadow">
-                    <img src="<?php echo $source['full']['rel'];?>" width="<?php echo $source['full']['width'];?>" height="<?php echo $source['full']['height'];?>" alt="<?php echo $entry['default:description'] ;?>" />
-                  </div>
+	<div class="center" style="padding-top:10px;">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<div class="img-shadow">
+						<img src="<?php echo $source['full']['rel'];?>" width="<?php echo $source['full']['width'];?>" height="<?php echo $source['full']['height'];?>" alt="<?php echo $entry['default:description'] ;?>" />
+					</div>
 <?php
-  $fn=File_Factory::get_file($source['full']['abs']);
-  $ar=$fn->get_meta_data()->ar;
-  if(count($ar)>0){
+		$fn=File_Factory::get_file($source['full']['abs']);
+		$ar=$fn->get_meta_data()->ar;
+		if(count($ar)>0){
 ?>
-                  <div class="table-exif">
-                    <br style="clear: both;" /><br />
-                    <table>
+					<div class="table-exif">
+						<br style="clear: both;" /><br />
+						<table>
 <?php
-    $_keys=array_keys($ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
+			$_keys=array_keys($ar);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++){
 ?>
-                      <tr>
-                        <th><b><?php echo $_keys[$i];?></b></th>
-                        <td><?php echo $ar[$_keys[$i]];?></td>
-                      </tr>
+							<tr>
+								<th><b><?php echo $_keys[$i];?></b></th>
+								<td><?php echo $ar[$_keys[$i]];?></td>
+							</tr>
 <?php
-    }
+			}
 ?>
-                    </table>
-                  </div>
+						</table>
+					</div>
 <?php
-  }
+		}
 ?>
-                </td>
-              </tr>
-            </table>
-          </div>
+				</td>
+			</tr>
+		</table>
+	</div>
 <?php
-    }
+	}
 ?>

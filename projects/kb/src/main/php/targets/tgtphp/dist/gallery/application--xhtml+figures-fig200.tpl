@@ -40,33 +40,33 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-  $req=clone $request;
-  $req->set_value("request:entry", $entry['key']);
-  $href=$req->build_url($_SERVER["PHP_SELF"]);
+	$req=clone $request;
+	$req->set_value("request:entry", $entry['key']);
+	$href=$req->build_url($_SERVER["PHP_SELF"]);
 
-  $source=null;
-  if(isset($entry['file']['svg']))
-    $source=$entry['file']['svg'];
-  elseif(isset($entry['file']['svgz']))
-    $source=$entry['file']['svgz'];
+	$source=null;
+	if(isset($entry['file']['svg']))
+		$source=$entry['file']['svg'];
+	elseif(isset($entry['file']['svgz']))
+		$source=$entry['file']['svgz'];
 
-  if($source==null)
-    return;
+	if($source==null)
+		return;
 
-  echo '    <div class="img-frame-link">'."\n";
-  if(isset($source['full']))
-    echo "      <a href=\"{$href}\">\n";
+	echo '    <div class="img-frame-link">'."\n";
+	if(isset($source['full']))
+		echo "      <a href=\"{$href}\">\n";
 
-  $fn=File_Factory::get_file($source['full']['abs']);
-  $ar=$fn->get_content()->ar;
-  foreach ($ar as $line_num => $line)
-    echo $line;
+	$fn=File_Factory::get_file($source['full']['abs']);
+	$ar=$fn->get_content()->ar;
+	foreach ($ar as $line_num => $line)
+		echo $line;
 
-  if(isset($source['full']))
-    echo "      </a>";
+	if(isset($source['full']))
+		echo "      </a>";
 
-  if(isset($entry['request:hbr']))
-    echo "<br />";
-  echo "\n\n";
-  echo "    </div>\n";
+	if(isset($entry['request:hbr']))
+		 echo "<br />";
+	echo "\n\n";
+	echo "    </div>\n";
 ?>

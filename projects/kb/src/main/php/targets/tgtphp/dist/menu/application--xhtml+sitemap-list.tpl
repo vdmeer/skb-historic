@@ -40,42 +40,42 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-  if(!isset($entries['options'])||strstr($entries['options'], "no-sitemap")===false)
-    echo pkg_dist__menu___helpers::sitemap_li($position, $entries['level']);
-  else
-    return;
+	if(!isset($entries['options'])||strstr($entries['options'], "no-sitemap")===false)
+		echo pkg_dist__menu___helpers::sitemap_li($position, $entries['level']);
+	else
+		return;
 
-  $tpl=new Util_Template($tpl_entry);
-  $tpl->set("entries", $entries);
-  $tpl->set("tpl_list", $tpl_list);
-  $tpl->set("tpl_entry", $tpl_entry);
-  $tpl->printT();
+	$tpl=new Util_Template($tpl_entry);
+	$tpl->set("entries", $entries);
+	$tpl->set("tpl_list", $tpl_list);
+	$tpl->set("tpl_entry", $tpl_entry);
+	$tpl->printT();
 
-  $next_level=$entries['level']+1;
+	$next_level=$entries['level']+1;
 
-  if(isset($entries['_children'])&&pkg_dist__menu___helpers::check_print_levels($levels,$next_level)==true){
-    echo "\n<ul";
-    if($entries['level']==1)
-      echo " class=\"sub\"";
-    echo ">";
+	if(isset($entries['_children'])&&pkg_dist__menu___helpers::check_print_levels($levels,$next_level)==true){
+		echo "\n<ul";
+		if($entries['level']==1)
+			echo " class=\"sub\"";
+		echo ">";
 
-    $_keys=array_keys($entries['_children']);
-    $_size=count($_keys);
+		$_keys=array_keys($entries['_children']);
+		$_size=count($_keys);
 
-    $positionT=pkg_dist__menu___helpers::alter_positions($position, $_size);
-    for($i=0;$i<$_size;$i++){
-      $pos=pkg_dist__menu___helpers::set_position($_size, $i);
+		$positionT=pkg_dist__menu___helpers::alter_positions($position, $_size);
+		for($i=0;$i<$_size;$i++){
+			$pos=pkg_dist__menu___helpers::set_position($_size, $i);
 
-      $tpl=new Util_Template($tpl_list);
+			$tpl=new Util_Template($tpl_list);
 
-      $tpl->set("levels", $levels);
-      $tpl->set("position", $positionT.$pos);
-      $tpl->set("entries", $entries['_children'][$_keys[$i]]);
-      $tpl->set("tpl_list", $tpl_list);
-      $tpl->set("tpl_entry", $tpl_entry);
-      $tpl->printT();
-    }
-    echo "</ul>\n\n";
-  }
-  echo "</li>\n";
+			$tpl->set("levels", $levels);
+			$tpl->set("position", $positionT.$pos);
+			$tpl->set("entries", $entries['_children'][$_keys[$i]]);
+			$tpl->set("tpl_list", $tpl_list);
+			$tpl->set("tpl_entry", $tpl_entry);
+			$tpl->printT();
+		}
+		echo "</ul>\n\n";
+	}
+	echo "</li>\n";
 ?>

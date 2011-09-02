@@ -39,52 +39,57 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Html4_Ext_TD extends Html4_Base{
-  /**
-   * Constructor for the extended table column element.
-   *
-   * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
-   * set to td (so it's not part of this constructor. Furthermore, two attributes are set in the constructor:
-   * <ul>
-   *  <li>sort_value - for using sort function</li>
-   *  <li>normaliseValue - for normalising values in the table column</li>
-   * </ul>
-   *
-   * @param array attributes HTML attributes as array("attribute" => "value")
-   * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
-   * @param array parameters configuration parameters array("parameter" => "value")
-   * @param string obj_id identifier the instance
-   */
-  public function __construct($attributes=false, $content=false, $objID=false){
-  	parent::__construct("td", $attributes, $content, array("sort_value"=>array("value"=>false),"normaliseValue"=>array("value"=>false)), $objID);
-  }
+	/**
+	 * Constructor for the extended table column element.
+	 *
+	 * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
+	 * set to td (so it's not part of this constructor. Furthermore, two attributes are set in the constructor:
+	 * <ul>
+	 *  <li>sort_value - for using sort function</li>
+	 *  <li>normaliseValue - for normalising values in the table column</li>
+	 * </ul>
+	 *
+	 * @param array attributes HTML attributes as array("attribute" => "value")
+	 * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
+	 * @param array parameters configuration parameters array("parameter" => "value")
+	 * @param string obj_id identifier the instance
+	 */
+	public function __construct($attributes=false, $content=false, $objID=false){
+		parent::__construct("td", $attributes, $content, array("sort_value"=>array("value"=>false),"normaliseValue"=>array("value"=>false)), $objID);
+	}
 
-  /**
-   *  Mark cell as empty and use non-breakable space
-   */
-  public function empty_content(){
-  	$this->content[]="&#160;";
-  }
 
-  /**
-   *  Set the cell's alignement
-   *
-   *  @param string $va the requested alignement as one of: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
-   */
-  public function set_align($va="top-left"){
-  	$valueMap=array("top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right");
-  	if(isset($valueMap[$va])){
-      $this->set("valign",strtok($va,"-"));
-      $this->set("align",strtok("-"));
-  	}
-  }
+	/**
+	 *  Mark cell as empty and use non-breakable space
+	 */
+	public function empty_content(){
+		$this->content[]="&#160;";
+	}
 
-  /**
-   *  Compare two cells.
-   *
-   *  @param Html4_Base $a the left part of the comparision
-   *  @param Html4_Base $b the right part of the comparision
-   */
-  public function compare($a, $b){return strcmp($a->get("sort_value"), $b->get("sort_value"));}
+
+	/**
+	 *  Set the cell's alignement
+	 *
+	 *  @param string $va the requested alignement as one of: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
+	 */
+	public function set_align($va="top-left"){
+		$valueMap=array("top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right");
+		if(isset($valueMap[$va])){
+	  		$this->set("valign",strtok($va,"-"));
+	  		$this->set("align",strtok("-"));
+		}
+	}
+
+
+	/**
+	 *  Compare two cells.
+	 *
+	 *  @param Html4_Base $a the left part of the comparision
+	 *  @param Html4_Base $b the right part of the comparision
+	 */
+	public function compare($a, $b){
+		return strcmp($a->get("sort_value"), $b->get("sort_value"));
+	}
 }
 
 ?>

@@ -39,95 +39,95 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class SKB_BuilderTemplates{
-  /**
-   * The local collection of templates.
-   * @var array
-   */
-  protected $templates=array();
+	/**
+	 * The local collection of templates.
+	 * @var array
+	 */
+	protected $templates=array();
 
 
-  /**
-   * Class constructor (empty).
-   */
-  public function __construct(){}
+	/**
+	 * Class constructor (empty).
+	 */
+	public function __construct(){}
 
 
-  /**
-   * Add a template using a name/key pair.
-   * 
-   * This will create an entry 'name' in the local template array and set the 
-   * name/value pair 'key'/key.
-   *
-   * @param string name name for the template
-   * @param key key key for the template
-   */
-  public function add_template($name, $key){
-  	$this->templates[$name]=array("key"=>$key);
-  }
+	/**
+	 * Add a template using a name/key pair.
+	 * 
+	 * This will create an entry 'name' in the local template array and set the 
+	 * name/value pair 'key'/key.
+	 *
+	 * @param string name name for the template
+	 * @param key key key for the template
+	 */
+	public function add_template($name, $key){
+		$this->templates[$name]=array("key"=>$key);
+	}
 
 
-  /**
-   * Add CSS and Mime Content type information of registered templates to the global SKB configuration.
-   * 
-   * This function will add the CSS and Mime Content Type information of each of the registered templates to
-   * the global SKB configuration, which in turn will help to automatically load CSS in HTML page headers and 
-   * to process Mime Content Types when using REST access.
-   */
-  public function set_header(){
-    $mySKB=SKB_Main::get_instance();
+	/**
+	 * Add CSS and Mime Content type information of registered templates to the global SKB configuration.
+	 * 
+	 * This function will add the CSS and Mime Content Type information of each of the registered templates to
+	 * the global SKB configuration, which in turn will help to automatically load CSS in HTML page headers and 
+	 * to process Mime Content Types when using REST access.
+	 */
+	public function set_header(){
+		$mySKB=SKB_Main::get_instance();
 
-    $_keys=array_keys($this->templates);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
-    	$tpl=$mySKB->get_registered_templates_by_key($this->templates[$_keys[$i]]['key']);
-    	if(isset($tpl['core:rabit:css'])&&Util_Interpreter::interpret("value:is_empty", $tpl['core:rabit:css'])==false)
-    	  $mySKB->configuration->add_2_comma("header","std-css",$tpl['core:rabit:css']);
-    	if(isset($tpl['core:rabit:mime_out'])&&Util_Interpreter::interpret("value:is_empty", $tpl['core:rabit:mime_out'])==false){
-    	  $mySKB->configuration->add_2_comma("header","content-type",$tpl['core:rabit:mime_out']);
-    	}
-    }
-  }
-
-
-  /**
-   * Return a template object for the given template key.
-   * 
-   * This function will create and return an object Util_Template for the given tempalte 'key', or -1 if the key
-   * does not exist.
-   *
-   * @param key key key of the template
-   */
-  public function get_template_object($key){
-  	if(isset($this->templates[$key])){
-  		$mySKB=SKB_Main::get_instance();
-  		$target=$mySKB->configuration->get_group("skb","target");
-  		$targetpref=$mySKB->configuration->get_group("skb","targetpref");
-  		$tpl=$mySKB->get_registered_templates_by_key($this->templates[$key]['key']);
-  	  return new Util_Template($mySKB->configuration->get_group("path","targets") . $targetpref . $target . "/" . $tpl['core:rabit:target:template'][$target] . ".tpl");
-  	}
-  	else
-  	  return -1;
-  }
+		$_keys=array_keys($this->templates);
+		$_size=count($_keys);
+		for($i=0;$i<$_size;$i++){
+			$tpl=$mySKB->get_registered_templates_by_key($this->templates[$_keys[$i]]['key']);
+			if(isset($tpl['core:rabit:css'])&&Util_Interpreter::interpret("value:is_empty", $tpl['core:rabit:css'])==false)
+				$mySKB->configuration->add_2_comma("header","std-css",$tpl['core:rabit:css']);
+			if(isset($tpl['core:rabit:mime_out'])&&Util_Interpreter::interpret("value:is_empty", $tpl['core:rabit:mime_out'])==false){
+				$mySKB->configuration->add_2_comma("header","content-type",$tpl['core:rabit:mime_out']);
+			}
+		}
+	}
 
 
-  /**
-   * Return a path of the template for the given template key.
-   * 
-   * This function will return the path to the actual template for the given tempalte 'key', or -1 if the key
-   * does not exist.
-   *
-   * @param key key key of the template
-   */
-  public function get_template_path($key){
-  	if(isset($this->templates[$key])){
-  		$mySKB=SKB_Main::get_instance();
-  		$target=$mySKB->configuration->get_group("skb","target");
-  		$targetpref=$mySKB->configuration->get_group("skb","targetpref");
-  		$tpl=$mySKB->get_registered_templates_by_key($this->templates[$key]['key']);
-  	  return $mySKB->configuration->get_group("path","targets") . $targetpref . $target .  "/" . $tpl['core:rabit:target:template'][$target] . ".tpl";
-  	}
-  	else
-  	  return -1;
-  }
+	/**
+	 * Return a template object for the given template key.
+	 * 
+	 * This function will create and return an object Util_Template for the given tempalte 'key', or -1 if the key
+	 * does not exist.
+	 *
+	 * @param key key key of the template
+	 */
+	public function get_template_object($key){
+		if(isset($this->templates[$key])){
+			$mySKB=SKB_Main::get_instance();
+			$target=$mySKB->configuration->get_group("skb","target");
+			$targetpref=$mySKB->configuration->get_group("skb","targetpref");
+			$tpl=$mySKB->get_registered_templates_by_key($this->templates[$key]['key']);
+			return new Util_Template($mySKB->configuration->get_group("path","targets") . $targetpref . $target . "/" . $tpl['core:rabit:target:template'][$target] . ".tpl");
+		}
+		else
+			return -1;
+	}
+
+
+	/**
+	 * Return a path of the template for the given template key.
+	 * 
+	 * This function will return the path to the actual template for the given tempalte 'key', or -1 if the key
+	 * does not exist.
+	 *
+	 * @param key key key of the template
+	 */
+	public function get_template_path($key){
+		if(isset($this->templates[$key])){
+			$mySKB=SKB_Main::get_instance();
+			$target=$mySKB->configuration->get_group("skb","target");
+			$targetpref=$mySKB->configuration->get_group("skb","targetpref");
+			$tpl=$mySKB->get_registered_templates_by_key($this->templates[$key]['key']);
+		  return $mySKB->configuration->get_group("path","targets") . $targetpref . $target .  "/" . $tpl['core:rabit:target:template'][$target] . ".tpl";
+		}
+		else
+			return -1;
+	}
 }
 ?>

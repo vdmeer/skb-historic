@@ -41,26 +41,26 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-      <div class="publications">
-        <ol>
+	<div class="publications">
+		<ol>
 <?php
-    $_keys=array_keys($entries->ar);
-    $_size=count($_keys);
-    for($i=0;$i<$_size;$i++){
+	$_keys=array_keys($entries->ar);
+	$_size=count($_keys);
+	for($i=0;$i<$_size;$i++){
 ?>
-          <li>
-            <span class="default">
-              <?php
-                $tpl=new Util_Template($tplSingle);
-                $tpl->set("entry",   $entries->ar[$_keys[$i]]);
-                $tpl->set("request", $request);
-                $tpl->printT();
-              ?>
-            </span>
-            &nbsp;
-          </li>
+			<li>
+				<span class="default">
+					<?php
+						$tpl=new Util_Template($tplSingle);
+						$tpl->set("entry",   $entries->ar[$_keys[$i]]);
+						$tpl->set("request", $request);
+						$tpl->printT();
+					?>
+				</span>
+				&nbsp;
+			</li>
 <?php
-    }
+	}
 ?>
-        </ol>
-      </div>
+		</ol>
+	</div>

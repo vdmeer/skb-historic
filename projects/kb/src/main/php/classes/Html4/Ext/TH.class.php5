@@ -39,38 +39,42 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Html4_Ext_TH extends Html4_Base{
-  /**
-   * Constructor for the extended table header element.
-   *
-   * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
-   * set to th (so it's not part of this constructor.
-   *
-   * @param array attributes HTML attributes as array("attribute" => "value")
-   * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
-   * @param array parameters configuration parameters array("parameter" => "value")
-   * @param string obj_id identifier the instance
-   */
-  public function __construct($attributes=false, $content=false, $objID=false){
-  	parent::__construct("th", $attributes, $content, array(), $objID);
-  }
+	/**
+	 * Constructor for the extended table header element.
+	 *
+	 * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
+	 * set to th (so it's not part of this constructor.
+	 *
+	 * @param array attributes HTML attributes as array("attribute" => "value")
+	 * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
+	 * @param array parameters configuration parameters array("parameter" => "value")
+	 * @param string obj_id identifier the instance
+	 */
+	public function __construct($attributes=false, $content=false, $objID=false){
+		parent::__construct("th", $attributes, $content, array(), $objID);
+	}
 
-  /**
-   *  Mark cell as empty and use non-breakable space
-   */
-  public function empty_content(){$this->content[]="&#160;";}
 
-  /**
-   *  Set the cell's alignement
-   *
-   *  @param string $va the requested alignement as one of: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
-   */
-  public function set_align($va="top-left"){
-  	$valueMap=array("top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right");
-  	if(isset($valueMap[$va])){
-      $this->set("valign",strtok($va,"-"));
-      $this->set("align",strtok("-"));
-  	}
-  }
+	/**
+	 *  Mark cell as empty and use non-breakable space
+	 */
+	public function empty_content(){
+		$this->content[]="&#160;";
+	}
+
+
+	/**
+	 *  Set the cell's alignement
+	 *
+	 *  @param string $va the requested alignement as one of: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
+	 */
+	public function set_align($va="top-left"){
+		$valueMap=array("top-left","top-center","top-right","middle-left","middle-center","middle-right","bottom-left","bottom-center","bottom-right");
+		if(isset($valueMap[$va])){
+	  		$this->set("valign",strtok($va,"-"));
+	  		$this->set("align",strtok("-"));
+		}
+	}
 }
 
 ?>

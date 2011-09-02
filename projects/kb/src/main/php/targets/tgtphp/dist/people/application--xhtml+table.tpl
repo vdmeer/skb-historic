@@ -41,75 +41,75 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-    <div class="center">
-      <br />
-      <div class="table-widegrey">
-        <table style="width:auto;">
-          <?php
-            echo "              <thead><tr>";
-            echo "                <th>First</th>\n";
-            echo "                <th>Middle</th>\n";
-            echo "                <th>Last</th>\n";
-            echo "                <th>Affiliation(s)</th>\n";
-            echo "              </tr></thead>";
+	<div class="center">
+		<br />
+		<div class="table-widegrey">
+			<table style="width:auto;">
+				<?php
+					echo "				<thead><tr>";
+					echo "					<th>First</th>\n";
+					echo "					<th>Middle</th>\n";
+					echo "					<th>Last</th>\n";
+					echo "					<th>Affiliation(s)</th>\n";
+					echo "				</tr></thead>";
 
-            echo "              <tbody>";
-            $_keys=array_keys($entries->ar);
-            $_size=count($_keys);
-            for($i=0;$i<$_size;$i++){
-              echo "              <tr>";
-              if(isset($entries->ar[$_keys[$i]]['people:first']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['people:first'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
+					echo "				<tbody>";
+					$_keys=array_keys($entries->ar);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+						echo "					<tr>";
+						if(isset($entries->ar[$_keys[$i]]['people:first']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['people:first'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              if(isset($entries->ar[$_keys[$i]]['people:middle']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['people:middle'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['people:middle']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['people:middle'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              if(isset($entries->ar[$_keys[$i]]['people:last']))
-                echo '                <td>'.$entries->ar[$_keys[$i]]['people:last'].'</td>'."\n";
-              else
-                echo '                <td>&#160;</td>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['people:last']))
+							echo '						<td>'.$entries->ar[$_keys[$i]]['people:last'].'</td>'."\n";
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              if(isset($entries->ar[$_keys[$i]]['people:affiliation'])){
-                echo '                <td>';
-                $ar=$entries->ar[$_keys[$i]]['people:affiliation'];
-                $_keysAf=array_keys($ar);
-                $_sizeAf=count($_keysAf);
-                for($k=0;$k<$_sizeAf;$k++){
-                  if(isset($ar[$_keysAf[$k]]['default:name']))
-                    echo ($k+1).': '.$ar[$_keysAf[$k]]['default:name'];
-                  elseif(isset($ar[$_keysAf[$k]]['default:acronym']))
-                    echo ($k+1).': '.$ar[$_keysAf[$k]]['default:acronym']['acronyms:long'];
-                  if(isset($ar[$_keysAf[$k]]['default:acronym']))
-                    echo ' ('.$ar[$_keysAf[$k]]['default:acronym']['acronyms:short'].')';
-                  if(isset($ar[$_keysAf[$k]]['default:address']))
-                    echo ', '.$ar[$_keysAf[$k]]['default:address'];
-                  if(isset($ar[$_keysAf[$k]]['default:city'])){
-                    if(isset($ar[$_keysAf[$k]]['default:city']['default:name']))
-                      echo ', '.$ar[$_keysAf[$k]]['default:city']['default:name'];
-                    if(isset($ar[$_keysAf[$k]]['default:city']['default:country']['default:name']))
-                      echo ', '.$ar[$_keysAf[$k]]['default:city']['default:country']['default:name'];
-                  }
-                  elseif(isset($ar[$_keysAf[$k]]['default:country']['default:name'])){
-                    echo ', '.$ar[$_keysAf[$k]]['default:country']['default:name'];
-                  }
-                  if(isset($ar[$_keysAf[$k]]['default:url']))
-                    echo ', '.$ar[$_keysAf[$k]]['default:url'];
-                  echo "<br />\n";
-                }
-                echo '</td>'."\n";
-              }
-              else
-                echo '                <td>&#160;</td>'."\n";
+						if(isset($entries->ar[$_keys[$i]]['people:affiliation'])){
+							echo '						<td>';
+							$ar=$entries->ar[$_keys[$i]]['people:affiliation'];
+							$_keysAf=array_keys($ar);
+							$_sizeAf=count($_keysAf);
+							for($k=0;$k<$_sizeAf;$k++){
+								if(isset($ar[$_keysAf[$k]]['default:name']))
+									echo ($k+1).': '.$ar[$_keysAf[$k]]['default:name'];
+								elseif(isset($ar[$_keysAf[$k]]['default:acronym']))
+									echo ($k+1).': '.$ar[$_keysAf[$k]]['default:acronym']['acronyms:long'];
+								if(isset($ar[$_keysAf[$k]]['default:acronym']))
+									echo ' ('.$ar[$_keysAf[$k]]['default:acronym']['acronyms:short'].')';
+								if(isset($ar[$_keysAf[$k]]['default:address']))
+									echo ', '.$ar[$_keysAf[$k]]['default:address'];
+								if(isset($ar[$_keysAf[$k]]['default:city'])){
+									if(isset($ar[$_keysAf[$k]]['default:city']['default:name']))
+										echo ', '.$ar[$_keysAf[$k]]['default:city']['default:name'];
+									if(isset($ar[$_keysAf[$k]]['default:city']['default:country']['default:name']))
+										echo ', '.$ar[$_keysAf[$k]]['default:city']['default:country']['default:name'];
+								}
+								elseif(isset($ar[$_keysAf[$k]]['default:country']['default:name'])){
+									echo ', '.$ar[$_keysAf[$k]]['default:country']['default:name'];
+								}
+								if(isset($ar[$_keysAf[$k]]['default:url']))
+									echo ', '.$ar[$_keysAf[$k]]['default:url'];
+								echo "<br />\n";
+							}
+							echo '</td>'."\n";
+						}
+						else
+							echo '						<td>&#160;</td>'."\n";
 
-              echo "              </tr>";
-            }
-            echo "              </tbody>";
-          ?>
-        </table>
-      </div>
-      <br />
-    </div>
+						echo "					</tr>";
+					}
+					echo "				</tbody>";
+				?>
+			</table>
+		</div>
+		<br />
+	</div>

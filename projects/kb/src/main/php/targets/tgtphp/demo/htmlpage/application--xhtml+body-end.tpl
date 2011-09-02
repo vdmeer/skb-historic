@@ -41,48 +41,48 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 
-    $mySKB=SKB_Main::get_instance();
-    global $skb_menu_reader;
-    $imgPath=$mySKB->configuration->get_group("path","images");
+	$mySKB=SKB_Main::get_instance();
+	global $skb_menu_reader;
+	$imgPath=$mySKB->configuration->get_group("path","images");
 
 ?>
-          <div id="push"></div><br />
-        </div>
-      </div>
-    </div>
+				<div id="push"></div><br />
+			</div>
+		</div>
+	</div>
 
-    <div id="container-food-outer">
-      <div id="container-food-inner">
-        <div id="foot_top"></div>
-        <div id="foot_top_content">
-          <ul>
-            <li>&copy; 2010-2011 Sven van der Meer</li>
-            <li>Licenced under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license">Creative Commons Licence</a></li>
-            <li><i>last changed:</i> <?php echo date("F j, Y, g:i a", filemtime($_SERVER["SCRIPT_FILENAME"]));?></li>
-          </ul>
-        </div>
-        <div class="foot_middle"></div>
-        <div class="foot_middle_content" style="text-align:left;">
-          <ul>
-            <li><i>page reference:</i> http://<?php echo $_SERVER["HTTP_HOST"].htmlspecialchars($_SERVER["REQUEST_URI"]);?></li>
-          </ul>
-        </div>
-        <div class="foot_middle"></div>
-        <div class="foot_middle_content">
-          <ul>
-            <li>&#160;</li>
-            <li><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license"><img alt="reative Commons License" src="<?php echo $imgPath;?>dist/images/valid/cc-by-nc-nd.png" /></a></li>
-            <li><a href="http://validator.w3.org/check?uri=referer"><img alt="w3c xhtml validation banner" src="<?php echo $imgPath;?>dist/images/valid/w3c-valid-xhtml11.png" /></a></li>
-            <li><a href="http://jigsaw.w3.org/css-validator/check/referer"><img alt="w3c css validation banner" src="<?php echo $imgPath;?>dist/images/valid/w3c-valid-css.png" /></a></li>
-            <li><a href="http://www.php.net"><img alt="php5 banner" src="<?php echo $imgPath;?>dist/images/valid/php5-power-micro.png" /></a></li>
-            <li><a href="http://www.apache.org"><img alt="apache banner" src="<?php echo $imgPath;?>dist/images/valid/apache.gif" /></a></li>
-            <li><img alt="no-table banner" src="<?php echo $imgPath;?>dist/images/valid/no-table.png" /></li>
-            <li><a href="http://www.anybrowser.org/campaign/"><img alt="all browser banner" src="<?php echo $imgPath;?>dist/images/valid/ab_thin.png" /></a></li>
-          </ul>
-        </div>
-        <div id="foot_bottom"></div>
-      </div>
-    </div>
+		<div id="container-food-outer">
+			<div id="container-food-inner">
+				<div id="foot_top"></div>
+				<div id="foot_top_content">
+					<ul>
+						<li>&copy; 2010-2011 Sven van der Meer</li>
+						<li>Licenced under a <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license">Creative Commons Licence</a></li>
+						<li><i>last changed:</i> <?php echo date("F j, Y, g:i a", filemtime($_SERVER["SCRIPT_FILENAME"]));?></li>
+					</ul>
+				</div>
+				<div class="foot_middle"></div>
+				<div class="foot_middle_content" style="text-align:left;">
+					<ul>
+						<li><i>page reference:</i> http://<?php echo $_SERVER["HTTP_HOST"].htmlspecialchars($_SERVER["REQUEST_URI"]);?></li>
+					</ul>
+				</div>
+				<div class="foot_middle"></div>
+				<div class="foot_middle_content">
+					<ul>
+						<li>&#160;</li>
+						<li><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" rel="license"><img alt="reative Commons License" src="<?php echo $imgPath;?>dist/images/valid/cc-by-nc-nd.png" /></a></li>
+						<li><a href="http://validator.w3.org/check?uri=referer"><img alt="w3c xhtml validation banner" src="<?php echo $imgPath;?>dist/images/valid/w3c-valid-xhtml11.png" /></a></li>
+						<li><a href="http://jigsaw.w3.org/css-validator/check/referer"><img alt="w3c css validation banner" src="<?php echo $imgPath;?>dist/images/valid/w3c-valid-css.png" /></a></li>
+						<li><a href="http://www.php.net"><img alt="php5 banner" src="<?php echo $imgPath;?>dist/images/valid/php5-power-micro.png" /></a></li>
+						<li><a href="http://www.apache.org"><img alt="apache banner" src="<?php echo $imgPath;?>dist/images/valid/apache.gif" /></a></li>
+						<li><img alt="no-table banner" src="<?php echo $imgPath;?>dist/images/valid/no-table.png" /></li>
+						<li><a href="http://www.anybrowser.org/campaign/"><img alt="all browser banner" src="<?php echo $imgPath;?>dist/images/valid/ab_thin.png" /></a></li>
+					</ul>
+				</div>
+				<div id="foot_bottom"></div>
+			</div>
+		</div>
 
-  </body>
+	</body>
 </html>

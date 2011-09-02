@@ -82,8 +82,8 @@ class SKB_Http{
 			self::$instance=new SKB_Http("beef");
 		return self::$instance;
 	}
-  
-  
+
+
 	/**
 	 * Cloning is not allowed, since SKB_Http is a Singleton
 	 */
@@ -217,6 +217,7 @@ class SKB_Http{
 			trigger_error("SKB_Http: unknown status code: {$status}.", E_USER_ERROR);
 	}
 
+
 	public function response_send_header($header, $value, $status=null, $replace=true){
 		if(array_key_exists($header,$this->headers_response)&&$status!=null&&array_key_exists($status,$this->status_codes))
 			header($header.": ".$value, $replace, $status);
@@ -229,6 +230,7 @@ class SKB_Http{
 		else
 			trigger_error("SKB_Http: unknown header <{$header}> or status code: <{$status}> with value <{$value}>.", E_USER_ERROR);
 	}
+
 
 	public function register_callback($http_methods, $header_accept, $f_name){
 		if($f_name==null&&$f_name=="")
@@ -243,7 +245,7 @@ class SKB_Http{
 					trigger_error("SKB_Http: cannot register unknown content type {$key}.", E_USER_ERROR);
 			}
 		}
-	
+
 		if(!is_array($http_methods)){
 			if(array_key_exists($http_methods,$this->request_methods)){
 				if(!is_array($header_accept))
@@ -291,6 +293,7 @@ class SKB_Http{
 			$this->response_send_header("Allow", $allow, 405);
 	}
 
+
 	public function response_set_html_content_type(){
 		//get the accept header, and change the array to allow priorities
 		if(!array_key_exists("ACCEPT", $this->request_headers))
@@ -313,6 +316,7 @@ class SKB_Http{
 		}
 		return $ret;
 	}
+
 
 	private function _test_response_set_html_content_type($ar){
 		$mySKB=SKB_Main::get_instance();
@@ -342,9 +346,11 @@ class SKB_Http{
 		return $ret;
 	}
 
+
 	public function get_skb_http_headers_response(){
 		return $this->headers_response;
 	}
+
 
 	public function get_skb_mime_content_types(){
 		$ret=array();

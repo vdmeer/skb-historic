@@ -39,122 +39,127 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Html4_Ext_Table extends Html4_Base{
-  /**
-   * Constructor for the extended table element.
-   *
-   * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
-   * set to table (so it's not part of this constructor. Furthermore, three attributes are set in the constructor:
-   * <ul>
-   *   <li>altColors - for alternating colors (color1 and color2)</li>
-   *   <li>altClasses - for alternating css classes (class1 and class2)</li>
-   *   <li>optimise - is set to false since optimisation of the HTML4 package doesn't work well with the extra functionality</li>
-   * </ul>
-   *
-   * @param array attributes HTML attributes as array("attribute" => "value")
-   * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
-   * @param array parameters configuration parameters array("parameter" => "value")
-   * @param string obj_id identifier the instance
-   */
-  public function __construct($attributes=false, $content=false, $objID=false){
-    $cfgAttr=array(
-      "altColors"  => array("value" => false, "color1" => false, "color2" => false, "current" => 0),
-      "altClasses" => array("value" => false, "class1" => false, "class2" => false, "current" => 0),
-      "optimise" => false,
-    );
-    parent::__construct("table", $attributes, $content, $cfgAttr, $objID);
-  }
+	/**
+	 * Constructor for the extended table element.
+	 *
+	 * The constructor works similar to the base class ({@link Html4_Base Html4_Base}), except that the paramter htype is automatically 
+	 * set to table (so it's not part of this constructor. Furthermore, three attributes are set in the constructor:
+	 * <ul>
+	 *   <li>altColors - for alternating colors (color1 and color2)</li>
+	 *   <li>altClasses - for alternating css classes (class1 and class2)</li>
+	 *   <li>optimise - is set to false since optimisation of the HTML4 package doesn't work well with the extra functionality</li>
+	 * </ul>
+	 *
+	 * @param array attributes HTML attributes as array("attribute" => "value")
+	 * @param mixed content content for the instance (mixed, object, array of mixed or array of objects)
+	 * @param array parameters configuration parameters array("parameter" => "value")
+	 * @param string obj_id identifier the instance
+	 */
+	public function __construct($attributes=false, $content=false, $objID=false){
+		$cfgAttr=array(
+			"altColors"  => array("value" => false, "color1" => false, "color2" => false, "current" => 0),
+			"altClasses" => array("value" => false, "class1" => false, "class2" => false, "current" => 0),
+			"optimise" => false,
+		);
+		parent::__construct("table", $attributes, $content, $cfgAttr, $objID);
+	}
 
-  /**
-   *  Set alternate colours for table rows.
-   *
-   *  @param string $color1 the color for all odd rows
-   *  @param string $color2 the color for all even rows
-   */
-  public function set_alternate_colors($color1, $color2){
-    $this->parameters["altColors"]["value"]=true;
-    $this->parameters["altColors"]["color1"]=$color1;
-    $this->parameters["altColors"]["color2"]=$color2;
-    $this->parameters["altColors"]["current"]=0;
-  }
 
-  /** @ignore */
-  private function do_alternate_colors(){
-    if($this->parameters["altColors"]["value"]==true){
-      $_keys=array_keys($this->content);
-      $_size=count($_keys);
-      for($i=0;$i<$_size;$i++){
-        if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tr"){
-          $color=($this->parameters["altColors"]["current"]==0)?$this->parameters["altColors"]["color1"]:$this->parameters["altColors"]["color2"];
-          $newCurrent=($this->parameters["altColors"]["current"])==0?1:0;
-          if($color!="")
-            $this->content[$_keys[$i]]->set("bgcolor",$color);
-          $this->parameters["altColors"]["current"]=$newCurrent;
-        }
-        if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tbody"){
-          $newCurrent=($this->parameters["altColors"]["current"])==0?1:0;
-          $this->content[$_keys[$i]]->do_alternate_colors($this->parameters["altColors"]["color1"],$this->parameters["altColors"]["color2"],$newCurrent);
-          $this->parameters["altColors"]["current"]=$newCurrent;
-        }
-      }
-    }
-  }
+	/**
+	 *  Set alternate colours for table rows.
+	 *
+	 *  @param string $color1 the color for all odd rows
+	 *  @param string $color2 the color for all even rows
+	 */
+	public function set_alternate_colors($color1, $color2){
+		$this->parameters["altColors"]["value"]=true;
+		$this->parameters["altColors"]["color1"]=$color1;
+		$this->parameters["altColors"]["color2"]=$color2;
+		$this->parameters["altColors"]["current"]=0;
+	}
 
-  /**
-   *  Set alternate classes for table rows.
-   *
-   *  @param string $class1 the class for all odd rows
-   *  @param string $class2 the class for all even rows
-   */
-  public function set_alternate_classes($class1, $class2){
-    $this->parameters["altClasses"]["value"]=true;
-    $this->parameters["altClasses"]["class1"]=$class1;
-    $this->parameters["altClasses"]["class2"]=$class2;
-    $this->parameters["altClasses"]["current"]=0;
-  }
 
-  /** @ignore */
-  private function do_alternate_classes(){
-    if($this->parameters["altClasses"]["value"]==true){
-      $_keys=array_keys($this->content);
-      $_size=count($_keys);
-      for($i=0;$i<$_size;$i++){
-        if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tr"){
-          $class=($this->parameters["altClasses"]["current"]==0)?$this->parameters["altClasses"]["class1"]:$this->parameters["altClasses"]["class2"];
-          $newCurrent=($this->parameters["altClasses"]["current"])==0?1:0;
-          if($class!="")
-            $this->content[$_keys[$i]]->set("class",$class);
-          $this->parameters["altClasses"]["current"]=$newCurrent;
-        }
-        else if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tbody"){
-          $newCurrent=($this->parameters["altClasses"]["current"])==0?1:0;
-          $this->content[$_keys[$i]]->do_alternate_classes($this->parameters["altClasses"]["class1"],$this->parameters["altClasses"]["class2"],$newCurrent);
-          $this->parameters["altClasses"]["current"]=$newCurrent;
-        }
-      }
-    }
-  }
+	/** @ignore */
+	private function do_alternate_colors(){
+		if($this->parameters["altColors"]["value"]==true){
+			$_keys=array_keys($this->content);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++){
+				if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tr"){
+					$color=($this->parameters["altColors"]["current"]==0)?$this->parameters["altColors"]["color1"]:$this->parameters["altColors"]["color2"];
+					$newCurrent=($this->parameters["altColors"]["current"])==0?1:0;
+					if($color!="")
+						$this->content[$_keys[$i]]->set("bgcolor",$color);
+					$this->parameters["altColors"]["current"]=$newCurrent;
+				}
+				if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tbody"){
+					$newCurrent=($this->parameters["altColors"]["current"])==0?1:0;
+					$this->content[$_keys[$i]]->do_alternate_colors($this->parameters["altColors"]["color1"],$this->parameters["altColors"]["color2"],$newCurrent);
+					$this->parameters["altColors"]["current"]=$newCurrent;
+				}
+			}
+		}
+	}
 
-  /**
-   *  Convert the HTML4 Table object into a string, using the set or default colours and classes
-   *
-   *  @param string $indent minimum indent for each line of the code, default is 0
-   *  "param boolean $_echo not used here, inherited from base class
-   */
-  public function to_string($indent=0, $_echo=false){
-  	$this->do_alternate_colors();
-  	$this->do_alternate_classes();
-  	return parent::to_string($indent);
-  }
+	/**
+	 *  Set alternate classes for table rows.
+	 *
+	 *  @param string $class1 the class for all odd rows
+	 *  @param string $class2 the class for all even rows
+	 */
+	public function set_alternate_classes($class1, $class2){
+		$this->parameters["altClasses"]["value"]=true;
+		$this->parameters["altClasses"]["class1"]=$class1;
+		$this->parameters["altClasses"]["class2"]=$class2;
+		$this->parameters["altClasses"]["current"]=0;
+	}
 
-  /**
-   *  Convert the HTML4 Table object into a string and print the result.
-   *
-   *  @param string $indent minimum indent for each line of the code, default is 0
-   */
-  public function print_html($indent=0){
-  	$this->do_alternate_colors();
-  	$this->do_alternate_classes();
-  	parent::print_html($indent);
-  }
+
+	/** @ignore */
+	private function do_alternate_classes(){
+		if($this->parameters["altClasses"]["value"]==true){
+			$_keys=array_keys($this->content);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++){
+				if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tr"){
+					$class=($this->parameters["altClasses"]["current"]==0)?$this->parameters["altClasses"]["class1"]:$this->parameters["altClasses"]["class2"];
+					$newCurrent=($this->parameters["altClasses"]["current"])==0?1:0;
+					if($class!="")
+						$this->content[$_keys[$i]]->set("class",$class);
+					$this->parameters["altClasses"]["current"]=$newCurrent;
+				}
+				else if(is_object($this->content[$_keys[$i]])&&$this->content[$_keys[$i]]->htype()=="tbody"){
+					$newCurrent=($this->parameters["altClasses"]["current"])==0?1:0;
+					$this->content[$_keys[$i]]->do_alternate_classes($this->parameters["altClasses"]["class1"],$this->parameters["altClasses"]["class2"],$newCurrent);
+					$this->parameters["altClasses"]["current"]=$newCurrent;
+				}
+			}
+		}
+	}
+
+
+	/**
+	 *  Convert the HTML4 Table object into a string, using the set or default colours and classes
+	 *
+	 *  @param string $indent minimum indent for each line of the code, default is 0
+	 *  "param boolean $_echo not used here, inherited from base class
+	 */
+	public function to_string($indent=0, $_echo=false){
+		$this->do_alternate_colors();
+		$this->do_alternate_classes();
+		return parent::to_string($indent);
+	}
+
+
+	/**
+	 *  Convert the HTML4 Table object into a string and print the result.
+	 *
+	 *  @param string $indent minimum indent for each line of the code, default is 0
+	 */
+	public function print_html($indent=0){
+		$this->do_alternate_colors();
+		$this->do_alternate_classes();
+		parent::print_html($indent);
+	}
 }
 ?>

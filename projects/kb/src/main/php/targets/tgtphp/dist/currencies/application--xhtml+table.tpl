@@ -41,100 +41,99 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 ?>
-    <div class="center">
-      <br />
-      <div class="table-widegrey">
-        <table style="width:auto;">
-          <?php
-            echo "              <thead><tr>";
-            echo "                <th>Code</th>\n";
-            echo "                <th>Number</th>\n";
-            echo "                <th>Exponent</th>\n";
-            echo "                <th>Name</th>\n";
-            echo "                <th>Country</th>\n";
-            echo "                <th>Organisation</th>\n";
-            echo "                <th>Replaced by</th>\n";
-            echo "                <th>Description</th>\n";
-            echo "                <th>Active?</th>\n";
-            echo "              </tr></thead>";
-            echo "              <tbody>";
+	<div class="center">
+		<br />
+		<div class="table-widegrey">
+			<table style="width:auto;">
+				<?php
+					echo "              <thead><tr>";
+					echo "                <th>Code</th>\n";
+					echo "                <th>Number</th>\n";
+					echo "                <th>Exponent</th>\n";
+					echo "                <th>Name</th>\n";
+					echo "                <th>Country</th>\n";
+					echo "                <th>Organisation</th>\n";
+					echo "                <th>Replaced by</th>\n";
+					echo "                <th>Description</th>\n";
+					echo "                <th>Active?</th>\n";
+					echo "              </tr></thead>";
+					echo "              <tbody>";
 
-            $_keys=array_keys($entries->ar);
-            $_size=count($_keys);
-            for($i=0;$i<$_size;$i++){
-          ?>
-              <tr>
-                <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:code'] ?></td>
-                <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:number'] ?></td>
-                <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:e'] ?></td>
-                <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['default:name'] ?></td>
+					$_keys=array_keys($entries->ar);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++){
+		  		?>
+				<tr>
+					<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:code'] ?></td>
+					<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:number'] ?></td>
+					<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:e'] ?></td>
+					<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['default:name'] ?></td>
 
-                <?php if(isset($entries->ar[$_keys[$i]]['default:country'])): ?>
-                  <td style="vertical-align:top;text-align:left;">
-                    <?php
-                      $_keysC=array_keys($entries->ar[$_keys[$i]]['default:country']);
-                      $_sizeC=count($_keysC);
-                      for($c=0;$c<$_sizeC;$c++){
-                        if($c>0)
-                          echo ", ";
-                        echo $entries->ar[$_keys[$i]]['default:country'][$_keysC[$c]]['default:name'];
-                      }
-                    ?>
-                  </td>
-                <?php else: ?>
-                  <td style="vertical-align:top;text-align:left;">&#160;</td>
-                <?php endif; ?>
+					<?php if(isset($entries->ar[$_keys[$i]]['default:country'])): ?>
+					<td style="vertical-align:top;text-align:left;">
+					<?php
+						$_keysC=array_keys($entries->ar[$_keys[$i]]['default:country']);
+						$_sizeC=count($_keysC);
+						for($c=0;$c<$_sizeC;$c++){
+							if($c>0)
+								echo ", ";
+							echo $entries->ar[$_keys[$i]]['default:country'][$_keysC[$c]]['default:name'];
+						}
+					?>
+					</td>
+					<?php else: ?>
+					<td style="vertical-align:top;text-align:left;">&#160;</td>
+					<?php endif; ?>
 
-                <?php if(isset($entries->ar[$_keys[$i]]['default:organization'])): ?>
-                  <td style="vertical-align:top;text-align:left;">
-                    <?php
-                      $_keysO=array_keys($entries->ar[$_keys[$i]]['default:organization']);
-                      $_sizeO=count($_keysO);
-                      for($o=0;$o<$_sizeO;$o++){
-                        if($o>0)
-                          echo ", ";
-                        if(isset($entries->ar[$_keys[$i]]['default:organization'][$_keysO[$o]]['default:acronym']['acronyms:long']))
-                          echo $entries->ar[$_keys[$i]]['default:organization'][$_keysO[$o]]['default:acronym']['acronyms:long'];
-                        else
-                          echo $entries->ar[$_keys[$i]]['default:organization'][$_keysO[$o]]['default:name'];
-                      }
-                    ?>
-                  </td>
-                <?php else: ?>
-                  <td style="vertical-align:top;text-align:left;">&#160;</td>
-                <?php endif; ?>
+					<?php if(isset($entries->ar[$_keys[$i]]['default:organization'])): ?>
+					<td style="vertical-align:top;text-align:left;">
+						<?php
+							$_keysO=array_keys($entries->ar[$_keys[$i]]['default:organization']);
+							$_sizeO=count($_keysO);
+							for($o=0;$o<$_sizeO;$o++){
+								if($o>0)
+									echo ", ";
+								if(isset($entries->ar[$_keys[$i]]['default:organization'][$_keysO[$o]]['default:acronym']['acronyms:long']))
+									echo $entries->ar[$_keys[$i]]['default:organization'][$_keysO[$o]]['default:acronym']['acronyms:long'];
+								else
+									echo $entries->ar[$_keys[$i]]['default:organization'][$_keysO[$o]]['default:name'];
+							}
+						?>
+					</td>
+					<?php else: ?>
+					<td style="vertical-align:top;text-align:left;">&#160;</td>
+					<?php endif; ?>
 
-                <?php if(isset($entries->ar[$_keys[$i]]['currencies:replacedby'])): ?>
-                  <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:replacedby']['default:name']."(".$entries->ar[$_keys[$i]]['currencies:replacedby']['currencies:code'].")"; ?></td>
-                <?php else: ?>
-                  <td style="vertical-align:top;text-align:left;">&#160;</td>
-                <?php endif; ?>
+					<?php if(isset($entries->ar[$_keys[$i]]['currencies:replacedby'])): ?>
+					<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['currencies:replacedby']['default:name']."(".$entries->ar[$_keys[$i]]['currencies:replacedby']['currencies:code'].")"; ?></td>
+					<?php else: ?>
+					<td style="vertical-align:top;text-align:left;">&#160;</td>
+					<?php endif; ?>
 
-                <?php if(isset($entries->ar[$_keys[$i]]['default:description'])): ?>
-                  <td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['default:description'] ?></td>
-                <?php else: ?>
-                  <td style="vertical-align:top;text-align:left;">&#160;</td>
-                <?php endif; ?>
+					<?php if(isset($entries->ar[$_keys[$i]]['default:description'])): ?>
+						<td style="vertical-align:top;text-align:left;"><?php echo $entries->ar[$_keys[$i]]['default:description'] ?></td>
+					<?php else: ?>
+						<td style="vertical-align:top;text-align:left;">&#160;</td>
+					<?php endif; ?>
 
-                <?php if(isset($entries->ar[$_keys[$i]]['currencies:active'])&&$entries->ar[$_keys[$i]]['currencies:active']==true): ?>
-                  <td style="vertical-align:top;text-align:left;">active</td>
-                <?php else: ?>
-                  <td style="vertical-align:top;text-align:left;">historic
-                  <?php if(isset($entries->ar[$_keys[$i]]['default:year_start'])||isset($entries->ar[$_keys[$i]]['default:month_start'])||isset($entries->ar[$_keys[$i]]['default:day_start'])||isset($entries->ar[$_keys[$i]]['default:year_end'])||isset($entries->ar[$_keys[$i]]['default:month_end'])||isset($entries->ar[$_keys[$i]]['default:day_end'])): ?>
-                    <?php
-                      $mySKB=SKB_Main::get_instance();
-                      echo "(".$mySKB->interpret_data("Dist.Date.Interpreter.PeriodString", $entries->ar[$_keys[$i]]).")";
-                    ?>
-                  <?php endif; ?>
-                  </td>
-                <?php endif; ?>
-
-              </tr>
-          <?php
-            }
-            echo "              </tbody>";
-          ?>
-        </table>
-      </div>
-      <br />
-    </div>
+					<?php if(isset($entries->ar[$_keys[$i]]['currencies:active'])&&$entries->ar[$_keys[$i]]['currencies:active']==true): ?>
+						<td style="vertical-align:top;text-align:left;">active</td>
+					<?php else: ?>
+					<td style="vertical-align:top;text-align:left;">historic
+					<?php if(isset($entries->ar[$_keys[$i]]['default:year_start'])||isset($entries->ar[$_keys[$i]]['default:month_start'])||isset($entries->ar[$_keys[$i]]['default:day_start'])||isset($entries->ar[$_keys[$i]]['default:year_end'])||isset($entries->ar[$_keys[$i]]['default:month_end'])||isset($entries->ar[$_keys[$i]]['default:day_end'])): ?>
+					<?php
+						$mySKB=SKB_Main::get_instance();
+						echo "(".$mySKB->interpret_data("Dist.Date.Interpreter.PeriodString", $entries->ar[$_keys[$i]]).")";
+					?>
+					<?php endif; ?>
+					</td>
+					<?php endif; ?>
+				</tr>
+				<?php
+					}
+					echo "              </tbody>";
+				?>
+			</table>
+		</div>
+		<br />
+	</div>

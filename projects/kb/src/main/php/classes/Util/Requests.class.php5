@@ -39,58 +39,68 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Util_Requests{
-  private $_requestAr;
+	private $_requestAr;
 
-  function __construct() {
-    $this->_requestAr = array();
-  }
 
-  /*
-   * $ar[$request]["core:val_unset"]
-   * $ar[$request]["core:if_set"]=["core:isval"]["core:isval_if"]["core:isval_else"]
-   */
-  public function init_http($ar=array()){
-  	if(count($ar)>0){
-      while(list($key, $val) = each($ar)){
-      	if(isset($_REQUEST[$key])){
-      	  $this->_requestAr[$key]=$_REQUEST[$key];
-      	}
-      	else{
-      	  $this->_requestAr[$key]=$val["core:val_unset"];
-      	}
-      	if(isset($val["core:if_set"])&&is_array($val["core:if_set"])&&count($val["core:if_set"])>0){
-          if($this->_requestAr[$key]==$val["core:if_set"]["core:isval"])
-            $this->_requestAr[$key]=$val["core:if_set"]["core:isval_if"];
-          else
-            $this->_requestAr[$key]=$val["core:if_set"]["core:isval_else"];
-        }
-        if(isset($val["core:list"])&&$val["core:list"]==true){
-          $_keys=array_keys($_REQUEST);
-          $_size=count($_keys);
-          for($i=0;$i<$_size;$i++)
-            if(strpos($_keys[$i],$key)!==false)
-              $this->_requestAr[$key][]=str_replace($key, "", $_keys[$i]);
-        }
-  	  }
-    }
-  }
+	function __construct() {
+		$this->_requestAr = array();
+	}
 
-  public function init_plain($ar=array()){
-  	if(count($ar)>0){
-      while(list($key, $val) = each($ar)){
-     	  $this->_requestAr[$key]=$val["core:val_unset"];
-      	if(isset($val["core:if_set"])&&is_array($val["core:if_set"])&&count($val["core:if_set"])>0){
-          if($this->_requestAr[$key]==$val["core:if_set"]["core:isval"])
-            $this->_requestAr[$key]=$val["core:if_set"]["core:isval_if"];
-          else
-            $this->_requestAr[$key]=$val["core:if_set"]["core:isval_else"];
-        }
-  	  }
-    }
-  }
 
-  public function get_request_by_key($request){(isset($this->_requestAr[$request]))?$ret=$this->_requestAr[$request]:$ret=-1;return $ret;}
-  public function get_requests(){return $this->_requestAr;}
+	/*
+	 * $ar[$request]["core:val_unset"]
+	 * $ar[$request]["core:if_set"]=["core:isval"]["core:isval_if"]["core:isval_else"]
+	 */
+	public function init_http($ar=array()){
+		if(count($ar)>0){
+			while(list($key, $val) = each($ar)){
+				if(isset($_REQUEST[$key])){
+					$this->_requestAr[$key]=$_REQUEST[$key];
+				}
+				else{
+					$this->_requestAr[$key]=$val["core:val_unset"];
+				}
+				if(isset($val["core:if_set"])&&is_array($val["core:if_set"])&&count($val["core:if_set"])>0){
+					if($this->_requestAr[$key]==$val["core:if_set"]["core:isval"])
+						$this->_requestAr[$key]=$val["core:if_set"]["core:isval_if"];
+					else
+						$this->_requestAr[$key]=$val["core:if_set"]["core:isval_else"];
+				}
+				if(isset($val["core:list"])&&$val["core:list"]==true){
+					$_keys=array_keys($_REQUEST);
+					$_size=count($_keys);
+					for($i=0;$i<$_size;$i++)
+					  if(strpos($_keys[$i],$key)!==false)
+						$this->_requestAr[$key][]=str_replace($key, "", $_keys[$i]);
+				}
+			}
+		}
+	}
+
+
+	public function init_plain($ar=array()){
+		if(count($ar)>0){
+			while(list($key, $val) = each($ar)){
+				$this->_requestAr[$key]=$val["core:val_unset"];
+				if(isset($val["core:if_set"])&&is_array($val["core:if_set"])&&count($val["core:if_set"])>0){
+					if($this->_requestAr[$key]==$val["core:if_set"]["core:isval"])
+						$this->_requestAr[$key]=$val["core:if_set"]["core:isval_if"];
+					else
+						$this->_requestAr[$key]=$val["core:if_set"]["core:isval_else"];
+				}
+			}
+		}
+	}
+
+
+	public function get_request_by_key($request){
+		(isset($this->_requestAr[$request]))?$ret=$this->_requestAr[$request]:$ret=-1;return $ret;
+	}
+
+
+	public function get_requests(){
+		return $this->_requestAr;
+	}
 }
 
 ?>

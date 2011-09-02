@@ -39,48 +39,58 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class Util_Template{
-  private $vars;
-  private $file;
+	private $vars;
+	private $file;
+                 
+                 
+	function __construct($file=null){
+		$this->set_template($file);
+	}
 
-  function __construct($file=null){
-    $this->set_template($file);
-  }
 
-  function set_template($file){
-    $this->file=$file;
-    $this->set("__name", $file);
-  }
+	public function set_template($file){
+		$this->file=$file;
+		$this->set("__name", $file);
+	}
 
-  function set($name, $value){
-  	if(is_object($value)){
-  		if(get_class($value)=="Util_Template")
-  	    $this->vars[$name]=$value->fetch();
-  	  else
-  	    $this->vars[$name]=$value;
-  	}
-  	elseif(is_array($value)){
-  		if(isset($this->vars[$name]))
-  	    $this->vars[$name]=array_merge($this->vars[$name],$value);
-  	  else
-  	    $this->vars[$name]=$value;
-  	}
-  	else
-      $this->vars[$name]=$value;
-  }
 
-  function fetch($file=null) {
-    if($file==null)
-      $file=$this->file;
-    extract($this->vars);
-    ob_start();
-    include($file);
-    $contents = ob_get_contents();
-    ob_end_clean();
-    return $contents;
-  }
+	public function set($name, $value){
+		if(is_object($value)){
+			if(get_class($value)=="Util_Template")
+				$this->vars[$name]=$value->fetch();
+			else
+				$this->vars[$name]=$value;
+		}
+		elseif(is_array($value)){
+			if(isset($this->vars[$name]))
+				$this->vars[$name]=array_merge($this->vars[$name],$value);
+			else
+				$this->vars[$name]=$value;
+		}
+		else
+			$this->vars[$name]=$value;
+	}
 
-  function to_string($file=null){return $this->fetch($file);}
 
-  function printT($file=null){echo $this->fetch($file);}
+	public function fetch($file=null) {
+		if($file==null)
+			$file=$this->file;
+		extract($this->vars);
+		ob_start();
+		include($file);
+		$contents = ob_get_contents();
+		ob_end_clean();
+		return $contents;
+	}
+
+
+	public function to_string($file=null){
+		return $this->fetch($file);
+	}
+
+
+	public function printT($file=null){
+		echo $this->fetch($file);
+	}
 }
 ?>

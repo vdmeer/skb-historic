@@ -40,19 +40,19 @@
  */
 class Util_Debug{
 
-  /**
-   * Print an array using HTML element &lt;pre&gt; plus a start and end line with an optional name.
-   *
-   * @param array $ar the array to be printed
-   * @param string $name an optional name to be printed with the array in the start/end line
-   */
-  public static function print_r($ar, $name=""){
-    echo "<pre>";
-    echo "------------------------[ Start {$name} ]--------------------------\n";
-    print_r($ar);
-    echo "-------------------------[ End {$name} ]--------------------------\n";
-    echo "</pre>";
-  }
+	/**
+	 * Print an array using HTML element &lt;pre&gt; plus a start and end line with an optional name.
+	 *
+	 * @param array $ar the array to be printed
+	 * @param string $name an optional name to be printed with the array in the start/end line
+	 */
+	public static function print_r($ar, $name=""){
+		echo "<pre>";
+		echo "------------------------[ Start {$name} ]--------------------------\n";
+		print_r($ar);
+		echo "-------------------------[ End {$name} ]--------------------------\n";
+		echo "</pre>";
+	}
 
 }
 ?>

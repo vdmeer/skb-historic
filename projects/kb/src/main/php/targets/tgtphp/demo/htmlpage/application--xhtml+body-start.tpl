@@ -41,49 +41,49 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 
-    $mySKB=SKB_Main::get_instance();
-    global $skb_menu_reader;
+	$mySKB=SKB_Main::get_instance();
+	global $skb_menu_reader;
 
-    $menu_request=$mySKB->get_request("Dist.Menu");
-    $menu_request->activate();
-    $skb_menu_reader->set_builder($mySKB->get_builder("Dist.Menu.Entries2XHTML-Menu-Brick"));
+	$menu_request=$mySKB->get_request("Dist.Menu");
+	$menu_request->activate();
+	$skb_menu_reader->set_builder($mySKB->get_builder("Dist.Menu.Entries2XHTML-Menu-Brick"));
 
 ?>
-  <body>
-    <div id="container-page">
-      <span><a id="top"></a></span>
-      <div id="container-head-outer">
-        <div id="container-head-inner">
-          <div id="menu-top">&#160;</div>
-          <div id="menu-top2">&#160;</div>
-          <?php $skb_menu_reader->execute($menu_request); ?>
+	<body>
+		<div id="container-page">
+			<span><a id="top"></a></span>
+			<div id="container-head-outer">
+				<div id="container-head-inner">
+					<div id="menu-top">&#160;</div>
+						<div id="menu-top2">&#160;</div>
+							<?php $skb_menu_reader->execute($menu_request); ?>
 <?php
-    $add=$request->get_value("htmlpage:extra_builder");
-    if(count($add)>0){
-    	if(isset($add['reader'])&&isset($add['request'])){
-      	if(is_object($add['reader'])&&is_object($add['request'])){
-      	  echo '          <div id="gall-nav">';
-      	  $add['reader']->execute($add['request']);
-    	    echo '</div>'."\n";
-    	  }
-    	}
-    	else{
-        $_keys=array_keys($add);
-        $_size=count($_keys);
-        for($i=0;$i<$_size;$i++){
-          if(isset($add[$_keys[$i]]['reader'])&&isset($add[$_keys[$i]]['request'])){
-    	      if(is_object($add[$_keys[$i]]['reader'])&&is_object($add[$_keys[$i]]['request'])){
-    	        echo '          <div id="gall-nav">';
-    	        $add[$_keys[$i]]['reader']->execute($add[$_keys[$i]]['request']);
-    	        echo '</div>'."\n";
-    	      }
-    	    }
-        }
-      }
-    }
+	$add=$request->get_value("htmlpage:extra_builder");
+	if(count($add)>0){
+		if(isset($add['reader'])&&isset($add['request'])){
+			if(is_object($add['reader'])&&is_object($add['request'])){
+				echo '          <div id="gall-nav">';
+				$add['reader']->execute($add['request']);
+				echo '</div>'."\n";
+			}
+		}
+		else{
+			$_keys=array_keys($add);
+			$_size=count($_keys);
+			for($i=0;$i<$_size;$i++){
+				if(isset($add[$_keys[$i]]['reader'])&&isset($add[$_keys[$i]]['request'])){
+					if(is_object($add[$_keys[$i]]['reader'])&&is_object($add[$_keys[$i]]['request'])){
+						echo '          <div id="gall-nav">';
+						$add[$_keys[$i]]['reader']->execute($add[$_keys[$i]]['request']);
+						echo '</div>'."\n";
+					}
+				}
+			}
+		}
+	}
 ?>
-        </div>
-      </div>
+						</div>
+					</div>
 
-      <div id="container-content">
-        <div id="content">
+					<div id="container-content">
+						<div id="content">

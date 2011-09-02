@@ -40,48 +40,48 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
-    $entries=$entries->ar;
+	$entries=$entries->ar;
 
-    $http_request=SKB_Http::get_instance();
-    $ct=$http_request->response_set_html_content_type();
-    switch($ct){
-      case "application/xhtml+xml":
-        echo '<?xml version="1.0" encoding="utf-8"?>';
-        echo "\n";
-        echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">';
-        echo "\n";
-        echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">';
-        echo "\n";
-        echo "  <head>\n";
-        echo '    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />';
-        echo "\n";
-        break;
-      case "text/html":
-      default:
-        echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">';
-        echo "\n";
-        echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">';
-//        echo "\n";
-//        echo "<html>";
-        echo "\n";
-        echo "  <head>\n";
-        echo '    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
-        echo "\n";
-        break;
-    }
-    echo "    <title>{$entries['title']}</title>\n";
+	$http_request=SKB_Http::get_instance();
+	$ct=$http_request->response_set_html_content_type();
+	switch($ct){
+		case "application/xhtml+xml":
+			echo '<?xml version="1.0" encoding="utf-8"?>';
+			echo "\n";
+			echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">';
+			echo "\n";
+			echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">';
+			echo "\n";
+			echo "  <head>\n";
+			echo '    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />';
+			echo "\n";
+			break;
+		case "text/html":
+		default:
+			echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">';
+			echo "\n";
+			echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">';
+//			echo "\n";
+//			echo "<html>";
+			echo "\n";
+			echo "  <head>\n";
+			echo '    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+			echo "\n";
+			break;
+	}
+	echo "    <title>{$entries['title']}</title>\n";
 
-    $_size=count($entries['meta']);
-    for($i=0;$i<$_size;$i++)
-      echo "    <meta {$entries['meta'][$i]} />\n";
+	$_size=count($entries['meta']);
+	for($i=0;$i<$_size;$i++)
+		echo "    <meta {$entries['meta'][$i]} />\n";
 
-    $_size=count($entries['style']);
-    for($i=0;$i<$_size;$i++)
-      echo "    <style type=\"{$entries['style'][$i]['type']}\" media=\"{$entries['style'][$i]['media']}\">{$entries['style'][$i]['__content']}</style>\n";
+	$_size=count($entries['style']);
+	for($i=0;$i<$_size;$i++)
+		echo "    <style type=\"{$entries['style'][$i]['type']}\" media=\"{$entries['style'][$i]['media']}\">{$entries['style'][$i]['__content']}</style>\n";
 
-    $_size=count($entries['script']);
-    for($i=0;$i<$_size;$i++)
-      echo "    <script type=\"{$entries['script'][$i]['type']}\" src=\"{$entries['script'][$i]['src']}\"></script>\n";
+	$_size=count($entries['script']);
+	for($i=0;$i<$_size;$i++)
+		echo "    <script type=\"{$entries['script'][$i]['type']}\" src=\"{$entries['script'][$i]['src']}\"></script>\n";
 
-    echo "  </head>\n\n";
+	echo "  </head>\n\n";
 ?>

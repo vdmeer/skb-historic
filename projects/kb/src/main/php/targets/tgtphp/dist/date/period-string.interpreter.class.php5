@@ -39,23 +39,20 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 class pkg_dist__date___period_string___interpreter implements SKB_InterpreterValue{
-  public function __construct(){}
+	public function __construct(){
+	}
 
-  static public function interpret($ar){
-    $ret="";
-    if(isset($ar['default:day_start'])&&isset($ar['default:month_start'])&&isset($ar['default:year_start'])&&isset($ar['default:day_end'])&&isset($ar['default:month_end'])&&isset($ar['default:year_end'])){
-    	$ret=$ar['default:day_start'] . "/" . $ar['default:month_start']['date:number'] . "/" . $ar['default:year_start'] . " - " . $ar['default:day_end'] . "/" . $ar['default:month_end']['date:number'] . "/" . $ar['default:year_end'];
-    }
-    elseif(isset($ar['default:month_start'])&&isset($ar['default:year_start'])&&isset($ar['default:month_end'])&&isset($ar['default:year_end'])){
-    	$ret=$ar['default:month_start']['date:short'] . " " . $ar['default:year_start'] . " - " . $ar['default:month_end']['date:short'] . " " . $ar['default:year_end'];
-    }
-    elseif(isset($ar['default:year_start'])&&isset($ar['default:year_end'])){
-    	$ret=$ar['default:year_start'] . " - " . $ar['default:year_end'];
-    }
-    elseif(isset($ar['default:year'])){
-    	$ret=$ar['default:year'];
-    }
-    return $ret;
-  }
+	static public function interpret($ar){
+		$ret="";
+		if(isset($ar['default:day_start'])&&isset($ar['default:month_start'])&&isset($ar['default:year_start'])&&isset($ar['default:day_end'])&&isset($ar['default:month_end'])&&isset($ar['default:year_end']))
+			$ret=$ar['default:day_start'] . "/" . $ar['default:month_start']['date:number'] . "/" . $ar['default:year_start'] . " - " . $ar['default:day_end'] . "/" . $ar['default:month_end']['date:number'] . "/" . $ar['default:year_end'];
+		elseif(isset($ar['default:month_start'])&&isset($ar['default:year_start'])&&isset($ar['default:month_end'])&&isset($ar['default:year_end']))
+			$ret=$ar['default:month_start']['date:short'] . " " . $ar['default:year_start'] . " - " . $ar['default:month_end']['date:short'] . " " . $ar['default:year_end'];
+		elseif(isset($ar['default:year_start'])&&isset($ar['default:year_end']))
+			$ret=$ar['default:year_start'] . " - " . $ar['default:year_end'];
+		elseif(isset($ar['default:year']))
+			$ret=$ar['default:year'];
+		return $ret;
+	}
 }
 ?>
