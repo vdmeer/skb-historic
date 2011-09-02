@@ -51,16 +51,52 @@ import org.skb.util.types.atomic.java.TSBoolean;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class FileManager {
+	/**
+	 * Header for code files, will prepend all other content
+	 */
 	private StringTemplate codeHeader;
+
+	/**
+	 * 
+	 */
 	private StringTemplate fileStart;
+
+	/**
+	 * 
+	 */
 	private StringTemplate fileEnd;
 
+	/**
+	 * Source language, i.e. cola, pola, dal, glue
+	 */
 	private String sourceLanguage=null;
+
+	/**
+	 * Source file
+	 */
 	private String sourceFile=null;
+
+	/**
+	 * Target language, i.e. xml, sql, java
+	 */
 	private String targetLanguage=null;
+
+	/**
+	 * Standard file extension for target files
+	 */
 	private String targetFileExtension=null;
+
+	/**
+	 * Boolean determining if files can be printed or not, default is false
+	 */
 	private TSBoolean canPrint;
 
+	/**
+	 * Class constructor, requires code header, file start and file end paramters
+	 * @param codeHeader the header to be added to each code file
+	 * @param fileStart a start text for files
+	 * @param fileEnd a final text for files
+	 */
 	public FileManager(StringTemplate codeHeader, StringTemplate fileStart, StringTemplate fileEnd){
 		this.codeHeader=codeHeader;
 		this.fileStart=fileStart;
@@ -69,6 +105,14 @@ public class FileManager {
 		this.canPrint=new TSBoolean((false));
 	}
 
+	/**
+	 * Initialisation of the File Manager
+	 * @param srcLang source language
+	 * @param srcFile source file name
+	 * @param tgtLang target language
+	 * @param tgtFileExt target file extension
+	 * @param canPrint can print boolean
+	 */
 	public void init(TSBase srcLang, TSBase srcFile, TSBase tgtLang, TSBase tgtFileExt, TSBase canPrint){
 		if(srcLang!=null)
 			this.sourceLanguage=srcLang.toString();
@@ -85,6 +129,11 @@ public class FileManager {
 			this.canPrint=new TSBoolean((false));
 	}
 
+	/**
+	 * Write the given file list
+	 * @param list list of file names and associated templates
+	 * @return true if successful, false otherwise
+	 */
 	public boolean writeList(FileTemplateList list){
 		if(canPrint()==false)
 			return false;
@@ -93,6 +142,13 @@ public class FileManager {
 		return true;
 	}
 
+	/**
+	 * Write a single file
+	 * @param dir target directory
+	 * @param file target file name
+	 * @param fts template to be written
+	 * @return true if successful, false otherwise
+	 */
 	private boolean writeSingleFileFromList(String dir, String file, FileTemplateSingle fts){
 		if(canPrint()==false)
 			return false;
@@ -126,10 +182,21 @@ public class FileManager {
 		return true;
 	}
 
+	/**
+	 * Return the current status of <canPrint>
+	 * @return current print status
+	 */
 	public boolean canPrint(){
 		return this.canPrint.tsvalue;
 	}
 
+	/**
+	 * Return the standard header
+	 * 
+	 * The standard header includes the source file, the source language, the target language and time and date information.
+	 * @param ms misc items to be added to the standard header
+	 * @return standard header
+	 */
 	private String stdHeader(LinkedHashMap<String, String> ms){
 		if(this.targetLanguage==null||this.sourceLanguage==null||this.sourceFile==null)
 			return null;
@@ -159,6 +226,10 @@ public class FileManager {
 	    return this.codeHeader.toString();
 	}
 
+	/**
+	 * Compile and return the standard pre-text of a file
+	 * @return text to be used as pre-text
+	 */
 	private String stdFileStart(){
 		if(this.targetLanguage==null)
 			return "";
@@ -168,6 +239,11 @@ public class FileManager {
 		this.fileStart.setAttribute("target", target);
 		return this.fileStart.toString();
 	}
+
+	/**
+	 * Compile and return the standard pre-text of a file
+	 * @return text to be used as pre-text
+	 */
 	private String stdFileEnd(){
 		if(this.targetLanguage==null)
 			return "";

@@ -43,35 +43,58 @@ import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * Walk a directory and find entries, specifically for the SKB.
+ * Walk a directory and find entries, written specifically for the SKB
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 @SuppressWarnings(value={"all"})
 public class FindPackageDirectories extends DirectoryWalker {
+	/**
+	 * The SKB site id
+	 */
 	private String site_id;
 
 //    private static IOFileFilter filter = FileFilterUtils.and(FileFilterUtils.fileFileFilter(),
 //            FileFilterUtils.suffixFileFilter(".json"));
+	/**
+	 * Filter object for IO operations
+	 */
 	private static IOFileFilter filter = 
         FileFilterUtils.and(FileFilterUtils.directoryFileFilter(), HiddenFileFilter.VISIBLE);
 
+	/**
+	 * Class constructor, initialises private members
+	 */
 	public FindPackageDirectories() {
 		super(filter, -1);
 		this.site_id="";
 	}
 
+	/**
+	 * Set the site ID
+	 * @param new_id new site ID
+	 */
 	public void siteID(String new_id){
 		this.site_id=new_id;
 	}
 
+	/**
+	 * Walk directory <dir> and collect names of all text files
+	 * @param dir start directory
+	 * @return List of strings with file names
+	 */
 	public List<String> getTxtFiles(File dir){
 		List<String> results = new ArrayList<String>();
 		try{walk(dir, results);}catch(Exception e){System.err.println(e);}
 		return results;
 	}
 
+	/**
+	 * Walk directory <dir> and collect names of all text files
+	 * @param dir start directory
+	 * @return List of strings with file names
+	 */
 	public List<String> getTxtFiles(String dir){
 		if(dir==null)
 			return new ArrayList<String>();

@@ -40,7 +40,7 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * 
 	 * Returns true if this map contains a mapping for the specified key. More formally, returns true if and only if this map
 	 * contains a mapping for a key k such that (key==null ? k==null : key.equals(k)). (There can be at most one such mapping.)
-	 * @param key - key whose presence in this map is to be tested.
+	 * @param key key whose presence in this map is to be tested.
 	 * @return true if this map contains a mapping for the specified key.  
 	 */
 	public boolean containsKey(String key);
@@ -50,7 +50,7 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * 
 	 * Returns true if this map contains a mapping for the specified key. More formally, returns true if and only if this map
 	 * contains a mapping for a key k such that (key==null ? k==null : key.equals(k)). (There can be at most one such mapping.)
-	 * @param key - key whose presence in this map is to be tested.
+	 * @param key key whose presence in this map is to be tested.
 	 * @return true if this map contains a mapping for the specified key. 
 	 */
 	public boolean containsKey(TSString key);
@@ -61,10 +61,10 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * Returns true if this map maps one or more keys to the specified value. More formally, returns true if and only if this map
 	 * contains at least one mapping to a value v such that (value==null ? v==null : value.equals(v)). This operation will probably
 	 * require time linear in the map size for most implementations of the Map interface.  
-	 * @param value - value whose presence in this map is to be tested.
+	 * @param val value whose presence in this map is to be tested.
 	 * @return true if this map maps one or more keys to the specified value.
 	 */
-	public boolean containsValue(TSBase value);
+	public boolean containsValue(TSBase val);
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -75,7 +75,7 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * 
 	 * More formally, if this map contains a mapping from a key k to a value v such that (key==null ? k==null : key.equals(k)), then this
 	 * method returns v; otherwise it returns TSNull. (There can be at most one such mapping.) 
-	 * @param key - key whose associated value is to be returned.
+	 * @param key key whose associated value is to be returned.
 	 * @return the value to which this map maps the specified key, or TSNull if the map contains no mapping for this key.
 	 */
 	public TSBase get(String key);
@@ -89,7 +89,7 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * 
 	 * More formally, if this map contains a mapping from a key k to a value v such that (key==null ? k==null : key.equals(k)), then this
 	 * method returns v; otherwise it returns TSNull. (There can be at most one such mapping.) 
-	 * @param key - key whose associated value is to be returned.
+	 * @param key key whose associated value is to be returned.
 	 * @return the value to which this map maps the specified key, or TSNull if the map contains no mapping for this key.
 	 */
 	public TSBase get(TSString key);
@@ -100,8 +100,8 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * Associates the specified value with the specified key in this map (optional operation). If the map previously contained a mapping
 	 * for this key, the old value is replaced by the specified value. (A map m is said to contain a mapping for a key k if and only if
 	 * m.containsKey(k) would return true.))  
-	 * @param key - key with which the specified value is to be associated.
-	 * @param value - value to be associated with the specified key.
+	 * @param key key with which the specified value is to be associated.
+	 * @param val value to be associated with the specified key.
 	 * @return previous value associated with specified key, or TSNull if there was no mapping for key. A TSNull return can also indicate that
 	 * the map previously associated null with the specified key, if the implementation supports null values. 
 	 */

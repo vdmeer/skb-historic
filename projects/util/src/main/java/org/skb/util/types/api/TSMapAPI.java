@@ -37,6 +37,12 @@ import java.util.Set;
 
 import org.skb.util.types.atomic.java.TSString;
 
+/**
+ * Base interface for map implementations in the SKB type system
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface TSMapAPI extends TSComposite, Map<String, TSBase>{
 	public boolean containsKey(List<String> list);
 	public boolean containsKey(String key) ;

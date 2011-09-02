@@ -30,7 +30,6 @@
 package org.skb.util.languages;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -51,7 +50,7 @@ import org.skb.util.types.composite.util.TSTableRow;
 /**
  * Provides a table that compilers/parsers can use to maintain a list of language elements.
  *
- * This class is based on {@link org.skb.util.typesOLD.composite.util.TSTable} using a pre-defined column structure
+ * This class is based on {@link org.skb.util.types.composite.util.TSTable} using a pre-defined column structure
  * suitable for compilers and parsers. The columns are
  * <ul>
  *   <li>category - general separation of language atoms</li>
@@ -70,54 +69,69 @@ import org.skb.util.types.composite.util.TSTableRow;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class AtomList extends TSTable {
-	//need treemap since the insertion of elements determines their position
+	/**
+	 * The local list of atoms as a TreeMap (because insertion sequence determines atom positions)
+	 */
 	protected TreeMap<String, TSTableRow> oatValue=null;
 
 	/**
 	 * Column identifier for the category
 	 */
 	public final static String alValCategory	= "category";
+
 	/**
 	 * Column identifier for the type
 	 */
 	public final static String alValType		= "type";
+
 	/**
 	 * Column identifier for the array
 	 */
 	public final static String alValTypeArray	= "array";
+
 	/**
 	 * Column identifier for the file
 	 */
 	public final static String alValFile 		= "file";
+
 	/**
 	 * Column identifier for the line
 	 */
 	public final static String alValLine		= "line";
+
 	/**
 	 * Column identifier for the column
 	 */
 	public final static String alValColumn		= "column";
+
 	/**
 	 * Column identifier for the string template
 	 */
 	public final static String alValST 		   	= "st";
+
 	/**
 	 * Column identifier for the scoped identifier
 	 */
 	public final static String alValScopedID	= "id:scoped";
 
-	/** @ignore */
+	/** 
+	 * Default category
+	 */
 	private String defaultCategory;
 
-	/** @ignore */
+	/**
+	 * Specification name
+	 */
 	private String specificationName;
 
 	/**
-	 * Current scope.
+	 * Current scope
 	 */
 	public ScopeString scope;
 
-	/** @ignore */
+	/**
+	 * List of imports
+	 */
 	private TreeMap<String, LinkedHashMap<String, String>> imports;
 
 	private static class AtomListHolder{
@@ -141,22 +155,25 @@ public class AtomList extends TSTable {
 		return AtomListHolder.INSTANCE;
 	}
 
-	public AtomList(){
+	/**
+	 * Class constructor (private, since AtomList implements singleton)
+	 */
+	private AtomList(){
 		super();
 		this._init();
 	}
 
-	public AtomList(HashSet<String>rows){
-		super();
-		this._init();
-		this.addRows(rows);
-	}
-
-	public AtomList(String ref_class, String rowPrefix){
-		super();
-		this._init();
-		this.addRows(ref_class, rowPrefix);
-	}
+//	public AtomList(HashSet<String>rows){
+//		super();
+//		this._init();
+//		this.addRows(rows);
+//	}
+//
+//	public AtomList(String ref_class, String rowPrefix){
+//		super();
+//		this._init();
+//		this.addRows(ref_class, rowPrefix);
+//	}
 
 	/**
 	 * Initialise the atom list, create the table and set default values.

@@ -51,17 +51,35 @@ import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
- * Implementation of the CLI interface using Apache Commons cli.
+ * Implementation of the CLI interface using Apache Commons CLI.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class CliApache implements Cli {
+	/**
+	 * The application name for reporting error and warnings
+	 */
 	private TSString applicationName;
+
+	/**
+	 * The command line options
+	 */
 	private Options options;
+
+	/**
+	 * The command line parsed
+	 */
 	private CommandLine line;
+
+	/**
+	 * List of options
+	 */
 	private LinkedHashMap<String, String> optionList;
 
+	/**
+	 * Class constructor, initialises all private data structures
+	 */
 	public CliApache() {
 		this.applicationName=new TSString();
 		this.options=new Options();

@@ -33,29 +33,21 @@ import java.util.EnumSet;
 
 import org.skb.util.types.api.TSBase;
 
-/* TODO revisit the java doc
 /**
  * Type repository maintaining string and enumerate literals for SKB types.
  *
- * The base class for SKB types ({@link org.skb.util.typesOLD.base.OatBase}) uses two protected
- * fields to maintain type information. The first field is a string vector for the stringified 
- * version of the type (string literals in this class). The second field is an enumerate set for the
- * enumerate version of the type. Each class inheriting from {@link org.skb.util.typesOLD.base.OatBase} can
- * add their specific type information, which can then be used at runtime to determine the A4DS type of 
- * an object.
- * <br /><br />
- * The starting point for all types is OAT_BASE, which is automatically
- * set by the base class {@link org.skb.util.typesOLD.base.OatBase}. The next two categories determine whether the type
- * is atomic (OAT_BASE_ATOMIC) or a composite type
- * OAT_BASE_COMPOSITE. Atomic here means that the type only holds atomic fields
- * (i.e. a string array, or a structure of different atomic types but no composite filed). Composite here means that
- * the type maintains atomic and composite fields. 
+ * The base interface for SKB types ({@link org.skb.util.types.api.TSBase}) defines four methods for processing type information.
+ * The first two ({@link org.skb.util.types.api.TSBase#tsGetTypeEnum} and {@link org.skb.util.types.api.TSBase#tsGetTypeString})
+ * must return the type of a TSBase object as either enumerate or string. The other two methods
+ * ({@link org.skb.util.types.api.TSBase#tsGetTypeEnumSet} and {@link org.skb.util.types.api.TSBase#tsGetTypeStringList})
+ * must return all type information of a TSBase object as either a set of enumerates or a set of strings. This class maintains all enumerates and
+ * all strings that for type information that the SKB supports, and provides some basic function to convert between them.
+ * <br /><br /> 
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSRepository {
-
 	/**
 	 * String values identifying SKB types.
 	 *
@@ -196,7 +188,7 @@ public class TSRepository {
 		/** The SKB unknown type */
 		TS_UNKNOWN (TSRepository.TString.TS_UNKNOWN);
 
-		/** @ignore */
+		/** local type */
 		private final String type;
 
 		TEnum(String type){
@@ -234,7 +226,7 @@ public class TSRepository {
 	}
 
 	/**
-	 * Returns the string version of a type given as string or TS_UNKNOWN. 
+	 * Returns the string version of a type given as TSBase or TS_UNKNOWN. 
 	 * @param b the TSBase version of the type
 	 * @return the string version of the type or TS_UNKNOWN
 	 */

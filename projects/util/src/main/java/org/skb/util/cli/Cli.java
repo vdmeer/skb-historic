@@ -41,16 +41,40 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  */
 public interface Cli {
 
+	/**
+	 * Set the application name, used for reporting errors and warnings
+	 * @param appName the application name
+	 */
 	public abstract void setApplicationName(TSBase appName);
 
+	/**
+	 * Set the application name, used for reporting errors and warnings
+	 * @param appName the application name
+	 */
 	public abstract void setApplicationName(String appName);
 
+	/**
+	 * Set properties, i.e. the command line arguments
+	 * @param prop property map with command line arguments
+	 */
 	public abstract void setPropOptions(TSPropertyMap prop);
 
+	/**
+	 * Parse the command line
+	 * @param args arguments from the main method
+	 * @throws ParseException
+	 */
 	public abstract void parse(String[] args) throws ParseException;
 
+	/**
+	 * Print usage information
+	 */
 	public abstract void usage();
 
+	/**
+	 * Set options for parsing
+	 * @param prop
+	 */
 	public abstract void setOptions(TSPropertyMap prop);
 
 }

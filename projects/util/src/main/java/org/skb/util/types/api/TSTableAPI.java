@@ -44,12 +44,53 @@ import org.skb.util.types.atomic.java.TSObject;
 import org.skb.util.types.atomic.java.TSShort;
 import org.skb.util.types.atomic.java.TSString;
 
+/**
+ * Base interface for all table implementations of the SKB type system
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface TSTableAPI extends TSComposite, Map<String, TSTableRowAPI>{
 
+	/**
+	 * Add am empty row to the table
+	 * 
+	 * This method should add a new empty row using the given string as key.
+	 * @param row key of the row to be added
+	 */
 	public void addRow(String row);
 
+	/**
+	 * Add a set of empty rows to the table
+	 * 
+	 * This method should add a new empty row using the given strings as keys.
+	 * @param rows set of rows to be added
+	 */
 	public void addRows(HashSet<String>rows);
 
+	/**
+	 * Add a set of rows using reflection
+	 * 
+	 * This method should use reflection to collect all declared fields of the given class <ref_class> whose name starts with the string <prefix> and then
+	 * create an empty row using the string defined by the declared fields as keys. The class {@link org.skb.tribe.TribeProperties}
+	 * uses this method to initialise a number of properties. Have a look at the following example:
+	 * <code>
+	 * 		public final static String tpmKeySrcLanguage		= "src-lang";
+	 * 		public final static String tpmKeySrcFile			= "src-file";
+	 * 		public final static String tpmKeyTgtLanguage		= "tgt-lang";
+	 * 		public final static String tpmKeyTgtDir				= "tgt-dir";
+	 * 		void init(){
+	 * 			...
+	 * 			this.table.addRows(TribeProperties.class.getName(), "tpmKey");
+	 * 			...
+	 * 		}
+	 * </code>
+	 * The class declares four fields that all use the same prefix in their name: "tpmKey". In a method <code>init</code>, the class then calls
+	 * <code>addRows</code> with its own class name and the required prefix "tpmKey" to create four empty rows in the table with the keys "src-lang",
+	 *  "src-file", "tgt-lang" and "tgt-dir".
+	 * @param ref_class class name to be used for reflection
+	 * @param prefix string to be used as prefix filter when selecting declared fields 
+	 */
 	public void addRows(String ref_class, String prefix);
 
 	/**
@@ -144,20 +185,21 @@ public interface TSTableAPI extends TSComposite, Map<String, TSTableRowAPI>{
 	 * Associates the specified value with the specified key in this map (optional operation). If the map previously contained a mapping
 	 * for this key, the old value is replaced by the specified value. (A map m is said to contain a mapping for a key k if and only if
 	 * m.containsKey(k) would return true.))  
-	 * @param key - key with which the specified value is to be associated.
-	 * @param value - value to be associated with the specified key.
+	 * @param key key with which the specified value is to be associated.
+	 * @param val value to be associated with the specified key.
 	 * @return previous value associated with specified key, or TSNull if there was no mapping for key. A TSNull return can also indicate that
 	 * the map previously associated null with the specified key, if the implementation supports null values. 
 	 */
 	public TSTableRowAPI put(String key, TSTableRowAPI val);
+
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
 	 * 
 	 * Associates the specified value with the specified key in this map (optional operation). If the map previously contained a mapping
 	 * for this key, the old value is replaced by the specified value. (A map m is said to contain a mapping for a key k if and only if
 	 * m.containsKey(k) would return true.))  
-	 * @param key - key with which the specified value is to be associated.
-	 * @param value - value to be associated with the specified key.
+	 * @param key key with which the specified value is to be associated.
+	 * @param val value to be associated with the specified key.
 	 * @return previous value associated with specified key, or TSNull if there was no mapping for key. A TSNull return can also indicate that
 	 * the map previously associated null with the specified key, if the implementation supports null values. 
 	 */

@@ -46,31 +46,58 @@ import org.skb.util.types.composite.util.TSArrayList;
 import org.skb.util.types.composite.util.TSMapLH;
 
 /**
- * Class that reads a json file and transforms it into an TSMapLH.
+ * Class that reads a JSON file and transforms it into an TSMapLH.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Json2Oat {
 
-	public Json2Oat(){}
+	/**
+	 * Class construtor, empty
+	 */
+	public Json2Oat(){
+	}
 
+	/**
+	 * Read the given JSON file
+	 * @param file JSON file
+	 * @return a TSMapLH with information from the JSON file or null in case of errors 
+	 */
 	public TSBase read(File file){
 		if(file.canRead()){
 			try{
 				return this.read(new Scanner(file));
 			}
-			catch (Exception e){System.err.println(e);}
+			catch (Exception e){
+				//TODO add log instead of stderr
+				System.err.println(e);
+			}
 		}
 		return null;
 	}
 
+	/**
+	 * Read the JSON from the given file name (URL)
+	 * @param url file name, will be used as URL
+	 * @return a TSMapLH with information from the JSON file or null in case of errors
+	 */
 	public TSBase read(String url){
 		try{
 			return this.read(new Scanner(getClass().getResourceAsStream(url)));
-		}catch(Exception e){return null;}
+		}catch(Exception e){
+			return null;
+		}
 	}
 
+	/**
+	 * Read JSON from the input scanner and transform into an TSMapLH
+	 * 
+	 * This method parses the <input> and removes every line starting with either of the two possible singe line comments: '//' and '#'.
+	 * It then calls s2o with the altered input.
+	 * @param input scanner wit JSON specification
+	 * @return a TSMapLH with information from the JSON file or null in case of errors
+	 */
 	public TSBase read(Scanner input){
 		String content=new String();
 		try{
@@ -80,10 +107,20 @@ public class Json2Oat {
 					content+=line.trim();
 			}
 		}
-		catch (Exception e){System.err.println(e);}
+		catch (Exception e){
+			//TODO add log instead of stderr
+			System.err.println(e);
+		}
 		return this.s2o(content);
 	}
 
+	/**
+	 * Transform the given JSON string into a TSBase object
+	 * @param content JSON string
+	 * @return The return value depends on the JSON specification. It can be a TSArrayList or a TSMapLH for composite items or a
+	 * TSString, TSBoolean, TSInteger, TSDouble or TSFloat for atomic items. The method is using recursion to parse each part of the JSON string and construct
+	 * a single TSBase object.
+	 */
 	public TSBase s2o(String content){
 		try{
 			ObjectMapper mapper=new ObjectMapper();
@@ -122,6 +159,7 @@ public class Json2Oat {
 			return new TSFloat(node.getDoubleValue());
 		else if(node.isNull())
 			return new TSString("");
+//TODO - add log instead of stderr
 System.err.println("nothing for");
 		return null;
 	}

@@ -43,35 +43,138 @@ import org.antlr.stringtemplate.StringTemplate;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class FileTemplateSingle {
+	/**
+	 * StringTemplates maintained by this template
+	 */
 	LinkedHashSet<StringTemplate> templates;
+
+	/**
+	 * List of imports for this template
+	 */
 	LinkedHashSet<String> imports;
+
+	/**
+	 * List of miscellaneous items for the template
+	 */
 	LinkedHashMap<String, String> misc;
 
+	/**
+	 * Class constructor, initialised private members
+	 */
 	public FileTemplateSingle(){
 		this.templates=new LinkedHashSet<StringTemplate>();
 		this.imports=new LinkedHashSet<String>();
 		this.misc=new LinkedHashMap<String, String>();
 	}
 
+	/**
+	 * Class constructor, initialises private members with given parameters
+	 * @param lhsST list of StringTemplates
+	 * @param lhsIM list of imports
+	 * @param lhsMisc list of misc items
+	 */
 	public FileTemplateSingle(LinkedHashSet<StringTemplate> lhsST, LinkedHashSet<String> lhsIM, LinkedHashMap<String, String> lhsMisc){
 		this.templates=new LinkedHashSet<StringTemplate>(lhsST);
 		this.imports=new LinkedHashSet<String>(lhsIM);
 		this.misc=new LinkedHashMap<String, String>(lhsMisc);
 	}
 
-	public void addTemplate(StringTemplate st){this.templates.add(st);}
-	public void addImport(String im){this.imports.add(im);}
-	public void addMisc(String k, String v){this.misc.put(k,v);}
+	/**
+	 * Add a StringTemplate to the template
+	 * @param st the StringTemplate to be added
+	 */
+	public void addTemplate(StringTemplate st){
+		this.templates.add(st);
+	}
 
-	public boolean addAllTemplates(Collection <StringTemplate> ts){return this.templates.addAll(ts);};
-	public boolean addAllImports(Collection <String> ts){return this.imports.addAll(ts);};
-	public void putAllMisc(Map <String, String> ms){this.misc.putAll(ms);};
+	/**
+	 * Add an import to the template
+	 * @param im the import to be added
+	 */
+	public void addImport(String im){
+		this.imports.add(im);
+	}
 
-	public LinkedHashSet<StringTemplate> getTemplates(){return this.templates;}
-	public LinkedHashSet<String> getImports(){return this.imports;}
-	public LinkedHashMap<String, String> getMisc(){return this.misc;}
+	/**
+	 * Add a misc item to the template
+	 * @param key the key of the misc item
+	 * @param val the value of the misc item
+	 */
+	public void addMisc(String key, String val){
+		this.misc.put(key,val);
+	}
 
-	public int sizeTemplates(){return this.templates.size();}
-	public int sizeImports(){return this.imports.size();}
-	public int sizeMisc(){return this.misc.size();}
+	/**
+	 * Add a collection of StringTemplates to the template
+	 * @param ts collection of StringTemplates to be added
+	 * @return true if successful, false otherwise
+	 */
+	public boolean addAllTemplates(Collection <StringTemplate> ts){
+		return this.templates.addAll(ts);
+	}
+
+	/**
+	 * Add a collection of imports to the template
+	 * @param ts collection of imports to be added
+	 * @return true if successful, false otherwise
+	 */
+	public boolean addAllImports(Collection <String> ts){
+		return this.imports.addAll(ts);
+	}
+
+	/**
+	 * Add a collection of misc items to the template
+	 * @param ms collection of misc items to be added
+	 */
+	public void putAllMisc(Map <String, String> ms){
+		this.misc.putAll(ms);
+	}
+
+	/**
+	 * Return all currently added StringTemplates
+	 * @return list of StringTemplates
+	 */
+	public LinkedHashSet<StringTemplate> getTemplates(){
+		return this.templates;
+	}
+
+	/**
+	 * Return all currently added imports
+	 * @return list of imports
+	 */
+	public LinkedHashSet<String> getImports(){
+		return this.imports;
+	}
+
+	/**
+	 * Return all currently added misc items
+	 * @return list of misc items
+	 */
+	public LinkedHashMap<String, String> getMisc(){
+		return this.misc;
+	}
+
+	/**
+	 * Return the size of the template list
+	 * @return size
+	 */
+	public int sizeTemplates(){
+		return this.templates.size();
+	}
+
+	/**
+	 * Return the size of the import list
+	 * @return size
+	 */
+	public int sizeImports(){
+		return this.imports.size();
+	}
+
+	/**
+	 * Return the size of the misc item list
+	 * @return size
+	 */
+	public int sizeMisc(){
+		return this.misc.size();
+	}
 }

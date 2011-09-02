@@ -50,6 +50,9 @@ public class ScopeToken {
 	 */
 	private Vector<Token> field;
 
+	/**
+	 * Class constructor, initialises private members
+	 */
 	public ScopeToken(){
 		this.separator="::";
 		this.field=new Vector<Token>();

@@ -44,11 +44,15 @@ public class ScopeString {
 	 * The currently used scope separator, default is "::".
 	 */
 	private String separator;
+
 	/**
 	 * The string vector maintaining the scope.
 	 */
 	private Vector<String> field;
 
+	/**
+	 * Class constructor, initialises private members
+	 */
 	public ScopeString(){
 		this.separator="::";
 		this.field=new Vector<String>();

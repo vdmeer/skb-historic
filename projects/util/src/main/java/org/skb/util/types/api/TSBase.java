@@ -34,28 +34,83 @@ import java.util.Set;
 
 import org.skb.util.types.TSRepository.TEnum;
 
+/**
+ * Base interface for all SKB types
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface TSBase {
+	/**
+	 * Empty the TSBase object
+	 */
 	public void tsClean();
 
+	/**
+	 * Return the last entry of the type list as an enumerate
+	 * @return type
+	 */
 	public TEnum tsGetTypeEnum();
 
+	/**
+	 * Return the full set of enumerate types
+	 * @return type list
+	 */
 	public Set<TEnum> tsGetTypeEnumSet();
 
+	/**
+	 * Return the last entry of the type list as an string
+	 * @return type
+	 */
 	public java.lang.String tsGetTypeString();
 
+	/**
+	 * Return the full set of string types
+	 * @return type list
+	 */
 	public List<String> tsGetTypeStringList();
 
+	/**
+	 * Is the object a TSAtomic?
+	 * @return true if the object is a TSAtomic type, false otherwise
+	 */
 	public boolean tsIsAtomic();
 
+	/**
+	 * Is the object a TSComposite?
+	 * @return true if the object is a TSComposite type, false otherwise
+	 */
 	public boolean tsIsComposite();
 
-	public boolean tsIsType(String t);
+	/**
+	 * Test if the object is of a given type (string)
+	 * @param type to be tested
+	 * @return true if the object is of the given type, false otherwise
+	 */
+	public boolean tsIsType(String type);
 
-	public boolean tsIsType(TEnum t);
+	/**
+	 * Test if the object is of a given type (enumerate)
+	 * @param type to be tested
+	 * @return true if the object is of the given type, false otherwise
+	 */
+	public boolean tsIsType(TEnum type);
 
+	/**
+	 * Add a value to the object
+	 * @param tb value to be added
+	 */
 	public void tsPlus(TSBase tb);
 
+	/**
+	 * toString() with indentation for formatted output
+	 * @param indent indentation to be used
+	 * @return stringified version of the object
+	 */
 	public String tsToString(int indent);
 
+	/**
+	 * Trim the object
+	 */
 	public void tsTrim();
 }
