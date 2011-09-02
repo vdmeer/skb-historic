@@ -16,13 +16,13 @@ org.junit=4.4.0
 
 php=5.3.0
 
-skb.util=1.0.0
-skb.tribe=1.0.0
-skb.ant.tribe=1.0.0
-skb.ant.dal=1.0.0
-skb.lang.cola.proto=1.0.0
-skb.lang.cpp=1.0.0
-skb.lang.dal=1.0.0
-skb.lang.pola.proto=1.0.0
-skb.lang.glue.proto=1.0.0
-skb.kb=1.0.0
+skb.util=1.0.1
+skb.tribe=1.0.1
+skb.ant.tribe=1.0.1
+skb.ant.dal=1.0.1
+skb.lang.cola.proto=1.0.1
+skb.lang.cpp=1.0.1
+skb.lang.dal=1.0.1
+skb.lang.pola.proto=1.0.1
+skb.lang.glue.proto=1.0.1
+skb.kb=1.0.1
