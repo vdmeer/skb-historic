@@ -18,7 +18,7 @@
 			</fileset>
 		</path>
 		<java-doc input.dir="${javadoc.prep.dir}" output.dir="${javadoc-all.output.dir}" classpath.id="global.path"
-				access="private"/>
+				access="private" exclude.package.names="${javadoc.exclude.package.names}"/>
 		<delete quiet="true" dir="${javadoc.prep.dir}"/>
 	</target>
 
