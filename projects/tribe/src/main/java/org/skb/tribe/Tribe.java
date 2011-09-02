@@ -394,7 +394,6 @@ public class Tribe {
 	 * looking for specific options of the selected source and target languages.
 	 * @param args Command line arguments
 	 * @param languages List of languages supported
-	 * @param pass The current pass (1 or 2)
 	 */
 	private void setOptions(String[] args, LanguageList languages){
 		try {

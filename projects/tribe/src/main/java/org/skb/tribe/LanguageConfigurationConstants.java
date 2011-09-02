@@ -45,6 +45,7 @@ public final class LanguageConfigurationConstants {
 //    	public final static String SKBLangTargetConfigurationTribe="skb:lang:target:config:tribe";
 
     	public final static String SKBLangTargetConfigurationConstID="skb:lang:target:config:constid";
+    	public final static String SKBLangTargetConfigurationJavaDoc="skb:lang:target:config:javadoc";
 
     	public final static String SKBTribeStgChunkMandatory="skb:tribe:stgchunk:mandatory";
     	public final static String SKBTribeStgChunkOptional="skb:tribe:stgchunk:optional";
