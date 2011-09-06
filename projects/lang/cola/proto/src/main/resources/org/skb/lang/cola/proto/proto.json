@@ -891,140 +891,140 @@
                     "skb:lang:target:tokens:cval":"@alterable",
                     "skb:lang:target:tokens:tid":"AT_ALTERABLE",
                     "skb:lang:target:tokens:tval":"an @ keyword '@alterable'",
-                    "skb:lang:target:tokens:cjavadoc":"@Alterable"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Alterable"
                 },
                 "colaAT_APPLY":{
                     "skb:lang:target:tokens:cid":"colaAT_APPLY",
                     "skb:lang:target:tokens:cval":"@apply",
                     "skb:lang:target:tokens:tid":"AT_APPLY",
                     "skb:lang:target:tokens:tval":"an @ keyword '@apply'",
-                    "skb:lang:target:tokens:cjavadoc":"@Apply"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Apply"
                 },
                 "colaAT_CLEVEL":{
                     "skb:lang:target:tokens:cid":"colaAT_CLEVEL",
                     "skb:lang:target:tokens:cval":"@clevel",
                     "skb:lang:target:tokens:tid":"AT_CLEVEL",
                     "skb:lang:target:tokens:tval":"an @ keyword '@clevel'",
-                    "skb:lang:target:tokens:cjavadoc":"@CLevel"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;CLevel"
                 },
                 "colaAT_CONTAINS":{
                     "skb:lang:target:tokens:cid":"colaAT_CONTAINS",
                     "skb:lang:target:tokens:cval":"@contains",
                     "skb:lang:target:tokens:tid":"AT_CONTAINS",
                     "skb:lang:target:tokens:tval":"an @ keyword '@contains'",
-                    "skb:lang:target:tokens:cjavadoc":"@Contains"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Contains"
                 },
                 "colaAT_DESCRIPTION":{
                     "skb:lang:target:tokens:cid":"colaAT_DESCRIPTION",
                     "skb:lang:target:tokens:cval":"@description",
                     "skb:lang:target:tokens:tid":"AT_DESCRIPTION",
                     "skb:lang:target:tokens:tval":"an @ keyword '@description'",
-                    "skb:lang:target:tokens:cjavadoc":"@Description"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Description"
                 },
                 "colaAT_EXTENDS":{
                     "skb:lang:target:tokens:cid":"colaAT_EXTENDS",
                     "skb:lang:target:tokens:cval":"@extends",
                     "skb:lang:target:tokens:tid":"AT_EXTENDS",
                     "skb:lang:target:tokens:tval":"an @ keyword '@extends'",
-                    "skb:lang:target:tokens:cjavadoc":"@Extends"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Extends"
                 },
                 "colaAT_ENVIRONMENT":{
                     "skb:lang:target:tokens:cid":"colaAT_ENVIRONMENT",
                     "skb:lang:target:tokens:cval":"@environment",
                     "skb:lang:target:tokens:tid":"AT_ENVIRONMENT",
                     "skb:lang:target:tokens:tval":"an @ keyword '@environment'",
-                    "skb:lang:target:tokens:cjavadoc":"@Environment"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Environment"
                 },
                 "colaAT_LANGUAGE":{
                     "skb:lang:target:tokens:cid":"colaAT_LANGUAGE",
                     "skb:lang:target:tokens:cval":"@language",
                     "skb:lang:target:tokens:tid":"AT_LANGUAGE",
                     "skb:lang:target:tokens:tval":"an @ keyword '@language'",
-                    "skb:lang:target:tokens:cjavadoc":"@Language"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Language"
                 },
                 "colaAT_NEGOTIABLE":{
                     "skb:lang:target:tokens:cid":"colaAT_NEGOTIABLE",
                     "skb:lang:target:tokens:cval":"@negotiable",
                     "skb:lang:target:tokens:tid":"AT_NEGOTIABLE",
                     "skb:lang:target:tokens:tval":"an @ keyword '@negotiable'",
-                    "skb:lang:target:tokens:cjavadoc":"@Negotiable"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Negotiable"
                 },
                 "colaAT_PRIORITY":{
                     "skb:lang:target:tokens:cid":"colaAT_PRIORITY",
                     "skb:lang:target:tokens:cval":"@priority",
                     "skb:lang:target:tokens:tid":"AT_PRIORITY",
                     "skb:lang:target:tokens:tval":"an @ keyword '@priority'",
-                    "skb:lang:target:tokens:cjavadoc":"@Priority"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Priority"
                 },
                 "colaAT_PROVIDES":{
                     "skb:lang:target:tokens:cid":"colaAT_PROVIDES",
                     "skb:lang:target:tokens:cval":"@provides",
                     "skb:lang:target:tokens:tid":"AT_PROVIDES",
                     "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
-                    "skb:lang:target:tokens:cjavadoc":"@Provides"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Provides"
                 },
                 "colaAT_RANK":{
                     "skb:lang:target:tokens:cid":"colaAT_RANK",
                     "skb:lang:target:tokens:cval":"@rank",
                     "skb:lang:target:tokens:tid":"AT_RANK",
                     "skb:lang:target:tokens:tval":"an @ keyword '@rank'",
-                    "skb:lang:target:tokens:cjavadoc":"@Rank"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Rank"
                 },
                 "colaAT_REQUIRES":{
                     "skb:lang:target:tokens:cid":"colaAT_REQUIRES",
                     "skb:lang:target:tokens:cval":"@requires",
                     "skb:lang:target:tokens:tid":"AT_REQUIRES",
                     "skb:lang:target:tokens:tval":"an @ keyword '@requires'",
-                    "skb:lang:target:tokens:cjavadoc":"@Requires"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Requires"
                 },
                 "colaAT_RETURN":{
                     "skb:lang:target:tokens:cid":"colaAT_RETURN",
                     "skb:lang:target:tokens:cval":"@return",
                     "skb:lang:target:tokens:tid":"AT_RETURN",
                     "skb:lang:target:tokens:tval":"an @ keyword '@return'",
-                    "skb:lang:target:tokens:cjavadoc":"@Return"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Return"
                 },
                 "colaAT_RUNTIME":{
                     "skb:lang:target:tokens:cid":"colaAT_RUNTIME",
                     "skb:lang:target:tokens:cval":"@runtime",
                     "skb:lang:target:tokens:tid":"AT_RUNTIME",
                     "skb:lang:target:tokens:tval":"an @ keyword '@runtime'",
-                    "skb:lang:target:tokens:cjavadoc":"@Runtime"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Runtime"
                 },
                 "colaAT_SCOPE":{
                     "skb:lang:target:tokens:cid":"colaAT_SCOPE",
                     "skb:lang:target:tokens:cval":"@scope",
                     "skb:lang:target:tokens:tid":"AT_SCOPE",
                     "skb:lang:target:tokens:tval":"an @ keyword '@scope'",
-                    "skb:lang:target:tokens:cjavadoc":"@Scope"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Scope"
                 },
                 "colaAT_SPEC":{
                     "skb:lang:target:tokens:cid":"colaAT_SPEC",
                     "skb:lang:target:tokens:cval":"@spec",
                     "skb:lang:target:tokens:tid":"AT_SPEC",
                     "skb:lang:target:tokens:tval":"an @ keyword '@spec'",
-                    "skb:lang:target:tokens:cjavadoc":"@Spec"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Spec"
                 },
                 "colaAT_STAGE":{
                     "skb:lang:target:tokens:cid":"colaAT_STAGE",
                     "skb:lang:target:tokens:cval":"@stage",
                     "skb:lang:target:tokens:tid":"AT_STAGE",
                     "skb:lang:target:tokens:tval":"an @ keyword '@stage'",
-                    "skb:lang:target:tokens:cjavadoc":"@Stage"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Stage"
                 },
                 "colaAT_TYPE":{
                     "skb:lang:target:tokens:cid":"colaAT_TYPE",
                     "skb:lang:target:tokens:cval":"@type",
                     "skb:lang:target:tokens:tid":"AT_TYPE",
                     "skb:lang:target:tokens:tval":"an @ keyword '@type'",
-                    "skb:lang:target:tokens:cjavadoc":"@Type"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Type"
                 },
                 "colaAT_VISIBILITY":{
                     "skb:lang:target:tokens:cid":"colaAT_VISIBILITY",
                     "skb:lang:target:tokens:cval":"@visibility",
                     "skb:lang:target:tokens:tid":"AT_VISIBILITY",
                     "skb:lang:target:tokens:tval":"an @ keyword '@visibility'",
-                    "skb:lang:target:tokens:cjavadoc":"@Visibility"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Visibility"
                 },
 
 

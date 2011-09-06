@@ -543,14 +543,14 @@
                     "skb:lang:target:tokens:cval":"@provides",
                     "skb:lang:target:tokens:tid":"AT_PROVIDES",
                     "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
-                    "skb:lang:target:tokens:cjavadoc":"@Provides"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Provides"
                 },
                 "dalAT_SPEC":{
                     "skb:lang:target:tokens:cid":"dalAT_SPEC",
                     "skb:lang:target:tokens:cval":"@spec",
                     "skb:lang:target:tokens:tid":"AT_SPEC",
                     "skb:lang:target:tokens:tval":"an @ keyword '@spec'",
-                    "skb:lang:target:tokens:cjavadoc":"@Spec"
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Spec"
                 },
 
 
