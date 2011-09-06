@@ -41,6 +41,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.composite.util.TSArrayList;
@@ -53,6 +54,8 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PDO {
+	static Logger logger;
+
 	private Connection core=null;
 	public Connection get_core(){return this.core;}
 
@@ -60,9 +63,11 @@ public class PDO {
 	private ResultSet result_set=null;
 
 	public PDO(){
+		logger=Logger.getLogger(PDO.class);
 	}
 
 	public PDO(Connection c){
+		logger=Logger.getLogger(PDO.class);
 		this.core=c;
 	}
 
@@ -74,6 +79,7 @@ public class PDO {
 		try{
 			this.core.clearWarnings();
 		} catch (SQLException e) {
+			logger.error("catched exception: "+e);
 			throw e;
 		}
 	}
@@ -82,6 +88,7 @@ public class PDO {
 		try{
 			this.core.close();
 		} catch (SQLException e) {
+			logger.error("catched exception: "+e);
 			throw e;
 		}
 	}
@@ -90,6 +97,7 @@ public class PDO {
 		try{
 			this.core.commit();
 		} catch (SQLException e) {
+			logger.error("catched exception: "+e);
 			throw e;
 		}
 	}
@@ -99,6 +107,7 @@ public class PDO {
 		try{
 			this.core.createStatement();
 		} catch (SQLException e){
+			logger.error("catched exception: "+e);
 			throw e;
 		}
 		return s;
@@ -109,6 +118,7 @@ public class PDO {
 		try{
 			this.core.createStatement(resultSetType, resultSetConcurrency);
 		} catch (SQLException e){
+			logger.error("catched exception: "+e);
 			throw e;
 		} return s;
 	}
@@ -118,6 +128,7 @@ public class PDO {
 		try{
 			this.core.createStatement(resultSetType, resultSetConcurrency, resultSetHoldability);
 		} catch (SQLException e){
+			logger.error("catched exception: "+e);
 			throw e;
 		}
 		return s;
@@ -128,6 +139,7 @@ public class PDO {
 		try{
 			this.core.getMetaData();
 		} catch (SQLException e){
+			logger.error("catched exception: "+e);
 			throw e;
 		}
 		return dmd;
@@ -153,7 +165,7 @@ public class PDO {
 		if(sel.length()>0)
 			select=sel;
 		else
-			System.err.println("Empty Select string!"+"\n--> USER ERROR");
+			logger.error("Empty Select string!"+"\n--> USER ERROR");
 
 		if(select==null&&table==null)
 			return null;
@@ -167,7 +179,7 @@ public class PDO {
 			this.statement=this.core.createStatement();
 			this.result_set=statement.executeQuery(sql);
 		} catch (Exception e) { 
-			e.printStackTrace();
+			logger.error("create/execute exception: "+e);
 		}
 		return this.result_set;
 	}
@@ -210,7 +222,7 @@ public class PDO {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("exception while filling result map: "+e);
 		}
 		return ret;
 	}
@@ -225,12 +237,12 @@ public class PDO {
 					columns.add(rsmd.getColumnName(i));
 				return columns;
 			} catch (Exception e) {
-				System.err.println("Could not extract ResultSet MetaData\n --> USER WARNING");
-				e.printStackTrace();
+				logger.warn("Could not extract ResultSet MetaData\n --> USER WARNING");
+				logger.error("exception while looking for columns: "+e);
 				return null;
 			}
 		}
-		System.err.println("Something wrong with result set" + "\n --> USER WARNING");
+		logger.warn("Something wrong with result set" + "\n --> USER WARNING");
 		return null;
 	}
 

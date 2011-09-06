@@ -32,6 +32,8 @@ package org.skb.util.misc;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
 /**
  * Simple class that loads properties
  *
@@ -39,11 +41,13 @@ import java.util.Properties;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PropertyHandler {
+	static Logger logger;
 
 	/**
 	 * Class constructor, empty
 	 */
 	public PropertyHandler(){
+		logger=Logger.getLogger(PropertyHandler.class);
 	}
 
 	/**
@@ -58,12 +62,10 @@ public class PropertyHandler {
 			ret.load(getClass().getResourceAsStream(file));
 		}
 		catch (IOException e){
-			System.err.println(callee+" cant' load property file <"+file+">, IOException");
-			e.printStackTrace();
+			logger.error(callee+" cant' load property file <"+file+">, IOException\n--> "+e);
 		}
 		catch (Exception e){
-			System.err.println(callee+" cant' load property file <"+file+">, general Exception");
-			e.printStackTrace();
+			logger.error(callee+" cant' load property file <"+file+">, general Exception\n--> "+e);
 		}
 		return ret;
 	}

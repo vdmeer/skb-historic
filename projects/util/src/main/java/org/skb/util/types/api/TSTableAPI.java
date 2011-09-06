@@ -212,7 +212,6 @@ public interface TSTableAPI extends TSComposite, Map<String, TSTableRowAPI>{
 	public void setColumns(String ref_class, String prefix);
 	public Map<String, TSTableRowAPI> tsGetMap();
 	public Object tsGetValue();
-	public String tsToString(int indent);
 
 	public Collection<TSTableRowAPI> values();
 }

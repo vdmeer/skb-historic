@@ -72,7 +72,6 @@ public interface TSMapAPI extends TSComposite, Map<String, TSBase>{
 	public TSBase remove(TSString key);
 	public Map<String, TSBase> tsGetMap();
 	public Object tsGetValue();
-	public String tsToString(int indent);
 
 	public Collection<TSBase> values() ;
 }

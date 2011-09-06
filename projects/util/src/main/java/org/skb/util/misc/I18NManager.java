@@ -93,8 +93,7 @@ public class I18NManager {
 			this.entries.put(pkg, rb);
 
 		} catch (Exception e) {
-			logger.error("catched exception: "+e.toString());
-			//e.printStackTrace();
+			logger.error("catched exception: "+e);
 		}
 	}
 

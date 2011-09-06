@@ -41,6 +41,7 @@ import java.util.TimeZone;
 import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 import org.skb.util.types.api.TSBase;
 import org.skb.util.types.atomic.java.TSBoolean;
 
@@ -51,45 +52,56 @@ import org.skb.util.types.atomic.java.TSBoolean;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class FileManager {
+	static Logger logger;
+
+
 	/**
 	 * Header for code files, will prepend all other content
 	 */
 	private StringTemplate codeHeader;
+
 
 	/**
 	 * 
 	 */
 	private StringTemplate fileStart;
 
+
 	/**
 	 * 
 	 */
 	private StringTemplate fileEnd;
+
 
 	/**
 	 * Source language, i.e. cola, pola, dal, glue
 	 */
 	private String sourceLanguage=null;
 
+
 	/**
 	 * Source file
 	 */
 	private String sourceFile=null;
+
 
 	/**
 	 * Target language, i.e. xml, sql, java
 	 */
 	private String targetLanguage=null;
 
+
 	/**
 	 * Standard file extension for target files
 	 */
 	private String targetFileExtension=null;
 
+
 	/**
 	 * Boolean determining if files can be printed or not, default is false
 	 */
 	private TSBoolean canPrint;
+
 
 	/**
 	 * Class constructor, requires code header, file start and file end paramters
@@ -98,12 +110,15 @@ public class FileManager {
 	 * @param fileEnd a final text for files
 	 */
 	public FileManager(StringTemplate codeHeader, StringTemplate fileStart, StringTemplate fileEnd){
+		logger=Logger.getLogger(FileManager.class);
+
 		this.codeHeader=codeHeader;
 		this.fileStart=fileStart;
 		this.fileEnd=fileEnd;
 
 		this.canPrint=new TSBoolean((false));
 	}
+
 
 	/**
 	 * Initialisation of the File Manager
@@ -129,6 +144,7 @@ public class FileManager {
 			this.canPrint=new TSBoolean((false));
 	}
 
+
 	/**
 	 * Write the given file list
 	 * @param list list of file names and associated templates
@@ -141,6 +157,7 @@ public class FileManager {
 			this.writeSingleFileFromList(list.getDir(e.getKey()), list.getFile(e.getKey())+this.targetFileExtension, e.getValue());
 		return true;
 	}
+
 
 	/**
 	 * Write a single file
@@ -174,13 +191,14 @@ public class FileManager {
 			aout.flush();
 			aout.close();
 		}  catch (IOException io) {
-//			ReportManager.getInstance().reportErrorNoFile("Exception in tribe::FileManager : " + io.toString());
+			logger.error("IO exception writing files: " + io);
 			return false;
 		}  catch (Exception e) {
-//			ReportManager.getInstance().reportErrorNoFile("Exception in tribe::FileManager : " + e.toString());
+			logger.error("general exception writing files: " + e);
 		}
 		return true;
 	}
+
 
 	/**
 	 * Return the current status of <canPrint>
@@ -189,6 +207,7 @@ public class FileManager {
 	public boolean canPrint(){
 		return this.canPrint.tsvalue;
 	}
+
 
 	/**
 	 * Return the standard header
@@ -226,6 +245,7 @@ public class FileManager {
 	    return this.codeHeader.toString();
 	}
 
+
 	/**
 	 * Compile and return the standard pre-text of a file
 	 * @return text to be used as pre-text
@@ -239,6 +259,7 @@ public class FileManager {
 		this.fileStart.setAttribute("target", target);
 		return this.fileStart.toString();
 	}
+
 
 	/**
 	 * Compile and return the standard pre-text of a file

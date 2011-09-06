@@ -217,8 +217,8 @@ public class TSInteger implements TSAtomic {
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN);
-		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_BOOLEAN);
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER);
+		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_INTEGER);
 		this.tsvalue=new java.lang.Integer(0);
 	}
 

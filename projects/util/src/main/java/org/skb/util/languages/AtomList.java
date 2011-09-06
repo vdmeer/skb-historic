@@ -48,17 +48,17 @@ import org.skb.util.types.composite.util.TSTable;
 import org.skb.util.types.composite.util.TSTableRow;
 
 /**
- * Provides a table that compilers/parsers can use to maintain a list of language elements.
+ * Provides a (symbol) table that compilers/parsers can use to maintain a list of language elements.
  *
  * This class is based on {@link org.skb.util.types.composite.util.TSTable} using a pre-defined column structure
  * suitable for compilers and parsers. The columns are
  * <ul>
- *   <li>category - general separation of language atoms</li>
- *   <li>type - the type of the language atom</li>
+ *   <li>category - general separation of language atoms, such as class, interface, contract.</li>
+ *   <li>type - the type of the language atom, such has integer, string, char/</li>
  *   <li>array - a boolean indicating if the language atom is an array or not</li>
- *   <li>file - the name of the file where the language atom was used</li>
- *   <li>line - the line number where the language atom was used</li>
- *   <li>column - the column where the language atom was used (first character of the atom's name)</li>
+ *   <li>file - the name of the file where the language atom was found</li>
+ *   <li>line - the line number where the language atom was found</li>
+ *   <li>column - the column where the language atom was found (usually the first character of the atom's name)</li>
  *   <li>st - the string template to be used for transformations of the language atom</li>
  *   <li>id:scoped - the identifier of the language atom with full scope (as scoped name)</li>
  * </ul>
@@ -140,7 +140,7 @@ public class AtomList extends TSTable {
 
 	/**
 	 * Return a pointer to the instance of the atom list (singleton)
-	 * @return the pointer to the instance
+	 * @return instance pointer
 	 */
 	public static AtomList getInstance(){
 		return AtomListHolder.INSTANCE;
@@ -175,8 +175,9 @@ public class AtomList extends TSTable {
 //		this.addRows(ref_class, rowPrefix);
 //	}
 
+
 	/**
-	 * Initialise the atom list, create the table and set default values.
+	 * Initialises the atom list, create the table and set default values.
 	 */
 	protected void _init(){
 		super._init();
@@ -190,48 +191,54 @@ public class AtomList extends TSTable {
 		this.imports=new TreeMap<String, LinkedHashMap<String, String>>();
 	}
 
+
 	/**
-	 * Set the specification name, which is the root of an atom list hierarchy
+	 * Sets the specification name, which is the root of an atom list hierarchy
 	 * @param s the new specification name as string
 	 */
 	public void specificationName(String s){
 		this.specificationName=s;
 	}
 
+
 	/**
-	 * Set the specification name, which is the root of an atom list hierarchy
-	 * @param tk the new specification name as ANTLR token
+	 * Sets the specification name, which is the root of an atom list hierarchy
+	 * @param tk the new specification name as ANTLR token, getText is used to get the string
 	 */
 	public void specificationName(Token tk){
 		this.specificationName=tk.getText();
 	}
 
+
 	/**
-	 * Return the specification name, which is the root of an atom list hierarchy
+	 * Returns the specification name, which is the root of an atom list hierarchy
 	 * @return the specification name, default is "default"
 	 */
 	public String specificationName(){
 		return this.specificationName;
 	}
 
+
 	/**
-	 * Set the scope separator.
+	 * Sets the scope separator.
 	 * @param s the new scope separator
 	 */
 	public void setScopeSeparator(String s){
 		this.scope.separator(s);
 	}
 
+
 	/**
-	 * Get the scope separator.
+	 * Gets the scope separator.
 	 * return the current scope separator
 	 */
 	public String getScopeSeparator(){
 		return this.scope.separator();
 	}
 
+
 	/**
-	 * Add a new atom to the list.
+	 * Adds a new atom to the list.
 	 * @param tk the ANTLR token of the atom 
 	 * @param category the category the atom should be filed at
 	 * @return null if successful, row containing existing atom otherwise
@@ -241,8 +248,9 @@ public class AtomList extends TSTable {
 		return this.putAtom(tk, category, null);
 	}
 
+
 	/**
-	 * Add a new atom to the list.
+	 * Adds a new atom to the list.
 	 * @param tk the ANTLR token of the atom
 	 * @param category category the category the atom should be filed at
 	 * @param type the type of the atom
@@ -253,8 +261,9 @@ public class AtomList extends TSTable {
 		return this.putAtom(tk, category, type, false);
 	}
 
+
 	/**
-	 * Add a new atom to the list.
+	 * Adds a new atom to the list.
 	 * @param tk the ANTLR token of the atom
 	 * @param category category the category the atom should be filed at
 	 * @param type the type of the atom
@@ -288,16 +297,18 @@ public class AtomList extends TSTable {
 			return this.get(id);
 	}
 
+
 	/**
-	 * Add an import to the list of imports.
+	 * Adds an import to the list of imports.
 	 * @param sn the import as scoped name
 	 */
 	public void addImport(String sn){
 		this.imports.get(this.scope.toString()).put(sn,this.get(sn,AtomList.alValCategory).toString());
 	}
 
+
 	/**
-	 * Add a list of imports to the list of imports
+	 * Adds a list of imports to the list of imports
 	 * @param row
 	 * @param m
 	 */
@@ -305,8 +316,9 @@ public class AtomList extends TSTable {
 		this.imports.get(row).putAll(m);
 	}
 
+
 	/**
-	 * Add a string template to a language atom
+	 * Adds a string template to a language atom
 	 * @param row
 	 * @param st
 	 */
@@ -315,14 +327,20 @@ public class AtomList extends TSTable {
 			this.put(row, AtomList.alValST, new TSST(st));
 	}
 
+
 	/**
-	 * Add a string template to a language atom
+	 * Adds a string template to a language atom
 	 * @param st
 	 */
 	public void addST(StringTemplate st){
 		this.addST(this.scope.toString(),st);
 	}
 
+
+	/**
+	 * Returns a list of of strings (categories) and the atoms defined for each of them.
+	 * @return and empty list (of no atoms registered) or a list of string/integer pairs
+	 */
 	public LinkedHashMap<String, Integer> atomNumbers(){
 		LinkedHashMap<String, Integer> ret=new LinkedHashMap<String, Integer>();
 		Set<String> rows=this.getRows();
@@ -337,16 +355,18 @@ public class AtomList extends TSTable {
 		return ret;
 	}
 
+
 	/**
-	 * Return the number of atoms in the list
+	 * Returns the number of atoms in the list
 	 * @return size of the atom list
 	 */
 	public Integer noOfAtoms(){
 		return this.size();
 	}
 
+
 	/**
-	 * Return import list 
+	 * Returns import list 
 	 * @param row name of an atom to look for
 	 * @return the list of recorded imports for this atom
 	 */
@@ -354,16 +374,18 @@ public class AtomList extends TSTable {
 		return this.imports.get(row);
 	}
 
+
 	/**
-	 * Get last atom in the current scope.
+	 * Gets last atom in the current scope.
 	 * @return id of the last atom the the current scope
 	 */
 	public String getLastID(){
 		return this.scope.lastElement();
 	}
 
+
 	/**
-	 * Remove all language atoms of a given category
+	 * Removes all language atoms of a given category
 	 * @param cat
 	 */
 	public void removeCategory(String cat){
@@ -383,8 +405,9 @@ public class AtomList extends TSTable {
         	this.remove(removeList.get(i));
 	}
 
+
 	/**
-	 * Return the string template of a language atom
+	 * Returns the string template of a language atom
 	 * @param row atom the read the template for
 	 * @return the current set string template
 	 */
@@ -396,8 +419,9 @@ public class AtomList extends TSTable {
 		return ret;
 	}
 
+
 	/**
-	 * Return an ANTLR runtime token for the given atom (row) and column
+	 * Returns the ANTLR runtime token for the given atom (row) and column
 	 * @param row name of the atom
 	 * @param column column to read the token from
 	 * @return an ANTLR runtime token
@@ -410,8 +434,9 @@ public class AtomList extends TSTable {
 		return (Token)ret;
 	}
 
+
 	/**
-	 * Return the category of the parent atom for the atom with name 's'.
+	 * Returns the category of the parent atom for the atom with name 's'.
 	 * @param s name of the atom
 	 * @return category of the atom's parent
 	 */
@@ -425,8 +450,9 @@ public class AtomList extends TSTable {
 		return this.get(par, AtomList.alValCategory).toString();
 	}
 
+
 	/**
-	 * Return the name (identifier) of the parent atom for the atom with name 's'.
+	 * Returns the name (identifier) of the parent atom for the atom with name 's'.
 	 * @param s name of the atom
 	 * @return identifier of the atom's parent
 	 */
@@ -440,8 +466,9 @@ public class AtomList extends TSTable {
 		return par;
 	}
 
+
 	/**
-	 * Set the default category.
+	 * Sets the default category.
 	 * @param s
 	 */
 	public void setDefaultCategory(String s){

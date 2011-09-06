@@ -34,6 +34,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.skb.util.types.api.TSBase;
@@ -52,11 +53,13 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Json2Oat {
+	static Logger logger;
 
 	/**
 	 * Class construtor, empty
 	 */
 	public Json2Oat(){
+		logger=Logger.getLogger(Json2Oat.class);
 	}
 
 	/**
@@ -70,8 +73,7 @@ public class Json2Oat {
 				return this.read(new Scanner(file));
 			}
 			catch (Exception e){
-				//TODO add log instead of stderr
-				System.err.println(e);
+				logger.error("excpetion reading file <"+file.getName()+">\n--> "+e);
 			}
 		}
 		return null;
@@ -85,7 +87,9 @@ public class Json2Oat {
 	public TSBase read(String url){
 		try{
 			return this.read(new Scanner(getClass().getResourceAsStream(url)));
-		}catch(Exception e){
+		}
+		catch(Exception e){
+			logger.error("exception getting URL <"+url+"> as stream\n--> "+e);
 			return null;
 		}
 	}
@@ -108,8 +112,7 @@ public class Json2Oat {
 			}
 		}
 		catch (Exception e){
-			//TODO add log instead of stderr
-			System.err.println(e);
+			logger.error("exception while reading from input\n--> "+e);
 		}
 		return this.s2o(content);
 	}
@@ -127,7 +130,9 @@ public class Json2Oat {
 			JsonNode rootNode=mapper.readValue(content, JsonNode.class);
 			return this.traverse(rootNode);
 		}
-		catch (Exception e){System.err.println(e);}
+		catch (Exception e){
+			logger.error("exception while transforming JSON into TSBase\n--> "+e);
+		}
 		return null;
 	}
 
@@ -159,8 +164,8 @@ public class Json2Oat {
 			return new TSFloat(node.getDoubleValue());
 		else if(node.isNull())
 			return new TSString("");
-//TODO - add log instead of stderr
-System.err.println("nothing for");
+
+		logger.warn("nothing do to here");
 		return null;
 	}
 }

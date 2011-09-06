@@ -74,6 +74,8 @@ public class TSString implements TSAtomic{
 	 * @return String
 	 */
 	public static java.lang.String tsAddChar(TSString str, java.lang.String chr){
+		if(str==null)
+			return "";
 		if(str.tsvalue.length()>0&&!str.tsvalue.endsWith(chr)&&!str.tsvalue.endsWith(" "))
 			return chr;
 		else
@@ -83,13 +85,19 @@ public class TSString implements TSAtomic{
 	/**
 	 * Returns a comma if the specified string is non-empty and does not end with a blank nor a comma; "" otherwise
 	 * @param str string to test for
-	 * @return 
-	 * String
+	 * @return String
 	 */
 	public static java.lang.String tsAddCharComma(TSString str){
 		return TSString.tsAddChar(str, ",");
 	}
 
+
+	/**
+	 * Adds the given character with a blank to the given string of the string is not empty and does not end with the given character, "" otherwise
+	 * @param str string to test for
+	 * @param chr character to add
+	 * @return String
+	 */
 	public static java.lang.String tsAddCharWBlank(TSString str, java.lang.String chr){
 		if (TSString.tsAddChar(str, chr).equals("")){
 			java.lang.String ret=TSString.tsAddChar(str, chr);
@@ -99,6 +107,7 @@ public class TSString implements TSAtomic{
 		else
 			return "";	
 	}
+
 
 	public static java.lang.String tsAddFirstChar(TSString str, TSString chr){
 		if (str.tsvalue.length()==0)
@@ -206,6 +215,12 @@ public class TSString implements TSAtomic{
 			this.tsvalue=new java.lang.String(s.tsvalue);
 	}
 
+
+	/**
+	 * Local initialisation method.
+	 * 
+	 * Adds TS_ATOMIC and TS_ATOMIC_JAVA_STRING to the type lists (string and enum) and initialises the local string.
+	 */
 	private void _init(){
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
@@ -267,6 +282,7 @@ public class TSString implements TSAtomic{
 		return this.tsvalue.getBytes();
 	}
 
+
 	public byte[] getBytes(java.lang.String charsetName) throws UnsupportedEncodingException{
 		try {
 			return this.tsvalue.getBytes(charsetName);
@@ -275,13 +291,16 @@ public class TSString implements TSAtomic{
 		}
 	}
 
+
 	public void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin){
 		this.tsvalue.getChars(srcBegin, srcEnd, dst, dstBegin);
 	}
 
+
 	public int indexOf(int ch){
 		return this.tsvalue.indexOf(ch);
 	}
+
 
 	public int indexOf(int ch, int fromIndex){
 		return this.tsvalue.indexOf(ch, fromIndex);

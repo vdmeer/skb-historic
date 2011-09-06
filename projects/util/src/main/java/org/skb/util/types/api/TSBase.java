@@ -42,33 +42,38 @@ import org.skb.util.types.TSRepository.TEnum;
  */
 public interface TSBase {
 	/**
-	 * Empty the TSBase object
+	 * Empties the TSBase object
 	 */
 	public void tsClean();
 
+
 	/**
-	 * Return the last entry of the type list as an enumerate
+	 * Returns the last entry of the type list as an enumerate
 	 * @return type
 	 */
 	public TEnum tsGetTypeEnum();
 
+
 	/**
-	 * Return the full set of enumerate types
+	 * Returns the full set of enumerate types
 	 * @return type list
 	 */
 	public Set<TEnum> tsGetTypeEnumSet();
 
+
 	/**
-	 * Return the last entry of the type list as an string
+	 * Returns the last entry of the type list as an string
 	 * @return type
 	 */
 	public java.lang.String tsGetTypeString();
 
+
 	/**
-	 * Return the full set of string types
+	 * Returns the full set of string types
 	 * @return type list
 	 */
 	public List<String> tsGetTypeStringList();
+
 
 	/**
 	 * Is the object a TSAtomic?
@@ -76,31 +81,36 @@ public interface TSBase {
 	 */
 	public boolean tsIsAtomic();
 
+
 	/**
 	 * Is the object a TSComposite?
 	 * @return true if the object is a TSComposite type, false otherwise
 	 */
 	public boolean tsIsComposite();
 
+
 	/**
-	 * Test if the object is of a given type (string)
+	 * Tests if the object is of a given type (string)
 	 * @param type to be tested
 	 * @return true if the object is of the given type, false otherwise
 	 */
 	public boolean tsIsType(String type);
 
+
 	/**
-	 * Test if the object is of a given type (enumerate)
+	 * Tests if the object is of a given type (enumerate)
 	 * @param type to be tested
 	 * @return true if the object is of the given type, false otherwise
 	 */
 	public boolean tsIsType(TEnum type);
 
+
 	/**
-	 * Add a value to the object
+	 * Adds a value to the object
 	 * @param tb value to be added
 	 */
 	public void tsPlus(TSBase tb);
+
 
 	/**
 	 * toString() with indentation for formatted output
@@ -108,6 +118,7 @@ public interface TSBase {
 	 * @return stringified version of the object
 	 */
 	public String tsToString(int indent);
+
 
 	/**
 	 * Trim the object

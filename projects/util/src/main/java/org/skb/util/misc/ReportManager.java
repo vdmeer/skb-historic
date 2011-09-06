@@ -44,36 +44,41 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ReportManager extends STGManager{
-
 	/**
 	 * Number of reported errors
 	 */
 	private int noOfErrors=0;
+
 
 	/**
 	 * Number of reported warnings
 	 */
 	private int noOfWarnings=0;
 
+
 	/**
 	 * Report warnings?
 	 */
 	private boolean noWarnings;
+
 
 	/**
 	 * Report errors?
 	 */
 	private boolean noErrors;
 
+
 	/**
 	 * File name used for reporting
 	 */
 	private String fileFN;
 
+
 	/**
 	 * Programme name used for reporting
 	 */
 	private String progName;
+
 
 	/**
 	 * Class constructor, initialises members
@@ -82,6 +87,7 @@ public class ReportManager extends STGManager{
 		super();
 		this._init();
 	}
+
 
 	/**
 	 * Initialise the report manager
@@ -105,9 +111,11 @@ public class ReportManager extends STGManager{
 		this.useLexerAngelB=true;		
 	}
 
+
 	private static class ReportManagerHolder{
 		private final static ReportManager INSTANCE = new ReportManager();
 	}
+
 
 	/**
 	 * Return the instance of the ReportManager (singleton)
@@ -116,6 +124,7 @@ public class ReportManager extends STGManager{
 	public static ReportManager getInstance(){
 		return ReportManagerHolder.INSTANCE;
 	}
+
 
 	/**
 	 * Return the instance of the ReportManager (singleton) and re-initialise the manager
@@ -126,6 +135,7 @@ public class ReportManager extends STGManager{
 		return ReportManagerHolder.INSTANCE;
 	}
 
+
 	/**
 	 * Set the file name for reporting
 	 * @param fn
@@ -134,6 +144,7 @@ public class ReportManager extends STGManager{
 		this.fileFN=(new File(fn)).getName();
 	}
 
+
 	/**
 	 * Return the currently set file name
 	 * @return currently set file name
@@ -141,6 +152,7 @@ public class ReportManager extends STGManager{
 	public String getFileName(){
 		return this.fileFN;
 	}
+
 
 	/**
 	 * Set the boolean for error handling.
@@ -152,6 +164,7 @@ public class ReportManager extends STGManager{
 		this.noErrors=b;
 	}
 
+
 	/**
 	 * Set the boolean for warning handling.
 	 * 
@@ -162,6 +175,7 @@ public class ReportManager extends STGManager{
 		this.noWarnings=b;
 	}
 
+
 	/**
 	 * Set the programme name to be used for reporting
 	 * @param p
@@ -169,6 +183,7 @@ public class ReportManager extends STGManager{
 	public void setProgrammeName(String p){
 		this.progName=p;
 	}
+
 
 	/**
 	 * Return the number of errors reported since the last initialisation
@@ -178,12 +193,14 @@ public class ReportManager extends STGManager{
 		return this.noOfErrors;
 	}
 
+
 	/**
 	 * Set the number of errors to zero
 	 */
 	public void resetNoOfErrors(){
 		this.noOfErrors=0;
 	}
+
 
 	/**
 	 * Return the number of warnings reported since the last initialisation
@@ -193,12 +210,14 @@ public class ReportManager extends STGManager{
 		return this.noOfWarnings;
 	}
 
+
 	/**
 	 * Set the number of warnings to zero
 	 */
 	public void resetNoOfWarnings(){
 		this.noOfWarnings=0;
 	}
+
 
 	/**
 	 * Report an error or a warning
@@ -257,6 +276,7 @@ public class ReportManager extends STGManager{
 		}
 	}
 
+
 	/**
 	 * Report an error from string with additional information
 	 * 
@@ -270,6 +290,7 @@ public class ReportManager extends STGManager{
 		this.report("error", m, add, line, column);
 	}
 
+
 	/**
 	 * Report an error from Token with additional information
 	 * 
@@ -282,6 +303,7 @@ public class ReportManager extends STGManager{
 		this.reportError(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
+
 	/**
 	 * Report an error from Token without additional information
 	 * 
@@ -293,6 +315,7 @@ public class ReportManager extends STGManager{
 		this.reportError(m, t, null);
 	}
 
+
 	/**
 	 * Report a simple error message
 	 * 
@@ -302,6 +325,7 @@ public class ReportManager extends STGManager{
 	public void reportError(String m){
 		this.reportError(m, null, -1, -1);
 	}
+
 
 	/**
 	 * Report a simple error message with additional information
@@ -313,6 +337,7 @@ public class ReportManager extends STGManager{
 	public void reportError(String m, String add){
 		this.reportError(m, add, -1, -1);
 	}
+
 
 	/**
 	 * Report a simple error message without a file name
@@ -326,6 +351,7 @@ public class ReportManager extends STGManager{
 		this.reportError(m);
 		this.fileFN=t;
 	}
+
 
 	/**
 	 * Report an error message with an ANTLR exception without additional information
@@ -352,6 +378,7 @@ public class ReportManager extends STGManager{
 		this.report(null, m, add, line, column);
 	}
 
+
 	/**
 	 * Report a message from Token with additional information
 	 * 
@@ -364,6 +391,7 @@ public class ReportManager extends STGManager{
 		this.reportMessage(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
+
 	/**
 	 * Report a message from Token without additional information
 	 * 
@@ -375,6 +403,7 @@ public class ReportManager extends STGManager{
 		this.reportMessage(m, t, null);
 	}
 
+
 	/**
 	 * Report a simple message
 	 * 
@@ -384,6 +413,7 @@ public class ReportManager extends STGManager{
 	public void reportMessage(String m){
 		this.reportMessage(m, null, -1, -1);
 	}
+
 
 	/**
 	 * Report a simple message with additional information
@@ -395,6 +425,7 @@ public class ReportManager extends STGManager{
 	public void reportMessage(String m, String add){
 		this.reportMessage(m, add, -1, -1);
 	}
+
 
 	/**
 	 * Report a simple message without a file name
@@ -423,6 +454,7 @@ public class ReportManager extends STGManager{
 		this.report("warning", m, add, line, column);
 	}
 
+
 	/**
 	 * Report a warning from Token with additional information
 	 * 
@@ -435,6 +467,7 @@ public class ReportManager extends STGManager{
 		this.reportWarning(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
+
 	/**
 	 * Report a warning from Token without additional information
 	 * 
@@ -446,6 +479,7 @@ public class ReportManager extends STGManager{
 		this.reportWarning(m, t, null);
 	}
 
+
 	/**
 	 * Report a simple warning message
 	 * 
@@ -455,6 +489,7 @@ public class ReportManager extends STGManager{
 	public void reportWarning(String m){
 		this.reportWarning(m, null, -1, -1);
 	}
+
 
 	/**
 	 * Report a simple warning message with additional information
@@ -467,6 +502,7 @@ public class ReportManager extends STGManager{
 		this.reportWarning(m, add, -1, -1);
 	}
 	
+
 	/**
 	 * Report a simple warning message without a file name
 	 * 

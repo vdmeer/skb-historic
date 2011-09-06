@@ -59,7 +59,7 @@ public class ScopeString {
 	}
 
 	/**
-	 * Set the scope separator to the given string.
+	 * Sets the scope separator to the given string.
 	 * @param s new scope separator.
 	 */
 	public void separator(String s){
@@ -67,7 +67,7 @@ public class ScopeString {
 	}
 
 	/**
-	 * Return the currently used scope separator.
+	 * Returns the currently used scope separator.
 	 * @return scope separator currently used.
 	 */
 	public String separator(){
@@ -75,7 +75,7 @@ public class ScopeString {
 	}
 
 	/**
-	 * Return the current scope as string.
+	 * Returns the current scope as string.
 	 */
 	public String toString(){
 		String ret="";
@@ -87,7 +87,7 @@ public class ScopeString {
 	}
 
 	/**
-	 * Remove the last entry of the vector, i.e. the last part of the scope
+	 * Removes the last entry of the vector, i.e. the last part of the scope
 	 */
 	public void pop(){
 		if(this.field.size()>0)
@@ -95,21 +95,21 @@ public class ScopeString {
 	}
 
 	/**
-	 * Add a new scope, i.e. append the given token to the vector.
+	 * Adds a new scope, i.e. append the given token to the vector.
 	 */
 	public void push(Token token){
 		this.field.add(token.getText());
 	}
 
 	/**
-	 * Clear the vector, empty the scope.
+	 * Clears the vector, empty the scope.
 	 */
 	public void clear(){
 		this.field.clear();
 	}
 
 	/**
-	 * Return the last entry of the vector.
+	 * Returns the last entry of the vector.
 	 * @return last entry of the vector
 	 */
 	public String lastElement(){

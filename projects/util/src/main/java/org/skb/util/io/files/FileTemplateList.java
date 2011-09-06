@@ -51,10 +51,12 @@ public class FileTemplateList {
 	 */
 	private TreeMap<String, FileTemplateSingle> templates;
 
+
 	/**
 	 * The target directory
 	 */
 	private TSString targetDirectory=null;
+
 
 	/**
 	 * Class constructor, initialises private members
@@ -63,6 +65,7 @@ public class FileTemplateList {
 		this.templates=new TreeMap<String, FileTemplateSingle>();
 	}
 
+
 	/**
 	 * Class constructor, initialises private list with given list
 	 * @param ftl file list to be used
@@ -70,6 +73,7 @@ public class FileTemplateList {
 	public FileTemplateList(TreeMap<String, FileTemplateSingle> ftl){
 		this.templates=new TreeMap<String, FileTemplateSingle>(ftl);
 	}
+
 
 	/**
 	 * Initialise the template with the target directory
@@ -80,6 +84,7 @@ public class FileTemplateList {
 			this.targetDirectory=new TSString(targetDir.toString());
 	}
 
+
 	/**
 	 * Tests for existence of a key 
 	 * @param k key to be tested
@@ -87,17 +92,20 @@ public class FileTemplateList {
 	 */
 	public boolean containsKey(String k){return this.templates.containsKey(k);}
 
+
 	/**
 	 * Return the current size of the tempalte list
 	 * @return size of the template list
 	 */
 	public int size(){return this.templates.size();}
 
+
 	/**
 	 * Return an entry set of the template list
 	 * @return entry set
 	 */
 	public Set<Map.Entry<String, FileTemplateSingle>> entrySet(){return this.templates.entrySet();}
+
 
 	/**
 	 * Return the template for a given key
@@ -106,11 +114,13 @@ public class FileTemplateList {
 	 */
 	public FileTemplateSingle get(String key){return this.templates.get(key);}
 
+
 	/**
 	 * Return the complete template list
 	 * @return template list
 	 */
 	public TreeMap<String, FileTemplateSingle> getList(){return this.templates;}
+
 
 	/**
 	 * Add a template
@@ -120,6 +130,7 @@ public class FileTemplateList {
 	public void add(String fn, FileTemplateSingle fts){
 		this.templates.put(fn, fts);
 	}
+
 
 	/**
 	 * Add a template
@@ -136,6 +147,7 @@ public class FileTemplateList {
 		}
 	}
 
+
 	/**
 	 * Add imports to a key
 	 * @param fn file name (key)
@@ -150,6 +162,7 @@ public class FileTemplateList {
 			this.templates.put(fn, fts);
 		}
 	}
+
 
 	/**
 	 * Add miscelleanous information to a template
@@ -167,6 +180,7 @@ public class FileTemplateList {
 		}
 	}
 
+
 	/**
 	 * Add all given templates to the list
 	 * @param key key to add the templates to
@@ -183,6 +197,7 @@ public class FileTemplateList {
 			return true;
 		}
 	}
+
 
 	/**
 	 * Get directory
@@ -202,6 +217,7 @@ public class FileTemplateList {
 			ret=this.targetDirectory.toString();
 		return ret;
 	}
+
 
 	/**
 	 * Get file
