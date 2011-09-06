@@ -18,7 +18,7 @@ public final class SKBInit {
 			ret=true;
 		}
 		catch(Exception e){
-			System.err.println("SKBInit exception initialising SKB and SKBDataManager\n"+e);
+			logger.error("SKBInit exception initialising SKB and SKBDataManager\n"+e);
 		}
 		try{
 			logger.trace("loading SKB core packages");
@@ -26,7 +26,7 @@ public final class SKBInit {
 			mySKB.load_core_packages();
 		}
 		catch(Exception e){
-			System.err.println("SKBInit exception loading core packages\n"+e);
+			logger.error("SKBInit exception loading core packages\n"+e);
 		}
 
 		logger.trace("return ("+ret+")");

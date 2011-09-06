@@ -39,6 +39,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.skb.util.misc.I18NManager;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.TSRepository;
@@ -59,23 +60,26 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class SKBDataManager {
+	static Logger logger;
+
 	/**
 	 * Registered data objects
 	 */
 	private TSMapLH registered_dos;
 
 
-
-
 	private static class XtSKBDataMangerHolder{
 		private final static SKBDataManager INSTANCE = new SKBDataManager();
 	}
+
 
 	public static SKBDataManager getInstance(){
 		return XtSKBDataMangerHolder.INSTANCE;
 	}
 
+
 	private SKBDataManager(){
+		logger=Logger.getLogger(SKBDataManager.class);
 		this.registered_dos=new TSMapLH();
 	}
 
@@ -119,7 +123,7 @@ public class SKBDataManager {
 
 			File f=new File(sqliteFile);
 			if(!f.canRead()){
-				//trigger_error("SKB_DataManager: SQLite database {$sqlite_file} not found for sema tag {$sema_tag} in package {$package}", E_USER_WARNING);
+				logger.warn("SKB_DataManager: SQLite database <"+sqliteFile+">  not found for sema tag <"+semaTag+"> in package <"+pkg+">");
 				doReg=false;
 			}
 			else{
@@ -128,11 +132,10 @@ public class SKBDataManager {
 					Class.forName("org.sqlite.JDBC");
 					connection=DriverManager.getConnection("jdbc:sqlite:"+sqliteFile);
 				} catch (Exception e) {
-					System.err.println("Unable to load PDO!\n--> "+sqliteFile+"\n--> USER ERROR");
-					e.printStackTrace();
+					logger.error("SKB_DataManager: Unable to load PDO!\n--> "+sqliteFile+"\n--> "+e);
 				}
 				if(connection==null){
-					System.err.println("Could not load database\n --> USER WARNING");
+					logger.warn("SKB_DataManager: Could not load database <"+"jdbc:sqlite:"+sqliteFile+">");
 				}
 				else{
 					for(int i=0;i<tab.size();i++){
@@ -140,7 +143,7 @@ public class SKBDataManager {
 							ResultSet rs=connection.createStatement().executeQuery("SELECT * FROM "+tab.get(i));
 							rs.next();
 						} catch (Exception e) {
-							//trigger_error("SKB_DataManager: table {$tables[$_keys[$i]]} does not exist in SQLite database {$sqlite_file} for sema tag {$sema_tag} in package {$package}", E_USER_ERROR);
+							logger.error("SKB_DataManager: table <"+tab.get(i)+"> does not exist in SQLite database <"+sqliteFile+"> for sema tag <"+semaTag+"> in package <"+pkg+">");
 							doReg=false;
 						}
 						if(doReg==true){
@@ -151,7 +154,7 @@ public class SKBDataManager {
 			}
 		}
 		else{
-			//trigger_error("SKB_DataManager: unknown type {$type} for sema tag {$sema_tag} in package {$package}", E_USER_ERROR);
+			logger.error("SKB_DataManager: unknown type <"+type+"> for sema tag <"+semaTag+"> in package <"+pkg+">");
 			doReg=false;
 		}
 
@@ -193,9 +196,9 @@ public class SKBDataManager {
 
 	public TSMapLH testQuery(TSMapLH query){
 		if(!query.containsKey("sema_tag"))
-			System.err.println("SKB_DataManager: no sema tag set in query request");
+			logger.warn("SKB_DataManager: no sema tag set in query request");
 		if(!this.registered_dos.containsKey(query.get("sema_tag").toString()))
-			System.err.println("SKB_DataManager: unknown sema tag "+query.get("sema_tag")+" in query request");
+			logger.error("SKB_DataManager: unknown sema tag <"+query.get("sema_tag")+"> in query request");
 
 		if(!query.containsKey("find"))
 			query.put("find", new TSString("*"));
@@ -232,7 +235,7 @@ public class SKBDataManager {
 		query=this.testQuery(query);
 		
 		if(!this.registered_dos.containsKey(query.get("sema_tag").toString())){
-			System.err.println("SKB_DataManager: unknown sema tag "+query.get("sema_tag")+" in query request");
+			logger.error("SKB_DataManager: unknown sema tag <"+query.get("sema_tag")+"> in query request");
 			return ret;
 		}
 
@@ -424,20 +427,20 @@ public class SKBDataManager {
 			SKBInterpreter inter=(SKBInterpreter)theClass.newInstance();
 			String type=registered_interpreter.get("/core:rabit:type").toString();
 			if(type.equals("interpreter:core"))
-				((SKBInterpreterCore)inter).interpret(val.toString(), request);
+				return ((SKBInterpreterCore)inter).interpret(val.toString(), request);
 			else if(type.equals("interpreter:entity"))
-				((SKBInterpreterEntity)inter).interpret(val.toString(), table);
+				return ((SKBInterpreterEntity)inter).interpret(val.toString(), table);
 			else if(type.equals("interpreter:value"))
-				((SKBInterpreterValue)inter).interpret(val.toString());
+				return ((SKBInterpreterValue)inter).interpret(val.toString());
 			else if(type.equals("interpreter:entries"))
-				((SKBInterpreterEntries)inter).interpret((TSMapLH)val, table);
+				return ((SKBInterpreterEntries)inter).interpret((TSMapLH)val, table);
 			else
 				return null;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//trigger_error("SKB_Main: interpreter not found: {$id} for target {$target}", E_USER_ERROR);
+		logger.error("SKBDataManager: interpreter not found: <"+id+">");
 		return null;
 	}
 }

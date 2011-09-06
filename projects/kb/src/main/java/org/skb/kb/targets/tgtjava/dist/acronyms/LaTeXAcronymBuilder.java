@@ -46,6 +46,7 @@ public class LaTeXAcronymBuilder extends SKBBuilder{
 		this.templates.add_template("tpl", this.tpl_list);
 	}
 
+
 	@Override
 	protected void execute_loop(Request request, TSMapLH entries) {
 		TSSTGManager stgm=this.templates.get_template_object("tpl");

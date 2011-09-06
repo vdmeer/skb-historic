@@ -404,7 +404,7 @@ public class SKB {
 			}
 		}
 		else{
-			logger.trace("["+pkg+"] "+"cant' read JSON file <"+pkgJson+">");
+			logger.error("["+pkg+"] "+"cant' read JSON file <"+pkgJson+">");
 		}
 	}
 
@@ -460,7 +460,7 @@ public class SKB {
 					else if(type.equals("application"))
 						tmap=this.registered_applications;
 					else
-						System.err.println("SKB_Main: Unknown RABIT type: "+type);
+						logger.error("SKB_Main: Unknown RABIT type: <"+type+">");
 
 					if(tmap!=null){
 						tmap.put(key, val);
@@ -526,36 +526,6 @@ public class SKB {
 	}
 
 
-	 /**
-	  * Register a Database (from database/) in the PDO repository.
-	  * 
-	  * This function creates a PDO object for the given database and registered the tables in the PDO
-	  * repository. One can provide a package name or a simple name, the difference being that using a package name
-	  * the registration will prefix it with "pkg:".
-	  * 
-	  * @param fn the filename of the database, assuming it is on the directory database/
-	  * @param tables the tables to be registered, can be array or comma-separated list as string
-	  * @param pkg name as package for the PDO repository or null if simple name is used
-	  * @param name simple name for the PDO repository
-	  */
-//	public void loadDatabase(String fn, TSArrayListString tables, String pkg, String name){
-//		String key;
-//		if(name!=null)
-//			key=name;
-//		else
-//			key="pkg:"+pkg;
-//		String dbFile=this.configuration.get("path/database")+fn+".db";
-//		TSPDO pdo=new TSPDO(new PDOConnect(dbFile).connection);
-//		for(int i=1;i<tables.size();i++){
-//			if(this.dbpdos.pdo_table_exists(pdo, tables.get(i).toString())==false){
-//				//TODO trigger_error('SKB_Main: Database Table not found: '.$tables[$_keys[$i]].' in '.$db_file, E_USER_ERROR);
-//				System.err.println("SKB_Main: table "+tables.get(i)+" not found in db "+fn);
-//			}
-//		}
-//		this.dbpdos.pdo_add(key, dbFile, tables, pdo, key);
-//	}
-
-
 	/**
 	 * Return the current configuration array.
 	 * 
@@ -564,6 +534,7 @@ public class SKB {
 	public TSMapLH getConfiguration(){
 		return this.configuration;
 	}
+
 
 	/**
 	 * Return the specified registration field or a complete group of fields.
@@ -611,6 +582,7 @@ public class SKB {
 		return this.registered_requests; 				
 	}
 
+
 	/**
 	 * Return the specified requests.
 	 * 
@@ -623,12 +595,16 @@ public class SKB {
 		return null;
 	}
 
+
 	/**
 	 * Return all currently registered readers.
 	 * 
 	 * @return list of all registered readers
 	 */
-	public TSMapLH getRegisteredReaders(){return this.registered_readers;}
+	public TSMapLH getRegisteredReaders(){
+		return this.registered_readers;
+	}
+
 
 	/**
 	 * Return the specified reader.
@@ -642,12 +618,14 @@ public class SKB {
 		return null;
 	}
 
+
 	/**
 	 * Return all currently registered builders.
 	 * 
 	 * @return list of all registered builders
 	 */
 	public TSMapLH getRegisteredBuilders(){return this.registered_builders;}
+
 
 	/**
 	 * Return the specified builder.
@@ -661,12 +639,14 @@ public class SKB {
 		return null;
 	}
 
+
 	/**
 	 * Return all currently registered templates.
 	 * 
 	 * @return list of all registered templates
 	 */
 	public TSMapLH getRegisteredTemplates(){return this.registered_templates;}
+
 
 	/**
 	 * Return the specified template.
@@ -680,12 +660,14 @@ public class SKB {
 		return null;
 	}
 
+
 	/**
 	 * Return all currently registered interpreters.
 	 * 
 	 * @return list of all registered interpreters
 	 */
 	public TSMapLH getRegisteredInterpreters(){return this.registered_interpreters;}
+
 
 	/**
 	 * Return the specified interpreter.
@@ -699,12 +681,14 @@ public class SKB {
 		return null;
 	}
 
+
 	/**
 	 * Return all currently registered applications.
 	 * 
 	 * @return list of all registered applications
 	 */
 	public TSMapLH getRegisteredApplications(){return this.registered_applications;}
+
 
 	/**
 	 * Return the specified application.
@@ -717,6 +701,7 @@ public class SKB {
 			return (TSMapLH)this.registered_applications.get(key);
 		return null;
 	}
+
 
 	/**
 	 * Return a Request object for the given key.
@@ -732,9 +717,10 @@ public class SKB {
 			ret.setRequestType(type, (TSMapLH)this.registered_requests.get(type), this.registered_fields);
 			return ret;
 		}
-		System.err.println("SKB_Main: request not found: {"+type+"}\n--> USER ERROR");;
+		logger.error("SKB_Main: request not found: {"+type+"}\n--> USER ERROR");
 		return null;
 	}
+
 
 	/**
 	 * Return a Reader object for the given key.
@@ -749,12 +735,13 @@ public class SKB {
 				SKBReader ret=(SKBReader)theClass.newInstance();
 				return ret;
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("SKB_Main: caught exception instantiation reader: <"+key+">\n-->"+e);
 			}
 		}
-		System.err.println("ERROR, Reader not found");
+		logger.error("SKB_Main: reader not found: <"+key+">");
 		return null;
 	}
+
 
 	/**
 	 * Return a Builder object for the given key.
@@ -770,10 +757,10 @@ public class SKB {
 				ret.set_templates();
 				return ret;
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("SKB_Main: caught exception instantiation builder: <"+key+">\n-->"+e);
 			}
 		}
-		System.err.println("ERROR, Builder not found");
+		logger.error("SKB_Main: builder not found: <"+key+">");
 		return null;
 	}
 
@@ -791,10 +778,10 @@ public class SKB {
 				SKBInterpreter ret=(SKBInterpreter)theClass.newInstance();
 				return ret;
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("SKB_Main: caught exception instantiation interpreter: <"+key+">\n-->"+e);
 			}
 		}
-		System.err.println("ERROR, Interpreter not found");
+		logger.error("SKB_Main: interpreter not found: <"+key+">");
 		return null;
 	}
 
@@ -812,18 +799,20 @@ public class SKB {
 				SKBApplication ret=(SKBApplication)theClass.newInstance();
 				return ret;
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("SKB_Main: caught exception instantiation application: <"+key+">\n-->"+e);
 			}
 		}
-		System.err.println("ERROR, Application not found");
+		logger.error("SKB_Main: application not found: <"+key+">");
 		return null;
 	}
+
 
 	public TSMapLH getFieldSettings(String field){
 		if(this.registered_fields.containsKey(field))
 			return (TSMapLH)this.registered_fields.get(field);
 		return null;
 	}
+
 
 	public String getLang(){
 		return this.lang;

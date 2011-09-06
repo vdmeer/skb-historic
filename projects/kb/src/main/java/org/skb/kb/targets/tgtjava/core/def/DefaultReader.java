@@ -37,8 +37,7 @@ import org.skb.util.types.atomic.java.TSString;
 public class DefaultReader extends SKBReader {
 
 	@Override
-	protected void prepare_loop(Request request, TSString table,
-			TSString tableCollections) {
+	protected void prepare_loop(Request request, TSString table, TSString tableCollections) {
 		// TODO Auto-generated method stub
 System.err.println("Reader: prepare_loop");		
 	}
