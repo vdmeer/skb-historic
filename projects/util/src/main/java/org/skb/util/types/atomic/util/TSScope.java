@@ -31,30 +31,43 @@ package org.skb.util.types.atomic.util;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSAtomic;
 import org.skb.util.types.api.TSBase;
 
 public class TSScope implements TSAtomic {
+	/** Logger instance */
+	static Logger logger;
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	protected Stack<String> scope;
 
 	public TSScope(){
+		this._init();
+	}
+
+
+	protected void _init(){
+		logger=Logger.getLogger(TSScope.class);
+
 		this.scope=new Stack<String>();
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
-		this.typeString.add(TSRepository.TString.TS_UNKNOWN);
-		this.typeEnum.add(TEnum.TS_UNKNOWN);
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_SCOPE);
+		this.typeEnum.add(TEnum.TS_ATOMIC_SCOPE);
 	}
+
 
 	public boolean push(String key, String value){
 		if(this.scope.contains(key+"@"+value))
@@ -71,8 +84,8 @@ public class TSScope implements TSAtomic {
 
 	@Override
 	public void tsClean() {
-		// TODO Auto-generated method stub
-
+		// TODO
+		logger.warn("tsClean not implemented");
 	}
 
 	@Override
@@ -121,13 +134,14 @@ public class TSScope implements TSAtomic {
 
 	@Override
 	public String tsToString(int indent) {
-		// TODO Auto-generated method stub
+		// TODO
+		logger.warn("tsToString not implemented");
 		return null;
 	}
 
 	@Override
 	public void tsTrim() {
-		// TODO Auto-generated method stub
-
+		// TODO
+		logger.warn("tsTrim not implemented");
 	}
 }

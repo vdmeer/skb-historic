@@ -31,10 +31,12 @@ package org.skb.util.types.atomic.java;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSAtomic;
@@ -47,6 +49,10 @@ import org.skb.util.types.api.TSBase;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSFloat implements TSAtomic {
+	/** Logger instance */
+	static Logger logger;
+
+
 	public static int compare(float f1, float f2){
 		return java.lang.Float.compare(f1, f2);
 	}
@@ -92,7 +98,7 @@ public class TSFloat implements TSAtomic {
 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	public Float tsvalue=null;
 
@@ -196,6 +202,11 @@ public class TSFloat implements TSAtomic {
 	}
 
 	private void _init(){
+		logger=Logger.getLogger(TSFloat.class);
+
+		this.typeString.add(TSRepository.TString.TS_ATOMIC);
+		this.typeEnum.add(TEnum.TS_ATOMIC);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_FLOAT);
 		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_FLOAT);
 		this.tsvalue=new java.lang.Float(0);
@@ -304,6 +315,7 @@ public class TSFloat implements TSAtomic {
 
 	@Override
 	public void tsTrim(){
-		//TODO not yet implemented
+		//TODO
+		logger.warn("tsTrim not implemented");
 	}
 }

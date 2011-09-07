@@ -37,12 +37,14 @@ import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
@@ -68,8 +70,12 @@ import org.skb.util.types.atomic.java.TSString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSTable implements TSComposite, TSTableAPI{
+	/** Logger instance */
+	static Logger logger;
+
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	protected LinkedHashMap<String, TSTableRowAPI> tsvalue=null;
 
@@ -94,6 +100,8 @@ public class TSTable implements TSComposite, TSTableAPI{
 	}
 
 	protected void _init(){
+		logger=Logger.getLogger(TSTable.class);
+
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
 		this.typeEnum.add(TEnum.TS_COMPOSITE);
 
@@ -545,8 +553,8 @@ public class TSTable implements TSComposite, TSTableAPI{
 
 	@Override
 	public void tsClean() {
-		// TODO Auto-generated method stub
-		
+		//TODO
+		logger.warn("tsClean not implemented");
 	}
 
 	@Override
@@ -591,8 +599,8 @@ public class TSTable implements TSComposite, TSTableAPI{
 
 	@Override
 	public void tsPlus(TSBase tb) {
-		// TODO Auto-generated method stub
-		
+		//TODO
+		logger.warn("tsPlus not implemented");
 	}
 
 	@Override
@@ -624,7 +632,8 @@ public class TSTable implements TSComposite, TSTableAPI{
 
 	@Override
 	public void tsTrim() {
-		// TODO Auto-generated method stub
+		//TODO
+		logger.warn("tsTrim not implemented");
 	}
 
 	@Override

@@ -32,11 +32,13 @@ package org.skb.util.types.atomic.java;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.dictionaries.Html2LaTeX;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
@@ -52,6 +54,9 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSString implements TSAtomic{
+	/** Logger instance */
+	static Logger logger;
+
 	public static java.lang.String copyValueOf(char[] data){
 		return java.lang.String.copyValueOf(data);
 	}
@@ -154,7 +159,7 @@ public class TSString implements TSAtomic{
 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	public java.lang.String tsvalue;
 
@@ -222,6 +227,8 @@ public class TSString implements TSAtomic{
 	 * Adds TS_ATOMIC and TS_ATOMIC_JAVA_STRING to the type lists (string and enum) and initialises the local string.
 	 */
 	private void _init(){
+		logger=Logger.getLogger(TSString.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
@@ -426,10 +433,12 @@ public class TSString implements TSAtomic{
 		return this.tsvalue.trim();
 	}
 
+
 	@Override
 	public void tsClean(){
 		this.tsvalue=new java.lang.String();
 	}
+
 
 	/**
 	 * Parses the local String and 'explodes' it into a map or list object, depending on the contents of the String.
@@ -462,55 +471,67 @@ public class TSString implements TSAtomic{
 		}
 	}
 
+
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
+
 	@Override
 	public final java.lang.String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
+
 	public java.lang.String tsHtml2LaTeX(){
 		Html2LaTeX dict=Html2LaTeX.getInstance();
 		return dict.translate(this.tsvalue);
 	}
+
 
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
 
+
 	@Override
 	public boolean tsIsComposite(){
 		return false;
 	}
+
 
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
 
+
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
 
+
 	@Override
 	public void tsPlus(TSBase tb){
-		//TODO not yet implemented
+		//TODO
+		logger.warn("tsPLus not implemented");
 	}
+
 
 	@Override
 	public java.lang.String tsToString(int indent){
@@ -520,6 +541,7 @@ public class TSString implements TSAtomic{
 		ret+=this.tsvalue.toString();
 		return ret;
 	}
+
 
 	@Override
 	public void tsTrim(){

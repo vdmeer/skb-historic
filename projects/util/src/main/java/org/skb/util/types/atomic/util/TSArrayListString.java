@@ -34,11 +34,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSAtomic;
@@ -52,8 +54,12 @@ import org.skb.util.types.atomic.java.TSString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSArrayListString implements TSAtomic, List<TSString>, Collection<TSString>{
+	/** Logger instance */
+	static Logger logger;
+
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	protected List<TSString> tsvalue=null;
 
@@ -129,6 +135,8 @@ public class TSArrayListString implements TSAtomic, List<TSString>, Collection<T
 	}
 
 	protected void _init(){
+		logger=Logger.getLogger(TSArrayListString.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
@@ -401,19 +409,19 @@ public class TSArrayListString implements TSAtomic, List<TSString>, Collection<T
 
 	@Override
 	public void tsPlus(TSBase tb) {
-		// TODO Auto-generated method stub
-		
+		//TODO
+		logger.warn("tsPlus not implemented");
 	}
 
 	@Override
 	public String tsToString(int indent) {
-		// TODO Auto-generated method stub
+		//TODO
+		logger.warn("tsToString not implemented");
 		return null;
 	}
 
 	@Override
 	public void tsTrim() {
-		//TODO check trim function
 		for (TSString s : this.tsvalue)
 			s.tsvalue.trim();
 	}

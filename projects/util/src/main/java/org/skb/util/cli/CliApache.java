@@ -40,6 +40,7 @@ import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSBase;
@@ -57,55 +58,49 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class CliApache implements Cli {
-	/**
-	 * The application name for reporting error and warnings
-	 */
+	/** Logger instance */
+	static Logger logger;
+
+
+	/** The application name for reporting error and warnings */
 	private TSString applicationName;
 
-	/**
-	 * The command line options
-	 */
+
+	/** The command line options */
 	private Options options;
 
-	/**
-	 * The command line parsed
-	 */
+
+	/** The command line parsed */
 	private CommandLine line;
 
-	/**
-	 * List of options
-	 */
+
+	/** List of options */
 	private LinkedHashMap<String, String> optionList;
 
-	/**
-	 * Class constructor, initialises all private data structures
-	 */
+
+	/** Class constructor, initialises all private data structures */
 	public CliApache() {
+		logger=Logger.getLogger(CliApache.class);
+
 		this.applicationName=new TSString();
 		this.options=new Options();
 		this.optionList=new LinkedHashMap<String, String>();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#setApplicationName(org.skb.types.base.TSAtomic)
-	 */
-	public void setApplicationName(TSBase appName){
+
+	@Override public void setApplicationName(TSBase appName){
 		if(appName!=null&&appName.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING))
 			this.applicationName=(TSString)appName;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#setApplicationName(java.lang.String)
-	 */
-	public void setApplicationName(String appName){
+
+	@Override public void setApplicationName(String appName){
 		if(appName!=null)
 			this.applicationName=new TSString(appName);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#setPropOptions(org.skb.types.util.TSPropertyMap)
-	 */
-	public void setPropOptions(TSPropertyMap prop){
+
+	@Override public void setPropOptions(TSPropertyMap prop){
 		String optType;
 		String optShort;
 		String optLong;
@@ -168,31 +163,26 @@ public class CliApache implements Cli {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#parse(java.lang.String[])
-	 */
-	public void parse(String[] args) throws ParseException {
+
+	@Override public void parse(String[] args) throws ParseException {
         CommandLineParser parser=new PosixParser();
         try {
             this.line=parser.parse(this.options, args, true);
         }
         catch(ParseException exp){
+        	logger.warn("catched ParserException: "+exp);
             throw exp;
         }
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#usage()
-	 */
-	public void usage(){
+
+	@Override public void usage(){
         HelpFormatter formatter=new HelpFormatter();
         formatter.printHelp(this.applicationName.toString(), this.options);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.Cli#setOptions(org.skb.types.util.TSPropertyMap)
-	 */
-	public void setOptions(TSPropertyMap prop){
+
+	@Override public void setOptions(TSPropertyMap prop){
 		String val;
         for(String key:this.optionList.keySet()){
         	val=this.optionList.get(key);
@@ -204,12 +194,12 @@ public class CliApache implements Cli {
         			valType="";
         		}
         		switch(TSRepository.type(valType)){
-        			case TS_ATOMIC_JAVA_STRING:  prop.setValueCli(key, new TSString(line.getOptionValue(val))); break;
-        			case TS_ATOMIC_JAVA_BOOLEAN: prop.setValueCli(key, new TSBoolean(true)); break;
-        			case TS_ATOMIC_JAVA_INTEGER: prop.setValueCli(key, new TSInteger(line.getOptionValue(val))); break;
-        			case TS_ATOMIC_JAVA_DOUBLE:  prop.setValueCli(key, new TSDouble(line.getOptionValue(val))); break;
-        			case TS_ATOMIC_JAVA_LONG:    prop.setValueCli(key, new TSLong(line.getOptionValue(val))); break;
-        			default: //System.err.println("Apache CL, UNKNOWN TYPE for <"+key+"> <"+valType+">");
+        			case TS_ATOMIC_JAVA_STRING:		prop.setValueCli(key, new TSString(line.getOptionValue(val))); break;
+        			case TS_ATOMIC_JAVA_BOOLEAN:	prop.setValueCli(key, new TSBoolean(true)); break;
+        			case TS_ATOMIC_JAVA_INTEGER:	prop.setValueCli(key, new TSInteger(line.getOptionValue(val))); break;
+        			case TS_ATOMIC_JAVA_DOUBLE:		prop.setValueCli(key, new TSDouble(line.getOptionValue(val))); break;
+        			case TS_ATOMIC_JAVA_LONG:		prop.setValueCli(key, new TSLong(line.getOptionValue(val))); break;
+        			default:						logger.warn("unknown type <"+valType+"> for <"+key+">");
         		}
         	}
         }

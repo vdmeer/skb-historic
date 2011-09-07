@@ -1,0 +1,1503 @@
+//
+// [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+// Copyright (c) 2010-2011, Sven van der Meer <sven@vandermeer.de>
+// All rights reserved.
+//
+// Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+// modification, are permitted provided that the following conditions are met:
+// 
+//     + Redistributions of source code must retain the above copyright notice,
+//       this list of conditions and the following disclaimer.
+//     + Redistributions  in binary  form must  reproduce the  above copyright
+//       notice, this list  of conditions and  the following disclaimer  in the
+//       documentation and/or other materials provided with the distribution.
+//     + Neither the name of the the author nor the names of its contributors
+//       may be used to endorse or promote products derived from this software
+//       without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+// AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+// LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+// CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+// SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+// CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+
+//
+// Configuration file for the Org.SKB.Lang.Cola.Proto
+//
+// @package    org.skb.lang.cola.proto
+// @author     Sven van der Meer <sven@vandermeer.de>
+// @copyright  2011-2011 Sven van der Meer
+// @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+// @version    v0.30 build 110309 (09-Mar-11)
+//
+
+{
+    "skb":{
+        "tribe":{
+            "configuration":{
+                "name":{
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"COLA"
+                },
+                "name-lc":{
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"cola"
+                },
+                "copyright":{
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"Copyright (c) 2002-2011 Sven van der Meer <sven@vandermeer.de>"
+                },
+                "version":{
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"0.30"
+                },
+                "build":{
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"110309"
+                },
+                "build-date":{
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"2011-Mar-09"
+                },
+                "tribe-generic-stg":{
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/internal\/generic.stg"
+                }
+            }
+        },
+        "lang":{
+            "configuration":{
+                "cola":{
+                    "skb:lang:target:config:constid":"internalColaTgtCola",
+                    "skb:lang:target:config:javadoc":"Constant to test internally for the target Cola"
+                },
+                "java":{
+                    "skb:lang:target:config:constid":"internalColaTgtJava",
+                    "skb:lang:target:config:javadoc":"Constant to test internally for the target Java"
+                },
+                "php":{
+                    "skb:lang:target:config:constid":"internalColaTgtPhp",
+                    "skb:lang:target:config:javadoc":"Constant to test internally for the target PHP"
+                },
+                "xml":{
+                    "skb:lang:target:config:constid":"internalColaTgtXml",
+                    "skb:lang:target:config:javadoc":"Constant to test internally for the target XML"
+                },
+                "sql":{
+                    "skb:lang:target:config:constid":"internalColaTgtSql",
+                    "skb:lang:target:config:javadoc":"Constant to test internally for the target SQL"
+                },
+                "internal-scope-sep":{
+                    "skb:lang:target:config:constid":"keyScopeSep",
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"::",
+                    "skb:lang:target:config:javadoc":"Internal scope separator"
+                },
+                "pr-stats":{
+                    "skb:lang:target:config:constid":"keyPrStat",
+                    "at:type":"ts:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats",
+                    "cli:option:type":"ts:atomic:java:boolean",
+                    "cli:usage:descr":"Show simple statistic information",
+                    "skb:lang:target:config:javadoc":"Show simple statistic information"
+                },
+                "pr-stats-all":{
+                    "skb:lang:target:config:constid":"keyPrStatAll",
+                    "at:type":"ts:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats-all",
+                    "cli:option:type":"ts:atomic:java:boolean",
+                    "cli:usage:descr":"Show complete statistic information",
+                    "skb:lang:target:config:javadoc":"Show complete statistic information"
+                },
+                "pr-stats-ws":{
+                    "skb:lang:target:config:constid":"keyPrStatsWScope",
+                    "at:type":"ts:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stats-ws",
+                    "cli:option:type":"ts:atomic:java:boolean",
+                    "cli:usage:descr":"No scoped names in statistics",
+                    "skb:lang:target:config:javadoc":"Don't use scoped names in statistics"
+                },
+                "pr-stg-stats":{
+                    "skb:lang:target:config:constid":"keyPrStgFileStats",
+                    "at:type":"ts:atomic:java:boolean",
+                    "value:default":false,
+                    "cli:option:long":"pr-stg-stats",
+                    "cli:option:type":"ts:atomic:java:boolean",
+                    "cli:usage:descr":"Print statistics string template",
+                    "skb:lang:target:config:javadoc":"Print the string template used for statistics"
+                },
+                "stat-stg":{
+                    "skb:lang:target:config:constid":"keyStatStg",
+                    "at:type":"ts:atomic:java:string",
+                    "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/statistics.stg",
+                    "cli:option:long":"stat-stg",
+                    "cli:option:arg-name":"file",
+                    "cli:option:type":"ts:atomic:java:string",
+                    "cli:usage:descr":"Group template file for statistics",
+                    "skb:lang:target:config:javadoc":"Group template for statistics"
+                }
+            },
+            "targets":{
+                "cola":{
+                    "skb:lang:target:name":"cola",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/cola.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".cola"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-includes":{
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes",
+                            "skb:lang:target:config:javadoc":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)",
+                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package",
+                            "skb:lang:target:config:javadoc":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)",
+                            "skb:lang:target:config:javadoc":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "java":{
+                    "skb:lang:target:name":"java",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/java.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".java"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"."
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-imports":{
+                            "skb:lang:target:config:constid":"keyXtDoImports",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-imports",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Generate imports (Java style)",
+                            "skb:lang:target:config:javadoc":"Generate imports (Java Style)"
+                        },
+                        "xt-do-element-code":{
+                            "skb:lang:target:config:constid":"keyXtDoElementCode",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-element-code",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Generate complete Element skeletons",
+                            "skb:lang:target:config:javadoc":"Generate complete Element skeletons",
+                            "skb:lang:target:config:javadoc":"Generate complete Element skeletons"
+                        },
+                        "xt-java-pkg":{
+                            "skb:lang:target:config:constid":"keyXtJavaPackage",
+                            "at:type":"ts:atomic:java:string",
+                            "value:default":"",
+                            "cli:option:long":"xt-java-pkg",
+                            "cli:option:arg-name":"package",
+                            "cli:option:type":"ts:atomic:java:string",
+                            "cli:usage:descr":"Root package for java classes",
+                            "skb:lang:target:config:javadoc":"Root package name for java classes"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":true,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)",
+                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package",
+                            "skb:lang:target:config:javadoc":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)",
+                            "skb:lang:target:config:javadoc":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "php":{
+                    "skb:lang:target:name":"php",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/php.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".php5"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-includes":{
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes",
+                            "skb:lang:target:config:javadoc":"Generate includes"
+                        },
+                        "xt-do-element-code":{
+                            "skb:lang:target:config:constid":"keyXtDoElementCode",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-element-code",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Generate complete Element skeletons",
+                            "skb:lang:target:config:javadoc":"Generate complete Element skeletons",
+                            "skb:lang:target:config:javadoc":"Generate complete Element skeletons"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-split-code",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)",
+                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        },
+                        "tgt-sc-by-pkg":{
+                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-pkg",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by package",
+                            "skb:lang:target:config:javadoc":"Split code by package"
+                        },
+                        "tgt-sc-by-category":{
+                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"tgt-sc-by-category",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)",
+                            "skb:lang:target:config:javadoc":"Split code by atom category (i.e. element, struct)"
+                        }
+                    }
+                },
+                "xml":{
+                    "skb:lang:target:name":"xml",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/xml.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".xml"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "tgt-stg-angle-br":{
+                        "value:default":false
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-includes":{
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes",
+                            "skb:lang:target:config:javadoc":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        }
+                    }
+                },
+                "sql":{
+                    "skb:lang:target:name":"sql",
+                    "tgt-stg":{
+                            "value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/sql.stg"
+                    },
+                    "tgt-fileext":{
+                            "value:default":".sql"
+                    },
+                    "gc-scope-sep":{
+                            "value:default":"::"
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-includes":{
+                            "skb:lang:target:config:constid":"keyXtDoIncludes",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "cli:option:long":"xt-do-includes",
+                            "cli:option:type":"ts:atomic:java:boolean",
+                            "cli:usage:descr":"Generate includes",
+                            "skb:lang:target:config:javadoc":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "skb:lang:target:config:constid":"keyTgSplitCode",
+                            "at:type":"ts:atomic:java:boolean",
+                            "value:default":false,
+                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        }
+                    }
+                }
+            },
+
+            "stgchunks":{
+                "mlcomment_start":{
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "mlcomment_end":{
+                    "skb:tribe:stgchunk:mandatory": ["dummy"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "slcomment":{
+                    "skb:tribe:stgchunk:mandatory": ["comment"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "colaSpecification":{
+                    "skb:tribe:stgchunk:mandatory": ["stage", "environment", "clevel", "language", "spec"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "colaFunction":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "parameter", "ret_type", "ret_array"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaFunctionParam":{
+                    "skb:tribe:stgchunk:mandatory": ["type", "array", "id"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "colaPropertyDecl":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "propertyScope", "apply", "aExtends", "aRequires",
+                                  "alterable", "negotiable", "priorityBT", "priorityCV", "description", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "aVisibility":{
+                    "skb:tribe:stgchunk:mandatory": ["id"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "colaPropertyDefList":{
+                    "skb:tribe:stgchunk:mandatory": ["property"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaPropertyDef":{
+                    "skb:tribe:stgchunk:mandatory": ["sn", "id", "type", "val", "array", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "colaContractDecl":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "contractScope", "description", "items" , "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "contractItem":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "property", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "contractItemProp":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "val", "array", "rank", "apply", "alterable", "negotiable", "description", "priorityBT", "priorityCV", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "colaContractDefList":{
+                    "skb:tribe:stgchunk:mandatory": ["contract", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaContractDef":{
+                    "skb:tribe:stgchunk:mandatory":  ["scoped_name", "id", "items", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaContractItemDef":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaItemDef":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "val", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "colaPackage":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "body", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaElement":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aProvides", "aRequires", "inline_code", "properties", "contracts", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaFacility":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "body", "aExtends", "aRequires", "properties", "contracts", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaAction":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "parameter", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaParameter":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaTypeDef":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "propertiesInstances", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaAttribute":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaStruct":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "member", "inline_code", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "colaMember":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "type", "properties", "misc"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "const_value":{
+                    "skb:tribe:stgchunk:mandatory": ["type", "val"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+                "scoped_name":{
+                    "skb:tribe:stgchunk:mandatory": ["id", "add"],
+                    "skb:tribe:stgchunk:optional":  []
+                },
+        
+                "inline_code":{
+                    "skb:tribe:stgchunk:mandatory": ["language", "code"],
+                    "skb:tribe:stgchunk:optional":  []
+                }
+            },
+
+            "tokens":{
+                // for parser
+                "parserARRAY":{
+                    "skb:lang:target:tokens:cid":"parserARRAY",
+                    "skb:lang:target:tokens:cval":"array",
+                    "skb:lang:target:tokens:cjavadoc":"Parser - array"
+                },
+                "parserMEMBER":{
+                    "skb:lang:target:tokens:cid":"parserMEMBER",
+                    "skb:lang:target:tokens:cval":"member",
+                    "skb:lang:target:tokens:cjavadoc":"Parser - member"
+                },
+                "parserIDENTIFIER":{
+                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:cjavadoc":"Parser - identifier"
+                },
+                "parserScopedName":{
+                    "skb:lang:target:tokens:cid":"parserScopedName",
+                    "skb:lang:target:tokens:cval":"scoped_name",
+                    "skb:lang:target:tokens:cjavadoc":"Parser - scoped name"
+                },
+                "parserBaseType ":{
+                    "skb:lang:target:tokens:cid":"parserBaseType ",
+                    "skb:lang:target:tokens:cval":"base_type",
+                    "skb:lang:target:tokens:cjavadoc":"Parser - base type"
+                },
+                "parserItemProp":{
+                    "skb:lang:target:tokens:cid":"parserItemProp",
+                    "skb:lang:target:tokens:cval":"item-property",
+                    "skb:lang:target:tokens:cjavadoc":"Parser - item-property"
+                },
+                "parserScopeSep":{
+                    "skb:lang:target:tokens:cid":"parserScopeSep",
+                    "skb:lang:target:tokens:cval":"::",
+                    "skb:lang:target:tokens:cjavadoc":"Parser - scope separator"
+                },
+                "gcMiscParrentID":{
+                    "skb:lang:target:tokens:cid":"gcMiscParrentID",
+                    "skb:lang:target:tokens:cval":"parrentId",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - parrent ID"
+                },
+                "gcMiscParrentCat":{
+                    "skb:lang:target:tokens:cid":"gcMiscParrentCat",
+                    "skb:lang:target:tokens:cval":"parrentCategory",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - parrent category"
+                },
+                "gcMiscCurrentCat":{
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentCat",
+                    "skb:lang:target:tokens:cval":"currentCategory",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - current category"
+                },
+                "gcMiscInDefinition":{
+                    "skb:lang:target:tokens:cid":"gcMiscInDefinition",
+                    "skb:lang:target:tokens:cval":"inDefinition",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in definition"
+                },
+                "gcMiscInItem":{
+                    "skb:lang:target:tokens:cid":"gcMiscInItem",
+                    "skb:lang:target:tokens:cval":"inItem",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in item"
+                },
+                "gcMiscInContract":{
+                    "skb:lang:target:tokens:cid":"gcMiscInContract",
+                    "skb:lang:target:tokens:cval":"inContract",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in contract"
+                },
+                "gcMiscInPackage":{
+                    "skb:lang:target:tokens:cid":"gcMiscInPackage",
+                    "skb:lang:target:tokens:cval":"inPackage",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in package"
+                },
+                "gcMiscInElement":{
+                    "skb:lang:target:tokens:cid":"gcMiscInElement",
+                    "skb:lang:target:tokens:cval":"inElement",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in element"
+                },
+                "gcMiscInFacility":{
+                    "skb:lang:target:tokens:cid":"gcMiscInFacility",
+                    "skb:lang:target:tokens:cval":"inFacility",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in facility"
+                },
+                "gcMiscInAction":{
+                    "skb:lang:target:tokens:cid":"gcMiscInAction",
+                    "skb:lang:target:tokens:cval":"inAction",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in action"
+                },
+                "gcMiscInStruct":{
+                    "skb:lang:target:tokens:cid":"gcMiscInStruct",
+                    "skb:lang:target:tokens:cval":"inStruct",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in structure"
+                },
+                "gcMiscSpecName":{
+                    "skb:lang:target:tokens:cid":"gcMiscSpecName",
+                    "skb:lang:target:tokens:cval":"specificationName",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - specification name"
+                },
+                "gcMiscCurrentScope":{
+                    "skb:lang:target:tokens:cid":"gcMiscCurrentScope",
+                    "skb:lang:target:tokens:cval":"currentScope",
+                    "skb:lang:target:tokens:cjavadoc":"Generate Code - current scope"
+                },
+
+
+                // COLA Keywords
+                "colaACTION":{
+                    "skb:lang:target:tokens:cid":"colaACTION",
+                    "skb:lang:target:tokens:cval":"action",
+                    "skb:lang:target:tokens:tid":"ACTION",
+                    "skb:lang:target:tokens:tval":"keyword 'action'",
+                    "skb:lang:target:tokens:cjavadoc":"Action Keyword"
+                },
+                "colaATTRIBUTE":{
+                    "skb:lang:target:tokens:cid":"colaATTRIBUTE",
+                    "skb:lang:target:tokens:cval":"attribute",
+                    "skb:lang:target:tokens:tid":"ATTRIBUTE",
+                    "skb:lang:target:tokens:tval":"keyword 'attribute'",
+                    "skb:lang:target:tokens:cjavadoc":"Attribute Keyword"
+                },
+                "colaCONTRACT":{
+                    "skb:lang:target:tokens:cid":"colaCONTRACT",
+                    "skb:lang:target:tokens:cval":"contract",
+                    "skb:lang:target:tokens:tid":"CONTRACT",
+                    "skb:lang:target:tokens:tval":"keyword 'contract'",
+                    "skb:lang:target:tokens:cjavadoc":"Contract Keyword"
+                },
+                "colaDEFINITION":{
+                    "skb:lang:target:tokens:cid":"colaDEFINITION",
+                    "skb:lang:target:tokens:cval":"definition",
+                    "skb:lang:target:tokens:tid":"DEFINITION",
+                    "skb:lang:target:tokens:tval":"keyword 'definition'",
+                    "skb:lang:target:tokens:cjavadoc":"Definition Keyword"
+                },
+                "colaELEMENT":{
+                    "skb:lang:target:tokens:cid":"colaELEMENT",
+                    "skb:lang:target:tokens:cval":"element",
+                    "skb:lang:target:tokens:tid":"ELEMENT",
+                    "skb:lang:target:tokens:tval":"keyword 'element'",
+                    "skb:lang:target:tokens:cjavadoc":"Element Keyword"
+                },
+                "colaFACILITY":{
+                    "skb:lang:target:tokens:cid":"colaFACILITY",
+                    "skb:lang:target:tokens:cval":"facility",
+                    "skb:lang:target:tokens:tid":"FACILITY",
+                    "skb:lang:target:tokens:tval":"keyword 'facility'",
+                    "skb:lang:target:tokens:cjavadoc":"Facility Keyword"
+                },
+                "colaFUNCTION":{
+                    "skb:lang:target:tokens:cid":"colaFUNCTION",
+                    "skb:lang:target:tokens:cval":"function",
+                    "skb:lang:target:tokens:tid":"FUNCTON",
+                    "skb:lang:target:tokens:tval":"keyword 'function'",
+                    "skb:lang:target:tokens:cjavadoc":"Function Keyword"
+                },
+                "colaINV":{
+                    "skb:lang:target:tokens:cid":"colaINV",
+                    "skb:lang:target:tokens:cval":"inv",
+                    "skb:lang:target:tokens:tid":"INVARIANT",
+                    "skb:lang:target:tokens:tval":"keyword 'inv'",
+                    "skb:lang:target:tokens:cjavadoc":"Inv Keyword"
+                },
+                "colaITEM":{
+                    "skb:lang:target:tokens:cid":"colaITEM",
+                    "skb:lang:target:tokens:cval":"item",
+                    "skb:lang:target:tokens:tid":"ITEM",
+                    "skb:lang:target:tokens:tval":"keyword 'item'",
+                    "skb:lang:target:tokens:cjavadoc":"Item Keyword"
+                },
+                "colaMANDATORY":{
+                    "skb:lang:target:tokens:cid":"colaMANDATORY",
+                    "skb:lang:target:tokens:cval":"mandatory",
+                    "skb:lang:target:tokens:tid":"MANDATORY",
+                    "skb:lang:target:tokens:tval":"keyword 'mandatory'",
+                    "skb:lang:target:tokens:cjavadoc":"Mandatory Keyword"
+                },
+                "colaNOT_DEF":{
+                    "skb:lang:target:tokens:cid":"colaNOT_DEF",
+                    "skb:lang:target:tokens:cval":"not_def",
+                    "skb:lang:target:tokens:tid":"NOT_DEF",
+                    "skb:lang:target:tokens:tval":"keyword 'not_def'",
+                    "skb:lang:target:tokens:cjavadoc":"Not_def Keyword"
+                },
+                "colaOPTIONAL":{
+                    "skb:lang:target:tokens:cid":"colaOPTIONAL",
+                    "skb:lang:target:tokens:cval":"optional",
+                    "skb:lang:target:tokens:tid":"OPTIONAL",
+                    "skb:lang:target:tokens:tval":"keyword 'optional'",
+                    "skb:lang:target:tokens:cjavadoc":"Optional Keyword"
+                },
+                "colaPACKAGE":{
+                    "skb:lang:target:tokens:cid":"colaPACKAGE",
+                    "skb:lang:target:tokens:cval":"package",
+                    "skb:lang:target:tokens:tid":"PACKAGE",
+                    "skb:lang:target:tokens:tval":"keyword 'package'",
+                    "skb:lang:target:tokens:cjavadoc":"Package Keyword"
+                },
+                "colaPARAMETER":{
+                    "skb:lang:target:tokens:cid":"colaPARAMETER",
+                    "skb:lang:target:tokens:cval":"parameter",
+                    "skb:lang:target:tokens:tid":"PARAMETER",
+                    "skb:lang:target:tokens:tval":"keyword 'parameter'",
+                    "skb:lang:target:tokens:cjavadoc":"Parameter Keyword"
+                },
+                "colaPOST":{
+                    "skb:lang:target:tokens:cid":"colaPOST",
+                    "skb:lang:target:tokens:cval":"post",
+                    "skb:lang:target:tokens:tid":"POST",
+                    "skb:lang:target:tokens:tval":"keyword 'post'",
+                    "skb:lang:target:tokens:cjavadoc":"Post Keyword"
+                },
+                "colaPRE":{
+                    "skb:lang:target:tokens:cid":"colaPRE",
+                    "skb:lang:target:tokens:cval":"pre",
+                    "skb:lang:target:tokens:tid":"PRE",
+                    "skb:lang:target:tokens:tval":"keyword 'pre'",
+                    "skb:lang:target:tokens:cjavadoc":"Pre Keyword"
+                },
+                "colaPROPERTY":{
+                    "skb:lang:target:tokens:cid":"colaPROPERTY",
+                    "skb:lang:target:tokens:cval":"property",
+                    "skb:lang:target:tokens:tid":"PROPERTY",
+                    "skb:lang:target:tokens:tval":"keyword 'property'",
+                    "skb:lang:target:tokens:cjavadoc":"Property Keyword"
+                },
+                "colaREQUIRED":{
+                    "skb:lang:target:tokens:cid":"colaREQUIRED",
+                    "skb:lang:target:tokens:cval":"required",
+                    "skb:lang:target:tokens:tid":"REQUIRED",
+                    "skb:lang:target:tokens:tval":"keyword 'required'",
+                    "skb:lang:target:tokens:cjavadoc":"Required Keyword"
+                },
+                "colaSPECIFICATION":{
+                    "skb:lang:target:tokens:cid":"colaSPECIFICATION",
+                    "skb:lang:target:tokens:cval":"cola-specification",
+                    "skb:lang:target:tokens:tid":"SPECIFICATION",
+                    "skb:lang:target:tokens:tval":"keyword 'cola-specification'",
+                    "skb:lang:target:tokens:cjavadoc":"Specification Keyword"
+                },
+                "colaSTRUCT":{
+                    "skb:lang:target:tokens:cid":"colaSTRUCT",
+                    "skb:lang:target:tokens:cval":"struct",
+                    "skb:lang:target:tokens:tid":"STRUCT",
+                    "skb:lang:target:tokens:tval":"keyword 'struct'",
+                    "skb:lang:target:tokens:cjavadoc":"Struct Keyword"
+                },
+                "colaTYPEDEF":{
+                    "skb:lang:target:tokens:cid":"colaTYPEDEF",
+                    "skb:lang:target:tokens:cval":"typedef",
+                    "skb:lang:target:tokens:tid":"TYPEDEF",
+                    "skb:lang:target:tokens:tval":"keyword 'typedef'",
+                    "skb:lang:target:tokens:cjavadoc":"Tyepdef Keyword"
+                },
+
+
+                // COLA Keywords -> TYPES
+                "colaBINARY":{
+                    "skb:lang:target:tokens:cid":"colaBINARY",
+                    "skb:lang:target:tokens:cval":"binary",
+                    "skb:lang:target:tokens:tid":"BINARY",
+                    "skb:lang:target:tokens:tval":"keyword 'binary'",
+                    "skb:lang:target:tokens:cjavadoc":"Binary Keyword"
+                },
+                "colaBOOLEAN":{
+                    "skb:lang:target:tokens:cid":"colaBOOLEAN",
+                    "skb:lang:target:tokens:cval":"boolean",
+                    "skb:lang:target:tokens:tid":"BOOLEAN",
+                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
+                    "skb:lang:target:tokens:cjavadoc":"Boolean Keyword"
+                },
+                "colaCHAR":{
+                    "skb:lang:target:tokens:cid":"colaCHAR",
+                    "skb:lang:target:tokens:cval":"char",
+                    "skb:lang:target:tokens:tid":"CHAR",
+                    "skb:lang:target:tokens:tval":"keyword 'char'",
+                    "skb:lang:target:tokens:cjavadoc":"Char Keyword"
+                },
+                "colaDOUBLE":{
+                    "skb:lang:target:tokens:cid":"colaDOUBLE",
+                    "skb:lang:target:tokens:cval":"double",
+                    "skb:lang:target:tokens:tid":"DOUBLE",
+                    "skb:lang:target:tokens:tval":"keyword 'double'",
+                    "skb:lang:target:tokens:cjavadoc":"Double Keyword"
+                },
+                "colaFLOAT":{
+                    "skb:lang:target:tokens:cid":"colaFLOAT",
+                    "skb:lang:target:tokens:cval":"float",
+                    "skb:lang:target:tokens:tid":"FLOAT",
+                    "skb:lang:target:tokens:tval":"keyword 'float'",
+                    "skb:lang:target:tokens:cjavadoc":"Float Keyword"
+                },
+                "colaHEX":{
+                    "skb:lang:target:tokens:cid":"colaHEX",
+                    "skb:lang:target:tokens:cval":"hex",
+                    "skb:lang:target:tokens:tid":"HEX",
+                    "skb:lang:target:tokens:tval":"keyword 'hex'",
+                    "skb:lang:target:tokens:cjavadoc":"Hex Keyword"
+                },
+                "colaINTEGER":{
+                    "skb:lang:target:tokens:cid":"colaINTEGER",
+                    "skb:lang:target:tokens:cval":"integer",
+                    "skb:lang:target:tokens:tid":"INTEGER",
+                    "skb:lang:target:tokens:tval":"keyword 'integer'",
+                    "skb:lang:target:tokens:cjavadoc":"Integer Keyword"
+                },
+                "colaLONG":{
+                    "skb:lang:target:tokens:cid":"colaLONG",
+                    "skb:lang:target:tokens:cval":"long",
+                    "skb:lang:target:tokens:tid":"LONG",
+                    "skb:lang:target:tokens:tval":"keyword 'long'",
+                    "skb:lang:target:tokens:cjavadoc":"Long Keyword"
+                },
+                "colaOCTET":{
+                    "skb:lang:target:tokens:cid":"colaOCTET",
+                    "skb:lang:target:tokens:cval":"octet",
+                    "skb:lang:target:tokens:tid":"OCTET",
+                    "skb:lang:target:tokens:tval":"keyword 'octet'",
+                    "skb:lang:target:tokens:cjavadoc":"Octet Keyword"
+                },
+                "colaSHORT":{
+                    "skb:lang:target:tokens:cid":"colaSHORT",
+                    "skb:lang:target:tokens:cval":"short",
+                    "skb:lang:target:tokens:tid":"SHORT",
+                    "skb:lang:target:tokens:tval":"keyword 'short'",
+                    "skb:lang:target:tokens:cjavadoc":"Short Keyword"
+                },
+                "colaSTRING":{
+                    "skb:lang:target:tokens:cid":"colaSTRING",
+                    "skb:lang:target:tokens:cval":"string",
+                    "skb:lang:target:tokens:tid":"STRING",
+                    "skb:lang:target:tokens:tval":"keyword 'string'",
+                    "skb:lang:target:tokens:cjavadoc":"String Keyword"
+                },
+                "colaVOID":{
+                    "skb:lang:target:tokens:cid":"colaVOID",
+                    "skb:lang:target:tokens:cval":"void",
+                    "skb:lang:target:tokens:tid":"VOID",
+                    "skb:lang:target:tokens:tval":"keyword 'void'",
+                    "skb:lang:target:tokens:cjavadoc":"Void Keyword"
+                },
+
+
+                // COLA Keywords -> VALUES
+                "colaFALSE":{
+                    "skb:lang:target:tokens:cid":"colaFALSE",
+                    "skb:lang:target:tokens:cval":"FALSE",
+                    "skb:lang:target:tokens:tid":"FALSE",
+                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
+                    "skb:lang:target:tokens:cjavadoc":"FALSE Value"
+                },
+                "colaNULL":{
+                    "skb:lang:target:tokens:cid":"colaNULL",
+                    "skb:lang:target:tokens:cval":"NULL",
+                    "skb:lang:target:tokens:tid":"NULL",
+                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
+                    "skb:lang:target:tokens:cjavadoc":"NULL Value"
+                },
+                "colaTRUE":{
+                    "skb:lang:target:tokens:cid":"colaTRUE",
+                    "skb:lang:target:tokens:cval":"TRUE",
+                    "skb:lang:target:tokens:tid":"TRUE",
+                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
+                    "skb:lang:target:tokens:cjavadoc":"TRUE Value"
+                },
+
+
+                // COLA Keywords -> @@@
+                "colaAT_ALTERABLE":{
+                    "skb:lang:target:tokens:cid":"colaAT_ALTERABLE",
+                    "skb:lang:target:tokens:cval":"@alterable",
+                    "skb:lang:target:tokens:tid":"AT_ALTERABLE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@alterable'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Alterable"
+                },
+                "colaAT_APPLY":{
+                    "skb:lang:target:tokens:cid":"colaAT_APPLY",
+                    "skb:lang:target:tokens:cval":"@apply",
+                    "skb:lang:target:tokens:tid":"AT_APPLY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@apply'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Apply"
+                },
+                "colaAT_CLEVEL":{
+                    "skb:lang:target:tokens:cid":"colaAT_CLEVEL",
+                    "skb:lang:target:tokens:cval":"@clevel",
+                    "skb:lang:target:tokens:tid":"AT_CLEVEL",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@clevel'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;CLevel"
+                },
+                "colaAT_CONTAINS":{
+                    "skb:lang:target:tokens:cid":"colaAT_CONTAINS",
+                    "skb:lang:target:tokens:cval":"@contains",
+                    "skb:lang:target:tokens:tid":"AT_CONTAINS",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@contains'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Contains"
+                },
+                "colaAT_DESCRIPTION":{
+                    "skb:lang:target:tokens:cid":"colaAT_DESCRIPTION",
+                    "skb:lang:target:tokens:cval":"@description",
+                    "skb:lang:target:tokens:tid":"AT_DESCRIPTION",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@description'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Description"
+                },
+                "colaAT_EXTENDS":{
+                    "skb:lang:target:tokens:cid":"colaAT_EXTENDS",
+                    "skb:lang:target:tokens:cval":"@extends",
+                    "skb:lang:target:tokens:tid":"AT_EXTENDS",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@extends'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Extends"
+                },
+                "colaAT_ENVIRONMENT":{
+                    "skb:lang:target:tokens:cid":"colaAT_ENVIRONMENT",
+                    "skb:lang:target:tokens:cval":"@environment",
+                    "skb:lang:target:tokens:tid":"AT_ENVIRONMENT",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@environment'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Environment"
+                },
+                "colaAT_LANGUAGE":{
+                    "skb:lang:target:tokens:cid":"colaAT_LANGUAGE",
+                    "skb:lang:target:tokens:cval":"@language",
+                    "skb:lang:target:tokens:tid":"AT_LANGUAGE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@language'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Language"
+                },
+                "colaAT_NEGOTIABLE":{
+                    "skb:lang:target:tokens:cid":"colaAT_NEGOTIABLE",
+                    "skb:lang:target:tokens:cval":"@negotiable",
+                    "skb:lang:target:tokens:tid":"AT_NEGOTIABLE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@negotiable'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Negotiable"
+                },
+                "colaAT_PRIORITY":{
+                    "skb:lang:target:tokens:cid":"colaAT_PRIORITY",
+                    "skb:lang:target:tokens:cval":"@priority",
+                    "skb:lang:target:tokens:tid":"AT_PRIORITY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@priority'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Priority"
+                },
+                "colaAT_PROVIDES":{
+                    "skb:lang:target:tokens:cid":"colaAT_PROVIDES",
+                    "skb:lang:target:tokens:cval":"@provides",
+                    "skb:lang:target:tokens:tid":"AT_PROVIDES",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Provides"
+                },
+                "colaAT_RANK":{
+                    "skb:lang:target:tokens:cid":"colaAT_RANK",
+                    "skb:lang:target:tokens:cval":"@rank",
+                    "skb:lang:target:tokens:tid":"AT_RANK",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@rank'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Rank"
+                },
+                "colaAT_REQUIRES":{
+                    "skb:lang:target:tokens:cid":"colaAT_REQUIRES",
+                    "skb:lang:target:tokens:cval":"@requires",
+                    "skb:lang:target:tokens:tid":"AT_REQUIRES",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@requires'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Requires"
+                },
+                "colaAT_RETURN":{
+                    "skb:lang:target:tokens:cid":"colaAT_RETURN",
+                    "skb:lang:target:tokens:cval":"@return",
+                    "skb:lang:target:tokens:tid":"AT_RETURN",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@return'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Return"
+                },
+                "colaAT_RUNTIME":{
+                    "skb:lang:target:tokens:cid":"colaAT_RUNTIME",
+                    "skb:lang:target:tokens:cval":"@runtime",
+                    "skb:lang:target:tokens:tid":"AT_RUNTIME",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@runtime'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Runtime"
+                },
+                "colaAT_SCOPE":{
+                    "skb:lang:target:tokens:cid":"colaAT_SCOPE",
+                    "skb:lang:target:tokens:cval":"@scope",
+                    "skb:lang:target:tokens:tid":"AT_SCOPE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@scope'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Scope"
+                },
+                "colaAT_SPEC":{
+                    "skb:lang:target:tokens:cid":"colaAT_SPEC",
+                    "skb:lang:target:tokens:cval":"@spec",
+                    "skb:lang:target:tokens:tid":"AT_SPEC",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@spec'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Spec"
+                },
+                "colaAT_STAGE":{
+                    "skb:lang:target:tokens:cid":"colaAT_STAGE",
+                    "skb:lang:target:tokens:cval":"@stage",
+                    "skb:lang:target:tokens:tid":"AT_STAGE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@stage'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Stage"
+                },
+                "colaAT_TYPE":{
+                    "skb:lang:target:tokens:cid":"colaAT_TYPE",
+                    "skb:lang:target:tokens:cval":"@type",
+                    "skb:lang:target:tokens:tid":"AT_TYPE",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@type'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Type"
+                },
+                "colaAT_VISIBILITY":{
+                    "skb:lang:target:tokens:cid":"colaAT_VISIBILITY",
+                    "skb:lang:target:tokens:cval":"@visibility",
+                    "skb:lang:target:tokens:tid":"AT_VISIBILITY",
+                    "skb:lang:target:tokens:tval":"an @ keyword '@visibility'",
+                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Visibility"
+                },
+
+
+                //for lexer to print proper error messages
+                "colaCPP_DIRECTIVE":{
+                    "skb:lang:target:tokens:cid":"colaCPP_DIRECTIVE",
+                    "skb:lang:target:tokens:cval":"preprocessor directive",
+                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
+                    "skb:lang:target:tokens:tval":"preprocessor directive",
+                    "skb:lang:target:tokens:cjavadoc":"CPP Directive"
+                },
+                "colaESC":{
+                    "skb:lang:target:tokens:cid":"colaESC",
+                    "skb:lang:target:tokens:cval":"escape sequence",
+                    "skb:lang:target:tokens:tid":"ESC",
+                    "skb:lang:target:tokens:tval":"escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":"ESC"
+                },
+                "colaFloatSuffix":{
+                    "skb:lang:target:tokens:cid":"colaFloatSuffix",
+                    "skb:lang:target:tokens:cval":"floating point suffix",
+                    "skb:lang:target:tokens:tid":"FloatSuffix",
+                    "skb:lang:target:tokens:tval":"floating point suffix",
+                    "skb:lang:target:tokens:cjavadoc":"Float Suffix"
+                },
+                "colaHexDigit":{
+                    "skb:lang:target:tokens:cid":"colaHexDigit",
+                    "skb:lang:target:tokens:cval":"hexadecimal digit",
+                    "skb:lang:target:tokens:tid":"HexDigit",
+                    "skb:lang:target:tokens:tval":"hexadecimal digit",
+                    "skb:lang:target:tokens:cjavadoc":"Hex digit"
+                },
+                "colaIDENT":{
+                    "skb:lang:target:tokens:cid":"colaIDENT",
+                    "skb:lang:target:tokens:cval":"identifier",
+                    "skb:lang:target:tokens:tid":"IDENT",
+                    "skb:lang:target:tokens:tval":"an identifier",
+                    "skb:lang:target:tokens:cjavadoc":"Identifier"
+                },
+                "colaINLINE_CODE":{
+                    "skb:lang:target:tokens:cid":"colaINLINE_CODE",
+                    "skb:lang:target:tokens:cval":"inline code",
+                    "skb:lang:target:tokens:tid":"INLINE_CODE",
+                    "skb:lang:target:tokens:tval":"inline code",
+                    "skb:lang:target:tokens:cjavadoc":"Inline Code"
+                },
+                "colaML_COMMENT":{
+                    "skb:lang:target:tokens:cid":"colaML_COMMENT",
+                    "skb:lang:target:tokens:cval":"multiple line comment",
+                    "skb:lang:target:tokens:tid":"ML_COMMENT",
+                    "skb:lang:target:tokens:tval":"multiple line comment",
+                    "skb:lang:target:tokens:cjavadoc":"Multi Line Comment"
+                },
+                "colaOctDigit":{
+                    "skb:lang:target:tokens:cid":"colaOctDigit",
+                    "skb:lang:target:tokens:cval":"otcal digit",
+                    "skb:lang:target:tokens:tid":"OctDigit",
+                    "skb:lang:target:tokens:tval":"otcal digit",
+                    "skb:lang:target:tokens:cjavadoc":"Oct Digit"
+                },
+                "colaOctalEscape":{
+                    "skb:lang:target:tokens:cid":"colaOctalEscape",
+                    "skb:lang:target:tokens:cval":"octal escape sequence",
+                    "skb:lang:target:tokens:tid":"OctalEscape",
+                    "skb:lang:target:tokens:tval":"octal escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":"Octal Escape"
+                },
+                "colaSL_COMMENT":{
+                    "skb:lang:target:tokens:cid":"colaSL_COMMENT",
+                    "skb:lang:target:tokens:cval":"single line comment",
+                    "skb:lang:target:tokens:tid":"SL_COMMENT",
+                    "skb:lang:target:tokens:tval":"single line comment",
+                    "skb:lang:target:tokens:cjavadoc":"Single Line Comment"
+                },
+                "colaUnicodeEscape":{
+                    "skb:lang:target:tokens:cid":"colaUnicodeEscape",
+                    "skb:lang:target:tokens:cval":"unicode escape sequence",
+                    "skb:lang:target:tokens:tid":"UnicodeEscape",
+                    "skb:lang:target:tokens:tval":"unicode escape sequence",
+                    "skb:lang:target:tokens:cjavadoc":"Unicode Escape"
+                },
+                "colaVAL_BINARY":{
+                    "skb:lang:target:tokens:cid":"colaVAL_BINARY",
+                    "skb:lang:target:tokens:cval":"binary value",
+                    "skb:lang:target:tokens:tid":"VAL_BINARY",
+                    "skb:lang:target:tokens:tval":"binary value",
+                    "skb:lang:target:tokens:cjavadoc":"Binary Value"
+                },
+                "colaVAL_CHAR":{
+                    "skb:lang:target:tokens:cid":"colaVAL_CHAR",
+                    "skb:lang:target:tokens:cval":"character value",
+                    "skb:lang:target:tokens:tid":"VAL_CHAR",
+                    "skb:lang:target:tokens:tval":"character value",
+                    "skb:lang:target:tokens:cjavadoc":"Char Value"
+                },
+                "colaVAL_FLOAT":{
+                    "skb:lang:target:tokens:cid":"colaVAL_FLOAT",
+                    "skb:lang:target:tokens:cval":"floating point value",
+                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
+                    "skb:lang:target:tokens:tval":"floating point value",
+                    "skb:lang:target:tokens:cjavadoc":"Float Value"
+                },
+                "colaVAL_HEX":{
+                    "skb:lang:target:tokens:cid":"colaVAL_HEX",
+                    "skb:lang:target:tokens:cval":"hexadecimal value",
+                    "skb:lang:target:tokens:tid":"VAL_HEX",
+                    "skb:lang:target:tokens:tval":"hexadecimal value",
+                    "skb:lang:target:tokens:cjavadoc":"Hex Value"
+                },
+                "colaVAL_INTEGER":{
+                    "skb:lang:target:tokens:cid":"colaVAL_INTEGER",
+                    "skb:lang:target:tokens:cval":"integer value",
+                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
+                    "skb:lang:target:tokens:tval":"integer value",
+                    "skb:lang:target:tokens:cjavadoc":"Integer Value"
+                },
+                "colaVAL_OCT":{
+                    "skb:lang:target:tokens:cid":"colaVAL_OCT",
+                    "skb:lang:target:tokens:cval":"octal value",
+                    "skb:lang:target:tokens:tid":"VAL_OCT",
+                    "skb:lang:target:tokens:tval":"octal value",
+                    "skb:lang:target:tokens:cjavadoc":"Octet Value"
+                },
+                "colaVAL_STRING":{
+                    "skb:lang:target:tokens:cid":"colaVAL_STRING",
+                    "skb:lang:target:tokens:cval":"string value",
+                    "skb:lang:target:tokens:tid":"VAL_STRING",
+                    "skb:lang:target:tokens:tval":"string value",
+                    "skb:lang:target:tokens:cjavadoc":"String Value"
+                },
+                "colaWS":{
+                    "skb:lang:target:tokens:cid":"colaWS",
+                    "skb:lang:target:tokens:cval":"whitespace",
+                    "skb:lang:target:tokens:tid":"WS",
+                    "skb:lang:target:tokens:tval":"whitespace",
+                    "skb:lang:target:tokens:cjavadoc":"White space"
+                },
+
+
+                //for lexer to print proper error messages
+                ";":{
+                    "skb:lang:target:tokens:tid":"';'",
+                    "skb:lang:target:tokens:tval":"character ';'"
+                },
+                "}":{
+                    "skb:lang:target:tokens:tid":"'}'",
+                    "skb:lang:target:tokens:tval":"character '}'"
+                },
+                "=":{
+                    "skb:lang:target:tokens:tid":"'='",
+                    "skb:lang:target:tokens:tval":"character '='"
+                },
+                "(":{
+                    "skb:lang:target:tokens:tid":"'('",
+                    "skb:lang:target:tokens:tval":"character '('"
+                },
+                ":":{
+                    "skb:lang:target:tokens:tid":"':'",
+                    "skb:lang:target:tokens:tval":"character ':'"
+                },
+                "::":{
+                    "skb:lang:target:tokens:tid":"'::'",
+                    "skb:lang:target:tokens:tval":"scope operator '::'"
+                },
+                "[":{
+                    "skb:lang:target:tokens:tid":"'['",
+                    "skb:lang:target:tokens:tval":"character '['"
+                },
+                ",":{
+                    "skb:lang:target:tokens:tid":"','",
+                    "skb:lang:target:tokens:tval":"character ','"
+                },
+                ")":{
+                    "skb:lang:target:tokens:tid":"')'",
+                    "skb:lang:target:tokens:tval":"character ')'"
+                },
+                "{":{
+                    "skb:lang:target:tokens:tid":"'{'",
+                    "skb:lang:target:tokens:tval":"character '{'"
+                },
+                "]":{
+                    "skb:lang:target:tokens:tid":"']'",
+                    "skb:lang:target:tokens:tval":"character ']'"
+                }
+            },
+
+            "rules":{
+                "property:01":{
+                    "skb:lang:target:config:constid":"ruleProperty01",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #01"
+                },
+                "property:02":{
+                    "skb:lang:target:config:constid":"ruleProperty02",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #02"
+                },
+                "property:03":{
+                    "skb:lang:target:config:constid":"ruleProperty03",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "skb:lang:parser:rules:message:add":"required properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #03"
+                },
+                "property:04":{
+                    "skb:lang:target:config:constid":"ruleProperty04",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "skb:lang:parser:rules:message:add":"required properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #04"
+                },
+                "property:05":{
+                    "skb:lang:target:config:constid":"ruleProperty05",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #05"
+                },
+                "property:06":{
+                    "skb:lang:target:config:constid":"ruleProperty06",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #06"
+                },
+                "property:07":{
+                    "skb:lang:target:config:constid":"ruleProperty07",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #07"
+                },
+                "property:08":{
+                    "skb:lang:target:config:constid":"ruleProperty08",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #08"
+                },
+                "property:09":{
+                    "skb:lang:target:config:constid":"ruleProperty09",
+                    "skb:lang:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "skb:lang:parser:rules:message:add":"note: typedef, struct and member are handled as attributes",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #09"
+                },
+                "property:10":{
+                    "skb:lang:target:config:constid":"ruleProperty10",
+                    "skb:lang:parser:rules:message":"declaration of unknown ####",
+                    "skb:lang:parser:rules:message:add":"#### <%s> is not specified",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #10"
+                },
+                "property:11":{
+                    "skb:lang:target:config:constid":"ruleProperty11",
+                    "skb:lang:parser:rules:message":"empty description in <%s> <%s>",
+                    "skb:lang:parser:rules:message:add":"description needs to be a non-empty ####",
+                    "skb:lang:target:rules:message:add:insert:path":"colaSTRING",
+                    "skb:lang:target:config:javadoc":"Rule for properties #11"
+                },
+                "property:12":{
+                    "skb:lang:target:config:constid":"ruleProperty12",
+                    "skb:lang:parser:rules:message":"type mismatch for <%s> declaration <%s>",
+                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>",
+                    "skb:lang:target:config:javadoc":"Rule for properties #12"
+                },
+                "property:13":{
+                    "skb:lang:target:config:constid":"ruleProperty13",
+                    "skb:lang:parser:rules:message":"potential type mismatch for <%s> declaration <%s>",
+                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type %s",
+                    "skb:lang:target:config:javadoc":"Rule for properties #13"
+                },
+                "property:14":{
+                    "skb:lang:target:config:constid":"ruleProperty14",
+                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for #### <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for properties #14"
+                },
+
+                "contract:01":{
+                    "skb:lang:target:config:constid":"ruleContract01",
+                    "skb:lang:parser:rules:message":"#### defined more than once: <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT",
+                    "skb:lang:target:config:javadoc":"Rule for contracts #01"
+                },
+                "contract:02":{
+                    "skb:lang:target:config:constid":"ruleContract02",
+                    "skb:lang:parser:rules:message":"used #### <%s> is not specified for <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT",
+                    "skb:lang:target:config:javadoc":"Rule for contracts #02"
+                },
+                "contract:03":{
+                    "skb:lang:target:config:constid":"ruleContract03",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory contracts need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT",
+                    "skb:lang:target:config:javadoc":"Rule for contracts #03"
+                },
+                "contract:04":{
+                    "skb:lang:target:config:constid":"ruleContract04",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required contracts need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT",
+                    "skb:lang:target:config:javadoc":"Rule for contracts #04"
+                },
+                "contract:05":{
+                    "skb:lang:target:config:constid":"ruleContract05",
+                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for %s <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"colaCONTRACT",
+                    "skb:lang:target:config:javadoc":"Rule for contracts #05"
+                },
+                
+                "item:01":{
+                    "skb:lang:target:config:constid":"ruleItem01",
+                    "skb:lang:parser:rules:message":"missing declared item <%s> for declared contract <%2>",
+                    "skb:lang:parser:rules:message:add":"all declared items must be defined",
+                    "skb:lang:target:config:javadoc":"Rule for items #01"
+                },
+                "item:02":{
+                    "skb:lang:target:config:constid":"ruleItem02",
+                    "skb:lang:parser:rules:message":"declaration of unknown ####",
+                    "skb:lang:parser:rules:message:add":"#### <%s> is not specified",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:rules:message:add:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for items #02"
+                },
+                "item:03":{
+                    "skb:lang:target:config:constid":"ruleItem03",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for items #03"
+                },
+                "item:04":{
+                    "skb:lang:target:config:constid":"ruleItem04",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for items #04"
+                },
+                "item:05":{
+                    "skb:lang:target:config:constid":"ruleItem05",
+                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s>, but %s values given",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for items #05"
+                },
+                "item:06":{
+                    "skb:lang:target:config:constid":"ruleItem06",
+                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
+                    "skb:lang:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for items #06"
+                },
+                "item:07":{
+                    "skb:lang:target:config:constid":"ruleItem07",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, no value given",
+                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for items #07"
+                },
+                "item:08":{
+                    "skb:lang:target:config:constid":"ruleItem08",
+                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, one empty value given",
+                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
+                    "skb:lang:parser:rules:message:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for items #08"
+                },
+                "item:09":{
+                    "skb:lang:target:config:constid":"ruleItem09",
+                    "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all mandatory item-properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for items #09"
+                },
+                "item:10":{
+                    "skb:lang:target:config:constid":"ruleItem10",
+                    "skb:lang:parser:rules:message":"missing required #### <%s> for %s <%s>",
+                    "skb:lang:parser:rules:message:add":"all required item-properties need to be declared",
+                    "skb:lang:parser:rules:message:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for items #10"
+                },
+
+                "identifier:01":{
+                    "skb:lang:target:config:constid":"ruleIdentifier01",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"#### <%s> in property definitions",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:config:javadoc":"Rule for identifier #01"
+                },
+                "identifier:02":{
+                    "skb:lang:target:config:constid":"ruleIdentifier02",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:config:javadoc":"Rule for identifier #02"
+                },
+                "identifier:03":{
+                    "skb:lang:target:config:constid":"ruleIdentifier03",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"#### <%s> in item-property definitions",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:config:javadoc":"Rule for identifier #03"
+                },
+                "identifier:04":{
+                    "skb:lang:target:config:constid":"ruleIdentifier04",
+					"skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"parserItemProp",
+                    "skb:lang:target:config:javadoc":"Rule for identifier #04"
+                },
+                "identifier:05":{
+                    "skb:lang:target:config:constid":"ruleIdentifier05",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY",
+                    "skb:lang:target:config:javadoc":"Rule for identifier #05"
+                },
+                "identifier:06":{
+                    "skb:lang:target:config:constid":"ruleIdentifier06",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"colaCONTRACT",
+                    "skb:lang:target:config:javadoc":"Rule for identifier #06"
+                },
+                
+                "scoped-name:01":{
+                    "skb:lang:target:config:constid":"ruleScopedName01",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":"",
+                    "skb:lang:target:config:javadoc":"Rule for scoped naming #01"
+                },
+                "scoped-name:02":{
+                    "skb:lang:target:config:constid":"ruleScopedName02",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":"",
+                    "skb:lang:target:config:javadoc":"Rule for scoped naming #02"
+                },
+                "scoped-name:03":{
+                    "skb:lang:target:config:constid":"ruleScopedName03",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":"",
+                    "skb:lang:target:config:javadoc":"Rule for scoped naming #03"
+                },
+                "scoped-name:04":{
+                    "skb:lang:target:config:constid":"ruleScopedName04",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":"",
+                    "skb:lang:target:config:javadoc":"Rule for scoped naming #04"
+                },
+                "scoped-name:05":{
+                    "skb:lang:target:config:constid":"ruleScopedName05",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":"",
+                    "skb:lang:target:config:javadoc":"Rule for scoped naming #05"
+                },
+                "scoped-name:06":{
+                    "skb:lang:target:config:constid":"ruleScopedName06",
+                    "skb:lang:parser:rules:message":"",
+                    "skb:lang:parser:rules:message:add":"",
+                    "skb:lang:target:config:javadoc":"Rule for scoped naming #06"
+                }
+            }
+        }
+    }
+}

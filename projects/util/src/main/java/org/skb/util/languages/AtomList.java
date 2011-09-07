@@ -38,6 +38,7 @@ import java.util.TreeMap;
 
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.api.TSBase;
@@ -69,6 +70,10 @@ import org.skb.util.types.composite.util.TSTableRow;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class AtomList extends TSTable {
+	/** Logger instance */
+	static Logger logger;
+
+
 	/**
 	 * The local list of atoms as a TreeMap (because insertion sequence determines atom positions)
 	 */
@@ -181,6 +186,9 @@ public class AtomList extends TSTable {
 	 */
 	protected void _init(){
 		super._init();
+
+		logger=Logger.getLogger(AtomList.class);
+
 		this.oatValue=new TreeMap <String, TSTableRow>();
 		this.setColumns(AtomList.class.getName(), "alVal");
 		this.addRows(AtomList.class.getName(), "alKey");

@@ -32,6 +32,7 @@ package org.skb.util.types.composite.util;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSTableRowAPI;
@@ -43,28 +44,33 @@ import org.skb.util.types.api.TSTableRowAPI;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSLangRuleMap extends TSTable{
+	/** Logger instance */
+	static Logger logger;
+
+
 	public final static String rmValRuleMessage		= "rule:message";
 	public final static String rmValRuleAddMessage	= "rule:message:add";
 
 	public TSLangRuleMap(){
 		super();
-		this._init();
+		this._initRM();
 	}
 
 	public TSLangRuleMap(HashSet<String>rows){
 		super();
-		this._init();
+		this._initRM();
 		this.addRows(rows);
 	}
 
 	public TSLangRuleMap(String ref_class, String rowPrefix){
 		super();
-		this._init();
+		this._initRM();
 		this.addRows(ref_class, rowPrefix);
 	}
 
-	protected void _init(){
-		super._init();
+	protected void _initRM(){
+		logger=Logger.getLogger(TSLangRuleMap.class);
+
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
 		this.setColumns(TSLangRuleMap.class.getName(), "rmVal");
 		this.addRows(TSLangRuleMap.class.getName(), "rmKey");

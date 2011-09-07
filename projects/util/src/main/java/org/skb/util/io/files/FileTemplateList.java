@@ -36,6 +36,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 import org.skb.util.types.api.TSBase;
 import org.skb.util.types.atomic.java.TSString;
 
@@ -46,6 +47,10 @@ import org.skb.util.types.atomic.java.TSString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class FileTemplateList {
+	/** Logger instance */
+	static Logger logger;
+
+
 	/**
 	 * List of templates
 	 */
@@ -62,6 +67,7 @@ public class FileTemplateList {
 	 * Class constructor, initialises private members
 	 */
 	public FileTemplateList(){
+		logger=Logger.getLogger(FileTemplateList.class);
 		this.templates=new TreeMap<String, FileTemplateSingle>();
 	}
 
@@ -71,6 +77,7 @@ public class FileTemplateList {
 	 * @param ftl file list to be used
 	 */
 	public FileTemplateList(TreeMap<String, FileTemplateSingle> ftl){
+		logger=Logger.getLogger(FileTemplateList.class);
 		this.templates=new TreeMap<String, FileTemplateSingle>(ftl);
 	}
 

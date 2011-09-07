@@ -389,6 +389,9 @@ public class SKBDataManager {
 										listRemove.add(key);
 									}
 								}
+								else{
+									mergeMap.put(name,"");
+								}
 							}
 							else if(exp.equals("1")){
 								mergeMap.put(name,((TSString)val).tsExplode());

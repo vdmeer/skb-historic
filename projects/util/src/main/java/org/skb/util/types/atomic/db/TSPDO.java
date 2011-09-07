@@ -32,10 +32,12 @@ package org.skb.util.types.atomic.db;
 import java.sql.Connection;
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.sql.PDO;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
@@ -44,7 +46,9 @@ import org.skb.util.types.api.TSBase;
 
 public class TSPDO extends PDO implements TSAtomic {
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
+
+	static Logger logger;
 
 	public TSPDO(){
 		super();
@@ -57,6 +61,8 @@ public class TSPDO extends PDO implements TSAtomic {
 	}
 
 	private void _init(){
+		logger=Logger.getLogger(TSPDO.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
@@ -66,7 +72,8 @@ public class TSPDO extends PDO implements TSAtomic {
 
 	@Override
 	public void tsClean(){
-		//TODO not yet implemented
+		//TODO
+		logger.warn("tsClean not implemented");
 	}
 
 	@Override
@@ -111,6 +118,8 @@ public class TSPDO extends PDO implements TSAtomic {
 
 	@Override
 	public void tsPlus(TSBase tb){
+		//TODO
+		logger.warn("tsPlus not implemented");
 	}
 
 	@Override
@@ -124,6 +133,7 @@ public class TSPDO extends PDO implements TSAtomic {
 
 	@Override
 	public void tsTrim(){
-		//TODO not yet implemented
+		//TODO
+		logger.warn("tsTrim not implemented");
 	}
 }

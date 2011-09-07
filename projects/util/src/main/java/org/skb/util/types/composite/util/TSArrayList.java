@@ -34,11 +34,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSBase;
@@ -51,8 +53,12 @@ import org.skb.util.types.api.TSComposite;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase> {
+	/** Logger instance */
+	static Logger logger;
+
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	protected List<TSBase> tsvalue=null;
 
@@ -80,6 +86,8 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	public TSArrayList(TSBase oba) {
+		//TODO
+		logger.warn("constructor (TSBase) not implemented");
 //		this._init();
 //		if(oba!=null){
 //			switch(oba.getTypeEnum()){
@@ -95,6 +103,8 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	protected void _init(){
+		logger=Logger.getLogger(TSArrayList.class);
+
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
 		this.typeEnum.add(TEnum.TS_COMPOSITE);
 
@@ -274,7 +284,8 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 
 	@Override
 	public void tsClean() {
-		// TODO Auto-generated method stub
+		//TODO
+		logger.warn("tsClean not implemented");
 /*
 		ArrayList<String> listRemove=new ArrayList<String>();
 		for (TSBase s : this.tsvalue) {
@@ -353,8 +364,8 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 
 	@Override
 	public void tsPlus(TSBase tb) {
-		// TODO Auto-generated method stub
-
+		//TODO
+		logger.warn("tsPlus not implemented");
 	}
 
 	@Override
@@ -377,7 +388,8 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 
 	@Override
 	public void tsTrim() {
-		// TODO Auto-generated method stub
+		//TODO
+		logger.warn("tsTrim not implemented");
 /*
 		for (TSBase s : this.tsvalue) {
 			switch(s.getTypeEnum()){

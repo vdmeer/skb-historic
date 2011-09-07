@@ -32,6 +32,7 @@ package org.skb.util.languages;
 import java.util.Vector;
 
 import org.antlr.runtime.Token;
+import org.apache.log4j.Logger;
 
 /**
  * Provides functionality for a scoped name based on a vector of strings.
@@ -40,6 +41,10 @@ import org.antlr.runtime.Token;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ScopeString {
+	/** Logger instance */
+	static Logger logger;
+
+
 	/**
 	 * The currently used scope separator, default is "::".
 	 */
@@ -54,6 +59,8 @@ public class ScopeString {
 	 * Class constructor, initialises private members
 	 */
 	public ScopeString(){
+		logger=Logger.getLogger(ScopeString.class);
+
 		this.separator="::";
 		this.field=new Vector<String>();
 	}

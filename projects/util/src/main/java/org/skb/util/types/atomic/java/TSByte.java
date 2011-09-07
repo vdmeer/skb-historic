@@ -31,10 +31,12 @@ package org.skb.util.types.atomic.java;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSAtomic;
@@ -47,6 +49,9 @@ import org.skb.util.types.api.TSBase;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSByte implements TSAtomic {
+	/** Logger instance */
+	static Logger logger;
+
 	public static java.lang.Byte decode(java.lang.String nm){
 		return java.lang.Byte.decode(nm);
 	}
@@ -62,7 +67,6 @@ public class TSByte implements TSAtomic {
 		return java.lang.Byte.toString(b);
 	}
 
-
 	public static java.lang.Byte valueOf(byte b){
 		return java.lang.Byte.valueOf(b);
 	}
@@ -77,7 +81,7 @@ public class TSByte implements TSAtomic {
 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	public java.lang.Byte tsvalue=null;
 
@@ -154,12 +158,15 @@ public class TSByte implements TSAtomic {
 	}
 
 	private void _init(){
+		logger=Logger.getLogger(TSByte.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_BYTE);
 		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_BYTE);
-		this.tsvalue=new java.lang.Byte(null);
+		this.tsvalue=new java.lang.Byte((byte)1);
+
 	}
 
 	public byte byteValue(){
@@ -256,7 +263,8 @@ public class TSByte implements TSAtomic {
 
 	@Override
 	public void tsTrim(){
-		//TODO not yet implemented
+		//TODO
+		logger.warn("tsTrim not implemented");
 	}
 
 }

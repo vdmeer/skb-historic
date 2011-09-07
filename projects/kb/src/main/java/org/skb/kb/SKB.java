@@ -234,6 +234,8 @@ public class SKB {
 			}
 		}
 
+		this.lang=this.configuration.get("system/lang").toString();
+
 /*
         if(isset($_REQUEST['lang'])){
           $dir=$this->configuration->get_group("path", "locale");

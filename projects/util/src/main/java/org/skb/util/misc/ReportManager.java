@@ -33,6 +33,7 @@ import java.io.File;
 
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
@@ -44,6 +45,9 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ReportManager extends STGManager{
+	/** Logger instance */
+	static Logger logger;
+
 	/**
 	 * Number of reported errors
 	 */
@@ -96,6 +100,8 @@ public class ReportManager extends STGManager{
 	 * noErrors and noWarnings are set to false, the file name is set to an empty string and the programme name is set to "tribe". 
 	 */
 	private void _init(){
+		logger=Logger.getLogger(ReportManager.class);
+
 		this.chunksMandatory=new TSMapLH();
 		this.chunksOptional=new TSMapLH();
 

@@ -35,6 +35,7 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.antlr.stringtemplate.StringTemplate;
+import org.apache.log4j.Logger;
 
 /**
  * A single file template maintaining everything necessary to write a file.
@@ -43,6 +44,10 @@ import org.antlr.stringtemplate.StringTemplate;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class FileTemplateSingle {
+	/** Logger instance */
+	static Logger logger;
+
+
 	/**
 	 * StringTemplates maintained by this template
 	 */
@@ -65,6 +70,8 @@ public class FileTemplateSingle {
 	 * Class constructor, initialised private members
 	 */
 	public FileTemplateSingle(){
+		logger=Logger.getLogger(FileTemplateSingle.class);
+
 		this.templates=new LinkedHashSet<StringTemplate>();
 		this.imports=new LinkedHashSet<String>();
 		this.misc=new LinkedHashMap<String, String>();
@@ -78,6 +85,8 @@ public class FileTemplateSingle {
 	 * @param lhsMisc list of misc items
 	 */
 	public FileTemplateSingle(LinkedHashSet<StringTemplate> lhsST, LinkedHashSet<String> lhsIM, LinkedHashMap<String, String> lhsMisc){
+		logger=Logger.getLogger(FileTemplateSingle.class);
+
 		this.templates=new LinkedHashSet<StringTemplate>(lhsST);
 		this.imports=new LinkedHashSet<String>(lhsIM);
 		this.misc=new LinkedHashMap<String, String>(lhsMisc);

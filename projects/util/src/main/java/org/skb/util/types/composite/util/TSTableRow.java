@@ -33,6 +33,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -40,6 +41,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
@@ -54,17 +56,22 @@ import org.skb.util.types.atomic.java.TSString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSTableRow implements TSTableRowAPI{
+	/** Logger instance */
+	static Logger logger;
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	protected Map<String, TSBase> tsvalue=null;
 
-	TSTableRow(Map<String, TSBase> map){
+	public TSTableRow(Map<String, TSBase> map){
 		this._init();
 		this.tsvalue=map;
 	}
 
 	private void _init(){
+		logger=Logger.getLogger(TSTableRow.class);
+
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
 		this.typeEnum.add(TEnum.TS_COMPOSITE);
 
@@ -273,7 +280,8 @@ public class TSTableRow implements TSTableRowAPI{
 
 	@Override
 	public void tsPlus(TSBase tb) {
-		// TODO Auto-generated method stub
+		//TODO
+		logger.warn("tsPlus not implemented");
 	}
 
 	@Override

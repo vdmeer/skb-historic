@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import org.antlr.stringtemplate.AutoIndentWriter;
+import org.apache.log4j.Logger;
 
 /**
  * An writer implementation for String Templates that limits the charachters per output line.
@@ -41,12 +42,17 @@ import org.antlr.stringtemplate.AutoIndentWriter;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class STGWriterXtoY extends AutoIndentWriter {
+	/** Logger instance */
+	static Logger logger;
+
 	protected int start=2;
 	protected int end=78;
 	protected int done=0;
 
 	public STGWriterXtoY(Writer out){
 		super(out);
+
+		logger=Logger.getLogger(STGWriterXtoY.class);
 	}
 
 	private String printXtoY(String str, int co){

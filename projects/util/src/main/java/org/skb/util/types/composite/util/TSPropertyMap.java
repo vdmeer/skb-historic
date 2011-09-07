@@ -41,6 +41,7 @@ import org.apache.commons.configuration.AbstractConfiguration;
 import org.apache.commons.configuration.INIConfiguration;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
+import org.apache.log4j.Logger;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
@@ -56,6 +57,10 @@ import org.skb.util.types.api.TSTableRowAPI;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSPropertyMap extends TSTable{
+	/** Logger instance */
+	static Logger logger;
+
+
 	/**
 	 * TS Type of the property
 	 */
@@ -109,23 +114,24 @@ public class TSPropertyMap extends TSTable{
 
 	public TSPropertyMap(){
 		super();
-		this._init();
+		this._initPM();
 	}
 
 	public TSPropertyMap(HashSet<String>rows){
 		super();
-		this._init();
+		this._initPM();
 		this.addRows(rows);
 	}
 
 	public TSPropertyMap(String ref_class, String rowPrefix){
 		super();
-		this._init();
+		this._initPM();
 		this.addRows(ref_class, rowPrefix);
 	}
 
-	protected void _init(){
-		super._init();
+	protected void _initPM(){
+		logger=Logger.getLogger(TSPropertyMap.class);
+
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
 		this.setColumns(TSPropertyMap.class.getName(), "pmVal");
 		this.addRows(TSPropertyMap.class.getName(), "pmKey");

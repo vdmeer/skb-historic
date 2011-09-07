@@ -31,10 +31,12 @@ package org.skb.util.types.atomic.java;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSAtomic;
@@ -47,33 +49,44 @@ import org.skb.util.types.api.TSBase;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSBoolean implements TSAtomic {
+	/** Logger instance */
+	static Logger logger;
+
+
 	static boolean getBoolean(java.lang.String name){
 		return java.lang.Boolean.getBoolean(name);
 	}
+
+
 	static boolean parseBoolean(java.lang.String s){
 		return java.lang.Boolean.parseBoolean(s);
 	}
+
 
 	static java.lang.String toString(boolean b){
 		return java.lang.Boolean.toString(b);
 	}
 
+
 	static java.lang.Boolean valueOf(boolean b){
 		return java.lang.Boolean.valueOf(b);
 	}
+
 
 	static java.lang.Boolean valueOf(java.lang.String s){ 
 		return java.lang.Boolean.valueOf(s);
 	}
 
+
+	/** The internal Boolean value. */
+	public java.lang.Boolean tsvalue=null;
+
+
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
+
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
-
-	/**
-	 * The internal Boolean value.
-	 */
-	public java.lang.Boolean tsvalue=null;
 
 	/**
 	 * Creates a new OatBoolean with oatValue=null.
@@ -81,6 +94,7 @@ public class TSBoolean implements TSAtomic {
 	public TSBoolean(){
 		this._init();
 	}
+
 
 	/**
 	 * Creates a new TSBoolean from the specified boolean
@@ -91,6 +105,7 @@ public class TSBoolean implements TSAtomic {
 		this._init();
 		this.tsvalue=new java.lang.Boolean(b);
 	}
+
 
 	/**
 	 * Creates a new TSBoolean from the specified Boolean
@@ -104,11 +119,13 @@ public class TSBoolean implements TSAtomic {
 			this.tsvalue=new java.lang.Boolean(b);
 	}
 
+
 	public TSBoolean(java.lang.String s){
 		this._init();
 		if(s!=null)
 			this.tsvalue=new java.lang.Boolean(s);
 	}
+
 
 	/**
 	 * Creates a new TSBoolean from the specified TSAtomic
@@ -125,6 +142,7 @@ public class TSBoolean implements TSAtomic {
 		}
 	}
 
+
 	/**
 	 * Creates a new TSBoolean from the specified TSBoolean
 	 * 
@@ -136,7 +154,10 @@ public class TSBoolean implements TSAtomic {
 			this.tsvalue=b.tsvalue;
 	}
 
+
 	private void _init(){
+		logger=Logger.getLogger(TSBoolean.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
@@ -145,62 +166,77 @@ public class TSBoolean implements TSAtomic {
 		this.tsvalue=new java.lang.Boolean(null);
 	}
 
+
 	boolean booleanValue(){
 		return this.tsvalue.booleanValue();
 	}
 
+
 	public int compareTo(java.lang.Boolean b){
 		return this.tsvalue.compareTo(b);
 	}
+
 
 	@Override
 	public void tsClean(){
 		this.tsvalue=new java.lang.Boolean(null);
 	}
 
+
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
+
 	@Override
 	public final java.lang.String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
+
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
+
 
 	@Override
 	public boolean tsIsComposite(){
 		return false;
 	}
 
+
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
+
 
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
 
+
 	@Override
 	public void tsPlus(TSBase tb){
+		//TODO
+		logger.warn("tsPlus not implemented");
 	}
+
 
 	@Override
 	public java.lang.String tsToString(int indent){
@@ -211,8 +247,10 @@ public class TSBoolean implements TSAtomic {
 		return ret;
 	}
 
+
 	@Override
 	public void tsTrim(){
-		//TODO not yet implemented
+		//TODO
+		logger.warn("tsTrim not implemented");
 	}
 }

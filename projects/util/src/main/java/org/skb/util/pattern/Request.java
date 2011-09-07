@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.api.TSBase;
 import org.skb.util.types.atomic.java.TSBoolean;
@@ -47,6 +48,9 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Request {
+	/** Logger instance */
+	static Logger logger;
+
 	private TSMapLH request_ar;
 
 	protected boolean is_initialised=false;
@@ -55,7 +59,9 @@ public class Request {
 	protected TSMapLH core_ar_http=new TSMapLH();
 	protected TSMapLH core_ar_plain=new TSMapLH();
 
-	public Request(){}
+	public Request(){
+		logger=Logger.getLogger(Request.class);
+	}
 
 	public void setRequestType(String type, TSMapLH registered_request, TSMapLH registered_fields){
 		this.request_ar=new TSMapLH();

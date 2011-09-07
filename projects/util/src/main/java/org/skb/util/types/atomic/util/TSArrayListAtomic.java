@@ -34,11 +34,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
@@ -52,8 +54,11 @@ import org.skb.util.types.api.TSBase;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<TSAtomic>{
+	/** Logger instance */
+	static Logger logger;
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	protected List<TSAtomic> tsvalue=null;
 
@@ -81,11 +86,13 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	protected void _init(){
+		logger=Logger.getLogger(TSArrayListAtomic.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING);
-		this.typeEnum.add(TEnum.TS_ATOMIC_ARRAYLIST_STRING);
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_ARRAYLIST_ATOMIC);
+		this.typeEnum.add(TEnum.TS_ATOMIC_ARRAYLIST_ATOMIC);
 	}
 
 //	public TSArrayListStringAtomic(TSAtomic oba) {
@@ -304,6 +311,8 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 
 	@Override
 	public void tsClean() {
+		// TODO
+		logger.warn("tsClean not implemented");
 /*
 		ArrayList<String> listRemove=new ArrayList<String>();
 		for (OatBaseAtomic s : this.tsvalue) {
@@ -371,13 +380,15 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 
 	@Override
 	public void tsPlus(TSBase tb) {
-		// TODO Auto-generated method stub
+		// TODO
+		logger.warn("tsPlusnot implemented");
 		
 	}
 
 	@Override
 	public String tsToString(int indent) {
-		// TODO Auto-generated method stub
+		// TODO
+		logger.warn("tsToString not implemented");
 		return null;
 	}
 

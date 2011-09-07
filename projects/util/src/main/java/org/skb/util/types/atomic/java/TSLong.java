@@ -31,16 +31,22 @@ package org.skb.util.types.atomic.java;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSAtomic;
 import org.skb.util.types.api.TSBase;
 
 public class TSLong implements TSAtomic {
+	/** Logger instance */
+	static Logger logger;
+
+
 	public static int bitCount(long i){
 		return java.lang.Long.bitCount(i);
 	}
@@ -138,7 +144,7 @@ public class TSLong implements TSAtomic {
 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	public java.lang.Long tsvalue=null;
 
@@ -214,11 +220,13 @@ public class TSLong implements TSAtomic {
 	}
 
 	private void _init(){
+		logger=Logger.getLogger(TSLong.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN);
-		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_BOOLEAN);
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_LONG);
+		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_LONG);
 		this.tsvalue=new java.lang.Long(0);
 	}
 
@@ -316,6 +324,7 @@ public class TSLong implements TSAtomic {
 
 	@Override
 	public void tsTrim() {
-		//TODO not yet implemented
+		//TODO
+		logger.warn("tsTrim not implemented");
 	}
 }

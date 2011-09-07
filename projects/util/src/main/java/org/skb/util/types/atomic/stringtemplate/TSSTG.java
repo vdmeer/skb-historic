@@ -31,12 +31,14 @@ package org.skb.util.types.atomic.stringtemplate;
 
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
 import org.antlr.stringtemplate.StringTemplateErrorListener;
 import org.antlr.stringtemplate.StringTemplateGroup;
+import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
 import org.skb.util.types.api.TSAtomic;
@@ -49,8 +51,12 @@ import org.skb.util.types.api.TSBase;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSSTG extends StringTemplateGroup implements TSAtomic {
+	/** Logger instance */
+	static Logger logger;
+
+
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	public TSSTG(java.io.Reader r){
 		super(r);
@@ -98,6 +104,8 @@ public class TSSTG extends StringTemplateGroup implements TSAtomic {
 	}
 
 	private void _init(){
+		logger=Logger.getLogger(TSSTG.class);
+
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
@@ -107,6 +115,8 @@ public class TSSTG extends StringTemplateGroup implements TSAtomic {
 
 	@Override
 	public void tsClean(){
+		//TODO
+		logger.warn("tsClean not implemented");
 	}
 
 	@Override
@@ -151,6 +161,8 @@ public class TSSTG extends StringTemplateGroup implements TSAtomic {
 
 	@Override
 	public void tsPlus(TSBase tb){
+		//TODO
+		logger.warn("tsPlus not implemented");
 	}
 
 	@Override
@@ -164,5 +176,7 @@ public class TSSTG extends StringTemplateGroup implements TSAtomic {
 
 	@Override
 	public void tsTrim(){
+		//TODO
+		logger.warn("tsTrim not implemented");
 	}
 }

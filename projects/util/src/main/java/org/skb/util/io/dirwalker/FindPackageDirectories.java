@@ -30,7 +30,6 @@
 package org.skb.util.io.dirwalker;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -41,6 +40,7 @@ import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.HiddenFileFilter;
 import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 
 /**
  * Walk a directory and find entries, written specifically for the SKB
@@ -50,26 +50,36 @@ import org.apache.commons.lang.StringUtils;
  */
 @SuppressWarnings(value={"all"})
 public class FindPackageDirectories extends DirectoryWalker {
+	/** Logger instance */
+	static Logger logger;
+
+
 	/**
 	 * The SKB site id
 	 */
 	private String site_id;
 
+
 //    private static IOFileFilter filter = FileFilterUtils.and(FileFilterUtils.fileFileFilter(),
 //            FileFilterUtils.suffixFileFilter(".json"));
+
 	/**
 	 * Filter object for IO operations
 	 */
 	private static IOFileFilter filter = 
         FileFilterUtils.and(FileFilterUtils.directoryFileFilter(), HiddenFileFilter.VISIBLE);
 
+
 	/**
 	 * Class constructor, initialises private members
 	 */
 	public FindPackageDirectories() {
 		super(filter, -1);
+		logger=Logger.getLogger(FindPackageDirectories.class);
+
 		this.site_id="";
 	}
+
 
 	/**
 	 * Set the site ID
@@ -78,6 +88,7 @@ public class FindPackageDirectories extends DirectoryWalker {
 	public void siteID(String new_id){
 		this.site_id=new_id;
 	}
+
 
 	/**
 	 * Walk directory <dir> and collect names of all text files
@@ -90,6 +101,7 @@ public class FindPackageDirectories extends DirectoryWalker {
 		return results;
 	}
 
+
 	/**
 	 * Walk directory <dir> and collect names of all text files
 	 * @param dir start directory
@@ -100,6 +112,7 @@ public class FindPackageDirectories extends DirectoryWalker {
 			return new ArrayList<String>();
 		return this.getTxtFiles(new File(dir));
 	}
+
 
 	protected boolean handleDirectory(File directory, int depth, Collection results){
 		String fn=new String();
