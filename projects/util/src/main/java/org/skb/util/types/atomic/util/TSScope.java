@@ -40,10 +40,10 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
-public class TSScope implements TSAtomic {
+public class TSScope implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSScope.class);
 
@@ -132,7 +132,7 @@ public class TSScope implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 	}
 
 	@Override

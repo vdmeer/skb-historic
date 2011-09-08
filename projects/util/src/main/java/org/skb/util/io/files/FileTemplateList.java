@@ -37,7 +37,7 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSString;
 
 /**
@@ -78,7 +78,7 @@ public class FileTemplateList {
 	 * Initialise the template with the target directory
 	 * @param targetDir target directory
 	 */
-	public void init(TSBase targetDir){
+	public void init(TSBaseAPI targetDir){
 		if(targetDir!=null)
 			this.targetDirectory=new TSString(targetDir.toString());
 	}

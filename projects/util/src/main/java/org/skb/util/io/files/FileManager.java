@@ -42,7 +42,7 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 
 /**
@@ -104,7 +104,7 @@ public class FileManager {
 	 * @param tgtFileExt target file extension
 	 * @param canPrint can print boolean
 	 */
-	public void init(TSBase srcLang, TSBase srcFile, TSBase tgtLang, TSBase tgtFileExt, TSBase canPrint){
+	public void init(TSBaseAPI srcLang, TSBaseAPI srcFile, TSBaseAPI tgtLang, TSBaseAPI tgtFileExt, TSBaseAPI canPrint){
 		if(srcLang!=null)
 			this.sourceLanguage=srcLang.toString();
 		if(srcFile!=null)

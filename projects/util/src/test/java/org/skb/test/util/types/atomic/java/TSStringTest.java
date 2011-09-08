@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
@@ -86,7 +86,7 @@ public class TSStringTest extends TestCase{
 	@Test
 	public void testTsExplodeSimple(){
 		TSString t=new TSString("string1,string2,string3");
-		TSBase result=t.tsExplode();
+		TSBaseAPI result=t.tsExplode();
 
 		//check for type
 		assertEquals(TEnum.TS_ATOMIC_ARRAYLIST_STRING, result.tsGetTypeEnum());
@@ -102,7 +102,7 @@ public class TSStringTest extends TestCase{
 	@Test
 	public void testTsExplodeDouble(){
 		TSString t=new TSString("key1%val1,key2%val2,key3%val3");
-		TSBase result=t.tsExplode();
+		TSBaseAPI result=t.tsExplode();
 
 		//check for type
 		assertEquals(TEnum.TS_COMPOSITE_MAP_LH, result.tsGetTypeEnum());

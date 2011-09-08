@@ -46,8 +46,8 @@ import org.skb.util.misc.Json2Oat;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.api.TSTableRowAPI;
 
 /**
@@ -145,7 +145,7 @@ public class TSPropertyMap extends TSTable{
 		if(this.isInitialised()){
 			if(this.tsvalue.containsKey(row)){
 				if(this.tsvalue.get(row).containsKey(col)){
-					TSBase val=this.tsvalue.get(row).get(col);
+					TSBaseAPI val=this.tsvalue.get(row).get(col);
 					if(val!=null&&!val.tsIsType(TEnum.TS_NULL))
 						ret=true;
 				}
@@ -158,7 +158,7 @@ public class TSPropertyMap extends TSTable{
 		this.put(key, TSPropertyMap.pmValValueDefault, val);
 	}
 
-	public void setValueDefault(String key, TSAtomic val){
+	public void setValueDefault(String key, TSAtomicAPI val){
 		this.put(key, TSPropertyMap.pmValValueDefault, val);
 	}
 
@@ -166,19 +166,19 @@ public class TSPropertyMap extends TSTable{
 		this.put(key, TSPropertyMap.pmValValueDefault, val);
 	}
 
-	public TSBase getValueDefault(String key){
+	public TSBaseAPI getValueDefault(String key){
 		return this.get(key, TSPropertyMap.pmValValueDefault);
 	}
 
-	public void setValueCli(String key, TSAtomic val){
+	public void setValueCli(String key, TSAtomicAPI val){
 		this.put(key, TSPropertyMap.pmValValueCli, val);
 	}
 
-	public TSBase getValueCli(String key){
+	public TSBaseAPI getValueCli(String key){
 		return this.get(key, TSPropertyMap.pmValValueCli);
 	}
 
-	public TSBase getValue(String key){
+	public TSBaseAPI getValue(String key){
 		if(!this.containsKey(key))
 			return new TSNull();
 		if(!(this.get(key, TSPropertyMap.pmValValueCli)).tsIsType(TEnum.TS_NULL))
@@ -190,7 +190,7 @@ public class TSPropertyMap extends TSTable{
 		return new TSNull();
 	}
 
-	public String loadFromFile(TSBase fn){
+	public String loadFromFile(TSBaseAPI fn){
 		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL))
 			return this.loadFromFile(fn.toString());
 		else
@@ -247,7 +247,7 @@ public class TSPropertyMap extends TSTable{
 		return null;
 	}
 
-	public String writeToFile(TSBase fn){
+	public String writeToFile(TSBaseAPI fn){
 		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL))
 			return this.writeToFile(fn.toString());
 		else
@@ -294,13 +294,13 @@ public class TSPropertyMap extends TSTable{
 	}
 
 	public Set<String> loadFromJson(File file){
-		TSBase _t=new Json2Oat().read(file);
+		TSBaseAPI _t=new Json2Oat().read(file);
 		if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			return this.loadFromJason((TSMapLH)_t);
 		return new TreeSet<String>();
 	}
 
-	public Set<String> loadFromJason(TSBase map){
+	public Set<String> loadFromJason(TSBaseAPI map){
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			return null;
 		else
@@ -317,7 +317,7 @@ public class TSPropertyMap extends TSTable{
 		HashSet<String> cols=this.getColumns();
 		while(key_it.hasNext()){
 			String key=key_it.next();
-			TSBase val;
+			TSBaseAPI val;
 
 		    for (String s:cols){
 		    	val=map.get(key+"/"+s);

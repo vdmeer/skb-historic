@@ -37,7 +37,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSDouble;
 import org.skb.util.types.atomic.java.TSFloat;
@@ -68,7 +68,7 @@ public class Json2Oat {
 	 * @param file JSON file
 	 * @return a TSMapLH with information from the JSON file or null in case of errors 
 	 */
-	public TSBase read(File file){
+	public TSBaseAPI read(File file){
 		if(file.canRead()){
 			try{
 				return this.read(new Scanner(file));
@@ -86,7 +86,7 @@ public class Json2Oat {
 	 * @param url file name, will be used as URL
 	 * @return a TSMapLH with information from the JSON file or null in case of errors
 	 */
-	public TSBase read(String url){
+	public TSBaseAPI read(String url){
 		try{
 			return this.read(new Scanner(getClass().getResourceAsStream(url)));
 		}
@@ -100,12 +100,12 @@ public class Json2Oat {
 	/**
 	 * Read JSON from the input scanner and transform into an TSMapLH
 	 * 
-	 * This method parses the <input> and removes every line starting with either of the two possible singe line comments: '//' and '#'.
+	 * This method parses the <code>input</code> and removes every line starting with either of the two possible single line comments: '//' and '#'.
 	 * It then calls s2o with the altered input.
 	 * @param input scanner wit JSON specification
 	 * @return a TSMapLH with information from the JSON file or null in case of errors
 	 */
-	public TSBase read(Scanner input){
+	public TSBaseAPI read(Scanner input){
 		String content=new String();
 		try{
 			while(input.hasNextLine()){
@@ -128,7 +128,7 @@ public class Json2Oat {
 	 * TSString, TSBoolean, TSInteger, TSDouble or TSFloat for atomic items. The method is using recursion to parse each part of the JSON string and construct
 	 * a single TSBase object.
 	 */
-	public TSBase s2o(String content){
+	public TSBaseAPI s2o(String content){
 		try{
 			ObjectMapper mapper=new ObjectMapper();
 			JsonNode rootNode=mapper.readValue(content, JsonNode.class);
@@ -141,7 +141,7 @@ public class Json2Oat {
 	}
 
 
-	private TSBase traverse(JsonNode node){
+	private TSBaseAPI traverse(JsonNode node){
 		if(node.isArray()){
 			TSArrayList ret=new TSArrayList();
 			Iterator<JsonNode> valFields = node.getElements();

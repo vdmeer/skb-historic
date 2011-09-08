@@ -39,7 +39,7 @@ import org.junit.Test;
 import org.skb.util.log.LogManager;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.antlr.TSToken;
 import org.skb.util.types.atomic.db.TSPDO;
 import org.skb.util.types.atomic.java.TSBoolean;
@@ -786,7 +786,7 @@ public class InitTests extends TestCase{
 
 	@Test public void testCompositeTablerow(){
 		Object[] o;
-		TSTableRow _t=new TSTableRow(new TreeMap<String, TSBase>());
+		TSTableRow _t=new TSTableRow(new TreeMap<String, TSBaseAPI>());
 		o=_t.tsGetTypeEnumSet().toArray();
 			assertEquals(3,o.length);
 			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());

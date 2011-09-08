@@ -43,35 +43,35 @@ import org.skb.util.types.atomic.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public interface TSMapAPI extends TSComposite, Map<String, TSBase>{
+public interface TSMapAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	public boolean containsKey(List<String> list);
 	public boolean containsKey(String key) ;
 	public boolean containsKey(String[] list);
 	public boolean containsKey(TSString key);
-	public TSBase get(List<String> list);
-	public TSBase get(String key);
-	public TSBase get(String[] list);
-	public TSBase get(TSString key);
+	public TSBaseAPI get(List<String> list);
+	public TSBaseAPI get(String key);
+	public TSBaseAPI get(String[] list);
+	public TSBaseAPI get(TSString key);
 	public void h2l();
 	public boolean isEmpty() ;
 	public boolean isInitialised();
 	public Set<String> keySet() ;
 	public void merge(TSMapAPI arg0);
-	public TSBase put(ArrayList<String> list, String val);
-	public TSBase put(List<String> list, TSBase val);
-	public TSBase put(String key, String val);
-	public TSBase put(String key, TSBase val) ;
-	public TSBase put(String[] list, String val);
-	public TSBase put(String[] list, TSBase val);
-	public TSBase put(TSString key, TSBase val);
-	public void putAll(Map<? extends String, ? extends TSBase> map) ;
+	public TSBaseAPI put(ArrayList<String> list, String val);
+	public TSBaseAPI put(List<String> list, TSBaseAPI val);
+	public TSBaseAPI put(String key, String val);
+	public TSBaseAPI put(String key, TSBaseAPI val) ;
+	public TSBaseAPI put(String[] list, String val);
+	public TSBaseAPI put(String[] list, TSBaseAPI val);
+	public TSBaseAPI put(TSString key, TSBaseAPI val);
+	public void putAll(Map<? extends String, ? extends TSBaseAPI> map) ;
 	public void putAll(TSMapAPI m) ;
-	public TSBase remove(List<String> list);
-	public TSBase remove(String key);
-	public TSBase remove(String[] list);
-	public TSBase remove(TSString key);
-	public Map<String, TSBase> tsGetMap();
+	public TSBaseAPI remove(List<String> list);
+	public TSBaseAPI remove(String key);
+	public TSBaseAPI remove(String[] list);
+	public TSBaseAPI remove(TSString key);
+	public Map<String, TSBaseAPI> tsGetMap();
 	public Object tsGetValue();
 
-	public Collection<TSBase> values() ;
+	public Collection<TSBaseAPI> values() ;
 }

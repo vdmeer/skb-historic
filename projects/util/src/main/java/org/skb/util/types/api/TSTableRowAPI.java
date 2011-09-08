@@ -33,7 +33,7 @@ import java.util.Map;
 
 import org.skb.util.types.atomic.java.TSString;
 
-public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
+public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
@@ -64,7 +64,7 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * @param val value whose presence in this map is to be tested.
 	 * @return true if this map maps one or more keys to the specified value.
 	 */
-	public boolean containsValue(TSBase val);
+	public boolean containsValue(TSBaseAPI val);
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -78,7 +78,7 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * @param key key whose associated value is to be returned.
 	 * @return the value to which this map maps the specified key, or TSNull if the map contains no mapping for this key.
 	 */
-	public TSBase get(String key);
+	public TSBaseAPI get(String key);
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -92,7 +92,7 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * @param key key whose associated value is to be returned.
 	 * @return the value to which this map maps the specified key, or TSNull if the map contains no mapping for this key.
 	 */
-	public TSBase get(TSString key);
+	public TSBaseAPI get(TSString key);
 
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
@@ -105,9 +105,9 @@ public interface TSTableRowAPI extends TSComposite, Map<String, TSBase>{
 	 * @return previous value associated with specified key, or TSNull if there was no mapping for key. A TSNull return can also indicate that
 	 * the map previously associated null with the specified key, if the implementation supports null values. 
 	 */
-	public TSBase put(TSString key, TSBase val);
+	public TSBaseAPI put(TSString key, TSBaseAPI val);
 
-	public Map<String, TSBase> tsGetMap();
+	public Map<String, TSBaseAPI> tsGetMap();
 	public Object tsGetValue();
 
 	public String tsToString(int indent);

@@ -45,7 +45,7 @@ import org.apache.log4j.Logger;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.api.TSTableRowAPI;
 import org.skb.util.types.atomic.java.TSString;
 
@@ -65,9 +65,9 @@ public class TSTableRow implements TSTableRowAPI{
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
-	protected Map<String, TSBase> tsvalue=null;
+	protected Map<String, TSBaseAPI> tsvalue=null;
 
-	public TSTableRow(Map<String, TSBase> map){
+	public TSTableRow(Map<String, TSBaseAPI> map){
 		this._init();
 		this.tsvalue=map;
 	}
@@ -119,7 +119,7 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public boolean containsValue(TSBase value) {
+	public boolean containsValue(TSBaseAPI value) {
 		if(this.tsvalue!=null&&value!=null)
 			return this.tsvalue.containsValue(value);
 		else
@@ -127,19 +127,19 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public Set<java.util.Map.Entry<String, TSBase>> entrySet() {
-		Set<java.util.Map.Entry<String, TSBase>> ret=null;
+	public Set<java.util.Map.Entry<String, TSBaseAPI>> entrySet() {
+		Set<java.util.Map.Entry<String, TSBaseAPI>> ret=null;
 		if(this.tsvalue!=null)
 			ret=this.tsvalue.entrySet();
 		if(ret==null)
-			return new TreeSet<java.util.Map.Entry<String, TSBase>>();
+			return new TreeSet<java.util.Map.Entry<String, TSBaseAPI>>();
 		else
 			return ret;
 	}
 
 	@Override
-	public TSBase get(Object arg0) {
-		TSBase ret=null;
+	public TSBaseAPI get(Object arg0) {
+		TSBaseAPI ret=null;
 		if(this.tsvalue!=null&&arg0!=null)
 			ret=this.tsvalue.get(arg0);
 		if(ret==null)
@@ -149,8 +149,8 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public TSBase get(String key) {
-		TSBase ret=null;
+	public TSBaseAPI get(String key) {
+		TSBaseAPI ret=null;
 		if(this.tsvalue!=null&&key!=null)
 			ret=this.tsvalue.get(key);
 		if(ret==null)
@@ -160,8 +160,8 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public TSBase get(TSString key) {
-		TSBase ret=null;
+	public TSBaseAPI get(TSString key) {
+		TSBaseAPI ret=null;
 		if(this.tsvalue!=null&&key!=null)
 			ret=this.tsvalue.get(key.toString());
 		if(ret==null)
@@ -190,7 +190,7 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public TSBase put(String arg0, TSBase arg1) {
+	public TSBaseAPI put(String arg0, TSBaseAPI arg1) {
 		if(this.tsvalue!=null&&arg0!=null&&arg1!=null)
 			return this.tsvalue.put(arg0, arg1);
 		else
@@ -198,7 +198,7 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public TSBase put(TSString key, TSBase val) {
+	public TSBaseAPI put(TSString key, TSBaseAPI val) {
 		if(this.tsvalue==null||key==null||val==null)
 			return new TSNull();
 
@@ -209,7 +209,7 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public void putAll(Map<? extends String, ? extends TSBase> arg0) {
+	public void putAll(Map<? extends String, ? extends TSBaseAPI> arg0) {
 		String key;
 		@SuppressWarnings("unchecked")
 		Set<String> o_set = (Set<String>) arg0.keySet();
@@ -221,7 +221,7 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public TSBase remove(Object arg0) {
+	public TSBaseAPI remove(Object arg0) {
 		// we do not remove any keys from a row in a table, so return null
 		return new TSNull();
 	}
@@ -280,7 +280,7 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public void tsPlus(TSBase tb) {
+	public void tsPlus(TSBaseAPI tb) {
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}
@@ -297,7 +297,7 @@ public class TSTableRow implements TSTableRowAPI{
 
 		String ret = new String();
 		String key;
-		TSBase val;
+		TSBaseAPI val;
 
 		Set<String> o_set = this.tsvalue.keySet();
 		Iterator<String> key_it = o_set.iterator();
@@ -330,19 +330,19 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public Collection<TSBase> values() {
+	public Collection<TSBaseAPI> values() {
 		if(this.tsvalue!=null)
 			return this.tsvalue.values();
 		else
-			return new TreeSet<TSBase>();
+			return new TreeSet<TSBaseAPI>();
 	}
 
 	@Override
-	public Map<String, TSBase> tsGetMap() {
+	public Map<String, TSBaseAPI> tsGetMap() {
 		if(this.tsvalue!=null)
 			return this.tsvalue;
 		else
-			return new TreeMap<String, TSBase>();
+			return new TreeMap<String, TSBaseAPI>();
 	}
 
 	@Override

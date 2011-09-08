@@ -43,8 +43,8 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
-import org.skb.util.types.api.TSComposite;
+import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.types.api.TSCompositeAPI;
 
 /**
  * An Array list of TSBase types.
@@ -52,7 +52,7 @@ import org.skb.util.types.api.TSComposite;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase> {
+public class TSArrayList implements TSCompositeAPI, List<TSBaseAPI>, Collection<TSBaseAPI> {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSArrayList.class);
 
@@ -63,32 +63,32 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	/** Local value */
-	protected List<TSBase> tsvalue=null;
+	protected List<TSBaseAPI> tsvalue=null;
 
 	public TSArrayList(){
 		this._init();
-		this.tsvalue=new ArrayList<TSBase>();
+		this.tsvalue=new ArrayList<TSBaseAPI>();
 	}
 
 	public TSArrayList(int initialCapacity){
 		this._init();
-		this.tsvalue=new ArrayList<TSBase>(initialCapacity);
+		this.tsvalue=new ArrayList<TSBaseAPI>(initialCapacity);
 	}
 
-	public TSArrayList(List<TSBase>a){
+	public TSArrayList(List<TSBaseAPI>a){
 		this._init();
-		this.tsvalue=new ArrayList<TSBase>(a);
+		this.tsvalue=new ArrayList<TSBaseAPI>(a);
 	}
 
 	public TSArrayList(TSArrayList a){
 		this._init();
 		if(a!=null)
-			this.tsvalue=new ArrayList<TSBase>(a.tsGetList());
+			this.tsvalue=new ArrayList<TSBaseAPI>(a.tsGetList());
 		else
-			this.tsvalue=new ArrayList<TSBase>();
+			this.tsvalue=new ArrayList<TSBaseAPI>();
 	}
 
-	public TSArrayList(TSBase oba) {
+	public TSArrayList(TSBaseAPI oba) {
 		//TODO
 		logger.warn("constructor (TSBase) not implemented");
 //		this._init();
@@ -112,24 +112,24 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_ARRAYLIST);
 		this.typeEnum.add(TEnum.TS_COMPOSITE_ARRAYLIST);
 
-		this.tsvalue=new ArrayList<TSBase>();
+		this.tsvalue=new ArrayList<TSBaseAPI>();
 	}
 
 	@Override
-	public void add(int index, TSBase element) {
+	public void add(int index, TSBaseAPI element) {
 		if(this.tsvalue!=null)
 			this.tsvalue.add(index, element);
 	}
 
 	@Override
-	public boolean add(TSBase element) {
+	public boolean add(TSBaseAPI element) {
 		if(this.tsvalue!=null)
 			return this.tsvalue.add(element);
 		return false;
 	}
 
 	@Override
-	public boolean addAll(Collection<? extends TSBase> c) {
+	public boolean addAll(Collection<? extends TSBaseAPI> c) {
 		boolean ret=false;
 		if(this.tsvalue!=null)
 			ret=this.tsvalue.addAll(c);
@@ -137,7 +137,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	@Override
-	public boolean addAll(int index, Collection<? extends TSBase> c) {
+	public boolean addAll(int index, Collection<? extends TSBaseAPI> c) {
 		boolean ret=false;
 		if(this.tsvalue!=null)
 			ret=tsvalue.addAll(index, c);
@@ -165,7 +165,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	@Override
-	public TSBase get(int index) {
+	public TSBaseAPI get(int index) {
 		if(this.tsvalue!=null)
 			return tsvalue.get(index);
 		return null;
@@ -186,7 +186,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	@Override
-	public Iterator<TSBase> iterator() {
+	public Iterator<TSBaseAPI> iterator() {
 		if(this.tsvalue!=null)
 			return tsvalue.iterator();
 		return null;
@@ -200,21 +200,21 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	@Override
-	public ListIterator<TSBase> listIterator() {
+	public ListIterator<TSBaseAPI> listIterator() {
 		if(this.tsvalue!=null)
 			return tsvalue.listIterator();
 		return null;
 	}
 
 	@Override
-	public ListIterator<TSBase> listIterator(int index) {
+	public ListIterator<TSBaseAPI> listIterator(int index) {
 		if(this.tsvalue!=null)
 			return tsvalue.listIterator(index);
 		return null;
 	}
 
 	@Override
-	public TSBase remove(int index) {
+	public TSBaseAPI remove(int index) {
 		if(this.tsvalue!=null)
 			return tsvalue.remove(index);
 		return null;
@@ -242,7 +242,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	@Override
-	public TSBase set(int index, TSBase element) {
+	public TSBaseAPI set(int index, TSBaseAPI element) {
 		if(this.tsvalue!=null)
 			return tsvalue.set(index, element);
 		return null;
@@ -256,7 +256,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	@Override
-	public List<TSBase> subList(int fromIndex, int toIndex) {
+	public List<TSBaseAPI> subList(int fromIndex, int toIndex) {
 		if(this.tsvalue!=null)
 			return tsvalue.subList(fromIndex, toIndex);
 		return null;
@@ -271,7 +271,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 
 	public ArrayList<String> toStringArray(){
 		ArrayList<String> ret=new ArrayList<String>();
-		for (TSBase s : this.tsvalue)
+		for (TSBaseAPI s : this.tsvalue)
 			ret.add(s.toString());
 		return ret;
 	}
@@ -312,11 +312,11 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 */
 	}
 
-	public List<TSBase> tsGetList(){
+	public List<TSBaseAPI> tsGetList(){
 		if(this.tsvalue!=null)
 			return this.tsvalue;
 		else
-			return new ArrayList<TSBase>();
+			return new ArrayList<TSBaseAPI>();
 	}
 
 	public TSArrayList tsGetValue(){
@@ -364,7 +364,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 	}
 
 	@Override
-	public void tsPlus(TSBase tb) {
+	public void tsPlus(TSBaseAPI tb) {
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}
@@ -378,7 +378,7 @@ public class TSArrayList implements TSComposite, List<TSBase>, Collection<TSBase
 
 		String ret = new String();
 
-		for(TSBase val : this.tsvalue){
+		for(TSBaseAPI val : this.tsvalue){
 			if(val.tsIsType(TSRepository.TEnum.TS_COMPOSITE))
 				ret+=indentation+" <"+val.tsGetTypeString()+"> => \n"+val.tsToString(indent)+"\n";
 			else

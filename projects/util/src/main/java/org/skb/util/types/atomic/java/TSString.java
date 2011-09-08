@@ -42,8 +42,8 @@ import org.apache.log4j.Logger;
 import org.skb.util.dictionaries.Html2LaTeX;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
 
@@ -53,9 +53,15 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSString implements TSAtomic{
+public class TSString implements TSAtomicAPI{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSString.class);
+
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
+	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	public static java.lang.String copyValueOf(char[] data){
 		return java.lang.String.copyValueOf(data);
@@ -157,11 +163,6 @@ public class TSString implements TSAtomic{
 		return java.lang.String.valueOf(obj);
 	}
 
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	/** Local value */
 	public java.lang.String tsvalue;
@@ -203,7 +204,7 @@ public class TSString implements TSAtomic{
 	 * If the specified TSAtomic is not of type TSString then s.toString is called for the initialisation.
 	 * @param at TSAtomic to be used in initialisation
 	 */
-	public TSString(TSAtomic at){
+	public TSString(TSAtomicAPI at){
 		this._init();
 		if(at!=null){
 			if(at.tsGetTypeEnum()==this.tsGetTypeEnum())
@@ -450,7 +451,7 @@ public class TSString implements TSAtomic{
 	 * 
 	 * @return TSBase either an TSMapLH (if String explodes to an associated array) or an TSArrayListString (if String explodes to a simple String[]); null otherwise  
 	 */
-	public TSBase tsExplode() {
+	public TSBaseAPI tsExplode() {
 		String ts[];
 		if(this.tsvalue.length() == 0)
 			return null;
@@ -529,7 +530,7 @@ public class TSString implements TSAtomic{
 
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPLus not implemented");
 	}

@@ -42,8 +42,8 @@ import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
@@ -118,7 +118,7 @@ public class STGManager {
 	 * @param name new application name
 	 * @return true if successful, false otherwise (given name was null or not of type TSSTring)
 	 */
-	public boolean setApplicationName(TSBase name){
+	public boolean setApplicationName(TSBaseAPI name){
 		boolean ret=true;
 		if(name!=null&&name.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING))
 			this.applicationName=(TSString)name;
@@ -151,7 +151,7 @@ public class STGManager {
 	 * @param targetLang target language of the STG to be loaded
 	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
 	 */
-	public boolean loadSTG(TSBase purpose, TSBase targetLang){
+	public boolean loadSTG(TSBaseAPI purpose, TSBaseAPI targetLang){
 		if(purpose==null&&targetLang==null)
 			return this.loadSTG("", "");
 		if(purpose!=null&&targetLang==null)
@@ -168,7 +168,7 @@ public class STGManager {
 	 * @param targetLang target language of the STG to be loaded
 	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
 	 */
-	public boolean loadSTG(String purpose, TSBase targetLang){
+	public boolean loadSTG(String purpose, TSBaseAPI targetLang){
 		if(targetLang==null)
 			return this.loadSTG(purpose, "");
 		else
@@ -324,7 +324,7 @@ public class STGManager {
 	 * @param fn file name
 	 * @return true if set, false if fn was null or not of type TSString
 	 */
-	public boolean setSTGFileName(TSAtomic fn){
+	public boolean setSTGFileName(TSAtomicAPI fn){
 		boolean ret=false;
 		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgFileName=(TSString)fn;
@@ -340,7 +340,7 @@ public class STGManager {
 	 * @param fn file name
 	 * @return true if set, false if fn was null or not of type TSString
 	 */
-	public boolean setSTGFileName(TSBase fn){
+	public boolean setSTGFileName(TSBaseAPI fn){
 		boolean ret=false;
 		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgFileName=(TSString)fn;
@@ -383,7 +383,7 @@ public class STGManager {
 	}
 
 
-	public boolean setSTGUrlName(TSAtomic url){
+	public boolean setSTGUrlName(TSAtomicAPI url){
 		boolean ret=false;
 		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgUrlName=(TSString)url;
@@ -394,7 +394,7 @@ public class STGManager {
 	}
 
 
-	public boolean setSTGUrlName(TSBase url){
+	public boolean setSTGUrlName(TSBaseAPI url){
 		boolean ret=false;
 		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgUrlName=(TSString)url;
@@ -431,7 +431,7 @@ public class STGManager {
 		for (String s:this.chunksMandatory.keySet()){
 			//check if our Templates exist
 			if(stNames.contains(s)){
-				TSBase _b=this.chunksMandatory.get(s);
+				TSBaseAPI _b=this.chunksMandatory.get(s);
 				TSArrayListString val=null;
 				if(_b.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING))
 					val=(TSArrayListString)_b;
@@ -476,7 +476,7 @@ public class STGManager {
 		for (String s:this.chunksOptional.keySet()){
 			//check if our Templates exist
 			if(tName.contains(s)){
-				TSBase _b=this.chunksMandatory.get(s);
+				TSBaseAPI _b=this.chunksMandatory.get(s);
 				TSArrayListString val=null;
 				if(_b.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING))
 					val=(TSArrayListString)_b;

@@ -39,8 +39,8 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * A wrapper for java.lang.Boolean.
@@ -48,7 +48,7 @@ import org.skb.util.types.api.TSBase;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSBoolean implements TSAtomic {
+public class TSBoolean implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSBoolean.class);
 
@@ -132,7 +132,7 @@ public class TSBoolean implements TSAtomic {
 	 * 
 	 * @param at TSAtomic to be used in initialisation
 	 */
-	public TSBoolean(TSAtomic at){
+	public TSBoolean(TSAtomicAPI at){
 		this._init();
 		if(at!=null){
 			if(at.tsGetTypeEnum()==this.tsGetTypeEnum())
@@ -230,7 +230,7 @@ public class TSBoolean implements TSAtomic {
 
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}

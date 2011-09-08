@@ -47,8 +47,8 @@ import org.apache.log4j.Logger;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
-import org.skb.util.types.api.TSComposite;
+import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.types.api.TSCompositeAPI;
 import org.skb.util.types.api.TSMapAPI;
 import org.skb.util.types.atomic.java.TSString;
 
@@ -58,7 +58,7 @@ import org.skb.util.types.atomic.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSMapLH implements TSComposite, TSMapAPI {
+public class TSMapLH implements TSCompositeAPI, TSMapAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSMapLH.class);
 
@@ -69,7 +69,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	/** The local value. */
-	protected LinkedHashMap<String, TSBase> tsvalue=null;
+	protected LinkedHashMap<String, TSBaseAPI> tsvalue=null;
 
 
 	/**
@@ -87,7 +87,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	public TSMapLH(TSMapLH map){
 		this._init();
 		if(map!=null)
-			this.tsvalue=new LinkedHashMap<String, TSBase>(map);
+			this.tsvalue=new LinkedHashMap<String, TSBaseAPI>(map);
 	}
 
 
@@ -107,7 +107,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_MAP_LH);
 		this.typeEnum.add(TEnum.TS_COMPOSITE_MAP_LH);
 
-		this.tsvalue=new LinkedHashMap<String, TSBase>();
+		this.tsvalue=new LinkedHashMap<String, TSBaseAPI>();
 	}
 
 	@Override
@@ -123,7 +123,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 		else if(list.size()==1)
 			return this.tsvalue.containsKey(list.get(0));
 		else if(this.tsvalue.containsKey(list.get(0))){
-			TSBase ct=this.tsvalue.get(list.get(0));
+			TSBaseAPI ct=this.tsvalue.get(list.get(0));
 			if(ct.tsIsType(TSRepository.type(TEnum.TS_COMPOSITE_MAP))){
 				list.remove(0);
 				return ((TSMapAPI)ct).containsKey(list);
@@ -173,24 +173,24 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public Set<java.util.Map.Entry<String, TSBase>> entrySet() {
-		Set<java.util.Map.Entry<String, TSBase>> ret=null;
+	public Set<java.util.Map.Entry<String, TSBaseAPI>> entrySet() {
+		Set<java.util.Map.Entry<String, TSBaseAPI>> ret=null;
 		if(this.isInitialised())
 			ret=this.tsvalue.entrySet();
 		if(ret==null)
-			return new TreeSet<java.util.Map.Entry<String, TSBase>>();
+			return new TreeSet<java.util.Map.Entry<String, TSBaseAPI>>();
 		else
 			return ret;
 	}
 
 	@Override
-	public TSBase get(List<String> list) {
+	public TSBaseAPI get(List<String> list) {
 		if(!this.isInitialised()||list==null||list.size()==0)
 			return new TSNull();
 		else if(list.size()==1)
 			return this.tsvalue.get(list.get(0).toString());
 		else if(this.tsvalue.containsKey(list.get(0).toString())){
-			TSBase ct=this.tsvalue.get(list.get(0).toString());
+			TSBaseAPI ct=this.tsvalue.get(list.get(0).toString());
 			if(ct.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP)){
 				list.remove(0);
 				return ((TSMapAPI)ct).get(list);
@@ -200,14 +200,14 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase get(Object key) {
+	public TSBaseAPI get(Object key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.get(key);
 		return new TSNull();
 	}
 
 	@Override
-	public TSBase get(String key) {
+	public TSBaseAPI get(String key) {
 		if(this.isInitialised()&&key!=null){
 			if(StringUtils.contains(key, '/'))
 				return this.get(new ArrayList<String>(Arrays.asList(StringUtils.split(key, '/'))));
@@ -218,14 +218,14 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase get(String[] list) {
+	public TSBaseAPI get(String[] list) {
 		if(this.isInitialised()&&list!=null&&list.length>0)
 			return this.get(new ArrayList<String>(Arrays.asList(list)));
 		return new TSNull();
 	}
 
 	@Override
-	public TSBase get(TSString key) {
+	public TSBaseAPI get(TSString key) {
 		if(this.isInitialised()&&key!=null)
 			return this.get(key.toString());
 		return new TSNull();
@@ -270,12 +270,12 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase put(ArrayList<String> list, String val) {
+	public TSBaseAPI put(ArrayList<String> list, String val) {
 		return this.put(list, new TSString(val));
 	}
 
 	@Override
-	public TSBase put(List<String> list, TSBase val) {
+	public TSBaseAPI put(List<String> list, TSBaseAPI val) {
 		if(!this.isInitialised()||list==null||list.size()==0)
 			return null;
 		else if(list.size()==1)
@@ -292,7 +292,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase put(String key, String val) {
+	public TSBaseAPI put(String key, String val) {
 		if(this.isInitialised()){
 			if(StringUtils.contains(key, '/'))
 				return this.put(new ArrayList<String>(Arrays.asList(StringUtils.split(key, '/'))), new TSString(val));
@@ -303,7 +303,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase put(String key, TSBase val) {
+	public TSBaseAPI put(String key, TSBaseAPI val) {
 		if(this.isInitialised()){
 			if(StringUtils.contains(key, '/'))
 				return this.put(new ArrayList<String>(Arrays.asList(StringUtils.split(key, '/'))), val);
@@ -314,22 +314,22 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase put(String[] list, String val) {
+	public TSBaseAPI put(String[] list, String val) {
 		return this.put(new ArrayList<String>(Arrays.asList(list)), val);
 	}
 
 	@Override
-	public TSBase put(String[] list, TSBase val) {
+	public TSBaseAPI put(String[] list, TSBaseAPI val) {
 		return this.put(new ArrayList<String>(Arrays.asList(list)), val);
 	}
 
 	@Override
-	public TSBase put(TSString key, TSBase val) {
+	public TSBaseAPI put(TSString key, TSBaseAPI val) {
 		return this.put(key.toString(), val);
 	}
 
 	@Override
-	public void putAll(Map<? extends String, ? extends TSBase> map) {
+	public void putAll(Map<? extends String, ? extends TSBaseAPI> map) {
 		String key;
 		@SuppressWarnings("unchecked")
 		Set<String> o_set = (Set<String>) map.keySet();
@@ -347,13 +347,13 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase remove(List<String> list) {
+	public TSBaseAPI remove(List<String> list) {
 		if(!this.isInitialised()||list==null||list.size()==0)
 			return null;
 		else if(list.size()==1)
 			return this.tsvalue.remove(list.get(0).toString());
 		else if(this.tsvalue.containsKey(list.get(0).toString())){
-			TSBase ct=this.tsvalue.get(list.get(0).toString());
+			TSBaseAPI ct=this.tsvalue.get(list.get(0).toString());
 			if(ct.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP)){
 				list.remove(0);
 				return ((TSMapAPI)ct).remove(list);
@@ -363,14 +363,14 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase remove(Object key) {
+	public TSBaseAPI remove(Object key) {
 		if(this.isInitialised())
 			return this.tsvalue.remove(key);
 		return new TSNull();
 	}
 
 	@Override
-	public TSBase remove(String key) {
+	public TSBaseAPI remove(String key) {
 		if(this.isInitialised()){
 			if(StringUtils.contains(key, '/'))
 				return this.remove(new ArrayList<String>(Arrays.asList(StringUtils.split(key, '/'))));
@@ -381,12 +381,12 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public TSBase remove(String[] list) {
+	public TSBaseAPI remove(String[] list) {
 		return this.remove(new ArrayList<String>(Arrays.asList(list)));
 	}
 
 	@Override
-	public TSBase remove(TSString key) {
+	public TSBaseAPI remove(TSString key) {
 		return this.remove(key.toString());
 	}
 
@@ -405,7 +405,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	public void tsClean() {
 		ArrayList<String> listRemove=new ArrayList<String>();
 		String key;
-		TSBase val;
+		TSBaseAPI val;
 		Set<String> o_set = this.tsvalue.keySet();
 		Iterator<String> key_it = o_set.iterator();
 		while(key_it.hasNext()){
@@ -472,7 +472,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb) {
+	public void tsPlus(TSBaseAPI tb) {
 		// TODO
 		logger.warn("tsPlus not implemented");
 	}
@@ -489,7 +489,7 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 
 		String ret = new String();
 		String key;
-		TSBase val;
+		TSBaseAPI val;
 
 		Set<String> o_set = this.tsvalue.keySet();
 		Iterator<String> key_it = o_set.iterator();
@@ -513,18 +513,18 @@ public class TSMapLH implements TSComposite, TSMapAPI {
 	}
 
 	@Override
-	public Collection<TSBase> values() {
+	public Collection<TSBaseAPI> values() {
 		if(this.isInitialised())
 			return this.tsvalue.values();
 		return null;
 	}
 
 	@Override
-	public Map<String, TSBase> tsGetMap() {
+	public Map<String, TSBaseAPI> tsGetMap() {
 		if(this.isInitialised())
 			return this.tsvalue;
 		else
-			return new LinkedHashMap<String, TSBase>();
+			return new LinkedHashMap<String, TSBaseAPI>();
 	}
 
 	@Override

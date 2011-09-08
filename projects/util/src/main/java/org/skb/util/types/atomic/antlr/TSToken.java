@@ -40,8 +40,8 @@ import org.antlr.runtime.ClassicToken;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * This class provides am OatBaseAtomic wrapper for the ANTLR runtime class Token.
@@ -49,7 +49,7 @@ import org.skb.util.types.api.TSBase;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public final class TSToken extends ClassicToken implements TSAtomic {
+public final class TSToken extends ClassicToken implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSToken.class);
 
@@ -134,7 +134,7 @@ public final class TSToken extends ClassicToken implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}

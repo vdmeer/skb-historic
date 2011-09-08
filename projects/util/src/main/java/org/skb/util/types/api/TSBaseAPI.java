@@ -40,7 +40,7 @@ import org.skb.util.types.TSRepository.TEnum;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public interface TSBase {
+public interface TSBaseAPI {
 	/**
 	 * Empties the TSBase object
 	 */
@@ -109,7 +109,7 @@ public interface TSBase {
 	 * Adds a value to the object
 	 * @param tb value to be added
 	 */
-	public void tsPlus(TSBase tb);
+	public void tsPlus(TSBaseAPI tb);
 
 
 	/**

@@ -12,7 +12,7 @@ import org.skb.util.log.LogManager;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSFloat;
 import org.skb.util.types.atomic.java.TSInteger;
@@ -56,7 +56,7 @@ public class TSMapLHTest extends TestCase{
 	@Ignore public void initComplex(){
 		this.complex=new TSMapLH();
 		Json2Oat j2o=new Json2Oat();
-		TSBase c=j2o.read("/org/skb/test/util/types/composite/util/cola-proto.json");
+		TSBaseAPI c=j2o.read("/org/skb/test/util/types/composite/util/cola-proto.json");
 		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			this.complex=(TSMapLH)c;
 	}

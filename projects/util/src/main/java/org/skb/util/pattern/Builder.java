@@ -38,16 +38,36 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface Builder {
+	//TODO add jdoc
+	public void setTemplates();
 
-	//public void setRegisteredTemplates(TSMapLH regTemplates);
+	/**
+	 * Add CSS and Mime Content Type information to the application.
+	 */
+	public void setHeader();
 
-	abstract public void set_templates();
 
-	public void set_header();
-
+	/**
+	 * Execute the Builder's main functionality.
+	 * 
+	 * This method is called by the reader in the execution state. When you write your own builder,
+	 * simply implement the function execute_loop and it is called automatically at the right time.
+	 * @param request original request object
+	 * @param entries original array with collected information from the reader
+	 */
 	public void execute(Request request, TSMapLH entries);
 
-	//abstract public void execute_loop(SKBRequest request, TSMapLH entries);
 
+	/**
+	 * Execute the Builder's main functionality.
+	 * 
+	 * This method is called by the builder base class in the execution state. When you write your own builder,
+	 * simply implement your functionality here and it is called automatically at the right time.
+	 * @param request original request object
+	 * @param entries original array with collected information from the reader
+	 */
+	public void executeLoop(Request request, TSMapLH entries);
+
+	//TODO add jdoc
 	public boolean isInitialised();
 }

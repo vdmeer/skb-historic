@@ -40,10 +40,10 @@ import org.apache.log4j.Logger;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
-public class TSSTGManager extends STGManager implements TSAtomic {
+public class TSSTGManager extends STGManager implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSSTGManager.class);
 
@@ -114,7 +114,7 @@ public class TSSTGManager extends STGManager implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}

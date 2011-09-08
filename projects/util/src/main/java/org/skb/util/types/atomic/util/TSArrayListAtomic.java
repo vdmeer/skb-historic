@@ -44,8 +44,8 @@ import org.apache.log4j.Logger;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * An Array list of TSAtomic types.
@@ -53,7 +53,7 @@ import org.skb.util.types.api.TSBase;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<TSAtomic>{
+public class TSArrayListAtomic implements TSAtomicAPI, List<TSAtomicAPI>, Collection<TSAtomicAPI>{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSArrayListAtomic.class);
 
@@ -64,17 +64,17 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	/** Local value */
-	protected List<TSAtomic> tsvalue=null;
+	protected List<TSAtomicAPI> tsvalue=null;
 
 
 	public TSArrayListAtomic(){
 		this._init();
-		this.tsvalue=new ArrayList<TSAtomic>();
+		this.tsvalue=new ArrayList<TSAtomicAPI>();
 	}
 
 	public TSArrayListAtomic(int initialCapacity){
 		this._init();
-		this.tsvalue=new ArrayList<TSAtomic>(initialCapacity);
+		this.tsvalue=new ArrayList<TSAtomicAPI>(initialCapacity);
 	}
 
 //	public TSArrayListStringAtomic(TSArrayListStringAtomic a){
@@ -85,9 +85,9 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 //			this.tsvalue=new ArrayList<TSAtomic>();
 //	}
 
-	public TSArrayListAtomic(List<TSAtomic>a){
+	public TSArrayListAtomic(List<TSAtomicAPI>a){
 		this._init();
-		this.tsvalue=new ArrayList<TSAtomic>(a);
+		this.tsvalue=new ArrayList<TSAtomicAPI>(a);
 	}
 
 	protected void _init(){
@@ -114,27 +114,27 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 //	}
 
 	@Override
-	public void add(int index, TSAtomic element) {
+	public void add(int index, TSAtomicAPI element) {
 		if(this.tsvalue!=null)
 			this.tsvalue.add(index, element);
 	}
 
 	@Override
-	public boolean add(TSAtomic e) {
+	public boolean add(TSAtomicAPI e) {
 		if(this.tsvalue!=null)
 			return this.tsvalue.add(e);
 		return false;
 	}
 
 	@Override
-	public boolean addAll(Collection<? extends TSAtomic> c) {
+	public boolean addAll(Collection<? extends TSAtomicAPI> c) {
 		if(this.tsvalue!=null)
 			return this.tsvalue.addAll(c);
 		return false;
 	}
 
 	@Override
-	public boolean addAll(int index, Collection<? extends TSAtomic> c) {
+	public boolean addAll(int index, Collection<? extends TSAtomicAPI> c) {
 		if(this.tsvalue!=null)
 			return tsvalue.addAll(index, c);
 		return false;
@@ -161,7 +161,7 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	@Override
-	public TSAtomic get(int index) {
+	public TSAtomicAPI get(int index) {
 		if(this.tsvalue!=null)
 			return tsvalue.get(index);
 		return null;
@@ -204,7 +204,7 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	@Override
-	public Iterator<TSAtomic> iterator() {
+	public Iterator<TSAtomicAPI> iterator() {
 		if(this.tsvalue!=null)
 			return tsvalue.iterator();
 		return null;
@@ -219,21 +219,21 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	@Override
-	public ListIterator<TSAtomic> listIterator() {
+	public ListIterator<TSAtomicAPI> listIterator() {
 		if(this.tsvalue!=null)
 			return tsvalue.listIterator();
 		return null;
 	}
 
 	@Override
-	public ListIterator<TSAtomic> listIterator(int index) {
+	public ListIterator<TSAtomicAPI> listIterator(int index) {
 		if(this.tsvalue!=null)
 			return tsvalue.listIterator(index);
 		return null;
 	}
 
 	@Override
-	public TSAtomic remove(int index) {
+	public TSAtomicAPI remove(int index) {
 		if(this.tsvalue!=null)
 			return tsvalue.remove(index);
 		return new TSNull();
@@ -264,7 +264,7 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	@Override
-	public TSAtomic set(int index, TSAtomic element) {
+	public TSAtomicAPI set(int index, TSAtomicAPI element) {
 		if(this.tsvalue!=null)
 			return tsvalue.set(index, element);
 		return null;
@@ -279,7 +279,7 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	@Override
-	public List<TSAtomic> subList(int fromIndex, int toIndex) {
+	public List<TSAtomicAPI> subList(int fromIndex, int toIndex) {
 		if(this.tsvalue!=null)
 			return tsvalue.subList(fromIndex, toIndex);
 		return null;
@@ -307,7 +307,7 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 
 	public ArrayList<String> toStringArray(){
 		ArrayList<String> ret=new ArrayList<String>();
-		for (TSAtomic s : this.tsvalue)
+		for (TSAtomicAPI s : this.tsvalue)
 			ret.add(s.toString());
 		return ret;
 	}
@@ -382,7 +382,7 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	@Override
-	public void tsPlus(TSBase tb) {
+	public void tsPlus(TSBaseAPI tb) {
 		// TODO
 		logger.warn("tsPlusnot implemented");
 		
@@ -397,7 +397,7 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 
 	@Override
 	public void tsTrim() {
-		for (TSAtomic s : this.tsvalue)
+		for (TSAtomicAPI s : this.tsvalue)
 			s.tsTrim();
 	}
 }

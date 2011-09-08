@@ -48,9 +48,9 @@ import org.apache.log4j.Logger;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
-import org.skb.util.types.api.TSComposite;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.types.api.TSCompositeAPI;
 import org.skb.util.types.api.TSTableAPI;
 import org.skb.util.types.api.TSTableRowAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
@@ -69,7 +69,7 @@ import org.skb.util.types.atomic.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSTable implements TSComposite, TSTableAPI{
+public class TSTable implements TSCompositeAPI, TSTableAPI{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSTable.class);
 
@@ -114,7 +114,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	@Override
 	public void addRow(String row) {
 		if(this.columnsInitialised&&row!=null){
-			LinkedHashMap<String, TSBase> rowMap=new LinkedHashMap<String, TSBase>();
+			LinkedHashMap<String, TSBaseAPI> rowMap=new LinkedHashMap<String, TSBaseAPI>();
 			Iterator<String> cIT = columns.iterator();
 			while(cIT.hasNext())
 				rowMap.put(cIT.next(), null);
@@ -238,8 +238,8 @@ public class TSTable implements TSComposite, TSTableAPI{
 	}
 
 	@Override
-	public TSBase get(String row, String col) {
-		TSBase ret=new TSNull();
+	public TSBaseAPI get(String row, String col) {
+		TSBaseAPI ret=new TSNull();
 		if(this.isInitialised()){
 			if(this.containsKey(row)&&this.get(row).containsKey(col))
 				ret=this.tsvalue.get(row).get(col);
@@ -259,7 +259,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSBoolean getBoolean(String row, String col) {
 		TSBoolean ret=new TSBoolean();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
 				ret=(TSBoolean)tsb;
 		}
@@ -270,7 +270,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSByte getByte(String row, String col) {
 		TSByte ret=new TSByte();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_BYTE))
 				ret=(TSByte)tsb;
 		}
@@ -289,7 +289,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSDouble getDouble(String row, String col) {
 		TSDouble ret=new TSDouble();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_DOUBLE))
 				ret=(TSDouble)tsb;
 		}
@@ -300,7 +300,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSFloat getFloat(String row, String col) {
 		TSFloat ret=new TSFloat();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_FLOAT))
 				ret=(TSFloat)tsb;
 		}
@@ -311,7 +311,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSInteger getInteger(String row, String col) {
 		TSInteger ret=new TSInteger();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_INTEGER))
 				ret=(TSInteger)tsb;
 		}
@@ -322,7 +322,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSLong getLong(String row, String col) {
 		TSLong ret=new TSLong();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_LONG))
 				ret=(TSLong)tsb;
 		}
@@ -333,7 +333,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSObject getObject(String row, String col) {
 		TSObject ret=new TSObject();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_OBJECT))
 				ret=(TSObject)tsb;
 		}
@@ -349,7 +349,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSShort getShort(String row, String col) {
 		TSShort ret=new TSShort();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_SHORT))
 				ret=(TSShort)tsb;
 		}
@@ -360,7 +360,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	public TSString getString(String row, String col) {
 		TSString ret=new TSString();
 		if(this.isInitialised()){
-			TSBase tsb=this.get(row, col);
+			TSBaseAPI tsb=this.get(row, col);
 			if(tsb.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING))
 				ret=(TSString)tsb;
 		}
@@ -444,13 +444,13 @@ public class TSTable implements TSComposite, TSTableAPI{
 			this.tsvalue.get(row).put(col, new TSString(val));
 	}
 
-	public void put(String row, String col, TSBase val) {
+	public void put(String row, String col, TSBaseAPI val) {
 		if(this.isInitialised()&&row!=null&&col!=null&&val!=null)
 			this.tsvalue.get(row).put(col, val);
 	}
 
 	@Override
-	public void put(String row, String col, TSAtomic val) {
+	public void put(String row, String col, TSAtomicAPI val) {
 		if(this.isInitialised()&&row!=null&&col!=null&&val!=null)
 			this.tsvalue.get(row).put(col, val);
 	}
@@ -595,7 +595,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 	}
 
 	@Override
-	public void tsPlus(TSBase tb) {
+	public void tsPlus(TSBaseAPI tb) {
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}
@@ -612,7 +612,7 @@ public class TSTable implements TSComposite, TSTableAPI{
 
 		String ret = new String();
 		String key;
-		TSBase val;
+		TSBaseAPI val;
 
 		Set<String> o_set = this.tsvalue.keySet();
 		Iterator<String> key_it = o_set.iterator();

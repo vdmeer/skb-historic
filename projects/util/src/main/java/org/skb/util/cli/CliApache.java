@@ -45,7 +45,7 @@ import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSDouble;
 import org.skb.util.types.atomic.java.TSInteger;
@@ -88,7 +88,7 @@ public class CliApache implements Cli {
 	}
 
 
-	@Override public boolean setApplicationName(TSBase appName){
+	@Override public boolean setApplicationName(TSBaseAPI appName){
 		boolean ret=false;
 		if(appName!=null&&appName.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.applicationName=(TSString)appName;

@@ -42,8 +42,8 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * This class provides am OatBaseAtomic wrapper for the string template class StringTemplate.
@@ -51,7 +51,7 @@ import org.skb.util.types.api.TSBase;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSST extends StringTemplate implements TSAtomic {
+public class TSST extends StringTemplate implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSST.class);
 
@@ -149,7 +149,7 @@ public class TSST extends StringTemplate implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}

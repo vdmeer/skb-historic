@@ -41,7 +41,7 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.api.TSTableRowAPI;
 import org.skb.util.types.atomic.antlr.TSToken;
 import org.skb.util.types.atomic.stringtemplate.TSST;
@@ -395,7 +395,7 @@ public class AtomList extends TSTable {
 	 * @return the current set string template
 	 */
 	public StringTemplate getST(String row){
-		TSBase st=this.get(row, AtomList.alValST);
+		TSBaseAPI st=this.get(row, AtomList.alValST);
 		StringTemplate ret=new StringTemplate("");
 		if(st!=null&&st.tsIsType(TSRepository.TEnum.TS_ATOMIC_ST_ST))
 			ret=((TSST)st);
@@ -411,7 +411,7 @@ public class AtomList extends TSTable {
 	 */
 	public Token getToken(String row, String column){
 		TSToken ret=null;
-		TSBase ata=this.get(row, column);
+		TSBaseAPI ata=this.get(row, column);
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_ANTLR_TOKEN))
 			ret=((TSToken)ata);
 		return (Token)ret;

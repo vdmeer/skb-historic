@@ -29,6 +29,7 @@
 
 package org.skb.util.pattern;
 
+import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.composite.util.TSMapLH;
 
 /**
@@ -38,18 +39,69 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface Reader {
+	/**
+	 * Associate an instantiated builder with the reader.
+	 * @param builder the builder instance
+	 */
+	public void setBuilder(Builder builder);
 
-	public void set_builder(Builder builder);
 
-	public void prepare_and_execute(Request request);
+	/**
+	 * Prepare (reader only) and Execute (reader and builder).
+	 * 
+	 * This method will call prepare and execute on the reader. It is a shortcut to calling first prepare and
+	 * execute next on the reader.
+	 * @param request the request object to parameterise the method
+	 */
+	public void prepareAndExecute(Request request);
 
+
+	/**
+	 * Prepare the reader.
+	 * 
+	 * Prepare basically means to do everything needed prior invoking execute. Usually, this would
+	 * mean initialise all data structures, possibly reading and processing data from external sources and
+	 * other preparation tasks. This function will call prepare_loop before and set is_prepared to true before returning.
+	 * @param request the request object to parameterise the method
+	 */
 	public void prepare(Request request);
 
-	public TSMapLH get_entries();
 
-	//public abstract void prepare_loop(Request request, TSString table, TSString table_collections);
+	/**
+	 * Local Prepare method.
+	 * 
+	 * If you want your reader to do anything in the preparation stage, simply put all that code in this function.
+	 * It will be automatically called by the base object.
+	 * @param request the request object to parameterise the method
+	 * @param table semantic tag to be used to read from external data sources
+	 * @param table_collections semantic tag to be used to read collections from external data sources
+	 */
+	public void prepareLoop(Request request, TSString table, TSString table_collections);
 
+
+	/**
+	 * Return the current array of entries.
+	 * @return entries array
+	 */
+	public TSMapLH getEntries();
+
+
+	/**
+	 * Execute the reader and the builder.
+	 * 
+	 * Execute all remaining functionality on the reader first and then call the builder's execute function to 
+	 * finish the job. This is only done if is_prepared is true and if a builder was provided (set_builder).
+	 * @param request the request object to parameterise the method
+	 */
 	public void execute(Request request);
 
-	//public abstract void execute_loop(Request request);
+
+	/**
+	 * Local Execute method.
+	 * 
+	 * If you want your reader to do anything in the execution stage, simply put all that code in this function.
+	 * It will be automatically called by the base object.
+	 * @param request the request object to parameterise the method
+	 */
+	public void executeLoop(Request request);
 }

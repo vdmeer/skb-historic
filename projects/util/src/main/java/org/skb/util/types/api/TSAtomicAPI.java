@@ -35,6 +35,6 @@ package org.skb.util.types.api;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public interface TSAtomic extends TSBase {
+public interface TSAtomicAPI extends TSBaseAPI {
 
 }

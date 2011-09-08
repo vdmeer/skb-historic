@@ -38,11 +38,11 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
-import org.skb.util.types.api.TSComposite;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.types.api.TSCompositeAPI;
 
-public final class TSNull implements TSBase, TSAtomic, TSComposite {
+public final class TSNull implements TSBaseAPI, TSAtomicAPI, TSCompositeAPI {
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
@@ -137,7 +137,7 @@ public final class TSNull implements TSBase, TSAtomic, TSComposite {
 
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		logger.warn("tsPlus has no effect on TSNull, yet someone called it");
 	}
 

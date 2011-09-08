@@ -35,7 +35,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.atomic.util.TSArrayListString;
@@ -82,7 +82,7 @@ public class Request {
 		this.request_ar=new TSMapLH();
 
 		if(type!=null){
-			TSBase tmp;
+			TSBaseAPI tmp;
 
 			//this.init_map=mySkb.get_registered_requests_by_key(type);
 			this.init_map=new TSMapLH(registered_request);
@@ -108,7 +108,7 @@ public class Request {
 				this.init_map.put("core:requests:table_collections", new TSString());
 
 			ArrayList<String> rem_keys=new ArrayList<String>();
-			TSBase _t=this.init_map.get("core:requests:fields");
+			TSBaseAPI _t=this.init_map.get("core:requests:fields");
 			TSMapLH ar=new TSMapLH();
 			if(_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH))
 				ar=(TSMapLH)_t;
@@ -152,7 +152,8 @@ public class Request {
 			logger.error("no request type given");
 	}
 
-	private TSBase _set(TSString type){
+
+	private TSBaseAPI _set(TSString type){
 		/*if(type.equals("null"))
 			return null;
 		else if(type.equals("true"))
@@ -163,9 +164,23 @@ public class Request {
 			return type;
 	}
 
+
+	/**
+	 * Initialise the data for that request reading HTTP request values.
+	 */
 	public void initHttp(){this.init("http");}
+
+
+	/**
+	 * Initialise the data for that request using default values.
+	 */
 	public void initPlain(){this.init("plain");}
 
+
+	/**
+	 * Private method for initialising the request.
+	 * @param type either "http" or "core"
+	 */
 	private void init(String type){
 		if(this.is_initialised==false)
 			logger.error("request not initialised");
@@ -187,24 +202,77 @@ public class Request {
 		}
 	}
 
-	public void activate(){this.init_map.put("core:requests:fields"+"/"+"request:active"+"/"+"value", new TSBoolean(true));}
+
+	/**
+	 * Activate the request object.
+	 *
+	 * This method must be called before the request object can be used by Readers or Builders.
+	 * A non-activated request object will be ignored, and some Reader/Builder functionality might be 
+	 * disabled.
+	 */
+	public void activate(){
+		this.init_map.put("core:requests:fields"+"/"+"request:active"+"/"+"value", new TSBoolean(true));
+	}
+
+
+	/**
+	 * Test if the request object is activated or not.
+	 * @return true if activated, boolean false otherwise
+	 */
 	public boolean isActivated(){
 		return (boolean)((TSBoolean)this.init_map.get("core:requests:fields"+"/"+"request:active"+"/"+"value")).tsvalue;
 	}
 
-	public TSString getKey(){return (TSString)this.init_map.get("key");}
 
-	public void addValue(String field_key, String[] value){this.addValue(field_key, new TSArrayListString(value));}
+	/**
+	 * Return the key of the request object.
+	 *
+	 * The key is the type used for the creation in the constructor. In the SKB, it corresponds to a registered request.
+	 * @return string 
+	 */
+	public TSString getKey(){
+		return (TSString)this.init_map.get("key");
+	}
+
+
+	/**
+	 * Add a value to a registered key/value pair of the request object.
+	 * 
+	 * This function allows to add values to registered key/value pair of the request object. <code>key</code> must be a known
+	 * key in the request, otherwise this method will do nothing. All fields of <code>value</code> will be merged with the list that <code>key</code> points to.
+	 * @param field_key the key for which values should be added.
+	 * @param value the value to be added.
+	 */
+	public void addValue(String field_key, String[] value){
+		this.addValue(field_key, new TSArrayListString(value));
+	}
+
+
+	/**
+	 * Add a value to a registered key/value pair of the request object.
+	 * 
+	 * This function allows to add values to registered key/value pair of the request object. <code>key</code> must be a known
+	 * key in the request, otherwise this method will do nothing. All fields of <code>value</code> will be merged with the list that <code>key</code> points to.
+
+	 * @param field_key the key for which values should be added.
+	 * @param value the value to be added.
+	 */
 	public void addValue(String field_key, TSArrayListString value){
 		for(int i=0;i<value.size();i++)
 			this.addValue(field_key, value.get(i));
 	}
 
-	public void addValue(String field_key, TSBase value){
+
+	/**
+	 * Add a value to a registered key/value pair of the request object.
+	 * @param field_key the key for which values should be added.
+	 * @param value the value to be added.
+	 */
+	public void addValue(String field_key, TSBaseAPI value){
 		if(!this.init_map.containsKey("core:requests:fields"+"/"+field_key)||field_key.equals("request:active"))
 			return;
 
-		TSBase cur_val=this.init_map.get("core:requests:fields"+"/"+field_key+"/"+"value");
+		TSBaseAPI cur_val=this.init_map.get("core:requests:fields"+"/"+field_key+"/"+"value");
 		if(cur_val.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
 			((TSArrayListString)cur_val).add(((TSString)value));
 			this.init_map.put("core:requests:fields"+"/"+field_key+"/"+"value", cur_val);
@@ -214,16 +282,48 @@ public class Request {
 		}
 	}
 
-	public void setValue(String field_key, TSBase value){
+
+	/**
+	 * Set a value of a registered key/value pair of the request object.
+	 * 
+	 * This methods allows to set the value of a registered key/value pair of the request object. <code>field_key</code> must be a known
+	 * key in the request, otherwise this function will do nothing. The value will simply overwrite any 
+	 * current value of <code>field_key</code>.
+	 * @param field_key the key for which values should be set.
+	 * @param value the value to be set.
+	 */
+	public void setValue(String field_key, TSBaseAPI value){
 		if(!this.init_map.containsKey("core:requests:fields"+"/"+field_key)||field_key.equals("request:active"))
 			return;
 		this.init_map.put("core:requests:fields"+"/"+field_key+"/"+"value",value);
 	}
 
-	public TSBase getValue(String field_key){
+
+	/**
+	 * Return the current value of <code>field_key</code>.
+	 * 
+	 * This method will return the current value of <code>field_key</code> in the following way:
+	 * <ul>
+	 *   <li> If the value of <code>field_key</code> is 'null', the return value is TSNull.</li>
+	 *   <li> If the value of <code>field_key</code> is an array, then this array will be returned.</li>
+	 *   <li> If the value of <code>field_key</code> is no 'null' and not an array, then a new array with the current value as member will be returned.</li>
+	 * </ul>
+	 * @param field_key the key for which values should be returned.
+	 * @return current value of the key
+	 */
+	public TSBaseAPI getValue(String field_key){
 		return this.init_map.get("core:requests:fields"+"/"+field_key+"/"+"value");
 	}
 
+
+	/**
+	 * Return the HTTP request name (or HTML Form name) of the given key.
+	 * 
+	 * This method returns the HTTP request name (or HTML Form name) of key, or null if that name does not exist.
+	 * This name is usually different from the variable name used internally in the SKB.
+	 * @param field_key the key to be looked for.
+	 * @return null or the form name of the key
+	 */
 	public String getFormName(String field_key){
 		if(this.init_map.containsKey("core:requests:fields"+"/"+field_key+"/"+"core:http_req_name"))
 			return ((TSString)this.init_map.get("core:requests:prefix")).tsvalue+((TSString)this.init_map.get("core:requests:fields"+"/"+field_key+"/"+"core:http_req_name")).tsvalue;
@@ -231,17 +331,57 @@ public class Request {
     	  return null;
 	}
 
-	public Object getFormSelectKeys(){return this.init_map.get("core:requests:formselect_fields");}
 
-	public TSString getTable(){return (TSString)this.init_map.get("core:requests:table");}
-	public TSString getTableCollections(){return (TSString)this.init_map.get("core:requests:table_collections");}
+	/**
+	 * Return the keys for form select fields
+	 * @return set with the keys
+	 */
+	public Object getFormSelectKeys(){
+		return this.init_map.get("core:requests:formselect_fields");
+	}
 
+
+	/**
+	 * Return the default semantic tag set for the request object.
+	 * @return default semantic tag
+	 */
+	public TSString getTable(){
+		return (TSString)this.init_map.get("core:requests:table");
+	}
+
+
+	/**
+	 * Return the default semantic tag for collections set for the request object.
+	 * @return default semantic tag for collections
+	 */
+	public TSString getTableCollections(){
+		return (TSString)this.init_map.get("core:requests:table_collections");
+	}
+
+
+	/**
+	 * Build a URL adding request specific information.
+	 * 
+	 * This method will return a new URL adding some request specific information to it. That information is basically
+	 * the HTTP Request name and the current value of all key/value pairs that are visible to HTTP requests.
+	 * @param href the original URL (aka HTML HREF).
+	 * @return new url
+	 */
 	public String buildURL(String href){
 		//TODO implement if HTTP/REST supported
 		logger.warn("not yet implemented");
 		return null;
 	}
 
+
+	/**
+	 * Return the HTTP Request name for a given key (field).
+	 * 
+	 * This method returns the HTTP Request name for a given field (existing key/value pair), or 'null' if it does not exist 
+	 * or if the given field is not visible for HTTP requests.
+	 * @param field_key the field to be looked for.
+	 * @return HTTP request name for the field or null if key does not exist
+	 */
 	public String getHttpRequestName(String field_key){
 		if(this.init_map.containsKey("core:requests:fields"+"/"+field_key)){
 			String _t;
@@ -250,15 +390,17 @@ public class Request {
 				return _t+"[]";
 		}
 		return null;
-
 	}
-	
+
+
+	@Override
 	public String toString(){
 		if(this.is_initialised==true)
 			return "init map: \n"+this.init_map.toString()+"http: \n"+this.core_ar_http.toString()+"plain: \n"+this.core_ar_plain.toString();
 		else
 			return "";
 	}
+
 
 	private void init_http(TSMapLH ar){
 		if(ar.size()>0){
@@ -283,6 +425,7 @@ public class Request {
 		}
 
 	}
+
 
 	private void init_plain(TSMapLH ar){
 		if(ar.size()>0){

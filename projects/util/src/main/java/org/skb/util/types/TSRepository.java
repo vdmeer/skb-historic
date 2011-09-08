@@ -32,15 +32,15 @@ package org.skb.util.types;
 import java.util.EnumSet;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * Type repository maintaining string and enumerate literals for SKB types.
  *
- * The base interface for SKB types ({@link org.skb.util.types.api.TSBase}) defines four methods for processing type information.
- * The first two ({@link org.skb.util.types.api.TSBase#tsGetTypeEnum} and {@link org.skb.util.types.api.TSBase#tsGetTypeString})
+ * The base interface for SKB types ({@link org.skb.util.types.api.TSBaseAPI}) defines four methods for processing type information.
+ * The first two ({@link org.skb.util.types.api.TSBaseAPI#tsGetTypeEnum} and {@link org.skb.util.types.api.TSBaseAPI#tsGetTypeString})
  * must return the type of a TSBase object as either enumerate or string. The other two methods
- * ({@link org.skb.util.types.api.TSBase#tsGetTypeEnumSet} and {@link org.skb.util.types.api.TSBase#tsGetTypeStringList})
+ * ({@link org.skb.util.types.api.TSBaseAPI#tsGetTypeEnumSet} and {@link org.skb.util.types.api.TSBaseAPI#tsGetTypeStringList})
  * must return all type information of a TSBase object as either a set of enumerates or a set of strings. This class maintains all enumerates and
  * all strings that for type information that the SKB supports, and provides some basic function to convert between them.
  * <br /><br /> 
@@ -245,7 +245,7 @@ public class TSRepository {
 	 * @param b the TSBase version of the type
 	 * @return the string version of the type or TS_UNKNOWN
 	 */
-	public final static String type(TSBase b){
+	public final static String type(TSBaseAPI b){
 		String s=b.toString();
 	    for (TEnum t : EnumSet.range(TEnum.TS_BASE, TEnum.TS_UNKNOWN))
 	    	if(t.type().equals(s))

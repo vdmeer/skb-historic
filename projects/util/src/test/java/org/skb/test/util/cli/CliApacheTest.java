@@ -10,7 +10,7 @@ import org.skb.util.cli.CliApache;
 import org.skb.util.log.LogManager;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSInteger;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.composite.util.TSMapLH;
@@ -201,7 +201,7 @@ public class CliApacheTest extends TestCase {
 
 		public void fill(){
 			Json2Oat j2o=new Json2Oat();
-			TSBase c=j2o.read("/org/skb/test/util/cli/properties.json");
+			TSBaseAPI c=j2o.read("/org/skb/test/util/cli/properties.json");
 			if(c!=null&&c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 				this.loadFromJason(((TSMapLH)c));
 		}

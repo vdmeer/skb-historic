@@ -50,7 +50,7 @@ import org.skb.util.types.atomic.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public interface TSTableAPI extends TSComposite, Map<String, TSTableRowAPI>{
+public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 
 	/**
 	 * Add am empty row to the table
@@ -140,7 +140,7 @@ public interface TSTableAPI extends TSComposite, Map<String, TSTableRowAPI>{
 	 */
 	public TSTableRowAPI get(String key);
 
-	public TSBase get(String row, String col);
+	public TSBaseAPI get(String row, String col);
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -177,7 +177,7 @@ public interface TSTableAPI extends TSComposite, Map<String, TSTableRowAPI>{
 	public void put(String row, String col, long val);
 	public void put(String row, String col, Long val);
 	public void put(String row, String col, String val);
-	public void put(String row, String col, TSAtomic val);
+	public void put(String row, String col, TSAtomicAPI val);
 
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).

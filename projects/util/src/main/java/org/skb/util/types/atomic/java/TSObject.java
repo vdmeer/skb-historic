@@ -39,8 +39,8 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * A wrapper for java.lang.String.Object.
@@ -48,7 +48,7 @@ import org.skb.util.types.api.TSBase;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSObject implements TSAtomic {
+public class TSObject implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSObject.class);
 
@@ -84,7 +84,7 @@ public class TSObject implements TSAtomic {
 	 * 
 	 * @param at TSAtomic to be used in initialisation
 	 */
-	public TSObject(TSAtomic at){
+	public TSObject(TSAtomicAPI at){
 		this._init();
 		if(at!=null){
 			if(at.tsGetTypeEnum()==this.tsGetTypeEnum())
@@ -166,7 +166,7 @@ public class TSObject implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 	}
 
 	@Override

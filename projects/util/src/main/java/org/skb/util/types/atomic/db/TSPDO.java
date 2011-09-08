@@ -41,10 +41,10 @@ import org.apache.log4j.Logger;
 import org.skb.util.sql.PDO;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
-public class TSPDO extends PDO implements TSAtomic {
+public class TSPDO extends PDO implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSPDO.class);
 
@@ -120,7 +120,7 @@ public class TSPDO extends PDO implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}

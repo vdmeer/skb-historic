@@ -30,7 +30,7 @@
 package org.skb.util.cli;
 
 import org.apache.commons.cli.ParseException;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
@@ -44,7 +44,7 @@ public interface Cli {
 	 * Sets the application name, used for reporting errors and warnings
 	 * @param appName the application name
 	 */
-	public abstract boolean setApplicationName(TSBase appName);
+	public abstract boolean setApplicationName(TSBaseAPI appName);
 
 	/**
 	 * Set the application name, used for reporting errors and warnings

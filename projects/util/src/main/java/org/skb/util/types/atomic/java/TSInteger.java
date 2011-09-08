@@ -39,8 +39,8 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * A wrapper for java.lang.Integer.
@@ -48,7 +48,7 @@ import org.skb.util.types.api.TSBase;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSInteger implements TSAtomic {
+public class TSInteger implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSInteger.class);
 
@@ -203,7 +203,7 @@ public class TSInteger implements TSAtomic {
 	 * 
 	 * @param at TSAtomic to be used in initialisation
 	 */
-	public TSInteger(TSAtomic at){
+	public TSInteger(TSAtomicAPI at){
 		this._init();
 		if(at!=null){
 			if(at.tsGetTypeEnum()==this.tsGetTypeEnum())
@@ -311,7 +311,7 @@ public class TSInteger implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 		if(tb.tsGetTypeEnum()==this.tsGetTypeEnum())
 			this.tsvalue=this.tsvalue+((TSInteger)tb).tsvalue;
 	}
