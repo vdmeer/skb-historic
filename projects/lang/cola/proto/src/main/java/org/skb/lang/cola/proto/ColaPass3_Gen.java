@@ -41,7 +41,7 @@ import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
 import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * Pass 3 of the Cola parser using templates to generate a target language specification.
@@ -143,7 +143,7 @@ public class ColaPass3_Gen {
 
 
 	public String inline_codeLanguage(String lang){
-		TSBase ata=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage);
+		TSBaseAPI ata=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage);
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola))
 			return lang;
 
@@ -195,7 +195,7 @@ public class ColaPass3_Gen {
 		if(this.atoms.get(this.sn.toString(),AtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
 			return ret;
 		if(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
-			TSBase javaPkg=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage);
+			TSBaseAPI javaPkg=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage);
 			if(javaPkg!=null&&javaPkg.toString().length()>0)
 				ret=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage).toString();
 		}

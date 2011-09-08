@@ -57,7 +57,7 @@ import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
@@ -172,7 +172,7 @@ public class DalParser extends LanguageParser{
 			if(!quietMode)
 				repMgr.reportMessageNoFile(msg);
 
-			TSBase ata=this.prop.getValue(DalConstants.Properties.keyPrStat);
+			TSBaseAPI ata=this.prop.getValue(DalConstants.Properties.keyPrStat);
 			if(!quietMode){
 				this.stats=new DalStatistics();
 				if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
@@ -243,7 +243,7 @@ public class DalParser extends LanguageParser{
 	public void loadStg(){
 		this.stgl=new STGManager();
 
-		TSBase obt=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtStgAngleBr);
+		TSBaseAPI obt=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtStgAngleBr);
 		Boolean _t=false;
 		if(obt.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
 			_t=((TSBoolean)obt).tsvalue;
@@ -325,7 +325,7 @@ public class DalParser extends LanguageParser{
 	}
 
 	@Override
-	public void tsPlus(TSBase tb) {
+	public void tsPlus(TSBaseAPI tb) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -38,7 +38,7 @@ import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
 
@@ -71,7 +71,7 @@ public class GlueStatistics {
 		this.stgl=new STGManager();
 		this.stgl.setMandatoryChunks(chMan);
 
-		TSBase statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);
+		TSBaseAPI statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);
 		if(statStg!=null)
 			this.stgl.setSTGFileName(statStg.toString());
 		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(GlueConstants.Properties.keyStatStg));

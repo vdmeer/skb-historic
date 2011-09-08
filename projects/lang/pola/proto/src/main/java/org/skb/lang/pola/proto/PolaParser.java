@@ -57,7 +57,7 @@ import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
@@ -148,7 +148,7 @@ public class PolaParser extends LanguageParser{
 
 			this.stats=new PolaStatistics();
 
-			TSBase ata=this.prop.getValue(PolaConstants.Properties.keyPrStat);
+			TSBaseAPI ata=this.prop.getValue(PolaConstants.Properties.keyPrStat);
 			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 				stats.genSimpleStats();
 			ata=this.prop.getValue(PolaConstants.Properties.keyPrStatAll);
@@ -203,7 +203,7 @@ public class PolaParser extends LanguageParser{
 
 	public void loadStg(){
 		this.stgl=new STGManager();
-		TSBase obt=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtStgAngleBr);
+		TSBaseAPI obt=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtStgAngleBr);
 		Boolean _t=false;
 		if(obt.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
 			_t=((TSBoolean)obt).tsvalue;
@@ -285,7 +285,7 @@ public class PolaParser extends LanguageParser{
 	}
 
 	@Override
-	public void tsPlus(TSBase tb) {
+	public void tsPlus(TSBaseAPI tb) {
 		// TODO Auto-generated method stub
 		
 	}

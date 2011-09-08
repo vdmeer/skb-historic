@@ -44,7 +44,7 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 
 /**
@@ -167,7 +167,7 @@ public class ColaPass4_Files {
 				//final cleanup, like remove all functions if we're not in cola target mode
 				this.removeFunctions();
 
-				TSBase defP=this.prop.getValue(ColaConstants.Properties.keyXtJavaPackage);
+				TSBaseAPI defP=this.prop.getValue(ColaConstants.Properties.keyXtJavaPackage);
 				String defPkg;
 				if(defP==null)
 					defPkg="";

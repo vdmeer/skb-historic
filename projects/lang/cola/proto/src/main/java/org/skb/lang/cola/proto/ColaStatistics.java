@@ -46,7 +46,7 @@ import org.skb.util.misc.ReportManager;
 import org.skb.util.stringtemplate.STGManager;
 import org.skb.util.stringtemplate.STGWriterXtoY;
 import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
@@ -139,7 +139,7 @@ public class ColaStatistics {
 			boolean scope=false;
 
 			try {
-				TSBase ata=prop.getValue(ColaConstants.Properties.keyPrStatsWScope);
+				TSBaseAPI ata=prop.getValue(ColaConstants.Properties.keyPrStatsWScope);
 				if(ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
 						scope=((TSBoolean)ata).tsvalue;
 			} catch (Exception e) {}
