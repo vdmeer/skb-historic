@@ -47,7 +47,7 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TribeProperties extends TSPropertyMap {
-	static Logger logger = Logger.getLogger("org.skb.tribe.Tribe");
+	static Logger logger = Logger.getLogger(TSPropertyMap.class);
 
 	/**
 	 * TribeProperty external configurations

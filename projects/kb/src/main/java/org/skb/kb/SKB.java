@@ -514,7 +514,7 @@ public class SKB {
 		String site_id=this.configuration.get("skb/site-id").toString();
 
 		FindPackageDirectories fpd=new FindPackageDirectories();
-		fpd.siteID(site_id);
+		fpd.setSiteID(site_id);
 		List<String> files = fpd.getTxtFiles(pkg_dir);
 		pkg_dir=pkg_dir.replace(FilenameUtils.getPrefix(pkg_dir), "");
 		for(int i=0;i<files.size();i++){

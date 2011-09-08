@@ -346,7 +346,7 @@ public class Tribe {
 	        			System.out.println("    "+current+" = "+prop.getValueDefault(current));
 	        	}
 	        }
-        	this.footer();
+        	System.out.println(this.footer());
         	System.exit(0);
         }
 
@@ -356,9 +356,8 @@ public class Tribe {
 		} catch (Exception e) {}
 
         if(showHelp==true){
-        	this.header();
-        	this.cli.usage();
-        	this.footer();
+        	System.out.println(this.cli.usage(this.header(), this.footer(), 80, true));
+        	//this.cli.usage();
             System.exit(0);
         }
 
@@ -368,7 +367,7 @@ public class Tribe {
 		} catch (Exception e) {}
 
         if(showVersion==true){
-        	this.header();
+        	System.out.println(this.header());
         	System.exit(0);
         }
 
@@ -397,7 +396,7 @@ public class Tribe {
 	 */
 	private void setOptions(String[] args, LanguageList languages){
 		try {
-			this.cli.parse(args);
+			this.cli.parse(args, true);
         }
         catch(ParseException e){
        		repMgr.reportError(e.getMessage());
@@ -419,22 +418,27 @@ public class Tribe {
 		}
 	}
 
-	private void header(){
-		System.out.println(prop.get(TribeProperties.tpmKeyName, TSPropertyMap.pmValValueDefault)+", version "+
-		           prop.get(TribeProperties.tpmKeyVersion, TSPropertyMap.pmValValueDefault)+", build "+
-		           prop.get(TribeProperties.tpmKeyBuild, TSPropertyMap.pmValValueDefault)+", "+
-		           prop.get(TribeProperties.tpmKeyBuildDate, TSPropertyMap.pmValValueDefault));
-		System.out.println(prop.get(TribeProperties.tpmKeyCopyright, TSPropertyMap.pmValValueDefault));
-		System.out.println();
-		System.out.println(prop.get(TribeProperties.tpmKeyBuildWith, TSPropertyMap.pmValValueDefault));
-		System.out.println();
+	private String header(){
+		String ret=new String();
+		ret+=prop.get(TribeProperties.tpmKeyName, TSPropertyMap.pmValValueDefault)+", version "+
+		     prop.get(TribeProperties.tpmKeyVersion, TSPropertyMap.pmValValueDefault)+", build "+
+		     prop.get(TribeProperties.tpmKeyBuild, TSPropertyMap.pmValValueDefault)+", "+
+		     prop.get(TribeProperties.tpmKeyBuildDate, TSPropertyMap.pmValValueDefault)+
+		     "\n";
+		ret+=prop.get(TribeProperties.tpmKeyCopyright, TSPropertyMap.pmValValueDefault)+"\n";
+		ret+="\n";
+		ret+=prop.get(TribeProperties.tpmKeyBuildWith, TSPropertyMap.pmValValueDefault)+"\n";
+		ret+="\n";
+		return ret;
 	}
 	
-	private void footer(){
-		System.out.println();
+	private String footer(){
+		String ret=new String();
+		ret+="\n";
 		if(!prop.get(TribeProperties.tpmKeyAdditional, TSPropertyMap.pmValValueDefault).tsIsType(TEnum.TS_NULL)){
-			System.out.println();
-			System.out.println(prop.get(TribeProperties.tpmKeyAdditional, TSPropertyMap.pmValValueDefault).toString());
+			ret+="\n";
+			ret+=prop.get(TribeProperties.tpmKeyAdditional, TSPropertyMap.pmValValueDefault).toString()+"\n";
 		}
+		return ret;
 	}
 }
