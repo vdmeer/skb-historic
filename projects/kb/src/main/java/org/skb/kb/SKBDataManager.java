@@ -43,7 +43,7 @@ import org.apache.log4j.Logger;
 import org.skb.util.misc.I18NManager;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.db.TSPDO;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSString;
@@ -51,7 +51,6 @@ import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.atomic.util.TSScope;
 import org.skb.util.types.composite.util.TSArrayList;
 import org.skb.util.types.composite.util.TSMapLH;
-
 
 /**
  * The SKB Data Manager, handling access to all registered data
@@ -68,16 +67,28 @@ public class SKBDataManager {
 	private TSMapLH registered_dos;
 
 
+	/**
+	 * Private class holding the instance of the SKBDataManager (singleton)
+	 * @author     Sven van der Meer <sven@vandermeer.de>
+	 * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+	 */
 	private static class XtSKBDataMangerHolder{
 		private final static SKBDataManager INSTANCE = new SKBDataManager();
 	}
 
 
+	/**
+	 * Returns the instance to the Data Manager (singleton)
+	 * @return instance
+	 */
 	public static SKBDataManager getInstance(){
 		return XtSKBDataMangerHolder.INSTANCE;
 	}
 
 
+	/**
+	 * Class constructor, private (singleton), initialises local fields
+	 */
 	private SKBDataManager(){
 		logger=Logger.getLogger(SKBDataManager.class);
 		this.registered_dos=new TSMapLH();
@@ -178,6 +189,8 @@ public class SKBDataManager {
 		}
 	}
 
+
+	//TODO JSDOC
 	/**
 	 * Prepares a query object that query_data_object can process
 	 */
@@ -194,6 +207,8 @@ public class SKBDataManager {
 		return ret;
 	}
 
+
+	//TODO JSDOC
 	public TSMapLH testQuery(TSMapLH query){
 		if(!query.containsKey("sema_tag"))
 			logger.warn("SKB_DataManager: no sema tag set in query request");
@@ -230,6 +245,8 @@ public class SKBDataManager {
 		return query;
 	}
 
+
+	//TODO JSDOC
 	public TSMapLH queryDataObject(TSMapLH query){
 		TSMapLH ret=new TSMapLH();
 		query=this.testQuery(query);
@@ -239,9 +256,9 @@ public class SKBDataManager {
 			return ret;
 		}
 
-		TSBase entries=this.registered_dos.get(query.get("sema_tag").toString());
+		TSBaseAPI entries=this.registered_dos.get(query.get("sema_tag").toString());
 		if(entries.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
-			for(TSBase entry : (TSArrayList)entries){
+			for(TSBaseAPI entry : (TSArrayList)entries){
 				if(entry.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
 					TSMapLH todo=(TSMapLH)entry;
 					if(query.get("filter_id").toString().length()!=0&&todo.containsKey("filet_id")&&!query.get("filter_id").toString().equals(todo.get("filter_id").toString()))
@@ -250,7 +267,7 @@ public class SKBDataManager {
 						continue;
 					String type=todo.get("type").toString();
 					if(type.equals("sqlite")){
-						TSBase tables=todo.get("tables");
+						TSBaseAPI tables=todo.get("tables");
 						String from=null;
 						if(tables.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST))
 							from=StringUtils.join(((TSArrayList)tables).toArray(),",");
@@ -295,6 +312,7 @@ public class SKBDataManager {
 		this.interpretLoop(map, new TSScope());
 	}
 
+
 	/**
 	 * Loop for interpreting data
 	 * @param map entries the data array to be interpreted
@@ -315,7 +333,7 @@ public class SKBDataManager {
 		Iterator<String> key_it = o_set.iterator();
 		while(key_it.hasNext()){
 			key=key_it.next();
-			TSBase val=map.get(key);
+			TSBaseAPI val=map.get(key);
 			switch(val.tsGetTypeEnum()){
 				case TS_COMPOSITE_MAP_LH:
 					this.interpretLoop((TSMapLH)val, scope);
@@ -334,7 +352,7 @@ public class SKBDataManager {
 							if(registered_fields.get(key+"/core:interpreter").toString().length()==0){
 								String exp=registered_fields.get(key+"/core:explode").toString();
 								if(exp.equals("1")){
-									TSBase newVal=((TSString)val).tsExplode();
+									TSBaseAPI newVal=((TSString)val).tsExplode();
 									if(newVal.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
 										mergeMap.put(name, new TSMapLH());
 										TSArrayListString m=(TSArrayListString)newVal;
@@ -376,7 +394,7 @@ public class SKBDataManager {
 									listRemove.add(key);
 								}
 								else if(((TSString)val).tsvalue.contains("%")){
-									TSBase newVal=((TSString)val).tsExplode();
+									TSBaseAPI newVal=((TSString)val).tsExplode();
 									if(newVal.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
 										TSMapLH m=(TSMapLH)newVal;
 										String lang=SKB.getInstance().getLang();
@@ -422,7 +440,7 @@ public class SKBDataManager {
 	 * @param request request object for parametrisation
 	 * @return interpreted value
 	 */
-	public TSBase interpretData(String id, TSBase val, String table, Request request){
+	public TSBaseAPI interpretData(String id, TSBaseAPI val, String table, Request request){
 		try{
 			TSMapLH registered_interpreter=SKB.getInstance().getRegisteredInterpreters(id+"/core:rabit:target:class/java");
 

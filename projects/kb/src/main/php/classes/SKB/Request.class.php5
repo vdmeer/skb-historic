@@ -169,7 +169,7 @@ class SKB_Request{
 
 
 	/**
-	 * Private function for intialising the request.
+	 * Private function for initialising the request.
 	 *
 	 * @ignore
 	 */
@@ -219,7 +219,7 @@ class SKB_Request{
 	/**
 	 * Return the key of the request object.
 	 *
-	 * The key is the type used for the creation in the constructor. It correspons to a registered request in the SKB.
+	 * The key is the type used for the creation in the constructor. It corresponds to a registered request in the SKB.
 	 */
 	public function get_key(){
 		return $this->init_map['key'];
@@ -300,7 +300,7 @@ class SKB_Request{
 
 
 	/**
-	 * Return the HTTP reuqest name (or HTML Form name) of the given key.
+	 * Return the HTTP request name (or HTML Form name) of the given key.
 	 *
 	 * This function returns the HTTP request name (or HTML Form name) of $field_key, or -1 if that name does not exist.
 	 * This name is usually different from the variable name used internally in the SKB.
@@ -343,7 +343,7 @@ class SKB_Request{
 	 * Build a URL adding request specific information.
 	 *
 	 * This function will return a new URL adding some request specific information to it. That information is basically
-	 * the HTTP Request name and the current value of all key/value pairs that are visibile to HTTP requests.
+	 * the HTTP Request name and the current value of all key/value pairs that are visible to HTTP requests.
 	 *
 	 * @param string href the original URL (aka HTML HREF).
 	 */

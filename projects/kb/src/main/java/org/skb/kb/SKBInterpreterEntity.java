@@ -30,10 +30,16 @@
 
 package org.skb.kb;
 
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 
+/**
+ * Interface for an SKB interpreter that processes entities (identifiers as string and tables)
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface SKBInterpreterEntity extends SKBInterpreter{
 	public static String type="entity";
 
-	public TSBase interpret(String key, String table);
+	public TSBaseAPI interpret(String key, String table);
 }

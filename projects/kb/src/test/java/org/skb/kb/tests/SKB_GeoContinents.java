@@ -27,6 +27,6 @@ public class SKB_GeoContinents {
 		r.prepare(def);
 //		r.execute(def);
 
-		System.err.println(r.get_entries());
+		System.err.println(r.getEntries());
 	}
 }

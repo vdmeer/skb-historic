@@ -26,6 +26,6 @@ public class SKB_GeoCities {
 		r.prepare(def);
 //		r.execute(def);
 
-		System.err.println(r.get_entries());
+		System.err.println(r.getEntries());
 	}
 }

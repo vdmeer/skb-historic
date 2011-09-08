@@ -81,10 +81,8 @@ abstract class SKB_Reader{
 
 
 	/**
-	 * Associate an intantiated builder with the reader.
+	 * Associate an instantiated builder with the reader.
 	 * 
-	 * The class constructor only initialises the local variable templates.
-	 *
 	 * @param SKB_Builder builder the builder instance
 	 */
 	public function set_builder(SKB_Builder $builder){
@@ -96,10 +94,10 @@ abstract class SKB_Reader{
 	/**
 	 * Prepare (reader only) and Execute (reader and builder).
 	 * 
-	 * This function will call prepare and execute on the reader. It is a shortcut to calling prepare first and 
+	 * This function will call prepare and execute on the reader. It is a shortcut to calling first prepare and 
 	 * execute next on the reader.
 	 *
-	 * @param SKB_Request request the request object to paremeterise the function call
+	 * @param SKB_Request request the request object to parameterise the function call
 	 */
 	public function prepare_and_execute(SKB_Request $request){
 		$this->prepare($request);
@@ -114,7 +112,7 @@ abstract class SKB_Reader{
 	 * mean initialise all data structures, possibly reading and processing data from external sources and
 	 * other preparation tasks. This function will call prepare_loop before and set is_prepared to true before returning.
 	 *
-	 * @param SKB_Request request the request object to paremeterise the function call
+	 * @param SKB_Request request the request object to parameterise the function call
 	 */
 	public function prepare(SKB_Request $request){
 		if($request->is_activated()==true){
@@ -136,7 +134,7 @@ abstract class SKB_Reader{
 	 * If you want your reader to do anything in the preparation stage, simply put all that code in this function.
 	 * It will be automatically called by the base object.
 	 *
-	 * @param SKB_Request request the request object to paremeterise the function call
+	 * @param SKB_Request request the request object to parameterise the function call
 	 * @param string sematag semantic tag to be used to read from external data sources
 	 * @param string sematag_collections semantic tag to be used to read collections from external data sources
 	 */
@@ -149,7 +147,7 @@ abstract class SKB_Reader{
 	 * Execute all remaining functionality on the reader first and then call the builder's execute function to 
 	 * finish the job. This is only done if is_prepared is true and if a builder was provided (set_builder).
 	 *
-	 * @param SKB_Request request the request object to paremeterise the function call
+	 * @param SKB_Request request the request object to parameterise the function call
 	 */
 	public function execute(SKB_Request $request){
 		if($this->is_prepared==false)
@@ -168,7 +166,7 @@ abstract class SKB_Reader{
 	 * If you want your reader to do anything in the execution stage, simply put all that code in this function.
 	 * It will be automatically called by the base object.
 	 *
-	 * @param SKB_Request request the request object to paremeterise the function call
+	 * @param SKB_Request request the request object to parameterise the function call
 	 */
 	abstract public function execute_loop(SKB_Request $request);
 

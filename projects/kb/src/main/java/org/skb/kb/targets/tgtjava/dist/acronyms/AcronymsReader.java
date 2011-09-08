@@ -35,15 +35,20 @@ import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.atomic.java.TSString;
 
+/**
+ * SKB Acronyms Reader (Dist Package)
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class AcronymsReader extends SKBReader {
 
 	@Override
-	protected void prepare_loop(Request request, TSString table, TSString tableCollections) {
+	public void prepareLoop(Request request, TSString table, TSString tableCollections) {
 		SKBDataManager myDM=SKBDataManager.getInstance();
 		this.entries=myDM.queryDataObject(myDM.prepareQuery("skb:acronyms",null,null,"acronyms:short",null,null,true,true));
 	}
 
 	@Override
-	protected void execute_loop(Request request) {
+	public void executeLoop(Request request) {
 	}
 }

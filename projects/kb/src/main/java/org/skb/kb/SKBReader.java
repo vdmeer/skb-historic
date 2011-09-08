@@ -36,50 +36,60 @@ import org.skb.util.pattern.Request;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * Abstract class to implement readers for the SKB.
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public abstract class SKBReader implements Reader {
 	protected Builder builder=null;
 	protected boolean is_prepared=false;
 
 	protected TSMapLH entries=null;
 
-	public SKBReader(){}
 
-	public final void set_builder(Builder builder){
+	@Override
+	public final void setBuilder(Builder builder){
 		this.builder=builder;
-//		this.builder.set_header();
+		//this.builder.set_header();
 	}
 
-	public final void prepare_and_execute(Request request){
+
+	@Override
+	public final void prepareAndExecute(Request request){
 		this.prepare(request);
 		this.execute(request);
 	}
 
+
+	@Override
 	public final void prepare(Request request){
 		if(request.isActivated()==true){
 			TSString table=request.getTable();
 			TSString table_collections=request.getTableCollections();
 			this.entries=new TSMapLH();
-			this.prepare_loop(request, table, table_collections);
+			this.prepareLoop(request, table, table_collections);
 			this.is_prepared=true;
 		}
 	}
 
-	public final TSMapLH get_entries(){
+
+	@Override
+	public final TSMapLH getEntries(){
 		if(this.is_prepared==true)
 			return this.entries;
 		return null;
 	}
 
-	protected abstract void prepare_loop(Request request, TSString table, TSString table_collections);
 
+	@Override
 	public final void execute(Request request){
 		if(this.is_prepared==false)
 			return;
 		if(this.builder==null)
 			return;
-		this.execute_loop(request);
+		this.executeLoop(request);
 		this.builder.execute(request, this.entries);
 	}
-
-	protected abstract void execute_loop(Request request);
 }

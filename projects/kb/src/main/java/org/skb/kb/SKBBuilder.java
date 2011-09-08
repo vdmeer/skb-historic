@@ -34,26 +34,32 @@ import org.skb.util.pattern.Builder;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * Abstract class to implement builders for the SKB.
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public abstract class SKBBuilder implements Builder {
 	protected SKBTemplateManager templates=new SKBTemplateManager();
 	protected TSMapLH registered_templates=null;
 
-	public SKBBuilder(){}
 
-	abstract public void set_templates();
-
-	public final void set_header(){
+	@Override
+	public final void setHeader(){
 		if(this.isInitialised())
 			this.templates.set_header();
 	}
 
+
+	@Override
 	public final void execute(Request request, TSMapLH entries){
 		if(this.isInitialised())
-			this.execute_loop(request, entries);
+			this.executeLoop(request, entries);
 	}
 
-	abstract protected void execute_loop(Request request, TSMapLH entries);
 
+	@Override
 	public final boolean isInitialised(){
 		if(this.templates!=null)
 			return true;

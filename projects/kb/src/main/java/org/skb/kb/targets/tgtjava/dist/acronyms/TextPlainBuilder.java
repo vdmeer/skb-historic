@@ -37,18 +37,23 @@ import org.skb.util.pattern.Request;
 import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * SKB Acronyms Builder for plain text output (Dist Package)
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class TextPlainBuilder extends SKBBuilder{
+	/** Single Template using ID Dist.Acronyms.Entries2Text-Plain:Template */
 	protected String tpl_list="Dist.Acronyms.Entries2Text-Plain:Template";
 
-
 	@Override
-	public void set_templates() {
+	public void setTemplates() {
 		this.templates.add_template("tpl", this.tpl_list);
 	}
 
 
 	@Override
-	protected void execute_loop(Request request, TSMapLH entries) {
+	public void executeLoop(Request request, TSMapLH entries) {
 		TSSTGManager stgm=this.templates.get_template_object("tpl");
 		StringTemplateGroup stg=stgm.getSTG();
 		StringTemplate template=stg.getInstanceOf("build");

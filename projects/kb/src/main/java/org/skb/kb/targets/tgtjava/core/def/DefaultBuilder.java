@@ -34,16 +34,22 @@ import org.skb.kb.SKBBuilder;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * SKB Default Builder (Core Package)
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class DefaultBuilder extends SKBBuilder{
 
 	@Override
-	public void set_templates() {
+	public void setTemplates() {
 		// TODO Auto-generated method stub
 System.err.println("Reader: set_templates");		
 	}
 
 	@Override
-	protected void execute_loop(Request request, TSMapLH entries) {
+	public void executeLoop(Request request, TSMapLH entries) {
 		// TODO Auto-generated method stub
 System.err.println("Reader: execute_loop");	
 	}

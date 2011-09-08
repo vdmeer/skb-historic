@@ -30,6 +30,12 @@
 
 package org.skb.kb;
 
+/**
+ * Interface for SKB Applications
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface SKBApplication {
-
+	//TODO placeholder, not yet implemented (see PHP port for details)
 }

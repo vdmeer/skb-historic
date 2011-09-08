@@ -27,6 +27,6 @@ public class SKB_SKB_Countries {
 		r.prepare(def);
 //		r.execute(def);
 
-		System.err.println(r.get_entries());
+		System.err.println(r.getEntries());
 	}
 }

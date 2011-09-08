@@ -30,22 +30,44 @@
 
 package org.skb.kb;
 
+import org.apache.log4j.Logger;
 import org.skb.util.pattern.TemplateManager;
 import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * SKB specific Template Manager, supporting builders in managing templates.
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class SKBTemplateManager implements TemplateManager {
+	/** Logger instance */
+	static Logger logger=Logger.getLogger(TemplateManager.class);
+
+	/** local map of templates */
 	protected TSMapLH templates=new TSMapLH();
 
+
+	/**
+	 * Class constructor, empty
+	 */
 	public SKBTemplateManager(){
 	}
 
+
+	/**
+	 * Shows if the manager is initialised completely or not
+	 * @return true if everything is initialised, false otherwise (either templates are NULL or no templates registered)
+	 */
 	public final boolean isInitialised(){
 		if(this.templates!=null&&this.templates.size()>0)
 			return true;
 		return false;
 	}
 
+
+	//TODO JSDOC
 	public void add_template(String name, String key){
 		this.templates.put(new String [] {name, "key"}, key);
 
@@ -64,8 +86,15 @@ public class SKBTemplateManager implements TemplateManager {
 		this.templates.put(new String [] {name, "stgm"}, stgm);
 	}
 
-	public void set_header(){}
 
+	//TODO JSDOC
+	public void set_header(){
+		//TODO implement once HTTP/REST functionality is available
+		logger.warn("not yet implemented");
+	}
+
+
+	//TODO JSDOC
 	public TSSTGManager get_template_object(String key){
 		if(!this.isInitialised())
 			return null;
@@ -76,6 +105,8 @@ public class SKBTemplateManager implements TemplateManager {
 		return null;
 	}
 
+
+	//TODO JSDOC
 	public String get_template_path(String key){
 		if(!this.isInitialised())
 			return null;

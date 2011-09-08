@@ -45,44 +45,95 @@ import org.skb.util.misc.Json2Oat;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSArrayList;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * Main SKB class
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class SKB {
-	static Logger logger;
+	/** Logger instance */
+	static Logger logger=Logger.getLogger(SKB.class);
 
+	/** Set language */
 	private String lang;
+
+	/** Site ID, used to find local configurations */
 	public static String site_id;
 
+	/** Central configuration, everything that can be configured is stored here */ 
 	public TSMapLH configuration;
 
+	/** List of registered (loaded) packages, a list of identifiers */
 	private TSArrayListString registered_packages; 
 
+	/** Key/TSBase map of registered fields, everything the SKB can process is stored here */
 	private TSMapLH registered_fields;
+
+	/** Key/TBase map of registered requests, used to create new instances and parameterise them */
 	private TSMapLH registered_requests;
+
+	/** Key/TBase map of registered readers, used to instantiate new readers */
 	private TSMapLH registered_readers;
+
+	/** Key/TBase map of registered builders, used to instantiate new builders */
 	private TSMapLH registered_builders;
+
+	/** Key/TBase map of registered templates, used by builders to retrieve all information to access templates */
 	private TSMapLH registered_templates;
+
+	/** Key/TBase map of registered interpreters, used by the SKB for any interpretation request */
 	private TSMapLH registered_interpreters;
+
+	/** Key/TBase map of registered applications, used to instantiate new applications */
 	private TSMapLH registered_applications;
 
+	/** Local Internationalisation Manager */
 	private I18NManager i18n; 
 
+
+	/**
+	 * Class that 'holds' the single valid instance of the SKB (singleton) 
+	 * @author     Sven van der Meer <sven@vandermeer.de>
+	 * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+	 */
 	private static class XtSKB_MainHolder{
 		private final static SKB INSTANCE = new SKB();
 	}
 
+
+	/**
+	 * Returns a pointer to the SKB instance (singleton)
+	 * @return SKB pointer
+	 */
 	public static SKB getInstance(){
 		return XtSKB_MainHolder.INSTANCE;
 	}
 
-	private SKB(){
-		logger=Logger.getLogger(SKB.class);
 
+	/**
+	 * Class constructor (private, since SKB is singleton)
+	 * 
+	 * <p>
+	 * The constructor initialises all local fields (registered_* and others) and reads the core configuration and 
+	 * the configuration for the site. Once the constructor is finished, the SKB is operational. That means all required
+	 * configuration is loaded and processed (some path information will be created based on given paths).
+	 * </p>
+	 * <p>
+	 * Note: the first call to {@link SKB#getInstance()} will call this constructor. To complete the load, one will also need to call
+	 * {@link SKB#load_core_packages()}, which will load the required core packages. Best is to use {@link SKBInit#init()} before any other
+	 * call to the SKB.
+	 * </p>
+	 */
+	private SKB(){
+		//TODO externalise the initial __config array
 		logger.trace("initialising SKB");
 
 		logger.trace("-> configuration, registered packages");
@@ -259,6 +310,7 @@ public class SKB {
 		logger.trace("return, initialisation successful");
 	}
 
+
 	/**
 	 * Loads the core packages.
 	 * 
@@ -344,7 +396,7 @@ public class SKB {
 			SKBDataManager myDM=SKBDataManager.getInstance();
 
 			Json2Oat j2o=new Json2Oat();
-			TSBase _t=j2o.read(pkgJson);
+			TSBaseAPI _t=j2o.read(pkgJson);
 			TSMapLH res=new TSMapLH();
 			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 				res=(TSMapLH)_t;
@@ -353,9 +405,9 @@ public class SKB {
 			if(res!=null){
 				if(res.containsKey("load_repository_object")){
 					logger.trace("["+pkg+"] "+"found <load_repository_object>");
-					TSBase loadrepo=(res).get("load_repository_object");
+					TSBaseAPI loadrepo=(res).get("load_repository_object");
 					if(loadrepo.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
-						for(TSBase dos : (TSArrayList)loadrepo){
+						for(TSBaseAPI dos : (TSArrayList)loadrepo){
 							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
 								TSMapLH repo=(TSMapLH)dos;
 								if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
@@ -369,7 +421,7 @@ public class SKB {
 				}
 				if(res.containsKey("require_package")){
 					logger.trace("["+pkg+"] "+"found <require_package>");
-					TSBase reqpkg=(res).get("require_package");
+					TSBaseAPI reqpkg=(res).get("require_package");
 					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
 						reqpkg=((TSString)res.get("require_package")).tsExplode();
 					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
@@ -392,9 +444,9 @@ public class SKB {
 				}
 				if(res.containsKey("load_data_object")){
 					logger.trace("["+pkg+"] "+"found <load_data_object>");
-					TSBase loaddata=(res).get("load_data_object");
+					TSBaseAPI loaddata=(res).get("load_data_object");
 					if(loaddata.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
-						for(TSBase dos : (TSArrayList)loaddata){
+						for(TSBaseAPI dos : (TSArrayList)loaddata){
 							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
 								TSMapLH data=(TSMapLH)dos;
 								if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id"))
@@ -412,8 +464,11 @@ public class SKB {
 
 
 	/**
-	 * Loads all repository information of a required package
-	 *
+	 * Loads all repository information of a required package.
+	 * @param semaTag semantic tag for the fields
+	 * @param data actual data to load information from
+	 * @param filter filter to be used (with the semantic tag)
+	 * @param pkg package
 	 */
 	private void load_repository_info(String semaTag, TSMapLH data, String filter, String pkg){
 //		TSMapLH http_ar=new TSMapLH();
@@ -545,7 +600,7 @@ public class SKB {
 	 * @param key name of the requested key; if null then the group is returned
 	 * @return the configuration value if it exists
 	 */
-	public TSBase getConfiguration(String group, String key){
+	public TSBaseAPI getConfiguration(String group, String key){
 		if(key==null)
 			return this.configuration.get(group);
 		else
@@ -568,7 +623,7 @@ public class SKB {
 	 * @param key name of the field
 	 * @return field entry if it exists null otherwise
 	 */
-	public TSBase getRegisteredFields(String key){
+	public TSBaseAPI getRegisteredFields(String key){
 		if(this.registered_fields.containsKey(key))
 			return this.registered_fields.get(key);
 		return null;
@@ -591,7 +646,7 @@ public class SKB {
 	 * @param key name of the requests
 	 * @return requests entry if it exists null otherwise
 	 */
-	public TSBase getRegisteredRequests(String key){
+	public TSBaseAPI getRegisteredRequests(String key){
 		if(this.registered_requests.containsKey(key))
 			return this.registered_requests.get(key);
 		return null;
@@ -756,7 +811,7 @@ public class SKB {
 			try{
 				Class<?> theClass=Class.forName((String)this.registered_builders.get(key+"/core:rabit:target:class/java").toString());
 				SKBBuilder ret=(SKBBuilder)theClass.newInstance();
-				ret.set_templates();
+				ret.setTemplates();
 				return ret;
 			} catch (Exception e) {
 				logger.error("SKB_Main: caught exception instantiation builder: <"+key+">\n-->"+e);
@@ -816,6 +871,10 @@ public class SKB {
 	}
 
 
+	/**
+	 * Return the current language set for the SKB
+	 * @return current language
+	 */
 	public String getLang(){
 		return this.lang;
 	}

@@ -31,10 +31,16 @@
 package org.skb.kb;
 
 import org.skb.util.pattern.Request;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 
+/**
+ * Interface for an SKB interpreter for core functionality (identifier as string and Request)
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface SKBInterpreterCore extends SKBInterpreter{
 	public static String type="core";
 
-	public TSBase interpret(String key, Request request);
+	public TSBaseAPI interpret(String key, Request request);
 }

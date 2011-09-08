@@ -30,6 +30,12 @@
 
 package org.skb.kb;
 
+/**
+ * Standard interface for an SKB interpreter.
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface SKBInterpreter {
 	public static String type="base";
 }

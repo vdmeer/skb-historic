@@ -30,10 +30,16 @@
 
 package org.skb.kb;
 
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 
+/**
+ * Interface for an SKB interpreter that processes values (strings)
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface SKBInterpreterValue extends SKBInterpreter{
 	public static String type="value";
 
-	public TSBase interpret(String str);
+	public TSBaseAPI interpret(String str);
 }

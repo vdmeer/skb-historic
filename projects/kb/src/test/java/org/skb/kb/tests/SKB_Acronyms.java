@@ -27,7 +27,7 @@ public class SKB_Acronyms {
 			//Dist.Acronyms.Entries2LaTeX-Table
 			//Dist.Acronyms.Entries2Text-Plain
 
-		r.set_builder(b);
+		r.setBuilder(b);
 		r.prepare(def);
 		r.execute(def);
 

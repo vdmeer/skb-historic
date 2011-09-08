@@ -34,19 +34,22 @@ import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.atomic.java.TSString;
 
+/**
+ * SKB Core HTTP Reader.
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class HttpReader extends SKBReader{
 
 	@Override
-	protected void execute_loop(Request request) {
+	public void executeLoop(Request request) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	protected void prepare_loop(Request request, TSString table,
+	public void prepareLoop(Request request, TSString table,
 			TSString tableCollections) {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

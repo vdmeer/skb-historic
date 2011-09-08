@@ -30,11 +30,17 @@
 
 package org.skb.kb;
 
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * Interface for an SKB interpreter that processes entries (Key/TBase maps and tables)
+ *  
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public interface SKBInterpreterEntries extends SKBInterpreter{
 	public static String type="entries";
 
-	public TSBase interpret(TSMapLH entries, String table);
+	public TSBaseAPI interpret(TSMapLH entries, String table);
 }

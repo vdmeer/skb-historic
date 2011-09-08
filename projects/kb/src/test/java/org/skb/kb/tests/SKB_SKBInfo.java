@@ -29,7 +29,7 @@ public class SKB_SKBInfo {
 		SKBReader r=mySKB.getReader("Core.SkbInfo.DB2Entries");
 		SKBBuilder b=mySKB.getBuilder("Core.SkbInfo.Entries2Text-Plain");
 
-		r.set_builder(b);
+		r.setBuilder(b);
 		r.prepare(def);
 		r.execute(def);
 

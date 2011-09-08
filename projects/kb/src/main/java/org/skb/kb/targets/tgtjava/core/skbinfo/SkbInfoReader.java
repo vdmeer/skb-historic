@@ -37,16 +37,21 @@ import org.skb.kb.SKB;
 import org.skb.kb.SKBReader;
 import org.skb.util.pattern.Request;
 import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
 
+/**
+ * SKB Information Reader (Core Package)
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class SkbInfoReader extends SKBReader {
 
 	@Override
-	protected void prepare_loop(Request request, TSString table, TSString tableCollections) {
-		TSBase todo=request.getValue("request:entry");
+	public void prepareLoop(Request request, TSString table, TSString tableCollections) {
+		TSBaseAPI todo=request.getValue("request:entry");
 		String doto=null;
 		String select=null;
 		switch(todo.tsGetTypeEnum()){
@@ -112,7 +117,7 @@ public class SkbInfoReader extends SKBReader {
 			String key;
 			while(key_it.hasNext()){
 				key=key_it.next();
-				TSBase val=this.entries.get(key);
+				TSBaseAPI val=this.entries.get(key);
 				if(val.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
 					Set<String> t_set = ((TSMapLH)val).keySet();
 					Iterator<String> t_it = t_set.iterator();
@@ -130,7 +135,7 @@ public class SkbInfoReader extends SKBReader {
 	}
 
 	@Override
-	protected void execute_loop(Request request) {
+	public void executeLoop(Request request) {
 		// TODO Auto-generated method stub
 	}
 }
