@@ -32,40 +32,10 @@
   POSSIBILITY OF SUCH DAMAGE.
   
   [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
-		-->
+ 		-->
 	</head>
 	<body>
-		SKB type library organised in the packages <code>api</code>, <code>atomic</code> and <code>util</code>. 
-
-		<p>
-			The SKB type library is basically an implementation of the Composite Pattern as a data structure, similar to the way the DEN-ng information model uses this pattern.
-			Similar to the well-known pattern (as defined by the Gang of Four), this implementation composes objects in a tree structure and provides methods to process the resulting 
-			tree recursively.
-		</p>
-
-		<p>
-			<b>Terminology:</b> The implementation uses the terms <code>api</code> <code>atomic</code> and <code>composite</code>. The <code>api</code> provides interface definitions
-			for atomics and composites. The <code>atomic</code> captures all 'leafs' or 'entries' and provides implementations and wrappers of commonly used other classes, such as the 
-			JAVA basic types, ANTLR classes and others.
-		</p>
-
-		<p>
-			The sub-packages provide for all types that the SKB system uses.
-			<ul>
-		  		<li><code>api</code>:<br />
-					Contains the interfaces for the type hierarchy (TSBasea, TSAtomic and TSComposite) and some interfaces for specific types (i.e. TSMap, TSTable and TSTableRow).
-				</li>
-				<li><code>atomic</code>:<br />
-					The atomic packages has two sub-packages. First, <code>antlr</code> provides compositions for the ANTLR class Token and the StringTemplate classes StringTemplate and StringTemplate Group.
-					Second, <code>java</code> provides compositions for the basic Java types: Boolean, Byte, Double, Float, Integer, Long, Object, Short and String.
-				</li> 
-				<li><code>util</code>:<br />
-					This package contains classes that are very similar to java.utils, such as array lists (for general OatAtomic types and for Strings, map (implementing a linked hash map),
-					PDO (for a simple portable database object), property map (implementing a simple key/value map), table and table row, scope (implementing a utils class for scoped names)
-					and STGManger (providing access to the string template manager of org.skb.utils). 
-				</li>
-			</ul>
-		</p>
+		Interface for command line parsing and concrete implementations, for instance using Apache Commons CLI.
 		<!--
 			<h2>Related Documentation</h2>
 			For overviews, tutorials, examples, guides, and tool documentation, please see:
