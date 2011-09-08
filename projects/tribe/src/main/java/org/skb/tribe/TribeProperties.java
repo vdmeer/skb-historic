@@ -36,7 +36,7 @@ import org.apache.log4j.Logger;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.misc.PropertyHandler;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.composite.util.TSMapLH;
 import org.skb.util.types.composite.util.TSPropertyMap;
 
@@ -268,7 +268,7 @@ public class TribeProperties extends TSPropertyMap {
 		}
 
 		Json2Oat j2o=new Json2Oat();
-		TSBase c=j2o.read(this.config.getProperty("org.tribe.config.jsonfile"));
+		TSBaseAPI c=j2o.read(this.config.getProperty("org.tribe.config.jsonfile"));
 		TSMapLH config=null;
 		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			config=(TSMapLH)c;

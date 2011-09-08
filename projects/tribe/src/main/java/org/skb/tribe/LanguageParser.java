@@ -33,7 +33,7 @@ package org.skb.tribe;
 import java.io.InputStream;
 
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.api.TSAtomic;
+import org.skb.util.types.api.TSAtomicAPI;
 import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSPropertyMap;
 
@@ -43,7 +43,7 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public abstract class LanguageParser implements TSAtomic {
+public abstract class LanguageParser implements TSAtomicAPI {
 	protected TribeProperties prop=TribeProperties.getInstance();
 	protected STGManager stgl=null;
 

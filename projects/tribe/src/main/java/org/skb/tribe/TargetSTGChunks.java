@@ -31,7 +31,7 @@
 package org.skb.tribe;
 
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.composite.util.TSMapLH;
 
 /**
@@ -51,7 +51,7 @@ public class TargetSTGChunks {
 		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
 		TSMapLH map=cfg.getLanguageStgChunks();
 		if(map!=null){
-			TSBase ala;
+			TSBaseAPI ala;
 			for (String s:map.keySet()){
 				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkMandatory);
 				if(ala!=null&&!ala.tsIsType(TEnum.TS_NULL))

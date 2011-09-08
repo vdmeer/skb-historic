@@ -49,7 +49,7 @@ import org.skb.util.misc.ReportManager;
 import org.skb.util.types.TSNull;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSString;
 import org.skb.util.types.composite.util.TSPropertyMap;
@@ -136,8 +136,8 @@ public class Tribe {
          */
         logger.trace("testing source and target languages pass1");
         Boolean gc=false;
-        TSBase srcLang=new TSNull();
-        TSBase tgtLang=new TSNull();
+        TSBaseAPI srcLang=new TSNull();
+        TSBaseAPI tgtLang=new TSNull();
 		srcLang=prop.getValue(TribeProperties.tpmKeySrcLanguage);
 		tgtLang=prop.getValue(TribeProperties.tpmKeyTgtLanguage);
 		gc=((TSBoolean)prop.getValue(TribeProperties.tpmKeyGC)).tsvalue;
@@ -230,7 +230,7 @@ public class Tribe {
         			prop.put(TribeProperties.tpmKeySrcFile, TSPropertyMap.pmValValueCli, fnTest.getAbsolutePath());
         	}
 
-        	TSBase ata=prop.getValue(TribeProperties.tpmKeyGC);
+        	TSBaseAPI ata=prop.getValue(TribeProperties.tpmKeyGC);
         	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
         		fnTest=new File(prop.getValue(TribeProperties.tpmKeyTgtDir).toString());
         		if (fnTest.canWrite()==false){
@@ -276,7 +276,7 @@ public class Tribe {
         logger.trace("rock'n roll, creating input stream");
         try{
         	InputStream tribeIS;
-        	TSBase ata=prop.getValue(TribeProperties.tpmKeyNoCPP);
+        	TSBaseAPI ata=prop.getValue(TribeProperties.tpmKeyNoCPP);
         	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==false){
         		logger.trace("use build-in cpp");
         		File temp=File.createTempFile("_tribe", "cpp");
@@ -406,7 +406,7 @@ public class Tribe {
         cli.setOptions(this.prop);
 
 		if(!(prop.getValueCli(TribeProperties.tpmKeyCfgLoad)).tsIsType(TEnum.TS_NULL)){
-			TSBase cl=(TSString)prop.getValueCli(TribeProperties.tpmKeyCfgLoad);
+			TSBaseAPI cl=(TSString)prop.getValueCli(TribeProperties.tpmKeyCfgLoad);
 			String ret=null;
 			try {
 				ret=prop.loadFromFile(cl);

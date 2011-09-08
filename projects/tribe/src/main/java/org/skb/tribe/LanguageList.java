@@ -43,8 +43,8 @@ import java.util.Vector;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.types.TSRepository;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomic;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSAtomicAPI;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.api.TSTableRowAPI;
 import org.skb.util.types.atomic.java.TSBoolean;
 import org.skb.util.types.atomic.java.TSString;
@@ -61,7 +61,7 @@ import org.skb.util.types.composite.util.TSTable;
  * @author vdmeer
  *
  */
-public class LanguageList implements TSAtomic {
+public class LanguageList implements TSAtomicAPI {
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 	protected final EnumSet<TEnum> typeEnum=EnumSet.of(TEnum.TS_BASE);
 
@@ -139,7 +139,7 @@ public class LanguageList implements TSAtomic {
     	return ret;
 	}
 
-	public Boolean setSelectedLanguage(TSBase srcLang, TSBase tgtLang, Boolean gc){
+	public Boolean setSelectedLanguage(TSBaseAPI srcLang, TSBaseAPI tgtLang, Boolean gc){
 		if(srcLang!=null&&!srcLang.tsIsType(TEnum.TS_NULL))
 			this.srcLanguage=srcLang.toString();
 		if(tgtLang!=null&&!tgtLang.tsIsType(TEnum.TS_NULL))
@@ -150,7 +150,7 @@ public class LanguageList implements TSAtomic {
 			return false;
 
 		if(this.tgtLanguage!=null){
-			TSBase ols=this.llist.get(this.srcLanguage, LanguageList.llValXT);
+			TSBaseAPI ols=this.llist.get(this.srcLanguage, LanguageList.llValXT);
 			if(ols.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING)&&!((TSArrayListString)ols).contains(this.tgtLanguage))
 				return false;
 		}
@@ -248,7 +248,7 @@ public class LanguageList implements TSAtomic {
 	}
 
 	@Override
-	public void tsPlus(TSBase tb){
+	public void tsPlus(TSBaseAPI tb){
 	}
 
 	@Override

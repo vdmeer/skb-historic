@@ -31,7 +31,7 @@
 package org.skb.tribe;
 
 import org.apache.commons.lang.StringUtils;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.composite.util.TSLangRuleMap;
 import org.skb.util.types.composite.util.TSMapLH;
 
@@ -70,11 +70,11 @@ public class LanguageRuleMap extends TSLangRuleMap {
 			TSMapLH tokens=cfg.getLanguageTokens();
 
 			for (String s:map.keySet()){
-				TSBase rm=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessage);
-				TSBase rmIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageInsertPath);
+				TSBaseAPI rm=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessage);
+				TSBaseAPI rmIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageInsertPath);
 				if(rm!=null){
 					if(rmIns!=null){
-						TSBase replace=tokens.get(rmIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
+						TSBaseAPI replace=tokens.get(rmIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
 						if(replace!=null)
 							this.put(s, TSLangRuleMap.rmValRuleMessage, StringUtils.replace(rm.toString(), "####", replace.toString()));
 						else
@@ -84,11 +84,11 @@ public class LanguageRuleMap extends TSLangRuleMap {
 						this.put(s, TSLangRuleMap.rmValRuleMessage, rm.toString());
 				}
 
-				TSBase rmAdd=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAdd);
-				TSBase rmAddIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAddInsertPath);
+				TSBaseAPI rmAdd=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAdd);
+				TSBaseAPI rmAddIns=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangRulesMessageAddInsertPath);
 				if(rmAdd!=null){
 					if(rmAddIns!=null){
-						TSBase replace=tokens.get(rmAddIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
+						TSBaseAPI replace=tokens.get(rmAddIns.toString()+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
 						if(replace!=null)
 							this.put(s, TSLangRuleMap.rmValRuleAddMessage, StringUtils.replace(rmAdd.toString(), "####", replace.toString()));
 						else

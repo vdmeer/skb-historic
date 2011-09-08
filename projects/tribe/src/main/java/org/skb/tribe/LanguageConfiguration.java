@@ -34,7 +34,7 @@ import java.io.File;
 
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBase;
+import org.skb.util.types.api.TSBaseAPI;
 import org.skb.util.types.composite.util.TSMapLH;
 
 /**
@@ -90,7 +90,7 @@ public class LanguageConfiguration {
 	public void read(String url){
 		try{
 			Json2Oat j2o=new Json2Oat();
-			TSBase c=j2o.read(url);
+			TSBaseAPI c=j2o.read(url);
 			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 				this.configuration=(TSMapLH)c;
 		}
@@ -102,7 +102,7 @@ public class LanguageConfiguration {
 	public void read(File file){
 		try{
 			Json2Oat j2o=new Json2Oat();
-			TSBase c=j2o.read(file);
+			TSBaseAPI c=j2o.read(file);
 			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 				this.configuration=(TSMapLH)c;
 		}
