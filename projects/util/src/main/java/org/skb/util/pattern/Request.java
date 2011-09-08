@@ -49,20 +49,35 @@ import org.skb.util.types.composite.util.TSMapLH;
  */
 public class Request {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(Request.class);
 
+	/** Local request array */
 	private TSMapLH request_ar;
 
+	/** Boolean indicating if initialisation is ok */
 	protected boolean is_initialised=false;
 
+	/** Initialisation map */
 	protected TSMapLH init_map=new TSMapLH();
+
+	/** Array for HTTP initialisation */
 	protected TSMapLH core_ar_http=new TSMapLH();
+
+	/** Array for initialisation */
 	protected TSMapLH core_ar_plain=new TSMapLH();
 
+
+	/** Class constructor, empty */
 	public Request(){
-		logger=Logger.getLogger(Request.class);
 	}
 
+
+	/**
+	 * Initialises the request instance
+	 * @param type the type ID for the request
+	 * @param registered_request the parameters for the request
+	 * @param registered_fields the registered fields
+	 */
 	public void setRequestType(String type, TSMapLH registered_request, TSMapLH registered_fields){
 		this.request_ar=new TSMapLH();
 
@@ -72,7 +87,7 @@ public class Request {
 			//this.init_map=mySkb.get_registered_requests_by_key(type);
 			this.init_map=new TSMapLH(registered_request);
 			if(this.init_map==null)
-				;//trigger_error("SKB_Request: no request type of '{$type}' found", E_USER_ERROR);
+				logger.error("no request type found for <"+type+">");
 
 			if(this.init_map.containsKey("core:requests:fields")){
 				tmp=this.init_map.get("core:requests:fields");
@@ -134,7 +149,7 @@ public class Request {
 			this.is_initialised=true;
 		}
 		else
-			;//trigger_error("SKB_Request: no request type given", E_USER_ERROR);
+			logger.error("no request type given");
 	}
 
 	private TSBase _set(TSString type){
@@ -153,14 +168,14 @@ public class Request {
 
 	private void init(String type){
 		if(this.is_initialised==false)
-			;//trigger_error("SKB_Request: no type loaded", E_USER_ERROR);
+			logger.error("request not initialised");
 
 		if(type.equals("http"))
 			this.init_http(this.core_ar_http);
 		else if(type.equals("plain"))
 			this.init_plain(this.core_ar_http);
 		else
-			;//trigger_error("SKB_Request: no type given for initialisation of request", E_USER_ERROR);
+			logger.error("no type given for initialisation of request (should be http or plain)");
 		this.init_plain(this.core_ar_plain);
 
 		String key;
@@ -221,8 +236,11 @@ public class Request {
 	public TSString getTable(){return (TSString)this.init_map.get("core:requests:table");}
 	public TSString getTableCollections(){return (TSString)this.init_map.get("core:requests:table_collections");}
 
-	//not yet implemented
-	public String buildURL(String href){return null;}
+	public String buildURL(String href){
+		//TODO implement if HTTP/REST supported
+		logger.warn("not yet implemented");
+		return null;
+	}
 
 	public String getHttpRequestName(String field_key){
 		if(this.init_map.containsKey("core:requests:fields"+"/"+field_key)){

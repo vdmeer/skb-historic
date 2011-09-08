@@ -49,50 +49,108 @@ import org.skb.util.types.atomic.util.TSArrayListString;
 import org.skb.util.types.composite.util.TSMapLH;
 
 /**
- * A manager for String Template Groups, including chunk tests.
+ * Manager for String Template Groups, including chunk tests.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class STGManager {
-	static Logger logger;
+	/** Logger instance */
+	public final static Logger logger=Logger.getLogger(STGManager.class);
 
+	/** Managed STG */
 	protected StringTemplateGroup stg=null;
+
+	/** File name for the STG (local file system */
 	protected TSString stgFileName=null;
+
+	/** URL name for the STG (resource) */
 	protected TSString stgUrlName=null;
 
+	/** Application name the STGManager is working for */
 	protected TSString applicationName=null;
 
+	/** Mandatory chunks, everything the STG must provide */
 	protected TSMapLH chunksMandatory=null;
+
+	/** Optionally chunks, everything the STG can provide */
 	protected TSMapLH chunksOptional=null;
 
+	/** Indicator for correct and complete initialisation */
 	protected boolean loaded=false;
+
+	/** Indicator for which lexer to be used, default is AngelB */
 	protected boolean useLexerAngelB;
 
+
+	//TODO sequence of load/testChunks is still important, should not be! needs to have two values: STG loaded and STG tested!
+
+
+	/**
+	 * Class constructor, empty
+	 */
 	public STGManager(){
-		logger=Logger.getLogger(STGManager.class);
 	}
 
+
+	/**
+	 * Returns the managed STG
+	 * @return null if not set or not initialised, STG otherwise
+	 */
 	public StringTemplateGroup getSTG(){
 		if(this.loaded==true&&this.stg!=null)
 			return this.stg;
 		return null;
 	}
 
+
+	/**
+	 * Returns the isLoaded indicator
+	 * @return true if STG is loaded, false otherwise. If false, some functionality might not be available.
+	 */
 	public boolean isLoaded(){
 		return this.loaded;
 	}
 
-	public void setApplicationName(TSBase name){
+
+	/**
+	 * Sets the application name
+	 * @param name new application name
+	 * @return true if successful, false otherwise (given name was null or not of type TSSTring)
+	 */
+	public boolean setApplicationName(TSBase name){
+		boolean ret=true;
 		if(name!=null&&name.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING))
-			this.applicationName=(TSString)name;		
+			this.applicationName=(TSString)name;
+		else
+			ret=false;
+		return ret;
 	}
 
-	public void setApplicationName(String name){
+
+	/**
+	 * Sets the application name
+	 * @param name new application name
+	 * @return true if successful, false otherwise (given name was null)
+	 */
+	public boolean setApplicationName(String name){
+		boolean ret=true;
 		if(name!=null)
-			this.applicationName=new TSString(name);		
+			this.applicationName=new TSString(name);
+		else
+			ret=false;
+		return ret;
 	}
 
+
+	/**
+	 * Loads an STG
+	 * 
+	 * This method tests the parameters and then calls {@link STGManager#loadSTG(String, String)} 
+	 * @param purpose message to be used for reporting/logging
+	 * @param targetLang target language of the STG to be loaded
+	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
+	 */
 	public boolean loadSTG(TSBase purpose, TSBase targetLang){
 		if(purpose==null&&targetLang==null)
 			return this.loadSTG("", "");
@@ -101,6 +159,15 @@ public class STGManager {
 		return false;
 	}
 
+
+	/**
+	 * Loads an STG
+	 * 
+	 * This method tests the parameters and then calls {@link STGManager#loadSTG(String, String)}
+	 * @param purpose message to be used for reporting/logging
+	 * @param targetLang target language of the STG to be loaded
+	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
+	 */
 	public boolean loadSTG(String purpose, TSBase targetLang){
 		if(targetLang==null)
 			return this.loadSTG(purpose, "");
@@ -108,6 +175,13 @@ public class STGManager {
 			return this.loadSTG(purpose, targetLang.toString());
 	}
 
+
+	/**
+	 * Loads an STG
+	 * @param purpose message to be used for reporting/logging
+	 * @param targetLang target language of the STG to be loaded
+	 * @return true if loaded, false otherwise (file name and URL not set, not able to load from URL, not able to load from file name)
+	 */
 	public boolean loadSTG(String purpose, String targetLang){
 		if(purpose!=null&&!purpose.equals("")){
 			purpose=" (purpose: "+purpose;
@@ -163,75 +237,187 @@ public class STGManager {
 		return this.testChunks();
 	}
 
+
+	/**
+	 * Adds chunks to the mandatory chunk list
+	 * @param key name of template
+	 * @param value values of chunks to be added
+	 */
 	public void putMandatoryChunks(String key, TSArrayListString value){
 		this.chunksMandatory.put(key, value);
 	}
 
+
+	/**
+	 * Adds chunks to the optional chunk list
+	 * @param key name of template
+	 * @param value values of chunks to be added
+	 */
 	public void putOptionalChunks(String key, TSArrayListString value){
 		this.chunksOptional.put(key, value);
 	}
 
+
+	/**
+	 * Sets mandatory and optional chunks
+	 * @param mandatory list with all mandatory chunks
+	 * @param optional list with all optional chunks
+	 */
 	public void setChunks(TSMapLH mandatory, TSMapLH optional){
 		this.chunksMandatory=mandatory;
 		this.chunksOptional=optional;
 	}
 
+
+	/**
+	 * Sets the mandatory chunks
+	 * @param mandatory list with all mandatory chunks
+	 */
 	public void setMandatoryChunks(TSMapLH mandatory){
 		this.chunksMandatory=mandatory;
 	}
 
+
+	/**
+	 * Sets the optional chunks
+	 * @param optional list with all optional chunks
+	 */
 	public void setOptionalChunks(TSMapLH optional){
 		this.chunksOptional=optional;
 	}
 
-	public void setSTGFileName(String fn){
-		this.stgFileName=new TSString(fn);
-		logger.trace("got FILE ("+fn.toString()+") of type (String)");
+
+	/**
+	 * Sets the file name for the STG
+	 * @param fn file name
+	 * @return true if set, false if fn was null or not of type TSString
+	 */
+	public boolean setSTGFileName(String fn){
+		boolean ret=false;
+		if(fn!=null){
+			this.stgFileName=new TSString(fn);
+			logger.trace("got FILE ("+fn.toString()+") of type (String)");
+			ret=true;
+		}
+		return ret;
 	}
 
-	public void setSTGFileName(TSString fn){
-		this.stgFileName=fn;
-		logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
+
+	/**
+	 * Sets the file name for the STG
+	 * @param fn file name
+	 * @return true if set, false if fn was null or not of type TSString
+	 */
+	public boolean setSTGFileName(TSString fn){
+		boolean ret=false;
+		if(fn!=null){
+			this.stgFileName=fn;
+			logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
+			ret=true;
+		}
+		return ret;
 	}
 
-	public void setSTGFileName(TSAtomic fn){
-		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+
+	/**
+	 * Sets the file name for the STG
+	 * @param fn file name
+	 * @return true if set, false if fn was null or not of type TSString
+	 */
+	public boolean setSTGFileName(TSAtomic fn){
+		boolean ret=false;
+		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgFileName=(TSString)fn;
 			logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
+			ret=true;
+		}
+		return ret;
 	}
 
-	public void setSTGFileName(TSBase fn){
-		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+
+	/**
+	 * Sets the file name for the STG
+	 * @param fn file name
+	 * @return true if set, false if fn was null or not of type TSString
+	 */
+	public boolean setSTGFileName(TSBase fn){
+		boolean ret=false;
+		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgFileName=(TSString)fn;
-		logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
+			logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
+			ret=true;
+		}
+		return ret;
 	}
 
-	public void setSTGUrlName(String url){
-		this.stgUrlName=new TSString(url);
-		logger.trace("got URL ("+url.toString()+") of type (String)");
+
+	/** 
+	 * Sets the URL name for the STG
+	 * @param url URL name
+	 * @return true if set, false if url was null or not of type TSString
+	 */
+	public boolean setSTGUrlName(String url){
+		boolean ret=false;
+		if(url!=null){
+			this.stgUrlName=new TSString(url);
+			logger.trace("got URL ("+url.toString()+") of type (String)");
+			ret=true;
+		}
+		return ret;
 	}
 
-	public void setSTGUrlName(TSString url){
-		this.stgUrlName=url;
-		logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
+
+	/** 
+	 * Sets the URL name for the STG
+	 * @param url URL name
+	 * @return true if set, false if url was null or not of type TSString
+	 */
+	public boolean setSTGUrlName(TSString url){
+		boolean ret=false;
+		if(url!=null){
+			this.stgUrlName=url;
+			logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
+			ret=true;
+		}
+		return ret;
 	}
 
-	public void setSTGUrlName(TSAtomic url){
-		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+
+	public boolean setSTGUrlName(TSAtomic url){
+		boolean ret=false;
+		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgUrlName=(TSString)url;
-		logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
+			logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
+			ret=true;
+		}
+		return ret;
 	}
 
-	public void setSTGUrlName(TSBase url){
-		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+
+	public boolean setSTGUrlName(TSBase url){
+		boolean ret=false;
+		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.stgUrlName=(TSString)url;
-		logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
+			logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
+			ret=true;
+		}
+		return ret;
 	}
 
+
+	/**
+	 * Tests the currently set mandatory and optional chunks for the STG
+	 * @return true if everything was ok, false otherwise (error messages in the log)
+	 */
 	public boolean testChunks(){
 		return (this.testMandatoryChunks()&this.testOptionalChunks());
 	}
 
+
+	/**
+	 * Tests the currently set mandatory chunks for the STG
+	 * @return true if everything was ok, false otherwise (error messages in the log)
+	 */
 	public boolean testMandatoryChunks(){
 		if(this.loaded==false)
 			return false;
@@ -270,6 +456,12 @@ public class STGManager {
 		return true;
 	}
 
+
+
+	/**
+	 * Tests the currently set optional chunks for the STG
+	 * @return true if everything was ok, false otherwise (error messages in the log)
+	 */
 	public boolean testOptionalChunks(){
 		if(this.loaded==false)
 			return false;
@@ -319,6 +511,7 @@ public class STGManager {
 
 
 
+	@Override
 	public String toString(){
 		if(this.loaded==true&&this.stg!=null)
 			return this.stg.toString();

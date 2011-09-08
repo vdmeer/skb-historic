@@ -50,7 +50,7 @@ import org.skb.util.types.api.TSBase;
  */
 public class TSByte implements TSAtomic {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSByte.class);
 
 	public static java.lang.Byte decode(java.lang.String nm){
 		return java.lang.Byte.decode(nm);
@@ -79,11 +79,15 @@ public class TSByte implements TSAtomic {
 		return java.lang.Byte.valueOf(s, radix);
 	}
 
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+	/** Local value */
 	public java.lang.Byte tsvalue=null;
+
 
 	/**
 	 * Creates a new empty TSByte.
@@ -158,8 +162,6 @@ public class TSByte implements TSAtomic {
 	}
 
 	private void _init(){
-		logger=Logger.getLogger(TSByte.class);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 

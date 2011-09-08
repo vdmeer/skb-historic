@@ -36,29 +36,50 @@ import org.antlr.stringtemplate.AutoIndentWriter;
 import org.apache.log4j.Logger;
 
 /**
- * An writer implementation for String Templates that limits the charachters per output line.
+ * Writer implementation for String Templates that limits the characters per output line.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class STGWriterXtoY extends AutoIndentWriter {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(STGWriterXtoY.class);
 
+	/** Start for writing characters in a line, default is 2 */
 	protected int start=2;
+
+	/** End for writing characters in a line, default is 78 */
 	protected int end=78;
+
+	/** Internal counter for number of written characters */
 	protected int done=0;
 
+
+	/**
+	 * Class constructor, initialises super class with the given writer
+	 * @param out writer to be used
+	 */
 	public STGWriterXtoY(Writer out){
 		super(out);
-
-		logger=Logger.getLogger(STGWriterXtoY.class);
 	}
 
+
+	/**
+	 * Writes a string between start and and using count
+	 * @param str string to be written
+	 * @param co current count of already used (written) characters in the current line
+	 * @return string with \n added to not exceed end of each line
+	 */
 	private String printXtoY(String str, int co){
 		String ret=""; int count;
-		if(co<start) count=start; else count=co;
-		if(co==0) for(int i=start;i>0;i-=1) ret+=" ";
+		if(co<start)
+			count=start;
+		else
+			count=co;
+		if(co==0){
+			for(int i=start;i>0;i-=1)
+				ret+=" ";
+		}
 		// not enough room for printing in the same line
 		if((count+str.length()+1)>end){
 			ret+="\n";
@@ -72,30 +93,61 @@ public class STGWriterXtoY extends AutoIndentWriter {
 		  count+=+str.length();
 		}
 		done=count;
-		if(str.contains("\n")) done=0;
+		if(str.contains("\n"))
+			done=0;
 		return ret;
 	}
 
+
+	/**
+	 * Sets the line end
+	 * @param i new line end, alternative to {@link STGWriterXtoY#setLineWidth(int)}
+	 */
 	public void setEnd(int i){
 		this.end=i;
 	}
 
-	public void setLineWidth (int w){
+
+	/**
+	 * Sets the line end, alternative to {@link STGWriterXtoY#setEnd(int)}
+	 * @param w new line end
+	 */
+	public void setLineWidth(int w){
 		this.end=w;
 	}
 
+
+	/**
+	 * Sets the printable areas (line start and line end)
+	 * @param start new starting point in the line
+	 * @param end new final width of the line
+	 */
 	public void setPrintableArea(int start, int end){
 		this.start=start;
 		this.end=end;
 	}
 
+
+	/**
+	 * Sets new starting point for the line
+	 * @param i new starting point
+	 */
 	public void setStart(int i){
 		this.start=i;
 	}
 
-	public int write(String str){
-		try{out.write(printXtoY(str,done));}
-		catch (IOException e){System.err.println("STGWriterXtoY exception "+e);}
+
+	/**
+	 * Writes a string
+	 * @param str string to be written
+	 * @return number of characters written
+	 */
+	@Override public int write(String str){
+		try{
+			out.write(printXtoY(str,done));
+		}catch (IOException e){
+			logger.error("catched IO exception while writing\n"+e);
+		}
 		return done;
 	}
 }

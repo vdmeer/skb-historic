@@ -44,7 +44,7 @@ import org.skb.util.types.api.TSBase;
 
 public class TSLong implements TSAtomic {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSLong.class);
 
 
 	public static int bitCount(long i){
@@ -142,10 +142,13 @@ public class TSLong implements TSAtomic {
 		return java.lang.Long.valueOf(l);
 	}
 
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+	/** Local value */
 	public java.lang.Long tsvalue=null;
 
 	/**
@@ -220,8 +223,6 @@ public class TSLong implements TSAtomic {
 	}
 
 	private void _init(){
-		logger=Logger.getLogger(TSLong.class);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 

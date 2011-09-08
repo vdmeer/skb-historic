@@ -42,28 +42,23 @@ import org.apache.log4j.Logger;
  */
 public class ScopeString {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(ScopeString.class);
 
-
-	/**
-	 * The currently used scope separator, default is "::".
-	 */
+	/** The currently used scope separator, default is "::". */
 	private String separator;
 
-	/**
-	 * The string vector maintaining the scope.
-	 */
+	/** The string vector maintaining the scope. */
 	private Vector<String> field;
+
 
 	/**
 	 * Class constructor, initialises private members
 	 */
 	public ScopeString(){
-		logger=Logger.getLogger(ScopeString.class);
-
 		this.separator="::";
 		this.field=new Vector<String>();
 	}
+
 
 	/**
 	 * Sets the scope separator to the given string.
@@ -73,6 +68,7 @@ public class ScopeString {
 		this.separator=s;
 	}
 
+
 	/**
 	 * Returns the currently used scope separator.
 	 * @return scope separator currently used.
@@ -80,6 +76,7 @@ public class ScopeString {
 	public String separator(){
 		return this.separator;
 	}
+
 
 	/**
 	 * Returns the current scope as string.
@@ -93,6 +90,7 @@ public class ScopeString {
 		return ret;
 	}
 
+
 	/**
 	 * Removes the last entry of the vector, i.e. the last part of the scope
 	 */
@@ -101,6 +99,7 @@ public class ScopeString {
 			this.field.remove(this.field.size()-1);
 	}
 
+
 	/**
 	 * Adds a new scope, i.e. append the given token to the vector.
 	 */
@@ -108,12 +107,14 @@ public class ScopeString {
 		this.field.add(token.getText());
 	}
 
+
 	/**
 	 * Clears the vector, empty the scope.
 	 */
 	public void clear(){
 		this.field.clear();
 	}
+
 
 	/**
 	 * Returns the last entry of the vector.

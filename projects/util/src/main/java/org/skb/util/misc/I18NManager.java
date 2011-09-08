@@ -43,24 +43,20 @@ import org.apache.log4j.Logger;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class I18NManager {
-	/**
-	 * Class logger
-	 */
-	public final static Logger logger = Logger.getLogger(I18NManager.class);
+	/** Class logger */
+	public final static Logger logger=Logger.getLogger(I18NManager.class);
 
-	/**
-	 * List of keys (domains) with associated resource bundle
-	 */
+	/** List of keys (domains) with associated resource bundle */
 	LinkedHashMap <String, ResourceBundle> entries;
 
-	/**
-	 * Current domain for resources
-	 */
+	/** Current domain for resources */
 	private String currentDomain;
+
 
 	private static class XtI18NManager_MainHolder{
 		private final static I18NManager INSTANCE = new I18NManager();
 	}
+
 
 	/**
 	 * Return the instance of I18NManager (singleton)
@@ -70,6 +66,7 @@ public class I18NManager {
 		return XtI18NManager_MainHolder.INSTANCE;
 	}
 
+
 	/**
 	 * Class constructor, private since I18NManager implements singleton
 	 */
@@ -77,6 +74,7 @@ public class I18NManager {
 		this.entries=new LinkedHashMap <String, ResourceBundle>();
 		currentDomain=new String();
 	}
+
 
 	/**
 	 * Add a domain described by a package name and locale information
@@ -97,6 +95,7 @@ public class I18NManager {
 		}
 	}
 
+
 	/**
 	 * Set the domain to be used for getting translations
 	 * @param pkg package name (domain ID)
@@ -105,6 +104,7 @@ public class I18NManager {
 		if(pkg!=null)
 			this .currentDomain=pkg;
 	}
+
 
 	/**
 	 * Translate the given string using the currently set domain
@@ -117,6 +117,7 @@ public class I18NManager {
 		else
 			return "";
 	}
+
 
 	/**
 	 * Return translation for the given string from the given domain (pkg name)

@@ -48,18 +48,12 @@ import org.skb.util.types.atomic.java.TSString;
  */
 public class FileTemplateList {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(FileTemplateList.class);
 
-
-	/**
-	 * List of templates
-	 */
+	/** List of templates */
 	private TreeMap<String, FileTemplateSingle> templates;
 
-
-	/**
-	 * The target directory
-	 */
+	/** The target directory */
 	private TSString targetDirectory=null;
 
 
@@ -67,7 +61,6 @@ public class FileTemplateList {
 	 * Class constructor, initialises private members
 	 */
 	public FileTemplateList(){
-		logger=Logger.getLogger(FileTemplateList.class);
 		this.templates=new TreeMap<String, FileTemplateSingle>();
 	}
 
@@ -77,7 +70,6 @@ public class FileTemplateList {
 	 * @param ftl file list to be used
 	 */
 	public FileTemplateList(TreeMap<String, FileTemplateSingle> ftl){
-		logger=Logger.getLogger(FileTemplateList.class);
 		this.templates=new TreeMap<String, FileTemplateSingle>(ftl);
 	}
 
@@ -97,21 +89,27 @@ public class FileTemplateList {
 	 * @param k key to be tested
 	 * @return true if key exists, false otherwise
 	 */
-	public boolean containsKey(String k){return this.templates.containsKey(k);}
+	public boolean containsKey(String k){
+		return this.templates.containsKey(k);
+	}
 
 
 	/**
 	 * Return the current size of the tempalte list
 	 * @return size of the template list
 	 */
-	public int size(){return this.templates.size();}
+	public int size(){
+		return this.templates.size();
+	}
 
 
 	/**
 	 * Return an entry set of the template list
 	 * @return entry set
 	 */
-	public Set<Map.Entry<String, FileTemplateSingle>> entrySet(){return this.templates.entrySet();}
+	public Set<Map.Entry<String, FileTemplateSingle>> entrySet(){
+		return this.templates.entrySet();
+	}
 
 
 	/**
@@ -119,14 +117,18 @@ public class FileTemplateList {
 	 * @param key key of the template
 	 * @return single template
 	 */
-	public FileTemplateSingle get(String key){return this.templates.get(key);}
+	public FileTemplateSingle get(String key){
+		return this.templates.get(key);
+	}
 
 
 	/**
 	 * Return the complete template list
 	 * @return template list
 	 */
-	public TreeMap<String, FileTemplateSingle> getList(){return this.templates;}
+	public TreeMap<String, FileTemplateSingle> getList(){
+		return this.templates;
+	}
 
 
 	/**
@@ -209,11 +211,9 @@ public class FileTemplateList {
 	/**
 	 * Get directory
 	 * @param key key
-	 * @return directory
+	 * @return directory, either the target dir + local dir or the target dir only
 	 */
 	public String getDir(String key){
-		//return either the TGT Dir + local dir
-		//or just the TGT Dir
 		String ret=null;
 		if(this.targetDirectory==null)
 			return ret;

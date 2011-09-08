@@ -50,10 +50,15 @@ import org.skb.util.types.api.TSBase;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public final class TSToken extends ClassicToken implements TSAtomic {
+	/** Logger instance */
+	public final static Logger logger=Logger.getLogger(TSToken.class);
+
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
-	static Logger logger;
 
 	public TSToken(){
 		super(0);
@@ -76,8 +81,6 @@ public final class TSToken extends ClassicToken implements TSAtomic {
 	}
 
 	private void _init(){
-		logger=Logger.getLogger(TSToken.class);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 

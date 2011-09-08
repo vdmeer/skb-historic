@@ -55,7 +55,7 @@ import org.skb.util.types.composite.util.TSMapLH;
  */
 public class TSString implements TSAtomic{
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSString.class);
 
 	public static java.lang.String copyValueOf(char[] data){
 		return java.lang.String.copyValueOf(data);
@@ -157,11 +157,15 @@ public class TSString implements TSAtomic{
 		return java.lang.String.valueOf(obj);
 	}
 
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+	/** Local value */
 	public java.lang.String tsvalue;
+
 
 	/**
 	 * Creates a new empty OatString.
@@ -227,8 +231,6 @@ public class TSString implements TSAtomic{
 	 * Adds TS_ATOMIC and TS_ATOMIC_JAVA_STRING to the type lists (string and enum) and initialises the local string.
 	 */
 	private void _init(){
-		logger=Logger.getLogger(TSString.class);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 

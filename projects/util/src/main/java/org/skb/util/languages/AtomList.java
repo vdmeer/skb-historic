@@ -71,77 +71,52 @@ import org.skb.util.types.composite.util.TSTableRow;
  */
 public class AtomList extends TSTable {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(AtomList.class);
 
-
-	/**
-	 * The local list of atoms as a TreeMap (because insertion sequence determines atom positions)
-	 */
+	/** The local list of atoms as a TreeMap (because insertion sequence determines atom positions) */
 	protected TreeMap<String, TSTableRow> oatValue=null;
 
-	/**
-	 * Column identifier for the category
-	 */
+	/** Column identifier for the category */
 	public final static String alValCategory	= "category";
 
-	/**
-	 * Column identifier for the type
-	 */
+	/** Column identifier for the type */
 	public final static String alValType		= "type";
 
-	/**
-	 * Column identifier for the array
-	 */
+	/** Column identifier for the array */
 	public final static String alValTypeArray	= "array";
 
-	/**
-	 * Column identifier for the file
-	 */
+	/** Column identifier for the file */
 	public final static String alValFile 		= "file";
 
-	/**
-	 * Column identifier for the line
-	 */
+	/** Column identifier for the line */
 	public final static String alValLine		= "line";
 
-	/**
-	 * Column identifier for the column
-	 */
+	/** Column identifier for the column */
 	public final static String alValColumn		= "column";
 
-	/**
-	 * Column identifier for the string template
-	 */
+	/** Column identifier for the string template */
 	public final static String alValST 		   	= "st";
 
-	/**
-	 * Column identifier for the scoped identifier
-	 */
+	/** Column identifier for the scoped identifier */
 	public final static String alValScopedID	= "id:scoped";
 
-	/** 
-	 * Default category
-	 */
+	/**  Default category */
 	private String defaultCategory;
 
-	/**
-	 * Specification name
-	 */
+	/** Specification name */
 	private String specificationName;
 
-	/**
-	 * Current scope
-	 */
+	/** Current scope */
 	public ScopeString scope;
 
-	/**
-	 * List of imports
-	 */
+	/** List of imports */
 	private TreeMap<String, LinkedHashMap<String, String>> imports;
+
 
 	private static class AtomListHolder{
 		private final static AtomList INSTANCE = new AtomList();
 	}
+
 
 	/**
 	 * Return a pointer to the instance of the atom list (singleton)
@@ -151,6 +126,7 @@ public class AtomList extends TSTable {
 		return AtomListHolder.INSTANCE;
 	}
 
+
 	/**
 	 * Return a pointer to the instance of the atom list (singleton) and perform a re-initialisation
 	 * @return the pointer to the instance
@@ -159,6 +135,7 @@ public class AtomList extends TSTable {
 		AtomListHolder.INSTANCE._init();
 		return AtomListHolder.INSTANCE;
 	}
+
 
 	/**
 	 * Class constructor (private, since AtomList implements singleton)
@@ -186,8 +163,6 @@ public class AtomList extends TSTable {
 	 */
 	protected void _init(){
 		super._init();
-
-		logger=Logger.getLogger(AtomList.class);
 
 		this.oatValue=new TreeMap <String, TSTableRow>();
 		this.setColumns(AtomList.class.getName(), "alVal");

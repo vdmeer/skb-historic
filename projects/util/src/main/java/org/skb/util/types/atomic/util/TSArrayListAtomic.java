@@ -55,12 +55,17 @@ import org.skb.util.types.api.TSBase;
  */
 public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<TSAtomic>{
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSArrayListAtomic.class);
 
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+	/** Local value */
 	protected List<TSAtomic> tsvalue=null;
+
 
 	public TSArrayListAtomic(){
 		this._init();
@@ -86,8 +91,6 @@ public class TSArrayListAtomic implements TSAtomic, List<TSAtomic>, Collection<T
 	}
 
 	protected void _init(){
-		logger=Logger.getLogger(TSArrayListAtomic.class);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 

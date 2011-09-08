@@ -46,7 +46,7 @@ import org.skb.util.types.composite.util.TSMapLH;
  */
 public class ReportManager extends STGManager{
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(ReportManager.class);
 
 	/**
 	 * Number of reported errors
@@ -100,8 +100,6 @@ public class ReportManager extends STGManager{
 	 * noErrors and noWarnings are set to false, the file name is set to an empty string and the programme name is set to "tribe". 
 	 */
 	private void _init(){
-		logger=Logger.getLogger(ReportManager.class);
-
 		this.chunksMandatory=new TSMapLH();
 		this.chunksOptional=new TSMapLH();
 

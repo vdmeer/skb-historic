@@ -51,7 +51,7 @@ import org.apache.log4j.Logger;
 @SuppressWarnings(value={"all"})
 public class FindPackageDirectories extends DirectoryWalker {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(FindPackageDirectories.class);
 
 
 	/**
@@ -75,8 +75,6 @@ public class FindPackageDirectories extends DirectoryWalker {
 	 */
 	public FindPackageDirectories() {
 		super(filter, -1);
-		logger=Logger.getLogger(FindPackageDirectories.class);
-
 		this.site_id="";
 	}
 
@@ -85,8 +83,13 @@ public class FindPackageDirectories extends DirectoryWalker {
 	 * Set the site ID
 	 * @param new_id new site ID
 	 */
-	public void siteID(String new_id){
-		this.site_id=new_id;
+	public boolean setSiteID(String new_id){
+		boolean ret=true;
+		if(new_id!=null)
+			this.site_id=new_id;
+		else
+			ret=false;
+		return ret;
 	}
 
 
@@ -97,7 +100,12 @@ public class FindPackageDirectories extends DirectoryWalker {
 	 */
 	public List<String> getTxtFiles(File dir){
 		List<String> results = new ArrayList<String>();
-		try{walk(dir, results);}catch(Exception e){System.err.println(e);}
+		try{
+			walk(dir, results);
+		} catch (Exception e){
+			//TODO add logging information, remove System.err
+			System.err.println(e);
+		}
 		return results;
 	}
 

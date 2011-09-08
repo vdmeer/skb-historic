@@ -45,12 +45,17 @@ import org.skb.util.types.api.TSBase;
 
 public class TSScope implements TSAtomic {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSScope.class);
 
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+	/** Local value */
 	protected Stack<String> scope;
+
 
 	public TSScope(){
 		this._init();
@@ -58,8 +63,6 @@ public class TSScope implements TSAtomic {
 
 
 	protected void _init(){
-		logger=Logger.getLogger(TSScope.class);
-
 		this.scope=new Stack<String>();
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);

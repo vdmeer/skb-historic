@@ -38,13 +38,29 @@ import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface TemplateManager {
+	/**
+	 * Indicates if the instance is initialised or not
+	 * @return true if initialised, false otherwise. Note: if return is false some functionality of the instance might not be available
+	 */
 	public boolean isInitialised();
+
+	//TODO clarify what name/key mean
+	/**
+	 * Adds a template with name and key
+	 * @param name name
+	 * @param key key
+	 */
 	public void add_template(String name, String key);
 
 	public void set_header();
 
 	public TSSTGManager get_template_object(String key);
 
+	/**
+	 * Returns the path (the fully qualified path name) for the template <code>key</code>
+	 * @param key key of the template
+	 * @return path to the template file
+	 */
 	public String get_template_path(String key);
 
 }

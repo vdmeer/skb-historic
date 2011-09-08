@@ -45,7 +45,7 @@ import org.skb.util.types.api.TSTableRowAPI;
  */
 public class TSLangRuleMap extends TSTable{
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSLangRuleMap.class);
 
 
 	public final static String rmValRuleMessage		= "rule:message";
@@ -69,8 +69,6 @@ public class TSLangRuleMap extends TSTable{
 	}
 
 	protected void _initRM(){
-		logger=Logger.getLogger(TSLangRuleMap.class);
-
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
 		this.setColumns(TSLangRuleMap.class.getName(), "rmVal");
 		this.addRows(TSLangRuleMap.class.getName(), "rmKey");

@@ -54,27 +54,55 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PDO {
-	static Logger logger;
+	/** Logger instance */
+	public final static Logger logger=Logger.getLogger(PDO.class);
 
+	/** Local connection of this PDO object */
 	private Connection core=null;
-	public Connection get_core(){return this.core;}
+
+
+	//TODO anyone using this? why field name is core?
+	/**
+	 * Returns the PDO's connection
+	 * @return connection
+	 */
+	public Connection get_core(){
+		return this.core;
+	}
 
 	private Statement statement=null;
 	private ResultSet result_set=null;
 
+
+	/**
+	 * Class constructor, empty
+	 */
 	public PDO(){
-		logger=Logger.getLogger(PDO.class);
 	}
 
+
+	/**
+	 * Class constructor, sets the local connection
+	 * @param c new connection
+	 */
 	public PDO(Connection c){
-		logger=Logger.getLogger(PDO.class);
 		this.core=c;
 	}
 
+
+	/**
+	 * Sets the local connection
+	 * @param c new connection
+	 */
 	public void set(java.sql.Connection c){
 		this.core=c;
 	}
 
+
+	/**
+	 * Clears all warnings
+	 * @throws SQLException
+	 */
 	public void clearWarnings() throws SQLException{
 		try{
 			this.core.clearWarnings();
@@ -84,6 +112,11 @@ public class PDO {
 		}
 	}
 
+
+	/**
+	 * Closes the local connection
+	 * @throws SQLException
+	 */
 	public void close() throws SQLException{
 		try{
 			this.core.close();
@@ -93,7 +126,8 @@ public class PDO {
 		}
 	}
 
-	public void commint() throws SQLException{
+
+	public void commit() throws SQLException{
 		try{
 			this.core.commit();
 		} catch (SQLException e) {
@@ -101,6 +135,7 @@ public class PDO {
 			throw e;
 		}
 	}
+
 
 	public Statement createStatement() throws SQLException{
 		Statement s=null;
@@ -113,6 +148,7 @@ public class PDO {
 		return s;
 	}
 
+
 	public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException{
 		Statement s=null;
 		try{
@@ -122,6 +158,7 @@ public class PDO {
 			throw e;
 		} return s;
 	}
+
 
 	public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException{
 		Statement s=null;
@@ -134,6 +171,7 @@ public class PDO {
 		return s;
 	}
 
+
 	public DatabaseMetaData getMetaData() throws SQLException{
 		DatabaseMetaData dmd=null;
 		try{
@@ -144,6 +182,7 @@ public class PDO {
 		}
 		return dmd;
 	}
+
 
 	public ResultSet query(ArrayList<String> sel, String table, String whe, String ord){
 		String select=null;
@@ -158,6 +197,7 @@ public class PDO {
 		}
 		return null;
 	}
+
 
 	public ResultSet query(String sel, String table, String whe, String ord){
 		this.result_set=null;
@@ -183,6 +223,7 @@ public class PDO {
 		}
 		return this.result_set;
 	}
+
 
 	public TSMapLH semanticQuery(TSMapLH query, String from){
 		TSMapLH ret=new TSMapLH();
@@ -226,6 +267,7 @@ public class PDO {
 		}
 		return ret;
 	}
+
 
 	public ArrayList<String> get_columns(){
 		if(this.result_set!=null){

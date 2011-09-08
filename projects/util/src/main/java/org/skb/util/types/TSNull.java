@@ -43,18 +43,28 @@ import org.skb.util.types.api.TSBase;
 import org.skb.util.types.api.TSComposite;
 
 public final class TSNull implements TSBase, TSAtomic, TSComposite {
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
-	static Logger logger;
+	/** Logger instance */
+	public final static Logger logger=Logger.getLogger(TSNull.class);
 
+
+	/**
+	 * Class constructor, call init
+	 */
 	public TSNull(){
 		this.init();
 	}
 
-	private void init(){
-		logger=Logger.getLogger(TSNull.class);
 
+	/**
+	 * Initialises the object, sets the types as TEnum and TSString
+	 */
+	private void init(){
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
@@ -65,65 +75,78 @@ public final class TSNull implements TSBase, TSAtomic, TSComposite {
 		this.typeEnum.add(TEnum.TS_NULL);
 	}
 
+
 	@Override
 	public final java.lang.String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
 
+
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
+
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
+
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
+
 
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
 
+
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
+
 
 	@Override
 	public boolean tsIsComposite(){
 		return true;
 	}
 
+
 	@Override
 	public void tsClean(){
 		logger.warn("tsClean has no effect on TSNull, yet someone called it");
 	}
+
 
 	@Override
 	public void tsTrim(){
 		logger.warn("tsTrim has no effect on TSNull, yet someone called it");
 	}
 
+
 	@Override
 	public void tsPlus(TSBase tb){
 		logger.warn("tsPlus has no effect on TSNull, yet someone called it");
 	}
 
+
 	@Override
 	public java.lang.String toString(){
 		return "";
 	}
+
 
 	@Override
 	public java.lang.String tsToString(int indent){

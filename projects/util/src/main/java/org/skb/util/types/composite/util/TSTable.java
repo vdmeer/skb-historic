@@ -71,10 +71,12 @@ import org.skb.util.types.atomic.java.TSString;
  */
 public class TSTable implements TSComposite, TSTableAPI{
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSTable.class);
 
-
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	protected LinkedHashMap<String, TSTableRowAPI> tsvalue=null;
@@ -100,8 +102,6 @@ public class TSTable implements TSComposite, TSTableAPI{
 	}
 
 	protected void _init(){
-		logger=Logger.getLogger(TSTable.class);
-
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
 		this.typeEnum.add(TEnum.TS_COMPOSITE);
 
@@ -239,15 +239,12 @@ public class TSTable implements TSComposite, TSTableAPI{
 
 	@Override
 	public TSBase get(String row, String col) {
-		TSBase ret=null;
+		TSBase ret=new TSNull();
 		if(this.isInitialised()){
 			if(this.containsKey(row)&&this.get(row).containsKey(col))
 				ret=this.tsvalue.get(row).get(col);
 		}
-		if(ret!=null)
-			return ret;
-		else
-			return new TSNull();
+		return ret;
 	}
 
 	@Override

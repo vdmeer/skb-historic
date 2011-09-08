@@ -40,21 +40,26 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface Cli {
+	/**
+	 * Sets the application name, used for reporting errors and warnings
+	 * @param appName the application name
+	 */
+	public abstract boolean setApplicationName(TSBase appName);
 
 	/**
 	 * Set the application name, used for reporting errors and warnings
 	 * @param appName the application name
 	 */
-	public abstract void setApplicationName(TSBase appName);
+	public abstract boolean setApplicationName(String appName);
 
 	/**
-	 * Set the application name, used for reporting errors and warnings
-	 * @param appName the application name
+	 * Returns the current application name
+	 * @return current application name, "" if not set after initialisation
 	 */
-	public abstract void setApplicationName(String appName);
+	public abstract String getApplicationName();
 
 	/**
-	 * Set properties, i.e. the command line arguments
+	 * Sets properties, i.e. the command line arguments
 	 * @param prop property map with command line arguments
 	 */
 	public abstract void setPropOptions(TSPropertyMap prop);
@@ -64,12 +69,12 @@ public interface Cli {
 	 * @param args arguments from the main method
 	 * @throws ParseException
 	 */
-	public abstract void parse(String[] args) throws ParseException;
+	public abstract void parse(String[] args, boolean stopAtNonOption) throws ParseException;
 
 	/**
 	 * Print usage information
 	 */
-	public abstract void usage();
+	public abstract String usage(String header, String footer, int width, boolean autoUsage);
 
 	/**
 	 * Set options for parsing

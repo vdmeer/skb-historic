@@ -53,14 +53,15 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Json2Oat {
-	static Logger logger;
+	/** Logger instance */
+	public final static Logger logger=Logger.getLogger(Json2Oat.class);
 
 	/**
-	 * Class construtor, empty
+	 * Class constructor, empty
 	 */
 	public Json2Oat(){
-		logger=Logger.getLogger(Json2Oat.class);
 	}
+
 
 	/**
 	 * Read the given JSON file
@@ -79,6 +80,7 @@ public class Json2Oat {
 		return null;
 	}
 
+
 	/**
 	 * Read the JSON from the given file name (URL)
 	 * @param url file name, will be used as URL
@@ -93,6 +95,7 @@ public class Json2Oat {
 			return null;
 		}
 	}
+
 
 	/**
 	 * Read JSON from the input scanner and transform into an TSMapLH
@@ -117,6 +120,7 @@ public class Json2Oat {
 		return this.s2o(content);
 	}
 
+
 	/**
 	 * Transform the given JSON string into a TSBase object
 	 * @param content JSON string
@@ -135,6 +139,7 @@ public class Json2Oat {
 		}
 		return null;
 	}
+
 
 	private TSBase traverse(JsonNode node){
 		if(node.isArray()){

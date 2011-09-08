@@ -41,13 +41,12 @@ import org.apache.log4j.Logger;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PropertyHandler {
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(PropertyHandler.class);
 
 	/**
 	 * Class constructor, empty
 	 */
 	public PropertyHandler(){
-		logger=Logger.getLogger(PropertyHandler.class);
 	}
 
 	/**

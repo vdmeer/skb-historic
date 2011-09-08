@@ -31,6 +31,7 @@ package org.skb.util.types;
 
 import java.util.EnumSet;
 
+import org.apache.log4j.Logger;
 import org.skb.util.types.api.TSBase;
 
 /**
@@ -48,6 +49,10 @@ import org.skb.util.types.api.TSBase;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class TSRepository {
+	/** Logger instance */
+	public final static Logger logger=Logger.getLogger(TSRepository.class);
+
+
 	/**
 	 * String values identifying SKB types.
 	 *

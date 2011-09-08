@@ -45,24 +45,15 @@ import org.apache.log4j.Logger;
  */
 public class FileTemplateSingle {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(FileTemplateSingle.class);
 
-
-	/**
-	 * StringTemplates maintained by this template
-	 */
+	/** StringTemplates maintained by this template */
 	LinkedHashSet<StringTemplate> templates;
 
-
-	/**
-	 * List of imports for this template
-	 */
+	/** List of imports for this template */
 	LinkedHashSet<String> imports;
 
-
-	/**
-	 * List of miscellaneous items for the template
-	 */
+	/** List of miscellaneous items for the template */
 	LinkedHashMap<String, String> misc;
 
 
@@ -70,8 +61,6 @@ public class FileTemplateSingle {
 	 * Class constructor, initialised private members
 	 */
 	public FileTemplateSingle(){
-		logger=Logger.getLogger(FileTemplateSingle.class);
-
 		this.templates=new LinkedHashSet<StringTemplate>();
 		this.imports=new LinkedHashSet<String>();
 		this.misc=new LinkedHashMap<String, String>();
@@ -85,8 +74,6 @@ public class FileTemplateSingle {
 	 * @param lhsMisc list of misc items
 	 */
 	public FileTemplateSingle(LinkedHashSet<StringTemplate> lhsST, LinkedHashSet<String> lhsIM, LinkedHashMap<String, String> lhsMisc){
-		logger=Logger.getLogger(FileTemplateSingle.class);
-
 		this.templates=new LinkedHashSet<StringTemplate>(lhsST);
 		this.imports=new LinkedHashSet<String>(lhsIM);
 		this.misc=new LinkedHashMap<String, String>(lhsMisc);

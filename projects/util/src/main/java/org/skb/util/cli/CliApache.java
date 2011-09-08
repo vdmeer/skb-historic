@@ -29,6 +29,8 @@
 
 package org.skb.util.cli;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -59,7 +61,7 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  */
 public class CliApache implements Cli {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(CliApache.class);
 
 
 	/** The application name for reporting error and warnings */
@@ -80,67 +82,129 @@ public class CliApache implements Cli {
 
 	/** Class constructor, initialises all private data structures */
 	public CliApache() {
-		logger=Logger.getLogger(CliApache.class);
-
 		this.applicationName=new TSString();
 		this.options=new Options();
 		this.optionList=new LinkedHashMap<String, String>();
 	}
 
 
-	@Override public void setApplicationName(TSBase appName){
-		if(appName!=null&&appName.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING))
+	@Override public boolean setApplicationName(TSBase appName){
+		boolean ret=false;
+		if(appName!=null&&appName.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING)){
 			this.applicationName=(TSString)appName;
+			ret=true;
+		}
+		return ret;
 	}
 
 
-	@Override public void setApplicationName(String appName){
-		if(appName!=null)
+	@Override public boolean setApplicationName(String appName){
+		boolean ret=false;
+		if(appName!=null){
 			this.applicationName=new TSString(appName);
+			ret=true;
+		}
+		return ret;
+	}
+
+
+	@Override public String getApplicationName(){
+		return this.applicationName.tsToString(0);
 	}
 
 
 	@Override public void setPropOptions(TSPropertyMap prop){
-		String optType;
 		String optShort;
 		String optLong;
-		String optDescr;
 		String optArgName;
 
 		HashSet<String> ts=new HashSet<String>(prop.getRows());
         for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
         	String current=i.next();
         	if(prop.get(current, TSPropertyMap.pmValCliOptionType)!=null){
-       			optType=prop.get(current, TSPropertyMap.pmValCliOptionType).toString();
-       			if(!(prop.get(current, TSPropertyMap.pmValCliOptionShort)).tsIsType(TEnum.TS_NULL))
-       				optShort=prop.get(current, TSPropertyMap.pmValCliOptionShort).toString();
-       			else
-       				optShort=null;
        			if(!(prop.get(current, TSPropertyMap.pmValCliOptionLong)).tsIsType(TEnum.TS_NULL))
        				optLong=prop.get(current, TSPropertyMap.pmValCliOptionLong).toString();
        			else
        				optLong=null;
-       			optDescr=prop.get(current, TSPropertyMap.pmValCliUsageDescr).toString();
-       			optArgName=prop.get(current, TSPropertyMap.pmValCliUsageDescrAdd).toString();
+       			OptionBuilder.withLongOpt(optLong);
 
-        		if(  optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING)||
+       			OptionBuilder.withDescription(prop.get(current, TSPropertyMap.pmValCliUsageDescr).toString());
+
+       			optArgName=prop.get(current, TSPropertyMap.pmValCliUsageDescrAdd).toString();
+				if(optArgName.length()>0){
+					OptionBuilder.hasArg();
+					OptionBuilder.withArgName(optArgName);
+				}
+				else
+					OptionBuilder.hasArg(false);
+
+				TEnum optType=TSRepository.type(prop.get(current, TSPropertyMap.pmValCliOptionType).toString());
+				switch(optType){
+					case TS_ATOMIC_JAVA_BOOLEAN:
+						OptionBuilder.withType(Boolean.class);
+						break;
+					case TS_ATOMIC_JAVA_DOUBLE:
+						OptionBuilder.withType(Double.class);
+						break;
+					case TS_ATOMIC_JAVA_INTEGER:
+						OptionBuilder.withType(Integer.class);
+						break;
+					case TS_ATOMIC_JAVA_LONG:
+						OptionBuilder.withType(Long.class);
+						break;
+					case TS_ATOMIC_JAVA_STRING:
+						OptionBuilder.withType(String.class);
+						break;
+					default: break;
+				}
+
+       			if(!(prop.get(current, TSPropertyMap.pmValCliOptionShort)).tsIsType(TEnum.TS_NULL))
+       				optShort=prop.get(current, TSPropertyMap.pmValCliOptionShort).toString();
+       			else
+       				optShort=null;
+       			if(optShort!=null&&optLong!=null){
+       				this.options.addOption(OptionBuilder.create(optShort.charAt(0)));
+					this.optionList.put(current, optLong);
+       			}
+       			else if(optLong!=null){
+       				this.options.addOption(OptionBuilder.create());
+					this.optionList.put(current, optLong);
+       			}
+       			else{
+       				//dummy create, nothing to be done since no option set (short/long)
+       				//TODO log warning or error
+       				OptionBuilder.withLongOpt("__dummyLongOpt__");
+       				OptionBuilder.create();
+       			}
+
+
+/*
+       			if(  optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING)||
         		     optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER)||
         		     optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE)||
                 	 optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_LONG)
         		  ){
         			if(optShort!=null&&optLong!=null){
-        				OptionBuilder.hasArg();
+        				if(optArgName.length()>0){
+        					OptionBuilder.hasArg();
+        					OptionBuilder.withArgName(optArgName);
+        				}
+        				else
+        					OptionBuilder.hasArg(false);
 						OptionBuilder.withDescription(optDescr);
 						OptionBuilder.withLongOpt(optLong);
-						OptionBuilder.withArgName(optArgName);
 						this.options.addOption(OptionBuilder.create(optShort.charAt(0)));
 						this.optionList.put(current, optLong);
         			}
         			else if(optLong!=null){
-        				OptionBuilder.hasArg();
+        				if(optArgName.length()>0){
+        					OptionBuilder.hasArg();
+        					OptionBuilder.withArgName(optArgName);
+        				}
+        				else
+        					OptionBuilder.hasArg(false);
 						OptionBuilder.withDescription(optDescr);
 						OptionBuilder.withLongOpt(optLong);
-						OptionBuilder.withArgName(optArgName);
 						this.options.addOption(OptionBuilder.create());
 						this.optionList.put(current, optLong);
         			}
@@ -159,15 +223,26 @@ public class CliApache implements Cli {
 						this.optionList.put(current, optLong);
         			}
         		}
-			}
+*/
+
+        	}
 		}
 	}
 
 
-	@Override public void parse(String[] args) throws ParseException {
+	/**
+	 * Returns the options set for the command line parser
+	 * @return options
+	 */
+	public Options getPropOptions(){
+		return this.options;
+	}
+
+
+	@Override public void parse(String[] args, boolean stopAtNonOption) throws ParseException {
         CommandLineParser parser=new PosixParser();
         try {
-            this.line=parser.parse(this.options, args, true);
+            this.line=parser.parse(this.options, args, stopAtNonOption);
         }
         catch(ParseException exp){
         	logger.warn("catched ParserException: "+exp);
@@ -176,9 +251,15 @@ public class CliApache implements Cli {
 	}
 
 
-	@Override public void usage(){
+	@Override public String usage(String header, String footer, int width, boolean autoUsage){
+		StringWriter sw=new StringWriter();
+		PrintWriter pw=new PrintWriter(sw);
+
         HelpFormatter formatter=new HelpFormatter();
-        formatter.printHelp(this.applicationName.toString(), this.options);
+        //formatter.printWrapped(pw, width, header); // formatter didn't accept "\n" ...
+		formatter.printHelp(pw, width, this.applicationName.toString(), null, this.options, 2, 2, null, autoUsage);
+		//formatter.printWrapped(pw, width, footer); // formatter didn't accept "\n" ...
+		return header+sw.toString()+footer;
 	}
 
 
@@ -193,13 +274,37 @@ public class CliApache implements Cli {
         		} catch (Exception e) {
         			valType="";
         		}
-        		switch(TSRepository.type(valType)){
-        			case TS_ATOMIC_JAVA_STRING:		prop.setValueCli(key, new TSString(line.getOptionValue(val))); break;
-        			case TS_ATOMIC_JAVA_BOOLEAN:	prop.setValueCli(key, new TSBoolean(true)); break;
-        			case TS_ATOMIC_JAVA_INTEGER:	prop.setValueCli(key, new TSInteger(line.getOptionValue(val))); break;
-        			case TS_ATOMIC_JAVA_DOUBLE:		prop.setValueCli(key, new TSDouble(line.getOptionValue(val))); break;
-        			case TS_ATOMIC_JAVA_LONG:		prop.setValueCli(key, new TSLong(line.getOptionValue(val))); break;
-        			default:						logger.warn("unknown type <"+valType+"> for <"+key+">");
+
+				switch(TSRepository.type(valType)){
+        			case TS_ATOMIC_JAVA_STRING:
+        				prop.setValueCli(key, new TSString(line.getOptionValue(val)));
+        				break;
+        			case TS_ATOMIC_JAVA_BOOLEAN:
+        				prop.setValueCli(key, new TSBoolean(true));
+        				break;
+        			case TS_ATOMIC_JAVA_INTEGER:
+        				int i;
+        				try{
+        					i=Integer.parseInt(line.getOptionValue(val).toString());
+        				} catch(Exception e) {i=0;}
+        				prop.setValueCli(key, new TSInteger(i));
+        				break;
+        			case TS_ATOMIC_JAVA_DOUBLE:
+        				double d;
+        				try{
+        					d=Double.parseDouble(line.getOptionValue(val).toString());
+        				} catch(Exception e) {d=0;}
+        				prop.setValueCli(key, new TSDouble(d));
+        				break;
+        			case TS_ATOMIC_JAVA_LONG:
+        				long l;
+        				try{
+        					l=Long.parseLong(line.getOptionValue(val).toString());
+        				} catch(Exception e) {l=0;}
+        				prop.setValueCli(key, new TSLong(l));
+        				break;
+        			default:
+        				logger.warn("unknown type <"+valType+"> for <"+key+">");
         		}
         	}
         }

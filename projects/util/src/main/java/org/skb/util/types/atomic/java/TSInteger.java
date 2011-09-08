@@ -50,7 +50,7 @@ import org.skb.util.types.api.TSBase;
  */
 public class TSInteger implements TSAtomic {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSInteger.class);
 
 
 	public static int bitCount(int i){
@@ -148,10 +148,13 @@ public class TSInteger implements TSAtomic {
 		return java.lang.Integer.valueOf(s, radix);
 	}
 
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
 
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+	/** Local value */
 	public java.lang.Integer tsvalue=null;
 
 	/**
@@ -188,9 +191,11 @@ public class TSInteger implements TSAtomic {
 	 * @param s String to be used in initialisation
 	 */
 	public TSInteger(java.lang.String s){
+		//TODO needs to test if String can be converted to Int and catch exceptions
 		this._init();
-		if(s!=null)
-			this.tsvalue=new java.lang.Integer(s);
+		if(s!=null){
+			this.tsvalue=new java.lang.Integer(Integer.parseInt(s));
+		}
 	}
 
 	/**
@@ -220,8 +225,6 @@ public class TSInteger implements TSAtomic {
 	}
 
 	private void _init(){
-		logger=Logger.getLogger(TSInteger.class);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 

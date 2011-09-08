@@ -83,7 +83,7 @@ import org.skb.test.util.types.composite.util.TSTableTest;
 public class RunTests {
 
 	/**
-	 * Main function for running tests from command line
+	 * Main method for running tests from command line or inside Eclipse
 	 * @param args command line arguments
 	 */
 	@Ignore	public static void main(String[] args){

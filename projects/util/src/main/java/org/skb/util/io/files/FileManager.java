@@ -52,54 +52,32 @@ import org.skb.util.types.atomic.java.TSBoolean;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class FileManager {
-	static Logger logger;
+	/** Logger instance */
+	public final static Logger logger=Logger.getLogger(FileManager.class);
 
 
-	/**
-	 * Header for code files, will prepend all other content
-	 */
-	private StringTemplate codeHeader;
+	/** Header for code files, will prepend all other content */
+	private StringTemplate codeHeader=null;
 
+	/** StringTemplate for the start of a file, file header */
+	private StringTemplate fileStart=null;
 
-	/**
-	 * 
-	 */
-	private StringTemplate fileStart;
+	/** StringTemplate for the end of a file, file footer */
+	private StringTemplate fileEnd=null;
 
-
-	/**
-	 * 
-	 */
-	private StringTemplate fileEnd;
-
-
-	/**
-	 * Source language, i.e. cola, pola, dal, glue
-	 */
+	/** Source language, i.e. cola, pola, dal, glue */
 	private String sourceLanguage=null;
 
-
-	/**
-	 * Source file
-	 */
+	/** Source file */
 	private String sourceFile=null;
 
-
-	/**
-	 * Target language, i.e. xml, sql, java
-	 */
+	/** Target language, i.e. xml, sql, java */
 	private String targetLanguage=null;
 
-
-	/**
-	 * Standard file extension for target files
-	 */
+	/** Standard file extension for target files */
 	private String targetFileExtension=null;
 
-
-	/**
-	 * Boolean determining if files can be printed or not, default is false
-	 */
+	/** Boolean determining if files can be printed or not, default is false */
 	private TSBoolean canPrint;
 
 
@@ -110,8 +88,6 @@ public class FileManager {
 	 * @param fileEnd a final text for files
 	 */
 	public FileManager(StringTemplate codeHeader, StringTemplate fileStart, StringTemplate fileEnd){
-		logger=Logger.getLogger(FileManager.class);
-
 		this.codeHeader=codeHeader;
 		this.fileStart=fileStart;
 		this.fileEnd=fileEnd;
@@ -151,8 +127,10 @@ public class FileManager {
 	 * @return true if successful, false otherwise
 	 */
 	public boolean writeList(FileTemplateList list){
-		if(canPrint()==false)
+		if(this.canPrint()==false){
+			logger.warn("call to write list but canPrint=false");
 			return false;
+		}
 		for (Map.Entry<String, FileTemplateSingle> e : list.entrySet())
 			this.writeSingleFileFromList(list.getDir(e.getKey()), list.getFile(e.getKey())+this.targetFileExtension, e.getValue());
 		return true;
@@ -167,13 +145,16 @@ public class FileManager {
 	 * @return true if successful, false otherwise
 	 */
 	private boolean writeSingleFileFromList(String dir, String file, FileTemplateSingle fts){
-		if(canPrint()==false)
+		if(this.canPrint()==false){
+			logger.warn("call to write single file but canPrint=false");
 			return false;
+		}
 
 		if(dir!=null){
 			File outputDir = new File(dir);
 			outputDir.mkdirs();
 		}
+
 		File outputFile=new File(dir+System.getProperty("file.separator")+file);
 		FileWriter aout;
 		LinkedHashSet<StringTemplate> set=fts.getTemplates();
@@ -195,6 +176,7 @@ public class FileManager {
 			return false;
 		}  catch (Exception e) {
 			logger.error("general exception writing files: " + e);
+			return false;
 		}
 		return true;
 	}
@@ -217,32 +199,45 @@ public class FileManager {
 	 * @return standard header
 	 */
 	private String stdHeader(LinkedHashMap<String, String> ms){
-		if(this.targetLanguage==null||this.sourceLanguage==null||this.sourceFile==null)
-			return null;
+		String ret="";
+		if(this.codeHeader==null){
+			logger.error("no code header template set");
+		}
+		else if(this.targetLanguage==null){
+			logger.error("no target language set");
+		}
+		else if(this.sourceLanguage==null){
+			logger.error("no source language set");
+		}
+		else if(this.sourceFile==null){
+			logger.error("no source file set");
+		}
+		else{
+			this.codeHeader.reset();
 
-		this.codeHeader.reset();
+			this.codeHeader.setAttribute("source", this.sourceLanguage);
+			this.codeHeader.setAttribute("file", this.sourceFile);
 
-		this.codeHeader.setAttribute("source", this.sourceLanguage);
-		this.codeHeader.setAttribute("file", this.sourceFile);
+			TreeMap<String,String> target=new TreeMap<String, String>();
+			target.put(this.targetLanguage.toString(), this.targetLanguage.toString());
+			this.codeHeader.setAttribute("target", target);
 
-		TreeMap<String,String> target=new TreeMap<String, String>();
-		target.put(this.targetLanguage.toString(), this.targetLanguage.toString());
-		this.codeHeader.setAttribute("target", target);
+			Calendar cal = Calendar.getInstance(TimeZone.getDefault());
+			String dateFormat = "dd MMMMM yyyy";
+			java.text.SimpleDateFormat sdfDay = new java.text.SimpleDateFormat(dateFormat);
+			sdfDay.setTimeZone(TimeZone.getDefault());  
+			this.codeHeader.setAttribute("day", sdfDay.format(cal.getTime()));
 
-		Calendar cal = Calendar.getInstance(TimeZone.getDefault());
-	    String dateFormat = "dd MMMMM yyyy";
-	    java.text.SimpleDateFormat sdfDay = new java.text.SimpleDateFormat(dateFormat);
-	    sdfDay.setTimeZone(TimeZone.getDefault());  
-	    this.codeHeader.setAttribute("day", sdfDay.format(cal.getTime()));
+			dateFormat = "H:mm:ss";
+			java.text.SimpleDateFormat sdfTime = new java.text.SimpleDateFormat(dateFormat);
+			sdfTime.setTimeZone(TimeZone.getDefault());
+			this.codeHeader.setAttribute("time", sdfTime.format(cal.getTime()));
 
-	    dateFormat = "H:mm:ss";
-	    java.text.SimpleDateFormat sdfTime = new java.text.SimpleDateFormat(dateFormat);
-	    sdfTime.setTimeZone(TimeZone.getDefault());
-	    this.codeHeader.setAttribute("time", sdfTime.format(cal.getTime()));
+			this.codeHeader.setAttribute("misc", ms);
 
-	    this.codeHeader.setAttribute("misc", ms);
-
-	    return this.codeHeader.toString();
+			ret=this.codeHeader.toString();
+		}
+		return ret;
 	}
 
 
@@ -251,13 +246,21 @@ public class FileManager {
 	 * @return text to be used as pre-text
 	 */
 	private String stdFileStart(){
-		if(this.targetLanguage==null)
-			return "";
-		this.fileStart.reset();
-		TreeMap<String,String> target=new TreeMap<String, String>();
-		target.put(this.targetLanguage.toString(), this.targetLanguage.toString());
-		this.fileStart.setAttribute("target", target);
-		return this.fileStart.toString();
+		String ret="";
+		if(this.targetLanguage==null){
+			logger.error("no target language set");
+		}
+		else if(this.fileStart==null){
+			logger.error("no file start template set");
+		}
+		else{
+			this.fileStart.reset();
+			TreeMap<String,String> target=new TreeMap<String, String>();
+			target.put(this.targetLanguage.toString(), this.targetLanguage.toString());
+			this.fileStart.setAttribute("target", target);
+			ret=this.fileStart.toString();
+		}
+		return ret;
 	}
 
 
@@ -266,12 +269,20 @@ public class FileManager {
 	 * @return text to be used as pre-text
 	 */
 	private String stdFileEnd(){
-		if(this.targetLanguage==null)
-			return "";
-		this.fileEnd.reset();
-		TreeMap<String,String> target=new TreeMap<String, String>();
-		target.put(this.targetLanguage.toString(), this.targetLanguage.toString());
-		this.fileEnd.setAttribute("target", target);
-		return this.fileEnd.toString();
+		String ret="";
+		if(this.targetLanguage==null){
+			logger.error("no target language set");
+		}
+		else if(this.fileEnd==null){
+			logger.error("no file end template set");
+		}
+		else{
+			this.fileEnd.reset();
+			TreeMap<String,String> target=new TreeMap<String, String>();
+			target.put(this.targetLanguage.toString(), this.targetLanguage.toString());
+			this.fileEnd.setAttribute("target", target);
+			ret= this.fileEnd.toString();
+		}
+		return ret;
 	}
 }

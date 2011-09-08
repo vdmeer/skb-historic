@@ -43,27 +43,23 @@ import org.apache.log4j.Logger;
  */
 public class ScopeToken {
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(ScopeToken.class);
 
-
-	/**
-	 * The currently used scope separator, default is "::".
-	 */
+	/** The currently used scope separator, default is "::". */
 	private String separator;
-	/**
-	 * The ANTLR runtime token vector maintaining the scope.
-	 */
+
+	/** The ANTLR runtime token vector maintaining the scope. */
 	private Vector<Token> field;
+
 
 	/**
 	 * Class constructor, initialises private members
 	 */
 	public ScopeToken(){
-		logger=Logger.getLogger(ScopeToken.class);
-
 		this.separator="::";
 		this.field=new Vector<Token>();
 	}
+
 
 	/**
 	 * Set the scope separator to the given string.
@@ -73,6 +69,7 @@ public class ScopeToken {
 		this.separator=s;
 	}
 
+
 	/**
 	 * Return the currently used scope separator.
 	 * @return scope separator currently used.
@@ -80,6 +77,7 @@ public class ScopeToken {
 	public String separator(){
 		return this.separator;
 	}
+
 
 	/**
 	 * Return the current scope as string.
@@ -93,6 +91,7 @@ public class ScopeToken {
 		return ret;
 	}
 
+
 	/**
 	 * Remove the last entry of the vector, i.e. the last part of the scope
 	 */
@@ -101,12 +100,14 @@ public class ScopeToken {
 			this.field.remove(this.field.size()-1);
 	}
 
+
 	/**
 	 * Add a new scope, i.e. append the given token to the vector.
 	 */
 	public void push(Token token){
 		this.field.add(token);
 	}
+
 
 	/**
 	 * Clear the vector, empty the scope.
@@ -115,6 +116,7 @@ public class ScopeToken {
 		this.field.clear();
 	}
 
+
 	/**
 	 * Return the last entry of the vector.
 	 * @return last entry of the vector
@@ -122,6 +124,7 @@ public class ScopeToken {
 	public Token lastElement(){
 		return this.field.lastElement();
 	}
+
 
 	/**
 	 * Return the ANTLR token of the given index.
@@ -132,6 +135,7 @@ public class ScopeToken {
 		return this.field.get(index);
 	}
 
+
 	/**
 	 * Return the size of the vector.
 	 * @return the size of the vector
@@ -139,6 +143,7 @@ public class ScopeToken {
 	public int size(){
 		return this.field.size();
 	}
+
 
 	/**
 	 * Return the vector as an array list of tokens.

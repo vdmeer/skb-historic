@@ -58,58 +58,37 @@ import org.skb.util.types.api.TSTableRowAPI;
  */
 public class TSPropertyMap extends TSTable{
 	/** Logger instance */
-	static Logger logger;
+	public final static Logger logger=Logger.getLogger(TSPropertyMap.class);
 
-
-	/**
-	 * TS Type of the property
-	 */
+	/** TS Type of the property */
 	public final static String pmValType				= "at:type";
 
-	/**
-	 * Default value of the property
-	 */
+	/** Default value of the property */
 	public final static String pmValValueDefault		= "value:default";
 
-	/**
-	 * Value read from file
-	 */
+	/** Value read from file */
 	public final static String pmValValueFile			= "value:file";
 
-	/**
-	 * Value read from command line
-	 */
+	/** Value read from command line */
 	public final static String pmValValueCli			= "value:cli";
 
 
-	/**
-	 * Type of the CLI option
-	 */
+	/** Type of the CLI option */
 	public final static String pmValCliOptionType		= "cli:option:type";
 
-	/**
-	 * Short option for CLI (first character is used)
-	 */
+	/** Short option for CLI (first character is used) */
 	public final static String pmValCliOptionShort		= "cli:option:short";
 
-	/**
-	 * Long option for CLI (all characters are used, some restrictions apply)
-	 */
+	/** Long option for CLI (all characters are used, some restrictions apply) */
 	public final static String pmValCliOptionLong		= "cli:option:long";
 
-	/**
-	 * Additional description, i.e. extra arguments
-	 */
+	/** Additional description, i.e. extra arguments */
 	public final static String pmValCliUsageDescrAdd	= "cli:option:arg-name";
 
-	/**
-	 * Description of the property for CLI
-	 */
+	/** Description of the property for CLI */
 	public final static String pmValCliUsageDescr		= "cli:usage:descr";
 
-	/**
-	 * Long description of the property for CLI 
-	 */
+	/** Long description of the property for CLI */
 	public final static String pmValCliUsageDescrLong	= "cli:usage:descr-long";
 
 	public TSPropertyMap(){
@@ -130,8 +109,6 @@ public class TSPropertyMap extends TSTable{
 	}
 
 	protected void _initPM(){
-		logger=Logger.getLogger(TSPropertyMap.class);
-
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
 		this.setColumns(TSPropertyMap.class.getName(), "pmVal");
 		this.addRows(TSPropertyMap.class.getName(), "pmKey");
