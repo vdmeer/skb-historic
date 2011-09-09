@@ -46,18 +46,39 @@ import org.skb.lang.dal.Dal;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Dal2SqlTask extends Task {
+	/** Fileset managing the input DAL files */
 	private Vector<FileSet> filesets = new Vector<FileSet>();
+
+	/** Destination directory for the SQL target files*/
 	private String destdir=null;
 
-    public void setDestdir(String s){
+
+	/**
+	 * Sets the destination directory for the SQL target files.
+	 * @param s destination directory
+	 */
+	public void setDestdir(String s){
         this.destdir=s;
     }
 
-    public void addFileset(FileSet fileset) {
+
+	/**
+	 * Sets the fileset managing the DAL source files.
+	 * @param fileset DAL source files
+	 */
+	public void addFileset(FileSet fileset) {
         filesets.add(fileset);
     }
 
-    public void execute() throws BuildException {
+
+	/**
+	 * Executes the ANT task.
+	 * 
+	 * Goes through the fileset of source files and calls the DAL compiler with the following argument set:
+	 * <code>--src-lang dal --tgt-lang sql --no-warnings --gc --tgt-dir [given destination dir] --src-file [current file from fileset]</code>
+	 */
+	@Override
+	public void execute() throws BuildException {
     	if(this.filesets.size()==0)
     		throw new BuildException("no fileset given, nothing to do");
     	if(this.destdir==null)

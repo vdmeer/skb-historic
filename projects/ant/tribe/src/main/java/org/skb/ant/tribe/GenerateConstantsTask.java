@@ -38,7 +38,7 @@ import java.util.Set;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
+import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 import org.skb.tribe.LanguageConfiguration;
@@ -53,38 +53,112 @@ import org.skb.util.types.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class GenerateConstantsTask extends Task{
+	/** package name the constants are generated for */
 	private String pkgname=null;
+
+	/** Class name the constants are maintained by */
 	private String classname=null;
+
+	/** source JSON file */
 	private String jsonfile=null;
+
+	/** destination directory, a JAVA package */
 	private String destdir=null;
+
+	/** destination file name, a JAVA file */
 	private String destfile=null;
 
+	/** URL for the StringTemplate used to generate JAVA output */
 	private String stgurl=null; //="/org/skb/ant/tribe/constants.stg";
 
+	/**
+	 * Sets the package name field.
+	 * @param s name of the package the constants are generated for
+	 */
     public void setPkgname(String s){
         this.pkgname=s;
     }
 
+
+    /**
+     * Sets the class name field.
+     * @param s class name the contants are maintained by
+     */
     public void setClassname(String s){
         this.classname=s;
     }
 
+
+    /**
+     * Sets the JSON source file field.
+     * @param s JSON source file to read constant specifications from
+     */
     public void setJsonfile(String s){
         this.jsonfile=s;
     }
 
+
+    /**
+     * Sets the destination directory field.
+     * @param s destination directory, a JAVA package
+     */
     public void setDestdir(String s){
         this.destdir=s;
     }
 
+
+    /**
+     * Sets the destination file name field.
+     * @param s destination file name, needs to be consistent with JAVA naming conventions (same as the package name)
+     */
     public void setDestfile(String s){
         this.destfile=s;
     }
 
+
+    /**
+     * Sets the StringTemplate field.
+     * @param s template to be used to generate JAVA output
+     */
     public void setStgurl(String s){
         this.stgurl=s;
     }
 
+
+    /**
+     * Executes the task.
+     * 
+     * <p>
+     * 		This method is called by ANT when calling the ant task. It first checks that all fields are set (not null, not empty).
+     * 		Throws a BuildException if fields are not set, proceeds to read the JSON file and generates output otherwise.
+     * </p>
+	 * <p>
+	 * 		{@link LanguageConfiguration} is used to parse the JSON source file and to retrieve properties, rules and tokens. For tokens, the following three
+	 * 		JSON fields are processed:
+	 * 		<ul>
+	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTokensConstID} - as key for the resulting map</li>
+	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTokensConstVal} - as "value"</li>
+	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTokensConstJavaDoc} - as "javadoc"</li>
+	 * 		</ul>
+	 * 		For rules, the JSON source can have an map with rule specifications each of which is a key/map pair (the map holding the details). This map
+	 * 		is then used in the following way:
+	 * 		<ul>
+	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationConstID} - as key for the resulting map</li>
+	 * 			<li>the key providing {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationConstID} - as "value"</li>
+	 * 			<li>the key providing {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationJavaDoc} - as "javadoc"</li>
+	 * 		</ul>
+	 * 		For properties (usually access to some configuration information in a property map), the JSON source file should to provide the path
+	 * 		{@link org.skb.tribe.LanguageConfigurationConstants.Paths#SKBLangConfiguration} for general properties and the path
+	 * 		{@link org.skb.tribe.LanguageConfigurationConstants.Paths#SKBLangTargets} for target specific configurations. The general configuration and each of the target
+	 * 		configurations will be processed and JSON fields used in the following way:
+	 * 		<ul>
+	 * 			<li>path plus specific key plus {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationConstID} - as key for the resulting map</li>
+	 * 			<li>path plus specific key - as "value"</li> 
+	 * 			<li>path plus specific key plus {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationJavaDoc} - as "javadoc"</li>
+	 * 		</ul>
+ 	 * </p>
+     */
+    @Override
     public void execute() throws BuildException {
     	if(this.pkgname==null)
     		throw new BuildException("no package name given");
@@ -173,7 +247,8 @@ public class GenerateConstantsTask extends Task{
 		try{
 			InputStream in=this.getClass().getResourceAsStream(this.stgurl);
 			InputStreamReader isr=new InputStreamReader(in);
-			stg=new StringTemplateGroup(isr, AngleBracketTemplateLexer.class);
+			//stg=new StringTemplateGroup(isr, AngleBracketTemplateLexer.class);
+			stg=new StringTemplateGroup(isr, DefaultTemplateLexer.class);
 		} catch (Exception e) {
 			throw new BuildException("can't read string template group from URL <"+this.stgurl+">");
 		}
@@ -196,6 +271,18 @@ public class GenerateConstantsTask extends Task{
 			aout.close();
 		}catch(Exception e){
 			throw new BuildException("cannot write to output file <"+this.destfile+"> in directory <"+this.destdir+">\n"+e);
+		}
+
+		template=stg.getInstanceOf("doPackageHTML");
+		outputFile=new File(this.destdir+"/package.html");
+		try{
+			aout=new FileWriter(outputFile);
+			aout.write(template.toString());
+			aout.write("\r\n");
+			aout.flush();
+			aout.close();
+		}catch(Exception e){
+			throw new BuildException("cannot write to output file <package.html> in directory <"+this.destdir+">\n"+e);
 		}
     }
 }
