@@ -105,6 +105,17 @@ public class TSRepository {
 		/** The SKB type for a Portable Data Object (SKB.Util) */
 		public final static String TS_ATOMIC_SCOPE				= "ts:atomic:scope";
 
+		/** The SKB type for the Tribe Language Parser */
+		public final static String TS_TRIBE_LP					= "ts:atomic:tribe:lp";
+		/** The SKB type for the COLA PROTO Parser */
+		public final static String TS_TRIBE_LP_COLA_PROTO		= "ts:atomic:tribe:lp:cola:proto";
+		/** The SKB type for the POLA PROTO Parser */
+		public final static String TS_TRIBE_LP_POLA_PROTO		= "ts:atomic:tribe:lp:pola:proto";
+		/** The SKB type for the GLUE PROTO Parser */
+		public final static String TS_TRIBE_LP_GLUE_PROTO		= "ts:atomic:tribe:lp:glue:proto";
+		/** The SKB type for the DAL Parser */
+		public final static String TS_TRIBE_LP_DAL				= "ts:atomic:tribe:lp:dal";
+
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		public final static String TS_ATOMIC_ARRAYLIST_STRING	= "ts:atomic:util:arraylist_string";
 		/** SKB Type for an Array List (java.utils.list<TSAtomic>) */
@@ -176,6 +187,17 @@ public class TSRepository {
 
 		/** The SKB type for a Portable Data Object (SKB.Util) */
 		TS_ATOMIC_SCOPE				(TSRepository.TString.TS_ATOMIC_SCOPE),
+
+		/** The SKB type for the Tribe Language Parser */
+		TS_TRIBE_LP					(TSRepository.TString.TS_TRIBE_LP),
+		/** The SKB type for the COLA PROTO Parser */
+		TS_TRIBE_LP_COLA_PROTO		(TSRepository.TString.TS_TRIBE_LP_COLA_PROTO),
+		/** The SKB type for the POLA PROTO Parser */
+		TS_TRIBE_LP_POLA_PROTO		(TSRepository.TString.TS_TRIBE_LP_POLA_PROTO),
+		/** The SKB type for the GLUE PROTO Parser */
+		TS_TRIBE_LP_GLUE_PROTO		(TSRepository.TString.TS_TRIBE_LP_GLUE_PROTO),
+		/** The SKB type for the DAL Parser */
+		TS_TRIBE_LP_DAL				(TSRepository.TString.TS_TRIBE_LP_DAL),
 
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		TS_ATOMIC_ARRAYLIST_STRING	(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING),

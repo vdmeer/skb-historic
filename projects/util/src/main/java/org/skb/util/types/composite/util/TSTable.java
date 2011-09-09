@@ -79,15 +79,20 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+
 	protected LinkedHashMap<String, TSTableRowAPI> tsvalue=null;
+
 
 	protected HashSet<String> columns=null;
 
+
 	protected boolean columnsInitialised=false;
+
 
 	public TSTable(){
 		this._init();
 	}
+
 
 	public TSTable(HashSet<String>rows, HashSet<String>cols){
 		this._init();
@@ -95,11 +100,13 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		this.addRows(rows);
 	}
 
+
 	public TSTable(String ref_class, String rowPrefix, String colPrefix){
 		this._init();
 		this.setColumns(ref_class, colPrefix);
 		this.addRows(ref_class, rowPrefix);
 	}
+
 
 	protected void _init(){
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
@@ -110,6 +117,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 
 		this.tsvalue=new LinkedHashMap<String, TSTableRowAPI>();
 	}
+
 
 	@Override
 	public void addRow(String row) {
@@ -122,6 +130,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		}
 	}
 
+
 	@Override
 	public void addRows(HashSet<String> rows) {
 		if(this.columnsInitialised&&rows!=null){
@@ -130,6 +139,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 				this.addRow(rIT.next());
 		}
 	}
+
 
 	@Override
 	public void addRows(String ref_class, String prefix) {
@@ -153,6 +163,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		}
 	}
 
+
 	protected boolean checkField(int mod, String type, String name, String prefix){
 		if((mod==(Modifier.FINAL+Modifier.PUBLIC+Modifier.STATIC))&&("java.lang.String".equals(type))){
 			if(prefix!=null&&name.startsWith(prefix))
@@ -164,11 +175,13 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return false;
 	}
 
+
 	@Override
 	public void clear() {
 		if(this.isInitialised())
 			this.tsvalue.clear();
 	}
+
 
 	@Override
 	public boolean containsKey(Object key) {
@@ -178,6 +191,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return false;
 	}
 
+
 	@Override
 	public boolean containsKey(String key) {
 		if(this.isInitialised()&&key!=null)
@@ -185,6 +199,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return false;
 	}
+
 
 	@Override
 	public boolean containsKey(TSString key) {
@@ -194,6 +209,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return false;
 	}
 
+
 	@Override
 	public boolean containsValue(Object value) {
 		if(this.isInitialised()&&value!=null)
@@ -202,6 +218,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return false;
 	}
 
+
 	@Override
 	public boolean containsValue(TSTableRowAPI value) {
 		if(this.isInitialised()&&value!=null)
@@ -209,6 +226,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return false;
 	}
+
 
 	@Override
 	public Set<java.util.Map.Entry<String, TSTableRowAPI>> entrySet() {
@@ -221,6 +239,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return ret;
 	}
 
+
 	@Override
 	public TSTableRowAPI get(Object key) {
 		if(this.isInitialised()&&key!=null)
@@ -229,6 +248,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return null;
 	}
 
+
 	@Override
 	public TSTableRowAPI get(String key) {
 		if(this.isInitialised()&&key!=null)
@@ -236,6 +256,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return null;
 	}
+
 
 	@Override
 	public TSBaseAPI get(String row, String col) {
@@ -247,6 +268,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public TSTableRowAPI get(TSString key) {
 		if(this.isInitialised()&&key!=null)
@@ -254,6 +276,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return null;
 	}
+
 
 	@Override
 	public TSBoolean getBoolean(String row, String col) {
@@ -266,6 +289,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public TSByte getByte(String row, String col) {
 		TSByte ret=new TSByte();
@@ -277,6 +301,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public HashSet<String> getColumns() {
 		if(this.isInitialised())
@@ -284,6 +309,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return new HashSet<String>();
 	}
+
 
 	@Override
 	public TSDouble getDouble(String row, String col) {
@@ -296,6 +322,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public TSFloat getFloat(String row, String col) {
 		TSFloat ret=new TSFloat();
@@ -306,6 +333,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		}
 		return ret;
 	}
+
 
 	@Override
 	public TSInteger getInteger(String row, String col) {
@@ -318,6 +346,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public TSLong getLong(String row, String col) {
 		TSLong ret=new TSLong();
@@ -328,6 +357,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		}
 		return ret;
 	}
+
 
 	@Override
 	public TSObject getObject(String row, String col) {
@@ -340,10 +370,12 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public Set<String> getRows() {
 		return this.keySet();
 	}
+
 
 	@Override
 	public TSShort getShort(String row, String col) {
@@ -356,6 +388,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public TSString getString(String row, String col) {
 		TSString ret=new TSString();
@@ -367,6 +400,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public boolean isEmpty() {
 		if(this.isInitialised())
@@ -374,10 +408,12 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return true;
 	}
 
+
 	@Override
 	public boolean isInitialised() {
 		return this.columnsInitialised;
 	}
+
 
 	@Override
 	public Set<String> keySet() {
@@ -390,11 +426,13 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return ret;
 	}
 
+
 	@Override
 	public void put(String row, String col, boolean val) {
 		if(this.isInitialised()&&row!=null&&col!=null)
 			this.tsvalue.get(row).put(col, new TSBoolean(val));
 	}
+
 
 	@Override
 	public void put(String row, String col, Boolean val) {
@@ -402,11 +440,13 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			this.tsvalue.get(row).put(col, new TSBoolean(val));
 	}
 
+
 	@Override
 	public void put(String row, String col, double val) {
 		if(this.isInitialised()&&row!=null&&col!=null)
 			this.tsvalue.get(row).put(col, new TSDouble(val));
 	}
+
 
 	@Override
 	public void put(String row, String col, Double val) {
@@ -414,11 +454,13 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			this.tsvalue.get(row).put(col, new TSDouble(val));
 	}
 
+
 	@Override
 	public void put(String row, String col, int val) {
 		if(this.isInitialised()&&row!=null&&col!=null)
 			this.tsvalue.get(row).put(col, new TSInteger(val));
 	}
+
 
 	@Override
 	public void put(String row, String col, Integer val) {
@@ -426,11 +468,13 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			this.tsvalue.get(row).put(col, new TSInteger(val));
 	}
 
+
 	@Override
 	public void put(String row, String col, long val) {
 		if(this.isInitialised()&&row!=null&&col!=null)
 			this.tsvalue.get(row).put(col, new TSLong(val));
 	}
+
 
 	@Override
 	public void put(String row, String col, Long val) {
@@ -438,22 +482,26 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			this.tsvalue.get(row).put(col, new TSLong(val));
 	}
 
+
 	@Override
 	public void put(String row, String col, String val) {
 		if(this.isInitialised()&&row!=null&&col!=null&&val!=null)
 			this.tsvalue.get(row).put(col, new TSString(val));
 	}
 
+
 	public void put(String row, String col, TSBaseAPI val) {
 		if(this.isInitialised()&&row!=null&&col!=null&&val!=null)
 			this.tsvalue.get(row).put(col, val);
 	}
+
 
 	@Override
 	public void put(String row, String col, TSAtomicAPI val) {
 		if(this.isInitialised()&&row!=null&&col!=null&&val!=null)
 			this.tsvalue.get(row).put(col, val);
 	}
+
 
 	@Override
 	public TSTableRowAPI put(String key, TSTableRowAPI val) {
@@ -463,6 +511,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return null;
 	}
 
+
 	@Override
 	public TSTableRowAPI put(TSString key, TSTableRowAPI val) {
 		if(this.isInitialised()&&key!=null&&val!=null)
@@ -470,6 +519,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return null;
 	}
+
 
 	@Override
 	public void putAll(Map<? extends String, ? extends TSTableRowAPI> map) {
@@ -483,6 +533,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		}
 	}
 
+
 	@Override
 	public TSTableRowAPI remove(Object key) {
 		if(this.isInitialised()&&key!=null)
@@ -490,6 +541,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return null;
 	}
+
 
 	@Override
 	public TSTableRowAPI remove(String key) {
@@ -499,6 +551,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return null;
 	}
 
+
 	@Override
 	public TSTableRowAPI remove(TSString key) {
 		if(this.isInitialised()&&key!=null)
@@ -507,6 +560,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return null;
 	}
 
+
 	@Override
 	public void setColumns(HashSet<String> cols) {
 		if(this.columnsInitialised==false){
@@ -514,6 +568,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			this.columnsInitialised=true;
 		}
 	}
+
 
 	@Override
 	public void setColumns(String ref_class, String prefix) {
@@ -536,6 +591,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		}
 	}
 
+
 	@Override
 	public int size() {
 		if(this.isInitialised())
@@ -544,9 +600,11 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return 0;
 	}
 
+
 	public String toString(){
 		return this.tsToString(0);
 	}
+
 
 	@Override
 	public void tsClean() {
@@ -554,51 +612,61 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		logger.warn("tsClean not implemented");
 	}
 
+
 	@Override
 	public TEnum tsGetTypeEnum() {
 		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public Set<TEnum> tsGetTypeEnumSet() {
 		return this.typeEnum;
 	}
 
+
 	@Override
 	public String tsGetTypeString() {
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public List<String> tsGetTypeStringList() {
 		return this.typeString;
 	}
 
+
 	@Override
 	public boolean tsIsAtomic() {
 		return false;
 	}
+
 
 	@Override
 	public boolean tsIsComposite() {
 		return true;
 	}
 
+
 	@Override
 	public boolean tsIsType(String t) {
 		return this.typeString.contains(t);
 	}
+
 
 	@Override
 	public boolean tsIsType(TEnum t) {
 		return this.typeEnum.contains(t);
 	}
 
+
 	@Override
 	public void tsPlus(TSBaseAPI tb) {
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}
+
 
 	@Override
 	public String tsToString(int indent) {
@@ -627,11 +695,13 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		return ret;
 	}
 
+
 	@Override
 	public void tsTrim() {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
 
 	@Override
 	public Collection<TSTableRowAPI> values() {
@@ -641,6 +711,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 			return new TreeSet<TSTableRowAPI>();		
 	}
 
+
 	@Override
 	public Map<String, TSTableRowAPI> tsGetMap() {
 		if(this.isInitialised())
@@ -648,6 +719,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		else
 			return new LinkedHashMap<String, TSTableRowAPI>();
 	}
+
 
 	@Override
 	public TSTable tsGetValue(){

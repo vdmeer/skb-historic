@@ -72,7 +72,6 @@ public class TSPropertyMap extends TSTable{
 	/** Value read from command line */
 	public final static String pmValValueCli			= "value:cli";
 
-
 	/** Type of the CLI option */
 	public final static String pmValCliOptionType		= "cli:option:type";
 
@@ -96,17 +95,20 @@ public class TSPropertyMap extends TSTable{
 		this._initPM();
 	}
 
+
 	public TSPropertyMap(HashSet<String>rows){
 		super();
 		this._initPM();
 		this.addRows(rows);
 	}
 
+
 	public TSPropertyMap(String ref_class, String rowPrefix){
 		super();
 		this._initPM();
 		this.addRows(ref_class, rowPrefix);
 	}
+
 
 	protected void _initPM(){
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
@@ -117,6 +119,7 @@ public class TSPropertyMap extends TSTable{
 		this.typeEnum.add(TEnum.TS_COMPOSITE_PROPERTY_MAP);
 	}
 
+
 	public void addProperties(TSTable table){
 		Collection<String> values = table.getRows();
 		for (Iterator<String> i = values.iterator(); i.hasNext(); ){
@@ -124,6 +127,7 @@ public class TSPropertyMap extends TSTable{
 			this.put(s, table.get(s));
         }
 	}
+
 
 	public void addProperties(TSPropertyMap map){
 		Collection<String> values = map.getRows();
@@ -133,12 +137,14 @@ public class TSPropertyMap extends TSTable{
         }
 	}
 
+
 	public boolean hasProperty(String row){
 		if(this.isInitialised())
 			return this.tsvalue.containsKey(row);
 		else
 			return false;
 	}
+
 
 	public boolean hasPropertyValue(String row, String col){
 		boolean ret=false;
@@ -154,29 +160,36 @@ public class TSPropertyMap extends TSTable{
 		return ret;
 	}
 
+
 	public void setValueDefault(String key, String val){
 		this.put(key, TSPropertyMap.pmValValueDefault, val);
 	}
+
 
 	public void setValueDefault(String key, TSAtomicAPI val){
 		this.put(key, TSPropertyMap.pmValValueDefault, val);
 	}
 
+
 	public void setValueDefault(String key, boolean val){
 		this.put(key, TSPropertyMap.pmValValueDefault, val);
 	}
+
 
 	public TSBaseAPI getValueDefault(String key){
 		return this.get(key, TSPropertyMap.pmValValueDefault);
 	}
 
+
 	public void setValueCli(String key, TSAtomicAPI val){
 		this.put(key, TSPropertyMap.pmValValueCli, val);
 	}
 
+
 	public TSBaseAPI getValueCli(String key){
 		return this.get(key, TSPropertyMap.pmValValueCli);
 	}
+
 
 	public TSBaseAPI getValue(String key){
 		if(!this.containsKey(key))
@@ -190,12 +203,14 @@ public class TSPropertyMap extends TSTable{
 		return new TSNull();
 	}
 
+
 	public String loadFromFile(TSBaseAPI fn){
 		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL))
 			return this.loadFromFile(fn.toString());
 		else
 			return null;
 	}
+
 
 	public String loadFromFile(String fn){
 		try {
@@ -247,12 +262,14 @@ public class TSPropertyMap extends TSTable{
 		return null;
 	}
 
+
 	public String writeToFile(TSBaseAPI fn){
 		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL))
 			return this.writeToFile(fn.toString());
 		else
 			return null;
 	}
+
 
 	public String writeToFile(String fn){
 		try {
@@ -293,6 +310,7 @@ public class TSPropertyMap extends TSTable{
 		return null;
 	}
 
+
 	public Set<String> loadFromJson(File file){
 		TSBaseAPI _t=new Json2Oat().read(file);
 		if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
@@ -300,12 +318,14 @@ public class TSPropertyMap extends TSTable{
 		return new TreeSet<String>();
 	}
 
+
 	public Set<String> loadFromJason(TSBaseAPI map){
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			return null;
 		else
 			return this.loadFromJason((TSMapLH)map);
 	}
+
 
 	public Set<String> loadFromJason(TSMapLH map){
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))

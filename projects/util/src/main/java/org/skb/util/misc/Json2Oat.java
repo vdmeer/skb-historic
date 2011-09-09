@@ -64,7 +64,7 @@ public class Json2Oat {
 
 
 	/**
-	 * Read the given JSON file
+	 * Reads the given JSON file and logs errors.
 	 * @param file JSON file
 	 * @return a TSMapLH with information from the JSON file or null in case of errors 
 	 */
@@ -82,7 +82,7 @@ public class Json2Oat {
 
 
 	/**
-	 * Read the JSON from the given file name (URL)
+	 * Reads the JSON from the given file name (URL) and logs errors.
 	 * @param url file name, will be used as URL
 	 * @return a TSMapLH with information from the JSON file or null in case of errors
 	 */
@@ -98,7 +98,7 @@ public class Json2Oat {
 
 
 	/**
-	 * Read JSON from the input scanner and transform into an TSMapLH
+	 * Reads JSON from the input scanner and transform into an TSMapLH and logs errors.
 	 * 
 	 * This method parses the <code>input</code> and removes every line starting with either of the two possible single line comments: '//' and '#'.
 	 * It then calls s2o with the altered input.
@@ -122,7 +122,7 @@ public class Json2Oat {
 
 
 	/**
-	 * Transform the given JSON string into a TSBase object
+	 * Transforms the given JSON string into a TSBase object
 	 * @param content JSON string
 	 * @return The return value depends on the JSON specification. It can be a TSArrayList or a TSMapLH for composite items or a
 	 * TSString, TSBoolean, TSInteger, TSDouble or TSFloat for atomic items. The method is using recursion to parse each part of the JSON string and construct
@@ -141,6 +141,11 @@ public class Json2Oat {
 	}
 
 
+	/**
+	 * Recurses through the given node and constructs a TSBase return.
+	 * @param node starting node for recursion
+	 * @return TSBase object that is either and TSArrayList, a TSMapLH or an atomic type from the package {@link org.skb.util.types.atomic.java}
+	 */
 	private TSBaseAPI traverse(JsonNode node){
 		if(node.isArray()){
 			TSArrayList ret=new TSArrayList();
