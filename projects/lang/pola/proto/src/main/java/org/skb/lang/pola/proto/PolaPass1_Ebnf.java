@@ -30,14 +30,9 @@
 
 package org.skb.lang.pola.proto;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-
-import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.languages.AtomList;
-import org.skb.util.misc.ReportManager;
 
 /**
  * Pass 1 of the Pola parser, syntax checks and building a symbol table.
@@ -46,119 +41,21 @@ import org.skb.util.misc.ReportManager;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PolaPass1_Ebnf {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(PolaPass1_Ebnf.class);
 
+	/** Atom List (Symbol Table) */
 	public AtomList atoms;
-//	private ScopedName sn=ScopedName.getInstance();
 
-//	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();
-//	private ContractDeclarationList contractDeclList=ContractDeclarationList.getInstance();
 
-	//for property declarations, scope check and list build
-	private String lastPropertyDeclScopeAtom;
-	private LinkedHashMap<String,String> propertyDeclScope;
-
-	//for property declarations, scope check and list build only
-	private String lastContractDeclScopeAtom;
-	private LinkedHashMap<String,String> contractDeclScope;
-
-	//Idents (names bound to properties/items as type)
-	private ArrayList<String> tempIdents=new ArrayList<String>();
-	//Idents (names bound to contracts as type)
-	private ArrayList<String> tempContIdents=new ArrayList<String>();
-
+	/**
+	 * Class constructor, initialises the atom list (symbol table) and other local fields
+	 */
 	public PolaPass1_Ebnf(){
-		this.lastPropertyDeclScopeAtom="";
-		this.propertyDeclScope=new LinkedHashMap<String,String>();
-
-		this.lastContractDeclScopeAtom="";
-		this.contractDeclScope=new LinkedHashMap<String,String>();
-
 		//initialise the AtomList with spec
 		this.atoms=AtomList.getInstanceInit();
 		this.atoms.addRow(PolaConstants.Tokens.polaSPECIFICATION);
 		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValCategory, PolaConstants.Tokens.polaVOID);
 		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValType, PolaConstants.Tokens.polaVOID);
-	}
-
-	//add propertyDeclarationScope atoms and rank, check that atom is not redefined
-	public void addPropertyDeclScopeAtom(Token atom){
-		if(this.propertyDeclScope.containsKey(atom.getText()))
-			ReportManager.getInstance().reportError(PolaConstants.Tokens.polaPROPERTY + " scope <" + atom.getText() + "> redefined for " + PolaConstants.Tokens.polaPROPERTY + " <" + this.atoms.scope.toString() + ">",atom);
-		else
-			lastPropertyDeclScopeAtom=atom.getText();
-	}
-	public void addPropertyDeclScopeRank(Token rank){this.propertyDeclScope.put(this.lastPropertyDeclScopeAtom,rank.getText());}
-	public void propertyDeclScopeFinish(){
-/*
-		this.propertyDeclList.add(this._getPropertyRankForScope(DPOLTokens.polaCONTRACT),  DPOLTokens.polaCONTRACT,  this.atoms.scope());
-		this.propertyDeclList.add(this._getPropertyRankForScope(DPOLTokens.polaPACKAGE),   DPOLTokens.polaPACKAGE,   this.atoms.scope());
-		this.propertyDeclList.add(this._getPropertyRankForScope(DPOLTokens.polaELEMENT),   DPOLTokens.polaELEMENT,   this.atoms.scope());
-		this.propertyDeclList.add(this._getPropertyRankForScope(DPOLTokens.polaFACILITY),  DPOLTokens.polaFACILITY,  this.atoms.scope());
-		this.propertyDeclList.add(this._getPropertyRankForScope(DPOLTokens.polaACTION),    DPOLTokens.polaACTION,    this.atoms.scope());
-		this.propertyDeclList.add(this._getPropertyRankForScope(DPOLTokens.polaATTRIBUTE), DPOLTokens.polaATTRIBUTE, this.atoms.scope());
-		this.propertyDeclList.add(this._getPropertyRankForScope(DPOLTokens.polaPARAMETER), DPOLTokens.polaPARAMETER, this.atoms.scope());
-		this.propertyDeclScope.clear();
-*/
-	}
-//	private String _getPropertyRankForScope(String scope){
-//		String ret;
-//		if(this.propertyDeclScope.containsKey(scope))
-//			ret=this.propertyDeclScope.get(scope);
-//		else
-//			ret=LanguageTokens.polaNOT_DEF;
-//		return ret;
-//	}
-
-	//and now the contract scopes
-	public void addContractDeclScopeAtom(Token atom){
-		if(this.contractDeclScope.containsKey(atom.getText()))
-			ReportManager.getInstance().reportError(PolaConstants.Tokens.polaCONTRACT + " scope <" + atom.getText() + "> redefined for " + PolaConstants.Tokens.polaCONTRACT + " <" + this.atoms.scope.toString() +">",atom);
-		else
-			lastContractDeclScopeAtom=atom.getText();
-	}
-	public void addContractDeclScopeRank(Token rank){
-		this.contractDeclScope.put(this.lastContractDeclScopeAtom,rank.getText());
-	}
-	public void contractDeclScopeFinish(){
-//		this.contractDeclList.add(this._getContractRankForScope(DPOLTokens.polaELEMENT),   DPOLTokens.polaELEMENT,   this.atoms.scope());
-//		this.contractDeclList.add(this._getContractRankForScope(DPOLTokens.polaFACILITY),  DPOLTokens.polaFACILITY,  this.atoms.scope());
-		this.contractDeclScope.clear();
-	}
-//	private String _getContractRankForScope(String scope){
-//		String ret;
-//		if(this.contractDeclScope.containsKey(scope))
-//			ret=this.contractDeclScope.get(scope);
-//		else
-//			ret=LanguageTokens.polaNOT_DEF;
-//		return ret;
-//	}
-
-	public void identsStart(){this.tempIdents.clear();}
-	private void _identsAdd(Token tk){this.tempIdents.add(tk.getText());}
-
-	public void identsAddItemDef(Token tk){
-		if(this.tempIdents.contains(tk.getText()))
-			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once","in " + PolaConstants.Tokens.parserItemProp + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
-		else
-			this._identsAdd(tk);
-	}
-	public void identsAddPropDef(Token tk){
-		if(this.tempIdents.contains(tk.getText()))
-			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once","in " + PolaConstants.Tokens.polaPROPERTY + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
-		else
-			this._identsAdd(tk);
-	}
-
-	public void contIdentsStart(){this.tempContIdents.clear();}
-	public void contIdentsAdd(Token tk){
-		if(this.tempContIdents.contains(tk.getText()))
-			ReportManager.getInstance().reportError(PolaConstants.Tokens.parserIDENTIFIER + " used more than once","in " + PolaConstants.Tokens.polaCONTRACT + " definition: " + tk.getText(),tk.getLine(),tk.getCharPositionInLine());
-		else
-			this.tempContIdents.add(tk.getText());
-	}
-
-	public void contractItemDeclAdd(String property){
-//		this.contractDeclList.addItemDecl(this.lastContract, this.lastItem, property, this.lastItemPropRank);
 	}
 }

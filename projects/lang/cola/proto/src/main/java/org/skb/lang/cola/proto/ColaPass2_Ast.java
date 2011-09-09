@@ -53,17 +53,21 @@ import org.skb.util.misc.ReportManager;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaPass2_Ast {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(ColaPass2_Ast.class);
 
+	/** Atom List (Symbol Table) */
 	public AtomList atoms=AtomList.getInstance();
-	//public ScopedName sn=ScopedName.getInstance();
-	//public ScopedName sn=ScopedName.getInstance();
+
+	/** Language Rule map for error/warning reporting */
+	private LanguageRuleMap cr;
+
+	/** Scope processing using ANTLR Tokens */
 	public ScopeToken sn;
+
 	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();
 	private ContractDeclarationList contractDeclList=ContractDeclarationList.getInstance();
 
-	private LanguageRuleMap cr;
-	
 	//for Extends, Provides and Requires
 	private String eprCategory;
 	private String eprAtom;
@@ -86,6 +90,10 @@ public class ColaPass2_Ast {
 	//for ContDef checks
 	private LinkedHashMap<String, ArrayList<String>>contDefList=new LinkedHashMap<String, ArrayList<String>>();
 
+
+	/**
+	 * 
+	 */
 	public ColaPass2_Ast(){
 		this.atoms.scope.clear();
 
@@ -101,15 +109,50 @@ public class ColaPass2_Ast {
 		this.sn=new ScopeToken();
 	}
 
+
 	//EPR methods, including testing the EPR declarations for Properties, Elements and Facilities
-	public void eprStart(String atom){this.eprClear();this.eprAtom(atom);}
-	public void eprAtom(String atom){this.eprAtom=atom;}
-	public void eprCategory(String cat){this.eprCategory=cat;}
+	/**
+	 * 
+	 * @param atom
+	 */
+	public void eprStart(String atom){
+		this.eprClear();
+		this.eprAtom(atom);
+	}
+
+
+	/**
+	 * 
+	 * @param atom
+	 */
+	public void eprAtom(String atom){
+		this.eprAtom=atom;
+	}
+
+
+	/**
+	 * 
+	 * @param cat
+	 */
+	public void eprCategory(String cat){
+		this.eprCategory=cat;
+	}
+
+
+	/**
+	 * 
+	 */
 	public void eprClear(){
 		this.eprCategory="";
 		this.eprAtom="";
 		this.eprList.clear();
 	}
+
+
+	/**
+	 * 
+	 * @param epr
+	 */
 	public void eprAdd(String epr){
 		if(this.eprList.containsKey(epr)==true){
 			Token tk=this.sn.get(this.sn.size()-1);
@@ -127,12 +170,50 @@ public class ColaPass2_Ast {
 			this.eprList.put(epr, this.eprCategory);
 	}
 
-	// temp Type and Value for testing
-	public void setLastBaseType(Token tk){this.lastBaseType=tk;}
-	public void setLastCommonValue(Token tk){this.lastCommonValue=tk;}
-	public void setLastCommonValueType(Token tk){this.lastCommonValueType=tk;}
-	public void setLastCommonValuePlusType(Token value, Token type){this.setLastCommonValueType(type); this.setLastCommonValue(value);}
 
+	// temp Type and Value for testing
+	/**
+	 * 
+	 * @param tk
+	 */
+	public void setLastBaseType(Token tk){
+		this.lastBaseType=tk;
+	}
+
+
+	/**
+	 * 
+	 * @param tk
+	 */
+	public void setLastCommonValue(Token tk){
+		this.lastCommonValue=tk;
+	}
+
+
+	/**
+	 * 
+	 * @param tk
+	 */
+	public void setLastCommonValueType(Token tk){
+		this.lastCommonValueType=tk;
+	}
+
+
+	/**
+	 * 
+	 * @param value
+	 * @param type
+	 */
+	public void setLastCommonValuePlusType(Token value, Token type){
+		this.setLastCommonValueType(type);
+		this.setLastCommonValue(value);
+	}
+
+
+	/**
+	 * 
+	 * @param t
+	 */
 	public void testBaseTypeWithConstValue(String t){
 		String base_type=this.lastBaseType.getText().toLowerCase();
 		String const_valueType=this.lastCommonValueType.getText().toLowerCase();
@@ -154,7 +235,11 @@ public class ColaPass2_Ast {
 		}
 	}
 
+
 	//test property declaration description, must be string and non-empty
+	/**
+	 * 
+	 */
 	public void testPropDeclDescription(){
 		String val=this.lastCommonValue.getText();
 		val=val.replace('"', ' ');
@@ -167,7 +252,17 @@ public class ColaPass2_Ast {
 	}
 
 
-	public void propDefListStart(){this.propDefList.clear();}
+	/**
+	 * 
+	 */
+	public void propDefListStart(){
+		this.propDefList.clear();
+	}
+
+
+	/**
+	 * 
+	 */
 	public void propDef(){
 		boolean add=true;
 		String scoped=this.sn.toString();
@@ -208,7 +303,18 @@ public class ColaPass2_Ast {
 		}
 	}
 
-	public void propDefValueStart(){this.propDefListValues=0;}
+
+	/**
+	 * 
+	 */
+	public void propDefValueStart(){
+		this.propDefListValues=0;
+	}
+
+
+	/**
+	 * 
+	 */
 	public void propDefValueTest(){
 		String scoped=this.sn.toString();
 		//first check if we have a property of that type
@@ -236,6 +342,10 @@ public class ColaPass2_Ast {
 		this.propDefListValues++;
 	}
 
+
+	/**
+	 * 
+	 */
 	public void propDefFinish(){
 		String scoped=this.sn.toString();
 		//first check if we have a property of that type
@@ -289,6 +399,10 @@ public class ColaPass2_Ast {
 		}
 	}
 
+
+	/**
+	 * 
+	 */
 	public void propDefListFinish(){
 		//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
 		String category=this.atoms.get(this.atoms.scope.toString(),AtomList.alValCategory).toString();
@@ -321,10 +435,18 @@ public class ColaPass2_Ast {
 		}
 	}
 
+
+	/**
+	 * 
+	 */
 	public void contDefListStart(){
 		this.contDefList.clear();
 	}
 
+
+	/**
+	 * 
+	 */
 	public void contDef(){
 		String scoped=this.sn.toString();
 		Token tk=this.sn.get(this.sn.size()-1);
@@ -349,6 +471,10 @@ public class ColaPass2_Ast {
 		this.contDefList.put(scoped, new ArrayList<String>());
 	}
 
+
+	/**
+	 * 
+	 */
 	public void contDefListFinish(){
 		String category=this.atoms.get(this.atoms.scope.toString(),AtomList.alValCategory).toString();
 		//now we need to check if all mandatory and required contracts have been defined
@@ -399,12 +525,22 @@ public class ColaPass2_Ast {
 		}
 	}
 
+
+	/**
+	 * 
+	 * @param item
+	 */
 	public void itemDefListStart(Token item){
 		this.currentItemDef=item;
 		this.contDefList.get(this.sn.toString()).add(item.getText());
 		this.itemDefList.clear();
 	}
 
+
+	/**
+	 * 
+	 * @param itemProp
+	 */
 	public void itemDef(Token itemProp){
 		boolean add=true;
 		String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
@@ -432,10 +568,19 @@ public class ColaPass2_Ast {
 			this.itemDefList.put(new String(scoped), this.sn.getList());
 	}
 
+
+	/**
+	 * 
+	 */
 	public void itemDefValueStart(){
 		this.itemDefListValues=0;
 	}
 
+
+	/**
+	 * 
+	 * @param itemProp
+	 */
 	public void itemDefValueTest(Token itemProp){
 		String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
 		//first check if we have a item-property of that type
@@ -463,6 +608,11 @@ public class ColaPass2_Ast {
 		this.itemDefListValues++;
 	}
 
+
+	/**
+	 * 
+	 * @param itemProp
+	 */
 	public void itemDefFinish(Token itemProp){
 		String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
 		//first check if we have a property of that type
@@ -516,6 +666,10 @@ public class ColaPass2_Ast {
 		}
 	}
 
+
+	/**
+	 * 
+	 */
 	public void itemDefListFinish(){
 		String category=ColaConstants.Tokens.colaITEM;
 		String scoped_add=this.sn.toString()+"::"+this.currentItemDef.getText()+"::";
@@ -547,6 +701,13 @@ public class ColaPass2_Ast {
 		this.currentItemDef=null;
 	}
 
+
+	/**
+	 * 
+	 * @param category
+	 * @param catElem
+	 * @return
+	 */
 	public boolean testSN(String category, String catElem){
 		boolean ret=true;
 		if(this.sn.size()==0)

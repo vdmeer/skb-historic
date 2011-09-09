@@ -32,9 +32,13 @@ package org.skb.lang.cola.proto;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Vector;
 
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -70,17 +74,45 @@ import org.skb.util.types.composite.util.TSPropertyMap;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaParser extends LanguageParser{
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(ColaParser.class);
 
+	/** Target StringTemplateGroup */
 	private TargetSTG target;
+
+	/** Class managing statistic information on the parsed COLA specifications */
 	private ColaStatistics stats;
 
+	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
+	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+
+	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
+
+
+	@Override
 	public TSPropertyMap getMap(){
 		return LanguageProperties.getInstance().getMap();
 	}
 
+
+	/**
+	 * Class constructor, initialises local fields and TS type hierarchy.
+	 * 
+	 * Pola reads its configuration from the JAR package as "/org/skb/lang/cola/proto/proto.json".
+	 */
 	public ColaParser(){
 		logger.trace("constructor -- in");
+
+		this.typeString.add(TSRepository.TString.TS_ATOMIC);
+		this.typeEnum.add(TEnum.TS_ATOMIC);
+
+		this.typeString.add(TSRepository.TString.TS_TRIBE_LP);
+		this.typeEnum.add(TEnum.TS_TRIBE_LP);
+
+		this.typeString.add(TSRepository.TString.TS_TRIBE_LP_COLA_PROTO);
+		this.typeEnum.add(TEnum.TS_TRIBE_LP_COLA_PROTO);
+
 		this.xs="cola";
 		this.xt=new TSArrayListString();
 
@@ -100,6 +132,8 @@ public class ColaParser extends LanguageParser{
 		logger.trace("constructor -- out");
 	}
 
+
+	@Override
 	public void setOptions(){
 		logger.trace("setOptions -- in");
 		LanguageProperties lp=LanguageProperties.getInstance();
@@ -110,6 +144,8 @@ public class ColaParser extends LanguageParser{
 		logger.trace("setOptions -- out");
 	}
 
+
+	@Override
 	public void parse(InputStream is){
 		logger.trace("parse -- in");
 
@@ -238,6 +274,8 @@ public class ColaParser extends LanguageParser{
 		logger.trace("parse -- out");
 	}
 
+
+	@Override
 	public void loadTarget(){
 		if(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage)!=null){
 			logger.trace("target set as ColaTargetSTG");
@@ -245,6 +283,8 @@ public class ColaParser extends LanguageParser{
 		}
 	}
 
+
+	@Override
 	public void loadStg(){
 		this.stgl=new STGManager();
 
@@ -272,80 +312,87 @@ public class ColaParser extends LanguageParser{
 			System.exit(-10);
 	}
 
+
+	@Override
 	public void printStg(){
 		if(this.stgl!=null)
 			System.out.println(this.stgl.getSTG().toString());
 	}
 
+
 	@Override
 	public void tsClean() {
-		// TODO Auto-generated method stub
-		
+		//TODO not implemented
+		logger.warn("not implemented");	
 	}
+
 
 	@Override
 	public TEnum tsGetTypeEnum() {
-		// TODO Auto-generated method stub
-		return null;
+		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public Set<TEnum> tsGetTypeEnumSet() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.typeEnum;
 	}
+
 
 	@Override
 	public String tsGetTypeString() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public List<String> tsGetTypeStringList() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.typeString;
 	}
+
 
 	@Override
 	public boolean tsIsAtomic() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
+
 
 	@Override
 	public boolean tsIsComposite() {
-		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 	@Override
 	public boolean tsIsType(String t) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.typeString.contains(t);
 	}
+
 
 	@Override
 	public boolean tsIsType(TEnum t) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.typeEnum.contains(t);
 	}
+
 
 	@Override
 	public void tsPlus(TSBaseAPI tb) {
-		// TODO Auto-generated method stub
-		
+		//TODO not implemented
+		logger.warn("not implemented");
 	}
+
 
 	@Override
 	public String tsToString(int indent) {
-		// TODO Auto-generated method stub
-		return null;
+		//TODO not implemented
+		logger.warn("not implemented");
+		return "";
 	}
+
 
 	@Override
 	public void tsTrim() {
-		// TODO Auto-generated method stub
-		
+		//TODO not implemented
+		logger.warn("not implemented");
 	}
 }

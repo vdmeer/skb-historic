@@ -50,32 +50,46 @@ import org.skb.util.types.api.TSTableRowAPI;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaPass1_Ebnf {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(ColaPass1_Ebnf.class);
 
+	/** Atom List (Symbol Table) */
 	public AtomList atoms;
 
+	/** Language Rule map for error/warning reporting */
 	private LanguageRuleMap cr;
 
+	/** List for Property Declarations */
 	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();
+	/** List for Contract Declarations */
 	private ContractDeclarationList contractDeclList=ContractDeclarationList.getInstance();
 
-	//for property declarations, scope check and list build
+	/** Holds the last parsed scope atom in a property declarations */
 	private String lastPropertyDeclScopeAtom;
+	/** Holds the scopes of the current property declaration, for scope checks */
 	private LinkedHashMap<String,String> propertyDeclScope;
 
-	//for property declarations, scope check and list build only
+	/** Holds the last parsed scope atom in a contract declarations */
 	private String lastContractDeclScopeAtom;
+	/** Holds the scopes of the current contract declaration, for scope checks */
 	private LinkedHashMap<String,String> contractDeclScope;
 
-	//Idents (names bound to properties/items as type)
-	private ArrayList<String> tempIdents=new ArrayList<String>();
-	//Idents (names bound to contracts as type)
+	/** Temporary storage of Identifiers bound to properties or items as type */
+	private ArrayList<String> tempPropIdents=new ArrayList<String>();
+	/** Temporary storage of Identifiers bound to contracts or items as type */
 	private ArrayList<String> tempContIdents=new ArrayList<String>();
 
+	/** ID of last parsed contract */
 	private String lastContract=null;
+	/** ID of last parsed item */
 	private String lastItem=null;
+	/** ID of last parsed item property rank */
 	private String lastItemPropRank=null;
 
+
+	/**
+	 * Class constructor, initialises the atom list (symbol table) and other local fields
+	 */
 	public ColaPass1_Ebnf(){
 		this.lastPropertyDeclScopeAtom="";
 		this.propertyDeclScope=new LinkedHashMap<String,String>();
@@ -97,7 +111,11 @@ public class ColaPass1_Ebnf {
 		this.atoms.setDefaultCategory(ColaConstants.Tokens.colaDEFINITION);
 	}
 
-	//add propertyDeclarationScope atoms and rank, check that atom is not redefined
+
+	/**
+	 * Stores the last parsed property scope in a property declaration if it not exists, logs error if is already defined
+	 * @param atom to be checked and stored
+	 */
 	public void addPropertyDeclScopeAtom(Token atom){
 		if(this.propertyDeclScope.containsKey(atom.getText()))
 			ReportManager.getInstance().reportError(
@@ -106,7 +124,20 @@ public class ColaPass1_Ebnf {
 		else
 			lastPropertyDeclScopeAtom=atom.getText();
 	}
-	public void addPropertyDeclScopeRank(Token rank){this.propertyDeclScope.put(this.lastPropertyDeclScopeAtom,rank.getText());}
+
+
+	/**
+	 * Adds the parsed rank to the last parsed atom for a property scope declaration.
+	 * @param rank to be stored
+	 */
+	public void addPropertyDeclScopeRank(Token rank){
+		this.propertyDeclScope.put(this.lastPropertyDeclScopeAtom,rank.getText());
+	}
+
+
+	/**
+	 * Finishes the property scope declaration and empties the temporary property scope list.
+	 */
 	public void propertyDeclScopeFinish(){
 		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaCONTRACT),  ColaConstants.Tokens.colaCONTRACT,  this.atoms.scope.toString());
 		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaPACKAGE),   ColaConstants.Tokens.colaPACKAGE,   this.atoms.scope.toString());
@@ -117,6 +148,13 @@ public class ColaPass1_Ebnf {
 		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaPARAMETER), ColaConstants.Tokens.colaPARAMETER, this.atoms.scope.toString());
 		this.propertyDeclScope.clear();
 	}
+
+
+	/**
+	 * Returns the rank for a given property scope
+	 * @param scope property scope atom
+	 * @return the parsed/stored rank of the scope exists, colaNOT_DEF otherwise
+	 */
 	private String _getPropertyRankForScope(String scope){
 		String ret;
 		if(this.propertyDeclScope.containsKey(scope))
@@ -127,6 +165,10 @@ public class ColaPass1_Ebnf {
 	}
 
 	//and now the contract scopes
+	/**
+	 * Stores the last parsed contract scope in a contract declaration if it not exists, logs error if is already defined
+	 * @param atom to be checked and stored
+	 */
 	public void addContractDeclScopeAtom(Token atom){
 		if(this.contractDeclScope.containsKey(atom.getText()))
 			ReportManager.getInstance().reportError(
@@ -135,14 +177,32 @@ public class ColaPass1_Ebnf {
 		else
 			lastContractDeclScopeAtom=atom.getText();
 	}
+
+
+	/**
+	 * Adds the parsed rank to the last parsed atom for a contract scope declaration.
+	 * @param rank to be stored
+	 */
 	public void addContractDeclScopeRank(Token rank){
 		this.contractDeclScope.put(this.lastContractDeclScopeAtom,rank.getText());
 	}
+
+
+	/**
+	 * Finishes the contract scope declaration and empties the temporary contract scope list.
+	 */
 	public void contractDeclScopeFinish(){
 		this.contractDeclList.add(this._getContractRankForScope(ColaConstants.Tokens.colaELEMENT),   ColaConstants.Tokens.colaELEMENT,   this.atoms.scope.toString());
 		this.contractDeclList.add(this._getContractRankForScope(ColaConstants.Tokens.colaFACILITY),  ColaConstants.Tokens.colaFACILITY,  this.atoms.scope.toString());
 		this.contractDeclScope.clear();
 	}
+
+
+	/**
+	 * Returns the rank for a given contract scope
+	 * @param scope contract scope atom
+	 * @return the parsed/stored rank of the scope exists, colaNOT_DEF otherwise
+	 */
 	private String _getContractRankForScope(String scope){
 		String ret;
 		if(this.contractDeclScope.containsKey(scope))
@@ -152,67 +212,158 @@ public class ColaPass1_Ebnf {
 		return ret;
 	}
 
-	public void identsStart(){this.tempIdents.clear();}
-	private void _identsAdd(Token tk){this.tempIdents.add(tk.getText());}
 
-	public void identsAddItemDef(Token tk){
-		if(this.tempIdents.contains(tk.getText()))
+	/**
+	 * Clears the list of temporary stored property identifiers.
+	 */
+	public void identsStart(){
+		this.tempPropIdents.clear();
+	}
+
+
+	/**
+	 * Adds a token to the list of temporary stored property identifiers.
+	 * @param token to be added
+	 */
+	private void _identsAdd(Token token){
+		this.tempPropIdents.add(token.getText());
+	}
+
+
+	/**
+	 * Checks and adds a token to the list of temporary stored property identifiers.
+	 * 
+	 * The property identifier should have been defined in an Item declaration. The method will test if it is unique for
+	 * this item declaration, and add if unique or log an error if not.
+	 * @param token to be added and checked
+	 */
+	public void identsAddItemDef(Token token){
+		if(this.tempPropIdents.contains(token.getText()))
 			ReportManager.getInstance().reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleIdentifier04),
-					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier04, new String[]{tk.getText()}),
-					tk.getLine(),
-					tk.getCharPositionInLine());
+					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier04, new String[]{token.getText()}),
+					token.getLine(),
+					token.getCharPositionInLine());
 		else
-			this._identsAdd(tk);
+			this._identsAdd(token);
 	}
-	public void identsAddPropDef(Token tk){
-		if(this.tempIdents.contains(tk.getText()))
+
+
+	/**
+	 * Checks and adds a token to the list of temporary stored property identifiers.
+	 * 
+	 * The property identifier should have been defined in a Contract declaration. The method will test if it is unique for
+	 * this contract declaration, and add if unique or log an error if not.
+	 * @param token to be added and checked
+	 */
+	public void identsAddPropDef(Token token){
+		if(this.tempPropIdents.contains(token.getText()))
 			ReportManager.getInstance().reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleIdentifier05),
-					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier05, new String[]{tk.getText()}),
-					tk.getLine(),
-					tk.getCharPositionInLine());
+					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier05, new String[]{token.getText()}),
+					token.getLine(),
+					token.getCharPositionInLine());
 		else
-			this._identsAdd(tk);
+			this._identsAdd(token);
 	}
 
-	public void contIdentsStart(){this.tempContIdents.clear();}
-	public void contIdentsAdd(Token tk){
-		if(this.tempContIdents.contains(tk.getText()))
+
+	/**
+	 * Clears the list of temporary stored contract identifiers.
+	 */
+	public void contIdentsStart(){
+		this.tempContIdents.clear();
+	}
+
+
+	/**
+	 * Checks and adds a token to the list of temporary stored contract identifiers.
+	 * 
+	 * If the token is already in the list, an error will be logged, otherwise the token will be added to the list.
+	 * @param token to be added
+	 */
+	public void contIdentsAdd(Token token){
+		if(this.tempContIdents.contains(token.getText()))
 			ReportManager.getInstance().reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleIdentifier06),
-					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier06, new String[]{tk.getText()}),
-					tk.getLine(),
-					tk.getCharPositionInLine());
+					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier06, new String[]{token.getText()}),
+					token.getLine(),
+					token.getCharPositionInLine());
 		else
-			this.tempContIdents.add(tk.getText());
+			this.tempContIdents.add(token.getText());
 	}
 
+
+	/**
+	 * Adds a property declaration parsed within an Item of a Contract to the contract declaration list.
+	 * @param property to be added
+	 */
 	public void contractItemDeclAdd(String property){
 		this.contractDeclList.addItemDecl(this.lastContract, this.lastItem, property, this.lastItemPropRank);
 	}
 
-	public void lastContract(){this.lastContract=this.atoms.getLastID();}
-	public void lastItem(){this.lastItem=this.atoms.getLastID();}
-	public void lastItemPropRank(Token rank){this.lastItemPropRank=rank.getText();}
 
-	//from atoms, only here for error handling
-	public void putAtom(Token tk, String category, Token type, Boolean array){
-		TSTableRowAPI otr=this.atoms.putAtom(tk, category, type, array);
+	/**
+	 * Stores the last parsed Identifier as a contract identifier.
+	 */
+	public void lastContract(){
+		this.lastContract=this.atoms.getLastID();
+	}
+
+
+	/**
+	 * Stores the last parsed Identifier as an item identifier.
+	 */
+	public void lastItem(){
+		this.lastItem=this.atoms.getLastID();
+	}
+
+
+	/**
+	 * Stores the last parsed item property rank.
+	 * @param rank to be stored
+	 */
+	public void lastItemPropRank(Token rank){
+		this.lastItemPropRank=rank.getText();
+	}
+
+
+	/**
+	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
+	 * @param token of the atom
+	 * @param category the atom belongs to
+	 * @param type of the atom
+	 * @param array true if it is an array, false otherwise
+	 */
+	public void putAtom(Token token, String category, Token type, Boolean array){
+		TSTableRowAPI otr=this.atoms.putAtom(token, category, type, array);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(
 					ColaConstants.Tokens.parserIDENTIFIER+" used more than once",
-					tk,
+					token,
 					ColaConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
 		}
 	}
 
-	public void putAtom(Token tk, String category){
-		this.putAtom(tk, category, null);
+
+	/**
+	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
+	 * @param token of the atom
+	 * @param category the atom belongs to
+	 */
+	public void putAtom(Token token, String category){
+		this.putAtom(token, category, null);
 	}
 
-	public void putAtom(Token tk, String category, Token type){
-		this.putAtom(tk, category, type, false);
+
+	/**
+	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
+	 * @param token of the atom
+	 * @param category the atom belongs to
+	 * @param type of the atom
+	 */
+	public void putAtom(Token token, String category, Token type){
+		this.putAtom(token, category, type, false);
 	}
 
 }

@@ -42,15 +42,28 @@ import org.skb.util.log.LogManager;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Glue {
+	/** logger instance */
 	static Logger logger;
 
+
+	/**
+	 * Main method to execute the GLUE-Proto parser with arguments.
+	 * @param args arguments for execution, usually command line arguments
+	 */
 	public static void main (String[] args) {
 		LogManager.init();
 		logger=Logger.getLogger(Glue.class);
 
+		logger.trace("main -- in");
+		logger.trace("initialise tribe and properties");
 		Tribe tribe=new Tribe();
 
+		logger.trace("create Language[]");
 		LanguageParser[] supportedLanguages={new GlueParser()};
+
+		logger.trace("calling tribe to parse");
 		tribe.start(supportedLanguages, args);
+
+		logger.trace("main -- out");
 	}
 }

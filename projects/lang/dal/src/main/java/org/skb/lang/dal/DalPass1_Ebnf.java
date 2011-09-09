@@ -46,11 +46,19 @@ import org.skb.util.types.api.TSTableRowAPI;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class DalPass1_Ebnf {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(DalPass1_Ebnf.class);
 
+	/** Atom List (Symbol Table) */
 	public AtomList atoms;
+
+	/** Language Rule map for error/warning reporting */
 	private LanguageRuleMap cr;
 
+
+	/**
+	 * Class constructor, initialises the atom list (symbol table) and other local fields
+	 */
 	public DalPass1_Ebnf(){
 		this.cr=new LanguageRuleMap();
 		this.cr.setClassName(DalConstants.Rules.class.getName());
@@ -61,18 +69,30 @@ public class DalPass1_Ebnf {
 		this.atoms.setScopeSeparator(TribeProperties.getInstance().getValueDefault("internal-scope-sep").toString());
 	}
 
-	public void putAtom(Token tk, String category, Token type){
-		TSTableRowAPI otr=this.atoms.putAtom(tk, category, type);
+
+	/**
+	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
+	 * @param token of the atom
+	 * @param category the atom belongs to
+	 * @param type of the atom
+	 */
+	public void putAtom(Token token, String category, Token type){
+		TSTableRowAPI otr=this.atoms.putAtom(token, category, type);
 		if(otr!=null){
 			ReportManager.getInstance().reportError(
 					DalConstants.Tokens.parserIDENTIFIER+" used more than once",
-					tk,
+					token,
 					DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
 		}
 	}
 
-	public void putAtom(Token tk, String category){
-		this.putAtom(tk, category, null);
-	}
 
+	/**
+	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
+	 * @param token of the atom
+	 * @param category the atom belongs to
+	 */
+	public void putAtom(Token token, String category){
+		this.putAtom(token, category, null);
+	}
 }

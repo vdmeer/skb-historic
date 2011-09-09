@@ -42,16 +42,28 @@ import org.skb.util.log.LogManager;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Pola {
+	/** Logger instance */
 	static Logger logger;
 
+
+	/**
+	 * Main method to execute the COLA-Proto parser with arguments.
+	 * @param args arguments for execution, usually command line arguments
+	 */
 	public static void main (String[] args) {
 		LogManager.init();
 		logger=Logger.getLogger(Pola.class);
 
+		logger.trace("main -- in");
+		logger.trace("initialise tribe and properties");
 		Tribe tribe=new Tribe();
 
+		logger.trace("create Language[]");
 		LanguageParser[] supportedLanguages={new PolaParser()};
 
+		logger.trace("calling tribe to parse");
 		tribe.start(supportedLanguages, args);
+
+		logger.trace("main -- out");
 	}
 }

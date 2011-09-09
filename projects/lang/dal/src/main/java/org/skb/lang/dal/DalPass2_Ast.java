@@ -47,10 +47,17 @@ import org.skb.util.languages.AtomList;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class DalPass2_Ast {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(DalPass2_Ast.class);
 
+	/** Atom List (Symbol Table) */
 	public AtomList atoms;
+
+	/** Language Rule map for error/warning reporting */
 	private LanguageRuleMap cr;
+
+//	/** Scope processing using ANTLR Tokens */
+//	public ScopeToken sn;
 
 	// temp Type and Value for testing
 	private Token lastBaseType=null;
@@ -60,7 +67,6 @@ public class DalPass2_Ast {
 	public DalPass2_Ast(){
 		this.atoms=AtomList.getInstance();
 		this.atoms.scope.clear();
-//System.err.println(this.atoms);
 
 		this.cr=new LanguageRuleMap();
 		this.cr.setClassName(DalConstants.Rules.class.getName());
@@ -201,13 +207,17 @@ public class DalPass2_Ast {
 	}
 
 	// temp Type and Value for testing
-	public void setLastBaseType(Token tk){this.lastBaseType=tk;}
-	public void setLastCommonValue(Token tk){this.lastCommonValue=tk;}
-	public void setLastCommonValueType(Token tk){this.lastCommonValueType=tk;}
-	public void setLastCommonValuePlusType(Token value, Token type){this.setLastCommonValueType(type); this.setLastCommonValue(value);}
-
-	public boolean testSN(String category, String catElem){
-		boolean ret=true;
-		return ret;
+	public void setLastBaseType(Token tk){
+		this.lastBaseType=tk;
+	}
+	public void setLastCommonValue(Token tk){
+		this.lastCommonValue=tk;
+	}
+	public void setLastCommonValueType(Token tk){
+		this.lastCommonValueType=tk;
+	}
+	public void setLastCommonValuePlusType(Token value, Token type){
+		this.setLastCommonValueType(type);
+		this.setLastCommonValue(value);
 	}
 }
