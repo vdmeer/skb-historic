@@ -81,5 +81,4 @@ public class TargetSTG {
 	public StringTemplate getStdHeaderST(){return this.stdHeader.getSTG().getInstanceOf("std");}
 	public StringTemplate getFileStartST(){return this.stdHeader.getSTG().getInstanceOf("fileStart");}
 	public StringTemplate getFileEndST(){return this.stdHeader.getSTG().getInstanceOf("fileEnd");}
-
 }
