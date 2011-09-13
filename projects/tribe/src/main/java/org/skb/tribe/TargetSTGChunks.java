@@ -30,9 +30,9 @@
 
 package org.skb.tribe;
 
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Class that checks the chunks of a given string template with a required list.

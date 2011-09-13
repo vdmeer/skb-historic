@@ -32,8 +32,8 @@ package org.skb.tribe;
 
 import java.util.TreeMap;
 
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Class that reads language tokens from the configuration and processes them for parser/lexer.

@@ -31,9 +31,9 @@
 package org.skb.tribe;
 
 import org.apache.commons.lang.StringUtils;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.composite.util.TSLangRuleMap;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Class that reads parser rules and provides them for pass1/2 of parsers.

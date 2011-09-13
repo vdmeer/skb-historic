@@ -32,10 +32,10 @@ package org.skb.tribe;
 
 import java.io.InputStream;
 
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
+import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.api.TSAtomicAPI;
-import org.skb.util.types.atomic.util.TSArrayListString;
-import org.skb.util.types.composite.util.TSPropertyMap;
 
 /**
  * Abstract class containing a language parser.

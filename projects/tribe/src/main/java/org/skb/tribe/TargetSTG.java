@@ -31,9 +31,9 @@
 package org.skb.tribe;
 
 import org.antlr.stringtemplate.StringTemplate;
+import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.atomic.util.TSArrayListString;
-import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class that handles target string template groups for the parser.

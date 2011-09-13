@@ -46,13 +46,13 @@ import org.skb.lang.cpp.CPP;
 import org.skb.util.cli.Cli;
 import org.skb.util.cli.CliApache;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.TSNull;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSBoolean;
-import org.skb.util.types.atomic.java.TSString;
-import org.skb.util.types.composite.util.TSPropertyMap;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSNull;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
  * This is the main Tribe class, it does all the magic.

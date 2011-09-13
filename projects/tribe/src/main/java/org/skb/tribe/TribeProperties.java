@@ -35,10 +35,10 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.misc.PropertyHandler;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.composite.util.TSMapLH;
-import org.skb.util.types.composite.util.TSPropertyMap;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
  * Singleton class maintaining all properties of the Tribe system.
