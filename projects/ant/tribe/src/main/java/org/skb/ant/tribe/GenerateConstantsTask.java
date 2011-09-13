@@ -43,8 +43,8 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.LanguageConfigurationConstants;
-import org.skb.util.types.atomic.java.TSString;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Ant task for generating constant classes for parsers.
