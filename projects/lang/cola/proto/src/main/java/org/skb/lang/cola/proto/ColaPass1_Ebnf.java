@@ -41,7 +41,7 @@ import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.LanguageRuleMap;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.api.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.

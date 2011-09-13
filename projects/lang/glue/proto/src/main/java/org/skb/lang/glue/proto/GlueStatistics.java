@@ -37,10 +37,10 @@ import org.skb.lang.glue.proto.constants.GlueConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.util.TSArrayListString;
-import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * Class handling statistic information about a Glue specification.

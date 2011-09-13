@@ -45,8 +45,8 @@ import org.skb.lang.dal.constants.DalConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
-import org.skb.util.types.atomic.java.TSBoolean;
-import org.skb.util.types.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 
 /**
  * Pass 3 of the DAL parser using templates to generate a target language specification.

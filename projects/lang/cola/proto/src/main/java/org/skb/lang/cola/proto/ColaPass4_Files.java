@@ -44,8 +44,8 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 
 /**
  * Pass 4 of the Cola Parser, generating files for output.

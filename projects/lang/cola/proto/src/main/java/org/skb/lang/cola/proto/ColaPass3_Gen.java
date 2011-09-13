@@ -40,8 +40,8 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
 
 /**
  * Pass 3 of the Cola parser using templates to generate a target language specification.
