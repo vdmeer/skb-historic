@@ -30,7 +30,7 @@
 
 package org.skb.kb;
 
-import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
 
 /**
  * Interface for an SKB interpreter that processes values (strings)

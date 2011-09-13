@@ -31,8 +31,8 @@
 package org.skb.kb.targets.tgtjava.core.def;
 
 import org.skb.kb.SKBBuilder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.creational.builder.Request;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * SKB Default Builder (Core Package)

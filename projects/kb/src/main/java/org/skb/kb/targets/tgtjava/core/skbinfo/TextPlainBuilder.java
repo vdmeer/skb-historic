@@ -33,9 +33,9 @@ package org.skb.kb.targets.tgtjava.core.skbinfo;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.skb.kb.SKBBuilder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.creational.builder.Request;
+import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * SKB Information Builder for plain text output (Core Package)

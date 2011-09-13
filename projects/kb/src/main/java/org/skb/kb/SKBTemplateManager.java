@@ -31,9 +31,9 @@
 package org.skb.kb;
 
 import org.apache.log4j.Logger;
-import org.skb.util.pattern.TemplateManager;
-import org.skb.util.types.atomic.stringtemplate.TSSTGManager;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.creational.builder.TemplateManager;
+import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * SKB specific Template Manager, supporting builders in managing templates.

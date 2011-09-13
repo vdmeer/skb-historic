@@ -3,7 +3,7 @@ package org.skb.kb.tests;
 import org.skb.kb.SKB;
 import org.skb.kb.SKBInit;
 import org.skb.kb.SKBReader;
-import org.skb.util.pattern.Request;
+import org.skb.util.patterns.creational.builder.Request;
 
 public class SKB_GeoCities {
 

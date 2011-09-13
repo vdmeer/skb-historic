@@ -31,8 +31,8 @@
 package org.skb.kb.targets.tgtjava.core.def;
 
 import org.skb.kb.SKBReader;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.patterns.creational.builder.Request;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
  * SKB Default Reader (Core Package)

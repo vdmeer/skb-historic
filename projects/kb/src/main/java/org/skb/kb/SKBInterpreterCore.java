@@ -30,8 +30,8 @@
 
 package org.skb.kb;
 
-import org.skb.util.pattern.Request;
-import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.patterns.creational.builder.Request;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
 
 /**
  * Interface for an SKB interpreter for core functionality (identifier as string and Request)

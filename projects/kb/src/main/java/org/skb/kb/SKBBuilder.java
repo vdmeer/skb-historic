@@ -30,9 +30,9 @@
 
 package org.skb.kb;
 
-import org.skb.util.pattern.Builder;
-import org.skb.util.pattern.Request;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.creational.builder.Builder;
+import org.skb.util.patterns.creational.builder.Request;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Abstract class to implement builders for the SKB.
