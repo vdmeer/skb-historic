@@ -206,11 +206,19 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	public TSTableRowAPI put(TSString key, TSTableRowAPI val);
 
 	public void putAll(Map<? extends String, ? extends TSTableRowAPI> map);
+
 	public TSTableRowAPI remove(String key);
+
 	public TSTableRowAPI remove(TSString key);
+
 	public void setColumns(HashSet<String>cols);
+
 	public void setColumns(String ref_class, String prefix);
+
+	public void setColumns(HashSet<String>cols, String ref_class, String prefix);
+
 	public Map<String, TSTableRowAPI> tsGetMap();
+
 	public Object tsGetValue();
 
 	public Collection<TSTableRowAPI> values();

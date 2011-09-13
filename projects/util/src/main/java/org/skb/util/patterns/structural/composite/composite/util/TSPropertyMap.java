@@ -42,13 +42,13 @@ import org.apache.commons.configuration.INIConfiguration;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
+import org.skb.util.FieldKeys;
 import org.skb.util.misc.Json2Oat;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSNull;
 import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 
 /**
  * Provides a map of properties based on TSTable
@@ -60,35 +60,6 @@ public class TSPropertyMap extends TSTable{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSPropertyMap.class);
 
-	/** TS Type of the property */
-	public final static String pmValType				= "at:type";
-
-	/** Default value of the property */
-	public final static String pmValValueDefault		= "value:default";
-
-	/** Value read from file */
-	public final static String pmValValueFile			= "value:file";
-
-	/** Value read from command line */
-	public final static String pmValValueCli			= "value:cli";
-
-	/** Type of the CLI option */
-	public final static String pmValCliOptionType		= "cli:option:type";
-
-	/** Short option for CLI (first character is used) */
-	public final static String pmValCliOptionShort		= "cli:option:short";
-
-	/** Long option for CLI (all characters are used, some restrictions apply) */
-	public final static String pmValCliOptionLong		= "cli:option:long";
-
-	/** Additional description, i.e. extra arguments */
-	public final static String pmValCliUsageDescrAdd	= "cli:option:arg-name";
-
-	/** Description of the property for CLI */
-	public final static String pmValCliUsageDescr		= "cli:usage:descr";
-
-	/** Long description of the property for CLI */
-	public final static String pmValCliUsageDescrLong	= "cli:usage:descr-long";
 
 	public TSPropertyMap(){
 		super();
@@ -112,7 +83,21 @@ public class TSPropertyMap extends TSTable{
 
 	protected void _initPM(){
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
-		this.setColumns(TSPropertyMap.class.getName(), "pmVal");
+
+		HashSet<String>columns=new HashSet<String>();
+		columns.add(FieldKeys.fieldValueType);
+		columns.add(FieldKeys.fieldValueDefault);
+		columns.add(FieldKeys.fieldValueFile);
+		columns.add(FieldKeys.fieldValueCli);
+		columns.add(FieldKeys.fieldCliOptionType);
+		columns.add(FieldKeys.fieldCliOptionShort);
+		columns.add(FieldKeys.fieldCliOptionLong);
+		columns.add(FieldKeys.fieldCliOptionDescriptionShort);
+		columns.add(FieldKeys.fieldCliOptionDescriptionLong);
+		columns.add(FieldKeys.fieldCliOptionArguments);
+		columns.add(FieldKeys.fieldCliOptionDescriptionArguments);
+
+		this.setColumns(columns, TSPropertyMap.class.getName(), "pmVal");
 		this.addRows(TSPropertyMap.class.getName(), "pmKey");
 
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_PROPERTY_MAP);
@@ -162,44 +147,44 @@ public class TSPropertyMap extends TSTable{
 
 
 	public void setValueDefault(String key, String val){
-		this.put(key, TSPropertyMap.pmValValueDefault, val);
+		this.put(key, FieldKeys.fieldValueDefault, val);
 	}
 
 
-	public void setValueDefault(String key, TSAtomicAPI val){
-		this.put(key, TSPropertyMap.pmValValueDefault, val);
+	public void setValueDefault(String key, TSBaseAPI val){
+		this.put(key, FieldKeys.fieldValueDefault, val);
 	}
 
 
 	public void setValueDefault(String key, boolean val){
-		this.put(key, TSPropertyMap.pmValValueDefault, val);
+		this.put(key, FieldKeys.fieldValueDefault, val);
 	}
 
 
 	public TSBaseAPI getValueDefault(String key){
-		return this.get(key, TSPropertyMap.pmValValueDefault);
+		return this.get(key, FieldKeys.fieldValueDefault);
 	}
 
 
-	public void setValueCli(String key, TSAtomicAPI val){
-		this.put(key, TSPropertyMap.pmValValueCli, val);
+	public void setValueCli(String key, TSBaseAPI val){
+		this.put(key, FieldKeys.fieldValueCli, val);
 	}
 
 
 	public TSBaseAPI getValueCli(String key){
-		return this.get(key, TSPropertyMap.pmValValueCli);
+		return this.get(key, FieldKeys.fieldValueCli);
 	}
 
 
 	public TSBaseAPI getValue(String key){
 		if(!this.containsKey(key))
 			return new TSNull();
-		if(!(this.get(key, TSPropertyMap.pmValValueCli)).tsIsType(TEnum.TS_NULL))
-			return this.get(key, TSPropertyMap.pmValValueCli);
-		if(!(this.get(key, TSPropertyMap.pmValValueFile)).tsIsType(TEnum.TS_NULL))
-			return this.get(key, TSPropertyMap.pmValValueFile);
-		if(!(this.get(key, TSPropertyMap.pmValValueDefault)).tsIsType(TEnum.TS_NULL))
-			return this.get(key, TSPropertyMap.pmValValueDefault);
+		if(!(this.get(key, FieldKeys.fieldValueCli)).tsIsType(TEnum.TS_NULL))
+			return this.get(key, FieldKeys.fieldValueCli);
+		if(!(this.get(key, FieldKeys.fieldValueFile)).tsIsType(TEnum.TS_NULL))
+			return this.get(key, FieldKeys.fieldValueFile);
+		if(!(this.get(key, FieldKeys.fieldValueDefault)).tsIsType(TEnum.TS_NULL))
+			return this.get(key, FieldKeys.fieldValueDefault);
 		return new TSNull();
 	}
 
@@ -239,17 +224,17 @@ public class TSPropertyMap extends TSTable{
 			while(it.hasNext()){
 				String p=it.next().toString();
 				if(this.containsKey(p)){
-					String type=this.get(p, TSPropertyMap.pmValType).toString();
+					String type=this.get(p, FieldKeys.fieldValueType).toString();
 					if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING))
-	        			this.put(p, TSPropertyMap.pmValValueFile, cfg.getString(p));
+	        			this.put(p, FieldKeys.fieldValueFile, cfg.getString(p));
 	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN))
-	        			this.put(p, TSPropertyMap.pmValValueFile, cfg.getBoolean(p, false));
+	        			this.put(p, FieldKeys.fieldValueFile, cfg.getBoolean(p, false));
 	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER))
-	        			this.put(p, TSPropertyMap.pmValValueFile, cfg.getInteger(p, 0));
+	        			this.put(p, FieldKeys.fieldValueFile, cfg.getInteger(p, 0));
         			else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE))
-	        			this.put(p, TSPropertyMap.pmValValueFile, cfg.getDouble(p));
+	        			this.put(p, FieldKeys.fieldValueFile, cfg.getDouble(p));
 	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_LONG))
-	        			this.put(p, TSPropertyMap.pmValValueFile, cfg.getLong(p, 0));
+	        			this.put(p, FieldKeys.fieldValueFile, cfg.getLong(p, 0));
 //	        		else
 //	        			System.err.println("TSPropMap, loadfromfile, unknown type <"+type+"> for <"+p+">");
 				}
@@ -294,7 +279,7 @@ public class TSPropertyMap extends TSTable{
 			HashSet<String> rows=new HashSet<String>(this.getRows());
 	        for (Iterator<String> i = rows.iterator(); i.hasNext(); i.hasNext()){
 	        	String row=i.next();
-	        	if(this.get(row, TSPropertyMap.pmValCliOptionShort)!=null||this.get(row, TSPropertyMap.pmValCliOptionLong)!=null)
+	        	if(this.get(row, FieldKeys.fieldCliOptionShort)!=null||this.get(row, FieldKeys.fieldCliOptionLong)!=null)
 	        		cfg.setProperty(prefix+row, this.getValue(row));
 	        }
 			if(fn.endsWith(".ini"))
@@ -345,13 +330,13 @@ public class TSPropertyMap extends TSTable{
 		    		this.put(key,s,val);
 		    }
 
-		    val=map.get(key+"/"+TSPropertyMap.pmValType);
+		    val=map.get(key+"/"+FieldKeys.fieldValueType);
 			if(val!=null&&!val.tsIsType(TEnum.TS_NULL))
-				this.put(key,TSPropertyMap.pmValType,TSRepository.type(val));
+				this.put(key,FieldKeys.fieldValueType,TSRepository.type(val));
 
-			val=map.get(key+"/"+TSPropertyMap.pmValCliOptionType);
+			val=map.get(key+"/"+FieldKeys.fieldCliOptionType);
 			if(val!=null&&!val.tsIsType(TEnum.TS_NULL))
-				this.put(key,TSPropertyMap.pmValCliOptionType,TSRepository.type(val));
+				this.put(key,FieldKeys.fieldCliOptionType,TSRepository.type(val));
 
 			//remove the key from cfg_ar to allow test for unknown options
 			map.remove(key);

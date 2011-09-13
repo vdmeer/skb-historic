@@ -6,6 +6,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.junit.Test;
+import org.skb.util.FieldKeys;
 import org.skb.util.cli.CliApache;
 import org.skb.util.log.LogManager;
 import org.skb.util.misc.Json2Oat;
@@ -80,13 +81,13 @@ public class CliApacheTest extends TestCase {
 			assertEquals(true, prop.containsKey(optLong));
 			//if arg=="arg" we have a boolean CLI value
 			if(o.hasArg())
-				assertEquals(arg.toString(), prop.get(optLong).get(TSPropertyMap.pmValCliUsageDescrAdd).toString());
+				assertEquals(arg.toString(), prop.get(optLong).get(FieldKeys.fieldCliOptionDescriptionArguments).toString());
 
 			//if optShort==null, then not set, so put on "" for testing
 			if(optShort==null)
 				optShort="";
-			assertEquals(optShort, prop.get(optLong).get(TSPropertyMap.pmValCliOptionShort).toString());
-			assertEquals(descr, prop.get(optLong).get(TSPropertyMap.pmValCliUsageDescr).toString());
+			assertEquals(optShort, prop.get(optLong).get(FieldKeys.fieldCliOptionShort).toString());
+			assertEquals(descr, prop.get(optLong).get(FieldKeys.fieldCliOptionDescriptionShort).toString());
 		}
 		assertEquals(18, opt.getOptions().size());
 	}

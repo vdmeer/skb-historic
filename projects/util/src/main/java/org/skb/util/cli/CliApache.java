@@ -43,6 +43,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
+import org.skb.util.FieldKeys;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
@@ -121,16 +122,16 @@ public class CliApache implements Cli {
 		HashSet<String> ts=new HashSet<String>(prop.getRows());
         for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
         	String current=i.next();
-        	if(prop.get(current, TSPropertyMap.pmValCliOptionType)!=null){
-       			if(!(prop.get(current, TSPropertyMap.pmValCliOptionLong)).tsIsType(TEnum.TS_NULL))
-       				optLong=prop.get(current, TSPropertyMap.pmValCliOptionLong).toString();
+        	if(prop.get(current, FieldKeys.fieldCliOptionType)!=null){
+       			if(!(prop.get(current, FieldKeys.fieldCliOptionLong)).tsIsType(TEnum.TS_NULL))
+       				optLong=prop.get(current, FieldKeys.fieldCliOptionLong).toString();
        			else
        				optLong=null;
        			OptionBuilder.withLongOpt(optLong);
 
-       			OptionBuilder.withDescription(prop.get(current, TSPropertyMap.pmValCliUsageDescr).toString());
+       			OptionBuilder.withDescription(prop.get(current, FieldKeys.fieldCliOptionDescriptionShort).toString());
 
-       			optArgName=prop.get(current, TSPropertyMap.pmValCliUsageDescrAdd).toString();
+       			optArgName=prop.get(current, FieldKeys.fieldCliOptionDescriptionArguments).toString();
 				if(optArgName.length()>0){
 					OptionBuilder.hasArg();
 					OptionBuilder.withArgName(optArgName);
@@ -138,7 +139,7 @@ public class CliApache implements Cli {
 				else
 					OptionBuilder.hasArg(false);
 
-				TEnum optType=TSRepository.type(prop.get(current, TSPropertyMap.pmValCliOptionType).toString());
+				TEnum optType=TSRepository.type(prop.get(current, FieldKeys.fieldCliOptionType).toString());
 				switch(optType){
 					case TS_ATOMIC_JAVA_BOOLEAN:
 						OptionBuilder.withType(Boolean.class);
@@ -158,8 +159,8 @@ public class CliApache implements Cli {
 					default: break;
 				}
 
-       			if(!(prop.get(current, TSPropertyMap.pmValCliOptionShort)).tsIsType(TEnum.TS_NULL))
-       				optShort=prop.get(current, TSPropertyMap.pmValCliOptionShort).toString();
+       			if(!(prop.get(current, FieldKeys.fieldCliOptionShort)).tsIsType(TEnum.TS_NULL))
+       				optShort=prop.get(current, FieldKeys.fieldCliOptionShort).toString();
        			else
        				optShort=null;
        			if(optShort!=null&&optLong!=null){
@@ -176,55 +177,6 @@ public class CliApache implements Cli {
        				OptionBuilder.withLongOpt("__dummyLongOpt__");
        				OptionBuilder.create();
        			}
-
-
-/*
-       			if(  optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING)||
-        		     optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER)||
-        		     optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE)||
-                	 optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_LONG)
-        		  ){
-        			if(optShort!=null&&optLong!=null){
-        				if(optArgName.length()>0){
-        					OptionBuilder.hasArg();
-        					OptionBuilder.withArgName(optArgName);
-        				}
-        				else
-        					OptionBuilder.hasArg(false);
-						OptionBuilder.withDescription(optDescr);
-						OptionBuilder.withLongOpt(optLong);
-						this.options.addOption(OptionBuilder.create(optShort.charAt(0)));
-						this.optionList.put(current, optLong);
-        			}
-        			else if(optLong!=null){
-        				if(optArgName.length()>0){
-        					OptionBuilder.hasArg();
-        					OptionBuilder.withArgName(optArgName);
-        				}
-        				else
-        					OptionBuilder.hasArg(false);
-						OptionBuilder.withDescription(optDescr);
-						OptionBuilder.withLongOpt(optLong);
-						this.options.addOption(OptionBuilder.create());
-						this.optionList.put(current, optLong);
-        			}
-        		}
-        		else if(optType.equals(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN)){
-        			if(optShort!=null&&optLong!=null){
-        				OptionBuilder.withDescription(optDescr);
-						OptionBuilder.withLongOpt(optLong);
-						this.options.addOption(OptionBuilder.create(optShort.charAt(0)));
-						this.optionList.put(current, optLong);
-        			}
-        			else if(optLong!=null){
-        				OptionBuilder.withDescription(optDescr);
-						OptionBuilder.withLongOpt(optLong);
-						this.options.addOption(OptionBuilder.create());
-						this.optionList.put(current, optLong);
-        			}
-        		}
-*/
-
         	}
 		}
 	}
@@ -270,7 +222,7 @@ public class CliApache implements Cli {
         	if(this.line.hasOption(val)){
         		String valType;
         		try {
-        			valType=prop.get(key, TSPropertyMap.pmValCliOptionType).toString();
+        			valType=prop.get(key, FieldKeys.fieldCliOptionType).toString();
         		} catch (Exception e) {
         			valType="";
         		}

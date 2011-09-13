@@ -116,6 +116,7 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 		this.typeEnum.add(TEnum.TS_COMPOSITE_TABLE);
 
 		this.tsvalue=new LinkedHashMap<String, TSTableRowAPI>();
+		this.columns=new HashSet<String>();
 	}
 
 
@@ -573,7 +574,6 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 	@Override
 	public void setColumns(String ref_class, String prefix) {
 		if(this.columnsInitialised==false){
-			this.columns=new HashSet<String>();
 			try {
 				Class<?> c=Class.forName(ref_class);
 				for (Field f : c.getDeclaredFields()){
@@ -589,6 +589,17 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 				System.out.println(e);
 			}
 		}
+	}
+
+
+	@Override
+	public void setColumns(HashSet<String> cols, String ref_class, String prefix) {
+		//add the string set
+		this.setColumns(cols);
+		//re-set init to false, to that the next set still sets
+		this.columnsInitialised=false;
+		//add the prefixed class fields
+		this.setColumns(ref_class, prefix);
 	}
 
 
