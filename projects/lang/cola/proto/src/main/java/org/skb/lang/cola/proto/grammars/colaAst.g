@@ -142,7 +142,7 @@ colaContractItemDef     : s=IDENT {this.pass.itemDefListStart(s.token);}colaItem
 colaItemDef             : ^(prop=IDENT s=IDENT {this.pass.itemDef(prop.token); this.pass.itemDefValueStart();}
                           (const_value {this.pass.itemDefValueTest(prop.token);})*) {this.pass.itemDefFinish(prop.token);};
 
-colaSpecification @init{this.init();}
+colaSpecification        @init{this.init();}
                         : ^(AT_SPEC skbStage skbEnvironment skbCLevel ^(AT_LANGUAGE IDENT) ^(AT_SPEC IDENT) cpp_directive colaDefinition*);
 colaDefinition          : colaFunction | colaPropertyDecl | colaContractDecl | colaPackage | colaElement | colaFacility | colaTypeDef | colaStruct | cpp_directive;
 

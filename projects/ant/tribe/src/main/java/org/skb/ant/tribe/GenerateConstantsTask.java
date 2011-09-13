@@ -42,7 +42,8 @@ import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 import org.skb.tribe.LanguageConfiguration;
-import org.skb.tribe.LanguageConfigurationConstants;
+import org.skb.util.FieldKeys;
+import org.skb.util.PathKeys;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
@@ -187,9 +188,9 @@ public class GenerateConstantsTask extends Task{
     		Set<String> cols=map.keySet();
     		for (String s:cols){
     			try{
-    				TSString cid=(TSString)map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstID);
-    			    TSString cval=(TSString)map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstVal);
-    			    TSString jdoc=(TSString)map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensConstJavaDoc);
+    				TSString cid=(TSString)map.get(s+"/"+FieldKeys.fieldLangTargetConstantIdent);
+    			    TSString cval=(TSString)map.get(s+"/"+FieldKeys.fieldLangTargetConstantValue);
+    			    TSString jdoc=(TSString)map.get(s+"/"+FieldKeys.fieldLangTargetConstantJavadoc);
 
     			    TSMapLH _put=new TSMapLH();
 					_put.put("value", cval);
@@ -202,41 +203,41 @@ public class GenerateConstantsTask extends Task{
     	map=cfg.getLanguageRules();
     	if(map!=null&&map.size()>0){
 				for(String k:map.keySet()){
-					if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID)){
+					if(map.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantIdent)){
 						TSMapLH _put=new TSMapLH();
 						_put.put("value", new TSString(k));
-						if(map.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc))
-							_put.put("javadoc", map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc).toString());
-						constRules.put(map.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), _put);
+						if(map.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
+							_put.put("javadoc", map.get(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc).toString());
+						constRules.put(map.get(k+"/"+FieldKeys.fieldLangTargetConstantIdent).toString(), _put);
 					}
 				}
     	}
 
     	map=cfg.getConfiguration();
     	if(map!=null&&map.size()>0){
-			if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration)){
-				TSMapLH _m=(TSMapLH)map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration);
+			if(map.containsKey(PathKeys.pathLangConfiguration)){
+				TSMapLH _m=(TSMapLH)map.get(PathKeys.pathLangConfiguration);
 				for(String s:_m.keySet()){
-					if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID)){
+					if(map.containsKey(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantIdent)){
 						TSMapLH _put=new TSMapLH();
 						_put.put("value", s);
-						if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc))
-							_put.put("javadoc", map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc).toString());
-						constProperties.put(map.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), _put);
+						if(map.containsKey(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
+							_put.put("javadoc", map.get(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc).toString());
+						constProperties.put(map.get(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantIdent).toString(), _put);
 					}
 				}
 			}
-			if(map.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
-				TSMapLH _m=(TSMapLH)map.get(LanguageConfigurationConstants.Paths.SKBLangTargets);
+			if(map.containsKey(PathKeys.pathLangTargets)){
+				TSMapLH _m=(TSMapLH)map.get(PathKeys.pathLangTargets);
 				for(String s:_m.keySet()){
-					TSMapLH newMap=(TSMapLH)map.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+s+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli);
+					TSMapLH newMap=(TSMapLH)map.get(PathKeys.pathLangTargets+"/"+s+"/"+FieldKeys.fieldLangTargetConfigCli);
 					for(String k:newMap.keySet()){
-						if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID)){
+						if(newMap.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantIdent)){
 							TSMapLH _put=new TSMapLH();
 							_put.put("value", new TSString(k));
-							if(newMap.containsKey(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc))
-								_put.put("javadoc", newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationJavaDoc));
-							constProperties.put(newMap.get(k+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationConstID).toString(), _put);
+							if(newMap.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
+								_put.put("javadoc", newMap.get(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc));
+							constProperties.put(newMap.get(k+"/"+FieldKeys.fieldLangTargetConstantIdent).toString(), _put);
 						}
 					}
 				}

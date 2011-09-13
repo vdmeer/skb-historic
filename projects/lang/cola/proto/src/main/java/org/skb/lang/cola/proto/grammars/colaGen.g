@@ -160,7 +160,7 @@ colaContractItemDef     : id=IDENT def+=colaItemDef*
 colaItemDef             : ^(IDENT id=IDENT val+=const_value*)
                           -> colaItemDef(id={$id.text}, val={$val}, misc={this.pass.misc()});
 
-colaSpecification @init{this.init();}
+colaSpecification           @init{this.init();}
                         : ^(AT_SPEC stage=skbStage env=skbEnvironment clevel=skbCLevel ^(AT_LANGUAGE lang=IDENT)
                           ^(AT_SPEC s=IDENT
                            {StringTemplate spec=templateLib.getInstanceOf("colaSpecification");

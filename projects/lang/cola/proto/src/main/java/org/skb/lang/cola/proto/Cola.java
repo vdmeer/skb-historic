@@ -31,8 +31,9 @@
 package org.skb.lang.cola.proto;
 
 import org.apache.log4j.Logger;
-import org.skb.tribe.LanguageParser;
+import org.skb.tribe.LanguageParserAPI;
 import org.skb.tribe.Tribe;
+import org.skb.tribe.TribeParser;
 import org.skb.util.log.LogManager;
 
 /**
@@ -59,7 +60,9 @@ public class Cola{
 		Tribe tribe=new Tribe();
 
 		logger.trace("create Language[]");
-		LanguageParser[] supportedLanguages={new ColaParser()};
+		TribeParser tp=new TribeParser();
+		tp.setLangParser(new ColaParser());
+		LanguageParserAPI[] supportedLanguages={tp};
 
 		logger.trace("calling tribe to parse");
 		tribe.start(supportedLanguages, args);

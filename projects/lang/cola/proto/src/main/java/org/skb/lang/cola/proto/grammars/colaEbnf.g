@@ -212,7 +212,7 @@ colaItemDefList         : {this.pass.identsStart();} '[' (colaItemDef (',' colaI
 colaItemDef             : IDENT s=IDENT {this.pass.identsAddItemDef(s);} ('(' const_value (',' const_value)* ')')?
                           -> ^(IDENT IDENT const_value*);
 
-colaSpecification         @init{this.init();}
+colaSpecification       @init{this.init();}
                         : cpp_directive AT_STAGE skbStage ';' AT_ENVIRONMENT skbEnvironment ';' AT_CLEVEL skbCLevel ';' AT_LANGUAGE l=IDENT ';' AT_SPEC s=IDENT ';' {this.pass.atoms.specificationName(s);} colaDefinition* EOF
                           -> ^(AT_SPEC skbStage skbEnvironment skbCLevel ^(AT_LANGUAGE $l) ^(AT_SPEC $s) cpp_directive colaDefinition*);
 colaDefinition          : colaFunction | colaPropertyDecl | colaContractDecl | colaPackage | colaElement | colaFacility | colaTypeDef | colaStruct | cpp_directive;

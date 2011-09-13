@@ -257,7 +257,9 @@ property xmlDTD: @type(string = NULL)
  Revision rev(0),
  SpecStatus spS("current"),
  Status stat("required"),
- Version ver(1)]
+ Version ver(1)
+ //,Group g
+ ]
 package MAMA {
 
   [Description descr("This &lt;short&gt; type represents an enumerate that identifies the type of a single value"),

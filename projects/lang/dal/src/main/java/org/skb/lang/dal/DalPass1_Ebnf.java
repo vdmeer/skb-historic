@@ -33,11 +33,12 @@ package org.skb.lang.dal;
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.tribe.LanguageRuleMap;
+import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -53,17 +54,15 @@ public class DalPass1_Ebnf {
 	public AtomList atoms;
 
 	/** Language Rule map for error/warning reporting */
-	private LanguageRuleMap cr;
+	private TSLangRuleMap cr;
 
 
 	/**
 	 * Class constructor, initialises the atom list (symbol table) and other local fields
 	 */
 	public DalPass1_Ebnf(){
-		this.cr=new LanguageRuleMap();
-		this.cr.setClassName(DalConstants.Rules.class.getName());
-		this.cr.setKey("rule");
-		this.cr.loadRules();		
+		this.cr=new TSLangRuleMap();
+		this.cr.loadRules(DalConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
 
 		this.atoms=AtomList.getInstanceInit();
 		this.atoms.setScopeSeparator(TribeProperties.getInstance().getValueDefault("internal-scope-sep").toString());

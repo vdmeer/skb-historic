@@ -38,10 +38,11 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.tribe.LanguageRuleMap;
+import org.skb.tribe.LanguageConfiguration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -57,7 +58,7 @@ public class ColaPass1_Ebnf {
 	public AtomList atoms;
 
 	/** Language Rule map for error/warning reporting */
-	private LanguageRuleMap cr;
+	private TSLangRuleMap cr;
 
 	/** List for Property Declarations */
 	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();
@@ -97,10 +98,8 @@ public class ColaPass1_Ebnf {
 		this.lastContractDeclScopeAtom="";
 		this.contractDeclScope=new LinkedHashMap<String,String>();
 
-		this.cr=new LanguageRuleMap();
-		this.cr.setClassName(ColaConstants.Rules.class.getName());
-		this.cr.setKey("rule");
-		this.cr.loadRules();		
+		this.cr=new TSLangRuleMap();
+		this.cr.loadRules(ColaConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
 
 		//initialise the AtomList with spec
 		this.atoms=AtomList.getInstanceInit();

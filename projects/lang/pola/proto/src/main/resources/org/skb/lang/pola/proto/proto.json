@@ -43,113 +43,113 @@
         "tribe":{
             "configuration":{
                 "name":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"POLA"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"POLA"
                 },
                 "name-lc":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"pola"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"pola"
                 },
                 "copyright":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"Copyright (c) 2010-2011 Sven van der Meer <sven@vandermeer.de>"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"Copyright (c) 2010-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
                 "version":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"0.30"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"0.30"
                 },
                 "build":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"110309"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"110309"
                 },
                 "build-date":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"2011-Mar-08"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"2011-Mar-08"
                 },
                 "tribe-generic-stg":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/internal\/generic.stg"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
             }
         },
         "lang":{
             "configuration":{
                 "pola":{
-                    "skb:lang:target:config:constid":"internalPolaTgtPola",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target Pola"
+                    "skb:util:constant:ident":"internalPolaTgtPola",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target Pola"
                 },
                 "xml":{
-                    "skb:lang:target:config:constid":"internalPolaTgtXml",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target XML"
+                    "skb:util:constant:ident":"internalPolaTgtXml",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target XML"
                 },
                 "sql":{
-                    "skb:lang:target:config:constid":"internalPolaTgtSql",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target SQL"
+                    "skb:util:constant:ident":"internalPolaTgtSql",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target SQL"
                 },
                 "internal-scope-sep":{
-                    "skb:lang:target:config:constid":"keyScopeSep",
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"::",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target SQL"
+                    "skb:util:constant:ident":"keyScopeSep",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"::",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target SQL"
                 },
                 "pr-stats":{
-                    "skb:lang:target:config:constid":"keyPrStat",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Show simple statistic information",
-                    "cli:usage:descr":"Show simple statistic information"
+                    "skb:util:constant:ident":"keyPrStat",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Show simple statistic information",
+                    "skb:util:cli:descr:short":"Show simple statistic information"
                 },
                 "pr-stats-all":{
-                    "skb:lang:target:config:constid":"keyPrStatAll",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats-all",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Show complete statistic information",
-                    "skb:lang:target:config:javadoc":"Show complete statistic information"
+                    "skb:util:constant:ident":"keyPrStatAll",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats-all",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Show complete statistic information",
+                    "skb:util:constant:javadoc":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
-                    "skb:lang:target:config:constid":"keyPrStatsWScope",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats-ws",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"No scoped names in statistics",
-                    "skb:lang:target:config:javadoc":"Don't use scoped names in statistics"
+                    "skb:util:constant:ident":"keyPrStatsWScope",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats-ws",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"No scoped names in statistics",
+                    "skb:util:constant:javadoc":"Don't use scoped names in statistics"
                 },
                 "pr-stg-stats":{
-                    "skb:lang:target:config:constid":"keyPrStgFileStats",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stg-stats",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Print statistics string template",
-                    "skb:lang:target:config:javadoc":"Print the string template used for statistics"
+                    "skb:util:constant:ident":"keyPrStgFileStats",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stg-stats",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Print statistics string template",
+                    "skb:util:constant:javadoc":"Print the string template used for statistics"
                 },
                 "stat-stg":{
-                    "skb:lang:target:config:constid":"keyStatStg",
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/statistics.stg",
-                    "cli:option:long":"stat-stg",
-                    "cli:option:arg-name":"file",
-                    "cli:option:type":"ts:atomic:java:string",
-                    "cli:usage:descr":"Group template file for statistics",
-                    "skb:lang:target:config:javadoc":"Group template for statistics"
+                    "skb:util:constant:ident":"keyStatStg",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/statistics.stg",
+                    "skb:util:cli:option:long":"stat-stg",
+                    "skb:util:cli:descr:arguments":"file",
+                    "skb:util:cli:option:type":"ts:atomic:java:string",
+                    "skb:util:cli:descr:short":"Group template file for statistics",
+                    "skb:util:constant:javadoc":"Group template for statistics"
                 }
             },
             "targets":{
                 "pola":{
                     "skb:lang:target:name":"pola",
                     "tgt-stg":{
-                            "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/pola.stg"
+                            "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/pola.stg"
                     },
                     "tgt-fileext":{
-                            "value:default":".pola"
+                            "skb:value:default":".pola"
                     },
                     "gc-scope-sep":{
-                            "value:default":"::"
+                            "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
                     }
@@ -157,16 +157,16 @@
                 "xml":{
                     "skb:lang:target:name":"xml",
                     "tgt-stg":{
-                            "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/xml.stg"
+                            "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
                     "tgt-fileext":{
-                            "value:default":".xml"
+                            "skb:value:default":".xml"
                     },
                     "gc-scope-sep":{
-                            "value:default":"::"
+                            "skb:value:default":"::"
                     },
                     "tgt-stg-angle-br":{
-                        "value:default":false
+                        "skb:value:default":false
                     },
                     "skb:lang:target:config:cli":{
                     }
@@ -174,13 +174,13 @@
                 "sql":{
                     "skb:lang:target:name":"sql",
                     "tgt-stg":{
-                            "value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/sql.stg"
+                            "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
                     "tgt-fileext":{
-                            "value:default":".sql"
+                            "skb:value:default":".sql"
                     },
                     "gc-scope-sep":{
-                            "value:default":"::"
+                            "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
                     }
@@ -189,693 +189,693 @@
 
             "stgchunks":{
                 "mlcomment_start":{
-                    "skb:tribe:stgchunk:mandatory": ["dummy"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "mlcomment_end":{
-                    "skb:tribe:stgchunk:mandatory": ["dummy"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "slcomment":{
-                    "skb:tribe:stgchunk:mandatory": ["comment"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["comment"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
         
                 "polaSpecification":{
-                    "skb:tribe:stgchunk:mandatory": ["id", "dialect"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["id", "dialect"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
 
                 "const_value":{
-                    "skb:tribe:stgchunk:mandatory": ["type", "val"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["type", "val"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "scoped_name":{
-                    "skb:tribe:stgchunk:mandatory": ["id", "add"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["id", "add"],
+                    "skb:stringtemplate:chunks:optional":  []
                 }
             },
 
             "tokens":{
                 // for parser
                 "parserARRAY":{
-                    "skb:lang:target:tokens:cid":"parserARRAY",
-                    "skb:lang:target:tokens:cval":"array",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Array"
+                    "skb:util:constant:ident":"parserARRAY",
+                    "skb:util:constant:value":"array",
+                    "skb:util:constant:javadoc":"Parser - Array"
                 },
                 "parserMEMBER":{
-                    "skb:lang:target:tokens:cid":"parserMEMBER",
-                    "skb:lang:target:tokens:cval":"__member",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Member"
+                    "skb:util:constant:ident":"parserMEMBER",
+                    "skb:util:constant:value":"__member",
+                    "skb:util:constant:javadoc":"Parser - Member"
                 },
                 "parserIDENTIFIER":{
-                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
-                    "skb:lang:target:tokens:cval":"identifier",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Identifier"
+                    "skb:util:constant:ident":"parserIDENTIFIER",
+                    "skb:util:constant:value":"identifier",
+                    "skb:util:constant:javadoc":"Parser - Identifier"
                 },
                 "parserScopedName":{
-                    "skb:lang:target:tokens:cid":"parserScopedName",
-                    "skb:lang:target:tokens:cval":"scoped_name",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Scoped Name"
+                    "skb:util:constant:ident":"parserScopedName",
+                    "skb:util:constant:value":"scoped_name",
+                    "skb:util:constant:javadoc":"Parser - Scoped Name"
                 },
                 "parserBaseType ":{
-                    "skb:lang:target:tokens:cid":"parserBaseType ",
-                    "skb:lang:target:tokens:cval":"base_type",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Base Type"
+                    "skb:util:constant:ident":"parserBaseType ",
+                    "skb:util:constant:value":"base_type",
+                    "skb:util:constant:javadoc":"Parser - Base Type"
                 },
                 "parserItemProp":{
-                    "skb:lang:target:tokens:cid":"parserItemProp",
-                    "skb:lang:target:tokens:cval":"item-property",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Item Property"
+                    "skb:util:constant:ident":"parserItemProp",
+                    "skb:util:constant:value":"item-property",
+                    "skb:util:constant:javadoc":"Parser - Item Property"
                 },
                 "parserScopeSep":{
-                    "skb:lang:target:tokens:cid":"parserScopeSep",
-                    "skb:lang:target:tokens:cval":"::",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Scope Separator"
+                    "skb:util:constant:ident":"parserScopeSep",
+                    "skb:util:constant:value":"::",
+                    "skb:util:constant:javadoc":"Parser - Scope Separator"
                 },
                 "gcMiscParrentID":{
-                    "skb:lang:target:tokens:cid":"gcMiscParrentID",
-                    "skb:lang:target:tokens:cval":"parrentId",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - Misc - Parrent Identifier"
+                    "skb:util:constant:ident":"gcMiscParrentID",
+                    "skb:util:constant:value":"parrentId",
+                    "skb:util:constant:javadoc":"Generate Code - Misc - Parrent Identifier"
                 },
                 "gcMiscParrentCat":{
-                    "skb:lang:target:tokens:cid":"gcMiscParrentCat",
-                    "skb:lang:target:tokens:cval":"parrentCategory",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - Misc - Parrent Category"
+                    "skb:util:constant:ident":"gcMiscParrentCat",
+                    "skb:util:constant:value":"parrentCategory",
+                    "skb:util:constant:javadoc":"Generate Code - Misc - Parrent Category"
                 },
                 "gcMiscCurrentCat":{
-                    "skb:lang:target:tokens:cid":"gcMiscCurrentCat",
-                    "skb:lang:target:tokens:cval":"currentCategory",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - Misc Current Category"
+                    "skb:util:constant:ident":"gcMiscCurrentCat",
+                    "skb:util:constant:value":"currentCategory",
+                    "skb:util:constant:javadoc":"Generate Code - Misc Current Category"
                 },
                 "gcMiscInDefinition":{
-                    "skb:lang:target:tokens:cid":"gcMiscInDefinition",
-                    "skb:lang:target:tokens:cval":"inDefinition",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Definition"
+                    "skb:util:constant:ident":"gcMiscInDefinition",
+                    "skb:util:constant:value":"inDefinition",
+                    "skb:util:constant:javadoc":"Generate Code - in a Definition"
                 },
                 "gcMiscInItem":{
-                    "skb:lang:target:tokens:cid":"gcMiscInItem",
-                    "skb:lang:target:tokens:cval":"inItem",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in an Item"
+                    "skb:util:constant:ident":"gcMiscInItem",
+                    "skb:util:constant:value":"inItem",
+                    "skb:util:constant:javadoc":"Generate Code - in an Item"
                 },
                 "gcMiscInContract":{
-                    "skb:lang:target:tokens:cid":"gcMiscInContract",
-                    "skb:lang:target:tokens:cval":"inContract",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Contract"
+                    "skb:util:constant:ident":"gcMiscInContract",
+                    "skb:util:constant:value":"inContract",
+                    "skb:util:constant:javadoc":"Generate Code - in a Contract"
                 },
                 "gcMiscInPackage":{
-                    "skb:lang:target:tokens:cid":"gcMiscInPackage",
-                    "skb:lang:target:tokens:cval":"inPackage",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Package"
+                    "skb:util:constant:ident":"gcMiscInPackage",
+                    "skb:util:constant:value":"inPackage",
+                    "skb:util:constant:javadoc":"Generate Code - in a Package"
                 },
                 "gcMiscInElement":{
-                    "skb:lang:target:tokens:cid":"gcMiscInElement",
-                    "skb:lang:target:tokens:cval":"inElement",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in an Element"
+                    "skb:util:constant:ident":"gcMiscInElement",
+                    "skb:util:constant:value":"inElement",
+                    "skb:util:constant:javadoc":"Generate Code - in an Element"
                 },
                 "gcMiscInFacility":{
-                    "skb:lang:target:tokens:cid":"gcMiscInFacility",
-                    "skb:lang:target:tokens:cval":"inFacility",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Facility"
+                    "skb:util:constant:ident":"gcMiscInFacility",
+                    "skb:util:constant:value":"inFacility",
+                    "skb:util:constant:javadoc":"Generate Code - in a Facility"
                 },
                 "gcMiscInAction":{
-                    "skb:lang:target:tokens:cid":"gcMiscInAction",
-                    "skb:lang:target:tokens:cval":"inAction",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in an Action"
+                    "skb:util:constant:ident":"gcMiscInAction",
+                    "skb:util:constant:value":"inAction",
+                    "skb:util:constant:javadoc":"Generate Code - in an Action"
                 },
                 "gcMiscInStruct":{
-                    "skb:lang:target:tokens:cid":"gcMiscInStruct",
-                    "skb:lang:target:tokens:cval":"inStruct",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Structure"
+                    "skb:util:constant:ident":"gcMiscInStruct",
+                    "skb:util:constant:value":"inStruct",
+                    "skb:util:constant:javadoc":"Generate Code - in a Structure"
                 },
                 "gcMiscSpecName":{
-                    "skb:lang:target:tokens:cid":"gcMiscSpecName",
-                    "skb:lang:target:tokens:cval":"specificationName",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - Misc - Specification Name"
+                    "skb:util:constant:ident":"gcMiscSpecName",
+                    "skb:util:constant:value":"specificationName",
+                    "skb:util:constant:javadoc":"Generate Code - Misc - Specification Name"
                 },
                 "gcMiscCurrentScope":{
-                    "skb:lang:target:tokens:cid":"gcMiscCurrentScope",
-                    "skb:lang:target:tokens:cval":"currentScope",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code -  Misc - Current Scope"
+                    "skb:util:constant:ident":"gcMiscCurrentScope",
+                    "skb:util:constant:value":"currentScope",
+                    "skb:util:constant:javadoc":"Generate Code -  Misc - Current Scope"
                 },
 
 
                 // pola Keywords
                 "polaACTION":{
-                    "skb:lang:target:tokens:cid":"polaACTION",
-                    "skb:lang:target:tokens:cval":"action",
-                    "skb:lang:target:tokens:tid":"ACTION",
-                    "skb:lang:target:tokens:tval":"keyword 'action'",
-                    "skb:lang:target:tokens:cjavadoc":"Action Keyword"
+                    "skb:util:constant:ident":"polaACTION",
+                    "skb:util:constant:value":"action",
+                    "skb:lang:target:token:ident":"ACTION",
+                    "skb:lang:target:token:translate":"keyword 'action'",
+                    "skb:util:constant:javadoc":"Action Keyword"
                 },
                 "polaATTRIBUTE":{
-                    "skb:lang:target:tokens:cid":"polaATTRIBUTE",
-                    "skb:lang:target:tokens:cval":"attribute",
-                    "skb:lang:target:tokens:tid":"ATTRIBUTE",
-                    "skb:lang:target:tokens:tval":"keyword 'attribute'",
-                    "skb:lang:target:tokens:cjavadoc":"Attribute Keyword"
+                    "skb:util:constant:ident":"polaATTRIBUTE",
+                    "skb:util:constant:value":"attribute",
+                    "skb:lang:target:token:ident":"ATTRIBUTE",
+                    "skb:lang:target:token:translate":"keyword 'attribute'",
+                    "skb:util:constant:javadoc":"Attribute Keyword"
                 },
                 "polaCONTRACT":{
-                    "skb:lang:target:tokens:cid":"polaCONTRACT",
-                    "skb:lang:target:tokens:cval":"contract",
-                    "skb:lang:target:tokens:tid":"CONTRACT",
-                    "skb:lang:target:tokens:tval":"keyword 'contract'",
-                    "skb:lang:target:tokens:cjavadoc":"Contract Keyword"
+                    "skb:util:constant:ident":"polaCONTRACT",
+                    "skb:util:constant:value":"contract",
+                    "skb:lang:target:token:ident":"CONTRACT",
+                    "skb:lang:target:token:translate":"keyword 'contract'",
+                    "skb:util:constant:javadoc":"Contract Keyword"
                 },
                 "polaELEMENT":{
-                    "skb:lang:target:tokens:cid":"polaELEMENT",
-                    "skb:lang:target:tokens:cval":"element",
-                    "skb:lang:target:tokens:tid":"ELEMENT",
-                    "skb:lang:target:tokens:tval":"keyword 'element'",
-                    "skb:lang:target:tokens:cjavadoc":"Element Keyword"
+                    "skb:util:constant:ident":"polaELEMENT",
+                    "skb:util:constant:value":"element",
+                    "skb:lang:target:token:ident":"ELEMENT",
+                    "skb:lang:target:token:translate":"keyword 'element'",
+                    "skb:util:constant:javadoc":"Element Keyword"
                 },
                 "polaFACILITY":{
-                    "skb:lang:target:tokens:cid":"polaFACILITY",
-                    "skb:lang:target:tokens:cval":"facility",
-                    "skb:lang:target:tokens:tid":"FACILITY",
-                    "skb:lang:target:tokens:tval":"keyword 'facility'",
-                    "skb:lang:target:tokens:cjavadoc":"Facility Keyword"
+                    "skb:util:constant:ident":"polaFACILITY",
+                    "skb:util:constant:value":"facility",
+                    "skb:lang:target:token:ident":"FACILITY",
+                    "skb:lang:target:token:translate":"keyword 'facility'",
+                    "skb:util:constant:javadoc":"Facility Keyword"
                 },
                 "polaFUNCTION":{
-                    "skb:lang:target:tokens:cid":"polaFUNCTION",
-                    "skb:lang:target:tokens:cval":"function",
-                    "skb:lang:target:tokens:tid":"FUNCTON",
-                    "skb:lang:target:tokens:tval":"keyword 'function'",
-                    "skb:lang:target:tokens:cjavadoc":"Function Keyword"
+                    "skb:util:constant:ident":"polaFUNCTION",
+                    "skb:util:constant:value":"function",
+                    "skb:lang:target:token:ident":"FUNCTON",
+                    "skb:lang:target:token:translate":"keyword 'function'",
+                    "skb:util:constant:javadoc":"Function Keyword"
                 },
                 "polaITEM":{
-                    "skb:lang:target:tokens:cid":"polaITEM",
-                    "skb:lang:target:tokens:cval":"item",
-                    "skb:lang:target:tokens:tid":"ITEM",
-                    "skb:lang:target:tokens:tval":"keyword 'item'",
-                    "skb:lang:target:tokens:cjavadoc":"Item Keyword"
+                    "skb:util:constant:ident":"polaITEM",
+                    "skb:util:constant:value":"item",
+                    "skb:lang:target:token:ident":"ITEM",
+                    "skb:lang:target:token:translate":"keyword 'item'",
+                    "skb:util:constant:javadoc":"Item Keyword"
                 },
                 "polaMANDATORY":{
-                    "skb:lang:target:tokens:cid":"polaMANDATORY",
-                    "skb:lang:target:tokens:cval":"mandatory",
-                    "skb:lang:target:tokens:tid":"MANDATORY",
-                    "skb:lang:target:tokens:tval":"keyword 'mandatory'",
-                    "skb:lang:target:tokens:cjavadoc":"Mandatory Keyword"
+                    "skb:util:constant:ident":"polaMANDATORY",
+                    "skb:util:constant:value":"mandatory",
+                    "skb:lang:target:token:ident":"MANDATORY",
+                    "skb:lang:target:token:translate":"keyword 'mandatory'",
+                    "skb:util:constant:javadoc":"Mandatory Keyword"
                 },
                 "polaNOT_DEF":{
-                    "skb:lang:target:tokens:cid":"polaNOT_DEF",
-                    "skb:lang:target:tokens:cval":"not_def",
-                    "skb:lang:target:tokens:tid":"NOT_DEF",
-                    "skb:lang:target:tokens:tval":"keyword 'not_def'",
-                    "skb:lang:target:tokens:cjavadoc":"Not_Def Keyword"
+                    "skb:util:constant:ident":"polaNOT_DEF",
+                    "skb:util:constant:value":"not_def",
+                    "skb:lang:target:token:ident":"NOT_DEF",
+                    "skb:lang:target:token:translate":"keyword 'not_def'",
+                    "skb:util:constant:javadoc":"Not_Def Keyword"
                 },
                 "polaOPTIONAL":{
-                    "skb:lang:target:tokens:cid":"polaOPTIONAL",
-                    "skb:lang:target:tokens:cval":"optional",
-                    "skb:lang:target:tokens:tid":"OPTIONAL",
-                    "skb:lang:target:tokens:tval":"keyword 'optional'",
-                    "skb:lang:target:tokens:cjavadoc":"Optional Keyword"
+                    "skb:util:constant:ident":"polaOPTIONAL",
+                    "skb:util:constant:value":"optional",
+                    "skb:lang:target:token:ident":"OPTIONAL",
+                    "skb:lang:target:token:translate":"keyword 'optional'",
+                    "skb:util:constant:javadoc":"Optional Keyword"
                 },
                 "polaPACKAGE":{
-                    "skb:lang:target:tokens:cid":"polaPACKAGE",
-                    "skb:lang:target:tokens:cval":"package",
-                    "skb:lang:target:tokens:tid":"PACKAGE",
-                    "skb:lang:target:tokens:tval":"keyword 'package'",
-                    "skb:lang:target:tokens:cjavadoc":"Package Keyword"
+                    "skb:util:constant:ident":"polaPACKAGE",
+                    "skb:util:constant:value":"package",
+                    "skb:lang:target:token:ident":"PACKAGE",
+                    "skb:lang:target:token:translate":"keyword 'package'",
+                    "skb:util:constant:javadoc":"Package Keyword"
                 },
                 "polaPARAMETER":{
-                    "skb:lang:target:tokens:cid":"polaPARAMETER",
-                    "skb:lang:target:tokens:cval":"parameter",
-                    "skb:lang:target:tokens:tid":"PARAMETER",
-                    "skb:lang:target:tokens:tval":"keyword 'parameter'",
-                    "skb:lang:target:tokens:cjavadoc":"Parameter Keyword"
+                    "skb:util:constant:ident":"polaPARAMETER",
+                    "skb:util:constant:value":"parameter",
+                    "skb:lang:target:token:ident":"PARAMETER",
+                    "skb:lang:target:token:translate":"keyword 'parameter'",
+                    "skb:util:constant:javadoc":"Parameter Keyword"
                 },
                 "polaPROPERTY":{
-                    "skb:lang:target:tokens:cid":"polaPROPERTY",
-                    "skb:lang:target:tokens:cval":"property",
-                    "skb:lang:target:tokens:tid":"PROPERTY",
-                    "skb:lang:target:tokens:tval":"keyword 'property'",
-                    "skb:lang:target:tokens:cjavadoc":"Property Keyword"
+                    "skb:util:constant:ident":"polaPROPERTY",
+                    "skb:util:constant:value":"property",
+                    "skb:lang:target:token:ident":"PROPERTY",
+                    "skb:lang:target:token:translate":"keyword 'property'",
+                    "skb:util:constant:javadoc":"Property Keyword"
                 },
                 "polaREQUIRED":{
-                    "skb:lang:target:tokens:cid":"polaREQUIRED",
-                    "skb:lang:target:tokens:cval":"required",
-                    "skb:lang:target:tokens:tid":"REQUIRED",
-                    "skb:lang:target:tokens:tval":"keyword 'required'",
-                    "skb:lang:target:tokens:cjavadoc":"Required Keyword"
+                    "skb:util:constant:ident":"polaREQUIRED",
+                    "skb:util:constant:value":"required",
+                    "skb:lang:target:token:ident":"REQUIRED",
+                    "skb:lang:target:token:translate":"keyword 'required'",
+                    "skb:util:constant:javadoc":"Required Keyword"
                 },
                 "polaSPECIFICATION":{
-                    "skb:lang:target:tokens:cid":"polaSPECIFICATION",
-                    "skb:lang:target:tokens:cval":"pola-specification",
-                    "skb:lang:target:tokens:tid":"SPECIFICATION",
-                    "skb:lang:target:tokens:tval":"keyword 'pola-specification'",
-                    "skb:lang:target:tokens:cjavadoc":"Specification Keyword"
+                    "skb:util:constant:ident":"polaSPECIFICATION",
+                    "skb:util:constant:value":"pola-specification",
+                    "skb:lang:target:token:ident":"SPECIFICATION",
+                    "skb:lang:target:token:translate":"keyword 'pola-specification'",
+                    "skb:util:constant:javadoc":"Specification Keyword"
                 },
                 "polaSTRUCT":{
-                    "skb:lang:target:tokens:cid":"polaSTRUCT",
-                    "skb:lang:target:tokens:cval":"struct",
-                    "skb:lang:target:tokens:tid":"STRUCT",
-                    "skb:lang:target:tokens:tval":"keyword 'struct'",
-                    "skb:lang:target:tokens:cjavadoc":"Struct Keyword"
+                    "skb:util:constant:ident":"polaSTRUCT",
+                    "skb:util:constant:value":"struct",
+                    "skb:lang:target:token:ident":"STRUCT",
+                    "skb:lang:target:token:translate":"keyword 'struct'",
+                    "skb:util:constant:javadoc":"Struct Keyword"
                 },
                 "polaTYPEDEF":{
-                    "skb:lang:target:tokens:cid":"polaTYPEDEF",
-                    "skb:lang:target:tokens:cval":"typedef",
-                    "skb:lang:target:tokens:tid":"TYPEDEF",
-                    "skb:lang:target:tokens:tval":"keyword 'typedef'",
-                    "skb:lang:target:tokens:cjavadoc":"TypeDef Keyword"
+                    "skb:util:constant:ident":"polaTYPEDEF",
+                    "skb:util:constant:value":"typedef",
+                    "skb:lang:target:token:ident":"TYPEDEF",
+                    "skb:lang:target:token:translate":"keyword 'typedef'",
+                    "skb:util:constant:javadoc":"TypeDef Keyword"
                 },
 
 
                 // pola Keywords -> TYPES
                 "polaBINARY":{
-                    "skb:lang:target:tokens:cid":"polaBINARY",
-                    "skb:lang:target:tokens:cval":"binary",
-                    "skb:lang:target:tokens:tid":"BINARY",
-                    "skb:lang:target:tokens:tval":"keyword 'binary'",
-                    "skb:lang:target:tokens:cjavadoc":"Binary Keyword"
+                    "skb:util:constant:ident":"polaBINARY",
+                    "skb:util:constant:value":"binary",
+                    "skb:lang:target:token:ident":"BINARY",
+                    "skb:lang:target:token:translate":"keyword 'binary'",
+                    "skb:util:constant:javadoc":"Binary Keyword"
                 },
                 "polaBOOLEAN":{
-                    "skb:lang:target:tokens:cid":"polaBOOLEAN",
-                    "skb:lang:target:tokens:cval":"boolean",
-                    "skb:lang:target:tokens:tid":"BOOLEAN",
-                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
-                    "skb:lang:target:tokens:cjavadoc":"Boolean Keyword"
+                    "skb:util:constant:ident":"polaBOOLEAN",
+                    "skb:util:constant:value":"boolean",
+                    "skb:lang:target:token:ident":"BOOLEAN",
+                    "skb:lang:target:token:translate":"keyword 'boolean'",
+                    "skb:util:constant:javadoc":"Boolean Keyword"
                 },
                 "polaCHAR":{
-                    "skb:lang:target:tokens:cid":"polaCHAR",
-                    "skb:lang:target:tokens:cval":"char",
-                    "skb:lang:target:tokens:tid":"CHAR",
-                    "skb:lang:target:tokens:tval":"keyword 'char'",
-                    "skb:lang:target:tokens:cjavadoc":"Char Keyword"
+                    "skb:util:constant:ident":"polaCHAR",
+                    "skb:util:constant:value":"char",
+                    "skb:lang:target:token:ident":"CHAR",
+                    "skb:lang:target:token:translate":"keyword 'char'",
+                    "skb:util:constant:javadoc":"Char Keyword"
                 },
                 "polaDOUBLE":{
-                    "skb:lang:target:tokens:cid":"polaDOUBLE",
-                    "skb:lang:target:tokens:cval":"double",
-                    "skb:lang:target:tokens:tid":"DOUBLE",
-                    "skb:lang:target:tokens:tval":"keyword 'double'",
-                    "skb:lang:target:tokens:cjavadoc":"Double Keyword"
+                    "skb:util:constant:ident":"polaDOUBLE",
+                    "skb:util:constant:value":"double",
+                    "skb:lang:target:token:ident":"DOUBLE",
+                    "skb:lang:target:token:translate":"keyword 'double'",
+                    "skb:util:constant:javadoc":"Double Keyword"
                 },
                 "polaFLOAT":{
-                    "skb:lang:target:tokens:cid":"polaFLOAT",
-                    "skb:lang:target:tokens:cval":"float",
-                    "skb:lang:target:tokens:tid":"FLOAT",
-                    "skb:lang:target:tokens:tval":"keyword 'float'",
-                    "skb:lang:target:tokens:cjavadoc":"Float Keyword"
+                    "skb:util:constant:ident":"polaFLOAT",
+                    "skb:util:constant:value":"float",
+                    "skb:lang:target:token:ident":"FLOAT",
+                    "skb:lang:target:token:translate":"keyword 'float'",
+                    "skb:util:constant:javadoc":"Float Keyword"
                 },
                 "polaHEX":{
-                    "skb:lang:target:tokens:cid":"polaHEX",
-                    "skb:lang:target:tokens:cval":"hex",
-                    "skb:lang:target:tokens:tid":"HEX",
-                    "skb:lang:target:tokens:tval":"keyword 'hex'",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Keyword"
+                    "skb:util:constant:ident":"polaHEX",
+                    "skb:util:constant:value":"hex",
+                    "skb:lang:target:token:ident":"HEX",
+                    "skb:lang:target:token:translate":"keyword 'hex'",
+                    "skb:util:constant:javadoc":"Hex Keyword"
                 },
                 "polaINTEGER":{
-                    "skb:lang:target:tokens:cid":"polaINTEGER",
-                    "skb:lang:target:tokens:cval":"integer",
-                    "skb:lang:target:tokens:tid":"INTEGER",
-                    "skb:lang:target:tokens:tval":"keyword 'integer'",
-                    "skb:lang:target:tokens:cjavadoc":"Integer Keyword"
+                    "skb:util:constant:ident":"polaINTEGER",
+                    "skb:util:constant:value":"integer",
+                    "skb:lang:target:token:ident":"INTEGER",
+                    "skb:lang:target:token:translate":"keyword 'integer'",
+                    "skb:util:constant:javadoc":"Integer Keyword"
                 },
                 "polaLONG":{
-                    "skb:lang:target:tokens:cid":"polaLONG",
-                    "skb:lang:target:tokens:cval":"long",
-                    "skb:lang:target:tokens:tid":"LONG",
-                    "skb:lang:target:tokens:tval":"keyword 'long'",
-                    "skb:lang:target:tokens:cjavadoc":"Long Keyword"
+                    "skb:util:constant:ident":"polaLONG",
+                    "skb:util:constant:value":"long",
+                    "skb:lang:target:token:ident":"LONG",
+                    "skb:lang:target:token:translate":"keyword 'long'",
+                    "skb:util:constant:javadoc":"Long Keyword"
                 },
                 "polaOCTET":{
-                    "skb:lang:target:tokens:cid":"polaOCTET",
-                    "skb:lang:target:tokens:cval":"octet",
-                    "skb:lang:target:tokens:tid":"OCTET",
-                    "skb:lang:target:tokens:tval":"keyword 'octet'",
-                    "skb:lang:target:tokens:cjavadoc":"Octet Keyword"
+                    "skb:util:constant:ident":"polaOCTET",
+                    "skb:util:constant:value":"octet",
+                    "skb:lang:target:token:ident":"OCTET",
+                    "skb:lang:target:token:translate":"keyword 'octet'",
+                    "skb:util:constant:javadoc":"Octet Keyword"
                 },
                 "polaSHORT":{
-                    "skb:lang:target:tokens:cid":"polaSHORT",
-                    "skb:lang:target:tokens:cval":"short",
-                    "skb:lang:target:tokens:tid":"SHORT",
-                    "skb:lang:target:tokens:tval":"keyword 'short'",
-                    "skb:lang:target:tokens:cjavadoc":"Short Keyword"
+                    "skb:util:constant:ident":"polaSHORT",
+                    "skb:util:constant:value":"short",
+                    "skb:lang:target:token:ident":"SHORT",
+                    "skb:lang:target:token:translate":"keyword 'short'",
+                    "skb:util:constant:javadoc":"Short Keyword"
                 },
                 "polaSTRING":{
-                    "skb:lang:target:tokens:cid":"polaSTRING",
-                    "skb:lang:target:tokens:cval":"string",
-                    "skb:lang:target:tokens:tid":"STRING",
-                    "skb:lang:target:tokens:tval":"keyword 'string'",
-                    "skb:lang:target:tokens:cjavadoc":"String Keyword"
+                    "skb:util:constant:ident":"polaSTRING",
+                    "skb:util:constant:value":"string",
+                    "skb:lang:target:token:ident":"STRING",
+                    "skb:lang:target:token:translate":"keyword 'string'",
+                    "skb:util:constant:javadoc":"String Keyword"
                 },
                 "polaVOID":{
-                    "skb:lang:target:tokens:cid":"polaVOID",
-                    "skb:lang:target:tokens:cval":"void",
-                    "skb:lang:target:tokens:tid":"VOID",
-                    "skb:lang:target:tokens:tval":"keyword 'void'",
-                    "skb:lang:target:tokens:cjavadoc":"Void Keyword"
+                    "skb:util:constant:ident":"polaVOID",
+                    "skb:util:constant:value":"void",
+                    "skb:lang:target:token:ident":"VOID",
+                    "skb:lang:target:token:translate":"keyword 'void'",
+                    "skb:util:constant:javadoc":"Void Keyword"
                 },
 
 
                 // pola Keywords -> VALUES
                 "polaFALSE":{
-                    "skb:lang:target:tokens:cid":"polaFALSE",
-                    "skb:lang:target:tokens:cval":"FALSE",
-                    "skb:lang:target:tokens:tid":"FALSE",
-                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
-                    "skb:lang:target:tokens:cjavadoc":"FALSE Value"
+                    "skb:util:constant:ident":"polaFALSE",
+                    "skb:util:constant:value":"FALSE",
+                    "skb:lang:target:token:ident":"FALSE",
+                    "skb:lang:target:token:translate":"keyword 'FALSE'",
+                    "skb:util:constant:javadoc":"FALSE Value"
                 },
                 "polaNULL":{
-                    "skb:lang:target:tokens:cid":"polaNULL",
-                    "skb:lang:target:tokens:cval":"NULL",
-                    "skb:lang:target:tokens:tid":"NULL",
-                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
-                    "skb:lang:target:tokens:cjavadoc":"NULL Value"
+                    "skb:util:constant:ident":"polaNULL",
+                    "skb:util:constant:value":"NULL",
+                    "skb:lang:target:token:ident":"NULL",
+                    "skb:lang:target:token:translate":"keyword 'NULL'",
+                    "skb:util:constant:javadoc":"NULL Value"
                 },
                 "polaTRUE":{
-                    "skb:lang:target:tokens:cid":"polaTRUE",
-                    "skb:lang:target:tokens:cval":"TRUE",
-                    "skb:lang:target:tokens:tid":"TRUE",
-                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
-                    "skb:lang:target:tokens:cjavadoc":"TRUE Value"
+                    "skb:util:constant:ident":"polaTRUE",
+                    "skb:util:constant:value":"TRUE",
+                    "skb:lang:target:token:ident":"TRUE",
+                    "skb:lang:target:token:translate":"keyword 'TRUE'",
+                    "skb:util:constant:javadoc":"TRUE Value"
                 },
 
 
                 // pola Keywords -> @@@
                 "polaAT_ALTERABLE":{
-                    "skb:lang:target:tokens:cid":"polaAT_ALTERABLE",
-                    "skb:lang:target:tokens:cval":"@alterable",
-                    "skb:lang:target:tokens:tid":"AT_ALTERABLE",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@alterable'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Alterable Keyword"
+                    "skb:util:constant:ident":"polaAT_ALTERABLE",
+                    "skb:util:constant:value":"@alterable",
+                    "skb:lang:target:token:ident":"AT_ALTERABLE",
+                    "skb:lang:target:token:translate":"an @ keyword '@alterable'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Alterable Keyword"
                 },
                 "polaAT_APPLY":{
-                    "skb:lang:target:tokens:cid":"polaAT_APPLY",
-                    "skb:lang:target:tokens:cval":"@apply",
-                    "skb:lang:target:tokens:tid":"AT_APPLY",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@apply'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Apply Keyword"
+                    "skb:util:constant:ident":"polaAT_APPLY",
+                    "skb:util:constant:value":"@apply",
+                    "skb:lang:target:token:ident":"AT_APPLY",
+                    "skb:lang:target:token:translate":"an @ keyword '@apply'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Apply Keyword"
                 },
                 "polaAT_CLEVEL":{
-                    "skb:lang:target:tokens:cid":"polaAT_CLEVEL",
-                    "skb:lang:target:tokens:cval":"@clevel",
-                    "skb:lang:target:tokens:tid":"AT_CLEVEL",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@clevel'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;CLevel Keyword"
+                    "skb:util:constant:ident":"polaAT_CLEVEL",
+                    "skb:util:constant:value":"@clevel",
+                    "skb:lang:target:token:ident":"AT_CLEVEL",
+                    "skb:lang:target:token:translate":"an @ keyword '@clevel'",
+                    "skb:util:constant:javadoc":"Constant for &#64;CLevel Keyword"
                 },
                 "polaAT_CONTAINS":{
-                    "skb:lang:target:tokens:cid":"polaAT_CONTAINS",
-                    "skb:lang:target:tokens:cval":"@contains",
-                    "skb:lang:target:tokens:tid":"AT_CONTAINS",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@contains'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Contains Keyword"
+                    "skb:util:constant:ident":"polaAT_CONTAINS",
+                    "skb:util:constant:value":"@contains",
+                    "skb:lang:target:token:ident":"AT_CONTAINS",
+                    "skb:lang:target:token:translate":"an @ keyword '@contains'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Contains Keyword"
                 },
                 "polaAT_DESCRIPTION":{
-                    "skb:lang:target:tokens:cid":"polaAT_DESCRIPTION",
-                    "skb:lang:target:tokens:cval":"@description",
-                    "skb:lang:target:tokens:tid":"AT_DESCRIPTION",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@description'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Description Keyword"
+                    "skb:util:constant:ident":"polaAT_DESCRIPTION",
+                    "skb:util:constant:value":"@description",
+                    "skb:lang:target:token:ident":"AT_DESCRIPTION",
+                    "skb:lang:target:token:translate":"an @ keyword '@description'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Description Keyword"
                 },
                 "polaAT_EXTENDS":{
-                    "skb:lang:target:tokens:cid":"polaAT_EXTENDS",
-                    "skb:lang:target:tokens:cval":"@extends",
-                    "skb:lang:target:tokens:tid":"AT_EXTENDS",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@extends'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Extends Keyword"
+                    "skb:util:constant:ident":"polaAT_EXTENDS",
+                    "skb:util:constant:value":"@extends",
+                    "skb:lang:target:token:ident":"AT_EXTENDS",
+                    "skb:lang:target:token:translate":"an @ keyword '@extends'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Extends Keyword"
                 },
                 "polaAT_ENVIRONMENT":{
-                    "skb:lang:target:tokens:cid":"polaAT_ENVIRONMENT",
-                    "skb:lang:target:tokens:cval":"@environment",
-                    "skb:lang:target:tokens:tid":"AT_ENVIRONMENT",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@environment'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Environment Keyword"
+                    "skb:util:constant:ident":"polaAT_ENVIRONMENT",
+                    "skb:util:constant:value":"@environment",
+                    "skb:lang:target:token:ident":"AT_ENVIRONMENT",
+                    "skb:lang:target:token:translate":"an @ keyword '@environment'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Environment Keyword"
                 },
                 "polaAT_LANGUAGE":{
-                    "skb:lang:target:tokens:cid":"polaAT_LANGUAGE",
-                    "skb:lang:target:tokens:cval":"@language",
-                    "skb:lang:target:tokens:tid":"AT_LANGUAGE",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@language'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Language Keyword"
+                    "skb:util:constant:ident":"polaAT_LANGUAGE",
+                    "skb:util:constant:value":"@language",
+                    "skb:lang:target:token:ident":"AT_LANGUAGE",
+                    "skb:lang:target:token:translate":"an @ keyword '@language'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Language Keyword"
                 },
                 "polaAT_NEGOTIABLE":{
-                    "skb:lang:target:tokens:cid":"polaAT_NEGOTIABLE",
-                    "skb:lang:target:tokens:cval":"@negotiable",
-                    "skb:lang:target:tokens:tid":"AT_NEGOTIABLE",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@negotiable'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Negotiable Keyword"
+                    "skb:util:constant:ident":"polaAT_NEGOTIABLE",
+                    "skb:util:constant:value":"@negotiable",
+                    "skb:lang:target:token:ident":"AT_NEGOTIABLE",
+                    "skb:lang:target:token:translate":"an @ keyword '@negotiable'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Negotiable Keyword"
                 },
                 "polaAT_PRIORITY":{
-                    "skb:lang:target:tokens:cid":"polaAT_PRIORITY",
-                    "skb:lang:target:tokens:cval":"@priority",
-                    "skb:lang:target:tokens:tid":"AT_PRIORITY",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@priority'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Priority Keyword"
+                    "skb:util:constant:ident":"polaAT_PRIORITY",
+                    "skb:util:constant:value":"@priority",
+                    "skb:lang:target:token:ident":"AT_PRIORITY",
+                    "skb:lang:target:token:translate":"an @ keyword '@priority'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Priority Keyword"
                 },
                 "polaAT_PROVIDES":{
-                    "skb:lang:target:tokens:cid":"polaAT_PROVIDES",
-                    "skb:lang:target:tokens:cval":"@provides",
-                    "skb:lang:target:tokens:tid":"AT_PROVIDES",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Provides Keyword"
+                    "skb:util:constant:ident":"polaAT_PROVIDES",
+                    "skb:util:constant:value":"@provides",
+                    "skb:lang:target:token:ident":"AT_PROVIDES",
+                    "skb:lang:target:token:translate":"an @ keyword '@provides'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Provides Keyword"
                 },
                 "polaAT_RANK":{
-                    "skb:lang:target:tokens:cid":"polaAT_RANK",
-                    "skb:lang:target:tokens:cval":"@rank",
-                    "skb:lang:target:tokens:tid":"AT_RANK",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@rank'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Rank Keyword"
+                    "skb:util:constant:ident":"polaAT_RANK",
+                    "skb:util:constant:value":"@rank",
+                    "skb:lang:target:token:ident":"AT_RANK",
+                    "skb:lang:target:token:translate":"an @ keyword '@rank'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Rank Keyword"
                 },
                 "polaAT_REQUIRES":{
-                    "skb:lang:target:tokens:cid":"polaAT_REQUIRES",
-                    "skb:lang:target:tokens:cval":"@requires",
-                    "skb:lang:target:tokens:tid":"AT_REQUIRES",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@requires'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Requires Keyword"
+                    "skb:util:constant:ident":"polaAT_REQUIRES",
+                    "skb:util:constant:value":"@requires",
+                    "skb:lang:target:token:ident":"AT_REQUIRES",
+                    "skb:lang:target:token:translate":"an @ keyword '@requires'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Requires Keyword"
                 },
                 "polaAT_RETURN":{
-                    "skb:lang:target:tokens:cid":"polaAT_RETURN",
-                    "skb:lang:target:tokens:cval":"@return",
-                    "skb:lang:target:tokens:tid":"AT_RETURN",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@return'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Return Keyword"
+                    "skb:util:constant:ident":"polaAT_RETURN",
+                    "skb:util:constant:value":"@return",
+                    "skb:lang:target:token:ident":"AT_RETURN",
+                    "skb:lang:target:token:translate":"an @ keyword '@return'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Return Keyword"
                 },
                 "polaAT_RUNTIME":{
-                    "skb:lang:target:tokens:cid":"polaAT_RUNTIME",
-                    "skb:lang:target:tokens:cval":"@runtime",
-                    "skb:lang:target:tokens:tid":"AT_RUNTIME",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@runtime'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Runtime Keyword"
+                    "skb:util:constant:ident":"polaAT_RUNTIME",
+                    "skb:util:constant:value":"@runtime",
+                    "skb:lang:target:token:ident":"AT_RUNTIME",
+                    "skb:lang:target:token:translate":"an @ keyword '@runtime'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Runtime Keyword"
                 },
                 "polaAT_SCOPE":{
-                    "skb:lang:target:tokens:cid":"polaAT_SCOPE",
-                    "skb:lang:target:tokens:cval":"@scope",
-                    "skb:lang:target:tokens:tid":"AT_SCOPE",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@scope'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Scope"
+                    "skb:util:constant:ident":"polaAT_SCOPE",
+                    "skb:util:constant:value":"@scope",
+                    "skb:lang:target:token:ident":"AT_SCOPE",
+                    "skb:lang:target:token:translate":"an @ keyword '@scope'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Scope"
                 },
                 "polaAT_SPEC":{
-                    "skb:lang:target:tokens:cid":"polaAT_SPEC",
-                    "skb:lang:target:tokens:cval":"@spec",
-                    "skb:lang:target:tokens:tid":"AT_SPEC",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@spec'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Spec"
+                    "skb:util:constant:ident":"polaAT_SPEC",
+                    "skb:util:constant:value":"@spec",
+                    "skb:lang:target:token:ident":"AT_SPEC",
+                    "skb:lang:target:token:translate":"an @ keyword '@spec'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Spec"
                 },
                 "polaAT_STAGE":{
-                    "skb:lang:target:tokens:cid":"polaAT_STAGE",
-                    "skb:lang:target:tokens:cval":"@stage",
-                    "skb:lang:target:tokens:tid":"AT_STAGE",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@stage'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Stage"
+                    "skb:util:constant:ident":"polaAT_STAGE",
+                    "skb:util:constant:value":"@stage",
+                    "skb:lang:target:token:ident":"AT_STAGE",
+                    "skb:lang:target:token:translate":"an @ keyword '@stage'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Stage"
                 },
                 "polaAT_TYPE":{
-                    "skb:lang:target:tokens:cid":"polaAT_TYPE",
-                    "skb:lang:target:tokens:cval":"@type",
-                    "skb:lang:target:tokens:tid":"AT_TYPE",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@type'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Type"
+                    "skb:util:constant:ident":"polaAT_TYPE",
+                    "skb:util:constant:value":"@type",
+                    "skb:lang:target:token:ident":"AT_TYPE",
+                    "skb:lang:target:token:translate":"an @ keyword '@type'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Type"
                 },
                 "polaAT_VISIBILITY":{
-                    "skb:lang:target:tokens:cid":"polaAT_VISIBILITY",
-                    "skb:lang:target:tokens:cval":"@visibility",
-                    "skb:lang:target:tokens:tid":"AT_VISIBILITY",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@visibility'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Visibility"
+                    "skb:util:constant:ident":"polaAT_VISIBILITY",
+                    "skb:util:constant:value":"@visibility",
+                    "skb:lang:target:token:ident":"AT_VISIBILITY",
+                    "skb:lang:target:token:translate":"an @ keyword '@visibility'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Visibility"
                 },
 
 
                 //for lexer to print proper error messages
                 "polaCPP_DIRECTIVE":{
-                    "skb:lang:target:tokens:cid":"polaCPP_DIRECTIVE",
-                    "skb:lang:target:tokens:cval":"preprocessor directive",
-                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
-                    "skb:lang:target:tokens:tval":"preprocessor directive",
-                    "skb:lang:target:tokens:cjavadoc":"CPP Directove"
+                    "skb:util:constant:ident":"polaCPP_DIRECTIVE",
+                    "skb:util:constant:value":"preprocessor directive",
+                    "skb:lang:target:token:ident":"CPP_DIRECTIVE",
+                    "skb:lang:target:token:translate":"preprocessor directive",
+                    "skb:util:constant:javadoc":"CPP Directove"
                 },
                 "polaESC":{
-                    "skb:lang:target:tokens:cid":"polaESC",
-                    "skb:lang:target:tokens:cval":"escape sequence",
-                    "skb:lang:target:tokens:tid":"ESC",
-                    "skb:lang:target:tokens:tval":"escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Escape Sequence"
+                    "skb:util:constant:ident":"polaESC",
+                    "skb:util:constant:value":"escape sequence",
+                    "skb:lang:target:token:ident":"ESC",
+                    "skb:lang:target:token:translate":"escape sequence",
+                    "skb:util:constant:javadoc":"Escape Sequence"
                 },
                 "polaFloatSuffix":{
-                    "skb:lang:target:tokens:cid":"polaFloatSuffix",
-                    "skb:lang:target:tokens:cval":"floating point suffix",
-                    "skb:lang:target:tokens:tid":"FloatSuffix",
-                    "skb:lang:target:tokens:tval":"floating point suffix",
-                    "skb:lang:target:tokens:cjavadoc":"Float Suffix"
+                    "skb:util:constant:ident":"polaFloatSuffix",
+                    "skb:util:constant:value":"floating point suffix",
+                    "skb:lang:target:token:ident":"FloatSuffix",
+                    "skb:lang:target:token:translate":"floating point suffix",
+                    "skb:util:constant:javadoc":"Float Suffix"
                 },
                 "polaHexDigit":{
-                    "skb:lang:target:tokens:cid":"polaHexDigit",
-                    "skb:lang:target:tokens:cval":"hexadecimal digit",
-                    "skb:lang:target:tokens:tid":"HexDigit",
-                    "skb:lang:target:tokens:tval":"hexadecimal digit",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Digit"
+                    "skb:util:constant:ident":"polaHexDigit",
+                    "skb:util:constant:value":"hexadecimal digit",
+                    "skb:lang:target:token:ident":"HexDigit",
+                    "skb:lang:target:token:translate":"hexadecimal digit",
+                    "skb:util:constant:javadoc":"Hex Digit"
                 },
                 "polaIDENT":{
-                    "skb:lang:target:tokens:cid":"polaIDENT",
-                    "skb:lang:target:tokens:cval":"identifier",
-                    "skb:lang:target:tokens:tid":"IDENT",
-                    "skb:lang:target:tokens:tval":"an identifier",
-                    "skb:lang:target:tokens:cjavadoc":"Identifier"
+                    "skb:util:constant:ident":"polaIDENT",
+                    "skb:util:constant:value":"identifier",
+                    "skb:lang:target:token:ident":"IDENT",
+                    "skb:lang:target:token:translate":"an identifier",
+                    "skb:util:constant:javadoc":"Identifier"
                 },
                 "polaINLINE_CODE":{
-                    "skb:lang:target:tokens:cid":"polaINLINE_CODE",
-                    "skb:lang:target:tokens:cval":"inline code",
-                    "skb:lang:target:tokens:tid":"INLINE_CODE",
-                    "skb:lang:target:tokens:tval":"inline code",
-                    "skb:lang:target:tokens:cjavadoc":"Inline Code"
+                    "skb:util:constant:ident":"polaINLINE_CODE",
+                    "skb:util:constant:value":"inline code",
+                    "skb:lang:target:token:ident":"INLINE_CODE",
+                    "skb:lang:target:token:translate":"inline code",
+                    "skb:util:constant:javadoc":"Inline Code"
                 },
                 "polaML_COMMENT":{
-                    "skb:lang:target:tokens:cid":"polaML_COMMENT",
-                    "skb:lang:target:tokens:cval":"multiple line comment",
-                    "skb:lang:target:tokens:tid":"ML_COMMENT",
-                    "skb:lang:target:tokens:tval":"multiple line comment",
-                    "skb:lang:target:tokens:cjavadoc":"Multiline Comment"
+                    "skb:util:constant:ident":"polaML_COMMENT",
+                    "skb:util:constant:value":"multiple line comment",
+                    "skb:lang:target:token:ident":"ML_COMMENT",
+                    "skb:lang:target:token:translate":"multiple line comment",
+                    "skb:util:constant:javadoc":"Multiline Comment"
                 },
                 "polaOctDigit":{
-                    "skb:lang:target:tokens:cid":"polaOctDigit",
-                    "skb:lang:target:tokens:cval":"otcal digit",
-                    "skb:lang:target:tokens:tid":"OctDigit",
-                    "skb:lang:target:tokens:tval":"otcal digit",
-                    "skb:lang:target:tokens:cjavadoc":"Oct Digit"
+                    "skb:util:constant:ident":"polaOctDigit",
+                    "skb:util:constant:value":"otcal digit",
+                    "skb:lang:target:token:ident":"OctDigit",
+                    "skb:lang:target:token:translate":"otcal digit",
+                    "skb:util:constant:javadoc":"Oct Digit"
                 },
                 "polaOctalEscape":{
-                    "skb:lang:target:tokens:cid":"polaOctalEscape",
-                    "skb:lang:target:tokens:cval":"octal escape sequence",
-                    "skb:lang:target:tokens:tid":"OctalEscape",
-                    "skb:lang:target:tokens:tval":"octal escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Octal Escape"
+                    "skb:util:constant:ident":"polaOctalEscape",
+                    "skb:util:constant:value":"octal escape sequence",
+                    "skb:lang:target:token:ident":"OctalEscape",
+                    "skb:lang:target:token:translate":"octal escape sequence",
+                    "skb:util:constant:javadoc":"Octal Escape"
                 },
                 "polaSL_COMMENT":{
-                    "skb:lang:target:tokens:cid":"polaSL_COMMENT",
-                    "skb:lang:target:tokens:cval":"single line comment",
-                    "skb:lang:target:tokens:tid":"SL_COMMENT",
-                    "skb:lang:target:tokens:tval":"single line comment",
-                    "skb:lang:target:tokens:cjavadoc":"Singleline Comment"
+                    "skb:util:constant:ident":"polaSL_COMMENT",
+                    "skb:util:constant:value":"single line comment",
+                    "skb:lang:target:token:ident":"SL_COMMENT",
+                    "skb:lang:target:token:translate":"single line comment",
+                    "skb:util:constant:javadoc":"Singleline Comment"
                 },
                 "polaUnicodeEscape":{
-                    "skb:lang:target:tokens:cid":"polaUnicodeEscape",
-                    "skb:lang:target:tokens:cval":"unicode escape sequence",
-                    "skb:lang:target:tokens:tid":"UnicodeEscape",
-                    "skb:lang:target:tokens:tval":"unicode escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Unicode Escape"
+                    "skb:util:constant:ident":"polaUnicodeEscape",
+                    "skb:util:constant:value":"unicode escape sequence",
+                    "skb:lang:target:token:ident":"UnicodeEscape",
+                    "skb:lang:target:token:translate":"unicode escape sequence",
+                    "skb:util:constant:javadoc":"Unicode Escape"
                 },
                 "polaVAL_BINARY":{
-                    "skb:lang:target:tokens:cid":"polaVAL_BINARY",
-                    "skb:lang:target:tokens:cval":"binary value",
-                    "skb:lang:target:tokens:tid":"VAL_BINARY",
-                    "skb:lang:target:tokens:tval":"binary value",
-                    "skb:lang:target:tokens:cjavadoc":"Binary Keyword"
+                    "skb:util:constant:ident":"polaVAL_BINARY",
+                    "skb:util:constant:value":"binary value",
+                    "skb:lang:target:token:ident":"VAL_BINARY",
+                    "skb:lang:target:token:translate":"binary value",
+                    "skb:util:constant:javadoc":"Binary Keyword"
                 },
                 "polaVAL_CHAR":{
-                    "skb:lang:target:tokens:cid":"polaVAL_CHAR",
-                    "skb:lang:target:tokens:cval":"character value",
-                    "skb:lang:target:tokens:tid":"VAL_CHAR",
-                    "skb:lang:target:tokens:tval":"character value",
-                    "skb:lang:target:tokens:cjavadoc":"Char Keyword"
+                    "skb:util:constant:ident":"polaVAL_CHAR",
+                    "skb:util:constant:value":"character value",
+                    "skb:lang:target:token:ident":"VAL_CHAR",
+                    "skb:lang:target:token:translate":"character value",
+                    "skb:util:constant:javadoc":"Char Keyword"
                 },
                 "polaVAL_FLOAT":{
-                    "skb:lang:target:tokens:cid":"polaVAL_FLOAT",
-                    "skb:lang:target:tokens:cval":"floating point value",
-                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
-                    "skb:lang:target:tokens:tval":"floating point value",
-                    "skb:lang:target:tokens:cjavadoc":"Float Keyword"
+                    "skb:util:constant:ident":"polaVAL_FLOAT",
+                    "skb:util:constant:value":"floating point value",
+                    "skb:lang:target:token:ident":"VAL_FLOAT",
+                    "skb:lang:target:token:translate":"floating point value",
+                    "skb:util:constant:javadoc":"Float Keyword"
                 },
                 "polaVAL_HEX":{
-                    "skb:lang:target:tokens:cid":"polaVAL_HEX",
-                    "skb:lang:target:tokens:cval":"hexadecimal value",
-                    "skb:lang:target:tokens:tid":"VAL_HEX",
-                    "skb:lang:target:tokens:tval":"hexadecimal value",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Keyword"
+                    "skb:util:constant:ident":"polaVAL_HEX",
+                    "skb:util:constant:value":"hexadecimal value",
+                    "skb:lang:target:token:ident":"VAL_HEX",
+                    "skb:lang:target:token:translate":"hexadecimal value",
+                    "skb:util:constant:javadoc":"Hex Keyword"
                 },
                 "polaVAL_INTEGER":{
-                    "skb:lang:target:tokens:cid":"polaVAL_INTEGER",
-                    "skb:lang:target:tokens:cval":"integer value",
-                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
-                    "skb:lang:target:tokens:tval":"integer value",
-                    "skb:lang:target:tokens:cjavadoc":"Integer Keyword"
+                    "skb:util:constant:ident":"polaVAL_INTEGER",
+                    "skb:util:constant:value":"integer value",
+                    "skb:lang:target:token:ident":"VAL_INTEGER",
+                    "skb:lang:target:token:translate":"integer value",
+                    "skb:util:constant:javadoc":"Integer Keyword"
                 },
                 "polaVAL_OCT":{
-                    "skb:lang:target:tokens:cid":"polaVAL_OCT",
-                    "skb:lang:target:tokens:cval":"octal value",
-                    "skb:lang:target:tokens:tid":"VAL_OCT",
-                    "skb:lang:target:tokens:tval":"octal value",
-                    "skb:lang:target:tokens:cjavadoc":"Oct Keyword"
+                    "skb:util:constant:ident":"polaVAL_OCT",
+                    "skb:util:constant:value":"octal value",
+                    "skb:lang:target:token:ident":"VAL_OCT",
+                    "skb:lang:target:token:translate":"octal value",
+                    "skb:util:constant:javadoc":"Oct Keyword"
                 },
                 "polaVAL_STRING":{
-                    "skb:lang:target:tokens:cid":"polaVAL_STRING",
-                    "skb:lang:target:tokens:cval":"string value",
-                    "skb:lang:target:tokens:tid":"VAL_STRING",
-                    "skb:lang:target:tokens:tval":"string value",
-                    "skb:lang:target:tokens:cjavadoc":"String Keyword"
+                    "skb:util:constant:ident":"polaVAL_STRING",
+                    "skb:util:constant:value":"string value",
+                    "skb:lang:target:token:ident":"VAL_STRING",
+                    "skb:lang:target:token:translate":"string value",
+                    "skb:util:constant:javadoc":"String Keyword"
                 },
                 "polaWS":{
-                    "skb:lang:target:tokens:cid":"polaWS",
-                    "skb:lang:target:tokens:cval":"whitespace",
-                    "skb:lang:target:tokens:tid":"WS",
-                    "skb:lang:target:tokens:tval":"whitespace",
-                    "skb:lang:target:tokens:cjavadoc":"Whitespace"
+                    "skb:util:constant:ident":"polaWS",
+                    "skb:util:constant:value":"whitespace",
+                    "skb:lang:target:token:ident":"WS",
+                    "skb:lang:target:token:translate":"whitespace",
+                    "skb:util:constant:javadoc":"Whitespace"
                 },
 
 
                 //for lexer to print proper error messages
                 ";":{
-                    "skb:lang:target:tokens:tid":"';'",
-                    "skb:lang:target:tokens:tval":"character ';'"
+                    "skb:lang:target:token:ident":"';'",
+                    "skb:lang:target:token:translate":"character ';'"
                 },
                 "}":{
-                    "skb:lang:target:tokens:tid":"'}'",
-                    "skb:lang:target:tokens:tval":"character '}'"
+                    "skb:lang:target:token:ident":"'}'",
+                    "skb:lang:target:token:translate":"character '}'"
                 },
                 "=":{
-                    "skb:lang:target:tokens:tid":"'='",
-                    "skb:lang:target:tokens:tval":"character '='"
+                    "skb:lang:target:token:ident":"'='",
+                    "skb:lang:target:token:translate":"character '='"
                 },
                 "(":{
-                    "skb:lang:target:tokens:tid":"'('",
-                    "skb:lang:target:tokens:tval":"character '('"
+                    "skb:lang:target:token:ident":"'('",
+                    "skb:lang:target:token:translate":"character '('"
                 },
                 ":":{
-                    "skb:lang:target:tokens:tid":"':'",
-                    "skb:lang:target:tokens:tval":"character ':'"
+                    "skb:lang:target:token:ident":"':'",
+                    "skb:lang:target:token:translate":"character ':'"
                 },
                 "::":{
-                    "skb:lang:target:tokens:tid":"'::'",
-                    "skb:lang:target:tokens:tval":"scope operator '::'"
+                    "skb:lang:target:token:ident":"'::'",
+                    "skb:lang:target:token:translate":"scope operator '::'"
                 },
                 "[":{
-                    "skb:lang:target:tokens:tid":"'['",
-                    "skb:lang:target:tokens:tval":"character '['"
+                    "skb:lang:target:token:ident":"'['",
+                    "skb:lang:target:token:translate":"character '['"
                 },
                 ",":{
-                    "skb:lang:target:tokens:tid":"','",
-                    "skb:lang:target:tokens:tval":"character ','"
+                    "skb:lang:target:token:ident":"','",
+                    "skb:lang:target:token:translate":"character ','"
                 },
                 ")":{
-                    "skb:lang:target:tokens:tid":"')'",
-                    "skb:lang:target:tokens:tval":"character ')'"
+                    "skb:lang:target:token:ident":"')'",
+                    "skb:lang:target:token:translate":"character ')'"
                 },
                 "{":{
-                    "skb:lang:target:tokens:tid":"'{'",
-                    "skb:lang:target:tokens:tval":"character '{'"
+                    "skb:lang:target:token:ident":"'{'",
+                    "skb:lang:target:token:translate":"character '{'"
                 },
                 "]":{
-                    "skb:lang:target:tokens:tid":"']'",
-                    "skb:lang:target:tokens:tval":"character ']'"
+                    "skb:lang:target:token:ident":"']'",
+                    "skb:lang:target:token:translate":"character ']'"
                 }
             },
 

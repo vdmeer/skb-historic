@@ -43,129 +43,129 @@
         "tribe":{
             "configuration":{
                 "name":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"DAL"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"DAL"
                 },
                 "name-lc":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"dal"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"dal"
                 },
                 "copyright":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"Copyright (c) 2011-2011 Sven van der Meer <sven@vandermeer.de>"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"Copyright (c) 2011-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
                 "version":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"0.01"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"0.01"
                 },
                 "build":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"110309"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"110309"
                 },
                 "build-date":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"2011-Mar-09"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"2011-Mar-09"
                 },
                 "tribe-generic-stg":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/internal\/generic.stg"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/internal\/generic.stg"
                 }
             }
         },
         "lang":{
             "configuration":{
                 "sql":{
-                    "skb:lang:target:config:constid":"internalDalTgtSql",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target SQL"
+                    "skb:util:constant:ident":"internalDalTgtSql",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target SQL"
                 },
                 "internal-scope-sep":{
-                    "skb:lang:target:config:constid":"keyScopeSep",
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"@@",
-                    "skb:lang:target:config:javadoc":"Internal scope separator"
+                    "skb:util:constant:ident":"keyScopeSep",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"@@",
+                    "skb:util:constant:javadoc":"Internal scope separator"
                 },
                 "pr-stats":{
-                    "skb:lang:target:config:constid":"keyPrStat",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Show simple statistic information"
+                    "skb:util:constant:ident":"keyPrStat",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Show simple statistic information"
                 },
                 "pr-stats-all":{
-                    "skb:lang:target:config:constid":"keyPrStatAll",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats-all",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Show complete statistic information",
-                    "skb:lang:target:config:javadoc":"Show complete statistic information"
+                    "skb:util:constant:ident":"keyPrStatAll",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats-all",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Show complete statistic information",
+                    "skb:util:constant:javadoc":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
-                    "skb:lang:target:config:constid":"keyPrStatsWScope",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats-ws",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"No scoped names in statistics",
-                    "skb:lang:target:config:javadoc":"Don't use scoped names in statistics"
+                    "skb:util:constant:ident":"keyPrStatsWScope",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats-ws",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"No scoped names in statistics",
+                    "skb:util:constant:javadoc":"Don't use scoped names in statistics"
                 },
                 "pr-stg-stats":{
-                    "skb:lang:target:config:constid":"keyPrStgFileStats",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stg-stats",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Print statistics string template",
-                    "skb:lang:target:config:javadoc":"Print the string template used for statistics"
+                    "skb:util:constant:ident":"keyPrStgFileStats",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stg-stats",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Print statistics string template",
+                    "skb:util:constant:javadoc":"Print the string template used for statistics"
                 },
                 "stat-stg":{
-                    "skb:lang:target:config:constid":"keyStatStg",
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"\/org\/skb\/lang\/dal\/stg\/statistics.stg",
-                    "cli:option:long":"stat-stg",
-                    "cli:option:arg-name":"file",
-                    "cli:option:type":"ts:atomic:java:string",
-                    "cli:usage:descr":"Group template file for statistics",
-                    "skb:lang:target:config:javadoc":"Group template for statistics"
+                    "skb:util:constant:ident":"keyStatStg",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/dal\/stg\/statistics.stg",
+                    "skb:util:cli:option:long":"stat-stg",
+                    "skb:util:cli:descr:arguments":"file",
+                    "skb:util:cli:option:type":"ts:atomic:java:string",
+                    "skb:util:cli:descr:short":"Group template file for statistics",
+                    "skb:util:constant:javadoc":"Group template for statistics"
                 },
                 "print-repo-fields":{
-                    "skb:lang:target:config:constid":"keyPrintRepoFields",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"print-repo-fields",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Print the Repository Fieldnames to stderr",
-                    "skb:lang:target:config:javadoc":"Print the collected repository fields to stderr"
+                    "skb:util:constant:ident":"keyPrintRepoFields",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"print-repo-fields",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Print the Repository Fieldnames to stderr",
+                    "skb:util:constant:javadoc":"Print the collected repository fields to stderr"
                 }
             },
             "targets":{
                 "sql":{
                     "skb:lang:target:name":"sql",
                     "tgt-stg":{
-                            "value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/sql.stg"
+                            "skb:value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/sql.stg"
                     },
                     "tgt-fileext":{
-                            "value:default":".sql"
+                            "skb:value:default":".sql"
                     },
                     "gc-scope-sep":{
-                            "value:default":"::"
+                            "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
                         "tgt-split-repository":{
-                            "skb:lang:target:config:constid":"keyTgSplitRepository",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":true
+                            "skb:util:constant:ident":"keyTgSplitRepository",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":true
                         },
                         "tgt-ignore-empty-st":{
-                            "skb:lang:target:config:constid":"keyTgIgnoreEmptyST",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":true
+                            "skb:util:constant:ident":"keyTgIgnoreEmptyST",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":true
                         },
                         "tgt-repo-fileadd":{
-                            "skb:lang:target:config:constid":"keyTgRepoFileAdd",
-                            "at:type":"ts:atomic:java:string",
-                            "value:default":"-repo"
+                            "skb:util:constant:ident":"keyTgRepoFileAdd",
+                            "skb:value:type":"ts:atomic:java:string",
+                            "skb:value:default":"-repo"
                         }
                     }
                 }
@@ -173,596 +173,596 @@
 
             "stgchunks":{
                 "mlcomment_start":{
-                    "skb:tribe:stgchunk:mandatory": ["dummy"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "mlcomment_end":{
-                    "skb:tribe:stgchunk:mandatory": ["dummy"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "slcomment":{
-                    "skb:tribe:stgchunk:mandatory": ["comment"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["comment"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
 
                 "dalSpecification":{
-                    "skb:tribe:stgchunk:mandatory": ["definition"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["definition"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalDefinition":{
-                    "skb:tribe:stgchunk:mandatory": ["package"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["package"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackage":{
-                    "skb:tribe:stgchunk:mandatory": ["ident", "empty", "repos", "tables", "actions", "data"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "empty", "repos", "tables", "actions", "data"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalRepository":{
-                    "skb:tribe:stgchunk:mandatory": ["ident", "tables"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "tables"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalTable":{
-                    "skb:tribe:stgchunk:mandatory": ["ident", "fields"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "fields"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalField":{
-                    "skb:tribe:stgchunk:mandatory": ["ident", "type", "constraints", "size", "precision", "others"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "type", "constraints", "size", "precision", "others"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalFieldConstraint":{
-                    "skb:tribe:stgchunk:mandatory": ["reason", "action"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["reason", "action"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalSequence":{
-                    "skb:tribe:stgchunk:mandatory": ["ids"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["ids"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackageRepository":{
-                    "skb:tribe:stgchunk:mandatory": ["repo", "tables"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["repo", "tables"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackageRepositoryTable":{
-                    "skb:tribe:stgchunk:mandatory": ["table", "kv"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["table", "kv"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackageRepositoryRow":{
-                    "skb:tribe:stgchunk:mandatory": ["kv"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["kv"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActions":{
-                    "skb:tribe:stgchunk:mandatory": ["insert", "remove", "empty"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["insert", "remove", "empty"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActionsInsert":{
-                    "skb:tribe:stgchunk:mandatory": ["table", "kvl"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["table", "kvl"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActionsRemove":{
-                    "skb:tribe:stgchunk:mandatory": ["table", "kv"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["table", "kv"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActionsEmpty":{
-                    "skb:tribe:stgchunk:mandatory": ["table"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["table"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalData":{
-                    "skb:tribe:stgchunk:mandatory": ["rows"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["rows"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalDataRow":{
-                    "skb:tribe:stgchunk:mandatory": ["table", "kvl"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["table", "kvl"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
 
                 "const_value":{
-                    "skb:tribe:stgchunk:mandatory": ["val"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["val"],
+                    "skb:stringtemplate:chunks:optional":  []
                 }
             },
 
             "tokens":{
                 // for parser
                 "parserIDENTIFIER":{
-                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
-                    "skb:lang:target:tokens:cval":"identifier",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - identifier"
+                    "skb:util:constant:ident":"parserIDENTIFIER",
+                    "skb:util:constant:value":"identifier",
+                    "skb:util:constant:javadoc":"Parser - identifier"
                 },
                 "parserScopedName":{
-                    "skb:lang:target:tokens:cid":"parserScopedName",
-                    "skb:lang:target:tokens:cval":"scoped_name",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - scoped name"
+                    "skb:util:constant:ident":"parserScopedName",
+                    "skb:util:constant:value":"scoped_name",
+                    "skb:util:constant:javadoc":"Parser - scoped name"
                 },
                 "parserBaseType ":{
-                    "skb:lang:target:tokens:cid":"parserBaseType ",
-                    "skb:lang:target:tokens:cval":"base_type",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - base type"
+                    "skb:util:constant:ident":"parserBaseType ",
+                    "skb:util:constant:value":"base_type",
+                    "skb:util:constant:javadoc":"Parser - base type"
                 },
                 "parserScopeSep":{
-                    "skb:lang:target:tokens:cid":"parserScopeSep",
-                    "skb:lang:target:tokens:cval":"::",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - scope separator"
+                    "skb:util:constant:ident":"parserScopeSep",
+                    "skb:util:constant:value":"::",
+                    "skb:util:constant:javadoc":"Parser - scope separator"
                 },
 
 
                 // DAL Keywords -> DAL Specific
                 "dalTABLE":{
-                    "skb:lang:target:tokens:cid":"dalTABLE",
-                    "skb:lang:target:tokens:cval":"table",
-                    "skb:lang:target:tokens:tid":"DAL_TABLE",
-                    "skb:lang:target:tokens:tval":"keyword 'table'",
-                    "skb:lang:target:tokens:cjavadoc":"Table Keyword"
+                    "skb:util:constant:ident":"dalTABLE",
+                    "skb:util:constant:value":"table",
+                    "skb:lang:target:token:ident":"DAL_TABLE",
+                    "skb:lang:target:token:translate":"keyword 'table'",
+                    "skb:util:constant:javadoc":"Table Keyword"
                 },
                 "dalACTION_EMPTY":{
-                    "skb:lang:target:tokens:cid":"dalACTION_EMPTY",
-                    "skb:lang:target:tokens:cval":"empty",
-                    "skb:lang:target:tokens:tid":"DAL_ACTION_EMPTY",
-                    "skb:lang:target:tokens:tval":"keyword 'empty'",
-                    "skb:lang:target:tokens:cjavadoc":"Action Empty Keyword"
+                    "skb:util:constant:ident":"dalACTION_EMPTY",
+                    "skb:util:constant:value":"empty",
+                    "skb:lang:target:token:ident":"DAL_ACTION_EMPTY",
+                    "skb:lang:target:token:translate":"keyword 'empty'",
+                    "skb:util:constant:javadoc":"Action Empty Keyword"
                 },
                 "dalACTION_INSERT":{
-                    "skb:lang:target:tokens:cid":"dalACTION_INSERT",
-                    "skb:lang:target:tokens:cval":"insert",
-                    "skb:lang:target:tokens:tid":"DAL_ACTION_INSERT",
-                    "skb:lang:target:tokens:tval":"keyword 'insert'",
-                    "skb:lang:target:tokens:cjavadoc":"Action Insert Keyword"
+                    "skb:util:constant:ident":"dalACTION_INSERT",
+                    "skb:util:constant:value":"insert",
+                    "skb:lang:target:token:ident":"DAL_ACTION_INSERT",
+                    "skb:lang:target:token:translate":"keyword 'insert'",
+                    "skb:util:constant:javadoc":"Action Insert Keyword"
                 },
                 "dalACTION_REMOVE":{
-                    "skb:lang:target:tokens:cid":"dalACTION_REMOVE",
-                    "skb:lang:target:tokens:cval":"remove",
-                    "skb:lang:target:tokens:tid":"DAL_ACTION_REMOVE",
-                    "skb:lang:target:tokens:tval":"keyword 'remove'",
-                    "skb:lang:target:tokens:cjavadoc":"Action Remove Keyword"
+                    "skb:util:constant:ident":"dalACTION_REMOVE",
+                    "skb:util:constant:value":"remove",
+                    "skb:lang:target:token:ident":"DAL_ACTION_REMOVE",
+                    "skb:lang:target:token:translate":"keyword 'remove'",
+                    "skb:util:constant:javadoc":"Action Remove Keyword"
                 },
                 "dalACTIONS":{
-                    "skb:lang:target:tokens:cid":"dalACTIONS",
-                    "skb:lang:target:tokens:cval":"actions",
-                    "skb:lang:target:tokens:tid":"DAL_ACTIONS",
-                    "skb:lang:target:tokens:tval":"keyword 'actions'",
-                    "skb:lang:target:tokens:cjavadoc":"Actions Keyword"
+                    "skb:util:constant:ident":"dalACTIONS",
+                    "skb:util:constant:value":"actions",
+                    "skb:lang:target:token:ident":"DAL_ACTIONS",
+                    "skb:lang:target:token:translate":"keyword 'actions'",
+                    "skb:util:constant:javadoc":"Actions Keyword"
                 },
                 "dalABORT":{
-                    "skb:lang:target:tokens:cid":"dalABORT",
-                    "skb:lang:target:tokens:cval":"abort",
-                    "skb:lang:target:tokens:tid":"DAL_ABORT",
-                    "skb:lang:target:tokens:tval":"keyword 'abort'",
-                    "skb:lang:target:tokens:cjavadoc":"Abort Keyword"
+                    "skb:util:constant:ident":"dalABORT",
+                    "skb:util:constant:value":"abort",
+                    "skb:lang:target:token:ident":"DAL_ABORT",
+                    "skb:lang:target:token:translate":"keyword 'abort'",
+                    "skb:util:constant:javadoc":"Abort Keyword"
                 },
                 "dalNOTNUL":{
-                    "skb:lang:target:tokens:cid":"dalNOTNUL",
-                    "skb:lang:target:tokens:cval":"notnull",
-                    "skb:lang:target:tokens:tid":"DAL_NOTNUL",
-                    "skb:lang:target:tokens:tval":"keyword 'notnull'",
-                    "skb:lang:target:tokens:cjavadoc":"Not_Null Keyword"
+                    "skb:util:constant:ident":"dalNOTNUL",
+                    "skb:util:constant:value":"notnull",
+                    "skb:lang:target:token:ident":"DAL_NOTNUL",
+                    "skb:lang:target:token:translate":"keyword 'notnull'",
+                    "skb:util:constant:javadoc":"Not_Null Keyword"
                 },
                 "dalPRIMKEY":{
-                    "skb:lang:target:tokens:cid":"dalPRIMKEY",
-                    "skb:lang:target:tokens:cval":"primkey",
-                    "skb:lang:target:tokens:tid":"DAL_PRIMKEY",
-                    "skb:lang:target:tokens:tval":"keyword 'primkey'",
-                    "skb:lang:target:tokens:cjavadoc":"PrimKey Keyword"
+                    "skb:util:constant:ident":"dalPRIMKEY",
+                    "skb:util:constant:value":"primkey",
+                    "skb:lang:target:token:ident":"DAL_PRIMKEY",
+                    "skb:lang:target:token:translate":"keyword 'primkey'",
+                    "skb:util:constant:javadoc":"PrimKey Keyword"
                 },
                 "dalROLLBACK":{
-                    "skb:lang:target:tokens:cid":"dalROLLBACK",
-                    "skb:lang:target:tokens:cval":"rollback",
-                    "skb:lang:target:tokens:tid":"DAL_ROLLBACK",
-                    "skb:lang:target:tokens:tval":"keyword 'rollback'",
-                    "skb:lang:target:tokens:cjavadoc":"Rollback Keyword"
+                    "skb:util:constant:ident":"dalROLLBACK",
+                    "skb:util:constant:value":"rollback",
+                    "skb:lang:target:token:ident":"DAL_ROLLBACK",
+                    "skb:lang:target:token:translate":"keyword 'rollback'",
+                    "skb:util:constant:javadoc":"Rollback Keyword"
                 },
                 "dalUNIQUE":{
-                    "skb:lang:target:tokens:cid":"dalUNIQUE",
-                    "skb:lang:target:tokens:cval":"unique",
-                    "skb:lang:target:tokens:tid":"DAL_UNIQUE",
-                    "skb:lang:target:tokens:tval":"keyword 'unique'",
-                    "skb:lang:target:tokens:cjavadoc":"Unique Keyword"
+                    "skb:util:constant:ident":"dalUNIQUE",
+                    "skb:util:constant:value":"unique",
+                    "skb:lang:target:token:ident":"DAL_UNIQUE",
+                    "skb:lang:target:token:translate":"keyword 'unique'",
+                    "skb:util:constant:javadoc":"Unique Keyword"
                 },
                 "dalDATA":{
-                    "skb:lang:target:tokens:cid":"dalDATA",
-                    "skb:lang:target:tokens:cval":"data",
-                    "skb:lang:target:tokens:tid":"DAL_DATA",
-                    "skb:lang:target:tokens:tval":"keyword 'data'",
-                    "skb:lang:target:tokens:cjavadoc":"Data Keyword"
+                    "skb:util:constant:ident":"dalDATA",
+                    "skb:util:constant:value":"data",
+                    "skb:lang:target:token:ident":"DAL_DATA",
+                    "skb:lang:target:token:translate":"keyword 'data'",
+                    "skb:util:constant:javadoc":"Data Keyword"
                 },
                 "dalCOLLATE":{
-                    "skb:lang:target:tokens:cid":"dalCOLLATE",
-                    "skb:lang:target:tokens:cval":"collate",
-                    "skb:lang:target:tokens:tid":"DAL_COLLATE",
-                    "skb:lang:target:tokens:tval":"keyword 'collate'",
-                    "skb:lang:target:tokens:cjavadoc":"Collate Keyword"
+                    "skb:util:constant:ident":"dalCOLLATE",
+                    "skb:util:constant:value":"collate",
+                    "skb:lang:target:token:ident":"DAL_COLLATE",
+                    "skb:lang:target:token:translate":"keyword 'collate'",
+                    "skb:util:constant:javadoc":"Collate Keyword"
                 },
                 "dalDEFVAL":{
-                    "skb:lang:target:tokens:cid":"dalDEFVAL",
-                    "skb:lang:target:tokens:cval":"defval",
-                    "skb:lang:target:tokens:tid":"DAL_DEFVAL",
-                    "skb:lang:target:tokens:tval":"keyword 'defval'",
-                    "skb:lang:target:tokens:cjavadoc":"DefVal Keyword"
+                    "skb:util:constant:ident":"dalDEFVAL",
+                    "skb:util:constant:value":"defval",
+                    "skb:lang:target:token:ident":"DAL_DEFVAL",
+                    "skb:lang:target:token:translate":"keyword 'defval'",
+                    "skb:util:constant:javadoc":"DefVal Keyword"
                 },
                 "dalPRECISION":{
-                    "skb:lang:target:tokens:cid":"dalPRECISION",
-                    "skb:lang:target:tokens:cval":"precision",
-                    "skb:lang:target:tokens:tid":"DAL_PRECISION",
-                    "skb:lang:target:tokens:tval":"keyword 'precision'",
-                    "skb:lang:target:tokens:cjavadoc":"Precision Keyword"
+                    "skb:util:constant:ident":"dalPRECISION",
+                    "skb:util:constant:value":"precision",
+                    "skb:lang:target:token:ident":"DAL_PRECISION",
+                    "skb:lang:target:token:translate":"keyword 'precision'",
+                    "skb:util:constant:javadoc":"Precision Keyword"
                 },
                 "dalSIZE":{
-                    "skb:lang:target:tokens:cid":"dalSIZE",
-                    "skb:lang:target:tokens:cval":"size",
-                    "skb:lang:target:tokens:tid":"DAL_SIZE",
-                    "skb:lang:target:tokens:tval":"keyword 'size'",
-                    "skb:lang:target:tokens:cjavadoc":"Size Keyword"
+                    "skb:util:constant:ident":"dalSIZE",
+                    "skb:util:constant:value":"size",
+                    "skb:lang:target:token:ident":"DAL_SIZE",
+                    "skb:lang:target:token:translate":"keyword 'size'",
+                    "skb:util:constant:javadoc":"Size Keyword"
                 },
                 "dalREPOSITORY":{
-                    "skb:lang:target:tokens:cid":"dalREPOSITORY",
-                    "skb:lang:target:tokens:cval":"repository",
-                    "skb:lang:target:tokens:tid":"DA_REPOSITORY",
-                    "skb:lang:target:tokens:tval":"keyword 'repository'",
-                    "skb:lang:target:tokens:cjavadoc":"Repository Keyword"
+                    "skb:util:constant:ident":"dalREPOSITORY",
+                    "skb:util:constant:value":"repository",
+                    "skb:lang:target:token:ident":"DA_REPOSITORY",
+                    "skb:lang:target:token:translate":"keyword 'repository'",
+                    "skb:util:constant:javadoc":"Repository Keyword"
                 },
                 "dalSEQUENCE":{
-                    "skb:lang:target:tokens:cid":"dalSEQUENCE",
-                    "skb:lang:target:tokens:cval":"sequence",
-                    "skb:lang:target:tokens:tid":"DAL_SEQUENCE",
-                    "skb:lang:target:tokens:tval":"keyword 'sequence'",
-                    "skb:lang:target:tokens:cjavadoc":"Sequence Keyword"
+                    "skb:util:constant:ident":"dalSEQUENCE",
+                    "skb:util:constant:value":"sequence",
+                    "skb:lang:target:token:ident":"DAL_SEQUENCE",
+                    "skb:lang:target:token:translate":"keyword 'sequence'",
+                    "skb:util:constant:javadoc":"Sequence Keyword"
                 },
                 "dalPACKAGE":{
-                    "skb:lang:target:tokens:cid":"dalPACKAGE",
-                    "skb:lang:target:tokens:cval":"package",
-                    "skb:lang:target:tokens:tid":"DAL_PACKAGE",
-                    "skb:lang:target:tokens:tval":"keyword 'package'",
-                    "skb:lang:target:tokens:cjavadoc":"Package Keyword"
+                    "skb:util:constant:ident":"dalPACKAGE",
+                    "skb:util:constant:value":"package",
+                    "skb:lang:target:token:ident":"DAL_PACKAGE",
+                    "skb:lang:target:token:translate":"keyword 'package'",
+                    "skb:util:constant:javadoc":"Package Keyword"
                 },
                 "dalROW":{
-                    "skb:lang:target:tokens:cid":"dalROW",
-                    "skb:lang:target:tokens:cval":"row",
-                    "skb:lang:target:tokens:tid":"DAL_ROW",
-                    "skb:lang:target:tokens:tval":"keyword 'row'",
-                    "skb:lang:target:tokens:cjavadoc":"Row Keyword"
+                    "skb:util:constant:ident":"dalROW",
+                    "skb:util:constant:value":"row",
+                    "skb:lang:target:token:ident":"DAL_ROW",
+                    "skb:lang:target:token:translate":"keyword 'row'",
+                    "skb:util:constant:javadoc":"Row Keyword"
                 },
                 "dalDEFVALUE":{
-                    "skb:lang:target:tokens:cid":"dalDEFVALUE",
-                    "skb:lang:target:tokens:cval":"defvalue",
-                    "skb:lang:target:tokens:tid":"DAL_DEFVALUE",
-                    "skb:lang:target:tokens:tval":"keyword 'defvalue'",
-                    "skb:lang:target:tokens:cjavadoc":"DefValue Keyword"
+                    "skb:util:constant:ident":"dalDEFVALUE",
+                    "skb:util:constant:value":"defvalue",
+                    "skb:lang:target:token:ident":"DAL_DEFVALUE",
+                    "skb:lang:target:token:translate":"keyword 'defvalue'",
+                    "skb:util:constant:javadoc":"DefValue Keyword"
                 },
                 "dalFIELD":{
-                    "skb:lang:target:tokens:cid":"dalFIELD",
-                    "skb:lang:target:tokens:cval":"field",
-                    "skb:lang:target:tokens:tid":"DAL_FIELD",
-                    "skb:lang:target:tokens:tval":"keyword 'field'",
-                    "skb:lang:target:tokens:cjavadoc":"Field Keyword"
+                    "skb:util:constant:ident":"dalFIELD",
+                    "skb:util:constant:value":"field",
+                    "skb:lang:target:token:ident":"DAL_FIELD",
+                    "skb:lang:target:token:translate":"keyword 'field'",
+                    "skb:util:constant:javadoc":"Field Keyword"
                 },
 
                 // DAL Keywords -> TYPES
                 "dalBINARY":{
-                    "skb:lang:target:tokens:cid":"dalBINARY",
-                    "skb:lang:target:tokens:cval":"binary",
-                    "skb:lang:target:tokens:tid":"BINARY",
-                    "skb:lang:target:tokens:tval":"keyword 'binary'",
-                    "skb:lang:target:tokens:cjavadoc":"Binary Keyword"
+                    "skb:util:constant:ident":"dalBINARY",
+                    "skb:util:constant:value":"binary",
+                    "skb:lang:target:token:ident":"BINARY",
+                    "skb:lang:target:token:translate":"keyword 'binary'",
+                    "skb:util:constant:javadoc":"Binary Keyword"
                 },
                 "dalBOOLEAN":{
-                    "skb:lang:target:tokens:cid":"dalBOOLEAN",
-                    "skb:lang:target:tokens:cval":"boolean",
-                    "skb:lang:target:tokens:tid":"BOOLEAN",
-                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
-                    "skb:lang:target:tokens:cjavadoc":"Boolean Keyword"
+                    "skb:util:constant:ident":"dalBOOLEAN",
+                    "skb:util:constant:value":"boolean",
+                    "skb:lang:target:token:ident":"BOOLEAN",
+                    "skb:lang:target:token:translate":"keyword 'boolean'",
+                    "skb:util:constant:javadoc":"Boolean Keyword"
                 },
                 "dalCHAR":{
-                    "skb:lang:target:tokens:cid":"dalCHAR",
-                    "skb:lang:target:tokens:cval":"char",
-                    "skb:lang:target:tokens:tid":"CHAR",
-                    "skb:lang:target:tokens:tval":"keyword 'char'",
-                    "skb:lang:target:tokens:cjavadoc":"Char Keyword"
+                    "skb:util:constant:ident":"dalCHAR",
+                    "skb:util:constant:value":"char",
+                    "skb:lang:target:token:ident":"CHAR",
+                    "skb:lang:target:token:translate":"keyword 'char'",
+                    "skb:util:constant:javadoc":"Char Keyword"
                 },
                 "dalDOUBLE":{
-                    "skb:lang:target:tokens:cid":"dalDOUBLE",
-                    "skb:lang:target:tokens:cval":"double",
-                    "skb:lang:target:tokens:tid":"DOUBLE",
-                    "skb:lang:target:tokens:tval":"keyword 'double'",
-                    "skb:lang:target:tokens:cjavadoc":"Double Keyword"
+                    "skb:util:constant:ident":"dalDOUBLE",
+                    "skb:util:constant:value":"double",
+                    "skb:lang:target:token:ident":"DOUBLE",
+                    "skb:lang:target:token:translate":"keyword 'double'",
+                    "skb:util:constant:javadoc":"Double Keyword"
                 },
                 "dalFLOAT":{
-                    "skb:lang:target:tokens:cid":"dalFLOAT",
-                    "skb:lang:target:tokens:cval":"float",
-                    "skb:lang:target:tokens:tid":"FLOAT",
-                    "skb:lang:target:tokens:tval":"keyword 'float'",
-                    "skb:lang:target:tokens:cjavadoc":"Float Keyword"
+                    "skb:util:constant:ident":"dalFLOAT",
+                    "skb:util:constant:value":"float",
+                    "skb:lang:target:token:ident":"FLOAT",
+                    "skb:lang:target:token:translate":"keyword 'float'",
+                    "skb:util:constant:javadoc":"Float Keyword"
                 },
                 "dalHEX":{
-                    "skb:lang:target:tokens:cid":"dalHEX",
-                    "skb:lang:target:tokens:cval":"hex",
-                    "skb:lang:target:tokens:tid":"HEX",
-                    "skb:lang:target:tokens:tval":"keyword 'hex'",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Keyword"
+                    "skb:util:constant:ident":"dalHEX",
+                    "skb:util:constant:value":"hex",
+                    "skb:lang:target:token:ident":"HEX",
+                    "skb:lang:target:token:translate":"keyword 'hex'",
+                    "skb:util:constant:javadoc":"Hex Keyword"
                 },
                 "dalINTEGER":{
-                    "skb:lang:target:tokens:cid":"dalINTEGER",
-                    "skb:lang:target:tokens:cval":"integer",
-                    "skb:lang:target:tokens:tid":"INTEGER",
-                    "skb:lang:target:tokens:tval":"keyword 'integer'",
-                    "skb:lang:target:tokens:cjavadoc":"Integer Keyword"
+                    "skb:util:constant:ident":"dalINTEGER",
+                    "skb:util:constant:value":"integer",
+                    "skb:lang:target:token:ident":"INTEGER",
+                    "skb:lang:target:token:translate":"keyword 'integer'",
+                    "skb:util:constant:javadoc":"Integer Keyword"
                 },
                 "dalLONG":{
-                    "skb:lang:target:tokens:cid":"dalLONG",
-                    "skb:lang:target:tokens:cval":"long",
-                    "skb:lang:target:tokens:tid":"LONG",
-                    "skb:lang:target:tokens:tval":"keyword 'long'",
-                    "skb:lang:target:tokens:cjavadoc":"Long Keyword"
+                    "skb:util:constant:ident":"dalLONG",
+                    "skb:util:constant:value":"long",
+                    "skb:lang:target:token:ident":"LONG",
+                    "skb:lang:target:token:translate":"keyword 'long'",
+                    "skb:util:constant:javadoc":"Long Keyword"
                 },
                 "dalSHORT":{
-                    "skb:lang:target:tokens:cid":"dalSHORT",
-                    "skb:lang:target:tokens:cval":"short",
-                    "skb:lang:target:tokens:tid":"SHORT",
-                    "skb:lang:target:tokens:tval":"keyword 'short'",
-                    "skb:lang:target:tokens:cjavadoc":"Short Keyword"
+                    "skb:util:constant:ident":"dalSHORT",
+                    "skb:util:constant:value":"short",
+                    "skb:lang:target:token:ident":"SHORT",
+                    "skb:lang:target:token:translate":"keyword 'short'",
+                    "skb:util:constant:javadoc":"Short Keyword"
                 },
                 "dalSTRING":{
-                    "skb:lang:target:tokens:cid":"dalSTRING",
-                    "skb:lang:target:tokens:cval":"string",
-                    "skb:lang:target:tokens:tid":"STRING",
-                    "skb:lang:target:tokens:tval":"keyword 'string'",
-                    "skb:lang:target:tokens:cjavadoc":"String Keyword"
+                    "skb:util:constant:ident":"dalSTRING",
+                    "skb:util:constant:value":"string",
+                    "skb:lang:target:token:ident":"STRING",
+                    "skb:lang:target:token:translate":"keyword 'string'",
+                    "skb:util:constant:javadoc":"String Keyword"
                 },
                 "dalVOID":{
-                    "skb:lang:target:tokens:cid":"dalVOID",
-                    "skb:lang:target:tokens:cval":"void",
-                    "skb:lang:target:tokens:tid":"VOID",
-                    "skb:lang:target:tokens:tval":"keyword 'void'",
-                    "skb:lang:target:tokens:cjavadoc":"Void Keyword"
+                    "skb:util:constant:ident":"dalVOID",
+                    "skb:util:constant:value":"void",
+                    "skb:lang:target:token:ident":"VOID",
+                    "skb:lang:target:token:translate":"keyword 'void'",
+                    "skb:util:constant:javadoc":"Void Keyword"
                 },
 
 
                 // DAL Keywords -> VALUES
                 "dalFALSE":{
-                    "skb:lang:target:tokens:cid":"dalFALSE",
-                    "skb:lang:target:tokens:cval":"FALSE",
-                    "skb:lang:target:tokens:tid":"FALSE",
-                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
-                    "skb:lang:target:tokens:cjavadoc":"FALSE Value"
+                    "skb:util:constant:ident":"dalFALSE",
+                    "skb:util:constant:value":"FALSE",
+                    "skb:lang:target:token:ident":"FALSE",
+                    "skb:lang:target:token:translate":"keyword 'FALSE'",
+                    "skb:util:constant:javadoc":"FALSE Value"
                 },
                 "dalNULL":{
-                    "skb:lang:target:tokens:cid":"dalNULL",
-                    "skb:lang:target:tokens:cval":"NULL",
-                    "skb:lang:target:tokens:tid":"NULL",
-                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
-                    "skb:lang:target:tokens:cjavadoc":"NULL Value"
+                    "skb:util:constant:ident":"dalNULL",
+                    "skb:util:constant:value":"NULL",
+                    "skb:lang:target:token:ident":"NULL",
+                    "skb:lang:target:token:translate":"keyword 'NULL'",
+                    "skb:util:constant:javadoc":"NULL Value"
                 },
                 "dalTRUE":{
-                    "skb:lang:target:tokens:cid":"dalTRUE",
-                    "skb:lang:target:tokens:cval":"TRUE",
-                    "skb:lang:target:tokens:tid":"TRUE",
-                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
-                    "skb:lang:target:tokens:cjavadoc":"TRUE Value"
+                    "skb:util:constant:ident":"dalTRUE",
+                    "skb:util:constant:value":"TRUE",
+                    "skb:lang:target:token:ident":"TRUE",
+                    "skb:lang:target:token:translate":"keyword 'TRUE'",
+                    "skb:util:constant:javadoc":"TRUE Value"
                 },
 
 
                 // DAL Keywords -> @@@
                 "dalAT_PROVIDES":{
-                    "skb:lang:target:tokens:cid":"dalAT_PROVIDES",
-                    "skb:lang:target:tokens:cval":"@provides",
-                    "skb:lang:target:tokens:tid":"AT_PROVIDES",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@provides'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Provides"
+                    "skb:util:constant:ident":"dalAT_PROVIDES",
+                    "skb:util:constant:value":"@provides",
+                    "skb:lang:target:token:ident":"AT_PROVIDES",
+                    "skb:lang:target:token:translate":"an @ keyword '@provides'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Provides"
                 },
                 "dalAT_SPEC":{
-                    "skb:lang:target:tokens:cid":"dalAT_SPEC",
-                    "skb:lang:target:tokens:cval":"@spec",
-                    "skb:lang:target:tokens:tid":"AT_SPEC",
-                    "skb:lang:target:tokens:tval":"an @ keyword '@spec'",
-                    "skb:lang:target:tokens:cjavadoc":"Constant for &#64;Spec"
+                    "skb:util:constant:ident":"dalAT_SPEC",
+                    "skb:util:constant:value":"@spec",
+                    "skb:lang:target:token:ident":"AT_SPEC",
+                    "skb:lang:target:token:translate":"an @ keyword '@spec'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Spec"
                 },
 
 
                 //for lexer to print proper error messages
                 "dalCPP_DIRECTIVE":{
-                    "skb:lang:target:tokens:cid":"dalCPP_DIRECTIVE",
-                    "skb:lang:target:tokens:cval":"preprocessor directive",
-                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
-                    "skb:lang:target:tokens:tval":"preprocessor directive",
-                    "skb:lang:target:tokens:cjavadoc":"CPP Directive"
+                    "skb:util:constant:ident":"dalCPP_DIRECTIVE",
+                    "skb:util:constant:value":"preprocessor directive",
+                    "skb:lang:target:token:ident":"CPP_DIRECTIVE",
+                    "skb:lang:target:token:translate":"preprocessor directive",
+                    "skb:util:constant:javadoc":"CPP Directive"
                 },
                 "dalESC":{
-                    "skb:lang:target:tokens:cid":"dalESC",
-                    "skb:lang:target:tokens:cval":"escape sequence",
-                    "skb:lang:target:tokens:tid":"ESC",
-                    "skb:lang:target:tokens:tval":"escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Escape Sequence"
+                    "skb:util:constant:ident":"dalESC",
+                    "skb:util:constant:value":"escape sequence",
+                    "skb:lang:target:token:ident":"ESC",
+                    "skb:lang:target:token:translate":"escape sequence",
+                    "skb:util:constant:javadoc":"Escape Sequence"
                 },
                 "dalFloatSuffix":{
-                    "skb:lang:target:tokens:cid":"dalFloatSuffix",
-                    "skb:lang:target:tokens:cval":"floating point suffix",
-                    "skb:lang:target:tokens:tid":"FloatSuffix",
-                    "skb:lang:target:tokens:tval":"floating point suffix",
-                    "skb:lang:target:tokens:cjavadoc":"Float Suffixe"
+                    "skb:util:constant:ident":"dalFloatSuffix",
+                    "skb:util:constant:value":"floating point suffix",
+                    "skb:lang:target:token:ident":"FloatSuffix",
+                    "skb:lang:target:token:translate":"floating point suffix",
+                    "skb:util:constant:javadoc":"Float Suffixe"
                 },
                 "dalHexDigit":{
-                    "skb:lang:target:tokens:cid":"dalHexDigit",
-                    "skb:lang:target:tokens:cval":"hexadecimal digit",
-                    "skb:lang:target:tokens:tid":"HexDigit",
-                    "skb:lang:target:tokens:tval":"hexadecimal digit",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Digit"
+                    "skb:util:constant:ident":"dalHexDigit",
+                    "skb:util:constant:value":"hexadecimal digit",
+                    "skb:lang:target:token:ident":"HexDigit",
+                    "skb:lang:target:token:translate":"hexadecimal digit",
+                    "skb:util:constant:javadoc":"Hex Digit"
                 },
                 "dalIDENT":{
-                    "skb:lang:target:tokens:cid":"dalIDENT",
-                    "skb:lang:target:tokens:cval":"identifier",
-                    "skb:lang:target:tokens:tid":"IDENT",
-                    "skb:lang:target:tokens:tval":"an identifier",
-                    "skb:lang:target:tokens:cjavadoc":"Identifier"
+                    "skb:util:constant:ident":"dalIDENT",
+                    "skb:util:constant:value":"identifier",
+                    "skb:lang:target:token:ident":"IDENT",
+                    "skb:lang:target:token:translate":"an identifier",
+                    "skb:util:constant:javadoc":"Identifier"
                 },
                 "dalML_COMMENT":{
-                    "skb:lang:target:tokens:cid":"dalML_COMMENT",
-                    "skb:lang:target:tokens:cval":"multiple line comment",
-                    "skb:lang:target:tokens:tid":"ML_COMMENT",
-                    "skb:lang:target:tokens:tval":"multiple line comment",
-                    "skb:lang:target:tokens:cjavadoc":"Multiline Comment"
+                    "skb:util:constant:ident":"dalML_COMMENT",
+                    "skb:util:constant:value":"multiple line comment",
+                    "skb:lang:target:token:ident":"ML_COMMENT",
+                    "skb:lang:target:token:translate":"multiple line comment",
+                    "skb:util:constant:javadoc":"Multiline Comment"
                 },
                 "dalOctalEscape":{
-                    "skb:lang:target:tokens:cid":"dalOctalEscape",
-                    "skb:lang:target:tokens:cval":"octal escape sequence",
-                    "skb:lang:target:tokens:tid":"OctalEscape",
-                    "skb:lang:target:tokens:tval":"octal escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Octal Escape"
+                    "skb:util:constant:ident":"dalOctalEscape",
+                    "skb:util:constant:value":"octal escape sequence",
+                    "skb:lang:target:token:ident":"OctalEscape",
+                    "skb:lang:target:token:translate":"octal escape sequence",
+                    "skb:util:constant:javadoc":"Octal Escape"
                 },
                 "dalSL_COMMENT":{
-                    "skb:lang:target:tokens:cid":"dalSL_COMMENT",
-                    "skb:lang:target:tokens:cval":"single line comment",
-                    "skb:lang:target:tokens:tid":"SL_COMMENT",
-                    "skb:lang:target:tokens:tval":"single line comment",
-                    "skb:lang:target:tokens:cjavadoc":"Single Line Comment"
+                    "skb:util:constant:ident":"dalSL_COMMENT",
+                    "skb:util:constant:value":"single line comment",
+                    "skb:lang:target:token:ident":"SL_COMMENT",
+                    "skb:lang:target:token:translate":"single line comment",
+                    "skb:util:constant:javadoc":"Single Line Comment"
                 },
                 "dalUnicodeEscape":{
-                    "skb:lang:target:tokens:cid":"dalUnicodeEscape",
-                    "skb:lang:target:tokens:cval":"unicode escape sequence",
-                    "skb:lang:target:tokens:tid":"UnicodeEscape",
-                    "skb:lang:target:tokens:tval":"unicode escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Unicode Escape"
+                    "skb:util:constant:ident":"dalUnicodeEscape",
+                    "skb:util:constant:value":"unicode escape sequence",
+                    "skb:lang:target:token:ident":"UnicodeEscape",
+                    "skb:lang:target:token:translate":"unicode escape sequence",
+                    "skb:util:constant:javadoc":"Unicode Escape"
                 },
                 "dalVAL_BINARY":{
-                    "skb:lang:target:tokens:cid":"dalVAL_BINARY",
-                    "skb:lang:target:tokens:cval":"binary value",
-                    "skb:lang:target:tokens:tid":"VAL_BINARY",
-                    "skb:lang:target:tokens:tval":"binary value",
-                    "skb:lang:target:tokens:cjavadoc":"Binary value"
+                    "skb:util:constant:ident":"dalVAL_BINARY",
+                    "skb:util:constant:value":"binary value",
+                    "skb:lang:target:token:ident":"VAL_BINARY",
+                    "skb:lang:target:token:translate":"binary value",
+                    "skb:util:constant:javadoc":"Binary value"
                 },
                 "dalVAL_CHAR":{
-                    "skb:lang:target:tokens:cid":"dalVAL_CHAR",
-                    "skb:lang:target:tokens:cval":"character value",
-                    "skb:lang:target:tokens:tid":"VAL_CHAR",
-                    "skb:lang:target:tokens:tval":"character value",
-                    "skb:lang:target:tokens:cjavadoc":"Char value"
+                    "skb:util:constant:ident":"dalVAL_CHAR",
+                    "skb:util:constant:value":"character value",
+                    "skb:lang:target:token:ident":"VAL_CHAR",
+                    "skb:lang:target:token:translate":"character value",
+                    "skb:util:constant:javadoc":"Char value"
                 },
                 "dalVAL_FLOAT":{
-                    "skb:lang:target:tokens:cid":"dalVAL_FLOAT",
-                    "skb:lang:target:tokens:cval":"floating point value",
-                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
-                    "skb:lang:target:tokens:tval":"floating point value",
-                    "skb:lang:target:tokens:cjavadoc":"Float value"
+                    "skb:util:constant:ident":"dalVAL_FLOAT",
+                    "skb:util:constant:value":"floating point value",
+                    "skb:lang:target:token:ident":"VAL_FLOAT",
+                    "skb:lang:target:token:translate":"floating point value",
+                    "skb:util:constant:javadoc":"Float value"
                 },
                 "dalVAL_HEX":{
-                    "skb:lang:target:tokens:cid":"dalVAL_HEX",
-                    "skb:lang:target:tokens:cval":"hexadecimal value",
-                    "skb:lang:target:tokens:tid":"VAL_HEX",
-                    "skb:lang:target:tokens:tval":"hexadecimal value",
-                    "skb:lang:target:tokens:cjavadoc":"Hex value"
+                    "skb:util:constant:ident":"dalVAL_HEX",
+                    "skb:util:constant:value":"hexadecimal value",
+                    "skb:lang:target:token:ident":"VAL_HEX",
+                    "skb:lang:target:token:translate":"hexadecimal value",
+                    "skb:util:constant:javadoc":"Hex value"
                 },
                 "dalVAL_INTEGER":{
-                    "skb:lang:target:tokens:cid":"dalVAL_INTEGER",
-                    "skb:lang:target:tokens:cval":"integer value",
-                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
-                    "skb:lang:target:tokens:tval":"integer value",
-                    "skb:lang:target:tokens:cjavadoc":"Integer value"
+                    "skb:util:constant:ident":"dalVAL_INTEGER",
+                    "skb:util:constant:value":"integer value",
+                    "skb:lang:target:token:ident":"VAL_INTEGER",
+                    "skb:lang:target:token:translate":"integer value",
+                    "skb:util:constant:javadoc":"Integer value"
                 },
                 "dalVAL_STRING":{
-                    "skb:lang:target:tokens:cid":"dalVAL_STRING",
-                    "skb:lang:target:tokens:cval":"string value",
-                    "skb:lang:target:tokens:tid":"VAL_STRING",
-                    "skb:lang:target:tokens:tval":"string value",
-                    "skb:lang:target:tokens:cjavadoc":"String value"
+                    "skb:util:constant:ident":"dalVAL_STRING",
+                    "skb:util:constant:value":"string value",
+                    "skb:lang:target:token:ident":"VAL_STRING",
+                    "skb:lang:target:token:translate":"string value",
+                    "skb:util:constant:javadoc":"String value"
                 },
                 "dalWS":{
-                    "skb:lang:target:tokens:cid":"dalWS",
-                    "skb:lang:target:tokens:cval":"whitespace",
-                    "skb:lang:target:tokens:tid":"WS",
-                    "skb:lang:target:tokens:tval":"whitespace",
-                    "skb:lang:target:tokens:cjavadoc":"Whitespace"
+                    "skb:util:constant:ident":"dalWS",
+                    "skb:util:constant:value":"whitespace",
+                    "skb:lang:target:token:ident":"WS",
+                    "skb:lang:target:token:translate":"whitespace",
+                    "skb:util:constant:javadoc":"Whitespace"
                 },
 
 
                 //for lexer to print proper error messages
                 ";":{
-                    "skb:lang:target:tokens:tid":"';'",
-                    "skb:lang:target:tokens:tval":"character ';'"
+                    "skb:lang:target:token:ident":"';'",
+                    "skb:lang:target:token:translate":"character ';'"
                 },
                 "}":{
-                    "skb:lang:target:tokens:tid":"'}'",
-                    "skb:lang:target:tokens:tval":"character '}'"
+                    "skb:lang:target:token:ident":"'}'",
+                    "skb:lang:target:token:translate":"character '}'"
                 },
                 "=":{
-                    "skb:lang:target:tokens:tid":"'='",
-                    "skb:lang:target:tokens:tval":"character '='"
+                    "skb:lang:target:token:ident":"'='",
+                    "skb:lang:target:token:translate":"character '='"
                 },
                 "(":{
-                    "skb:lang:target:tokens:tid":"'('",
-                    "skb:lang:target:tokens:tval":"character '('"
+                    "skb:lang:target:token:ident":"'('",
+                    "skb:lang:target:token:translate":"character '('"
                 },
                 ":":{
-                    "skb:lang:target:tokens:tid":"':'",
-                    "skb:lang:target:tokens:tval":"character ':'"
+                    "skb:lang:target:token:ident":"':'",
+                    "skb:lang:target:token:translate":"character ':'"
                 },
                 "::":{
-                    "skb:lang:target:tokens:tid":"'::'",
-                    "skb:lang:target:tokens:tval":"scope operator '::'"
+                    "skb:lang:target:token:ident":"'::'",
+                    "skb:lang:target:token:translate":"scope operator '::'"
                 },
                 "[":{
-                    "skb:lang:target:tokens:tid":"'['",
-                    "skb:lang:target:tokens:tval":"character '['"
+                    "skb:lang:target:token:ident":"'['",
+                    "skb:lang:target:token:translate":"character '['"
                 },
                 ",":{
-                    "skb:lang:target:tokens:tid":"','",
-                    "skb:lang:target:tokens:tval":"character ','"
+                    "skb:lang:target:token:ident":"','",
+                    "skb:lang:target:token:translate":"character ','"
                 },
                 ")":{
-                    "skb:lang:target:tokens:tid":"')'",
-                    "skb:lang:target:tokens:tval":"character ')'"
+                    "skb:lang:target:token:ident":"')'",
+                    "skb:lang:target:token:translate":"character ')'"
                 },
                 "{":{
-                    "skb:lang:target:tokens:tid":"'{'",
-                    "skb:lang:target:tokens:tval":"character '{'"
+                    "skb:lang:target:token:ident":"'{'",
+                    "skb:lang:target:token:translate":"character '{'"
                 },
                 "]":{
-                    "skb:lang:target:tokens:tid":"']'",
-                    "skb:lang:target:tokens:tval":"character ']'"
+                    "skb:lang:target:token:ident":"']'",
+                    "skb:lang:target:token:translate":"character ']'"
                 }
             },
 
             "rules":{
                 "identifier:01":{
-                    "skb:lang:target:config:constid":"ruleIdentifier01",
+                    "skb:util:constant:ident":"ruleIdentifier01",
                     "skb:lang:parser:rules:message":"#### used more than once",
                     "skb:lang:parser:rules:message:add":"#### <%s> in property definitions",
                     "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
                     "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER",
-                    "skb:lang:target:config:javadoc":"Rule for identifier #01"
+                    "skb:util:constant:javadoc":"Rule for identifier #01"
                 },
                 "identifier:02":{
-                    "skb:lang:target:config:constid":"ruleIdentifier02",
+                    "skb:util:constant:ident":"ruleIdentifier02",
                     "skb:lang:parser:rules:message":"#### used more than once",
                     "skb:lang:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
                     "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
-                    "skb:lang:target:config:javadoc":"Rule for identifier #02"
+                    "skb:util:constant:javadoc":"Rule for identifier #02"
                 },
                 "identifier:03":{
-                    "skb:lang:target:config:constid":"ruleIdentifier03",
+                    "skb:util:constant:ident":"ruleIdentifier03",
                     "skb:lang:parser:rules:message":"#### used more than once",
                     "skb:lang:parser:rules:message:add":"#### <%s> in item-property definitions",
                     "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
                     "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER",
-                    "skb:lang:target:config:javadoc":"Rule for identifier #03"
+                    "skb:util:constant:javadoc":"Rule for identifier #03"
                 },
                 "identifier:04":{
-                    "skb:lang:target:config:constid":"ruleIdentifier04",
+                    "skb:util:constant:ident":"ruleIdentifier04",
                 "skb:lang:parser:rules:message":"#### used more than once",
                     "skb:lang:parser:rules:message:add":"in #### definition: %s",
                     "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
                     "skb:lang:target:rules:message:add:insert:path":"parserItemProp",
-                    "skb:lang:target:config:javadoc":"Rule for identifier #04"
+                    "skb:util:constant:javadoc":"Rule for identifier #04"
                 },
                 "identifier:05":{
-                    "skb:lang:target:config:constid":"ruleIdentifier05",
+                    "skb:util:constant:ident":"ruleIdentifier05",
                     "skb:lang:parser:rules:message":"#### used more than once",
                     "skb:lang:parser:rules:message:add":"in #### definition: %s",
                     "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
                     "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY",
-                    "skb:lang:target:config:javadoc":"Rule for identifier #05"
+                    "skb:util:constant:javadoc":"Rule for identifier #05"
                 },
                 "identifier:06":{
-                    "skb:lang:target:config:constid":"ruleIdentifier06",
+                    "skb:util:constant:ident":"ruleIdentifier06",
                     "skb:lang:parser:rules:message":"#### used more than once",
                     "skb:lang:parser:rules:message:add":"in #### definition: %s",
                     "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
                     "skb:lang:target:rules:message:add:insert:path":"colaCONTRACT",
-                    "skb:lang:target:config:javadoc":"Rule for identifier #06"
+                    "skb:util:constant:javadoc":"Rule for identifier #06"
                 }                
             }
         }

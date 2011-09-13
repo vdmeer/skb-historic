@@ -37,8 +37,9 @@ import org.antlr.runtime.Token;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.tribe.LanguageRuleMap;
+import org.skb.tribe.LanguageConfiguration;
 import org.skb.util.languages.AtomList;
+import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 
 /**
  * Pass 2 of the DAL parser, mostly looking into semantic analysis.
@@ -54,7 +55,7 @@ public class DalPass2_Ast {
 	public AtomList atoms;
 
 	/** Language Rule map for error/warning reporting */
-	private LanguageRuleMap cr;
+	private TSLangRuleMap cr;
 
 //	/** Scope processing using ANTLR Tokens */
 //	public ScopeToken sn;
@@ -68,10 +69,8 @@ public class DalPass2_Ast {
 		this.atoms=AtomList.getInstance();
 		this.atoms.scope.clear();
 
-		this.cr=new LanguageRuleMap();
-		this.cr.setClassName(DalConstants.Rules.class.getName());
-		this.cr.setKey("rule");
-		this.cr.loadRules();
+		this.cr=new TSLangRuleMap();
+		this.cr.loadRules(DalConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
 	}
 
 

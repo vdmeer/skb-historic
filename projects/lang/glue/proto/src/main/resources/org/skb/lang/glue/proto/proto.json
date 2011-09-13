@@ -43,211 +43,211 @@
         "tribe":{
             "configuration":{
                 "name":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"GLUE"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"GLUE"
                 },
                 "name-lc":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"glue"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"glue"
                 },
                 "copyright":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"Copyright (c) 2010-2011 Sven van der Meer <sven@vandermeer.de>"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"Copyright (c) 2010-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
                 "version":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"0.30"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"0.30"
                 },
                 "build":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"110309"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"110309"
                 },
                 "build-date":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"2011-Mar-09"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"2011-Mar-09"
                 },
                 "tribe-generic-stg":{
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/internal\/generic.stg"
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
             }
         },
         "lang":{
             "configuration":{
                 "glue":{
-                    "skb:lang:target:config:constid":"internalGlueTgtGlue",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target Glue"
+                    "skb:util:constant:ident":"internalGlueTgtGlue",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target Glue"
                 },
                 "graphml":{
-                    "skb:lang:target:config:constid":"internalGlueTgtGraphML",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target GraphML"
+                    "skb:util:constant:ident":"internalGlueTgtGraphML",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target GraphML"
                 },
                 "sql":{
-                    "skb:lang:target:config:constid":"internalGlueTgtSql",
-                    "skb:lang:target:config:javadoc":"Constant to test internally for the target SQL"
+                    "skb:util:constant:ident":"internalGlueTgtSql",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target SQL"
                 },
                 "internal-scope-sep":{
-                    "skb:lang:target:config:constid":"keyScopeSep",
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"::",
-                    "skb:lang:target:config:javadoc":"Internal scope separator"
+                    "skb:util:constant:ident":"keyScopeSep",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"::",
+                    "skb:util:constant:javadoc":"Internal scope separator"
                 },
                 "pr-stats":{
-                    "skb:lang:target:config:constid":"keyPrStat",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Show simple statistic information",
-                    "skb:lang:target:config:javadoc":"Show simple statistic information"
+                    "skb:util:constant:ident":"keyPrStat",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Show simple statistic information",
+                    "skb:util:constant:javadoc":"Show simple statistic information"
                 },
                 "pr-stats-all":{
-                    "skb:lang:target:config:constid":"keyPrStatAll",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats-all",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Show complete statistic information",
-                    "skb:lang:target:config:javadoc":"Show complete statistic information"
+                    "skb:util:constant:ident":"keyPrStatAll",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats-all",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Show complete statistic information",
+                    "skb:util:constant:javadoc":"Show complete statistic information"
                 },
                 "pr-stats-ws":{
-                    "skb:lang:target:config:constid":"keyPrStatsWScope",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stats-ws",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"No scoped names in statistics",
-                    "skb:lang:target:config:javadoc":"Don't use scoped names in statistics"
+                    "skb:util:constant:ident":"keyPrStatsWScope",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stats-ws",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"No scoped names in statistics",
+                    "skb:util:constant:javadoc":"Don't use scoped names in statistics"
                 },
                 "pr-stg-stats":{
-                    "skb:lang:target:config:constid":"keyPrStgFileStats",
-                    "at:type":"ts:atomic:java:boolean",
-                    "value:default":false,
-                    "cli:option:long":"pr-stg-stats",
-                    "cli:option:type":"ts:atomic:java:boolean",
-                    "cli:usage:descr":"Print statistics string template",
-                    "skb:lang:target:config:javadoc":"Print the string template used for statistics"
+                    "skb:util:constant:ident":"keyPrStgFileStats",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"pr-stg-stats",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Print statistics string template",
+                    "skb:util:constant:javadoc":"Print the string template used for statistics"
                 },
                 "stat-stg":{
-                    "skb:lang:target:config:constid":"keyStatStg",
-                    "at:type":"ts:atomic:java:string",
-                    "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/statistics.stg",
-                    "cli:option:long":"stat-stg",
-                    "cli:option:arg-name":"file",
-                    "cli:option:type":"ts:atomic:java:string",
-                    "cli:usage:descr":"Group template file for statistics",
-                    "skb:lang:target:config:javadoc":"Group template for statistics"
+                    "skb:util:constant:ident":"keyStatStg",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/statistics.stg",
+                    "skb:util:cli:option:long":"stat-stg",
+                    "skb:util:cli:descr:arguments":"file",
+                    "skb:util:cli:option:type":"ts:atomic:java:string",
+                    "skb:util:cli:descr:short":"Group template file for statistics",
+                    "skb:util:constant:javadoc":"Group template for statistics"
                 }
             },
             "targets":{
                 "glue":{
                     "skb:lang:target:name":"glue",
                     "tgt-stg":{
-                            "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/glue.stg"
+                            "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/glue.stg"
                     },
                     "tgt-fileext":{
-                            "value:default":".glue"
+                            "skb:value:default":".glue"
                     },
                     "gc-scope-sep":{
-                            "value:default":"::"
+                            "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"ts:atomic:java:boolean",
-                            "cli:usage:descr":"Generate includes",
-                            "skb:lang:target:config:javadoc":"Generate includes"
+                            "skb:util:constant:ident":"keyXtDoIncludes",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:cli:option:long":"xt-do-includes",
+                            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                            "skb:util:cli:descr:short":"Generate includes",
+                            "skb:util:constant:javadoc":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "cli:option:long":"tgt-split-code",
-                            "cli:option:type":"ts:atomic:java:boolean",
-                            "cli:usage:descr":"Split code (i.e. packages in directories, elements and facilities in files)",
-                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                            "skb:util:constant:ident":"keyTgSplitCode",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:cli:option:long":"tgt-split-code",
+                            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                            "skb:util:cli:descr:short":"Split code (i.e. packages in directories, elements and facilities in files)",
+                            "skb:util:constant:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
                         },
                         "tgt-sc-by-pkg":{
-                            "skb:lang:target:config:constid":"keyTgSCbyPackage",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "cli:option:long":"tgt-sc-by-pkg",
-                            "cli:option:type":"ts:atomic:java:boolean",
-                            "cli:usage:descr":"Split code by package",
-                            "skb:lang:target:config:javadoc":"Split code by package"
+                            "skb:util:constant:ident":"keyTgSCbyPackage",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:cli:option:long":"tgt-sc-by-pkg",
+                            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                            "skb:util:cli:descr:short":"Split code by package",
+                            "skb:util:constant:javadoc":"Split code by package"
                         },
                         "tgt-sc-by-category":{
-                            "skb:lang:target:config:constid":"keyTgSCbyAtomCategory",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "cli:option:long":"tgt-sc-by-category",
-                            "cli:option:type":"ts:atomic:java:boolean",
-                            "cli:usage:descr":"Split code by atom category (i.e. element, struct)",
-                            "skb:lang:target:config:javadoc":"Split code by atom category (i.e. element, struct)"
+                            "skb:util:constant:ident":"keyTgSCbyAtomCategory",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:cli:option:long":"tgt-sc-by-category",
+                            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                            "skb:util:cli:descr:short":"Split code by atom category (i.e. element, struct)",
+                            "skb:util:constant:javadoc":"Split code by atom category (i.e. element, struct)"
                         }
                     }
                 },
                 "graphml":{
                     "skb:lang:target:name":"graphml",
                     "tgt-stg":{
-                            "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/graphml.stg"
+                            "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/graphml.stg"
                     },
                     "tgt-fileext":{
-                            "value:default":".graphml"
+                            "skb:value:default":".graphml"
                     },
                     "gc-scope-sep":{
-                            "value:default":"::"
+                            "skb:value:default":"::"
                     },
                     "tgt-stg-angle-br":{
-                        "value:default":false
+                        "skb:value:default":false
                     },
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"ts:atomic:java:boolean",
-                            "cli:usage:descr":"Generate includes",
-                            "skb:lang:target:config:javadoc":"Generate includes"
+                            "skb:util:constant:ident":"keyXtDoIncludes",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:cli:option:long":"xt-do-includes",
+                            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                            "skb:util:cli:descr:short":"Generate includes",
+                            "skb:util:constant:javadoc":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                            "skb:util:constant:ident":"keyTgSplitCode",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:constant:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
                         }
                     }
                 },
                 "sql":{
                     "skb:lang:target:name":"sql",
                     "tgt-stg":{
-                            "value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/sql.stg"
+                            "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
                     "tgt-fileext":{
-                            "value:default":".sql"
+                            "skb:value:default":".sql"
                     },
                     "gc-scope-sep":{
-                            "value:default":"::"
+                            "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
                         "xt-do-includes":{
-                            "skb:lang:target:config:constid":"keyXtDoIncludes",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "cli:option:long":"xt-do-includes",
-                            "cli:option:type":"ts:atomic:java:boolean",
-                            "cli:usage:descr":"Generate includes",
-                            "skb:lang:target:config:javadoc":"Generate includes"
+                            "skb:util:constant:ident":"keyXtDoIncludes",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:cli:option:long":"xt-do-includes",
+                            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                            "skb:util:cli:descr:short":"Generate includes",
+                            "skb:util:constant:javadoc":"Generate includes"
                         },
                         "tgt-split-code":{
-                            "skb:lang:target:config:constid":"keyTgSplitCode",
-                            "at:type":"ts:atomic:java:boolean",
-                            "value:default":false,
-                            "skb:lang:target:config:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                            "skb:util:constant:ident":"keyTgSplitCode",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:constant:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
                         }
                     }
                 }
@@ -255,514 +255,514 @@
 
             "stgchunks":{
                 "mlcomment_start":{
-                    "skb:tribe:stgchunk:mandatory": ["dummy"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "mlcomment_end":{
-                    "skb:tribe:stgchunk:mandatory": ["dummy"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "slcomment":{
-                    "skb:tribe:stgchunk:mandatory": ["comment"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["comment"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
 
                 "glueSpecification":{
-                    "skb:tribe:stgchunk:mandatory": ["id"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["id"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
 
                 "const_value":{
-                    "skb:tribe:stgchunk:mandatory": ["type", "val"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["type", "val"],
+                    "skb:stringtemplate:chunks:optional":  []
                 },
                 "scoped_name":{
-                    "skb:tribe:stgchunk:mandatory": ["id", "add"],
-                    "skb:tribe:stgchunk:optional":  []
+                    "skb:stringtemplate:chunks:mandatory": ["id", "add"],
+                    "skb:stringtemplate:chunks:optional":  []
                 }
             },
 
             "tokens":{
                 // for parser
                 "parserARRAY":{
-                    "skb:lang:target:tokens:cid":"parserARRAY",
-                    "skb:lang:target:tokens:cval":"array",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Array"
+                    "skb:util:constant:ident":"parserARRAY",
+                    "skb:util:constant:value":"array",
+                    "skb:util:constant:javadoc":"Parser - Array"
                 },
                 "parserIDENTIFIER":{
-                    "skb:lang:target:tokens:cid":"parserIDENTIFIER",
-                    "skb:lang:target:tokens:cval":"identifier",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Identifier"
+                    "skb:util:constant:ident":"parserIDENTIFIER",
+                    "skb:util:constant:value":"identifier",
+                    "skb:util:constant:javadoc":"Parser - Identifier"
                 },
                 "parserScopedName":{
-                    "skb:lang:target:tokens:cid":"parserScopedName",
-                    "skb:lang:target:tokens:cval":"scoped_name",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Scoped Name"
+                    "skb:util:constant:ident":"parserScopedName",
+                    "skb:util:constant:value":"scoped_name",
+                    "skb:util:constant:javadoc":"Parser - Scoped Name"
                 },
                 "parserScopeSep":{
-                    "skb:lang:target:tokens:cid":"parserScopeSep",
-                    "skb:lang:target:tokens:cval":"::",
-                    "skb:lang:target:tokens:cjavadoc":"Parser - Scope Separator"
+                    "skb:util:constant:ident":"parserScopeSep",
+                    "skb:util:constant:value":"::",
+                    "skb:util:constant:javadoc":"Parser - Scope Separator"
                 },
                 "gcMiscParrentID":{
-                    "skb:lang:target:tokens:cid":"gcMiscParrentID",
-                    "skb:lang:target:tokens:cval":"parrentId",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - parrent Identifier"
+                    "skb:util:constant:ident":"gcMiscParrentID",
+                    "skb:util:constant:value":"parrentId",
+                    "skb:util:constant:javadoc":"Generate Code - parrent Identifier"
                 },
                 "gcMiscParrentCat":{
-                    "skb:lang:target:tokens:cid":"gcMiscParrentCat",
-                    "skb:lang:target:tokens:cval":"parrentCategory",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - parrent Category"
+                    "skb:util:constant:ident":"gcMiscParrentCat",
+                    "skb:util:constant:value":"parrentCategory",
+                    "skb:util:constant:javadoc":"Generate Code - parrent Category"
                 },
                 "gcMiscCurrentCat":{
-                    "skb:lang:target:tokens:cid":"gcMiscCurrentCat",
-                    "skb:lang:target:tokens:cval":"currentCategory",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - current Category"
+                    "skb:util:constant:ident":"gcMiscCurrentCat",
+                    "skb:util:constant:value":"currentCategory",
+                    "skb:util:constant:javadoc":"Generate Code - current Category"
                 },
                 "gcMiscInDefinition":{
-                    "skb:lang:target:tokens:cid":"gcMiscInDefinition",
-                    "skb:lang:target:tokens:cval":"inDefinition",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Definition"
+                    "skb:util:constant:ident":"gcMiscInDefinition",
+                    "skb:util:constant:value":"inDefinition",
+                    "skb:util:constant:javadoc":"Generate Code - in a Definition"
                 },
                 "gcMiscInItem":{
-                    "skb:lang:target:tokens:cid":"gcMiscInItem",
-                    "skb:lang:target:tokens:cval":"inItem",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in an Item"
+                    "skb:util:constant:ident":"gcMiscInItem",
+                    "skb:util:constant:value":"inItem",
+                    "skb:util:constant:javadoc":"Generate Code - in an Item"
                 },
                 "gcMiscInContract":{
-                    "skb:lang:target:tokens:cid":"gcMiscInContract",
-                    "skb:lang:target:tokens:cval":"inContract",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Contract"
+                    "skb:util:constant:ident":"gcMiscInContract",
+                    "skb:util:constant:value":"inContract",
+                    "skb:util:constant:javadoc":"Generate Code - in a Contract"
                 },
                 "gcMiscInPackage":{
-                    "skb:lang:target:tokens:cid":"gcMiscInPackage",
-                    "skb:lang:target:tokens:cval":"inPackage",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Package"
+                    "skb:util:constant:ident":"gcMiscInPackage",
+                    "skb:util:constant:value":"inPackage",
+                    "skb:util:constant:javadoc":"Generate Code - in a Package"
                 },
                 "gcMiscInElement":{
-                    "skb:lang:target:tokens:cid":"gcMiscInElement",
-                    "skb:lang:target:tokens:cval":"inElement",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in an Element"
+                    "skb:util:constant:ident":"gcMiscInElement",
+                    "skb:util:constant:value":"inElement",
+                    "skb:util:constant:javadoc":"Generate Code - in an Element"
                 },
                 "gcMiscInFacility":{
-                    "skb:lang:target:tokens:cid":"gcMiscInFacility",
-                    "skb:lang:target:tokens:cval":"inFacility",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Facility"
+                    "skb:util:constant:ident":"gcMiscInFacility",
+                    "skb:util:constant:value":"inFacility",
+                    "skb:util:constant:javadoc":"Generate Code - in a Facility"
                 },
                 "gcMiscInAction":{
-                    "skb:lang:target:tokens:cid":"gcMiscInAction",
-                    "skb:lang:target:tokens:cval":"inAction",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in an Action"
+                    "skb:util:constant:ident":"gcMiscInAction",
+                    "skb:util:constant:value":"inAction",
+                    "skb:util:constant:javadoc":"Generate Code - in an Action"
                 },
                 "gcMiscInStruct":{
-                    "skb:lang:target:tokens:cid":"gcMiscInStruct",
-                    "skb:lang:target:tokens:cval":"inStruct",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - in a Structure"
+                    "skb:util:constant:ident":"gcMiscInStruct",
+                    "skb:util:constant:value":"inStruct",
+                    "skb:util:constant:javadoc":"Generate Code - in a Structure"
                 },
                 "gcMiscSpecName":{
-                    "skb:lang:target:tokens:cid":"gcMiscSpecName",
-                    "skb:lang:target:tokens:cval":"specificationName",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - Specification Name"
+                    "skb:util:constant:ident":"gcMiscSpecName",
+                    "skb:util:constant:value":"specificationName",
+                    "skb:util:constant:javadoc":"Generate Code - Specification Name"
                 },
                 "gcMiscCurrentScope":{
-                    "skb:lang:target:tokens:cid":"gcMiscCurrentScope",
-                    "skb:lang:target:tokens:cval":"currentScope",
-                    "skb:lang:target:tokens:cjavadoc":"Generate Code - Current Scope"
+                    "skb:util:constant:ident":"gcMiscCurrentScope",
+                    "skb:util:constant:value":"currentScope",
+                    "skb:util:constant:javadoc":"Generate Code - Current Scope"
                 },
 
 
                 // GLUE Keywords
                 "glueTopology":{
-                    "skb:lang:target:tokens:cid":"glueTopology",
-                    "skb:lang:target:tokens:cval":"topology",
-                    "skb:lang:target:tokens:tid":"SPECIFICATION",
-                    "skb:lang:target:tokens:tval":"keyword 'topology'",
-                    "skb:lang:target:tokens:cjavadoc":"Topology Keyword"
+                    "skb:util:constant:ident":"glueTopology",
+                    "skb:util:constant:value":"topology",
+                    "skb:lang:target:token:ident":"SPECIFICATION",
+                    "skb:lang:target:token:translate":"keyword 'topology'",
+                    "skb:util:constant:javadoc":"Topology Keyword"
                 },
                 "glueNode":{
-                    "skb:lang:target:tokens:cid":"glueNode",
-                    "skb:lang:target:tokens:cval":"node",
-                    "skb:lang:target:tokens:tid":"NODE",
-                    "skb:lang:target:tokens:tval":"keyword 'node'",
-                    "skb:lang:target:tokens:cjavadoc":"Node Keyword"
+                    "skb:util:constant:ident":"glueNode",
+                    "skb:util:constant:value":"node",
+                    "skb:lang:target:token:ident":"NODE",
+                    "skb:lang:target:token:translate":"keyword 'node'",
+                    "skb:util:constant:javadoc":"Node Keyword"
                 },
                 "glueConnection":{
-                    "skb:lang:target:tokens:cid":"glueConnection",
-                    "skb:lang:target:tokens:cval":"connection",
-                    "skb:lang:target:tokens:tid":"CONNECTION",
-                    "skb:lang:target:tokens:tval":"keyword 'connection'",
-                    "skb:lang:target:tokens:cjavadoc":"Connection Keyword"
+                    "skb:util:constant:ident":"glueConnection",
+                    "skb:util:constant:value":"connection",
+                    "skb:lang:target:token:ident":"CONNECTION",
+                    "skb:lang:target:token:translate":"keyword 'connection'",
+                    "skb:util:constant:javadoc":"Connection Keyword"
                 },
                 "glueInterface":{
-                    "skb:lang:target:tokens:cid":"glueInterface",
-                    "skb:lang:target:tokens:cval":"interface",
-                    "skb:lang:target:tokens:tid":"INTERFACE",
-                    "skb:lang:target:tokens:tval":"keyword 'interface'",
-                    "skb:lang:target:tokens:cjavadoc":"Interface Keyword"
+                    "skb:util:constant:ident":"glueInterface",
+                    "skb:util:constant:value":"interface",
+                    "skb:lang:target:token:ident":"INTERFACE",
+                    "skb:lang:target:token:translate":"keyword 'interface'",
+                    "skb:util:constant:javadoc":"Interface Keyword"
                 },
                 "glueComponent":{
-                    "skb:lang:target:tokens:cid":"glueComponent",
-                    "skb:lang:target:tokens:cval":"component",
-                    "skb:lang:target:tokens:tid":"COMPONENT",
-                    "skb:lang:target:tokens:tval":"keyword 'component'",
-                    "skb:lang:target:tokens:cjavadoc":"Component Keyword"
+                    "skb:util:constant:ident":"glueComponent",
+                    "skb:util:constant:value":"component",
+                    "skb:lang:target:token:ident":"COMPONENT",
+                    "skb:lang:target:token:translate":"keyword 'component'",
+                    "skb:util:constant:javadoc":"Component Keyword"
                 },
                 "glueDirected":{
-                    "skb:lang:target:tokens:cid":"glueDirected",
-                    "skb:lang:target:tokens:cval":"directed",
-                    "skb:lang:target:tokens:tid":"DIRECTED",
-                    "skb:lang:target:tokens:tval":"keyword 'directed'",
-                    "skb:lang:target:tokens:cjavadoc":"Directed Keyword"
+                    "skb:util:constant:ident":"glueDirected",
+                    "skb:util:constant:value":"directed",
+                    "skb:lang:target:token:ident":"DIRECTED",
+                    "skb:lang:target:token:translate":"keyword 'directed'",
+                    "skb:util:constant:javadoc":"Directed Keyword"
                 },
                 "glueSource":{
-                    "skb:lang:target:tokens:cid":"glueSource",
-                    "skb:lang:target:tokens:cval":"source",
-                    "skb:lang:target:tokens:tid":"SOURCE",
-                    "skb:lang:target:tokens:tval":"keyword 'source'",
-                    "skb:lang:target:tokens:cjavadoc":"Source Keyword"
+                    "skb:util:constant:ident":"glueSource",
+                    "skb:util:constant:value":"source",
+                    "skb:lang:target:token:ident":"SOURCE",
+                    "skb:lang:target:token:translate":"keyword 'source'",
+                    "skb:util:constant:javadoc":"Source Keyword"
                 },
                 "glueTarget":{
-                    "skb:lang:target:tokens:cid":"glueTarget",
-                    "skb:lang:target:tokens:cval":"target",
-                    "skb:lang:target:tokens:tid":"TARGET",
-                    "skb:lang:target:tokens:tval":"keyword 'target'",
-                    "skb:lang:target:tokens:cjavadoc":"Target Keyword"
+                    "skb:util:constant:ident":"glueTarget",
+                    "skb:util:constant:value":"target",
+                    "skb:lang:target:token:ident":"TARGET",
+                    "skb:lang:target:token:translate":"keyword 'target'",
+                    "skb:util:constant:javadoc":"Target Keyword"
                 },
                 "gluePort":{
-                    "skb:lang:target:tokens:cid":"gluePort",
-                    "skb:lang:target:tokens:cval":"port",
-                    "skb:lang:target:tokens:tid":"PORT",
-                    "skb:lang:target:tokens:tval":"keyword 'port'",
-                    "skb:lang:target:tokens:cjavadoc":"Port Keyword"
+                    "skb:util:constant:ident":"gluePort",
+                    "skb:util:constant:value":"port",
+                    "skb:lang:target:token:ident":"PORT",
+                    "skb:lang:target:token:translate":"keyword 'port'",
+                    "skb:util:constant:javadoc":"Port Keyword"
                 },
                 "glueSourcePort":{
-                    "skb:lang:target:tokens:cid":"glueSourcePort",
-                    "skb:lang:target:tokens:cval":"sourceport",
-                    "skb:lang:target:tokens:tid":"SOURCEPORT",
-                    "skb:lang:target:tokens:tval":"keyword 'sourceport'",
-                    "skb:lang:target:tokens:cjavadoc":"Source Port Keyword"
+                    "skb:util:constant:ident":"glueSourcePort",
+                    "skb:util:constant:value":"sourceport",
+                    "skb:lang:target:token:ident":"SOURCEPORT",
+                    "skb:lang:target:token:translate":"keyword 'sourceport'",
+                    "skb:util:constant:javadoc":"Source Port Keyword"
                 },
                 "glueTargetPort":{
-                    "skb:lang:target:tokens:cid":"glueTargetPort",
-                    "skb:lang:target:tokens:cval":"targetport",
-                    "skb:lang:target:tokens:tid":"TARGETPORT",
-                    "skb:lang:target:tokens:tval":"keyword 'targetport'",
-                    "skb:lang:target:tokens:cjavadoc":"Target Port Keyword"
+                    "skb:util:constant:ident":"glueTargetPort",
+                    "skb:util:constant:value":"targetport",
+                    "skb:lang:target:token:ident":"TARGETPORT",
+                    "skb:lang:target:token:translate":"keyword 'targetport'",
+                    "skb:util:constant:javadoc":"Target Port Keyword"
                 },
                 "glueDomain":{
-                    "skb:lang:target:tokens:cid":"glueDomain",
-                    "skb:lang:target:tokens:cval":"domain",
-                    "skb:lang:target:tokens:tid":"DOMAIN",
-                    "skb:lang:target:tokens:tval":"keyword 'domain'",
-                    "skb:lang:target:tokens:cjavadoc":"Domain Keyword"
+                    "skb:util:constant:ident":"glueDomain",
+                    "skb:util:constant:value":"domain",
+                    "skb:lang:target:token:ident":"DOMAIN",
+                    "skb:lang:target:token:translate":"keyword 'domain'",
+                    "skb:util:constant:javadoc":"Domain Keyword"
                 },
                 "glueContracts":{
-                    "skb:lang:target:tokens:cid":"glueContracts",
-                    "skb:lang:target:tokens:cval":"contracts",
-                    "skb:lang:target:tokens:tid":"CONTRACTS",
-                    "skb:lang:target:tokens:tval":"keyword 'contracts'",
-                    "skb:lang:target:tokens:cjavadoc":"Contracts Keyword"
+                    "skb:util:constant:ident":"glueContracts",
+                    "skb:util:constant:value":"contracts",
+                    "skb:lang:target:token:ident":"CONTRACTS",
+                    "skb:lang:target:token:translate":"keyword 'contracts'",
+                    "skb:util:constant:javadoc":"Contracts Keyword"
                 },
                 "gluePolicies":{
-                    "skb:lang:target:tokens:cid":"gluePolicies",
-                    "skb:lang:target:tokens:cval":"policies",
-                    "skb:lang:target:tokens:tid":"POLICIES",
-                    "skb:lang:target:tokens:tval":"keyword 'policies'",
-                    "skb:lang:target:tokens:cjavadoc":"Policies Keyword"
+                    "skb:util:constant:ident":"gluePolicies",
+                    "skb:util:constant:value":"policies",
+                    "skb:lang:target:token:ident":"POLICIES",
+                    "skb:lang:target:token:translate":"keyword 'policies'",
+                    "skb:util:constant:javadoc":"Policies Keyword"
                 },
 
 
                 // GLUE Keywords -> TYPES
                 "glueBINARY":{
-                    "skb:lang:target:tokens:cid":"glueBINARY",
-                    "skb:lang:target:tokens:cval":"binary",
-                    "skb:lang:target:tokens:tid":"BINARY",
-                    "skb:lang:target:tokens:tval":"keyword 'binary'",
-                    "skb:lang:target:tokens:cjavadoc":"Binary Keyword"
+                    "skb:util:constant:ident":"glueBINARY",
+                    "skb:util:constant:value":"binary",
+                    "skb:lang:target:token:ident":"BINARY",
+                    "skb:lang:target:token:translate":"keyword 'binary'",
+                    "skb:util:constant:javadoc":"Binary Keyword"
                 },
                 "glueBOOLEAN":{
-                    "skb:lang:target:tokens:cid":"glueBOOLEAN",
-                    "skb:lang:target:tokens:cval":"boolean",
-                    "skb:lang:target:tokens:tid":"BOOLEAN",
-                    "skb:lang:target:tokens:tval":"keyword 'boolean'",
-                    "skb:lang:target:tokens:cjavadoc":"Boolean Keyword"
+                    "skb:util:constant:ident":"glueBOOLEAN",
+                    "skb:util:constant:value":"boolean",
+                    "skb:lang:target:token:ident":"BOOLEAN",
+                    "skb:lang:target:token:translate":"keyword 'boolean'",
+                    "skb:util:constant:javadoc":"Boolean Keyword"
                 },
                 "glueCHAR":{
-                    "skb:lang:target:tokens:cid":"glueCHAR",
-                    "skb:lang:target:tokens:cval":"char",
-                    "skb:lang:target:tokens:tid":"CHAR",
-                    "skb:lang:target:tokens:tval":"keyword 'char'",
-                    "skb:lang:target:tokens:cjavadoc":"Char Keyword"
+                    "skb:util:constant:ident":"glueCHAR",
+                    "skb:util:constant:value":"char",
+                    "skb:lang:target:token:ident":"CHAR",
+                    "skb:lang:target:token:translate":"keyword 'char'",
+                    "skb:util:constant:javadoc":"Char Keyword"
                 },
                 "glueDOUBLE":{
-                    "skb:lang:target:tokens:cid":"glueDOUBLE",
-                    "skb:lang:target:tokens:cval":"double",
-                    "skb:lang:target:tokens:tid":"DOUBLE",
-                    "skb:lang:target:tokens:tval":"keyword 'double'",
-                    "skb:lang:target:tokens:cjavadoc":"Double Keyword"
+                    "skb:util:constant:ident":"glueDOUBLE",
+                    "skb:util:constant:value":"double",
+                    "skb:lang:target:token:ident":"DOUBLE",
+                    "skb:lang:target:token:translate":"keyword 'double'",
+                    "skb:util:constant:javadoc":"Double Keyword"
                 },
                 "glueFLOAT":{
-                    "skb:lang:target:tokens:cid":"glueFLOAT",
-                    "skb:lang:target:tokens:cval":"float",
-                    "skb:lang:target:tokens:tid":"FLOAT",
-                    "skb:lang:target:tokens:tval":"keyword 'float'",
-                    "skb:lang:target:tokens:cjavadoc":"Float Keyword"
+                    "skb:util:constant:ident":"glueFLOAT",
+                    "skb:util:constant:value":"float",
+                    "skb:lang:target:token:ident":"FLOAT",
+                    "skb:lang:target:token:translate":"keyword 'float'",
+                    "skb:util:constant:javadoc":"Float Keyword"
                 },
                 "glueHEX":{
-                    "skb:lang:target:tokens:cid":"glueHEX",
-                    "skb:lang:target:tokens:cval":"hex",
-                    "skb:lang:target:tokens:tid":"HEX",
-                    "skb:lang:target:tokens:tval":"keyword 'hex'",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Keyword"
+                    "skb:util:constant:ident":"glueHEX",
+                    "skb:util:constant:value":"hex",
+                    "skb:lang:target:token:ident":"HEX",
+                    "skb:lang:target:token:translate":"keyword 'hex'",
+                    "skb:util:constant:javadoc":"Hex Keyword"
                 },
                 "glueINTEGER":{
-                    "skb:lang:target:tokens:cid":"glueINTEGER",
-                    "skb:lang:target:tokens:cval":"integer",
-                    "skb:lang:target:tokens:tid":"INTEGER",
-                    "skb:lang:target:tokens:tval":"keyword 'integer'",
-                    "skb:lang:target:tokens:cjavadoc":"Integer Keyword"
+                    "skb:util:constant:ident":"glueINTEGER",
+                    "skb:util:constant:value":"integer",
+                    "skb:lang:target:token:ident":"INTEGER",
+                    "skb:lang:target:token:translate":"keyword 'integer'",
+                    "skb:util:constant:javadoc":"Integer Keyword"
                 },
                 "glueLONG":{
-                    "skb:lang:target:tokens:cid":"glueLONG",
-                    "skb:lang:target:tokens:cval":"long",
-                    "skb:lang:target:tokens:tid":"LONG",
-                    "skb:lang:target:tokens:tval":"keyword 'long'",
-                    "skb:lang:target:tokens:cjavadoc":"Long Keyword"
+                    "skb:util:constant:ident":"glueLONG",
+                    "skb:util:constant:value":"long",
+                    "skb:lang:target:token:ident":"LONG",
+                    "skb:lang:target:token:translate":"keyword 'long'",
+                    "skb:util:constant:javadoc":"Long Keyword"
                 },
                 "glueOCTET":{
-                    "skb:lang:target:tokens:cid":"glueOCTET",
-                    "skb:lang:target:tokens:cval":"octet",
-                    "skb:lang:target:tokens:tid":"OCTET",
-                    "skb:lang:target:tokens:tval":"keyword 'octet'",
-                    "skb:lang:target:tokens:cjavadoc":"Octet Keyword"
+                    "skb:util:constant:ident":"glueOCTET",
+                    "skb:util:constant:value":"octet",
+                    "skb:lang:target:token:ident":"OCTET",
+                    "skb:lang:target:token:translate":"keyword 'octet'",
+                    "skb:util:constant:javadoc":"Octet Keyword"
                 },
                 "glueSHORT":{
-                    "skb:lang:target:tokens:cid":"glueSHORT",
-                    "skb:lang:target:tokens:cval":"short",
-                    "skb:lang:target:tokens:tid":"SHORT",
-                    "skb:lang:target:tokens:tval":"keyword 'short'",
-                    "skb:lang:target:tokens:cjavadoc":"Short Keyword"
+                    "skb:util:constant:ident":"glueSHORT",
+                    "skb:util:constant:value":"short",
+                    "skb:lang:target:token:ident":"SHORT",
+                    "skb:lang:target:token:translate":"keyword 'short'",
+                    "skb:util:constant:javadoc":"Short Keyword"
                 },
                 "glueSTRING":{
-                    "skb:lang:target:tokens:cid":"glueSTRING",
-                    "skb:lang:target:tokens:cval":"string",
-                    "skb:lang:target:tokens:tid":"STRING",
-                    "skb:lang:target:tokens:tval":"keyword 'string'",
-                    "skb:lang:target:tokens:cjavadoc":"String Keyword"
+                    "skb:util:constant:ident":"glueSTRING",
+                    "skb:util:constant:value":"string",
+                    "skb:lang:target:token:ident":"STRING",
+                    "skb:lang:target:token:translate":"keyword 'string'",
+                    "skb:util:constant:javadoc":"String Keyword"
                 },
                 "glueVOID":{
-                    "skb:lang:target:tokens:cid":"glueVOID",
-                    "skb:lang:target:tokens:cval":"void",
-                    "skb:lang:target:tokens:tid":"VOID",
-                    "skb:lang:target:tokens:tval":"keyword 'void'",
-                    "skb:lang:target:tokens:cjavadoc":"Void Keyword"
+                    "skb:util:constant:ident":"glueVOID",
+                    "skb:util:constant:value":"void",
+                    "skb:lang:target:token:ident":"VOID",
+                    "skb:lang:target:token:translate":"keyword 'void'",
+                    "skb:util:constant:javadoc":"Void Keyword"
                 },
 
 
                 // GLUE Keywords -> VALUES
                 "glueFALSE":{
-                    "skb:lang:target:tokens:cid":"glueFALSE",
-                    "skb:lang:target:tokens:cval":"FALSE",
-                    "skb:lang:target:tokens:tid":"FALSE",
-                    "skb:lang:target:tokens:tval":"keyword 'FALSE'",
-                    "skb:lang:target:tokens:cjavadoc":"False Value"
+                    "skb:util:constant:ident":"glueFALSE",
+                    "skb:util:constant:value":"FALSE",
+                    "skb:lang:target:token:ident":"FALSE",
+                    "skb:lang:target:token:translate":"keyword 'FALSE'",
+                    "skb:util:constant:javadoc":"False Value"
                 },
                 "glueNULL":{
-                    "skb:lang:target:tokens:cid":"glueNULL",
-                    "skb:lang:target:tokens:cval":"NULL",
-                    "skb:lang:target:tokens:tid":"NULL",
-                    "skb:lang:target:tokens:tval":"keyword 'NULL'",
-                    "skb:lang:target:tokens:cjavadoc":"NULL Value"
+                    "skb:util:constant:ident":"glueNULL",
+                    "skb:util:constant:value":"NULL",
+                    "skb:lang:target:token:ident":"NULL",
+                    "skb:lang:target:token:translate":"keyword 'NULL'",
+                    "skb:util:constant:javadoc":"NULL Value"
                 },
                 "glueTRUE":{
-                    "skb:lang:target:tokens:cid":"glueTRUE",
-                    "skb:lang:target:tokens:cval":"TRUE",
-                    "skb:lang:target:tokens:tid":"TRUE",
-                    "skb:lang:target:tokens:tval":"keyword 'TRUE'",
-                    "skb:lang:target:tokens:cjavadoc":"TRUE Value"
+                    "skb:util:constant:ident":"glueTRUE",
+                    "skb:util:constant:value":"TRUE",
+                    "skb:lang:target:token:ident":"TRUE",
+                    "skb:lang:target:token:translate":"keyword 'TRUE'",
+                    "skb:util:constant:javadoc":"TRUE Value"
                 },
 
 
                 //for lexer to print proper error messages
                 "glueCPP_DIRECTIVE":{
-                    "skb:lang:target:tokens:cid":"glueCPP_DIRECTIVE",
-                    "skb:lang:target:tokens:cval":"preprocessor directive",
-                    "skb:lang:target:tokens:tid":"CPP_DIRECTIVE",
-                    "skb:lang:target:tokens:tval":"preprocessor directive",
-                    "skb:lang:target:tokens:cjavadoc":"CPP Directive"
+                    "skb:util:constant:ident":"glueCPP_DIRECTIVE",
+                    "skb:util:constant:value":"preprocessor directive",
+                    "skb:lang:target:token:ident":"CPP_DIRECTIVE",
+                    "skb:lang:target:token:translate":"preprocessor directive",
+                    "skb:util:constant:javadoc":"CPP Directive"
                 },
                 "glueESC":{
-                    "skb:lang:target:tokens:cid":"glueESC",
-                    "skb:lang:target:tokens:cval":"escape sequence",
-                    "skb:lang:target:tokens:tid":"ESC",
-                    "skb:lang:target:tokens:tval":"escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Esc Sequence"
+                    "skb:util:constant:ident":"glueESC",
+                    "skb:util:constant:value":"escape sequence",
+                    "skb:lang:target:token:ident":"ESC",
+                    "skb:lang:target:token:translate":"escape sequence",
+                    "skb:util:constant:javadoc":"Esc Sequence"
                 },
                 "glueFloatSuffix":{
-                    "skb:lang:target:tokens:cid":"glueFloatSuffix",
-                    "skb:lang:target:tokens:cval":"floating point suffix",
-                    "skb:lang:target:tokens:tid":"FloatSuffix",
-                    "skb:lang:target:tokens:tval":"floating point suffix",
-                    "skb:lang:target:tokens:cjavadoc":"Float Suffix"
+                    "skb:util:constant:ident":"glueFloatSuffix",
+                    "skb:util:constant:value":"floating point suffix",
+                    "skb:lang:target:token:ident":"FloatSuffix",
+                    "skb:lang:target:token:translate":"floating point suffix",
+                    "skb:util:constant:javadoc":"Float Suffix"
                 },
                 "glueHexDigit":{
-                    "skb:lang:target:tokens:cid":"glueHexDigit",
-                    "skb:lang:target:tokens:cval":"hexadecimal digit",
-                    "skb:lang:target:tokens:tid":"HexDigit",
-                    "skb:lang:target:tokens:tval":"hexadecimal digit",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Digit"
+                    "skb:util:constant:ident":"glueHexDigit",
+                    "skb:util:constant:value":"hexadecimal digit",
+                    "skb:lang:target:token:ident":"HexDigit",
+                    "skb:lang:target:token:translate":"hexadecimal digit",
+                    "skb:util:constant:javadoc":"Hex Digit"
                 },
                 "glueIDENT":{
-                    "skb:lang:target:tokens:cid":"glueIDENT",
-                    "skb:lang:target:tokens:cval":"identifier",
-                    "skb:lang:target:tokens:tid":"IDENT",
-                    "skb:lang:target:tokens:tval":"an identifier",
-                    "skb:lang:target:tokens:cjavadoc":"Identifier"
+                    "skb:util:constant:ident":"glueIDENT",
+                    "skb:util:constant:value":"identifier",
+                    "skb:lang:target:token:ident":"IDENT",
+                    "skb:lang:target:token:translate":"an identifier",
+                    "skb:util:constant:javadoc":"Identifier"
                 },
                 "glueINLINE_CODE":{
-                    "skb:lang:target:tokens:cid":"glueINLINE_CODE",
-                    "skb:lang:target:tokens:cval":"inline code",
-                    "skb:lang:target:tokens:tid":"INLINE_CODE",
-                    "skb:lang:target:tokens:tval":"inline code",
-                    "skb:lang:target:tokens:cjavadoc":"Inline Code"
+                    "skb:util:constant:ident":"glueINLINE_CODE",
+                    "skb:util:constant:value":"inline code",
+                    "skb:lang:target:token:ident":"INLINE_CODE",
+                    "skb:lang:target:token:translate":"inline code",
+                    "skb:util:constant:javadoc":"Inline Code"
                 },
                 "glueML_COMMENT":{
-                    "skb:lang:target:tokens:cid":"glueML_COMMENT",
-                    "skb:lang:target:tokens:cval":"multiple line comment",
-                    "skb:lang:target:tokens:tid":"ML_COMMENT",
-                    "skb:lang:target:tokens:tval":"multiple line comment",
-                    "skb:lang:target:tokens:cjavadoc":"Multi Line Comment"
+                    "skb:util:constant:ident":"glueML_COMMENT",
+                    "skb:util:constant:value":"multiple line comment",
+                    "skb:lang:target:token:ident":"ML_COMMENT",
+                    "skb:lang:target:token:translate":"multiple line comment",
+                    "skb:util:constant:javadoc":"Multi Line Comment"
                 },
                 "glueOctDigit":{
-                    "skb:lang:target:tokens:cid":"glueOctDigit",
-                    "skb:lang:target:tokens:cval":"otcal digit",
-                    "skb:lang:target:tokens:tid":"OctDigit",
-                    "skb:lang:target:tokens:tval":"otcal digit",
-                    "skb:lang:target:tokens:cjavadoc":"Oct Digit"
+                    "skb:util:constant:ident":"glueOctDigit",
+                    "skb:util:constant:value":"otcal digit",
+                    "skb:lang:target:token:ident":"OctDigit",
+                    "skb:lang:target:token:translate":"otcal digit",
+                    "skb:util:constant:javadoc":"Oct Digit"
                 },
                 "glueOctalEscape":{
-                    "skb:lang:target:tokens:cid":"glueOctalEscape",
-                    "skb:lang:target:tokens:cval":"octal escape sequence",
-                    "skb:lang:target:tokens:tid":"OctalEscape",
-                    "skb:lang:target:tokens:tval":"octal escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Octal Escape"
+                    "skb:util:constant:ident":"glueOctalEscape",
+                    "skb:util:constant:value":"octal escape sequence",
+                    "skb:lang:target:token:ident":"OctalEscape",
+                    "skb:lang:target:token:translate":"octal escape sequence",
+                    "skb:util:constant:javadoc":"Octal Escape"
                 },
                 "glueSL_COMMENT":{
-                    "skb:lang:target:tokens:cid":"glueSL_COMMENT",
-                    "skb:lang:target:tokens:cval":"single line comment",
-                    "skb:lang:target:tokens:tid":"SL_COMMENT",
-                    "skb:lang:target:tokens:tval":"single line comment",
-                    "skb:lang:target:tokens:cjavadoc":"Single Line Comment"
+                    "skb:util:constant:ident":"glueSL_COMMENT",
+                    "skb:util:constant:value":"single line comment",
+                    "skb:lang:target:token:ident":"SL_COMMENT",
+                    "skb:lang:target:token:translate":"single line comment",
+                    "skb:util:constant:javadoc":"Single Line Comment"
                 },
                 "glueUnicodeEscape":{
-                    "skb:lang:target:tokens:cid":"glueUnicodeEscape",
-                    "skb:lang:target:tokens:cval":"unicode escape sequence",
-                    "skb:lang:target:tokens:tid":"UnicodeEscape",
-                    "skb:lang:target:tokens:tval":"unicode escape sequence",
-                    "skb:lang:target:tokens:cjavadoc":"Unicode Escape"
+                    "skb:util:constant:ident":"glueUnicodeEscape",
+                    "skb:util:constant:value":"unicode escape sequence",
+                    "skb:lang:target:token:ident":"UnicodeEscape",
+                    "skb:lang:target:token:translate":"unicode escape sequence",
+                    "skb:util:constant:javadoc":"Unicode Escape"
                 },
                 "glueVAL_BINARY":{
-                    "skb:lang:target:tokens:cid":"glueVAL_BINARY",
-                    "skb:lang:target:tokens:cval":"binary value",
-                    "skb:lang:target:tokens:tid":"VAL_BINARY",
-                    "skb:lang:target:tokens:tval":"binary value",
-                    "skb:lang:target:tokens:cjavadoc":"Binary Value"
+                    "skb:util:constant:ident":"glueVAL_BINARY",
+                    "skb:util:constant:value":"binary value",
+                    "skb:lang:target:token:ident":"VAL_BINARY",
+                    "skb:lang:target:token:translate":"binary value",
+                    "skb:util:constant:javadoc":"Binary Value"
                 },
                 "glueVAL_CHAR":{
-                    "skb:lang:target:tokens:cid":"glueVAL_CHAR",
-                    "skb:lang:target:tokens:cval":"character value",
-                    "skb:lang:target:tokens:tid":"VAL_CHAR",
-                    "skb:lang:target:tokens:tval":"character value",
-                    "skb:lang:target:tokens:cjavadoc":"Char Value"
+                    "skb:util:constant:ident":"glueVAL_CHAR",
+                    "skb:util:constant:value":"character value",
+                    "skb:lang:target:token:ident":"VAL_CHAR",
+                    "skb:lang:target:token:translate":"character value",
+                    "skb:util:constant:javadoc":"Char Value"
                 },
                 "glueVAL_FLOAT":{
-                    "skb:lang:target:tokens:cid":"glueVAL_FLOAT",
-                    "skb:lang:target:tokens:cval":"floating point value",
-                    "skb:lang:target:tokens:tid":"VAL_FLOAT",
-                    "skb:lang:target:tokens:tval":"floating point value",
-                    "skb:lang:target:tokens:cjavadoc":"Float Value"
+                    "skb:util:constant:ident":"glueVAL_FLOAT",
+                    "skb:util:constant:value":"floating point value",
+                    "skb:lang:target:token:ident":"VAL_FLOAT",
+                    "skb:lang:target:token:translate":"floating point value",
+                    "skb:util:constant:javadoc":"Float Value"
                 },
                 "glueVAL_HEX":{
-                    "skb:lang:target:tokens:cid":"glueVAL_HEX",
-                    "skb:lang:target:tokens:cval":"hexadecimal value",
-                    "skb:lang:target:tokens:tid":"VAL_HEX",
-                    "skb:lang:target:tokens:tval":"hexadecimal value",
-                    "skb:lang:target:tokens:cjavadoc":"Hex Value"
+                    "skb:util:constant:ident":"glueVAL_HEX",
+                    "skb:util:constant:value":"hexadecimal value",
+                    "skb:lang:target:token:ident":"VAL_HEX",
+                    "skb:lang:target:token:translate":"hexadecimal value",
+                    "skb:util:constant:javadoc":"Hex Value"
                 },
                 "glueVAL_INTEGER":{
-                    "skb:lang:target:tokens:cid":"glueVAL_INTEGER",
-                    "skb:lang:target:tokens:cval":"integer value",
-                    "skb:lang:target:tokens:tid":"VAL_INTEGER",
-                    "skb:lang:target:tokens:tval":"integer value",
-                    "skb:lang:target:tokens:cjavadoc":"Integer Value"
+                    "skb:util:constant:ident":"glueVAL_INTEGER",
+                    "skb:util:constant:value":"integer value",
+                    "skb:lang:target:token:ident":"VAL_INTEGER",
+                    "skb:lang:target:token:translate":"integer value",
+                    "skb:util:constant:javadoc":"Integer Value"
                 },
                 "glueVAL_OCT":{
-                    "skb:lang:target:tokens:cid":"glueVAL_OCT",
-                    "skb:lang:target:tokens:cval":"octal value",
-                    "skb:lang:target:tokens:tid":"VAL_OCT",
-                    "skb:lang:target:tokens:tval":"octal value",
-                    "skb:lang:target:tokens:cjavadoc":"Oct Value"
+                    "skb:util:constant:ident":"glueVAL_OCT",
+                    "skb:util:constant:value":"octal value",
+                    "skb:lang:target:token:ident":"VAL_OCT",
+                    "skb:lang:target:token:translate":"octal value",
+                    "skb:util:constant:javadoc":"Oct Value"
                 },
                 "glueVAL_STRING":{
-                    "skb:lang:target:tokens:cid":"glueVAL_STRING",
-                    "skb:lang:target:tokens:cval":"string value",
-                    "skb:lang:target:tokens:tid":"VAL_STRING",
-                    "skb:lang:target:tokens:tval":"string value",
-                    "skb:lang:target:tokens:cjavadoc":"String Value"
+                    "skb:util:constant:ident":"glueVAL_STRING",
+                    "skb:util:constant:value":"string value",
+                    "skb:lang:target:token:ident":"VAL_STRING",
+                    "skb:lang:target:token:translate":"string value",
+                    "skb:util:constant:javadoc":"String Value"
                 },
                 "glueWS":{
-                    "skb:lang:target:tokens:cid":"glueWS",
-                    "skb:lang:target:tokens:cval":"whitespace",
-                    "skb:lang:target:tokens:tid":"WS",
-                    "skb:lang:target:tokens:tval":"whitespace",
-                    "skb:lang:target:tokens:cjavadoc":"White space"
+                    "skb:util:constant:ident":"glueWS",
+                    "skb:util:constant:value":"whitespace",
+                    "skb:lang:target:token:ident":"WS",
+                    "skb:lang:target:token:translate":"whitespace",
+                    "skb:util:constant:javadoc":"White space"
                 },
 
 
                 //for lexer to print proper error messages
                 ";":{
-                    "skb:lang:target:tokens:tid":"';'",
-                    "skb:lang:target:tokens:tval":"character ';'"
+                    "skb:lang:target:token:ident":"';'",
+                    "skb:lang:target:token:translate":"character ';'"
                 },
                 "}":{
-                    "skb:lang:target:tokens:tid":"'}'",
-                    "skb:lang:target:tokens:tval":"character '}'"
+                    "skb:lang:target:token:ident":"'}'",
+                    "skb:lang:target:token:translate":"character '}'"
                 },
                 "=":{
-                    "skb:lang:target:tokens:tid":"'='",
-                    "skb:lang:target:tokens:tval":"character '='"
+                    "skb:lang:target:token:ident":"'='",
+                    "skb:lang:target:token:translate":"character '='"
                 },
                 "(":{
-                    "skb:lang:target:tokens:tid":"'('",
-                    "skb:lang:target:tokens:tval":"character '('"
+                    "skb:lang:target:token:ident":"'('",
+                    "skb:lang:target:token:translate":"character '('"
                 },
                 ":":{
-                    "skb:lang:target:tokens:tid":"':'",
-                    "skb:lang:target:tokens:tval":"character ':'"
+                    "skb:lang:target:token:ident":"':'",
+                    "skb:lang:target:token:translate":"character ':'"
                 },
                 "::":{
-                    "skb:lang:target:tokens:tid":"'::'",
-                    "skb:lang:target:tokens:tval":"scope operator '::'"
+                    "skb:lang:target:token:ident":"'::'",
+                    "skb:lang:target:token:translate":"scope operator '::'"
                 },
                 "[":{
-                    "skb:lang:target:tokens:tid":"'['",
-                    "skb:lang:target:tokens:tval":"character '['"
+                    "skb:lang:target:token:ident":"'['",
+                    "skb:lang:target:token:translate":"character '['"
                 },
                 ",":{
-                    "skb:lang:target:tokens:tid":"','",
-                    "skb:lang:target:tokens:tval":"character ','"
+                    "skb:lang:target:token:ident":"','",
+                    "skb:lang:target:token:translate":"character ','"
                 },
                 ")":{
-                    "skb:lang:target:tokens:tid":"')'",
-                    "skb:lang:target:tokens:tval":"character ')'"
+                    "skb:lang:target:token:ident":"')'",
+                    "skb:lang:target:token:translate":"character ')'"
                 },
                 "{":{
-                    "skb:lang:target:tokens:tid":"'{'",
-                    "skb:lang:target:tokens:tval":"character '{'"
+                    "skb:lang:target:token:ident":"'{'",
+                    "skb:lang:target:token:translate":"character '{'"
                 },
                 "]":{
-                    "skb:lang:target:tokens:tid":"']'",
-                    "skb:lang:target:tokens:tval":"character ']'"
+                    "skb:lang:target:token:ident":"']'",
+                    "skb:lang:target:token:translate":"character ']'"
                 }
             },
 

@@ -40,11 +40,12 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.tribe.LanguageRuleMap;
+import org.skb.tribe.LanguageConfiguration;
 import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeToken;
 import org.skb.util.misc.ReportManager;
+import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 
 /**
  * Pass 2 of the Cola parser, mostly looking into semantic analysis.
@@ -60,7 +61,7 @@ public class ColaPass2_Ast {
 	public AtomList atoms=AtomList.getInstance();
 
 	/** Language Rule map for error/warning reporting */
-	private LanguageRuleMap cr;
+	private TSLangRuleMap cr;
 
 	/** Scope processing using ANTLR Tokens */
 	public ScopeToken sn;
@@ -101,10 +102,8 @@ public class ColaPass2_Ast {
 		this.eprAtom="";
 		this.eprList=new LinkedHashMap<String, String>();
 
-		this.cr=new LanguageRuleMap();
-		this.cr.setClassName(ColaConstants.Rules.class.getName());
-		this.cr.setKey("rule");
-		this.cr.loadRules();
+		this.cr=new TSLangRuleMap();
+		this.cr.loadRules(ColaConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
 
 		this.sn=new ScopeToken();
 	}
