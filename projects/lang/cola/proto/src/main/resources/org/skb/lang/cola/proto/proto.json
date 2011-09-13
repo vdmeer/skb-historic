@@ -149,7 +149,6 @@
             },
             "targets":{
                 "cola":{
-//                    "skb:lang:target:name":"cola",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/cola.stg"
                     },
@@ -199,7 +198,6 @@
                     }
                 },
                 "java":{
-//                    "skb:lang:target:name":"java",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/java.stg"
                     },
@@ -268,7 +266,6 @@
                     }
                 },
                 "php":{
-//                    "skb:lang:target:name":"php",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/php.stg"
                     },
@@ -327,7 +324,6 @@
                     }
                 },
                 "xml":{
-//                    "skb:lang:target:name":"xml",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
@@ -359,7 +355,6 @@
                     }
                 },
                 "sql":{
-//                    "skb:lang:target:name":"sql",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
@@ -1211,7 +1206,7 @@
 
             "rules":{
                 "property:01":{
-                    "skb:lang:target:config:constid":"ruleProperty01",
+                    "skb:util:constant:ident":"ruleProperty01",
                     "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
                     "skb:lang:parser:rules:message:add":"all mandatory properties need to be declared",
                     "skb:lang:rule:message:replace":"colaPROPERTY",

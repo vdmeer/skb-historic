@@ -141,7 +141,6 @@
             },
             "targets":{
                 "pola":{
-                    "skb:lang:target:name":"pola",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/pola.stg"
                     },
@@ -155,7 +154,6 @@
                     }
                 },
                 "xml":{
-                    "skb:lang:target:name":"xml",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
@@ -172,7 +170,6 @@
                     }
                 },
                 "sql":{
-                    "skb:lang:target:name":"sql",
                     "tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
