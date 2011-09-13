@@ -33,6 +33,7 @@ package org.skb.tribe;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
+import org.skb.util.FieldKeys;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.misc.PropertyHandler;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
@@ -279,8 +280,8 @@ public class TribeProperties extends TSPropertyMap {
 		}
 		else
 			this.loadFromJason(((TSMapLH)config.get("configuration")));
-		this.put(TribeProperties.tpmKeyUserDir, TSPropertyMap.pmValValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
-		this.put(TribeProperties.tpmKeyTgtDir, TSPropertyMap.pmValValueDefault, System.getProperty("user.dir"));
+		this.put(TribeProperties.tpmKeyUserDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
+		this.put(TribeProperties.tpmKeyTgtDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir"));
 
 		logger.trace("init -- out");
 	}

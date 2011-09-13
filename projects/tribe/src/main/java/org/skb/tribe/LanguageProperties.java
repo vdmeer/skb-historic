@@ -30,6 +30,9 @@
 
 package org.skb.tribe;
 
+import org.apache.log4j.Logger;
+import org.skb.util.FieldKeys;
+import org.skb.util.PathKeys;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
@@ -45,25 +48,25 @@ public class LanguageProperties {
 	private String className;
 	private String key;
 
-//	static Logger logger = Logger.getLogger("org.skb.tribe");
+	static Logger logger = Logger.getLogger(LanguageProperties.class);
 
 	private static class LanguagePropertiesHolder{
 		private final static LanguageProperties INSTANCE = new LanguageProperties();
 	}
 
 	public static LanguageProperties getInstance(){
-//		logger.trace("returning instance");
+		logger.trace("returning instance");
 		return LanguagePropertiesHolder.INSTANCE;
 	}
 
 	public static LanguageProperties getInstanceInit(){
-//		logger.trace("returning instance");
+		logger.trace("returning instance");
 		LanguagePropertiesHolder.INSTANCE._init();
 		return LanguagePropertiesHolder.INSTANCE;
 	}
 
 	public LanguageProperties(){
-//		logger.trace("creating properties");
+		logger.trace("creating properties");
 		this._init();
 	}
 
@@ -80,7 +83,7 @@ public class LanguageProperties {
 	}
 
 	public void setOptions(){
-//		logger.trace("setOptions -- in");
+		logger.trace("setOptions -- in");
 
 		if(this.className==null&&this.key==null)
 			return;
@@ -95,18 +98,18 @@ public class LanguageProperties {
 		if(config==null)
 			System.err.println("tribe: property configuration not found");
 		else{
-			this.opm.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration));
-			prop.loadFromJason(config.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration));
-			if(config.containsKey(LanguageConfigurationConstants.Paths.SKBLangTargets)){
+			this.opm.loadFromJason(config.get(PathKeys.pathLangConfiguration));
+			prop.loadFromJason(config.get(PathKeys.pathTribeConfiguration));
+			if(config.containsKey(PathKeys.pathLangTargets)){
 				String lang=new String();
 				if(!prop.getValue(TribeProperties.tpmKeyTgtLanguage).tsIsType(TEnum.TS_NULL)){
 					lang=prop.getValue(TribeProperties.tpmKeyTgtLanguage).toString();
-					this.opm.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang+"/"+LanguageConfigurationConstants.Fields.SKBLangTargetConfigurationCli)).tsGetValue());
-					prop.loadFromJason(((TSMapLH)config.get(LanguageConfigurationConstants.Paths.SKBLangTargets+"/"+lang)).tsGetValue());
+					this.opm.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang+"/"+FieldKeys.fieldLangTargetConfigCli)).tsGetValue());
+					prop.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang)).tsGetValue());
 				}
 			}
 		}
-//		logger.trace("setOptions -- out");
+		logger.trace("setOptions -- out");
 	}
 
 	public TSPropertyMap getMap(){

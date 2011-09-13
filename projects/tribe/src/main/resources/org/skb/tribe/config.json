@@ -41,212 +41,212 @@
 {
     "configuration":{
         "name":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"TRIBE"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"TRIBE"
         },
         "name-lc":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"tribe"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"tribe"
         },
         "copyright":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"Copyright (c) 2002-2008 Sven van der Meer <sven@vandermeer.de>"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"Copyright (c) 2002-2008 Sven van der Meer <sven@vandermeer.de>"
         },
         "build-with":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"  Eclipse 3.6, (c) the Eclipse Foundation (www.eclipse.org)\n  TRIBE 0.10, (c) Sven van der Meer\n  ANTLR 3.3, (c) Terence Parr <http://www.ANTLR.org>\n  StringTemplate 3.2.1, (c) Terence Parr <http://www.stringtemplate.org>\n  ANTLR IDE <http://antlrv3ide.sourceforge.net/>\n  Apache Commons, (c) The Apache Software Foundation <http://commons.apache.org/>\n  Apache log4j, (c) The Apache Software Foundation <http://logging.apache.org>\n"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"  Eclipse 3.6, (c) the Eclipse Foundation (www.eclipse.org)\n  TRIBE 0.10, (c) Sven van der Meer\n  ANTLR 3.3, (c) Terence Parr <http://www.ANTLR.org>\n  StringTemplate 3.2.1, (c) Terence Parr <http://www.stringtemplate.org>\n  ANTLR IDE <http://antlrv3ide.sourceforge.net/>\n  Apache Commons, (c) The Apache Software Foundation <http://commons.apache.org/>\n  Apache log4j, (c) The Apache Software Foundation <http://logging.apache.org>\n"
         },
         "additional":{
-            "at:type":"ts:atomic:java:string"
-//            "value:default":"cpp handles #define/#undef, #ifdef/#elsif/#else/#endif, and #include\n    but does miss some of the simpler directives\n    and doesn't follow the cpp spec perfectly\nno support for function overloading yet\n'generate_impl_code' not recursive\n\n"
+            "skb:value:type":"ts:atomic:java:string"
+//            "skb:value:default":"cpp handles #define/#undef, #ifdef/#elsif/#else/#endif, and #include\n    but does miss some of the simpler directives\n    and doesn't follow the cpp spec perfectly\nno support for function overloading yet\n'generate_impl_code' not recursive\n\n"
         },
         "version":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"0.30"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"0.30"
         },
         "build":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"110309"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"110309"
         },
         "build-date":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"2011-Mar-09"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"2011-Mar-09"
         },
         "show-version":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:short":"v",
-            "cli:option:long":"show-version",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"show version information"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:short":"v",
+            "skb:util:cli:option:long":"show-version",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"show version information"
         },
         "show-help":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:short":"h",
-            "cli:option:long":"show-help",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Show usage/help information"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:short":"h",
+            "skb:util:cli:option:long":"show-help",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Show usage/help information"
         },
         "show-languages":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:short":"l",
-            "cli:option:long":"show-languages",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Show supported languages"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:short":"l",
+            "skb:util:cli:option:long":"show-languages",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Show supported languages"
         },
         "cfg-load":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:short":"c",
-            "cli:option:long":"cfg-load",
-            "cli:option:arg-name":"file",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Load configuration options from file (.ini, .xml, .properties)"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:short":"c",
+            "skb:util:cli:option:long":"cfg-load",
+            "skb:util:cli:descr:arguments":"file",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Load configuration options from file (.ini, .xml, .properties)"
         },
         "cfg-save":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:short":"w",
-            "cli:option:long":"cfg-save",
-            "cli:option:arg-name":"file",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Save configuration options to file (.ini, .xml, .properties)"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:short":"w",
+            "skb:util:cli:option:long":"cfg-save",
+            "skb:util:cli:descr:arguments":"file",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Save configuration options to file (.ini, .xml, .properties)"
         },
         "default-options":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:short":"d",
-            "cli:option:long":"default-options",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Show current values for configuration options (config file or command-line)"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:short":"d",
+            "skb:util:cli:option:long":"default-options",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Show current values for configuration options (config file or command-line)"
         },
         "languages":{
-            "at:type":"Languages"
+            "skb:value:type":"Languages"
         },
         "repmgr-stg":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"/org/skb/util/misc/ReportManager.stg",
-            "cli:option:long":"repmgr-stg",
-            "cli:option:arg-name":"file",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Group template file for tribe messages"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"/org/skb/util/misc/ReportManager.stg",
+            "skb:util:cli:option:long":"repmgr-stg",
+            "skb:util:cli:descr:arguments":"file",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Group template file for tribe messages"
         },
         "pr-stg-tribe":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:long":"pr-stg-tribe",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Print parser string template"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:long":"pr-stg-tribe",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Print parser string template"
         },
         "pr-stg-target":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:long":"pr-stg-target",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Print code string template"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:long":"pr-stg-target",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Print code string template"
             },
         "no-warnings":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:long":"no-warnings",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Do not show compiler warnings"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:long":"no-warnings",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Do not show compiler warnings"
         },
         "no-errors":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:long":"no-errors",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Do not show compiler warnings"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:long":"no-errors",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Do not show compiler warnings"
         },
         "no-cpp":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:long":"no-cpp",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Do not use build in CPP"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:long":"no-cpp",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Do not use build in CPP"
         },
         "be-quiet":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:short":"q",
-            "cli:option:long":"be-quiet",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Quiet mode, no compiler messages to stdout/stderr"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:short":"q",
+            "skb:util:cli:option:long":"be-quiet",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Quiet mode, no compiler messages to stdout/stderr"
         },
         "gc":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":false,
-            "cli:option:long":"gc",
-            "cli:option:type":"ts:atomic:java:boolean",
-            "cli:usage:descr":"Generate code"
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":false,
+            "skb:util:cli:option:long":"gc",
+            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+            "skb:util:cli:descr:short":"Generate code"
         },
         "gc-scope-sep":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"::",
-            "cli:option:long":"gc-scope-sep",
-            "cli:option:arg-name":"sep",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"ts:atomic:java:string"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"::",
+            "skb:util:cli:option:long":"gc-scope-sep",
+            "skb:util:cli:descr:arguments":"sep",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"ts:atomic:java:string"
         },
         "src-lang":{
-            "at:type":"ts:atomic:java:string",
-            "cli:option:short":"s",
-            "cli:option:long":"src-lang",
-            "cli:option:arg-name":"lang",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Source language"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:util:cli:option:short":"s",
+            "skb:util:cli:option:long":"src-lang",
+            "skb:util:cli:descr:arguments":"lang",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Source language"
         },
         "src-file":{
-            "at:type":"ts:atomic:java:string",
-            "cli:option:short":"f",
-            "cli:option:long":"src-file",
-            "cli:option:arg-name":"file",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Source file"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:util:cli:option:short":"f",
+            "skb:util:cli:option:long":"src-file",
+            "skb:util:cli:descr:arguments":"file",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Source file"
         },
         "tgt-lang":{
-            "at:type":"ts:atomic:java:string",
-            "cli:option:short":"t",
-            "cli:option:long":"tgt-lang",
-            "cli:option:arg-name":"lang",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Target language"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:util:cli:option:short":"t",
+            "skb:util:cli:option:long":"tgt-lang",
+            "skb:util:cli:descr:arguments":"lang",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Target language"
         },
         "tgt-dir":{
-            "at:type":"ts:atomic:java:string",
-            "cli:option:long":"tgt-dir",
-            "cli:option:arg-name":"dir",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Target directory"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:util:cli:option:long":"tgt-dir",
+            "skb:util:cli:descr:arguments":"dir",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Target directory"
         },
         "tgt-fileext":{
-            "at:type":"ts:atomic:java:string",
-            "cli:option:long":"tgt-fileext",
-            "cli:option:arg-name":"ext",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Target file extension (i.e. java, php5, etc.)"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:util:cli:option:long":"tgt-fileext",
+            "skb:util:cli:descr:arguments":"ext",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Target file extension (i.e. java, php5, etc.)"
         },
         "tgt-file":{
-            "at:type":"ts:atomic:java:string",
-            "value:default":"default-tgt",
-            "cli:option:long":"tgt-file",
-            "cli:option:arg-name":"file",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Target file"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:value:default":"default-tgt",
+            "skb:util:cli:option:long":"tgt-file",
+            "skb:util:cli:descr:arguments":"file",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Target file"
         },
         "tgt-stg":{
-            "at:type":"ts:atomic:java:string",
-            "cli:option:long":"tgt-stg",
-            "cli:option:arg-name":"file",
-            "cli:option:type":"ts:atomic:java:string",
-            "cli:usage:descr":"Target stg file"
+            "skb:value:type":"ts:atomic:java:string",
+            "skb:util:cli:option:long":"tgt-stg",
+            "skb:util:cli:descr:arguments":"file",
+            "skb:util:cli:option:type":"ts:atomic:java:string",
+            "skb:util:cli:descr:short":"Target stg file"
         },
         "tgt-stg-angle-br":{
-            "at:type":"ts:atomic:java:boolean",
-            "value:default":true
+            "skb:value:type":"ts:atomic:java:boolean",
+            "skb:value:default":true
         }
     }
 }

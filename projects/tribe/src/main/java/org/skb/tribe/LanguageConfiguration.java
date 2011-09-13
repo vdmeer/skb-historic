@@ -32,6 +32,7 @@ package org.skb.tribe;
 
 import java.io.File;
 
+import org.skb.util.PathKeys;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
@@ -111,35 +112,31 @@ public class LanguageConfiguration {
 		}
 	}
 
-	public void validate(){
-		//TODO nyi
-	}
-
 	public TSMapLH getConfiguration(){
 		return this.configuration;
 	}
 
 	public TSMapLH getTribeConfiguration(){
-		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBTribeConfiguration)).tsGetValue();
+		return ((TSMapLH)this.configuration.get(PathKeys.pathTribeConfiguration)).tsGetValue();
 	}
 
 	public TSMapLH getLanguageConfiguration(){
-		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangConfiguration)).tsGetValue();
+		return ((TSMapLH)this.configuration.get(PathKeys.pathLangConfiguration)).tsGetValue();
 	}
 
 	public TSMapLH getLanguageTokens(){
-		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTokens)).tsGetValue();
+		return ((TSMapLH)this.configuration.get(PathKeys.pathLangTokens)).tsGetValue();
 	}
 
 	public TSMapLH getLanguageTargets(){
-		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangTargets)).tsGetValue();
+		return ((TSMapLH)this.configuration.get(PathKeys.pathLangTargets)).tsGetValue();
 	}
 
 	public TSMapLH getLanguageStgChunks(){
-		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangStgChunks)).tsGetValue();
+		return ((TSMapLH)this.configuration.get(PathKeys.pathLangStgChunks)).tsGetValue();
 	}
 
 	public TSMapLH getLanguageRules(){
-		return ((TSMapLH)this.configuration.get(LanguageConfigurationConstants.Paths.SKBLangRules)).tsGetValue();
+		return ((TSMapLH)this.configuration.get(PathKeys.pathLangRules)).tsGetValue();
 	}
 }

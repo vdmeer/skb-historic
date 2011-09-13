@@ -32,6 +32,7 @@ package org.skb.tribe;
 
 import java.util.TreeMap;
 
+import org.skb.util.FieldKeys;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
@@ -66,8 +67,8 @@ public class LanguageTokens {
     		if(map!=null&&map.size()>0){
     			for(String s:map.keySet()){
     				try{
-    					TSBaseAPI tid=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenID);
-    					TSBaseAPI tval=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBLangTokensTokenVal);
+    					TSBaseAPI tid=map.get(s+"/"+FieldKeys.fieldLangTargetTokenIdent);
+    					TSBaseAPI tval=map.get(s+"/"+FieldKeys.fieldLangTargetTokenTranslate);
     				    tokenStrings.put(tid.toString(), tval.toString());
     				} catch (Exception e){}
     			}

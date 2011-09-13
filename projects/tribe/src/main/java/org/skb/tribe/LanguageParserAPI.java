@@ -35,7 +35,6 @@ import java.io.InputStream;
 import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
-import org.skb.util.stringtemplate.STGManager;
 
 /**
  * Abstract class containing a language parser.
@@ -43,22 +42,16 @@ import org.skb.util.stringtemplate.STGManager;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public abstract class LanguageParser implements TSAtomicAPI {
-	protected TribeProperties prop=TribeProperties.getInstance();
-	protected STGManager stgl=null;
+public interface LanguageParserAPI extends TSAtomicAPI {
+	public String getSupportedSourceLang();
+	public TSArrayListString getSupportedTargetLang();
 
-	protected String xs;
-	protected TSArrayListString xt;
+	public TSPropertyMap getMap();
 
-	public String xs(){return this.xs;}
-	public TSArrayListString xt(){return this.xt;}
+	public void setOptions();
 
-	abstract public TSPropertyMap getMap();
-
-	public void setOptions(){}
-
-	public abstract void parse(InputStream is);
-	public abstract void loadTarget();
-	public abstract void loadStg();
-	public abstract void printStg();
+	public void parse(InputStream is);
+	public void loadTarget();
+	public void loadStg();
+	public void printStg();
 }

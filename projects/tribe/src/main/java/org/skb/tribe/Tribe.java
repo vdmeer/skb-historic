@@ -43,6 +43,7 @@ import java.util.TreeSet;
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
 import org.skb.lang.cpp.CPP;
+import org.skb.util.FieldKeys;
 import org.skb.util.cli.Cli;
 import org.skb.util.cli.CliApache;
 import org.skb.util.misc.ReportManager;
@@ -52,7 +53,6 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
  * This is the main Tribe class, it does all the magic.
@@ -85,7 +85,7 @@ public class Tribe {
 	 * @param supportedLanguages LanguageParser array containing all information on supported source and target languages.
 	 * @param args Command line arguments.
 	 */
-	public void start (LanguageParser[] supportedLanguages, String[] args){
+	public void start (LanguageParserAPI[] supportedLanguages, String[] args){
 		logger.trace("start -- in");
 
 		cli.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
@@ -95,7 +95,7 @@ public class Tribe {
 		 */
 		logger.trace("set languages");
 		//Languages languages=new Languages(supportedLanguages);
-		LanguageList languages=new LanguageList();
+		LanguageParserList languages=new LanguageParserList();
 		languages.addLanguages(supportedLanguages);
 		prop.setValueDefault(TribeProperties.tpmKeyLanguages, languages);
 
@@ -104,7 +104,7 @@ public class Tribe {
 		 */
 		logger.trace("set report manager");
 		repMgr.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
-		repMgr.setSTGUrlName(prop.get(TribeProperties.tpmKeyReportManagerStg, TSPropertyMap.pmValValueDefault));
+		repMgr.setSTGUrlName(prop.get(TribeProperties.tpmKeyReportManagerStg, FieldKeys.fieldValueDefault));
 		repMgr.loadSTG("Report Manager String Template Group", "");
 
 		/**
@@ -140,11 +140,12 @@ public class Tribe {
         TSBaseAPI tgtLang=new TSNull();
 		srcLang=prop.getValue(TribeProperties.tpmKeySrcLanguage);
 		tgtLang=prop.getValue(TribeProperties.tpmKeyTgtLanguage);
+//System.err.println(prop);
 		gc=((TSBoolean)prop.getValue(TribeProperties.tpmKeyGC)).tsvalue;
 
 //		if(!(prop.getValue(TribeProperties.tpmKeySrcLanguage)).tsIsType(TEnum.TS_NULL)) //TODO fill
 //			;
-		Boolean ssl=languages.setSelectedLanguage(srcLang, tgtLang, gc);
+		Boolean ssl=languages.setMapping(srcLang, tgtLang, gc);
 		this.cli.setPropOptions(this.prop);
 		cli.setApplicationName(prop.getValue(TribeProperties.tpmKeyNameLC));
 //System.err.println(prop);
@@ -163,7 +164,7 @@ public class Tribe {
 		 */
 		// if we got a language problem earlier, exit now
 		logger.trace("testing source and target languages pass2");
-		ssl=languages.checkSelectedLanguage();
+		ssl=languages.checkSetMapping();
 		if(ssl==false)
 			System.exit(3);
 //System.err.println(prop);
@@ -227,7 +228,7 @@ public class Tribe {
         			System.exit(1);
         		}
         		else
-        			prop.put(TribeProperties.tpmKeySrcFile, TSPropertyMap.pmValValueCli, fnTest.getAbsolutePath());
+        			prop.put(TribeProperties.tpmKeySrcFile, FieldKeys.fieldValueCli, fnTest.getAbsolutePath());
         	}
 
         	TSBaseAPI ata=prop.getValue(TribeProperties.tpmKeyGC);
@@ -339,8 +340,8 @@ public class Tribe {
 			TreeSet<String> ts=new TreeSet<String>(this.prop.getRows());
 	        for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
 	        	String current=i.next();
-	        	if(!(prop.get(current, TSPropertyMap.pmValCliOptionType)).tsIsType(TEnum.TS_NULL)){
-	        		if(!(prop.get(current, TSPropertyMap.pmValValueFile)).tsIsType(TEnum.TS_NULL)||!(prop.get(current, TSPropertyMap.pmValValueCli)).tsIsType(TEnum.TS_NULL))
+	        	if(!(prop.get(current, FieldKeys.fieldCliOptionType)).tsIsType(TEnum.TS_NULL)){
+	        		if(!(prop.get(current, FieldKeys.fieldValueFile)).tsIsType(TEnum.TS_NULL)||!(prop.get(current, FieldKeys.fieldValueCli)).tsIsType(TEnum.TS_NULL))
 	        			System.out.println("    "+current+" = "+prop.getValue(current));
 	        		else
 	        			System.out.println("    "+current+" = "+prop.getValueDefault(current));
@@ -394,7 +395,7 @@ public class Tribe {
 	 * @param args Command line arguments
 	 * @param languages List of languages supported
 	 */
-	private void setOptions(String[] args, LanguageList languages){
+	private void setOptions(String[] args, LanguageParserList languages){
 		try {
 			this.cli.parse(args, true);
         }
@@ -420,14 +421,14 @@ public class Tribe {
 
 	private String header(){
 		String ret=new String();
-		ret+=prop.get(TribeProperties.tpmKeyName, TSPropertyMap.pmValValueDefault)+", version "+
-		     prop.get(TribeProperties.tpmKeyVersion, TSPropertyMap.pmValValueDefault)+", build "+
-		     prop.get(TribeProperties.tpmKeyBuild, TSPropertyMap.pmValValueDefault)+", "+
-		     prop.get(TribeProperties.tpmKeyBuildDate, TSPropertyMap.pmValValueDefault)+
+		ret+=prop.get(TribeProperties.tpmKeyName, FieldKeys.fieldValueDefault)+", version "+
+		     prop.get(TribeProperties.tpmKeyVersion, FieldKeys.fieldValueDefault)+", build "+
+		     prop.get(TribeProperties.tpmKeyBuild, FieldKeys.fieldValueDefault)+", "+
+		     prop.get(TribeProperties.tpmKeyBuildDate, FieldKeys.fieldValueDefault)+
 		     "\n";
-		ret+=prop.get(TribeProperties.tpmKeyCopyright, TSPropertyMap.pmValValueDefault)+"\n";
+		ret+=prop.get(TribeProperties.tpmKeyCopyright, FieldKeys.fieldValueDefault)+"\n";
 		ret+="\n";
-		ret+=prop.get(TribeProperties.tpmKeyBuildWith, TSPropertyMap.pmValValueDefault)+"\n";
+		ret+=prop.get(TribeProperties.tpmKeyBuildWith, FieldKeys.fieldValueDefault)+"\n";
 		ret+="\n";
 		return ret;
 	}
@@ -435,9 +436,9 @@ public class Tribe {
 	private String footer(){
 		String ret=new String();
 		ret+="\n";
-		if(!prop.get(TribeProperties.tpmKeyAdditional, TSPropertyMap.pmValValueDefault).tsIsType(TEnum.TS_NULL)){
+		if(!prop.get(TribeProperties.tpmKeyAdditional, FieldKeys.fieldValueDefault).tsIsType(TEnum.TS_NULL)){
 			ret+="\n";
-			ret+=prop.get(TribeProperties.tpmKeyAdditional, TSPropertyMap.pmValValueDefault).toString()+"\n";
+			ret+=prop.get(TribeProperties.tpmKeyAdditional, FieldKeys.fieldValueDefault).toString()+"\n";
 		}
 		return ret;
 	}

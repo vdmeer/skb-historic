@@ -30,6 +30,7 @@
 
 package org.skb.tribe;
 
+import org.skb.util.FieldKeys;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
@@ -53,10 +54,10 @@ public class TargetSTGChunks {
 		if(map!=null){
 			TSBaseAPI ala;
 			for (String s:map.keySet()){
-				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkMandatory);
+				ala=map.get(s+"/"+FieldKeys.fieldStringtemplateChunksMandatory);
 				if(ala!=null&&!ala.tsIsType(TEnum.TS_NULL))
 					this.chMan.put(s, ala);
-				ala=map.get(s+"/"+LanguageConfigurationConstants.Fields.SKBTribeStgChunkOptional);
+				ala=map.get(s+"/"+FieldKeys.fieldStringtemplateChunksOptional);
 				if(ala!=null&&!ala.tsIsType(TEnum.TS_NULL))
 					this.chOpt.put(s, ala);
 			}
