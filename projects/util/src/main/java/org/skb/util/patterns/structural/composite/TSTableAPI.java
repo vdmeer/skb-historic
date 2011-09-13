@@ -27,22 +27,22 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.api;
+package org.skb.util.patterns.structural.composite;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.skb.util.types.atomic.java.TSBoolean;
-import org.skb.util.types.atomic.java.TSByte;
-import org.skb.util.types.atomic.java.TSDouble;
-import org.skb.util.types.atomic.java.TSFloat;
-import org.skb.util.types.atomic.java.TSInteger;
-import org.skb.util.types.atomic.java.TSLong;
-import org.skb.util.types.atomic.java.TSObject;
-import org.skb.util.types.atomic.java.TSShort;
-import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.java.TSByte;
+import org.skb.util.patterns.structural.composite.atomic.java.TSDouble;
+import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
+import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
+import org.skb.util.patterns.structural.composite.atomic.java.TSLong;
+import org.skb.util.patterns.structural.composite.atomic.java.TSObject;
+import org.skb.util.patterns.structural.composite.atomic.java.TSShort;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
  * Base interface for all table implementations of the SKB type system

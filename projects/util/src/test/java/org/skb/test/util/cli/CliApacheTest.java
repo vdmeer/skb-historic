@@ -9,12 +9,12 @@ import org.junit.Test;
 import org.skb.util.cli.CliApache;
 import org.skb.util.log.LogManager;
 import org.skb.util.misc.Json2Oat;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSInteger;
-import org.skb.util.types.atomic.java.TSString;
-import org.skb.util.types.composite.util.TSMapLH;
-import org.skb.util.types.composite.util.TSPropertyMap;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 public class CliApacheTest extends TestCase {
 	public void setUp(){

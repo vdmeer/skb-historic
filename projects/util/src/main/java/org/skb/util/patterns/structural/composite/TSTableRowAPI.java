@@ -27,11 +27,11 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.api;
+package org.skb.util.patterns.structural.composite;
 
 import java.util.Map;
 
-import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 

@@ -42,8 +42,8 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 
 /**
  * A manager for file lists to prepare output.

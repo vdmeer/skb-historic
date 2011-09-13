@@ -27,19 +27,19 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.patterns.creational.builder;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSBoolean;
-import org.skb.util.types.atomic.java.TSString;
-import org.skb.util.types.atomic.util.TSArrayListString;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Generic implementation of a request object.

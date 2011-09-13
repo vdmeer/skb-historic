@@ -37,14 +37,14 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSBoolean;
-import org.skb.util.types.atomic.java.TSDouble;
-import org.skb.util.types.atomic.java.TSFloat;
-import org.skb.util.types.atomic.java.TSInteger;
-import org.skb.util.types.atomic.java.TSString;
-import org.skb.util.types.composite.util.TSArrayList;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.java.TSDouble;
+import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
+import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Class that reads a JSON file and transforms it into an TSMapLH.

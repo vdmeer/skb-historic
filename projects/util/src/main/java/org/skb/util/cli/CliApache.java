@@ -43,15 +43,15 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSBoolean;
-import org.skb.util.types.atomic.java.TSDouble;
-import org.skb.util.types.atomic.java.TSInteger;
-import org.skb.util.types.atomic.java.TSLong;
-import org.skb.util.types.atomic.java.TSString;
-import org.skb.util.types.composite.util.TSPropertyMap;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.java.TSDouble;
+import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
+import org.skb.util.patterns.structural.composite.atomic.java.TSLong;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
  * Implementation of the CLI interface using Apache Commons CLI.

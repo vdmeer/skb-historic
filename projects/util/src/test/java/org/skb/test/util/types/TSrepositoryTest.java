@@ -40,9 +40,9 @@ import junit.framework.TestSuite;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.skb.util.log.LogManager;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.TSRepository.TString;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.TSRepository.TString;
 
 /**
  * Test class for the TSRepository, checks for consistent definitions of TString and TEnum fields

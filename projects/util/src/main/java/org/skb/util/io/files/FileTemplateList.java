@@ -37,8 +37,8 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
  * A list of file templates that a parser/compiler can use/generate to produce output files.

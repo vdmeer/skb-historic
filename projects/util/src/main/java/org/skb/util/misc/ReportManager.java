@@ -34,9 +34,9 @@ import java.io.File;
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
+import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.types.atomic.util.TSArrayListString;
-import org.skb.util.types.composite.util.TSMapLH;
 
 /**
  * A report manager with extended functionality for parsers/compilers.

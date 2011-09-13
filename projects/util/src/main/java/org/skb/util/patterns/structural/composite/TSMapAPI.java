@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.api;
+package org.skb.util.patterns.structural.composite;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
  * Base interface for map implementations in the SKB type system

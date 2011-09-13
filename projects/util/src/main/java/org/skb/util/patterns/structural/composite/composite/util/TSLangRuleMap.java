@@ -27,15 +27,15 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.composite.util;
+package org.skb.util.patterns.structural.composite.composite.util;
 
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
  * Implementation of a rule map for parsers/compilers.

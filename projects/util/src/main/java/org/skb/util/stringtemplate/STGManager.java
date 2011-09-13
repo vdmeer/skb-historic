@@ -40,13 +40,13 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomicAPI;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.atomic.java.TSString;
-import org.skb.util.types.atomic.util.TSArrayListString;
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Manager for String Template Groups, including chunk tests.

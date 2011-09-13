@@ -27,9 +27,9 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.pattern;
+package org.skb.util.patterns.creational.builder;
 
-import org.skb.util.types.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
  * Interface for a builder.

@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.composite.util;
+package org.skb.util.patterns.structural.composite.composite.util;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -42,12 +42,12 @@ import java.util.TreeSet;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSNull;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.api.TSTableRowAPI;
-import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSNull;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
  * Implementation of a Table row with predefined columns.

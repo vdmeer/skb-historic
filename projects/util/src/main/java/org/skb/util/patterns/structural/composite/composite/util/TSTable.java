@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.composite.util;
+package org.skb.util.patterns.structural.composite.composite.util;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -45,23 +45,23 @@ import java.util.TreeSet;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSNull;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomicAPI;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.api.TSCompositeAPI;
-import org.skb.util.types.api.TSTableAPI;
-import org.skb.util.types.api.TSTableRowAPI;
-import org.skb.util.types.atomic.java.TSBoolean;
-import org.skb.util.types.atomic.java.TSByte;
-import org.skb.util.types.atomic.java.TSDouble;
-import org.skb.util.types.atomic.java.TSFloat;
-import org.skb.util.types.atomic.java.TSInteger;
-import org.skb.util.types.atomic.java.TSLong;
-import org.skb.util.types.atomic.java.TSObject;
-import org.skb.util.types.atomic.java.TSShort;
-import org.skb.util.types.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSCompositeAPI;
+import org.skb.util.patterns.structural.composite.TSNull;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSTableAPI;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.java.TSByte;
+import org.skb.util.patterns.structural.composite.atomic.java.TSDouble;
+import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
+import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
+import org.skb.util.patterns.structural.composite.atomic.java.TSLong;
+import org.skb.util.patterns.structural.composite.atomic.java.TSObject;
+import org.skb.util.patterns.structural.composite.atomic.java.TSShort;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
  * A composite class for tables.

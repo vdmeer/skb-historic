@@ -27,20 +27,19 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types;
+package org.skb.util.patterns.structural.composite;
 
 import java.util.EnumSet;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.api.TSBaseAPI;
 
 /**
  * Type repository maintaining string and enumerate literals for SKB types.
  *
- * The base interface for SKB types ({@link org.skb.util.types.api.TSBaseAPI}) defines four methods for processing type information.
- * The first two ({@link org.skb.util.types.api.TSBaseAPI#tsGetTypeEnum} and {@link org.skb.util.types.api.TSBaseAPI#tsGetTypeString})
+ * The base interface for SKB types ({@link org.skb.util.patterns.structural.composite.TSBaseAPI}) defines four methods for processing type information.
+ * The first two ({@link org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeEnum} and {@link org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeString})
  * must return the type of a TSBase object as either enumerate or string. The other two methods
- * ({@link org.skb.util.types.api.TSBaseAPI#tsGetTypeEnumSet} and {@link org.skb.util.types.api.TSBaseAPI#tsGetTypeStringList})
+ * ({@link org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeEnumSet} and {@link org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeStringList})
  * must return all type information of a TSBase object as either a set of enumerates or a set of strings. This class maintains all enumerates and
  * all strings that for type information that the SKB supports, and provides some basic function to convert between them.
  * <br /><br /> 

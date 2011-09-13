@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.api;
+package org.skb.util.patterns.structural.composite;
 
 /**
  * Base interface for all TSAtomic types

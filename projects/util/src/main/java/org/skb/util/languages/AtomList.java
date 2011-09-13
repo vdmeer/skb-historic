@@ -40,18 +40,18 @@ import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.util.misc.ReportManager;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.api.TSTableRowAPI;
-import org.skb.util.types.atomic.antlr.TSToken;
-import org.skb.util.types.atomic.stringtemplate.TSST;
-import org.skb.util.types.composite.util.TSTable;
-import org.skb.util.types.composite.util.TSTableRow;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.atomic.antlr.TSToken;
+import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSST;
+import org.skb.util.patterns.structural.composite.composite.util.TSTable;
+import org.skb.util.patterns.structural.composite.composite.util.TSTableRow;
 
 /**
  * Provides a (symbol) table that compilers/parsers can use to maintain a list of language elements.
  *
- * This class is based on {@link org.skb.util.types.composite.util.TSTable} using a pre-defined column structure
+ * This class is based on {@link org.skb.util.patterns.structural.composite.composite.util.TSTable} using a pre-defined column structure
  * suitable for compilers and parsers. The columns are
  * <ul>
  *   <li>category - general separation of language atoms, such as class, interface, contract.</li>

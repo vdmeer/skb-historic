@@ -30,8 +30,8 @@
 package org.skb.util.cli;
 
 import org.apache.commons.cli.ParseException;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.composite.util.TSPropertyMap;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
  * Interface for CLI processing.

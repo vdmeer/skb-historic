@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.atomic.java;
+package org.skb.util.patterns.structural.composite.atomic.java;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -37,10 +37,10 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomicAPI;
-import org.skb.util.types.api.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
  * A wrapper for java.lang.Short.

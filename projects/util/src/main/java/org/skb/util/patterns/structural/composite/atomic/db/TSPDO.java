@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.atomic.db;
+package org.skb.util.patterns.structural.composite.atomic.db;
 
 import java.sql.Connection;
 import java.util.Arrays;
@@ -38,11 +38,11 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.sql.PDO;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomicAPI;
-import org.skb.util.types.api.TSBaseAPI;
 
 public class TSPDO extends PDO implements TSAtomicAPI {
 	/** Logger instance */

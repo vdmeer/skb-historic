@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types.composite.util;
+package org.skb.util.patterns.structural.composite.composite.util;
 
 import java.io.File;
 import java.util.Collection;
@@ -43,12 +43,12 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
 import org.skb.util.misc.Json2Oat;
-import org.skb.util.types.TSNull;
-import org.skb.util.types.TSRepository;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomicAPI;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.api.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSNull;
+import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
  * Provides a map of properties based on TSTable

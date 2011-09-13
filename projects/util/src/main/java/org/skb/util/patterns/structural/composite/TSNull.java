@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.types;
+package org.skb.util.patterns.structural.composite;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -37,10 +37,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.types.TSRepository.TEnum;
-import org.skb.util.types.api.TSAtomicAPI;
-import org.skb.util.types.api.TSBaseAPI;
-import org.skb.util.types.api.TSCompositeAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 public final class TSNull implements TSBaseAPI, TSAtomicAPI, TSCompositeAPI {
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
