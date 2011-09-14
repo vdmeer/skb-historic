@@ -102,8 +102,8 @@ public class LanguageProperties {
 			prop.loadFromJason(config.get(PathKeys.pathTribeConfiguration));
 			if(config.containsKey(PathKeys.pathLangTargets)){
 				String lang=new String();
-				if(!prop.getValue(TribeProperties.tpmKeyTgtLanguage).tsIsType(TEnum.TS_NULL)){
-					lang=prop.getValue(TribeProperties.tpmKeyTgtLanguage).toString();
+				if(!prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
+					lang=prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).toString();
 					this.opm.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang+"/"+FieldKeys.fieldLangTargetConfigCli)).tsGetValue());
 					prop.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang)).tsGetValue());
 				}

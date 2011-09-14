@@ -36,7 +36,7 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
-import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.stringtemplate.STGroupManager;
 
 /**
  * A report manager with extended functionality for parsers/compilers.
@@ -44,7 +44,7 @@ import org.skb.util.stringtemplate.STGManager;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class ReportManager extends STGManager{
+public class ReportManager extends STGroupManager{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(ReportManager.class);
 

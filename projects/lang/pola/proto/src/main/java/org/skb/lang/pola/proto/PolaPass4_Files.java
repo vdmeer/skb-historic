@@ -34,6 +34,7 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 import org.skb.tribe.TribeProperties;
+import org.skb.util.FieldKeys;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
 
@@ -57,7 +58,7 @@ public class PolaPass4_Files {
 
 		//no split, so go through the atoms, put all children into the body of their parent
 		//add the final template to the ftl and give back
-		fn=this.prop.getValue(TribeProperties.tpmKeyTgtFile).toString();
+		fn=this.prop.getValue(FieldKeys.fieldCliOptionTgtFile).toString();
 
 		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 		Integer size=rows.size();

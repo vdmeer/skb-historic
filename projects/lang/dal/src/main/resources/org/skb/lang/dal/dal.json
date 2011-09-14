@@ -42,31 +42,27 @@
     "skb":{
         "tribe":{
             "configuration":{
-                "name":{
+                "skb.application.name":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"DAL"
                 },
-                "name-lc":{
-                    "skb:value:type":"ts:atomic:java:string",
-                    "skb:value:default":"dal"
-                },
-                "copyright":{
+                "skb.application.copyright":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"Copyright (c) 2011-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
-                "version":{
+                "skb.application.version":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"0.01"
                 },
-                "build":{
+                "skb.application.build":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"110309"
                 },
-                "build-date":{
+                "skb.application.builddate":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"2011-Mar-09"
                 },
-                "tribe-generic-stg":{
+                "skb.application.generic-stg":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/internal\/generic.stg"
                 }
@@ -141,13 +137,13 @@
             },
             "targets":{
                 "sql":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/sql.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".sql"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
@@ -767,3 +763,5 @@
         }
     }
 }
+
+//tgt-split-code			skb.clioption.tgt-split-code

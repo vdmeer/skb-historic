@@ -76,12 +76,17 @@ options
 
   public void init() {
     this.pass=new ColaPass1_Ebnf();
-    this.myTokens = new LanguageTokens();
+    this.myTokens=new LanguageTokens();
     this.myTokens.addTokens(tokenNames);
   }
 
-  public void setFilename(String f){ReportManager.getInstance().setFileName(f);}
-  public String getFilename(){return ReportManager.getInstance().getFileName();}
+  public void setFilename(String f){
+    ReportManager.getInstance().setFileName(f);
+  }
+
+  public String getFilename(){
+    return ReportManager.getInstance().getFileName();
+  }
 
   private void setCppFile(String cpp){
     String fn=cpp.substring(1,cpp.lastIndexOf(':'));
@@ -89,23 +94,38 @@ options
     this.setFilename(fn);
   }
 
-  public int  numberOfErrors() {return ReportManager.getInstance().noOfErrors();}
-  public void resetErrors()    {ReportManager.getInstance().resetNoOfErrors();}
-  public void displayRecognitionError(String[] tokenNames, RecognitionException re){ReportManager.getInstance().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);}
+  public int numberOfErrors(){
+    return ReportManager.getInstance().noOfErrors();
+  }
+
+  public void resetErrors(){
+    ReportManager.getInstance().resetNoOfErrors();
+  }
+
+  public void displayRecognitionError(String[] tokenNames, RecognitionException re){
+    ReportManager.getInstance().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
+  }
 }
 
 @lexer::members{
-  public void setFilename(String f){ReportManager.getInstance().setFileName(f);}
-  public String getFilename(){return ReportManager.getInstance().getFileName();}
+  public void setFilename(String f){
+    ReportManager.getInstance().setFileName(f);
+  }
+
+  public String getFilename(){
+    return ReportManager.getInstance().getFileName();
+  }
 
   private void setCppFile(String cpp){
     String fn=cpp.substring(1,cpp.lastIndexOf(':'));
     this.setFilename(fn);
   }
+
   private void setCppLine(String cpp){
     Integer i=new Integer(cpp.substring(cpp.lastIndexOf(':')+1, cpp.length()-1));
     this.input.setLine(i.intValue());
   }
+
   private void setCppFileandLine(String cpp){
     setCppFile(cpp);
     setCppLine(cpp);

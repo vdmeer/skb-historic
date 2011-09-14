@@ -41,9 +41,9 @@ import org.apache.log4j.Logger;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class STGWriterXtoY extends AutoIndentWriter {
+public class STWriterXtoY extends AutoIndentWriter {
 	/** Logger instance */
-	public final static Logger logger=Logger.getLogger(STGWriterXtoY.class);
+	public final static Logger logger=Logger.getLogger(STWriterXtoY.class);
 
 	/** Start for writing characters in a line, default is 2 */
 	protected int start=2;
@@ -59,7 +59,7 @@ public class STGWriterXtoY extends AutoIndentWriter {
 	 * Class constructor, initialises super class with the given writer
 	 * @param out writer to be used
 	 */
-	public STGWriterXtoY(Writer out){
+	public STWriterXtoY(Writer out){
 		super(out);
 	}
 
@@ -101,7 +101,7 @@ public class STGWriterXtoY extends AutoIndentWriter {
 
 	/**
 	 * Sets the line end
-	 * @param i new line end, alternative to {@link STGWriterXtoY#setLineWidth(int)}
+	 * @param i new line end, alternative to {@link STWriterXtoY#setLineWidth(int)}
 	 */
 	public void setEnd(int i){
 		this.end=i;
@@ -109,7 +109,7 @@ public class STGWriterXtoY extends AutoIndentWriter {
 
 
 	/**
-	 * Sets the line end, alternative to {@link STGWriterXtoY#setEnd(int)}
+	 * Sets the line end, alternative to {@link STWriterXtoY#setEnd(int)}
 	 * @param w new line end
 	 */
 	public void setLineWidth(int w){

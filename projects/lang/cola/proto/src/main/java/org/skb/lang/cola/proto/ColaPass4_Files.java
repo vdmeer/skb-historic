@@ -42,6 +42,7 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.tribe.TribeProperties;
+import org.skb.util.FieldKeys;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
@@ -101,7 +102,7 @@ public class ColaPass4_Files {
 		if(tgtSplitCode==false){
 			//no split, so go through the atoms, put all children into the body of their parent
 			//add the final template to the ftl and give back
-			fn=this.prop.getValue(TribeProperties.tpmKeyTgtFile).toString();
+			fn=this.prop.getValue(FieldKeys.fieldCliOptionTgtFile).toString();
 
 			//now we only have root elements and packages (including their children)
 			//let's do the packages, if their are not root, from the inner to the outer
@@ -132,11 +133,11 @@ public class ColaPass4_Files {
 				Integer size=rows.size();
 				for(int i=1;i<size;i++){
 					if(this.atoms.get(rows.get(i), AtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE))
-						fn=rows.get(i).replace(this.prop.getValue(TribeProperties.tpmKeyGCScopeSep).toString(), "_"); 
+						fn=rows.get(i).replace(this.prop.getValue(FieldKeys.fieldCliOptionGCScopeSep).toString(), "_"); 
 					else{
-						File f=new File(this.prop.getValue(TribeProperties.tpmKeySrcFile).toString());
+						File f=new File(this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString());
 						fn=f.getName();
-						fn=fn.substring(0, fn.lastIndexOf(this.prop.getValue(TribeProperties.tpmKeyTgtFileExt).toString()));
+						fn=fn.substring(0, fn.lastIndexOf(this.prop.getValue(FieldKeys.fieldCliOptionTgtFileExt).toString()));
 					}
 					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
 				}
@@ -180,7 +181,7 @@ public class ColaPass4_Files {
 				for(int i=0;i<size;i++){
 					fn=rows.get(i).replace(ColaConstants.Tokens.parserScopeSep, System.getProperty("file.separator"));
 					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
-					if(this.prop.getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
+					if(this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
 						if(defPkg.length()>0)
 							calcPkg=new String(defPkg)+this.prop.getValue(ColaConstants.Properties.keyScopeSep);
 						else
@@ -188,7 +189,7 @@ public class ColaPass4_Files {
 
 						if(rows.get(i).contains(ColaConstants.Tokens.parserScopeSep)){
 							calcPkg+=rows.get(i).substring(0, rows.get(i).lastIndexOf(ColaConstants.Tokens.parserScopeSep));
-							calcPkg=calcPkg.replace(ColaConstants.Tokens.parserScopeSep,this.prop.getValue(TribeProperties.tpmKeyGCScopeSep).toString());
+							calcPkg=calcPkg.replace(ColaConstants.Tokens.parserScopeSep,this.prop.getValue(FieldKeys.fieldCliOptionGCScopeSep).toString());
 						}
 
 						if(calcPkg.length()>0)
@@ -375,7 +376,7 @@ public class ColaPass4_Files {
 	}
 
 	private void removeFunctions(){
-		if(this.prop.getValue(TribeProperties.tpmKeyTgtLanguage).equals(ColaConstants.Properties.internalColaTgtCola))
+		if(this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).equals(ColaConstants.Properties.internalColaTgtCola))
 			return;
 		ArrayList<String>removeList=new ArrayList<String>();
 		String current;

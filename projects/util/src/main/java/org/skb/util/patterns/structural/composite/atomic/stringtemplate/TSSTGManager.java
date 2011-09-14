@@ -41,9 +41,9 @@ import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.stringtemplate.STGroupManager;
 
-public class TSSTGManager extends STGManager implements TSAtomicAPI {
+public class TSSTGManager extends STGroupManager implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSSTGManager.class);
 
@@ -63,8 +63,8 @@ public class TSSTGManager extends STGManager implements TSAtomicAPI {
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_ST_STGMANAGER);
-		this.typeEnum.add(TEnum.TS_ATOMIC_ST_STGMANAGER);
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_STGROUPMANAGER);
+		this.typeEnum.add(TEnum.TS_ATOMIC_STGROUPMANAGER);
 	}
 
 	@Override

@@ -40,6 +40,7 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.tribe.TribeProperties;
+import org.skb.util.FieldKeys;
 import org.skb.util.languages.AtomList;
 import org.skb.util.misc.ReportManager;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
@@ -47,8 +48,8 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
-import org.skb.util.stringtemplate.STGManager;
-import org.skb.util.stringtemplate.STGWriterXtoY;
+import org.skb.util.stringtemplate.STGroupManager;
+import org.skb.util.stringtemplate.STWriterXtoY;
 
 /**
  * Class implementing statistic methods for Cola parser.
@@ -59,7 +60,7 @@ import org.skb.util.stringtemplate.STGWriterXtoY;
 public class DalStatistics {
 	static Logger logger = Logger.getLogger(DalStatistics.class);
 
-	private STGManager stgl=null;
+	private STGroupManager stgl=null;
 	private StringTemplateGroup stg;
 	boolean loaded=false;
 
@@ -76,9 +77,9 @@ public class DalStatistics {
 		chMan.put("completeStatStart",      new TSArrayListString(new String[]{"file"}));
 		chMan.put("completeStatPrintArray", new TSArrayListString(new String[]{"text", "size", "array"}));
 
-		this.stgl=new STGManager();
+		this.stgl=new STGroupManager();
 		this.stgl.setMandatoryChunks(chMan);
-		this.stgl.setApplicationName(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyNameLC));
+		this.stgl.setApplicationName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
 
 		this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(DalConstants.Properties.keyStatStg));
 		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(DalConstants.Properties.keyStatStg));
@@ -160,7 +161,7 @@ public class DalStatistics {
 			template.setAttribute("array", tempA);
 		}
 		StringWriter out = new StringWriter();
-		STGWriterXtoY psrmw = new STGWriterXtoY(out);
+		STWriterXtoY psrmw = new STWriterXtoY(out);
 		psrmw.setStart(2);
 		psrmw.setEnd(78);
 		try{template.write(psrmw);} catch (IOException e) {}

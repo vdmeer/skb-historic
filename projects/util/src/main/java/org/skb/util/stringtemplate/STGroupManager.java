@@ -54,9 +54,9 @@ import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class STGManager {
+public class STGroupManager {
 	/** Logger instance */
-	public final static Logger logger=Logger.getLogger(STGManager.class);
+	public final static Logger logger=Logger.getLogger(STGroupManager.class);
 
 	/** Managed STG */
 	protected StringTemplateGroup stg=null;
@@ -89,7 +89,7 @@ public class STGManager {
 	/**
 	 * Class constructor, empty
 	 */
-	public STGManager(){
+	public STGroupManager(){
 	}
 
 
@@ -146,7 +146,7 @@ public class STGManager {
 	/**
 	 * Loads an STG
 	 * 
-	 * This method tests the parameters and then calls {@link STGManager#loadSTG(String, String)} 
+	 * This method tests the parameters and then calls {@link STGroupManager#loadSTG(String, String)} 
 	 * @param purpose message to be used for reporting/logging
 	 * @param targetLang target language of the STG to be loaded
 	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
@@ -163,7 +163,7 @@ public class STGManager {
 	/**
 	 * Loads an STG
 	 * 
-	 * This method tests the parameters and then calls {@link STGManager#loadSTG(String, String)}
+	 * This method tests the parameters and then calls {@link STGroupManager#loadSTG(String, String)}
 	 * @param purpose message to be used for reporting/logging
 	 * @param targetLang target language of the STG to be loaded
 	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)

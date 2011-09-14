@@ -44,6 +44,7 @@ import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
  */
 public interface LanguageParserAPI extends TSAtomicAPI {
 	public String getSupportedSourceLang();
+
 	public TSArrayListString getSupportedTargetLang();
 
 	public TSPropertyMap getMap();
@@ -51,7 +52,10 @@ public interface LanguageParserAPI extends TSAtomicAPI {
 	public void setOptions();
 
 	public void parse(InputStream is);
+
 	public void loadTarget();
+
 	public void loadStg();
+
 	public void printStg();
 }

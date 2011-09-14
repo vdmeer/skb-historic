@@ -92,11 +92,11 @@ public class TSRepository {
 		/** The SKB type for an ANTLR Token (org.antlr) */
 		public final static String TS_ATOMIC_ANTLR_TOKEN		= "ts:atomic:antlr:token";
 		/** The SKB type for a string template (org.stringtemplate) */
-		public final static String TS_ATOMIC_ST_ST				= "ts:atomic:st:st";
+		public final static String TS_ATOMIC_STRINGTEMPLATE_ST	= "ts:atomic:stringtemplate:st";
 		/** The SKB type for a string template group (org.stringtemplate) */
-		public final static String TS_ATOMIC_ST_STG				= "ts:atomic:st:stg";
+		public final static String TS_ATOMIC_STRINGTEMPLATE_STG	= "ts:atomic:stringtemplate:stg";
 		/** The SKB type for a string template group manager (SKB.Util) */
-		public final static String TS_ATOMIC_ST_STGMANAGER		= "ts:atomic:st:stgmanager";
+		public final static String TS_ATOMIC_STGROUPMANAGER		= "ts:atomic:stgroupmanager";
 
 		/** The SKB type for a Portable Data Object (SKB.Util) */
 		public final static String TS_ATOMIC_DB_PDO				= "ts:atomic:db:pdo";
@@ -145,81 +145,81 @@ public class TSRepository {
 	 */
 	public enum TEnum{
 		/** The SKB base type */
-		TS_BASE						(TSRepository.TString.TS_BASE),
+		TS_BASE							(TSRepository.TString.TS_BASE),
 		/** The generic SKB NULL type */
-		TS_NULL						(TSRepository.TString.TS_NULL),
+		TS_NULL							(TSRepository.TString.TS_NULL),
 		/** The SKB for a TSAtomic */
-		TS_ATOMIC					(TSRepository.TString.TS_ATOMIC),
+		TS_ATOMIC						(TSRepository.TString.TS_ATOMIC),
 		/** The SKB for a TSComposite */
-		TS_COMPOSITE				(TSRepository.TString.TS_COMPOSITE),
+		TS_COMPOSITE					(TSRepository.TString.TS_COMPOSITE),
 
 		/** The SKB type for a (Java) Object */
-		TS_ATOMIC_JAVA_OBJECT		(TSRepository.TString.TS_ATOMIC_JAVA_OBJECT),
+		TS_ATOMIC_JAVA_OBJECT			(TSRepository.TString.TS_ATOMIC_JAVA_OBJECT),
 		/** The SKB type for a (Java) String */
-		TS_ATOMIC_JAVA_STRING		(TSRepository.TString.TS_ATOMIC_JAVA_STRING),
+		TS_ATOMIC_JAVA_STRING			(TSRepository.TString.TS_ATOMIC_JAVA_STRING),
 		/** The SKB type for a (Java) Long */
-		TS_ATOMIC_JAVA_LONG			(TSRepository.TString.TS_ATOMIC_JAVA_LONG),
+		TS_ATOMIC_JAVA_LONG				(TSRepository.TString.TS_ATOMIC_JAVA_LONG),
 		/** The SKB type for a (Java) Short */
-		TS_ATOMIC_JAVA_SHORT		(TSRepository.TString.TS_ATOMIC_JAVA_SHORT),
+		TS_ATOMIC_JAVA_SHORT			(TSRepository.TString.TS_ATOMIC_JAVA_SHORT),
 		/** The SKB type for a (Java) Integer */
-		TS_ATOMIC_JAVA_INTEGER		(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER),
+		TS_ATOMIC_JAVA_INTEGER			(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER),
 		/** The SKB type for a (Java) Float */
-		TS_ATOMIC_JAVA_FLOAT		(TSRepository.TString.TS_ATOMIC_JAVA_FLOAT),
+		TS_ATOMIC_JAVA_FLOAT			(TSRepository.TString.TS_ATOMIC_JAVA_FLOAT),
 		/** The SKB type for a (Java) Double */
-		TS_ATOMIC_JAVA_DOUBLE		(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE),
+		TS_ATOMIC_JAVA_DOUBLE			(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE),
 		/** The SKB type for a (Java) Byte */
-		TS_ATOMIC_JAVA_BYTE			(TSRepository.TString.TS_ATOMIC_JAVA_BYTE),
+		TS_ATOMIC_JAVA_BYTE				(TSRepository.TString.TS_ATOMIC_JAVA_BYTE),
 		/** The SKB type for a (Java) Boolean */
-		TS_ATOMIC_JAVA_BOOLEAN		(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN),
+		TS_ATOMIC_JAVA_BOOLEAN			(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN),
 
 		/** The SKB type for an ANTLR Token (org.antlr) */
-		TS_ATOMIC_ANTLR_TOKEN		(TSRepository.TString.TS_ATOMIC_ANTLR_TOKEN),
+		TS_ATOMIC_ANTLR_TOKEN			(TSRepository.TString.TS_ATOMIC_ANTLR_TOKEN),
 		/** The SKB type for a string template (org.stringtemplate) */
-		TS_ATOMIC_ST_ST				(TSRepository.TString.TS_ATOMIC_ST_ST),
+		TS_ATOMIC_STRINGTEMPLATE_ST		(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_ST),
 		/** The SKB type for a string template group (org.stringtemplate) */
-		TS_ATOMIC_ST_STG			(TSRepository.TString.TS_ATOMIC_ST_STG),
+		TS_ATOMIC_STRINGTEMPLATE_STG	(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_STG),
 		/** The SKB type for a string template group manager (SKB.Util) */
-		TS_ATOMIC_ST_STGMANAGER		(TSRepository.TString.TS_ATOMIC_ST_STGMANAGER),
+		TS_ATOMIC_STGROUPMANAGER		(TSRepository.TString.TS_ATOMIC_STGROUPMANAGER),
 
 		/** The SKB type for a Portable Data Object (SKB.Util) */
-		TS_ATOMIC_DB_PDO			(TSRepository.TString.TS_ATOMIC_DB_PDO),
+		TS_ATOMIC_DB_PDO				(TSRepository.TString.TS_ATOMIC_DB_PDO),
 
 		/** The SKB type for a Portable Data Object (SKB.Util) */
-		TS_ATOMIC_SCOPE				(TSRepository.TString.TS_ATOMIC_SCOPE),
+		TS_ATOMIC_SCOPE					(TSRepository.TString.TS_ATOMIC_SCOPE),
 
 		/** The SKB type for the Tribe Language Parser */
-		TS_TRIBE_LP					(TSRepository.TString.TS_TRIBE_LP),
+		TS_TRIBE_LP						(TSRepository.TString.TS_TRIBE_LP),
 		/** The SKB type for the COLA PROTO Parser */
-		TS_TRIBE_LP_COLA_PROTO		(TSRepository.TString.TS_TRIBE_LP_COLA_PROTO),
+		TS_TRIBE_LP_COLA_PROTO			(TSRepository.TString.TS_TRIBE_LP_COLA_PROTO),
 		/** The SKB type for the POLA PROTO Parser */
-		TS_TRIBE_LP_POLA_PROTO		(TSRepository.TString.TS_TRIBE_LP_POLA_PROTO),
+		TS_TRIBE_LP_POLA_PROTO			(TSRepository.TString.TS_TRIBE_LP_POLA_PROTO),
 		/** The SKB type for the GLUE PROTO Parser */
-		TS_TRIBE_LP_GLUE_PROTO		(TSRepository.TString.TS_TRIBE_LP_GLUE_PROTO),
+		TS_TRIBE_LP_GLUE_PROTO			(TSRepository.TString.TS_TRIBE_LP_GLUE_PROTO),
 		/** The SKB type for the DAL Parser */
-		TS_TRIBE_LP_DAL				(TSRepository.TString.TS_TRIBE_LP_DAL),
+		TS_TRIBE_LP_DAL					(TSRepository.TString.TS_TRIBE_LP_DAL),
 
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
-		TS_ATOMIC_ARRAYLIST_STRING	(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING),
+		TS_ATOMIC_ARRAYLIST_STRING		(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING),
 		/** SKB Type for an Array List (java.utils.list<TSAtomic>) */
-		TS_ATOMIC_ARRAYLIST_ATOMIC	(TSRepository.TString.TS_ATOMIC_ARRAYLIST_ATOMIC),
+		TS_ATOMIC_ARRAYLIST_ATOMIC		(TSRepository.TString.TS_ATOMIC_ARRAYLIST_ATOMIC),
 
 		/** SKB Type for a Table (using TSTableRow) */
-		TS_COMPOSITE_TABLE			(TSRepository.TString.TS_COMPOSITE_TABLE),
+		TS_COMPOSITE_TABLE				(TSRepository.TString.TS_COMPOSITE_TABLE),
 		/** SKB Type for a Table Row (used in TSTable) */
-		TS_COMPOSITE_TABLEROW		(TSRepository.TString.TS_COMPOSITE_TABLEROW),
+		TS_COMPOSITE_TABLEROW			(TSRepository.TString.TS_COMPOSITE_TABLEROW),
 		/** SKB Type for a Map, used to identify the Map interface */
-		TS_COMPOSITE_MAP			(TSRepository.TString.TS_COMPOSITE_MAP),
+		TS_COMPOSITE_MAP				(TSRepository.TString.TS_COMPOSITE_MAP),
 		/** SKB Type for a Linked Hash Map (java.util.LinkedHashMap<String, TSBase> */
-		TS_COMPOSITE_MAP_LH			(TSRepository.TString.TS_COMPOSITE_MAP_LH),
+		TS_COMPOSITE_MAP_LH				(TSRepository.TString.TS_COMPOSITE_MAP_LH),
 		/** SKB Type for an Array List (java.utils.list<TSBase>) */
-		TS_COMPOSITE_ARRAYLIST		(TSRepository.TString.TS_COMPOSITE_ARRAYLIST),
+		TS_COMPOSITE_ARRAYLIST			(TSRepository.TString.TS_COMPOSITE_ARRAYLIST),
 		/** SKB Type for a map of rules, as used in SKB.Tribe */
-		TS_COMPOSITE_LANG_RULEMAP	(TSRepository.TString.TS_COMPOSITE_LANG_RULEMAP),
+		TS_COMPOSITE_LANG_RULEMAP		(TSRepository.TString.TS_COMPOSITE_LANG_RULEMAP),
 		/** SKB Type for a Property Map, which provides different value types and initialisations */
-		TS_COMPOSITE_PROPERTY_MAP	(TSRepository.TString.TS_COMPOSITE_PROPERTY_MAP),
+		TS_COMPOSITE_PROPERTY_MAP		(TSRepository.TString.TS_COMPOSITE_PROPERTY_MAP),
 
 		/** The SKB unknown type */
-		TS_UNKNOWN					(TSRepository.TString.TS_UNKNOWN);
+		TS_UNKNOWN						(TSRepository.TString.TS_UNKNOWN);
 
 		/** local type */
 		private final String type;

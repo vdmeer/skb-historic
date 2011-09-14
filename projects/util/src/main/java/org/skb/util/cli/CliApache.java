@@ -123,7 +123,7 @@ public class CliApache implements Cli {
         for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
         	String current=i.next();
         	if(prop.get(current, FieldKeys.fieldCliOptionType)!=null){
-       			if(!(prop.get(current, FieldKeys.fieldCliOptionLong)).tsIsType(TEnum.TS_NULL))
+        		if(!(prop.get(current, FieldKeys.fieldCliOptionLong)).tsIsType(TEnum.TS_NULL))
        				optLong=prop.get(current, FieldKeys.fieldCliOptionLong).toString();
        			else
        				optLong=null;

@@ -16,6 +16,7 @@ import org.antlr.runtime.Lexer;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.apache.log4j.Logger;
+import org.skb.util.FieldKeys;
 import org.skb.util.io.files.FileManager;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.misc.ReportManager;
@@ -26,14 +27,14 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
-import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.stringtemplate.STGroupManager;
 
 public class TribeParser implements LanguageParserAPI {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(TribeParser.class);
 
 	/** Target StringTemplateGroup */
-	private TargetSTG target;
+	private STGroupTarget target;
 
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
@@ -51,7 +52,7 @@ public class TribeParser implements LanguageParserAPI {
 	private TSArrayListString supportedTargetLang=null;
 
 	/** StringTemplateGroup manager for the parser */
-	protected STGManager stgl=null;
+	protected STGroupManager stgl=null;
 
 	//TODO needs to change
 	protected TribeProperties prop=TribeProperties.getInstance();
@@ -79,11 +80,6 @@ public class TribeParser implements LanguageParserAPI {
 
 		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
 		cfg.read(this.langParser.getConfigurationFile());
-//		cfg.read(new String[] {	"/org/skb/lang/cola/proto/proto.json",
-//       						"/org/skb/lang/cola/proto/lang-rules.json",
-//    							"/org/skb/lang/cola/proto/lang-tokens.json"
-//    						  }
-//		);
 
 		this.supportedTargetLang=new TSArrayListString();
 		Set<String> lang=cfg.getLanguageTargets().keySet();
@@ -185,7 +181,7 @@ public class TribeParser implements LanguageParserAPI {
 
 		Boolean quietMode=false;
 		try {
-			quietMode=((TSBoolean)this.prop.getValue(TribeProperties.tpmKeyQuietMode)).tsvalue;
+			quietMode=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
 		}
 		catch(Exception e){
 			logger.trace("quiet mode not set in tribe, default false");
@@ -244,7 +240,7 @@ public class TribeParser implements LanguageParserAPI {
 			if(!quietMode)
 				repMgr.reportMessageNoFile(msg);
 
-			TSBaseAPI ata=this.prop.getValue(TribeProperties.tpmKeyGC);
+			TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionGC);
 			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
 				//repMgr.resetNoOfErrors();
 				CommonTree treeForGen=this.langParser.pass2GetTree();
@@ -257,14 +253,14 @@ public class TribeParser implements LanguageParserAPI {
 					repMgr.reportMessageNoFile(msg);
 
 				FileTemplateList ftl=this.langParser.pass4Files();
-				ftl.init(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtDir));
+				ftl.init(TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtDir));
 
 				FileManager fm=new FileManager(this.target.getStdHeaderST(), this.target.getFileStartST(), this.target.getFileEndST());
-				fm.init(TribeProperties.getInstance().getValue(TribeProperties.tpmKeySrcLanguage),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeySrcFile),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtFileExt),
-						TribeProperties.getInstance().getValue(TribeProperties.tpmKeyGC));
+				fm.init(TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionSrcLanguage),
+						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionSrcFile),
+						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage),
+						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtFileExt),
+						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionGC));
 				fm.writeList(ftl);
 
 				msg="success  in pass 4 (Write Files)";
@@ -286,18 +282,18 @@ public class TribeParser implements LanguageParserAPI {
 
 	@Override
 	public void loadTarget() {
-		if(TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtLanguage)!=null){
-			logger.trace("target set as ColaTargetSTG");
-			this.target=new TargetSTG();
+		if(TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage)!=null){
+			logger.trace("target set as <"+TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage)+">");
+			this.target=new STGroupTarget();
 		}
 	}
 
 
 	@Override
 	public void loadStg() {
-		this.stgl=new STGManager();
+		this.stgl=new STGroupManager();
 
-		TSBaseAPI obt=TribeProperties.getInstance().getValue(TribeProperties.tpmKeyTgtStgAngleBr);
+		TSBaseAPI obt=TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationTgtStgAngleBr);
 		Boolean _t=false;
 		try {
 			if(obt.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
@@ -309,10 +305,10 @@ public class TribeParser implements LanguageParserAPI {
 		else
 			this.stgl.useLexerDefault();
 
-		this.stgl.setApplicationName(this.prop.getValue(TribeProperties.tpmKeyNameLC));
-		this.stgl.setSTGFileName(this.prop.getValueCli(TribeProperties.tpmKeyTgtStg));
-		this.stgl.setSTGUrlName(this.prop.getValueDefault(TribeProperties.tpmKeyTgtStg));
-		this.stgl.loadSTG("code generation", this.prop.getValue(TribeProperties.tpmKeyTgtLanguage));
+		this.stgl.setApplicationName(this.prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+		this.stgl.setSTGFileName(this.prop.getValueCli(FieldKeys.fieldCliOptionTgtStg));
+		this.stgl.setSTGUrlName(this.prop.getValueDefault(FieldKeys.fieldCliOptionTgtStg));
+		this.stgl.loadSTG("code generation", this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage));
 
 		TSMapLH chMan=this.target.getMandatory();
 		TSMapLH chOpt=this.target.getOptional();

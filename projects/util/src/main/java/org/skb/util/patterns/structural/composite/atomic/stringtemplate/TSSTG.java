@@ -110,8 +110,8 @@ public class TSSTG extends StringTemplateGroup implements TSAtomicAPI {
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_ST_STG);
-		this.typeEnum.add(TEnum.TS_ATOMIC_ST_STG);
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_STG);
+		this.typeEnum.add(TEnum.TS_ATOMIC_STRINGTEMPLATE_STG);
 	}
 
 	@Override

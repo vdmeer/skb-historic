@@ -40,28 +40,34 @@ public class FieldKeys {
 	 * Field keys for application specific items
 	 */
 	/** Key for a field holding the application name */
-	public final static String	fieldApplicationName				= "skb:application:name";
+	public final static String	fieldApplicationName				= "skb.application.name";
 
 	/** Key for a field holding copyright information for the application */
-	public final static String fieldApplicationCopyright			= "skb:application:copyright";
+	public final static String fieldApplicationCopyright			= "skb.application.copyright";
 
 	/** Key for a field holding information about software used to build the application */
-	public final static String fieldApplicationBuildwith			= "skb:application:buildwith";
+	public final static String fieldApplicationBuildwith			= "skb.application.buildwith";
 
 	/** Key for a field holding additional information about application, used for usage/help screens */
-	public final static String fieldApplicationAdditional			= "skb:application:additional";
+	public final static String fieldApplicationAdditional			= "skb.application.additional";
 
 	/** Key for a field holding the version of an application */
-	public final static String fieldApplicationVersion				= "skb:application:version";
+	public final static String fieldApplicationVersion				= "skb.application.version";
 
 	/** Key for a field holding the build of an application */
-	public final static String fieldApplicationBuild				= "skb:application:build";
+	public final static String fieldApplicationBuild				= "skb.application.build";
 
 	/** Key for a field holding the build date of an application */
-	public final static String fieldApplicationBuilddate			= "skb:application:builddate";
+	public final static String fieldApplicationBuilddate			= "skb.application.builddate";
 
 	/** Key for a field with the name of the application directory, for instance user-dir */
-	public final static String fieldApplicationDirectory			= "skb:application:directory";
+	public final static String fieldApplicationDirectory			= "skb.application.directory";
+
+	/** Key to a field that determines the lexer to be used for StringTemplate initialisation */
+	public final static String fieldApplicationTgtStgAngleBr		= "skb.application.tgt-stg-angle-br";
+
+	/** Key to a field that determines which StringTemplate to be used for header information */
+	public final static String fieldApplicationGenericSTG         	= "skb.application.generic-stg";
 
 
 	/*
@@ -107,91 +113,6 @@ public class FieldKeys {
 
 	/** Key for a field that specifies the description for arguments (if any allowed) */
 	public final static String fieldCliOptionDescriptionArguments	= "skb:util:cli:descr:arguments";
-
-
-	/*
-	 * Field keys for general command line arguments 
-	 */
-	/** General key for common command line arguments */
-	public final static String fieldCliArgument						= "skb:util:cli:argument";
-
-	/** Key for a field that holds information on whether to show version information or not */
-	public final static String fieldCliArgumentShowversion			= "skb:util:cli:argument:show-version";
-
-	/** Key for a field that holds information on whether to show help information or not */
-	public final static String fieldCliArgumentShowhelp				= "skb:util:cli:argument:show-help";
-
-	/** Key for a field that holds information on whether to show supported languages, i.e. of a parser/compiler */
-	public final static String fieldCliArgumentShowlang				= "skb:util:cli:argument:show-languages";
-
-	/** Key for a field that indicates to load configuration from a <file> */
-	public final static String fieldCliArgumentConfigLoad			= "cfg-load";
-
-	/** Key for a field that indicates to save configuration to a <file> */
-	public final static String fieldCliArgumentConfigSave			= "cfg-save";
-
-	/** Key for a field that indicates whether default options are to be shown */
-	public final static String fieldCliArgumentDefaultOptions		= "default-options";
-
-	/** Key to a field that holds information on supported languages */
-	public final static String fieldCliArgumentLanguages			= "languages";
-
-	/** Key to a field that indicates whether the Report Manager StringTempltate should be printed */
-	public final static String fieldCliArgumentReportManagerStg		= "repmgr-stg";
-
-	/** Key to a field that indicates whether the Tribe StringTempltate should be printed */
-	public final static String fieldCliArgumentPrStgFileTribe		= "pr-stg-tribe";
-
-	/** Key to a field that indicates whether to print the target language StringTempltate */
-	public final static String fieldCliArgumentPrStgFileTarget		= "pr-stg-target";
-
-	/** Key to a field that indicates if warnings should be printed */
-	public final static String fieldCliArgumentNoWarnings			= "no-warnings";
-
-	/** Key to a field that indicates if errors should be printed*/
-	public final static String fieldCliArgumentNoErrors				= "no-errors";
-
-	/** Key to a field that indicates whether the preprocessor (CPP) should be used */
-	public final static String fieldCliArgumentNoCPP				= "no-cpp";
-
-	/** Key to a field that indicates if quiet mode is on */
-	public final static String fieldCliArgumentQuietMode			= "be-quiet";
-
-	/** Key to a field that indicates if code generation is switched on*/
-	public final static String fieldCliArgumentGC					= "gc";
-
-	/** Key to a field that holds the scope separator for code generation */
-	public final static String fieldCliArgumentGCScopeSep			= "gc-scope-sep";
-
-	/** Key to a field that determines the source language*/
-	public final static String fieldCliArgumentSrcLanguage			= "src-lang";
-
-	/** Key to a field that determines the source file */
-	public final static String fieldCliArgumentSrcFile				= "src-file";
-
-	/** Key to a field that determines the target language*/
-	public final static String fieldCliArgumentTgtLanguage			= "tgt-lang";
-
-	/** Key to a field that determines the target language directory*/
-	public final static String fieldCliArgumentTgtDir				= "tgt-dir";
-
-	/** Key to a field that determines the target language file extension */
-	public final static String fieldCliArgumentTgtFileExt			= "tgt-fileext";
-
-	/** Key to a field that determines the target language file */
-	public final static String fieldCliArgumentTgtFile				= "tgt-file";
-
-	/** Key to a field that determines the target language StringTemplate*/
-	public final static String fieldCliArgumentTgtStg				= "tgt-stg";
-
-	/** Key to a field that determines the lexer to be used for StringTemplate initialisation */
-	public final static String fieldCliArgumentTgtStgAngleBr		= "tgt-stg-angle-br";
-
-	/** Key to a field that determines which StringTemplate to be used for header information */
-	public final static String tpmKeyGenericSTG         = "tribe-generic-stg";
-
-	/** Key to a field that determines whether generated target code should be split, i.e. into several files or directories */
-	public final static String fieldCliArgumentTgSplitCode			= "tgt-split-code";
 
 
 	/*
@@ -274,5 +195,83 @@ public class FieldKeys {
 	/** Key to a field that defines optional chunks for a string template group */
 	public final static String fieldStringtemplateChunksOptional	= "skb:stringtemplate:chunks:optional";
 
-}
 
+	/**
+	 * Field Keys for general command line options
+	 */
+	/** General key for common command line options */
+	public final static String fieldCliOption						= "skb.clioption";
+
+	/** Key for a field that holds information on whether to show version information or not */
+	public final static String fieldCliOptionShowversion			= "skb.clioption.show-version";
+
+	/** Key for a field that holds information on whether to show help information or not */
+	public final static String fieldCliOptionShowhelp				= "skb.clioption.show-help";
+
+	/** Key for a field that holds information on whether to show supported languages, i.e. of a parser/compiler */
+	public final static String fieldCliOptionShowlang				= "skb.clioption.show-languages";
+
+	/** Key for a field that indicates to load configuration from a <file> */
+	public final static String fieldCliOptionConfigLoad				= "skb.clioption.cfg-load";
+
+	/** Key for a field that indicates to save configuration to a <file> */
+	public final static String fieldCliOptionConfigSave				= "skb.clioption.cfg-save";
+
+	/** Key for a field that indicates whether default options are to be shown */
+	public final static String fieldCliOptionDefaultOptions			= "skb.clioption.default-options";
+
+	/** Key to a field that holds information on supported languages */
+	public final static String fieldCliOptionLanguages				= "skb.clioption.languages";
+
+	/** Key to a field that indicates whether the Report Manager StringTempltate should be printed */
+	public final static String fieldCliOptionReportManagerStg		= "skb.clioption.repmgr-stg";
+
+	/** Key to a field that indicates whether the Tribe StringTempltate should be printed */
+	public final static String fieldCliOptionPrStgFileTribe			= "skb.clioption.pr-stg-tribe";
+
+	/** Key to a field that indicates whether to print the target language StringTempltate */
+	public final static String fieldCliOptionPrStgFileTarget		= "skb.clioption.pr-stg-target";
+
+	/** Key to a field that indicates if warnings should be printed */
+	public final static String fieldCliOptionNoWarnings				= "skb.clioption.no-warnings";
+
+	/** Key to a field that indicates if errors should be printed*/
+	public final static String fieldCliOptionNoErrors				= "skb.clioption.no-errors";
+
+	/** Key to a field that indicates whether the preprocessor (CPP) should be used */
+	public final static String fieldCliOptionNoCPP					= "skb.clioption.no-cpp";
+
+	/** Key to a field that indicates if quiet mode is on */
+	public final static String fieldCliOptionQuietMode				= "skb.clioption.be-quiet";
+
+	/** Key to a field that indicates if code generation is switched on*/
+	public final static String fieldCliOptionGC						= "skb.clioption.gc";
+
+	/** Key to a field that holds the scope separator for code generation */
+	public final static String fieldCliOptionGCScopeSep				= "skb.clioption.gc-scope-sep";
+
+	/** Key to a field that determines the source language*/
+	public final static String fieldCliOptionSrcLanguage			= "skb.clioption.src-lang";
+
+	/** Key to a field that determines the source file */
+	public final static String fieldCliOptionSrcFile				= "skb.clioption.src-file";
+
+	/** Key to a field that determines the target language*/
+	public final static String fieldCliOptionTgtLanguage			= "skb.clioption.tgt-lang";
+
+	/** Key to a field that determines the target language directory*/
+	public final static String fieldCliOptionTgtDir					= "skb.clioption.tgt-dir";
+
+	/** Key to a field that determines the target language file extension */
+	public final static String fieldCliOptionTgtFileExt				= "skb.clioption.tgt-fileext";
+
+	/** Key to a field that determines the target language file */
+	public final static String fieldCliOptionTgtFile				= "skb.clioption.tgt-file";
+
+	/** Key to a field that determines the target language StringTemplate*/
+	public final static String fieldCliOptionTgtStg					= "skb.clioption.tgt-stg";
+
+	/** Key to a field that determines whether generated target code should be split, i.e. into several files or directories */
+	public final static String fieldCliOptionTgSplitCode			= "skb.clioption.tgt-split-code";
+
+}

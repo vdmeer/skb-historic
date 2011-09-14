@@ -42,31 +42,27 @@
     "skb":{
         "tribe":{
             "configuration":{
-                "name":{
+                "skb.application.name":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"POLA"
                 },
-                "name-lc":{
-                    "skb:value:type":"ts:atomic:java:string",
-                    "skb:value:default":"pola"
-                },
-                "copyright":{
+                "skb.application.copyright":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"Copyright (c) 2010-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
-                "version":{
+                "skb.application.version":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"0.30"
                 },
-                "build":{
+                "skb.application.build":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"110309"
                 },
-                "build-date":{
+                "skb.application.builddate":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"2011-Mar-08"
                 },
-                "tribe-generic-stg":{
+                "skb.application.generic-stg":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
@@ -141,42 +137,42 @@
             },
             "targets":{
                 "pola":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/pola.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".pola"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
                     }
                 },
                 "xml":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".xml"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
-                    "tgt-stg-angle-br":{
+                    "skb.application.tgt-stg-angle-br":{
                         "skb:value:default":false
                     },
                     "skb:lang:target:config:cli":{
                     }
                 },
                 "sql":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/pola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".sql"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
@@ -881,3 +877,5 @@
         }
     }
 }
+
+//tgt-split-code			skb.clioption.tgt-split-code

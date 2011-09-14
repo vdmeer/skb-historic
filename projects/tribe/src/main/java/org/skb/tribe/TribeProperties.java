@@ -30,6 +30,7 @@
 
 package org.skb.tribe;
 
+import java.util.HashSet;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -55,177 +56,6 @@ public class TribeProperties extends TSPropertyMap {
 	 */
 	public Properties config;
 
-	/**
-	 * TribeProperty Key for the programme name
-	 */
-	public final static String tpmKeyName				= "name";
-
-	/**
-	 * TribeProperty Key for the programme name, all characters lower case
-	 */
-	public final static String tpmKeyNameLC				= "name-lc";
-
-	/**
-	 * TribeProperty Key for copyright notices
-	 */
-	public final static String tpmKeyCopyright			= "copyright";
-
-	/**
-	 * TribeProperty Key for referencing software used to build the programme
-	 */
-	public final static String tpmKeyBuildWith			= "build-with";
-
-	/**
-	 * TribeProperty Key for additional comments in the help screen
-	 */
-	public final static String tpmKeyAdditional			= "additional";
-
-	/**
-	 * TribeProperty Key for the programme version number
-	 */
-	public final static String tpmKeyVersion			= "version";
-
-	/**
-	 * TribeProperty Key for the programme build number
-	 */
-	public final static String tpmKeyBuild				= "build";
-
-	/**
-	 * TribeProperty Key for the programme build date
-	 */
-	public final static String tpmKeyBuildDate			= "build-date";
-
-	/**
-	 * TribeProperty Key for the user directory
-	 */
-	public final static String tpmKeyUserDir			= "user-dir";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to show version information
-	 */
-	public final static String tpmKeyShowVersion		= "show-version";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to show help information
-	 */
-	public final static String tpmKeyShowHelp			= "show-help";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to show information about supported languages
-	 */
-	public final static String tpmKeyShowLanguages		= "show-languages";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to load a configuration
-	 */
-	public final static String tpmKeyCfgLoad			= "cfg-load";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to save a configuration
-	 */
-	public final static String tpmKeyCfgSave			= "cfg-save";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to show default options
-	 */
-	public final static String tpmKeyDefaultOptions		= "default-options";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to show language
-	 */
-	public final static String tpmKeyLanguages			= "languages";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to print the template used by ReportManager
-	 */
-	public final static String tpmKeyReportManagerStg	= "repmgr-stg";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to print the template used by Tribe
-	 */
-	public final static String tpmKeyPrStgFileTribe		= "pr-stg-tribe";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command to print the template used for the selected target language
-	 */
-	public final static String tpmKeyPrStgFileTarget	= "pr-stg-target";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command activating no warnings
-	 */
-	public final static String tpmKeyNoWarnings			= "no-warnings";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command activating no errors
-	 */
-	public final static String tpmKeyNoErrors			= "no-errors";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command de-activating preprocessor
-	 */
-	public final static String tpmKeyNoCPP				= "no-cpp";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command de-activating all output (quiet)
-	 */
-	public final static String tpmKeyQuietMode			= "be-quiet";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command activating code generation
-	 */
-	public final static String tpmKeyGC					= "gc";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command changing the scope separator for code generation
-	 */
-	public final static String tpmKeyGCScopeSep			= "gc-scope-sep";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command setting the source language
-	 */
-	public final static String tpmKeySrcLanguage		= "src-lang";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command setting the source file
-	 */
-	public final static String tpmKeySrcFile			= "src-file";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command setting the target language
-	 */
-	public final static String tpmKeyTgtLanguage		= "tgt-lang";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command setting the target directory (for code generation)
-	 */
-	public final static String tpmKeyTgtDir				= "tgt-dir";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command setting the target file extension (for code generation)
-	 */
-	public final static String tpmKeyTgtFileExt			= "tgt-fileext";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command setting the target file (for code generation)
-	 */
-	public final static String tpmKeyTgtFile			= "tgt-file";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command setting the template for the target language (for code generation)
-	 */
-	public final static String tpmKeyTgtStg				= "tgt-stg";
-
-	/**
-	 * TribeProperty Key to evaluate CLI command activating angle-brackets for target language template
-	 */
-	public final static String tpmKeyTgtStgAngleBr		= "tgt-stg-angle-br";
-
-	/**
-	 * TribeProperty Key to locate a generic STG file with header templates
-	 */
-	public final static String tpmKeyGenericSTG         = "tribe-generic-stg";
-
-	//public final static String tpmKeyTgSplitCode		= "tgt-split-code";
 
 	private static class TribePropertiesHolder{
 		private final static TribeProperties INSTANCE = new TribeProperties();
@@ -256,7 +86,43 @@ public class TribeProperties extends TSPropertyMap {
 	private void _trInit(){
 		logger.trace("init -- in");
 
-		this.addRows(TribeProperties.class.getName(), "tpmKey");
+		//this.addRows(TribeProperties.class.getName(), "tpmKey");
+		HashSet<String> rows=new HashSet<String>();
+			rows.add(FieldKeys.fieldApplicationName);
+			rows.add(FieldKeys.fieldApplicationCopyright);
+			rows.add(FieldKeys.fieldApplicationBuildwith);
+			rows.add(FieldKeys.fieldApplicationAdditional);
+			rows.add(FieldKeys.fieldApplicationVersion);
+			rows.add(FieldKeys.fieldApplicationBuild);
+			rows.add(FieldKeys.fieldApplicationBuilddate);
+			rows.add(FieldKeys.fieldApplicationDirectory);
+			rows.add(FieldKeys.fieldCliOptionShowversion);
+			rows.add(FieldKeys.fieldCliOptionShowhelp);
+			rows.add(FieldKeys.fieldCliOptionShowlang);
+			rows.add(FieldKeys.fieldCliOptionConfigLoad);
+			rows.add(FieldKeys.fieldCliOptionConfigSave);
+			rows.add(FieldKeys.fieldCliOptionDefaultOptions);
+			rows.add(FieldKeys.fieldCliOptionLanguages);
+			rows.add(FieldKeys.fieldCliOptionReportManagerStg);
+			rows.add(FieldKeys.fieldCliOptionPrStgFileTribe);
+			rows.add(FieldKeys.fieldCliOptionPrStgFileTarget);
+			rows.add(FieldKeys.fieldCliOptionNoWarnings);
+			rows.add(FieldKeys.fieldCliOptionNoErrors);
+			rows.add(FieldKeys.fieldCliOptionNoCPP);
+			rows.add(FieldKeys.fieldCliOptionQuietMode);
+			rows.add(FieldKeys.fieldCliOptionGC);
+			rows.add(FieldKeys.fieldCliOptionGCScopeSep);
+			rows.add(FieldKeys.fieldCliOptionSrcLanguage);
+			rows.add(FieldKeys.fieldCliOptionSrcFile);
+			rows.add(FieldKeys.fieldCliOptionTgtLanguage);
+			rows.add(FieldKeys.fieldCliOptionTgtDir);
+			rows.add(FieldKeys.fieldCliOptionTgtFileExt);
+			rows.add(FieldKeys.fieldCliOptionTgtFile);
+			rows.add(FieldKeys.fieldCliOptionTgtStg);
+			rows.add(FieldKeys.fieldApplicationTgtStgAngleBr);
+			rows.add(FieldKeys.fieldApplicationGenericSTG);
+			rows.add(FieldKeys.fieldCliOptionTgSplitCode);
+		this.addRows(rows);
 
 		PropertyHandler ph=new PropertyHandler();
 		this.config=ph.load("/org/skb/tribe/tribe.properties", "tribe");
@@ -280,8 +146,8 @@ public class TribeProperties extends TSPropertyMap {
 		}
 		else
 			this.loadFromJason(((TSMapLH)config.get("configuration")));
-		this.put(TribeProperties.tpmKeyUserDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
-		this.put(TribeProperties.tpmKeyTgtDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir"));
+		this.put(FieldKeys.fieldApplicationDirectory, FieldKeys.fieldValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
+		this.put(FieldKeys.fieldCliOptionTgtDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir"));
 
 		logger.trace("init -- out");
 	}

@@ -397,7 +397,7 @@ public class AtomList extends TSTable {
 	public StringTemplate getST(String row){
 		TSBaseAPI st=this.get(row, AtomList.alValST);
 		StringTemplate ret=new StringTemplate("");
-		if(st!=null&&st.tsIsType(TSRepository.TEnum.TS_ATOMIC_ST_ST))
+		if(st!=null&&st.tsIsType(TSRepository.TEnum.TS_ATOMIC_STRINGTEMPLATE_ST))
 			ret=((TSST)st);
 		return ret;
 	}

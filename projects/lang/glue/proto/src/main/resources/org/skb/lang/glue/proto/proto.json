@@ -42,31 +42,27 @@
     "skb":{
         "tribe":{
             "configuration":{
-                "name":{
+                "skb.application.name":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"GLUE"
                 },
-                "name-lc":{
-                    "skb:value:type":"ts:atomic:java:string",
-                    "skb:value:default":"glue"
-                },
-                "copyright":{
+                "skb.application.copyright":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"Copyright (c) 2010-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
-                "version":{
+                "skb.application.version":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"0.30"
                 },
-                "build":{
+                "skb.application.build":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"110309"
                 },
-                "build-date":{
+                "skb.application.builddate":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"2011-Mar-09"
                 },
-                "tribe-generic-stg":{
+                "skb.application.generic-stg":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
@@ -141,13 +137,13 @@
             },
             "targets":{
                 "glue":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/glue.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".glue"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
@@ -190,16 +186,16 @@
                     }
                 },
                 "graphml":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/graphml.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".graphml"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
-                    "tgt-stg-angle-br":{
+                    "skb.application.tgt-stg-angle-br":{
                         "skb:value:default":false
                     },
                     "skb:lang:target:config:cli":{
@@ -221,13 +217,13 @@
                     }
                 },
                 "sql":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/glue\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".sql"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
@@ -768,3 +764,5 @@
         }
     }
 }
+
+//tgt-split-code			skb.clioption.tgt-split-code

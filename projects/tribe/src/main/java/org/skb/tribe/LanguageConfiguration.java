@@ -76,18 +76,6 @@ public class LanguageConfiguration {
 		this.configuration=new TSMapLH();
 	}
 
-	public void read(String[] url){
-		//TODO not implemented yet
-//		try{
-//			Json2Oat j2o=new Json2Oat();
-//			for(int i=0;i<url.length;i++)
-//				this.configuration.merge(j2o.read(url[i]).getValOatMapLH());
-//		}
-//		catch (Exception e){
-//			System.err.println("LanguageConfiguration: "+e);
-//		}
-	}
-
 	public void read(String url){
 		try{
 			Json2Oat j2o=new Json2Oat();

@@ -98,8 +98,8 @@ public class TSST extends StringTemplate implements TSAtomicAPI {
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
 
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_ST_ST);
-		this.typeEnum.add(TEnum.TS_ATOMIC_ST_ST);
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_ST);
+		this.typeEnum.add(TEnum.TS_ATOMIC_STRINGTEMPLATE_ST);
 	}
 
 	@Override

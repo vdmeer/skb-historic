@@ -42,31 +42,27 @@
     "skb":{
         "tribe":{
             "configuration":{
-                "name":{
+                "skb.application.name":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"COLA"
                 },
-                "name-lc":{
-                    "skb:value:type":"ts:atomic:java:string",
-                    "skb:value:default":"cola"
-                },
-                "copyright":{
+                "skb.application.copyright":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"Copyright (c) 2002-2011 Sven van der Meer <sven@vandermeer.de>"
                 },
-                "version":{
+                "skb.application.version":{
                     "skb:value:type":"ts:atomic:java:string",
-                    "skb:value:default":"0.30"
+                    "skb:value:default":"1.0.0"
                 },
-                "build":{
+                "skb.application.build":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"110309"
                 },
-                "build-date":{
+                "skb.application.builddate":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"2011-Mar-09"
                 },
-                "tribe-generic-stg":{
+                "skb.application.generic-stg":{
                     "skb:value:type":"ts:atomic:java:string",
                     "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/internal\/generic.stg"
                 }
@@ -149,13 +145,13 @@
             },
             "targets":{
                 "cola":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/cola.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".cola"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
@@ -198,13 +194,13 @@
                     }
                 },
                 "java":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/java.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".java"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"."
                     },
                     "skb:lang:target:config:cli":{
@@ -266,13 +262,13 @@
                     }
                 },
                 "php":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/php.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".php5"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
@@ -324,16 +320,16 @@
                     }
                 },
                 "xml":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/xml.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".xml"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
-                    "tgt-stg-angle-br":{
+                    "skb.application.tgt-stg-angle-br":{
                         "skb:value:default":false
                     },
                     "skb:lang:target:config:cli":{
@@ -355,13 +351,13 @@
                     }
                 },
                 "sql":{
-                    "tgt-stg":{
+                    "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/sql.stg"
                     },
-                    "tgt-fileext":{
+                    "skb.clioption.tgt-fileext":{
                             "skb:value:default":".sql"
                     },
-                    "gc-scope-sep":{
+                    "skb.clioption.gc-scope-sep":{
                             "skb:value:default":"::"
                     },
                     "skb:lang:target:config:cli":{
@@ -1494,3 +1490,5 @@
         }
     }
 }
+
+//tgt-split-code			skb.clioption.tgt-split-code

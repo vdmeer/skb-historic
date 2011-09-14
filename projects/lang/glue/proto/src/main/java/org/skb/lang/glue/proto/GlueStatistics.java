@@ -40,7 +40,7 @@ import org.skb.util.misc.ReportManager;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
-import org.skb.util.stringtemplate.STGManager;
+import org.skb.util.stringtemplate.STGroupManager;
 
 /**
  * Class handling statistic information about a Glue specification.
@@ -51,7 +51,7 @@ import org.skb.util.stringtemplate.STGManager;
 public class GlueStatistics {
 	static Logger logger = Logger.getLogger(GlueStatistics.class);
 
-	private STGManager stgl=null;
+	private STGroupManager stgl=null;
 	private StringTemplateGroup stg;
 	boolean loaded=false;
 
@@ -68,7 +68,7 @@ public class GlueStatistics {
 		chMan.put("completeStatStart",      new TSArrayListString(new String[]{"file"}));
 		chMan.put("completeStatPrintArray", new TSArrayListString(new String[]{"text", "size", "array"}));
 
-		this.stgl=new STGManager();
+		this.stgl=new STGroupManager();
 		this.stgl.setMandatoryChunks(chMan);
 
 		TSBaseAPI statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);

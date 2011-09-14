@@ -108,7 +108,7 @@ public class LanguageParserList extends TSTable{
 
         Boolean gc=false;
 		try {
-			gc=((TSBoolean)prop.getValue(TribeProperties.tpmKeyGC)).tsvalue;
+			gc=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionGC)).tsvalue;
 		} catch (Exception e) {}
 
 		if(gc==true&&this.setTgtLang==null){

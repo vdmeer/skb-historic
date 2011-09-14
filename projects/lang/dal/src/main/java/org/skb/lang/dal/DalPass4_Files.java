@@ -37,6 +37,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.tribe.TribeProperties;
+import org.skb.util.FieldKeys;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
@@ -78,7 +79,7 @@ public class DalPass4_Files {
 		} catch (Exception e) {}
 
 		//set the default file name, will be overwritten by package name later (set just in case)
-		String fn=this.prop.getValue(TribeProperties.tpmKeyTgtFile).toString();
+		String fn=this.prop.getValue(FieldKeys.fieldCliOptionTgtFile).toString();
 		//remember package name for fn construction later
 		String pkg=new String();
 
