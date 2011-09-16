@@ -52,14 +52,18 @@ options
 {
   package org.skb.lang.pola.proto.grammars;
 
+  import org.skb.util.config.Configuration;
   import org.skb.util.languages.AtomList;
   import org.skb.lang.pola.proto.PolaPass2_Ast;
   import org.skb.tribe.LanguageTokens;
+  import org.skb.lang.pola.proto.PolaParser;
   import org.skb.lang.pola.proto.constants.PolaConstants;
-  import org.skb.util.misc.ReportManager;
+  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @members{
+  public static Configuration config=Configuration.getConfiguration(PolaParser.class);
+
   private LanguageTokens myTokens;
   private AtomList atoms;
   private PolaPass2_Ast pass;
@@ -71,8 +75,13 @@ options
     this.myTokens.addTokens(tokenNames);
   }
 
-  public void setFilename(String f){ReportManager.getInstance().setFileName(f);}
-  public String getFilename(){return ReportManager.getInstance().getFileName();}
+  public void setFilename(String f){
+    config.getReportManager().setFileName(f);
+  }
+
+  public String getFilename(){
+    return config.getReportManager().getFileName();
+  }
 
   private void setCppFile(String cpp){
     String fn=cpp.substring(1,cpp.lastIndexOf(':'));
@@ -80,9 +89,17 @@ options
     this.setFilename(fn);
   }
 
-  public int  numberOfErrors() {return ReportManager.getInstance().noOfErrors();}
-  public void resetErrors()    {ReportManager.getInstance().resetNoOfErrors();}
-  public void displayRecognitionError(String[] tokenNames, RecognitionException re){ReportManager.getInstance().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);}
+  public int  numberOfErrors(){
+    return config.getReportManager().noOfErrors();
+  }
+
+  public void resetErrors(){
+    config.getReportManager().resetNoOfErrors();
+  }
+
+  public void displayRecognitionError(String[] tokenNames, RecognitionException re){
+    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
+  }
 }
 
 skbStage                : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';

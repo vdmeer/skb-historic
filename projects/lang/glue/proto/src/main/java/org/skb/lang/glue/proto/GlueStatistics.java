@@ -33,11 +33,7 @@ package org.skb.lang.glue.proto;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
-import org.skb.lang.glue.proto.constants.GlueConstants;
-import org.skb.tribe.TribeProperties;
 import org.skb.util.languages.AtomList;
-import org.skb.util.misc.ReportManager;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGroupManager;
@@ -71,10 +67,11 @@ public class GlueStatistics {
 		this.stgl=new STGroupManager();
 		this.stgl.setMandatoryChunks(chMan);
 
-		TSBaseAPI statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);
-		if(statStg!=null)
-			this.stgl.setSTGFileName(statStg.toString());
-		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(GlueConstants.Properties.keyStatStg));
+		//TSBaseAPI statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);
+		//if(statStg!=null)
+//			this.stgl.setSTGFileName(statStg.toString());
+		//this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(GlueConstants.Properties.keyStatStg));
+//		this.stgl.setSTGFile(TribeProperties.getInstance().getValue(GlueConstants.Properties.keyStatStg));
 
 		this.stgl.loadSTG("templates for printing statistics", "");
 
@@ -89,7 +86,7 @@ public class GlueStatistics {
 			AtomList atoms=AtomList.getInstance();
 
 			this.simpleStat=stg.getInstanceOf("simpleStat");
-			simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());
+			//simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());
 
 //			LinkedHashMap<String, Integer> map=atoms.atomNumbers();
 			simpleStat.setAttribute("ids", atoms.noOfAtoms());
@@ -105,7 +102,7 @@ public class GlueStatistics {
 	public void genCompleteStats(){
 		if(this.loaded==true){
 			this.completeStatStart=stg.getInstanceOf("completeStatStart");
-			this.completeStatStart.setAttribute("file", ReportManager.getInstance().getFileName());
+			//this.completeStatStart.setAttribute("file", ReportManager.getInstance().getFileName());
 		}
 	}
 

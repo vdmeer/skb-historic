@@ -33,8 +33,9 @@ package org.skb.lang.pola.proto;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
-import org.skb.tribe.TribeProperties;
 import org.skb.util.FieldKeys;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
 
@@ -45,13 +46,20 @@ import org.skb.util.languages.AtomList;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PolaPass4_Files {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(PolaPass4_Files.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	private FileTemplateList ftl;
 	private AtomList atoms=AtomList.getInstance();
-	private TribeProperties prop=TribeProperties.getInstance();
+	private ConfigurationProperties prop;
 
-	public PolaPass4_Files(){this.ftl=new FileTemplateList();}
+	public PolaPass4_Files(){
+		this.ftl=new FileTemplateList();
+		this.prop=config.getProperties();
+	}
 
 	public FileTemplateList getFileTemplateList(){
 		String fn;

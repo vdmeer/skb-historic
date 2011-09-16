@@ -14,7 +14,8 @@ import org.skb.lang.pola.proto.grammars.polaEbnfLexer;
 import org.skb.lang.pola.proto.grammars.polaEbnfParser;
 import org.skb.lang.pola.proto.grammars.polaGen;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.tribe.TribeProperties;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
@@ -23,6 +24,9 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 public class PolaParser implements TribeParserAPI {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(TribeParserAPI.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	private polaEbnfParser.polaSpecification_return fromEbnf;
 	private polaAst.polaSpecification_return fromAst;
@@ -35,6 +39,11 @@ public class PolaParser implements TribeParserAPI {
 	@Override
 	public String getSourceLanguage() {
 		return "pola";
+	}
+
+	@Override
+	public Class<?> getConfigurationClassName(){
+		return PolaParser.class;
 	}
 
 	@Override
@@ -84,7 +93,7 @@ public class PolaParser implements TribeParserAPI {
 
 	@Override
 	public void finish(boolean quietMode) {
-		TribeProperties prop=TribeProperties.getInstance();
+		ConfigurationProperties prop=config.getProperties();
 		PolaStatistics stats=new PolaStatistics();
 
 		TSBaseAPI ata=prop.getValue(PolaConstants.Properties.keyPrStat);
@@ -102,5 +111,10 @@ public class PolaParser implements TribeParserAPI {
 		ata=prop.getValue(PolaConstants.Properties.keyPrStatAll);
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 			stats.printCompleteStatistic();
+	}
+
+	@Override
+	public String getOptionKeyword() {
+		return "key";
 	}
 }

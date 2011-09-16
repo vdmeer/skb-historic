@@ -14,7 +14,8 @@ import org.skb.lang.cola.proto.grammars.colaEbnfLexer;
 import org.skb.lang.cola.proto.grammars.colaEbnfParser;
 import org.skb.lang.cola.proto.grammars.colaGen;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.tribe.TribeProperties;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
@@ -22,8 +23,10 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 
 public class ColaParser implements TribeParserAPI {
 	/** Logger instance */
-	static Logger logger = Logger.getLogger(ColaParser.class);
+	public static Logger logger = Logger.getLogger(ColaParser.class);
 
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
 	private colaEbnfParser.colaSpecification_return fromEbnf;
 	private colaAst.colaSpecification_return fromAst;
@@ -42,8 +45,20 @@ public class ColaParser implements TribeParserAPI {
 
 
 	@Override
+	public Class<?> getConfigurationClassName(){
+		return ColaParser.class;
+	}
+
+
+	@Override
 	public String getOptionClassName(){
 		return ColaConstants.Properties.class.getName();
+	}
+
+
+	@Override
+	public String getOptionKeyword(){
+		return "key";
 	}
 
 
@@ -96,7 +111,7 @@ public class ColaParser implements TribeParserAPI {
 
 	@Override
 	public void finish(boolean quietMode) {
-		TribeProperties prop=TribeProperties.getInstance();
+		ConfigurationProperties prop=config.getProperties();
 		ColaStatistics stats=new ColaStatistics();
 
 		TSBaseAPI ata=prop.getValue(ColaConstants.Properties.keyPrStat);

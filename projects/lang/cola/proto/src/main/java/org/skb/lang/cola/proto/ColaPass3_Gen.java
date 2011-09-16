@@ -37,8 +37,8 @@ import java.util.TreeSet;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
-import org.skb.tribe.TribeProperties;
 import org.skb.util.FieldKeys;
+import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
@@ -51,7 +51,11 @@ import org.skb.util.patterns.structural.composite.TSRepository;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaPass3_Gen {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(ColaPass3_Gen.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
 	public AtomList atoms=AtomList.getInstance();
 	public ScopeString sn;
@@ -144,13 +148,13 @@ public class ColaPass3_Gen {
 
 
 	public String inline_codeLanguage(String lang){
-		TSBaseAPI ata=TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage);
+		TSBaseAPI ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola))
 			return lang;
 
 		String ret=lang.replace("\"", "");
 		ret.replace("\"", "");
-		ata=TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage);
+		ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ret))
 			return ret;
 		else
@@ -195,10 +199,10 @@ public class ColaPass3_Gen {
 		String ret=null;
 		if(this.atoms.get(this.sn.toString(),AtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
 			return ret;
-		if(TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
-			TSBaseAPI javaPkg=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage);
+		if(config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
+			TSBaseAPI javaPkg=config.getProperties().getValue(ColaConstants.Properties.keyXtJavaPackage);
 			if(javaPkg!=null&&javaPkg.toString().length()>0)
-				ret=TribeProperties.getInstance().getValue(ColaConstants.Properties.keyXtJavaPackage).toString();
+				ret=config.getProperties().getValue(ColaConstants.Properties.keyXtJavaPackage).toString();
 		}
 		return ret;
 	}

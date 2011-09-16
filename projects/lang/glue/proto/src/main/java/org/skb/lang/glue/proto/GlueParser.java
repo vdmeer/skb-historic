@@ -14,7 +14,8 @@ import org.skb.lang.glue.proto.grammars.glueEbnfLexer;
 import org.skb.lang.glue.proto.grammars.glueEbnfParser;
 import org.skb.lang.glue.proto.grammars.glueGen;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.tribe.TribeProperties;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
@@ -23,6 +24,9 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 public class GlueParser implements TribeParserAPI {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(GlueParser.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(GlueParser.class);
 
 	private glueEbnfParser.glueSpecification_return fromEbnf;
 	private glueAst.glueSpecification_return fromAst;
@@ -35,6 +39,11 @@ public class GlueParser implements TribeParserAPI {
 	@Override
 	public String getSourceLanguage() {
 		return "glue";
+	}
+
+	@Override
+	public Class<?> getConfigurationClassName(){
+		return GlueParser.class;
 	}
 
 	@Override
@@ -84,7 +93,7 @@ public class GlueParser implements TribeParserAPI {
 
 	@Override
 	public void finish(boolean quietMode) {
-		TribeProperties prop=TribeProperties.getInstance();
+		ConfigurationProperties prop=config.getProperties();
 		GlueStatistics stats=new GlueStatistics();
 
 		TSBaseAPI ata=prop.getValue(GlueConstants.Properties.keyPrStat);
@@ -102,5 +111,10 @@ public class GlueParser implements TribeParserAPI {
 		ata=prop.getValue(GlueConstants.Properties.keyPrStatAll);
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 			stats.printCompleteStatistic();
+	}
+
+	@Override
+	public String getOptionKeyword() {
+		return "key";
 	}
 }

@@ -31,9 +31,9 @@
 package org.skb.lang.pola.proto;
 
 import org.apache.log4j.Logger;
-import org.skb.tribe.LanguageParserAPI;
 import org.skb.tribe.Tribe;
-import org.skb.tribe.TribeParser;
+import org.skb.tribe.LangParserImpl;
+import org.skb.util.languages.LangParserAPI;
 import org.skb.util.log.LogManager;
 
 /**
@@ -60,12 +60,12 @@ public class Pola {
 		Tribe tribe=new Tribe();
 
 		logger.trace("create Language[]");
-		TribeParser tp=new TribeParser();
+		LangParserImpl tp=new LangParserImpl();
 		tp.setLangParser(new PolaParser());
-		LanguageParserAPI[] supportedLanguages={tp};
+		LangParserAPI[] supportedLanguages={tp};
 
 		logger.trace("calling tribe to parse");
-		tribe.start(supportedLanguages, args);
+		tribe.execute(supportedLanguages, args);
 
 		logger.trace("main -- out");
 	}

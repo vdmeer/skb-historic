@@ -53,22 +53,28 @@ options
 
   import java.util.LinkedHashMap;
 
+  import org.skb.util.config.Configuration;
   import org.skb.lang.cola.proto.ColaPass1_Ebnf;
   import org.skb.tribe.LanguageTokens;
+  import org.skb.lang.cola.proto.ColaParser;
   import org.skb.lang.cola.proto.constants.ColaConstants;
-  import org.skb.util.misc.ReportManager;
+  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @lexer::header
 {
   package org.skb.lang.cola.proto.grammars;
 
+  import org.skb.util.config.Configuration;
   import org.skb.tribe.LanguageTokens;
+  import org.skb.lang.cola.proto.ColaParser;
   import org.skb.lang.cola.proto.constants.ColaConstants;
-  import org.skb.util.misc.ReportManager;
+  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @members{
+  public static Configuration config=Configuration.getConfiguration(ColaParser.class);
+
   private LanguageTokens myTokens;
   private ColaPass1_Ebnf pass;
   private Token base_type;
@@ -81,11 +87,11 @@ options
   }
 
   public void setFilename(String f){
-    ReportManager.getInstance().setFileName(f);
+    config.getReportManager().setFileName(f);
   }
 
   public String getFilename(){
-    return ReportManager.getInstance().getFileName();
+    return config.getReportManager().getFileName();
   }
 
   private void setCppFile(String cpp){
@@ -95,25 +101,27 @@ options
   }
 
   public int numberOfErrors(){
-    return ReportManager.getInstance().noOfErrors();
+    return config.getReportManager().noOfErrors();
   }
 
   public void resetErrors(){
-    ReportManager.getInstance().resetNoOfErrors();
+    config.getReportManager().resetNoOfErrors();
   }
 
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){
-    ReportManager.getInstance().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
+    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
   }
 }
 
 @lexer::members{
+  public static Configuration config=Configuration.getConfiguration(ColaParser.class);
+
   public void setFilename(String f){
-    ReportManager.getInstance().setFileName(f);
+    config.getReportManager().setFileName(f);
   }
 
   public String getFilename(){
-    return ReportManager.getInstance().getFileName();
+    return config.getReportManager().getFileName();
   }
 
   private void setCppFile(String cpp){

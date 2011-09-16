@@ -41,8 +41,9 @@ import java.util.TreeSet;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
-import org.skb.tribe.TribeProperties;
 import org.skb.util.FieldKeys;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
@@ -55,16 +56,20 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ColaPass4_Files {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(ColaPass4_Files.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
 	private FileTemplateList ftl;
 	private AtomList atoms;
-	private TribeProperties prop;
+	private ConfigurationProperties prop;
 
 	public ColaPass4_Files(){
 		this.ftl=new FileTemplateList();
 		this.atoms=AtomList.getInstance();
-		this.prop=TribeProperties.getInstance();
+		this.prop=config.getProperties();
 	}
 
 	public FileTemplateList getFileTemplateList(){

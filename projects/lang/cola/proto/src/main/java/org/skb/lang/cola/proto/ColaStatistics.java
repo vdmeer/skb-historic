@@ -40,13 +40,7 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.tribe.TribeProperties;
-import org.skb.util.FieldKeys;
 import org.skb.util.languages.AtomList;
-import org.skb.util.misc.ReportManager;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGroupManager;
@@ -80,10 +74,11 @@ public class ColaStatistics {
 
 		this.stgl=new STGroupManager();
 		this.stgl.setMandatoryChunks(chMan);
-		this.stgl.setApplicationName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+		//this.stgl.setApplicationName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
 
-		this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(ColaConstants.Properties.keyStatStg));
-		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(ColaConstants.Properties.keyStatStg));
+		//this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(ColaConstants.Properties.keyStatStg));
+		//this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(ColaConstants.Properties.keyStatStg));
+		//this.stgl.setSTGFile(TribeProperties.getInstance().getValue(ColaConstants.Properties.keyStatStg));
 		this.stgl.loadSTG("templates for printing statistics", "");
 
 		if(this.stgl.testChunks()){
@@ -97,7 +92,7 @@ public class ColaStatistics {
 			AtomList atoms=AtomList.getInstance();
 
 			this.simpleStat=stg.getInstanceOf("simpleStat");
-			simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());
+			//simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());
 
 			LinkedHashMap<String, Integer> map=atoms.atomNumbers();
 			simpleStat.setAttribute("ids", atoms.noOfAtoms());
@@ -124,7 +119,7 @@ public class ColaStatistics {
 	public void genCompleteStats(){
 		if(this.loaded==true){
 			this.completeStatStart=stg.getInstanceOf("completeStatStart");
-			this.completeStatStart.setAttribute("file", ReportManager.getInstance().getFileName());
+			//this.completeStatStart.setAttribute("file", ReportManager.getInstance().getFileName());
 		}
 	}
 
@@ -136,13 +131,13 @@ public class ColaStatistics {
 			PropertyDeclarationList propDeclList=PropertyDeclarationList.getInstance();
 			LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> properties=propDeclList.getList();
 
-			TribeProperties prop=TribeProperties.getInstance();
+//			TribeProperties prop=TribeProperties.getInstance();
 			boolean scope=false;
 
 			try {
-				TSBaseAPI ata=prop.getValue(ColaConstants.Properties.keyPrStatsWScope);
-				if(ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
-						scope=((TSBoolean)ata).tsvalue;
+//				TSBaseAPI ata=prop.getValue(ColaConstants.Properties.keyPrStatsWScope);
+//				if(ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+//						scope=((TSBoolean)ata).tsvalue;
 			} catch (Exception e) {}
 
 			_printCompleteStatisticArray("Properties required for contracts",   properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaCONTRACT),   completeStatPrintArray, scope);
@@ -174,6 +169,8 @@ public class ColaStatistics {
 			_printCompleteStatisticArray("Properties optional for parameters",  properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaPARAMETER),  completeStatPrintArray, scope);
 		}
 	}
+
+
 	private void _printCompleteStatisticArray(String s, ArrayList<String> ar, StringTemplate template, boolean scope) {
 		template.setAttribute("text", s);
 		if(scope==true){

@@ -34,9 +34,8 @@ import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.tribe.LanguageConfiguration;
-import org.skb.tribe.TribeProperties;
+import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
-import org.skb.util.misc.ReportManager;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 
@@ -49,6 +48,9 @@ import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 public class DalPass1_Ebnf {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(DalPass1_Ebnf.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
 	/** Atom List (Symbol Table) */
 	public AtomList atoms;
@@ -65,7 +67,7 @@ public class DalPass1_Ebnf {
 		this.cr.loadRules(DalConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
 
 		this.atoms=AtomList.getInstanceInit();
-		this.atoms.setScopeSeparator(TribeProperties.getInstance().getValueDefault("internal-scope-sep").toString());
+		this.atoms.setScopeSeparator(config.getProperties().getValueDefault("internal-scope-sep").toString());
 	}
 
 
@@ -78,7 +80,7 @@ public class DalPass1_Ebnf {
 	public void putAtom(Token token, String category, Token type){
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, type);
 		if(otr!=null){
-			ReportManager.getInstance().reportError(
+			config.getReportManager().reportError(
 					DalConstants.Tokens.parserIDENTIFIER+" used more than once",
 					token,
 					DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));

@@ -39,9 +39,10 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.LanguageConfiguration;
+import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
-import org.skb.util.misc.ReportManager;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
+import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 
 /**
@@ -53,6 +54,12 @@ import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 public class ColaPass1_Ebnf {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(ColaPass1_Ebnf.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
+
+	/** Report Manager instance */
+	private TSReportManager reportManager;
 
 	/** Atom List (Symbol Table) */
 	public AtomList atoms;
@@ -108,6 +115,8 @@ public class ColaPass1_Ebnf {
 		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValType, ColaConstants.Tokens.colaVOID);
 
 		this.atoms.setDefaultCategory(ColaConstants.Tokens.colaDEFINITION);
+
+		this.reportManager=config.getReportManager();
 	}
 
 
@@ -117,7 +126,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void addPropertyDeclScopeAtom(Token atom){
 		if(this.propertyDeclScope.containsKey(atom.getText()))
-			ReportManager.getInstance().reportError(
+			this.reportManager.reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleProperty14, new String[]{atom.getText(), this.atoms.scope.toString()}),
 					atom);
 		else
@@ -170,7 +179,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void addContractDeclScopeAtom(Token atom){
 		if(this.contractDeclScope.containsKey(atom.getText()))
-			ReportManager.getInstance().reportError(
+			this.reportManager.reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleContract05, new String[]{atom.getText(), this.atoms.scope.toString()}),
 					atom);
 		else
@@ -238,7 +247,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void identsAddItemDef(Token token){
 		if(this.tempPropIdents.contains(token.getText()))
-			ReportManager.getInstance().reportError(
+			this.reportManager.reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleIdentifier04),
 					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier04, new String[]{token.getText()}),
 					token.getLine(),
@@ -257,7 +266,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void identsAddPropDef(Token token){
 		if(this.tempPropIdents.contains(token.getText()))
-			ReportManager.getInstance().reportError(
+			this.reportManager.reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleIdentifier05),
 					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier05, new String[]{token.getText()}),
 					token.getLine(),
@@ -283,7 +292,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void contIdentsAdd(Token token){
 		if(this.tempContIdents.contains(token.getText()))
-			ReportManager.getInstance().reportError(
+			this.reportManager.reportError(
 					this.cr.getRule(ColaConstants.Rules.ruleIdentifier06),
 					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier06, new String[]{token.getText()}),
 					token.getLine(),
@@ -337,7 +346,7 @@ public class ColaPass1_Ebnf {
 	public void putAtom(Token token, String category, Token type, Boolean array){
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, type, array);
 		if(otr!=null){
-			ReportManager.getInstance().reportError(
+			this.reportManager.reportError(
 					ColaConstants.Tokens.parserIDENTIFIER+" used more than once",
 					token,
 					ColaConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));

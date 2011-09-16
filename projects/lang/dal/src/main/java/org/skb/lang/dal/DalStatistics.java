@@ -38,14 +38,7 @@ import java.util.LinkedHashMap;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
-import org.skb.lang.dal.constants.DalConstants;
-import org.skb.tribe.TribeProperties;
-import org.skb.util.FieldKeys;
 import org.skb.util.languages.AtomList;
-import org.skb.util.misc.ReportManager;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGroupManager;
@@ -79,10 +72,11 @@ public class DalStatistics {
 
 		this.stgl=new STGroupManager();
 		this.stgl.setMandatoryChunks(chMan);
-		this.stgl.setApplicationName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+		//this.stgl.setApplicationName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
 
-		this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(DalConstants.Properties.keyStatStg));
-		this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(DalConstants.Properties.keyStatStg));
+		//this.stgl.setSTGFileName(TribeProperties.getInstance().getValueCli(DalConstants.Properties.keyStatStg));
+		//this.stgl.setSTGUrlName(TribeProperties.getInstance().getValueDefault(DalConstants.Properties.keyStatStg));
+		//this.stgl.setSTGFile(TribeProperties.getInstance().getValue(DalConstants.Properties.keyStatStg));
 		this.stgl.loadSTG("templates for printing statistics", "");
 
 		if(this.stgl.testChunks()){
@@ -96,7 +90,7 @@ public class DalStatistics {
 			AtomList atoms=AtomList.getInstance();
 
 			this.simpleStat=stg.getInstanceOf("simpleStat");
-			simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());
+//			simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());
 
 			LinkedHashMap<String, Integer> map=atoms.atomNumbers();
 			simpleStat.setAttribute("ids", atoms.noOfAtoms());
@@ -123,7 +117,7 @@ public class DalStatistics {
 	public void genCompleteStats(){
 		if(this.loaded==true){
 			this.completeStatStart=stg.getInstanceOf("completeStatStart");
-			this.completeStatStart.setAttribute("file", ReportManager.getInstance().getFileName());
+//			this.completeStatStart.setAttribute("file", ReportManager.getInstance().getFileName());
 		}
 	}
 
@@ -133,13 +127,13 @@ public class DalStatistics {
 
 			this.completeStatPrintArray = stg.getInstanceOf("completeStatPrintArray");
 
-			TribeProperties prop=TribeProperties.getInstance();
+			//TribeProperties prop=TribeProperties.getInstance();
 			boolean scope=false;
 
 			try {
-				TSBaseAPI ata=prop.getValue(DalConstants.Properties.keyPrStatsWScope);
-				if(ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
-						scope=((TSBoolean)ata).tsvalue;
+//				TSBaseAPI ata=prop.getValue(DalConstants.Properties.keyPrStatsWScope);
+//				if(ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+//						scope=((TSBoolean)ata).tsvalue;
 			} catch (Exception e) {}
 		}
 	}

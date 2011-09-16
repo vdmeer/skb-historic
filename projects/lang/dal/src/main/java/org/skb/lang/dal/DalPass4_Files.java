@@ -36,8 +36,9 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.tribe.TribeProperties;
 import org.skb.util.FieldKeys;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
@@ -49,16 +50,20 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class DalPass4_Files {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(DalPass4_Files.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
 	private FileTemplateList ftl;
 	private AtomList atoms;
-	private TribeProperties prop;
+	private ConfigurationProperties prop;
 
 	public DalPass4_Files(){
 		this.ftl=new FileTemplateList();
 		this.atoms=AtomList.getInstance();
-		this.prop=TribeProperties.getInstance();
+		this.prop=config.getProperties();
 	}
 
 	public FileTemplateList getFileTemplateList(){
