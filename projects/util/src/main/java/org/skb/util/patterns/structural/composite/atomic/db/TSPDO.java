@@ -139,4 +139,10 @@ public class TSPDO extends PDO implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSPDO tsCopyAtomic(){
+		return new TSPDO(this.get_core());
+	}
 }

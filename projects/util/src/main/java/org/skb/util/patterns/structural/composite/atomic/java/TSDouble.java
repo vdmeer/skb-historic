@@ -289,4 +289,10 @@ public class TSDouble implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSDouble tsCopyAtomic(){
+		return new TSDouble(new Double(this.tsvalue));
+	}
 }

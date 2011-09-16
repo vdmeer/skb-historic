@@ -334,4 +334,10 @@ public class TSLong implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSLong tsCopyAtomic(){
+		return new TSLong(new Long(this.tsvalue));
+	}
 }

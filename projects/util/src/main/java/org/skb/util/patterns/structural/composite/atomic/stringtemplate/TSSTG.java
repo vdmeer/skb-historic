@@ -180,4 +180,11 @@ public class TSSTG extends StringTemplateGroup implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSSTG tsCopyAtomic(){
+		return this;
+	}
+
 }

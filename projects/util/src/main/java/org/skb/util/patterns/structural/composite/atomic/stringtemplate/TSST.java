@@ -168,4 +168,10 @@ public class TSST extends StringTemplate implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSST tsCopyAtomic(){
+		return this;
+	}
 }

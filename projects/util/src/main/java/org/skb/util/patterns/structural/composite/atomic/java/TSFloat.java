@@ -319,4 +319,10 @@ public class TSFloat implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSFloat tsCopyAtomic(){
+		return new TSFloat(new Float(this.tsvalue));
+	}
 }

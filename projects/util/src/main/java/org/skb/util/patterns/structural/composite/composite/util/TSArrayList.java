@@ -41,6 +41,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSCompositeAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
@@ -436,4 +437,20 @@ public class TSArrayList implements TSCompositeAPI, List<TSBaseAPI>, Collection<
 		}
 	}
 */
+
+
+	@Override
+	public TSArrayList tsCopyComposite(){
+		TSArrayList ret=new TSArrayList();
+		ret.tsvalue=new ArrayList<TSBaseAPI>(this.tsvalue.size());
+		for(int i=0;i<this.tsvalue.size();i++){
+			if(this.tsvalue.get(i)==null)
+				ret.tsvalue.add(i, null);
+			else if(this.tsvalue.get(i).tsIsAtomic())
+				ret.tsvalue.add(((TSAtomicAPI)this.tsvalue.get(i)).tsCopyAtomic());
+			else
+				ret.tsvalue.add(((TSCompositeAPI)this.tsvalue.get(i)).tsCopyComposite());
+		}
+		return ret;
+	}
 }

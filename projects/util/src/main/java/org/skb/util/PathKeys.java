@@ -1,6 +1,13 @@
 package org.skb.util;
 
 public class PathKeys {
+	/** Key for a path to property information (TSPropertyMap) in a configuration */
+	public final static String pathConfigurationProperties		= "skb/configuration/properties";
+
+	/** Key for a path to the report manager in a configuration */
+	public final static String pathConfigurationReportmanager	= "skb/configuration/reportmanager";
+
+
 	/** Key for a path that holds configuration information for the Tribe library */
 	public final static String pathTribeConfiguration		= "skb/tribe/configuration";
 

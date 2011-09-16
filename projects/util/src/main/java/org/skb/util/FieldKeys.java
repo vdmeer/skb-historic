@@ -223,11 +223,11 @@ public class FieldKeys {
 	/** Key to a field that holds information on supported languages */
 	public final static String fieldCliOptionLanguages				= "skb.clioption.languages";
 
-	/** Key to a field that indicates whether the Report Manager StringTempltate should be printed */
+	/** Key to a field that holds the file name for the report manager StringTemplate */
 	public final static String fieldCliOptionReportManagerStg		= "skb.clioption.repmgr-stg";
 
 	/** Key to a field that indicates whether the Tribe StringTempltate should be printed */
-	public final static String fieldCliOptionPrStgFileTribe			= "skb.clioption.pr-stg-tribe";
+	public final static String fieldCliOptionPrStgFileReportMgr		= "skb.clioption.pr-stg-reportmgr";
 
 	/** Key to a field that indicates whether to print the target language StringTempltate */
 	public final static String fieldCliOptionPrStgFileTarget		= "skb.clioption.pr-stg-target";

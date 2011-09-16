@@ -72,7 +72,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 * Add a set of rows using reflection
 	 * 
 	 * This method should use reflection to collect all declared fields of the given class <ref_class> whose name starts with the string <prefix> and then
-	 * create an empty row using the string defined by the declared fields as keys. The class {@link org.skb.tribe.TribeProperties}
+	 * create an empty row using the string defined by the declared fields as keys. The class {@link org.skb.ConfigurationProperties.TribeProperties}
 	 * uses this method to initialise a number of properties. Have a look at the following example:
 	 * <code>
 	 * 		public final static String tpmKeySrcLanguage		= "src-lang";

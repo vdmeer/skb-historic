@@ -115,6 +115,9 @@ public class TSRepository {
 		/** The SKB type for the DAL Parser */
 		public final static String TS_TRIBE_LP_DAL				= "ts:atomic:tribe:lp:dal";
 
+		/** The SKB Report Manager */
+		public final static String TS_ATOMIC_REPORTMANAGER		= "ts:atomic:reportmanager";
+
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		public final static String TS_ATOMIC_ARRAYLIST_STRING	= "ts:atomic:util:arraylist_string";
 		/** SKB Type for an Array List (java.utils.list<TSAtomic>) */
@@ -197,6 +200,9 @@ public class TSRepository {
 		TS_TRIBE_LP_GLUE_PROTO			(TSRepository.TString.TS_TRIBE_LP_GLUE_PROTO),
 		/** The SKB type for the DAL Parser */
 		TS_TRIBE_LP_DAL					(TSRepository.TString.TS_TRIBE_LP_DAL),
+
+		/** The SKB Report Manager */
+		TS_ATOMIC_REPORTMANAGER			(TSRepository.TString.TS_ATOMIC_REPORTMANAGER),
 
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		TS_ATOMIC_ARRAYLIST_STRING		(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING),

@@ -124,9 +124,11 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 	public void addRow(String row) {
 		if(this.columnsInitialised&&row!=null){
 			LinkedHashMap<String, TSBaseAPI> rowMap=new LinkedHashMap<String, TSBaseAPI>();
-			Iterator<String> cIT = columns.iterator();
-			while(cIT.hasNext())
-				rowMap.put(cIT.next(), null);
+			Iterator<String> cIT = this.columns.iterator();
+			while(cIT.hasNext()){
+				String key=cIT.next();
+				rowMap.put(key, null);
+			}
 			this.put(row, new TSTableRow(rowMap));
 		}
 	}
@@ -136,8 +138,10 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 	public void addRows(HashSet<String> rows) {
 		if(this.columnsInitialised&&rows!=null){
 			Iterator<String> rIT = rows.iterator();
-			while(rIT.hasNext())
-				this.addRow(rIT.next());
+			while(rIT.hasNext()){
+				String row=rIT.next();
+				this.addRow(row);
+			}
 		}
 	}
 
@@ -735,5 +739,22 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 	@Override
 	public TSTable tsGetValue(){
 		return this;
+	}
+
+
+	@Override
+	public TSTable tsCopyComposite(){
+		TSTable ret=new TSTable();
+
+		String key;
+		Set<String> o_set=(Set<String>)this.tsvalue.keySet();
+		Iterator<String> key_it=o_set.iterator();
+		while(key_it.hasNext()){
+			key=key_it.next();
+			ret.tsvalue.put(key, (TSTableRowAPI)this.tsvalue.get(key).tsCopyComposite());
+		}
+		ret.columns=new HashSet<String>(this.columns);
+		ret.columnsInitialised=this.columnsInitialised;
+		return ret;
 	}
 }

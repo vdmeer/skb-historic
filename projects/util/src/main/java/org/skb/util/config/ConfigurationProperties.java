@@ -28,65 +28,48 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.tribe;
+package org.skb.util.config;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Properties;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
 import org.skb.util.misc.Json2Oat;
 import org.skb.util.misc.PropertyHandler;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
- * Singleton class maintaining all properties of the Tribe system.
+ * ####
  *
  * @author     Sven van der Meer
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TribeProperties extends TSPropertyMap {
-	static Logger logger = Logger.getLogger(TSPropertyMap.class);
+public class ConfigurationProperties extends TSPropertyMap {
+	static Logger logger = Logger.getLogger(ConfigurationProperties.class);
+
 
 	/**
-	 * TribeProperty external configurations
+	 * To read property pointing to default configuration file
 	 */
 	public Properties config;
 
 
-	private static class TribePropertiesHolder{
-		private final static TribeProperties INSTANCE = new TribeProperties();
-	}
-
-	/**
-	 * Singleton getInstance
-	 * @return pointer to the TribeProperty instance
-	 */
-	public static TribeProperties getInstance(){
-		return TribePropertiesHolder.INSTANCE;
-	}
-
-	/**
-	 * Singleton getInstance with default initialisation
-	 * @return pointer to the TribeProperty instance
-	 */
-	public static TribeProperties getInstanceInit(){
-		TribePropertiesHolder.INSTANCE._trInit();
-		return TribePropertiesHolder.INSTANCE;
-	}
-
-	private TribeProperties(){
+	public ConfigurationProperties(){
 		super();
 		this._trInit();
 	}
 
+
 	private void _trInit(){
 		logger.trace("init -- in");
 
-		//this.addRows(TribeProperties.class.getName(), "tpmKey");
 		HashSet<String> rows=new HashSet<String>();
 			rows.add(FieldKeys.fieldApplicationName);
 			rows.add(FieldKeys.fieldApplicationCopyright);
@@ -104,7 +87,7 @@ public class TribeProperties extends TSPropertyMap {
 			rows.add(FieldKeys.fieldCliOptionDefaultOptions);
 			rows.add(FieldKeys.fieldCliOptionLanguages);
 			rows.add(FieldKeys.fieldCliOptionReportManagerStg);
-			rows.add(FieldKeys.fieldCliOptionPrStgFileTribe);
+			rows.add(FieldKeys.fieldCliOptionPrStgFileReportMgr);
 			rows.add(FieldKeys.fieldCliOptionPrStgFileTarget);
 			rows.add(FieldKeys.fieldCliOptionNoWarnings);
 			rows.add(FieldKeys.fieldCliOptionNoErrors);
@@ -125,22 +108,22 @@ public class TribeProperties extends TSPropertyMap {
 		this.addRows(rows);
 
 		PropertyHandler ph=new PropertyHandler();
-		this.config=ph.load("/org/skb/tribe/tribe.properties", "tribe");
-		String cfgFile=this.config.getProperty("org.tribe.config.jsonfile");
+		this.config=ph.load("/org/skb/util/config/load.properties", "skb");
+		String cfgFile=this.config.getProperty("org.skb.util.config.jsonfile");
 
 		if(cfgFile==null){
-			System.err.println("tribe: no configuration file given in properties");
+			System.err.println("skb: no configuration file given in properties");
 			logger.trace("init -- out > no property for config file set");
 			return;
 		}
 
 		Json2Oat j2o=new Json2Oat();
-		TSBaseAPI c=j2o.read(this.config.getProperty("org.tribe.config.jsonfile"));
+		TSBaseAPI c=j2o.read(this.config.getProperty("org.skb.util.config.jsonfile"));
 		TSMapLH config=null;
 		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			config=(TSMapLH)c;
 		if(config==null){
-			System.err.println("tribe: configuration not found");
+			System.err.println("skb: configuration not found");
 			logger.trace("init -- out > no configuration file found");
 			return;
 		}
@@ -150,5 +133,21 @@ public class TribeProperties extends TSPropertyMap {
 		this.put(FieldKeys.fieldCliOptionTgtDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir"));
 
 		logger.trace("init -- out");
+	}
+
+
+	@Override
+	public ConfigurationProperties tsCopyComposite(){
+		ConfigurationProperties ret=new ConfigurationProperties();
+		String key;
+		Set<String> o_set=(Set<String>)this.tsvalue.keySet();
+		Iterator<String> key_it=o_set.iterator();
+		while(key_it.hasNext()){
+			key=key_it.next();
+			ret.tsvalue.put(key, (TSTableRowAPI)this.tsvalue.get(key).tsCopyComposite());
+		}
+		ret.columns=new HashSet<String>(this.columns);
+		ret.columnsInitialised=this.columnsInitialised;
+		return ret;
 	}
 }

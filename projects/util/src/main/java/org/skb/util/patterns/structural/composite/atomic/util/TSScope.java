@@ -147,4 +147,12 @@ public class TSScope implements TSAtomicAPI {
 		// TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSScope tsCopyAtomic(){
+		TSScope ret=new TSScope();
+		ret.scope=this.scope;
+		return ret;
+	}
 }

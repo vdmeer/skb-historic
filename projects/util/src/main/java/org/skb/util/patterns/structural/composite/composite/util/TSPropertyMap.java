@@ -346,4 +346,20 @@ public class TSPropertyMap extends TSTable{
 			return map.keySet();
 		return null;
 	}
+
+
+	@Override
+	public TSPropertyMap tsCopyComposite(){
+		TSPropertyMap ret=new TSPropertyMap();
+		String key;
+		Set<String> o_set=(Set<String>)this.tsvalue.keySet();
+		Iterator<String> key_it=o_set.iterator();
+		while(key_it.hasNext()){
+			key=key_it.next();
+			ret.tsvalue.put(key, (TSTableRowAPI)this.tsvalue.get(key).tsCopyComposite());
+		}
+		ret.columns=new HashSet<String>(this.columns);
+		ret.columnsInitialised=this.columnsInitialised;
+		return ret;
+	}
 }

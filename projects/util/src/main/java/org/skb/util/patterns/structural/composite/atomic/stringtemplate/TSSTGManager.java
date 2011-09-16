@@ -133,4 +133,21 @@ public class TSSTGManager extends STGroupManager implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSSTGManager tsCopyAtomic(){
+		TSSTGManager ret=new TSSTGManager();
+
+		/* fields from STGroupManager */
+		ret.stg=this.stg;
+		ret.stgFile=this.stgFile.tsCopyAtomic();
+		ret.applicationName=this.applicationName.tsCopyAtomic();
+		ret.chunksMandatory=this.chunksMandatory.tsCopyComposite();
+		ret.chunksOptional=this.chunksOptional.tsCopyComposite();
+		ret.loaded=this.loaded;
+		ret.useLexerAngelB=this.useLexerAngelB;
+
+		return ret;
+	}
 }

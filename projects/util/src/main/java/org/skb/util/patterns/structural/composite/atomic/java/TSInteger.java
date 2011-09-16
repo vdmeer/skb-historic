@@ -330,4 +330,10 @@ public class TSInteger implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSInteger tsCopyAtomic(){
+		return new TSInteger(new Integer(this.tsvalue));
+	}
 }

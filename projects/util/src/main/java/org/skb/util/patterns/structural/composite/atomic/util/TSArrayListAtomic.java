@@ -236,7 +236,7 @@ public class TSArrayListAtomic implements TSAtomicAPI, List<TSAtomicAPI>, Collec
 	public TSAtomicAPI remove(int index) {
 		if(this.tsvalue!=null)
 			return tsvalue.remove(index);
-		return new TSNull();
+		return null;
 	}
 
 	@Override
@@ -267,7 +267,7 @@ public class TSArrayListAtomic implements TSAtomicAPI, List<TSAtomicAPI>, Collec
 	public TSAtomicAPI set(int index, TSAtomicAPI element) {
 		if(this.tsvalue!=null)
 			return tsvalue.set(index, element);
-		return null;
+		return new TSNull();
 
 	}
 
@@ -399,5 +399,16 @@ public class TSArrayListAtomic implements TSAtomicAPI, List<TSAtomicAPI>, Collec
 	public void tsTrim() {
 		for (TSAtomicAPI s : this.tsvalue)
 			s.tsTrim();
+	}
+
+
+	@Override
+	public TSArrayListAtomic tsCopyAtomic(){
+		TSArrayListAtomic ret=new TSArrayListAtomic();
+		ret.tsvalue=new ArrayList<TSAtomicAPI>(this.tsvalue.size());
+		for(int i=0;i<this.tsvalue.size();i++){
+			ret.tsvalue.add(this.tsvalue.get(i).tsCopyAtomic());
+		}
+		return ret;
 	}
 }

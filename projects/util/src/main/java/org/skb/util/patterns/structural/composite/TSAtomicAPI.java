@@ -36,5 +36,5 @@ package org.skb.util.patterns.structural.composite;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface TSAtomicAPI extends TSBaseAPI {
-
+	public TSAtomicAPI tsCopyAtomic();
 }

@@ -251,4 +251,16 @@ public class TSBoolean implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
+
+	@Override
+	public TSBoolean tsCopyAtomic(){
+		return new TSBoolean(new Boolean(this.tsvalue));
+	}
+
+
+	@Override
+	public String toString(){
+		return this.tsToString(0);
+	}
 }

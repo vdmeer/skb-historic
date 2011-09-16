@@ -42,6 +42,7 @@ import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.log4j.Logger;
 import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSNull;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
@@ -61,11 +62,11 @@ public class STGroupManager {
 	/** Managed STG */
 	protected StringTemplateGroup stg=null;
 
-	/** File name for the STG (local file system */
-	protected TSString stgFileName=null;
+	/** File name for the STG */
+	protected TSAtomicAPI stgFile=null;
 
-	/** URL name for the STG (resource) */
-	protected TSString stgUrlName=null;
+	/** Enum type identifying the type of the stgFile */
+	public enum stgLoadType{URL, FILESYSTEM}
 
 	/** Application name the STGManager is working for */
 	protected TSString applicationName=null;
@@ -80,16 +81,31 @@ public class STGroupManager {
 	protected boolean loaded=false;
 
 	/** Indicator for which lexer to be used, default is AngelB */
-	protected boolean useLexerAngelB;
+	protected boolean useLexerAngelB=true;
 
 
 	//TODO sequence of load/testChunks is still important, should not be! needs to have two values: STG loaded and STG tested!
 
 
 	/**
-	 * Class constructor, empty
+	 * Class constructor, initialises local fields
 	 */
 	public STGroupManager(){
+		this.chunksMandatory=new TSMapLH();
+		this.chunksOptional=new TSMapLH();
+
+		this.stgFile=new TSNull();
+	}
+
+
+	public STGroupManager(STGroupManager stgm){
+		this.stg=stgm.stg;
+		this.stgFile=stgm.stgFile.tsCopyAtomic();
+		this.applicationName=stgm.applicationName.tsCopyAtomic();
+		this.chunksMandatory=stgm.chunksMandatory.tsCopyComposite();
+		this.chunksOptional=stgm.chunksOptional.tsCopyComposite();
+		this.loaded=stgm.loaded;
+		this.useLexerAngelB=stgm.useLexerAngelB;
 	}
 
 
@@ -190,48 +206,37 @@ public class STGroupManager {
 			purpose+=")";
 		}
 
-		if(this.stgFileName==null&&this.stgUrlName==null){
-			logger.error(this.applicationName+": can't read internal string template, no file and no URL set"+purpose);
+		if(this.stgFile.tsIsType(TEnum.TS_NULL)){
+			logger.error(this.applicationName+": can't read internal string template, no file set"+purpose);
 			return false;
 		}
 
-		if(this.stgUrlName!=null){
+		//test if we can access the file via URL
+		InputStream in=getClass().getResourceAsStream(this.stgFile.toString());
+		if(in!=null){
 			try{
-				InputStream in=getClass().getResourceAsStream(this.stgUrlName.toString());
 				InputStreamReader isr=new InputStreamReader(in);
 				if(this.useLexerAngelB==true)
 					this.stg=new StringTemplateGroup(isr, AngleBracketTemplateLexer.class);
 				else
 					this.stg=new StringTemplateGroup(isr, DefaultTemplateLexer.class);
-				this.stgFileName=this.stgUrlName;
 			} catch (Exception e) {
-				logger.error(this.applicationName+": can't read internal string template <"+this.stgUrlName+">"+purpose);
+				logger.warn(this.applicationName+": can't read internal string template <"+this.stgFile+">"+purpose);
 				return false;
 			}
+			logger.trace("loaded URL <"+this.stgFile+">");
 		}
 		else{
 			try{
 				if(this.useLexerAngelB==true)
-					this.stg=new StringTemplateGroup(new FileReader(this.stgFileName.toString()), AngleBracketTemplateLexer.class);
+					this.stg=new StringTemplateGroup(new FileReader(this.stgFile.toString()), AngleBracketTemplateLexer.class);
 				else
-					this.stg=new StringTemplateGroup(new FileReader(this.stgFileName.toString()), DefaultTemplateLexer.class);
+					this.stg=new StringTemplateGroup(new FileReader(this.stgFile.toString()), DefaultTemplateLexer.class);
 			} catch (Exception e1) {
-				logger.error(this.applicationName+": can't find external string template <" + this.stgFileName + ">"+purpose);
+				logger.error(this.applicationName+": can't find external string template <" + this.stgFile + ">"+purpose);
 				return false;
-/*
-				try{
-					InputStream in = getClass().getResourceAsStream(url);
-					InputStreamReader isr = new InputStreamReader(in); 
-					this.myStg = new StringTemplateGroup(isr, AngleBracketTemplateLexer.class);
-					this.stgFN=url;
-					System.err.println(this.name+": using internal template file <" + file + ">");
-				} catch (Exception e2) {
-					System.err.println(this.name+": could not read template file <" + url + ">");
-					System.err.println("exception: " + e2);
-					System.exit(10);
-				}
-*/
 			}
+			logger.trace("loaded Filesystem <"+this.stgFile+">");
 		}
 		this.loaded=true;
 		return this.testChunks();
@@ -292,10 +297,10 @@ public class STGroupManager {
 	 * @param fn file name
 	 * @return true if set, false if fn was null or not of type TSString
 	 */
-	public boolean setSTGFileName(String fn){
+	public boolean setSTGFile(String fn){
 		boolean ret=false;
 		if(fn!=null){
-			this.stgFileName=new TSString(fn);
+			this.stgFile=new TSString(fn);
 			logger.trace("got FILE ("+fn.toString()+") of type (String)");
 			ret=true;
 		}
@@ -308,97 +313,11 @@ public class STGroupManager {
 	 * @param fn file name
 	 * @return true if set, false if fn was null or not of type TSString
 	 */
-	public boolean setSTGFileName(TSString fn){
-		boolean ret=false;
-		if(fn!=null){
-			this.stgFileName=fn;
-			logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
-			ret=true;
-		}
-		return ret;
-	}
-
-
-	/**
-	 * Sets the file name for the STG
-	 * @param fn file name
-	 * @return true if set, false if fn was null or not of type TSString
-	 */
-	public boolean setSTGFileName(TSAtomicAPI fn){
+	public boolean setSTGFile(TSBaseAPI fn){
 		boolean ret=false;
 		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
-			this.stgFileName=(TSString)fn;
-			logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
-			ret=true;
-		}
-		return ret;
-	}
-
-
-	/**
-	 * Sets the file name for the STG
-	 * @param fn file name
-	 * @return true if set, false if fn was null or not of type TSString
-	 */
-	public boolean setSTGFileName(TSBaseAPI fn){
-		boolean ret=false;
-		if(fn!=null&&fn.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
-			this.stgFileName=(TSString)fn;
-			logger.trace("got FILE ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
-			ret=true;
-		}
-		return ret;
-	}
-
-
-	/** 
-	 * Sets the URL name for the STG
-	 * @param url URL name
-	 * @return true if set, false if url was null or not of type TSString
-	 */
-	public boolean setSTGUrlName(String url){
-		boolean ret=false;
-		if(url!=null){
-			this.stgUrlName=new TSString(url);
-			logger.trace("got URL ("+url.toString()+") of type (String)");
-			ret=true;
-		}
-		return ret;
-	}
-
-
-	/** 
-	 * Sets the URL name for the STG
-	 * @param url URL name
-	 * @return true if set, false if url was null or not of type TSString
-	 */
-	public boolean setSTGUrlName(TSString url){
-		boolean ret=false;
-		if(url!=null){
-			this.stgUrlName=url;
-			logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
-			ret=true;
-		}
-		return ret;
-	}
-
-
-	public boolean setSTGUrlName(TSAtomicAPI url){
-		boolean ret=false;
-		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
-			this.stgUrlName=(TSString)url;
-			logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
-			ret=true;
-		}
-		return ret;
-	}
-
-
-	public boolean setSTGUrlName(TSBaseAPI url){
-		boolean ret=false;
-		if(url!=null&&url.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)){
-			this.stgUrlName=(TSString)url;
-			logger.trace("got URL ("+url.toString()+") of type ("+url.tsGetTypeString()+")");
+			this.stgFile=new TSString(fn.toString());
+			logger.trace("got file ("+fn.toString()+") of type ("+fn.tsGetTypeString()+")");
 			ret=true;
 		}
 		return ret;
@@ -442,13 +361,13 @@ public class STGroupManager {
 				Map<?,?> stm=st.getFormalArguments();
 				for (int i=0;i<val.size();i++){
 					if(!stm.containsKey(val.get(i).toString())){
-						logger.error(this.applicationName+": template group <"+this.stgFileName+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
+						logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
 						this.loaded=false;
 						return false;
 					}
 				}
 			} else {
-				logger.error(this.applicationName+": template group <"+this.stgFileName+"> does not specify mandatory template <"+s+">");
+				logger.error(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
 				this.loaded=false;
 				return false;
 			}
@@ -476,7 +395,7 @@ public class STGroupManager {
 		for (String s:this.chunksOptional.keySet()){
 			//check if our Templates exist
 			if(tName.contains(s)){
-				TSBaseAPI _b=this.chunksMandatory.get(s);
+				TSBaseAPI _b=this.chunksOptional.get(s);
 				TSArrayListString val=null;
 				if(_b.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING))
 					val=(TSArrayListString)_b;
@@ -491,24 +410,23 @@ public class STGroupManager {
 						tempList.add(val.get(i));
 				}
 				if(tempList.isEmpty()){
-					logger.error(this.applicationName+": template group <"+this.stgFileName+"> with template <"+s+"> does not define any optional argument <"+val+">");
+					logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define any optional argument <"+val+">");
 					this.loaded=false;
 					return false;
 				}
 				else if(tempList.size()>1){
-					logger.error(this.applicationName+": template group <"+this.stgFileName+"> with template <"+s+"> defines more than one optional argument <"+val+">");
+					logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> defines more than one optional argument <"+val+">");
 					this.loaded=false;
 					return false;
 				}
 			} else {
-				logger.error(this.applicationName+": template group <"+this.stgFileName+"> does not specify optional template <"+s+">");
+				logger.error(this.applicationName+": template group <"+this.stgFile+"> does not specify optional template <"+s+">");
 				this.loaded=false;
 				return false;
 			}
 		}
 		return true;
 	}
-
 
 
 	@Override

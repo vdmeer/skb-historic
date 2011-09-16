@@ -435,4 +435,15 @@ public class TSArrayListString implements TSAtomicAPI, List<TSString>, Collectio
 //			} catch (Exception e) {}
 //		}
 //	}
+
+
+	@Override
+	public TSArrayListString tsCopyAtomic(){
+		TSArrayListString ret=new TSArrayListString();
+		ret.tsvalue=new ArrayList<TSString>(this.tsvalue.size());
+		for(int i=0;i<this.tsvalue.size();i++){
+			ret.tsvalue.add(this.tsvalue.get(i).tsCopyAtomic());
+		}
+		return ret;
+	}
 }

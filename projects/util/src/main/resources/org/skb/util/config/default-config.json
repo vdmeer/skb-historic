@@ -29,7 +29,7 @@
 //
 
 //
-// Configuration file for the Org.SKB.Tribe
+// Configuration file for the Org.SKB.Util.Config providing default configuration
 //
 // @package    org.skb.tribe
 // @author     Sven van der Meer <sven@vandermeer.de>
@@ -129,7 +129,7 @@
             "skb:util:cli:option:type":"ts:atomic:java:string",
             "skb:util:cli:descr:short":"Group template file for tribe messages"
         },
-        "skb.clioption.pr-stg-reportmgr":{
+        "skb.clioption.pr-stg-tribe":{
             "skb:value:type":"ts:atomic:java:boolean",
             "skb:value:default":false,
             "skb:util:cli:option:long":"pr-stg-tribe",

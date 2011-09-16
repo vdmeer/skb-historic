@@ -28,13 +28,12 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.tribe;
+package org.skb.util.languages;
 
 import java.io.InputStream;
 
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
  * Abstract class containing a language parser.
@@ -42,20 +41,16 @@ import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public interface LanguageParserAPI extends TSAtomicAPI {
+public interface LangParserAPI {
 	public String getSupportedSourceLang();
+
+	public Class<?> getConfigurationClassName();
 
 	public TSArrayListString getSupportedTargetLang();
 
-	public TSPropertyMap getMap();
-
-	public void setOptions();
+	public void setOptions(ConfigurationProperties prop);
 
 	public void parse(InputStream is);
-
-	public void loadTarget();
-
-	public void loadStg();
 
 	public void printStg();
 }

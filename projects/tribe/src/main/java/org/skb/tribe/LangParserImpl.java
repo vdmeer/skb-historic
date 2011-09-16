@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
@@ -17,21 +16,25 @@ import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
+import org.skb.util.PathKeys;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileManager;
 import org.skb.util.io.files.FileTemplateList;
-import org.skb.util.misc.ReportManager;
+import org.skb.util.languages.LangParserAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 import org.skb.util.stringtemplate.STGroupManager;
 
-public class TribeParser implements LanguageParserAPI {
+public class LangParserImpl implements LangParserAPI {
 	/** Logger instance */
-	static Logger logger = Logger.getLogger(TribeParser.class);
+	static Logger logger = Logger.getLogger(LangParserImpl.class);
 
 	/** Target StringTemplateGroup */
 	private STGroupTarget target;
@@ -54,13 +57,14 @@ public class TribeParser implements LanguageParserAPI {
 	/** StringTemplateGroup manager for the parser */
 	protected STGroupManager stgl=null;
 
-	//TODO needs to change
-	protected TribeProperties prop=TribeProperties.getInstance();
+	//TODO comments
+	Configuration config=null;
+	ConfigurationProperties cProp=null;
 
 	/**
 	 * Class constructor, initialises local fields
 	 */
-	public TribeParser(){
+	public LangParserImpl(){
 		logger.trace("constructor -- in");
 
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
@@ -87,89 +91,7 @@ public class TribeParser implements LanguageParserAPI {
 		while(it.hasNext())
 			this.supportedTargetLang.add(it.next().toString());
 
-	}
-
-
-	@Override
-	public void tsClean() {
-		//TODO not implemented
-		logger.warn("not implemented");	
-	}
-
-
-	@Override
-	public TEnum tsGetTypeEnum() {
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-
-	@Override
-	public Set<TEnum> tsGetTypeEnumSet() {
-		return this.typeEnum;
-	}
-
-
-	@Override
-	public String tsGetTypeString() {
-		return this.typeString.lastElement();
-	}
-
-
-	@Override
-	public List<String> tsGetTypeStringList() {
-		return this.typeString;
-	}
-
-
-	@Override
-	public boolean tsIsAtomic() {
-		return true;
-	}
-
-
-	@Override
-	public boolean tsIsComposite() {
-		return false;
-	}
-
-
-	@Override
-	public boolean tsIsType(String t) {
-		return this.typeString.contains(t);
-	}
-
-
-	@Override
-	public boolean tsIsType(TEnum t) {
-		return this.typeEnum.contains(t);
-	}
-
-
-	@Override
-	public void tsPlus(TSBaseAPI tb) {
-		//TODO not implemented
-		logger.warn("not implemented");
-	}
-
-
-	@Override
-	public String tsToString(int indent) {
-		//TODO not implemented
-		logger.warn("not implemented");
-		return "";
-	}
-
-
-	@Override
-	public void tsTrim() {
-		//TODO not implemented
-		logger.warn("not implemented");
-	}
-
-
-	@Override
-	public TSPropertyMap getMap() {
-		return LanguageProperties.getInstance().getMap();
+		this.config=Configuration.getConfiguration(this.langParser.getConfigurationClassName());
 	}
 
 
@@ -177,11 +99,11 @@ public class TribeParser implements LanguageParserAPI {
 	public void parse(InputStream is) {
 		logger.trace("parse -- in");
 
-		ReportManager repMgr=ReportManager.getInstance();
+		TSReportManager repMgr=this.config.getReportManager();
 
 		Boolean quietMode=false;
 		try {
-			quietMode=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
+			quietMode=((TSBoolean)this.cProp.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
 		}
 		catch(Exception e){
 			logger.trace("quiet mode not set in tribe, default false");
@@ -240,7 +162,7 @@ public class TribeParser implements LanguageParserAPI {
 			if(!quietMode)
 				repMgr.reportMessageNoFile(msg);
 
-			TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionGC);
+			TSBaseAPI ata=this.cProp.getValue(FieldKeys.fieldCliOptionGC);
 			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
 				//repMgr.resetNoOfErrors();
 				CommonTree treeForGen=this.langParser.pass2GetTree();
@@ -253,14 +175,14 @@ public class TribeParser implements LanguageParserAPI {
 					repMgr.reportMessageNoFile(msg);
 
 				FileTemplateList ftl=this.langParser.pass4Files();
-				ftl.init(TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtDir));
+				ftl.init(this.cProp.getValue(FieldKeys.fieldCliOptionTgtDir));
 
 				FileManager fm=new FileManager(this.target.getStdHeaderST(), this.target.getFileStartST(), this.target.getFileEndST());
-				fm.init(TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionSrcLanguage),
-						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionSrcFile),
-						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage),
-						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtFileExt),
-						TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionGC));
+				fm.init(this.cProp.getValue(FieldKeys.fieldCliOptionSrcLanguage),
+						this.cProp.getValue(FieldKeys.fieldCliOptionSrcFile),
+						this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage),
+						this.cProp.getValue(FieldKeys.fieldCliOptionTgtFileExt),
+						this.cProp.getValue(FieldKeys.fieldCliOptionGC));
 				fm.writeList(ftl);
 
 				msg="success  in pass 4 (Write Files)";
@@ -280,20 +202,10 @@ public class TribeParser implements LanguageParserAPI {
 	}
 
 
-	@Override
-	public void loadTarget() {
-		if(TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage)!=null){
-			logger.trace("target set as <"+TribeProperties.getInstance().getValue(FieldKeys.fieldCliOptionTgtLanguage)+">");
-			this.target=new STGroupTarget();
-		}
-	}
-
-
-	@Override
-	public void loadStg() {
+	private void loadStg() {
 		this.stgl=new STGroupManager();
 
-		TSBaseAPI obt=TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationTgtStgAngleBr);
+		TSBaseAPI obt=this.cProp.getValue(FieldKeys.fieldApplicationTgtStgAngleBr);
 		Boolean _t=false;
 		try {
 			if(obt.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
@@ -305,16 +217,17 @@ public class TribeParser implements LanguageParserAPI {
 		else
 			this.stgl.useLexerDefault();
 
-		this.stgl.setApplicationName(this.prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
-		this.stgl.setSTGFileName(this.prop.getValueCli(FieldKeys.fieldCliOptionTgtStg));
-		this.stgl.setSTGUrlName(this.prop.getValueDefault(FieldKeys.fieldCliOptionTgtStg));
-		this.stgl.loadSTG("code generation", this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage));
+		this.stgl.setApplicationName(this.cProp.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+		this.stgl.setSTGFile(this.cProp.getValue(FieldKeys.fieldCliOptionTgtStg));
+		this.stgl.loadSTG("code generation", this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage));
 
 		TSMapLH chMan=this.target.getMandatory();
 		TSMapLH chOpt=this.target.getOptional();
 		this.stgl.setChunks(chMan, chOpt);
-		if(this.stgl.testChunks()==false)
+		if(this.stgl.testChunks()==false){
+			System.err.println("Oops, problem loading STG"); //TODO
 			System.exit(-10);
+		}
 	}
 
 
@@ -326,12 +239,45 @@ public class TribeParser implements LanguageParserAPI {
 
 
 	@Override
-	public void setOptions(){
+	public void setOptions(ConfigurationProperties TTT){
 		logger.trace("setOptions -- in");
-		LanguageProperties lp=LanguageProperties.getInstance();
-		lp.setClassName(this.langParser.getOptionClassName());
-		lp.setKey("key");
-		lp.setOptions();
+
+		//has to be a std property map to avoid loading fixed rows of ConfigurationProprties
+		TSPropertyMap opm=new TSPropertyMap();
+		opm.addRows(this.langParser.getOptionClassName(), this.langParser.getOptionKeyword());
+
+		this.cProp=this.config.getProperties();
+
+		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
+		TSMapLH config=cfg.getConfiguration();
+
+		if(config==null){
+			//TODO
+			System.err.println("tribe: property configuration not found");
+		}
+		else{
+			opm.loadFromJason(config.get(PathKeys.pathLangConfiguration));
+			cProp.loadFromJason(config.get(PathKeys.pathTribeConfiguration));
+			if(config.containsKey(PathKeys.pathLangTargets)){
+				String lang=new String();
+				if(!cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
+					lang=cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).toString();
+					opm.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang+"/"+FieldKeys.fieldLangTargetConfigCli)).tsGetValue());
+					cProp.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang)).tsGetValue());
+				}
+			}
+		}
+		cProp.addProperties(opm);
+
+		//load target
+		if(!this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
+			logger.trace("target set as <"+this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage)+">");
+			this.target=new STGroupTarget(this.cProp.getValue(FieldKeys.fieldApplicationName), this.cProp.getValue(FieldKeys.fieldApplicationGenericSTG));
+		}
+
+		//load stg for target
+		this.loadStg();
+
 		logger.trace("setOptions -- out");
 	}
 
@@ -345,5 +291,11 @@ public class TribeParser implements LanguageParserAPI {
 	@Override
 	public TSArrayListString getSupportedTargetLang() {
 		return this.supportedTargetLang;
+	}
+
+
+	@Override
+	public Class<?> getConfigurationClassName(){
+		return this.langParser.getConfigurationClassName();
 	}
 }

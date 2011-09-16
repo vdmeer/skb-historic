@@ -33,6 +33,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -42,11 +43,13 @@ import java.util.TreeSet;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSCompositeAPI;
 import org.skb.util.patterns.structural.composite.TSNull;
 import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
@@ -65,11 +68,17 @@ public class TSTableRow implements TSTableRowAPI{
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
+	/** The actual table row */
 	protected Map<String, TSBaseAPI> tsvalue=null;
 
 	public TSTableRow(Map<String, TSBaseAPI> map){
 		this._init();
 		this.tsvalue=map;
+	}
+
+
+	private TSTableRow(){
+		this._init();
 	}
 
 	private void _init(){
@@ -348,5 +357,26 @@ public class TSTableRow implements TSTableRowAPI{
 	@Override
 	public TSTableRow tsGetValue(){
 		return this;
+	}
+
+
+	@Override
+	public TSTableRow tsCopyComposite(){
+		TSTableRow ret=new TSTableRow();
+		ret.tsvalue=new LinkedHashMap<String, TSBaseAPI>();
+
+		String key;
+		Set<String> o_set=(Set<String>)this.tsvalue.keySet();
+		Iterator<String> key_it=o_set.iterator();
+		while(key_it.hasNext()){
+			key=key_it.next();
+			if(this.tsvalue.get(key)==null)
+				ret.tsvalue.put(key, null);
+			else if(this.tsvalue.get(key).tsIsAtomic())
+				ret.tsvalue.put(key, ((TSAtomicAPI)this.tsvalue.get(key)).tsCopyAtomic());
+			else
+				ret.tsvalue.put(key, ((TSCompositeAPI)this.tsvalue.get(key)).tsCopyComposite());
+		}
+		return ret;
 	}
 }

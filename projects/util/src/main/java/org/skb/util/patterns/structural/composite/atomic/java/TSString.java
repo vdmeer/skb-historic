@@ -550,4 +550,10 @@ public class TSString implements TSAtomicAPI{
 	public void tsTrim(){
 		this.tsvalue=this.tsvalue.trim();
 	}
+
+
+	@Override
+	public TSString tsCopyAtomic(){
+		return new TSString(new String(this.tsvalue));
+	}
 }

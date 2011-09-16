@@ -33,9 +33,11 @@ import java.io.File;
 
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
+import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGroupManager;
 
 /**
@@ -44,50 +46,36 @@ import org.skb.util.stringtemplate.STGroupManager;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class ReportManager extends STGroupManager{
+public class ReportManager{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(ReportManager.class);
 
-	/**
-	 * Number of reported errors
-	 */
-	private int noOfErrors=0;
+	/** Number of reported errors */
+	protected int noOfErrors=0;
 
+	/** Number of reported warnings */
+	protected int noOfWarnings=0;
 
-	/**
-	 * Number of reported warnings
-	 */
-	private int noOfWarnings=0;
+	/** Report warnings? */
+	protected boolean noWarnings;
 
+	/** Report errors? */
+	protected boolean noErrors;
 
-	/**
-	 * Report warnings?
-	 */
-	private boolean noWarnings;
+	/** File name used for reporting */
+	protected String fileFN;
 
+	/** Programme name used for reporting */
+	protected String applicationName;
 
-	/**
-	 * Report errors?
-	 */
-	private boolean noErrors;
-
-
-	/**
-	 * File name used for reporting
-	 */
-	private String fileFN;
-
-
-	/**
-	 * Programme name used for reporting
-	 */
-	private String progName;
+	/** The manager for the StringTemplate */
+	protected STGroupManager stgm;
 
 
 	/**
 	 * Class constructor, initialises members
 	 */
-	private ReportManager() {
+	public ReportManager() {
 		super();
 		this._init();
 	}
@@ -100,43 +88,16 @@ public class ReportManager extends STGroupManager{
 	 * noErrors and noWarnings are set to false, the file name is set to an empty string and the programme name is set to "tribe". 
 	 */
 	private void _init(){
-		this.chunksMandatory=new TSMapLH();
-		this.chunksOptional=new TSMapLH();
-
-		this.chunksMandatory.put("report",    new TSArrayListString(new String[]{"name", "file", "line", "column", "message", "type"}));
-		this.chunksMandatory.put("error100",  new TSArrayListString(new String[]{"name"}));
+		this.stgm=new STGroupManager();
+		this.stgm.putMandatoryChunks("report", new TSArrayListString(new String[]{"name", "file", "line", "column", "message", "type"}));
+		this.stgm.putOptionalChunks("error100", new TSArrayListString(new String[]{"name"}));
+		this.stgm.useLexerAngelB();
 
 		this.setFileName("");
-		this.progName="tribe";
+		this.applicationName="tribe";
 
 		this.noErrors=false;
 		this.noWarnings=false;
-
-		this.useLexerAngelB=true;		
-	}
-
-
-	private static class ReportManagerHolder{
-		private final static ReportManager INSTANCE = new ReportManager();
-	}
-
-
-	/**
-	 * Return the instance of the ReportManager (singleton)
-	 * @return ReportManager instance
-	 */
-	public static ReportManager getInstance(){
-		return ReportManagerHolder.INSTANCE;
-	}
-
-
-	/**
-	 * Return the instance of the ReportManager (singleton) and re-initialise the manager
-	 * @return ReportManager instance
-	 */
-	public static ReportManager getInstanceInit(){
-		ReportManagerHolder.INSTANCE._init();
-		return ReportManagerHolder.INSTANCE;
 	}
 
 
@@ -184,8 +145,33 @@ public class ReportManager extends STGroupManager{
 	 * Set the programme name to be used for reporting
 	 * @param p
 	 */
-	public void setProgrammeName(String p){
-		this.progName=p;
+	public boolean setApplicationName(String p){
+		boolean ret=true;
+		if(p!=null){
+			this.applicationName=new String(p);
+			this.stgm.setApplicationName(p);
+		}
+		else{
+			ret=false;
+		}
+		return ret;
+	}
+
+
+	/**
+	 * Set the programme name to be used for reporting
+	 * @param p
+	 */
+	public boolean setApplicationName(TSBaseAPI p){
+		boolean ret=true;
+		if(p!=null&&p.tsIsType(TEnum.TS_ATOMIC_JAVA_STRING)){
+			this.applicationName=p.toString();
+			this.stgm.setApplicationName(p);
+		}
+		else{
+			ret=false;
+		}
+		return ret;
 	}
 
 
@@ -244,11 +230,12 @@ public class ReportManager extends STGroupManager{
 		if(msgType=="error"&&this.noErrors==true)
 			return;
 
-		if(this.stg==null)
+		StringTemplateGroup group=this.stgm.getSTG();
+		if(group==null)
 			return;
 
-		StringTemplate template=this.stg.getInstanceOf("report");
-		template.setAttribute("name", this.progName);
+		StringTemplate template=group.getInstanceOf("report");
+		template.setAttribute("name", this.applicationName);
 
 		if(add!=null)
 			template.setAttribute("add", add);
@@ -273,8 +260,8 @@ public class ReportManager extends STGroupManager{
 		}
 
 		if(msgType=="error"&&this.noOfErrors>100){
-			StringTemplate error100 = this.stg.getInstanceOf("error100");
-			error100.setAttribute("name", this.progName);
+			StringTemplate error100 = group.getInstanceOf("error100");
+			error100.setAttribute("name", this.applicationName);
 			System.err.print(error100);
 			System.exit(1);
 		}
@@ -519,4 +506,40 @@ public class ReportManager extends STGroupManager{
 		this.reportWarning(m);
 		this.fileFN=t;
 	}
+
+
+	/**
+	 * @see STGroupManager#setSTGFileName(TSBaseAPI)
+	 * @param fn file name
+	 * @return true if set, false if fn was null or not of type TSString
+	 */
+	public boolean setSTGFileName(TSBaseAPI fn){
+		return this.stgm.setSTGFile(fn);
+	}
+
+
+	/**
+	 * @see STGroupManager#loadSTG(String, String)
+	 * @param purpose
+	 * @param targetLang
+	 * @return
+	 */
+	public boolean loadSTG(String purpose, String targetLang){
+		return this.stgm.loadSTG(purpose, targetLang);
+	}
+
+
+	/**
+	 * Returns the manager's STGroup
+	 * @return null if not set or not initialised, STGroup otherwise
+	 */
+	public StringTemplateGroup getSTG(){
+		return this.stgm.getSTG();
+	}
+
+
+	public String stgmToString(){
+		return this.stgm.toString();
+	}
+
 }

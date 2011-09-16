@@ -44,6 +44,7 @@ import java.util.Vector;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSCompositeAPI;
 import org.skb.util.patterns.structural.composite.TSMapAPI;
@@ -530,5 +531,25 @@ public class TSMapLH implements TSCompositeAPI, TSMapAPI {
 	@Override
 	public TSMapLH tsGetValue(){
 		return this;
+	}
+
+
+	@Override
+	public TSMapLH tsCopyComposite(){
+		TSMapLH ret=new TSMapLH();
+
+		String key;
+		Set<String> o_set=(Set<String>)this.tsvalue.keySet();
+		Iterator<String> key_it=o_set.iterator();
+		while(key_it.hasNext()){
+			key=key_it.next();
+			if(this.tsvalue.get(key)==null)
+				ret.tsvalue.put(key, null);
+			else if(this.tsvalue.get(key).tsIsAtomic())
+				ret.tsvalue.put(key, ((TSAtomicAPI)this.tsvalue.get(key)).tsCopyAtomic());
+			else
+				ret.tsvalue.put(key, ((TSCompositeAPI)this.tsvalue.get(key)).tsCopyComposite());
+		}
+		return ret;
 	}
 }

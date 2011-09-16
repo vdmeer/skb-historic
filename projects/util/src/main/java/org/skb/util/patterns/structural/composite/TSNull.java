@@ -149,4 +149,16 @@ public final class TSNull implements TSBaseAPI, TSAtomicAPI, TSCompositeAPI {
 	public java.lang.String tsToString(int indent){
 		return "";
 	}
+
+
+	@Override
+	public TSCompositeAPI tsCopyComposite() {
+		return new TSNull();
+	}
+
+
+	@Override
+	public TSAtomicAPI tsCopyAtomic() {
+		return new TSNull();
+	}
 }

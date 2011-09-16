@@ -13,6 +13,9 @@ public interface TribeParserAPI {
 	public String getConfigurationFile();
 	public String getSourceLanguage();
 	public String getOptionClassName();
+	public String getOptionKeyword();
+
+	public Class<?> getConfigurationClassName();
 
 	public Lexer pass1GetLexer(ANTLRInputStream input);
 	public void pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException;

@@ -269,4 +269,9 @@ public class TSByte implements TSAtomicAPI {
 		logger.warn("tsTrim not implemented");
 	}
 
+
+	@Override
+	public TSByte tsCopyAtomic(){
+		return new TSByte(new Byte(this.tsvalue));
+	}
 }

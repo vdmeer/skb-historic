@@ -51,7 +51,7 @@ public class STGroupTarget {
 
 	private STGroupManager stdHeader;
 
-	public STGroupTarget(){
+	public STGroupTarget(TSBaseAPI applicationName, TSBaseAPI genericSTG){
 		this.initialised=false;
 
 		TSMapLH stdHeaderChunks=new TSMapLH();
@@ -68,9 +68,9 @@ public class STGroupTarget {
 		this.getChunks();
 
 		this.stdHeader.useLexerDefault();
-		this.stdHeader.setApplicationName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+		this.stdHeader.setApplicationName(applicationName.toString().toLowerCase());
 
-		this.stdHeader.setSTGUrlName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationGenericSTG).toString());
+		this.stdHeader.setSTGFile(genericSTG.toString());
 		this.stdHeader.loadSTG("string template for generic header", "");
 
 		this.initialised=true;

@@ -153,4 +153,9 @@ public final class TSToken extends ClassicToken implements TSAtomicAPI {
 		//TODO
 		logger.warn("tsClean not implemented");
 	}
+
+	@Override
+	public TSToken tsCopyAtomic(){
+		return new TSToken(this);
+	}
 }

@@ -182,4 +182,10 @@ public class TSObject implements TSAtomicAPI {
 	public void tsTrim(){
 		//TODO not yet implmented
 	}
+
+
+	@Override
+	public TSObject tsCopyAtomic(){
+		return new TSObject(this.tsvalue);
+	}
 }

@@ -268,7 +268,7 @@ public class AtomList extends TSTable {
 				this.put(id, AtomList.alValTypeArray, false);
 			else
 				this.put(id, AtomList.alValTypeArray, true);
-			this.put(id, AtomList.alValFile, ReportManager.getInstance().getFileName());
+//			this.put(id, AtomList.alValFile, ReportManager.getInstance().getFileName());//TODO
 			this.put(id, AtomList.alValLine, tk.getLine());
 			this.put(id, AtomList.alValColumn, tk.getCharPositionInLine());
 			this.put(id, AtomList.alValScopedID, id);

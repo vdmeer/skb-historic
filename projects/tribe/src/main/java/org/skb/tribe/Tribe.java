@@ -37,8 +37,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.EnumSet;
 
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
@@ -46,13 +46,15 @@ import org.skb.lang.cpp.CPP;
 import org.skb.util.FieldKeys;
 import org.skb.util.cli.Cli;
 import org.skb.util.cli.CliApache;
-import org.skb.util.misc.ReportManager;
+import org.skb.util.config.Configuration;
+import org.skb.util.config.ConfigurationProperties;
+import org.skb.util.languages.LangParserAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSNull;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 
 /**
  * This is the main Tribe class, it does all the magic.
@@ -61,188 +63,289 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Tribe {
-	private TribeProperties prop;
-	private ReportManager repMgr;
-	private Cli cli;
-
 	/** Log4 Logger Object */
 	public final static Logger logger = Logger.getLogger(Tribe.class);
 
-	/**
-	 * Class Constructor initialising the Tribe system, loading <code>TribeProperties</code>, <code>ReportManager</code> and <code>Cli</code> objects.
-	 */
-	public Tribe(){
-		logger.trace("init -- in");
-		this.prop=TribeProperties.getInstanceInit();
-		this.repMgr=ReportManager.getInstanceInit();
-		this.cli=new CliApache();
-		logger.trace("init -- out");
-	}
+	/** Configuration Instance */
+	public final static Configuration config=Configuration.getConfiguration(Tribe.class);
+
+	private ConfigurationProperties prop;
+	private TSReportManager repMgr;
+	private Cli cli;
+	private LangParserAPI[] parsers=null;
+	private LangParserAPI parser=null;
+
+	/** Enum set used as bit field for exitOptions */
+	public EnumSet<TribeHelpers.exitOptions> eo=EnumSet.noneOf(TribeHelpers.exitOptions.class);
 
 	/**
-	 * Start parsing with Tribe. Input parameters are the supported languages (string array) and the actual
-	 * arguments. 
-	 * @param supportedLanguages LanguageParser array containing all information on supported source and target languages.
+	 * Class Constructor, empty
+	 */
+	public Tribe(){}
+
+
+	/**
+	 * Execute the parsing process Tribe. Input parameters are the supported languages and arguments for parameterising 
+	 * Tribe, usually taken from the command line. 
+	 * @param parsers LanguageParser array containing all information on supported source and target languages.
 	 * @param args Command line arguments.
 	 */
-	public void start (LanguageParserAPI[] supportedLanguages, String[] args){
-		logger.trace("start -- in");
+	public void execute(LangParserAPI[] parsers, String[] args){
+		this.cli=new CliApache();
+		config.init();
+		this.prop=config.getProperties();
+		this.repMgr=config.getReportManager();
+		this.parsers=parsers;
 
-		cli.setApplicationName(prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+		Integer result;
+		//phase 1 is doing TRIBE parameter checking, no parser involved
+		//if the phase returns 0 we can continue, otherwise we exit (phase responsible for printing errors/warnings/messages)
+		result=this.phase1_Tribe(args);
+		if(result!=0){
+			System.exit(result);
+		}
+
+		//parser is selected, so shift our internal prop and report manager to the new parser configuration
+		Configuration parserConfig=Configuration.getConfiguration(this.parser.getConfigurationClassName());
+		this.prop=parserConfig.getProperties();
+		this.repMgr=parserConfig.getReportManager();
+
+		//call phase 2, the actual parser related evaluation of parameters and the parsing
+		result=this.phase2_Parser();
+		if(result!=0){
+			System.exit(result);
+		}
+	}
+
+
+	/**
+	 * 
+	 * @param parsers
+	 * @param args
+	 * @return -1 = exit with problem, 0 = continue, 1 = exit normally
+	 */
+	private Integer phase1_Tribe(String[] args){
+		logger.trace("starting phase 1 -- tribe");
 
 		/**
-		 * Create an object for the supported language and set the property for languages
+		 * Get the set application name (default is "") and set CLI and ReportManager accordingly
 		 */
-		logger.trace("set languages");
-		//Languages languages=new Languages(supportedLanguages);
-		LanguageParserList languages=new LanguageParserList();
-		languages.addLanguages(supportedLanguages);
-		prop.setValueDefault(FieldKeys.fieldCliOptionLanguages, languages);
+		String appName="";
+		try{
+			appName=prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase();
+		} catch(Exception e){}
+		logger.trace("set app name on CLI and ReportManager to <"+appName+">");
+		this.cli.setApplicationName(appName);
+		this.repMgr.setApplicationName(appName);
 
 		/**
-		 * Get an instance of the report manager, to be able to write output, and give it the standard stg.
+		 * Initialise the report manager
 		 */
 		logger.trace("set report manager");
-		repMgr.setApplicationName(prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
-		repMgr.setSTGUrlName(prop.get(FieldKeys.fieldCliOptionReportManagerStg, FieldKeys.fieldValueDefault));
-		repMgr.loadSTG("Report Manager String Template Group", "");
+		repMgr.setSTGFileName(prop.get(FieldKeys.fieldCliOptionReportManagerStg, FieldKeys.fieldValueDefault));
+		repMgr.loadSTG("Report Manager default String Template Group", "");
 
 		/**
 		 * Do the first pass of options. This is needed to detect:
-		 * - a new TRIBE stg file if requested
-		 * - input language if specified
-		 * - target language if specified
+		 * - a new StringTemplate for the ReportManager
+		 * - source language
+		 * - target language
 		 */
 		logger.trace("cli propOptions and setOptions pass 1");
 		this.cli.setPropOptions(this.prop);
-		this.setOptions(args, languages);
-//System.err.println(prop);
+		this.setOptions(args);
+
+		//check if exit options are set, put them into the enum set
+		this.eo=TribeHelpers.checkExitOptions(this.prop);
 
 		/**
-		 * If there is a new stg given, instruct the report manager to load it. Checks on the content of the
-		 * new stg file will be handled by the report manager.
+		 * reload the report manager stg (can be changed in CLI as well as in file)
 		 */
-        if (!(prop.getValueCli(FieldKeys.fieldCliOptionReportManagerStg)).tsIsType(TEnum.TS_NULL)){
-        	logger.trace("changed tribe stg");
-        	repMgr.setSTGFileName(prop.getValueCli(FieldKeys.fieldCliOptionReportManagerStg));
-        	repMgr.loadSTG("Tribe report stg", "");
-        }
-//System.err.println(prop);
+		repMgr.setSTGFileName(prop.getValue(FieldKeys.fieldCliOptionReportManagerStg));
+       	repMgr.loadSTG("Report Manager command line String Template Group", "");
+
         /**
-         * Check if the selected source and/or target language are valid. If they are not valid, check
-         * if other CLI options still need to be addressed (such as -help or -version). If there are options
-         * that result in exit (help, version), doExitOptions will not return! Otherwise we still need to go
-         * through the CLI options again, cause that might include other exit options.
+         * CLI Option case 1: no source language specified then
+         * - if a target language is specified, print error and exit
+         * - if no target language is specified then
+         *   - if exitOptions apply, print exitOptions and exit
+         *   - else print error on not set source language end exit
          */
-        logger.trace("testing source and target languages pass1");
-        Boolean gc=false;
-        TSBaseAPI srcLang=new TSNull();
-        TSBaseAPI tgtLang=new TSNull();
-		srcLang=prop.getValue(FieldKeys.fieldCliOptionSrcLanguage);
-		tgtLang=prop.getValue(FieldKeys.fieldCliOptionTgtLanguage);
-//System.err.println(prop);
-		gc=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionGC)).tsvalue;
+        if(prop.getValue(FieldKeys.fieldCliOptionSrcLanguage).tsIsType(TEnum.TS_NULL)){
+        	if(!prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
+        		System.out.println(" - target language specified without a source language");
+        		return -1;
+        	}
+        	else{
+        		if(this.eo.size()>0){
+        			System.out.println(this.doExitOptions());
+        			return 1;
+        		}
+        		else{
+        			System.out.println("-  no source language specified");
+        			return -1;
+        		}
+        	}
+        }
 
-//		if(!(prop.getValue(TribeProperties.tpmKeySrcLanguage)).tsIsType(TEnum.TS_NULL)) //TODO fill
-//			;
-		Boolean ssl=languages.setMapping(srcLang, tgtLang, gc);
-		this.cli.setPropOptions(this.prop);
-		cli.setApplicationName(prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
-//System.err.println(prop);
-		if(ssl==false)
-			this.doExitOptions(1);
+        //we have a source language
+        TSBaseAPI sourceLang=prop.getValue(FieldKeys.fieldCliOptionSrcLanguage);
 
-		/**
-		 * Second pass of the CLI options, this time including the specific options of the selected source
-		 * and/or target languages.
-		 */
-		logger.trace("cli pass 2");
-		this.setOptions(args, languages);
-//System.err.println(prop);
-		/**
-		 * Now, if we have problems with the selected source and/or target language, exit with an error. 
-		 */
-		// if we got a language problem earlier, exit now
-		logger.trace("testing source and target languages pass2");
-		ssl=languages.checkSetMapping();
-		if(ssl==false)
-			System.exit(3);
-//System.err.println(prop);
-		/**
-		 * Now do the language specific exit options (such as print an stg).
-		 */
-		logger.trace("exitOptions pass2");
-//System.err.println(prop);
-		this.doExitOptions(2);
+        /**
+         * CLI Option case 2: source language specified but no parser supporting it
+         * - print error and exit
+         */
+        ArrayList<LangParserAPI> sourceParsers=TribeHelpers.getSrcParsers(this.parsers, sourceLang);
+        if(sourceParsers.size()==0){
+        	System.out.println("-  source language <"+sourceLang+"> not supported");
+        	return -1;
+        }
 
-		/**
-		 * If we do not have any input file, exit now. All other CLI options that do not need an input file need to be processed
-		 * before this line!
-		 */
-		logger.trace("testing input file");
-		if (prop.getValue(FieldKeys.fieldCliOptionSrcFile)==null||prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString().equals("")){
+        //we now know that there is a source language and at least 1 parser supports it
+        TSBaseAPI targetLang=prop.getValue(FieldKeys.fieldCliOptionTgtLanguage);
+        ArrayList<LangParserAPI> targetParsers=TribeHelpers.getTgtParsers(sourceParsers, targetLang);
+
+        /**
+         * CLI Option case 3: test src with target and exit options
+         * a) if no target language
+         *    a.1) more than 1 source parser => error and exit
+         *    a.2) exactly 1 source parser => load parser options, do exit options, exit
+         *    => a.3 doesn't exist, at least 1 parser is supporting the source language!
+         * b) if target language
+         *    b.1) if supported by exactly 1 possible mapping (source parser), then load options and do exit options, exit
+         *    b.2) if supported by more than 1 source parser => error and exit
+         */
+        if(targetLang.tsIsType(TEnum.TS_NULL)){
+        	//a.1 - not target and multiple source parsers = decision problem
+        	if(sourceParsers.size()>1){
+        		System.out.println("-  source language <"+sourceLang+"> supported by <"+sourceParsers.size()+"> parsers and no target language set");
+            	return -1;
+        	}
+        	//a.2 - to target and 1 source parser, if exit Options then do, otherwise nothing
+        	else if(this.eo.size()>0){
+       			TribeHelpers.loadParserOptions(sourceParsers.get(0), this.cli);
+       			this.setOptions(args);
+       			System.out.println(this.doExitOptions());
+       			return 1;        			
+        	}
+        }
+        //b
+        else{
+        	//b.1 - target lang set, 1 target parser selected = if exit Options do, otherwise nothing
+        	if(targetParsers.size()==1){
+        		if(this.eo.size()>0){
+        			TribeHelpers.loadParserOptions(targetParsers.get(0), this.cli);
+        			this.setOptions(args);
+        			System.out.println(this.doExitOptions());
+        			return 1;	
+        		}
+        	}
+        	//b.2 - target lang set, multiple target parsers available, print error
+        	else{
+        		System.out.println("-  target language <"+targetLang+"> supported by <"+targetParsers.size()+"> parsers");
+            	return -1;
+        	}
+        }
+
+        /**
+         * CLI Option case 4: code generation is selected but no target language given
+         * - print error
+         */
+        Boolean gc=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionGC)).tsvalue;
+        if(gc==true&&targetParsers.size()==0){
+        	System.err.println(" - code generation activated but no target language given");
+        	return -1;
+        }
+
+        /**
+         * CLI Option case 5: test src with target and exit options
+         * - we have a parser selected, and all exit options are processed, now we need an input file or we can't proceed
+         */
+        if (this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).tsIsType(TEnum.TS_NULL)||this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString().equals("")){
         	repMgr.reportError("no input file specified");
-        	System.exit(1);
+        	return -1;
         }
 
         /**
-         * From here on we MUST have all options set via either default, files or CLI! 
+         * we now have either src and !tgt and 1 parser or src&tgt and 1 parser and no further exit options. finished then.
          */
-		logger.trace("end of option look up, starting processing");
+        if(targetParsers.size()==1){
+        	this.parser=targetParsers.get(0);
+        }
+        else if(sourceParsers.size()==1){
+        	this.parser=sourceParsers.get(0);
+        }
+        else{
+        	//oops, we should not have this case, that sourceParser and targetParser have more/less than 1 member
+        	System.err.println("PANIC, Problem with parser selection");
+        	return -1;
+        }
 
-		repMgr.doErrors(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoErrors)).tsvalue);
-		repMgr.doWarnings(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoWarnings)).tsvalue);
-		repMgr.setProgrammeName(prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+//TODO no check for print ReportMgt Template yet, tricky to set phase/place for it
+
+        /**
+         * the final action - transfer all options to the selected parser's configuration and re-check command line parameters for it as well
+         */
+        TribeHelpers.loadParserOptions(this.parser, this.cli);
+		this.setOptions(args);
+
+        logger.trace("finshed phase 1 -- tribe");
+		return 0;
+	}
+
+
+
+	private Integer phase2_Parser(){
+		logger.trace("starting phase 2 -- parser");
 
 		/**
-         * Everything is set, so start loading the stg for the target file. If the stg should only be printed, print and exit.
-         */
-		logger.trace("load target stg");
-		gc=false;
-		Boolean prStgFileTgt=false;
-		gc=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionGC)).tsvalue;
-		prStgFileTgt=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionPrStgFileTarget)).tsvalue;
-//System.err.println(prop);
-		if(gc==true){
-			languages.loadStg();
-			if(prStgFileTgt==true){
-				languages.printStg();
-				System.exit(0);
-			}
+		 * first, set everything for the report manager
+		 */
+		this.repMgr.doErrors(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoErrors)).tsvalue);
+		this.repMgr.doWarnings(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoWarnings)).tsvalue);
+
+		//if printing target stg is required, do so and return 1
+		if(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionPrStgFileTarget)).tsvalue){
+			this.parser.printStg();
+			return 1;
 		}
 
-        /**
+		/**
          * Test the source and target files (including directories) by mean of:
          * - source file exists (check simple access and then classpath)
          * - target directory and target file can be written into
          */
-        logger.trace("testing source and target files and target directory");
         try {
+			String sourceFile=this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString();
         	File fnTest;
-        	fnTest=new File(prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString());
+        	fnTest=new File(sourceFile);
         	if(fnTest.canRead()==false){
-        		URL url=ClassLoader.getSystemResource(prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString());
+        		URL url=ClassLoader.getSystemResource(sourceFile);
+        		if(url==null){
+        			repMgr.reportError("can't open source file <" + sourceFile + "> for reading (tried URL from getSystemResource)");
+        			return -1;
+        		}
         		fnTest=new File(url.getFile());
         		if(fnTest.canRead()==false){
-        			repMgr.reportError("can't open source file <" + prop.getValue(FieldKeys.fieldCliOptionSrcFile) + "> for reading");
-        			System.exit(1);
+        			repMgr.reportError("can't open source file <" + sourceFile + "> for reading (tried to read from URL)");
+        			return -1;
         		}
         		else
-        			prop.put(FieldKeys.fieldCliOptionSrcFile, FieldKeys.fieldValueCli, fnTest.getAbsolutePath());
+        			this.prop.put(FieldKeys.fieldCliOptionSrcFile, FieldKeys.fieldValueCli, fnTest.getAbsolutePath());
         	}
 
-        	TSBaseAPI ata=prop.getValue(FieldKeys.fieldCliOptionGC);
+        	TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionGC);
         	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
-        		fnTest=new File(prop.getValue(FieldKeys.fieldCliOptionTgtDir).toString());
-        		if (fnTest.canWrite()==false){
-        			repMgr.reportError("can't write in target directory <" + prop.getValue(FieldKeys.fieldCliOptionTgtDir) + ">");
-        			System.exit(1);
+        		fnTest=new File(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir).toString());
+        		if(fnTest.canWrite()==false){
+        			repMgr.reportError("can't write in target directory <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir) + ">");
+        			return -1;
         		}
-        		fnTest=new File(prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt));
+        		fnTest=new File(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+this.prop.getValue(FieldKeys.fieldCliOptionTgtFileExt));
         		fnTest.createNewFile();
-        		if (fnTest.canWrite()==false){
-        			repMgr.reportError("can't open target file <" + prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt) + "> for writing");
-        			System.exit(1);
+        		if(fnTest.canWrite()==false){
+        			repMgr.reportError("can't open target file <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt) + "> for writing");
+        			return -1;
         		}
         		else
         			fnTest.delete();
@@ -251,24 +354,6 @@ public class Tribe {
         	repMgr.reportError(e.toString());
 		}
 
-        /**
-         * Save the current configuration.
-         */
-        logger.trace("save current configuration, if requested");
-        if(!(prop.getValueCli(FieldKeys.fieldCliOptionConfigSave)).tsIsType(TEnum.TS_NULL)){
-			TSString cl=(TSString)prop.getValueCli(FieldKeys.fieldCliOptionConfigSave);
-//			String _cret="";
-			try {
-				prop.writeToFile(cl.tsvalue);
-			} catch (Exception e) {}
-
-//			if(_cret!=null)
-//				repMgr.reportError(_cret+", trying to continue");
-
-
-//        	if(sTest!=null)
-//        		repMgr.reportError(sTest+", trying to continue");
-		}
 
         /**
          * Rock'n roll. Create an input stream and (if requested) the preprocessor, finally hand over the stream to
@@ -277,23 +362,23 @@ public class Tribe {
         logger.trace("rock'n roll, creating input stream");
         try{
         	InputStream tribeIS;
-        	TSBaseAPI ata=prop.getValue(FieldKeys.fieldCliOptionNoCPP);
+        	TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionNoCPP);
         	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==false){
         		logger.trace("use build-in cpp");
         		File temp=File.createTempFile("_tribe", "cpp");
         		temp.deleteOnExit();
 				PrintWriter pw=new PrintWriter(new FileWriter(temp));
 				CPP prep=new CPP();
-				prep.parse_initial(prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString(), pw);
+				prep.parse_initial(this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString(), pw);
 				logger.trace("finished cpp, create input stream");
 				tribeIS=new FileInputStream(temp);
 			}
         	else{
 				logger.trace("no cpp requested, create input stream");
-				tribeIS=new FileInputStream(prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString());
+				tribeIS=new FileInputStream(this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString());
 			}
         	logger.trace("calling language.parse");
-        	languages.parse(tribeIS);
+        	this.parser.parse(tribeIS);
         }
         catch(IOException io){
         	repMgr.reportError("catched exception while parsing", "IOException: " + io.toString());
@@ -302,91 +387,70 @@ public class Tribe {
         	repMgr.reportError("catched exception while parsing", "Exception: " + e.toString());
         }
 
+
+        /**
+         * Save the current configuration.
+         */
+        logger.trace("save current configuration, if requested");
+        if(!(this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave)).tsIsType(TEnum.TS_NULL)){
+			TSString cl=(TSString)this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave);
+			try {
+				this.prop.writeToFile(cl.tsvalue);
+			} catch (Exception e) {}
+		}
+
         /**
          * Cleanup, especially remove the temporary files created by the preprocessor.
          */
         logger.trace("finally, garbage collector");
         System.gc();
 
-        logger.trace("start -- out");
+		logger.trace("finshed phase 2 -- parser");
+		return 0;
 	}
+
 
 	/**
 	 * Do all options that require Tribe to exit after processing them, such as help or version or
 	 * print an stg file.
 	 * @param pass Pass=1 means and we have to print an stg file, we cannot do that.
+	 * @return null if no exit option found, a message to be printed otherwise
 	 */
-	private void doExitOptions(int pass){
-		TribeProperties prop=TribeProperties.getInstance();
+	private String doExitOptions(){
+		String ret=null;
 
-        if(pass==1&&!(prop.getValueCli(FieldKeys.fieldCliOptionTgtLanguage)).tsIsType(TEnum.TS_NULL))
-            return;
-
-        if(pass==1&&!(prop.getValueCli(FieldKeys.fieldCliOptionSrcLanguage)).tsIsType(TEnum.TS_NULL))
-            return;
-
-		ReportManager repMgr=ReportManager.getInstance();
-
-		Boolean defOpt=false;
-		try {
-			defOpt=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionDefaultOptions)).tsvalue;
-		} catch (Exception e) {}
-		if(defOpt==true){
-			System.out.println("Default Configuration:");
-			System.out.println("  [Option] = [Default Configuration]");
-			System.out.println();
-
-        	//repMgr.defaults();
-			TreeSet<String> ts=new TreeSet<String>(this.prop.getRows());
-	        for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
-	        	String current=i.next();
-	        	if(!(prop.get(current, FieldKeys.fieldCliOptionType)).tsIsType(TEnum.TS_NULL)){
-	        		if(!(prop.get(current, FieldKeys.fieldValueFile)).tsIsType(TEnum.TS_NULL)||!(prop.get(current, FieldKeys.fieldValueCli)).tsIsType(TEnum.TS_NULL))
-	        			System.out.println("    "+current+" = "+prop.getValue(current));
-	        		else
-	        			System.out.println("    "+current+" = "+prop.getValueDefault(current));
-	        	}
-	        }
-        	System.out.println(this.footer());
-        	System.exit(0);
+		if(this.eo.contains(TribeHelpers.exitOptions.HELP)){
+        	ret=TribeHelpers.getHelpPrint(cli, this.prop);
         }
-
-		Boolean showHelp=false;
-		try {
-			showHelp=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowhelp)).tsvalue;
-		} catch (Exception e) {}
-
-        if(showHelp==true){
-        	System.out.println(this.cli.usage(this.header(), this.footer(), 80, true));
-        	//this.cli.usage();
-            System.exit(0);
+        if(this.eo.contains(TribeHelpers.exitOptions.VERSION)&&
+        		!this.eo.contains(TribeHelpers.exitOptions.HELP)){
+        	ret=TribeHelpers.getVersionPrint(this.prop);
         }
-
-		Boolean showVersion=false;
-		try {
-			showVersion=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowversion)).tsvalue;
-		} catch (Exception e) {}
-
-        if(showVersion==true){
-        	System.out.println(this.header());
-        	System.exit(0);
+        if(this.eo.contains(TribeHelpers.exitOptions.LANGUAGES)){
+        	if(ret!=null)
+        		ret+="\n\n";
+        	else
+        		ret="\n";
+        	ret+=TribeHelpers.getSupportedLangPrint(this.parsers);
         }
+        if(this.eo.contains(TribeHelpers.exitOptions.DEF_OPTIONS)){
+			if(ret!=null)
+        		ret+="\n\n";
+        	else
+        		ret="\n";
+			ret+=TribeHelpers.getDefaultOptionsPrint(this.prop);
+		}
 
-		Boolean showLang=false;
-		try {
-			showLang=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowlang)).tsvalue;
-		} catch (Exception e) {}
-
-        if(showLang==true){
-        	repMgr.reportMessageNoFile("supported languages = " + prop.getValueDefault(FieldKeys.fieldCliOptionLanguages));
-        	System.exit(0);
-        }
-
-        if(!(prop.getValueCli(FieldKeys.fieldCliOptionPrStgFileTribe)).tsIsType(TEnum.TS_NULL)){
-        	System.out.println(repMgr.toString());
-            System.exit(0);
-        }		
+		if(this.eo.contains(TribeHelpers.exitOptions.PRINT_STG_REPORTMGR)){
+        	if(ret!=null)
+        		ret+="\n\n";
+        	else
+        		ret="\n";
+        	ret+=this.repMgr.stgmToString();
+		}		
+		return ret;
 	}
+
 
 	/**
 	 * SetOptions, instantiates the command line parser (CLI) and requests to parse the command line. 
@@ -395,50 +459,28 @@ public class Tribe {
 	 * @param args Command line arguments
 	 * @param languages List of languages supported
 	 */
-	private void setOptions(String[] args, LanguageParserList languages){
+	private void setOptions(String[] args){
 		try {
 			this.cli.parse(args, true);
         }
         catch(ParseException e){
-       		repMgr.reportError(e.getMessage());
+       		this.repMgr.reportError(e.getMessage());
        		System.exit(2);
         }
 
         cli.setOptions(this.prop);
-		if(!(prop.getValueCli(FieldKeys.fieldCliOptionConfigLoad)).tsIsType(TEnum.TS_NULL)){
+		if(!(this.prop.getValueCli(FieldKeys.fieldCliOptionConfigLoad)).tsIsType(TEnum.TS_NULL)){
 			TSBaseAPI cl=(TSString)prop.getValueCli(FieldKeys.fieldCliOptionConfigLoad);
 			String ret=null;
 			try {
-				ret=prop.loadFromFile(cl);
+				ret=this.prop.loadFromFile(cl);
 			} catch (Exception e) {
-				repMgr.reportError("tribe: problems loading configuration file<"+cl+">, trying to continue");
+				this.repMgr.reportError("tribe: problems loading configuration file<"+cl+">, trying to continue");
 			}
 			if(ret!=null)
-				repMgr.reportError("tribe: problems loading configuration file<"+cl+">, "+ret+", trying to continue");
+				this.repMgr.reportError("tribe: problems loading configuration file<"+cl+">, "+ret+", trying to continue");
 		}
 	}
 
-	private String header(){
-		String ret=new String();
-		ret+=prop.get(FieldKeys.fieldApplicationName, FieldKeys.fieldValueDefault)+", version "+
-		     prop.get(FieldKeys.fieldApplicationVersion, FieldKeys.fieldValueDefault)+", build "+
-		     prop.get(FieldKeys.fieldApplicationBuild, FieldKeys.fieldValueDefault)+", "+
-		     prop.get(FieldKeys.fieldApplicationBuilddate, FieldKeys.fieldValueDefault)+
-		     "\n";
-		ret+=prop.get(FieldKeys.fieldApplicationCopyright, FieldKeys.fieldValueDefault)+"\n";
-		ret+="\n";
-		ret+=prop.get(FieldKeys.fieldApplicationBuildwith, FieldKeys.fieldValueDefault)+"\n";
-		ret+="\n";
-		return ret;
-	}
-	
-	private String footer(){
-		String ret=new String();
-		ret+="\n";
-		if(!prop.get(FieldKeys.fieldApplicationAdditional, FieldKeys.fieldValueDefault).tsIsType(TEnum.TS_NULL)){
-			ret+="\n";
-			ret+=prop.get(FieldKeys.fieldApplicationAdditional, FieldKeys.fieldValueDefault).toString()+"\n";
-		}
-		return ret;
-	}
+
 }
