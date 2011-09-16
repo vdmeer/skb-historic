@@ -76,7 +76,7 @@ public class SKBTemplateManager implements TemplateManager {
 
 		TSSTGManager stgm=new TSSTGManager();
 		stgm.setApplicationName("skb");
-		stgm.setSTGFileName(file);
+		stgm.setSTGFile(file);
 		stgm.useLexerAngelB();
 		stgm.loadSTG("builder template", "skb");
 
