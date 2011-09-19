@@ -118,6 +118,9 @@ public class TSRepository {
 		/** The SKB Report Manager */
 		public final static String TS_ATOMIC_REPORTMANAGER		= "ts:atomic:reportmanager";
 
+		/** The SKB Lang AtomList */
+		public final static String TS_ATOMIC_LANG_ATOMLIST		= "ts:atomic:lang:atomlist";
+
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		public final static String TS_ATOMIC_ARRAYLIST_STRING	= "ts:atomic:util:arraylist_string";
 		/** SKB Type for an Array List (java.utils.list<TSAtomic>) */
@@ -203,6 +206,9 @@ public class TSRepository {
 
 		/** The SKB Report Manager */
 		TS_ATOMIC_REPORTMANAGER			(TSRepository.TString.TS_ATOMIC_REPORTMANAGER),
+
+		/** The SKB Lang AtomList */
+		TS_ATOMIC_LANG_ATOMLIST			(TSRepository.TString.TS_ATOMIC_LANG_ATOMLIST),
 
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		TS_ATOMIC_ARRAYLIST_STRING		(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING),

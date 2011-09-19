@@ -41,9 +41,12 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
-import org.skb.tribe.LanguageConfiguration;
 import org.skb.util.FieldKeys;
 import org.skb.util.PathKeys;
+import org.skb.util.config.Configuration;
+import org.skb.util.misc.Json2Oat;
+import org.skb.util.patterns.structural.composite.TSBaseAPI;
+import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
@@ -180,10 +183,23 @@ public class GenerateConstantsTask extends Task{
     	TSMapLH constRules=new TSMapLH();
     	TSMapLH constTokens=new TSMapLH();
 
-    	LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-   		cfg.read(jfh);
+    	Configuration config=Configuration.getConfiguration(GenerateConstantsTask.class);
+
+		try{
+			Json2Oat j2o=new Json2Oat();
+			TSBaseAPI c=j2o.read(jfh);
+			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+				config.config.put(PathKeys.pathConfigurationParserTribe, ((TSMapLH)c).get(PathKeys.pathConfigurationParserTribe));
+				config.config.put(PathKeys.patConfigurationParserLang, ((TSMapLH)c).get(PathKeys.patConfigurationParserLang));
+			}
+		}
+		catch (Exception e){
+			throw new BuildException("problems parsing json file <"+this.jsonfile+">\n"+e);
+		}
+
     	TSMapLH map=null;
-    	map=cfg.getLanguageTokens();
+
+    	map=(TSMapLH)config.config.get(PathKeys.pathConfigurationParserLangTokens);
     	if(map!=null&&map.size()>0){
     		Set<String> cols=map.keySet();
     		for (String s:cols){
@@ -200,7 +216,7 @@ public class GenerateConstantsTask extends Task{
     		}
     	}
 
-    	map=cfg.getLanguageRules();
+    	map=(TSMapLH)config.config.get(PathKeys.pathConfigurationParserLangRules);
     	if(map!=null&&map.size()>0){
 				for(String k:map.keySet()){
 					if(map.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantIdent)){
@@ -213,24 +229,24 @@ public class GenerateConstantsTask extends Task{
 				}
     	}
 
-    	map=cfg.getConfiguration();
+    	map=config.config;
     	if(map!=null&&map.size()>0){
-			if(map.containsKey(PathKeys.pathLangConfiguration)){
-				TSMapLH _m=(TSMapLH)map.get(PathKeys.pathLangConfiguration);
+			if(map.containsKey(PathKeys.patConfigurationParserLangConfiguration)){
+				TSMapLH _m=(TSMapLH)map.get(PathKeys.patConfigurationParserLangConfiguration);
 				for(String s:_m.keySet()){
-					if(map.containsKey(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantIdent)){
+					if(map.containsKey(PathKeys.patConfigurationParserLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantIdent)){
 						TSMapLH _put=new TSMapLH();
 						_put.put("value", s);
-						if(map.containsKey(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
-							_put.put("javadoc", map.get(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc).toString());
-						constProperties.put(map.get(PathKeys.pathLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantIdent).toString(), _put);
+						if(map.containsKey(PathKeys.patConfigurationParserLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
+							_put.put("javadoc", map.get(PathKeys.patConfigurationParserLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc).toString());
+						constProperties.put(map.get(PathKeys.patConfigurationParserLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantIdent).toString(), _put);
 					}
 				}
 			}
-			if(map.containsKey(PathKeys.pathLangTargets)){
-				TSMapLH _m=(TSMapLH)map.get(PathKeys.pathLangTargets);
+			if(map.containsKey(PathKeys.pathConfigurationParserLangTargets)){
+				TSMapLH _m=(TSMapLH)map.get(PathKeys.pathConfigurationParserLangTargets);
 				for(String s:_m.keySet()){
-					TSMapLH newMap=(TSMapLH)map.get(PathKeys.pathLangTargets+"/"+s+"/"+FieldKeys.fieldLangTargetConfigCli);
+					TSMapLH newMap=(TSMapLH)map.get(PathKeys.pathConfigurationParserLangTargets+"/"+s+"/"+FieldKeys.fieldLangTargetConfigCli);
 					for(String k:newMap.keySet()){
 						if(newMap.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantIdent)){
 							TSMapLH _put=new TSMapLH();

@@ -15,6 +15,9 @@ public interface TribeParserAPI {
 	public String getOptionClassName();
 	public String getOptionKeyword();
 
+	public String getLangRuleClassName();
+	public String getLangRuleKeyword();
+
 	public Class<?> getConfigurationClassName();
 
 	public Lexer pass1GetLexer(ANTLRInputStream input);

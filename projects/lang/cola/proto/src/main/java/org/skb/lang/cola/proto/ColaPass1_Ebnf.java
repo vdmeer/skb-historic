@@ -38,7 +38,6 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.tribe.LanguageConfiguration;
 import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
@@ -105,11 +104,10 @@ public class ColaPass1_Ebnf {
 		this.lastContractDeclScopeAtom="";
 		this.contractDeclScope=new LinkedHashMap<String,String>();
 
-		this.cr=new TSLangRuleMap();
-		this.cr.loadRules(ColaConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
+		this.cr=config.getLangRuleMap();
 
 		//initialise the AtomList with spec
-		this.atoms=AtomList.getInstanceInit();
+		this.atoms=config.getAtomlist();
 		this.atoms.addRow(ColaConstants.Tokens.colaSPECIFICATION);
 		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValCategory, ColaConstants.Tokens.colaVOID);
 		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValType, ColaConstants.Tokens.colaVOID);

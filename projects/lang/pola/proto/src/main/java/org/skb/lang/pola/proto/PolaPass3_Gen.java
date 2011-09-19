@@ -35,6 +35,7 @@ import java.util.TreeMap;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
+import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeString;
 
@@ -45,15 +46,20 @@ import org.skb.util.languages.ScopeString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class PolaPass3_Gen {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(PolaPass3_Gen.class);
 
-	private AtomList atoms=AtomList.getInstance();
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
+
+	public AtomList atoms;
 	public ScopeString sn;
 
 	//for simple_type, to get all options to all DPOLAtoms
 	private TreeMap<String,String> simple_type;
 
 	public PolaPass3_Gen(){
+		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
 
 		this.simple_type=new TreeMap<String,String>();

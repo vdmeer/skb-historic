@@ -32,6 +32,12 @@ public class ColaParser implements TribeParserAPI {
 	private colaAst.colaSpecification_return fromAst;
 
 
+	public ColaParser(){
+		config.addAtomList();
+		config.addLangRuleMap();
+	}
+
+
 	@Override
 	public String getConfigurationFile(){
 		return "/org/skb/lang/cola/proto/proto.json";
@@ -47,6 +53,18 @@ public class ColaParser implements TribeParserAPI {
 	@Override
 	public Class<?> getConfigurationClassName(){
 		return ColaParser.class;
+	}
+
+
+	@Override
+	public String getLangRuleClassName(){
+		return ColaConstants.Rules.class.getName();
+	}
+
+
+	@Override
+	public String getLangRuleKeyword(){
+		return "rule";
 	}
 
 

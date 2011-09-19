@@ -39,6 +39,7 @@ import org.apache.log4j.Logger;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class GluePass3_Gen {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(GluePass3_Gen.class);
 
 }

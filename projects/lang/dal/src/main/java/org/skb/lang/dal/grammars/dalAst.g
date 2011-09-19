@@ -53,9 +53,8 @@ options
   package org.skb.lang.dal.grammars;
 
   import org.skb.util.config.Configuration;
-  import org.skb.util.languages.AtomList;
   import org.skb.lang.dal.DalPass2_Ast;
-  import org.skb.tribe.LanguageTokens;
+  import org.skb.tribe.TribeHelpers;
   import org.skb.lang.dal.DalParser;
   import org.skb.lang.dal.constants.DalConstants;
   import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
@@ -64,13 +63,12 @@ options
 @members{
   public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
-  private LanguageTokens myTokens;
+  private String[] myTokens;
   private DalPass2_Ast pass;
 
   public void init() {
     this.pass=new DalPass2_Ast();
-    this.myTokens = new LanguageTokens();
-    this.myTokens.addTokens(tokenNames);
+    this.myTokens=TribeHelpers.translateTokens(tokenNames, config);
   }
 
   public void setFilename(String f){
@@ -96,7 +94,7 @@ options
   }
 
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){
-    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
+    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens), re);
   }
 }
 

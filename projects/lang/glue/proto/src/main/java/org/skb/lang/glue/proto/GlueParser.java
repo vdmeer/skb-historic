@@ -31,6 +31,11 @@ public class GlueParser implements TribeParserAPI {
 	private glueEbnfParser.glueSpecification_return fromEbnf;
 	private glueAst.glueSpecification_return fromAst;
 
+	public GlueParser(){
+		config.addAtomList();
+		config.addLangRuleMap();
+	}
+
 	@Override
 	public String getConfigurationFile() {
 		return "/org/skb/lang/glue/proto/proto.json";
@@ -44,6 +49,17 @@ public class GlueParser implements TribeParserAPI {
 	@Override
 	public Class<?> getConfigurationClassName(){
 		return GlueParser.class;
+	}
+
+	@Override
+	public String getLangRuleClassName(){
+		return GlueConstants.Rules.class.getName();
+	}
+
+
+	@Override
+	public String getLangRuleKeyword(){
+		return "rule";
 	}
 
 	@Override

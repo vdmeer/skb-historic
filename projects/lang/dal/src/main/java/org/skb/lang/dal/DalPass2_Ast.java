@@ -37,7 +37,7 @@ import org.antlr.runtime.Token;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.tribe.LanguageConfiguration;
+import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 
@@ -50,6 +50,9 @@ import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 public class DalPass2_Ast {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(DalPass2_Ast.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
 	/** Atom List (Symbol Table) */
 	public AtomList atoms;
@@ -66,11 +69,10 @@ public class DalPass2_Ast {
 	private Token lastCommonValueType=null;
 
 	public DalPass2_Ast(){
-		this.atoms=AtomList.getInstance();
+		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
 
-		this.cr=new TSLangRuleMap();
-		this.cr.loadRules(DalConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
+		this.cr=config.getLangRuleMap();
 	}
 
 

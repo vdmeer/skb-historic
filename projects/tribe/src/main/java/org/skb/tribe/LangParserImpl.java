@@ -22,6 +22,7 @@ import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.io.files.FileManager;
 import org.skb.util.io.files.FileTemplateList;
 import org.skb.util.languages.LangParserAPI;
+import org.skb.util.misc.Json2Oat;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
@@ -82,16 +83,28 @@ public class LangParserImpl implements LangParserAPI {
 
 		this.supportedSourceLang=this.langParser.getSourceLanguage();
 
-		LanguageConfiguration cfg=LanguageConfiguration.getInstanceInit();
-		cfg.read(this.langParser.getConfigurationFile());
+		this.config=Configuration.getConfiguration(this.langParser.getConfigurationClassName());
+
+		String url=this.langParser.getConfigurationFile();
+		try{
+			Json2Oat j2o=new Json2Oat();
+			TSBaseAPI c=j2o.read(url);
+			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+				this.config.config.put(PathKeys.pathConfigurationParserTribe, ((TSMapLH)c).get(PathKeys.pathConfigurationParserTribe));
+				this.config.config.put(PathKeys.patConfigurationParserLang, ((TSMapLH)c).get(PathKeys.patConfigurationParserLang));
+			}
+		}
+		catch (Exception e){
+			System.err.println("LangParserImpl: "+e);
+		}
 
 		this.supportedTargetLang=new TSArrayListString();
-		Set<String> lang=cfg.getLanguageTargets().keySet();
+		Set<String> lang=((TSMapLH)this.config.config.get(PathKeys.pathConfigurationParserLangTargets)).keySet();
 		Iterator<String> it=lang.iterator();
 		while(it.hasNext())
 			this.supportedTargetLang.add(it.next().toString());
 
-		this.config=Configuration.getConfiguration(this.langParser.getConfigurationClassName());
+		this.config.getLangRuleMap().loadRules(this.langParser.getLangRuleClassName(), this.langParser.getLangRuleKeyword(), (TSMapLH)this.config.config.get(PathKeys.pathConfigurationParserLangRules), (TSMapLH)this.config.config.get(PathKeys.pathConfigurationParserLangTokens));
 	}
 
 
@@ -223,6 +236,7 @@ public class LangParserImpl implements LangParserAPI {
 
 		TSMapLH chMan=this.target.getMandatory();
 		TSMapLH chOpt=this.target.getOptional();
+
 		this.stgl.setChunks(chMan, chOpt);
 		if(this.stgl.testChunks()==false){
 			System.err.println("Oops, problem loading STG"); //TODO
@@ -248,22 +262,19 @@ public class LangParserImpl implements LangParserAPI {
 
 		this.cProp=this.config.getProperties();
 
-		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		TSMapLH config=cfg.getConfiguration();
-
 		if(config==null){
 			//TODO
 			System.err.println("tribe: property configuration not found");
 		}
 		else{
-			opm.loadFromJason(config.get(PathKeys.pathLangConfiguration));
-			cProp.loadFromJason(config.get(PathKeys.pathTribeConfiguration));
-			if(config.containsKey(PathKeys.pathLangTargets)){
+			opm.loadFromJason(this.config.config.get(PathKeys.patConfigurationParserLangConfiguration));
+			cProp.loadFromJason(this.config.config.get(PathKeys.pathConfigurationParserTribe));
+			if(this.config.config.containsKey(PathKeys.pathConfigurationParserLangTargets)){
 				String lang=new String();
 				if(!cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
 					lang=cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).toString();
-					opm.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang+"/"+FieldKeys.fieldLangTargetConfigCli)).tsGetValue());
-					cProp.loadFromJason(((TSMapLH)config.get(PathKeys.pathLangTargets+"/"+lang)).tsGetValue());
+					opm.loadFromJason(((TSMapLH)this.config.config.get(PathKeys.pathConfigurationParserLangTargets+"/"+lang+"/"+FieldKeys.fieldLangTargetConfigCli)).tsGetValue());
+					cProp.loadFromJason(((TSMapLH)this.config.config.get(PathKeys.pathConfigurationParserLangTargets+"/"+lang)).tsGetValue());
 				}
 			}
 		}
@@ -272,7 +283,7 @@ public class LangParserImpl implements LangParserAPI {
 		//load target
 		if(!this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
 			logger.trace("target set as <"+this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage)+">");
-			this.target=new STGroupTarget(this.cProp.getValue(FieldKeys.fieldApplicationName), this.cProp.getValue(FieldKeys.fieldApplicationGenericSTG));
+			this.target=new STGroupTarget(this.cProp.getValue(FieldKeys.fieldApplicationName), this.cProp.getValue(FieldKeys.fieldApplicationGenericSTG), this.config);
 		}
 
 		//load stg for target

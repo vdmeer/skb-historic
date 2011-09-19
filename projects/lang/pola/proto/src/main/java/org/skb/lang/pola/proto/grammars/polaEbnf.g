@@ -55,7 +55,7 @@ options
 
   import org.skb.util.config.Configuration;
   import org.skb.lang.pola.proto.PolaPass1_Ebnf;
-  import org.skb.tribe.LanguageTokens;
+  import org.skb.tribe.TribeHelpers;
   import org.skb.lang.pola.proto.PolaParser;
   import org.skb.lang.pola.proto.constants.PolaConstants;
   import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
@@ -74,15 +74,14 @@ options
 @members{
   public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
-  private LanguageTokens myTokens;
+  private String[] myTokens;
   private PolaPass1_Ebnf pass;
   private Token base_type;
   private boolean isArray=false;
 
   public void init() {
     this.pass=new PolaPass1_Ebnf();
-    this.myTokens = new LanguageTokens();
-    this.myTokens.addTokens(tokenNames);
+    this.myTokens=TribeHelpers.translateTokens(tokenNames, config);
   }
 
   public void setFilename(String f){
@@ -108,7 +107,7 @@ options
   }
 
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){
-    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
+    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens), re);
   }
 }
 

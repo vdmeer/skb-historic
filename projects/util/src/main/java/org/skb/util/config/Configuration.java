@@ -3,7 +3,9 @@ package org.skb.util.config;
 import org.skb.util.PathKeys;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.lang.TSAtomList;
 import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
+import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 public class Configuration {
@@ -29,8 +31,8 @@ public class Configuration {
 	 */
 	public void init(){
 		this.config=new TSMapLH();
-		this.config.put(PathKeys.pathConfigurationProperties, new ConfigurationProperties());
-		this.config.put(PathKeys.pathConfigurationReportmanager, new TSReportManager());
+		this.config.put(PathKeys.pathInstancesProperties, new ConfigurationProperties());
+		this.config.put(PathKeys.pathInstancesReportmanager, new TSReportManager());
 	}
 
 
@@ -49,7 +51,7 @@ public class Configuration {
 
 
 	public ConfigurationProperties getProperties(){
-		TSBaseAPI base=this.config.get(PathKeys.pathConfigurationProperties);
+		TSBaseAPI base=this.config.get(PathKeys.pathInstancesProperties);
 		if(base.tsIsType(TEnum.TS_COMPOSITE_PROPERTY_MAP))
 			return (ConfigurationProperties)base;
 		else
@@ -58,10 +60,54 @@ public class Configuration {
 
 
 	public TSReportManager getReportManager(){
-		TSBaseAPI base=this.config.get(PathKeys.pathConfigurationReportmanager);
+		TSBaseAPI base=this.config.get(PathKeys.pathInstancesReportmanager);
 		if(base.tsIsType(TEnum.TS_ATOMIC_REPORTMANAGER))
 			return (TSReportManager)base;
 		else
 			return new TSReportManager();
+	}
+
+
+	public TSAtomList getAtomlist(){
+		TSBaseAPI base=this.config.get(PathKeys.pathInstancesAtomlist);
+		if(base.tsIsType(TEnum.TS_ATOMIC_LANG_ATOMLIST)){
+			return (TSAtomList)base;
+		}
+		else{
+			return new TSAtomList();
+		}
+	}
+
+
+	public boolean addAtomList(){
+		this.config.put(PathKeys.pathInstancesAtomlist, new TSAtomList());
+		return true;
+	}
+
+
+	public TSLangRuleMap getLangRuleMap(){
+		TSBaseAPI base=this.config.get(PathKeys.pathInstancesLangrulemap);
+		if(base.tsIsType(TEnum.TS_COMPOSITE_LANG_RULEMAP)){
+			return (TSLangRuleMap)base;
+		}
+		else{
+			return new TSLangRuleMap();
+		}
+	}
+
+	public boolean addLangRuleMap(){
+		this.config.put(PathKeys.pathInstancesLangrulemap, new TSLangRuleMap());
+		return true;
+	}
+
+
+	public TSMapLH get(String path){
+		TSBaseAPI base=this.config.get(path);
+		if(base.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+			return (TSMapLH)base;
+		}
+		else{
+			return new TSMapLH();
+		}
 	}
 }

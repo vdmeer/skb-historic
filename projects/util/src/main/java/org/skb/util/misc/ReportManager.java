@@ -37,7 +37,7 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
 import org.skb.util.stringtemplate.STGroupManager;
 
 /**
@@ -89,8 +89,8 @@ public class ReportManager{
 	 */
 	private void _init(){
 		this.stgm=new STGroupManager();
-		this.stgm.putMandatoryChunks("report", new TSArrayListString(new String[]{"name", "file", "line", "column", "message", "type"}));
-		this.stgm.putOptionalChunks("error100", new TSArrayListString(new String[]{"name"}));
+		this.stgm.putMandatoryChunks("report", new TSArrayList(new String[]{"name", "file", "line", "column", "message", "type"}));
+		this.stgm.putOptionalChunks("error100", new TSArrayList(new String[]{"name"}));
 		this.stgm.useLexerAngelB();
 
 		this.setFileName("");

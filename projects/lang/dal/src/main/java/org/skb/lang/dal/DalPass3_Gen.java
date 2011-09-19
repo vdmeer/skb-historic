@@ -61,19 +61,17 @@ public class DalPass3_Gen {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
-	public AtomList atoms=AtomList.getInstance();
+	public AtomList atoms;
 	public ScopeString sn;
 
 	//for simple_type, to get all options to all ColaAtoms
 	private TreeMap<String,String> simple_type;
 
 	//for temporary sequence lists
-	TSArrayListString tempSeq;
-
-	//collect constants, i.e. column name of repository fields
-	TSArrayListString fieldNames;
+	private TSArrayListString tempSeq;
 
 	public DalPass3_Gen(){
+		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
 
 		this.simple_type=new TreeMap<String,String>();
@@ -82,8 +80,6 @@ public class DalPass3_Gen {
 		this.sn=new ScopeString();
 
 		this.tempSeq=new TSArrayListString();
-
-		this.fieldNames=new TSArrayListString();
 	}
 
 	public String trimQuotes(String s){

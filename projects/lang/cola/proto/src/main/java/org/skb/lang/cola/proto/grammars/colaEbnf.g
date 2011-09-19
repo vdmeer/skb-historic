@@ -55,7 +55,7 @@ options
 
   import org.skb.util.config.Configuration;
   import org.skb.lang.cola.proto.ColaPass1_Ebnf;
-  import org.skb.tribe.LanguageTokens;
+  import org.skb.tribe.TribeHelpers;
   import org.skb.lang.cola.proto.ColaParser;
   import org.skb.lang.cola.proto.constants.ColaConstants;
   import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
@@ -66,7 +66,6 @@ options
   package org.skb.lang.cola.proto.grammars;
 
   import org.skb.util.config.Configuration;
-  import org.skb.tribe.LanguageTokens;
   import org.skb.lang.cola.proto.ColaParser;
   import org.skb.lang.cola.proto.constants.ColaConstants;
   import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
@@ -75,15 +74,14 @@ options
 @members{
   public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
-  private LanguageTokens myTokens;
   private ColaPass1_Ebnf pass;
   private Token base_type;
   private boolean isArray=false;
+  private String[] myTokens;
 
   public void init() {
     this.pass=new ColaPass1_Ebnf();
-    this.myTokens=new LanguageTokens();
-    this.myTokens.addTokens(tokenNames);
+    this.myTokens=TribeHelpers.translateTokens(tokenNames, config);
   }
 
   public void setFilename(String f){
@@ -109,7 +107,7 @@ options
   }
 
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){
-    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
+    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens), re);
   }
 }
 

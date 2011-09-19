@@ -53,9 +53,8 @@ options
   package org.skb.lang.pola.proto.grammars;
 
   import org.skb.util.config.Configuration;
-  import org.skb.util.languages.AtomList;
   import org.skb.lang.pola.proto.PolaPass2_Ast;
-  import org.skb.tribe.LanguageTokens;
+  import org.skb.tribe.TribeHelpers;
   import org.skb.lang.pola.proto.PolaParser;
   import org.skb.lang.pola.proto.constants.PolaConstants;
   import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
@@ -64,15 +63,12 @@ options
 @members{
   public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
-  private LanguageTokens myTokens;
-  private AtomList atoms;
+  private String[] myTokens;
   private PolaPass2_Ast pass;
 
   public void init() {
-    this.atoms=AtomList.getInstance();
     this.pass=new PolaPass2_Ast();
-    this.myTokens = new LanguageTokens();
-    this.myTokens.addTokens(tokenNames);
+    this.myTokens=TribeHelpers.translateTokens(tokenNames, config);
   }
 
   public void setFilename(String f){
@@ -98,7 +94,7 @@ options
   }
 
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){
-    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens.getTokenNames()), re);
+    config.getReportManager().reportError(super.getErrorMessage(re, this.myTokens), re);
   }
 }
 

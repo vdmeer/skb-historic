@@ -51,7 +51,7 @@ public class PolaPass2_Ast {
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	/** Atom List (Symbol Table) */
-	private AtomList atoms=AtomList.getInstance();
+	public AtomList atoms;
 
 //	/** Language Rule map for error/warning reporting */
 //	private LanguageRuleMap cr;
@@ -65,6 +65,7 @@ public class PolaPass2_Ast {
 	private Token lastCommonValueType=null;
 
 	public PolaPass2_Ast(){
+		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
 		this.sn=new ScopeToken();
 	}

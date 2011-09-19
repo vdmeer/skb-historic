@@ -3,6 +3,7 @@ package org.skb.tribe;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import org.skb.util.FieldKeys;
@@ -15,6 +16,7 @@ import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 
 public class TribeHelpers {
@@ -53,8 +55,8 @@ public class TribeHelpers {
 		Configuration dest=Configuration.getConfiguration(parser.getConfigurationClassName());
 		Configuration orig=Configuration.getConfiguration(Tribe.class);
 
-		dest.config.put(PathKeys.pathConfigurationProperties, orig.getProperties().tsCopyComposite());
-		dest.config.put(PathKeys.pathConfigurationReportmanager, orig.getReportManager().tsCopyAtomic());
+		dest.config.put(PathKeys.pathInstancesProperties, orig.getProperties().tsCopyComposite());
+		dest.config.put(PathKeys.pathInstancesReportmanager, orig.getReportManager().tsCopyAtomic());
 
 		parser.setOptions(dest.getProperties());
 
@@ -191,4 +193,37 @@ public class TribeHelpers {
 			ret.add(TribeHelpers.exitOptions.PRINT_STG_REPORTMGR);
 		return ret;
 	}
+
+
+    public static String[] translateTokens(String[] tokens, Configuration config){
+    	TreeMap<String, String> tokenMap=new TreeMap<String, String>();
+
+    	TSMapLH map=(TSMapLH)config.config.get(PathKeys.pathConfigurationParserLangTokens);
+    	if(map!=null){
+    		TSMapLH tokenStrings=new TSMapLH();
+    		if(map!=null&&map.size()>0){
+    			for(String s:map.keySet()){
+    				try{
+    					TSBaseAPI tid=map.get(s+"/"+FieldKeys.fieldLangTargetTokenIdent);
+    					TSBaseAPI tval=map.get(s+"/"+FieldKeys.fieldLangTargetTokenTranslate);
+    				    tokenStrings.put(tid.toString(), tval.toString());
+    				} catch (Exception e){}
+    			}
+    		}
+    		if(tokenStrings.size()>0){
+    			for(String s:tokenStrings.keySet()){
+    				tokenMap.put(s,tokenStrings.get(s).toString());
+    			}
+    		}
+    	}
+
+    	String[] tokenNames=new String[tokens.length];
+        for(int i=0;i<tokens.length;i++){
+        	if(tokenMap.get(tokens[i])!=null)
+            	tokenNames[i]=tokenMap.get(tokens[i]);
+        	else
+            	tokenNames[i]=tokens[i];
+        }
+        return tokenNames;
+    }
 }

@@ -31,6 +31,11 @@ public class DalParser implements TribeParserAPI {
 	private dalEbnfParser.dalSpecification_return fromEbnf;
 	private dalAst.dalSpecification_return fromAst;
 
+	public DalParser(){
+		config.addAtomList();
+		config.addLangRuleMap();
+	}
+
 	@Override
 	public String getConfigurationFile() {
 		return "/org/skb/lang/dal/dal.json";
@@ -49,6 +54,17 @@ public class DalParser implements TribeParserAPI {
 	@Override
 	public String getOptionClassName() {
 		return DalConstants.Properties.class.getName();
+	}
+
+	@Override
+	public String getLangRuleClassName(){
+		return DalConstants.Rules.class.getName();
+	}
+
+
+	@Override
+	public String getLangRuleKeyword(){
+		return "rule";
 	}
 
 	@Override

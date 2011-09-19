@@ -62,7 +62,7 @@ public class DalPass4_Files {
 
 	public DalPass4_Files(){
 		this.ftl=new FileTemplateList();
-		this.atoms=AtomList.getInstance();
+		this.atoms=config.getAtomlist();
 		this.prop=config.getProperties();
 	}
 

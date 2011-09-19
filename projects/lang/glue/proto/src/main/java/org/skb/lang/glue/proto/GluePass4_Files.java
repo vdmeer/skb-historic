@@ -40,6 +40,7 @@ import org.skb.util.io.files.FileTemplateList;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class GluePass4_Files {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(GluePass4_Files.class);
 
 	public FileTemplateList getFileTemplateList(){

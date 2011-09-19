@@ -46,6 +46,7 @@ import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSCompositeAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
  * An Array list of TSBase types.
@@ -87,6 +88,15 @@ public class TSArrayList implements TSCompositeAPI, List<TSBaseAPI>, Collection<
 			this.tsvalue=new ArrayList<TSBaseAPI>(a.tsGetList());
 		else
 			this.tsvalue=new ArrayList<TSBaseAPI>();
+	}
+
+	public TSArrayList(String[] a){
+		this._init();
+		this.tsvalue=new ArrayList<TSBaseAPI>();
+		if(a!=null){
+			for(int i=0;i<a.length;i++)
+				this.tsvalue.add(new TSString(a[i]));
+		}
 	}
 
 	public TSArrayList(TSBaseAPI oba) {

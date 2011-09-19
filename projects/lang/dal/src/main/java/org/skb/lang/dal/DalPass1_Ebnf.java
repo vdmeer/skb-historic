@@ -33,7 +33,6 @@ package org.skb.lang.dal;
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.tribe.LanguageConfiguration;
 import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
@@ -63,10 +62,9 @@ public class DalPass1_Ebnf {
 	 * Class constructor, initialises the atom list (symbol table) and other local fields
 	 */
 	public DalPass1_Ebnf(){
-		this.cr=new TSLangRuleMap();
-		this.cr.loadRules(DalConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
+		this.cr=config.getLangRuleMap();
 
-		this.atoms=AtomList.getInstanceInit();
+		this.atoms=config.getAtomlist();
 		this.atoms.setScopeSeparator(config.getProperties().getValueDefault("internal-scope-sep").toString());
 	}
 

@@ -53,11 +53,12 @@ public class PolaPass4_Files {
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	private FileTemplateList ftl;
-	private AtomList atoms=AtomList.getInstance();
+	private AtomList atoms;
 	private ConfigurationProperties prop;
 
 	public PolaPass4_Files(){
 		this.ftl=new FileTemplateList();
+		this.atoms=config.getAtomlist();
 		this.prop=config.getProperties();
 	}
 

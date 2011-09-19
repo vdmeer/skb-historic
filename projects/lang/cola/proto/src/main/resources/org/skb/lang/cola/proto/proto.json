@@ -502,7 +502,7 @@
                     "skb:stringtemplate:chunks:mandatory": ["id", "add"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
-        
+
                 "inline_code":{
                     "skb:stringtemplate:chunks:mandatory": ["language", "code"],
                     "skb:stringtemplate:chunks:optional":  []

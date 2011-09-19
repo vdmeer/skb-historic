@@ -33,6 +33,7 @@ package org.skb.lang.glue.proto;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
@@ -45,7 +46,11 @@ import org.skb.util.stringtemplate.STGroupManager;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class GlueStatistics {
+	/** Logger instance */
 	static Logger logger = Logger.getLogger(GlueStatistics.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(GlueParser.class);
 
 	private STGroupManager stgl=null;
 	private StringTemplateGroup stg;
@@ -83,7 +88,7 @@ public class GlueStatistics {
 
 	public void genSimpleStats(){
 		if(this.loaded==true){
-			AtomList atoms=AtomList.getInstance();
+			AtomList atoms=config.getAtomlist();
 
 			this.simpleStat=stg.getInstanceOf("simpleStat");
 			//simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());

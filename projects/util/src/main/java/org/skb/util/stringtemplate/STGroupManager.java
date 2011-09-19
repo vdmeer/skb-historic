@@ -47,6 +47,7 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 
 /**
@@ -248,7 +249,7 @@ public class STGroupManager {
 	 * @param key name of template
 	 * @param value values of chunks to be added
 	 */
-	public void putMandatoryChunks(String key, TSArrayListString value){
+	public void putMandatoryChunks(String key, TSArrayList value){
 		this.chunksMandatory.put(key, value);
 	}
 
@@ -258,7 +259,7 @@ public class STGroupManager {
 	 * @param key name of template
 	 * @param value values of chunks to be added
 	 */
-	public void putOptionalChunks(String key, TSArrayListString value){
+	public void putOptionalChunks(String key, TSArrayList value){
 		this.chunksOptional.put(key, value);
 	}
 
@@ -351,9 +352,9 @@ public class STGroupManager {
 			//check if our Templates exist
 			if(stNames.contains(s)){
 				TSBaseAPI _b=this.chunksMandatory.get(s);
-				TSArrayListString val=null;
-				if(_b.tsIsType(TEnum.TS_ATOMIC_ARRAYLIST_STRING))
-					val=(TSArrayListString)_b;
+				TSArrayList val=null;
+				if(_b.tsIsType(TEnum.TS_COMPOSITE_ARRAYLIST))
+					val=(TSArrayList)_b;
 				if(val==null)
 					continue;
 				//Template exists, check for Arguments existence
@@ -362,12 +363,14 @@ public class STGroupManager {
 				for (int i=0;i<val.size();i++){
 					if(!stm.containsKey(val.get(i).toString())){
 						logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
+						System.err.println(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");;
 						this.loaded=false;
 						return false;
 					}
 				}
 			} else {
 				logger.error(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
+				System.err.println(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
 				this.loaded=false;
 				return false;
 			}

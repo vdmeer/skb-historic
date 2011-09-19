@@ -39,11 +39,11 @@ import java.util.TreeMap;
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.misc.ReportManager;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 import org.skb.util.patterns.structural.composite.atomic.antlr.TSToken;
+import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSST;
 import org.skb.util.patterns.structural.composite.composite.util.TSTable;
 import org.skb.util.patterns.structural.composite.composite.util.TSTableRow;
@@ -112,38 +112,18 @@ public class AtomList extends TSTable {
 	/** List of imports */
 	private TreeMap<String, LinkedHashMap<String, String>> imports;
 
-
-	private static class AtomListHolder{
-		private final static AtomList INSTANCE = new AtomList();
-	}
+	/** Reportmanager instance, used to set file name for atoms */
+	private TSReportManager reportMgr=null;
 
 
 	/**
-	 * Return a pointer to the instance of the atom list (singleton)
-	 * @return instance pointer
+	 * Class constructor
 	 */
-	public static AtomList getInstance(){
-		return AtomListHolder.INSTANCE;
-	}
-
-
-	/**
-	 * Return a pointer to the instance of the atom list (singleton) and perform a re-initialisation
-	 * @return the pointer to the instance
-	 */
-	public static AtomList getInstanceInit(){
-		AtomListHolder.INSTANCE._init();
-		return AtomListHolder.INSTANCE;
-	}
-
-
-	/**
-	 * Class constructor (private, since AtomList implements singleton)
-	 */
-	private AtomList(){
+	public AtomList(){
 		super();
 		this._init();
 	}
+
 
 //	public AtomList(HashSet<String>rows){
 //		super();
@@ -174,6 +154,14 @@ public class AtomList extends TSTable {
 		this.imports=new TreeMap<String, LinkedHashMap<String, String>>();
 	}
 
+
+	/**
+	 * Set the report manager
+	 * @param rm Report Manager instance
+	 */
+	public void setReportMgt(TSReportManager rm){
+		this.reportMgr=rm;
+	}
 
 	/**
 	 * Sets the specification name, which is the root of an atom list hierarchy
@@ -268,7 +256,8 @@ public class AtomList extends TSTable {
 				this.put(id, AtomList.alValTypeArray, false);
 			else
 				this.put(id, AtomList.alValTypeArray, true);
-//			this.put(id, AtomList.alValFile, ReportManager.getInstance().getFileName());//TODO
+			if(this.reportMgr!=null)
+				this.put(id, AtomList.alValFile, this.reportMgr.getFileName());
 			this.put(id, AtomList.alValLine, tk.getLine());
 			this.put(id, AtomList.alValColumn, tk.getCharPositionInLine());
 			this.put(id, AtomList.alValScopedID, id);

@@ -40,7 +40,6 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.tribe.LanguageConfiguration;
 import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.languages.ScopeToken;
@@ -64,7 +63,7 @@ public class ColaPass2_Ast {
 	private TSReportManager reportManager;
 
 	/** Atom List (Symbol Table) */
-	public AtomList atoms=AtomList.getInstance();
+	public AtomList atoms;
 
 	/** Language Rule map for error/warning reporting */
 	private TSLangRuleMap cr;
@@ -102,14 +101,14 @@ public class ColaPass2_Ast {
 	 * 
 	 */
 	public ColaPass2_Ast(){
+		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
 
 		this.eprCategory="";
 		this.eprAtom="";
 		this.eprList=new LinkedHashMap<String, String>();
 
-		this.cr=new TSLangRuleMap();
-		this.cr.loadRules(ColaConstants.Rules.class.getName(), "rule", LanguageConfiguration.getInstance().getLanguageRules(), LanguageConfiguration.getInstance().getLanguageTokens());
+		this.cr=config.getLangRuleMap();
 
 		this.sn=new ScopeToken();
 

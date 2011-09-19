@@ -32,9 +32,11 @@ package org.skb.tribe;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.skb.util.FieldKeys;
+import org.skb.util.PathKeys;
+import org.skb.util.config.Configuration;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
+import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
 import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 import org.skb.util.stringtemplate.STGroupManager;
 
@@ -46,48 +48,50 @@ import org.skb.util.stringtemplate.STGroupManager;
  */
 public class STGroupTarget {
 	private boolean initialised;
-	private TSMapLH chMan;
-	private TSMapLH chOpt;
+	private TSMapLH targetCunksMan;
+	private TSMapLH targetChunksOpt;
 
 	private STGroupManager stdHeader;
 
-	public STGroupTarget(TSBaseAPI applicationName, TSBaseAPI genericSTG){
+	public STGroupTarget(TSBaseAPI applicationName, TSBaseAPI genericSTG, Configuration config){
 		this.initialised=false;
 
 		TSMapLH stdHeaderChunks=new TSMapLH();
-		stdHeaderChunks.put("std",	     new TSArrayListString(new String[]{"source", "target", "file", "day", "time", "misc"}));
-		stdHeaderChunks.put("fImport",   new TSArrayListString(new String[]{"target", "import"}));
-		stdHeaderChunks.put("fileStart", new TSArrayListString(new String[]{"target"}));
-		stdHeaderChunks.put("fileEnd",   new TSArrayListString(new String[]{"target"}));
+		stdHeaderChunks.put("std",	     new TSArrayList(new String[]{"source", "target", "file", "day", "time", "misc"}));
+		stdHeaderChunks.put("fImport",   new TSArrayList(new String[]{"target", "import"}));
+		stdHeaderChunks.put("fileStart", new TSArrayList(new String[]{"target"}));
+		stdHeaderChunks.put("fileEnd",   new TSArrayList(new String[]{"target"}));
 
 		this.stdHeader=new STGroupManager();
 		this.stdHeader.setMandatoryChunks(stdHeaderChunks);
-
-		this.chMan=new TSMapLH();
-		this.chOpt=new TSMapLH();
-		this.getChunks();
 
 		this.stdHeader.useLexerDefault();
 		this.stdHeader.setApplicationName(applicationName.toString().toLowerCase());
 
 		this.stdHeader.setSTGFile(genericSTG.toString());
 		this.stdHeader.loadSTG("string template for generic header", "");
+		//this.stdHeader.testChunks();
+
+		this.targetCunksMan=new TSMapLH();
+		this.targetChunksOpt=new TSMapLH();
+		this.getChunks(config);
 
 		this.initialised=true;
 	}
 
-	protected boolean getChunks(){
-		LanguageConfiguration cfg=LanguageConfiguration.getInstance();
-		TSMapLH map=cfg.getLanguageStgChunks();
+	protected boolean getChunks(Configuration config){
+		//LanguageConfiguration cfg=LanguageConfiguration.getInstance();
+		//TSMapLH map=cfg.getLanguageStgChunks();
+		TSMapLH map=(TSMapLH)config.config.get(PathKeys.pathConfigurationParserLangStgChunks);
 		if(map!=null){
 			TSBaseAPI ala;
 			for (String s:map.keySet()){
 				ala=map.get(s+"/"+FieldKeys.fieldStringtemplateChunksMandatory);
 				if(ala!=null&&!ala.tsIsType(TEnum.TS_NULL))
-					this.chMan.put(s, ala);
+					this.targetCunksMan.put(s, ala);
 				ala=map.get(s+"/"+FieldKeys.fieldStringtemplateChunksOptional);
 				if(ala!=null&&!ala.tsIsType(TEnum.TS_NULL))
-					this.chOpt.put(s, ala);
+					this.targetChunksOpt.put(s, ala);
 			}
 		}
 		return true;
@@ -98,11 +102,11 @@ public class STGroupTarget {
 	}
 
 	public TSMapLH getMandatory(){
-		return this.chMan;
+		return this.targetCunksMan;
 	}
 
 	public TSMapLH getOptional(){
-		return this.chOpt;
+		return this.targetChunksOpt;
 	}
 
 	public StringTemplate getStdHeaderST(){

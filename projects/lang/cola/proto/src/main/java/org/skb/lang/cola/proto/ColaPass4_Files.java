@@ -68,7 +68,7 @@ public class ColaPass4_Files {
 
 	public ColaPass4_Files(){
 		this.ftl=new FileTemplateList();
-		this.atoms=AtomList.getInstance();
+		this.atoms=config.getAtomlist();
 		this.prop=config.getProperties();
 	}
 

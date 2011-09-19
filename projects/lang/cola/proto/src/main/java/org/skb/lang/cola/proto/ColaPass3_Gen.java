@@ -57,7 +57,7 @@ public class ColaPass3_Gen {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
-	public AtomList atoms=AtomList.getInstance();
+	public AtomList atoms;
 	public ScopeString sn;
 
 	//for property Declarations, to get the whole scope as an array into the template
@@ -70,6 +70,7 @@ public class ColaPass3_Gen {
 	private TreeMap<String,String> simple_type;
 
 	public ColaPass3_Gen(){
+		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
 
 		this.propDefList=new TreeSet<String>();

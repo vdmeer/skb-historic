@@ -55,17 +55,14 @@ options
   import java.util.ArrayList;
   import java.util.LinkedHashMap;
 
-  import org.skb.util.languages.AtomList;
   import org.skb.lang.pola.proto.PolaPass3_Gen;
   import org.skb.lang.pola.proto.constants.PolaConstants;
 }
 
 @members{
-  private AtomList atoms;
   private PolaPass3_Gen pass;
 
   public void init() {
-    this.atoms=AtomList.getInstance();
     this.pass=new PolaPass3_Gen();
   }
 }
@@ -79,7 +76,7 @@ polaSpecification @init{this.init();}
                           ^(AT_SPEC id=IDENT
                            {StringTemplate spec=templateLib.getInstanceOf("polaSpecification");
                             spec.setAttribute("id", $id);
-                            this.atoms.addST(PolaConstants.Tokens.polaSPECIFICATION,spec);
+                            this.pass.atoms.addST(PolaConstants.Tokens.polaSPECIFICATION,spec);
                            })
                            cpp_directive (def+=polaDefinition)*
                           )
@@ -90,7 +87,7 @@ polaDefinition          : managementPolicy {this.pass.addST($managementPolicy.st
 
 cpp_directive           : CPP_DIRECTIVE;
 
-managementPolicy        : ^(POLA_POLICY id=IDENT {this.atoms.scope.push($id.token);} type=managementPolicyType prs=policyRuleStructure)
+managementPolicy        : ^(POLA_POLICY id=IDENT {this.pass.atoms.scope.push($id.token);} type=managementPolicyType prs=policyRuleStructure)
                           -> managementPolicy(id={$id}, type={$type.st}, prs={prs.st});
 managementPolicyType    : d=deonticPolicy -> template(token={$d.text}) "<token>" |
                           m=managementMetaPolicy -> template(token={$m.text}) "<token>";

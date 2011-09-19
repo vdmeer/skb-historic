@@ -31,30 +31,54 @@ public class PolaParser implements TribeParserAPI {
 	private polaEbnfParser.polaSpecification_return fromEbnf;
 	private polaAst.polaSpecification_return fromAst;
 
+
+	public PolaParser(){
+		config.addAtomList();
+		config.addLangRuleMap();
+	}
+
+
 	@Override
 	public String getConfigurationFile() {
 		return "/org/skb/lang/pola/proto/proto.json";
 	}
+
 
 	@Override
 	public String getSourceLanguage() {
 		return "pola";
 	}
 
+
 	@Override
 	public Class<?> getConfigurationClassName(){
 		return PolaParser.class;
 	}
+
+
+	@Override
+	public String getLangRuleClassName(){
+		return PolaConstants.Rules.class.getName();
+	}
+
+
+	@Override
+	public String getLangRuleKeyword(){
+		return "rule";
+	}
+
 
 	@Override
 	public String getOptionClassName() {
 		return PolaConstants.Properties.class.getName();
 	}
 
+
 	@Override
 	public Lexer pass1GetLexer(ANTLRInputStream input) {
 		return new polaEbnfLexer(input);
 	}
+
 
 	@Override
 	public void pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
@@ -62,10 +86,12 @@ public class PolaParser implements TribeParserAPI {
 		this.fromEbnf=parser.polaSpecification();
 	}
 
+
 	@Override
 	public CommonTree pass1GetTree() {
 		return (CommonTree)this.fromEbnf.getTree();
 	}
+
 
 	@Override
 	public void pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
@@ -73,10 +99,12 @@ public class PolaParser implements TribeParserAPI {
 		this.fromAst=ast.polaSpecification();
 	}
 
+
 	@Override
 	public CommonTree pass2GetTree() {
 		return (CommonTree)this.fromAst.getTree();
 	}
+
 
 	@Override
 	public void pass3CodeGen(CommonTreeNodeStream nodesForGen, StringTemplateGroup stg) throws RecognitionException {
@@ -85,11 +113,13 @@ public class PolaParser implements TribeParserAPI {
 		gen.polaSpecification();
 	}
 
+
 	@Override
 	public FileTemplateList pass4Files() {
 		PolaPass4_Files cfm=new PolaPass4_Files();
 		return cfm.getFileTemplateList();
 	}
+
 
 	@Override
 	public void finish(boolean quietMode) {
@@ -112,6 +142,7 @@ public class PolaParser implements TribeParserAPI {
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
 			stats.printCompleteStatistic();
 	}
+
 
 	@Override
 	public String getOptionKeyword() {
