@@ -50,6 +50,7 @@ import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.lang.LangParserAPI;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSBoolean;
@@ -76,13 +77,12 @@ public class Tribe {
 	private LangParserAPI parser=null;
 
 	/** Enum set used as bit field for exitOptions */
-	public EnumSet<TribeHelpers.exitOptions> eo=EnumSet.noneOf(TribeHelpers.exitOptions.class);
+	public EnumSet<TribeExitOptions> eo=EnumSet.noneOf(TribeExitOptions.class);
 
 	/**
 	 * Class Constructor, empty
 	 */
 	public Tribe(){}
-
 
 	/**
 	 * Execute the parsing process Tribe. Input parameters are the supported languages and arguments for parameterising 
@@ -116,7 +116,6 @@ public class Tribe {
 			System.exit(result);
 		}
 	}
-
 
 	/**
 	 * 
@@ -220,7 +219,7 @@ public class Tribe {
         		System.out.println("-  source language <"+sourceLang+"> supported by <"+sourceParsers.size()+"> parsers and no target language set");
             	return -1;
         	}
-        	//a.2 - to target and 1 source parser, if exit Options then do, otherwise nothing
+        	//a.2 - no target and 1 source parser, if exit Options then do, otherwise nothing
         	else if(this.eo.size()>0){
        			TribeHelpers.loadParserOptions(sourceParsers.get(0), this.cli);
        			this.setOptions(args);
@@ -292,8 +291,6 @@ public class Tribe {
 		return 0;
 	}
 
-
-
 	private Integer phase2_Parser(){
 		logger.trace("starting phase 2 -- parser");
 
@@ -353,7 +350,6 @@ public class Tribe {
         	repMgr.reportError(e.toString());
 		}
 
-
         /**
          * Rock'n roll. Create an input stream and (if requested) the preprocessor, finally hand over the stream to
          * the language parser.
@@ -392,10 +388,11 @@ public class Tribe {
          */
         logger.trace("save current configuration, if requested");
         if(!(this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave)).tsIsType(TEnum.TS_NULL)){
-			TSString cl=(TSString)this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave);
-			try {
-				this.prop.writeToFile(cl.tsvalue);
-			} catch (Exception e) {}
+			TSBaseAPI cl=this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave);
+			TSDefault ret=this.prop.writeToFile(cl);
+			if(ret.tsIsType(TEnum.TS_ERROR)){
+				this.repMgr.reportError("tribe: problems writing configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
+			}
 		}
 
         /**
@@ -408,7 +405,6 @@ public class Tribe {
 		return 0;
 	}
 
-
 	/**
 	 * Do all options that require Tribe to exit after processing them, such as help or version or
 	 * print an stg file.
@@ -417,21 +413,21 @@ public class Tribe {
 	private String doExitOptions(){
 		String ret=null;
 
-		if(this.eo.contains(TribeHelpers.exitOptions.HELP)){
+		if(this.eo.contains(TribeExitOptions.HELP)){
         	ret=TribeHelpers.getHelpPrint(cli, this.prop);
         }
-        if(this.eo.contains(TribeHelpers.exitOptions.VERSION)&&
-        		!this.eo.contains(TribeHelpers.exitOptions.HELP)){
+        if(this.eo.contains(TribeExitOptions.VERSION)&&
+        		!this.eo.contains(TribeExitOptions.HELP)){
         	ret=TribeHelpers.getVersionPrint(this.prop);
         }
-        if(this.eo.contains(TribeHelpers.exitOptions.LANGUAGES)){
+        if(this.eo.contains(TribeExitOptions.LANGUAGES)){
         	if(ret!=null)
         		ret+="\n\n";
         	else
         		ret="\n";
         	ret+=TribeHelpers.getSupportedLangPrint(this.parsers);
         }
-        if(this.eo.contains(TribeHelpers.exitOptions.DEF_OPTIONS)){
+        if(this.eo.contains(TribeExitOptions.DEF_OPTIONS)){
 			if(ret!=null)
         		ret+="\n\n";
         	else
@@ -439,7 +435,7 @@ public class Tribe {
 			ret+=TribeHelpers.getDefaultOptionsPrint(this.prop);
 		}
 
-		if(this.eo.contains(TribeHelpers.exitOptions.PRINT_STG_REPORTMGR)){
+		if(this.eo.contains(TribeExitOptions.PRINT_STG_REPORTMGR)){
         	if(ret!=null)
         		ret+="\n\n";
         	else
@@ -448,7 +444,6 @@ public class Tribe {
 		}		
 		return ret;
 	}
-
 
 	/**
 	 * SetOptions, instantiates the command line parser (CLI) and requests to parse the command line. 
@@ -468,16 +463,11 @@ public class Tribe {
         cli.setOptions(this.prop);
 		if(!(this.prop.getValueCli(FieldKeys.fieldCliOptionConfigLoad)).tsIsType(TEnum.TS_NULL)){
 			TSBaseAPI cl=(TSString)prop.getValueCli(FieldKeys.fieldCliOptionConfigLoad);
-			String ret=null;
-			try {
-				ret=this.prop.loadFromFile(cl);
-			} catch (Exception e) {
-				this.repMgr.reportError("tribe: problems loading configuration file<"+cl+">, trying to continue");
+			TSDefault ret=this.prop.loadFromFile(cl);
+			if(ret.tsIsType(TEnum.TS_ERROR)){
+				this.repMgr.reportError("tribe: problems loading configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
 			}
-			if(ret!=null)
-				this.repMgr.reportError("tribe: problems loading configuration file<"+cl+">, "+ret+", trying to continue");
 		}
 	}
-
 
 }

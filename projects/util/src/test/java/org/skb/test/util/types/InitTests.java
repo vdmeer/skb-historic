@@ -38,8 +38,11 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.skb.util.classic.log.LogManager;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSDefault;
+import org.skb.util.composite.TSError;
 import org.skb.util.composite.TSNull;
 import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSWarning;
 import org.skb.util.composite.antlr.TSToken;
 import org.skb.util.composite.db.TSPDO;
 import org.skb.util.composite.java.TSBoolean;
@@ -51,9 +54,8 @@ import org.skb.util.composite.java.TSLong;
 import org.skb.util.composite.java.TSObject;
 import org.skb.util.composite.java.TSShort;
 import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.stringtemplate.TSStringTemplate;
-import org.skb.util.composite.stringtemplate.TSStringTemplateGroup;
 import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.stringtemplate.TSStringTemplate;
 import org.skb.util.composite.util.TSArrayList;
 import org.skb.util.composite.util.TSArrayListAtomic;
 import org.skb.util.composite.util.TSArrayListString;
@@ -100,21 +102,57 @@ public class InitTests extends TestCase{
     }
 
 
-	@Test public void testAtomicNull(){
+	@Test public void testTSDefault(){
 		Object[] o;
-		TSNull _t=new TSNull();
+		TSDefault _t=new TSDefault();
 		o=_t.tsGetTypeEnumSet().toArray();
 			assertEquals(4,o.length);
 			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
 			assertEquals(TSRepository.TEnum.TS_ATOMIC.toString(),o[1].toString());
 			assertEquals(TSRepository.TEnum.TS_COMPOSITE.toString(),o[2].toString());
-			assertEquals(TSRepository.TEnum.TS_NULL.toString(),o[3].toString());
+			assertEquals(TSRepository.TEnum.TS_DEFAULT.toString(),o[3].toString());
 		o=_t.tsGetTypeStringList().toArray();
 			assertEquals(4,o.length);
 			assertEquals(TSRepository.TString.TS_BASE,o[0]);
 			assertEquals(TSRepository.TString.TS_ATOMIC,o[1]);
 			assertEquals(TSRepository.TString.TS_COMPOSITE,o[2]);
-			assertEquals(TSRepository.TString.TS_NULL,o[3]);
+			assertEquals(TSRepository.TString.TS_DEFAULT,o[3]);
+
+		assertEquals(true,_t.tsIsAtomic());
+		assertEquals(true,_t.tsIsComposite());
+
+		assertEquals(TSRepository.TEnum.TS_DEFAULT,_t.tsGetTypeEnum());
+		assertEquals(TSRepository.TString.TS_DEFAULT,_t.tsGetTypeString());
+
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_DEFAULT));
+
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_DEFAULT));
+	}
+
+
+	@Test public void testTSNull(){
+		Object[] o;
+		TSNull _t=new TSNull();
+		o=_t.tsGetTypeEnumSet().toArray();
+			assertEquals(5,o.length);
+			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
+			assertEquals(TSRepository.TEnum.TS_ATOMIC.toString(),o[1].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE.toString(),o[2].toString());
+			assertEquals(TSRepository.TEnum.TS_DEFAULT.toString(),o[3].toString());
+			assertEquals(TSRepository.TEnum.TS_NULL.toString(),o[4].toString());
+		o=_t.tsGetTypeStringList().toArray();
+			assertEquals(5,o.length);
+			assertEquals(TSRepository.TString.TS_BASE,o[0]);
+			assertEquals(TSRepository.TString.TS_ATOMIC,o[1]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE,o[2]);
+			assertEquals(TSRepository.TString.TS_DEFAULT,o[3]);
+			assertEquals(TSRepository.TString.TS_NULL,o[4]);
 
 		assertEquals(true,_t.tsIsAtomic());
 		assertEquals(true,_t.tsIsComposite());
@@ -125,12 +163,90 @@ public class InitTests extends TestCase{
 		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
 		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC));
 		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_DEFAULT));
 		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_NULL));
 
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC));
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_DEFAULT));
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_NULL));
+	}
+
+
+	@Test public void testTSWarning(){
+		Object[] o;
+		TSWarning _t=new TSWarning();
+		o=_t.tsGetTypeEnumSet().toArray();
+			assertEquals(5,o.length);
+			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
+			assertEquals(TSRepository.TEnum.TS_ATOMIC.toString(),o[1].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE.toString(),o[2].toString());
+			assertEquals(TSRepository.TEnum.TS_DEFAULT.toString(),o[3].toString());
+			assertEquals(TSRepository.TEnum.TS_WARNING.toString(),o[4].toString());
+		o=_t.tsGetTypeStringList().toArray();
+			assertEquals(5,o.length);
+			assertEquals(TSRepository.TString.TS_BASE,o[0]);
+			assertEquals(TSRepository.TString.TS_ATOMIC,o[1]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE,o[2]);
+			assertEquals(TSRepository.TString.TS_DEFAULT,o[3]);
+			assertEquals(TSRepository.TString.TS_WARNING,o[4]);
+
+		assertEquals(true,_t.tsIsAtomic());
+		assertEquals(true,_t.tsIsComposite());
+
+		assertEquals(TSRepository.TEnum.TS_WARNING,_t.tsGetTypeEnum());
+		assertEquals(TSRepository.TString.TS_WARNING,_t.tsGetTypeString());
+
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_DEFAULT));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_WARNING));
+
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_DEFAULT));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_WARNING));
+	}
+
+
+	@Test public void testTSError(){
+		Object[] o;
+		TSError _t=new TSError();
+		o=_t.tsGetTypeEnumSet().toArray();
+			assertEquals(5,o.length);
+			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
+			assertEquals(TSRepository.TEnum.TS_ATOMIC.toString(),o[1].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE.toString(),o[2].toString());
+			assertEquals(TSRepository.TEnum.TS_DEFAULT.toString(),o[3].toString());
+			assertEquals(TSRepository.TEnum.TS_ERROR.toString(),o[4].toString());
+		o=_t.tsGetTypeStringList().toArray();
+			assertEquals(5,o.length);
+			assertEquals(TSRepository.TString.TS_BASE,o[0]);
+			assertEquals(TSRepository.TString.TS_ATOMIC,o[1]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE,o[2]);
+			assertEquals(TSRepository.TString.TS_DEFAULT,o[3]);
+			assertEquals(TSRepository.TString.TS_ERROR,o[4]);
+
+		assertEquals(true,_t.tsIsAtomic());
+		assertEquals(true,_t.tsIsComposite());
+
+		assertEquals(TSRepository.TEnum.TS_ERROR,_t.tsGetTypeEnum());
+		assertEquals(TSRepository.TString.TS_ERROR,_t.tsGetTypeString());
+
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_DEFAULT));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ERROR));
+
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_DEFAULT));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ERROR));
 	}
 
 
@@ -480,35 +596,6 @@ public class InitTests extends TestCase{
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC));
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_ST));
-	}
-
-	@Test public void testAtomicStringtemplateSTG(){
-		Object[] o;
-		TSStringTemplateGroup _t=new TSStringTemplateGroup("");
-		o=_t.tsGetTypeEnumSet().toArray();
-			assertEquals(3,o.length);
-			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
-			assertEquals(TSRepository.TEnum.TS_ATOMIC.toString(),o[1].toString());
-			assertEquals(TSRepository.TEnum.TS_ATOMIC_STRINGTEMPLATE_STG.toString(),o[2].toString());
-		o=_t.tsGetTypeStringList().toArray();
-			assertEquals(3,o.length);
-			assertEquals(TSRepository.TString.TS_BASE,o[0]);
-			assertEquals(TSRepository.TString.TS_ATOMIC,o[1]);
-			assertEquals(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_STG,o[2]);
-
-		assertEquals(true,_t.tsIsAtomic());
-		assertEquals(false,_t.tsIsComposite());
-
-		assertEquals(TSRepository.TEnum.TS_ATOMIC_STRINGTEMPLATE_STG,_t.tsGetTypeEnum());
-		assertEquals(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_STG,_t.tsGetTypeString());
-
-		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
-		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC));
-		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC_STRINGTEMPLATE_STG));
-
-		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
-		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC));
-		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_STG));
 	}
 
 	@Test public void testAtomicStringtemplateSTGManager(){

@@ -15,11 +15,7 @@ import org.skb.lang.dal.grammars.dalEbnfParser;
 import org.skb.lang.dal.grammars.dalGen;
 import org.skb.tribe.TribeParserAPI;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.java.TSBoolean;
 
 public class DalParser implements TribeParserAPI {
 	/** Logger instance */
@@ -96,24 +92,6 @@ public class DalParser implements TribeParserAPI {
 
 	@Override
 	public void finish(boolean quietMode) {
-		ConfigurationProperties prop=config.getProperties();
-		DalStatistics stats=new DalStatistics();
-
-		TSBaseAPI ata=prop.getValue(DalConstants.Properties.keyPrStat);
-		if(!quietMode){
-			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-				stats.genSimpleStats();
-			ata=prop.getValue(DalConstants.Properties.keyPrStatAll);
-			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-				stats.genCompleteStats();
-		}
-		// print stats if wanted
-		ata=prop.getValue(DalConstants.Properties.keyPrStat);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-			stats.printSimpleStatistic();
-		ata=prop.getValue(DalConstants.Properties.keyPrStatAll);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-			stats.printCompleteStatistic();
 	}
 
 	@Override

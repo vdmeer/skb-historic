@@ -53,6 +53,7 @@ import org.skb.util.classic.io.files.FileTemplateList;
 import org.skb.util.classic.lang.LangParserAPI;
 import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSBoolean;
@@ -246,7 +247,7 @@ public class LangParserImpl implements LangParserAPI {
 	}
 
 
-	private void loadStg() {
+	private TSDefault loadStg() {
 		this.stgl=new TSSTGroupManager();
 
 		TSBaseAPI obt=this.cProp.getValue(FieldKeys.fieldApplicationTgtStgAngleBr);
@@ -263,16 +264,15 @@ public class LangParserImpl implements LangParserAPI {
 
 		this.stgl.setApplicationName(this.cProp.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
 		this.stgl.setSTGFile(this.cProp.getValue(FieldKeys.fieldCliOptionTgtStg));
-		this.stgl.loadSTG("code generation", this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage));
 
-		TSLinkedHashTree chMan=this.target.getMandatory();
-		TSLinkedHashTree chOpt=this.target.getOptional();
-
-		this.stgl.setChunks(chMan, chOpt);
-		if(this.stgl.testChunks()==false){
-			System.err.println("Oops, problem loading STG"); //TODO
-			System.exit(-10);
+		if(this.target!=null){
+			TSLinkedHashTree chMan=this.target.getMandatory();
+			TSLinkedHashTree chOpt=this.target.getOptional();
+			this.stgl.setChunks(chMan, chOpt);
 		}
+
+		TSDefault ret=this.stgl.loadSTG("code generation", this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage));
+		return ret;
 	}
 
 
@@ -284,7 +284,7 @@ public class LangParserImpl implements LangParserAPI {
 
 
 	@Override
-	public void setOptions(ConfigurationProperties TTT){
+	public TSDefault setOptions(){
 		logger.trace("setOptions -- in");
 
 		//has to be a std property map to avoid loading fixed rows of ConfigurationProprties
@@ -317,10 +317,8 @@ public class LangParserImpl implements LangParserAPI {
 			this.target=new STGroupTarget(this.cProp.getValue(FieldKeys.fieldApplicationName), this.cProp.getValue(FieldKeys.fieldApplicationGenericSTG), this.config);
 		}
 
-		//load stg for target
-		this.loadStg();
-
 		logger.trace("setOptions -- out");
+		return this.loadStg();
 	}
 
 

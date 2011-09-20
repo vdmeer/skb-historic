@@ -32,7 +32,7 @@ package org.skb.util.classic.lang;
 
 import java.io.InputStream;
 
-import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.util.TSArrayListString;
 
 /**
@@ -66,7 +66,7 @@ public interface LangParserAPI {
 	 * Sets the parser's configuration.
 	 * @param prop initial property map
 	 */
-	public void setOptions(ConfigurationProperties prop);
+	public TSDefault setOptions();
 
 
 	/**

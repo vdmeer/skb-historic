@@ -78,7 +78,7 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * Returns true if this map contains a mapping for the specified key.
 	 * More specifically, returns true if the map contains a mapping for the given key (string without any "/" character) or the 
 	 * given fqpn (string with "/" separators for each path element). 
-	 * @param key either the key (simple string) or a path to the key (string with "/" separators).
+	 * @param fqpn either the key (simple string) or a path to the key (string with "/" separators).
 	 * @return true if this map contains a mapping for the specified key or path.
 	 */
 	public boolean containsKey(TSString fqpn);
@@ -175,7 +175,7 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	public TSBaseAPI remove(TSString fqpn);
 
 
-	public Map<String, TSBaseAPI> tsGetMap();
+	public Map<String, TSBaseAPI> tsGetTree();
 
 
 	@Override

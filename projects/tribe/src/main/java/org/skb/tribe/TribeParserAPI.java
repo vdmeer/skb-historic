@@ -71,7 +71,7 @@ public interface TribeParserAPI {
 
 	/**
 	 * Returns the class name of the class that provides string constants for language rules.
-	 * @return
+	 * @return class name for the language rule constants
 	 */
 	public String getLangRuleClassName();
 
@@ -83,7 +83,7 @@ public interface TribeParserAPI {
 
 	/**
 	 * Returns the class that maintains the parser's configuration.
-	 * @return class
+	 * @return class for the parser's configuration
 	 */
 	public Class<?> getConfigurationClassName();
 

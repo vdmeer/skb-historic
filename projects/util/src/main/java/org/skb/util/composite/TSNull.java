@@ -29,137 +29,20 @@
 
 package org.skb.util.composite;
 
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
-
 import org.apache.log4j.Logger;
 import org.skb.util.composite.TSRepository.TEnum;
 
 
-public final class TSNull implements TSBaseAPI, TSAtomicAPI, TSCompositeAPI {
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
-
+public final class TSNull extends TSDefault {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSNull.class);
 
-
 	/**
-	 * Class constructor, call init
+	 * Class constructor
 	 */
 	public TSNull(){
-		this.init();
-	}
-
-
-	/**
-	 * Initialises the object, sets the types as TEnum and TSString
-	 */
-	private void init(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
-		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
-		this.typeEnum.add(TEnum.TS_COMPOSITE);
-
 		this.typeString.add(TSRepository.TString.TS_NULL);
 		this.typeEnum.add(TEnum.TS_NULL);
 	}
 
-
-	@Override
-	public final java.lang.String tsGetTypeString(){
-		return this.typeString.lastElement();
-	}
-
-
-	@Override
-	public final TEnum tsGetTypeEnum(){
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-
-	@Override
-	public final List<String> tsGetTypeStringList(){
-		return this.typeString;
-	}
-
-
-	@Override
-	public final Set<TEnum> tsGetTypeEnumSet(){
-		return this.typeEnum;
-	}
-
-
-	@Override
-	public final boolean tsIsType(TEnum t){
-		return this.typeEnum.contains(t);
-	}
-
-
-	@Override
-	public final boolean tsIsType(String t){
-		return this.typeString.contains(t);
-	}
-
-
-	@Override
-	public boolean tsIsAtomic(){
-		return true;
-	}
-
-
-	@Override
-	public boolean tsIsComposite(){
-		return true;
-	}
-
-
-	@Override
-	public void tsClean(){
-		logger.warn("tsClean has no effect on TSNull, yet someone called it");
-	}
-
-
-	@Override
-	public void tsTrim(){
-		logger.warn("tsTrim has no effect on TSNull, yet someone called it");
-	}
-
-
-	@Override
-	public void tsPlus(TSBaseAPI tb){
-		logger.warn("tsPlus has no effect on TSNull, yet someone called it");
-	}
-
-
-	@Override
-	public java.lang.String toString(){
-		return "";
-	}
-
-
-	@Override
-	public java.lang.String tsToString(int indent){
-		return "";
-	}
-
-
-	@Override
-	public TSCompositeAPI tsCopyComposite() {
-		return new TSNull();
-	}
-
-
-	@Override
-	public TSAtomicAPI tsCopyAtomic() {
-		return new TSNull();
-	}
 }

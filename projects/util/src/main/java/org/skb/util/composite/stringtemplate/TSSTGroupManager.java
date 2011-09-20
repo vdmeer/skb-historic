@@ -43,6 +43,8 @@ import org.apache.log4j.Logger;
 import org.skb.util.composite.TSAtomic;
 import org.skb.util.composite.TSAtomicAPI;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSDefault;
+import org.skb.util.composite.TSError;
 import org.skb.util.composite.TSNull;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
@@ -52,7 +54,7 @@ import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
- * Wrapper for the class {@link STGroupManager}
+ * String Template Group Manager.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
@@ -177,28 +179,33 @@ public class TSSTGroupManager extends TSAtomic {
 	/**
 	 * Loads an STG
 	 * 
-	 * This method tests the parameters and then calls {@link STGroupManager#loadSTG(String, String)} 
+	 * This method tests the parameters and then calls {@link TSSTGroupManager#loadSTG(String, String)} 
 	 * @param purpose message to be used for reporting/logging
 	 * @param targetLang target language of the STG to be loaded
 	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
 	 */
-	public boolean loadSTG(TSBaseAPI purpose, TSBaseAPI targetLang){
-		if(purpose==null&&targetLang==null)
-			return this.loadSTG("", "");
-		if(purpose!=null&&targetLang==null)
-			return this.loadSTG(purpose.toString(), "");
-		return false;
-	}
+//	public TSDefault loadSTG(TSBaseAPI purpose, TSBaseAPI targetLang){
+//		if(purpose==null&&targetLang==null){
+//			return this.loadSTG("", "");
+//		}
+//		if(purpose!=null&&targetLang==null){
+//			return this.loadSTG(purpose.toString(), "");
+//		}
+//
+//		TSError ret=new TSError();
+//		ret.tsSetMessage("could not load STG");
+//		return ret;
+//	}
 
 	/**
 	 * Loads an STG
 	 * 
-	 * This method tests the parameters and then calls {@link STGroupManager#loadSTG(String, String)}
+	 * This method tests the parameters and then calls {@link TSSTGroupManager#loadSTG(String, String)}
 	 * @param purpose message to be used for reporting/logging
 	 * @param targetLang target language of the STG to be loaded
 	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
 	 */
-	public boolean loadSTG(String purpose, TSBaseAPI targetLang){
+	public TSDefault loadSTG(String purpose, TSBaseAPI targetLang){
 		if(targetLang==null)
 			return this.loadSTG(purpose, "");
 		else
@@ -211,7 +218,9 @@ public class TSSTGroupManager extends TSAtomic {
 	 * @param targetLang target language of the STG to be loaded
 	 * @return true if loaded, false otherwise (file name and URL not set, not able to load from URL, not able to load from file name)
 	 */
-	public boolean loadSTG(String purpose, String targetLang){
+	public TSDefault loadSTG(String purpose, String targetLang){
+		TSError ret=new TSError();
+
 		if(purpose!=null&&!purpose.equals("")){
 			purpose=" (purpose: "+purpose;
 			if(targetLang!=null&&!targetLang.equals(""))
@@ -221,7 +230,9 @@ public class TSSTGroupManager extends TSAtomic {
 
 		if(this.stgFile.tsIsType(TEnum.TS_NULL)){
 			logger.error(this.applicationName+": can't read internal string template, no file set"+purpose);
-			return false;
+			ret.tsSetMessage(this.applicationName+": can't read internal string template");
+			ret.tsSetExplanation("no file set"+purpose);
+			return ret;
 		}
 
 		//test if we can access the file via URL
@@ -229,25 +240,33 @@ public class TSSTGroupManager extends TSAtomic {
 		if(in!=null){
 			try{
 				InputStreamReader isr=new InputStreamReader(in);
-				if(this.useLexerAngelB==true)
+				if(this.useLexerAngelB==true){
 					this.stg=new StringTemplateGroup(isr, AngleBracketTemplateLexer.class);
-				else
+				}
+				else{
 					this.stg=new StringTemplateGroup(isr, DefaultTemplateLexer.class);
+				}
 			} catch (Exception e) {
 				logger.warn(this.applicationName+": can't read internal string template <"+this.stgFile+">"+purpose);
-				return false;
+				ret.tsSetMessage(this.applicationName+": can't read internal string template <"+this.stgFile+">"+purpose);
+				ret.tsSetExplanation("catched exception: "+e.toString());
+				return ret;
 			}
 			logger.trace("loaded URL <"+this.stgFile+">");
 		}
 		else{
 			try{
-				if(this.useLexerAngelB==true)
+				if(this.useLexerAngelB==true){
 					this.stg=new StringTemplateGroup(new FileReader(this.stgFile.toString()), AngleBracketTemplateLexer.class);
-				else
+				}
+				else{
 					this.stg=new StringTemplateGroup(new FileReader(this.stgFile.toString()), DefaultTemplateLexer.class);
+				}
 			} catch (Exception e1) {
 				logger.error(this.applicationName+": can't find external string template <" + this.stgFile + ">"+purpose);
-				return false;
+				ret.tsSetMessage(this.applicationName+": can't find external string template <" + this.stgFile + ">"+purpose);
+				ret.tsSetExplanation("catched exception: "+e1.toString());
+				return ret;
 			}
 			logger.trace("loaded Filesystem <"+this.stgFile+">");
 		}
@@ -333,21 +352,34 @@ public class TSSTGroupManager extends TSAtomic {
 	 * Tests the currently set mandatory and optional chunks for the STG
 	 * @return true if everything was ok, false otherwise (error messages in the log)
 	 */
-	public boolean testChunks(){
-		return (this.testMandatoryChunks()&this.testOptionalChunks());
+	private TSDefault testChunks(){
+		TSDefault testMan=this.testMandatoryChunks();
+		if(testMan.tsIsType(TEnum.TS_ERROR))
+			return testMan;
+		TSDefault testOpt=this.testOptionalChunks();
+		return testOpt;
 	}
 
 	/**
 	 * Tests the currently set mandatory chunks for the STG
 	 * @return true if everything was ok, false otherwise (error messages in the log)
 	 */
-	public boolean testMandatoryChunks(){
-		if(this.loaded==false)
-			return false;
-		else if(this.chunksMandatory==null)
-			return true;
-		else if(this.chunksMandatory.size()==0)
-			return true;
+	public TSDefault testMandatoryChunks(){
+		TSError retErr=new TSError();
+		TSDefault retDef=new TSDefault();
+
+		if(this.loaded==false){
+			retErr.tsSetMessage("object "+TSSTGroupManager.class+" not loaded properly");
+			return retErr;
+		}
+		else if(this.chunksMandatory==null){
+			retDef.tsSetMessage("mandatory chunks are <null>");
+			return retDef;
+		}
+		else if(this.chunksMandatory.size()==0){
+			retDef.tsSetMessage("size of mandatory chunks is <0>");
+			return retDef;
+		}
 
 		Set<?> stNames=this.stg.getTemplateNames();
 		StringTemplate st;
@@ -366,32 +398,40 @@ public class TSSTGroupManager extends TSAtomic {
 				for (int i=0;i<val.size();i++){
 					if(!stm.containsKey(val.get(i).toString())){
 						logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
-						System.err.println(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");;
-						this.loaded=false;
-						return false;
+						retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
+						return retErr;
 					}
 				}
 			} else {
 				logger.error(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
-				System.err.println(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
+				retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
 				this.loaded=false;
-				return false;
+				return retErr;
 			}
 		}
-		return true;
+		return retDef;
 	}
 
 	/**
 	 * Tests the currently set optional chunks for the STG
 	 * @return true if everything was ok, false otherwise (error messages in the log)
 	 */
-	public boolean testOptionalChunks(){
-		if(this.loaded==false)
-			return false;
-		else if(this.chunksOptional==null)
-			return true;
-		else if(this.chunksOptional.size()==0)
-			return true;
+	public TSDefault testOptionalChunks(){
+		TSError retErr=new TSError();
+		TSDefault retDef=new TSDefault();
+
+		if(this.loaded==false){
+			retErr.tsSetMessage("object "+TSSTGroupManager.class+" not loaded properly");
+			return retErr;
+		}
+		else if(this.chunksOptional==null){
+			retDef.tsSetMessage("optional chunks are <null>");
+			return retDef;
+		}
+		else if(this.chunksOptional.size()==0){
+			retDef.tsSetMessage("size of optional chunks is <0>");
+			return retDef;
+		}
 
 		TSArrayListString tempList = new TSArrayListString();
 		Set<?> tName=this.stg.getTemplateNames();
@@ -415,21 +455,24 @@ public class TSSTGroupManager extends TSAtomic {
 				}
 				if(tempList.isEmpty()){
 					logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define any optional argument <"+val+">");
+					retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define any optional argument <"+val+">");
 					this.loaded=false;
-					return false;
+					return retErr;
 				}
 				else if(tempList.size()>1){
 					logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> defines more than one optional argument <"+val+">");
+					retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> defines more than one optional argument <"+val+">");
 					this.loaded=false;
-					return false;
+					return retErr;
 				}
 			} else {
 				logger.error(this.applicationName+": template group <"+this.stgFile+"> does not specify optional template <"+s+">");
+				retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> does not specify optional template <"+s+">");
 				this.loaded=false;
-				return false;
+				return retErr;
 			}
 		}
-		return true;
+		return retDef;
 	}
 
 	@Override

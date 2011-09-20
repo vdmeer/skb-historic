@@ -37,13 +37,14 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.util.composite.TSAtomic;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.stringtemplate.TSSTGroupManager;
 import org.skb.util.composite.util.TSArrayList;
 
 /**
- * Wrapper for the report manager class {@link ReportManager}.
+ * The SKB Report Manager.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
@@ -73,7 +74,6 @@ public class TSReportManager extends TSAtomic {
 	/** The manager for the StringTemplate */
 	protected TSSTGroupManager stgm;
 
-
 	/**
 	 * Class constructor.
 	 * 
@@ -83,7 +83,6 @@ public class TSReportManager extends TSAtomic {
 	public TSReportManager(){
 		this._init();
 	}
-
 
 
 	public TSReportManager(TSReportManager rm){
@@ -97,7 +96,6 @@ public class TSReportManager extends TSAtomic {
 		this.fileFN=new String(rm.fileFN);
 		this.applicationName=new String(rm.applicationName);
 	}
-
 
 	private void _init(){
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_REPORTMANAGER);
@@ -115,7 +113,6 @@ public class TSReportManager extends TSAtomic {
 		this.noWarnings=false;	
 	}
 
-
 	/**
 	 * Set the file name for reporting
 	 * @param fn
@@ -124,7 +121,6 @@ public class TSReportManager extends TSAtomic {
 		this.fileFN=(new File(fn)).getName();
 	}
 
-
 	/**
 	 * Return the currently set file name
 	 * @return currently set file name
@@ -132,7 +128,6 @@ public class TSReportManager extends TSAtomic {
 	public String getFileName(){
 		return this.fileFN;
 	}
-
 
 	/**
 	 * Set the boolean for error handling.
@@ -144,7 +139,6 @@ public class TSReportManager extends TSAtomic {
 		this.noErrors=b;
 	}
 
-
 	/**
 	 * Set the boolean for warning handling.
 	 * 
@@ -154,7 +148,6 @@ public class TSReportManager extends TSAtomic {
 	public void doWarnings(boolean b){
 		this.noWarnings=b;
 	}
-
 
 	/**
 	 * Set the programme name to be used for reporting
@@ -172,7 +165,6 @@ public class TSReportManager extends TSAtomic {
 		return ret;
 	}
 
-
 	/**
 	 * Set the programme name to be used for reporting
 	 * @param p
@@ -189,7 +181,6 @@ public class TSReportManager extends TSAtomic {
 		return ret;
 	}
 
-
 	/**
 	 * Return the number of errors reported since the last initialisation
 	 * @return number of errors reported since the last initialisation
@@ -198,14 +189,12 @@ public class TSReportManager extends TSAtomic {
 		return this.noOfErrors;
 	}
 
-
 	/**
 	 * Set the number of errors to zero
 	 */
 	public void resetNoOfErrors(){
 		this.noOfErrors=0;
 	}
-
 
 	/**
 	 * Return the number of warnings reported since the last initialisation
@@ -215,14 +204,12 @@ public class TSReportManager extends TSAtomic {
 		return this.noOfWarnings;
 	}
 
-
 	/**
 	 * Set the number of warnings to zero
 	 */
 	public void resetNoOfWarnings(){
 		this.noOfWarnings=0;
 	}
-
 
 	/**
 	 * Report an error or a warning
@@ -282,7 +269,6 @@ public class TSReportManager extends TSAtomic {
 		}
 	}
 
-
 	/**
 	 * Report an error from string with additional information
 	 * 
@@ -296,7 +282,6 @@ public class TSReportManager extends TSAtomic {
 		this.report("error", m, add, line, column);
 	}
 
-
 	/**
 	 * Report an error from Token with additional information
 	 * 
@@ -309,7 +294,6 @@ public class TSReportManager extends TSAtomic {
 		this.reportError(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
-
 	/**
 	 * Report an error from Token without additional information
 	 * 
@@ -321,7 +305,6 @@ public class TSReportManager extends TSAtomic {
 		this.reportError(m, t, null);
 	}
 
-
 	/**
 	 * Report a simple error message
 	 * 
@@ -331,7 +314,6 @@ public class TSReportManager extends TSAtomic {
 	public void reportError(String m){
 		this.reportError(m, null, -1, -1);
 	}
-
 
 	/**
 	 * Report a simple error message with additional information
@@ -343,7 +325,6 @@ public class TSReportManager extends TSAtomic {
 	public void reportError(String m, String add){
 		this.reportError(m, add, -1, -1);
 	}
-
 
 	/**
 	 * Report a simple error message without a file name
@@ -358,7 +339,6 @@ public class TSReportManager extends TSAtomic {
 		this.fileFN=t;
 	}
 
-
 	/**
 	 * Report an error message with an ANTLR exception without additional information
 	 * 
@@ -369,7 +349,6 @@ public class TSReportManager extends TSAtomic {
 	public void reportError(String m, org.antlr.runtime.RecognitionException re){
 		this.reportError(m, null, re.line, re.charPositionInLine);
 	}
-
 
 	/**
 	 * Report a message from string with additional information
@@ -384,7 +363,6 @@ public class TSReportManager extends TSAtomic {
 		this.report(null, m, add, line, column);
 	}
 
-
 	/**
 	 * Report a message from Token with additional information
 	 * 
@@ -397,7 +375,6 @@ public class TSReportManager extends TSAtomic {
 		this.reportMessage(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
-
 	/**
 	 * Report a message from Token without additional information
 	 * 
@@ -409,7 +386,6 @@ public class TSReportManager extends TSAtomic {
 		this.reportMessage(m, t, null);
 	}
 
-
 	/**
 	 * Report a simple message
 	 * 
@@ -419,7 +395,6 @@ public class TSReportManager extends TSAtomic {
 	public void reportMessage(String m){
 		this.reportMessage(m, null, -1, -1);
 	}
-
 
 	/**
 	 * Report a simple message with additional information
@@ -431,7 +406,6 @@ public class TSReportManager extends TSAtomic {
 	public void reportMessage(String m, String add){
 		this.reportMessage(m, add, -1, -1);
 	}
-
 
 	/**
 	 * Report a simple message without a file name
@@ -446,7 +420,6 @@ public class TSReportManager extends TSAtomic {
 		this.fileFN=t;
 	}
 
-
 	/**
 	 * Report a warning from string with additional information
 	 * 
@@ -460,7 +433,6 @@ public class TSReportManager extends TSAtomic {
 		this.report("warning", m, add, line, column);
 	}
 
-
 	/**
 	 * Report a warning from Token with additional information
 	 * 
@@ -473,7 +445,6 @@ public class TSReportManager extends TSAtomic {
 		this.reportWarning(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
-
 	/**
 	 * Report a warning from Token without additional information
 	 * 
@@ -485,7 +456,6 @@ public class TSReportManager extends TSAtomic {
 		this.reportWarning(m, t, null);
 	}
 
-
 	/**
 	 * Report a simple warning message
 	 * 
@@ -495,7 +465,6 @@ public class TSReportManager extends TSAtomic {
 	public void reportWarning(String m){
 		this.reportWarning(m, null, -1, -1);
 	}
-
 
 	/**
 	 * Report a simple warning message with additional information
@@ -507,7 +476,6 @@ public class TSReportManager extends TSAtomic {
 	public void reportWarning(String m, String add){
 		this.reportWarning(m, add, -1, -1);
 	}
-	
 
 	/**
 	 * Report a simple warning message without a file name
@@ -522,22 +490,19 @@ public class TSReportManager extends TSAtomic {
 		this.fileFN=t;
 	}
 
-
 	/**
-	 * @see STGroupManager#setSTGFile(TSBaseAPI)
+	 * @see TSSTGroupManager#setSTGFile(TSBaseAPI)
 	 */
 	public boolean setSTGFileName(TSBaseAPI fn){
 		return this.stgm.setSTGFile(fn);
 	}
 
-
 	/**
-	 * @see STGroupManager#loadSTG(String, String)
+	 * @see TSSTGroupManager#loadSTG(String, String)
 	 */
-	public boolean loadSTG(String purpose, String targetLang){
+	public TSDefault loadSTG(String purpose, String targetLang){
 		return this.stgm.loadSTG(purpose, targetLang);
 	}
-
 
 	/**
 	 * Returns the manager's STGroup
@@ -547,15 +512,14 @@ public class TSReportManager extends TSAtomic {
 		return this.stgm.getSTG();
 	}
 
-
 	public String stgmToString(){
 		return this.stgm.toString();
 	}
-
 
 	@Override
 	public TSReportManager tsCopyAtomic(){
 		TSReportManager ret=new TSReportManager(this);
 		return ret;
 	}
+
 }

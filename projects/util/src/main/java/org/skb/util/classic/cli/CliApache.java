@@ -64,22 +64,17 @@ public class CliApache implements Cli {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(CliApache.class);
 
-
 	/** The application name for reporting error and warnings */
 	private TSString applicationName;
-
 
 	/** The command line options */
 	private Options options;
 
-
 	/** The command line parsed */
 	private CommandLine line;
 
-
 	/** List of options */
 	private LinkedHashMap<String, String> optionList;
-
 
 	/** Class constructor, initialises all private data structures */
 	public CliApache() {
@@ -87,7 +82,6 @@ public class CliApache implements Cli {
 		this.options=new Options();
 		this.optionList=new LinkedHashMap<String, String>();
 	}
-
 
 	@Override public boolean setApplicationName(TSBaseAPI appName){
 		boolean ret=false;
@@ -98,7 +92,6 @@ public class CliApache implements Cli {
 		return ret;
 	}
 
-
 	@Override public boolean setApplicationName(String appName){
 		boolean ret=false;
 		if(appName!=null){
@@ -108,11 +101,9 @@ public class CliApache implements Cli {
 		return ret;
 	}
 
-
 	@Override public String getApplicationName(){
 		return this.applicationName.tsToString(0);
 	}
-
 
 	@Override public void setPropOptions(TSPropertyMap prop){
 		String optShort;
@@ -181,7 +172,6 @@ public class CliApache implements Cli {
 		}
 	}
 
-
 	/**
 	 * Returns the options set for the command line parser
 	 * @return options
@@ -189,7 +179,6 @@ public class CliApache implements Cli {
 	public Options getPropOptions(){
 		return this.options;
 	}
-
 
 	@Override public void parse(String[] args, boolean stopAtNonOption) throws ParseException {
         CommandLineParser parser=new PosixParser();
@@ -202,7 +191,6 @@ public class CliApache implements Cli {
         }
 	}
 
-
 	@Override public String usage(String header, String footer, int width, boolean autoUsage){
 		StringWriter sw=new StringWriter();
 		PrintWriter pw=new PrintWriter(sw);
@@ -213,7 +201,6 @@ public class CliApache implements Cli {
 		//formatter.printWrapped(pw, width, footer); // formatter didn't accept "\n" ...
 		return header+sw.toString()+footer;
 	}
-
 
 	@Override public void setOptions(TSPropertyMap prop){
 		String val;

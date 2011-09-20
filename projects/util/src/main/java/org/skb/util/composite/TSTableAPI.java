@@ -256,9 +256,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	public void setColumns(HashSet<String>cols, String ref_class, String prefix);
 
 
-	public Map<String, TSTableRowAPI> tsGetMap();
-
-
 	@Override
 	public Collection<TSTableRowAPI> values();
 }

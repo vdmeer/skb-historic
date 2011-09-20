@@ -45,10 +45,12 @@ import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
 import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSDefault;
+import org.skb.util.composite.TSError;
 import org.skb.util.composite.TSNull;
 import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSTableRowAPI;
 import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSTableRowAPI;
 
 /**
  * Provides a map of properties based on TSTable
@@ -105,15 +107,6 @@ public class TSPropertyMap extends TSTable{
 	}
 
 
-	public void addProperties(TSTable table){
-		Collection<String> values = table.getRows();
-		for (Iterator<String> i = values.iterator(); i.hasNext(); ){
-			String s=i.next();
-			this.put(s, table.get(s));
-        }
-	}
-
-
 	public void addProperties(TSPropertyMap map){
 		Collection<String> values = map.getRows();
 		for (Iterator<String> i = values.iterator(); i.hasNext(); ){
@@ -123,56 +116,12 @@ public class TSPropertyMap extends TSTable{
 	}
 
 
-	public boolean hasProperty(String row){
-		if(this.isInitialised())
-			return this.tsvalue.containsKey(row);
-		else
-			return false;
-	}
-
-
-	public boolean hasPropertyValue(String row, String col){
-		boolean ret=false;
-		if(this.isInitialised()){
-			if(this.tsvalue.containsKey(row)){
-				if(this.tsvalue.get(row).containsKey(col)){
-					TSBaseAPI val=this.tsvalue.get(row).get(col);
-					if(val!=null&&!val.tsIsType(TEnum.TS_NULL))
-						ret=true;
-				}
-			}
-		}
-		return ret;
-	}
-
-
-	public void setValueDefault(String key, String val){
-		this.put(key, FieldKeys.fieldValueDefault, val);
-	}
-
-
-	public void setValueDefault(String key, TSBaseAPI val){
-		this.put(key, FieldKeys.fieldValueDefault, val);
-	}
-
-
-	public void setValueDefault(String key, boolean val){
-		this.put(key, FieldKeys.fieldValueDefault, val);
-	}
-
-
-	public TSBaseAPI getValueDefault(String key){
-		return this.get(key, FieldKeys.fieldValueDefault);
-	}
-
-
-	public void setValueCli(String key, TSBaseAPI val){
-		this.put(key, FieldKeys.fieldValueCli, val);
-	}
-
-
-	public TSBaseAPI getValueCli(String key){
-		return this.get(key, FieldKeys.fieldValueCli);
+	public void addProperties(TSTable table){
+		Collection<String> values=table.getRows();
+		for (Iterator<String>i=values.iterator(); i.hasNext();){
+			String s=i.next();
+			this.put(s, table.get(s));
+        }
 	}
 
 
@@ -188,16 +137,39 @@ public class TSPropertyMap extends TSTable{
 		return new TSNull();
 	}
 
-
-	public String loadFromFile(TSBaseAPI fn){
-		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL))
-			return this.loadFromFile(fn.toString());
-		else
-			return null;
+	public TSBaseAPI getValueCli(String key){
+		return this.get(key, FieldKeys.fieldValueCli);
 	}
 
 
-	public String loadFromFile(String fn){
+	public TSBaseAPI getValueDefault(String key){
+		return this.get(key, FieldKeys.fieldValueDefault);
+	}
+
+	public boolean hasProperty(String row){
+		if(this.isInitialised())
+			return this.tsvalue.containsKey(row);
+		else
+			return false;
+	}
+
+	public boolean hasPropertyValue(String row, String col){
+		boolean ret=false;
+		if(this.isInitialised()){
+			if(this.tsvalue.containsKey(row)){
+				if(this.tsvalue.get(row).containsKey(col)){
+					TSBaseAPI val=this.tsvalue.get(row).get(col);
+					if(val!=null&&!val.tsIsType(TEnum.TS_NULL)){
+						ret=true;
+					}
+				}
+			}
+		}
+		return ret;
+	}
+
+	public TSDefault loadFromFile(String fn){
+		TSError ret=new TSError();
 		try {
 			AbstractConfiguration cfg;
 			String prefix="";
@@ -205,102 +177,75 @@ public class TSPropertyMap extends TSTable{
 				cfg=new INIConfiguration(fn);
 				prefix="tribe.";
 			}
-			else if(fn.endsWith(".xml"))
+			else if(fn.endsWith(".xml")){
 				cfg=new XMLConfiguration(fn);
-			else if(fn.endsWith(".properties"))
+			}
+			else if(fn.endsWith(".properties")){
 				cfg=new PropertiesConfiguration(fn);
-			else
-				return "unknown configuration file format, use '.ini' or '.xml' or '.properties'";
+			}
+			else{
+				ret.tsSetMessage("unknown configuration file format");
+				ret.tsSetExplanation("use '.ini' or '.xml' or '.properties'");
+				return ret;
+			}
 
 			File file=new File(fn);
-			if(!file.canRead())
-				return "can't read configuration file <" + fn +">";
+			if(!file.canRead()){
+				ret.tsSetMessage("can't read configuration file <" + fn +">");
+				return ret;
+			}
 
 			Iterator<?> it;
-			if(prefix!="")
+			if(prefix!=""){
 				it=cfg.getKeys(prefix);
-			else
+			}
+			else{
 				it=cfg.getKeys();
+			}
 			while(it.hasNext()){
 				String p=it.next().toString();
 				if(this.containsKey(p)){
 					String type=this.get(p, FieldKeys.fieldValueType).toString();
-					if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING))
+					if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_STRING)){
 	        			this.put(p, FieldKeys.fieldValueFile, cfg.getString(p));
-	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN))
+					}
+	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_BOOLEAN)){
 	        			this.put(p, FieldKeys.fieldValueFile, cfg.getBoolean(p, false));
-	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER))
+	        		}
+	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_INTEGER)){
 	        			this.put(p, FieldKeys.fieldValueFile, cfg.getInteger(p, 0));
-        			else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE))
+	        		}
+        			else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_DOUBLE)){
 	        			this.put(p, FieldKeys.fieldValueFile, cfg.getDouble(p));
-	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_LONG))
+        			}
+	        		else if(type.equals(TSRepository.TString.TS_ATOMIC_JAVA_LONG)){
 	        			this.put(p, FieldKeys.fieldValueFile, cfg.getLong(p, 0));
-//	        		else
-//	        			System.err.println("TSPropMap, loadfromfile, unknown type <"+type+"> for <"+p+">");
+	        		}
+	        		else{
+	        			ret.tsSetMessage("TSPropMap, loadfromfile, unknown type <"+type+"> for <"+p+">");
+	        			return ret;
+	        		}
 				}
-
 			}
 		} catch (Exception e) {
-			//TODO exception printing
+			ret.tsSetMessage("catched exception while reading file");
+			ret.tsSetExplanation(e.toString());
+			return ret;
 		}
-		return null;
+		return new TSDefault();
 	}
 
-
-	public String writeToFile(TSBaseAPI fn){
-		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL))
-			return this.writeToFile(fn.toString());
-		else
-			return null;
-	}
-
-
-	public String writeToFile(String fn){
-		try {
-			AbstractConfiguration cfg;
-			String prefix="";
-			if(fn.endsWith(".ini")){
-				cfg=new INIConfiguration();
-				prefix="tribe.";
-			}
-			else if(fn.endsWith(".xml"))
-				cfg=new XMLConfiguration();
-			else if(fn.endsWith(".properties"))
-				cfg=new PropertiesConfiguration();
-			else
-				return "unknown configuration file format, use '.ini' or '.xml' or '.properties'";
-
-			File file=new File(fn);
-			file.createNewFile();
-			if(!file.canWrite())
-				return "can't write configuration file <" + fn +">";
-
-			HashSet<String> rows=new HashSet<String>(this.getRows());
-	        for (Iterator<String> i = rows.iterator(); i.hasNext(); i.hasNext()){
-	        	String row=i.next();
-	        	if(this.get(row, FieldKeys.fieldCliOptionShort)!=null||this.get(row, FieldKeys.fieldCliOptionLong)!=null)
-	        		cfg.setProperty(prefix+row, this.getValue(row));
-	        }
-			if(fn.endsWith(".ini"))
-				((INIConfiguration)cfg).save(file);
-			if(fn.endsWith(".xml"))
-				((XMLConfiguration)cfg).save(file);
-			if(fn.endsWith(".properties"))
-				((PropertiesConfiguration)cfg).save(file);
-		} catch (Exception e) {
-			//TODO exception printing
+	public TSDefault loadFromFile(TSBaseAPI fn){
+		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL)){
+			return this.loadFromFile(fn.toString());
 		}
-		return null;
+		else{
+			TSError ret=new TSError();
+			ret.tsSetMessage("could not load propertyfile");
+			ret.tsSetExplanation("no file name given");
+			return ret;
+		}
 	}
-
-
-	public Set<String> loadFromJson(File file){
-		TSBaseAPI _t=new Json2Oat().read(file);
-		if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-			return this.loadFromJason((TSLinkedHashTree)_t);
-		return new TreeSet<String>();
-	}
-
 
 	public Set<String> loadFromJason(TSBaseAPI map){
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
@@ -308,7 +253,6 @@ public class TSPropertyMap extends TSTable{
 		else
 			return this.loadFromJason((TSLinkedHashTree)map);
 	}
-
 
 	public Set<String> loadFromJason(TSLinkedHashTree map){
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
@@ -345,6 +289,28 @@ public class TSPropertyMap extends TSTable{
 		return null;
 	}
 
+	public Set<String> loadFromJson(File file){
+		TSBaseAPI _t=new Json2Oat().read(file);
+		if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+			return this.loadFromJason((TSLinkedHashTree)_t);
+		return new TreeSet<String>();
+	}
+
+	public void setValueCli(String key, TSBaseAPI val){
+		this.put(key, FieldKeys.fieldValueCli, val);
+	}
+
+	public void setValueDefault(String key, boolean val){
+		this.put(key, FieldKeys.fieldValueDefault, val);
+	}
+
+	public void setValueDefault(String key, String val){
+		this.put(key, FieldKeys.fieldValueDefault, val);
+	}
+
+	public void setValueDefault(String key, TSBaseAPI val){
+		this.put(key, FieldKeys.fieldValueDefault, val);
+	}
 
 	@Override
 	public TSPropertyMap tsCopyComposite(){
@@ -359,5 +325,65 @@ public class TSPropertyMap extends TSTable{
 		ret.columns=new HashSet<String>(this.columns);
 		ret.columnsInitialised=this.columnsInitialised;
 		return ret;
+	}
+
+	public TSDefault writeToFile(String fn){
+		TSError ret=new TSError();
+		try {
+			AbstractConfiguration cfg;
+			String prefix="";
+			if(fn.endsWith(".ini")){
+				cfg=new INIConfiguration();
+				prefix="tribe.";
+			}
+			else if(fn.endsWith(".xml")){
+				cfg=new XMLConfiguration();
+			}
+			else if(fn.endsWith(".properties")){
+				cfg=new PropertiesConfiguration();
+			}
+			else{
+				ret.tsSetMessage("unknown configuration file format");
+				ret.tsSetExplanation("use '.ini' or '.xml' or '.properties'");
+				return ret;
+			}
+
+			File file=new File(fn);
+			file.createNewFile();
+			if(!file.canWrite()){
+				ret.tsSetMessage("can't write configuration file <" + fn +">");
+				return ret;
+			}
+
+			HashSet<String> rows=new HashSet<String>(this.getRows());
+	        for (Iterator<String> i = rows.iterator(); i.hasNext(); i.hasNext()){
+	        	String row=i.next();
+	        	if(this.get(row, FieldKeys.fieldCliOptionShort)!=null||this.get(row, FieldKeys.fieldCliOptionLong)!=null)
+	        		cfg.setProperty(prefix+row, this.getValue(row));
+	        }
+			if(fn.endsWith(".ini"))
+				((INIConfiguration)cfg).save(file);
+			if(fn.endsWith(".xml"))
+				((XMLConfiguration)cfg).save(file);
+			if(fn.endsWith(".properties"))
+				((PropertiesConfiguration)cfg).save(file);
+		} catch (Exception e) {
+			ret.tsSetMessage("catched exception while writing file");
+			ret.tsSetExplanation(e.toString());
+			return ret;
+		}
+		return new TSDefault();
+	}
+
+	public TSDefault writeToFile(TSBaseAPI fn){
+		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL)){
+			return this.writeToFile(fn.toString());
+		}
+		else{
+			TSError ret=new TSError();
+			ret.tsSetMessage("could not write propertyfile");
+			ret.tsSetExplanation("no file name given");
+			return ret;
+		}
 	}
 }

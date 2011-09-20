@@ -86,10 +86,10 @@ public class ColaStatistics {
 		//this.stgl.setSTGFile(TribeProperties.getInstance().getValue(ColaConstants.Properties.keyStatStg));
 		this.stgl.loadSTG("templates for printing statistics", "");
 
-		if(this.stgl.testChunks()){
-			stg=this.stgl.getSTG();
-			this.loaded=true;
-		}
+//		if(!this.stgl.testChunks().tsIsType(TEnum.TS_ERROR)){
+//			stg=this.stgl.getSTG();
+//			this.loaded=true;
+//		}
 	}
 
 	public void genSimpleStats(){

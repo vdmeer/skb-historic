@@ -55,106 +55,67 @@ public abstract class TSAtomic implements TSAtomicAPI {
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC));
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsClean()
-	 */
 	@Override
 	public void tsClean() {
 		logger.warn("not implemented");
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeEnum()
-	 */
 	@Override
 	public TEnum tsGetTypeEnum() {
 		return TSRepository.type(this.typeString.lastElement());
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeEnumSet()
-	 */
 	@Override
 	public Set<TEnum> tsGetTypeEnumSet() {
 		return this.typeEnum;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeString()
-	 */
 	@Override
 	public String tsGetTypeString() {
 		return this.typeString.lastElement();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeStringList()
-	 */
 	@Override
 	public List<String> tsGetTypeStringList() {
 		return this.typeString;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsAtomic()
-	 */
 	@Override
 	public boolean tsIsAtomic() {
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsComposite()
-	 */
 	@Override
 	public boolean tsIsComposite() {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsType(java.lang.String)
-	 */
 	@Override
 	public boolean tsIsType(String type) {
 		return this.typeString.contains(type);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsType(org.skb.util.patterns.structural.composite.TSRepository.TEnum)
-	 */
 	@Override
 	public boolean tsIsType(TEnum type) {
 		return this.typeEnum.contains(type);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsPlus(org.skb.util.patterns.structural.composite.TSBaseAPI)
-	 */
 	@Override
 	public void tsPlus(TSBaseAPI tb) {
 		logger.warn("not implemented");
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsToString(int)
-	 */
 	@Override
 	public String tsToString(int indent) {
 		logger.warn("not implemented");
 		return "";
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsTrim()
-	 */
 	@Override
 	public void tsTrim() {
 		logger.warn("not implemented");
 	}
 
-	/* (non-Javadoc)
-	 * @see org.skb.util.patterns.structural.composite.TSAtomicAPI#tsCopyAtomic()
-	 */
 	@Override
 	public TSAtomicAPI tsCopyAtomic() {
 		logger.warn("not implemented");

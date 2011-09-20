@@ -345,7 +345,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	@Override
 	public void putAll(TSTreeAPI map) {
 		if(this.isInitialised()&&map!=null)
-			this.putAll(map.tsGetMap());
+			this.putAll(map.tsGetTree());
 	}
 
 
@@ -480,7 +480,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	}
 
 	@Override
-	public Map<String, TSBaseAPI> tsGetMap() {
+	public Map<String, TSBaseAPI> tsGetTree() {
 		if(this.isInitialised())
 			return this.tsvalue;
 		else

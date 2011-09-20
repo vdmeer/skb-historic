@@ -119,13 +119,4 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI put(TSString key, TSBaseAPI val);
 
-
-	public Map<String, TSBaseAPI> tsGetMap();
-
-
-	public Object tsGetValue();
-
-
-	public String tsToString(int indent);
-	//public T2TableRow getValOatTableRow();
 }

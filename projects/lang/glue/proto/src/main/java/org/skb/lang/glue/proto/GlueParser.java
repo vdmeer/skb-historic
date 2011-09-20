@@ -15,11 +15,7 @@ import org.skb.lang.glue.proto.grammars.glueEbnfParser;
 import org.skb.lang.glue.proto.grammars.glueGen;
 import org.skb.tribe.TribeParserAPI;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.java.TSBoolean;
 
 public class GlueParser implements TribeParserAPI {
 	/** Logger instance */
@@ -97,24 +93,6 @@ public class GlueParser implements TribeParserAPI {
 
 	@Override
 	public void finish(boolean quietMode) {
-		ConfigurationProperties prop=config.getProperties();
-		GlueStatistics stats=new GlueStatistics();
-
-		TSBaseAPI ata=prop.getValue(GlueConstants.Properties.keyPrStat);
-		if(!quietMode){
-			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-				stats.genSimpleStats();
-			ata=prop.getValue(GlueConstants.Properties.keyPrStatAll);
-			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-				stats.genCompleteStats();
-		}
-		// print stats if wanted
-		ata=prop.getValue(GlueConstants.Properties.keyPrStat);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-			stats.printSimpleStatistic();
-		ata=prop.getValue(GlueConstants.Properties.keyPrStatAll);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-			stats.printCompleteStatistic();
 	}
 
 	@Override

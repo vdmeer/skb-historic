@@ -481,14 +481,14 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	}
 
 
-	public void put(String row, String col, TSBaseAPI val) {
+	@Override
+	public void put(String row, String col, TSAtomicAPI val) {
 		if(this.isInitialised()&&row!=null&&col!=null&&val!=null)
 			this.tsvalue.get(row).put(col, val);
 	}
 
 
-	@Override
-	public void put(String row, String col, TSAtomicAPI val) {
+	public void put(String row, String col, TSBaseAPI val) {
 		if(this.isInitialised()&&row!=null&&col!=null&&val!=null)
 			this.tsvalue.get(row).put(col, val);
 	}
@@ -562,6 +562,17 @@ public class TSTable extends TSComposite implements TSTableAPI{
 
 
 	@Override
+	public void setColumns(HashSet<String> cols, String ref_class, String prefix) {
+		//add the string set
+		this.setColumns(cols);
+		//re-set init to false, to that the next set still sets
+		this.columnsInitialised=false;
+		//add the prefixed class fields
+		this.setColumns(ref_class, prefix);
+	}
+
+
+	@Override
 	public void setColumns(String ref_class, String prefix) {
 		if(this.columnsInitialised==false){
 			try {
@@ -583,17 +594,6 @@ public class TSTable extends TSComposite implements TSTableAPI{
 
 
 	@Override
-	public void setColumns(HashSet<String> cols, String ref_class, String prefix) {
-		//add the string set
-		this.setColumns(cols);
-		//re-set init to false, to that the next set still sets
-		this.columnsInitialised=false;
-		//add the prefixed class fields
-		this.setColumns(ref_class, prefix);
-	}
-
-
-	@Override
 	public int size() {
 		if(this.isInitialised())
 			return this.tsvalue.size();
@@ -605,6 +605,23 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	@Override
 	public String toString(){
 		return this.tsToString(0);
+	}
+
+
+	@Override
+	public TSTable tsCopyComposite(){
+		TSTable ret=new TSTable();
+
+		String key;
+		Set<String> o_set=(Set<String>)this.tsvalue.keySet();
+		Iterator<String> key_it=o_set.iterator();
+		while(key_it.hasNext()){
+			key=key_it.next();
+			ret.tsvalue.put(key, (TSTableRowAPI)this.tsvalue.get(key).tsCopyComposite());
+		}
+		ret.columns=new HashSet<String>(this.columns);
+		ret.columnsInitialised=this.columnsInitialised;
+		return ret;
 	}
 
 
@@ -642,31 +659,5 @@ public class TSTable extends TSComposite implements TSTableAPI{
 			return this.tsvalue.values();
 		else
 			return new TreeSet<TSTableRowAPI>();		
-	}
-
-
-	@Override
-	public Map<String, TSTableRowAPI> tsGetMap() {
-		if(this.isInitialised())
-			return this.tsvalue;
-		else
-			return new LinkedHashMap<String, TSTableRowAPI>();
-	}
-
-
-	@Override
-	public TSTable tsCopyComposite(){
-		TSTable ret=new TSTable();
-
-		String key;
-		Set<String> o_set=(Set<String>)this.tsvalue.keySet();
-		Iterator<String> key_it=o_set.iterator();
-		while(key_it.hasNext()){
-			key=key_it.next();
-			ret.tsvalue.put(key, (TSTableRowAPI)this.tsvalue.get(key).tsCopyComposite());
-		}
-		ret.columns=new HashSet<String>(this.columns);
-		ret.columnsInitialised=this.columnsInitialised;
-		return ret;
 	}
 }

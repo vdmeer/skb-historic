@@ -50,7 +50,7 @@ import org.skb.util.composite.util.TSArrayList;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
- * Wrapper for the string template class {@link PDO}.
+ * PDO Class.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

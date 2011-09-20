@@ -42,6 +42,7 @@ import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.lang.LangParserAPI;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.util.TSArrayListString;
@@ -80,18 +81,20 @@ public class TribeHelpers {
 	}
 
 
-	public static void loadParserOptions(LangParserAPI parser, Cli cli){
+	public static TSDefault loadParserOptions(LangParserAPI parser, Cli cli){
 		Configuration dest=Configuration.getConfiguration(parser.getConfigurationClassName());
 		Configuration orig=Configuration.getConfiguration(Tribe.class);
 
 		dest.config.put(PathKeys.pathInstancesProperties, orig.getProperties().tsCopyComposite());
 		dest.config.put(PathKeys.pathInstancesReportmanager, orig.getReportManager().tsCopyAtomic());
 
-		parser.setOptions(dest.getProperties());
+		TSDefault ret=parser.setOptions();
 
 		cli.setPropOptions(dest.getProperties());
 		cli.setApplicationName(dest.getProperties().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
 		dest.getReportManager().setApplicationName(dest.getProperties().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
+
+		return ret;
 	}
 
 
@@ -188,13 +191,8 @@ public class TribeHelpers {
 	}
 
 
-	public enum exitOptions{
-		HELP, VERSION, LANGUAGES, DEF_OPTIONS, PRINT_STG_REPORTMGR
-	}
-
-
-	public static EnumSet<TribeHelpers.exitOptions> checkExitOptions(ConfigurationProperties prop){
-		EnumSet<TribeHelpers.exitOptions> ret=EnumSet.noneOf(TribeHelpers.exitOptions.class);
+	public static EnumSet<TribeExitOptions> checkExitOptions(ConfigurationProperties prop){
+		EnumSet<TribeExitOptions> ret=EnumSet.noneOf(TribeExitOptions.class);
 
 		Boolean showHelp=false;
 		Boolean showVersion=false;
@@ -211,15 +209,15 @@ public class TribeHelpers {
 		} catch (Exception e) {}
 
 		if(showHelp==true)
-			ret.add(TribeHelpers.exitOptions.HELP);
+			ret.add(TribeExitOptions.HELP);
 		if(showVersion==true)
-			ret.add(TribeHelpers.exitOptions.VERSION);
+			ret.add(TribeExitOptions.VERSION);
 		if(showLang==true)
-			ret.add(TribeHelpers.exitOptions.LANGUAGES);
+			ret.add(TribeExitOptions.LANGUAGES);
 		if(defOpt==true)
-			ret.add(TribeHelpers.exitOptions.DEF_OPTIONS);
+			ret.add(TribeExitOptions.DEF_OPTIONS);
 		if(printTribeSTG==true)
-			ret.add(TribeHelpers.exitOptions.PRINT_STG_REPORTMGR);
+			ret.add(TribeExitOptions.PRINT_STG_REPORTMGR);
 		return ret;
 	}
 

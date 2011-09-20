@@ -34,7 +34,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
@@ -65,7 +64,6 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 		this._init();
 		this.tsvalue=map;
 	}
-
 
 	private TSTableRow(){
 		this._init();
@@ -282,20 +280,6 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 		else
 			return new TreeSet<TSBaseAPI>();
 	}
-
-	@Override
-	public Map<String, TSBaseAPI> tsGetMap() {
-		if(this.tsvalue!=null)
-			return this.tsvalue;
-		else
-			return new TreeMap<String, TSBaseAPI>();
-	}
-
-	@Override
-	public TSTableRow tsGetValue(){
-		return this;
-	}
-
 
 	@Override
 	public TSTableRow tsCopyComposite(){
