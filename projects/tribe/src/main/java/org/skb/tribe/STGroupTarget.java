@@ -33,12 +33,12 @@ package org.skb.tribe;
 import org.antlr.stringtemplate.StringTemplate;
 import org.skb.util.FieldKeys;
 import org.skb.util.PathKeys;
-import org.skb.util.config.Configuration;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
-import org.skb.util.stringtemplate.STGroupManager;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSArrayList;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * Class that handles target string template groups for the parser.
@@ -51,7 +51,7 @@ public class STGroupTarget {
 	private TSLinkedHashTree targetCunksMan;
 	private TSLinkedHashTree targetChunksOpt;
 
-	private STGroupManager stdHeader;
+	private TSSTGroupManager stdHeader;
 
 	public STGroupTarget(TSBaseAPI applicationName, TSBaseAPI genericSTG, Configuration config){
 		this.initialised=false;
@@ -62,7 +62,7 @@ public class STGroupTarget {
 		stdHeaderChunks.put("fileStart", new TSArrayList(new String[]{"target"}));
 		stdHeaderChunks.put("fileEnd",   new TSArrayList(new String[]{"target"}));
 
-		this.stdHeader=new STGroupManager();
+		this.stdHeader=new TSSTGroupManager();
 		this.stdHeader.setMandatoryChunks(stdHeaderChunks);
 
 		this.stdHeader.useLexerDefault();

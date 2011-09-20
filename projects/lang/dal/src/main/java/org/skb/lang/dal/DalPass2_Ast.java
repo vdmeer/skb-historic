@@ -37,9 +37,9 @@ import org.antlr.runtime.Token;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.util.config.Configuration;
-import org.skb.util.languages.AtomList;
-import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.util.TSLangRuleMap;
 
 /**
  * Pass 2 of the DAL parser, mostly looking into semantic analysis.

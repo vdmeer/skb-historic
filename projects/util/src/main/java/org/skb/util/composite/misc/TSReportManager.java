@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.atomic.misc;
+package org.skb.util.composite.misc;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -37,13 +37,13 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.misc.ReportManager;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.db.TSPDO;
-import org.skb.util.stringtemplate.STGroupManager;
+import org.skb.util.classic.misc.ReportManager;
+import org.skb.util.composite.TSAtomicAPI;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.db.TSPDO;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
 
 /**
  * Wrapper for the report manager class {@link ReportManager}.
@@ -56,10 +56,10 @@ public class TSReportManager extends ReportManager implements TSAtomicAPI {
 	public final static Logger logger=Logger.getLogger(TSPDO.class);
 
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE, TSRepository.TString.TS_ATOMIC, TSRepository.TString.TS_ATOMIC_REPORTMANAGER));
 
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC, TEnum.TS_ATOMIC_REPORTMANAGER));
 
 
 	/**
@@ -67,21 +67,7 @@ public class TSReportManager extends ReportManager implements TSAtomicAPI {
 	 */
 	public TSReportManager(){
 		super();
-		this._initRM();
 	}
-
-
-	/**
-	 * Initialisation.
-	 */
-	private void _initRM(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_REPORTMANAGER);
-		this.typeEnum.add(TEnum.TS_ATOMIC_REPORTMANAGER);
-	}
-
 
 	@Override
 	public void tsClean() {
@@ -160,7 +146,7 @@ public class TSReportManager extends ReportManager implements TSAtomicAPI {
 	@Override
 	public TSReportManager tsCopyAtomic(){
 		TSReportManager ret=new TSReportManager();
-		ret.stgm=new STGroupManager(this.stgm);
+		ret.stgm=new TSSTGroupManager(this.stgm);
 		ret.noOfErrors=this.noOfErrors;
 		ret.noOfWarnings=this.noOfWarnings;
 		ret.noWarnings=this.noWarnings;

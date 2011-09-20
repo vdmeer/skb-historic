@@ -40,12 +40,12 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.util.config.Configuration;
-import org.skb.util.languages.AtomList;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
-import org.skb.util.stringtemplate.STGroupManager;
-import org.skb.util.stringtemplate.STWriterXtoY;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.classic.stringtemplate.STWriterXtoY;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * Class implementing statistic methods for Cola parser.
@@ -60,7 +60,7 @@ public class ColaStatistics {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
-	private STGroupManager stgl=null;
+	private TSSTGroupManager stgl=null;
 	private StringTemplateGroup stg;
 	boolean loaded=false;
 
@@ -77,7 +77,7 @@ public class ColaStatistics {
 		chMan.put("completeStatStart",      new TSArrayListString(new String[]{"file"}));
 		chMan.put("completeStatPrintArray", new TSArrayListString(new String[]{"text", "size", "array"}));
 
-		this.stgl=new STGroupManager();
+		this.stgl=new TSSTGroupManager();
 		this.stgl.setMandatoryChunks(chMan);
 		//this.stgl.setApplicationName(TribeProperties.getInstance().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
 

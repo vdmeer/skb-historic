@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.atomic.antlr;
+package org.skb.util.composite.antlr;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -38,10 +38,10 @@ import java.util.Vector;
 
 import org.antlr.runtime.ClassicToken;
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSAtomicAPI;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
 
 /**
  * Wrapper for the string template ANTLR class {@link ClassicToken}.
@@ -54,38 +54,26 @@ public final class TSToken extends ClassicToken implements TSAtomicAPI {
 	public final static Logger logger=Logger.getLogger(TSToken.class);
 
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE, TSRepository.TString.TS_ATOMIC, TSRepository.TString.TS_ATOMIC_ANTLR_TOKEN));
 
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC, TEnum.TS_ATOMIC_ANTLR_TOKEN));
 
 
 	public TSToken(){
 		super(0);
-		this._init();
 	}
 
 	public TSToken(int arg0){
 		super(arg0);
-		this._init();
 	}
 
 	public TSToken(int arg0, java.lang.String arg1){
 		super(arg0, arg1);
-		this._init();
 	}
 
 	public TSToken(org.antlr.runtime.Token tk){
 		super(tk);
-		this._init();
-	}
-
-	private void _init(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_ANTLR_TOKEN);
-		this.typeEnum.add(TEnum.TS_ATOMIC_ANTLR_TOKEN);
 	}
 
 	@Override

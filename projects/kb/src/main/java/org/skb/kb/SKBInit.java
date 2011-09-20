@@ -31,7 +31,7 @@
 package org.skb.kb;
 
 import org.apache.log4j.Logger;
-import org.skb.util.log.LogManager;
+import org.skb.util.classic.log.LogManager;
 
 /**
  * Static class that provides an init method to realise all SKB initialisation.

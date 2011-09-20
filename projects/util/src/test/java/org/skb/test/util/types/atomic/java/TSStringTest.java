@@ -8,11 +8,11 @@ import java.util.Set;
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 public class TSStringTest extends TestCase{
 	public void setUp(){

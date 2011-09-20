@@ -46,21 +46,21 @@ import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
 import org.skb.util.PathKeys;
-import org.skb.util.config.Configuration;
-import org.skb.util.config.ConfigurationProperties;
-import org.skb.util.io.files.FileManager;
-import org.skb.util.io.files.FileTemplateList;
-import org.skb.util.languages.LangParserAPI;
-import org.skb.util.misc.Json2Oat;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
-import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
-import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
-import org.skb.util.stringtemplate.STGroupManager;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.io.files.FileManager;
+import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.classic.lang.LangParserAPI;
+import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.misc.TSReportManager;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.util.composite.util.TSPropertyMap;
 
 public class LangParserImpl implements LangParserAPI {
 	/** Logger instance */
@@ -85,7 +85,7 @@ public class LangParserImpl implements LangParserAPI {
 	private TSArrayListString supportedTargetLang=null;
 
 	/** StringTemplateGroup manager for the parser */
-	protected STGroupManager stgl=null;
+	protected TSSTGroupManager stgl=null;
 
 	//TODO comments
 	Configuration config=null;
@@ -245,7 +245,7 @@ public class LangParserImpl implements LangParserAPI {
 
 
 	private void loadStg() {
-		this.stgl=new STGroupManager();
+		this.stgl=new TSSTGroupManager();
 
 		TSBaseAPI obt=this.cProp.getValue(FieldKeys.fieldApplicationTgtStgAngleBr);
 		Boolean _t=false;

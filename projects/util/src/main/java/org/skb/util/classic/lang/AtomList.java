@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.languages;
+package org.skb.util.classic.lang;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,19 +39,19 @@ import java.util.TreeMap;
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSTableRowAPI;
-import org.skb.util.patterns.structural.composite.atomic.antlr.TSToken;
-import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
-import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSST;
-import org.skb.util.patterns.structural.composite.composite.util.TSTable;
-import org.skb.util.patterns.structural.composite.composite.util.TSTableRow;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSTableRowAPI;
+import org.skb.util.composite.antlr.TSToken;
+import org.skb.util.composite.misc.TSReportManager;
+import org.skb.util.composite.stringtemplate.TSST;
+import org.skb.util.composite.util.TSTable;
+import org.skb.util.composite.util.TSTableRow;
 
 /**
  * Provides a (symbol) table that compilers/parsers can use to maintain a list of language elements.
  *
- * This class is based on {@link org.skb.util.patterns.structural.composite.composite.util.TSTable} using a pre-defined column structure
+ * This class is based on {@link org.skb.util.composite.util.TSTable} using a pre-defined column structure
  * suitable for compilers and parsers. The columns are
  * <ul>
  *   <li>category - general separation of language atoms, such as class, interface, contract.</li>

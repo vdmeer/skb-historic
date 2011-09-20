@@ -35,12 +35,12 @@ import java.util.Set;
 
 import org.skb.kb.SKB;
 import org.skb.kb.SKBReader;
-import org.skb.util.patterns.creational.builder.Request;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.classic.patterns.creational.builder.Request;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * SKB Information Reader (Core Package)

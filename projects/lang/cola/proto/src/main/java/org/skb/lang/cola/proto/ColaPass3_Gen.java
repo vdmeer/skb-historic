@@ -38,11 +38,11 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.util.FieldKeys;
-import org.skb.util.config.Configuration;
-import org.skb.util.languages.AtomList;
-import org.skb.util.languages.ScopeString;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.classic.lang.ScopeString;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
 
 /**
  * Pass 3 of the Cola parser using templates to generate a target language specification.

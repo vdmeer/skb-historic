@@ -42,12 +42,12 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.util.FieldKeys;
-import org.skb.util.config.Configuration;
-import org.skb.util.config.ConfigurationProperties;
-import org.skb.util.io.files.FileTemplateList;
-import org.skb.util.languages.AtomList;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.java.TSBoolean;
 
 /**
  * Pass 4 of the Cola Parser, generating files for output.

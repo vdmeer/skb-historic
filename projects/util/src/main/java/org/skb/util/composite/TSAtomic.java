@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite;
+package org.skb.util.composite;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -37,7 +37,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSRepository.TEnum;
 
 /**
  * Abstract class implementing the core functionality of {@link TSAtomicAPI}
@@ -54,7 +54,6 @@ public abstract class TSAtomic implements TSAtomicAPI {
 
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC));
-
 
 	/* (non-Javadoc)
 	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsClean()

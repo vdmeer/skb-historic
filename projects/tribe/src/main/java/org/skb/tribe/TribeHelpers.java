@@ -37,15 +37,15 @@ import java.util.TreeSet;
 
 import org.skb.util.FieldKeys;
 import org.skb.util.PathKeys;
-import org.skb.util.cli.Cli;
-import org.skb.util.config.Configuration;
-import org.skb.util.config.ConfigurationProperties;
-import org.skb.util.languages.LangParserAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.classic.cli.Cli;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.lang.LangParserAPI;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 
 public class TribeHelpers {

@@ -27,21 +27,14 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.atomic.util;
+package org.skb.util.composite.util;
 
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
 import java.util.Stack;
-import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSAtomic;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
 
 /**
  * Implementation of a scope, using {@link Stack}.
@@ -49,34 +42,22 @@ import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSScope implements TSAtomicAPI {
+public class TSScope extends TSAtomic {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSScope.class);
 
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
-
 	/** Local value */
 	protected Stack<String> scope;
-
 
 	public TSScope(){
 		this._init();
 	}
 
-
 	protected void _init(){
-		this.scope=new Stack<String>();
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_SCOPE);
 		this.typeEnum.add(TEnum.TS_ATOMIC_SCOPE);
+		this.scope=new Stack<String>();
 	}
-
 
 	public boolean push(String key, String value){
 		if(this.scope.contains(key+"@"+value))
@@ -85,75 +66,21 @@ public class TSScope implements TSAtomicAPI {
 		return true;
 	}
 
-	public void pop(){this.scope.pop();}
-	public void reset(){this.scope.clear();}
-
-	public Stack<String> as_array(){return this.scope;}
-	public String as_string(){return this.scope.toString();}
-
-	@Override
-	public void tsClean() {
-		// TODO
-		logger.warn("tsClean not implemented");
+	public void pop(){
+		this.scope.pop();
 	}
 
-	@Override
-	public final TEnum tsGetTypeEnum(){
-		return TSRepository.type(this.typeString.lastElement());
+	public void reset(){
+		this.scope.clear();
 	}
 
-	@Override
-	public final Set<TEnum> tsGetTypeEnumSet(){
-		return this.typeEnum;
+	public Stack<String> as_array(){
+		return this.scope;
 	}
 
-	@Override
-	public final java.lang.String tsGetTypeString(){
-		return this.typeString.lastElement();
+	public String as_string(){
+		return this.scope.toString();
 	}
-
-	@Override
-	public final List<String> tsGetTypeStringList(){
-		return this.typeString;
-	}
-
-	@Override
-	public boolean tsIsAtomic(){
-		return true;
-	}
-
-	@Override
-	public boolean tsIsComposite(){
-		return false;
-	}
-
-	@Override
-	public final boolean tsIsType(String t){
-		return this.typeString.contains(t);
-	}
-
-	@Override
-	public final boolean tsIsType(TEnum t){
-		return this.typeEnum.contains(t);
-	}
-
-	@Override
-	public void tsPlus(TSBaseAPI tb){
-	}
-
-	@Override
-	public String tsToString(int indent) {
-		// TODO
-		logger.warn("tsToString not implemented");
-		return null;
-	}
-
-	@Override
-	public void tsTrim() {
-		// TODO
-		logger.warn("tsTrim not implemented");
-	}
-
 
 	@Override
 	public TSScope tsCopyAtomic(){

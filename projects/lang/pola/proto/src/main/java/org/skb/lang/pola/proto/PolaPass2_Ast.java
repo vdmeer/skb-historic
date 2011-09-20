@@ -33,9 +33,9 @@ package org.skb.lang.pola.proto;
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
-import org.skb.util.config.Configuration;
-import org.skb.util.languages.AtomList;
-import org.skb.util.languages.ScopeToken;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.classic.lang.ScopeToken;
 
 /**
  * Pass 2 of the Pola parser mostly doing semantic analysis.

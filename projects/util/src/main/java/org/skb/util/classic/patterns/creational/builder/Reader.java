@@ -27,10 +27,10 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.creational.builder;
+package org.skb.util.classic.patterns.creational.builder;
 
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * Interface for a reader.

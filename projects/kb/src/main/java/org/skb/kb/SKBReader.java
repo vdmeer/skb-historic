@@ -30,11 +30,11 @@
 
 package org.skb.kb;
 
-import org.skb.util.patterns.creational.builder.Builder;
-import org.skb.util.patterns.creational.builder.Reader;
-import org.skb.util.patterns.creational.builder.Request;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.classic.patterns.creational.builder.Builder;
+import org.skb.util.classic.patterns.creational.builder.Reader;
+import org.skb.util.classic.patterns.creational.builder.Request;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * Abstract class to implement readers for the SKB.

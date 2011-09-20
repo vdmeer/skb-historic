@@ -27,9 +27,9 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.creational.builder;
+package org.skb.util.classic.patterns.creational.builder;
 
-import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
 
 /**
  * A class managing templates for a builder.
@@ -54,7 +54,7 @@ public interface TemplateManager {
 
 	public void set_header();
 
-	public TSSTGManager get_template_object(String key);
+	public TSSTGroupManager get_template_object(String key);
 
 	/**
 	 * Returns the path (the fully qualified path name) for the template <code>key</code>

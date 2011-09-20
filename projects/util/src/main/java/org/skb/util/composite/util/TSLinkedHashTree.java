@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.composite.util;
+package org.skb.util.composite.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,14 +44,14 @@ import java.util.Vector;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSCompositeAPI;
-import org.skb.util.patterns.structural.composite.TSTreeAPI;
-import org.skb.util.patterns.structural.composite.TSNull;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.composite.TSAtomicAPI;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSCompositeAPI;
+import org.skb.util.composite.TSNull;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSTreeAPI;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.java.TSString;
 
 /**
  * The composite class for a linked hash tree.

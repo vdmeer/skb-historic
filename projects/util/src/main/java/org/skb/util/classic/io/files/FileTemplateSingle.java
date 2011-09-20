@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.io.files;
+package org.skb.util.classic.io.files;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

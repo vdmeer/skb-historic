@@ -33,10 +33,10 @@ package org.skb.lang.dal;
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.util.config.Configuration;
-import org.skb.util.languages.AtomList;
-import org.skb.util.patterns.structural.composite.TSTableRowAPI;
-import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.TSTableRowAPI;
+import org.skb.util.composite.util.TSLangRuleMap;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.

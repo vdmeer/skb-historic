@@ -44,17 +44,17 @@ import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
 import org.skb.lang.cpp.CPP;
 import org.skb.util.FieldKeys;
-import org.skb.util.cli.Cli;
-import org.skb.util.cli.CliApache;
-import org.skb.util.config.Configuration;
-import org.skb.util.config.ConfigurationProperties;
-import org.skb.util.languages.LangParserAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
+import org.skb.util.classic.cli.Cli;
+import org.skb.util.classic.cli.CliApache;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.lang.LangParserAPI;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.misc.TSReportManager;
 
 /**
  * This is the main Tribe class, it does all the magic.

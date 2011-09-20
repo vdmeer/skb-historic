@@ -36,7 +36,7 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.skb.util.io.files.FileTemplateList;
+import org.skb.util.classic.io.files.FileTemplateList;
 
 public interface TribeParserAPI {
 	public String getConfigurationFile();

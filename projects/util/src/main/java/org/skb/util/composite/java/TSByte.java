@@ -27,20 +27,13 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.atomic.java;
+package org.skb.util.composite.java;
 
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
-
-import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSAtomic;
+import org.skb.util.composite.TSAtomicAPI;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
 
 /**
  * A wrapper for the class {@link Byte}.
@@ -48,9 +41,7 @@ import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSByte implements TSAtomicAPI {
-	/** Logger instance */
-	public final static Logger logger=Logger.getLogger(TSByte.class);
+public class TSByte extends TSAtomic {
 
 	public static java.lang.Byte decode(java.lang.String nm){
 		return java.lang.Byte.decode(nm);
@@ -79,15 +70,8 @@ public class TSByte implements TSAtomicAPI {
 		return java.lang.Byte.valueOf(s, radix);
 	}
 
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
-
 	/** Local value */
 	public java.lang.Byte tsvalue=null;
-
 
 	/**
 	 * Creates a new empty TSByte.
@@ -162,9 +146,6 @@ public class TSByte implements TSAtomicAPI {
 	}
 
 	private void _init(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_BYTE);
 		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_BYTE);
 		this.tsvalue=new java.lang.Byte((byte)1);
@@ -204,51 +185,6 @@ public class TSByte implements TSAtomicAPI {
 	}
 
 	@Override
-	public void tsClean(){
-		this.tsvalue=new java.lang.Byte(null);
-	}
-
-	@Override
-	public final TEnum tsGetTypeEnum(){
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-	@Override
-	public final Set<TEnum> tsGetTypeEnumSet(){
-		return this.typeEnum;
-	}
-
-	@Override
-	public final java.lang.String tsGetTypeString(){
-		return this.typeString.lastElement();
-	}
-
-	@Override
-	public final List<String> tsGetTypeStringList(){
-		return this.typeString;
-	}
-
-	@Override
-	public boolean tsIsAtomic(){
-		return true;
-	}
-
-	@Override
-	public boolean tsIsComposite(){
-		return false;
-	}
-
-	@Override
-	public final boolean tsIsType(String t){
-		return this.typeString.contains(t);
-	}
-
-	@Override
-	public final boolean tsIsType(TEnum t){
-		return this.typeEnum.contains(t);
-	}
-
-	@Override
 	public void tsPlus(TSBaseAPI tb){
 		if(tb.tsGetTypeEnum()==this.tsGetTypeEnum())
 			this.tsvalue=(byte) (this.tsvalue+((TSByte)tb).tsvalue);
@@ -262,13 +198,6 @@ public class TSByte implements TSAtomicAPI {
 		ret+=this.tsvalue.toString();
 		return ret;
 	}
-
-	@Override
-	public void tsTrim(){
-		//TODO
-		logger.warn("tsTrim not implemented");
-	}
-
 
 	@Override
 	public TSByte tsCopyAtomic(){

@@ -14,12 +14,12 @@ import org.skb.lang.dal.grammars.dalEbnfLexer;
 import org.skb.lang.dal.grammars.dalEbnfParser;
 import org.skb.lang.dal.grammars.dalGen;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.util.config.Configuration;
-import org.skb.util.config.ConfigurationProperties;
-import org.skb.util.io.files.FileTemplateList;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.java.TSBoolean;
 
 public class DalParser implements TribeParserAPI {
 	/** Logger instance */

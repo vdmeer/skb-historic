@@ -7,15 +7,15 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.junit.Test;
 import org.skb.util.FieldKeys;
-import org.skb.util.cli.CliApache;
-import org.skb.util.log.LogManager;
-import org.skb.util.misc.Json2Oat;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
-import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
+import org.skb.util.classic.cli.CliApache;
+import org.skb.util.classic.log.LogManager;
+import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.java.TSInteger;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.util.composite.util.TSPropertyMap;
 
 public class CliApacheTest extends TestCase {
 	public void setUp(){

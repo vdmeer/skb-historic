@@ -27,11 +27,11 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite;
+package org.skb.util.composite;
 
 import java.util.Map;
 
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.composite.java.TSString;
 
 
 /**

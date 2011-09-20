@@ -4,7 +4,7 @@ import org.skb.kb.SKB;
 import org.skb.kb.SKBBuilder;
 import org.skb.kb.SKBInit;
 import org.skb.kb.SKBReader;
-import org.skb.util.patterns.creational.builder.Request;
+import org.skb.util.classic.patterns.creational.builder.Request;
 
 public class SKB_SKBInfo {
 

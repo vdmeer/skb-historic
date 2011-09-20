@@ -33,9 +33,9 @@ package org.skb.kb.targets.tgtjava.core.skbinfo;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.skb.kb.SKBBuilder;
-import org.skb.util.patterns.creational.builder.Request;
-import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.classic.patterns.creational.builder.Request;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * SKB Information Builder for plain text output (Core Package)
@@ -54,7 +54,7 @@ public class TextPlainBuilder extends SKBBuilder{
 
 	@Override
 	public void executeLoop(Request request, TSLinkedHashTree entries) {
-		TSSTGManager stgm=this.templates.get_template_object("tpl");
+		TSSTGroupManager stgm=this.templates.get_template_object("tpl");
 		StringTemplateGroup stg=stgm.getSTG();
 		StringTemplate template=stg.getInstanceOf("build");
 

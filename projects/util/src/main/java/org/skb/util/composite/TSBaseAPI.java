@@ -27,12 +27,12 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite;
+package org.skb.util.composite;
 
 import java.util.List;
 import java.util.Set;
 
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSRepository.TEnum;
 
 
 /**

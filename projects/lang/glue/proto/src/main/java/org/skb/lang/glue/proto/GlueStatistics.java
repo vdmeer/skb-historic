@@ -33,11 +33,11 @@ package org.skb.lang.glue.proto;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
-import org.skb.util.config.Configuration;
-import org.skb.util.languages.AtomList;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
-import org.skb.util.stringtemplate.STGroupManager;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * Class handling statistic information about a Glue specification.
@@ -52,7 +52,7 @@ public class GlueStatistics {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(GlueParser.class);
 
-	private STGroupManager stgl=null;
+	private TSSTGroupManager stgl=null;
 	private StringTemplateGroup stg;
 	boolean loaded=false;
 
@@ -69,7 +69,7 @@ public class GlueStatistics {
 		chMan.put("completeStatStart",      new TSArrayListString(new String[]{"file"}));
 		chMan.put("completeStatPrintArray", new TSArrayListString(new String[]{"text", "size", "array"}));
 
-		this.stgl=new STGroupManager();
+		this.stgl=new TSSTGroupManager();
 		this.stgl.setMandatoryChunks(chMan);
 
 		//TSBaseAPI statStg=TribeProperties.getInstance().getValueCli(GlueConstants.Properties.keyStatStg);

@@ -8,17 +8,17 @@ import junit.framework.TestSuite;
 import org.apache.log4j.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.skb.util.log.LogManager;
-import org.skb.util.misc.Json2Oat;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSNull;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
-import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
-import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.classic.log.LogManager;
+import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSNull;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.java.TSFloat;
+import org.skb.util.composite.java.TSInteger;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 public class TSMapLHTest extends TestCase{
 	TSLinkedHashTree simple;

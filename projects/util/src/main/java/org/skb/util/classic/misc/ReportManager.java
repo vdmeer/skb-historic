@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.misc;
+package org.skb.util.classic.misc;
 
 import java.io.File;
 
@@ -35,10 +35,10 @@ import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.stringtemplate.STGroupManager;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSArrayList;
 
 /**
  * A report manager with extended functionality for parsers/compilers.
@@ -69,7 +69,7 @@ public class ReportManager{
 	protected String applicationName;
 
 	/** The manager for the StringTemplate */
-	protected STGroupManager stgm;
+	protected TSSTGroupManager stgm;
 
 
 	/**
@@ -88,7 +88,7 @@ public class ReportManager{
 	 * noErrors and noWarnings are set to false, the file name is set to an empty string and the programme name is set to "tribe". 
 	 */
 	private void _init(){
-		this.stgm=new STGroupManager();
+		this.stgm=new TSSTGroupManager();
 		this.stgm.putMandatoryChunks("report", new TSArrayList(new String[]{"name", "file", "line", "column", "message", "type"}));
 		this.stgm.putOptionalChunks("error100", new TSArrayList(new String[]{"name"}));
 		this.stgm.useLexerAngelB();

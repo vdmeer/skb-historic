@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.misc;
+package org.skb.util.classic.misc;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;

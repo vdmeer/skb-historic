@@ -31,8 +31,8 @@
 package org.skb.kb.targets.tgtjava.core.http;
 
 import org.skb.kb.SKBReader;
-import org.skb.util.patterns.creational.builder.Request;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
+import org.skb.util.classic.patterns.creational.builder.Request;
+import org.skb.util.composite.java.TSString;
 
 /**
  * SKB Core HTTP Reader.

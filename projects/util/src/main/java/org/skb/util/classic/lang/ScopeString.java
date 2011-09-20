@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.languages;
+package org.skb.util.classic.lang;
 
 import java.util.Vector;
 

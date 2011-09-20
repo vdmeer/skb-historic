@@ -36,33 +36,33 @@ import junit.framework.TestSuite;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.skb.util.log.LogManager;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSNull;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.atomic.antlr.TSToken;
-import org.skb.util.patterns.structural.composite.atomic.db.TSPDO;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
-import org.skb.util.patterns.structural.composite.atomic.java.TSByte;
-import org.skb.util.patterns.structural.composite.atomic.java.TSDouble;
-import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
-import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
-import org.skb.util.patterns.structural.composite.atomic.java.TSLong;
-import org.skb.util.patterns.structural.composite.atomic.java.TSObject;
-import org.skb.util.patterns.structural.composite.atomic.java.TSShort;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSST;
-import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTG;
-import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListAtomic;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.atomic.util.TSScope;
-import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
-import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
-import org.skb.util.patterns.structural.composite.composite.util.TSTable;
-import org.skb.util.patterns.structural.composite.composite.util.TSTableRow;
+import org.skb.util.classic.log.LogManager;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSNull;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.antlr.TSToken;
+import org.skb.util.composite.db.TSPDO;
+import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.java.TSByte;
+import org.skb.util.composite.java.TSDouble;
+import org.skb.util.composite.java.TSFloat;
+import org.skb.util.composite.java.TSInteger;
+import org.skb.util.composite.java.TSLong;
+import org.skb.util.composite.java.TSObject;
+import org.skb.util.composite.java.TSShort;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.stringtemplate.TSST;
+import org.skb.util.composite.stringtemplate.TSSTG;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSArrayList;
+import org.skb.util.composite.util.TSArrayListAtomic;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLangRuleMap;
+import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.util.composite.util.TSPropertyMap;
+import org.skb.util.composite.util.TSScope;
+import org.skb.util.composite.util.TSTable;
+import org.skb.util.composite.util.TSTableRow;
 
 /**
  * Test class for initialisation and basic ts-method testing on Atomic and Composite types
@@ -513,7 +513,7 @@ public class InitTests extends TestCase{
 
 	@Test public void testAtomicStringtemplateSTGManager(){
 		Object[] o;
-		TSSTGManager _t=new TSSTGManager();
+		TSSTGroupManager _t=new TSSTGroupManager();
 		o=_t.tsGetTypeEnumSet().toArray();
 			assertEquals(3,o.length);
 			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());

@@ -37,11 +37,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.util.FieldKeys;
-import org.skb.util.config.Configuration;
-import org.skb.util.config.ConfigurationProperties;
-import org.skb.util.io.files.FileTemplateList;
-import org.skb.util.languages.AtomList;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.java.TSBoolean;
 
 /**
  * Pass 4 of the DAL Parser, generating files for output.

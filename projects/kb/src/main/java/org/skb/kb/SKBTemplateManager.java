@@ -31,9 +31,9 @@
 package org.skb.kb;
 
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.creational.builder.TemplateManager;
-import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.classic.patterns.creational.builder.TemplateManager;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * SKB specific Template Manager, supporting builders in managing templates.
@@ -74,7 +74,7 @@ public class SKBTemplateManager implements TemplateManager {
 		SKB mySKB=SKB.getInstance();
 		String file=mySKB.configuration.get(new String[] {"path", "targets"}).toString()+mySKB.configuration.get(new String[] {"skb", "targetpref"}).toString()+mySKB.configuration.get(new String[] {"skb", "target"}).toString()+"/"+mySKB.getRegisteredTemplates(key).get(new String[] {"core:rabit:target:template", "java"}).toString()+".stg";
 
-		TSSTGManager stgm=new TSSTGManager();
+		TSSTGroupManager stgm=new TSSTGroupManager();
 		stgm.setApplicationName("skb");
 		stgm.setSTGFile(file);
 		stgm.useLexerAngelB();
@@ -95,12 +95,12 @@ public class SKBTemplateManager implements TemplateManager {
 
 
 	//TODO JSDOC
-	public TSSTGManager get_template_object(String key){
+	public TSSTGroupManager get_template_object(String key){
 		if(!this.isInitialised())
 			return null;
 
 		if(this.templates.containsKey(key))
-			return (TSSTGManager)this.templates.get(new String[] {key, "stgm"});
+			return (TSSTGroupManager)this.templates.get(new String[] {key, "stgm"});
 
 		return null;
 	}

@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.config;
+package org.skb.util.classic.config;
 
 import java.util.LinkedHashMap;
 

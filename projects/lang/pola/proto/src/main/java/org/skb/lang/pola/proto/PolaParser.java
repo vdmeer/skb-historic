@@ -14,12 +14,12 @@ import org.skb.lang.pola.proto.grammars.polaEbnfLexer;
 import org.skb.lang.pola.proto.grammars.polaEbnfParser;
 import org.skb.lang.pola.proto.grammars.polaGen;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.util.config.Configuration;
-import org.skb.util.config.ConfigurationProperties;
-import org.skb.util.io.files.FileTemplateList;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
+import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.java.TSBoolean;
 
 public class PolaParser implements TribeParserAPI {
 	/** Logger instance */

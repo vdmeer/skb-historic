@@ -28,7 +28,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.config;
+package org.skb.util.classic.config;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -37,13 +37,13 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
-import org.skb.util.misc.Json2Oat;
-import org.skb.util.misc.PropertyHandler;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSTableRowAPI;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
-import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
+import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.misc.PropertyHandler;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSTableRowAPI;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.util.composite.util.TSPropertyMap;
 
 /**
  * Special property map with pre-loaded rows for configurations.

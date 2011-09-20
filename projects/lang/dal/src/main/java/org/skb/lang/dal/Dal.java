@@ -33,8 +33,8 @@ package org.skb.lang.dal;
 import org.apache.log4j.Logger;
 import org.skb.tribe.Tribe;
 import org.skb.tribe.LangParserImpl;
-import org.skb.util.languages.LangParserAPI;
-import org.skb.util.log.LogManager;
+import org.skb.util.classic.lang.LangParserAPI;
+import org.skb.util.classic.log.LogManager;
 
 /**
  * General entry point for Dal parsing.

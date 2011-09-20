@@ -27,20 +27,20 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.atomic.java;
+package org.skb.util.composite.java;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Locale;
 
-import org.skb.util.dictionaries.Html2LaTeX;
-import org.skb.util.patterns.structural.composite.TSAtomic;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.classic.dictionaries.Html2LaTeX;
+import org.skb.util.composite.TSAtomic;
+import org.skb.util.composite.TSAtomicAPI;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.util.TSArrayListString;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * A wrapper for the class {@link String}.

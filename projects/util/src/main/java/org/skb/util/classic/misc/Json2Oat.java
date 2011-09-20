@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.misc;
+package org.skb.util.classic.misc;
 
 import java.io.File;
 import java.util.Iterator;
@@ -37,14 +37,14 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
-import org.skb.util.patterns.structural.composite.atomic.java.TSDouble;
-import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
-import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
-import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
+import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.java.TSDouble;
+import org.skb.util.composite.java.TSFloat;
+import org.skb.util.composite.java.TSInteger;
+import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.util.TSArrayList;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * Class that reads a JSON file and transforms it into an TSMapLH.
@@ -144,7 +144,7 @@ public class Json2Oat {
 	/**
 	 * Recurses through the given node and constructs a TSBase return.
 	 * @param node starting node for recursion
-	 * @return TSBase object that is either and TSArrayList, a TSMapLH or an atomic type from the package {@link org.skb.util.patterns.structural.composite.atomic.java}
+	 * @return TSBase object that is either and TSArrayList, a TSMapLH or an atomic type from the package {@link org.skb.util.composite.java}
 	 */
 	private TSBaseAPI traverse(JsonNode node){
 		if(node.isArray()){

@@ -27,20 +27,13 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.atomic.java;
-
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Vector;
+package org.skb.util.composite.java;
 
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
-import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSAtomic;
+import org.skb.util.composite.TSAtomicAPI;
+import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
 
 /**
  * A wrapper for the class {@link Long}.
@@ -48,7 +41,7 @@ import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSLong implements TSAtomicAPI {
+public class TSLong extends TSAtomic {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSLong.class);
 
@@ -148,12 +141,6 @@ public class TSLong implements TSAtomicAPI {
 		return java.lang.Long.valueOf(l);
 	}
 
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
-
 	/** Local value */
 	public java.lang.Long tsvalue=null;
 
@@ -229,9 +216,6 @@ public class TSLong implements TSAtomicAPI {
 	}
 
 	private void _init(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_LONG);
 		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_LONG);
 		this.tsvalue=new java.lang.Long(0);
@@ -270,57 +254,6 @@ public class TSLong implements TSAtomicAPI {
 	}
 
 	@Override
-	public void tsClean() {
-		this.tsvalue=new java.lang.Long(0);
-	}
-
-	@Override
-	public final TEnum tsGetTypeEnum(){
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-	@Override
-	public final Set<TEnum> tsGetTypeEnumSet(){
-		return this.typeEnum;
-	}
-
-	@Override
-	public final java.lang.String tsGetTypeString(){
-		return this.typeString.lastElement();
-	}
-
-	@Override
-	public final List<String> tsGetTypeStringList(){
-		return this.typeString;
-	}
-
-	@Override
-	public boolean tsIsAtomic(){
-		return true;
-	}
-
-	@Override
-	public boolean tsIsComposite(){
-		return false;
-	}
-
-	@Override
-	public final boolean tsIsType(String t){
-		return this.typeString.contains(t);
-	}
-
-	@Override
-	public final boolean tsIsType(TEnum t){
-		return this.typeEnum.contains(t);
-	}
-
-	@Override
-	public void tsPlus(TSBaseAPI tb) {
-		if(tb.tsGetTypeEnum()==this.tsGetTypeEnum())
-			this.tsvalue=this.tsvalue+((TSLong)tb).tsvalue;
-	}
-
-	@Override
 	public java.lang.String tsToString(int indent){
 		String ret=new String();
 		for(int i=indent;i>0;i--)
@@ -328,13 +261,6 @@ public class TSLong implements TSAtomicAPI {
 		ret+=this.tsvalue.toString();
 		return ret;
 	}
-
-	@Override
-	public void tsTrim() {
-		//TODO
-		logger.warn("tsTrim not implemented");
-	}
-
 
 	@Override
 	public TSLong tsCopyAtomic(){
