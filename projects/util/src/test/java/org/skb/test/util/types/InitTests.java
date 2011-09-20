@@ -51,8 +51,8 @@ import org.skb.util.composite.java.TSLong;
 import org.skb.util.composite.java.TSObject;
 import org.skb.util.composite.java.TSShort;
 import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.stringtemplate.TSST;
-import org.skb.util.composite.stringtemplate.TSSTG;
+import org.skb.util.composite.stringtemplate.TSStringTemplate;
+import org.skb.util.composite.stringtemplate.TSStringTemplateGroup;
 import org.skb.util.composite.stringtemplate.TSSTGroupManager;
 import org.skb.util.composite.util.TSArrayList;
 import org.skb.util.composite.util.TSArrayListAtomic;
@@ -455,7 +455,7 @@ public class InitTests extends TestCase{
 
 	@Test public void testAtomicStringtemplateST(){
 		Object[] o;
-		TSST _t=new TSST();
+		TSStringTemplate _t=new TSStringTemplate();
 		o=_t.tsGetTypeEnumSet().toArray();
 			assertEquals(3,o.length);
 			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
@@ -484,7 +484,7 @@ public class InitTests extends TestCase{
 
 	@Test public void testAtomicStringtemplateSTG(){
 		Object[] o;
-		TSSTG _t=new TSSTG("");
+		TSStringTemplateGroup _t=new TSStringTemplateGroup("");
 		o=_t.tsGetTypeEnumSet().toArray();
 			assertEquals(3,o.length);
 			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());

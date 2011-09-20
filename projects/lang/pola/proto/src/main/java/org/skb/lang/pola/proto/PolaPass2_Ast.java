@@ -34,8 +34,8 @@ import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.classic.lang.ScopeToken;
+import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 2 of the Pola parser mostly doing semantic analysis.
@@ -51,7 +51,7 @@ public class PolaPass2_Ast {
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	/** Atom List (Symbol Table) */
-	public AtomList atoms;
+	public TSAtomList atoms;
 
 //	/** Language Rule map for error/warning reporting */
 //	private LanguageRuleMap cr;
@@ -103,7 +103,7 @@ public class PolaPass2_Ast {
 				ret=false;
 			}
 			else{
-				String leafCat=this.atoms.get(scoped, AtomList.alValCategory).toString();
+				String leafCat=this.atoms.get(scoped, TSAtomList.alValCategory).toString();
 				if(!leafCat.equals(PolaConstants.Tokens.polaPACKAGE)&&
 				   !leafCat.equals(PolaConstants.Tokens.polaELEMENT)&&
 				   !leafCat.equals(PolaConstants.Tokens.polaFACILITY)
@@ -123,7 +123,7 @@ public class PolaPass2_Ast {
 			ret=false;
 		}
 		else{
-			String leafCat=this.atoms.get(scoped, AtomList.alValCategory).toString();
+			String leafCat=this.atoms.get(scoped, TSAtomList.alValCategory).toString();
 			if(leafCat.equals(PolaConstants.Tokens.polaPARAMETER)||leafCat.equals(PolaConstants.Tokens.polaACTION)){
 				config.getReportManager().reportError("invalid scoped name <" + scoped + ">","cannot scope "+leafCat+"s",tk.getLine(),tk.getCharPositionInLine());
 				ret=false;

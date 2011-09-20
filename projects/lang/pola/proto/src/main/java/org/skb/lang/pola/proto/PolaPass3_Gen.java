@@ -36,8 +36,8 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.classic.lang.ScopeString;
+import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 3 of the Pola parser using templates to generate target language specifications.
@@ -52,7 +52,7 @@ public class PolaPass3_Gen {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
-	public AtomList atoms;
+	public TSAtomList atoms;
 	public ScopeString sn;
 
 	//for simple_type, to get all options to all DPOLAtoms
@@ -106,7 +106,7 @@ public class PolaPass3_Gen {
 		ret.put(PolaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
 		ret.put(PolaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
 		ret.put(PolaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
-		ret.put(PolaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
+		ret.put(PolaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)
@@ -133,7 +133,7 @@ public class PolaPass3_Gen {
 	public String scopeTgtLangAdd(){
 		String ret=null;
 		//if function then no add...
-		if(this.atoms.get(this.toString(),AtomList.alValCategory).equals(PolaConstants.Tokens.polaFUNCTION))
+		if(this.atoms.get(this.toString(),TSAtomList.alValCategory).equals(PolaConstants.Tokens.polaFUNCTION))
 			return ret;
 		return ret;
 	}

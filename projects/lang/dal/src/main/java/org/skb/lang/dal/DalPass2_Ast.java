@@ -38,7 +38,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.lang.TSAtomList;
 import org.skb.util.composite.util.TSLangRuleMap;
 
 /**
@@ -55,7 +55,7 @@ public class DalPass2_Ast {
 	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
 	/** Atom List (Symbol Table) */
-	public AtomList atoms;
+	public TSAtomList atoms;
 
 	/** Language Rule map for error/warning reporting */
 	private TSLangRuleMap cr;
@@ -193,7 +193,7 @@ public class DalPass2_Ast {
 						p+=scopeSep;
 				}
 				try{
-					ret.put(p,this.atoms.get(p).get(AtomList.alValCategory).toString());
+					ret.put(p,this.atoms.get(p).get(TSAtomList.alValCategory).toString());
 				}
 				catch(Exception e){
 					ret.put(p,new String());

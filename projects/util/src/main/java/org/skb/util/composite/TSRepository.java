@@ -119,9 +119,6 @@ public class TSRepository {
 		/** The SKB Report Manager */
 		public final static String TS_ATOMIC_REPORTMANAGER		= "ts:atomic:reportmanager";
 
-		/** The SKB Lang AtomList */
-		public final static String TS_ATOMIC_LANG_ATOMLIST		= "ts:atomic:lang:atomlist";
-
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		public final static String TS_ATOMIC_ARRAYLIST_STRING	= "ts:atomic:util:arraylist_string";
 		/** SKB Type for an Array List (java.utils.list<TSAtomic>) */
@@ -141,6 +138,9 @@ public class TSRepository {
 		public final static String TS_COMPOSITE_LANG_RULEMAP	= "ts:composite:util:lang_rulemap";
 		/** SKB Type for a Property Map, which provides different value types and initialisations */
 		public final static String TS_COMPOSITE_PROPERTY_MAP	= "ts:composite:util:property_map";
+
+		/** The SKB Lang AtomList */
+		public final static String TS_COMPOSITE_LANG_ATOMLIST	= "ts:composite:lang:atomlist";
 	}
 
 
@@ -208,9 +208,6 @@ public class TSRepository {
 		/** The SKB Report Manager */
 		TS_ATOMIC_REPORTMANAGER			(TSRepository.TString.TS_ATOMIC_REPORTMANAGER),
 
-		/** The SKB Lang AtomList */
-		TS_ATOMIC_LANG_ATOMLIST			(TSRepository.TString.TS_ATOMIC_LANG_ATOMLIST),
-
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		TS_ATOMIC_ARRAYLIST_STRING		(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING),
 		/** SKB Type for an Array List (java.utils.list<TSAtomic>) */
@@ -230,6 +227,9 @@ public class TSRepository {
 		TS_COMPOSITE_LANG_RULEMAP		(TSRepository.TString.TS_COMPOSITE_LANG_RULEMAP),
 		/** SKB Type for a Property Map, which provides different value types and initialisations */
 		TS_COMPOSITE_PROPERTY_MAP		(TSRepository.TString.TS_COMPOSITE_PROPERTY_MAP),
+
+		/** The SKB Lang AtomList */
+		TS_COMPOSITE_LANG_ATOMLIST		(TSRepository.TString.TS_COMPOSITE_LANG_ATOMLIST),
 
 		/** The SKB unknown type */
 		TS_UNKNOWN						(TSRepository.TString.TS_UNKNOWN);

@@ -52,12 +52,11 @@ options
 {
   package org.skb.lang.glue.proto.grammars;
 
-  import org.skb.util.config.Configuration;
+  import org.skb.util.classic.config.Configuration;
   import org.skb.lang.glue.proto.GluePass2_Ast;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.glue.proto.GlueParser;
   import org.skb.lang.glue.proto.constants.GlueConstants;
-  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @members{

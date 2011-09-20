@@ -53,22 +53,20 @@ options
 
   import java.util.LinkedHashMap;
 
-  import org.skb.util.config.Configuration;
+  import org.skb.util.classic.config.Configuration;
   import org.skb.lang.cola.proto.ColaPass1_Ebnf;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.cola.proto.ColaParser;
   import org.skb.lang.cola.proto.constants.ColaConstants;
-  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @lexer::header
 {
   package org.skb.lang.cola.proto.grammars;
 
-  import org.skb.util.config.Configuration;
+  import org.skb.util.classic.config.Configuration;
   import org.skb.lang.cola.proto.ColaParser;
   import org.skb.lang.cola.proto.constants.ColaConstants;
-  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @members{

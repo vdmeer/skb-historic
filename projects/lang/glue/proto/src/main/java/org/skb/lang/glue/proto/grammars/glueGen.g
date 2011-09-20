@@ -55,8 +55,6 @@ options
   import java.util.ArrayList;
   import java.util.LinkedHashMap;
 
-  import org.skb.util.languages.AtomList;
-  import org.skb.util.languages.ScopeToken;
   import org.skb.lang.glue.proto.GluePass3_Gen;
   import org.skb.lang.glue.proto.constants.GlueConstants;
 }

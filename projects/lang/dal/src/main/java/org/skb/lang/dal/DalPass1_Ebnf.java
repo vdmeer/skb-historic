@@ -34,8 +34,8 @@ import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.composite.TSTableRowAPI;
+import org.skb.util.composite.lang.TSAtomList;
 import org.skb.util.composite.util.TSLangRuleMap;
 
 /**
@@ -52,7 +52,7 @@ public class DalPass1_Ebnf {
 	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
 	/** Atom List (Symbol Table) */
-	public AtomList atoms;
+	public TSAtomList atoms;
 
 	/** Language Rule map for error/warning reporting */
 	private TSLangRuleMap cr;
@@ -81,7 +81,7 @@ public class DalPass1_Ebnf {
 			config.getReportManager().reportError(
 					DalConstants.Tokens.parserIDENTIFIER+" used more than once",
 					token,
-					DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
+					DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
 		}
 	}
 

@@ -37,7 +37,7 @@ import org.skb.util.FieldKeys;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
-import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 4 of the Pola parser generating output files.
@@ -53,7 +53,7 @@ public class PolaPass4_Files {
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	private FileTemplateList ftl;
-	private AtomList atoms;
+	private TSAtomList atoms;
 	private ConfigurationProperties prop;
 
 	public PolaPass4_Files(){

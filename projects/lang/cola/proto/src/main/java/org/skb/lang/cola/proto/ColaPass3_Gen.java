@@ -39,10 +39,10 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.util.FieldKeys;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.classic.lang.ScopeString;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 3 of the Cola parser using templates to generate a target language specification.
@@ -57,7 +57,7 @@ public class ColaPass3_Gen {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
-	public AtomList atoms;
+	public TSAtomList atoms;
 	public ScopeString sn;
 
 	//for property Declarations, to get the whole scope as an array into the template
@@ -111,7 +111,7 @@ public class ColaPass3_Gen {
 	public void addPropDefList(String p){this.propDefList.add(p);}
 	public TreeSet<String> getPropDefList(){return this.propDefList;}
 
-	public String getPropDefBaseType(String p){return this.atoms.getToken(p,AtomList.alValType).getText();}
+	public String getPropDefBaseType(String p){return this.atoms.getToken(p,TSAtomList.alValType).getText();}
 
 	private void _initSimple_type(){
 		this.simple_type.clear();
@@ -172,7 +172,7 @@ public class ColaPass3_Gen {
 		ret.put(ColaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
 		ret.put(ColaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
 		ret.put(ColaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
-		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
+		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)
@@ -198,7 +198,7 @@ public class ColaPass3_Gen {
 
 	public String scopeTgtLangAdd(){
 		String ret=null;
-		if(this.atoms.get(this.sn.toString(),AtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
+		if(this.atoms.get(this.sn.toString(),TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
 			return ret;
 		if(config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
 			TSBaseAPI javaPkg=config.getProperties().getValue(ColaConstants.Properties.keyXtJavaPackage);

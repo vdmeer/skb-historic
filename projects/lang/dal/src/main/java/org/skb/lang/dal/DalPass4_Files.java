@@ -40,8 +40,8 @@ import org.skb.util.FieldKeys;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 4 of the DAL Parser, generating files for output.
@@ -57,7 +57,7 @@ public class DalPass4_Files {
 	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
 	private FileTemplateList ftl;
-	private AtomList atoms;
+	private TSAtomList atoms;
 	private ConfigurationProperties prop;
 
 	public DalPass4_Files(){
@@ -96,23 +96,23 @@ public class DalPass4_Files {
 		//we start at 1 to deal with repository (0) separately
 		for(int i=1;i<size;i++){
 			if(tgtSplitRepo==true){
-				if(this.atoms.get(rows.get(i)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
+				if(this.atoms.get(rows.get(i)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
 					fn=rows.get(i);
 					pkg=fn;
 					//create the file with the core defs, if they are not empty
-					if(this.atoms.get(rows.get(0)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
+					if(this.atoms.get(rows.get(0)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
 						if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(0)).toString().length()>0))
 							this.ftl.addTemplate(fn+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString(),this.atoms.getST(rows.get(0)));
 					}
 				}
-				else if(this.atoms.get(rows.get(i)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
+				else if(this.atoms.get(rows.get(i)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
 					if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(0)).toString().length()>0))
 						fn=pkg+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString();
 				}
 			}
 			else{
 				//if no split for repos, and just started, then add the repo to the current fn
-				if(i==1&&this.atoms.get(rows.get(0)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY))
+				if(i==1&&this.atoms.get(rows.get(0)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY))
 					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(0)));
 			}
 			if(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(i)).toString().length()==0)
@@ -131,7 +131,7 @@ public class DalPass4_Files {
 		String cat;
 		for(int i=0;i<size;i++){
 			current=rows.get(i);
-			cat=this.atoms.get(current,AtomList.alValCategory).toString();
+			cat=this.atoms.get(current,TSAtomList.alValCategory).toString();
 			if(categories.contains(cat))
 				removeList.add(current);
 		}
@@ -147,9 +147,9 @@ public class DalPass4_Files {
 		for(int i=1;i<size;i++){
 			if(this.atoms.getST(rows.get(i)).toString().length()==0)
 				continue;
-			if(this.atoms.get(rows.get(i)).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
+			if(this.atoms.get(rows.get(i)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
 				String[] path=StringUtils.split(rows.get(i), this.atoms.scope.separator());
-				if(this.atoms.get(path[0]).get(AtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
+				if(this.atoms.get(path[0]).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
 					StringTemplate st=this.atoms.getST(path[0]);
 					st.setAttribute("repos", this.atoms.getST(rows.get(i)));
 					this.atoms.remove(rows.get(i));

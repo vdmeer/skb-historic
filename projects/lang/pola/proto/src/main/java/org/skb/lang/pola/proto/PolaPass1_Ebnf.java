@@ -33,7 +33,7 @@ package org.skb.lang.pola.proto;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 1 of the Pola parser, syntax checks and building a symbol table.
@@ -49,7 +49,7 @@ public class PolaPass1_Ebnf {
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	/** Atom List (Symbol Table) */
-	public AtomList atoms;
+	public TSAtomList atoms;
 
 
 	/**
@@ -59,7 +59,7 @@ public class PolaPass1_Ebnf {
 		//initialise the AtomList with spec
 		this.atoms=config.getAtomlist();
 		this.atoms.addRow(PolaConstants.Tokens.polaSPECIFICATION);
-		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValCategory, PolaConstants.Tokens.polaVOID);
-		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, AtomList.alValType, PolaConstants.Tokens.polaVOID);
+		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, TSAtomList.alValCategory, PolaConstants.Tokens.polaVOID);
+		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, TSAtomList.alValType, PolaConstants.Tokens.polaVOID);
 	}
 }

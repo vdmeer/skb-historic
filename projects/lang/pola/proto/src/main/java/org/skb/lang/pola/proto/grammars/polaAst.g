@@ -52,12 +52,11 @@ options
 {
   package org.skb.lang.pola.proto.grammars;
 
-  import org.skb.util.config.Configuration;
+  import org.skb.util.classic.config.Configuration;
   import org.skb.lang.pola.proto.PolaPass2_Ast;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.pola.proto.PolaParser;
   import org.skb.lang.pola.proto.constants.PolaConstants;
-  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @members{

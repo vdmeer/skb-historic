@@ -53,20 +53,18 @@ options
 
   import java.util.LinkedHashMap;
 
-  import org.skb.util.config.Configuration;
+  import org.skb.util.classic.config.Configuration;
   import org.skb.lang.pola.proto.PolaPass1_Ebnf;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.pola.proto.PolaParser;
   import org.skb.lang.pola.proto.constants.PolaConstants;
-  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @lexer::header
 {
   package org.skb.lang.pola.proto.grammars;
 
-  import org.skb.util.config.Configuration;
-  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
+  import org.skb.util.classic.config.Configuration;
   import org.skb.lang.pola.proto.PolaParser;
   import org.skb.lang.pola.proto.constants.PolaConstants;
 }

@@ -138,7 +138,6 @@ public class TSSTGroupManager extends TSAtomic {
 		return this.loaded;
 	}
 
-
 	/**
 	 * Sets the application name
 	 * @param name new application name
@@ -152,7 +151,6 @@ public class TSSTGroupManager extends TSAtomic {
 			ret=false;
 		return ret;
 	}
-
 
 	/**
 	 * Sets the application name
@@ -168,6 +166,13 @@ public class TSSTGroupManager extends TSAtomic {
 		return ret;
 	}
 
+	/**
+	 * Returns the currently set application name
+	 * @return currently set application name
+	 */
+	public TSString getApplicationName(){
+		return this.applicationName;
+	}
 
 	/**
 	 * Loads an STG
@@ -185,7 +190,6 @@ public class TSSTGroupManager extends TSAtomic {
 		return false;
 	}
 
-
 	/**
 	 * Loads an STG
 	 * 
@@ -200,7 +204,6 @@ public class TSSTGroupManager extends TSAtomic {
 		else
 			return this.loadSTG(purpose, targetLang.toString());
 	}
-
 
 	/**
 	 * Loads an STG
@@ -252,7 +255,6 @@ public class TSSTGroupManager extends TSAtomic {
 		return this.testChunks();
 	}
 
-
 	/**
 	 * Adds chunks to the mandatory chunk list
 	 * @param key name of template
@@ -262,7 +264,6 @@ public class TSSTGroupManager extends TSAtomic {
 		this.chunksMandatory.put(key, value);
 	}
 
-
 	/**
 	 * Adds chunks to the optional chunk list
 	 * @param key name of template
@@ -271,7 +272,6 @@ public class TSSTGroupManager extends TSAtomic {
 	public void putOptionalChunks(String key, TSArrayList value){
 		this.chunksOptional.put(key, value);
 	}
-
 
 	/**
 	 * Sets mandatory and optional chunks
@@ -283,7 +283,6 @@ public class TSSTGroupManager extends TSAtomic {
 		this.chunksOptional=optional;
 	}
 
-
 	/**
 	 * Sets the mandatory chunks
 	 * @param mandatory list with all mandatory chunks
@@ -292,7 +291,6 @@ public class TSSTGroupManager extends TSAtomic {
 		this.chunksMandatory=mandatory;
 	}
 
-
 	/**
 	 * Sets the optional chunks
 	 * @param optional list with all optional chunks
@@ -300,7 +298,6 @@ public class TSSTGroupManager extends TSAtomic {
 	public void setOptionalChunks(TSLinkedHashTree optional){
 		this.chunksOptional=optional;
 	}
-
 
 	/**
 	 * Sets the file name for the STG
@@ -317,7 +314,6 @@ public class TSSTGroupManager extends TSAtomic {
 		return ret;
 	}
 
-
 	/**
 	 * Sets the file name for the STG
 	 * @param fn file name
@@ -333,7 +329,6 @@ public class TSSTGroupManager extends TSAtomic {
 		return ret;
 	}
 
-
 	/**
 	 * Tests the currently set mandatory and optional chunks for the STG
 	 * @return true if everything was ok, false otherwise (error messages in the log)
@@ -341,7 +336,6 @@ public class TSSTGroupManager extends TSAtomic {
 	public boolean testChunks(){
 		return (this.testMandatoryChunks()&this.testOptionalChunks());
 	}
-
 
 	/**
 	 * Tests the currently set mandatory chunks for the STG
@@ -386,8 +380,6 @@ public class TSSTGroupManager extends TSAtomic {
 		}
 		return true;
 	}
-
-
 
 	/**
 	 * Tests the currently set optional chunks for the STG
@@ -440,14 +432,12 @@ public class TSSTGroupManager extends TSAtomic {
 		return true;
 	}
 
-
 	@Override
 	public String toString(){
 		if(this.loaded==true&&this.stg!=null)
 			return this.stg.toString();
 		return "";
 	}
-
 
 	/**
 	 * Use the Angel Bracket lexer
@@ -456,22 +446,12 @@ public class TSSTGroupManager extends TSAtomic {
 		this.useLexerAngelB=true;
 	}
 
-
 	/**
 	 * Use the StringTemplate default lexer
 	 */
 	public void useLexerDefault(){
 		this.useLexerAngelB=false;
 	}
-
-//	@Override
-//	public java.lang.String tsToString(int indent){
-//		String ret=new String();
-//		for(int i=indent;i>0;i--)
-//			ret+=" ";
-//		ret+=super.toString();
-//		return ret;
-//	}
 
 	@Override
 	public TSSTGroupManager tsCopyAtomic(){

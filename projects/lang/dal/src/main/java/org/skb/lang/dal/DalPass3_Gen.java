@@ -43,9 +43,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.classic.lang.ScopeString;
 import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.lang.TSAtomList;
 import org.skb.util.composite.util.TSArrayListString;
 
 /**
@@ -61,7 +61,7 @@ public class DalPass3_Gen {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
-	public AtomList atoms;
+	public TSAtomList atoms;
 	public ScopeString sn;
 
 	//for simple_type, to get all options to all ColaAtoms

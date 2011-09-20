@@ -45,9 +45,9 @@ import org.skb.util.FieldKeys;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 4 of the Cola Parser, generating files for output.
@@ -63,7 +63,7 @@ public class ColaPass4_Files {
 	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
 	private FileTemplateList ftl;
-	private AtomList atoms;
+	private TSAtomList atoms;
 	private ConfigurationProperties prop;
 
 	public ColaPass4_Files(){
@@ -137,7 +137,7 @@ public class ColaPass4_Files {
 				ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 				Integer size=rows.size();
 				for(int i=1;i<size;i++){
-					if(this.atoms.get(rows.get(i), AtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE))
+					if(this.atoms.get(rows.get(i), TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE))
 						fn=rows.get(i).replace(this.prop.getValue(FieldKeys.fieldCliOptionGCScopeSep).toString(), "_"); 
 					else{
 						File f=new File(this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString());
@@ -164,7 +164,7 @@ public class ColaPass4_Files {
 					category=category.replace(ColaConstants.Tokens.parserScopeSep, System.getProperty("file.separator"));
 					if(category.length()>0)
 						category+=System.getProperty("file.separator");
-					fn=category+this.atoms.get(rows.get(i), AtomList.alValCategory);
+					fn=category+this.atoms.get(rows.get(i), TSAtomList.alValCategory);
 					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
 				}
 			}
@@ -221,7 +221,7 @@ public class ColaPass4_Files {
 				if(currentElem.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
 					continue;
 				//not an element, then continue
-				if(!this.atoms.get(currentElem,AtomList.alValCategory).equals(ColaConstants.Tokens.colaELEMENT))
+				if(!this.atoms.get(currentElem,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaELEMENT))
 					continue;
 				else{
 					map=this.atoms.getImports(currentElem);
@@ -298,7 +298,7 @@ public class ColaPass4_Files {
 				if(current.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
 					continue;
 				parrent=current.substring(0,current.lastIndexOf(ColaConstants.Tokens.parserScopeSep));
-				parrentCat=this.atoms.get(parrent,AtomList.alValCategory).toString();
+				parrentCat=this.atoms.get(parrent,TSAtomList.alValCategory).toString();
 				if(processParrentCat!=null&&processParrentCat.equals(parrentCat)){
 					//now, if we should process a generic parent category, let's do that
 					if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaSTRUCT))
@@ -313,7 +313,7 @@ public class ColaPass4_Files {
 				else if(processParrent!=null&&processParrent.equals(parrent)){
 					//otherwise, we should process a specific Atom with ID, so let's do that then
 					//now check if we have to exclude the found child's category
-					if(excludeCategory!=null&&excludeCategory.equals(this.atoms.get(current,AtomList.alValCategory)))
+					if(excludeCategory!=null&&excludeCategory.equals(this.atoms.get(current,TSAtomList.alValCategory)))
 						continue;
 					if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaSTRUCT))
 						this.atoms.getST(parrent).setAttribute("member", this.atoms.getST(current).toString());
@@ -340,7 +340,7 @@ public class ColaPass4_Files {
 		Integer size=_r.size();
 		for(int i=0;i<size;i++){
 			current=_r.get(i);
-			if(this.atoms.get(current,AtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE)){
+			if(this.atoms.get(current,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE)){
 				Integer count=ColaPass4_Files.countIndexOf(current, ColaConstants.Tokens.parserScopeSep);
 				if(!pkgMap.containsKey(count))
 					pkgMap.put(count, new ArrayList<String>());
@@ -392,7 +392,7 @@ public class ColaPass4_Files {
 		if(size>0){
 			for(int i=0;i<size;i++){
 				current=rows.get(i);
-				if(this.atoms.get(current,AtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
+				if(this.atoms.get(current,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
 					removeList.add(current);
 			}
 		}
@@ -410,7 +410,7 @@ public class ColaPass4_Files {
 		ret.put(ColaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
 		ret.put(ColaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
 		ret.put(ColaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
-		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), AtomList.alValCategory).toString());
+		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)

@@ -30,19 +30,15 @@
 package org.skb.util.composite.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Set;
-import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.skb.util.composite.TSAtomicAPI;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSComposite;
 import org.skb.util.composite.TSCompositeAPI;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
@@ -54,15 +50,9 @@ import org.skb.util.composite.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSArrayList implements TSCompositeAPI, List<TSBaseAPI>, Collection<TSBaseAPI> {
+public class TSArrayList extends TSComposite implements List<TSBaseAPI>, Collection<TSBaseAPI> {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSArrayList.class);
-
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	/** Local value */
 	protected List<TSBaseAPI> tsvalue=null;
@@ -117,9 +107,6 @@ public class TSArrayList implements TSCompositeAPI, List<TSBaseAPI>, Collection<
 	}
 
 	protected void _init(){
-		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
-		this.typeEnum.add(TEnum.TS_COMPOSITE);
-
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_ARRAYLIST);
 		this.typeEnum.add(TEnum.TS_COMPOSITE_ARRAYLIST);
 
@@ -294,90 +281,11 @@ public class TSArrayList implements TSCompositeAPI, List<TSBaseAPI>, Collection<
 		return null;
 	}
 
-	@Override
-	public void tsClean() {
-		//TODO
-		logger.warn("tsClean not implemented");
-/*
-		ArrayList<String> listRemove=new ArrayList<String>();
-		for (TSBase s : this.tsvalue) {
-			switch(s.getTypeEnum()){
-				case OAT_ARRAYLIST_STRING:
-					((OatArrayListString)s).clean();
-					break;
-				case OAT_ARRAYLIST_ATOMIC:
-					((OatArrayListAtomic)s).clean();
-					break;
-				case OAT_ATOMIC_STRING:
-					try {
-						if(((OatString)s).tsvalue.length()==0)
-							listRemove.add(((OatString)s).getValue());
-					} catch (tsvalueIsNullException e) {}
-					break;
-				default:
-					break;
-			}
-		}
-		for(int i=0;i<listRemove.size();i++)
-			this.tsvalue.remove(listRemove.get(i));
-*/
-	}
-
 	public List<TSBaseAPI> tsGetList(){
 		if(this.tsvalue!=null)
 			return this.tsvalue;
 		else
 			return new ArrayList<TSBaseAPI>();
-	}
-
-	public TSArrayList tsGetValue(){
-		return this;
-	}
-
-	@Override
-	public TEnum tsGetTypeEnum() {
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-	@Override
-	public Set<TEnum> tsGetTypeEnumSet() {
-		return this.typeEnum;
-	}
-
-	@Override
-	public String tsGetTypeString() {
-		return this.typeString.lastElement();
-	}
-
-	@Override
-	public List<String> tsGetTypeStringList() {
-		return this.typeString;
-	}
-
-	@Override
-	public boolean tsIsAtomic() {
-		return false;
-	}
-
-	@Override
-	public boolean tsIsComposite() {
-		return true;
-	}
-
-	@Override
-	public boolean tsIsType(String t) {
-		return this.typeString.contains(t);
-	}
-
-	@Override
-	public boolean tsIsType(TEnum t) {
-		return this.typeEnum.contains(t);
-	}
-
-	@Override
-	public void tsPlus(TSBaseAPI tb) {
-		//TODO
-		logger.warn("tsPlus not implemented");
 	}
 
 	@Override
@@ -399,55 +307,9 @@ public class TSArrayList implements TSCompositeAPI, List<TSBaseAPI>, Collection<
 	}
 
 	@Override
-	public void tsTrim() {
-		//TODO
-		logger.warn("tsTrim not implemented");
-/*
-		for (TSBase s : this.tsvalue) {
-			switch(s.getTypeEnum()){
-				case OAT_ARRAYLIST_STRING:
-					((OatArrayListString)s).trim();
-					break;
-				case OAT_ARRAYLIST_ATOMIC:
-					((OatArrayListAtomic)s).trim();
-					break;
-				case OAT_ATOMIC_STRING:
-					try {
-						((OatString)s).tsvalue.trim();
-					} catch (Exception e) {}
-					break;
-				default:
-					break;
-			}
-		}
-*/
-	}
-
 	public String toString(){
 		return this.tsToString(0);
 	}
-/*
-	public void h2l(){
-		for (TSBase s : this.tsvalue) {
-			switch(s.getTypeEnum()){
-				case OAT_ARRAYLIST_STRING:
-					((OatArrayListString)s).h2l();
-					break;
-				case OAT_ARRAYLIST_ATOMIC:
-					((OatArrayListAtomic)s).h2l();
-					break;
-				case OAT_ATOMIC_STRING:
-					try {
-						((OatString)s).h2l();
-					} catch (Exception e) {}
-					break;
-				default:
-					break;
-			}
-		}
-	}
-*/
-
 
 	@Override
 	public TSArrayList tsCopyComposite(){

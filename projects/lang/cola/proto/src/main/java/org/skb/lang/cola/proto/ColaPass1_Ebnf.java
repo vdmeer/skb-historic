@@ -39,8 +39,8 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
 import org.skb.util.composite.TSTableRowAPI;
+import org.skb.util.composite.lang.TSAtomList;
 import org.skb.util.composite.misc.TSReportManager;
 import org.skb.util.composite.util.TSLangRuleMap;
 
@@ -61,7 +61,7 @@ public class ColaPass1_Ebnf {
 	private TSReportManager reportManager;
 
 	/** Atom List (Symbol Table) */
-	public AtomList atoms;
+	public TSAtomList atoms;
 
 	/** Language Rule map for error/warning reporting */
 	private TSLangRuleMap cr;
@@ -109,8 +109,8 @@ public class ColaPass1_Ebnf {
 		//initialise the AtomList with spec
 		this.atoms=config.getAtomlist();
 		this.atoms.addRow(ColaConstants.Tokens.colaSPECIFICATION);
-		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValCategory, ColaConstants.Tokens.colaVOID);
-		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, AtomList.alValType, ColaConstants.Tokens.colaVOID);
+		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, TSAtomList.alValCategory, ColaConstants.Tokens.colaVOID);
+		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, TSAtomList.alValType, ColaConstants.Tokens.colaVOID);
 
 		this.atoms.setDefaultCategory(ColaConstants.Tokens.colaDEFINITION);
 
@@ -347,7 +347,7 @@ public class ColaPass1_Ebnf {
 			this.reportManager.reportError(
 					ColaConstants.Tokens.parserIDENTIFIER+" used more than once",
 					token,
-					ColaConstants.Tokens.parserIDENTIFIER+": " + otr.get(AtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(AtomList.alValCategory) + " at " + otr.get(AtomList.alValFile) + ":" + otr.get(AtomList.alValLine) + ":" + otr.get(AtomList.alValColumn));
+					ColaConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
 		}
 	}
 

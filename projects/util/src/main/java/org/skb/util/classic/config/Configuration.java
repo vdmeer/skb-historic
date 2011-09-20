@@ -123,7 +123,7 @@ public class Configuration {
 	 */
 	public TSAtomList getAtomlist(){
 		TSBaseAPI base=this.config.get(PathKeys.pathInstancesAtomlist);
-		if(base.tsIsType(TEnum.TS_ATOMIC_LANG_ATOMLIST)){
+		if(base.tsIsType(TEnum.TS_COMPOSITE_LANG_ATOMLIST)){
 			return (TSAtomList)base;
 		}
 		else{

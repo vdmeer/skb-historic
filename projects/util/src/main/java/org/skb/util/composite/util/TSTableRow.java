@@ -29,27 +29,23 @@
 
 package org.skb.util.composite.util;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
-import java.util.Vector;
 
 import org.apache.log4j.Logger;
 import org.skb.util.composite.TSAtomicAPI;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSComposite;
 import org.skb.util.composite.TSCompositeAPI;
 import org.skb.util.composite.TSNull;
 import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSTableRowAPI;
 import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSTableRowAPI;
 import org.skb.util.composite.java.TSString;
 
 /**
@@ -58,15 +54,9 @@ import org.skb.util.composite.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSTableRow implements TSTableRowAPI{
+public class TSTableRow extends TSComposite implements TSTableRowAPI{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSTableRow.class);
-
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	/** The actual table row */
 	protected Map<String, TSBaseAPI> tsvalue=null;
@@ -82,9 +72,6 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	private void _init(){
-		this.typeString.add(TSRepository.TString.TS_COMPOSITE);
-		this.typeEnum.add(TEnum.TS_COMPOSITE);
-
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_TABLEROW);
 		this.typeEnum.add(TEnum.TS_COMPOSITE_TABLEROW);
 	}
@@ -244,57 +231,6 @@ public class TSTableRow implements TSTableRowAPI{
 	}
 
 	@Override
-	public void tsClean() {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public TEnum tsGetTypeEnum() {
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-	@Override
-	public Set<TEnum> tsGetTypeEnumSet() {
-		return this.typeEnum;
-	}
-
-	@Override
-	public String tsGetTypeString() {
-		return this.typeString.lastElement();
-	}
-
-	@Override
-	public List<String> tsGetTypeStringList() {
-		return this.typeString;
-	}
-
-	@Override
-	public boolean tsIsAtomic() {
-		return false;
-	}
-
-	@Override
-	public boolean tsIsComposite() {
-		return true;
-	}
-
-	@Override
-	public boolean tsIsType(String t) {
-		return this.typeString.contains(t);
-	}
-
-	@Override
-	public boolean tsIsType(TEnum t) {
-		return this.typeEnum.contains(t);
-	}
-
-	@Override
-	public void tsPlus(TSBaseAPI tb) {
-		//TODO
-		logger.warn("tsPlus not implemented");
-	}
-
-	@Override
 	public String tsToString(int indent) {
 		if(this.tsvalue==null)
 			return "";
@@ -325,6 +261,7 @@ public class TSTableRow implements TSTableRowAPI{
 		return ret;
 	}
 
+	@Override
 	public String toString(){
 		return this.tsToString(0);
 	}

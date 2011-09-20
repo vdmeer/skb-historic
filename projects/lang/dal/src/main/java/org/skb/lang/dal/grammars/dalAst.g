@@ -52,12 +52,11 @@ options
 {
   package org.skb.lang.dal.grammars;
 
-  import org.skb.util.config.Configuration;
+  import org.skb.util.classic.config.Configuration;
   import org.skb.lang.dal.DalPass2_Ast;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.dal.DalParser;
   import org.skb.lang.dal.constants.DalConstants;
-  import org.skb.util.patterns.structural.composite.atomic.misc.TSReportManager;
 }
 
 @members{

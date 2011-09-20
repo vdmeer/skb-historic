@@ -34,7 +34,7 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomList;
+import org.skb.util.composite.lang.TSAtomList;
 import org.skb.util.composite.stringtemplate.TSSTGroupManager;
 import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
@@ -88,7 +88,7 @@ public class GlueStatistics {
 
 	public void genSimpleStats(){
 		if(this.loaded==true){
-			AtomList atoms=config.getAtomlist();
+			TSAtomList atoms=config.getAtomlist();
 
 			this.simpleStat=stg.getInstanceOf("simpleStat");
 			//simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());

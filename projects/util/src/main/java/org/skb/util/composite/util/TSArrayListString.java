@@ -30,19 +30,13 @@
 package org.skb.util.composite.util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.EnumSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Set;
-import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomicAPI;
-import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSAtomic;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSString;
@@ -53,15 +47,9 @@ import org.skb.util.composite.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSArrayListString implements TSAtomicAPI, List<TSString>, Collection<TSString>{
+public class TSArrayListString extends TSAtomic implements List<TSString>, Collection<TSString>{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSArrayListString.class);
-
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 	/** Local value */
 	protected List<TSString> tsvalue=null;
@@ -139,9 +127,6 @@ public class TSArrayListString implements TSAtomicAPI, List<TSString>, Collectio
 	}
 
 	protected void _init(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING);
 		this.typeEnum.add(TEnum.TS_ATOMIC_ARRAYLIST_STRING);
 	}
@@ -347,6 +332,7 @@ public class TSArrayListString implements TSAtomicAPI, List<TSString>, Collectio
 		return null;
 	}
 
+	@Override
 	public String toString(){
 		String ret=new String();
 		for (TSString s : this.tsvalue){
@@ -369,73 +355,10 @@ public class TSArrayListString implements TSAtomicAPI, List<TSString>, Collectio
 	}
 
 	@Override
-	public TEnum tsGetTypeEnum() {
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-	@Override
-	public Set<TEnum> tsGetTypeEnumSet() {
-		return this.typeEnum;
-	}
-
-	@Override
-	public String tsGetTypeString() {
-		return this.typeString.lastElement();
-	}
-
-	@Override
-	public List<String> tsGetTypeStringList() {
-		return this.typeString;
-	}
-
-	@Override
-	public boolean tsIsAtomic() {
-		return true;
-	}
-
-	@Override
-	public boolean tsIsComposite() {
-		return false;
-	}
-
-	@Override
-	public boolean tsIsType(String t) {
-		return this.typeString.contains(t);
-	}
-
-	@Override
-	public boolean tsIsType(TEnum t) {
-		return this.typeEnum.contains(t);
-	}
-
-
-	@Override
-	public void tsPlus(TSBaseAPI tb) {
-		//TODO
-		logger.warn("tsPlus not implemented");
-	}
-
-	@Override
-	public String tsToString(int indent) {
-		//TODO
-		logger.warn("tsToString not implemented");
-		return null;
-	}
-
-	@Override
 	public void tsTrim() {
 		for (TSString s : this.tsvalue)
 			s.tsvalue.trim();
 	}
-
-//	public void h2l(){
-//		for (TSString s : this.tsvalue){
-//			try {
-//				s.h2l();
-//			} catch (Exception e) {}
-//		}
-//	}
-
 
 	@Override
 	public TSArrayListString tsCopyAtomic(){
