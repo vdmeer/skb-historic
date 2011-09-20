@@ -35,7 +35,7 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.skb.kb.SKBBuilder;
 import org.skb.util.patterns.creational.builder.Request;
 import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * SKB Acronyms Builder for LaTeX output using the LaTeX longtable environment (Dist Package)
@@ -52,12 +52,10 @@ public class LaTeXTableBuilder extends SKBBuilder{
 	}
 
 	@Override
-	public void executeLoop(Request request, TSMapLH entries) {
+	public void executeLoop(Request request, TSLinkedHashTree entries) {
 		TSSTGManager stgm=this.templates.get_template_object("tpl");
 		StringTemplateGroup stg=stgm.getSTG();
 		StringTemplate template=stg.getInstanceOf("build");
-
-		entries.h2l();
 
 		template.setAttribute("entries", entries);
 		template.setAttribute("request", request);

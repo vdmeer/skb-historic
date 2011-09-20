@@ -31,7 +31,7 @@
 package org.skb.kb;
 
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Interface for an SKB interpreter that processes entries (Key/TBase maps and tables)
@@ -42,5 +42,5 @@ import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
 public interface SKBInterpreterEntries extends SKBInterpreter{
 	public static String type="entries";
 
-	public TSBaseAPI interpret(TSMapLH entries, String table);
+	public TSBaseAPI interpret(TSLinkedHashTree entries, String table);
 }

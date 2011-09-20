@@ -50,7 +50,7 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSScope;
 import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * The SKB Data Manager, handling access to all registered data
@@ -59,12 +59,13 @@ import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class SKBDataManager {
+	/** Logger instance */
 	static Logger logger;
 
 	/**
 	 * Registered data objects
 	 */
-	private TSMapLH registered_dos;
+	private TSLinkedHashTree registered_dos;
 
 
 	/**
@@ -91,14 +92,14 @@ public class SKBDataManager {
 	 */
 	private SKBDataManager(){
 		logger=Logger.getLogger(SKBDataManager.class);
-		this.registered_dos=new TSMapLH();
+		this.registered_dos=new TSLinkedHashTree();
 	}
 
 
 	/**
 	 * Return current set of data objects.
 	 */
-	public TSMapLH getDataObjects(){
+	public TSLinkedHashTree getDataObjects(){
 		return this.registered_dos;
 	}
 
@@ -118,7 +119,7 @@ public class SKBDataManager {
 	 */
 	public void loadDataObject(String semaTag, String type, String handle, String tables, String filterID, String pkg){
 		boolean doReg=true;
-		TSMapLH dos=new TSMapLH();
+		TSLinkedHashTree dos=new TSLinkedHashTree();
 
 		if(type.equals("sqlite")){
 			TSString _t=new TSString(tables);
@@ -194,11 +195,11 @@ public class SKBDataManager {
 	/**
 	 * Prepares a query object that query_data_object can process
 	 */
-	public TSMapLH prepareQuery(String semaTag, String find, TSMapLH equals, String sort, String filterID, String pkg, boolean interpret, boolean clean){
-		TSMapLH ret=new TSMapLH();
+	public TSLinkedHashTree prepareQuery(String semaTag, String find, TSLinkedHashTree equals, String sort, String filterID, String pkg, boolean interpret, boolean clean){
+		TSLinkedHashTree ret=new TSLinkedHashTree();
 		ret.put("sema_tag",  new TSString(semaTag));
 		ret.put("find",      new TSString(find));
-		ret.put("equals",    new TSMapLH(equals));
+		ret.put("equals",    new TSLinkedHashTree(equals));
 		ret.put("sort",      new TSString(sort));
 		ret.put("filter_id", new TSString(filterID));
 		ret.put("package",   new TSString(pkg));
@@ -209,7 +210,7 @@ public class SKBDataManager {
 
 
 	//TODO JSDOC
-	public TSMapLH testQuery(TSMapLH query){
+	public TSLinkedHashTree testQuery(TSLinkedHashTree query){
 		if(!query.containsKey("sema_tag"))
 			logger.warn("SKB_DataManager: no sema tag set in query request");
 		if(!this.registered_dos.containsKey(query.get("sema_tag").toString()))
@@ -225,7 +226,7 @@ public class SKBDataManager {
 			query.put("find", new TSString("*"));
 
 		if(!query.containsKey("equals")||!query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH))
-			query.put("equals", new TSMapLH());
+			query.put("equals", new TSLinkedHashTree());
 
 		if(!query.containsKey("sort")||query.get("sort").tsIsType(TSRepository.TEnum.TS_NULL))
 			query.put("sort", new TSString(""));
@@ -247,8 +248,8 @@ public class SKBDataManager {
 
 
 	//TODO JSDOC
-	public TSMapLH queryDataObject(TSMapLH query){
-		TSMapLH ret=new TSMapLH();
+	public TSLinkedHashTree queryDataObject(TSLinkedHashTree query){
+		TSLinkedHashTree ret=new TSLinkedHashTree();
 		query=this.testQuery(query);
 		
 		if(!this.registered_dos.containsKey(query.get("sema_tag").toString())){
@@ -260,7 +261,7 @@ public class SKBDataManager {
 		if(entries.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 			for(TSBaseAPI entry : (TSArrayList)entries){
 				if(entry.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-					TSMapLH todo=(TSMapLH)entry;
+					TSLinkedHashTree todo=(TSLinkedHashTree)entry;
 					if(query.get("filter_id").toString().length()!=0&&todo.containsKey("filet_id")&&!query.get("filter_id").toString().equals(todo.get("filter_id").toString()))
 						continue;
 					if(query.get("package").toString().length()!=0&&todo.containsKey("package")&&!query.get("package").toString().equals(todo.get("package").toString()))
@@ -302,7 +303,7 @@ public class SKBDataManager {
 	 * @param map the data map to be interpreted
 	 * @param semaTag semantic tag to be used as starting point for interpretation
 	 */
-	public void interpretDo(TSMapLH map, String semaTag){
+	public void interpretDo(TSLinkedHashTree map, String semaTag){
 		if(map==null||map.size()==0)
 			return;
 		map.tsClean();
@@ -318,15 +319,15 @@ public class SKBDataManager {
 	 * @param map entries the data array to be interpreted
 	 * @param scope stack that is used to avoid loops
 	 */
-	protected void interpretLoop(TSMapLH map, TSScope scope){
+	protected void interpretLoop(TSLinkedHashTree map, TSScope scope){
 		if(map==null||map.size()==0)
 			return;
 
 		SKB mySKB=SKB.getInstance();
-		TSMapLH registered_fields=mySKB.getRegisteredFields();
+		TSLinkedHashTree registered_fields=mySKB.getRegisteredFields();
 
 		ArrayList<String> listRemove=new ArrayList<String>();
-		TSMapLH mergeMap=new TSMapLH();
+		TSLinkedHashTree mergeMap=new TSLinkedHashTree();
 
 		String key;
 		Set<String> o_set = map.keySet();
@@ -336,7 +337,7 @@ public class SKBDataManager {
 			TSBaseAPI val=map.get(key);
 			switch(val.tsGetTypeEnum()){
 				case TS_COMPOSITE_MAP_LH:
-					this.interpretLoop((TSMapLH)val, scope);
+					this.interpretLoop((TSLinkedHashTree)val, scope);
 					break;
 				case TS_ATOMIC_JAVA_STRING:
 					if(registered_fields.containsKey(key)){
@@ -354,10 +355,10 @@ public class SKBDataManager {
 								if(exp.equals("1")){
 									TSBaseAPI newVal=((TSString)val).tsExplode();
 									if(newVal.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
-										mergeMap.put(name, new TSMapLH());
+										mergeMap.put(name, new TSLinkedHashTree());
 										TSArrayListString m=(TSArrayListString)newVal;
 										for(Integer i=0;i<m.size();i++){
-											TSMapLH _t=new TSMapLH();
+											TSLinkedHashTree _t=new TSLinkedHashTree();
 											_t.put(name+"_key", m.get(i));
 											this.interpretLoop(_t, scope);
 											mergeMap.put(name+"/"+i.toString(), _t);
@@ -367,7 +368,7 @@ public class SKBDataManager {
 								}
 								else{
 									if(scope.push(table,val.toString())==true){
-										TSMapLH equals=new TSMapLH();
+										TSLinkedHashTree equals=new TSLinkedHashTree();
 										equals.put("key", val);
 										mergeMap.put(name, this.queryDataObject(this.prepareQuery(table,"*",equals,null,null,null,true,true)));
 										listRemove.add(key);
@@ -396,7 +397,7 @@ public class SKBDataManager {
 								else if(((TSString)val).tsvalue.contains("%")){
 									TSBaseAPI newVal=((TSString)val).tsExplode();
 									if(newVal.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-										TSMapLH m=(TSMapLH)newVal;
+										TSLinkedHashTree m=(TSLinkedHashTree)newVal;
 										String lang=SKB.getInstance().getLang();
 										if(m.get(lang)!=null)
 											mergeMap.put(name,m.get(lang));
@@ -442,7 +443,7 @@ public class SKBDataManager {
 	 */
 	public TSBaseAPI interpretData(String id, TSBaseAPI val, String table, Request request){
 		try{
-			TSMapLH registered_interpreter=SKB.getInstance().getRegisteredInterpreters(id+"/core:rabit:target:class/java");
+			TSLinkedHashTree registered_interpreter=SKB.getInstance().getRegisteredInterpreters(id+"/core:rabit:target:class/java");
 
 			Class<?> theClass=Class.forName((String)registered_interpreter.get("core:rabit:target:class/java").toString());
 			SKBInterpreter inter=(SKBInterpreter)theClass.newInstance();
@@ -454,7 +455,7 @@ public class SKBDataManager {
 			else if(type.equals("interpreter:value"))
 				return ((SKBInterpreterValue)inter).interpret(val.toString());
 			else if(type.equals("interpreter:entries"))
-				return ((SKBInterpreterEntries)inter).interpret((TSMapLH)val, table);
+				return ((SKBInterpreterEntries)inter).interpret((TSLinkedHashTree)val, table);
 			else
 				return null;
 

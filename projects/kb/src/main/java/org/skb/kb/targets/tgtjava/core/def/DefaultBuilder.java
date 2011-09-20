@@ -32,7 +32,7 @@ package org.skb.kb.targets.tgtjava.core.def;
 
 import org.skb.kb.SKBBuilder;
 import org.skb.util.patterns.creational.builder.Request;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * SKB Default Builder (Core Package)
@@ -49,7 +49,7 @@ System.err.println("Reader: set_templates");
 	}
 
 	@Override
-	public void executeLoop(Request request, TSMapLH entries) {
+	public void executeLoop(Request request, TSLinkedHashTree entries) {
 		// TODO Auto-generated method stub
 System.err.println("Reader: execute_loop");	
 	}

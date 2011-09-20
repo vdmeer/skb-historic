@@ -50,7 +50,7 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Main SKB class
@@ -69,31 +69,31 @@ public class SKB {
 	public static String site_id;
 
 	/** Central configuration, everything that can be configured is stored here */ 
-	public TSMapLH configuration;
+	public TSLinkedHashTree configuration;
 
 	/** List of registered (loaded) packages, a list of identifiers */
 	private TSArrayListString registered_packages; 
 
 	/** Key/TSBase map of registered fields, everything the SKB can process is stored here */
-	private TSMapLH registered_fields;
+	private TSLinkedHashTree registered_fields;
 
 	/** Key/TBase map of registered requests, used to create new instances and parameterise them */
-	private TSMapLH registered_requests;
+	private TSLinkedHashTree registered_requests;
 
 	/** Key/TBase map of registered readers, used to instantiate new readers */
-	private TSMapLH registered_readers;
+	private TSLinkedHashTree registered_readers;
 
 	/** Key/TBase map of registered builders, used to instantiate new builders */
-	private TSMapLH registered_builders;
+	private TSLinkedHashTree registered_builders;
 
 	/** Key/TBase map of registered templates, used by builders to retrieve all information to access templates */
-	private TSMapLH registered_templates;
+	private TSLinkedHashTree registered_templates;
 
 	/** Key/TBase map of registered interpreters, used by the SKB for any interpretation request */
-	private TSMapLH registered_interpreters;
+	private TSLinkedHashTree registered_interpreters;
 
 	/** Key/TBase map of registered applications, used to instantiate new applications */
-	private TSMapLH registered_applications;
+	private TSLinkedHashTree registered_applications;
 
 	/** Local Internationalisation Manager */
 	private I18NManager i18n; 
@@ -137,17 +137,17 @@ public class SKB {
 		logger.trace("initialising SKB");
 
 		logger.trace("-> configuration, registered packages");
-		this.configuration=new TSMapLH();
+		this.configuration=new TSLinkedHashTree();
 		this.registered_packages=new TSArrayListString();
 
 		logger.trace("-> registered fields, requests,  readers, builders, templates, interpreters, applications");
-		this.registered_fields=new TSMapLH();
-		this.registered_requests=new TSMapLH();
-		this.registered_readers=new TSMapLH();
-		this.registered_builders=new TSMapLH();
-		this.registered_templates=new TSMapLH();
-		this.registered_interpreters=new TSMapLH();
-		this.registered_applications=new TSMapLH();
+		this.registered_fields=new TSLinkedHashTree();
+		this.registered_requests=new TSLinkedHashTree();
+		this.registered_readers=new TSLinkedHashTree();
+		this.registered_builders=new TSLinkedHashTree();
+		this.registered_templates=new TSLinkedHashTree();
+		this.registered_interpreters=new TSLinkedHashTree();
+		this.registered_applications=new TSLinkedHashTree();
 
 		logger.trace("-> I18NManager");
 		this.i18n=I18NManager.getInstance();
@@ -164,7 +164,7 @@ public class SKB {
 		String root_document = "V:/dev/projects/skb/skb-git/htdocs";
 
 		logger.trace("-> __cfg_array");
-		TSMapLH __cfg_array=new TSMapLH();
+		TSLinkedHashTree __cfg_array=new TSLinkedHashTree();
 		__cfg_array.put("root-document", root_document);
 		__cfg_array.put("root-skb", root_skb);
 		__cfg_array.put("root-classes", root_classes);
@@ -187,12 +187,12 @@ public class SKB {
 
 			logger.trace("load skb core config from "+__cfg_array.get("config-core"));
 			myDM.loadDataObject("skb:core:config", "sqlite", "config://"+__cfg_array.get("config-core").toString(), "skb_cfg", "skb:core:config", "core");
-			TSMapLH __cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config",null,null,null,null,null,false,false));
+			TSLinkedHashTree __cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config",null,null,null,null,null,false,false));
 			Set<String> o_set = __cfg.keySet();
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				String key=key_it.next();
-				TSMapLH val=(TSMapLH)__cfg.get(key);
+				TSLinkedHashTree val=(TSLinkedHashTree)__cfg.get(key);
 
 				String collection=val.get("collection").toString();
 				String part=val.get("part").toString();
@@ -200,7 +200,7 @@ public class SKB {
 				String explode=val.get("field_explodes").toString();
 
 				if(!this.configuration.containsKey(collection))
-					this.configuration.put(collection, new TSMapLH());
+					this.configuration.put(collection, new TSLinkedHashTree());
 
 				if(explode.equals("1"))
 					this.configuration.put(collection+"/"+part, value.tsExplode());
@@ -218,7 +218,7 @@ public class SKB {
 			key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				String key=key_it.next();
-				TSMapLH val=(TSMapLH)__cfg.get(key);
+				TSLinkedHashTree val=(TSLinkedHashTree)__cfg.get(key);
 
 				String collection=val.get("collection").toString();
 				String part=val.get("part").toString();
@@ -226,7 +226,7 @@ public class SKB {
 				String explode=val.get("field_explodes").toString();
 
 				if(!this.configuration.containsKey(collection))
-					this.configuration.put(collection, new TSMapLH());
+					this.configuration.put(collection, new TSLinkedHashTree());
 
 				if(explode.equals("1"))
 					this.configuration.put(collection+"/"+part, value.tsExplode());
@@ -397,9 +397,9 @@ public class SKB {
 
 			Json2Oat j2o=new Json2Oat();
 			TSBaseAPI _t=j2o.read(pkgJson);
-			TSMapLH res=new TSMapLH();
+			TSLinkedHashTree res=new TSLinkedHashTree();
 			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-				res=(TSMapLH)_t;
+				res=(TSLinkedHashTree)_t;
 
 			logger.trace("["+pkg+"] "+"read file, testing for contents");
 			if(res!=null){
@@ -409,10 +409,10 @@ public class SKB {
 					if(loadrepo.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 						for(TSBaseAPI dos : (TSArrayList)loadrepo){
 							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-								TSMapLH repo=(TSMapLH)dos;
+								TSLinkedHashTree repo=(TSLinkedHashTree)dos;
 								if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
 									myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
-									TSMapLH data=myDM.queryDataObject(myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
+									TSLinkedHashTree data=myDM.queryDataObject(myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
 									this.load_repository_info(repo.get("sema_tag").toString(), data, repo.get("filter_id").toString(), pkg);
 								}
 							}
@@ -435,7 +435,7 @@ public class SKB {
 					TSArrayList ar=(TSArrayList)res.get("text_domain");
 					if(ar!=null){
 						for(int i=0;i<ar.size();i++){
-							TSMapLH ld=(TSMapLH)((TSArrayList)ar).get(i);
+							TSLinkedHashTree ld=(TSLinkedHashTree)((TSArrayList)ar).get(i);
 							if(ld!=null)
 								if(ld.containsKey("domain"))
 									this.i18n.addDomain(ld.get("domain").toString(), new Locale(this.configuration.get("system/lang").toString()));
@@ -448,7 +448,7 @@ public class SKB {
 					if(loaddata.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 						for(TSBaseAPI dos : (TSArrayList)loaddata){
 							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-								TSMapLH data=(TSMapLH)dos;
+								TSLinkedHashTree data=(TSLinkedHashTree)dos;
 								if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id"))
 									myDM.loadDataObject(data.get("sema_tag").toString(), data.get("type").toString(), data.get("handle").toString(), data.get("tables").toString(), data.get("filter_id").toString(), pkg);
 							}
@@ -470,7 +470,7 @@ public class SKB {
 	 * @param filter filter to be used (with the semantic tag)
 	 * @param pkg package
 	 */
-	private void load_repository_info(String semaTag, TSMapLH data, String filter, String pkg){
+	private void load_repository_info(String semaTag, TSLinkedHashTree data, String filter, String pkg){
 //		TSMapLH http_ar=new TSMapLH();
 
 		if(semaTag==""){
@@ -481,7 +481,7 @@ public class SKB {
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				String key=key_it.next();
-				TSMapLH val=(TSMapLH)data.get(key);
+				TSLinkedHashTree val=(TSLinkedHashTree)data.get(key);
 				val.put("package", pkg);
 				this.registered_fields.put(key, val);
 			}
@@ -491,7 +491,7 @@ public class SKB {
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				String key=key_it.next();
-				TSMapLH val=(TSMapLH)data.get(key);
+				TSLinkedHashTree val=(TSLinkedHashTree)data.get(key);
 				val.put("package", pkg);
 				this.registered_requests.put(key, val);
 			}
@@ -501,10 +501,10 @@ public class SKB {
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				String key=key_it.next();
-				TSMapLH val=(TSMapLH)data.get(key);
+				TSLinkedHashTree val=(TSLinkedHashTree)data.get(key);
 				val.put("package", pkg);
 				if(val.containsKey("core:rabit:type")){
-					TSMapLH tmap=null;
+					TSLinkedHashTree tmap=null;
 					String type=val.get("core:rabit:type").toString();
 					if(type.equals("reader"))
 						tmap=this.registered_readers;
@@ -588,7 +588,7 @@ public class SKB {
 	 * 
 	 * @return the current configuration array
 	 */
-	public TSMapLH getConfiguration(){
+	public TSLinkedHashTree getConfiguration(){
 		return this.configuration;
 	}
 
@@ -613,7 +613,7 @@ public class SKB {
 	 * 
 	 * @return list of all registered fields
 	 */
-	public TSMapLH getRegisteredFields(){
+	public TSLinkedHashTree getRegisteredFields(){
 		return this.registered_fields; 				
 	}
 
@@ -635,7 +635,7 @@ public class SKB {
 	 * 
 	 * @return list of all registered requests
 	 */
-	public TSMapLH getRegisteredRequests(){
+	public TSLinkedHashTree getRegisteredRequests(){
 		return this.registered_requests; 				
 	}
 
@@ -658,7 +658,7 @@ public class SKB {
 	 * 
 	 * @return list of all registered readers
 	 */
-	public TSMapLH getRegisteredReaders(){
+	public TSLinkedHashTree getRegisteredReaders(){
 		return this.registered_readers;
 	}
 
@@ -669,9 +669,9 @@ public class SKB {
 	 * @param key name of the reader
 	 * @return reader entry if it exists null otherwise
 	 */
-	public TSMapLH getRegisteredReaders(String key){
+	public TSLinkedHashTree getRegisteredReaders(String key){
 		if(this.registered_readers.containsKey(key))
-			return (TSMapLH)this.registered_readers.get(key);
+			return (TSLinkedHashTree)this.registered_readers.get(key);
 		return null;
 	}
 
@@ -681,7 +681,7 @@ public class SKB {
 	 * 
 	 * @return list of all registered builders
 	 */
-	public TSMapLH getRegisteredBuilders(){return this.registered_builders;}
+	public TSLinkedHashTree getRegisteredBuilders(){return this.registered_builders;}
 
 
 	/**
@@ -690,9 +690,9 @@ public class SKB {
 	 * @param key name of the builder
 	 * @return builder entry if it exists null otherwise
 	 */
-	public TSMapLH getRegisteredBuilders(String key){
+	public TSLinkedHashTree getRegisteredBuilders(String key){
 		if(this.registered_builders.containsKey(key))
-			return (TSMapLH)this.registered_builders.get(key);
+			return (TSLinkedHashTree)this.registered_builders.get(key);
 		return null;
 	}
 
@@ -702,7 +702,7 @@ public class SKB {
 	 * 
 	 * @return list of all registered templates
 	 */
-	public TSMapLH getRegisteredTemplates(){return this.registered_templates;}
+	public TSLinkedHashTree getRegisteredTemplates(){return this.registered_templates;}
 
 
 	/**
@@ -711,9 +711,9 @@ public class SKB {
 	 * @param key name of the template
 	 * @return template entry if it exists null otherwise
 	 */
-	public TSMapLH getRegisteredTemplates(String key){
+	public TSLinkedHashTree getRegisteredTemplates(String key){
 		if(this.registered_templates.containsKey(key))
-			return (TSMapLH)this.registered_templates.get(key);
+			return (TSLinkedHashTree)this.registered_templates.get(key);
 		return null;
 	}
 
@@ -723,7 +723,7 @@ public class SKB {
 	 * 
 	 * @return list of all registered interpreters
 	 */
-	public TSMapLH getRegisteredInterpreters(){return this.registered_interpreters;}
+	public TSLinkedHashTree getRegisteredInterpreters(){return this.registered_interpreters;}
 
 
 	/**
@@ -732,9 +732,9 @@ public class SKB {
 	 * @param key name of the interpreter
 	 * @return interpreter entry if it exists null otherwise
 	 */
-	public TSMapLH getRegisteredInterpreters(String key){
+	public TSLinkedHashTree getRegisteredInterpreters(String key){
 		if(this.registered_interpreters.containsKey(key))
-			return (TSMapLH)this.registered_interpreters.get(key);
+			return (TSLinkedHashTree)this.registered_interpreters.get(key);
 		return null;
 	}
 
@@ -744,7 +744,7 @@ public class SKB {
 	 * 
 	 * @return list of all registered applications
 	 */
-	public TSMapLH getRegisteredApplications(){return this.registered_applications;}
+	public TSLinkedHashTree getRegisteredApplications(){return this.registered_applications;}
 
 
 	/**
@@ -753,9 +753,9 @@ public class SKB {
 	 * @param key name of the application
 	 * @return interpreter entry if it exists null otherwise
 	 */
-	public TSMapLH getRegisteredApplications(String key){
+	public TSLinkedHashTree getRegisteredApplications(String key){
 		if(this.registered_applications.containsKey(key))
-			return (TSMapLH)this.registered_applications.get(key);
+			return (TSLinkedHashTree)this.registered_applications.get(key);
 		return null;
 	}
 
@@ -771,7 +771,7 @@ public class SKB {
 			type="Core.Default";
 		if(this.registered_requests.containsKey(type)){
 			Request ret=new Request();
-			ret.setRequestType(type, (TSMapLH)this.registered_requests.get(type), this.registered_fields);
+			ret.setRequestType(type, (TSLinkedHashTree)this.registered_requests.get(type), this.registered_fields);
 			return ret;
 		}
 		logger.error("SKB_Main: request not found: {"+type+"}\n--> USER ERROR");
@@ -864,9 +864,9 @@ public class SKB {
 	}
 
 
-	public TSMapLH getFieldSettings(String field){
+	public TSLinkedHashTree getFieldSettings(String field){
 		if(this.registered_fields.containsKey(field))
-			return (TSMapLH)this.registered_fields.get(field);
+			return (TSLinkedHashTree)this.registered_fields.get(field);
 		return null;
 	}
 

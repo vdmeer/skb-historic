@@ -40,7 +40,7 @@ import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * SKB Information Reader (Core Package)
@@ -119,13 +119,13 @@ public class SkbInfoReader extends SKBReader {
 				key=key_it.next();
 				TSBaseAPI val=this.entries.get(key);
 				if(val.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-					Set<String> t_set = ((TSMapLH)val).keySet();
+					Set<String> t_set = ((TSLinkedHashTree)val).keySet();
 					Iterator<String> t_it = t_set.iterator();
 					String t_key;
 					while(t_it.hasNext()){
 						t_key=t_it.next();
-						if(((TSMapLH)val).containsKey("origin")&&!((TSMapLH)val).get("origin").toString().equals(select)){
-							((TSMapLH)val).remove(t_key);
+						if(((TSLinkedHashTree)val).containsKey("origin")&&!((TSLinkedHashTree)val).get("origin").toString().equals(select)){
+							((TSLinkedHashTree)val).remove(t_key);
 						}
 					}
 				}

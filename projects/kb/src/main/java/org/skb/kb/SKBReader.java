@@ -34,7 +34,7 @@ import org.skb.util.patterns.creational.builder.Builder;
 import org.skb.util.patterns.creational.builder.Reader;
 import org.skb.util.patterns.creational.builder.Request;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Abstract class to implement readers for the SKB.
@@ -46,7 +46,7 @@ public abstract class SKBReader implements Reader {
 	protected Builder builder=null;
 	protected boolean is_prepared=false;
 
-	protected TSMapLH entries=null;
+	protected TSLinkedHashTree entries=null;
 
 
 	@Override
@@ -68,7 +68,7 @@ public abstract class SKBReader implements Reader {
 		if(request.isActivated()==true){
 			TSString table=request.getTable();
 			TSString table_collections=request.getTableCollections();
-			this.entries=new TSMapLH();
+			this.entries=new TSLinkedHashTree();
 			this.prepareLoop(request, table, table_collections);
 			this.is_prepared=true;
 		}
@@ -76,7 +76,7 @@ public abstract class SKBReader implements Reader {
 
 
 	@Override
-	public final TSMapLH getEntries(){
+	public final TSLinkedHashTree getEntries(){
 		if(this.is_prepared==true)
 			return this.entries;
 		return null;

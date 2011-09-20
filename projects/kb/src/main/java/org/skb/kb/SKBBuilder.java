@@ -32,7 +32,7 @@ package org.skb.kb;
 
 import org.skb.util.patterns.creational.builder.Builder;
 import org.skb.util.patterns.creational.builder.Request;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Abstract class to implement builders for the SKB.
@@ -42,7 +42,7 @@ import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
  */
 public abstract class SKBBuilder implements Builder {
 	protected SKBTemplateManager templates=new SKBTemplateManager();
-	protected TSMapLH registered_templates=null;
+	protected TSLinkedHashTree registered_templates=null;
 
 
 	@Override
@@ -53,7 +53,7 @@ public abstract class SKBBuilder implements Builder {
 
 
 	@Override
-	public final void execute(Request request, TSMapLH entries){
+	public final void execute(Request request, TSLinkedHashTree entries){
 		if(this.isInitialised())
 			this.executeLoop(request, entries);
 	}

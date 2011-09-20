@@ -33,7 +33,7 @@ package org.skb.kb;
 import org.apache.log4j.Logger;
 import org.skb.util.patterns.creational.builder.TemplateManager;
 import org.skb.util.patterns.structural.composite.atomic.stringtemplate.TSSTGManager;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * SKB specific Template Manager, supporting builders in managing templates.
@@ -46,7 +46,7 @@ public class SKBTemplateManager implements TemplateManager {
 	static Logger logger=Logger.getLogger(TemplateManager.class);
 
 	/** local map of templates */
-	protected TSMapLH templates=new TSMapLH();
+	protected TSLinkedHashTree templates=new TSLinkedHashTree();
 
 
 	/**
