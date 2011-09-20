@@ -115,7 +115,7 @@ public class CPP {
 	}
 
 	public void parse_initial(String fin, PrintWriter fout) {
-		DefinedTerms definitions=DefinedTerms.getInstance();
+		CPPDefinedTerms definitions=CPPDefinedTerms.getInstance();
 		definitions.defs.clear();
 		this.parse(fin, fout);
 	}
@@ -132,7 +132,7 @@ public class CPP {
     	    BufferedReader br=new BufferedReader(new InputStreamReader(in));
     	    String line;
 
-    	    DefinedTerms definitions=DefinedTerms.getInstance();
+    	    CPPDefinedTerms definitions=CPPDefinedTerms.getInstance();
     	    boolean ignoreUntilEndif=false;
 
     	    fout.println("#file \""+fin+":"+curLine+"\"");

@@ -133,7 +133,7 @@ public class ColaStatistics {
 			System.out.println(completeStatStart);
 
 			this.completeStatPrintArray = stg.getInstanceOf("completeStatPrintArray");
-			PropertyDeclarationList propDeclList=PropertyDeclarationList.getInstance();
+			PropertyDeclarationList propDeclList=(PropertyDeclarationList)config.config.get(ColaParser.pathInstancePropertyDeclarationList);
 			LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> properties=propDeclList.getList();
 
 //			TribeProperties prop=TribeProperties.getInstance();

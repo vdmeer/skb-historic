@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import org.skb.lang.cola.proto.constants.ColaConstants;
+import org.skb.util.composite.TSAtomic;
 
 /**
  * Internal class maintaining a list of property declarations.
@@ -41,7 +42,7 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class PropertyDeclarationList {
+public class PropertyDeclarationList extends TSAtomic {
 	private LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> propertyDeclMap;
 	
 	public PropertyDeclarationList(){
@@ -82,14 +83,6 @@ public class PropertyDeclarationList {
 		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaACTION, new ArrayList<String>());
 		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaATTRIBUTE, new ArrayList<String>());
 		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaPARAMETER, new ArrayList<String>());
-	}
-
-	private static class PropertyDeclarationListHolder{
-		private final static PropertyDeclarationList INSTANCE = new PropertyDeclarationList();
-	}
-
-	public static PropertyDeclarationList getInstance(){
-		return PropertyDeclarationListHolder.INSTANCE;
 	}
 
 	public void add(String key, String column, String val){

@@ -67,29 +67,35 @@ public class ColaPass1_Ebnf {
 	private TSLangRuleMap cr;
 
 	/** List for Property Declarations */
-	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();
+	private PropertyDeclarationList propertyDeclList=(PropertyDeclarationList)config.config.get(ColaParser.pathInstancePropertyDeclarationList);
+
 	/** List for Contract Declarations */
-	private ContractDeclarationList contractDeclList=ContractDeclarationList.getInstance();
+	private ContractDeclarationList contractDeclList=(ContractDeclarationList)config.config.get(ColaParser.pathInstanceContractDeclarationList);
 
 	/** Holds the last parsed scope atom in a property declarations */
 	private String lastPropertyDeclScopeAtom;
+
 	/** Holds the scopes of the current property declaration, for scope checks */
 	private LinkedHashMap<String,String> propertyDeclScope;
 
 	/** Holds the last parsed scope atom in a contract declarations */
 	private String lastContractDeclScopeAtom;
+
 	/** Holds the scopes of the current contract declaration, for scope checks */
 	private LinkedHashMap<String,String> contractDeclScope;
 
 	/** Temporary storage of Identifiers bound to properties or items as type */
 	private ArrayList<String> tempPropIdents=new ArrayList<String>();
+
 	/** Temporary storage of Identifiers bound to contracts or items as type */
 	private ArrayList<String> tempContIdents=new ArrayList<String>();
 
 	/** ID of last parsed contract */
 	private String lastContract=null;
+
 	/** ID of last parsed item */
 	private String lastItem=null;
+
 	/** ID of last parsed item property rank */
 	private String lastItemPropRank=null;
 

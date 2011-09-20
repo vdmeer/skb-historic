@@ -28,9 +28,6 @@ public class GlueParser implements TribeParserAPI {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(GlueParser.class);
 
-	private glueEbnfParser.glueSpecification_return fromEbnf;
-	private glueAst.glueSpecification_return fromAst;
-
 	public GlueParser(){
 		config.addAtomList();
 		config.addLangRuleMap();
@@ -73,25 +70,16 @@ public class GlueParser implements TribeParserAPI {
 	}
 
 	@Override
-	public void pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
+	public CommonTree pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
 		glueEbnfParser parser = new glueEbnfParser(tokens);
-		this.fromEbnf=parser.glueSpecification();
+		return (CommonTree)parser.glueSpecification().getTree();
 	}
 
-	@Override
-	public CommonTree pass1GetTree() {
-		return (CommonTree)this.fromEbnf.getTree();
-	}
 
 	@Override
-	public void pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
+	public CommonTree pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
 		glueAst ast=new glueAst(nodesForAst);
-		this.fromAst=ast.glueSpecification();
-	}
-
-	@Override
-	public CommonTree pass2GetTree() {
-		return (CommonTree)this.fromAst.getTree();
+		return (CommonTree)ast.glueSpecification().getTree();
 	}
 
 	@Override

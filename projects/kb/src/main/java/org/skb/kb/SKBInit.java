@@ -31,7 +31,10 @@
 package org.skb.kb;
 
 import org.apache.log4j.Logger;
+import org.skb.util.PathKeys;
+import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.log.LogManager;
+import org.skb.util.composite.misc.TSI18NManager;
 
 /**
  * Static class that provides an init method to realise all SKB initialisation.
@@ -43,6 +46,8 @@ public final class SKBInit {
 	/** Logger instance */
 	static Logger logger=Logger.getLogger(SKBInit.class);
 
+	/** Logger instance */
+	public static Configuration config=Configuration.getConfiguration(SKBInit.class);
 
 	/**
 	 * Initialise the SKB to be in operational state.
@@ -54,6 +59,8 @@ public final class SKBInit {
 	 */
 	public static boolean init(){
 		LogManager.init();
+		config.config.put(PathKeys.pathInstancesI18nmanager, new TSI18NManager());
+		config.config.put(PathKeys.pathInstancesKbDatamanager, new SKBDataManager());
 
 		boolean ret=false;
 		try{

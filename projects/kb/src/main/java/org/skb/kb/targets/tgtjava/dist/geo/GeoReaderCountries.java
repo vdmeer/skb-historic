@@ -32,6 +32,7 @@ package org.skb.kb.targets.tgtjava.dist.geo;
 
 import org.skb.kb.SKBDataManager;
 import org.skb.kb.SKBReader;
+import org.skb.util.PathKeys;
 import org.skb.util.classic.patterns.creational.builder.Request;
 import org.skb.util.composite.java.TSString;
 
@@ -44,7 +45,7 @@ public class GeoReaderCountries extends SKBReader {
 
 	@Override
 	public void prepareLoop(Request request, TSString table, TSString table_collections) {
-		SKBDataManager myDM=SKBDataManager.getInstance();
+		SKBDataManager myDM=(SKBDataManager)config.config.get(PathKeys.pathInstancesKbDatamanager);
 		this.entries=myDM.queryDataObject(myDM.prepareQuery("skb:geo:countries",null,null,"key",null,null,true,true));		
 	}
 

@@ -71,8 +71,11 @@ public class ColaPass2_Ast {
 	/** Scope processing using ANTLR Tokens */
 	public ScopeToken sn;
 
-	private PropertyDeclarationList propertyDeclList=PropertyDeclarationList.getInstance();
-	private ContractDeclarationList contractDeclList=ContractDeclarationList.getInstance();
+	/** List for Property Declarations */
+	private PropertyDeclarationList propertyDeclList=(PropertyDeclarationList)config.config.get(ColaParser.pathInstancePropertyDeclarationList);
+
+	/** List for Contract Declarations */
+	private ContractDeclarationList contractDeclList=(ContractDeclarationList)config.config.get(ColaParser.pathInstanceContractDeclarationList);
 
 	//for Extends, Provides and Requires
 	private String eprCategory;

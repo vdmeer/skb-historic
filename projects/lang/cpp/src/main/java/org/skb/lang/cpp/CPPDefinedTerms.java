@@ -43,18 +43,18 @@ package org.skb.lang.cpp;
 import java.util.ArrayList;
 
 
-public class DefinedTerms {
+public class CPPDefinedTerms {
 	public ArrayList<String> defs;
 
 	private static class DefinedTermsHolder{
-		private final static DefinedTerms INSTANCE = new DefinedTerms();
+		private final static CPPDefinedTerms INSTANCE = new CPPDefinedTerms();
 	}
 
-	public static DefinedTerms getInstance(){
+	public static CPPDefinedTerms getInstance(){
 		return DefinedTermsHolder.INSTANCE;
 	}
 
-	public DefinedTerms(){
+	public CPPDefinedTerms(){
 		this.defs=new ArrayList<String>();
 	}
 }

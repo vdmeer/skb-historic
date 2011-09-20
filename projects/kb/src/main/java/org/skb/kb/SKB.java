@@ -39,8 +39,9 @@ import java.util.Set;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+import org.skb.util.PathKeys;
+import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.io.dirwalker.FindPackageDirectories;
-import org.skb.util.classic.misc.I18NManager;
 import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.classic.patterns.creational.builder.Request;
 import org.skb.util.composite.TSBaseAPI;
@@ -48,6 +49,7 @@ import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.misc.TSI18NManager;
 import org.skb.util.composite.util.TSArrayList;
 import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
@@ -61,6 +63,9 @@ import org.skb.util.composite.util.TSLinkedHashTree;
 public class SKB {
 	/** Logger instance */
 	static Logger logger=Logger.getLogger(SKB.class);
+
+	/** Logger instance */
+	public static Configuration config=Configuration.getConfiguration(SKBInit.class);
 
 	/** Set language */
 	private String lang;
@@ -96,8 +101,10 @@ public class SKB {
 	private TSLinkedHashTree registered_applications;
 
 	/** Local Internationalisation Manager */
-	private I18NManager i18n; 
+	private TSI18NManager i18n; 
 
+	/** Local Data Manager */
+	private SKBDataManager myDM;
 
 	/**
 	 * Class that 'holds' the single valid instance of the SKB (singleton) 
@@ -108,7 +115,6 @@ public class SKB {
 		private final static SKB INSTANCE = new SKB();
 	}
 
-
 	/**
 	 * Returns a pointer to the SKB instance (singleton)
 	 * @return SKB pointer
@@ -116,7 +122,6 @@ public class SKB {
 	public static SKB getInstance(){
 		return XtSKB_MainHolder.INSTANCE;
 	}
-
 
 	/**
 	 * Class constructor (private, since SKB is singleton)
@@ -150,7 +155,10 @@ public class SKB {
 		this.registered_applications=new TSLinkedHashTree();
 
 		logger.trace("-> I18NManager");
-		this.i18n=I18NManager.getInstance();
+		this.i18n=(TSI18NManager)config.config.get(PathKeys.pathInstancesI18nmanager);
+
+		logger.trace("get DataManager Instance");
+		this.myDM=(SKBDataManager)config.config.get(PathKeys.pathInstancesKbDatamanager);
 
 		logger.trace("-> start values (not in property files yet)");
 		//try for the main variables we'll need set (similar to main.inc.php)
@@ -181,10 +189,6 @@ public class SKB {
 		}
 		else{
 			logger.trace("starting to load configuration data");
-
-			logger.trace("get DataManager Instance");
-			SKBDataManager myDM=SKBDataManager.getInstance();
-
 			logger.trace("load skb core config from "+__cfg_array.get("config-core"));
 			myDM.loadDataObject("skb:core:config", "sqlite", "config://"+__cfg_array.get("config-core").toString(), "skb_cfg", "skb:core:config", "core");
 			TSLinkedHashTree __cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config",null,null,null,null,null,false,false));
@@ -310,7 +314,6 @@ public class SKB {
 		logger.trace("return, initialisation successful");
 	}
 
-
 	/**
 	 * Loads the core packages.
 	 * 
@@ -332,7 +335,6 @@ public class SKB {
 //		myHttp->response_send_header("X-SKB", "v1.0");
 		logger.trace("return, loaded core packages");
 	}
-
 
 	/**
 	 * Loads a Package (.db and .php file in packages).
@@ -393,7 +395,6 @@ public class SKB {
 		File pkgJson=new File(jsonFN);
 		if(pkgJson.canRead()){
 			logger.trace("["+pkg+"] "+"loading from JSON file <"+pkgJson+">");
-			SKBDataManager myDM=SKBDataManager.getInstance();
 
 			Json2Oat j2o=new Json2Oat();
 			TSBaseAPI _t=j2o.read(pkgJson);
@@ -411,8 +412,8 @@ public class SKB {
 							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
 								TSLinkedHashTree repo=(TSLinkedHashTree)dos;
 								if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
-									myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
-									TSLinkedHashTree data=myDM.queryDataObject(myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
+									this.myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
+									TSLinkedHashTree data=this.myDM.queryDataObject(this.myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
 									this.load_repository_info(repo.get("sema_tag").toString(), data, repo.get("filter_id").toString(), pkg);
 								}
 							}
@@ -461,7 +462,6 @@ public class SKB {
 			logger.error("["+pkg+"] "+"cant' read JSON file <"+pkgJson+">");
 		}
 	}
-
 
 	/**
 	 * Loads all repository information of a required package.
@@ -555,7 +555,6 @@ public class SKB {
 		}
 	}
 
-
 	/**
 	 * Loads all available packages for the current site.
 	 * 
@@ -582,7 +581,6 @@ public class SKB {
 //	      in_array(str_replace($pkg_dir,"",$pkg),$additional)
 	}
 
-
 	/**
 	 * Return the current configuration array.
 	 * 
@@ -591,7 +589,6 @@ public class SKB {
 	public TSLinkedHashTree getConfiguration(){
 		return this.configuration;
 	}
-
 
 	/**
 	 * Return the specified registration field or a complete group of fields.
@@ -606,7 +603,6 @@ public class SKB {
 		else
 			return this.configuration.get(group+"/"+key);
 	}
-
 
 	/**
 	 * Return all currently registered fields.
@@ -629,7 +625,6 @@ public class SKB {
 		return null;
 	}
 
-
 	/**
 	 * Return all currently registered requests.
 	 * 
@@ -638,7 +633,6 @@ public class SKB {
 	public TSLinkedHashTree getRegisteredRequests(){
 		return this.registered_requests; 				
 	}
-
 
 	/**
 	 * Return the specified requests.
@@ -652,7 +646,6 @@ public class SKB {
 		return null;
 	}
 
-
 	/**
 	 * Return all currently registered readers.
 	 * 
@@ -661,7 +654,6 @@ public class SKB {
 	public TSLinkedHashTree getRegisteredReaders(){
 		return this.registered_readers;
 	}
-
 
 	/**
 	 * Return the specified reader.
@@ -675,14 +667,14 @@ public class SKB {
 		return null;
 	}
 
-
 	/**
 	 * Return all currently registered builders.
 	 * 
 	 * @return list of all registered builders
 	 */
-	public TSLinkedHashTree getRegisteredBuilders(){return this.registered_builders;}
-
+	public TSLinkedHashTree getRegisteredBuilders(){
+		return this.registered_builders;
+	}
 
 	/**
 	 * Return the specified builder.
@@ -696,14 +688,14 @@ public class SKB {
 		return null;
 	}
 
-
 	/**
 	 * Return all currently registered templates.
 	 * 
 	 * @return list of all registered templates
 	 */
-	public TSLinkedHashTree getRegisteredTemplates(){return this.registered_templates;}
-
+	public TSLinkedHashTree getRegisteredTemplates(){
+		return this.registered_templates;
+	}
 
 	/**
 	 * Return the specified template.
@@ -717,14 +709,14 @@ public class SKB {
 		return null;
 	}
 
-
 	/**
 	 * Return all currently registered interpreters.
 	 * 
 	 * @return list of all registered interpreters
 	 */
-	public TSLinkedHashTree getRegisteredInterpreters(){return this.registered_interpreters;}
-
+	public TSLinkedHashTree getRegisteredInterpreters(){
+		return this.registered_interpreters;
+	}
 
 	/**
 	 * Return the specified interpreter.
@@ -738,14 +730,14 @@ public class SKB {
 		return null;
 	}
 
-
 	/**
 	 * Return all currently registered applications.
 	 * 
 	 * @return list of all registered applications
 	 */
-	public TSLinkedHashTree getRegisteredApplications(){return this.registered_applications;}
-
+	public TSLinkedHashTree getRegisteredApplications(){
+		return this.registered_applications;
+	}
 
 	/**
 	 * Return the specified application.
@@ -758,7 +750,6 @@ public class SKB {
 			return (TSLinkedHashTree)this.registered_applications.get(key);
 		return null;
 	}
-
 
 	/**
 	 * Return a Request object for the given key.
@@ -777,7 +768,6 @@ public class SKB {
 		logger.error("SKB_Main: request not found: {"+type+"}\n--> USER ERROR");
 		return null;
 	}
-
 
 	/**
 	 * Return a Reader object for the given key.
@@ -798,7 +788,6 @@ public class SKB {
 		logger.error("SKB_Main: reader not found: <"+key+">");
 		return null;
 	}
-
 
 	/**
 	 * Return a Builder object for the given key.
@@ -821,7 +810,6 @@ public class SKB {
 		return null;
 	}
 
-
 	/**
 	 * Return a Builder object for the given key.
 	 * 
@@ -841,7 +829,6 @@ public class SKB {
 		logger.error("SKB_Main: interpreter not found: <"+key+">");
 		return null;
 	}
-
 
 	/**
 	 * Return a Application object for the given key.
@@ -863,13 +850,11 @@ public class SKB {
 		return null;
 	}
 
-
 	public TSLinkedHashTree getFieldSettings(String field){
 		if(this.registered_fields.containsKey(field))
 			return (TSLinkedHashTree)this.registered_fields.get(field);
 		return null;
 	}
-
 
 	/**
 	 * Return the current language set for the SKB

@@ -36,6 +36,7 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 import org.skb.lang.cola.proto.constants.ColaConstants;
+import org.skb.util.composite.TSAtomic;
 
 /**
  * Internal class maintaining a list of contract declarations.
@@ -43,7 +44,7 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class ContractDeclarationList {
+public class ContractDeclarationList extends TSAtomic {
 	private LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> contractScopesDeclMap;
 	private LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>> contractItemsDeclMap;
 
@@ -69,13 +70,17 @@ public class ContractDeclarationList {
 		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 	}
 
-	private static class ContractDeclarationListHolder{private final static ContractDeclarationList INSTANCE = new ContractDeclarationList();}
-	public static ContractDeclarationList getInstance(){return ContractDeclarationListHolder.INSTANCE;}
+	public void add(String key, String column, String val){
+		this.contractScopesDeclMap.get(key).get(column).add(val);
+	}
 
-	public void add(String key, String column, String val){this.contractScopesDeclMap.get(key).get(column).add(val);}
-	public boolean get(String key, String column, String contract){return this.contractScopesDeclMap.get(key).get(column).contains(contract);}
+	public boolean get(String key, String column, String contract){
+		return this.contractScopesDeclMap.get(key).get(column).contains(contract);
+	}
 
-	public ArrayList<String> get(String key, String column){return this.contractScopesDeclMap.get(key).get(column);}
+	public ArrayList<String> get(String key, String column){
+		return this.contractScopesDeclMap.get(key).get(column);
+	}
 
 	public void addItemDecl(String contract, String item, String property, String rank){
 		if(!this.contractItemsDeclMap.containsKey(contract))
@@ -84,6 +89,7 @@ public class ContractDeclarationList {
 			this.contractItemsDeclMap.get(contract).put(item, new LinkedHashMap<String, String>());
 		this.contractItemsDeclMap.get(contract).get(item).put(property, rank);
 	}
+
 	public boolean getItemDeclPropertyRank(String contract, String item, String property, String rank){
 		if(this.contractItemsDeclMap.containsKey(contract)){
 			if(this.contractItemsDeclMap.get(contract).containsKey(item)){
@@ -97,6 +103,7 @@ public class ContractDeclarationList {
 		}
 		return false;
 	}
+
 	public ArrayList<String> getArrayForRank(String contract, String item, String rank){
 		ArrayList<String> ret=new ArrayList<String>();
 		if(this.contractItemsDeclMap.containsKey(contract)){
@@ -112,6 +119,7 @@ public class ContractDeclarationList {
 		}
 		return ret;
 	}
+
 	public LinkedHashMap<String, ArrayList<String>> getDeclaredItems(){
 		LinkedHashMap<String, ArrayList<String>> ret=new LinkedHashMap<String, ArrayList<String>>();
 

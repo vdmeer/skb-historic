@@ -40,13 +40,17 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.skb.util.classic.misc.I18NManager;
+import org.skb.util.PathKeys;
+import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.patterns.creational.builder.Request;
+import org.skb.util.composite.TSAtomic;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
+import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.db.TSPDO;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.java.TSString;
+import org.skb.util.composite.misc.TSI18NManager;
 import org.skb.util.composite.util.TSArrayList;
 import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
@@ -58,43 +62,26 @@ import org.skb.util.composite.util.TSScope;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class SKBDataManager {
+public class SKBDataManager extends TSAtomic {
 	/** Logger instance */
 	static Logger logger;
 
-	/**
-	 * Registered data objects
-	 */
+	/** Logger instance */
+	public static Configuration config=Configuration.getConfiguration(SKBInit.class);
+
+	/** Registered data objects */
 	private TSLinkedHashTree registered_dos;
 
-
 	/**
-	 * Private class holding the instance of the SKBDataManager (singleton)
-	 * @author     Sven van der Meer <sven@vandermeer.de>
-	 * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+	 * Class constructor
 	 */
-	private static class XtSKBDataMangerHolder{
-		private final static SKBDataManager INSTANCE = new SKBDataManager();
-	}
+	public SKBDataManager(){
+		this.typeString.add(TSRepository.TString.TS_ATOMIC_KB_DATAMANAGER);
+		this.typeEnum.add(TEnum.TS_ATOMIC_KB_DATAMANAGER);
 
-
-	/**
-	 * Returns the instance to the Data Manager (singleton)
-	 * @return instance
-	 */
-	public static SKBDataManager getInstance(){
-		return XtSKBDataMangerHolder.INSTANCE;
-	}
-
-
-	/**
-	 * Class constructor, private (singleton), initialises local fields
-	 */
-	private SKBDataManager(){
 		logger=Logger.getLogger(SKBDataManager.class);
 		this.registered_dos=new TSLinkedHashTree();
 	}
-
 
 	/**
 	 * Return current set of data objects.
@@ -102,7 +89,6 @@ public class SKBDataManager {
 	public TSLinkedHashTree getDataObjects(){
 		return this.registered_dos;
 	}
-
 
 	/**
 	 * Load and register a new data object (i.e. database tables, data file)
@@ -190,7 +176,6 @@ public class SKBDataManager {
 		}
 	}
 
-
 	//TODO JSDOC
 	/**
 	 * Prepares a query object that query_data_object can process
@@ -207,7 +192,6 @@ public class SKBDataManager {
 		ret.put("clean",     new TSBoolean(clean));
 		return ret;
 	}
-
 
 	//TODO JSDOC
 	public TSLinkedHashTree testQuery(TSLinkedHashTree query){
@@ -245,7 +229,6 @@ public class SKBDataManager {
 
 		return query;
 	}
-
 
 	//TODO JSDOC
 	public TSLinkedHashTree queryDataObject(TSLinkedHashTree query){
@@ -296,7 +279,6 @@ public class SKBDataManager {
 		return ret;
 	}
 
-
 	/**
 	 * Interpret data, i.e. resolve all internal links, do i18n translations
 	 *
@@ -312,7 +294,6 @@ public class SKBDataManager {
 
 		this.interpretLoop(map, new TSScope());
 	}
-
 
 	/**
 	 * Loop for interpreting data
@@ -390,7 +371,7 @@ public class SKBDataManager {
 							if(key.endsWith("_locale")){
 								if(((TSString)val).tsvalue.contains("%%")){
 									String split[]=((TSString)val).tsvalue.split("%%");
-									I18NManager i18n=I18NManager.getInstance();
+									TSI18NManager i18n=(TSI18NManager)config.config.get(PathKeys.pathInstancesI18nmanager);
 									mergeMap.put(name,i18n._(split[0], split[1]));
 									listRemove.add(key);
 								}
@@ -427,7 +408,6 @@ public class SKBDataManager {
 			map.remove(listRemove.get(i));
 		map.putAll(mergeMap);
 	}
-
 
 	/**
 	 * Interpret data using registered interpreters.

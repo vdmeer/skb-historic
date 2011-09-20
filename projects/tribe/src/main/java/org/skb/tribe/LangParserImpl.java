@@ -62,6 +62,12 @@ import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 import org.skb.util.composite.util.TSPropertyMap;
 
+/**
+ * Tribe's implementation of a language parser.
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class LangParserImpl implements LangParserAPI {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(LangParserImpl.class);
@@ -153,21 +159,20 @@ public class LangParserImpl implements LangParserAPI {
 
 		try {
 			logger.trace("converting inputStream to ANTLR");
-			ANTLRInputStream input = new ANTLRInputStream(is);
+			ANTLRInputStream input=new ANTLRInputStream(is);
 
 			logger.trace("creating lexer and token stream");
 			Lexer lexer=this.langParser.pass1GetLexer(input);
-			CommonTokenStream tokens = new CommonTokenStream(lexer);
+			CommonTokenStream tokens=new CommonTokenStream(lexer);
 			logger.trace("creating parser and get return from parsing");
-			//Object fromEbnf=this.langParser.pass1Ebnf(tokens);
-			this.langParser.pass1ParseEBNF(tokens);
+			CommonTree treeForAst=this.langParser.pass1ParseEBNF(tokens);
 
 			logger.trace("check for errors");
 			int ret=repMgr.noOfErrors();
 			String msg=ret+" error";
-			if (ret == 0 || ret > 1)
+			if(ret==0||ret>1)
 				msg+="s";
-			if (ret > 0) {
+			if(ret>0) {
 				msg+=", exiting at pass 1";
 				if(!quietMode)
 					repMgr.reportError(msg);
@@ -181,19 +186,17 @@ public class LangParserImpl implements LangParserAPI {
 			logger.trace("still here, reset errors and continue");
 			repMgr.resetNoOfErrors();
 			logger.trace("creating AST parser and tree node stream");
-			CommonTree treeForAst=this.langParser.pass1GetTree();
 			CommonTreeNodeStream nodesForAst=new CommonTreeNodeStream(treeForAst);
 			nodesForAst.setTokenStream(tokens);
 
 			logger.trace("calling ast.specification");
-			//Object fromAst=this.langParser.pass2Ast(nodesForAst);
-			this.langParser.pass2Ast(nodesForAst);
+			CommonTree treeForGen=this.langParser.pass2Ast(nodesForAst);
 			ret=repMgr.noOfErrors();
 
 			msg=ret+" error";
-			if (ret == 0 || ret > 1)
+			if(ret==0||ret>1)
 				msg+="s";
-			if (ret > 0) {
+			if(ret>0) {
 				msg+=", exiting at pass 2";
 				if(!quietMode)
 					repMgr.reportError(msg);
@@ -207,7 +210,6 @@ public class LangParserImpl implements LangParserAPI {
 			TSBaseAPI ata=this.cProp.getValue(FieldKeys.fieldCliOptionGC);
 			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
 				//repMgr.resetNoOfErrors();
-				CommonTree treeForGen=this.langParser.pass2GetTree();
 				CommonTreeNodeStream nodesForGen=new CommonTreeNodeStream(treeForGen);
 				nodesForGen.setTokenStream(tokens);
 				this.langParser.pass3CodeGen(nodesForGen, this.stgl.getSTG());

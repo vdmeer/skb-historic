@@ -51,6 +51,12 @@ public class PathKeys {
 	/** Key for a path to the language rule map (TSLangRuleMap) in a configuration */
 	public final static String pathInstancesLangrulemap					= "skb/instances/langrulemap";
 
+	/** Key for a path to the internationalisation manager (TSI18NManager) in a configuration */
+	public final static String pathInstancesI18nmanager					= "skb/instances/i18nmanager";
+
+	/** Key for a path to the KB data manager (SKBDataManager) in a configuration */
+	public final static String pathInstancesKbDatamanager				= "skb/instances/kb/datamanager";
+
 
 	/*
 	 * Field keys paths to information, i.e. any TSAtomic or (usually) TSComposite types

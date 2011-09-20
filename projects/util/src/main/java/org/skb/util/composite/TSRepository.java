@@ -119,6 +119,12 @@ public class TSRepository {
 		/** The SKB Report Manager */
 		public final static String TS_ATOMIC_REPORTMANAGER		= "ts:atomic:reportmanager";
 
+		/** The SKB Internationalisation Manager */
+		public final static String TS_ATOMIC_I18NMANAGER		= "ts:atomic:i18nmanager";
+
+		/** The SKB KB Data Manager */
+		public final static String TS_ATOMIC_KB_DATAMANAGER		= "ts:atomic:kb:datamanager";
+
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		public final static String TS_ATOMIC_ARRAYLIST_STRING	= "ts:atomic:util:arraylist_string";
 		/** SKB Type for an Array List (java.utils.list<TSAtomic>) */
@@ -207,6 +213,12 @@ public class TSRepository {
 
 		/** The SKB Report Manager */
 		TS_ATOMIC_REPORTMANAGER			(TSRepository.TString.TS_ATOMIC_REPORTMANAGER),
+
+		/** The SKB Internationalisation Manager */
+		TS_ATOMIC_I18NMANAGER			(TSRepository.TString.TS_ATOMIC_I18NMANAGER),
+
+		/** The SKB KB Data Manager */
+		TS_ATOMIC_KB_DATAMANAGER			(TSRepository.TString.TS_ATOMIC_KB_DATAMANAGER),
 
 		/** SKB Type for an Array List (java.utils.list<java.lang.String>) */
 		TS_ATOMIC_ARRAYLIST_STRING		(TSRepository.TString.TS_ATOMIC_ARRAYLIST_STRING),

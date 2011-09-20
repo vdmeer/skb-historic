@@ -32,6 +32,7 @@ package org.skb.kb.targets.tgtjava.dist.acronyms;
 
 import org.skb.kb.SKBDataManager;
 import org.skb.kb.SKBReader;
+import org.skb.util.PathKeys;
 import org.skb.util.classic.patterns.creational.builder.Request;
 import org.skb.util.composite.java.TSString;
 
@@ -44,7 +45,7 @@ public class AcronymsReader extends SKBReader {
 
 	@Override
 	public void prepareLoop(Request request, TSString table, TSString tableCollections) {
-		SKBDataManager myDM=SKBDataManager.getInstance();
+		SKBDataManager myDM=(SKBDataManager)config.config.get(PathKeys.pathInstancesKbDatamanager);
 		this.entries=myDM.queryDataObject(myDM.prepareQuery("skb:acronyms",null,null,"acronyms:short",null,null,true,true));
 	}
 

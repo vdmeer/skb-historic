@@ -28,10 +28,6 @@ public class PolaParser implements TribeParserAPI {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
-	private polaEbnfParser.polaSpecification_return fromEbnf;
-	private polaAst.polaSpecification_return fromAst;
-
-
 	public PolaParser(){
 		config.addAtomList();
 		config.addLangRuleMap();
@@ -81,28 +77,16 @@ public class PolaParser implements TribeParserAPI {
 
 
 	@Override
-	public void pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
+	public CommonTree pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
 		polaEbnfParser parser = new polaEbnfParser(tokens);
-		this.fromEbnf=parser.polaSpecification();
+		return (CommonTree)parser.polaSpecification().getTree();
 	}
 
 
 	@Override
-	public CommonTree pass1GetTree() {
-		return (CommonTree)this.fromEbnf.getTree();
-	}
-
-
-	@Override
-	public void pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
+	public CommonTree pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
 		polaAst ast=new polaAst(nodesForAst);
-		this.fromAst=ast.polaSpecification();
-	}
-
-
-	@Override
-	public CommonTree pass2GetTree() {
-		return (CommonTree)this.fromAst.getTree();
+		return (CommonTree)ast.polaSpecification().getTree();
 	}
 
 

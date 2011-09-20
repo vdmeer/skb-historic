@@ -1,3 +1,32 @@
+/* Copyright (c) 2001-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * 
+ * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+ */
+
 package org.skb.lang.cola.proto;
 
 import org.antlr.runtime.ANTLRInputStream;
@@ -13,6 +42,8 @@ import org.skb.lang.cola.proto.grammars.colaAst;
 import org.skb.lang.cola.proto.grammars.colaEbnfLexer;
 import org.skb.lang.cola.proto.grammars.colaEbnfParser;
 import org.skb.lang.cola.proto.grammars.colaGen;
+import org.skb.lang.cola.proto.internal.ContractDeclarationList;
+import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.TribeParserAPI;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
@@ -21,6 +52,12 @@ import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.java.TSBoolean;
 
+/**
+ * Cola Parser, implementing tribe's parser API.
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class ColaParser implements TribeParserAPI {
 	/** Logger instance */
 	public static Logger logger = Logger.getLogger(ColaParser.class);
@@ -28,89 +65,73 @@ public class ColaParser implements TribeParserAPI {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
-	private colaEbnfParser.colaSpecification_return fromEbnf;
-	private colaAst.colaSpecification_return fromAst;
+	/** Path to the Contract Declaration List in the configuration */
+	public final static String pathInstanceContractDeclarationList	= "skb/instances/cola/proto/contractdecllist";
 
+	/** Path to the Property Declaration List in the configuration */
+	public final static String pathInstancePropertyDeclarationList	= "skb/instances/cola/proto/propertydecllist";
 
+	/**
+	 * Class constructor.
+	 */
 	public ColaParser(){
 		config.addAtomList();
 		config.addLangRuleMap();
+		config.config.put(ColaParser.pathInstanceContractDeclarationList, new ContractDeclarationList());
+		config.config.put(ColaParser.pathInstancePropertyDeclarationList, new PropertyDeclarationList());
 	}
-
 
 	@Override
 	public String getConfigurationFile(){
 		return "/org/skb/lang/cola/proto/proto.json";
 	}
 
-
 	@Override
 	public String getSourceLanguage(){
 		return "cola";
 	}
-
 
 	@Override
 	public Class<?> getConfigurationClassName(){
 		return ColaParser.class;
 	}
 
-
 	@Override
 	public String getLangRuleClassName(){
 		return ColaConstants.Rules.class.getName();
 	}
-
 
 	@Override
 	public String getLangRuleKeyword(){
 		return "rule";
 	}
 
-
 	@Override
 	public String getOptionClassName(){
 		return ColaConstants.Properties.class.getName();
 	}
-
 
 	@Override
 	public String getOptionKeyword(){
 		return "key";
 	}
 
-
 	@Override
 	public Lexer pass1GetLexer(ANTLRInputStream input) {
 		return new colaEbnfLexer(input);
 	}
 
-
 	@Override
-	public void pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
-		colaEbnfParser parser = new colaEbnfParser(tokens);
-		this.fromEbnf=parser.colaSpecification();
+	public CommonTree pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
+		colaEbnfParser parser=new colaEbnfParser(tokens);
+		return (CommonTree)parser.colaSpecification().getTree();
 	}
 
-
 	@Override
-	public CommonTree pass1GetTree() {
-		return (CommonTree)this.fromEbnf.getTree();
-	}
-
-
-	@Override
-	public void pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
+	public CommonTree pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
 		colaAst ast=new colaAst(nodesForAst);
-		this.fromAst=ast.colaSpecification();
+		return (CommonTree)ast.colaSpecification().getTree();
 	}
-
-
-	@Override
-	public CommonTree pass2GetTree() {
-		return (CommonTree)this.fromAst.getTree();
-	}
-
 
 	@Override
 	public void pass3CodeGen(CommonTreeNodeStream nodesForGen, StringTemplateGroup stg) throws RecognitionException {
@@ -119,13 +140,11 @@ public class ColaParser implements TribeParserAPI {
 		gen.colaSpecification();
 	}
 
-
 	@Override
 	public FileTemplateList pass4Files() {
 		ColaPass4_Files cfm=new ColaPass4_Files();
 		return cfm.getFileTemplateList();
 	}
-
 
 	@Override
 	public void finish(boolean quietMode) {

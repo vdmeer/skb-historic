@@ -28,9 +28,6 @@ public class DalParser implements TribeParserAPI {
 	/** Configuration instance */
 	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
-	private dalEbnfParser.dalSpecification_return fromEbnf;
-	private dalAst.dalSpecification_return fromAst;
-
 	public DalParser(){
 		config.addAtomList();
 		config.addLangRuleMap();
@@ -73,25 +70,15 @@ public class DalParser implements TribeParserAPI {
 	}
 
 	@Override
-	public void pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
+	public CommonTree pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
 		dalEbnfParser parser = new dalEbnfParser(tokens);
-		this.fromEbnf=parser.dalSpecification();
+		return (CommonTree)parser.dalSpecification().getTree();
 	}
 
 	@Override
-	public CommonTree pass1GetTree() {
-		return (CommonTree)this.fromEbnf.getTree();
-	}
-
-	@Override
-	public void pass2Ast(CommonTreeNodeStream nodesForAst)	throws RecognitionException {
+	public CommonTree pass2Ast(CommonTreeNodeStream nodesForAst)	throws RecognitionException {
 		dalAst ast=new dalAst(nodesForAst);
-		this.fromAst=ast.dalSpecification();
-	}
-
-	@Override
-	public CommonTree pass2GetTree() {
-		return (CommonTree)this.fromAst.getTree();
+		return (CommonTree)ast.dalSpecification().getTree();
 	}
 
 	@Override

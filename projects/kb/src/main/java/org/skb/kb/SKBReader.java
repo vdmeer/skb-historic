@@ -30,6 +30,7 @@
 
 package org.skb.kb;
 
+import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.patterns.creational.builder.Builder;
 import org.skb.util.classic.patterns.creational.builder.Reader;
 import org.skb.util.classic.patterns.creational.builder.Request;
@@ -43,6 +44,9 @@ import org.skb.util.composite.util.TSLinkedHashTree;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public abstract class SKBReader implements Reader {
+	/** Logger instance */
+	public static Configuration config=Configuration.getConfiguration(SKBInit.class);
+
 	protected Builder builder=null;
 	protected boolean is_prepared=false;
 
