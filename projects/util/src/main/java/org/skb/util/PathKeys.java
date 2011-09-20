@@ -64,6 +64,9 @@ public class PathKeys {
 	/** Key for a path that holds configuration information for the Tribe library */
 	public final static String pathConfigurationParserTribe				= "skb/tribe/configuration";
 
+	/** Key for a path that holds information on StringTemplate chunks */
+	public final static String pathConfigurationParserTribeStgChunks	= "skb/tribe/stgchunks";
+
 	/** Key for a path that holds configuration information for a parser/compiler */
 	public final static String patConfigurationParserLang				= "skb/lang";
 
@@ -76,7 +79,7 @@ public class PathKeys {
 	/** Key for a path that holds information about target languages */
 	public final static String pathConfigurationParserLangTargets		= "skb/lang/targets";
 
-	/** Key for a path that holds information in StringTemplate chunks */
+	/** Key for a path that holds information on StringTemplate chunks */
 	public final static String pathConfigurationParserLangStgChunks		= "skb/lang/stgchunks";
 
 	/** Key for a path that holds information language rules */

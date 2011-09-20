@@ -103,7 +103,7 @@ public class TSReportManager extends TSAtomic {
 
 		this.stgm=new TSSTGroupManager();
 		this.stgm.putMandatoryChunks("report", new TSArrayList(new String[]{"name", "file", "line", "column", "message", "type"}));
-		this.stgm.putOptionalChunks("error100", new TSArrayList(new String[]{"name"}));
+		this.stgm.putMandatoryChunks("error100", new TSArrayList(new String[]{"name"}));
 		this.stgm.useLexerAngelB();
 
 		this.setFileName("");

@@ -45,12 +45,37 @@ import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSBoolean;
+import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.util.TSArrayList;
 import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 
 public class TribeHelpers {
 
+	public static TSSTGroupManager loadSTGM(Configuration config, String path, String applicationName, String stgFile){
+		TSSTGroupManager ret=new TSSTGroupManager();
+		TSBaseAPI tsb=config.config.get(path);
+		if(tsb.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+			TSLinkedHashTree map=(TSLinkedHashTree)tsb;
+			TSBaseAPI ala;
+			for (String s:map.keySet()){
+				ala=map.get(s+"/"+FieldKeys.fieldStringtemplateChunksMandatory);
+				if(!ala.tsIsType(TEnum.TS_NULL))
+					ret.putMandatoryChunks(s, (TSArrayList)ala);
+				ala=map.get(s+"/"+FieldKeys.fieldStringtemplateChunksOptional);
+				if(!ala.tsIsType(TEnum.TS_NULL))
+					ret.putOptionalChunks(s, (TSArrayList)ala);
+			}
+		}
+
+		ret.useLexerDefault();
+		ret.setApplicationName(applicationName);
+
+		ret.setSTGFile(stgFile);
+
+		return ret;
+	}
 
 	public static ArrayList<LangParserAPI> getSrcParsers(LangParserAPI[] parsers, TSBaseAPI srcLang){
 		ArrayList<LangParserAPI> ret=new ArrayList<LangParserAPI>();
@@ -62,7 +87,6 @@ public class TribeHelpers {
 		}
 		return ret;
 	}
-
 
 	public static ArrayList<LangParserAPI> getTgtParsers(ArrayList<LangParserAPI> parsers, TSBaseAPI tgtLang){
 		ArrayList<LangParserAPI> ret=new ArrayList<LangParserAPI>();
@@ -80,15 +104,15 @@ public class TribeHelpers {
 		return ret;
 	}
 
-
 	public static TSDefault loadParserOptions(LangParserAPI parser, Cli cli){
-		Configuration dest=Configuration.getConfiguration(parser.getConfigurationClassName());
+		Configuration dest=parser.getConfiguration();
 		Configuration orig=Configuration.getConfiguration(Tribe.class);
 
+		dest.config.put(PathKeys.pathConfigurationParserTribeStgChunks, orig.config.get(PathKeys.pathConfigurationParserTribeStgChunks));
 		dest.config.put(PathKeys.pathInstancesProperties, orig.getProperties().tsCopyComposite());
 		dest.config.put(PathKeys.pathInstancesReportmanager, orig.getReportManager().tsCopyAtomic());
 
-		TSDefault ret=parser.setOptions();
+		TSDefault ret=parser.loadParserOptions();
 
 		cli.setPropOptions(dest.getProperties());
 		cli.setApplicationName(dest.getProperties().getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
@@ -96,7 +120,6 @@ public class TribeHelpers {
 
 		return ret;
 	}
-
 
 	public static String getFooterPrint(ConfigurationProperties prop){
 		String ret=new String();
@@ -107,7 +130,6 @@ public class TribeHelpers {
 		}
 		return ret;
 	}
-
 
 	public static String getHeaderPrint(ConfigurationProperties prop){
 		String ret=new String();
@@ -122,7 +144,6 @@ public class TribeHelpers {
 		ret+="\n";
 		return ret;
 	}
-
 
 	public static String getDefaultOptionsPrint(ConfigurationProperties prop){
 		String ret=new String();
@@ -149,16 +170,13 @@ public class TribeHelpers {
 		return ret;
 	}
 
-
 	public static String getHelpPrint(Cli cli, ConfigurationProperties prop){
 		return cli.usage(TribeHelpers.getHeaderPrint(prop), TribeHelpers.getFooterPrint(prop), 80, true);
 	}
 
-
 	public static String getVersionPrint(ConfigurationProperties prop){
 		return TribeHelpers.getHeaderPrint(prop);
 	}
-
 
 	public static String getSupportedLangPrint(LangParserAPI[] parsers){
 		String ret=new String();
@@ -173,32 +191,15 @@ public class TribeHelpers {
     	return ret;
 	}
 
-
-	public static boolean exitOptionsSet(ConfigurationProperties prop){
-		Boolean defOpt=false;
-		Boolean showHelp=false;
-		Boolean showVersion=false;
-		Boolean showLang=false;
-
-		try {
-			defOpt=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionDefaultOptions)).tsvalue;
-			showHelp=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowhelp)).tsvalue;
-			showVersion=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowversion)).tsvalue;
-			showLang=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowlang)).tsvalue;
-		} catch (Exception e) {}
-
-		return defOpt&showHelp&showVersion&showLang;
-	}
-
-
-	public static EnumSet<TribeExitOptions> checkExitOptions(ConfigurationProperties prop){
-		EnumSet<TribeExitOptions> ret=EnumSet.noneOf(TribeExitOptions.class);
+	public static EnumSet<EnumExitoptions> checkExitOptions(ConfigurationProperties prop){
+		EnumSet<EnumExitoptions> ret=EnumSet.noneOf(EnumExitoptions.class);
 
 		Boolean showHelp=false;
 		Boolean showVersion=false;
 		Boolean showLang=false;
 		Boolean defOpt=false;
 		Boolean printTribeSTG=false;
+		Boolean printTargetSTG=false;
 
 		try {
 			showHelp=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowhelp)).tsvalue;
@@ -206,21 +207,24 @@ public class TribeHelpers {
 			showLang=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionShowlang)).tsvalue;
 			defOpt=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionDefaultOptions)).tsvalue;
 			printTribeSTG=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionPrStgFileReportMgr)).tsvalue;
+			printTargetSTG=((TSBoolean)prop.getValue(FieldKeys.fieldCliOptionPrStgFileTarget)).tsvalue;
+
 		} catch (Exception e) {}
 
 		if(showHelp==true)
-			ret.add(TribeExitOptions.HELP);
+			ret.add(EnumExitoptions.HELP);
 		if(showVersion==true)
-			ret.add(TribeExitOptions.VERSION);
+			ret.add(EnumExitoptions.VERSION);
 		if(showLang==true)
-			ret.add(TribeExitOptions.LANGUAGES);
+			ret.add(EnumExitoptions.LANGUAGES);
 		if(defOpt==true)
-			ret.add(TribeExitOptions.DEF_OPTIONS);
+			ret.add(EnumExitoptions.DEF_OPTIONS);
 		if(printTribeSTG==true)
-			ret.add(TribeExitOptions.PRINT_STG_REPORTMGR);
+			ret.add(EnumExitoptions.PRINT_STG_REPORTMGR);
+		if(printTargetSTG==true)
+			ret.add(EnumExitoptions.PRINT_STG_TARGET);
 		return ret;
 	}
-
 
     public static String[] translateTokens(String[] tokens, Configuration config){
     	TreeMap<String, String> tokenMap=new TreeMap<String, String>();

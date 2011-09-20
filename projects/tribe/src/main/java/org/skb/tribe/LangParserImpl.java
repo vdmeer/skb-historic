@@ -73,14 +73,11 @@ public class LangParserImpl implements LangParserAPI {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(LangParserImpl.class);
 
-	/** Target StringTemplateGroup */
-	private STGroupTarget target;
-
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE, TSRepository.TString.TS_ATOMIC, TSRepository.TString.TS_TRIBE_LP));
 
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC, TEnum.TS_TRIBE_LP));
 
 	/** the Parser object associated with this TribeParser */
 	private TribeParserAPI langParser=null;
@@ -92,34 +89,26 @@ public class LangParserImpl implements LangParserAPI {
 	private TSArrayListString supportedTargetLang=null;
 
 	/** StringTemplateGroup manager for the parser */
-	protected TSSTGroupManager stgl=null;
+	protected TSSTGroupManager targetStgm=null;
+
+	/** StringTemplateGroup manager for the standard tribe stg */
+	protected TSSTGroupManager tribeStgm=null;
 
 	//TODO comments
 	Configuration config=null;
-	ConfigurationProperties cProp=null;
+	ConfigurationProperties prop=null;
 
 	/**
 	 * Class constructor, initialises local fields
 	 */
-	public LangParserImpl(){
-		logger.trace("constructor -- in");
-
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
-		this.typeString.add(TSRepository.TString.TS_TRIBE_LP);
-		this.typeEnum.add(TEnum.TS_TRIBE_LP);
-
-		logger.trace("constructor -- out");
-	}
-
+	public LangParserImpl(){}
 
 	public void setLangParser(TribeParserAPI parser){
 		this.langParser=parser;
 
 		this.supportedSourceLang=this.langParser.getSourceLanguage();
 
-		this.config=Configuration.getConfiguration(this.langParser.getConfigurationClassName());
+		this.config=this.langParser.getConfiguration();
 
 		String url=this.langParser.getConfigurationFile();
 		try{
@@ -143,7 +132,6 @@ public class LangParserImpl implements LangParserAPI {
 		this.config.getLangRuleMap().loadRules(this.langParser.getLangRuleClassName(), this.langParser.getLangRuleKeyword(), (TSLinkedHashTree)this.config.config.get(PathKeys.pathConfigurationParserLangRules), (TSLinkedHashTree)this.config.config.get(PathKeys.pathConfigurationParserLangTokens));
 	}
 
-
 	@Override
 	public void parse(InputStream is) {
 		logger.trace("parse -- in");
@@ -152,7 +140,7 @@ public class LangParserImpl implements LangParserAPI {
 
 		Boolean quietMode=false;
 		try {
-			quietMode=((TSBoolean)this.cProp.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
+			quietMode=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
 		}
 		catch(Exception e){
 			logger.trace("quiet mode not set in tribe, default false");
@@ -208,26 +196,26 @@ public class LangParserImpl implements LangParserAPI {
 			if(!quietMode)
 				repMgr.reportMessageNoFile(msg);
 
-			TSBaseAPI ata=this.cProp.getValue(FieldKeys.fieldCliOptionGC);
+			TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionGC);
 			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
 				//repMgr.resetNoOfErrors();
 				CommonTreeNodeStream nodesForGen=new CommonTreeNodeStream(treeForGen);
 				nodesForGen.setTokenStream(tokens);
-				this.langParser.pass3CodeGen(nodesForGen, this.stgl.getSTG());
+				this.langParser.pass3CodeGen(nodesForGen, this.targetStgm.getSTG());
 
 				msg="success  in pass 3 (Code Generation)";
 				if(!quietMode)
 					repMgr.reportMessageNoFile(msg);
 
 				FileTemplateList ftl=this.langParser.pass4Files();
-				ftl.init(this.cProp.getValue(FieldKeys.fieldCliOptionTgtDir));
+				ftl.init(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir));
 
-				FileManager fm=new FileManager(this.target.getStdHeaderST(), this.target.getFileStartST(), this.target.getFileEndST());
-				fm.init(this.cProp.getValue(FieldKeys.fieldCliOptionSrcLanguage),
-						this.cProp.getValue(FieldKeys.fieldCliOptionSrcFile),
-						this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage),
-						this.cProp.getValue(FieldKeys.fieldCliOptionTgtFileExt),
-						this.cProp.getValue(FieldKeys.fieldCliOptionGC));
+				FileManager fm=new FileManager(this.tribeStgm.getSTG().getInstanceOf("std"), this.tribeStgm.getSTG().getInstanceOf("fileStart"), this.tribeStgm.getSTG().getInstanceOf("fileEnd"));
+				fm.init(this.prop.getValue(FieldKeys.fieldCliOptionSrcLanguage),
+						this.prop.getValue(FieldKeys.fieldCliOptionSrcFile),
+						this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage),
+						this.prop.getValue(FieldKeys.fieldCliOptionTgtFileExt),
+						this.prop.getValue(FieldKeys.fieldCliOptionGC));
 				fm.writeList(ftl);
 
 				msg="success  in pass 4 (Write Files)";
@@ -246,52 +234,22 @@ public class LangParserImpl implements LangParserAPI {
 		logger.trace("parse -- out");
 	}
 
-
-	private TSDefault loadStg() {
-		this.stgl=new TSSTGroupManager();
-
-		TSBaseAPI obt=this.cProp.getValue(FieldKeys.fieldApplicationTgtStgAngleBr);
-		Boolean _t=false;
-		try {
-			if(obt.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
-				_t=((TSBoolean)obt).tsvalue;
-		} catch (Exception e) {}
-
-		if(Boolean.TRUE.equals(_t))
-			this.stgl.useLexerAngelB();
-		else
-			this.stgl.useLexerDefault();
-
-		this.stgl.setApplicationName(this.cProp.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase());
-		this.stgl.setSTGFile(this.cProp.getValue(FieldKeys.fieldCliOptionTgtStg));
-
-		if(this.target!=null){
-			TSLinkedHashTree chMan=this.target.getMandatory();
-			TSLinkedHashTree chOpt=this.target.getOptional();
-			this.stgl.setChunks(chMan, chOpt);
-		}
-
-		TSDefault ret=this.stgl.loadSTG("code generation", this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage));
-		return ret;
+	@Override
+	public String getTargetStgAsString() {
+		if(this.targetStgm!=null&&this.targetStgm.getSTG()!=null)
+			return this.targetStgm.getSTG().toString();
+		return "";
 	}
 
-
 	@Override
-	public void printStg() {
-		if(this.stgl!=null)
-			System.out.println(this.stgl.getSTG().toString());
-	}
-
-
-	@Override
-	public TSDefault setOptions(){
+	public TSDefault loadParserOptions(){
 		logger.trace("setOptions -- in");
 
 		//has to be a std property map to avoid loading fixed rows of ConfigurationProprties
 		TSPropertyMap opm=new TSPropertyMap();
 		opm.addRows(this.langParser.getOptionClassName(), this.langParser.getOptionKeyword());
 
-		this.cProp=this.config.getProperties();
+		this.prop=this.config.getProperties();
 
 		if(config==null){
 			//TODO
@@ -299,43 +257,67 @@ public class LangParserImpl implements LangParserAPI {
 		}
 		else{
 			opm.loadFromJason(this.config.config.get(PathKeys.patConfigurationParserLangConfiguration));
-			cProp.loadFromJason(this.config.config.get(PathKeys.pathConfigurationParserTribe));
+			prop.loadFromJason(this.config.config.get(PathKeys.pathConfigurationParserTribe));
 			if(this.config.config.containsKey(PathKeys.pathConfigurationParserLangTargets)){
 				String lang=new String();
-				if(!cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
-					lang=cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).toString();
+				if(!prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
+					lang=prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).toString();
 					opm.loadFromJason(((TSLinkedHashTree)this.config.config.get(PathKeys.pathConfigurationParserLangTargets+"/"+lang+"/"+FieldKeys.fieldLangTargetConfigCli)));
-					cProp.loadFromJason(((TSLinkedHashTree)this.config.config.get(PathKeys.pathConfigurationParserLangTargets+"/"+lang)));
+					prop.loadFromJason(((TSLinkedHashTree)this.config.config.get(PathKeys.pathConfigurationParserLangTargets+"/"+lang)));
 				}
 			}
 		}
-		cProp.addProperties(opm);
-
-		//load target
-		if(!this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
-			logger.trace("target set as <"+this.cProp.getValue(FieldKeys.fieldCliOptionTgtLanguage)+">");
-			this.target=new STGroupTarget(this.cProp.getValue(FieldKeys.fieldApplicationName), this.cProp.getValue(FieldKeys.fieldApplicationGenericSTG), this.config);
-		}
+		prop.addProperties(opm);
 
 		logger.trace("setOptions -- out");
-		return this.loadStg();
+		return this.loadTargetLanguage();
 	}
 
+	@Override
+	public TSDefault loadTargetLanguage(){
+		TSDefault ret=new TSDefault();
+
+		if(this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
+			ret.tsSetMessage("load target: no target language set");
+			return ret;
+		}
+
+		logger.trace("target set as <"+this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage)+">");
+		this.tribeStgm=TribeHelpers.loadSTGM(this.config, PathKeys.pathConfigurationParserTribeStgChunks, this.prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase(), this.prop.getValue(FieldKeys.fieldApplicationGenericSTG).toString());
+		ret=this.tribeStgm.loadSTG("string template for generic header", "");
+		if(ret.tsIsType(TEnum.TS_ERROR))
+			return ret;
+
+		this.targetStgm=TribeHelpers.loadSTGM(this.config, PathKeys.pathConfigurationParserLangStgChunks, this.prop.getValue(FieldKeys.fieldApplicationName).toString().toLowerCase(), this.prop.getValue(FieldKeys.fieldCliOptionTgtStg).toString());
+
+		TSBaseAPI obt=this.prop.getValue(FieldKeys.fieldApplicationTgtStgAngleBr);
+		Boolean _t=false;
+		try {
+			if(obt.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+				_t=((TSBoolean)obt).tsvalue;
+		} catch (Exception e) {}
+
+		if(Boolean.TRUE.equals(_t))
+			this.targetStgm.useLexerAngelB();
+		else
+			this.targetStgm.useLexerDefault();
+
+		ret=this.targetStgm.loadSTG("code generation", "");
+		return ret;
+	}
 
 	@Override
 	public String getSupportedSourceLang() {
 		return this.supportedSourceLang;
 	}
 
-
 	@Override
 	public TSArrayListString getSupportedTargetLang() {
 		return this.supportedTargetLang;
 	}
 
-
 	@Override
-	public Class<?> getConfigurationClassName(){
-		return this.langParser.getConfigurationClassName();
+	public Configuration getConfiguration(){
+		return this.langParser.getConfiguration();
 	}
 }

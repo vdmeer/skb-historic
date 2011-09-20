@@ -364,7 +364,7 @@ public class TSSTGroupManager extends TSAtomic {
 	 * Tests the currently set mandatory chunks for the STG
 	 * @return true if everything was ok, false otherwise (error messages in the log)
 	 */
-	public TSDefault testMandatoryChunks(){
+	private TSDefault testMandatoryChunks(){
 		TSError retErr=new TSError();
 		TSDefault retDef=new TSDefault();
 
@@ -416,7 +416,7 @@ public class TSSTGroupManager extends TSAtomic {
 	 * Tests the currently set optional chunks for the STG
 	 * @return true if everything was ok, false otherwise (error messages in the log)
 	 */
-	public TSDefault testOptionalChunks(){
+	private TSDefault testOptionalChunks(){
 		TSError retErr=new TSError();
 		TSDefault retDef=new TSDefault();
 

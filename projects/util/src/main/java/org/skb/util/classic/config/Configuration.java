@@ -73,6 +73,16 @@ public class Configuration {
 
 
 	/**
+	 * Initialises the configuration, resets all local fields (except configClass)
+	 */
+	public void init(String propFN){
+		this.config=new TSLinkedHashTree();
+		this.config.put(PathKeys.pathInstancesProperties, new ConfigurationProperties(propFN));
+		this.config.put(PathKeys.pathInstancesReportmanager, new TSReportManager());
+	}
+
+
+	/**
 	 * Returns a configuration object for a class name
 	 * @param clazz class name identifying the configuration object
 	 * @return configuration object

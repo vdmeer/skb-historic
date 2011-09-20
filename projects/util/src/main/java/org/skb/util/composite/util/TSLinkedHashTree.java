@@ -183,10 +183,15 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 
 	@Override
 	public TSBaseAPI get(List<String> fqpn) {
-		if(!this.isInitialised()||fqpn==null||fqpn.size()==0)
+		if(!this.isInitialised()||fqpn==null||fqpn.size()==0){
 			return new TSNull();
-		else if(fqpn.size()==1)
-			return this.tsvalue.get(fqpn.get(0).toString());
+		}
+		else if(fqpn.size()==1){
+			if(this.tsvalue.containsKey(fqpn.get(0).toString()))
+				return this.tsvalue.get(fqpn.get(0).toString());
+			else
+				return new TSNull();
+		}
 		else if(this.tsvalue.containsKey(fqpn.get(0).toString())){
 			TSBaseAPI ct=this.tsvalue.get(fqpn.get(0).toString());
 			if(ct.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP)){
@@ -200,8 +205,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 
 	@Override
 	public TSBaseAPI get(Object key) {
-		if(this.isInitialised()&&key!=null)
-			return this.tsvalue.get(key);
+		if(this.isInitialised()&&key!=null){
+			if(this.tsvalue.containsKey(key))
+				return this.tsvalue.get(key);
+			else
+				return new TSNull();				
+		}
 		return new TSNull();
 	}
 
@@ -211,8 +220,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		if(this.isInitialised()&&fqpn!=null){
 			if(StringUtils.contains(fqpn, '/'))
 				return this.get(new ArrayList<String>(Arrays.asList(StringUtils.split(fqpn, '/'))));
-			else
-				return this.tsvalue.get(fqpn);
+			else{
+				if(this.tsvalue.containsKey(fqpn))
+					return this.tsvalue.get(fqpn);
+				else
+					return new TSNull();
+			}
 		}
 		return new TSNull();
 	}

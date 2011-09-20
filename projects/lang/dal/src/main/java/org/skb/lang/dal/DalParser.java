@@ -40,8 +40,8 @@ public class DalParser implements TribeParserAPI {
 	}
 
 	@Override
-	public Class<?> getConfigurationClassName(){
-		return DalParser.class;
+	public Configuration getConfiguration(){
+		return config;
 	}
 
 	@Override

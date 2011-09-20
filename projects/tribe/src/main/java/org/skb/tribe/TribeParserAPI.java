@@ -36,6 +36,7 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.antlr.stringtemplate.StringTemplateGroup;
+import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.io.files.FileTemplateList;
 
 /**
@@ -82,10 +83,10 @@ public interface TribeParserAPI {
 	public String getLangRuleKeyword();
 
 	/**
-	 * Returns the class that maintains the parser's configuration.
+	 * Returns the parser's configuration object.
 	 * @return class for the parser's configuration
 	 */
-	public Class<?> getConfigurationClassName();
+	public Configuration getConfiguration();
 
 	/**
 	 * Returns the parser's lexer object

@@ -32,6 +32,7 @@ package org.skb.util.classic.lang;
 
 import java.io.InputStream;
 
+import org.skb.util.classic.config.Configuration;
 import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.util.TSArrayListString;
 
@@ -48,12 +49,11 @@ public interface LangParserAPI {
 	 */
 	public String getSupportedSourceLang();
 
-
 	/**
-	 * Returns the class name that maintains configuration information of the parser.
+	 * Returns the parser's configuration object.
 	 * @return class name
 	 */
-	public Class<?> getConfigurationClassName();
+	public Configuration getConfiguration();
 
 	/**
 	 * Returns the supported target languages of the parser.
@@ -61,13 +61,15 @@ public interface LangParserAPI {
 	 */
 	public TSArrayListString getSupportedTargetLang();
 
+	/**
+	 * Sets the parser's configuration.
+	 */
+	public TSDefault loadParserOptions();
 
 	/**
 	 * Sets the parser's configuration.
-	 * @param prop initial property map
 	 */
-	public TSDefault setOptions();
-
+	public TSDefault loadTargetLanguage();
 
 	/**
 	 * Starts the parsing process
@@ -75,9 +77,8 @@ public interface LangParserAPI {
 	 */
 	public void parse(InputStream is);
 
-
 	/**
-	 * Prints the target StringTemplate.
+	 * Returns the target StringTemplate as string, for instance for printing.
 	 */
-	public void printStg();
+	public String getTargetStgAsString();
 }

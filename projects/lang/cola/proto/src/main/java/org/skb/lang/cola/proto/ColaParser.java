@@ -92,8 +92,8 @@ public class ColaParser implements TribeParserAPI {
 	}
 
 	@Override
-	public Class<?> getConfigurationClassName(){
-		return ColaParser.class;
+	public Configuration getConfiguration(){
+		return config;
 	}
 
 	@Override

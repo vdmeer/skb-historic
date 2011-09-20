@@ -66,14 +66,23 @@ public class ConfigurationProperties extends TSPropertyMap {
 	 */
 	public ConfigurationProperties(){
 		super();
-		this._trInit();
+		this._trInit("/org/skb/util/config/load.properties");
+	}
+
+
+	/**
+	 * Class constructor, initialises local fields
+	 */
+	public ConfigurationProperties(String propFN){
+		super();
+		this._trInit(propFN);
 	}
 
 
 	/**
 	 * Initialisation method.
 	 */
-	private void _trInit(){
+	private void _trInit(String propFN){
 		logger.trace("init -- in");
 
 		HashSet<String> rows=new HashSet<String>();
@@ -114,7 +123,7 @@ public class ConfigurationProperties extends TSPropertyMap {
 		this.addRows(rows);
 
 		PropertyHandler ph=new PropertyHandler();
-		this.config=ph.load("/org/skb/util/config/load.properties", "skb");
+		this.config=ph.load(propFN, ConfigurationProperties.class.getName());
 		String cfgFile=this.config.getProperty("org.skb.util.config.jsonfile");
 
 		if(cfgFile==null){
@@ -122,6 +131,8 @@ public class ConfigurationProperties extends TSPropertyMap {
 			logger.trace("init -- out > no property for config file set");
 			return;
 		}
+
+		//TODO check if cfgFile exists as URL or FILE
 
 		Json2Oat j2o=new Json2Oat();
 		TSBaseAPI c=j2o.read(this.config.getProperty("org.skb.util.config.jsonfile"));

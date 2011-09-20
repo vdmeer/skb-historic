@@ -40,8 +40,8 @@ public class GlueParser implements TribeParserAPI {
 	}
 
 	@Override
-	public Class<?> getConfigurationClassName(){
-		return GlueParser.class;
+	public Configuration getConfiguration(){
+		return config;
 	}
 
 	@Override

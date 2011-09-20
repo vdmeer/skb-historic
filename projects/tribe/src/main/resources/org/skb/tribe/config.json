@@ -52,10 +52,10 @@
             "skb:value:type":"ts:atomic:java:string",
             "skb:value:default":"  Eclipse 3.6, (c) the Eclipse Foundation (www.eclipse.org)\n  TRIBE 0.10, (c) Sven van der Meer\n  ANTLR 3.3, (c) Terence Parr <http://www.ANTLR.org>\n  StringTemplate 3.2.1, (c) Terence Parr <http://www.stringtemplate.org>\n  ANTLR IDE <http://antlrv3ide.sourceforge.net/>\n  Apache Commons, (c) The Apache Software Foundation <http://commons.apache.org/>\n  Apache log4j, (c) The Apache Software Foundation <http://logging.apache.org>\n"
         },
-        "skb.application.additional":{
-            "skb:value:type":"ts:atomic:java:string"
+//        "skb.application.additional":{
+//            "skb:value:type":"ts:atomic:java:string"
 //            "skb:value:default":"cpp handles #define/#undef, #ifdef/#elsif/#else/#endif, and #include\n    but does miss some of the simpler directives\n    and doesn't follow the cpp spec perfectly\nno support for function overloading yet\n'generate_impl_code' not recursive\n\n"
-        },
+//        },
         "skb.application.version":{
             "skb:value:type":"ts:atomic:java:string",
             "skb:value:default":"0.30"
@@ -243,6 +243,27 @@
         "skb.application.tgt-stg-angle-br":{
             "skb:value:type":"ts:atomic:java:boolean",
             "skb:value:default":true
+        }
+    },
+    "skb":{
+        "tribe":{
+            "stgchunks":{
+                "std":{
+                    "skb:stringtemplate:chunks:mandatory": ["source", "target", "file", "day", "time", "misc"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "fImport":{
+                    "skb:stringtemplate:chunks:mandatory": ["target", "import"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "fileStart":{
+                    "skb:stringtemplate:chunks:mandatory": ["target"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "fileEnd":{
+                    "skb:stringtemplate:chunks:mandatory": ["target"]
+                }
+            }
         }
     }
 }

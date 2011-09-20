@@ -43,8 +43,8 @@ public class PolaParser implements TribeParserAPI {
 
 
 	@Override
-	public Class<?> getConfigurationClassName(){
-		return PolaParser.class;
+	public Configuration getConfiguration(){
+		return config;
 	}
 
 

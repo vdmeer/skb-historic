@@ -39,16 +39,20 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Properties;
 
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Logger;
 import org.skb.lang.cpp.CPP;
 import org.skb.util.FieldKeys;
+import org.skb.util.PathKeys;
 import org.skb.util.classic.cli.Cli;
 import org.skb.util.classic.cli.CliApache;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.lang.LangParserAPI;
+import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.misc.PropertyHandler;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository;
@@ -56,6 +60,7 @@ import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.java.TSString;
 import org.skb.util.composite.misc.TSReportManager;
+import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * This is the main Tribe class, it does all the magic.
@@ -70,14 +75,26 @@ public class Tribe {
 	/** Configuration Instance */
 	public final static Configuration config=Configuration.getConfiguration(Tribe.class);
 
+	/** Property file defining a property that points to the tribe JSON configuration file */
+	private final String propertyFile="/org/skb/tribe/tribe.properties";
+
+	/** Tribe configuration */
 	private ConfigurationProperties prop;
+
+	/** Report Manager instance */
 	private TSReportManager repMgr;
+
+	/** Command Line Parser instance */
 	private Cli cli;
+
+	/** Local list of parsers for processing */
 	private LangParserAPI[] parsers=null;
+
+	/** Parser selected for parsing */
 	private LangParserAPI parser=null;
 
 	/** Enum set used as bit field for exitOptions */
-	public EnumSet<TribeExitOptions> eo=EnumSet.noneOf(TribeExitOptions.class);
+	public EnumSet<EnumExitoptions> eo=EnumSet.noneOf(EnumExitoptions.class);
 
 	/**
 	 * Class Constructor, empty
@@ -92,10 +109,19 @@ public class Tribe {
 	 */
 	public void execute(LangParserAPI[] parsers, String[] args){
 		this.cli=new CliApache();
-		config.init();
+		config.init(this.propertyFile);
 		this.prop=config.getProperties();
 		this.repMgr=config.getReportManager();
 		this.parsers=parsers;
+
+		//get the chunks for the standard STG file
+		Properties cfgFile=new PropertyHandler().load(this.propertyFile, Tribe.class.getName());
+		Json2Oat j2o=new Json2Oat();
+		TSBaseAPI c=j2o.read(cfgFile.getProperty("org.skb.util.config.jsonfile"));
+		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+			TSLinkedHashTree cfg=(TSLinkedHashTree)c;
+			config.config.put(PathKeys.pathConfigurationParserTribeStgChunks, cfg.get(PathKeys.pathConfigurationParserTribeStgChunks));
+		}
 
 		Integer result;
 		//phase 1 is doing TRIBE parameter checking, no parser involved
@@ -106,7 +132,7 @@ public class Tribe {
 		}
 
 		//parser is selected, so shift our internal prop and report manager to the new parser configuration
-		Configuration parserConfig=Configuration.getConfiguration(this.parser.getConfigurationClassName());
+		Configuration parserConfig=this.parser.getConfiguration();
 		this.prop=parserConfig.getProperties();
 		this.repMgr=parserConfig.getReportManager();
 
@@ -125,6 +151,9 @@ public class Tribe {
 	private Integer phase1_Tribe(String[] args){
 		logger.trace("starting phase 1 -- tribe");
 
+		/** Field to check return values */
+		TSDefault checkRet=new TSDefault();
+
 		/**
 		 * Get the set application name (default is "") and set CLI and ReportManager accordingly
 		 */
@@ -141,7 +170,11 @@ public class Tribe {
 		 */
 		logger.trace("set report manager");
 		repMgr.setSTGFileName(prop.get(FieldKeys.fieldCliOptionReportManagerStg, FieldKeys.fieldValueDefault));
-		repMgr.loadSTG("Report Manager default String Template Group", "");
+		checkRet=repMgr.loadSTG("Report Manager default String Template Group", "");
+		if(checkRet.tsIsType(TEnum.TS_ERROR)){
+			System.err.println(checkRet);
+			return -1;
+		}
 
 		/**
 		 * Do the first pass of options. This is needed to detect:
@@ -160,7 +193,12 @@ public class Tribe {
 		 * reload the report manager stg (can be changed in CLI as well as in file)
 		 */
 		repMgr.setSTGFileName(prop.getValue(FieldKeys.fieldCliOptionReportManagerStg));
-       	repMgr.loadSTG("Report Manager command line String Template Group", "");
+       	checkRet=repMgr.loadSTG("Report Manager after command line parsing", "");
+		if(checkRet.tsIsType(TEnum.TS_ERROR)){
+			System.err.println(checkRet);
+			return -1;
+		}
+
 
         /**
          * CLI Option case 1: no source language specified then
@@ -221,8 +259,13 @@ public class Tribe {
         	}
         	//a.2 - no target and 1 source parser, if exit Options then do, otherwise nothing
         	else if(this.eo.size()>0){
-       			TribeHelpers.loadParserOptions(sourceParsers.get(0), this.cli);
-       			this.setOptions(args);
+        		checkRet=TribeHelpers.loadParserOptions(sourceParsers.get(0), this.cli);
+    			if(checkRet.tsIsType(TEnum.TS_ERROR)){
+    				System.err.println(checkRet);
+    				return -1;
+    			}
+
+        		this.setOptions(args);
        			System.out.println(this.doExitOptions());
        			return 1;        			
         	}
@@ -232,8 +275,13 @@ public class Tribe {
         	//b.1 - target lang set, 1 target parser selected = if exit Options do, otherwise nothing
         	if(targetParsers.size()==1){
         		if(this.eo.size()>0){
-        			TribeHelpers.loadParserOptions(targetParsers.get(0), this.cli);
+        			checkRet=TribeHelpers.loadParserOptions(targetParsers.get(0), this.cli);
+        			if(checkRet.tsIsType(TEnum.TS_ERROR)){
+        				System.err.println(checkRet);
+        				return -1;
+        			}
         			this.setOptions(args);
+        			this.parser=targetParsers.get(0);
         			System.out.println(this.doExitOptions());
         			return 1;	
         		}
@@ -279,13 +327,16 @@ public class Tribe {
         	return -1;
         }
 
-//TODO no check for print ReportMgt Template yet, tricky to set phase/place for it
-
         /**
          * the final action - transfer all options to the selected parser's configuration and re-check command line parameters for it as well
          */
-        TribeHelpers.loadParserOptions(this.parser, this.cli);
-		this.setOptions(args);
+        checkRet=TribeHelpers.loadParserOptions(this.parser, this.cli);
+		if(checkRet.tsIsType(TEnum.TS_ERROR)){
+			System.err.println(checkRet);
+			return -1;
+		}
+
+        this.setOptions(args);
 
         logger.trace("finshed phase 1 -- tribe");
 		return 0;
@@ -299,12 +350,6 @@ public class Tribe {
 		 */
 		this.repMgr.doErrors(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoErrors)).tsvalue);
 		this.repMgr.doWarnings(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoWarnings)).tsvalue);
-
-		//if printing target stg is required, do so and return 1
-		if(((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionPrStgFileTarget)).tsvalue){
-			this.parser.printStg();
-			return 1;
-		}
 
 		/**
          * Test the source and target files (including directories) by mean of:
@@ -413,21 +458,24 @@ public class Tribe {
 	private String doExitOptions(){
 		String ret=null;
 
-		if(this.eo.contains(TribeExitOptions.HELP)){
+		if(this.eo.contains(EnumExitoptions.HELP)){
         	ret=TribeHelpers.getHelpPrint(cli, this.prop);
         }
-        if(this.eo.contains(TribeExitOptions.VERSION)&&
-        		!this.eo.contains(TribeExitOptions.HELP)){
+
+		if(this.eo.contains(EnumExitoptions.VERSION)&&
+        		!this.eo.contains(EnumExitoptions.HELP)){
         	ret=TribeHelpers.getVersionPrint(this.prop);
         }
-        if(this.eo.contains(TribeExitOptions.LANGUAGES)){
+
+        if(this.eo.contains(EnumExitoptions.LANGUAGES)){
         	if(ret!=null)
         		ret+="\n\n";
         	else
         		ret="\n";
         	ret+=TribeHelpers.getSupportedLangPrint(this.parsers);
         }
-        if(this.eo.contains(TribeExitOptions.DEF_OPTIONS)){
+
+        if(this.eo.contains(EnumExitoptions.DEF_OPTIONS)){
 			if(ret!=null)
         		ret+="\n\n";
         	else
@@ -435,13 +483,27 @@ public class Tribe {
 			ret+=TribeHelpers.getDefaultOptionsPrint(this.prop);
 		}
 
-		if(this.eo.contains(TribeExitOptions.PRINT_STG_REPORTMGR)){
+		if(this.eo.contains(EnumExitoptions.PRINT_STG_REPORTMGR)){
         	if(ret!=null)
         		ret+="\n\n";
         	else
         		ret="\n";
         	ret+=this.repMgr.stgmToString();
 		}		
+
+		if(this.eo.contains(EnumExitoptions.PRINT_STG_TARGET)){
+			if(this.parser!=null){
+				String stg=this.parser.getTargetStgAsString();
+				if(stg.length()>0){
+					if(ret!=null)
+		        		ret+="\n\n";
+		        	else
+		        		ret="\n";
+					ret+=stg;
+				}
+			}
+		}
+
 		return ret;
 	}
 
