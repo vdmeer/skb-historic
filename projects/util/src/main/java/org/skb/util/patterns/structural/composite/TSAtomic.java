@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2011 Sven van der Meer
+/* Copyright (c) 2007-2011 Sven van der Meer
  * All rights reserved.
  *
  * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
@@ -27,138 +27,139 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.patterns.structural.composite.atomic.util;
+package org.skb.util.patterns.structural.composite;
 
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.Stack;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-import org.skb.util.patterns.structural.composite.TSAtomicAPI;
-import org.skb.util.patterns.structural.composite.TSBaseAPI;
-import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
- * Implementation of a scope, using {@link Stack}.
- * 
+ * Abstract class implementing the core functionality of {@link TSAtomicAPI}
+ *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSScope implements TSAtomicAPI {
+public abstract class TSAtomic implements TSAtomicAPI {
 	/** Logger instance */
-	public final static Logger logger=Logger.getLogger(TSScope.class);
+	public final static Logger logger=Logger.getLogger(TSAtomic.class);
 
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+	protected Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE, TSRepository.TString.TS_ATOMIC));
 
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
-
-	/** Local value */
-	protected Stack<String> scope;
+	protected LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC));
 
 
-	public TSScope(){
-		this._init();
-	}
-
-
-	protected void _init(){
-		this.scope=new Stack<String>();
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_SCOPE);
-		this.typeEnum.add(TEnum.TS_ATOMIC_SCOPE);
-	}
-
-
-	public boolean push(String key, String value){
-		if(this.scope.contains(key+"@"+value))
-			return false;
-		this.scope.push(key+"@"+value);
-		return true;
-	}
-
-	public void pop(){this.scope.pop();}
-	public void reset(){this.scope.clear();}
-
-	public Stack<String> as_array(){return this.scope;}
-	public String as_string(){return this.scope.toString();}
-
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsClean()
+	 */
 	@Override
 	public void tsClean() {
-		// TODO
-		logger.warn("tsClean not implemented");
+		logger.warn("not implemented");
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeEnum()
+	 */
 	@Override
-	public final TEnum tsGetTypeEnum(){
+	public TEnum tsGetTypeEnum() {
 		return TSRepository.type(this.typeString.lastElement());
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeEnumSet()
+	 */
 	@Override
-	public final Set<TEnum> tsGetTypeEnumSet(){
+	public Set<TEnum> tsGetTypeEnumSet() {
 		return this.typeEnum;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeString()
+	 */
 	@Override
-	public final java.lang.String tsGetTypeString(){
+	public String tsGetTypeString() {
 		return this.typeString.lastElement();
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsGetTypeStringList()
+	 */
 	@Override
-	public final List<String> tsGetTypeStringList(){
+	public List<String> tsGetTypeStringList() {
 		return this.typeString;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsAtomic()
+	 */
 	@Override
-	public boolean tsIsAtomic(){
+	public boolean tsIsAtomic() {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsComposite()
+	 */
 	@Override
-	public boolean tsIsComposite(){
+	public boolean tsIsComposite() {
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsType(java.lang.String)
+	 */
 	@Override
-	public final boolean tsIsType(String t){
-		return this.typeString.contains(t);
+	public boolean tsIsType(String type) {
+		return this.typeString.contains(type);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsIsType(org.skb.util.patterns.structural.composite.TSRepository.TEnum)
+	 */
 	@Override
-	public final boolean tsIsType(TEnum t){
-		return this.typeEnum.contains(t);
+	public boolean tsIsType(TEnum type) {
+		return this.typeEnum.contains(type);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsPlus(org.skb.util.patterns.structural.composite.TSBaseAPI)
+	 */
 	@Override
-	public void tsPlus(TSBaseAPI tb){
+	public void tsPlus(TSBaseAPI tb) {
+		logger.warn("not implemented");
 	}
 
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsToString(int)
+	 */
 	@Override
 	public String tsToString(int indent) {
-		// TODO
-		logger.warn("tsToString not implemented");
+		logger.warn("not implemented");
+		return "";
+	}
+
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSBaseAPI#tsTrim()
+	 */
+	@Override
+	public void tsTrim() {
+		logger.warn("not implemented");
+	}
+
+	/* (non-Javadoc)
+	 * @see org.skb.util.patterns.structural.composite.TSAtomicAPI#tsCopyAtomic()
+	 */
+	@Override
+	public TSAtomicAPI tsCopyAtomic() {
+		logger.warn("not implemented");
 		return null;
 	}
 
-	@Override
-	public void tsTrim() {
-		// TODO
-		logger.warn("tsTrim not implemented");
-	}
-
-
-	@Override
-	public TSScope tsCopyAtomic(){
-		TSScope ret=new TSScope();
-		ret.scope=this.scope;
-		return ret;
-	}
 }

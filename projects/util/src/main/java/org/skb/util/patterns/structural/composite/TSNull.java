@@ -39,6 +39,7 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
+
 public final class TSNull implements TSBaseAPI, TSAtomicAPI, TSCompositeAPI {
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
 	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));

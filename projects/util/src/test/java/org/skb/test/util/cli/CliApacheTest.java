@@ -14,7 +14,7 @@ import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 public class CliApacheTest extends TestCase {
@@ -204,7 +204,7 @@ public class CliApacheTest extends TestCase {
 			Json2Oat j2o=new Json2Oat();
 			TSBaseAPI c=j2o.read("/org/skb/test/util/cli/properties.json");
 			if(c!=null&&c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-				this.loadFromJason(((TSMapLH)c));
+				this.loadFromJason(((TSLinkedHashTree)c));
 		}
 	}
 }

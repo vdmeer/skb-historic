@@ -44,7 +44,7 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
 import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Class that reads a JSON file and transforms it into an TSMapLH.
@@ -144,7 +144,7 @@ public class Json2Oat {
 	/**
 	 * Recurses through the given node and constructs a TSBase return.
 	 * @param node starting node for recursion
-	 * @return TSBase object that is either and TSArrayList, a TSMapLH or an atomic type from the package {@link org.skb.util.types.atomic.java}
+	 * @return TSBase object that is either and TSArrayList, a TSMapLH or an atomic type from the package {@link org.skb.util.patterns.structural.composite.atomic.java}
 	 */
 	private TSBaseAPI traverse(JsonNode node){
 		if(node.isArray()){
@@ -155,7 +155,7 @@ public class Json2Oat {
 			return ret;
 		}
 		else if(node.isObject()){
-			TSMapLH ret=new TSMapLH();
+			TSLinkedHashTree ret=new TSLinkedHashTree();
 			Iterator<JsonNode> valFields = node.getElements();
 			Iterator<String> keyFields = node.getFieldNames();
 			while(keyFields.hasNext()&&valFields.hasNext())

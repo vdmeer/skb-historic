@@ -29,6 +29,7 @@
 
 package org.skb.util.patterns.structural.composite;
 
+
 /**
  * Base interface for all TSComposite types
  *
@@ -36,5 +37,9 @@ package org.skb.util.patterns.structural.composite;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface TSCompositeAPI extends TSBaseAPI {
+	/**
+	 * Returns a copy of the composite object
+	 * @return copy of the composite object
+	 */
 	public TSCompositeAPI tsCopyComposite();
 }

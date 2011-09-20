@@ -1,4 +1,4 @@
-/* Copyright (c) 2007-2011 Sven van der Meer
+/* Copyright (c) 2005-2011 Sven van der Meer
  * All rights reserved.
  *
  * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
@@ -509,9 +509,7 @@ public class ReportManager{
 
 
 	/**
-	 * @see STGroupManager#setSTGFileName(TSBaseAPI)
-	 * @param fn file name
-	 * @return true if set, false if fn was null or not of type TSString
+	 * @see STGroupManager#setSTGFile(TSBaseAPI)
 	 */
 	public boolean setSTGFileName(TSBaseAPI fn){
 		return this.stgm.setSTGFile(fn);
@@ -520,9 +518,6 @@ public class ReportManager{
 
 	/**
 	 * @see STGroupManager#loadSTG(String, String)
-	 * @param purpose
-	 * @param targetLang
-	 * @return
 	 */
 	public boolean loadSTG(String purpose, String targetLang){
 		return this.stgm.loadSTG(purpose, targetLang);

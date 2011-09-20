@@ -98,7 +98,7 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
+	 * Class construtor, intialises local fields.
 	 */
 	public ColaPass2_Ast(){
 		this.atoms=config.getAtomlist();
@@ -116,10 +116,9 @@ public class ColaPass2_Ast {
 	}
 
 
-	//EPR methods, including testing the EPR declarations for Properties, Elements and Facilities
 	/**
-	 * 
-	 * @param atom
+	 * Clears current EPR atom and sets it to the new atom
+	 * @param atom new EPR atom
 	 */
 	public void eprStart(String atom){
 		this.eprClear();
@@ -128,8 +127,8 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
-	 * @param atom
+	 * Changes the EPR atom
+	 * @param atom new EPR atom
 	 */
 	public void eprAtom(String atom){
 		this.eprAtom=atom;
@@ -137,8 +136,8 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
-	 * @param cat
+	 * Sets the EPR category
+	 * @param cat new category
 	 */
 	public void eprCategory(String cat){
 		this.eprCategory=cat;
@@ -146,7 +145,7 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
+	 * Clears all EPR fields (categroy, atoms and epr list).
 	 */
 	public void eprClear(){
 		this.eprCategory="";
@@ -156,8 +155,8 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
-	 * @param epr
+	 * Adds to the EPR list and tests the EPR declarations for Properties, Elements and Facilities
+	 * @param epr string to be used
 	 */
 	public void eprAdd(String epr){
 		if(this.eprList.containsKey(epr)==true){
@@ -179,8 +178,8 @@ public class ColaPass2_Ast {
 
 	// temp Type and Value for testing
 	/**
-	 * 
-	 * @param tk
+	 * Sets temporary type field
+	 * @param tk new type
 	 */
 	public void setLastBaseType(Token tk){
 		this.lastBaseType=tk;
@@ -188,8 +187,8 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
-	 * @param tk
+	 * Sets last value of parsed common value.
+	 * @param tk new value
 	 */
 	public void setLastCommonValue(Token tk){
 		this.lastCommonValue=tk;
@@ -197,8 +196,8 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
-	 * @param tk
+	 * Sets last type of parsed common value.
+	 * @param tk new type
 	 */
 	public void setLastCommonValueType(Token tk){
 		this.lastCommonValueType=tk;
@@ -206,7 +205,7 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
+	 * Sets last parsed common value and type.
 	 * @param value
 	 * @param type
 	 */
@@ -217,8 +216,8 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
-	 * @param t
+	 * tests base type with constant value
+	 * @param t string
 	 */
 	public void testBaseTypeWithConstValue(String t){
 		String base_type=this.lastBaseType.getText().toLowerCase();
@@ -709,10 +708,10 @@ public class ColaPass2_Ast {
 
 
 	/**
-	 * 
-	 * @param category
-	 * @param catElem
-	 * @return
+	 * Tests a scoped name 
+	 * @param category category for the scoped name
+	 * @param catElem category element
+	 * @return true if no errors
 	 */
 	public boolean testSN(String category, String catElem){
 		boolean ret=true;

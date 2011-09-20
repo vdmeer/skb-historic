@@ -43,7 +43,7 @@ import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.util.config.Configuration;
 import org.skb.util.languages.AtomList;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 import org.skb.util.stringtemplate.STGroupManager;
 import org.skb.util.stringtemplate.STWriterXtoY;
 
@@ -69,7 +69,7 @@ public class ColaStatistics {
 	private StringTemplate completeStatPrintArray=null;
 
 	public ColaStatistics(){
-		TSMapLH chMan=new TSMapLH();
+		TSLinkedHashTree chMan=new TSLinkedHashTree();
 
 		chMan.put("simpleStat", new TSArrayListString(new String[]{"file", "ids", "properties", "items", "contracts", "packages", "elements", "facilities", "actions"}));
 		chMan.put("simpleStat", new TSArrayListString(new String[]{"attributes", "parameters", "structs", "members", "typedefs"}));

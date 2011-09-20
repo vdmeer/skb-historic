@@ -43,7 +43,7 @@ import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
  */
 public interface TSBaseAPI {
 	/**
-	 * Empties the TSBase object
+	 * Removes all entries that hold no value (i.e. null, TS_NULL, empty strings)
 	 */
 	public void tsClean();
 
@@ -66,7 +66,7 @@ public interface TSBaseAPI {
 	 * Returns the last entry of the type list as an string
 	 * @return type
 	 */
-	public java.lang.String tsGetTypeString();
+	public String tsGetTypeString();
 
 
 	/**

@@ -42,11 +42,11 @@ import org.skb.util.misc.PropertyHandler;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSTableRowAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 
 /**
- * ####
+ * Special property map with pre-loaded rows for configurations.
  *
  * @author     Sven van der Meer
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
@@ -61,12 +61,18 @@ public class ConfigurationProperties extends TSPropertyMap {
 	public Properties config;
 
 
+	/**
+	 * Class constructor, initialises local fields
+	 */
 	public ConfigurationProperties(){
 		super();
 		this._trInit();
 	}
 
 
+	/**
+	 * Initialisation method.
+	 */
 	private void _trInit(){
 		logger.trace("init -- in");
 
@@ -119,16 +125,16 @@ public class ConfigurationProperties extends TSPropertyMap {
 
 		Json2Oat j2o=new Json2Oat();
 		TSBaseAPI c=j2o.read(this.config.getProperty("org.skb.util.config.jsonfile"));
-		TSMapLH config=null;
+		TSLinkedHashTree config=null;
 		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-			config=(TSMapLH)c;
+			config=(TSLinkedHashTree)c;
 		if(config==null){
 			System.err.println("skb: configuration not found");
 			logger.trace("init -- out > no configuration file found");
 			return;
 		}
 		else
-			this.loadFromJason(((TSMapLH)config.get("configuration")));
+			this.loadFromJason(((TSLinkedHashTree)config.get("configuration")));
 		this.put(FieldKeys.fieldApplicationDirectory, FieldKeys.fieldValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
 		this.put(FieldKeys.fieldCliOptionTgtDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir"));
 

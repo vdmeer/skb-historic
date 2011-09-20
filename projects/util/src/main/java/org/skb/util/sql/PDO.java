@@ -45,7 +45,7 @@ import org.apache.log4j.Logger;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Implementation of a PDO object.
@@ -225,8 +225,8 @@ public class PDO {
 	}
 
 
-	public TSMapLH semanticQuery(TSMapLH query, String from){
-		TSMapLH ret=new TSMapLH();
+	public TSLinkedHashTree semanticQuery(TSLinkedHashTree query, String from){
+		TSLinkedHashTree ret=new TSLinkedHashTree();
 
 		//select string
 		if(query.get("find").tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)&&((TSArrayList)query.get("find")).size()>0)
@@ -236,8 +236,8 @@ public class PDO {
 
 		//where string
 		String where="";
-		if(query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)&&((TSMapLH)query.get("equals")).size()>0){
-			TSMapLH _a=(TSMapLH)query.get("equals");
+		if(query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)&&((TSLinkedHashTree)query.get("equals")).size()>0){
+			TSLinkedHashTree _a=(TSLinkedHashTree)query.get("equals");
 			Set<String> o_set = _a.keySet();
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){

@@ -29,7 +29,7 @@
 
 package org.skb.util.patterns.creational.builder;
 
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Interface for a builder.
@@ -55,7 +55,7 @@ public interface Builder {
 	 * @param request original request object
 	 * @param entries original array with collected information from the reader
 	 */
-	public void execute(Request request, TSMapLH entries);
+	public void execute(Request request, TSLinkedHashTree entries);
 
 
 	/**
@@ -66,7 +66,7 @@ public interface Builder {
 	 * @param request original request object
 	 * @param entries original array with collected information from the reader
 	 */
-	public void executeLoop(Request request, TSMapLH entries);
+	public void executeLoop(Request request, TSLinkedHashTree entries);
 
 	//TODO add jdoc
 	public boolean isInitialised();

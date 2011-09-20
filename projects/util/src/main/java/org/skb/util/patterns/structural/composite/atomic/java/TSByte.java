@@ -43,7 +43,7 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
- * A wrapper for java.lang.Byte.
+ * A wrapper for the class {@link Byte}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

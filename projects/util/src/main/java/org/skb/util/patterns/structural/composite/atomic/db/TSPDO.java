@@ -44,6 +44,12 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.sql.PDO;
 
+/**
+ * Wrapper for the string template class {@link PDO}.
+ * 
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class TSPDO extends PDO implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSPDO.class);
@@ -60,10 +66,12 @@ public class TSPDO extends PDO implements TSAtomicAPI {
 		this._init();
 	}
 
+
 	public TSPDO(Connection c){
 		super(c);
 		this._init();
 	}
+
 
 	private void _init(){
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
@@ -73,51 +81,61 @@ public class TSPDO extends PDO implements TSAtomicAPI {
 		this.typeEnum.add(TEnum.TS_ATOMIC_DB_PDO);
 	}
 
+
 	@Override
 	public void tsClean(){
 		//TODO
 		logger.warn("tsClean not implemented");
 	}
 
+
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
+
 	@Override
-	public final java.lang.String tsGetTypeString(){
+	public final String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
+
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
+
 
 	@Override
 	public boolean tsIsComposite(){
 		return false;
 	}
 
+
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
 
+
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
+
 
 	@Override
 	public void tsPlus(TSBaseAPI tb){
@@ -125,14 +143,16 @@ public class TSPDO extends PDO implements TSAtomicAPI {
 		logger.warn("tsPlus not implemented");
 	}
 
+
 	@Override
-	public java.lang.String tsToString(int indent){
+	public String tsToString(int indent){
 		String ret=new String();
 		for(int i=indent;i>0;i--)
 			ret+=" ";
 		ret+=super.toString();
 		return ret;
 	}
+
 
 	@Override
 	public void tsTrim(){

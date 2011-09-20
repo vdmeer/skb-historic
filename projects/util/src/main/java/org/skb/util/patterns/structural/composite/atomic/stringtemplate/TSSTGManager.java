@@ -43,6 +43,12 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.stringtemplate.STGroupManager;
 
+/**
+ * Wrapper for the class {@link STGroupManager}
+ * 
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class TSSTGManager extends STGroupManager implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSSTGManager.class);
@@ -54,11 +60,18 @@ public class TSSTGManager extends STGroupManager implements TSAtomicAPI {
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 
+	/**
+	 * Class constructor, initialises local fields.
+	 */
 	public TSSTGManager(){
 		super();
 		this._init();
 	}
 
+
+	/**
+	 * Initialisation.
+	 */
 	private void _init(){
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
@@ -67,57 +80,68 @@ public class TSSTGManager extends STGroupManager implements TSAtomicAPI {
 		this.typeEnum.add(TEnum.TS_ATOMIC_STGROUPMANAGER);
 	}
 
+
 	@Override
 	public void tsClean(){
 		//TODO
 		logger.warn("tsClean not implemented");
 	}
 
+
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
+
 	@Override
 	public final java.lang.String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
+
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
+
 
 	@Override
 	public boolean tsIsComposite(){
 		return false;
 	}
 
+
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
+
 
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
 
+
 	@Override
 	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}
+
 
 	@Override
 	public java.lang.String tsToString(int indent){
@@ -128,11 +152,13 @@ public class TSSTGManager extends STGroupManager implements TSAtomicAPI {
 		return ret;
 	}
 
+
 	@Override
 	public void tsTrim(){
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
+
 
 
 	@Override

@@ -48,7 +48,7 @@ import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Manager for String Template Groups, including chunk tests.
@@ -73,10 +73,10 @@ public class STGroupManager {
 	protected TSString applicationName=null;
 
 	/** Mandatory chunks, everything the STG must provide */
-	protected TSMapLH chunksMandatory=null;
+	protected TSLinkedHashTree chunksMandatory=null;
 
 	/** Optionally chunks, everything the STG can provide */
-	protected TSMapLH chunksOptional=null;
+	protected TSLinkedHashTree chunksOptional=null;
 
 	/** Indicator for correct and complete initialisation */
 	protected boolean loaded=false;
@@ -92,8 +92,8 @@ public class STGroupManager {
 	 * Class constructor, initialises local fields
 	 */
 	public STGroupManager(){
-		this.chunksMandatory=new TSMapLH();
-		this.chunksOptional=new TSMapLH();
+		this.chunksMandatory=new TSLinkedHashTree();
+		this.chunksOptional=new TSLinkedHashTree();
 
 		this.stgFile=new TSNull();
 	}
@@ -269,7 +269,7 @@ public class STGroupManager {
 	 * @param mandatory list with all mandatory chunks
 	 * @param optional list with all optional chunks
 	 */
-	public void setChunks(TSMapLH mandatory, TSMapLH optional){
+	public void setChunks(TSLinkedHashTree mandatory, TSLinkedHashTree optional){
 		this.chunksMandatory=mandatory;
 		this.chunksOptional=optional;
 	}
@@ -279,7 +279,7 @@ public class STGroupManager {
 	 * Sets the mandatory chunks
 	 * @param mandatory list with all mandatory chunks
 	 */
-	public void setMandatoryChunks(TSMapLH mandatory){
+	public void setMandatoryChunks(TSLinkedHashTree mandatory){
 		this.chunksMandatory=mandatory;
 	}
 
@@ -288,7 +288,7 @@ public class STGroupManager {
 	 * Sets the optional chunks
 	 * @param optional list with all optional chunks
 	 */
-	public void setOptionalChunks(TSMapLH optional){
+	public void setOptionalChunks(TSLinkedHashTree optional){
 		this.chunksOptional=optional;
 	}
 

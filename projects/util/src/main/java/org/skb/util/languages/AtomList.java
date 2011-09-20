@@ -163,6 +163,7 @@ public class AtomList extends TSTable {
 		this.reportMgr=rm;
 	}
 
+
 	/**
 	 * Sets the specification name, which is the root of an atom list hierarchy
 	 * @param s the new specification name as string

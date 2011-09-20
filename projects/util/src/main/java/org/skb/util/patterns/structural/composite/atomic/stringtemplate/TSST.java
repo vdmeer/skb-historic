@@ -46,7 +46,7 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
- * This class provides am OatBaseAtomic wrapper for the string template class StringTemplate.
+ * Wrapper for the string template class {@link StringTemplate}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
@@ -62,11 +62,18 @@ public class TSST extends StringTemplate implements TSAtomicAPI {
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 
+	/**
+	 * Class constructor, initialises local fields.
+	 */
 	public TSST(){
 		super();
 		this._init();
 	}
 
+
+	/**
+	 * Class constructor, uses given StringTemplate for initialisation.
+	 */
 	public TSST(StringTemplate st){
 		super();
 		this._init();
@@ -74,26 +81,46 @@ public class TSST extends StringTemplate implements TSAtomicAPI {
 		this.setAttributes(st.getAttributes());
 	}
 
+
+	/**
+	 * Class constructor, @see StringTemplate#StringTemplate(String)
+	 */
 	public TSST(String template){
 		super(template);
 		this._init();
 	}
 
+
+	/**
+	 * Class constructor, @see StringTemplate#StringTemplate(String)
+	 */
 	public TSST(String template, @SuppressWarnings("rawtypes") java.lang.Class lexer){
 		super(template, lexer);
 		this._init();
 	}
 
+
+	/**
+	 * Class constructor, @see StringTemplate#StringTemplate(String)
+	 */
 	public TSST(StringTemplateGroup group, String template){
 		super(group, template);
 		this._init();
 	}
 
+
+	/**
+	 * Class constructor, @see StringTemplate#StringTemplate(String)
+	 */
 	public TSST(StringTemplateGroup group, String template, @SuppressWarnings("rawtypes") HashMap attributes){
 		super(group, template, attributes);
 		this._init();
 	}
 
+
+	/**
+	 * Initialisation.
+	 */
 	private void _init(){
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
@@ -102,57 +129,68 @@ public class TSST extends StringTemplate implements TSAtomicAPI {
 		this.typeEnum.add(TEnum.TS_ATOMIC_STRINGTEMPLATE_ST);
 	}
 
+
 	@Override
 	public void tsClean(){
 		//TDOD
 		logger.warn("tsClean not implemented");
 	}
 
+
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
+
 	@Override
-	public final java.lang.String tsGetTypeString(){
+	public final String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
+
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
+
 
 	@Override
 	public boolean tsIsComposite(){
 		return false;
 	}
 
+
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
+
 
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
 
+
 	@Override
 	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}
+
 
 	@Override
 	public java.lang.String tsToString(int indent){
@@ -162,6 +200,7 @@ public class TSST extends StringTemplate implements TSAtomicAPI {
 		ret+=super.toString();
 		return ret;
 	}
+
 
 	@Override
 	public void tsTrim(){

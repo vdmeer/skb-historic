@@ -70,7 +70,7 @@ public class TSLangRuleMap extends TSTable{
 	}
 
 
-	public void loadRules(String className, String key, TSMapLH map, TSMapLH tokens){
+	public void loadRules(String className, String key, TSLinkedHashTree map, TSLinkedHashTree tokens){
 		if(className==null&&key==null)
 			return;
 

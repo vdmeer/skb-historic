@@ -12,7 +12,7 @@ import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 public class TSStringTest extends TestCase{
 	public void setUp(){
@@ -112,7 +112,7 @@ public class TSStringTest extends TestCase{
 		keysExpected.add("key1");
 		keysExpected.add("key2");
 		keysExpected.add("key3");
-		Set<String> keysActual=((TSMapLH)result).keySet();
+		Set<String> keysActual=((TSLinkedHashTree)result).keySet();
 		assertArrayEquals(keysExpected.toArray(), keysActual.toArray());
 
 		//check if values are all ok
@@ -120,7 +120,7 @@ public class TSStringTest extends TestCase{
 		valExpected.add("val1");
 		valExpected.add("val2");
 		valExpected.add("val3");
-		Object[] _va=((TSMapLH)result).values().toArray();
+		Object[] _va=((TSLinkedHashTree)result).values().toArray();
 		LinkedHashSet<String> valActual=new LinkedHashSet<String>();
 		valActual.add(_va[0].toString());
 		valActual.add(_va[1].toString());

@@ -59,7 +59,7 @@ import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSScope;
 import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
 import org.skb.util.patterns.structural.composite.composite.util.TSLangRuleMap;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 import org.skb.util.patterns.structural.composite.composite.util.TSPropertyMap;
 import org.skb.util.patterns.structural.composite.composite.util.TSTable;
 import org.skb.util.patterns.structural.composite.composite.util.TSTableRow;
@@ -375,7 +375,7 @@ public class InitTests extends TestCase{
 			assertEquals(TSRepository.TEnum.TS_ATOMIC.toString(),o[1].toString());
 			assertEquals(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING.toString(),o[2].toString());
 		o=_t.tsGetTypeStringList().toArray();
-			assertEquals(3,o.length);
+		assertEquals(3,o.length);
 			assertEquals(TSRepository.TString.TS_BASE,o[0]);
 			assertEquals(TSRepository.TString.TS_ATOMIC,o[1]);
 			assertEquals(TSRepository.TString.TS_ATOMIC_JAVA_STRING,o[2]);
@@ -691,7 +691,7 @@ public class InitTests extends TestCase{
 
 	@Test public void testCompositeMaplh(){
 		Object[] o;
-		TSMapLH _t=new TSMapLH();
+		TSLinkedHashTree _t=new TSLinkedHashTree();
 		o=_t.tsGetTypeEnumSet().toArray();
 			assertEquals(4,o.length);
 			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());

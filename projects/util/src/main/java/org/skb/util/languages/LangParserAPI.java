@@ -36,21 +36,48 @@ import org.skb.util.config.ConfigurationProperties;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
 
 /**
- * Abstract class containing a language parser.
+ * Interface for a Language Parser.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface LangParserAPI {
+	/**
+	 * Returns the supported source language of the parser.
+	 * @return source language
+	 */
 	public String getSupportedSourceLang();
 
+
+	/**
+	 * Returns the class name that maintains configuration information of the parser.
+	 * @return class name
+	 */
 	public Class<?> getConfigurationClassName();
 
+	/**
+	 * Returns the supported target languages of the parser.
+	 * @return string array with the supported target languages
+	 */
 	public TSArrayListString getSupportedTargetLang();
 
+
+	/**
+	 * Sets the parser's configuration.
+	 * @param prop initial property map
+	 */
 	public void setOptions(ConfigurationProperties prop);
 
+
+	/**
+	 * Starts the parsing process
+	 * @param is stream with the content to be parsed
+	 */
 	public void parse(InputStream is);
 
+
+	/**
+	 * Prints the target StringTemplate.
+	 */
 	public void printStg();
 }

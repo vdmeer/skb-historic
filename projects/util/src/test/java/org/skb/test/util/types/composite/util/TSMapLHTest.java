@@ -18,11 +18,11 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSFloat;
 import org.skb.util.patterns.structural.composite.atomic.java.TSInteger;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 public class TSMapLHTest extends TestCase{
-	TSMapLH simple;
-	TSMapLH complex;
+	TSLinkedHashTree simple;
+	TSLinkedHashTree complex;
 
 	static Logger logger;
 
@@ -34,8 +34,8 @@ public class TSMapLHTest extends TestCase{
 
 	public void setUp(){
 		LogManager.init();
-		this.simple=new TSMapLH();
-		this.complex=new TSMapLH();
+		this.simple=new TSLinkedHashTree();
+		this.complex=new TSLinkedHashTree();
 		logger=Logger.getLogger(TSMapLHTest.class);
 	}
 
@@ -50,15 +50,15 @@ public class TSMapLHTest extends TestCase{
 
 
 	@Ignore public void initSimple(){
-		this.simple=(TSMapLH)new TSString("key1%val1,key2%val2,key3%val3").tsExplode();
+		this.simple=(TSLinkedHashTree)new TSString("key1%val1,key2%val2,key3%val3").tsExplode();
 	}
 
 	@Ignore public void initComplex(){
-		this.complex=new TSMapLH();
+		this.complex=new TSLinkedHashTree();
 		Json2Oat j2o=new Json2Oat();
 		TSBaseAPI c=j2o.read("/org/skb/test/util/types/composite/util/cola-proto.json");
 		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-			this.complex=(TSMapLH)c;
+			this.complex=(TSLinkedHashTree)c;
 	}
 
 	@Test public void testSize(){
@@ -213,7 +213,7 @@ public class TSMapLHTest extends TestCase{
 	}
 
 	@Test public void testPut(){
-		TSMapLH p=new TSMapLH();
+		TSLinkedHashTree p=new TSLinkedHashTree();
 
 		/*
 		 * test with KEY=String and VAL=String

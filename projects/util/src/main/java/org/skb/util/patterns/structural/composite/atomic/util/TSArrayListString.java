@@ -48,7 +48,7 @@ import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
 /**
- * An Array list of TSString types.
+ * An Array list of TSString types implementing the interfaces {@link List} and {@link Collection}.
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

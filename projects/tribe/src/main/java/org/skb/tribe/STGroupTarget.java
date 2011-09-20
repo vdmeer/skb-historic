@@ -37,7 +37,7 @@ import org.skb.util.config.Configuration;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.composite.util.TSArrayList;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 import org.skb.util.stringtemplate.STGroupManager;
 
 /**
@@ -48,15 +48,15 @@ import org.skb.util.stringtemplate.STGroupManager;
  */
 public class STGroupTarget {
 	private boolean initialised;
-	private TSMapLH targetCunksMan;
-	private TSMapLH targetChunksOpt;
+	private TSLinkedHashTree targetCunksMan;
+	private TSLinkedHashTree targetChunksOpt;
 
 	private STGroupManager stdHeader;
 
 	public STGroupTarget(TSBaseAPI applicationName, TSBaseAPI genericSTG, Configuration config){
 		this.initialised=false;
 
-		TSMapLH stdHeaderChunks=new TSMapLH();
+		TSLinkedHashTree stdHeaderChunks=new TSLinkedHashTree();
 		stdHeaderChunks.put("std",	     new TSArrayList(new String[]{"source", "target", "file", "day", "time", "misc"}));
 		stdHeaderChunks.put("fImport",   new TSArrayList(new String[]{"target", "import"}));
 		stdHeaderChunks.put("fileStart", new TSArrayList(new String[]{"target"}));
@@ -72,8 +72,8 @@ public class STGroupTarget {
 		this.stdHeader.loadSTG("string template for generic header", "");
 		//this.stdHeader.testChunks();
 
-		this.targetCunksMan=new TSMapLH();
-		this.targetChunksOpt=new TSMapLH();
+		this.targetCunksMan=new TSLinkedHashTree();
+		this.targetChunksOpt=new TSLinkedHashTree();
 		this.getChunks(config);
 
 		this.initialised=true;
@@ -82,7 +82,7 @@ public class STGroupTarget {
 	protected boolean getChunks(Configuration config){
 		//LanguageConfiguration cfg=LanguageConfiguration.getInstance();
 		//TSMapLH map=cfg.getLanguageStgChunks();
-		TSMapLH map=(TSMapLH)config.config.get(PathKeys.pathConfigurationParserLangStgChunks);
+		TSLinkedHashTree map=(TSLinkedHashTree)config.config.get(PathKeys.pathConfigurationParserLangStgChunks);
 		if(map!=null){
 			TSBaseAPI ala;
 			for (String s:map.keySet()){
@@ -101,11 +101,11 @@ public class STGroupTarget {
 		return this.initialised;
 	}
 
-	public TSMapLH getMandatory(){
+	public TSLinkedHashTree getMandatory(){
 		return this.targetCunksMan;
 	}
 
-	public TSMapLH getOptional(){
+	public TSLinkedHashTree getOptional(){
 		return this.targetChunksOpt;
 	}
 

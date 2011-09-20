@@ -45,7 +45,7 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
- * This class provides am OatBaseAtomic wrapper for the string template class StringTemplateGroup.
+ * Wrapper for the string template class {@link StringTemplateGroup}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
@@ -61,51 +61,66 @@ public class TSSTG extends StringTemplateGroup implements TSAtomicAPI {
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
 
 
+	/**
+	 * @see StringTemplateGroup#StringTemplateGroup(java.io.Reader)
+	 */
 	public TSSTG(java.io.Reader r){
 		super(r);
 		this._init();
 	}
+
 
 	public TSSTG(java.io.Reader r, @SuppressWarnings("rawtypes") java.lang.Class lexer){
 		super(r, lexer);
 		this._init();
 	}
 
+
 	public TSSTG(java.io.Reader r, @SuppressWarnings("rawtypes") java.lang.Class lexer, StringTemplateErrorListener errors){
 		super(r, lexer, errors);
 		this._init();
 	}
+
 
 	public TSSTG(java.io.Reader r, @SuppressWarnings("rawtypes") java.lang.Class lexer, StringTemplateErrorListener errors, StringTemplateGroup superGroup){
 		super(r, lexer, errors, superGroup);
 		this._init();
 	}
 
+
 	public TSSTG(java.io.Reader r, StringTemplateErrorListener errors){
 		super(r, errors);
 		this._init();
 	}
+
 
 	public TSSTG(String s){
 		super(s);
 		this._init();
 	}
 
+
 	public TSSTG(String s, @SuppressWarnings("rawtypes") java.lang.Class lexer){
 		super(s, lexer);
 		this._init();
 	}
+
 
 	public TSSTG(String s, String rootDir){
 		super(s, rootDir);
 		this._init();
 	}
 
+
 	public TSSTG(String s, String rootDir, @SuppressWarnings("rawtypes") java.lang.Class lexer){
 		super(s, rootDir, lexer);
 		this._init();
 	}
 
+
+	/**
+	 * Initialisation.
+	 */
 	private void _init(){
 		this.typeString.add(TSRepository.TString.TS_ATOMIC);
 		this.typeEnum.add(TEnum.TS_ATOMIC);
@@ -114,51 +129,61 @@ public class TSSTG extends StringTemplateGroup implements TSAtomicAPI {
 		this.typeEnum.add(TEnum.TS_ATOMIC_STRINGTEMPLATE_STG);
 	}
 
+
 	@Override
 	public void tsClean(){
 		//TODO
 		logger.warn("tsClean not implemented");
 	}
 
+
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
+
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
+
 	@Override
-	public final java.lang.String tsGetTypeString(){
+	public final String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
+
 
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
+
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
+
 
 	@Override
 	public boolean tsIsComposite(){
 		return false;
 	}
 
+
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
 
+
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
+
 
 	@Override
 	public void tsPlus(TSBaseAPI tb){
@@ -166,14 +191,16 @@ public class TSSTG extends StringTemplateGroup implements TSAtomicAPI {
 		logger.warn("tsPlus not implemented");
 	}
 
+
 	@Override
-	public java.lang.String tsToString(int indent){
+	public String tsToString(int indent){
 		String ret=new String();
 		for(int i=indent;i>0;i--)
 			ret+=" ";
 		ret+=super.toString();
 		return ret;
 	}
+
 
 	@Override
 	public void tsTrim(){

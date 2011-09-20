@@ -120,7 +120,6 @@ public class Tribe {
 
 	/**
 	 * 
-	 * @param parsers
 	 * @param args
 	 * @return -1 = exit with problem, 0 = continue, 1 = exit normally
 	 */
@@ -413,7 +412,6 @@ public class Tribe {
 	/**
 	 * Do all options that require Tribe to exit after processing them, such as help or version or
 	 * print an stg file.
-	 * @param pass Pass=1 means and we have to print an stg file, we cannot do that.
 	 * @return null if no exit option found, a message to be printed otherwise
 	 */
 	private String doExitOptions(){
@@ -457,7 +455,6 @@ public class Tribe {
 	 * CLI parsing is done in two passes, the first one establishing all Tribe options and the second one
 	 * looking for specific options of the selected source and target languages.
 	 * @param args Command line arguments
-	 * @param languages List of languages supported
 	 */
 	private void setOptions(String[] args){
 		try {

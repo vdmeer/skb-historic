@@ -30,38 +30,25 @@
 package org.skb.util.patterns.structural.composite.atomic.java;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
-import java.util.Vector;
 
-import org.apache.log4j.Logger;
 import org.skb.util.dictionaries.Html2LaTeX;
+import org.skb.util.patterns.structural.composite.TSAtomic;
 import org.skb.util.patterns.structural.composite.TSAtomicAPI;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
- * A wrapper for java.lang.String.
+ * A wrapper for the class {@link String}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSString implements TSAtomicAPI{
-	/** Logger instance */
-	public final static Logger logger=Logger.getLogger(TSString.class);
-
-	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
-
-	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
+public class TSString extends TSAtomic{
 
 	public static java.lang.String copyValueOf(char[] data){
 		return java.lang.String.copyValueOf(data);
@@ -232,9 +219,6 @@ public class TSString implements TSAtomicAPI{
 	 * Adds TS_ATOMIC and TS_ATOMIC_JAVA_STRING to the type lists (string and enum) and initialises the local string.
 	 */
 	private void _init(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
 		this.typeString.add(TSRepository.TString.TS_ATOMIC_JAVA_STRING);
 		this.typeEnum.add(TEnum.TS_ATOMIC_JAVA_STRING);
 		this.tsvalue=new java.lang.String();
@@ -437,12 +421,6 @@ public class TSString implements TSAtomicAPI{
 	}
 
 
-	@Override
-	public void tsClean(){
-		this.tsvalue=new java.lang.String();
-	}
-
-
 	/**
 	 * Parses the local String and 'explodes' it into a map or list object, depending on the contents of the String.
 	 * 
@@ -456,7 +434,7 @@ public class TSString implements TSAtomicAPI{
 		if(this.tsvalue.length() == 0)
 			return null;
 		else if (this.tsvalue.contains("%")) {
-			TSMapLH ret=new TSMapLH();
+			TSLinkedHashTree ret=new TSLinkedHashTree();
 			String[] comma=this.tsvalue.split(",");
 			for (int i = 0; i < comma.length; i++) {
 				comma[i].trim();
@@ -476,63 +454,21 @@ public class TSString implements TSAtomicAPI{
 
 
 	@Override
-	public final TEnum tsGetTypeEnum(){
-		return TSRepository.type(this.typeString.lastElement());
-	}
-
-
-	@Override
-	public final Set<TEnum> tsGetTypeEnumSet(){
-		return this.typeEnum;
-	}
-
-
-	@Override
-	public final java.lang.String tsGetTypeString(){
-		return this.typeString.lastElement();
-	}
-
-
-	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
 
-	public java.lang.String tsHtml2LaTeX(){
+	public String tsHtml2LaTeX(){
 		Html2LaTeX dict=Html2LaTeX.getInstance();
 		return dict.translate(this.tsvalue);
 	}
 
 
 	@Override
-	public boolean tsIsAtomic(){
-		return true;
-	}
-
-
-	@Override
-	public boolean tsIsComposite(){
-		return false;
-	}
-
-
-	@Override
-	public final boolean tsIsType(String t){
-		return this.typeString.contains(t);
-	}
-
-
-	@Override
-	public final boolean tsIsType(TEnum t){
-		return this.typeEnum.contains(t);
-	}
-
-
-	@Override
 	public void tsPlus(TSBaseAPI tb){
-		//TODO
-		logger.warn("tsPLus not implemented");
+		if(tb!=null)
+			this.tsvalue=this.tsvalue+tb.toString();
 	}
 
 

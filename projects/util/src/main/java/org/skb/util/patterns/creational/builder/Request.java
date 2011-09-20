@@ -39,7 +39,7 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.atomic.java.TSBoolean;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 import org.skb.util.patterns.structural.composite.atomic.util.TSArrayListString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Generic implementation of a request object.
@@ -52,19 +52,19 @@ public class Request {
 	public final static Logger logger=Logger.getLogger(Request.class);
 
 	/** Local request array */
-	private TSMapLH request_ar;
+	private TSLinkedHashTree request_ar;
 
 	/** Boolean indicating if initialisation is ok */
 	protected boolean is_initialised=false;
 
 	/** Initialisation map */
-	protected TSMapLH init_map=new TSMapLH();
+	protected TSLinkedHashTree init_map=new TSLinkedHashTree();
 
 	/** Array for HTTP initialisation */
-	protected TSMapLH core_ar_http=new TSMapLH();
+	protected TSLinkedHashTree core_ar_http=new TSLinkedHashTree();
 
 	/** Array for initialisation */
-	protected TSMapLH core_ar_plain=new TSMapLH();
+	protected TSLinkedHashTree core_ar_plain=new TSLinkedHashTree();
 
 
 	/** Class constructor, empty */
@@ -78,14 +78,14 @@ public class Request {
 	 * @param registered_request the parameters for the request
 	 * @param registered_fields the registered fields
 	 */
-	public void setRequestType(String type, TSMapLH registered_request, TSMapLH registered_fields){
-		this.request_ar=new TSMapLH();
+	public void setRequestType(String type, TSLinkedHashTree registered_request, TSLinkedHashTree registered_fields){
+		this.request_ar=new TSLinkedHashTree();
 
 		if(type!=null){
 			TSBaseAPI tmp;
 
 			//this.init_map=mySkb.get_registered_requests_by_key(type);
-			this.init_map=new TSMapLH(registered_request);
+			this.init_map=new TSLinkedHashTree(registered_request);
 			if(this.init_map==null)
 				logger.error("no request type found for <"+type+">");
 
@@ -94,13 +94,13 @@ public class Request {
 				this.init_map.put("core:requests:fields", ((TSString)tmp).tsExplode());
 			}
 			else
-				this.init_map.put("core:requests:fields", new TSMapLH());
+				this.init_map.put("core:requests:fields", new TSLinkedHashTree());
 			if(this.init_map.containsKey("core:requests:formselect_fields")){
 				tmp=this.init_map.get("core:requests:formselect_fields");
 				this.init_map.put("core:requests:formselect_fields", ((TSString)tmp).tsExplode());
 			}
 			else
-				this.init_map.put("core:requests:formselect_fields", new TSMapLH());
+				this.init_map.put("core:requests:formselect_fields", new TSLinkedHashTree());
 
 			if(!this.init_map.containsKey("core:requests:table"))
 				this.init_map.put("core:requests:formselect_fields", new TSString());
@@ -109,16 +109,16 @@ public class Request {
 
 			ArrayList<String> rem_keys=new ArrayList<String>();
 			TSBaseAPI _t=this.init_map.get("core:requests:fields");
-			TSMapLH ar=new TSMapLH();
+			TSLinkedHashTree ar=new TSLinkedHashTree();
 			if(_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH))
-				ar=(TSMapLH)_t;
+				ar=(TSLinkedHashTree)_t;
 			String key;
-			TSMapLH row;
+			TSLinkedHashTree row;
 			Set<String> o_set = ar.keySet();
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
 				key=key_it.next();
-				row=(TSMapLH)registered_fields.get(key);
+				row=(TSLinkedHashTree)registered_fields.get(key);
 				if(!((TSString)row.get("core:use")).tsvalue.contains("request"))
 					rem_keys.add(key);
 				else{
@@ -126,7 +126,7 @@ public class Request {
 					this.init_map.put("core:requests:fields"+"/"+key, row);
 					this.init_map.put("core:requests:fields"+"/"+key+"/"+"request", tmp);
 					this.init_map.put("core:requests:fields"+"/"+key+"/"+"value", new String());
-					this.init_map.put("core:requests:fields"+"/"+key+"/"+"core-ar", new TSMapLH());
+					this.init_map.put("core:requests:fields"+"/"+key+"/"+"core-ar", new TSLinkedHashTree());
 
 //				if(!((String)this.init_map.get("core:requests:fields"+"/"+key+"/"+"core:val_unset")).equals("null"))
 					this.init_map.put("core:requests:fields"+"/"+key+"/"+"core-ar"+"/"+"core:val_unset", this._set((TSString)this.init_map.get("core:requests:fields"+"/"+key+"/"+"core:val_unset")));
@@ -402,7 +402,7 @@ public class Request {
 	}
 
 
-	private void init_http(TSMapLH ar){
+	private void init_http(TSLinkedHashTree ar){
 		if(ar.size()>0){
 			String key;
 			Set<String> o_set = ar.keySet();
@@ -427,7 +427,7 @@ public class Request {
 	}
 
 
-	private void init_plain(TSMapLH ar){
+	private void init_plain(TSLinkedHashTree ar){
 		if(ar.size()>0){
 			String key;
 			Set<String> o_set = ar.keySet();

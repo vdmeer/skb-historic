@@ -208,37 +208,3 @@ public class ColaPass3_Gen {
 		return ret;
 	}
 }
-
-
-/*
-public void atomVisilibityMinusList(){
-	if(Tests.getInstance().checkTypes(LADSTokens.ladsSTRING,this.value.type())==false)
-		ReportManager.getInstance().reportError("type mismatch for visibility (minus) in property " + this.lastAtom,"type expected " + LADSTokens.ladsSTRING, this.value.line(),this.value.column());
-	else
-		this.currentVisibility.minusList.add(this.value.value());
-}
-public void atomVisilibityPlusList(){
-	if(Tests.getInstance().checkTypes(LADSTokens.ladsSTRING,this.value.type())==false)
-		ReportManager.getInstance().reportError("type mismatch for visibility (plus) in property " + this.lastAtom,"type expected " + LADSTokens.ladsSTRING, this.value.line(),this.value.column());
-	else
-		this.currentVisibility.plusList.add(this.value.value());
-}
-
-public void atomItemDef(Token tk){
-	String id=tk.getText();
-	if(this.currentAtom.contractDef.get(this.lastContract).items.containsKey(id))
-		ReportManager.getInstance().reportError(LADSTokens.ladsITEM + " used more than once: " + id,tk);
-	else{
-		this.currentAtom.contractDef.get(this.lastContract).items.put(id,new LADSItemDef(id,tk.getLine(),tk.getCharPositionInLine(),ReportManager.getInstance().getFileFN()));
-		this.lastItem=id;
-	}
-}
-
-public void atomItemPropDef(){
-	String id=this.tempScope.scope();
-	if(this.currentAtom.contractDef.get(this.lastContract).items.get(this.lastItem).propertyDef.containsKey(id))
-		ReportManager.getInstance().reportError(LADSTokens.parserIDENTIFIER + " used more than once",LADSTokens.parserIDENTIFIER + " " + id + " in item declarations",this.tempScope.scopeLeafLine(),this.tempScope.scopeLeafColumn());
-	else
-		this.currentAtom.contractDef.get(this.lastContract).items.get(this.lastItem).propertyDef.put(id,new LADSPropertyDef(id,this.tempScope.scopeLeafLine(),this.tempScope.scopeLeafColumn(),ReportManager.getInstance().getFileFN(),this.tempScope));
-}
-*/

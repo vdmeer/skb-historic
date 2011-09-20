@@ -30,7 +30,7 @@
 package org.skb.util.patterns.creational.builder;
 
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Interface for a reader.
@@ -83,7 +83,7 @@ public interface Reader {
 	 * Return the current array of entries.
 	 * @return entries array
 	 */
-	public TSMapLH getEntries();
+	public TSLinkedHashTree getEntries();
 
 
 	/**

@@ -241,8 +241,7 @@ public class TSPropertyMap extends TSTable{
 
 			}
 		} catch (Exception e) {
-//        	ReportManager repMgr=ReportManager.getInstance();
-//        	repMgr.reportErrorNoFile(e.toString());
+			//TODO exception printing
 		}
 		return null;
 	}
@@ -289,8 +288,7 @@ public class TSPropertyMap extends TSTable{
 			if(fn.endsWith(".properties"))
 				((PropertiesConfiguration)cfg).save(file);
 		} catch (Exception e) {
-//        	ReportManager repMgr=ReportManager.getInstance();
-//        	repMgr.reportErrorNoFile(e.toString());
+			//TODO exception printing
 		}
 		return null;
 	}
@@ -299,7 +297,7 @@ public class TSPropertyMap extends TSTable{
 	public Set<String> loadFromJson(File file){
 		TSBaseAPI _t=new Json2Oat().read(file);
 		if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-			return this.loadFromJason((TSMapLH)_t);
+			return this.loadFromJason((TSLinkedHashTree)_t);
 		return new TreeSet<String>();
 	}
 
@@ -308,11 +306,11 @@ public class TSPropertyMap extends TSTable{
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			return null;
 		else
-			return this.loadFromJason((TSMapLH)map);
+			return this.loadFromJason((TSLinkedHashTree)map);
 	}
 
 
-	public Set<String> loadFromJason(TSMapLH map){
+	public Set<String> loadFromJason(TSLinkedHashTree map){
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			return null;
 		map.tsClean();

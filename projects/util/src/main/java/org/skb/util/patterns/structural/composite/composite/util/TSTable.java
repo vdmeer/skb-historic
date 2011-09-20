@@ -737,12 +737,6 @@ public class TSTable implements TSCompositeAPI, TSTableAPI{
 
 
 	@Override
-	public TSTable tsGetValue(){
-		return this;
-	}
-
-
-	@Override
 	public TSTable tsCopyComposite(){
 		TSTable ret=new TSTable();
 

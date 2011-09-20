@@ -48,7 +48,7 @@ import org.skb.util.patterns.structural.composite.TSRepository;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 
 /**
- * An Array list of TSAtomic types.
+ * An Array list of TSAtomic types, implementing the interfaces {@link List} and {@link Collection}.
  *  
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

@@ -33,8 +33,15 @@ import java.util.Map;
 
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
 
-public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 
+/**
+ * Interface for a Table Row.
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
+
+public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
 	 * 
@@ -44,6 +51,7 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * @return true if this map contains a mapping for the specified key.  
 	 */
 	public boolean containsKey(String key);
+
 
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
@@ -55,6 +63,7 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public boolean containsKey(TSString key);
 
+
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
 	 *  
@@ -65,6 +74,7 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * @return true if this map maps one or more keys to the specified value.
 	 */
 	public boolean containsValue(TSBaseAPI val);
+
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -80,6 +90,7 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI get(String key);
 
+
 	/**
 	 * Returns the value to which this map maps the specified key.
 	 * 
@@ -94,6 +105,7 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI get(TSString key);
 
+
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
 	 * 
@@ -107,8 +119,12 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI put(TSString key, TSBaseAPI val);
 
+
 	public Map<String, TSBaseAPI> tsGetMap();
+
+
 	public Object tsGetValue();
+
 
 	public String tsToString(int indent);
 	//public T2TableRow getValOatTableRow();

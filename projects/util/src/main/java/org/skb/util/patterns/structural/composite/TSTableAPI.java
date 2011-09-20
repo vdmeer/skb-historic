@@ -51,7 +51,6 @@ import org.skb.util.patterns.structural.composite.atomic.java.TSString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
-
 	/**
 	 * Add am empty row to the table
 	 * 
@@ -59,6 +58,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 * @param row key of the row to be added
 	 */
 	public void addRow(String row);
+
 
 	/**
 	 * Add a set of empty rows to the table
@@ -68,12 +68,12 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public void addRows(HashSet<String>rows);
 
+
 	/**
 	 * Add a set of rows using reflection
 	 * 
 	 * This method should use reflection to collect all declared fields of the given class <ref_class> whose name starts with the string <prefix> and then
-	 * create an empty row using the string defined by the declared fields as keys. The class {@link org.skb.ConfigurationProperties.TribeProperties}
-	 * uses this method to initialise a number of properties. Have a look at the following example:
+	 * create an empty row using the string defined by the declared fields as keys. Have a look at the following example:
 	 * <code>
 	 * 		public final static String tpmKeySrcLanguage		= "src-lang";
 	 * 		public final static String tpmKeySrcFile			= "src-file";
@@ -81,7 +81,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 * 		public final static String tpmKeyTgtDir				= "tgt-dir";
 	 * 		void init(){
 	 * 			...
-	 * 			this.table.addRows(TribeProperties.class.getName(), "tpmKey");
+	 * 			this.table.addRows(MyClass.class.getName(), "tpmKey");
 	 * 			...
 	 * 		}
 	 * </code>
@@ -93,6 +93,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public void addRows(String ref_class, String prefix);
 
+
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
 	 * 
@@ -103,6 +104,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public boolean containsKey(String key);
 
+
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
 	 * 
@@ -112,6 +114,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 * @return true if this map contains a mapping for the specified key. 
 	 */
 	public boolean containsKey(TSString key);
+
 
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
@@ -124,7 +127,10 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public boolean containsValue(TSTableRowAPI value);
 
+
+	@Override
 	public Set<java.util.Map.Entry<String, TSTableRowAPI>> entrySet();
+
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -140,7 +146,9 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public TSTableRowAPI get(String key);
 
+
 	public TSBaseAPI get(String row, String col);
+
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -157,27 +165,49 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	public TSTableRowAPI get(TSString key);
 
 	public TSBoolean getBoolean(String row, String col);
+
 	public TSByte getByte(String row, String col);
+
 	public HashSet<String> getColumns();
+
 	public TSDouble getDouble(String row, String col);
+
 	public TSFloat getFloat(String row, String col);
+
 	public TSInteger getInteger(String row, String col);
+
 	public TSLong getLong(String row, String col);
+
 	public TSObject getObject(String row, String col);
+
 	public Set<String> getRows();
+
 	public TSShort getShort(String row, String col);
+
 	public TSString getString(String row, String col);
+
 	public boolean isInitialised();
+
 	public void put(String row, String col, boolean val);
+
 	public void put(String row, String col, Boolean val);
+
 	public void put(String row, String col, double val);
+
 	public void put(String row, String col, Double val);
+
 	public void put(String row, String col, int val);
+
 	public void put(String row, String col, Integer val);
+
 	public void put(String row, String col, long val);
+
 	public void put(String row, String col, Long val);
+
 	public void put(String row, String col, String val);
+
 	public void put(String row, String col, TSAtomicAPI val);
+
 
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
@@ -192,6 +222,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public TSTableRowAPI put(String key, TSTableRowAPI val);
 
+
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
 	 * 
@@ -205,21 +236,29 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public TSTableRowAPI put(TSString key, TSTableRowAPI val);
 
+
+	@Override
 	public void putAll(Map<? extends String, ? extends TSTableRowAPI> map);
+
 
 	public TSTableRowAPI remove(String key);
 
+
 	public TSTableRowAPI remove(TSString key);
+
 
 	public void setColumns(HashSet<String>cols);
 
+
 	public void setColumns(String ref_class, String prefix);
+
 
 	public void setColumns(HashSet<String>cols, String ref_class, String prefix);
 
+
 	public Map<String, TSTableRowAPI> tsGetMap();
 
-	public Object tsGetValue();
 
+	@Override
 	public Collection<TSTableRowAPI> values();
 }
