@@ -48,7 +48,7 @@ import org.skb.util.misc.Json2Oat;
 import org.skb.util.patterns.structural.composite.TSBaseAPI;
 import org.skb.util.patterns.structural.composite.TSRepository.TEnum;
 import org.skb.util.patterns.structural.composite.atomic.java.TSString;
-import org.skb.util.patterns.structural.composite.composite.util.TSMapLH;
+import org.skb.util.patterns.structural.composite.composite.util.TSLinkedHashTree;
 
 /**
  * Ant task for generating constant classes for parsers.
@@ -137,28 +137,28 @@ public class GenerateConstantsTask extends Task{
      * 		Throws a BuildException if fields are not set, proceeds to read the JSON file and generates output otherwise.
      * </p>
 	 * <p>
-	 * 		{@link LanguageConfiguration} is used to parse the JSON source file and to retrieve properties, rules and tokens. For tokens, the following three
+	 * 		{@link Configuration} is used to parse the JSON source file and to retrieve properties, rules and tokens. For tokens, the following three
 	 * 		JSON fields are processed:
 	 * 		<ul>
-	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTokensConstID} - as key for the resulting map</li>
-	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTokensConstVal} - as "value"</li>
-	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTokensConstJavaDoc} - as "javadoc"</li>
+	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
+	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantValue} - as "value"</li>
+	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
 	 * 		</ul>
 	 * 		For rules, the JSON source can have an map with rule specifications each of which is a key/map pair (the map holding the details). This map
 	 * 		is then used in the following way:
 	 * 		<ul>
-	 * 			<li>{@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationConstID} - as key for the resulting map</li>
-	 * 			<li>the key providing {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationConstID} - as "value"</li>
-	 * 			<li>the key providing {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationJavaDoc} - as "javadoc"</li>
+	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
+	 * 			<li>the key providing {@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as "value"</li>
+	 * 			<li>the key providing {@link org.skb.util.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
 	 * 		</ul>
 	 * 		For properties (usually access to some configuration information in a property map), the JSON source file should to provide the path
-	 * 		{@link org.skb.tribe.LanguageConfigurationConstants.Paths#SKBLangConfiguration} for general properties and the path
-	 * 		{@link org.skb.tribe.LanguageConfigurationConstants.Paths#SKBLangTargets} for target specific configurations. The general configuration and each of the target
+	 * 		{@link org.skb.util.PathKeys#pathConfigurationParserTribe} for general properties and the path
+	 * 		{@link org.skb.util.PathKeys#patConfigurationParserLang} for target specific configurations. The general configuration and each of the target
 	 * 		configurations will be processed and JSON fields used in the following way:
 	 * 		<ul>
-	 * 			<li>path plus specific key plus {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationConstID} - as key for the resulting map</li>
+	 * 			<li>path plus specific key plus {@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
 	 * 			<li>path plus specific key - as "value"</li> 
-	 * 			<li>path plus specific key plus {@link org.skb.tribe.LanguageConfigurationConstants.Fields#SKBLangTargetConfigurationJavaDoc} - as "javadoc"</li>
+	 * 			<li>path plus specific key plus {@link org.skb.util.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
 	 * 		</ul>
  	 * </p>
      */
@@ -179,9 +179,9 @@ public class GenerateConstantsTask extends Task{
     	if(!jfh.canRead())
     		throw new BuildException("cannot read the json file <"+this.jsonfile+">");
 
-    	TSMapLH constProperties=new TSMapLH();
-    	TSMapLH constRules=new TSMapLH();
-    	TSMapLH constTokens=new TSMapLH();
+    	TSLinkedHashTree constProperties=new TSLinkedHashTree();
+    	TSLinkedHashTree constRules=new TSLinkedHashTree();
+    	TSLinkedHashTree constTokens=new TSLinkedHashTree();
 
     	Configuration config=Configuration.getConfiguration(GenerateConstantsTask.class);
 
@@ -189,17 +189,17 @@ public class GenerateConstantsTask extends Task{
 			Json2Oat j2o=new Json2Oat();
 			TSBaseAPI c=j2o.read(jfh);
 			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
-				config.config.put(PathKeys.pathConfigurationParserTribe, ((TSMapLH)c).get(PathKeys.pathConfigurationParserTribe));
-				config.config.put(PathKeys.patConfigurationParserLang, ((TSMapLH)c).get(PathKeys.patConfigurationParserLang));
+				config.config.put(PathKeys.pathConfigurationParserTribe, ((TSLinkedHashTree)c).get(PathKeys.pathConfigurationParserTribe));
+				config.config.put(PathKeys.patConfigurationParserLang, ((TSLinkedHashTree)c).get(PathKeys.patConfigurationParserLang));
 			}
 		}
 		catch (Exception e){
 			throw new BuildException("problems parsing json file <"+this.jsonfile+">\n"+e);
 		}
 
-    	TSMapLH map=null;
+    	TSLinkedHashTree map=null;
 
-    	map=(TSMapLH)config.config.get(PathKeys.pathConfigurationParserLangTokens);
+    	map=(TSLinkedHashTree)config.config.get(PathKeys.pathConfigurationParserLangTokens);
     	if(map!=null&&map.size()>0){
     		Set<String> cols=map.keySet();
     		for (String s:cols){
@@ -208,7 +208,7 @@ public class GenerateConstantsTask extends Task{
     			    TSString cval=(TSString)map.get(s+"/"+FieldKeys.fieldLangTargetConstantValue);
     			    TSString jdoc=(TSString)map.get(s+"/"+FieldKeys.fieldLangTargetConstantJavadoc);
 
-    			    TSMapLH _put=new TSMapLH();
+    			    TSLinkedHashTree _put=new TSLinkedHashTree();
 					_put.put("value", cval);
 					_put.put("javadoc", jdoc);
     			    constTokens.put(cid, _put);
@@ -216,11 +216,11 @@ public class GenerateConstantsTask extends Task{
     		}
     	}
 
-    	map=(TSMapLH)config.config.get(PathKeys.pathConfigurationParserLangRules);
+    	map=(TSLinkedHashTree)config.config.get(PathKeys.pathConfigurationParserLangRules);
     	if(map!=null&&map.size()>0){
 				for(String k:map.keySet()){
 					if(map.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantIdent)){
-						TSMapLH _put=new TSMapLH();
+						TSLinkedHashTree _put=new TSLinkedHashTree();
 						_put.put("value", new TSString(k));
 						if(map.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
 							_put.put("javadoc", map.get(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc).toString());
@@ -232,10 +232,10 @@ public class GenerateConstantsTask extends Task{
     	map=config.config;
     	if(map!=null&&map.size()>0){
 			if(map.containsKey(PathKeys.patConfigurationParserLangConfiguration)){
-				TSMapLH _m=(TSMapLH)map.get(PathKeys.patConfigurationParserLangConfiguration);
+				TSLinkedHashTree _m=(TSLinkedHashTree)map.get(PathKeys.patConfigurationParserLangConfiguration);
 				for(String s:_m.keySet()){
 					if(map.containsKey(PathKeys.patConfigurationParserLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantIdent)){
-						TSMapLH _put=new TSMapLH();
+						TSLinkedHashTree _put=new TSLinkedHashTree();
 						_put.put("value", s);
 						if(map.containsKey(PathKeys.patConfigurationParserLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
 							_put.put("javadoc", map.get(PathKeys.patConfigurationParserLangConfiguration+"/"+s+"/"+FieldKeys.fieldLangTargetConstantJavadoc).toString());
@@ -244,12 +244,12 @@ public class GenerateConstantsTask extends Task{
 				}
 			}
 			if(map.containsKey(PathKeys.pathConfigurationParserLangTargets)){
-				TSMapLH _m=(TSMapLH)map.get(PathKeys.pathConfigurationParserLangTargets);
+				TSLinkedHashTree _m=(TSLinkedHashTree)map.get(PathKeys.pathConfigurationParserLangTargets);
 				for(String s:_m.keySet()){
-					TSMapLH newMap=(TSMapLH)map.get(PathKeys.pathConfigurationParserLangTargets+"/"+s+"/"+FieldKeys.fieldLangTargetConfigCli);
+					TSLinkedHashTree newMap=(TSLinkedHashTree)map.get(PathKeys.pathConfigurationParserLangTargets+"/"+s+"/"+FieldKeys.fieldLangTargetConfigCli);
 					for(String k:newMap.keySet()){
 						if(newMap.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantIdent)){
-							TSMapLH _put=new TSMapLH();
+							TSLinkedHashTree _put=new TSLinkedHashTree();
 							_put.put("value", new TSString(k));
 							if(newMap.containsKey(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc))
 								_put.put("javadoc", newMap.get(k+"/"+FieldKeys.fieldLangTargetConstantJavadoc));
