@@ -92,32 +92,28 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 	public boolean containsKey(String key) {
 		if(this.tsvalue!=null&&key!=null)
 			return this.tsvalue.containsKey(key);
-		else
-			return false;
+		return false;
 	}
 
 	@Override
 	public boolean containsKey(TSString key) {
 		if(this.tsvalue!=null&&key!=null)
 			return this.tsvalue.containsKey(key.toString());
-		else
-			return false;
+		return false;
 	}
 
 	@Override
 	public boolean containsValue(Object arg0) {
 		if(this.tsvalue!=null&&arg0!=null)
 			return this.tsvalue.containsValue(arg0);
-		else
-			return false;
+		return false;
 	}
 
 	@Override
 	public boolean containsValue(TSBaseAPI value) {
 		if(this.tsvalue!=null&&value!=null)
 			return this.tsvalue.containsValue(value);
-		else
-			return false;
+		return false;
 	}
 
 	@Override
@@ -168,8 +164,7 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 	public boolean isEmpty() {
 		if(this.tsvalue!=null)
 			return this.tsvalue.isEmpty();
-		else
-			return true;
+		return true;
 	}
 
 	@Override
@@ -187,8 +182,7 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 	public TSBaseAPI put(String arg0, TSBaseAPI arg1) {
 		if(this.tsvalue!=null&&arg0!=null&&arg1!=null)
 			return this.tsvalue.put(arg0, arg1);
-		else
-			return new TSNull();
+		return new TSNull();
 	}
 
 	@Override
@@ -198,8 +192,7 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 
 		if(this.tsvalue.containsKey(key.toString()))
 			return this.tsvalue.put(key.toString(), val);
-		else
-			return new TSNull();
+		return new TSNull();
 	}
 
 	@Override

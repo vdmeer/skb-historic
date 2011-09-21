@@ -47,7 +47,7 @@ import org.skb.util.composite.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSArrayListString extends TSAtomic implements List<TSString>, Collection<TSString>{
+public class TSArrayListString extends TSAtomic implements List<TSString> {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSArrayListString.class);
 
@@ -178,15 +178,15 @@ public class TSArrayListString extends TSAtomic implements List<TSString>, Colle
 	public boolean contains(Object o) {
 		if(o!=null)
 			return this.contains(o.toString());
-		else
-			return false;
+		return false;
 	}
 
 	public boolean contains(String s) {
 		if(this.tsvalue!=null){
-			for(int i=0;i<this.tsvalue.size();i++)
+			for(int i=0;i<this.tsvalue.size();i++){
 				if(s.equals(this.tsvalue.get(i).tsvalue))
 					return true;
+			}
 		}
 		return false;
 	}
@@ -194,8 +194,7 @@ public class TSArrayListString extends TSAtomic implements List<TSString>, Colle
 	public boolean contains(TSString s){
 		if(s!=null)
 			return this.contains(s.toString());
-		else
-			return false;
+		return false;
 	}
 
 	@Override

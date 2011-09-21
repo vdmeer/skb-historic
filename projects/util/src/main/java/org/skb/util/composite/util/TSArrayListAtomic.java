@@ -48,7 +48,7 @@ import org.skb.util.composite.TSRepository.TEnum;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSArrayListAtomic extends TSAtomic implements List<TSAtomicAPI>, Collection<TSAtomicAPI>{
+public class TSArrayListAtomic extends TSAtomic implements List<TSAtomicAPI> {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSArrayListAtomic.class);
 

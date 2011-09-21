@@ -129,8 +129,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	public boolean containsKey(Object key) {
 		if(this.isInitialised())
 			return this.tsvalue.containsKey(key);
-		else
-			return false;
+		return false;
 	}
 
 
@@ -139,8 +138,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		if(this.isInitialised()){
 			if(StringUtils.contains(fqpn, '/'))
 				return this.containsKey(new ArrayList<String>(Arrays.asList(StringUtils.split(fqpn, '/'))));
-			else
-				return this.tsvalue.containsKey(fqpn);
+			return this.tsvalue.containsKey(fqpn);
 		}
 		return false;
 	}
@@ -177,8 +175,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 			ret=this.tsvalue.entrySet();
 		if(ret==null)
 			return new TreeSet<java.util.Map.Entry<String, TSBaseAPI>>();
-		else
-			return ret;
+		return ret;
 	}
 
 	@Override
@@ -189,8 +186,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		else if(fqpn.size()==1){
 			if(this.tsvalue.containsKey(fqpn.get(0).toString()))
 				return this.tsvalue.get(fqpn.get(0).toString());
-			else
-				return new TSNull();
+			return new TSNull();
 		}
 		else if(this.tsvalue.containsKey(fqpn.get(0).toString())){
 			TSBaseAPI ct=this.tsvalue.get(fqpn.get(0).toString());
@@ -208,8 +204,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		if(this.isInitialised()&&key!=null){
 			if(this.tsvalue.containsKey(key))
 				return this.tsvalue.get(key);
-			else
-				return new TSNull();				
+			return new TSNull();				
 		}
 		return new TSNull();
 	}
@@ -259,8 +254,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	public boolean isInitialised() {
 		if(this.tsvalue!=null)
 			return true;
-		else
-			return false;
+		return false;
 	}
 
 
@@ -271,8 +265,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 			ret=this.tsvalue.keySet();
 		if(ret==null)
 			return new TreeSet<String>();
-		else
-			return ret;
+		return ret;
 	}
 
 
@@ -305,8 +298,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		if(this.isInitialised()){
 			if(StringUtils.contains(fqpn, '/'))
 				return this.put(new ArrayList<String>(Arrays.asList(StringUtils.split(fqpn, '/'))), new TSString(val));
-			else
-				return this.tsvalue.put(fqpn, new TSString(val));
+			return this.tsvalue.put(fqpn, new TSString(val));
 		}
 		return new TSNull();
 	}
@@ -317,8 +309,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		if(this.isInitialised()){
 			if(StringUtils.contains(fqpn, '/'))
 				return this.put(new ArrayList<String>(Arrays.asList(StringUtils.split(fqpn, '/'))), val);
-			else
-				return this.tsvalue.put(fqpn, val);
+			return this.tsvalue.put(fqpn, val);
 		}
 		return new TSNull();
 	}
@@ -392,8 +383,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		if(this.isInitialised()){
 			if(StringUtils.contains(fqpn, '/'))
 				return this.remove(new ArrayList<String>(Arrays.asList(StringUtils.split(fqpn, '/'))));
-			else
-				return this.tsvalue.remove(fqpn);
+			return this.tsvalue.remove(fqpn);
 		}
 		return new TSNull();
 	}
@@ -496,8 +486,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	public Map<String, TSBaseAPI> tsGetTree() {
 		if(this.isInitialised())
 			return this.tsvalue;
-		else
-			return new LinkedHashMap<String, TSBaseAPI>();
+		return new LinkedHashMap<String, TSBaseAPI>();
 	}
 
 	@Override

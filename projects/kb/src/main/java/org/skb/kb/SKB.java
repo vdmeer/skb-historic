@@ -600,8 +600,7 @@ public class SKB {
 	public TSBaseAPI getConfiguration(String group, String key){
 		if(key==null)
 			return this.configuration.get(group);
-		else
-			return this.configuration.get(group+"/"+key);
+		return this.configuration.get(group+"/"+key);
 	}
 
 	/**

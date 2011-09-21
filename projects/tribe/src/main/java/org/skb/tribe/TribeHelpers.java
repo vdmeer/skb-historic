@@ -191,8 +191,8 @@ public class TribeHelpers {
     	return ret;
 	}
 
-	public static EnumSet<EnumExitoptions> checkExitOptions(ConfigurationProperties prop){
-		EnumSet<EnumExitoptions> ret=EnumSet.noneOf(EnumExitoptions.class);
+	public static EnumSet<EnumExitOptions> checkExitOptions(ConfigurationProperties prop){
+		EnumSet<EnumExitOptions> ret=EnumSet.noneOf(EnumExitOptions.class);
 
 		Boolean showHelp=false;
 		Boolean showVersion=false;
@@ -212,17 +212,17 @@ public class TribeHelpers {
 		} catch (Exception e) {}
 
 		if(showHelp==true)
-			ret.add(EnumExitoptions.HELP);
+			ret.add(EnumExitOptions.HELP);
 		if(showVersion==true)
-			ret.add(EnumExitoptions.VERSION);
+			ret.add(EnumExitOptions.VERSION);
 		if(showLang==true)
-			ret.add(EnumExitoptions.LANGUAGES);
+			ret.add(EnumExitOptions.LANGUAGES);
 		if(defOpt==true)
-			ret.add(EnumExitoptions.DEF_OPTIONS);
+			ret.add(EnumExitOptions.DEF_OPTIONS);
 		if(printTribeSTG==true)
-			ret.add(EnumExitoptions.PRINT_STG_REPORTMGR);
+			ret.add(EnumExitOptions.PRINT_STG_REPORTMGR);
 		if(printTargetSTG==true)
-			ret.add(EnumExitoptions.PRINT_STG_TARGET);
+			ret.add(EnumExitOptions.PRINT_STG_TARGET);
 		return ret;
 	}
 
@@ -230,17 +230,15 @@ public class TribeHelpers {
     	TreeMap<String, String> tokenMap=new TreeMap<String, String>();
 
     	TSLinkedHashTree map=(TSLinkedHashTree)config.config.get(PathKeys.pathConfigurationParserLangTokens);
-    	if(map!=null){
+    	if(map!=null&&map.size()>0){
     		TSLinkedHashTree tokenStrings=new TSLinkedHashTree();
-    		if(map!=null&&map.size()>0){
-    			for(String s:map.keySet()){
-    				try{
-    					TSBaseAPI tid=map.get(s+"/"+FieldKeys.fieldLangTargetTokenIdent);
-    					TSBaseAPI tval=map.get(s+"/"+FieldKeys.fieldLangTargetTokenTranslate);
-    				    tokenStrings.put(tid.toString(), tval.toString());
-    				} catch (Exception e){}
-    			}
-    		}
+   			for(String s:map.keySet()){
+   				try{
+   					TSBaseAPI tid=map.get(s+"/"+FieldKeys.fieldLangTargetTokenIdent);
+   					TSBaseAPI tval=map.get(s+"/"+FieldKeys.fieldLangTargetTokenTranslate);
+   				    tokenStrings.put(tid.toString(), tval.toString());
+   				} catch (Exception e){}
+   			}
     		if(tokenStrings.size()>0){
     			for(String s:tokenStrings.keySet()){
     				tokenMap.put(s,tokenStrings.get(s).toString());

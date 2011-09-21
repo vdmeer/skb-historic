@@ -149,8 +149,7 @@ public class TSPropertyMap extends TSTable{
 	public boolean hasProperty(String row){
 		if(this.isInitialised())
 			return this.tsvalue.containsKey(row);
-		else
-			return false;
+		return false;
 	}
 
 	public boolean hasPropertyValue(String row, String col){
@@ -239,19 +238,16 @@ public class TSPropertyMap extends TSTable{
 		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL)){
 			return this.loadFromFile(fn.toString());
 		}
-		else{
-			TSError ret=new TSError();
-			ret.tsSetMessage("could not load propertyfile");
-			ret.tsSetExplanation("no file name given");
-			return ret;
-		}
+		TSError ret=new TSError();
+		ret.tsSetMessage("could not load propertyfile");
+		ret.tsSetExplanation("no file name given");
+		return ret;
 	}
 
 	public Set<String> loadFromJason(TSBaseAPI map){
 		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
 			return null;
-		else
-			return this.loadFromJason((TSLinkedHashTree)map);
+		return this.loadFromJason((TSLinkedHashTree)map);
 	}
 
 	public Set<String> loadFromJason(TSLinkedHashTree map){
@@ -379,11 +375,9 @@ public class TSPropertyMap extends TSTable{
 		if(fn!=null&&!fn.tsIsType(TEnum.TS_NULL)){
 			return this.writeToFile(fn.toString());
 		}
-		else{
-			TSError ret=new TSError();
-			ret.tsSetMessage("could not write propertyfile");
-			ret.tsSetExplanation("no file name given");
-			return ret;
-		}
+		TSError ret=new TSError();
+		ret.tsSetMessage("could not write propertyfile");
+		ret.tsSetExplanation("no file name given");
+		return ret;
 	}
 }

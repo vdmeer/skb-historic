@@ -50,7 +50,7 @@ import org.skb.util.composite.java.TSString;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSArrayList extends TSComposite implements List<TSBaseAPI>, Collection<TSBaseAPI> {
+public class TSArrayList extends TSComposite implements List<TSBaseAPI> {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSArrayList.class);
 
@@ -284,8 +284,7 @@ public class TSArrayList extends TSComposite implements List<TSBaseAPI>, Collect
 	public List<TSBaseAPI> tsGetList(){
 		if(this.tsvalue!=null)
 			return this.tsvalue;
-		else
-			return new ArrayList<TSBaseAPI>();
+		return new ArrayList<TSBaseAPI>();
 	}
 
 	@Override

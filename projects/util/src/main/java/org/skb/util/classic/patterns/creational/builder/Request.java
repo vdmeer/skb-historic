@@ -327,8 +327,7 @@ public class Request {
 	public String getFormName(String field_key){
 		if(this.init_map.containsKey("core:requests:fields"+"/"+field_key+"/"+"core:http_req_name"))
 			return ((TSString)this.init_map.get("core:requests:prefix")).tsvalue+((TSString)this.init_map.get("core:requests:fields"+"/"+field_key+"/"+"core:http_req_name")).tsvalue;
-		else
-    	  return null;
+		return null;
 	}
 
 
@@ -397,8 +396,7 @@ public class Request {
 	public String toString(){
 		if(this.is_initialised==true)
 			return "init map: \n"+this.init_map.toString()+"http: \n"+this.core_ar_http.toString()+"plain: \n"+this.core_ar_plain.toString();
-		else
-			return "";
+		return "";
 	}
 
 

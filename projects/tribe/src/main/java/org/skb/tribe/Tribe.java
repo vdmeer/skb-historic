@@ -94,7 +94,7 @@ public class Tribe {
 	private LangParserAPI parser=null;
 
 	/** Enum set used as bit field for exitOptions */
-	public EnumSet<EnumExitoptions> eo=EnumSet.noneOf(EnumExitoptions.class);
+	public EnumSet<EnumExitOptions> eo=EnumSet.noneOf(EnumExitOptions.class);
 
 	/**
 	 * Class Constructor, empty
@@ -264,7 +264,6 @@ public class Tribe {
     				System.err.println(checkRet);
     				return -1;
     			}
-
         		this.setOptions(args);
        			System.out.println(this.doExitOptions());
        			return 1;        			
@@ -458,16 +457,16 @@ public class Tribe {
 	private String doExitOptions(){
 		String ret=null;
 
-		if(this.eo.contains(EnumExitoptions.HELP)){
+		if(this.eo.contains(EnumExitOptions.HELP)){
         	ret=TribeHelpers.getHelpPrint(cli, this.prop);
         }
 
-		if(this.eo.contains(EnumExitoptions.VERSION)&&
-        		!this.eo.contains(EnumExitoptions.HELP)){
+		if(this.eo.contains(EnumExitOptions.VERSION)&&
+        		!this.eo.contains(EnumExitOptions.HELP)){
         	ret=TribeHelpers.getVersionPrint(this.prop);
         }
 
-        if(this.eo.contains(EnumExitoptions.LANGUAGES)){
+        if(this.eo.contains(EnumExitOptions.LANGUAGES)){
         	if(ret!=null)
         		ret+="\n\n";
         	else
@@ -475,7 +474,7 @@ public class Tribe {
         	ret+=TribeHelpers.getSupportedLangPrint(this.parsers);
         }
 
-        if(this.eo.contains(EnumExitoptions.DEF_OPTIONS)){
+        if(this.eo.contains(EnumExitOptions.DEF_OPTIONS)){
 			if(ret!=null)
         		ret+="\n\n";
         	else
@@ -483,7 +482,7 @@ public class Tribe {
 			ret+=TribeHelpers.getDefaultOptionsPrint(this.prop);
 		}
 
-		if(this.eo.contains(EnumExitoptions.PRINT_STG_REPORTMGR)){
+		if(this.eo.contains(EnumExitOptions.PRINT_STG_REPORTMGR)){
         	if(ret!=null)
         		ret+="\n\n";
         	else
@@ -491,7 +490,7 @@ public class Tribe {
         	ret+=this.repMgr.stgmToString();
 		}		
 
-		if(this.eo.contains(EnumExitoptions.PRINT_STG_TARGET)){
+		if(this.eo.contains(EnumExitOptions.PRINT_STG_TARGET)){
 			if(this.parser!=null){
 				String stg=this.parser.getTargetStgAsString();
 				if(stg.length()>0){

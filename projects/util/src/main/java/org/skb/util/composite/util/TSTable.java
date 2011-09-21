@@ -178,8 +178,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public boolean containsKey(Object key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.containsKey(key);
-		else
-			return false;
+		return false;
 	}
 
 
@@ -187,8 +186,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public boolean containsKey(String key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.containsKey(key);
-		else
-			return false;
+		return false;
 	}
 
 
@@ -196,8 +194,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public boolean containsKey(TSString key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.containsKey(key.toString());
-		else
-			return false;
+		return false;
 	}
 
 
@@ -205,8 +202,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public boolean containsValue(Object value) {
 		if(this.isInitialised()&&value!=null)
 			return this.tsvalue.containsValue(value);
-		else
-			return false;
+		return false;
 	}
 
 
@@ -214,8 +210,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public boolean containsValue(TSTableRowAPI value) {
 		if(this.isInitialised()&&value!=null)
 			return this.tsvalue.containsValue(value);
-		else
-			return false;
+		return false;
 	}
 
 
@@ -235,8 +230,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI get(Object key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.get(key);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -244,8 +238,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI get(String key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.get(key);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -264,8 +257,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI get(TSString key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.get(key);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -297,8 +289,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public HashSet<String> getColumns() {
 		if(this.isInitialised())
 			return this.columns;
-		else
-			return new HashSet<String>();
+		return new HashSet<String>();
 	}
 
 
@@ -498,8 +489,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI put(String key, TSTableRowAPI val) {
 		if(this.isInitialised()&&key!=null&&val!=null)
 			return this.tsvalue.put(key, val);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -507,8 +497,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI put(TSString key, TSTableRowAPI val) {
 		if(this.isInitialised()&&key!=null&&val!=null)
 			return this.tsvalue.put(key.toString(), val);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -529,8 +518,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI remove(Object key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.remove(key);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -538,8 +526,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI remove(String key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.remove(key);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -547,8 +534,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public TSTableRowAPI remove(TSString key) {
 		if(this.isInitialised()&&key!=null)
 			return this.tsvalue.remove(key);
-		else
-			return null;
+		return null;
 	}
 
 
@@ -597,8 +583,7 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public int size() {
 		if(this.isInitialised())
 			return this.tsvalue.size();
-		else
-			return 0;
+		return 0;
 	}
 
 
@@ -657,7 +642,6 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	public Collection<TSTableRowAPI> values() {
 		if(this.tsvalue!=null)
 			return this.tsvalue.values();
-		else
-			return new TreeSet<TSTableRowAPI>();		
+		return new TreeSet<TSTableRowAPI>();		
 	}
 }

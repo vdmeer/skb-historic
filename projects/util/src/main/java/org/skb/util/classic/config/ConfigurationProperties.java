@@ -136,16 +136,15 @@ public class ConfigurationProperties extends TSPropertyMap {
 
 		Json2Oat j2o=new Json2Oat();
 		TSBaseAPI c=j2o.read(this.config.getProperty("org.skb.util.config.jsonfile"));
-		TSLinkedHashTree config=null;
+		TSLinkedHashTree cfg=null;
 		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
-			config=(TSLinkedHashTree)c;
-		if(config==null){
+			cfg=(TSLinkedHashTree)c;
+		if(cfg==null){
 			System.err.println("skb: configuration not found");
 			logger.trace("init -- out > no configuration file found");
 			return;
 		}
-		else
-			this.loadFromJason(((TSLinkedHashTree)config.get("configuration")));
+		this.loadFromJason(((TSLinkedHashTree)cfg.get("configuration")));
 		this.put(FieldKeys.fieldApplicationDirectory, FieldKeys.fieldValueDefault, System.getProperty("user.dir")+System.getProperty("file.separator"));
 		this.put(FieldKeys.fieldCliOptionTgtDir, FieldKeys.fieldValueDefault, System.getProperty("user.dir"));
 

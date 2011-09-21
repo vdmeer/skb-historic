@@ -1,6 +1,6 @@
 package org.skb.tribe;
 
-public enum EnumExitoptions {
+public enum EnumExitOptions {
 	/** show-help, show a help text for the parser with all options and exit */
 	HELP,
 
@@ -17,6 +17,6 @@ public enum EnumExitoptions {
 	PRINT_STG_REPORTMGR,
 
 	/** pr-stg-target, print the source of the StringTemplate for the selected target and exit */
-	PRINT_STG_TARGET,
+	PRINT_STG_TARGET
 
 }

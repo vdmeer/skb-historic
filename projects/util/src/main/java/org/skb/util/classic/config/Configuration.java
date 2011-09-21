@@ -109,8 +109,7 @@ public class Configuration {
 		TSBaseAPI base=this.config.get(PathKeys.pathInstancesProperties);
 		if(base.tsIsType(TEnum.TS_COMPOSITE_PROPERTY_MAP))
 			return (ConfigurationProperties)base;
-		else
-			return new ConfigurationProperties();
+		return new ConfigurationProperties();
 	}
 
 
@@ -122,8 +121,7 @@ public class Configuration {
 		TSBaseAPI base=this.config.get(PathKeys.pathInstancesReportmanager);
 		if(base.tsIsType(TEnum.TS_ATOMIC_REPORTMANAGER))
 			return (TSReportManager)base;
-		else
-			return new TSReportManager();
+		return new TSReportManager();
 	}
 
 
@@ -136,9 +134,7 @@ public class Configuration {
 		if(base.tsIsType(TEnum.TS_COMPOSITE_LANG_ATOMLIST)){
 			return (TSAtomList)base;
 		}
-		else{
-			return new TSAtomList();
-		}
+		return new TSAtomList();
 	}
 
 
@@ -161,9 +157,7 @@ public class Configuration {
 		if(base.tsIsType(TEnum.TS_COMPOSITE_LANG_RULEMAP)){
 			return (TSLangRuleMap)base;
 		}
-		else{
-			return new TSLangRuleMap();
-		}
+		return new TSLangRuleMap();
 	}
 
 
@@ -187,8 +181,6 @@ public class Configuration {
 		if(base.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
 			return (TSLinkedHashTree)base;
 		}
-		else{
-			return new TSLinkedHashTree();
-		}
+		return new TSLinkedHashTree();
 	}
 }
