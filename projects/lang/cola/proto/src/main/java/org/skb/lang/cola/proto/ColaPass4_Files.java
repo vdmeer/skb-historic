@@ -218,62 +218,62 @@ public class ColaPass4_Files {
 			for(int i=0;i<size;i++){
 				currentElem=rows.get(i);
 				//not contained in any other Atom? go to the next one
-				if(currentElem.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
+				if(currentElem.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1){
 					continue;
+				}
 				//not an element, then continue
-				if(!this.atoms.get(currentElem,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaELEMENT))
+				if(!this.atoms.get(currentElem,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaELEMENT)){
 					continue;
-				else{
-					map=this.atoms.getImports(currentElem);
-					Collection<String> values = map.keySet();
-					for (Iterator<String> it = values.iterator(); it.hasNext(); ){
-						String currentFac=it.next();
-						String cat=map.get(currentFac);
-						//no facility, then continue
-						if(!cat.equals(ColaConstants.Tokens.colaFACILITY))
+				}
+				map=this.atoms.getImports(currentElem);
+				Collection<String> values = map.keySet();
+				for (Iterator<String> it = values.iterator(); it.hasNext(); ){
+					String currentFac=it.next();
+					String cat=map.get(currentFac);
+					//no facility, then continue
+					if(!cat.equals(ColaConstants.Tokens.colaFACILITY))
+						continue;
+					//we are in an element that has a dependency (requires) a facility
+					//this can only be by @provides, so we can generate the attribute/action code
+					//for that element
+					//first go through the list and get all definitions of that facility
+					inFac.clear();
+					Integer fSize=rows.size();
+					String entry;
+					String entryParID;
+					for(int k=0;k<fSize;k++){
+						entry=rows.get(k);
+						if(entry.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
 							continue;
-						//we are in an element that has a dependency (requires) a facility
-						//this can only be by @provides, so we can generate the attribute/action code
-						//for that element
-						//first go through the list and get all definitions of that facility
-						inFac.clear();
-						Integer fSize=rows.size();
-						String entry;
-						String entryParID;
-						for(int k=0;k<fSize;k++){
-							entry=rows.get(k);
-							if(entry.lastIndexOf(ColaConstants.Tokens.parserScopeSep)==-1)
-								continue;
-							entryParID=entry.substring(0,entry.lastIndexOf(ColaConstants.Tokens.parserScopeSep));
-							if(currentFac.equals(entryParID))
-								inFac.add(entry);
-						}
-						//first add the import of the Facility to the Element
-						//now we have a list of names of all children of the facility currentFac which is needed in
-						//the element currentElem, let's add them to the element
-						fSize=inFac.size();
-						StringTemplate elem=this.atoms.getST(currentElem);
-						StringTemplate body;
-						for(int k=0;k<fSize;k++){
-							//if we should do Element code, do it
-							Boolean xtDoElemCode=false;
-							try {
-								xtDoElemCode=((TSBoolean)this.prop.getValue(ColaConstants.Properties.keyXtDoElementCode)).tsvalue;
-							} catch (Exception e) {}
+						entryParID=entry.substring(0,entry.lastIndexOf(ColaConstants.Tokens.parserScopeSep));
+						if(currentFac.equals(entryParID))
+							inFac.add(entry);
+					}
+					//first add the import of the Facility to the Element
+					//now we have a list of names of all children of the facility currentFac which is needed in
+					//the element currentElem, let's add them to the element
+					fSize=inFac.size();
+					StringTemplate elem=this.atoms.getST(currentElem);
+					StringTemplate body;
+					for(int k=0;k<fSize;k++){
+						//if we should do Element code, do it
+						Boolean xtDoElemCode=false;
+						try {
+							xtDoElemCode=((TSBoolean)this.prop.getValue(ColaConstants.Properties.keyXtDoElementCode)).tsvalue;
+						} catch (Exception e) {}
 
-							if(xtDoElemCode==true){
-								body=this.atoms.getST(inFac.get(k));
-								//first set misc/inElement
-								body.removeAttribute("misc");
-								body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaConstants.Tokens.colaELEMENT));
-								elem.setAttribute("body", this.atoms.getST(inFac.get(k)).toString());
-								//and now retour
-								body.removeAttribute("misc");
-								body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaConstants.Tokens.colaFACILITY));								
-							}
-							//in any case, we have to do set imports for the elements
-//this.atoms.addImportsAll(currentElem, this.atoms.getImports(inFac.get(k)));
+						if(xtDoElemCode==true){
+							body=this.atoms.getST(inFac.get(k));
+							//first set misc/inElement
+							body.removeAttribute("misc");
+							body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaConstants.Tokens.colaELEMENT));
+							elem.setAttribute("body", this.atoms.getST(inFac.get(k)).toString());
+							//and now retour
+							body.removeAttribute("misc");
+							body.setAttribute("misc", this.genMiscAttribute(inFac.get(k),ColaConstants.Tokens.colaFACILITY));								
 						}
+						//in any case, we have to do set imports for the elements
+//this.atoms.addImportsAll(currentElem, this.atoms.getImports(inFac.get(k)));
 					}
 				}
 			}
@@ -301,9 +301,9 @@ public class ColaPass4_Files {
 				parrentCat=this.atoms.get(parrent,TSAtomList.alValCategory).toString();
 				if(processParrentCat!=null&&processParrentCat.equals(parrentCat)){
 					//now, if we should process a generic parent category, let's do that
-					if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaSTRUCT))
+					if(processParrentCat.equals(ColaConstants.Tokens.colaSTRUCT))
 						this.atoms.getST(parrent).setAttribute("member", this.atoms.getST(current).toString());
-					else if(processParrentCat!=null&&processParrentCat.equals(ColaConstants.Tokens.colaACTION))
+					else if(processParrentCat.equals(ColaConstants.Tokens.colaACTION))
 						this.atoms.getST(parrent).setAttribute("parameter", this.atoms.getST(current).toString());
 					else
 						this.atoms.getST(parrent).setAttribute("body", this.atoms.getST(current).toString());
@@ -363,19 +363,21 @@ public class ColaPass4_Files {
 	}
 
 	private static int countIndexOf(String content, String search) {
-		int ctr = -1;
-		int total = 0;
-		while (true) {
-			if (ctr == -1) ctr = content.indexOf(search);
-			else ctr = content.indexOf(search, ctr);
+		int ctr=-1;
+		int total=0;
+		while(true){
+			if(ctr==-1){
+				ctr=content.indexOf(search);
+			}
+			else{
+				ctr=content.indexOf(search, ctr);
+			}
 
-		    if (ctr == -1) {
+		    if(ctr==-1){
 		    	break;
 		    }
-		    else {
-		    	total++;
-		    	ctr += search.length();
-		    }
+			total++;
+			ctr+=search.length();
 		}
 		return total;
 	}

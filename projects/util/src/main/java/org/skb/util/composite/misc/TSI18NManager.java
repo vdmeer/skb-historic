@@ -100,10 +100,10 @@ public class TSI18NManager extends TSAtomic {
 	 * @return translation or an empty string <"">
 	 */
 	public String _(String translate){
-		if(this.currentDomain!=null)
+		if(this.currentDomain!=null){
 			return this.entries.get(this.currentDomain).getString(translate);
-		else
-			return "";
+		}
+		return "";
 	}
 
 	/**
@@ -113,9 +113,9 @@ public class TSI18NManager extends TSAtomic {
 	 * @return translation or an empty string <"">
 	 */
 	public String _(String domain, String translate){
-		if(this.entries.containsKey(domain))
+		if(this.entries.containsKey(domain)){
 			return this.entries.get(domain).getString(translate);
-		else
-			return "";
+		}
+		return "";
 	}
 }

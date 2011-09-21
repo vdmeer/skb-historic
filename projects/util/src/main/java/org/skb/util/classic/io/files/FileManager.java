@@ -55,7 +55,6 @@ public class FileManager {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(FileManager.class);
 
-
 	/** Header for code files, will prepend all other content */
 	private StringTemplate codeHeader=null;
 
@@ -104,7 +103,7 @@ public class FileManager {
 	 * @param tgtFileExt target file extension
 	 * @param canPrint can print boolean
 	 */
-	public void init(TSBaseAPI srcLang, TSBaseAPI srcFile, TSBaseAPI tgtLang, TSBaseAPI tgtFileExt, TSBaseAPI canPrint){
+	public void init(TSBaseAPI srcLang, TSBaseAPI srcFile, TSBaseAPI tgtLang, TSBaseAPI tgtFileExt, TSBaseAPI doPrint){
 		if(srcLang!=null)
 			this.sourceLanguage=srcLang.toString();
 		if(srcFile!=null)
@@ -114,7 +113,7 @@ public class FileManager {
 		if(tgtFileExt!=null)
 			this.targetFileExtension=tgtFileExt.toString();
 		if(canPrint!=null)
-			this.canPrint=(TSBoolean)canPrint;
+			this.canPrint=(TSBoolean)doPrint;
 
 		if(this.sourceLanguage==null||this.sourceFile==null||this.targetLanguage==null||this.targetFileExtension==null)
 			this.canPrint=new TSBoolean((false));

@@ -42,8 +42,10 @@ import java.util.EnumSet;
 import java.util.Properties;
 
 import org.apache.commons.cli.ParseException;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.skb.lang.cpp.CPP;
+import org.skb.util.ConfigKeys;
 import org.skb.util.FieldKeys;
 import org.skb.util.PathKeys;
 import org.skb.util.classic.cli.Cli;
@@ -107,12 +109,12 @@ public class Tribe {
 	 * @param parsers LanguageParser array containing all information on supported source and target languages.
 	 * @param args Command line arguments.
 	 */
-	public void execute(LangParserAPI[] parsers, String[] args){
+	public void execute(LangParserAPI[] langParsers, String[] args){
 		this.cli=new CliApache();
 		config.init(this.propertyFile);
 		this.prop=config.getProperties();
 		this.repMgr=config.getReportManager();
-		this.parsers=parsers;
+		this.parsers=langParsers;
 
 		//get the chunks for the standard STG file
 		Properties cfgFile=new PropertyHandler().load(this.propertyFile, Tribe.class.getName());
@@ -169,10 +171,10 @@ public class Tribe {
 		 * Initialise the report manager
 		 */
 		logger.trace("set report manager");
-		repMgr.setSTGFileName(prop.get(FieldKeys.fieldCliOptionReportManagerStg, FieldKeys.fieldValueDefault));
-		checkRet=repMgr.loadSTG("Report Manager default String Template Group", "");
+		this.repMgr.setSTGFileName(prop.get(FieldKeys.fieldCliOptionReportManagerStg, FieldKeys.fieldValueDefault));
+		checkRet=this.repMgr.loadSTG("Report Manager default String Template Group", "");
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
-			System.err.println(checkRet);
+			this.repMgr.genErrorMessage(checkRet.toString());
 			return -1;
 		}
 
@@ -186,19 +188,37 @@ public class Tribe {
 		this.cli.setPropOptions(this.prop);
 		this.setOptions(args);
 
+		/**
+		 * Check for quiet mode, no error or no warning mode and set the logger for reports accordingly
+		 */
+		//TODO
+		Boolean noError=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoErrors)).tsvalue;
+		Boolean noWarning=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoWarnings)).tsvalue;
+		Boolean quietMode=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
+		if(quietMode==true){
+			Logger.getLogger(ConfigKeys.configLoggerReportmanagerInfo).setLevel(Level.OFF);
+			Logger.getLogger(ConfigKeys.configLoggerReportmanagerErrors).setLevel(Level.OFF);
+			Logger.getLogger(ConfigKeys.configLoggerReportmanagerWarnings).setLevel(Level.OFF);
+		}
+		else{
+			if(noError==true)
+				Logger.getLogger(ConfigKeys.configLoggerReportmanagerErrors).setLevel(Level.OFF);
+			if(noWarning==true)
+				Logger.getLogger(ConfigKeys.configLoggerReportmanagerWarnings).setLevel(Level.OFF);
+		}
+
 		//check if exit options are set, put them into the enum set
 		this.eo=TribeHelpers.checkExitOptions(this.prop);
 
 		/**
 		 * reload the report manager stg (can be changed in CLI as well as in file)
 		 */
-		repMgr.setSTGFileName(prop.getValue(FieldKeys.fieldCliOptionReportManagerStg));
-       	checkRet=repMgr.loadSTG("Report Manager after command line parsing", "");
+		this.repMgr.setSTGFileName(prop.getValue(FieldKeys.fieldCliOptionReportManagerStg));
+       	checkRet=this.repMgr.loadSTG("Report Manager after command line parsing", "");
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
-			System.err.println(checkRet);
+			this.repMgr.genErrorMessage(checkRet.toString());
 			return -1;
 		}
-
 
         /**
          * CLI Option case 1: no source language specified then
@@ -212,16 +232,12 @@ public class Tribe {
         		System.out.println(" - target language specified without a source language");
         		return -1;
         	}
-        	else{
-        		if(this.eo.size()>0){
-        			System.out.println(this.doExitOptions());
-        			return 1;
-        		}
-        		else{
-        			System.out.println("-  no source language specified");
-        			return -1;
-        		}
-        	}
+			if(this.eo.size()>0){
+				System.out.println(this.doExitOptions());
+				return 1;
+			}
+			System.out.println("-  no source language specified");
+			return -1;
         }
 
         //we have a source language
@@ -261,7 +277,7 @@ public class Tribe {
         	else if(this.eo.size()>0){
         		checkRet=TribeHelpers.loadParserOptions(sourceParsers.get(0), this.cli);
     			if(checkRet.tsIsType(TEnum.TS_ERROR)){
-    				System.err.println(checkRet);
+    				this.repMgr.genErrorMessage(checkRet.toString());
     				return -1;
     			}
         		this.setOptions(args);
@@ -276,7 +292,7 @@ public class Tribe {
         		if(this.eo.size()>0){
         			checkRet=TribeHelpers.loadParserOptions(targetParsers.get(0), this.cli);
         			if(checkRet.tsIsType(TEnum.TS_ERROR)){
-        				System.err.println(checkRet);
+        				this.repMgr.genErrorMessage(checkRet.toString());
         				return -1;
         			}
         			this.setOptions(args);
@@ -307,7 +323,7 @@ public class Tribe {
          * - we have a parser selected, and all exit options are processed, now we need an input file or we can't proceed
          */
         if (this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).tsIsType(TEnum.TS_NULL)||this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString().equals("")){
-        	repMgr.reportError("no input file specified");
+        	this.repMgr.genErrorMessage("no input file specified");
         	return -1;
         }
 
@@ -331,7 +347,7 @@ public class Tribe {
          */
         checkRet=TribeHelpers.loadParserOptions(this.parser, this.cli);
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
-			System.err.println(checkRet);
+			this.parser.getConfiguration().getReportManager().genErrorMessage(checkRet.toString());
 			return -1;
 		}
 
@@ -362,36 +378,34 @@ public class Tribe {
         	if(fnTest.canRead()==false){
         		URL url=ClassLoader.getSystemResource(sourceFile);
         		if(url==null){
-        			repMgr.reportError("can't open source file <" + sourceFile + "> for reading (tried URL from getSystemResource)");
+        			this.repMgr.genErrorMessage("can't open source file <" + sourceFile + "> for reading (tried URL from getSystemResource)");
         			return -1;
         		}
         		fnTest=new File(url.getFile());
         		if(fnTest.canRead()==false){
-        			repMgr.reportError("can't open source file <" + sourceFile + "> for reading (tried to read from URL)");
+        			this.repMgr.genErrorMessage("can't open source file <" + sourceFile + "> for reading (tried to read from URL)");
         			return -1;
         		}
-        		else
-        			this.prop.put(FieldKeys.fieldCliOptionSrcFile, FieldKeys.fieldValueCli, fnTest.getAbsolutePath());
+				this.prop.put(FieldKeys.fieldCliOptionSrcFile, FieldKeys.fieldValueCli, fnTest.getAbsolutePath());
         	}
 
         	TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionGC);
         	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
         		fnTest=new File(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir).toString());
         		if(fnTest.canWrite()==false){
-        			repMgr.reportError("can't write in target directory <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir) + ">");
+        			this.repMgr.genErrorMessage("can't write in target directory <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir) + ">");
         			return -1;
         		}
         		fnTest=new File(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+this.prop.getValue(FieldKeys.fieldCliOptionTgtFileExt));
         		fnTest.createNewFile();
         		if(fnTest.canWrite()==false){
-        			repMgr.reportError("can't open target file <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt) + "> for writing");
+        			this.repMgr.genErrorMessage("can't open target file <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt) + "> for writing");
         			return -1;
         		}
-        		else
-        			fnTest.delete();
+				fnTest.delete();
         	}
         }catch(Exception e){
-        	repMgr.reportError(e.toString());
+        	this.repMgr.genErrorMessage(e.toString());
 		}
 
         /**
@@ -420,10 +434,10 @@ public class Tribe {
         	this.parser.parse(tribeIS);
         }
         catch(IOException io){
-        	repMgr.reportError("catched exception while parsing", "IOException: " + io.toString());
+        	this.repMgr.genErrorMessage("catched exception while parsing", "IOException: " + io.toString());
         }
         catch(Exception e){
-        	repMgr.reportError("catched exception while parsing", "Exception: " + e.toString());
+        	this.repMgr.genErrorMessage("catched exception while parsing", "Exception: " + e.toString());
         }
 
 
@@ -435,7 +449,7 @@ public class Tribe {
 			TSBaseAPI cl=this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave);
 			TSDefault ret=this.prop.writeToFile(cl);
 			if(ret.tsIsType(TEnum.TS_ERROR)){
-				this.repMgr.reportError("tribe: problems writing configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
+				this.repMgr.genErrorMessage("tribe: problems writing configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
 			}
 		}
 
@@ -517,7 +531,7 @@ public class Tribe {
 			this.cli.parse(args, true);
         }
         catch(ParseException e){
-       		this.repMgr.reportError(e.getMessage());
+        	this.repMgr.genErrorMessage(e.getMessage());
        		System.exit(2);
         }
 
@@ -526,7 +540,7 @@ public class Tribe {
 			TSBaseAPI cl=(TSString)prop.getValueCli(FieldKeys.fieldCliOptionConfigLoad);
 			TSDefault ret=this.prop.loadFromFile(cl);
 			if(ret.tsIsType(TEnum.TS_ERROR)){
-				this.repMgr.reportError("tribe: problems loading configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
+				this.repMgr.genErrorMessage("tribe: problems loading configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
 			}
 		}
 	}

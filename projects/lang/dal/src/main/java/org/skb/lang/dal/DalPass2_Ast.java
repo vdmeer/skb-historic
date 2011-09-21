@@ -39,7 +39,6 @@ import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.composite.lang.TSAtomList;
-import org.skb.util.composite.util.TSLangRuleMap;
 
 /**
  * Pass 2 of the DAL parser, mostly looking into semantic analysis.
@@ -57,12 +56,6 @@ public class DalPass2_Ast {
 	/** Atom List (Symbol Table) */
 	public TSAtomList atoms;
 
-	/** Language Rule map for error/warning reporting */
-	private TSLangRuleMap cr;
-
-//	/** Scope processing using ANTLR Tokens */
-//	public ScopeToken sn;
-
 	// temp Type and Value for testing
 	private Token lastBaseType=null;
 	private Token lastCommonValue=null;
@@ -71,8 +64,6 @@ public class DalPass2_Ast {
 	public DalPass2_Ast(){
 		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
-
-		this.cr=config.getLangRuleMap();
 	}
 
 

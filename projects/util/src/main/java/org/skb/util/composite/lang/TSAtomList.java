@@ -225,10 +225,10 @@ public class TSAtomList extends TSTable {
 			this.put(id, TSAtomList.alValScopedID, id);
 
 			this.imports.put(id, new LinkedHashMap<String, String>());
+			//TODO no null returns!
 			return null;
 		}
-		else
-			return this.get(id);
+		return this.get(id);
 	}
 
 

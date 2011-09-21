@@ -94,10 +94,10 @@ public class ContractDeclarationList extends TSAtomic {
 		if(this.contractItemsDeclMap.containsKey(contract)){
 			if(this.contractItemsDeclMap.get(contract).containsKey(item)){
 				if(this.contractItemsDeclMap.get(contract).get(item).containsKey(property)){
-					if(this.contractItemsDeclMap.get(contract).get(item).get(property).equals(rank))
+					if(this.contractItemsDeclMap.get(contract).get(item).get(property).equals(rank)){
 						return true;
-					else
-						return false;
+					}
+					return false;
 				}
 			}
 		}

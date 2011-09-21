@@ -129,12 +129,12 @@ public class ColaPass1_Ebnf {
 	 * @param atom to be checked and stored
 	 */
 	public void addPropertyDeclScopeAtom(Token atom){
-		if(this.propertyDeclScope.containsKey(atom.getText()))
-			this.reportManager.reportError(
-					this.cr.getRule(ColaConstants.Rules.ruleProperty14, new String[]{atom.getText(), this.atoms.scope.toString()}),
-					atom);
-		else
+		if(this.propertyDeclScope.containsKey(atom.getText())){
+			this.reportManager.genErrorMessage(this.cr.getRule(ColaConstants.Rules.ruleProperty14, new String[]{atom.getText(), this.atoms.scope.toString()}), atom);
+		}
+		else{
 			lastPropertyDeclScopeAtom=atom.getText();
+		}
 	}
 
 
@@ -182,12 +182,12 @@ public class ColaPass1_Ebnf {
 	 * @param atom to be checked and stored
 	 */
 	public void addContractDeclScopeAtom(Token atom){
-		if(this.contractDeclScope.containsKey(atom.getText()))
-			this.reportManager.reportError(
-					this.cr.getRule(ColaConstants.Rules.ruleContract05, new String[]{atom.getText(), this.atoms.scope.toString()}),
-					atom);
-		else
+		if(this.contractDeclScope.containsKey(atom.getText())){
+			this.reportManager.genErrorMessage(this.cr.getRule(ColaConstants.Rules.ruleContract05, new String[]{atom.getText(), this.atoms.scope.toString()}), atom);
+		}
+		else{
 			lastContractDeclScopeAtom=atom.getText();
+		}
 	}
 
 
@@ -251,11 +251,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void identsAddItemDef(Token token){
 		if(this.tempPropIdents.contains(token.getText()))
-			this.reportManager.reportError(
-					this.cr.getRule(ColaConstants.Rules.ruleIdentifier04),
-					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier04, new String[]{token.getText()}),
-					token.getLine(),
-					token.getCharPositionInLine());
+			this.reportManager.genErrorMessage(this.cr.getRule(ColaConstants.Rules.ruleIdentifier04), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier04, new String[]{token.getText()}), token.getLine(), token.getCharPositionInLine());
 		else
 			this._identsAdd(token);
 	}
@@ -270,11 +266,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void identsAddPropDef(Token token){
 		if(this.tempPropIdents.contains(token.getText()))
-			this.reportManager.reportError(
-					this.cr.getRule(ColaConstants.Rules.ruleIdentifier05),
-					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier05, new String[]{token.getText()}),
-					token.getLine(),
-					token.getCharPositionInLine());
+			this.reportManager.genErrorMessage(this.cr.getRule(ColaConstants.Rules.ruleIdentifier05), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier05, new String[]{token.getText()}), token.getLine(), token.getCharPositionInLine());
 		else
 			this._identsAdd(token);
 	}
@@ -296,11 +288,7 @@ public class ColaPass1_Ebnf {
 	 */
 	public void contIdentsAdd(Token token){
 		if(this.tempContIdents.contains(token.getText()))
-			this.reportManager.reportError(
-					this.cr.getRule(ColaConstants.Rules.ruleIdentifier06),
-					this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier06, new String[]{token.getText()}),
-					token.getLine(),
-					token.getCharPositionInLine());
+			this.reportManager.genErrorMessage(this.cr.getRule(ColaConstants.Rules.ruleIdentifier06), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier06, new String[]{token.getText()}), token.getLine(), token.getCharPositionInLine());
 		else
 			this.tempContIdents.add(token.getText());
 	}
@@ -350,10 +338,7 @@ public class ColaPass1_Ebnf {
 	public void putAtom(Token token, String category, Token type, Boolean array){
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, type, array);
 		if(otr!=null){
-			this.reportManager.reportError(
-					ColaConstants.Tokens.parserIDENTIFIER+" used more than once",
-					token,
-					ColaConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
+			this.reportManager.genErrorMessage(ColaConstants.Tokens.parserIDENTIFIER+" used more than once", token, ColaConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
 		}
 	}
 

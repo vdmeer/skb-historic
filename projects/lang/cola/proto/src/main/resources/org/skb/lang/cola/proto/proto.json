@@ -1288,7 +1288,7 @@
                 "property:13":{
                     "skb:util:constant:ident":"ruleProperty13",
                     "skb:lang:parser:rules:message":"potential type mismatch for <%s> declaration <%s>",
-                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type %s",
+                    "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>",
                     "skb:util:constant:javadoc":"Rule for properties #13"
                 },
                 "property:14":{

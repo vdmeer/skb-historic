@@ -197,14 +197,14 @@ public class FileTemplateList {
 	 * @return true if successful, false otherwise
 	 */
 	public boolean addAll(String key, Collection <StringTemplate> val){
-		if(this.templates.containsKey(key))
+		if(this.templates.containsKey(key)){
 			return this.templates.get(key).addAllTemplates(val);
-		else{
-			FileTemplateSingle fts=new FileTemplateSingle();
-			fts.addAllTemplates(val);
-			this.templates.put(key, fts);
-			return true;
 		}
+
+		FileTemplateSingle fts=new FileTemplateSingle();
+		fts.addAllTemplates(val);
+		this.templates.put(key, fts);
+		return true;
 	}
 
 

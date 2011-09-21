@@ -217,12 +217,13 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	@Override
 	public Set<java.util.Map.Entry<String, TSTableRowAPI>> entrySet() {
 		Set<java.util.Map.Entry<String, TSTableRowAPI>> ret=null;
-		if(this.isInitialised())
+		if(this.isInitialised()){
 			ret=this.tsvalue.entrySet();
-		if(ret==null)
+		}
+		if(ret==null){
 			return new TreeSet<java.util.Map.Entry<String, TSTableRowAPI>>();
-		else
-			return ret;
+		}
+		return ret;
 	}
 
 
@@ -385,8 +386,9 @@ public class TSTable extends TSComposite implements TSTableAPI{
 
 	@Override
 	public boolean isEmpty() {
-		if(this.isInitialised())
+		if(this.isInitialised()){
 			return this.tsvalue.isEmpty();
+		}
 		return true;
 	}
 
@@ -400,12 +402,14 @@ public class TSTable extends TSComposite implements TSTableAPI{
 	@Override
 	public Set<String> keySet() {
 		Set<String> ret=null;
-		if(this.isInitialised())
+		if(this.isInitialised()){
 			ret=this.tsvalue.keySet();
-		if(ret==null)
+		}
+		if(ret==null){
 			return new TreeSet<String>();
-		else
-			return ret;
+		}
+		//TODO no NULL returns
+		return ret;
 	}
 
 
@@ -516,24 +520,30 @@ public class TSTable extends TSComposite implements TSTableAPI{
 
 	@Override
 	public TSTableRowAPI remove(Object key) {
-		if(this.isInitialised()&&key!=null)
+		if(this.isInitialised()&&key!=null){
 			return this.tsvalue.remove(key);
+		}
+		//TODO no NULL returns
 		return null;
 	}
 
 
 	@Override
 	public TSTableRowAPI remove(String key) {
-		if(this.isInitialised()&&key!=null)
+		if(this.isInitialised()&&key!=null){
 			return this.tsvalue.remove(key);
+		}
+		//TODO no NULL returns
 		return null;
 	}
 
 
 	@Override
 	public TSTableRowAPI remove(TSString key) {
-		if(this.isInitialised()&&key!=null)
+		if(this.isInitialised()&&key!=null){
 			return this.tsvalue.remove(key);
+		}
+		//TODO no NULL returns
 		return null;
 	}
 
@@ -581,8 +591,9 @@ public class TSTable extends TSComposite implements TSTableAPI{
 
 	@Override
 	public int size() {
-		if(this.isInitialised())
+		if(this.isInitialised()){
 			return this.tsvalue.size();
+		}
 		return 0;
 	}
 
@@ -640,8 +651,9 @@ public class TSTable extends TSComposite implements TSTableAPI{
 
 	@Override
 	public Collection<TSTableRowAPI> values() {
-		if(this.tsvalue!=null)
+		if(this.tsvalue!=null){
 			return this.tsvalue.values();
+		}
 		return new TreeSet<TSTableRowAPI>();		
 	}
 }

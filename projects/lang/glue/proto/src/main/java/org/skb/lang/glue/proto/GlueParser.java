@@ -92,7 +92,7 @@ public class GlueParser implements TribeParserAPI {
 	}
 
 	@Override
-	public void finish(boolean quietMode) {
+	public void finish() {
 	}
 
 	@Override

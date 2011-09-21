@@ -150,16 +150,17 @@ public class ColaPass3_Gen {
 
 	public String inline_codeLanguage(String lang){
 		TSBaseAPI ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola))
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola)){
 			return lang;
+		}
 
 		String ret=lang.replace("\"", "");
 		ret.replace("\"", "");
 		ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ret))
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ret)){
 			return ret;
-		else
-			return null;
+		}
+		return null;
 	}
 
 

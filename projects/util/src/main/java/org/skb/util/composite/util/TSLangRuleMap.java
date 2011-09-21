@@ -29,7 +29,6 @@
 
 package org.skb.util.composite.util;
 
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 
 import org.apache.commons.lang.StringUtils;
@@ -37,8 +36,8 @@ import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSTableRowAPI;
 import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSTableRowAPI;
 
 /**
  * Implementation of a rule map for parsers/compilers.
@@ -59,11 +58,9 @@ public class TSLangRuleMap extends TSTable{
 
 	protected void _initRM(){
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
-
-		HashSet<String>columns=new HashSet<String>();
 		columns.add(FieldKeys.fieldLangRuleMessage);
 		columns.add(FieldKeys.fieldLangRuleMessageAdd);
-		this.setColumns(columns);
+		this.setColumns(this.columns);
 
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_LANG_RULEMAP);
 		this.typeEnum.add(TEnum.TS_COMPOSITE_LANG_RULEMAP);
@@ -79,32 +76,37 @@ public class TSLangRuleMap extends TSTable{
 			for (String s:map.keySet()){
 				TSBaseAPI rm=map.get(s+"/"+FieldKeys.fieldLangRuleMessage);
 				TSBaseAPI rmIns=map.get(s+"/"+FieldKeys.fieldLangRuleMessageReplace);
-				if(rm!=null){
-					if(rmIns!=null){
+				if(!rm.tsIsType(TEnum.TS_NULL)){
+					if(!rmIns.tsIsType(TEnum.TS_NULL)){
 						TSBaseAPI replace=tokens.get(rmIns.toString()+"/"+FieldKeys.fieldLangTargetConstantValue);
-						if(replace!=null)
+						if(!replace.tsIsType(TEnum.TS_NULL)){
 							this.put(s, FieldKeys.fieldLangRuleMessage, StringUtils.replace(rm.toString(), "####", replace.toString()));
-						else
+						}
+						else{
 							this.put(s, FieldKeys.fieldLangRuleMessage, rm.toString());
+						}
 					}
-					else
+					else{
 						this.put(s, FieldKeys.fieldLangRuleMessage, rm.toString());
+					}
 				}
 
 				TSBaseAPI rmAdd=map.get(s+"/"+FieldKeys.fieldLangRuleMessageAdd);
 				TSBaseAPI rmAddIns=map.get(s+"/"+FieldKeys.fieldLangRuleMessageAddReplace);
-				if(rmAdd!=null){
-					if(rmAddIns!=null){
+				if(!rmAdd.tsIsType(TEnum.TS_NULL)){
+					if(!rmAddIns.tsIsType(TEnum.TS_NULL)){
 						TSBaseAPI replace=tokens.get(rmAddIns.toString()+"/"+FieldKeys.fieldLangTargetConstantValue);
-						if(replace!=null)
+						if(!replace.tsIsType(TEnum.TS_NULL)){
 							this.put(s, FieldKeys.fieldLangRuleMessage, StringUtils.replace(rmAdd.toString(), "####", replace.toString()));
-						else
+						}
+						else{
 							this.put(s, FieldKeys.fieldLangRuleMessageAdd, rmAdd.toString());
+						}
 					}
-					else
+					else{
 						this.put(s, FieldKeys.fieldLangRuleMessageAdd, rmAdd.toString());
+					}
 				}
-
 			}
 		}
 	}

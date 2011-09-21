@@ -206,10 +206,10 @@ public class TSSTGroupManager extends TSAtomic {
 	 * @return true if load was successful, false otherwise (purpose and targetLang were NULL)
 	 */
 	public TSDefault loadSTG(String purpose, TSBaseAPI targetLang){
-		if(targetLang==null)
+		if(targetLang==null){
 			return this.loadSTG(purpose, "");
-		else
-			return this.loadSTG(purpose, targetLang.toString());
+		}
+		return this.loadSTG(purpose, targetLang.toString());
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class TSSTGroupManager extends TSAtomic {
 
 		if(this.stgFile.tsIsType(TEnum.TS_NULL)){
 			logger.error(this.applicationName+": can't read internal string template, no file set"+purpose);
-			ret.tsSetMessage(this.applicationName+": can't read internal string template");
+			ret.tsSetMessage("can't read internal string template");
 			ret.tsSetExplanation("no file set"+purpose);
 			return ret;
 		}
@@ -248,7 +248,7 @@ public class TSSTGroupManager extends TSAtomic {
 				}
 			} catch (Exception e) {
 				logger.warn(this.applicationName+": can't read internal string template <"+this.stgFile+">"+purpose);
-				ret.tsSetMessage(this.applicationName+": can't read internal string template <"+this.stgFile+">"+purpose);
+				ret.tsSetMessage("can't read internal string template <"+this.stgFile+">"+purpose);
 				ret.tsSetExplanation("catched exception: "+e.toString());
 				return ret;
 			}
@@ -264,7 +264,7 @@ public class TSSTGroupManager extends TSAtomic {
 				}
 			} catch (Exception e1) {
 				logger.error(this.applicationName+": can't find external string template <" + this.stgFile + ">"+purpose);
-				ret.tsSetMessage(this.applicationName+": can't find external string template <" + this.stgFile + ">"+purpose);
+				ret.tsSetMessage("can't find external string template <" + this.stgFile + ">"+purpose);
 				ret.tsSetExplanation("catched exception: "+e1.toString());
 				return ret;
 			}
@@ -398,13 +398,13 @@ public class TSSTGroupManager extends TSAtomic {
 				for (int i=0;i<val.size();i++){
 					if(!stm.containsKey(val.get(i).toString())){
 						logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
-						retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
+						retErr.tsSetMessage("template group <"+this.stgFile+"> with template <"+s+"> does not define argument <"+val.get(i)+">");
 						return retErr;
 					}
 				}
 			} else {
 				logger.error(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
-				retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
+				retErr.tsSetMessage("template group <"+this.stgFile+"> does not specify mandatory template <"+s+">");
 				this.loaded=false;
 				return retErr;
 			}
@@ -455,19 +455,19 @@ public class TSSTGroupManager extends TSAtomic {
 				}
 				if(tempList.isEmpty()){
 					logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define any optional argument <"+val+">");
-					retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> does not define any optional argument <"+val+">");
+					retErr.tsSetMessage("template group <"+this.stgFile+"> with template <"+s+"> does not define any optional argument <"+val+">");
 					this.loaded=false;
 					return retErr;
 				}
 				else if(tempList.size()>1){
 					logger.error(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> defines more than one optional argument <"+val+">");
-					retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> with template <"+s+"> defines more than one optional argument <"+val+">");
+					retErr.tsSetMessage("template group <"+this.stgFile+"> with template <"+s+"> defines more than one optional argument <"+val+">");
 					this.loaded=false;
 					return retErr;
 				}
 			} else {
 				logger.error(this.applicationName+": template group <"+this.stgFile+"> does not specify optional template <"+s+">");
-				retErr.tsSetMessage(this.applicationName+": template group <"+this.stgFile+"> does not specify optional template <"+s+">");
+				retErr.tsSetMessage("template group <"+this.stgFile+"> does not specify optional template <"+s+">");
 				this.loaded=false;
 				return retErr;
 			}

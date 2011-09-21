@@ -36,7 +36,6 @@ import org.skb.lang.dal.constants.DalConstants;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.composite.TSTableRowAPI;
 import org.skb.util.composite.lang.TSAtomList;
-import org.skb.util.composite.util.TSLangRuleMap;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -54,16 +53,11 @@ public class DalPass1_Ebnf {
 	/** Atom List (Symbol Table) */
 	public TSAtomList atoms;
 
-	/** Language Rule map for error/warning reporting */
-	private TSLangRuleMap cr;
-
 
 	/**
 	 * Class constructor, initialises the atom list (symbol table) and other local fields
 	 */
 	public DalPass1_Ebnf(){
-		this.cr=config.getLangRuleMap();
-
 		this.atoms=config.getAtomlist();
 		this.atoms.setScopeSeparator(config.getProperties().getValueDefault("internal-scope-sep").toString());
 	}
@@ -78,10 +72,7 @@ public class DalPass1_Ebnf {
 	public void putAtom(Token token, String category, Token type){
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, type);
 		if(otr!=null){
-			config.getReportManager().reportError(
-					DalConstants.Tokens.parserIDENTIFIER+" used more than once",
-					token,
-					DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
+			config.getReportManager().genErrorMessage(DalConstants.Tokens.parserIDENTIFIER+" used more than once", token, DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
 		}
 	}
 

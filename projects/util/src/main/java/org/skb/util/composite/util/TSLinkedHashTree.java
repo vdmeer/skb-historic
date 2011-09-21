@@ -213,14 +213,13 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	@Override
 	public TSBaseAPI get(String fqpn) {
 		if(this.isInitialised()&&fqpn!=null){
-			if(StringUtils.contains(fqpn, '/'))
+			if(StringUtils.contains(fqpn, '/')){
 				return this.get(new ArrayList<String>(Arrays.asList(StringUtils.split(fqpn, '/'))));
-			else{
-				if(this.tsvalue.containsKey(fqpn))
-					return this.tsvalue.get(fqpn);
-				else
-					return new TSNull();
 			}
+			if(this.tsvalue.containsKey(fqpn)){
+				return this.tsvalue.get(fqpn);
+			}
+			return new TSNull();
 		}
 		return new TSNull();
 	}

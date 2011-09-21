@@ -82,82 +82,94 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 
 	@Override
 	public boolean containsKey(Object arg0) {
-		if(this.tsvalue!=null&&arg0!=null)
+		if(this.tsvalue!=null&&arg0!=null){
 			return this.tsvalue.containsKey(arg0);
-		else
-			return false;
+		}
+		return false;
 	}
 
 	@Override
 	public boolean containsKey(String key) {
-		if(this.tsvalue!=null&&key!=null)
+		if(this.tsvalue!=null&&key!=null){
 			return this.tsvalue.containsKey(key);
+		}
 		return false;
 	}
 
 	@Override
 	public boolean containsKey(TSString key) {
-		if(this.tsvalue!=null&&key!=null)
+		if(this.tsvalue!=null&&key!=null){
 			return this.tsvalue.containsKey(key.toString());
+		}
 		return false;
 	}
 
 	@Override
 	public boolean containsValue(Object arg0) {
-		if(this.tsvalue!=null&&arg0!=null)
+		if(this.tsvalue!=null&&arg0!=null){
 			return this.tsvalue.containsValue(arg0);
+		}
 		return false;
 	}
 
 	@Override
 	public boolean containsValue(TSBaseAPI value) {
-		if(this.tsvalue!=null&&value!=null)
+		if(this.tsvalue!=null&&value!=null){
 			return this.tsvalue.containsValue(value);
+		}
 		return false;
 	}
 
 	@Override
 	public Set<java.util.Map.Entry<String, TSBaseAPI>> entrySet() {
 		Set<java.util.Map.Entry<String, TSBaseAPI>> ret=null;
-		if(this.tsvalue!=null)
+		if(this.tsvalue!=null){
 			ret=this.tsvalue.entrySet();
-		if(ret==null)
+		}
+		if(ret==null){
 			return new TreeSet<java.util.Map.Entry<String, TSBaseAPI>>();
-		else
-			return ret;
+		}
+		//TODO no NULL returns
+		return ret;
 	}
 
 	@Override
 	public TSBaseAPI get(Object arg0) {
 		TSBaseAPI ret=null;
-		if(this.tsvalue!=null&&arg0!=null)
+		if(this.tsvalue!=null&&arg0!=null){
 			ret=this.tsvalue.get(arg0);
-		if(ret==null)
+		}
+		if(ret==null){
 			return new TSNull();
-		else
-			return ret;
+		}
+		//TODO no NULL returns
+		return ret;
 	}
 
 	@Override
 	public TSBaseAPI get(String key) {
 		TSBaseAPI ret=null;
-		if(this.tsvalue!=null&&key!=null)
+		if(this.tsvalue!=null&&key!=null){
 			ret=this.tsvalue.get(key);
-		if(ret==null)
+		}
+		if(ret==null){
 			return new TSNull();
-		else
-			return ret;
+		}
+		//TODO no NULL returns
+		return ret;
 	}
 
 	@Override
 	public TSBaseAPI get(TSString key) {
 		TSBaseAPI ret=null;
-		if(this.tsvalue!=null&&key!=null)
+		if(this.tsvalue!=null&&key!=null){
 			ret=this.tsvalue.get(key.toString());
-		if(ret==null)
+		}
+		if(ret==null){
 			return new TSNull();
-		else
-			return ret;
+		}
+		//TODO no NULL returns
+		return ret;
 	}
 
 	@Override
@@ -170,28 +182,32 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 	@Override
 	public Set<String> keySet() {
 		Set<String> ret=null;
-		if(this.tsvalue!=null)
+		if(this.tsvalue!=null){
 			ret=this.tsvalue.keySet();
-		if(ret==null)
+		}
+		if(ret==null){
 			return new TreeSet<String>();
-		else
-			return ret;
+		}
+		//TODO no null returns!
+		return ret;
 	}
 
 	@Override
 	public TSBaseAPI put(String arg0, TSBaseAPI arg1) {
-		if(this.tsvalue!=null&&arg0!=null&&arg1!=null)
+		if(this.tsvalue!=null&&arg0!=null&&arg1!=null){
 			return this.tsvalue.put(arg0, arg1);
+		}
 		return new TSNull();
 	}
 
 	@Override
 	public TSBaseAPI put(TSString key, TSBaseAPI val) {
-		if(this.tsvalue==null||key==null||val==null)
+		if(this.tsvalue==null||key==null||val==null){
 			return new TSNull();
-
-		if(this.tsvalue.containsKey(key.toString()))
+		}
+		if(this.tsvalue.containsKey(key.toString())){
 			return this.tsvalue.put(key.toString(), val);
+		}
 		return new TSNull();
 	}
 
@@ -215,10 +231,11 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 
 	@Override
 	public int size() {
-		if(this.tsvalue!=null)
+		if(this.tsvalue!=null){
 			return this.tsvalue.size();
-		else
-			return -1;
+		}
+		//TODO is that ok?
+		return -1;
 	}
 
 	@Override
@@ -268,10 +285,10 @@ public class TSTableRow extends TSComposite implements TSTableRowAPI{
 
 	@Override
 	public Collection<TSBaseAPI> values() {
-		if(this.tsvalue!=null)
+		if(this.tsvalue!=null){
 			return this.tsvalue.values();
-		else
-			return new TreeSet<TSBaseAPI>();
+		}
+		return new TreeSet<TSBaseAPI>();
 	}
 
 	@Override

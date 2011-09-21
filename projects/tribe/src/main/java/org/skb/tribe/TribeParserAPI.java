@@ -129,5 +129,5 @@ public interface TribeParserAPI {
 	 * Final call to the parser, to do for instance statistics.
 	 * @param quietMode if true, this final call should not produce any output on the screen
 	 */
-	public void finish(boolean quietMode);
+	public void finish();
 }

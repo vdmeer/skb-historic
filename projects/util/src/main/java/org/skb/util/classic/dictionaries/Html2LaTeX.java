@@ -42,7 +42,7 @@ import java.util.Set;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Html2LaTeX extends Dictionary<String, String>{
-	protected Hashtable<String, String> value=null;
+	protected Hashtable<String, String> tsvalue=null;
 
 	private static class Html2LaTeXHolder{
 		private final static Html2LaTeX INSTANCE = new Html2LaTeX();
@@ -53,24 +53,24 @@ public class Html2LaTeX extends Dictionary<String, String>{
 	}
 
 	public Html2LaTeX(){
-		this.value=new Hashtable<String, String>();
+		this.tsvalue=new Hashtable<String, String>();
 		this.buildDictionary();
 	}
 
 	public Enumeration<String> elements(){
-		return this.value.elements();
+		return this.tsvalue.elements();
 	}
 
 	public String get(Object key){
-		return this.value.get(key);
+		return this.tsvalue.get(key);
 	}
 
 	public boolean isEmpty(){
-		return this.value.isEmpty();
+		return this.tsvalue.isEmpty();
 	}
 
 	public Enumeration<String> keys(){
-		return this.value.keys();
+		return this.tsvalue.keys();
 	}
 
 	public String put(String key, String value){
@@ -79,372 +79,372 @@ public class Html2LaTeX extends Dictionary<String, String>{
 	}
 
 	public String remove(Object key){
-		return this.value.remove(key);
+		return this.tsvalue.remove(key);
 	}
 
 	public int size(){
-		return this.value.size();
+		return this.tsvalue.size();
 	}
 
 
 	public String translate(String input){
 		String ret=new String(input);
-		Set<String> keys = this.value.keySet();
+		Set<String> keys = this.tsvalue.keySet();
 		Iterator<String> key_it = keys.iterator();
 		String key;
 		while(key_it.hasNext()){
 			key=key_it.next();
-			ret=ret.replace(key, this.value.get(key));
+			ret=ret.replace(key, this.tsvalue.get(key));
 		}
 		return ret;
 	}
 
 	private void buildDictionary(){
         //html entities
-        this.value.put("<sup>",   "$^{");
-        this.value.put("</sup>",  "}$");
-        this.value.put("<sub>",   "$_{");
-        this.value.put("</sub>",  "}$");
-        this.value.put("<b>",     "\\textbf{");
-        this.value.put("</b>",    "}");
-        this.value.put("<i>",     "\\textit{");
-        this.value.put("</i>",    "}");
-        this.value.put("<ol>",    "\\begin{enumerate}");
-        this.value.put("</ol>",   "\\end{enumerate}");
-        this.value.put("<ul>",    "\\begin{itemize}");
-        this.value.put("</ul>",   "\\end{itemize}");
-        this.value.put("<li>",    "\\item");
-        this.value.put("</li>",   " ");
-        this.value.put("<br />",  "\\\\");
+        this.tsvalue.put("<sup>",   "$^{");
+        this.tsvalue.put("</sup>",  "}$");
+        this.tsvalue.put("<sub>",   "$_{");
+        this.tsvalue.put("</sub>",  "}$");
+        this.tsvalue.put("<b>",     "\\textbf{");
+        this.tsvalue.put("</b>",    "}");
+        this.tsvalue.put("<i>",     "\\textit{");
+        this.tsvalue.put("</i>",    "}");
+        this.tsvalue.put("<ol>",    "\\begin{enumerate}");
+        this.tsvalue.put("</ol>",   "\\end{enumerate}");
+        this.tsvalue.put("<ul>",    "\\begin{itemize}");
+        this.tsvalue.put("</ul>",   "\\end{itemize}");
+        this.tsvalue.put("<li>",    "\\item");
+        this.tsvalue.put("</li>",   " ");
+        this.tsvalue.put("<br />",  "\\\\");
 
         //ascii characters
-        this.value.put("&#32;",  " ");                        // SPC
-        this.value.put("&#33;",  "!");                        // !
-        this.value.put("&#34;",  "\"");                       // "
-        this.value.put("#",      "\\#");                      // #
-        this.value.put("&#35;",  "\\#");                      // #
-        this.value.put("&#36;",  "\\$");                      // $
-        this.value.put("&#37;",  "\\%");                      // %
-        this.value.put("&#38;",  "\\&");                      // &
-        this.value.put("&#40;",  "(");                        // (
-        this.value.put("&#41;",  ")");                        // )
-        this.value.put("&#42;",  "\\textasteriskcentered");   // *
-        this.value.put("&#43;",  "+");                        // +
-        this.value.put("&#44;",  ",");                        // ,
-        this.value.put("&#45;",  "-");                        // -
-        this.value.put("&#46;",  ".");                        // .
-        this.value.put("&#47;",  "/");                        // /
-        this.value.put("&#58;",  ":");                        // :
-        this.value.put("&#59;",  ";");                        // ;
-        this.value.put("&#60;",  "\\textless");               // <
-        this.value.put("&#61;",  "=");                        // =
-        this.value.put("&#62;",  "\\textgreater");            // >
-        this.value.put("&#63;",  "?");                        // ?
-        this.value.put("&#64;",  "@");                        // @
-        this.value.put("&#91;",  "\\[");                      // [
-        this.value.put("&#92;",  "\\textbackslash");          // \
-        this.value.put("&#93;",  "\\]");                      // ]
-        this.value.put("&#94;",  "\\textasciicircum");        // ^
-        this.value.put("_",      "\\_");                      // _
-        this.value.put("&#95;",  "\\_");                      // _
-        this.value.put("&#123;", "\\{");                      // {
-        this.value.put("&#124;", "\\textbar");                // |
-        this.value.put("&#125;", "\\}");                      // }
-        this.value.put("&#126;", "\\textasciitilde");         // ~
+        this.tsvalue.put("&#32;",  " ");                        // SPC
+        this.tsvalue.put("&#33;",  "!");                        // !
+        this.tsvalue.put("&#34;",  "\"");                       // "
+        this.tsvalue.put("#",      "\\#");                      // #
+        this.tsvalue.put("&#35;",  "\\#");                      // #
+        this.tsvalue.put("&#36;",  "\\$");                      // $
+        this.tsvalue.put("&#37;",  "\\%");                      // %
+        this.tsvalue.put("&#38;",  "\\&");                      // &
+        this.tsvalue.put("&#40;",  "(");                        // (
+        this.tsvalue.put("&#41;",  ")");                        // )
+        this.tsvalue.put("&#42;",  "\\textasteriskcentered");   // *
+        this.tsvalue.put("&#43;",  "+");                        // +
+        this.tsvalue.put("&#44;",  ",");                        // ,
+        this.tsvalue.put("&#45;",  "-");                        // -
+        this.tsvalue.put("&#46;",  ".");                        // .
+        this.tsvalue.put("&#47;",  "/");                        // /
+        this.tsvalue.put("&#58;",  ":");                        // :
+        this.tsvalue.put("&#59;",  ";");                        // ;
+        this.tsvalue.put("&#60;",  "\\textless");               // <
+        this.tsvalue.put("&#61;",  "=");                        // =
+        this.tsvalue.put("&#62;",  "\\textgreater");            // >
+        this.tsvalue.put("&#63;",  "?");                        // ?
+        this.tsvalue.put("&#64;",  "@");                        // @
+        this.tsvalue.put("&#91;",  "\\[");                      // [
+        this.tsvalue.put("&#92;",  "\\textbackslash");          // \
+        this.tsvalue.put("&#93;",  "\\]");                      // ]
+        this.tsvalue.put("&#94;",  "\\textasciicircum");        // ^
+        this.tsvalue.put("_",      "\\_");                      // _
+        this.tsvalue.put("&#95;",  "\\_");                      // _
+        this.tsvalue.put("&#123;", "\\{");                      // {
+        this.tsvalue.put("&#124;", "\\textbar");                // |
+        this.tsvalue.put("&#125;", "\\}");                      // }
+        this.tsvalue.put("&#126;", "\\textasciitilde");         // ~
 
         //html-named ascii characters
-        this.value.put("&amp;",   "\\&");                     // &
-        this.value.put("&lt;",    "\\textless");              // <
-        this.value.put("&gt;",    "\\textgreater");           // >
-        this.value.put("&circ;",  "\\textasciicircum");       // ^
-        this.value.put("&tilde;", "\\textasciitilde");        // ~
+        this.tsvalue.put("&amp;",   "\\&");                     // &
+        this.tsvalue.put("&lt;",    "\\textless");              // <
+        this.tsvalue.put("&gt;",    "\\textgreater");           // >
+        this.tsvalue.put("&circ;",  "\\textasciicircum");       // ^
+        this.tsvalue.put("&tilde;", "\\textasciitilde");        // ~
 
         //punctuation, qoutes
-        this.value.put("&quot;",   "\""); // "
-        this.value.put("&lsquo;",  "`");  // `
-        this.value.put("&#96;",    "`");  // `
-        this.value.put("&rsquo;",  "'");  // '
-        this.value.put("&#39;",    "'");  // '
-        this.value.put("&sbquo;",  ""); // single low-9
-        this.value.put("&ldquo;",  "``");
-        this.value.put("&rdquo;",  "''");
-        this.value.put("&bdquo;",  ""); // double low-9
-        this.value.put("&lsaquo;", ""); // angewinkeltes <
-        this.value.put("&rsaquo;", ""); // angewinkeltes >
+        this.tsvalue.put("&quot;",   "\""); // "
+        this.tsvalue.put("&lsquo;",  "`");  // `
+        this.tsvalue.put("&#96;",    "`");  // `
+        this.tsvalue.put("&rsquo;",  "'");  // '
+        this.tsvalue.put("&#39;",    "'");  // '
+        this.tsvalue.put("&sbquo;",  ""); // single low-9
+        this.tsvalue.put("&ldquo;",  "``");
+        this.tsvalue.put("&rdquo;",  "''");
+        this.tsvalue.put("&bdquo;",  ""); // double low-9
+        this.tsvalue.put("&lsaquo;", ""); // angewinkeltes <
+        this.tsvalue.put("&rsaquo;", ""); // angewinkeltes >
 
         //accents grave
-        this.value.put("&Agrave;", "\\`{A}"); // À
-        this.value.put("&agrave;", "\\`{a}"); // à
-        this.value.put("&Egrave;", "\\`{E}"); // È
-        this.value.put("&egrave;", "\\`{e}"); // è
-        this.value.put("&Igrave;", "\\`{I}"); // Ì
-        this.value.put("&igrave;", "\\`{i}"); // ì
-        this.value.put("&Ograve;", "\\`{O}"); // Ò
-        this.value.put("&ograve;", "\\`{o}"); // ò
-        this.value.put("&Ugrave;", "\\`{U}"); // Ù
-        this.value.put("&ugrave;", "\\`{u}"); // ù
+        this.tsvalue.put("&Agrave;", "\\`{A}"); // À
+        this.tsvalue.put("&agrave;", "\\`{a}"); // à
+        this.tsvalue.put("&Egrave;", "\\`{E}"); // È
+        this.tsvalue.put("&egrave;", "\\`{e}"); // è
+        this.tsvalue.put("&Igrave;", "\\`{I}"); // Ì
+        this.tsvalue.put("&igrave;", "\\`{i}"); // ì
+        this.tsvalue.put("&Ograve;", "\\`{O}"); // Ò
+        this.tsvalue.put("&ograve;", "\\`{o}"); // ò
+        this.tsvalue.put("&Ugrave;", "\\`{U}"); // Ù
+        this.tsvalue.put("&ugrave;", "\\`{u}"); // ù
 
         //accents acute
-        this.value.put("&Aacute;", "\\'{A}"); // Á
-        this.value.put("&aacute;", "\\'{a}"); // á
-        this.value.put("&Eacute;", "\\'{E}"); // É
-        this.value.put("&eacute;", "\\'{e}"); // é
-        this.value.put("&Iacute;", "\\'{I}"); // Í
-        this.value.put("&iacute;", "\\'{i}"); // í
-        this.value.put("&Oacute;", "\\'{O}"); // Ó
-        this.value.put("&oacute;", "\\'{o}"); // ó
-        this.value.put("&Uacute;", "\\'{U}"); // Ú
-        this.value.put("&uacute;", "\\'{u}"); // ú
-        this.value.put("&Yacute;", "\\'{Y}"); // Ý
-        this.value.put("&yacute;", "\\'{y}"); // ý
+        this.tsvalue.put("&Aacute;", "\\'{A}"); // Á
+        this.tsvalue.put("&aacute;", "\\'{a}"); // á
+        this.tsvalue.put("&Eacute;", "\\'{E}"); // É
+        this.tsvalue.put("&eacute;", "\\'{e}"); // é
+        this.tsvalue.put("&Iacute;", "\\'{I}"); // Í
+        this.tsvalue.put("&iacute;", "\\'{i}"); // í
+        this.tsvalue.put("&Oacute;", "\\'{O}"); // Ó
+        this.tsvalue.put("&oacute;", "\\'{o}"); // ó
+        this.tsvalue.put("&Uacute;", "\\'{U}"); // Ú
+        this.tsvalue.put("&uacute;", "\\'{u}"); // ú
+        this.tsvalue.put("&Yacute;", "\\'{Y}"); // Ý
+        this.tsvalue.put("&yacute;", "\\'{y}"); // ý
 
         //accents circumflex
-        this.value.put("&Acirc;", "\\^{A}"); // Â
-        this.value.put("&acirc;", "\\^{a}"); // â
-        this.value.put("&Ecirc;", "\\^{E}"); // Ê
-        this.value.put("&ecirc;", "\\^{e}"); // ê
-        this.value.put("&Icirc;", "\\^{I}"); // Î
-        this.value.put("&icirc;", "\\^{i}"); // î
-        this.value.put("&Ocirc;", "\\^{O}"); // Ô
-        this.value.put("&ocirc;", "\\^{o}"); // ô
-        this.value.put("&Ucirc;", "\\^{U}"); // Û
-        this.value.put("&ucirc;", "\\^{u}"); // û
+        this.tsvalue.put("&Acirc;", "\\^{A}"); // Â
+        this.tsvalue.put("&acirc;", "\\^{a}"); // â
+        this.tsvalue.put("&Ecirc;", "\\^{E}"); // Ê
+        this.tsvalue.put("&ecirc;", "\\^{e}"); // ê
+        this.tsvalue.put("&Icirc;", "\\^{I}"); // Î
+        this.tsvalue.put("&icirc;", "\\^{i}"); // î
+        this.tsvalue.put("&Ocirc;", "\\^{O}"); // Ô
+        this.tsvalue.put("&ocirc;", "\\^{o}"); // ô
+        this.tsvalue.put("&Ucirc;", "\\^{U}"); // Û
+        this.tsvalue.put("&ucirc;", "\\^{u}"); // û
 
         //accents tilde
-        this.value.put("&Atilde;", "\\~{A}"); // Ã
-        this.value.put("&atilde;", "\\~{a}"); // ã
-        this.value.put("&Ntilde;", "\\~{E}"); // Ñ
-        this.value.put("&ntilde;", "\\~{e}"); // ñ
-        this.value.put("&Otilde;", "\\~{O}"); // Õ
-        this.value.put("&otilde;", "\\~{o}"); // õ
+        this.tsvalue.put("&Atilde;", "\\~{A}"); // Ã
+        this.tsvalue.put("&atilde;", "\\~{a}"); // ã
+        this.tsvalue.put("&Ntilde;", "\\~{E}"); // Ñ
+        this.tsvalue.put("&ntilde;", "\\~{e}"); // ñ
+        this.tsvalue.put("&Otilde;", "\\~{O}"); // Õ
+        this.tsvalue.put("&otilde;", "\\~{o}"); // õ
 
         //accents umlaut
-        this.value.put("&Auml;", "\\\"{A}"); // Ä
-        this.value.put("&auml;", "\\\"{a}"); // ä
-        this.value.put("&Euml;", "\\\"{E}"); // Ë
-        this.value.put("&euml;", "\\\"{e}"); // ë
-        this.value.put("&Iuml;", "\\\"{I}"); // Ï
-        this.value.put("&iuml;", "\\\"{i}"); // ï
-        this.value.put("&Ouml;", "\\\"{O}"); // Ö
-        this.value.put("&ouml;", "\\\"{o}"); // ö
-        this.value.put("&Uuml;", "\\\"{U}"); // Ü
-        this.value.put("&uuml;", "\\\"{u}"); // ü
-        this.value.put("&Yuml;", "\\\"{U}"); // Ÿ
-        this.value.put("&yuml;", "\\\"{u}"); // ÿ
+        this.tsvalue.put("&Auml;", "\\\"{A}"); // Ä
+        this.tsvalue.put("&auml;", "\\\"{a}"); // ä
+        this.tsvalue.put("&Euml;", "\\\"{E}"); // Ë
+        this.tsvalue.put("&euml;", "\\\"{e}"); // ë
+        this.tsvalue.put("&Iuml;", "\\\"{I}"); // Ï
+        this.tsvalue.put("&iuml;", "\\\"{i}"); // ï
+        this.tsvalue.put("&Ouml;", "\\\"{O}"); // Ö
+        this.tsvalue.put("&ouml;", "\\\"{o}"); // ö
+        this.tsvalue.put("&Uuml;", "\\\"{U}"); // Ü
+        this.tsvalue.put("&uuml;", "\\\"{u}"); // ü
+        this.tsvalue.put("&Yuml;", "\\\"{U}"); // Ÿ
+        this.tsvalue.put("&yuml;", "\\\"{u}"); // ÿ
 
         //accents ring
-        this.value.put("&Aring;", "\\AA"); // Å
-        this.value.put("&aring;", "\\aa"); // å
+        this.tsvalue.put("&Aring;", "\\AA"); // Å
+        this.tsvalue.put("&aring;", "\\aa"); // å
 
-        this.value.put("&AElig;", "\\AE"); // Æ
-        this.value.put("&aelig;", "\\ae"); // æ
-        this.value.put("&OElig;", "\\OE"); // Œ
-        this.value.put("&oelig;", "\\oe"); // œ
+        this.tsvalue.put("&AElig;", "\\AE"); // Æ
+        this.tsvalue.put("&aelig;", "\\ae"); // æ
+        this.tsvalue.put("&OElig;", "\\OE"); // Œ
+        this.tsvalue.put("&oelig;", "\\oe"); // œ
 
-        this.value.put("&Ccedil;", "\\c{C}"); // Ç
-        this.value.put("&ccedil;", "\\c{c}"); // ç
+        this.tsvalue.put("&Ccedil;", "\\c{C}"); // Ç
+        this.tsvalue.put("&ccedil;", "\\c{c}"); // ç
 
-        this.value.put("&ETH;", "\\DH"); // Ð
-        this.value.put("&eth;", "\\dh"); // ð
+        this.tsvalue.put("&ETH;", "\\DH"); // Ð
+        this.tsvalue.put("&eth;", "\\dh"); // ð
 
-        this.value.put("&Oslash;", "\\O"); // Ø
-        this.value.put("&oslash;", "\\o"); // ø
+        this.tsvalue.put("&Oslash;", "\\O"); // Ø
+        this.tsvalue.put("&oslash;", "\\o"); // ø
 
-        this.value.put("&THORN;", "\\TH");  // Þ
-        this.value.put("&thorn;", "\\th");  // þ
+        this.tsvalue.put("&THORN;", "\\TH");  // Þ
+        this.tsvalue.put("&thorn;", "\\th");  // þ
 
-        this.value.put("&szlig;", "\\ss"); // ß
+        this.tsvalue.put("&szlig;", "\\ss"); // ß
 
 //    '&LLL;' => '\\L', // L-
 //    '&lll;' => '\\l', // l-
 
-        this.value.put("&Scaron;", "\\v{S}"); // Š
-        this.value.put("&scaron;", "\\v{s}"); // š
+        this.tsvalue.put("&Scaron;", "\\v{S}"); // Š
+        this.tsvalue.put("&scaron;", "\\v{s}"); // š
 
-        this.value.put("&fnof;", "");       // ƒ
+        this.tsvalue.put("&fnof;", "");       // ƒ
 
-        this.value.put("&nbsp;",   "~");
-        this.value.put("&#160;",   "~");
-        this.value.put("&iexcl;",  "\\textexclamdown");   // ¡
-        this.value.put("&cent;",   "\\cent");             // ¢
-        this.value.put("&pound;",  "{\\pounds}");         // £
-        this.value.put("&curren;", "\\currency");         // ¤
-        this.value.put("&yen;",    "");                   // ¥
-        this.value.put("&brvbar;", "");                   // ¦
-        this.value.put("&sect;",   "{\\S}");              // §
-        this.value.put("&uml;",    "");                   // ¨
-        this.value.put("&copy;",   "{\\copyright}");      // © -- alternative: {\textcopyright}
-        this.value.put("&ordf;",   "\\textordfeminine");  // ª
-        this.value.put("&laquo;",  "");                   // «
-        this.value.put("&not;",    "");                   // ¬
-        this.value.put("&shy;",    "");                   // ­
-        this.value.put("&reg;",    "{\\textregistered}"); // ®
-        this.value.put("&macr;",   "");                   // ¯
-        this.value.put("&deg;",    "");                   // °
-        this.value.put("&plusmn;", "");                   // ±
-        this.value.put("&sup2;",   "");                   // ²
-        this.value.put("&sup3;",   "");                   // ³
-        this.value.put("&acute;",  "");                   // ´
-        this.value.put("&micro;",  "");                   // µ
-        this.value.put("&para;",   "\\P");                // ¶
-        this.value.put("&middot;", "");                   // ·
-        this.value.put("&cedil;",  "");                   // ¸
-        this.value.put("&sup1;",   "");                   // ¹
-        this.value.put("&ordm;",   "\\textordmasculine"); // º
-        this.value.put("&raquo;",  "");                   // »
-        this.value.put("&frac14;", "");                   // ¼
-        this.value.put("&frac12;", "");                   // ½
-        this.value.put("&frac34;", "");                   // ¾
-        this.value.put("&iquest;", "\\textquestiondown"); // ¿
-        this.value.put("&times;",  "");                   // ×
-        this.value.put("&divide;", "");                   // ÷
+        this.tsvalue.put("&nbsp;",   "~");
+        this.tsvalue.put("&#160;",   "~");
+        this.tsvalue.put("&iexcl;",  "\\textexclamdown");   // ¡
+        this.tsvalue.put("&cent;",   "\\cent");             // ¢
+        this.tsvalue.put("&pound;",  "{\\pounds}");         // £
+        this.tsvalue.put("&curren;", "\\currency");         // ¤
+        this.tsvalue.put("&yen;",    "");                   // ¥
+        this.tsvalue.put("&brvbar;", "");                   // ¦
+        this.tsvalue.put("&sect;",   "{\\S}");              // §
+        this.tsvalue.put("&uml;",    "");                   // ¨
+        this.tsvalue.put("&copy;",   "{\\copyright}");      // © -- alternative: {\textcopyright}
+        this.tsvalue.put("&ordf;",   "\\textordfeminine");  // ª
+        this.tsvalue.put("&laquo;",  "");                   // «
+        this.tsvalue.put("&not;",    "");                   // ¬
+        this.tsvalue.put("&shy;",    "");                   // ­
+        this.tsvalue.put("&reg;",    "{\\textregistered}"); // ®
+        this.tsvalue.put("&macr;",   "");                   // ¯
+        this.tsvalue.put("&deg;",    "");                   // °
+        this.tsvalue.put("&plusmn;", "");                   // ±
+        this.tsvalue.put("&sup2;",   "");                   // ²
+        this.tsvalue.put("&sup3;",   "");                   // ³
+        this.tsvalue.put("&acute;",  "");                   // ´
+        this.tsvalue.put("&micro;",  "");                   // µ
+        this.tsvalue.put("&para;",   "\\P");                // ¶
+        this.tsvalue.put("&middot;", "");                   // ·
+        this.tsvalue.put("&cedil;",  "");                   // ¸
+        this.tsvalue.put("&sup1;",   "");                   // ¹
+        this.tsvalue.put("&ordm;",   "\\textordmasculine"); // º
+        this.tsvalue.put("&raquo;",  "");                   // »
+        this.tsvalue.put("&frac14;", "");                   // ¼
+        this.tsvalue.put("&frac12;", "");                   // ½
+        this.tsvalue.put("&frac34;", "");                   // ¾
+        this.tsvalue.put("&iquest;", "\\textquestiondown"); // ¿
+        this.tsvalue.put("&times;",  "");                   // ×
+        this.tsvalue.put("&divide;", "");                   // ÷
 
         //technical symbols
-        this.value.put("&lceil;",  "");
-        this.value.put("&rceil;",  "");
-        this.value.put("&lfloor;", "");
-        this.value.put("&rfloor;", "");
-        this.value.put("&lang;",   "");
-        this.value.put("&rang;",   "");
+        this.tsvalue.put("&lceil;",  "");
+        this.tsvalue.put("&rceil;",  "");
+        this.tsvalue.put("&lfloor;", "");
+        this.tsvalue.put("&rfloor;", "");
+        this.tsvalue.put("&lang;",   "");
+        this.tsvalue.put("&rang;",   "");
 
         //arrow symbols
-        this.value.put("&larr;",   "\\(\\leftarrow{}\\)");
-        this.value.put("&uarr;",   "\\(\\uparrow\\)");
-        this.value.put("&rarr;",   "\\(\\rightarrow{}\\)");
-        this.value.put("&darr;",   "\\(\\downarrow{}\\)");
-        this.value.put("&harr;",   "\\(\\leftrightarrow{}\\)");
-        this.value.put("&crarr;",  "");
-        this.value.put("&lArr;",   "\\(\\Leftarrow{}\\)");
-        this.value.put("&uArr;",   "\\(\\Uparrow\\)");
-        this.value.put("&rArr;",   "\\(\\Rightarrow{}\\)");
-        this.value.put("&dArr;",   "\\(\\Downarrow{}\\)");
-        this.value.put("&hArr;",   "\\(\\Leftrightarrow{}\\)");
+        this.tsvalue.put("&larr;",   "\\(\\leftarrow{}\\)");
+        this.tsvalue.put("&uarr;",   "\\(\\uparrow\\)");
+        this.tsvalue.put("&rarr;",   "\\(\\rightarrow{}\\)");
+        this.tsvalue.put("&darr;",   "\\(\\downarrow{}\\)");
+        this.tsvalue.put("&harr;",   "\\(\\leftrightarrow{}\\)");
+        this.tsvalue.put("&crarr;",  "");
+        this.tsvalue.put("&lArr;",   "\\(\\Leftarrow{}\\)");
+        this.tsvalue.put("&uArr;",   "\\(\\Uparrow\\)");
+        this.tsvalue.put("&rArr;",   "\\(\\Rightarrow{}\\)");
+        this.tsvalue.put("&dArr;",   "\\(\\Downarrow{}\\)");
+        this.tsvalue.put("&hArr;",   "\\(\\Leftrightarrow{}\\)");
 
         //symbols misc
-        this.value.put("&bull;",    ""); // •
-        this.value.put("&prime;",   ""); // '
-        this.value.put("&Prime;",   "");
-        this.value.put("&oline;",   "");
-        this.value.put("&frasl;",   "");
-        this.value.put("&weierp;",  "");
-        this.value.put("&image;",   "");
-        this.value.put("&real;",    "");
-        this.value.put("&trade;",   "{\\texttrademark}"); // ™
-        this.value.put("&euro;",    "{\\euro}");          // €
-        this.value.put("&alefsym;", "");
-        this.value.put("&spades;",  "");
-        this.value.put("&clubs;",   "");
-        this.value.put("&hearts;",  "");
-        this.value.put("&diams;",   "");
+        this.tsvalue.put("&bull;",    ""); // •
+        this.tsvalue.put("&prime;",   ""); // '
+        this.tsvalue.put("&Prime;",   "");
+        this.tsvalue.put("&oline;",   "");
+        this.tsvalue.put("&frasl;",   "");
+        this.tsvalue.put("&weierp;",  "");
+        this.tsvalue.put("&image;",   "");
+        this.tsvalue.put("&real;",    "");
+        this.tsvalue.put("&trade;",   "{\\texttrademark}"); // ™
+        this.tsvalue.put("&euro;",    "{\\euro}");          // €
+        this.tsvalue.put("&alefsym;", "");
+        this.tsvalue.put("&spades;",  "");
+        this.tsvalue.put("&clubs;",   "");
+        this.tsvalue.put("&hearts;",  "");
+        this.tsvalue.put("&diams;",   "");
 
         //punctation
-        this.value.put("&ensp;",    "");
-        this.value.put("&emsp;",    "");
-        this.value.put("&thinsp;",  "");
-        this.value.put("&zwnj;",    "");
-        this.value.put("&zwj;",     "");
-        this.value.put("&lrm;",     "");
-        this.value.put("&rlm;",     "");
-        this.value.put("&ndash;",   "--");       // –
-        this.value.put("&mdash;",   "---");      // —
-        this.value.put("&dagger;",  "\\dag");    // †
-        this.value.put("&Dagger;",  "\\ddag");   // ‡
-        this.value.put("&hellip;",  "{\\dots}"); // …
-        this.value.put("&permil;",  "");         // ‰
+        this.tsvalue.put("&ensp;",    "");
+        this.tsvalue.put("&emsp;",    "");
+        this.tsvalue.put("&thinsp;",  "");
+        this.tsvalue.put("&zwnj;",    "");
+        this.tsvalue.put("&zwj;",     "");
+        this.tsvalue.put("&lrm;",     "");
+        this.tsvalue.put("&rlm;",     "");
+        this.tsvalue.put("&ndash;",   "--");       // –
+        this.tsvalue.put("&mdash;",   "---");      // —
+        this.tsvalue.put("&dagger;",  "\\dag");    // †
+        this.tsvalue.put("&Dagger;",  "\\ddag");   // ‡
+        this.tsvalue.put("&hellip;",  "{\\dots}"); // …
+        this.tsvalue.put("&permil;",  "");         // ‰
 
         //mathematical signs
-        this.value.put("&forall;",  "$\\forall$");
-        this.value.put("&part;",    "");
-        this.value.put("&exist;",   "$\\exists$");
-        this.value.put("&empty;",   "");
-        this.value.put("&nabla;",   "");
-        this.value.put("&isin;",    "$\\in$");
-        this.value.put("&notin;",   "$\\notin$");
-        this.value.put("&ni;",      "");
-        this.value.put("&prod;",    "$\\prod$");
-        this.value.put("&sum;",     "$\\sum$");
-        this.value.put("&minus;",   "");
-        this.value.put("&lowast;",  "");
-        this.value.put("&radic;",   "");
-        this.value.put("&prop;",    "");
-        this.value.put("&infin;",   "$infty$");
-        this.value.put("&ang;",     "");
-        this.value.put("&and;",     "$\\wedge$");
-        this.value.put("&or;",      "$\\vee$");
-        this.value.put("&cap;",     "$\\cap$");
-        this.value.put("&cup;",     "$\\cup$");
-        this.value.put("&int;",     "");
-        this.value.put("&there4;",  "");
-        this.value.put("&sim;",     "");
-        this.value.put("&cong;",    "");
-        this.value.put("&asymp;",   "$\\approx{}$");
-        this.value.put("&ne;",      "$\\neq$");
-        this.value.put("&equiv;",   "");
-        this.value.put("&le;",      "$\\leq$");
-        this.value.put("&ge;",      "$\\geq$");
-        this.value.put("&sub;",     "");
-        this.value.put("&sup;",     "");
-        this.value.put("&nsub;",    "");
-        this.value.put("&sube;",    "");
-        this.value.put("&supe;",    "");
-        this.value.put("&oplus;",   "");
-        this.value.put("&otimes;",  "");
-        this.value.put("&perp;",    "");
-        this.value.put("&sdot;",    "");
-        this.value.put("&loz;",     "");
+        this.tsvalue.put("&forall;",  "$\\forall$");
+        this.tsvalue.put("&part;",    "");
+        this.tsvalue.put("&exist;",   "$\\exists$");
+        this.tsvalue.put("&empty;",   "");
+        this.tsvalue.put("&nabla;",   "");
+        this.tsvalue.put("&isin;",    "$\\in$");
+        this.tsvalue.put("&notin;",   "$\\notin$");
+        this.tsvalue.put("&ni;",      "");
+        this.tsvalue.put("&prod;",    "$\\prod$");
+        this.tsvalue.put("&sum;",     "$\\sum$");
+        this.tsvalue.put("&minus;",   "");
+        this.tsvalue.put("&lowast;",  "");
+        this.tsvalue.put("&radic;",   "");
+        this.tsvalue.put("&prop;",    "");
+        this.tsvalue.put("&infin;",   "$infty$");
+        this.tsvalue.put("&ang;",     "");
+        this.tsvalue.put("&and;",     "$\\wedge$");
+        this.tsvalue.put("&or;",      "$\\vee$");
+        this.tsvalue.put("&cap;",     "$\\cap$");
+        this.tsvalue.put("&cup;",     "$\\cup$");
+        this.tsvalue.put("&int;",     "");
+        this.tsvalue.put("&there4;",  "");
+        this.tsvalue.put("&sim;",     "");
+        this.tsvalue.put("&cong;",    "");
+        this.tsvalue.put("&asymp;",   "$\\approx{}$");
+        this.tsvalue.put("&ne;",      "$\\neq$");
+        this.tsvalue.put("&equiv;",   "");
+        this.tsvalue.put("&le;",      "$\\leq$");
+        this.tsvalue.put("&ge;",      "$\\geq$");
+        this.tsvalue.put("&sub;",     "");
+        this.tsvalue.put("&sup;",     "");
+        this.tsvalue.put("&nsub;",    "");
+        this.tsvalue.put("&sube;",    "");
+        this.tsvalue.put("&supe;",    "");
+        this.tsvalue.put("&oplus;",   "");
+        this.tsvalue.put("&otimes;",  "");
+        this.tsvalue.put("&perp;",    "");
+        this.tsvalue.put("&sdot;",    "");
+        this.tsvalue.put("&loz;",     "");
 
         //greek characters
-        this.value.put("&Alpha;",   "A");
-        this.value.put("&alpha;",   "\\alpha");
-        this.value.put("&Beta;",    "B");
-        this.value.put("&beta;",    "\\beta");
-        this.value.put("&Gamma;",   "\\Gamma");
-        this.value.put("&gamma;",   "\\gamma");
-        this.value.put("&Delta;",   "\\Delta");
-        this.value.put("&delta;",   "\\delta");
-        this.value.put("&Epsilon;", "E");
-        this.value.put("&epsilon;", "\\epsilon");
-        this.value.put("&Zeta;",    "Z");
-        this.value.put("&zeta;",    "\\zeta");
-        this.value.put("&Eta;",     "H");
-        this.value.put("&eta;",     "\\eta");
-        this.value.put("&Theta;",   "\\Theta");
-        this.value.put("&theta;",   "\\theta");
-        this.value.put("&thetasym;","\\vartheta");
-        this.value.put("&Iota;",    "I");
-        this.value.put("&iota;",    "\\iota");
-        this.value.put("&Kappa;",   "K");
-        this.value.put("&kappa;",   "\\kappa");
-        this.value.put("&Lambda;",  "\\Lambda");
-        this.value.put("&lambda;",  "\\lambda");
-        this.value.put("&Mu;",      "M");
-        this.value.put("&mu;",      "\\mu");
-        this.value.put("&Nu;",      "N");
-        this.value.put("&nu;",      "\\nu");
-        this.value.put("&Xi;",      "\\Xi");
-        this.value.put("&xi;",      "\\xi");
-        this.value.put("&Omicron;", "O");
-        this.value.put("&omicron;", "o");
-        this.value.put("&Pi;",      "\\Pi");
-        this.value.put("&pi;",      "\\pi");
-        this.value.put("&Rho;",     "P");
-        this.value.put("&rho;",     "\\rho");
-        this.value.put("&Sigma;",   "\\Sigma");
-        this.value.put("&sigma;",   "\\sigma");
-        this.value.put("&sigmaf;",  "\\varsigma");
-        this.value.put("&Tau;",     "T");
-        this.value.put("&tau;",     "\\tau");
-        this.value.put("&Upsilon;", "\\Upsilon");
-        this.value.put("&upsilon;", "\\upsilon");
-        this.value.put("&Phi;",     "\\Phi");
-        this.value.put("&phi;",     "\\phi");
-        this.value.put("&piv;",	    "\\varpi");
-        this.value.put("&Chi;",     "X");
-        this.value.put("&chi;",     "\\chi");
-        this.value.put("&Psi;",     "\\Psi");
-        this.value.put("&psi;",     "\\psi");
-        this.value.put("&Omega;",   "\\Omega");
-        this.value.put("&omega;",   "\\omega");
-        this.value.put("&upsih;",   "");
+        this.tsvalue.put("&Alpha;",   "A");
+        this.tsvalue.put("&alpha;",   "\\alpha");
+        this.tsvalue.put("&Beta;",    "B");
+        this.tsvalue.put("&beta;",    "\\beta");
+        this.tsvalue.put("&Gamma;",   "\\Gamma");
+        this.tsvalue.put("&gamma;",   "\\gamma");
+        this.tsvalue.put("&Delta;",   "\\Delta");
+        this.tsvalue.put("&delta;",   "\\delta");
+        this.tsvalue.put("&Epsilon;", "E");
+        this.tsvalue.put("&epsilon;", "\\epsilon");
+        this.tsvalue.put("&Zeta;",    "Z");
+        this.tsvalue.put("&zeta;",    "\\zeta");
+        this.tsvalue.put("&Eta;",     "H");
+        this.tsvalue.put("&eta;",     "\\eta");
+        this.tsvalue.put("&Theta;",   "\\Theta");
+        this.tsvalue.put("&theta;",   "\\theta");
+        this.tsvalue.put("&thetasym;","\\vartheta");
+        this.tsvalue.put("&Iota;",    "I");
+        this.tsvalue.put("&iota;",    "\\iota");
+        this.tsvalue.put("&Kappa;",   "K");
+        this.tsvalue.put("&kappa;",   "\\kappa");
+        this.tsvalue.put("&Lambda;",  "\\Lambda");
+        this.tsvalue.put("&lambda;",  "\\lambda");
+        this.tsvalue.put("&Mu;",      "M");
+        this.tsvalue.put("&mu;",      "\\mu");
+        this.tsvalue.put("&Nu;",      "N");
+        this.tsvalue.put("&nu;",      "\\nu");
+        this.tsvalue.put("&Xi;",      "\\Xi");
+        this.tsvalue.put("&xi;",      "\\xi");
+        this.tsvalue.put("&Omicron;", "O");
+        this.tsvalue.put("&omicron;", "o");
+        this.tsvalue.put("&Pi;",      "\\Pi");
+        this.tsvalue.put("&pi;",      "\\pi");
+        this.tsvalue.put("&Rho;",     "P");
+        this.tsvalue.put("&rho;",     "\\rho");
+        this.tsvalue.put("&Sigma;",   "\\Sigma");
+        this.tsvalue.put("&sigma;",   "\\sigma");
+        this.tsvalue.put("&sigmaf;",  "\\varsigma");
+        this.tsvalue.put("&Tau;",     "T");
+        this.tsvalue.put("&tau;",     "\\tau");
+        this.tsvalue.put("&Upsilon;", "\\Upsilon");
+        this.tsvalue.put("&upsilon;", "\\upsilon");
+        this.tsvalue.put("&Phi;",     "\\Phi");
+        this.tsvalue.put("&phi;",     "\\phi");
+        this.tsvalue.put("&piv;",	    "\\varpi");
+        this.tsvalue.put("&Chi;",     "X");
+        this.tsvalue.put("&chi;",     "\\chi");
+        this.tsvalue.put("&Psi;",     "\\Psi");
+        this.tsvalue.put("&psi;",     "\\psi");
+        this.tsvalue.put("&Omega;",   "\\Omega");
+        this.tsvalue.put("&omega;",   "\\omega");
+        this.tsvalue.put("&upsih;",   "");
 	}
 }

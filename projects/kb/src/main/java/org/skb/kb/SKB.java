@@ -163,8 +163,8 @@ public class SKB {
 		logger.trace("-> start values (not in property files yet)");
 		//try for the main variables we'll need set (similar to main.inc.php)
 		//String site_id = System.getenv("site_id");     //id for the website
-		String site_id = "default";                      //id for the website
-		String site_path = "www/demo";                   //path to the website
+		String _site_id = "default";                      //id for the website
+		String _site_path = "www/demo";                   //path to the website
 
 		String root_classes = "/classes/";
 		String root_skb = "/skb";
@@ -177,9 +177,9 @@ public class SKB {
 		__cfg_array.put("root-skb", root_skb);
 		__cfg_array.put("root-classes", root_classes);
 		__cfg_array.put("config-core", root_document+root_skb+"/config/core.db");
-		__cfg_array.put("config-site", root_document+root_skb+"/config/"+site_id+".db");
-		__cfg_array.put("site_path", site_path);
-		__cfg_array.put("skb_site_id", site_id);
+		__cfg_array.put("config-site", root_document+root_skb+"/config/"+_site_id+".db");
+		__cfg_array.put("site_path", _site_path);
+		__cfg_array.put("skb_site_id", _site_id);
 		__cfg_array.put("php_extension", ".php5");
 
 		if(!__cfg_array.containsKey("skb_site_id")){
@@ -399,60 +399,59 @@ public class SKB {
 			Json2Oat j2o=new Json2Oat();
 			TSBaseAPI _t=j2o.read(pkgJson);
 			TSLinkedHashTree res=new TSLinkedHashTree();
-			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
 				res=(TSLinkedHashTree)_t;
+			}
 
 			logger.trace("["+pkg+"] "+"read file, testing for contents");
-			if(res!=null){
-				if(res.containsKey("load_repository_object")){
-					logger.trace("["+pkg+"] "+"found <load_repository_object>");
-					TSBaseAPI loadrepo=(res).get("load_repository_object");
-					if(loadrepo.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
-						for(TSBaseAPI dos : (TSArrayList)loadrepo){
-							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-								TSLinkedHashTree repo=(TSLinkedHashTree)dos;
-								if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
-									this.myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
-									TSLinkedHashTree data=this.myDM.queryDataObject(this.myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
-									this.load_repository_info(repo.get("sema_tag").toString(), data, repo.get("filter_id").toString(), pkg);
-								}
+			if(res.containsKey("load_repository_object")){
+				logger.trace("["+pkg+"] "+"found <load_repository_object>");
+				TSBaseAPI loadrepo=(res).get("load_repository_object");
+				if(loadrepo.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
+					for(TSBaseAPI dos : (TSArrayList)loadrepo){
+						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+							TSLinkedHashTree repo=(TSLinkedHashTree)dos;
+							if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
+								this.myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
+								TSLinkedHashTree data=this.myDM.queryDataObject(this.myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
+								this.load_repository_info(repo.get("sema_tag").toString(), data, repo.get("filter_id").toString(), pkg);
 							}
 						}
 					}
 				}
-				if(res.containsKey("require_package")){
-					logger.trace("["+pkg+"] "+"found <require_package>");
-					TSBaseAPI reqpkg=(res).get("require_package");
-					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
-						reqpkg=((TSString)res.get("require_package")).tsExplode();
-					if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
-						for(int i=0;i<((TSArrayListString)reqpkg).size();i++){
-							this.requirePackage(((TSArrayListString)reqpkg).get(i).toString());
-						}
+			}
+			if(res.containsKey("require_package")){
+				logger.trace("["+pkg+"] "+"found <require_package>");
+				TSBaseAPI reqpkg=(res).get("require_package");
+				if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING))
+					reqpkg=((TSString)res.get("require_package")).tsExplode();
+				if(reqpkg.tsIsType(TSRepository.TEnum.TS_ATOMIC_ARRAYLIST_STRING)){
+					for(int i=0;i<((TSArrayListString)reqpkg).size();i++){
+						this.requirePackage(((TSArrayListString)reqpkg).get(i).toString());
 					}
 				}
-				if(res.containsKey("text_domain")){
-					logger.trace("["+pkg+"] "+"found <text_domain>");
-					TSArrayList ar=(TSArrayList)res.get("text_domain");
-					if(ar!=null){
-						for(int i=0;i<ar.size();i++){
-							TSLinkedHashTree ld=(TSLinkedHashTree)((TSArrayList)ar).get(i);
-							if(ld!=null)
-								if(ld.containsKey("domain"))
-									this.i18n.addDomain(ld.get("domain").toString(), new Locale(this.configuration.get("system/lang").toString()));
-						}
+			}
+			if(res.containsKey("text_domain")){
+				logger.trace("["+pkg+"] "+"found <text_domain>");
+				TSArrayList ar=(TSArrayList)res.get("text_domain");
+				if(ar!=null){
+					for(int i=0;i<ar.size();i++){
+						TSLinkedHashTree ld=(TSLinkedHashTree)((TSArrayList)ar).get(i);
+						if(ld!=null)
+							if(ld.containsKey("domain"))
+								this.i18n.addDomain(ld.get("domain").toString(), new Locale(this.configuration.get("system/lang").toString()));
 					}
 				}
-				if(res.containsKey("load_data_object")){
-					logger.trace("["+pkg+"] "+"found <load_data_object>");
-					TSBaseAPI loaddata=(res).get("load_data_object");
-					if(loaddata.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
-						for(TSBaseAPI dos : (TSArrayList)loaddata){
-							if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
-								TSLinkedHashTree data=(TSLinkedHashTree)dos;
-								if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id"))
-									myDM.loadDataObject(data.get("sema_tag").toString(), data.get("type").toString(), data.get("handle").toString(), data.get("tables").toString(), data.get("filter_id").toString(), pkg);
-							}
+			}
+			if(res.containsKey("load_data_object")){
+				logger.trace("["+pkg+"] "+"found <load_data_object>");
+				TSBaseAPI loaddata=(res).get("load_data_object");
+				if(loaddata.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
+					for(TSBaseAPI dos : (TSArrayList)loaddata){
+						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+							TSLinkedHashTree data=(TSLinkedHashTree)dos;
+							if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id"))
+								myDM.loadDataObject(data.get("sema_tag").toString(), data.get("type").toString(), data.get("handle").toString(), data.get("tables").toString(), data.get("filter_id").toString(), pkg);
 						}
 					}
 				}
@@ -565,10 +564,10 @@ public class SKB {
 	 */
 	public void loadAllSitePackages(ArrayList<String> additional){
 		String pkg_dir=this.configuration.get("path/repository").toString();
-		String site_id=this.configuration.get("skb/site-id").toString();
+		String _site_id=this.configuration.get("skb/site-id").toString();
 
 		FindPackageDirectories fpd=new FindPackageDirectories();
-		fpd.setSiteID(site_id);
+		fpd.setSiteID(_site_id);
 		List<String> files = fpd.getTxtFiles(pkg_dir);
 		pkg_dir=pkg_dir.replace(FilenameUtils.getPrefix(pkg_dir), "");
 		for(int i=0;i<files.size();i++){

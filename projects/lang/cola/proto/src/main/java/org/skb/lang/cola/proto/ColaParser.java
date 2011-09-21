@@ -147,24 +147,24 @@ public class ColaParser implements TribeParserAPI {
 	}
 
 	@Override
-	public void finish(boolean quietMode) {
-		ConfigurationProperties prop=config.getProperties();
-		ColaStatistics stats=new ColaStatistics();
-
-		TSBaseAPI ata=prop.getValue(ColaConstants.Properties.keyPrStat);
-		if(!quietMode){
-			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-				stats.genSimpleStats();
-			ata=prop.getValue(ColaConstants.Properties.keyPrStatAll);
-			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-				stats.genCompleteStats();
-		}
-		// print stats if wanted
-		ata=prop.getValue(ColaConstants.Properties.keyPrStat);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-			stats.printSimpleStatistic();
-		ata=prop.getValue(ColaConstants.Properties.keyPrStatAll);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
-			stats.printCompleteStatistic();
+	public void finish() {
+//		ConfigurationProperties prop=config.getProperties();
+//		ColaStatistics stats=new ColaStatistics();
+//
+//		TSBaseAPI ata=prop.getValue(ColaConstants.Properties.keyPrStat);
+//		if(!quietMode){
+//			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
+//				stats.genSimpleStats();
+//			ata=prop.getValue(ColaConstants.Properties.keyPrStatAll);
+//			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
+//				stats.genCompleteStats();
+//		}
+//		// print stats if wanted
+//		ata=prop.getValue(ColaConstants.Properties.keyPrStat);
+//		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
+//			stats.printSimpleStatistic();
+//		ata=prop.getValue(ColaConstants.Properties.keyPrStatAll);
+//		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true)
+//			stats.printCompleteStatistic();
 	}
 }

@@ -138,14 +138,6 @@ public class LangParserImpl implements LangParserAPI {
 
 		TSReportManager repMgr=this.config.getReportManager();
 
-		Boolean quietMode=false;
-		try {
-			quietMode=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
-		}
-		catch(Exception e){
-			logger.trace("quiet mode not set in tribe, default false");
-		}
-
 		try {
 			logger.trace("converting inputStream to ANTLR");
 			ANTLRInputStream input=new ANTLRInputStream(is);
@@ -163,14 +155,12 @@ public class LangParserImpl implements LangParserAPI {
 				msg+="s";
 			if(ret>0) {
 				msg+=", exiting at pass 1";
-				if(!quietMode)
-					repMgr.reportError(msg);
+				repMgr.genErrorMessage(msg);
 				System.exit(1);
 			}
 			else
 				msg+=" in pass 1 (Syntax Check)";
-			if(!quietMode)
-				repMgr.reportMessageNoFile(msg);
+			repMgr.genMessageNoFile(msg);
 
 			logger.trace("still here, reset errors and continue");
 			repMgr.resetNoOfErrors();
@@ -187,14 +177,12 @@ public class LangParserImpl implements LangParserAPI {
 				msg+="s";
 			if(ret>0) {
 				msg+=", exiting at pass 2";
-				if(!quietMode)
-					repMgr.reportError(msg);
+				repMgr.genErrorMessage(msg);
 				System.exit(1);
 			}
 			else
 				msg+=" in pass 2 (Semantic Check)";
-			if(!quietMode)
-				repMgr.reportMessageNoFile(msg);
+			repMgr.genMessageNoFile(msg);
 
 			TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionGC);
 			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
@@ -204,8 +192,7 @@ public class LangParserImpl implements LangParserAPI {
 				this.langParser.pass3CodeGen(nodesForGen, this.targetStgm.getSTG());
 
 				msg="success  in pass 3 (Code Generation)";
-				if(!quietMode)
-					repMgr.reportMessageNoFile(msg);
+				repMgr.genMessageNoFile(msg);
 
 				FileTemplateList ftl=this.langParser.pass4Files();
 				ftl.init(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir));
@@ -219,16 +206,15 @@ public class LangParserImpl implements LangParserAPI {
 				fm.writeList(ftl);
 
 				msg="success  in pass 4 (Write Files)";
-				if(!quietMode)
-					repMgr.reportMessageNoFile(msg);
+				repMgr.genMessageNoFile(msg);
 			}
-			this.langParser.finish(quietMode);
+			this.langParser.finish();
 		}
 		catch(IOException io){
-			repMgr.reportError("catched exception while parsing", "IOException: " + io.toString());
+			repMgr.genErrorMessage("catched exception while parsing", "IOException: " + io.toString());
 		}
 		catch(Exception e){
-			repMgr.reportError("catched exception while parsing", "Exception: " + e.toString());
+			repMgr.genErrorMessage("catched exception while parsing", "Exception: " + e.toString());
 		}
 
 		logger.trace("parse -- out");

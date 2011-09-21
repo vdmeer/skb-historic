@@ -72,12 +72,13 @@ public class TSString extends TSAtomic{
 	 * @return String
 	 */
 	public static java.lang.String tsAddChar(TSString str, java.lang.String chr){
-		if(str==null)
+		if(str==null){
 			return "";
-		if(str.tsvalue.length()>0&&!str.tsvalue.endsWith(chr)&&!str.tsvalue.endsWith(" "))
+		}
+		if(str.tsvalue.length()>0&&!str.tsvalue.endsWith(chr)&&!str.tsvalue.endsWith(" ")){
 			return chr;
-		else
-			return "";
+		}
+		return "";
 	}
 
 	/**
@@ -102,16 +103,15 @@ public class TSString extends TSAtomic{
 			ret.concat(" ");
 			return ret;
 		}
-		else
-			return "";	
+		return "";	
 	}
 
 
 	public static java.lang.String tsAddFirstChar(TSString str, TSString chr){
-		if (str.tsvalue.length()==0)
+		if (str.tsvalue.length()==0){
 			return chr.tsvalue;
-		else
-			return "";
+		}
+		return "";
 	}
 
 	public static java.lang.String valueOf(boolean b){

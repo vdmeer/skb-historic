@@ -86,20 +86,19 @@ public class TSPropertyMap extends TSTable{
 	protected void _initPM(){
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
 
-		HashSet<String>columns=new HashSet<String>();
-		columns.add(FieldKeys.fieldValueType);
-		columns.add(FieldKeys.fieldValueDefault);
-		columns.add(FieldKeys.fieldValueFile);
-		columns.add(FieldKeys.fieldValueCli);
-		columns.add(FieldKeys.fieldCliOptionType);
-		columns.add(FieldKeys.fieldCliOptionShort);
-		columns.add(FieldKeys.fieldCliOptionLong);
-		columns.add(FieldKeys.fieldCliOptionDescriptionShort);
-		columns.add(FieldKeys.fieldCliOptionDescriptionLong);
-		columns.add(FieldKeys.fieldCliOptionArguments);
-		columns.add(FieldKeys.fieldCliOptionDescriptionArguments);
+		this.columns.add(FieldKeys.fieldValueType);
+		this.columns.add(FieldKeys.fieldValueDefault);
+		this.columns.add(FieldKeys.fieldValueFile);
+		this.columns.add(FieldKeys.fieldValueCli);
+		this.columns.add(FieldKeys.fieldCliOptionType);
+		this.columns.add(FieldKeys.fieldCliOptionShort);
+		this.columns.add(FieldKeys.fieldCliOptionLong);
+		this.columns.add(FieldKeys.fieldCliOptionDescriptionShort);
+		this.columns.add(FieldKeys.fieldCliOptionDescriptionLong);
+		this.columns.add(FieldKeys.fieldCliOptionArguments);
+		this.columns.add(FieldKeys.fieldCliOptionDescriptionArguments);
 
-		this.setColumns(columns, TSPropertyMap.class.getName(), "pmVal");
+		this.setColumns(this.columns, TSPropertyMap.class.getName(), "pmVal");
 		this.addRows(TSPropertyMap.class.getName(), "pmKey");
 
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_PROPERTY_MAP);

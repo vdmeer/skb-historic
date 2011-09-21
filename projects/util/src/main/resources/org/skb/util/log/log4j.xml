@@ -106,6 +106,25 @@
         </appender>
 	<!-- ORG.SKB.UTIL -->
 
+	<!-- ORG.SKB.UTIL ReportManager Reports-->
+        <appender name="SKBLoggerReportManagerSTDOUT"
+                class="org.apache.log4j.ConsoleAppender">
+                <param name="Target" value="System.out" />
+                <param name="Threshold" value="INFO" />
+                <layout class="org.apache.log4j.PatternLayout">
+                   <param name="ConversionPattern" value="%m"/>
+                </layout>    
+        </appender>
+
+		<appender name="SKBLoggerReportManagerSTDERR"
+                class="org.apache.log4j.ConsoleAppender">
+                <param name="Target" value="System.err" />
+                <param name="Threshold" value="ERROR" />
+                <layout class="org.apache.log4j.PatternLayout">
+                   <param name="ConversionPattern" value="%m"/>
+                </layout>    
+        </appender>
+	<!-- ORG.SKB.UTIL ReportManager Reports-->
 
         <appender name="R"
                 class="org.apache.log4j.RollingFileAppender">
@@ -153,35 +172,53 @@
 
 	<!-- ORG.SKB.LANG.DAL -->
         <logger name="org.skb.lang.dal">
-                <level value="trace"/>
-                <appender-ref ref="Org.Skb.Lang.Dal"/>
-                <!--<appender-ref ref="stdout"/>-->
+            <level value="trace"/>
+            <appender-ref ref="Org.Skb.Lang.Dal"/>
+			<!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.LANG.DAL -->
 
 	<!-- ORG.SKB.LANG.GLUE.PROTO -->
         <logger name="org.skb.lang.glue.proto">
-                <level value="trace"/>
-                <appender-ref ref="Org.Skb.Lang.Glue.Proto"/>
-                <!--<appender-ref ref="stdout"/>-->
+            <level value="trace"/>
+            <appender-ref ref="Org.Skb.Lang.Glue.Proto"/>
+			<!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.LANG.GLUE.PROTO -->
 
 	<!-- ORG.SKB.TRIBE -->
         <logger name="org.skb.tribe">
-                <level value="trace"/>
-                <appender-ref ref="Org.Skb.Tribe"/>
-                <!--<appender-ref ref="stdout"/>-->
+			<level value="trace"/>
+            <appender-ref ref="Org.Skb.Tribe"/>
+            <!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.TRIBE -->
 
 	<!-- ORG.SKB.UTIL -->
         <logger name="org.skb.util">
-                <level value="all"/>
-                <appender-ref ref="Org.Skb.Util"/>
-                <!--<appender-ref ref="stdout"/>-->
+            <level value="all"/>
+            <appender-ref ref="Org.Skb.Util"/>
+            <!--<appender-ref ref="stdout"/>-->
         </logger>
 	<!-- ORG.SKB.UTIL -->
+
+
+	<!-- ORG.SKB.UTIL ReportManager Reports-->
+		<logger name="SKBLoggerReportManagerInfo">
+			<level value="all"/>
+			<appender-ref ref="SKBLoggerReportManagerSTDOUT"/>
+		</logger>
+
+		<logger name="SKBLoggerReportManagerError">
+			<level value="all"/>
+			<appender-ref ref="SKBLoggerReportManagerSTDERR"/>
+		</logger>
+
+		<logger name="SKBLoggerReportManagerWarn">
+			<level value="all"/>
+			<appender-ref ref="SKBLoggerReportManagerSTDOUT"/>
+		</logger>
+	<!-- ORG.SKB.UTIL ReportManager Reports-->
 
 
         <logger name="org.apache.commons">
