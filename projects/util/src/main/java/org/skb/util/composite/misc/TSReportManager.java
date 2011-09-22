@@ -230,7 +230,7 @@ public class TSReportManager extends TSAtomic {
 	 * @param line line in which the error/warning occurred
 	 * @param column column in which the error/warning occurred
 	 */
-	public void genReport(String msgType, String message, String add, int line, int column){
+	public void report(String msgType, String message, String add, int line, int column){
 		if(msgType=="warning")
 			this.noOfWarnings++;
 		if(msgType=="error")
@@ -284,8 +284,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param line line in which the error occurred
 	 * @param column column in which the error occurred
 	 */
-	public void genErrorMessage(String m, String add, int line, int column){
-		this.genReport("error", m, add, line, column);
+	public void error(String m, String add, int line, int column){
+		this.report("error", m, add, line, column);
 	}
 
 	/**
@@ -296,8 +296,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param t token at which the error occurred
 	 * @param add additional message to be reported
 	 */
-	public void genErrorMessage(String m, Token t, String add){
-		this.genErrorMessage(m, add, t.getLine(), t.getCharPositionInLine());
+	public void error(String m, Token t, String add){
+		this.error(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
 	/**
@@ -307,8 +307,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param m error message to be reported
 	 * @param t token at which the error occurred
 	 */
-	public void genErrorMessage(String m, Token t){
-		this.genErrorMessage(m, t, null);
+	public void error(String m, Token t){
+		this.error(m, t, null);
 	}
 
 	/**
@@ -317,8 +317,8 @@ public class TSReportManager extends TSAtomic {
 	 * No additional information will be reported, and line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
 	 */
-	public void genErrorMessage(String m){
-		this.genErrorMessage(m, null, -1, -1);
+	public void error(String m){
+		this.error(m, null, -1, -1);
 	}
 
 	/**
@@ -328,8 +328,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param m error message to be reported
 	 * @param add additional message to be reported
 	 */
-	public void genErrorMessage(String m, String add){
-		this.genErrorMessage(m, add, -1, -1);
+	public void error(String m, String add){
+		this.error(m, add, -1, -1);
 	}
 
 	/**
@@ -338,10 +338,10 @@ public class TSReportManager extends TSAtomic {
 	 * Programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
 	 */
-	public void genErrorMessageNoFile(String m){
+	public void errorNoFile(String m){
 		String t=this.fileFN;
 		this.fileFN=null;
-		this.genErrorMessage(m);
+		this.error(m);
 		this.fileFN=t;
 	}
 
@@ -352,8 +352,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param m error message to be reported
 	 * @param re associated ANTLR exception
 	 */
-	public void errorMessage(String m, org.antlr.runtime.RecognitionException re){
-		this.genErrorMessage(m, null, re.line, re.charPositionInLine);
+	public void error(String m, org.antlr.runtime.RecognitionException re){
+		this.error(m, null, re.line, re.charPositionInLine);
 	}
 
 	/**
@@ -365,8 +365,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param line line to which the message corresponds
 	 * @param column column to which the message corresponds
 	 */
-	public void genMessage(String m, String add, int line, int column){
-		this.genReport(null, m, add, line, column);
+	public void message(String m, String add, int line, int column){
+		this.report(null, m, add, line, column);
 	}
 
 	/**
@@ -377,8 +377,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param t token to which the message corresponds
 	 * @param add additional message to be reported
 	 */
-	public void genMessage(String m, Token t, String add){
-		this.genMessage(m, add, t.getLine(), t.getCharPositionInLine());
+	public void message(String m, Token t, String add){
+		this.message(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
 	/**
@@ -388,8 +388,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param m message to be reported
 	 * @param t token to which the message corresponds
 	 */
-	public void genMessage(String m, Token t){
-		this.genMessage(m, t, null);
+	public void message(String m, Token t){
+		this.message(m, t, null);
 	}
 
 	/**
@@ -398,8 +398,8 @@ public class TSReportManager extends TSAtomic {
 	 * No additional information will be reported, and line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m message to be reported
 	 */
-	public void genMessage(String m){
-		this.genMessage(m, null, -1, -1);
+	public void message(String m){
+		this.message(m, null, -1, -1);
 	}
 
 	/**
@@ -409,8 +409,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param m message to be reported
 	 * @param add additional message to be reported
 	 */
-	public void genMessage(String m, String add){
-		this.genMessage(m, add, -1, -1);
+	public void message(String m, String add){
+		this.message(m, add, -1, -1);
 	}
 
 	/**
@@ -419,10 +419,10 @@ public class TSReportManager extends TSAtomic {
 	 * Programme name will be used as set (either default or last change).
 	 * @param m message to be reported
 	 */
-	public void genMessageNoFile(String m){
+	public void messageNoFile(String m){
 		String t=this.fileFN;
 		this.fileFN=null;
-		this.genMessage(m);
+		this.message(m);
 		this.fileFN=t;
 	}
 
@@ -435,8 +435,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param line line in which the warning occurred
 	 * @param column column in which the warning occurred
 	 */
-	public void genWarningMessage(String m, String add, int line, int column){
-		this.genReport("warning", m, add, line, column);
+	public void warning(String m, String add, int line, int column){
+		this.report("warning", m, add, line, column);
 	}
 
 	/**
@@ -447,8 +447,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param t token at which the warning occurred
 	 * @param add additional message to be reported
 	 */
-	public void genWarningMessage(String m, Token t, String add){
-		this.genWarningMessage(m, add, t.getLine(), t.getCharPositionInLine());
+	public void warning(String m, Token t, String add){
+		this.warning(m, add, t.getLine(), t.getCharPositionInLine());
 	}
 
 	/**
@@ -458,8 +458,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param m warning message to be reported
 	 * @param t token at which the warning occurred
 	 */
-	public void genWarningMessage(String m, Token t){
-		 this.genWarningMessage(m, t, null);
+	public void warning(String m, Token t){
+		 this.warning(m, t, null);
 	}
 
 	/**
@@ -468,8 +468,8 @@ public class TSReportManager extends TSAtomic {
 	 * No additional information will be reported, and line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m warning message to be reported
 	 */
-	public void genWarningMessage(String m){
-		this.genWarningMessage(m, null, -1, -1);
+	public void warning(String m){
+		this.warning(m, null, -1, -1);
 	}
 
 	/**
@@ -479,8 +479,8 @@ public class TSReportManager extends TSAtomic {
 	 * @param m warning message to be reported
 	 * @param add additional message to be reported
 	 */
-	public void genWarningMessage(String m, String add){
-		this.genWarningMessage(m, add, -1, -1);
+	public void warning(String m, String add){
+		this.warning(m, add, -1, -1);
 	}
 
 	/**
@@ -489,10 +489,10 @@ public class TSReportManager extends TSAtomic {
 	 * Programme name will be used as set (either default or last change).
 	 * @param m warning message to be reported
 	 */
-	public void genWarningMessageNoFile(String m){
+	public void warningNoFile(String m){
 		String t=this.fileFN;
 		this.fileFN=null;
-		this.genWarningMessage(m);
+		this.warning(m);
 		this.fileFN=t;
 	}
 
