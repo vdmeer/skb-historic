@@ -46,7 +46,6 @@ public interface Builder {
 	 */
 	public void setHeader();
 
-
 	/**
 	 * Execute the Builder's main functionality.
 	 * 
@@ -56,7 +55,6 @@ public interface Builder {
 	 * @param entries original array with collected information from the reader
 	 */
 	public void execute(Request request, TSLinkedHashTree entries);
-
 
 	/**
 	 * Execute the Builder's main functionality.

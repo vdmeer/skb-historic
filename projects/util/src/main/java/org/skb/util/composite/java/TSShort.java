@@ -198,7 +198,6 @@ public class TSShort extends TSAtomic {
 		return ret;
 	}
 
-
 	@Override
 	public TSShort tsCopyAtomic(){
 		return new TSShort(new Short(this.tsvalue));

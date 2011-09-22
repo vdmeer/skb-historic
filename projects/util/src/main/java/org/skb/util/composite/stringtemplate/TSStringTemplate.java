@@ -56,11 +56,10 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 	public final static Logger logger=Logger.getLogger(TSStringTemplate.class);
 
 	/** String Vector maintaining the type hierarchy of the class, must be identical to typeEnum */ 
-	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE));
+	protected final Vector<String> typeString=new Vector<String>(Arrays.asList(TSRepository.TString.TS_BASE, TSRepository.TString.TS_ATOMIC, TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_ST));
 
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
-	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE));
-
+	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC, TEnum.TS_ATOMIC_STRINGTEMPLATE_ST));
 
 	/**
 	 * Class constructor, initialises local fields.
@@ -69,7 +68,6 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		super();
 		this._init();
 	}
-
 
 	/**
 	 * Class constructor, uses given StringTemplate for initialisation.
@@ -81,7 +79,6 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		this.setAttributes(st.getAttributes());
 	}
 
-
 	/**
 	 * Class constructor, @see StringTemplate#StringTemplate(String)
 	 */
@@ -89,7 +86,6 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		super(template);
 		this._init();
 	}
-
 
 	/**
 	 * Class constructor, @see StringTemplate#StringTemplate(String)
@@ -99,7 +95,6 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		this._init();
 	}
 
-
 	/**
 	 * Class constructor, @see StringTemplate#StringTemplate(String)
 	 */
@@ -107,7 +102,6 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		super(group, template);
 		this._init();
 	}
-
 
 	/**
 	 * Class constructor, @see StringTemplate#StringTemplate(String)
@@ -117,18 +111,10 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		this._init();
 	}
 
-
 	/**
 	 * Initialisation.
 	 */
-	private void _init(){
-		this.typeString.add(TSRepository.TString.TS_ATOMIC);
-		this.typeEnum.add(TEnum.TS_ATOMIC);
-
-		this.typeString.add(TSRepository.TString.TS_ATOMIC_STRINGTEMPLATE_ST);
-		this.typeEnum.add(TEnum.TS_ATOMIC_STRINGTEMPLATE_ST);
-	}
-
+	private void _init(){}
 
 	@Override
 	public void tsClean(){
@@ -136,61 +122,51 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		logger.warn("tsClean not implemented");
 	}
 
-
 	@Override
 	public final TEnum tsGetTypeEnum(){
 		return TSRepository.type(this.typeString.lastElement());
 	}
-
 
 	@Override
 	public final Set<TEnum> tsGetTypeEnumSet(){
 		return this.typeEnum;
 	}
 
-
 	@Override
 	public final String tsGetTypeString(){
 		return this.typeString.lastElement();
 	}
-
 
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
 
-
 	@Override
 	public boolean tsIsAtomic(){
 		return true;
 	}
-
 
 	@Override
 	public boolean tsIsComposite(){
 		return false;
 	}
 
-
 	@Override
 	public final boolean tsIsType(String t){
 		return this.typeString.contains(t);
 	}
-
 
 	@Override
 	public final boolean tsIsType(TEnum t){
 		return this.typeEnum.contains(t);
 	}
 
-
 	@Override
 	public void tsPlus(TSBaseAPI tb){
 		//TODO
 		logger.warn("tsPlus not implemented");
 	}
-
 
 	@Override
 	public java.lang.String tsToString(int indent){
@@ -201,13 +177,11 @@ public class TSStringTemplate extends StringTemplate implements TSAtomicAPI {
 		return ret;
 	}
 
-
 	@Override
 	public void tsTrim(){
 		//TODO
 		logger.warn("tsTrim not implemented");
 	}
-
 
 	@Override
 	public TSStringTemplate tsCopyAtomic(){

@@ -32,7 +32,12 @@ package org.skb.util.composite;
 import org.apache.log4j.Logger;
 import org.skb.util.composite.TSRepository.TEnum;
 
-
+/**
+ * Null Class, used instead of a null return.
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public final class TSNull extends TSDefault {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSNull.class);

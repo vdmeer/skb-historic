@@ -59,7 +59,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public void addRow(String row);
 
-
 	/**
 	 * Add a set of empty rows to the table
 	 * 
@@ -67,7 +66,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 * @param rows set of rows to be added
 	 */
 	public void addRows(HashSet<String>rows);
-
 
 	/**
 	 * Add a set of rows using reflection
@@ -93,7 +91,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public void addRows(String ref_class, String prefix);
 
-
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
 	 * 
@@ -104,7 +101,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public boolean containsKey(String key);
 
-
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
 	 * 
@@ -114,7 +110,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 * @return true if this map contains a mapping for the specified key. 
 	 */
 	public boolean containsKey(TSString key);
-
 
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
@@ -127,10 +122,8 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public boolean containsValue(TSTableRowAPI value);
 
-
 	@Override
 	public Set<java.util.Map.Entry<String, TSTableRowAPI>> entrySet();
-
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -146,9 +139,7 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public TSTableRowAPI get(String key);
 
-
 	public TSBaseAPI get(String row, String col);
-
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -208,7 +199,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 
 	public void put(String row, String col, TSAtomicAPI val);
 
-
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
 	 * 
@@ -221,7 +211,6 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 * the map previously associated null with the specified key, if the implementation supports null values. 
 	 */
 	public TSTableRowAPI put(String key, TSTableRowAPI val);
-
 
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
@@ -236,25 +225,18 @@ public interface TSTableAPI extends TSCompositeAPI, Map<String, TSTableRowAPI>{
 	 */
 	public TSTableRowAPI put(TSString key, TSTableRowAPI val);
 
-
 	@Override
 	public void putAll(Map<? extends String, ? extends TSTableRowAPI> map);
 
-
 	public TSTableRowAPI remove(String key);
-
 
 	public TSTableRowAPI remove(TSString key);
 
-
 	public void setColumns(HashSet<String>cols);
-
 
 	public void setColumns(String ref_class, String prefix);
 
-
 	public void setColumns(HashSet<String>cols, String ref_class, String prefix);
-
 
 	@Override
 	public Collection<TSTableRowAPI> values();

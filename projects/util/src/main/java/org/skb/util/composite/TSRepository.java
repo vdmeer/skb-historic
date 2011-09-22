@@ -51,7 +51,6 @@ public class TSRepository {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSRepository.class);
 
-
 	/**
 	 * String values identifying SKB types.
 	 *

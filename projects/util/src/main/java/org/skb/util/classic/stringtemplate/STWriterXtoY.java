@@ -54,18 +54,16 @@ public class STWriterXtoY extends AutoIndentWriter {
 	/** Internal counter for number of written characters */
 	protected int done=0;
 
-
 	/**
-	 * Class constructor, initialises super class with the given writer
+	 * Class constructor, initialises super class with the given writer.
 	 * @param out writer to be used
 	 */
 	public STWriterXtoY(Writer out){
 		super(out);
 	}
 
-
 	/**
-	 * Writes a string between start and and using count
+	 * Writes a string between start and and using count.
 	 * @param str string to be written
 	 * @param co current count of already used (written) characters in the current line
 	 * @return string with \n added to not exceed end of each line
@@ -98,27 +96,24 @@ public class STWriterXtoY extends AutoIndentWriter {
 		return ret;
 	}
 
-
 	/**
-	 * Sets the line end
+	 * Sets the line end.
 	 * @param i new line end, alternative to {@link STWriterXtoY#setLineWidth(int)}
 	 */
 	public void setEnd(int i){
 		this.end=i;
 	}
 
-
 	/**
-	 * Sets the line end, alternative to {@link STWriterXtoY#setEnd(int)}
+	 * Sets the line end, alternative to {@link STWriterXtoY#setEnd(int)}.
 	 * @param w new line end
 	 */
 	public void setLineWidth(int w){
 		this.end=w;
 	}
 
-
 	/**
-	 * Sets the printable areas (line start and line end)
+	 * Sets the printable areas (line start and line end).
 	 * @param start new starting point in the line
 	 * @param end new final width of the line
 	 */
@@ -127,18 +122,16 @@ public class STWriterXtoY extends AutoIndentWriter {
 		this.end=end;
 	}
 
-
 	/**
-	 * Sets new starting point for the line
+	 * Sets new starting point for the line.
 	 * @param i new starting point
 	 */
 	public void setStart(int i){
 		this.start=i;
 	}
 
-
 	/**
-	 * Writes a string
+	 * Writes a string.
 	 * @param str string to be written
 	 * @return number of characters written
 	 */

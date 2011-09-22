@@ -29,7 +29,6 @@
 
 package org.skb.util.composite;
 
-
 /**
  * Base interface for all TSAtomic types
  *

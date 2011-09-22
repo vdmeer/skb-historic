@@ -33,7 +33,6 @@ import java.util.Map;
 
 import org.skb.util.composite.java.TSString;
 
-
 /**
  * Interface for a Table Row.
  *
@@ -52,7 +51,6 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public boolean containsKey(String key);
 
-
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
 	 * 
@@ -62,7 +60,6 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * @return true if this map contains a mapping for the specified key. 
 	 */
 	public boolean containsKey(TSString key);
-
 
 	/**
 	 * Returns true if this map maps one or more keys to the specified value.
@@ -74,7 +71,6 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * @return true if this map maps one or more keys to the specified value.
 	 */
 	public boolean containsValue(TSBaseAPI val);
-
 
 	/**
 	 * Returns the value to which this map maps the specified key.
@@ -90,7 +86,6 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI get(String key);
 
-
 	/**
 	 * Returns the value to which this map maps the specified key.
 	 * 
@@ -105,7 +100,6 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI get(TSString key);
 
-
 	/**
 	 * Associates the specified value with the specified key in this map (optional operation).
 	 * 
@@ -118,5 +112,4 @@ public interface TSTableRowAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * the map previously associated null with the specified key, if the implementation supports null values. 
 	 */
 	public TSBaseAPI put(TSString key, TSBaseAPI val);
-
 }

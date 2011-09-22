@@ -34,7 +34,6 @@ import java.util.Set;
 
 import org.skb.util.composite.TSRepository.TEnum;
 
-
 /**
  * Base interface for all SKB types
  *
@@ -47,13 +46,11 @@ public interface TSBaseAPI {
 	 */
 	public void tsClean();
 
-
 	/**
 	 * Returns the last entry of the type list as an enumerate
 	 * @return type
 	 */
 	public TEnum tsGetTypeEnum();
-
 
 	/**
 	 * Returns the full set of enumerate types
@@ -61,13 +58,11 @@ public interface TSBaseAPI {
 	 */
 	public Set<TEnum> tsGetTypeEnumSet();
 
-
 	/**
 	 * Returns the last entry of the type list as an string
 	 * @return type
 	 */
 	public String tsGetTypeString();
-
 
 	/**
 	 * Returns the full set of string types
@@ -75,20 +70,17 @@ public interface TSBaseAPI {
 	 */
 	public List<String> tsGetTypeStringList();
 
-
 	/**
 	 * Is the object a TSAtomic?
 	 * @return true if the object is a TSAtomic type, false otherwise
 	 */
 	public boolean tsIsAtomic();
 
-
 	/**
 	 * Is the object a TSComposite?
 	 * @return true if the object is a TSComposite type, false otherwise
 	 */
 	public boolean tsIsComposite();
-
 
 	/**
 	 * Tests if the object is of a given type (string)
@@ -97,7 +89,6 @@ public interface TSBaseAPI {
 	 */
 	public boolean tsIsType(String type);
 
-
 	/**
 	 * Tests if the object is of a given type (enumerate)
 	 * @param type to be tested
@@ -105,13 +96,11 @@ public interface TSBaseAPI {
 	 */
 	public boolean tsIsType(TEnum type);
 
-
 	/**
 	 * Adds a value to the object
 	 * @param tb value to be added
 	 */
 	public void tsPlus(TSBaseAPI tb);
-
 
 	/**
 	 * toString() with indentation for formatted output
@@ -119,7 +108,6 @@ public interface TSBaseAPI {
 	 * @return stringified version of the object
 	 */
 	public String tsToString(int indent);
-
 
 	/**
 	 * Trim the object

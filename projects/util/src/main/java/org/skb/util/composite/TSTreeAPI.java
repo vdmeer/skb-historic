@@ -37,7 +37,6 @@ import java.util.Set;
 
 import org.skb.util.composite.java.TSString;
 
-
 /**
  * Base interface for a tree classes.
  *
@@ -45,7 +44,6 @@ import org.skb.util.composite.java.TSString;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
-
 	/**
 	 * Returns true if this tree contains a mapping for the specified path. 
 	 * More specifically, returns true if the map contains a mapping for the given path.
@@ -53,7 +51,6 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * @return true if this map contains a mapping for the specified path.
 	 */
 	public boolean containsKey(List<String> fqpn);
-
 
 	/**
 	 * Returns true if this map contains a mapping for the specified key.
@@ -64,7 +61,6 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public boolean containsKey(String fqpn);
 
-
 	/**
 	 * Returns true if this map contains a mapping for the specified path.
 	 * More specifically, returns true if the map contains a mapping for the given path.
@@ -72,7 +68,6 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 * @return true if this map contains a mapping for the specified path.
 	 */
 	public boolean containsKey(String[] fqpn);
-
 
 	/**
 	 * Returns true if this map contains a mapping for the specified key.
@@ -83,14 +78,12 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public boolean containsKey(TSString fqpn);
 
-
 	/**
 	 * Returns the value to which this map maps the specified path.
 	 * @param fqpn path and key whose associated value is to be returned. 
 	 * @return the value to which this map maps the specified path, or {@link TSNull} if the map contains no mapping for this path. 
 	 */
 	public TSBaseAPI get(List<String> fqpn);
-
 
 	/**
 	 * Returns the value to which this map maps the specified key or path.
@@ -101,14 +94,12 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI get(String fqpn);
 
-
 	/**
 	 * Returns the value to which this map maps the specified path.
 	 * @param fqpn path path and key whose associated value is to be returned.
 	 * @return the value to which this map maps the specified path, or {@link TSNull} if the map contains no mapping for this path.
 	 */
 	public TSBaseAPI get(String[] fqpn);
-
 
 	/**
 	 * Returns the value to which this map maps the specified key or path.
@@ -119,10 +110,8 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public TSBaseAPI get(TSString fqpn);
 
-
 	@Override
 	public boolean isEmpty() ;
-
 
 	/**
 	 * Returns the current status of initialisation of the tree.
@@ -130,53 +119,37 @@ public interface TSTreeAPI extends TSCompositeAPI, Map<String, TSBaseAPI>{
 	 */
 	public boolean isInitialised();
 
-
 	@Override
 	public Set<String> keySet() ;
 
-
 	public TSBaseAPI put(ArrayList<String> fqpn, String val);
-
 
 	public TSBaseAPI put(List<String> fqpn, TSBaseAPI val);
 
-
 	public TSBaseAPI put(String fqpn, String val);
-
 
 	public TSBaseAPI put(String fqpn, TSBaseAPI val) ;
 
-
 	public TSBaseAPI put(String[] fqpn, String val);
-
 
 	public TSBaseAPI put(String[] fqpn, TSBaseAPI val);
 
-
 	public TSBaseAPI put(TSString fqpn, TSBaseAPI val);
-
 
 	@Override
 	public void putAll(Map<? extends String, ? extends TSBaseAPI> map);
 
-
 	public void putAll(TSTreeAPI m);
-
 
 	public TSBaseAPI remove(List<String> fqpn);
 
-
 	public TSBaseAPI remove(String fqpn);
-
 
 	public TSBaseAPI remove(String[] fqpn);
 
-
 	public TSBaseAPI remove(TSString fqpn);
 
-
 	public Map<String, TSBaseAPI> tsGetTree();
-
 
 	@Override
 	public Collection<TSBaseAPI> values() ;

@@ -49,12 +49,10 @@ public class TSLangRuleMap extends TSTable{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSLangRuleMap.class);
 
-
 	public TSLangRuleMap(){
 		super();
 		this._initRM();
 	}
-
 
 	protected void _initRM(){
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
@@ -65,7 +63,6 @@ public class TSLangRuleMap extends TSTable{
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_LANG_RULEMAP);
 		this.typeEnum.add(TEnum.TS_COMPOSITE_LANG_RULEMAP);
 	}
-
 
 	public void loadRules(String className, String key, TSLinkedHashTree map, TSLinkedHashTree tokens){
 		if(className==null&&key==null)
@@ -111,11 +108,9 @@ public class TSLangRuleMap extends TSTable{
 		}
 	}
 
-
 	public String getRule(String name){
 		return this.getRule(name, null);
 	}
-
 
 	public String getRule(String name, String[] args){
 		if(!this.isInitialised())
@@ -137,11 +132,9 @@ public class TSLangRuleMap extends TSTable{
 		return String.format(ret,(Object[])args);
 	}
 
-
 	public String getRuleAdd(String name){
 		return this.getRuleAdd(name, null);
 	}
-
 
 	public String getRuleAdd(String name, String[] args){
 		if(!this.isInitialised())

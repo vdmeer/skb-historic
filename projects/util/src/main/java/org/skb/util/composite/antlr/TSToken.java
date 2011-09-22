@@ -59,7 +59,9 @@ public final class TSToken extends ClassicToken implements TSAtomicAPI {
 	/** TEnum Set maintaining the type hierarchy of the class, must be identical to typeString */
 	protected final LinkedHashSet<TEnum> typeEnum=new LinkedHashSet<TEnum>(EnumSet.of(TEnum.TS_BASE, TEnum.TS_ATOMIC, TEnum.TS_ATOMIC_ANTLR_TOKEN));
 
-
+	/**
+	 * Creates a new, empty Token.
+	 */
 	public TSToken(){
 		super(0);
 	}

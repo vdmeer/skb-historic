@@ -56,7 +56,6 @@ public class FileTemplateSingle {
 	/** List of miscellaneous items for the template */
 	LinkedHashMap<String, String> misc;
 
-
 	/**
 	 * Class constructor, initialised private members
 	 */
@@ -65,7 +64,6 @@ public class FileTemplateSingle {
 		this.imports=new LinkedHashSet<String>();
 		this.misc=new LinkedHashMap<String, String>();
 	}
-
 
 	/**
 	 * Class constructor, initialises private members with given parameters
@@ -79,7 +77,6 @@ public class FileTemplateSingle {
 		this.misc=new LinkedHashMap<String, String>(lhsMisc);
 	}
 
-
 	/**
 	 * Add a StringTemplate to the template
 	 * @param st the StringTemplate to be added
@@ -88,7 +85,6 @@ public class FileTemplateSingle {
 		this.templates.add(st);
 	}
 
-
 	/**
 	 * Add an import to the template
 	 * @param im the import to be added
@@ -96,7 +92,6 @@ public class FileTemplateSingle {
 	public void addImport(String im){
 		this.imports.add(im);
 	}
-
 
 	/**
 	 * Add a misc item to the template
@@ -107,7 +102,6 @@ public class FileTemplateSingle {
 		this.misc.put(key,val);
 	}
 
-
 	/**
 	 * Add a collection of StringTemplates to the template
 	 * @param ts collection of StringTemplates to be added
@@ -116,7 +110,6 @@ public class FileTemplateSingle {
 	public boolean addAllTemplates(Collection <StringTemplate> ts){
 		return this.templates.addAll(ts);
 	}
-
 
 	/**
 	 * Add a collection of imports to the template
@@ -127,7 +120,6 @@ public class FileTemplateSingle {
 		return this.imports.addAll(ts);
 	}
 
-
 	/**
 	 * Add a collection of misc items to the template
 	 * @param ms collection of misc items to be added
@@ -135,7 +127,6 @@ public class FileTemplateSingle {
 	public void putAllMisc(Map <String, String> ms){
 		this.misc.putAll(ms);
 	}
-
 
 	/**
 	 * Return all currently added StringTemplates
@@ -145,7 +136,6 @@ public class FileTemplateSingle {
 		return this.templates;
 	}
 
-
 	/**
 	 * Return all currently added imports
 	 * @return list of imports
@@ -153,7 +143,6 @@ public class FileTemplateSingle {
 	public LinkedHashSet<String> getImports(){
 		return this.imports;
 	}
-
 
 	/**
 	 * Return all currently added misc items
@@ -163,7 +152,6 @@ public class FileTemplateSingle {
 		return this.misc;
 	}
 
-
 	/**
 	 * Return the size of the template list
 	 * @return size
@@ -172,7 +160,6 @@ public class FileTemplateSingle {
 		return this.templates.size();
 	}
 
-
 	/**
 	 * Return the size of the import list
 	 * @return size
@@ -180,7 +167,6 @@ public class FileTemplateSingle {
 	public int sizeImports(){
 		return this.imports.size();
 	}
-
 
 	/**
 	 * Return the size of the misc item list

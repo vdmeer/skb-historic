@@ -64,14 +64,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	/** The local value. */
 	protected LinkedHashMap<String, TSBaseAPI> tsvalue=null;
 
-
 	/**
 	 * Class constructor, initialises local members.
 	 */
 	public TSLinkedHashTree(){
 		this._init();
 	}
-
 
 	/**
 	 * Class constructor, initialises local members.
@@ -82,7 +80,6 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		if(map!=null)
 			this.tsvalue=new LinkedHashMap<String, TSBaseAPI>(map);
 	}
-
 
 	/**
 	 * Local initialisation method.
@@ -100,13 +97,11 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		this.tsvalue=new LinkedHashMap<String, TSBaseAPI>();
 	}
 
-
 	@Override
 	public void clear() {
 		if(this.isInitialised())
 			this.tsvalue.clear();
 	}
-
 
 	@Override
 	public boolean containsKey(List<String> fqpn) {
@@ -124,14 +119,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return false;
 	}
 
-
 	@Override
 	public boolean containsKey(Object key) {
 		if(this.isInitialised())
 			return this.tsvalue.containsKey(key);
 		return false;
 	}
-
 
 	@Override
 	public boolean containsKey(String fqpn) {
@@ -143,14 +136,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return false;
 	}
 
-
 	@Override
 	public boolean containsKey(String[] fqpn) {
 		if(this.isInitialised()&&fqpn!=null&&fqpn.length>0)
 			return this.containsKey(new ArrayList<String>(Arrays.asList(fqpn)));
 		return false;
 	}
-
 
 	@Override
 	public boolean containsKey(TSString fqpn) {
@@ -159,14 +150,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return false;
 	}
 
-
 	@Override
 	public boolean containsValue(Object value) {
 		if(this.isInitialised())
 			return this.tsvalue.containsValue(value);
 		return false;
 	}
-
 
 	@Override
 	public Set<java.util.Map.Entry<String, TSBaseAPI>> entrySet() {
@@ -198,7 +187,6 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return new TSNull();
 	}
 
-
 	@Override
 	public TSBaseAPI get(Object key) {
 		if(this.isInitialised()&&key!=null){
@@ -208,7 +196,6 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		}
 		return new TSNull();
 	}
-
 
 	@Override
 	public TSBaseAPI get(String fqpn) {
@@ -224,14 +211,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return new TSNull();
 	}
 
-
 	@Override
 	public TSBaseAPI get(String[] fqpn) {
 		if(this.isInitialised()&&fqpn!=null&&fqpn.length>0)
 			return this.get(new ArrayList<String>(Arrays.asList(fqpn)));
 		return new TSNull();
 	}
-
 
 	@Override
 	public TSBaseAPI get(TSString fqpn) {
@@ -240,7 +225,6 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return new TSNull();
 	}
 
-
 	@Override
 	public boolean isEmpty() {
 		if(this.isInitialised())
@@ -248,14 +232,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return false;
 	}
 
-
 	@Override
 	public boolean isInitialised() {
 		if(this.tsvalue!=null)
 			return true;
 		return false;
 	}
-
 
 	@Override
 	public Set<String> keySet() {
@@ -267,12 +249,10 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return ret;
 	}
 
-
 	@Override
 	public TSBaseAPI put(ArrayList<String> fqpn, String val) {
 		return this.put(fqpn, new TSString(val));
 	}
-
 
 	@Override
 	public TSBaseAPI put(List<String> fqpn, TSBaseAPI val) {
@@ -291,7 +271,6 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		}
 	}
 
-
 	@Override
 	public TSBaseAPI put(String fqpn, String val) {
 		if(this.isInitialised()){
@@ -301,7 +280,6 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		}
 		return new TSNull();
 	}
-
 
 	@Override
 	public TSBaseAPI put(String fqpn, TSBaseAPI val) {
@@ -313,24 +291,20 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return new TSNull();
 	}
 
-
 	@Override
 	public TSBaseAPI put(String[] fqpn, String val) {
 		return this.put(new ArrayList<String>(Arrays.asList(fqpn)), val);
 	}
-
 
 	@Override
 	public TSBaseAPI put(String[] fqpn, TSBaseAPI val) {
 		return this.put(new ArrayList<String>(Arrays.asList(fqpn)), val);
 	}
 
-
 	@Override
 	public TSBaseAPI put(TSString fqpn, TSBaseAPI val) {
 		return this.put(fqpn.toString(), val);
 	}
-
 
 	@Override
 	public void putAll(Map<? extends String, ? extends TSBaseAPI> map) {
@@ -344,13 +318,11 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		}
 	}
 
-
 	@Override
 	public void putAll(TSTreeAPI map) {
 		if(this.isInitialised()&&map!=null)
 			this.putAll(map.tsGetTree());
 	}
-
 
 	@Override
 	public TSBaseAPI remove(List<String> fqpn) {
@@ -368,14 +340,12 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return new TSNull();
 	}
 
-
 	@Override
 	public TSBaseAPI remove(Object key) {
 		if(this.isInitialised())
 			return this.tsvalue.remove(key);
 		return new TSNull();
 	}
-
 
 	@Override
 	public TSBaseAPI remove(String fqpn) {
@@ -387,18 +357,15 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return new TSNull();
 	}
 
-
 	@Override
 	public TSBaseAPI remove(String[] fqpn) {
 		return this.remove(new ArrayList<String>(Arrays.asList(fqpn)));
 	}
 
-
 	@Override
 	public TSBaseAPI remove(TSString fqpn) {
 		return this.remove(fqpn.toString());
 	}
-
 
 	@Override
 	public int size() {
@@ -407,12 +374,10 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		return 0;
 	}
 
-
 	@Override
 	public String toString(){
 		return this.tsToString(0);
 	}
-
 
 	//TODO
 	@Override

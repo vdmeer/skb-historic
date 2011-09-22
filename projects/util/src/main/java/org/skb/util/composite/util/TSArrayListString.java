@@ -54,7 +54,6 @@ public class TSArrayListString extends TSAtomic implements List<TSString> {
 	/** Local value */
 	protected List<TSString> tsvalue=null;
 
-
 	public TSArrayListString(){
 		this._init();
 		this.tsvalue=new ArrayList<TSString>();

@@ -40,8 +40,8 @@ import org.skb.util.FieldKeys;
 import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.classic.misc.PropertyHandler;
 import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSTableRowAPI;
 import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSTableRowAPI;
 import org.skb.util.composite.util.TSLinkedHashTree;
 import org.skb.util.composite.util.TSPropertyMap;
 
@@ -52,14 +52,11 @@ import org.skb.util.composite.util.TSPropertyMap;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ConfigurationProperties extends TSPropertyMap {
+	/** Logger Instance */
 	static Logger logger = Logger.getLogger(ConfigurationProperties.class);
 
-
-	/**
-	 * To read property pointing to default configuration file
-	 */
+	/** To read property pointing to default configuration file */
 	public Properties config;
-
 
 	/**
 	 * Class constructor, initialises local fields
@@ -69,7 +66,6 @@ public class ConfigurationProperties extends TSPropertyMap {
 		this._trInit("/org/skb/util/config/load.properties");
 	}
 
-
 	/**
 	 * Class constructor, initialises local fields
 	 */
@@ -78,7 +74,7 @@ public class ConfigurationProperties extends TSPropertyMap {
 		this._trInit(propFN);
 	}
 
-
+	//TODO: make this a public method, so that we can return errors (remove all println...)
 	/**
 	 * Initialisation method.
 	 */
@@ -150,7 +146,6 @@ public class ConfigurationProperties extends TSPropertyMap {
 
 		logger.trace("init -- out");
 	}
-
 
 	@Override
 	public ConfigurationProperties tsCopyComposite(){

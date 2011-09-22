@@ -38,8 +38,8 @@ import java.util.LinkedHashMap;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ConfigManager {
+	/** Local list of active configurations */
 	private LinkedHashMap<Class<?>, Configuration> configurations;
-
 
 	/**
 	 * Singleton instance holder
@@ -47,7 +47,6 @@ public class ConfigManager {
 	private static class ConfigManagerHolder{
 		private final static ConfigManager INSTANCE = new ConfigManager();
 	}
-
 
 	/**
 	 * Singleton getInstance
@@ -57,14 +56,12 @@ public class ConfigManager {
 		return ConfigManagerHolder.INSTANCE;
 	}
 
-
 	/**
 	 * Class constructor, private for singleton
 	 */
 	private ConfigManager(){
 		this.configurations=new LinkedHashMap<Class<?>, Configuration>();
 	}
-
 
 	/**
 	 * Returns a configuration identified by a class name.

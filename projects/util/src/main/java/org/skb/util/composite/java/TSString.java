@@ -90,7 +90,6 @@ public class TSString extends TSAtomic{
 		return TSString.tsAddChar(str, ",");
 	}
 
-
 	/**
 	 * Adds the given character with a blank to the given string of the string is not empty and does not end with the given character, "" otherwise
 	 * @param str string to test for
@@ -105,7 +104,6 @@ public class TSString extends TSAtomic{
 		}
 		return "";	
 	}
-
 
 	public static java.lang.String tsAddFirstChar(TSString str, TSString chr){
 		if (str.tsvalue.length()==0){
@@ -150,10 +148,8 @@ public class TSString extends TSAtomic{
 		return java.lang.String.valueOf(obj);
 	}
 
-
 	/** Local value */
 	public java.lang.String tsvalue;
-
 
 	/**
 	 * Creates a new empty OatString.
@@ -211,7 +207,6 @@ public class TSString extends TSAtomic{
 		if(s!=null)
 			this.tsvalue=new java.lang.String(s.tsvalue);
 	}
-
 
 	/**
 	 * Local initialisation method.
@@ -285,11 +280,9 @@ public class TSString extends TSAtomic{
 		}
 	}
 
-
 	public void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin){
 		this.tsvalue.getChars(srcBegin, srcEnd, dst, dstBegin);
 	}
-
 
 	public int indexOf(int ch){
 		return this.tsvalue.indexOf(ch);
@@ -420,7 +413,6 @@ public class TSString extends TSAtomic{
 		return this.tsvalue.trim();
 	}
 
-
 	/**
 	 * Parses the local String and 'explodes' it into a map or list object, depending on the contents of the String.
 	 * 
@@ -452,25 +444,21 @@ public class TSString extends TSAtomic{
 		}
 	}
 
-
 	@Override
 	public final List<String> tsGetTypeStringList(){
 		return this.typeString;
 	}
-
 
 	public String tsHtml2LaTeX(){
 		Html2LaTeX dict=Html2LaTeX.getInstance();
 		return dict.translate(this.tsvalue);
 	}
 
-
 	@Override
 	public void tsPlus(TSBaseAPI tb){
 		if(tb!=null)
 			this.tsvalue=this.tsvalue+tb.toString();
 	}
-
 
 	@Override
 	public java.lang.String tsToString(int indent){
@@ -481,12 +469,10 @@ public class TSString extends TSAtomic{
 		return ret;
 	}
 
-
 	@Override
 	public void tsTrim(){
 		this.tsvalue=this.tsvalue.trim();
 	}
-
 
 	@Override
 	public TSString tsCopyAtomic(){

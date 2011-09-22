@@ -53,22 +53,14 @@ public class FindPackageDirectories extends DirectoryWalker {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(FindPackageDirectories.class);
 
-
-	/**
-	 * The SKB site id
-	 */
+	/** The SKB site id */
 	private String site_id;
-
 
 //    private static IOFileFilter filter = FileFilterUtils.and(FileFilterUtils.fileFileFilter(),
 //            FileFilterUtils.suffixFileFilter(".json"));
 
-	/**
-	 * Filter object for IO operations
-	 */
-	private static IOFileFilter filter = 
-        FileFilterUtils.and(FileFilterUtils.directoryFileFilter(), HiddenFileFilter.VISIBLE);
-
+	/** Filter object for IO operations */
+	private static IOFileFilter filter=FileFilterUtils.and(FileFilterUtils.directoryFileFilter(), HiddenFileFilter.VISIBLE);
 
 	/**
 	 * Class constructor, initialises private members
@@ -77,7 +69,6 @@ public class FindPackageDirectories extends DirectoryWalker {
 		super(filter, -1);
 		this.site_id="";
 	}
-
 
 	/**
 	 * Set the site ID
@@ -91,7 +82,6 @@ public class FindPackageDirectories extends DirectoryWalker {
 			ret=false;
 		return ret;
 	}
-
 
 	/**
 	 * Walk directory <dir> and collect names of all text files
@@ -109,7 +99,6 @@ public class FindPackageDirectories extends DirectoryWalker {
 		return results;
 	}
 
-
 	/**
 	 * Walk directory <dir> and collect names of all text files
 	 * @param dir start directory
@@ -120,7 +109,6 @@ public class FindPackageDirectories extends DirectoryWalker {
 			return new ArrayList<String>();
 		return this.getTxtFiles(new File(dir));
 	}
-
 
 	protected boolean handleDirectory(File directory, int depth, Collection results){
 		String fn=new String();

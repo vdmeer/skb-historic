@@ -62,12 +62,10 @@ public class TSPropertyMap extends TSTable{
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSPropertyMap.class);
 
-
 	public TSPropertyMap(){
 		super();
 		this._initPM();
 	}
-
 
 	public TSPropertyMap(HashSet<String>rows){
 		super();
@@ -75,13 +73,11 @@ public class TSPropertyMap extends TSTable{
 		this.addRows(rows);
 	}
 
-
 	public TSPropertyMap(String ref_class, String rowPrefix){
 		super();
 		this._initPM();
 		this.addRows(ref_class, rowPrefix);
 	}
-
 
 	protected void _initPM(){
 		this.tsvalue=new LinkedHashMap <String, TSTableRowAPI>();
@@ -105,7 +101,6 @@ public class TSPropertyMap extends TSTable{
 		this.typeEnum.add(TEnum.TS_COMPOSITE_PROPERTY_MAP);
 	}
 
-
 	public void addProperties(TSPropertyMap map){
 		Collection<String> values = map.getRows();
 		for (Iterator<String> i = values.iterator(); i.hasNext(); ){
@@ -114,7 +109,6 @@ public class TSPropertyMap extends TSTable{
         }
 	}
 
-
 	public void addProperties(TSTable table){
 		Collection<String> values=table.getRows();
 		for (Iterator<String>i=values.iterator(); i.hasNext();){
@@ -122,7 +116,6 @@ public class TSPropertyMap extends TSTable{
 			this.put(s, table.get(s));
         }
 	}
-
 
 	public TSBaseAPI getValue(String key){
 		if(!this.containsKey(key))

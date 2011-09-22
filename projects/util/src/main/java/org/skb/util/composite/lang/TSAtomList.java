@@ -73,7 +73,6 @@ public class TSAtomList extends TSTable {
 	/** Reportmanager instance, used to set file name for atoms */
 	private TSReportManager reportMgr=null;
 
-
 	/**
 	 * Class constructor
 	 */
@@ -81,7 +80,6 @@ public class TSAtomList extends TSTable {
 		super();
 		this._initAL();
 	}
-
 
 //	public AtomList(HashSet<String>rows){
 //		super();
@@ -94,7 +92,6 @@ public class TSAtomList extends TSTable {
 //		this._init();
 //		this.addRows(ref_class, rowPrefix);
 //	}
-
 
 	/**
 	 * Initialises the atom list, create the table and set default values.
@@ -115,7 +112,6 @@ public class TSAtomList extends TSTable {
 		this.imports=new TreeMap<String, LinkedHashMap<String, String>>();
 	}
 
-
 	/**
 	 * Set the report manager
 	 * @param rm Report Manager instance
@@ -123,7 +119,6 @@ public class TSAtomList extends TSTable {
 	public void setReportMgt(TSReportManager rm){
 		this.reportMgr=rm;
 	}
-
 
 	/**
 	 * Sets the specification name, which is the root of an atom list hierarchy
@@ -133,7 +128,6 @@ public class TSAtomList extends TSTable {
 		this.specificationName=s;
 	}
 
-
 	/**
 	 * Sets the specification name, which is the root of an atom list hierarchy
 	 * @param tk the new specification name as ANTLR token, getText is used to get the string
@@ -141,7 +135,6 @@ public class TSAtomList extends TSTable {
 	public void specificationName(Token tk){
 		this.specificationName=tk.getText();
 	}
-
 
 	/**
 	 * Returns the specification name, which is the root of an atom list hierarchy
@@ -151,7 +144,6 @@ public class TSAtomList extends TSTable {
 		return this.specificationName;
 	}
 
-
 	/**
 	 * Sets the scope separator.
 	 * @param s the new scope separator
@@ -160,7 +152,6 @@ public class TSAtomList extends TSTable {
 		this.scope.separator(s);
 	}
 
-
 	/**
 	 * Gets the scope separator.
 	 * return the current scope separator
@@ -168,7 +159,6 @@ public class TSAtomList extends TSTable {
 	public String getScopeSeparator(){
 		return this.scope.separator();
 	}
-
 
 	/**
 	 * Adds a new atom to the list.
@@ -181,7 +171,6 @@ public class TSAtomList extends TSTable {
 		return this.putAtom(tk, category, null);
 	}
 
-
 	/**
 	 * Adds a new atom to the list.
 	 * @param tk the ANTLR token of the atom
@@ -193,7 +182,6 @@ public class TSAtomList extends TSTable {
 	public TSTableRowAPI putAtom(Token tk, String category, Token type){
 		return this.putAtom(tk, category, type, false);
 	}
-
 
 	/**
 	 * Adds a new atom to the list.
@@ -231,7 +219,6 @@ public class TSAtomList extends TSTable {
 		return this.get(id);
 	}
 
-
 	/**
 	 * Adds an import to the list of imports.
 	 * @param sn the import as scoped name
@@ -239,7 +226,6 @@ public class TSAtomList extends TSTable {
 	public void addImport(String sn){
 		this.imports.get(this.scope.toString()).put(sn,this.get(sn,TSAtomList.alValCategory).toString());
 	}
-
 
 	/**
 	 * Adds a list of imports to the list of imports
@@ -249,7 +235,6 @@ public class TSAtomList extends TSTable {
 	public void addImportsAll(String row, Map <String, String> m){
 		this.imports.get(row).putAll(m);
 	}
-
 
 	/**
 	 * Adds a string template to a language atom
@@ -261,7 +246,6 @@ public class TSAtomList extends TSTable {
 			this.put(row, TSAtomList.alValST, new TSStringTemplate(st));
 	}
 
-
 	/**
 	 * Adds a string template to a language atom
 	 * @param st
@@ -269,7 +253,6 @@ public class TSAtomList extends TSTable {
 	public void addST(StringTemplate st){
 		this.addST(this.scope.toString(),st);
 	}
-
 
 	/**
 	 * Returns a list of of strings (categories) and the atoms defined for each of them.
@@ -289,7 +272,6 @@ public class TSAtomList extends TSTable {
 		return ret;
 	}
 
-
 	/**
 	 * Returns the number of atoms in the list
 	 * @return size of the atom list
@@ -297,7 +279,6 @@ public class TSAtomList extends TSTable {
 	public Integer noOfAtoms(){
 		return this.size();
 	}
-
 
 	/**
 	 * Returns import list 
@@ -308,7 +289,6 @@ public class TSAtomList extends TSTable {
 		return this.imports.get(row);
 	}
 
-
 	/**
 	 * Gets last atom in the current scope.
 	 * @return id of the last atom the the current scope
@@ -316,7 +296,6 @@ public class TSAtomList extends TSTable {
 	public String getLastID(){
 		return this.scope.lastElement();
 	}
-
 
 	/**
 	 * Removes all language atoms of a given category
@@ -339,7 +318,6 @@ public class TSAtomList extends TSTable {
         	this.remove(removeList.get(i));
 	}
 
-
 	/**
 	 * Returns the string template of a language atom
 	 * @param row atom the read the template for
@@ -352,7 +330,6 @@ public class TSAtomList extends TSTable {
 			ret=((TSStringTemplate)st);
 		return ret;
 	}
-
 
 	/**
 	 * Returns the ANTLR runtime token for the given atom (row) and column
@@ -367,7 +344,6 @@ public class TSAtomList extends TSTable {
 			ret=((TSToken)ata);
 		return (Token)ret;
 	}
-
 
 	/**
 	 * Returns the category of the parent atom for the atom with name 's'.
@@ -384,7 +360,6 @@ public class TSAtomList extends TSTable {
 		return this.get(par, TSAtomList.alValCategory).toString();
 	}
 
-
 	/**
 	 * Returns the name (identifier) of the parent atom for the atom with name 's'.
 	 * @param s name of the atom
@@ -399,7 +374,6 @@ public class TSAtomList extends TSTable {
 		String par=ret.substring(0,ret.lastIndexOf(this.scope.separator()));
 		return par;
 	}
-
 
 	/**
 	 * Sets the default category.

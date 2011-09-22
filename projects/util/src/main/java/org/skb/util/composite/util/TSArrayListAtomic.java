@@ -55,7 +55,6 @@ public class TSArrayListAtomic extends TSAtomic implements List<TSAtomicAPI> {
 	/** Local value */
 	protected List<TSAtomicAPI> tsvalue=null;
 
-
 	public TSArrayListAtomic(){
 		this._init();
 		this.tsvalue=new ArrayList<TSAtomicAPI>();

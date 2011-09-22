@@ -54,9 +54,13 @@ public class TSReportManager extends TSAtomic {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSReportManager.class);
 
-	/** Report Manager Logger instances */
+	/** Report Manager Logger instance for normal information */
 	public final static Logger reportInfo=Logger.getLogger(ConfigKeys.configLoggerReportmanagerInfo);
+
+	/** Report Manager Logger instance for error messages */
 	public final static Logger reportError=Logger.getLogger(ConfigKeys.configLoggerReportmanagerErrors);
+
+	/** Report Manager Logger instance for warnings */
 	public final static Logger reportWarn=Logger.getLogger(ConfigKeys.configLoggerReportmanagerWarnings);
 
 	/** Number of reported errors */
@@ -89,7 +93,6 @@ public class TSReportManager extends TSAtomic {
 	public TSReportManager(){
 		this._init();
 	}
-
 
 	public TSReportManager(TSReportManager rm){
 		this._init();

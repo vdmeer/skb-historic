@@ -90,7 +90,6 @@ public class TSSTGroupManager extends TSAtomic {
 
 	//TODO sequence of load/testChunks is still important, should not be! needs to have two values: STG loaded and STG tested!
 
-
 	/**
 	 * Class constructor, initialises local fields.
 	 */

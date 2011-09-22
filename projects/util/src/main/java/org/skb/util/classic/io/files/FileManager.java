@@ -79,7 +79,6 @@ public class FileManager {
 	/** Boolean determining if files can be printed or not, default is false */
 	private TSBoolean canPrint;
 
-
 	/**
 	 * Class constructor, requires code header, file start and file end paramters
 	 * @param codeHeader the header to be added to each code file
@@ -94,14 +93,13 @@ public class FileManager {
 		this.canPrint=new TSBoolean((false));
 	}
 
-
 	/**
 	 * Initialisation of the File Manager
 	 * @param srcLang source language
 	 * @param srcFile source file name
 	 * @param tgtLang target language
 	 * @param tgtFileExt target file extension
-	 * @param canPrint can print boolean
+	 * @param doPrint can print boolean
 	 */
 	public void init(TSBaseAPI srcLang, TSBaseAPI srcFile, TSBaseAPI tgtLang, TSBaseAPI tgtFileExt, TSBaseAPI doPrint){
 		if(srcLang!=null)
@@ -119,7 +117,6 @@ public class FileManager {
 			this.canPrint=new TSBoolean((false));
 	}
 
-
 	/**
 	 * Write the given file list
 	 * @param list list of file names and associated templates
@@ -134,7 +131,6 @@ public class FileManager {
 			this.writeSingleFileFromList(list.getDir(e.getKey()), list.getFile(e.getKey())+this.targetFileExtension, e.getValue());
 		return true;
 	}
-
 
 	/**
 	 * Write a single file
@@ -180,7 +176,6 @@ public class FileManager {
 		return true;
 	}
 
-
 	/**
 	 * Return the current status of <canPrint>
 	 * @return current print status
@@ -188,7 +183,6 @@ public class FileManager {
 	public boolean canPrint(){
 		return this.canPrint.tsvalue;
 	}
-
 
 	/**
 	 * Return the standard header
@@ -239,7 +233,6 @@ public class FileManager {
 		return ret;
 	}
 
-
 	/**
 	 * Compile and return the standard pre-text of a file
 	 * @return text to be used as pre-text
@@ -261,7 +254,6 @@ public class FileManager {
 		}
 		return ret;
 	}
-
 
 	/**
 	 * Compile and return the standard pre-text of a file

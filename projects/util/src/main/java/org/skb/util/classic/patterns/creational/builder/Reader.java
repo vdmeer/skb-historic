@@ -45,7 +45,6 @@ public interface Reader {
 	 */
 	public void setBuilder(Builder builder);
 
-
 	/**
 	 * Prepare (reader only) and Execute (reader and builder).
 	 * 
@@ -54,7 +53,6 @@ public interface Reader {
 	 * @param request the request object to parameterise the method
 	 */
 	public void prepareAndExecute(Request request);
-
 
 	/**
 	 * Prepare the reader.
@@ -65,7 +63,6 @@ public interface Reader {
 	 * @param request the request object to parameterise the method
 	 */
 	public void prepare(Request request);
-
 
 	/**
 	 * Local Prepare method.
@@ -78,13 +75,11 @@ public interface Reader {
 	 */
 	public void prepareLoop(Request request, TSString table, TSString table_collections);
 
-
 	/**
 	 * Return the current array of entries.
 	 * @return entries array
 	 */
 	public TSLinkedHashTree getEntries();
-
 
 	/**
 	 * Execute the reader and the builder.
@@ -94,7 +89,6 @@ public interface Reader {
 	 * @param request the request object to parameterise the method
 	 */
 	public void execute(Request request);
-
 
 	/**
 	 * Local Execute method.
