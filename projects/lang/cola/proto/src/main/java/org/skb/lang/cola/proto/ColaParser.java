@@ -46,11 +46,7 @@ import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.TribeParserAPI;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.java.TSBoolean;
 
 /**
  * Cola Parser, implementing tribe's parser API.

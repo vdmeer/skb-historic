@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
 import org.skb.tribe.Tribe;
 import org.skb.tribe.LangParserImpl;
 import org.skb.util.classic.lang.LangParserAPI;
-import org.skb.util.classic.log.LogManager;
+import org.skb.util.classic.misc.LogManager;
 
 /**
  * General entry point for Glue parsing.
