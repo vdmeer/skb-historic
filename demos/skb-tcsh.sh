@@ -31,5 +31,6 @@ skblang="java -classpath \"${java_clp}\" org.skb.lang.skblang.SkbLang"
 #echo "${cola} -s cola -t sql -f mama.cola --no-warnings --gc --tgt-dir ./gc/" > cola.sh
 #chmod 755 cola.sh
 
-echo "${skblang} \$*" > skblang.sh
-chmod 755 skblang.sh
+echo "${skblang} \$*" > demo.sh
+chmod 755 demo.sh
+
