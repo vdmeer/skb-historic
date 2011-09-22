@@ -39,7 +39,7 @@ import junit.framework.TestSuite;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.skb.util.classic.log.LogManager;
+import org.skb.util.classic.misc.LogManager;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.TSRepository.TString;
