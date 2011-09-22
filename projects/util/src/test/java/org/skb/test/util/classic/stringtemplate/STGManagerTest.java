@@ -1,4 +1,4 @@
-package org.skb.test.util.stringtemplate;
+package org.skb.test.util.classic.stringtemplate;
 
 import junit.framework.TestCase;
 
