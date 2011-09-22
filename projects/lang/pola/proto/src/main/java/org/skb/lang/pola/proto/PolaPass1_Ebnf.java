@@ -51,7 +51,6 @@ public class PolaPass1_Ebnf {
 	/** Atom List (Symbol Table) */
 	public TSAtomList atoms;
 
-
 	/**
 	 * Class constructor, initialises the atom list (symbol table) and other local fields
 	 */

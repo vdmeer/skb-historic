@@ -86,7 +86,6 @@ public class PolaPass2_Ast {
 		this.setLastCommonValue(value);
 	}
 
-
 	public boolean testSN(String category, String catElem){
 		boolean ret=true;
 		if(this.sn.size()==0)

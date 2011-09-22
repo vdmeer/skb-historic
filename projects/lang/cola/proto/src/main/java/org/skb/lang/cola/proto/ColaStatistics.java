@@ -175,7 +175,6 @@ public class ColaStatistics {
 		}
 	}
 
-
 	private void _printCompleteStatisticArray(String s, ArrayList<String> ar, StringTemplate template, boolean scope) {
 		template.setAttribute("text", s);
 		if(scope==true){

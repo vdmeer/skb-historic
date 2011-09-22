@@ -64,48 +64,40 @@ public class PolaParser implements TribeParserAPI {
 		config.addLangRuleMap();
 	}
 
-
 	@Override
 	public String getConfigurationFile() {
 		return "/org/skb/lang/pola/proto/proto.json";
 	}
-
 
 	@Override
 	public String getSourceLanguage() {
 		return "pola";
 	}
 
-
 	@Override
 	public Configuration getConfiguration(){
 		return config;
 	}
-
 
 	@Override
 	public String getLangRuleClassName(){
 		return PolaConstants.Rules.class.getName();
 	}
 
-
 	@Override
 	public String getLangRuleKeyword(){
 		return "rule";
 	}
-
 
 	@Override
 	public String getOptionClassName() {
 		return PolaConstants.Properties.class.getName();
 	}
 
-
 	@Override
 	public Lexer pass1GetLexer(ANTLRInputStream input) {
 		return new polaEbnfLexer(input);
 	}
-
 
 	@Override
 	public CommonTree pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
@@ -113,13 +105,11 @@ public class PolaParser implements TribeParserAPI {
 		return (CommonTree)parser.polaSpecification().getTree();
 	}
 
-
 	@Override
 	public CommonTree pass2Ast(CommonTreeNodeStream nodesForAst) throws RecognitionException {
 		polaAst ast=new polaAst(nodesForAst);
 		return (CommonTree)ast.polaSpecification().getTree();
 	}
-
 
 	@Override
 	public void pass3CodeGen(CommonTreeNodeStream nodesForGen, StringTemplateGroup stg) throws RecognitionException {
@@ -128,18 +118,15 @@ public class PolaParser implements TribeParserAPI {
 		gen.polaSpecification();
 	}
 
-
 	@Override
 	public FileTemplateList pass4Files() {
 		PolaPass4_Files cfm=new PolaPass4_Files();
 		return cfm.getFileTemplateList();
 	}
 
-
 	@Override
 	public void finish() {
 	}
-
 
 	@Override
 	public String getOptionKeyword() {

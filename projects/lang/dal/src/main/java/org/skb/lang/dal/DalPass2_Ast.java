@@ -66,7 +66,6 @@ public class DalPass2_Ast {
 		this.atoms.scope.clear();
 	}
 
-
 	public void testAtom(Token tk){
 		this.atoms.scope.push(tk);
 		String atomScope=this.atoms.scope.toString();

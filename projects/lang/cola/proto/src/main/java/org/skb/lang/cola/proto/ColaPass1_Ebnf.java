@@ -99,7 +99,6 @@ public class ColaPass1_Ebnf {
 	/** ID of last parsed item property rank */
 	private String lastItemPropRank=null;
 
-
 	/**
 	 * Class constructor, initialises the atom list (symbol table) and other local fields
 	 */
@@ -123,7 +122,6 @@ public class ColaPass1_Ebnf {
 		this.reportManager=config.getReportManager();
 	}
 
-
 	/**
 	 * Stores the last parsed property scope in a property declaration if it not exists, logs error if is already defined
 	 * @param atom to be checked and stored
@@ -137,7 +135,6 @@ public class ColaPass1_Ebnf {
 		}
 	}
 
-
 	/**
 	 * Adds the parsed rank to the last parsed atom for a property scope declaration.
 	 * @param rank to be stored
@@ -145,7 +142,6 @@ public class ColaPass1_Ebnf {
 	public void addPropertyDeclScopeRank(Token rank){
 		this.propertyDeclScope.put(this.lastPropertyDeclScopeAtom,rank.getText());
 	}
-
 
 	/**
 	 * Finishes the property scope declaration and empties the temporary property scope list.
@@ -160,7 +156,6 @@ public class ColaPass1_Ebnf {
 		this.propertyDeclList.add(this._getPropertyRankForScope(ColaConstants.Tokens.colaPARAMETER), ColaConstants.Tokens.colaPARAMETER, this.atoms.scope.toString());
 		this.propertyDeclScope.clear();
 	}
-
 
 	/**
 	 * Returns the rank for a given property scope
@@ -190,7 +185,6 @@ public class ColaPass1_Ebnf {
 		}
 	}
 
-
 	/**
 	 * Adds the parsed rank to the last parsed atom for a contract scope declaration.
 	 * @param rank to be stored
@@ -198,7 +192,6 @@ public class ColaPass1_Ebnf {
 	public void addContractDeclScopeRank(Token rank){
 		this.contractDeclScope.put(this.lastContractDeclScopeAtom,rank.getText());
 	}
-
 
 	/**
 	 * Finishes the contract scope declaration and empties the temporary contract scope list.
@@ -208,7 +201,6 @@ public class ColaPass1_Ebnf {
 		this.contractDeclList.add(this._getContractRankForScope(ColaConstants.Tokens.colaFACILITY),  ColaConstants.Tokens.colaFACILITY,  this.atoms.scope.toString());
 		this.contractDeclScope.clear();
 	}
-
 
 	/**
 	 * Returns the rank for a given contract scope
@@ -224,14 +216,12 @@ public class ColaPass1_Ebnf {
 		return ret;
 	}
 
-
 	/**
 	 * Clears the list of temporary stored property identifiers.
 	 */
 	public void identsStart(){
 		this.tempPropIdents.clear();
 	}
-
 
 	/**
 	 * Adds a token to the list of temporary stored property identifiers.
@@ -240,7 +230,6 @@ public class ColaPass1_Ebnf {
 	private void _identsAdd(Token token){
 		this.tempPropIdents.add(token.getText());
 	}
-
 
 	/**
 	 * Checks and adds a token to the list of temporary stored property identifiers.
@@ -256,7 +245,6 @@ public class ColaPass1_Ebnf {
 			this._identsAdd(token);
 	}
 
-
 	/**
 	 * Checks and adds a token to the list of temporary stored property identifiers.
 	 * 
@@ -271,14 +259,12 @@ public class ColaPass1_Ebnf {
 			this._identsAdd(token);
 	}
 
-
 	/**
 	 * Clears the list of temporary stored contract identifiers.
 	 */
 	public void contIdentsStart(){
 		this.tempContIdents.clear();
 	}
-
 
 	/**
 	 * Checks and adds a token to the list of temporary stored contract identifiers.
@@ -293,7 +279,6 @@ public class ColaPass1_Ebnf {
 			this.tempContIdents.add(token.getText());
 	}
 
-
 	/**
 	 * Adds a property declaration parsed within an Item of a Contract to the contract declaration list.
 	 * @param property to be added
@@ -302,14 +287,12 @@ public class ColaPass1_Ebnf {
 		this.contractDeclList.addItemDecl(this.lastContract, this.lastItem, property, this.lastItemPropRank);
 	}
 
-
 	/**
 	 * Stores the last parsed Identifier as a contract identifier.
 	 */
 	public void lastContract(){
 		this.lastContract=this.atoms.getLastID();
 	}
-
 
 	/**
 	 * Stores the last parsed Identifier as an item identifier.
@@ -318,7 +301,6 @@ public class ColaPass1_Ebnf {
 		this.lastItem=this.atoms.getLastID();
 	}
 
-
 	/**
 	 * Stores the last parsed item property rank.
 	 * @param rank to be stored
@@ -326,7 +308,6 @@ public class ColaPass1_Ebnf {
 	public void lastItemPropRank(Token rank){
 		this.lastItemPropRank=rank.getText();
 	}
-
 
 	/**
 	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
@@ -342,7 +323,6 @@ public class ColaPass1_Ebnf {
 		}
 	}
 
-
 	/**
 	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
 	 * @param token of the atom
@@ -351,7 +331,6 @@ public class ColaPass1_Ebnf {
 	public void putAtom(Token token, String category){
 		this.putAtom(token, category, null);
 	}
-
 
 	/**
 	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
@@ -362,5 +341,4 @@ public class ColaPass1_Ebnf {
 	public void putAtom(Token token, String category, Token type){
 		this.putAtom(token, category, type, false);
 	}
-
 }

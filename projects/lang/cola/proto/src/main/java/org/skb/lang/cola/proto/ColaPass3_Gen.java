@@ -163,7 +163,6 @@ public class ColaPass3_Gen {
 		return null;
 	}
 
-
 	public TreeMap<String,String> genMiscAttribute(){return this. genMiscAttribute(null, null);}
 	
   	//keep key and cat null if you want to use current values or use overload function below

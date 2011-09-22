@@ -99,7 +99,6 @@ public class ColaPass2_Ast {
 	//for ContDef checks
 	private LinkedHashMap<String, ArrayList<String>>contDefList=new LinkedHashMap<String, ArrayList<String>>();
 
-
 	/**
 	 * Class construtor, intialises local fields.
 	 */
@@ -118,7 +117,6 @@ public class ColaPass2_Ast {
 		this.reportManager=config.getReportManager();
 	}
 
-
 	/**
 	 * Clears current EPR atom and sets it to the new atom
 	 * @param atom new EPR atom
@@ -128,7 +126,6 @@ public class ColaPass2_Ast {
 		this.eprAtom(atom);
 	}
 
-
 	/**
 	 * Changes the EPR atom
 	 * @param atom new EPR atom
@@ -136,7 +133,6 @@ public class ColaPass2_Ast {
 	public void eprAtom(String atom){
 		this.eprAtom=atom;
 	}
-
 
 	/**
 	 * Sets the EPR category
@@ -146,7 +142,6 @@ public class ColaPass2_Ast {
 		this.eprCategory=cat;
 	}
 
-
 	/**
 	 * Clears all EPR fields (categroy, atoms and epr list).
 	 */
@@ -155,7 +150,6 @@ public class ColaPass2_Ast {
 		this.eprAtom="";
 		this.eprList.clear();
 	}
-
 
 	/**
 	 * Adds to the EPR list and tests the EPR declarations for Properties, Elements and Facilities
@@ -174,7 +168,6 @@ public class ColaPass2_Ast {
 			this.eprList.put(epr, this.eprCategory);
 	}
 
-
 	// temp Type and Value for testing
 	/**
 	 * Sets temporary type field
@@ -184,7 +177,6 @@ public class ColaPass2_Ast {
 		this.lastBaseType=tk;
 	}
 
-
 	/**
 	 * Sets last value of parsed common value.
 	 * @param tk new value
@@ -193,7 +185,6 @@ public class ColaPass2_Ast {
 		this.lastCommonValue=tk;
 	}
 
-
 	/**
 	 * Sets last type of parsed common value.
 	 * @param tk new type
@@ -201,7 +192,6 @@ public class ColaPass2_Ast {
 	public void setLastCommonValueType(Token tk){
 		this.lastCommonValueType=tk;
 	}
-
 
 	/**
 	 * Sets last parsed common value and type.
@@ -212,7 +202,6 @@ public class ColaPass2_Ast {
 		this.setLastCommonValueType(type);
 		this.setLastCommonValue(value);
 	}
-
 
 	/**
 	 * tests base type with constant value
@@ -233,7 +222,6 @@ public class ColaPass2_Ast {
 		}
 	}
 
-
 	//test property declaration description, must be string and non-empty
 	/**
 	 * 
@@ -246,14 +234,12 @@ public class ColaPass2_Ast {
 		}
 	}
 
-
 	/**
 	 * 
 	 */
 	public void propDefListStart(){
 		this.propDefList.clear();
 	}
-
 
 	/**
 	 * 
@@ -288,14 +274,12 @@ public class ColaPass2_Ast {
 		}
 	}
 
-
 	/**
 	 * 
 	 */
 	public void propDefValueStart(){
 		this.propDefListValues=0;
 	}
-
 
 	/**
 	 * 
@@ -320,7 +304,6 @@ public class ColaPass2_Ast {
 		}
 		this.propDefListValues++;
 	}
-
 
 	/**
 	 * 
@@ -366,7 +349,6 @@ public class ColaPass2_Ast {
 		}
 	}
 
-
 	/**
 	 * 
 	 */
@@ -394,14 +376,12 @@ public class ColaPass2_Ast {
 		}
 	}
 
-
 	/**
 	 * 
 	 */
 	public void contDefListStart(){
 		this.contDefList.clear();
 	}
-
 
 	/**
 	 * 
@@ -425,7 +405,6 @@ public class ColaPass2_Ast {
 		//add contract, regardless of errors, to continue parsing (can help to catch multiple errors in one compile iteration and should not break anything)
 		this.contDefList.put(scoped, new ArrayList<String>());
 	}
-
 
 	/**
 	 * 
@@ -469,7 +448,6 @@ public class ColaPass2_Ast {
 		}
 	}
 
-
 	/**
 	 * 
 	 * @param item
@@ -479,7 +457,6 @@ public class ColaPass2_Ast {
 		this.contDefList.get(this.sn.toString()).add(item.getText());
 		this.itemDefList.clear();
 	}
-
 
 	/**
 	 * 
@@ -504,14 +481,12 @@ public class ColaPass2_Ast {
 			this.itemDefList.put(new String(scoped), this.sn.getList());
 	}
 
-
 	/**
 	 * 
 	 */
 	public void itemDefValueStart(){
 		this.itemDefListValues=0;
 	}
-
 
 	/**
 	 * 
@@ -537,7 +512,6 @@ public class ColaPass2_Ast {
 		}
 		this.itemDefListValues++;
 	}
-
 
 	/**
 	 * 
@@ -584,7 +558,6 @@ public class ColaPass2_Ast {
 		}
 	}
 
-
 	/**
 	 * 
 	 */
@@ -610,7 +583,6 @@ public class ColaPass2_Ast {
 		}
 		this.currentItemDef=null;
 	}
-
 
 	/**
 	 * Tests a scoped name 

@@ -46,7 +46,6 @@ public class Glue {
 	/** logger instance */
 	static Logger logger;
 
-
 	/**
 	 * Main method to execute the GLUE-Proto parser with arguments.
 	 * @param args arguments for execution, usually command line arguments

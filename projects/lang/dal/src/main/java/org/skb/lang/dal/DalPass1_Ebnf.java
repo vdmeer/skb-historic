@@ -53,7 +53,6 @@ public class DalPass1_Ebnf {
 	/** Atom List (Symbol Table) */
 	public TSAtomList atoms;
 
-
 	/**
 	 * Class constructor, initialises the atom list (symbol table) and other local fields
 	 */
@@ -61,7 +60,6 @@ public class DalPass1_Ebnf {
 		this.atoms=config.getAtomlist();
 		this.atoms.setScopeSeparator(config.getProperties().getValueDefault("internal-scope-sep").toString());
 	}
-
 
 	/**
 	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.
@@ -75,7 +73,6 @@ public class DalPass1_Ebnf {
 			config.getReportManager().error(DalConstants.Tokens.parserIDENTIFIER+" used more than once", token, DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
 		}
 	}
-
 
 	/**
 	 * Puts a new atom into the Atom List (Symbol Table), loggs an error if Atom already exists.

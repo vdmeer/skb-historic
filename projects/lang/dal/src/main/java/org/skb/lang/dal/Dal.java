@@ -46,7 +46,6 @@ public class Dal{
 	/** Logger instance */
 	static Logger logger;
 
-
 	/**
 	 * Main method to execute the DAL parser with arguments.
 	 * @param args arguments for execution, usually command line arguments

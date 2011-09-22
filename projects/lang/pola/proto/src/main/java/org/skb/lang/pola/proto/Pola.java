@@ -46,7 +46,6 @@ public class Pola {
 	/** Logger instance */
 	static Logger logger;
 
-
 	/**
 	 * Main method to execute the COLA-Proto parser with arguments.
 	 * @param args arguments for execution, usually command line arguments
