@@ -57,11 +57,9 @@ public class Json2Oat {
 	public final static Logger logger=Logger.getLogger(Json2Oat.class);
 
 	/**
-	 * Class constructor, empty
+	 * Class constructor, empty.
 	 */
-	public Json2Oat(){
-	}
-
+	public Json2Oat(){}
 
 	/**
 	 * Reads the given JSON file and logs errors.
@@ -80,7 +78,6 @@ public class Json2Oat {
 		return null;
 	}
 
-
 	/**
 	 * Reads the JSON from the given file name (URL) and logs errors.
 	 * @param url file name, will be used as URL
@@ -95,7 +92,6 @@ public class Json2Oat {
 			return null;
 		}
 	}
-
 
 	/**
 	 * Reads JSON from the input scanner and transform into an TSMapLH and logs errors.
@@ -120,7 +116,6 @@ public class Json2Oat {
 		return this.s2o(content);
 	}
 
-
 	/**
 	 * Transforms the given JSON string into a TSBase object
 	 * @param content JSON string
@@ -139,7 +134,6 @@ public class Json2Oat {
 		}
 		return null;
 	}
-
 
 	/**
 	 * Recurses through the given node and constructs a TSBase return.

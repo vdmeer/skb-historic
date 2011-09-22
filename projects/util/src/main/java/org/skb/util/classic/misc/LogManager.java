@@ -27,45 +27,36 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.misc;
-
-import java.io.IOException;
-import java.util.Properties;
+package org.skb.util.classic.log;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.xml.DOMConfigurator;
 
 /**
- * Simple class that loads properties.
+ * Initialises Log4 using the log4.xml configuration in the local resources or environment variable SKB_LOG4_CONFIG_XML
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class PropertyHandler {
-	/** Logger instance */
-	public final static Logger logger=Logger.getLogger(PropertyHandler.class);
-
+public class LogManager {
 	/**
-	 * Class constructor, empty.
+	 * Initialise Log4
+	 * 
+	 * This method first looks for the environment variable SKB_LOG4_CONFIG_XML and tries to open the configuration 
+	 * file given there (XML format only). If no file given (or file not readable), the method will use the 
+	 * log4 configuration file <log4.xml> from the local resource folder.
 	 */
-	public PropertyHandler(){}
-
-	/**
-	 * Load properties from the given file.
-	 * @param file file with property information
-	 * @param callee calling object, for reporting errors/logging only
-	 * @return read properties
-	 */
-	public Properties load(String file, String callee){
-		Properties ret=new Properties();
-		try{
-			ret.load(getClass().getResourceAsStream(file));
+	public static void init(){
+		Logger logger=Logger.getLogger(LogManager.class);
+		String fn=System.getenv("SKB_LOG4_CONFIG_XML");
+		if(fn!=null&&fn.length()>0){
+			DOMConfigurator.configure(fn);
+			logger.info("initialised Logger from environment with <"+fn+">");
 		}
-		catch (IOException e){
-			logger.error(callee+" cant' load property file <"+file+">, IOException\n--> "+e);
+		else{
+			fn="/org/skb/util/log/log4j.xml";
+			DOMConfigurator.configure(LogManager.class.getResource(fn));
+			logger.info("initialised Logger from default with <"+fn+">");
 		}
-		catch (Exception e){
-			logger.error(callee+" cant' load property file <"+file+">, general Exception\n--> "+e);
-		}
-		return ret;
 	}
 }
