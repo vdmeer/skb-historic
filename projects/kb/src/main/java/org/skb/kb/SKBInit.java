@@ -33,7 +33,7 @@ package org.skb.kb;
 import org.apache.log4j.Logger;
 import org.skb.util.PathKeys;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.log.LogManager;
+import org.skb.util.classic.misc.LogManager;
 import org.skb.util.composite.misc.TSI18NManager;
 
 /**
