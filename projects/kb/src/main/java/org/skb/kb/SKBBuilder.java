@@ -48,20 +48,17 @@ public abstract class SKBBuilder implements Builder {
 	protected SKBTemplateManager templates=new SKBTemplateManager();
 	protected TSLinkedHashTree registered_templates=null;
 
-
 	@Override
 	public final void setHeader(){
 		if(this.isInitialised())
 			this.templates.set_header();
 	}
 
-
 	@Override
 	public final void execute(Request request, TSLinkedHashTree entries){
 		if(this.isInitialised())
 			this.executeLoop(request, entries);
 	}
-
 
 	@Override
 	public final boolean isInitialised(){

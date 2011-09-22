@@ -48,13 +48,11 @@ public class SKBTemplateManager implements TemplateManager {
 	/** local map of templates */
 	protected TSLinkedHashTree templates=new TSLinkedHashTree();
 
-
 	/**
 	 * Class constructor, empty
 	 */
 	public SKBTemplateManager(){
 	}
-
 
 	/**
 	 * Shows if the manager is initialised completely or not
@@ -65,7 +63,6 @@ public class SKBTemplateManager implements TemplateManager {
 			return true;
 		return false;
 	}
-
 
 	//TODO JSDOC
 	public void add_template(String name, String key){
@@ -93,7 +90,6 @@ public class SKBTemplateManager implements TemplateManager {
 		logger.warn("not yet implemented");
 	}
 
-
 	//TODO JSDOC
 	public TSSTGroupManager get_template_object(String key){
 		if(!this.isInitialised())
@@ -104,7 +100,6 @@ public class SKBTemplateManager implements TemplateManager {
 
 		return null;
 	}
-
 
 	//TODO JSDOC
 	public String get_template_path(String key){

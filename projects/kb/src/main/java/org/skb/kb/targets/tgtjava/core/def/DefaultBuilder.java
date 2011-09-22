@@ -45,13 +45,13 @@ public class DefaultBuilder extends SKBBuilder{
 	@Override
 	public void setTemplates() {
 		// TODO Auto-generated method stub
-System.err.println("Reader: set_templates");		
+//System.err.println("Reader: set_templates");		
 	}
 
 	@Override
 	public void executeLoop(Request request, TSLinkedHashTree entries) {
 		// TODO Auto-generated method stub
-System.err.println("Reader: execute_loop");	
+//System.err.println("Reader: execute_loop");	
 	}
 
 }

@@ -51,7 +51,6 @@ public class TextPlainBuilder extends SKBBuilder{
 		this.templates.add_template("tpl", this.tpl_list);
 	}
 
-
 	@Override
 	public void executeLoop(Request request, TSLinkedHashTree entries) {
 		TSSTGroupManager stgm=this.templates.get_template_object("tpl");

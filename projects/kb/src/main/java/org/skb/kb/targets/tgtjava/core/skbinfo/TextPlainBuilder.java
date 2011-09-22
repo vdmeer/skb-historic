@@ -46,7 +46,6 @@ public class TextPlainBuilder extends SKBBuilder{
 
 	protected String tpl_list="Core.SkbInfo.Entries2Text-Plain:Template";
 
-
 	@Override
 	public void setTemplates() {
 		this.templates.add_template("tpl", this.tpl_list);

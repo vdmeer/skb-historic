@@ -45,13 +45,13 @@ public class DefaultReader extends SKBReader {
 	@Override
 	public void prepareLoop(Request request, TSString table, TSString tableCollections) {
 		// TODO Auto-generated method stub
-System.err.println("Reader: prepare_loop");		
+//System.err.println("Reader: prepare_loop");		
 	}
 
 	@Override
 	public void executeLoop(Request request) {
 		// TODO Auto-generated method stub
-System.err.println("Reader: execute_loop");	
+//System.err.println("Reader: execute_loop");	
 	}
 
 }

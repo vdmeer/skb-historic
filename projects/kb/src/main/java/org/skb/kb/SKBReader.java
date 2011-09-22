@@ -52,20 +52,17 @@ public abstract class SKBReader implements Reader {
 
 	protected TSLinkedHashTree entries=null;
 
-
 	@Override
 	public final void setBuilder(Builder builder){
 		this.builder=builder;
 		//this.builder.set_header();
 	}
 
-
 	@Override
 	public final void prepareAndExecute(Request request){
 		this.prepare(request);
 		this.execute(request);
 	}
-
 
 	@Override
 	public final void prepare(Request request){
@@ -78,14 +75,12 @@ public abstract class SKBReader implements Reader {
 		}
 	}
 
-
 	@Override
 	public final TSLinkedHashTree getEntries(){
 		if(this.is_prepared==true)
 			return this.entries;
 		return null;
 	}
-
 
 	@Override
 	public final void execute(Request request){
