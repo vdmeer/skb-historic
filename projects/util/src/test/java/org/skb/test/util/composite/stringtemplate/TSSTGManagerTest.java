@@ -1,4 +1,4 @@
-package org.skb.test.util.types.atomic.stringtemplate;
+package org.skb.test.util.composite.stringtemplate;
 
 import junit.framework.TestCase;
 
