@@ -1,4 +1,4 @@
-package org.skb.test.util.misc;
+package org.skb.test.util.classic.misc;
 
 import junit.framework.TestCase;
 
