@@ -5,7 +5,7 @@
 run_dir="./"
 
 ext_lib_dir=${run_dir}/external
-int_lib_dir=${run_dir}/../projects/build-distro/target/package-expanded/SKB-ALL-1.0.0/dist
+int_lib_dir=${run_dir}/../projects/build-distro/target/package-expanded/SKB-ALL-1.0.1/dist
 
 ext_clp=
 for i in `ls ${ext_lib_dir}/*.jar`
@@ -25,6 +25,11 @@ echo "Internal & External Classpath constructed"
 cola="java -classpath \"${java_clp}\" org.skb.lang.cola.proto.Cola"
 pola="java -classpath \"${java_clp}\" org.skb.lang.pola.proto.Pola"
 glue="java -classpath \"${java_clp}\" org.skb.lang.glue.proto.Glue"
+dal="java -classpath \"${java_clp}\" org.skb.lang.dal.Dal"
+skblang="java -classpath \"${java_clp}\" org.skb.lang.skblang.SkbLang"
 
-echo "${cola} -s cola -t sql -f mama.cola --no-warnings --gc --tgt-dir ./gc/" > cola.sh
-chmod 755 cola.sh
+#echo "${cola} -s cola -t sql -f mama.cola --no-warnings --gc --tgt-dir ./gc/" > cola.sh
+#chmod 755 cola.sh
+
+echo "${skblang} \$*" > skblang.sh
+chmod 755 skblang.sh

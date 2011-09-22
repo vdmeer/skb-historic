@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://ivyrep.jayasoft.org/ivy-doc.xsl"?>
+<ivy-module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://incubator.apache.org/ivy/schemas/ivy.xsd" version="2.0">
+	
+	<info organisation="skb.lang" module="${ant.project.name}">
+		<ivyauthor name="Author Name" />
+	</info>
+
+	<configurations>
+		<include file="${spring.build.dir}/common/default-ivy-configurations.xml"/>
+	</configurations>
+
+	<publications>
+		<artifact name="${ant.project.name}"/>
+		<artifact name="${ant.project.name}-sources" type="src" ext="jar"/>
+	</publications>
+
+	<dependencies>
+
+	<dependency org="skb" name="skb.util" rev="${skb.util}" />
+	<dependency org="skb" name="skb.tribe" rev="${skb.tribe}" /> 
+
+	<dependency org="skb.lang" name="skb.lang.cola.proto" rev="${skb.lang.cola.proto}" />
+	<dependency org="skb.lang" name="skb.lang.pola.proto" rev="${skb.lang.pola.proto}" />
+	<dependency org="skb.lang" name="skb.lang.glue.proto" rev="${skb.lang.glue.proto}" />
+	<dependency org="skb.lang" name="skb.lang.dal" rev="${skb.lang.dal}" />
+
+	<dependency org="org.junit"
+		name="com.springsource.org.junit"
+		rev="${org.junit}" conf="test->runtime" />
+
+	</dependencies>
+
+</ivy-module>
