@@ -1,4 +1,4 @@
-package org.skb.test.util.sql;
+package org.skb.test.util.composite.db;
 
 import junit.framework.TestCase;
 
