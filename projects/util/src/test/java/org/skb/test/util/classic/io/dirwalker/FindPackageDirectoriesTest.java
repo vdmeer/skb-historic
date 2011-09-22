@@ -1,4 +1,4 @@
-package org.skb.test.util.io.dirwalker;
+package org.skb.test.util.classic.io.dirwalker;
 
 import junit.framework.TestCase;
 

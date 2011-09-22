@@ -1,4 +1,4 @@
-package org.skb.test.util.pattern;
+package org.skb.test.util.classic.patterns.creational.builder;
 
 import junit.framework.TestCase;
 

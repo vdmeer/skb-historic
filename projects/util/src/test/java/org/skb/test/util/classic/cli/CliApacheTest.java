@@ -1,4 +1,4 @@
-package org.skb.test.util.cli;
+package org.skb.test.util.classic.cli;
 
 import junit.framework.TestCase;
 

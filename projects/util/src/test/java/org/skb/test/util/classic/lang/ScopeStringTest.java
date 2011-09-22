@@ -1,4 +1,4 @@
-package org.skb.test.util.languages;
+package org.skb.test.util.classic.lang;
 
 import junit.framework.TestCase;
 

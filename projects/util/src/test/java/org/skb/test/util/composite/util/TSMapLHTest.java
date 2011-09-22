@@ -1,4 +1,4 @@
-package org.skb.test.util.types.composite.util;
+package org.skb.test.util.composite.util;
 
 import java.util.ArrayList;
 
@@ -12,6 +12,7 @@ import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.classic.misc.LogManager;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSNull;
+import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.java.TSFloat;
@@ -47,6 +48,39 @@ public class TSMapLHTest extends TestCase{
 	public static junit.framework.Test suite() {
 		return new TestSuite(TSMapLHTest.class);
     }
+
+	@Test public void testInitialisation(){
+		Object[] o;
+		TSLinkedHashTree _t=new TSLinkedHashTree();
+		o=_t.tsGetTypeEnumSet().toArray();
+			assertEquals(4,o.length);
+			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE.toString(),o[1].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE_MAP.toString(),o[2].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE_MAP_LH.toString(),o[3].toString());
+		o=_t.tsGetTypeStringList().toArray();
+			assertEquals(4,o.length);
+			assertEquals(TSRepository.TString.TS_BASE,o[0]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE,o[1]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE_MAP,o[2]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE_MAP_LH,o[3]);
+
+		assertEquals(false,_t.tsIsAtomic());
+		assertEquals(true,_t.tsIsComposite());
+
+		assertEquals(TSRepository.TEnum.TS_COMPOSITE_MAP_LH,_t.tsGetTypeEnum());
+		assertEquals(TSRepository.TString.TS_COMPOSITE_MAP_LH,_t.tsGetTypeString());
+
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH));
+
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE_MAP));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE_MAP_LH));
+	}
 
 
 	@Ignore public void initSimple(){

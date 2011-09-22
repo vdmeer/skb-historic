@@ -32,47 +32,44 @@ package org.skb.test;
 import junit.framework.TestSuite;
 
 import org.junit.Ignore;
-import org.skb.test.util.cli.CliApacheTest;
-import org.skb.test.util.io.dirwalker.FindPackageDirectoriesTest;
-import org.skb.test.util.io.files.FileManagerTest;
-import org.skb.test.util.io.files.FileTemplateListTest;
-import org.skb.test.util.io.files.FileTemplateSingleTest;
-import org.skb.test.util.languages.AtomListTest;
-import org.skb.test.util.languages.ScopeStringTest;
-import org.skb.test.util.languages.ScopeTokenTest;
-import org.skb.test.util.misc.I18NManagerTest;
-import org.skb.test.util.misc.Json2OatTest;
-import org.skb.test.util.misc.PropertyHandlerTest;
-import org.skb.test.util.misc.ReportManagerTest;
-import org.skb.test.util.pattern.RequestTest;
-import org.skb.test.util.sql.PDOTest;
-import org.skb.test.util.stringtemplate.STGManagerTest;
-import org.skb.test.util.stringtemplate.STGWriterXtoYTest;
-import org.skb.test.util.types.InitTests;
-import org.skb.test.util.types.TSrepositoryTest;
-import org.skb.test.util.types.atomic.antlr.TSTokenTest;
-import org.skb.test.util.types.atomic.db.TSPDOTest;
-import org.skb.test.util.types.atomic.java.TSBooleanTest;
-import org.skb.test.util.types.atomic.java.TSByteTest;
-import org.skb.test.util.types.atomic.java.TSDoubleTest;
-import org.skb.test.util.types.atomic.java.TSFloatTest;
-import org.skb.test.util.types.atomic.java.TSIntegerTest;
-import org.skb.test.util.types.atomic.java.TSLongTest;
-import org.skb.test.util.types.atomic.java.TSObjectTest;
-import org.skb.test.util.types.atomic.java.TSShortTest;
-import org.skb.test.util.types.atomic.java.TSStringTest;
-import org.skb.test.util.types.atomic.stringtemplate.TSSTGManagerTest;
-import org.skb.test.util.types.atomic.stringtemplate.TSSTGTest;
-import org.skb.test.util.types.atomic.stringtemplate.TSSTTest;
-import org.skb.test.util.types.atomic.util.TSArrayListAtomicTest;
-import org.skb.test.util.types.atomic.util.TSArrayListStringTest;
-import org.skb.test.util.types.atomic.util.TSScopeTest;
-import org.skb.test.util.types.composite.util.TSArrayListTest;
-import org.skb.test.util.types.composite.util.TSLangRuleMapTest;
-import org.skb.test.util.types.composite.util.TSMapLHTest;
-import org.skb.test.util.types.composite.util.TSPropertyMapTest;
-import org.skb.test.util.types.composite.util.TSTableRowTest;
-import org.skb.test.util.types.composite.util.TSTableTest;
+import org.skb.test.util.classic.cli.CliApacheTest;
+import org.skb.test.util.classic.io.dirwalker.FindPackageDirectoriesTest;
+import org.skb.test.util.classic.io.files.FileManagerTest;
+import org.skb.test.util.classic.io.files.FileTemplateListTest;
+import org.skb.test.util.classic.io.files.FileTemplateSingleTest;
+import org.skb.test.util.classic.lang.ScopeStringTest;
+import org.skb.test.util.classic.lang.ScopeTokenTest;
+import org.skb.test.util.classic.misc.Json2OatTest;
+import org.skb.test.util.classic.misc.PropertyHandlerTest;
+import org.skb.test.util.classic.patterns.creational.builder.RequestTest;
+import org.skb.test.util.classic.stringtemplate.STGWriterXtoYTest;
+import org.skb.test.util.composite.TSDefaultTest;
+import org.skb.test.util.composite.TSErrorTest;
+import org.skb.test.util.composite.TSNullTest;
+import org.skb.test.util.composite.TSRepositoryTest;
+import org.skb.test.util.composite.TSWarningTest;
+import org.skb.test.util.composite.antlr.TSTokenTest;
+import org.skb.test.util.composite.db.TSPDOTest;
+import org.skb.test.util.composite.java.TSBooleanTest;
+import org.skb.test.util.composite.java.TSByteTest;
+import org.skb.test.util.composite.java.TSDoubleTest;
+import org.skb.test.util.composite.java.TSFloatTest;
+import org.skb.test.util.composite.java.TSIntegerTest;
+import org.skb.test.util.composite.java.TSLongTest;
+import org.skb.test.util.composite.java.TSObjectTest;
+import org.skb.test.util.composite.java.TSShortTest;
+import org.skb.test.util.composite.java.TSStringTest;
+import org.skb.test.util.composite.stringtemplate.TSSTGroupManagerTest;
+import org.skb.test.util.composite.stringtemplate.TSStringTemplateTest;
+import org.skb.test.util.composite.util.TSArrayListAtomicTest;
+import org.skb.test.util.composite.util.TSArrayListStringTest;
+import org.skb.test.util.composite.util.TSArrayListTest;
+import org.skb.test.util.composite.util.TSLangRuleMapTest;
+import org.skb.test.util.composite.util.TSMapLHTest;
+import org.skb.test.util.composite.util.TSPropertyMapTest;
+import org.skb.test.util.composite.util.TSScopeTest;
+import org.skb.test.util.composite.util.TSTableRowTest;
+import org.skb.test.util.composite.util.TSTableTest;
 
 /**
  * Test class that will run all SKB Util tests
@@ -98,6 +95,13 @@ public class RunTests {
 		TestSuite suite = new TestSuite();
 
 		/*
+		 * org.skb.util.config
+		 */
+		//TODO add Configuration
+		//TODO add Configuration Manager
+		//TODO add Configuration Properties
+
+		/*
 		 * org.skb.util.cli
 		 */
 		suite.addTestSuite(CliApacheTest.class);
@@ -117,17 +121,15 @@ public class RunTests {
 		/*
 		 * org.skb.util.languages
 		 */
-		suite.addTestSuite(AtomListTest.class);
 		suite.addTestSuite(ScopeStringTest.class);
 		suite.addTestSuite(ScopeTokenTest.class);
 
 		/*
 		 * org.skb.util.misc
 		 */
-		suite.addTestSuite(I18NManagerTest.class);
 		suite.addTestSuite(Json2OatTest.class);
 		suite.addTestSuite(PropertyHandlerTest.class);
-		suite.addTestSuite(ReportManagerTest.class);
+		//TODO ADD LOG MANAGER
 
 		/*
 		 * org.skb.util.pattern
@@ -135,34 +137,31 @@ public class RunTests {
 		suite.addTestSuite(RequestTest.class);
 
 		/*
-		 * org.skb.util.sql
-		 */
-		suite.addTestSuite(PDOTest.class);
-
-		/*
 		 * org.skb.util.stringtemplate
 		 */
-		suite.addTestSuite(STGManagerTest.class);
 		suite.addTestSuite(STGWriterXtoYTest.class);
 
 		/*
 		 * org.skb.types
 		 */
-		suite.addTestSuite(InitTests.class);
-		suite.addTestSuite(TSrepositoryTest.class);
+		suite.addTestSuite(TSRepositoryTest.class);
+		suite.addTestSuite(TSDefaultTest.class);
+		suite.addTestSuite(TSErrorTest.class);
+		suite.addTestSuite(TSWarningTest.class);
+		suite.addTestSuite(TSNullTest.class);
 
 		/*
-		 * org.skb.types.atomic.antlr
+		 * org.skb.composite.antlr
 		 */
 		suite.addTestSuite(TSTokenTest.class);
 
 		/*
-		 * org.skb.types.atomic.db
+		 * org.skb.composite.db
 		 */
 		suite.addTestSuite(TSPDOTest.class);
 
 		/*
-		 * org.skb.types.atomic.java
+		 * org.skb.composite.java
 		 */
 		suite.addTestSuite(TSBooleanTest.class);
 		suite.addTestSuite(TSByteTest.class);
@@ -175,22 +174,24 @@ public class RunTests {
 		suite.addTestSuite(TSStringTest.class);
 
 		/*
-		 * org.skb.types.atomic.stringtemplate
+		 * org.skb.composite.misc
 		 */
-		suite.addTestSuite(TSSTTest.class);
-		suite.addTestSuite(TSSTGTest.class);
-		suite.addTestSuite(TSSTGManagerTest.class);
+		//TODO add TSI18N
+		//TODO Add Report Manager
+
 
 		/*
-		 * org.skb.types.atomic.util
+		 * org.skb.composite.stringtemplate
+		 */
+		suite.addTestSuite(TSStringTemplateTest.class);
+		suite.addTestSuite(TSSTGroupManagerTest.class);
+
+		/*
+		 * org.skb.composite.util
 		 */
 		suite.addTestSuite(TSArrayListAtomicTest.class);
 		suite.addTestSuite(TSArrayListStringTest.class);
 		suite.addTestSuite(TSScopeTest.class);
-
-		/*
-		 * org.skb.types.composite.util
-		 */
 		suite.addTestSuite(TSArrayListTest.class);
 		suite.addTestSuite(TSLangRuleMapTest.class);
 		suite.addTestSuite(TSMapLHTest.class);

@@ -1,4 +1,4 @@
-package org.skb.test.util.types.atomic.java;
+package org.skb.test.util.composite.java;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -9,24 +9,20 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 import org.skb.util.composite.TSBaseAPI;
+import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSString;
 import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 public class TSStringTest extends TestCase{
-	public void setUp(){
-	}
+	public void setUp(){}
 
-
-	public void tearDown(){
-	}
-
+	public void tearDown(){}
 
 	public static junit.framework.Test suite() {
         return new junit.framework.JUnit4TestAdapter(TSStringTest.class);
     }
-
 
 	//TODO - test for tsAddCharWBlank
 	//TODO - test for tsAddFirstChar
@@ -34,6 +30,34 @@ public class TSStringTest extends TestCase{
 	//TODO - test for tsClean
 	//TODO - test for tsTrim
 
+	@Test public void testInitialisation(){
+		Object[] o;
+		TSString _t=new TSString();
+		o=_t.tsGetTypeEnumSet().toArray();
+			assertEquals(3,o.length);
+			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
+			assertEquals(TSRepository.TEnum.TS_ATOMIC.toString(),o[1].toString());
+			assertEquals(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING.toString(),o[2].toString());
+		o=_t.tsGetTypeStringList().toArray();
+		assertEquals(3,o.length);
+			assertEquals(TSRepository.TString.TS_BASE,o[0]);
+			assertEquals(TSRepository.TString.TS_ATOMIC,o[1]);
+			assertEquals(TSRepository.TString.TS_ATOMIC_JAVA_STRING,o[2]);
+
+		assertEquals(true,_t.tsIsAtomic());
+		assertEquals(false,_t.tsIsComposite());
+
+		assertEquals(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING,_t.tsGetTypeEnum());
+		assertEquals(TSRepository.TString.TS_ATOMIC_JAVA_STRING,_t.tsGetTypeString());
+
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING));
+
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_ATOMIC_JAVA_STRING));
+	}
 
 	@Test public void testTsAddChar(){
 		java.lang.String result;
@@ -58,7 +82,6 @@ public class TSStringTest extends TestCase{
 		assertEquals("", result);
 	}
 
-
 	@Test public void testTsAddCharComma(){
 		java.lang.String result;
 		//Returns a comma if the specified string is non-empty and does not end with a blank nor a comma; "" otherwise
@@ -82,7 +105,6 @@ public class TSStringTest extends TestCase{
 		assertEquals("", result);
 	}
 
-
 	@Test
 	public void testTsExplodeSimple(){
 		TSString t=new TSString("string1,string2,string3");
@@ -97,7 +119,6 @@ public class TSStringTest extends TestCase{
 		String[] expected=new String[]{"string1","string2","string3"};
 		assertArrayEquals(expected, actual);
 	}
-
 
 	@Test
 	public void testTsExplodeDouble(){
