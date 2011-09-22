@@ -57,8 +57,11 @@ import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.classic.misc.PropertyHandler;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
+import org.skb.util.composite.TSError;
+import org.skb.util.composite.TSNull;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.TSWarning;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.java.TSString;
 import org.skb.util.composite.misc.TSReportManager;
@@ -99,17 +102,18 @@ public class Tribe {
 	public EnumSet<EnumExitOptions> eo=EnumSet.noneOf(EnumExitOptions.class);
 
 	/**
-	 * Class Constructor, empty
+	 * Class Constructor, empty.
 	 */
 	public Tribe(){}
 
 	/**
 	 * Execute the parsing process Tribe. Input parameters are the supported languages and arguments for parameterising 
 	 * Tribe, usually taken from the command line. 
-	 * @param parsers LanguageParser array containing all information on supported source and target languages.
+	 * @param langParsers LanguageParser array containing all information on supported source and target languages.
 	 * @param args Command line arguments.
+	 * @return TSNull if everything was ok, TSError or TSWarning otherwise
 	 */
-	public void execute(LangParserAPI[] langParsers, String[] args){
+	public TSDefault execute(LangParserAPI[] langParsers, String[] args){
 		this.cli=new CliApache();
 		config.init(this.propertyFile);
 		this.prop=config.getProperties();
@@ -125,12 +129,12 @@ public class Tribe {
 			config.config.put(PathKeys.pathConfigurationParserTribeStgChunks, cfg.get(PathKeys.pathConfigurationParserTribeStgChunks));
 		}
 
-		Integer result;
+		TSDefault result;
 		//phase 1 is doing TRIBE parameter checking, no parser involved
 		//if the phase returns 0 we can continue, otherwise we exit (phase responsible for printing errors/warnings/messages)
 		result=this.phase1_Tribe(args);
-		if(result!=0){
-			System.exit(result);
+		if(!result.tsIsType(TEnum.TS_NULL)){
+			return result;
 		}
 
 		//parser is selected, so shift our internal prop and report manager to the new parser configuration
@@ -140,17 +144,19 @@ public class Tribe {
 
 		//call phase 2, the actual parser related evaluation of parameters and the parsing
 		result=this.phase2_Parser();
-		if(result!=0){
-			System.exit(result);
+		if(!result.tsIsType(TEnum.TS_NULL)){
+			return result;
 		}
+
+		return new TSNull();
 	}
 
 	/**
-	 * 
-	 * @param args
-	 * @return -1 = exit with problem, 0 = continue, 1 = exit normally
+	 * Realises the parser-generic option processing.
+	 * @param args command line arguments
+	 * @return TSNull if everything was ok, TSError or TSWarning otherwise
 	 */
-	private Integer phase1_Tribe(String[] args){
+	private TSDefault phase1_Tribe(String[] args){
 		logger.trace("starting phase 1 -- tribe");
 
 		/** Field to check return values */
@@ -175,7 +181,7 @@ public class Tribe {
 		checkRet=this.repMgr.loadSTG("Report Manager default String Template Group", "");
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
 			this.repMgr.genErrorMessage(checkRet.toString());
-			return -1;
+			return checkRet;
 		}
 
 		/**
@@ -191,7 +197,6 @@ public class Tribe {
 		/**
 		 * Check for quiet mode, no error or no warning mode and set the logger for reports accordingly
 		 */
-		//TODO
 		Boolean noError=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoErrors)).tsvalue;
 		Boolean noWarning=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionNoWarnings)).tsvalue;
 		Boolean quietMode=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionQuietMode)).tsvalue;
@@ -217,7 +222,7 @@ public class Tribe {
        	checkRet=this.repMgr.loadSTG("Report Manager after command line parsing", "");
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
 			this.repMgr.genErrorMessage(checkRet.toString());
-			return -1;
+			return checkRet;
 		}
 
         /**
@@ -229,15 +234,23 @@ public class Tribe {
          */
         if(prop.getValue(FieldKeys.fieldCliOptionSrcLanguage).tsIsType(TEnum.TS_NULL)){
         	if(!prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
-        		System.out.println(" - target language specified without a source language");
-        		return -1;
+        		String msg="target language specified without a source language";
+        		this.repMgr.genErrorMessage(msg);
+        		TSError ret=new TSError();
+        		ret.tsSetMessage(msg);
+        		return ret;
         	}
 			if(this.eo.size()>0){
 				System.out.println(this.doExitOptions());
-				return 1;
+				TSWarning ret=new TSWarning();
+				ret.tsSetMessage("exit options selected, printed");
+				return ret;
 			}
-			System.out.println("-  no source language specified");
-			return -1;
+			String msg="no source language specified";
+			this.repMgr.genErrorMessage(msg);
+			TSError ret=new TSError();
+			ret.tsSetMessage(msg);
+			return ret;
         }
 
         //we have a source language
@@ -249,8 +262,11 @@ public class Tribe {
          */
         ArrayList<LangParserAPI> sourceParsers=TribeHelpers.getSrcParsers(this.parsers, sourceLang);
         if(sourceParsers.size()==0){
-        	System.out.println("-  source language <"+sourceLang+"> not supported");
-        	return -1;
+        	String msg="source language <"+sourceLang+"> not supported";
+        	this.repMgr.genErrorMessage(msg);
+        	TSError ret=new TSError();
+			ret.tsSetMessage(msg);
+			return ret;
         }
 
         //we now know that there is a source language and at least 1 parser supports it
@@ -270,19 +286,24 @@ public class Tribe {
         if(targetLang.tsIsType(TEnum.TS_NULL)){
         	//a.1 - not target and multiple source parsers = decision problem
         	if(sourceParsers.size()>1){
-        		System.out.println("-  source language <"+sourceLang+"> supported by <"+sourceParsers.size()+"> parsers and no target language set");
-            	return -1;
+        		String msg="source language <"+sourceLang+"> supported by <"+sourceParsers.size()+"> parsers and no target language set";
+        		this.repMgr.genErrorMessage(msg);
+        		TSError ret=new TSError();
+    			ret.tsSetMessage(msg);
+    			return ret;
         	}
         	//a.2 - no target and 1 source parser, if exit Options then do, otherwise nothing
         	else if(this.eo.size()>0){
         		checkRet=TribeHelpers.loadParserOptions(sourceParsers.get(0), this.cli);
     			if(checkRet.tsIsType(TEnum.TS_ERROR)){
     				this.repMgr.genErrorMessage(checkRet.toString());
-    				return -1;
+    				return checkRet;
     			}
         		this.setOptions(args);
        			System.out.println(this.doExitOptions());
-       			return 1;        			
+       			TSWarning ret=new TSWarning();
+				ret.tsSetMessage("exit options selected, printed");
+				return ret;   			
         	}
         }
         //b
@@ -293,18 +314,23 @@ public class Tribe {
         			checkRet=TribeHelpers.loadParserOptions(targetParsers.get(0), this.cli);
         			if(checkRet.tsIsType(TEnum.TS_ERROR)){
         				this.repMgr.genErrorMessage(checkRet.toString());
-        				return -1;
+        				return checkRet;
         			}
         			this.setOptions(args);
         			this.parser=targetParsers.get(0);
         			System.out.println(this.doExitOptions());
-        			return 1;	
+        			TSWarning ret=new TSWarning();
+    				ret.tsSetMessage("exit options selected, printed");
+    				return ret;
         		}
         	}
         	//b.2 - target lang set, multiple target parsers available, print error
         	else{
-        		System.out.println("-  target language <"+targetLang+"> supported by <"+targetParsers.size()+"> parsers");
-            	return -1;
+        		String msg="target language <"+targetLang+"> supported by <"+targetParsers.size()+"> parsers";
+        		this.repMgr.genErrorMessage(msg);
+        		TSError ret=new TSError();
+				ret.tsSetMessage(msg);
+				return ret;
         	}
         }
 
@@ -314,8 +340,11 @@ public class Tribe {
          */
         Boolean gc=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionGC)).tsvalue;
         if(gc==true&&targetParsers.size()==0){
-        	System.err.println(" - code generation activated but no target language given");
-        	return -1;
+        	String msg="code generation activated but no target language given";
+        	this.repMgr.genErrorMessage(msg);
+        	TSError ret=new TSError();
+			ret.tsSetMessage(msg);
+			return ret;
         }
 
         /**
@@ -323,8 +352,11 @@ public class Tribe {
          * - we have a parser selected, and all exit options are processed, now we need an input file or we can't proceed
          */
         if (this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).tsIsType(TEnum.TS_NULL)||this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString().equals("")){
-        	this.repMgr.genErrorMessage("no input file specified");
-        	return -1;
+        	String msg="no input file specified";
+        	this.repMgr.genErrorMessage(msg);
+        	TSError ret=new TSError();
+			ret.tsSetMessage(msg);
+			return ret;
         }
 
         /**
@@ -338,8 +370,11 @@ public class Tribe {
         }
         else{
         	//oops, we should not have this case, that sourceParser and targetParser have more/less than 1 member
-        	System.err.println("PANIC, Problem with parser selection");
-        	return -1;
+        	String msg="PANIC, Problem with parser selection";
+        	this.repMgr.genErrorMessage(msg);
+        	TSError ret=new TSError();
+			ret.tsSetMessage(msg);
+			return ret;
         }
 
         /**
@@ -348,16 +383,20 @@ public class Tribe {
         checkRet=TribeHelpers.loadParserOptions(this.parser, this.cli);
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
 			this.parser.getConfiguration().getReportManager().genErrorMessage(checkRet.toString());
-			return -1;
+			return checkRet;
 		}
 
         this.setOptions(args);
 
         logger.trace("finshed phase 1 -- tribe");
-		return 0;
+		return new TSNull();
 	}
 
-	private Integer phase2_Parser(){
+	/**
+	 * Realises the parser specific option processing and finally calls the parser
+	 * @return TSNull if everything was ok, TSError or TSWarning otherwise
+	 */
+	private TSDefault phase2_Parser(){
 		logger.trace("starting phase 2 -- parser");
 
 		/**
@@ -378,13 +417,19 @@ public class Tribe {
         	if(fnTest.canRead()==false){
         		URL url=ClassLoader.getSystemResource(sourceFile);
         		if(url==null){
-        			this.repMgr.genErrorMessage("can't open source file <" + sourceFile + "> for reading (tried URL from getSystemResource)");
-        			return -1;
+        			String msg="can't open source file <" + sourceFile + "> for reading (tried URL from getSystemResource)";
+        			this.repMgr.genErrorMessage(msg);
+        			TSError ret=new TSError();
+        			ret.tsSetMessage(msg);
+        			return ret;
         		}
         		fnTest=new File(url.getFile());
         		if(fnTest.canRead()==false){
-        			this.repMgr.genErrorMessage("can't open source file <" + sourceFile + "> for reading (tried to read from URL)");
-        			return -1;
+        			String msg="can't open source file <" + sourceFile + "> for reading (tried to read from URL)";
+        			this.repMgr.genErrorMessage(msg);
+        			TSError ret=new TSError();
+        			ret.tsSetMessage(msg);
+        			return ret;
         		}
 				this.prop.put(FieldKeys.fieldCliOptionSrcFile, FieldKeys.fieldValueCli, fnTest.getAbsolutePath());
         	}
@@ -393,14 +438,20 @@ public class Tribe {
         	if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
         		fnTest=new File(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir).toString());
         		if(fnTest.canWrite()==false){
-        			this.repMgr.genErrorMessage("can't write in target directory <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir) + ">");
-        			return -1;
+        			String msg="can't write in target directory <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir) + ">";
+        			this.repMgr.genErrorMessage(msg);
+        			TSError ret=new TSError();
+        			ret.tsSetMessage(msg);
+        			return ret;
         		}
         		fnTest=new File(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+this.prop.getValue(FieldKeys.fieldCliOptionTgtFileExt));
         		fnTest.createNewFile();
         		if(fnTest.canWrite()==false){
-        			this.repMgr.genErrorMessage("can't open target file <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt) + "> for writing");
-        			return -1;
+        			String msg="can't open target file <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt) + "> for writing";
+        			this.repMgr.genErrorMessage(msg);
+        			TSError ret=new TSError();
+        			ret.tsSetMessage(msg);
+        			return ret;
         		}
 				fnTest.delete();
         	}
@@ -447,9 +498,10 @@ public class Tribe {
         logger.trace("save current configuration, if requested");
         if(!(this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave)).tsIsType(TEnum.TS_NULL)){
 			TSBaseAPI cl=this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave);
-			TSDefault ret=this.prop.writeToFile(cl);
-			if(ret.tsIsType(TEnum.TS_ERROR)){
-				this.repMgr.genErrorMessage("tribe: problems writing configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
+			TSDefault checkRet=this.prop.writeToFile(cl);
+			if(checkRet.tsIsType(TEnum.TS_ERROR)){
+				this.repMgr.genErrorMessage("tribe: problems writing configuration file<"+cl+">\n  => error message: "+checkRet.tsGetMessage()+"\n  => error explanation: "+checkRet.tsGetExplanation()+"\n  => ...trying to continue");
+				return checkRet;
 			}
 		}
 
@@ -460,7 +512,7 @@ public class Tribe {
         System.gc();
 
 		logger.trace("finshed phase 2 -- parser");
-		return 0;
+		return new TSNull();
 	}
 
 	/**

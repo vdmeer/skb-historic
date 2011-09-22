@@ -50,9 +50,22 @@ import org.skb.util.composite.util.TSArrayList;
 import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
-
+/**
+ * Helper methods for Tribe processing.
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class TribeHelpers {
 
+	/**
+	 * Loads a StringTemplateGroup Manager ({@link TSSTGroupManager}).
+	 * @param config configuration object
+	 * @param path path to StringTemplate chunk information within the configuration
+	 * @param applicationName name of the application that loads the manager
+	 * @param stgFile StringTemplate file name
+	 * @return new STG Manager
+	 */
 	public static TSSTGroupManager loadSTGM(Configuration config, String path, String applicationName, String stgFile){
 		TSSTGroupManager ret=new TSSTGroupManager();
 		TSBaseAPI tsb=config.config.get(path);
@@ -77,6 +90,12 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Returns all parsers from the given array of parsers that support the specified source language.
+	 * @param parsers parser array
+	 * @param srcLang required source language
+	 * @return set of parsers that support the source language
+	 */
 	public static ArrayList<LangParserAPI> getSrcParsers(LangParserAPI[] parsers, TSBaseAPI srcLang){
 		ArrayList<LangParserAPI> ret=new ArrayList<LangParserAPI>();
 		for(int i=0;i<parsers.length;i++){
@@ -88,6 +107,12 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Returns all parsers from the given array of parsers that support the specified target language.
+	 * @param parsers parser array
+	 * @param tgtLang required target language
+	 * @return set of parsers that support the target language
+	 */
 	public static ArrayList<LangParserAPI> getTgtParsers(ArrayList<LangParserAPI> parsers, TSBaseAPI tgtLang){
 		ArrayList<LangParserAPI> ret=new ArrayList<LangParserAPI>();
 		if(tgtLang.tsIsType(TEnum.TS_NULL))
@@ -104,6 +129,12 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Loads all options of a parser and copies current tribe-processed options to it.
+	 * @param parser selected parser
+	 * @param cli command line parser with additional settings
+	 * @return the return of the parser specific load method
+	 */
 	public static TSDefault loadParserOptions(LangParserAPI parser, Cli cli){
 		Configuration dest=parser.getConfiguration();
 		Configuration orig=Configuration.getConfiguration(Tribe.class);
@@ -121,6 +152,11 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Returns a string with a footer, to be used after other exit options prints
+	 * @param prop property map
+	 * @return string
+	 */
 	public static String getFooterPrint(ConfigurationProperties prop){
 		String ret=new String();
 		ret+="\n";
@@ -131,6 +167,11 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Returns a string with a header, to be used before other exit options prints
+	 * @param prop property map
+	 * @return string
+	 */
 	public static String getHeaderPrint(ConfigurationProperties prop){
 		String ret=new String();
 		ret+=prop.get(FieldKeys.fieldApplicationName, FieldKeys.fieldValueDefault)+", version "+
@@ -145,6 +186,11 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Returns a string with all options (properties) and their default value
+	 * @param prop property map
+	 * @return string
+	 */
 	public static String getDefaultOptionsPrint(ConfigurationProperties prop){
 		String ret=new String();
 
@@ -170,14 +216,30 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Returns a string with usage and extended help information.
+	 * @param cli command line parser that prints usage information
+	 * @param prop properties that hold all information on arguments
+	 * @return string
+	 */
 	public static String getHelpPrint(Cli cli, ConfigurationProperties prop){
 		return cli.usage(TribeHelpers.getHeaderPrint(prop), TribeHelpers.getFooterPrint(prop), 80, true);
 	}
 
+	/**
+	 * Returns a string with version information.
+	 * @param prop properties that hold information about the version
+	 * @return string
+	 */
 	public static String getVersionPrint(ConfigurationProperties prop){
 		return TribeHelpers.getHeaderPrint(prop);
 	}
 
+	/**
+	 * Returns a string with the supported languages.
+	 * @param parsers array with all registered parsers
+	 * @return simple string containing source language to target language(s) mappings per parser supported
+	 */
 	public static String getSupportedLangPrint(LangParserAPI[] parsers){
 		String ret=new String();
 
@@ -191,6 +253,15 @@ public class TribeHelpers {
     	return ret;
 	}
 
+	/**
+	 * Checks the settings for exit options and puts them into an enum set.
+	 * 
+	 * An exit option is any option that is intended to stop the processing of the parser intentionally.
+	 * Examples of exit options are: show help information, show version information, show supported languages
+	 * and print StrngTemplate source files.
+	 * @param prop properties that might contain exit options
+	 * @return set of activated exit options
+	 */
 	public static EnumSet<EnumExitOptions> checkExitOptions(ConfigurationProperties prop){
 		EnumSet<EnumExitOptions> ret=EnumSet.noneOf(EnumExitOptions.class);
 
@@ -226,6 +297,12 @@ public class TribeHelpers {
 		return ret;
 	}
 
+	/**
+	 * Translates tokens.
+	 * @param tokens tokens to be translated
+	 * @param config configuration holding translation information
+	 * @return translated tokens
+	 */
     public static String[] translateTokens(String[] tokens, Configuration config){
     	TreeMap<String, String> tokenMap=new TreeMap<String, String>();
 
