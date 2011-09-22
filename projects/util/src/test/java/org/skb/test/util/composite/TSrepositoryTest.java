@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.types;
+package org.skb.test.util.composite;
 
 import java.lang.reflect.Field;
 import java.util.Iterator;
