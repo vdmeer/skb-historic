@@ -51,7 +51,6 @@ public class Configuration {
 	/** The configuration map, use {@link FieldKeys} and {@link PathKeys} to access information */
 	public TSLinkedHashTree config=null;
 
-
 	/**
 	 * Class constructor, initialises local fields and sets class name
 	 * @param clazz name of the class the Configuration serves
@@ -60,7 +59,6 @@ public class Configuration {
 		this.configClass=clazz.toString();
 		this.init();
 	}
-
 
 	/**
 	 * Initialises the configuration, resets all local fields (except configClass)
@@ -71,7 +69,6 @@ public class Configuration {
 		this.config.put(PathKeys.pathInstancesReportmanager, new TSReportManager());
 	}
 
-
 	/**
 	 * Initialises the configuration, resets all local fields (except configClass)
 	 */
@@ -80,7 +77,6 @@ public class Configuration {
 		this.config.put(PathKeys.pathInstancesProperties, new ConfigurationProperties(propFN));
 		this.config.put(PathKeys.pathInstancesReportmanager, new TSReportManager());
 	}
-
 
 	/**
 	 * Returns a configuration object for a class name
@@ -91,7 +87,6 @@ public class Configuration {
 		return ConfigManager.getInstance().getConfiguration(clazz);
 	}
 
-
 	/**
 	 * Return the class name that this Configuration serves
 	 * @return class name
@@ -99,7 +94,6 @@ public class Configuration {
 	public String getConfigName(){
 		return this.configClass;
 	}
-
 
 	/**
 	 * Returns the main property map of the configuration.
@@ -112,7 +106,6 @@ public class Configuration {
 		return new ConfigurationProperties();
 	}
 
-
 	/**
 	 * Returns the report manager of the configuration.
 	 * @return report manager
@@ -123,7 +116,6 @@ public class Configuration {
 			return (TSReportManager)base;
 		return new TSReportManager();
 	}
-
 
 	/**
 	 * Returns the atom list of the configuration.
@@ -137,7 +129,6 @@ public class Configuration {
 		return new TSAtomList();
 	}
 
-
 	/**
 	 * Adds an atom list to the configuration.
 	 * @return always true
@@ -146,7 +137,6 @@ public class Configuration {
 		this.config.put(PathKeys.pathInstancesAtomlist, new TSAtomList());
 		return true;
 	}
-
 
 	/**
 	 * Returns the language rule map of the configuration.
@@ -160,7 +150,6 @@ public class Configuration {
 		return new TSLangRuleMap();
 	}
 
-
 	/**
 	 * Adds a language rule map to the configuration.
 	 * @return always true
@@ -169,7 +158,6 @@ public class Configuration {
 		this.config.put(PathKeys.pathInstancesLangrulemap, new TSLangRuleMap());
 		return true;
 	}
-
 
 	/**
 	 * Returns the configuration information of a specific path.

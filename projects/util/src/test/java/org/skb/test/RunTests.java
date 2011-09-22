@@ -65,7 +65,7 @@ import org.skb.test.util.composite.util.TSArrayListAtomicTest;
 import org.skb.test.util.composite.util.TSArrayListStringTest;
 import org.skb.test.util.composite.util.TSArrayListTest;
 import org.skb.test.util.composite.util.TSLangRuleMapTest;
-import org.skb.test.util.composite.util.TSMapLHTest;
+import org.skb.test.util.composite.util.TSLinkedHashTreeTest;
 import org.skb.test.util.composite.util.TSPropertyMapTest;
 import org.skb.test.util.composite.util.TSScopeTest;
 import org.skb.test.util.composite.util.TSTableRowTest;
@@ -78,7 +78,6 @@ import org.skb.test.util.composite.util.TSTableTest;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class RunTests {
-
 	/**
 	 * Main method for running tests from command line or inside Eclipse
 	 * @param args command line arguments
@@ -194,7 +193,7 @@ public class RunTests {
 		suite.addTestSuite(TSScopeTest.class);
 		suite.addTestSuite(TSArrayListTest.class);
 		suite.addTestSuite(TSLangRuleMapTest.class);
-		suite.addTestSuite(TSMapLHTest.class);
+		suite.addTestSuite(TSLinkedHashTreeTest.class);
 		suite.addTestSuite(TSPropertyMapTest.class);
 		suite.addTestSuite(TSTableTest.class);
 		suite.addTestSuite(TSTableRowTest.class);

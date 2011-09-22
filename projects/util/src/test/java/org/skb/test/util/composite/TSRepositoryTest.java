@@ -29,6 +29,12 @@
 
 package org.skb.test.util.composite;
 
+/**
+ * Test cases for {@link org.skb.util.composite.TSRepository}.
+ * 
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Set;

@@ -83,7 +83,6 @@ public class GenerateConstantsTask extends Task{
         this.pkgname=s;
     }
 
-
     /**
      * Sets the class name field.
      * @param s class name the contants are maintained by
@@ -91,7 +90,6 @@ public class GenerateConstantsTask extends Task{
     public void setClassname(String s){
         this.classname=s;
     }
-
 
     /**
      * Sets the JSON source file field.
@@ -101,7 +99,6 @@ public class GenerateConstantsTask extends Task{
         this.jsonfile=s;
     }
 
-
     /**
      * Sets the destination directory field.
      * @param s destination directory, a JAVA package
@@ -109,7 +106,6 @@ public class GenerateConstantsTask extends Task{
     public void setDestdir(String s){
         this.destdir=s;
     }
-
 
     /**
      * Sets the destination file name field.
@@ -119,7 +115,6 @@ public class GenerateConstantsTask extends Task{
         this.destfile=s;
     }
 
-
     /**
      * Sets the StringTemplate field.
      * @param s template to be used to generate JAVA output
@@ -127,7 +122,6 @@ public class GenerateConstantsTask extends Task{
     public void setStgurl(String s){
         this.stgurl=s;
     }
-
 
     /**
      * Executes the task.

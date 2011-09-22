@@ -56,14 +56,14 @@ import org.skb.util.composite.util.TSLinkedHashTree;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSMapLHTest extends TestCase{
+public class TSLinkedHashTreeTest extends TestCase{
 	TSLinkedHashTree simple;
 	TSLinkedHashTree complex;
 
 	static Logger logger;
 
 
-	public TSMapLHTest(String name) {
+	public TSLinkedHashTreeTest(String name) {
 		super(name);
 	}
 
@@ -72,7 +72,7 @@ public class TSMapLHTest extends TestCase{
 		LogManager.init();
 		this.simple=new TSLinkedHashTree();
 		this.complex=new TSLinkedHashTree();
-		logger=Logger.getLogger(TSMapLHTest.class);
+		logger=Logger.getLogger(TSLinkedHashTreeTest.class);
 	}
 
 
@@ -81,7 +81,7 @@ public class TSMapLHTest extends TestCase{
 
 
 	public static junit.framework.Test suite() {
-		return new TestSuite(TSMapLHTest.class);
+		return new TestSuite(TSLinkedHashTreeTest.class);
     }
 
 	@Test public void testTSInit(){

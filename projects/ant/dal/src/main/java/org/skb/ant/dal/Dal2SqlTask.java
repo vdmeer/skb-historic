@@ -52,7 +52,6 @@ public class Dal2SqlTask extends Task {
 	/** Destination directory for the SQL target files*/
 	private String destdir=null;
 
-
 	/**
 	 * Sets the destination directory for the SQL target files.
 	 * @param s destination directory
@@ -61,7 +60,6 @@ public class Dal2SqlTask extends Task {
         this.destdir=s;
     }
 
-
 	/**
 	 * Sets the fileset managing the DAL source files.
 	 * @param fileset DAL source files
@@ -69,7 +67,6 @@ public class Dal2SqlTask extends Task {
 	public void addFileset(FileSet fileset) {
         filesets.add(fileset);
     }
-
 
 	/**
 	 * Executes the ANT task.

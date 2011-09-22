@@ -74,7 +74,7 @@ import org.skb.util.composite.util.TSLinkedHashTree;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class Tribe {
-	/** Log4 Logger Object */
+	/** Logger Instance */
 	public final static Logger logger = Logger.getLogger(Tribe.class);
 
 	/** Configuration Instance */
@@ -300,6 +300,7 @@ public class Tribe {
     				return checkRet;
     			}
         		this.setOptions(args);
+        		this.prop=sourceParsers.get(0).getConfiguration().getProperties().tsCopyComposite();
        			System.out.println(this.doExitOptions());
        			TSWarning ret=new TSWarning();
 				ret.tsSetMessage("exit options selected, printed");
@@ -317,7 +318,8 @@ public class Tribe {
         				return checkRet;
         			}
         			this.setOptions(args);
-        			this.parser=targetParsers.get(0);
+        			//this.parser=targetParsers.get(0);
+        			this.prop=targetParsers.get(0).getConfiguration().getProperties().tsCopyComposite();
         			System.out.println(this.doExitOptions());
         			TSWarning ret=new TSWarning();
     				ret.tsSetMessage("exit options selected, printed");
@@ -326,7 +328,7 @@ public class Tribe {
         	}
         	//b.2 - target lang set, multiple target parsers available, print error
         	else{
-        		String msg="target language <"+targetLang+"> supported by <"+targetParsers.size()+"> parsers";
+        		String msg="target language <"+targetLang+"> supported by <"+targetParsers.size()+"> parsers for source language <"+sourceLang+">";
         		this.repMgr.error(msg);
         		TSError ret=new TSError();
 				ret.tsSetMessage(msg);
@@ -527,8 +529,7 @@ public class Tribe {
         	ret=TribeHelpers.getHelpPrint(cli, this.prop);
         }
 
-		if(this.eo.contains(EnumExitOptions.VERSION)&&
-        		!this.eo.contains(EnumExitOptions.HELP)){
+		if(this.eo.contains(EnumExitOptions.VERSION)&&!this.eo.contains(EnumExitOptions.HELP)){
         	ret=TribeHelpers.getVersionPrint(this.prop);
         }
 
