@@ -180,7 +180,7 @@ public class Tribe {
 		this.repMgr.setSTGFileName(prop.get(FieldKeys.fieldCliOptionReportManagerStg, FieldKeys.fieldValueDefault));
 		checkRet=this.repMgr.loadSTG("Report Manager default String Template Group", "");
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
-			this.repMgr.genErrorMessage(checkRet.toString());
+			this.repMgr.error(checkRet.toString());
 			return checkRet;
 		}
 
@@ -221,7 +221,7 @@ public class Tribe {
 		this.repMgr.setSTGFileName(prop.getValue(FieldKeys.fieldCliOptionReportManagerStg));
        	checkRet=this.repMgr.loadSTG("Report Manager after command line parsing", "");
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
-			this.repMgr.genErrorMessage(checkRet.toString());
+			this.repMgr.error(checkRet.toString());
 			return checkRet;
 		}
 
@@ -235,7 +235,7 @@ public class Tribe {
         if(prop.getValue(FieldKeys.fieldCliOptionSrcLanguage).tsIsType(TEnum.TS_NULL)){
         	if(!prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).tsIsType(TEnum.TS_NULL)){
         		String msg="target language specified without a source language";
-        		this.repMgr.genErrorMessage(msg);
+        		this.repMgr.error(msg);
         		TSError ret=new TSError();
         		ret.tsSetMessage(msg);
         		return ret;
@@ -247,7 +247,7 @@ public class Tribe {
 				return ret;
 			}
 			String msg="no source language specified";
-			this.repMgr.genErrorMessage(msg);
+			this.repMgr.error(msg);
 			TSError ret=new TSError();
 			ret.tsSetMessage(msg);
 			return ret;
@@ -263,7 +263,7 @@ public class Tribe {
         ArrayList<LangParserAPI> sourceParsers=TribeHelpers.getSrcParsers(this.parsers, sourceLang);
         if(sourceParsers.size()==0){
         	String msg="source language <"+sourceLang+"> not supported";
-        	this.repMgr.genErrorMessage(msg);
+        	this.repMgr.error(msg);
         	TSError ret=new TSError();
 			ret.tsSetMessage(msg);
 			return ret;
@@ -287,7 +287,7 @@ public class Tribe {
         	//a.1 - not target and multiple source parsers = decision problem
         	if(sourceParsers.size()>1){
         		String msg="source language <"+sourceLang+"> supported by <"+sourceParsers.size()+"> parsers and no target language set";
-        		this.repMgr.genErrorMessage(msg);
+        		this.repMgr.error(msg);
         		TSError ret=new TSError();
     			ret.tsSetMessage(msg);
     			return ret;
@@ -296,7 +296,7 @@ public class Tribe {
         	else if(this.eo.size()>0){
         		checkRet=TribeHelpers.loadParserOptions(sourceParsers.get(0), this.cli);
     			if(checkRet.tsIsType(TEnum.TS_ERROR)){
-    				this.repMgr.genErrorMessage(checkRet.toString());
+    				this.repMgr.error(checkRet.toString());
     				return checkRet;
     			}
         		this.setOptions(args);
@@ -313,7 +313,7 @@ public class Tribe {
         		if(this.eo.size()>0){
         			checkRet=TribeHelpers.loadParserOptions(targetParsers.get(0), this.cli);
         			if(checkRet.tsIsType(TEnum.TS_ERROR)){
-        				this.repMgr.genErrorMessage(checkRet.toString());
+        				this.repMgr.error(checkRet.toString());
         				return checkRet;
         			}
         			this.setOptions(args);
@@ -327,7 +327,7 @@ public class Tribe {
         	//b.2 - target lang set, multiple target parsers available, print error
         	else{
         		String msg="target language <"+targetLang+"> supported by <"+targetParsers.size()+"> parsers";
-        		this.repMgr.genErrorMessage(msg);
+        		this.repMgr.error(msg);
         		TSError ret=new TSError();
 				ret.tsSetMessage(msg);
 				return ret;
@@ -341,7 +341,7 @@ public class Tribe {
         Boolean gc=((TSBoolean)this.prop.getValue(FieldKeys.fieldCliOptionGC)).tsvalue;
         if(gc==true&&targetParsers.size()==0){
         	String msg="code generation activated but no target language given";
-        	this.repMgr.genErrorMessage(msg);
+        	this.repMgr.error(msg);
         	TSError ret=new TSError();
 			ret.tsSetMessage(msg);
 			return ret;
@@ -353,7 +353,7 @@ public class Tribe {
          */
         if (this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).tsIsType(TEnum.TS_NULL)||this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString().equals("")){
         	String msg="no input file specified";
-        	this.repMgr.genErrorMessage(msg);
+        	this.repMgr.error(msg);
         	TSError ret=new TSError();
 			ret.tsSetMessage(msg);
 			return ret;
@@ -371,7 +371,7 @@ public class Tribe {
         else{
         	//oops, we should not have this case, that sourceParser and targetParser have more/less than 1 member
         	String msg="PANIC, Problem with parser selection";
-        	this.repMgr.genErrorMessage(msg);
+        	this.repMgr.error(msg);
         	TSError ret=new TSError();
 			ret.tsSetMessage(msg);
 			return ret;
@@ -382,7 +382,7 @@ public class Tribe {
          */
         checkRet=TribeHelpers.loadParserOptions(this.parser, this.cli);
 		if(checkRet.tsIsType(TEnum.TS_ERROR)){
-			this.parser.getConfiguration().getReportManager().genErrorMessage(checkRet.toString());
+			this.parser.getConfiguration().getReportManager().error(checkRet.toString());
 			return checkRet;
 		}
 
@@ -418,7 +418,7 @@ public class Tribe {
         		URL url=ClassLoader.getSystemResource(sourceFile);
         		if(url==null){
         			String msg="can't open source file <" + sourceFile + "> for reading (tried URL from getSystemResource)";
-        			this.repMgr.genErrorMessage(msg);
+        			this.repMgr.error(msg);
         			TSError ret=new TSError();
         			ret.tsSetMessage(msg);
         			return ret;
@@ -426,7 +426,7 @@ public class Tribe {
         		fnTest=new File(url.getFile());
         		if(fnTest.canRead()==false){
         			String msg="can't open source file <" + sourceFile + "> for reading (tried to read from URL)";
-        			this.repMgr.genErrorMessage(msg);
+        			this.repMgr.error(msg);
         			TSError ret=new TSError();
         			ret.tsSetMessage(msg);
         			return ret;
@@ -439,7 +439,7 @@ public class Tribe {
         		fnTest=new File(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir).toString());
         		if(fnTest.canWrite()==false){
         			String msg="can't write in target directory <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir) + ">";
-        			this.repMgr.genErrorMessage(msg);
+        			this.repMgr.error(msg);
         			TSError ret=new TSError();
         			ret.tsSetMessage(msg);
         			return ret;
@@ -448,7 +448,7 @@ public class Tribe {
         		fnTest.createNewFile();
         		if(fnTest.canWrite()==false){
         			String msg="can't open target file <" + this.prop.getValue(FieldKeys.fieldCliOptionTgtDir)+"/"+this.prop.getValue(FieldKeys.fieldCliOptionTgtFile)+prop.getValue(FieldKeys.fieldCliOptionTgtFileExt) + "> for writing";
-        			this.repMgr.genErrorMessage(msg);
+        			this.repMgr.error(msg);
         			TSError ret=new TSError();
         			ret.tsSetMessage(msg);
         			return ret;
@@ -456,7 +456,7 @@ public class Tribe {
 				fnTest.delete();
         	}
         }catch(Exception e){
-        	this.repMgr.genErrorMessage(e.toString());
+        	this.repMgr.error(e.toString());
 		}
 
         /**
@@ -485,10 +485,10 @@ public class Tribe {
         	this.parser.parse(tribeIS);
         }
         catch(IOException io){
-        	this.repMgr.genErrorMessage("catched exception while parsing", "IOException: " + io.toString());
+        	this.repMgr.error("catched exception while parsing", "IOException: " + io.toString());
         }
         catch(Exception e){
-        	this.repMgr.genErrorMessage("catched exception while parsing", "Exception: " + e.toString());
+        	this.repMgr.error("catched exception while parsing", "Exception: " + e.toString());
         }
 
 
@@ -500,7 +500,7 @@ public class Tribe {
 			TSBaseAPI cl=this.prop.getValueCli(FieldKeys.fieldCliOptionConfigSave);
 			TSDefault checkRet=this.prop.writeToFile(cl);
 			if(checkRet.tsIsType(TEnum.TS_ERROR)){
-				this.repMgr.genErrorMessage("tribe: problems writing configuration file<"+cl+">\n  => error message: "+checkRet.tsGetMessage()+"\n  => error explanation: "+checkRet.tsGetExplanation()+"\n  => ...trying to continue");
+				this.repMgr.error("tribe: problems writing configuration file<"+cl+">\n  => error message: "+checkRet.tsGetMessage()+"\n  => error explanation: "+checkRet.tsGetExplanation()+"\n  => ...trying to continue");
 				return checkRet;
 			}
 		}
@@ -583,7 +583,7 @@ public class Tribe {
 			this.cli.parse(args, true);
         }
         catch(ParseException e){
-        	this.repMgr.genErrorMessage(e.getMessage());
+        	this.repMgr.error(e.getMessage());
        		System.exit(2);
         }
 
@@ -592,7 +592,7 @@ public class Tribe {
 			TSBaseAPI cl=(TSString)prop.getValueCli(FieldKeys.fieldCliOptionConfigLoad);
 			TSDefault ret=this.prop.loadFromFile(cl);
 			if(ret.tsIsType(TEnum.TS_ERROR)){
-				this.repMgr.genErrorMessage("tribe: problems loading configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
+				this.repMgr.error("tribe: problems loading configuration file<"+cl+">\n  => error message: "+ret.tsGetMessage()+"\n  => error explanation: "+ret.tsGetExplanation()+"\n  => ...trying to continue");
 			}
 		}
 	}

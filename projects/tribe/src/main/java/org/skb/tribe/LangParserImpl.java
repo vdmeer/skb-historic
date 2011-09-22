@@ -155,12 +155,12 @@ public class LangParserImpl implements LangParserAPI {
 				msg+="s";
 			if(ret>0) {
 				msg+=", exiting at pass 1";
-				repMgr.genErrorMessage(msg);
+				repMgr.error(msg);
 				System.exit(1);
 			}
 			else
 				msg+=" in pass 1 (Syntax Check)";
-			repMgr.genMessageNoFile(msg);
+			repMgr.messageNoFile(msg);
 
 			logger.trace("still here, reset errors and continue");
 			repMgr.resetNoOfErrors();
@@ -177,12 +177,12 @@ public class LangParserImpl implements LangParserAPI {
 				msg+="s";
 			if(ret>0) {
 				msg+=", exiting at pass 2";
-				repMgr.genErrorMessage(msg);
+				repMgr.error(msg);
 				System.exit(1);
 			}
 			else
 				msg+=" in pass 2 (Semantic Check)";
-			repMgr.genMessageNoFile(msg);
+			repMgr.messageNoFile(msg);
 
 			TSBaseAPI ata=this.prop.getValue(FieldKeys.fieldCliOptionGC);
 			if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_BOOLEAN)&&((TSBoolean)ata).tsvalue==true){
@@ -192,7 +192,7 @@ public class LangParserImpl implements LangParserAPI {
 				this.langParser.pass3CodeGen(nodesForGen, this.targetStgm.getSTG());
 
 				msg="success  in pass 3 (Code Generation)";
-				repMgr.genMessageNoFile(msg);
+				repMgr.messageNoFile(msg);
 
 				FileTemplateList ftl=this.langParser.pass4Files();
 				ftl.init(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir));
@@ -206,15 +206,15 @@ public class LangParserImpl implements LangParserAPI {
 				fm.writeList(ftl);
 
 				msg="success  in pass 4 (Write Files)";
-				repMgr.genMessageNoFile(msg);
+				repMgr.messageNoFile(msg);
 			}
 			this.langParser.finish();
 		}
 		catch(IOException io){
-			repMgr.genErrorMessage("catched exception while parsing", "IOException: " + io.toString());
+			repMgr.error("catched exception while parsing", "IOException: " + io.toString());
 		}
 		catch(Exception e){
-			repMgr.genErrorMessage("catched exception while parsing", "Exception: " + e.toString());
+			repMgr.error("catched exception while parsing", "Exception: " + e.toString());
 		}
 
 		logger.trace("parse -- out");

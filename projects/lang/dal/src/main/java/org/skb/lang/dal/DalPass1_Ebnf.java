@@ -72,7 +72,7 @@ public class DalPass1_Ebnf {
 	public void putAtom(Token token, String category, Token type){
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, type);
 		if(otr!=null){
-			config.getReportManager().genErrorMessage(DalConstants.Tokens.parserIDENTIFIER+" used more than once", token, DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
+			config.getReportManager().error(DalConstants.Tokens.parserIDENTIFIER+" used more than once", token, DalConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));
 		}
 	}
 

@@ -1,4 +1,4 @@
-/* Copyright (c) 2001-2011 Sven van der Meer
+/* Copyright (c) 2000-2011 Sven van der Meer
  * All rights reserved.
  *
  * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
@@ -49,7 +49,7 @@ import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.io.files.FileTemplateList;
 
 /**
- * Cola Parser, implementing tribe's parser API.
+ * Parser for COLA-Proto.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

@@ -93,7 +93,7 @@ options
   }
 
   public void displayRecognitionError(String[] tokenNames, RecognitionException re){
-    config.getReportManager().errorMessage(super.getErrorMessage(re, this.myTokens), re);
+    config.getReportManager().error(super.getErrorMessage(re, this.myTokens), re);
   }
 }
 

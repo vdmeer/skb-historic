@@ -1,4 +1,4 @@
-/* Copyright (c) 2005-2011 Sven van der Meer
+/* Copyright (c) 2000-2011 Sven van der Meer
  * All rights reserved.
  *
  * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
