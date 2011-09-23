@@ -125,6 +125,11 @@ public class AsciiFormatter {
 		return ret;
 	}
 
+	/**
+	 * Returns the length of the longest string in the given array.
+	 * @param ar array to be processed
+	 * @return length of the longest string (using toString on each object in the array)
+	 */
 	public static int maxLength(Object[] ar){
 		int ret=0;
 		for(int i=0;i<ar.length;i++){
@@ -139,7 +144,7 @@ public class AsciiFormatter {
 	 * @param str string to be filled
 	 * @param fill character used for the fill
 	 * @param length maximum length
-	 * @return
+	 * @return filled string
 	 */
     public static String tsFill(String str, Character fill, int length){
     	for(int i=str.length();i<length;i++)
