@@ -51,7 +51,7 @@ public class SkbLang {
 	static Logger logger;
 
 	/**
-	 * Main method to execute the COLA-Proto parser with arguments.
+	 * Main method to execute the parser with arguments.
 	 * @param args arguments for execution, usually command line arguments
 	 */
 	public static void main (String[] args) {
