@@ -523,37 +523,43 @@ public class Tribe {
 	 * @return null if no exit option found, a message to be printed otherwise
 	 */
 	private String doExitOptions(){
-		String ret=null;
+		String ret=new String();
+		boolean didHead=false;
 
 		if(this.eo.contains(EnumExitOptions.HELP)){
         	ret=TribeHelpers.getHelpPrint(cli, this.prop);
+        	didHead=true;
         }
 
 		if(this.eo.contains(EnumExitOptions.VERSION)&&!this.eo.contains(EnumExitOptions.HELP)){
         	ret=TribeHelpers.getVersionPrint(this.prop);
+        	didHead=true;
         }
 
         if(this.eo.contains(EnumExitOptions.LANGUAGES)){
-        	if(ret!=null)
-        		ret+="\n\n";
-        	else
-        		ret="\n";
+        	if(didHead==false){
+        		ret+="\n"+TribeHelpers.getHeaderShortPrint(this.prop);
+        		didHead=true;
+        	}
+        	ret+="\n";
         	ret+=TribeHelpers.getSupportedLangPrint(this.parsers);
         }
 
         if(this.eo.contains(EnumExitOptions.DEF_OPTIONS)){
-			if(ret!=null)
-        		ret+="\n\n";
-        	else
-        		ret="\n";
+        	if(didHead==false){
+        		ret+="\n"+TribeHelpers.getHeaderShortPrint(this.prop);
+        		didHead=true;
+        	}
+        	ret+="\n";
 			ret+=TribeHelpers.getDefaultOptionsPrint(this.prop);
 		}
 
 		if(this.eo.contains(EnumExitOptions.PRINT_STG_REPORTMGR)){
-        	if(ret!=null)
-        		ret+="\n\n";
-        	else
-        		ret="\n";
+			if(didHead==false){
+        		ret+="\n"+TribeHelpers.getVersionPrint(this.prop);
+        		didHead=true;
+        	}
+			ret+="\n";
         	ret+=this.repMgr.stgmToString();
 		}		
 

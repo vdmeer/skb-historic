@@ -32,6 +32,7 @@ package org.skb.tribe;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
@@ -41,6 +42,7 @@ import org.skb.util.classic.cli.Cli;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.lang.LangParserAPI;
+import org.skb.util.classic.misc.AsciiFormatter;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository.TEnum;
@@ -187,33 +189,36 @@ public class TribeHelpers {
 	}
 
 	/**
+	 * Returns a string with a header, to be used before other exit options prints
+	 * @param prop property map
+	 * @return string
+	 */
+	public static String getHeaderShortPrint(ConfigurationProperties prop){
+		return prop.get(FieldKeys.fieldApplicationName, FieldKeys.fieldValueDefault)+", version "+
+		       prop.get(FieldKeys.fieldApplicationVersion, FieldKeys.fieldValueDefault)+", build "+
+		       prop.get(FieldKeys.fieldApplicationBuild, FieldKeys.fieldValueDefault)+", "+
+		       prop.get(FieldKeys.fieldApplicationBuilddate, FieldKeys.fieldValueDefault)+
+		       "\n";
+	}
+
+	/**
 	 * Returns a string with all options (properties) and their default value
 	 * @param prop property map
 	 * @return string
 	 */
 	public static String getDefaultOptionsPrint(ConfigurationProperties prop){
-		String ret=new String();
-
-   		ret+="\n";
-		ret+="Default Configuration:\n";
-		ret+="  [Option] = [Default Configuration]\n";
-		ret+="\n";
-
+		LinkedHashMap<String,String> map=new LinkedHashMap<String, String>();
 		TreeSet<String> ts=new TreeSet<String>(prop.getRows());
         for (Iterator<String> i = ts.iterator(); i.hasNext(); i.hasNext()){
         	String current=i.next();
         	if(!(prop.get(current, FieldKeys.fieldCliOptionType)).tsIsType(TEnum.TS_NULL)){
-        		if(!(prop.get(current, FieldKeys.fieldValueFile)).tsIsType(TEnum.TS_NULL)||!(prop.get(current, FieldKeys.fieldValueCli)).tsIsType(TEnum.TS_NULL)){
-        			ret+="    "+current+" = "+prop.getValue(current)+"\n";
-        		}
-        		else{
-        			ret+="    "+current+" = "+prop.getValueDefault(current)+"\n";
-        		}
+        		if(!(prop.get(current, FieldKeys.fieldValueFile)).tsIsType(TEnum.TS_NULL)||!(prop.get(current, FieldKeys.fieldValueCli)).tsIsType(TEnum.TS_NULL))
+        			map.put(current, prop.getValue(current).toString());
+        		else
+        			map.put(current, prop.getValueDefault(current).toString());
         	}
         }
-        ret+=TribeHelpers.getFooterPrint(prop);
-
-		return ret;
+        return AsciiFormatter.tableTwoRows(map, "Default Options", "Option", "Default Value");
 	}
 
 	/**
@@ -241,16 +246,11 @@ public class TribeHelpers {
 	 * @return simple string containing source language to target language(s) mappings per parser supported
 	 */
 	public static String getSupportedLangPrint(LangParserAPI[] parsers){
-		String ret=new String();
-
-		ret+="supported languages = ";
+		LinkedHashMap<String,String> map=new LinkedHashMap<String, String>();
 		for(int i=0;i<parsers.length;i++){
-			LangParserAPI p=parsers[i];
-			ret+="\n          source:"+p.getSupportedSourceLang();
-			ret+=" -> targets:"+p.getSupportedTargetLang();
+			map.put(parsers[i].getSupportedSourceLang(), parsers[i].getSupportedTargetLang().toString());
 		}
-    	ret+="\n";
-    	return ret;
+		return AsciiFormatter.tableTwoRows(map, "Supported Languages", "Source", "Target");
 	}
 
 	/**
