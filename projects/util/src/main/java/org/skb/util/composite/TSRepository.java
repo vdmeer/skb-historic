@@ -171,10 +171,10 @@ public class TSRepository {
 		public final static String TS_COMPOSITE_TABLEROW		= "ts:composite:util:tablerow";
 
 		/** SKB Type for a Map, used to identify the Map interface */
-		public final static String TS_COMPOSITE_MAP				= "ts:composite:util:map";
+		public final static String TS_COMPOSITE_TREE			= "ts:composite:util:tree";
 
 		/** SKB Type for a Linked Hash Map (java.util.LinkedHashMap<String, TSBase> */
-		public final static String TS_COMPOSITE_MAP_LH			= "ts:composite:util:map_lh";
+		public final static String TS_COMPOSITE_TREE_LH			= "ts:composite:util:tree:lh";
 
 		/** SKB Type for an Array List (java.utils.list<TSBase>) */
 		public final static String TS_COMPOSITE_ARRAYLIST		= "ts:composite:util:arraylist";
@@ -315,10 +315,10 @@ public class TSRepository {
 		TS_COMPOSITE_TABLEROW			(TSRepository.TString.TS_COMPOSITE_TABLEROW),
 
 		/** SKB Type for a Map, used to identify the Map interface */
-		TS_COMPOSITE_MAP				(TSRepository.TString.TS_COMPOSITE_MAP),
+		TS_COMPOSITE_TREE				(TSRepository.TString.TS_COMPOSITE_TREE),
 
 		/** SKB Type for a Linked Hash Map (java.util.LinkedHashMap<String, TSBase> */
-		TS_COMPOSITE_MAP_LH				(TSRepository.TString.TS_COMPOSITE_MAP_LH),
+		TS_COMPOSITE_TREE_LH			(TSRepository.TString.TS_COMPOSITE_TREE_LH),
 
 		/** SKB Type for an Array List (java.utils.list<TSBase>) */
 		TS_COMPOSITE_ARRAYLIST			(TSRepository.TString.TS_COMPOSITE_ARRAYLIST),

@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.misc;
+package org.skb.util.classic.json;
 
 import java.io.File;
 import java.util.Iterator;
@@ -36,6 +36,7 @@ import java.util.Scanner;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.java.TSBoolean;
@@ -52,14 +53,14 @@ import org.skb.util.composite.util.TSLinkedHashTree;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class Json2Oat {
+public class Json2TS {
 	/** Logger instance */
-	public final static Logger logger=Logger.getLogger(Json2Oat.class);
+	public final static Logger logger=Logger.getLogger(Json2TS.class);
 
 	/**
 	 * Class constructor, empty.
 	 */
-	public Json2Oat(){}
+	public Json2TS(){}
 
 	/**
 	 * Reads the given JSON file and logs errors.
@@ -126,6 +127,7 @@ public class Json2Oat {
 	public TSBaseAPI s2o(String content){
 		try{
 			ObjectMapper mapper=new ObjectMapper();
+			mapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
 			JsonNode rootNode=mapper.readValue(content, JsonNode.class);
 			return this.traverse(rootNode);
 		}

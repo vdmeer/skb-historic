@@ -71,7 +71,7 @@ public class TribeHelpers {
 	public static TSSTGroupManager loadSTGM(Configuration config, String path, String applicationName, String stgFile){
 		TSSTGroupManager ret=new TSSTGroupManager();
 		TSBaseAPI tsb=config.config.get(path);
-		if(tsb.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+		if(tsb.tsIsType(TEnum.TS_COMPOSITE_TREE_LH)){
 			TSLinkedHashTree map=(TSLinkedHashTree)tsb;
 			TSBaseAPI ala;
 			for (String s:map.keySet()){

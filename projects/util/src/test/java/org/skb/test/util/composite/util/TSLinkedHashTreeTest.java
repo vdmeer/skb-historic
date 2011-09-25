@@ -29,15 +29,19 @@
 
 package org.skb.test.util.composite.util;
 
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.apache.log4j.Logger;
+import org.codehaus.jackson.JsonGenerator;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.json.Json2TS;
+import org.skb.util.classic.json.TS2Json;
 import org.skb.util.classic.misc.LogManager;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSNull;
@@ -91,30 +95,30 @@ public class TSLinkedHashTreeTest extends TestCase{
 			assertEquals(4,o.length);
 			assertEquals(TSRepository.TEnum.TS_BASE.toString(),o[0].toString());
 			assertEquals(TSRepository.TEnum.TS_COMPOSITE.toString(),o[1].toString());
-			assertEquals(TSRepository.TEnum.TS_COMPOSITE_MAP.toString(),o[2].toString());
-			assertEquals(TSRepository.TEnum.TS_COMPOSITE_MAP_LH.toString(),o[3].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE_TREE.toString(),o[2].toString());
+			assertEquals(TSRepository.TEnum.TS_COMPOSITE_TREE_LH.toString(),o[3].toString());
 		o=_t.tsGetTypeStringList().toArray();
 			assertEquals(4,o.length);
 			assertEquals(TSRepository.TString.TS_BASE,o[0]);
 			assertEquals(TSRepository.TString.TS_COMPOSITE,o[1]);
-			assertEquals(TSRepository.TString.TS_COMPOSITE_MAP,o[2]);
-			assertEquals(TSRepository.TString.TS_COMPOSITE_MAP_LH,o[3]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE_TREE,o[2]);
+			assertEquals(TSRepository.TString.TS_COMPOSITE_TREE_LH,o[3]);
 
 		assertEquals(false,_t.tsIsAtomic());
 		assertEquals(true,_t.tsIsComposite());
 
-		assertEquals(TSRepository.TEnum.TS_COMPOSITE_MAP_LH,_t.tsGetTypeEnum());
-		assertEquals(TSRepository.TString.TS_COMPOSITE_MAP_LH,_t.tsGetTypeString());
+		assertEquals(TSRepository.TEnum.TS_COMPOSITE_TREE_LH,_t.tsGetTypeEnum());
+		assertEquals(TSRepository.TString.TS_COMPOSITE_TREE_LH,_t.tsGetTypeString());
 
 		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_BASE));
 		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE));
-		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP));
-		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE));
+		assertEquals(true,_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH));
 
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_BASE));
 		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE));
-		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE_MAP));
-		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE_MAP_LH));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE_TREE));
+		assertEquals(true,_t.tsIsType(TSRepository.TString.TS_COMPOSITE_TREE_LH));
 	}
 
 
@@ -123,10 +127,11 @@ public class TSLinkedHashTreeTest extends TestCase{
 	}
 
 	@Ignore public void initComplex(){
-		this.complex=new TSLinkedHashTree();
-		Json2Oat j2o=new Json2Oat();
+		this.complex.clear();
+		Json2TS j2o=new Json2TS();
 		TSBaseAPI c=j2o.read("/org/skb/test/util/types/composite/util/cola-proto.json");
-		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+		//TSBaseAPI c=j2o.read("/org/skb/test/util/types/composite/util/flare.json");
+		if(c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH))
 			this.complex=(TSLinkedHashTree)c;
 	}
 
@@ -393,5 +398,21 @@ public class TSLinkedHashTreeTest extends TestCase{
 
 //		public TSBase put(String[] list, String val)
 //		public TSBase put(String[] list, TSBase val)
+	}
+
+	@Test public void testT(){
+		this.initComplex();
+
+		try{
+			StringWriter sw=new StringWriter();
+			ObjectMapper mapper=TS2Json.getMapper();
+			JsonGenerator jsonGenerator=TS2Json.getJsonGeneratorSW(sw);
+			mapper.writeValue(jsonGenerator, this.complex);
+			sw.close();
+			String res=sw.getBuffer().toString();
+			System.out.println(res);
+		} catch(Exception e){
+			System.err.println(e);
+		}
 	}
 }

@@ -84,15 +84,15 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	/**
 	 * Local initialisation method.
 	 * 
-	 * This method adds TS_COMPOSITE, TS_COMPOSITE_MAP and TS_COMPOSITE_MAP_LH to the type lists (string and enum) and
+	 * This method adds TS_COMPOSITE, TS_COMPOSITE_TREE and TS_COMPOSITE_TREE_LH to the type lists (string and enum) and
 	 * initialises the local map.
 	 */
 	protected void _init(){
-		this.typeString.add(TSRepository.TString.TS_COMPOSITE_MAP);
-		this.typeEnum.add(TEnum.TS_COMPOSITE_MAP);
+		this.typeString.add(TSRepository.TString.TS_COMPOSITE_TREE);
+		this.typeEnum.add(TEnum.TS_COMPOSITE_TREE);
 
-		this.typeString.add(TSRepository.TString.TS_COMPOSITE_MAP_LH);
-		this.typeEnum.add(TEnum.TS_COMPOSITE_MAP_LH);
+		this.typeString.add(TSRepository.TString.TS_COMPOSITE_TREE_LH);
+		this.typeEnum.add(TEnum.TS_COMPOSITE_TREE_LH);
 
 		this.tsvalue=new LinkedHashMap<String, TSBaseAPI>();
 	}
@@ -111,7 +111,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 			return this.tsvalue.containsKey(fqpn.get(0));
 		else if(this.tsvalue.containsKey(fqpn.get(0))){
 			TSBaseAPI ct=this.tsvalue.get(fqpn.get(0));
-			if(ct.tsIsType(TSRepository.type(TEnum.TS_COMPOSITE_MAP))){
+			if(ct.tsIsType(TSRepository.type(TEnum.TS_COMPOSITE_TREE))){
 				fqpn.remove(0);
 				return ((TSTreeAPI)ct).containsKey(fqpn);
 			}
@@ -179,7 +179,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 		}
 		else if(this.tsvalue.containsKey(fqpn.get(0).toString())){
 			TSBaseAPI ct=this.tsvalue.get(fqpn.get(0).toString());
-			if(ct.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP)){
+			if(ct.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE)){
 				fqpn.remove(0);
 				return ((TSTreeAPI)ct).get(fqpn);
 			}
@@ -264,7 +264,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 			String key=fqpn.get(0);
 			if(!this.tsvalue.containsKey(key))
 				this.tsvalue.put(key, new TSLinkedHashTree());
-			if(!(this.tsvalue.get(key).tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP)))
+			if(!(this.tsvalue.get(key).tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE)))
 				this.tsvalue.put(key, new TSLinkedHashTree());
 			fqpn.remove(0);
 			return ((TSLinkedHashTree)this.tsvalue.get(key)).put(fqpn, val);
@@ -332,7 +332,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 			return this.tsvalue.remove(fqpn.get(0).toString());
 		else if(this.tsvalue.containsKey(fqpn.get(0).toString())){
 			TSBaseAPI ct=this.tsvalue.get(fqpn.get(0).toString());
-			if(ct.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP)){
+			if(ct.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE)){
 				fqpn.remove(0);
 				return ((TSTreeAPI)ct).remove(fqpn);
 			}

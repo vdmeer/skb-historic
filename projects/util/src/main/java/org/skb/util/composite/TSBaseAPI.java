@@ -35,7 +35,7 @@ import java.util.Set;
 import org.skb.util.composite.TSRepository.TEnum;
 
 /**
- * Base interface for all SKB types
+ * Base interface for all SKB types.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

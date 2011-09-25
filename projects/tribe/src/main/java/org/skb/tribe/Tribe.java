@@ -52,8 +52,8 @@ import org.skb.util.classic.cli.Cli;
 import org.skb.util.classic.cli.CliApache;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
+import org.skb.util.classic.json.Json2TS;
 import org.skb.util.classic.lang.LangParserAPI;
-import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.classic.misc.PropertyHandler;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
@@ -122,9 +122,9 @@ public class Tribe {
 
 		//get the chunks for the standard STG file
 		Properties cfgFile=new PropertyHandler().load(this.propertyFile, Tribe.class.getName());
-		Json2Oat j2o=new Json2Oat();
+		Json2TS j2o=new Json2TS();
 		TSBaseAPI c=j2o.read(cfgFile.getProperty("org.skb.util.config.jsonfile"));
-		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+		if(c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH)){
 			TSLinkedHashTree cfg=(TSLinkedHashTree)c;
 			config.config.put(PathKeys.pathConfigurationParserTribeStgChunks, cfg.get(PathKeys.pathConfigurationParserTribeStgChunks));
 		}

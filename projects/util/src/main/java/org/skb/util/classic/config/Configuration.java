@@ -166,7 +166,7 @@ public class Configuration {
 	 */
 	public TSLinkedHashTree get(String path){
 		TSBaseAPI base=this.config.get(path);
-		if(base.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+		if(base.tsIsType(TEnum.TS_COMPOSITE_TREE_LH)){
 			return (TSLinkedHashTree)base;
 		}
 		return new TSLinkedHashTree();

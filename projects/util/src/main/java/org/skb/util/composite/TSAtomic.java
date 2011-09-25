@@ -40,12 +40,12 @@ import org.apache.log4j.Logger;
 import org.skb.util.composite.TSRepository.TEnum;
 
 /**
- * Abstract class implementing the core functionality of {@link TSAtomicAPI}
+ * Class implementing the core functionality of {@link TSAtomicAPI}.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public abstract class TSAtomic implements TSAtomicAPI {
+public class TSAtomic implements TSAtomicAPI {
 	/** Logger instance */
 	public final static Logger logger=Logger.getLogger(TSAtomic.class);
 
@@ -121,5 +121,4 @@ public abstract class TSAtomic implements TSAtomicAPI {
 		logger.warn("not implemented");
 		return null;
 	}
-
 }

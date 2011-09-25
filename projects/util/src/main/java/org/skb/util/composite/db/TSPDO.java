@@ -208,7 +208,7 @@ public class TSPDO extends TSAtomic {
 
 		//where string
 		String where="";
-		if(query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)&&((TSLinkedHashTree)query.get("equals")).size()>0){
+		if(query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)&&((TSLinkedHashTree)query.get("equals")).size()>0){
 			TSLinkedHashTree _a=(TSLinkedHashTree)query.get("equals");
 			Set<String> o_set = _a.keySet();
 			Iterator<String> key_it = o_set.iterator();

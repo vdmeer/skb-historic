@@ -27,25 +27,25 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.classic.misc;
+package org.skb.test.util.classic.json;
 
 import junit.framework.TestCase;
 
 import org.junit.Test;
 
 /**
- * Test cases for {@link org.skb.util.classic.misc.Json2Oat}.
+ * Test cases for {@link org.skb.util.classic.json.Json2TS}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class Json2OatTest extends TestCase {
+public class Json2TSTest extends TestCase {
 	public void setUp(){}
 
 	public void tearDown(){}
 
 	public static junit.framework.Test suite() {
-        return new junit.framework.JUnit4TestAdapter(Json2OatTest.class);
+        return new junit.framework.JUnit4TestAdapter(Json2TSTest.class);
     }
 
 	//TODO - test for Constructors

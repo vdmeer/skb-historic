@@ -40,7 +40,7 @@ import org.apache.log4j.Logger;
 import org.skb.util.composite.TSRepository.TEnum;
 
 /**
- * Abstract class implementing the core functionality of {@link TSCompositeAPI}
+ * Class implementing the core functionality of {@link TSCompositeAPI}.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
@@ -121,5 +121,4 @@ public class TSComposite implements TSCompositeAPI {
 		logger.warn("not implemented");
 		return null;
 	}
-
 }

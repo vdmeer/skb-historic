@@ -50,8 +50,8 @@ import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileManager;
 import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.classic.json.Json2TS;
 import org.skb.util.classic.lang.LangParserAPI;
-import org.skb.util.classic.misc.Json2Oat;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository;
@@ -112,9 +112,9 @@ public class LangParserImpl implements LangParserAPI {
 
 		String url=this.langParser.getConfigurationFile();
 		try{
-			Json2Oat j2o=new Json2Oat();
+			Json2TS j2o=new Json2TS();
 			TSBaseAPI c=j2o.read(url);
-			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+			if(c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH)){
 				this.config.config.put(PathKeys.pathConfigurationParserTribe, ((TSLinkedHashTree)c).get(PathKeys.pathConfigurationParserTribe));
 				this.config.config.put(PathKeys.patConfigurationParserLang, ((TSLinkedHashTree)c).get(PathKeys.patConfigurationParserLang));
 			}

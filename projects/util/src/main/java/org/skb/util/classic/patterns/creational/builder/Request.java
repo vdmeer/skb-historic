@@ -110,7 +110,7 @@ public class Request {
 			ArrayList<String> rem_keys=new ArrayList<String>();
 			TSBaseAPI _t=this.init_map.get("core:requests:fields");
 			TSLinkedHashTree ar=new TSLinkedHashTree();
-			if(_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH))
+			if(_t.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH))
 				ar=(TSLinkedHashTree)_t;
 			String key;
 			TSLinkedHashTree row;

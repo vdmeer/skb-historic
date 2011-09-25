@@ -48,7 +48,7 @@ import org.skb.util.composite.util.TSLinkedHashTree;
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class TSString extends TSAtomic{
+public class TSString extends TSAtomic {
 
 	public static java.lang.String copyValueOf(char[] data){
 		return java.lang.String.copyValueOf(data);

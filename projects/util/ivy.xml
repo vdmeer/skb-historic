@@ -34,12 +34,19 @@
 	<dependency org="org.apache.commons"
 		name="com.springsource.org.apache.commons.configuration"
 		rev="${org.apache.commons.configuration}" />
+<!--
 	<dependency org="org.codehaus.jackson"
 		name="com.springsource.org.codehaus.jackson"
 		rev="${org.codehaus.jackson}" />
+-->
+	<dependency org="org.codehaus"
+		name="org.codehaus.jackson"
+		rev="${org.codehaus.jackson}" />
+<!--
 	<dependency org="org.codehaus.jackson"
 		name="com.springsource.org.codehaus.jackson.mapper"
 		rev="${org.codehaus.jackson}" />
+-->
 	<dependency org="org.apache.log4j"
 		name="com.springsource.org.apache.log4j"
 		rev="${org.apache.log4j}" />

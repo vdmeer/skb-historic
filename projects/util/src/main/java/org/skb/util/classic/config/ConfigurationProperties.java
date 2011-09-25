@@ -37,7 +37,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
-import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.json.Json2TS;
 import org.skb.util.classic.misc.PropertyHandler;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository.TEnum;
@@ -130,10 +130,10 @@ public class ConfigurationProperties extends TSPropertyMap {
 
 		//TODO check if cfgFile exists as URL or FILE
 
-		Json2Oat j2o=new Json2Oat();
+		Json2TS j2o=new Json2TS();
 		TSBaseAPI c=j2o.read(this.config.getProperty("org.skb.util.config.jsonfile"));
 		TSLinkedHashTree cfg=null;
-		if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+		if(c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH))
 			cfg=(TSLinkedHashTree)c;
 		if(cfg==null){
 			System.err.println("skb: configuration not found");

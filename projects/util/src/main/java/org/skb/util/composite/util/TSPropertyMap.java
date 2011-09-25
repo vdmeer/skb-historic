@@ -43,7 +43,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
 import org.skb.util.FieldKeys;
-import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.json.Json2TS;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSError;
@@ -237,13 +237,13 @@ public class TSPropertyMap extends TSTable{
 	}
 
 	public Set<String> loadFromJason(TSBaseAPI map){
-		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_TREE_LH))
 			return null;
 		return this.loadFromJason((TSLinkedHashTree)map);
 	}
 
 	public Set<String> loadFromJason(TSLinkedHashTree map){
-		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+		if(map==null||!map.tsIsType(TEnum.TS_COMPOSITE_TREE_LH))
 			return null;
 		map.tsClean();
 
@@ -278,8 +278,8 @@ public class TSPropertyMap extends TSTable{
 	}
 
 	public Set<String> loadFromJson(File file){
-		TSBaseAPI _t=new Json2Oat().read(file);
-		if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+		TSBaseAPI _t=new Json2TS().read(file);
+		if(_t.tsIsType(TEnum.TS_COMPOSITE_TREE_LH))
 			return this.loadFromJason((TSLinkedHashTree)_t);
 		return new TreeSet<String>();
 	}

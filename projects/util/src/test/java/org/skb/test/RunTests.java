@@ -37,9 +37,9 @@ import org.skb.test.util.classic.io.dirwalker.FindPackageDirectoriesTest;
 import org.skb.test.util.classic.io.files.FileManagerTest;
 import org.skb.test.util.classic.io.files.FileTemplateListTest;
 import org.skb.test.util.classic.io.files.FileTemplateSingleTest;
+import org.skb.test.util.classic.json.Json2TSTest;
 import org.skb.test.util.classic.lang.ScopeStringTest;
 import org.skb.test.util.classic.lang.ScopeTokenTest;
-import org.skb.test.util.classic.misc.Json2OatTest;
 import org.skb.test.util.classic.misc.PropertyHandlerTest;
 import org.skb.test.util.classic.patterns.creational.builder.RequestTest;
 import org.skb.test.util.classic.stringtemplate.STGWriterXtoYTest;
@@ -117,6 +117,12 @@ public class RunTests {
 		suite.addTestSuite(FileTemplateListTest.class);
 		suite.addTestSuite(FileTemplateSingleTest.class);
 
+
+		/*
+		 * org.skb.util.json
+		 */
+		suite.addTestSuite(Json2TSTest.class);
+
 		/*
 		 * org.skb.util.languages
 		 */
@@ -126,7 +132,6 @@ public class RunTests {
 		/*
 		 * org.skb.util.misc
 		 */
-		suite.addTestSuite(Json2OatTest.class);
 		suite.addTestSuite(PropertyHandlerTest.class);
 		//TODO ADD LOG MANAGER
 

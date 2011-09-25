@@ -44,7 +44,7 @@ import org.apache.tools.ant.Task;
 import org.skb.util.FieldKeys;
 import org.skb.util.PathKeys;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.json.Json2TS;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSString;
@@ -180,9 +180,9 @@ public class GenerateConstantsTask extends Task{
     	Configuration config=Configuration.getConfiguration(GenerateConstantsTask.class);
 
 		try{
-			Json2Oat j2o=new Json2Oat();
+			Json2TS j2o=new Json2TS();
 			TSBaseAPI c=j2o.read(jfh);
-			if(c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+			if(c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH)){
 				config.config.put(PathKeys.pathConfigurationParserTribe, ((TSLinkedHashTree)c).get(PathKeys.pathConfigurationParserTribe));
 				config.config.put(PathKeys.patConfigurationParserLang, ((TSLinkedHashTree)c).get(PathKeys.patConfigurationParserLang));
 			}

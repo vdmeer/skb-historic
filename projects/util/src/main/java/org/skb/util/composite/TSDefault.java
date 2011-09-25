@@ -182,5 +182,4 @@ public class TSDefault implements TSAtomicAPI, TSCompositeAPI {
 	public void tsTrim() {
 		logger.warn("tsTrim has no effect on TSNull, yet someone called it");
 	}
-
 }

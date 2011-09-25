@@ -37,7 +37,7 @@ import org.apache.commons.cli.ParseException;
 import org.junit.Test;
 import org.skb.util.FieldKeys;
 import org.skb.util.classic.cli.CliApache;
-import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.json.Json2TS;
 import org.skb.util.classic.misc.LogManager;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository.TEnum;
@@ -226,9 +226,9 @@ public class CliApacheTest extends TestCase {
 		}
 
 		public void fill(){
-			Json2Oat j2o=new Json2Oat();
+			Json2TS j2o=new Json2TS();
 			TSBaseAPI c=j2o.read("/org/skb/test/util/cli/properties.json");
-			if(c!=null&&c.tsIsType(TEnum.TS_COMPOSITE_MAP_LH))
+			if(c!=null&&c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH))
 				this.loadFromJason(((TSLinkedHashTree)c));
 		}
 	}

@@ -118,7 +118,7 @@ public class SkbInfoReader extends SKBReader {
 			while(key_it.hasNext()){
 				key=key_it.next();
 				TSBaseAPI val=this.entries.get(key);
-				if(val.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+				if(val.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 					Set<String> t_set = ((TSLinkedHashTree)val).keySet();
 					Iterator<String> t_it = t_set.iterator();
 					String t_key;

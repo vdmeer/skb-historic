@@ -161,7 +161,7 @@ public class TSStringTest extends TestCase{
 		TSBaseAPI result=t.tsExplode();
 
 		//check for type
-		assertEquals(TEnum.TS_COMPOSITE_MAP_LH, result.tsGetTypeEnum());
+		assertEquals(TEnum.TS_COMPOSITE_TREE_LH, result.tsGetTypeEnum());
 
 		//check if keys are all ok
 		LinkedHashSet<String> keysExpected=new LinkedHashSet<String>();

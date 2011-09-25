@@ -42,7 +42,7 @@ import org.apache.log4j.Logger;
 import org.skb.util.PathKeys;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.io.dirwalker.FindPackageDirectories;
-import org.skb.util.classic.misc.Json2Oat;
+import org.skb.util.classic.json.Json2TS;
 import org.skb.util.classic.patterns.creational.builder.Request;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
@@ -396,10 +396,10 @@ public class SKB {
 		if(pkgJson.canRead()){
 			logger.trace("["+pkg+"] "+"loading from JSON file <"+pkgJson+">");
 
-			Json2Oat j2o=new Json2Oat();
+			Json2TS j2o=new Json2TS();
 			TSBaseAPI _t=j2o.read(pkgJson);
 			TSLinkedHashTree res=new TSLinkedHashTree();
-			if(_t.tsIsType(TEnum.TS_COMPOSITE_MAP_LH)){
+			if(_t.tsIsType(TEnum.TS_COMPOSITE_TREE_LH)){
 				res=(TSLinkedHashTree)_t;
 			}
 
@@ -409,7 +409,7 @@ public class SKB {
 				TSBaseAPI loadrepo=(res).get("load_repository_object");
 				if(loadrepo.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 					for(TSBaseAPI dos : (TSArrayList)loadrepo){
-						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 							TSLinkedHashTree repo=(TSLinkedHashTree)dos;
 							if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
 								this.myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
@@ -448,7 +448,7 @@ public class SKB {
 				TSBaseAPI loaddata=(res).get("load_data_object");
 				if(loaddata.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 					for(TSBaseAPI dos : (TSArrayList)loaddata){
-						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 							TSLinkedHashTree data=(TSLinkedHashTree)dos;
 							if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id"))
 								myDM.loadDataObject(data.get("sema_tag").toString(), data.get("type").toString(), data.get("handle").toString(), data.get("tables").toString(), data.get("filter_id").toString(), pkg);

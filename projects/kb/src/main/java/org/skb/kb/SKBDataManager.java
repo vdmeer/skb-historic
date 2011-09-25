@@ -209,7 +209,7 @@ public class SKBDataManager extends TSAtomic {
 		else if(query.get("find").tsIsType(TSRepository.TEnum.TS_NULL))
 			query.put("find", new TSString("*"));
 
-		if(!query.containsKey("equals")||!query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH))
+		if(!query.containsKey("equals")||!query.get("equals").tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH))
 			query.put("equals", new TSLinkedHashTree());
 
 		if(!query.containsKey("sort")||query.get("sort").tsIsType(TSRepository.TEnum.TS_NULL))
@@ -243,7 +243,7 @@ public class SKBDataManager extends TSAtomic {
 		TSBaseAPI entries=this.registered_dos.get(query.get("sema_tag").toString());
 		if(entries.tsIsType(TSRepository.TEnum.TS_COMPOSITE_ARRAYLIST)){
 			for(TSBaseAPI entry : (TSArrayList)entries){
-				if(entry.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+				if(entry.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 					TSLinkedHashTree todo=(TSLinkedHashTree)entry;
 					if(query.get("filter_id").toString().length()!=0&&todo.containsKey("filet_id")&&!query.get("filter_id").toString().equals(todo.get("filter_id").toString()))
 						continue;
@@ -317,7 +317,7 @@ public class SKBDataManager extends TSAtomic {
 			key=key_it.next();
 			TSBaseAPI val=map.get(key);
 			switch(val.tsGetTypeEnum()){
-				case TS_COMPOSITE_MAP_LH:
+				case TS_COMPOSITE_TREE_LH:
 					this.interpretLoop((TSLinkedHashTree)val, scope);
 					break;
 				case TS_ATOMIC_JAVA_STRING:
@@ -377,7 +377,7 @@ public class SKBDataManager extends TSAtomic {
 								}
 								else if(((TSString)val).tsvalue.contains("%")){
 									TSBaseAPI newVal=((TSString)val).tsExplode();
-									if(newVal.tsIsType(TSRepository.TEnum.TS_COMPOSITE_MAP_LH)){
+									if(newVal.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 										TSLinkedHashTree m=(TSLinkedHashTree)newVal;
 										String lang=SKB.getInstance().getLang();
 										if(m.get(lang)!=null)
