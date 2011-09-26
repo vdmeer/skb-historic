@@ -405,7 +405,7 @@ public class TSLinkedHashTreeTest extends TestCase{
 
 		try{
 			StringWriter sw=new StringWriter();
-			ObjectMapper mapper=TS2Json.getMapper();
+			ObjectMapper mapper=TS2Json.getMapperD3();
 			JsonGenerator jsonGenerator=TS2Json.getJsonGeneratorSW(sw);
 			mapper.writeValue(jsonGenerator, this.complex);
 			sw.close();
