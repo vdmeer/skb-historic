@@ -41,7 +41,7 @@ import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSDefault;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.antlr.TSSTGroupManager;
 import org.skb.util.composite.util.TSArrayList;
 
 /**

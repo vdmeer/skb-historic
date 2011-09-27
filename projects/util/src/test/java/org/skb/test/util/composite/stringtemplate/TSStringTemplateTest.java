@@ -33,10 +33,10 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.stringtemplate.TSStringTemplate;
+import org.skb.util.composite.antlr.TSStringTemplate;
 
 /**
- * Test cases for {@link org.skb.util.composite.stringtemplate.TSStringTemplate}.
+ * Test cases for {@link org.skb.util.composite.antlr.TSStringTemplate}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

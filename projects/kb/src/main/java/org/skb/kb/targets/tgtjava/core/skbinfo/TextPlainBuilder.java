@@ -34,7 +34,7 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.skb.kb.SKBBuilder;
 import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.antlr.TSSTGroupManager;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**

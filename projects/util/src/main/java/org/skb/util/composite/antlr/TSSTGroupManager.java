@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.stringtemplate;
+package org.skb.util.composite.antlr;
 
 import java.io.FileReader;
 import java.io.InputStream;

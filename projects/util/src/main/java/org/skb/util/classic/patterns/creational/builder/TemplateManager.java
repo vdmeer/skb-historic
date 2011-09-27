@@ -29,7 +29,7 @@
 
 package org.skb.util.classic.patterns.creational.builder;
 
-import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.antlr.TSSTGroupManager;
 
 /**
  * A class managing templates for a builder.

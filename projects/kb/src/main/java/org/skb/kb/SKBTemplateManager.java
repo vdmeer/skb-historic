@@ -32,7 +32,7 @@ package org.skb.kb;
 
 import org.apache.log4j.Logger;
 import org.skb.util.classic.patterns.creational.builder.TemplateManager;
-import org.skb.util.composite.stringtemplate.TSSTGroupManager;
+import org.skb.util.composite.antlr.TSSTGroupManager;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**

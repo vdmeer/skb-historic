@@ -44,9 +44,9 @@ import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.TSTableRowAPI;
+import org.skb.util.composite.antlr.TSStringTemplate;
 import org.skb.util.composite.antlr.TSToken;
 import org.skb.util.composite.misc.TSReportManager;
-import org.skb.util.composite.stringtemplate.TSStringTemplate;
 import org.skb.util.composite.util.TSTable;
 import org.skb.util.composite.util.TSTableRow;
 
