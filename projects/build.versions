@@ -11,8 +11,7 @@ org.apache.commons.configuration=1.5.0
 org.apache.commons.logging=1.1.1
 org.apache.log4j=1.2.15
 org.sqlite.jdbc=0.0.56
-org.codehaus.jackson=1.8.5
-#codehaus.jackson=1.8.5
+codehaus.jackson=1.8.5
 org.junit=4.4.0
 
 php=5.3.0
