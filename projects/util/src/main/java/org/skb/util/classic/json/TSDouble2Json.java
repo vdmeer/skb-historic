@@ -38,6 +38,12 @@ import org.codehaus.jackson.map.SerializerProvider;
 import org.codehaus.jackson.map.TypeSerializer;
 import org.skb.util.composite.java.TSDouble;
 
+/**
+ * Serialiser for Jackson library, serialising TSDouble.
+ *
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
+ */
 public class TSDouble2Json extends JsonSerializer<TSDouble> {
 	@Override
 	public Class<TSDouble> handledType(){
