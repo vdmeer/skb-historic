@@ -32,7 +32,6 @@ package org.skb.kb.targets.tgtjava.core.def;
 
 import org.skb.kb.SKBReader;
 import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.java.TSString;
 
 /**
  * SKB Default Reader (Core Package)
@@ -43,7 +42,7 @@ import org.skb.util.composite.java.TSString;
 public class DefaultReader extends SKBReader {
 
 	@Override
-	public void prepareLoop(Request request, TSString table, TSString tableCollections) {
+	public void prepareLoop(Request request) {
 		// TODO Auto-generated method stub
 //System.err.println("Reader: prepare_loop");		
 	}

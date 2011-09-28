@@ -38,7 +38,6 @@ import org.skb.kb.SKBReader;
 import org.skb.util.classic.patterns.creational.builder.Request;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.java.TSString;
 import org.skb.util.composite.util.TSArrayListString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
@@ -50,7 +49,7 @@ import org.skb.util.composite.util.TSLinkedHashTree;
 public class SkbInfoReader extends SKBReader {
 
 	@Override
-	public void prepareLoop(Request request, TSString table, TSString tableCollections) {
+	public void prepareLoop(Request request) {
 		TSBaseAPI todo=request.getValue("request:entry");
 		String doto=null;
 		String select=null;

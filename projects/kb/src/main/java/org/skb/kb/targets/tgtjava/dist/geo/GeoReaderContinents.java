@@ -34,6 +34,7 @@ import org.skb.kb.SKBDataManager;
 import org.skb.kb.SKBReader;
 import org.skb.util.PathKeys;
 import org.skb.util.classic.patterns.creational.builder.Request;
+import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.java.TSString;
 
 /**
@@ -44,9 +45,13 @@ import org.skb.util.composite.java.TSString;
 public class GeoReaderContinents extends SKBReader {
 
 	@Override
-	public void prepareLoop(Request request, TSString table, TSString table_collections) {
+	public void prepareLoop(Request request) {
+		TSString sematag=request.getSemaTag();
+		if(sematag.tsIsType(TEnum.TS_DEFAULT))
+			sematag=new TSString("skb:geo:continents");
+
 		SKBDataManager myDM=(SKBDataManager)config.config.get(PathKeys.pathInstancesKbDatamanager);
-		this.entries=myDM.queryDataObject(myDM.prepareQuery("skb:geo:continents",null,null,"key",null,null,true,true));
+		this.entries=myDM.queryDataObject(myDM.prepareQuery(sematag.toString(),null,null,"key",null,null,true,true));
 	}
 
 	@Override

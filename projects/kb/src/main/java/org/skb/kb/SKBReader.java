@@ -34,7 +34,6 @@ import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.patterns.creational.builder.Builder;
 import org.skb.util.classic.patterns.creational.builder.Reader;
 import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.java.TSString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
@@ -67,10 +66,8 @@ public abstract class SKBReader implements Reader {
 	@Override
 	public final void prepare(Request request){
 		if(request.isActivated()==true){
-			TSString table=request.getTable();
-			TSString table_collections=request.getTableCollections();
 			this.entries=new TSLinkedHashTree();
-			this.prepareLoop(request, table, table_collections);
+			this.prepareLoop(request);
 			this.is_prepared=true;
 		}
 	}

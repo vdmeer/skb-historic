@@ -108,6 +108,7 @@ public class SKBDataManager extends TSAtomic {
 		TSLinkedHashTree dos=new TSLinkedHashTree();
 
 		if(type.equals("sqlite")){
+			//using SQLite JDBC Driver from http://www.zentus.com/sqlitejdbc/
 			TSString _t=new TSString(tables);
 			TSArrayListString tab=(TSArrayListString)_t.tsExplode();
 
