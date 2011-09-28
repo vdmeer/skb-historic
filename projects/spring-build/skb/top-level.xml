@@ -23,5 +23,4 @@
 		<all-bundles target="clean-gen"/>
 	</target>
 
-
 </project>

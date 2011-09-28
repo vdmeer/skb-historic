@@ -11,6 +11,6 @@
 	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-bundle.xml"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
 
-	<target name="prepare" description="Prepares the project for building (jar)" depends="antlr,clean,jar"/>
+	<target name="prepare" description="Prepares the project for building (jar)" depends="clean,jar"/>
 
 </project>

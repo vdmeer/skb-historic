@@ -11,6 +11,5 @@
 	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-bundle.xml"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
 
-	<!-- Ant task is built before all the others - it is needed in the "prepare" of the languages -->
 	<target name="prepare" description="Prepares the project for building (jar)" depends="clean"/>
 </project>

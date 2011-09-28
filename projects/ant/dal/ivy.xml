@@ -18,10 +18,7 @@
 	<dependencies>
 		<dependency org="skb" name="skb.tribe" rev="${skb.tribe}" />
 		<dependency org="skb.lang" name="skb.lang.dal" rev="${skb.lang.dal}" />
-
-		<dependency org="org.junit"
-			name="com.springsource.org.junit"
-			rev="${org.junit}" conf="test->runtime" />
+		<dependency org="org.junit" name="com.springsource.org.junit" rev="${org.junit}" conf="test->runtime" />
 	</dependencies>
 
 </ivy-module>

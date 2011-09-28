@@ -20,6 +20,7 @@ skb.util=1.0.1
 skb.tribe=1.0.1
 skb.ant.tribe=1.0.1
 skb.ant.dal=1.0.1
+skb.ant.sql=1.0.1
 skb.lang.cola.proto=1.0.1
 skb.lang.cpp=1.0.1
 skb.lang.dal=1.0.1

@@ -57,7 +57,7 @@ public class Dal2SqlTask extends Task {
 	 * @param s destination directory
 	 */
 	public void setDestdir(String s){
-        this.destdir=s;
+        this.destdir=s.replace('\\','/');
     }
 
 	/**
@@ -76,7 +76,7 @@ public class Dal2SqlTask extends Task {
 	 */
 	@Override
 	public void execute() throws BuildException {
-    	if(this.filesets.size()==0)
+		if(this.filesets.size()==0)
     		throw new BuildException("no fileset given, nothing to do");
     	if(this.destdir==null)
     		throw new BuildException("no destination directory given");

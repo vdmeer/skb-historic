@@ -55,7 +55,7 @@
 		</sequential>
 	</macrodef>
 
-  <import file="./common-ant-dal.xml"/> 	
+	<import file="./common-ant-dal.xml"/>
 
 	<target name="prepare" description="Prepares an SKB project for building"/>
 
