@@ -41,7 +41,7 @@
 package config-default{
     repository skb.core{}
 
-    table skb_cfg{
+    table configuration{
         field key string primkey(abort) notnull(abort) unique(abort);
         field collection string;
         field part string;
@@ -53,17 +53,17 @@ package config-default{
     }
 
     data{
-        table skb_cfg {key "php:extension"} {collection "php"} {part "extension"} {value "php5"} {field_explodes "false"} {description "Extension for PHP files"}
-        table skb_cfg {key "header:std-css"} {collection "header"} {part "std-css"} {value ""} {field_explodes "false"} {description "Header - default CSS to be loaded"}
-        table skb_cfg {key "header:pre-title"} {collection "header"} {part "pre-title"} {value "SKB Default Configuration"} {field_explodes "false"} {description "Header - string to prefix title"}
-        table skb_cfg {key "header:default-header"} {collection "header"} {part "default-header"} {value ""} {field_explodes "false"} {description "Header - default header"}
-        table skb_cfg {key "header:default-keywords"} {collection "header"} {part "default-keywords"} {value ""} {field_explodes "false"} {description "Header - default keywords"}
-        table skb_cfg {key "header:default-description"} {collection "header"} {part "default-description"} {value ""} {field_explodes "false"} {description "Header - default description"}
-        table skb_cfg {key "header:base-target"} {collection "header"} {part "base-target"} {value ""} {field_explodes "false"} {description "Header - defaultbase target"}
-        table skb_cfg {key "html:version"} {collection "html"} {part "version"} {value "Strict"} {field_explodes "false"} {description "HTML version (Strict, Transitional)"}
-        table skb_cfg {key "system:lang"} {collection "system"} {part "lang"} {value "en"} {field_explodes "false"} {description "Default system language, used by pretty much all classes as default value, will be set in main.inc and skb_main"}
-        table skb_cfg {key "menu:load"} {collection "menu"} {part "load"} {value "false"} {field_explodes "false"} {description "Menu load?"}
-        table skb_cfg {key "html4:load"} {collection "html4"} {part "load"} {value "false"} {field_explodes "false"} {description "HTML4 load server?"}
-        table skb_cfg {key "server:access-remote"} {collection "server"} {part "access-remote"} {value "false"} {field_explodes "false"} {description "Indicates of the access to the web server is remote or local (local loop)"}
+        table configuration {key "php:extension"} {collection "php"} {part "extension"} {value "php5"} {field_explodes 0} {description "Extension for PHP files"}
+        table configuration {key "header:std-css"} {collection "header"} {part "std-css"} {value ""} {field_explodes 0} {description "Header - default CSS to be loaded"}
+        table configuration {key "header:pre-title"} {collection "header"} {part "pre-title"} {value "SKB Default Configuration"} {field_explodes 0} {description "Header - string to prefix title"}
+        table configuration {key "header:default-header"} {collection "header"} {part "default-header"} {value ""} {field_explodes 0} {description "Header - default header"}
+        table configuration {key "header:default-keywords"} {collection "header"} {part "default-keywords"} {value ""} {field_explodes 0} {description "Header - default keywords"}
+        table configuration {key "header:default-description"} {collection "header"} {part "default-description"} {value ""} {field_explodes 0} {description "Header - default description"}
+        table configuration {key "header:base-target"} {collection "header"} {part "base-target"} {value ""} {field_explodes 0} {description "Header - defaultbase target"}
+        table configuration {key "html:version"} {collection "html"} {part "version"} {value "Strict"} {field_explodes 0} {description "HTML version (Strict, Transitional)"}
+        table configuration {key "system:lang"} {collection "system"} {part "lang"} {value "en"} {field_explodes 0} {description "Default system language, used by pretty much all classes as default value, will be set in main.inc and skb_main"}
+        table configuration {key "menu:load"} {collection "menu"} {part "load"} {value "false"} {field_explodes 0} {description "Menu load?"}
+        table configuration {key "html4:load"} {collection "html4"} {part "load"} {value "false"} {field_explodes 0} {description "HTML4 load server?"}
+        table configuration {key "server:access-remote"} {collection "server"} {part "access-remote"} {value "false"} {field_explodes 0} {description "Indicates of the access to the web server is remote or local (local loop)"}
     }
 }

@@ -53,21 +53,21 @@ package config-core{
     }
 
     data{
-        table skb_cfg {key "path:database"} {collection "path"} {part "database"} {value "/../database/"} {field_explodes "false"} {description "Path for SKB databases, value relative from root_skb"}
-        table skb_cfg {key "path:images"} {collection "path"} {part "images"} {value "/share/images/"} {field_explodes "false"} {description "Path for site images"}
-        table skb_cfg {key "path:css"} {collection "path"} {part "css"} {value "/share/css/"} {field_explodes "fFalse"} {description "Path for site CSS"}
-        table skb_cfg {key "path:library"} {collection "path"} {part "library"} {value "/../library/"} {field_explodes "fFalse"} {description "Path for document library"}
-        table skb_cfg {key "path:gallery"} {collection "path"} {part "gallery"} {value "/../gallery/"} {field_explodes "fFalse"} {description "Path for site gallery"}
-        table skb_cfg {key "path:figures"} {collection "path"} {part "figures"} {value "/../figures/"} {field_explodes "fFalse"} {description "Path for site figures"}
-        table skb_cfg {key "ini:extension"} {collection "ini"} {part "extension"} {value "ini"} {field_explodes "fFalse"} {description "Ini file extension"}
-        table skb_cfg {key "skb:file-extensions"} {collection "skb"} {part "file-extensions"} {value "doc,docx,pptx,ppt,pdf,txt.pdf,txt,abstract,toc,chm,zip,doc.zip,pdf.zip,ppt.zip,mov"} {field_explodes "true"} {description "SKB - list of registered file extensions for the library/gallery readers"}
-        table skb_cfg {key "path:javascript"} {collection "path"} {part "javascript"} {value "/share/javascript/"} {field_explodes "false"} {description "Path for site JavaScript"}
-        table skb_cfg {key "header:content-type"} {collection "header"} {part "content-type"} {value "application/xhtml+xml"} {field_explodes "false"} {description "Set of content types, rabit can use that to register for http header"}
-        table skb_cfg {key "path:targets"} {collection "path"} {part "targets"} {value "/targets/"} {field_explodes "false"} {description "Path to targets (Readers, Applications, Builders, Interpreters, Templates)"}
-        table skb_cfg {key "path:locale"} {collection "path"} {part "locale"} {value "/share/locale/"} {field_explodes "false"} {description "Default system language, used by pretty much all classes as default value"}
-        table skb_cfg {key "system:lang"} {collection "system"} {part "lang"} {value "de"} {field_explodes "false"} {description "Default system language"}
-        table skb_cfg {key "path:config"} {collection "path"} {part "config"} {value "/config/"} {field_explodes "false"} {description "SKB and package configurations"}
-        table skb_cfg {key "path:repository"} {collection "path"} {part "repository"} {value "/repository/"} {field_explodes "false"} {description "SKB and package repositories"}
-        table skb_cfg {key "skb:targetpref"} {collection "skb"} {part "targetpref"} {value "tgt"} {field_explodes "false"} {description "Path prefix for targets (to avoid folder names such as java, which confuse build systems)"}
+        table skb_cfg {key "path:database"} {collection "path"} {part "database"} {value "/../database/"} {field_explodes 0} {description "Path for SKB databases, value relative from root_skb"}
+        table skb_cfg {key "path:images"} {collection "path"} {part "images"} {value "/share/images/"} {field_explodes 0} {description "Path for site images"}
+        table skb_cfg {key "path:css"} {collection "path"} {part "css"} {value "/share/css/"} {field_explodes 0} {description "Path for site CSS"}
+        table skb_cfg {key "path:library"} {collection "path"} {part "library"} {value "/../library/"} {field_explodes 0} {description "Path for document library"}
+        table skb_cfg {key "path:gallery"} {collection "path"} {part "gallery"} {value "/../gallery/"} {field_explodes 0} {description "Path for site gallery"}
+        table skb_cfg {key "path:figures"} {collection "path"} {part "figures"} {value "/../figures/"} {field_explodes 0} {description "Path for site figures"}
+        table skb_cfg {key "ini:extension"} {collection "ini"} {part "extension"} {value "ini"} {field_explodes 0} {description "Ini file extension"}
+        table skb_cfg {key "skb:file-extensions"} {collection "skb"} {part "file-extensions"} {value "doc,docx,pptx,ppt,pdf,txt.pdf,txt,abstract,toc,chm,zip,doc.zip,pdf.zip,ppt.zip,mov"} {field_explodes 1} {description "SKB - list of registered file extensions for the library/gallery readers"}
+        table skb_cfg {key "path:javascript"} {collection "path"} {part "javascript"} {value "/share/javascript/"} {field_explodes 0} {description "Path for site JavaScript"}
+        table skb_cfg {key "header:content-type"} {collection "header"} {part "content-type"} {value "application/xhtml+xml"} {field_explodes 0} {description "Set of content types, rabit can use that to register for http header"}
+        table skb_cfg {key "path:targets"} {collection "path"} {part "targets"} {value "/targets/"} {field_explodes 0} {description "Path to targets (Readers, Applications, Builders, Interpreters, Templates)"}
+        table skb_cfg {key "path:locale"} {collection "path"} {part "locale"} {value "/share/locale/"} {field_explodes 0} {description "Default system language, used by pretty much all classes as default value"}
+        table skb_cfg {key "system:lang"} {collection "system"} {part "lang"} {value "de"} {field_explodes 0} {description "Default system language"}
+        table skb_cfg {key "path:config"} {collection "path"} {part "config"} {value "/config/"} {field_explodes 0} {description "SKB and package configurations"}
+        table skb_cfg {key "path:repository"} {collection "path"} {part "repository"} {value "/repository/"} {field_explodes 0} {description "SKB and package repositories"}
+        table skb_cfg {key "skb:targetpref"} {collection "skb"} {part "targetpref"} {value "tgt"} {field_explodes 0} {description "Path prefix for targets (to avoid folder names such as java, which confuse build systems)"}
     }
 }

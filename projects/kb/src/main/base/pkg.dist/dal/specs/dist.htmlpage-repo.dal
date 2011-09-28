@@ -173,7 +173,7 @@
                 ;
         }
 
-        table pkg_request{
+        table pkg_requests{
             row Dist.HtmlPage
                 key = "Dist.HtmlPage"
                 core:requests:fields = "request:active%plain,htmlpage:description%plain,htmlpage:keywords%plain,htmlpage:additional%plain,htmlpage:nav_end%plain,htmlpage:extra_builder%plain,htmlpage:execute_todo%plain"

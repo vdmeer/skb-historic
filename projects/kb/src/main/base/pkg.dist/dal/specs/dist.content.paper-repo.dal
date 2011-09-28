@@ -63,7 +63,7 @@
                 ;
         }
 
-        table pkg_request{
+        table pkg_requests{
             row Dist.Content.Paper
                 key = "Dist.Content.Paper"
                 core:requests:fields = "request:active%plain,request:collection%http,request:part%http,request:entry%http,publications:title%plain,publications:subtitle%plain,request:request%plain"

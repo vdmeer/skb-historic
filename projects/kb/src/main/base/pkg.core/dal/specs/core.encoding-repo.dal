@@ -226,7 +226,7 @@
                 ;
         }
 
-        table pkg_request{
+        table pkg_requests{
             row Core.Encoding
                 key = "Core.Encoding"
                 core:requests:fields = "request:active%plain,request:entry%plain,default:source%plain,default:target%plain"

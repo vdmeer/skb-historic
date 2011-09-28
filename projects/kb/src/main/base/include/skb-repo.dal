@@ -74,7 +74,7 @@
                      core:rabit:mime_out, core:rabit:css, core:rabit:requests, default:description_locale}
         }
     
-        table pkg_request{
+        table pkg_requests{
             field key string primkey(abort) notnull(abort) unique(abort);
             field core:requests:fields string;
             field core:requests:prefix string;
@@ -109,6 +109,34 @@
             field default:description_locale string;
     
             sequence{key, mime:media:type, mime:type, mime:sub:type, mime:file:extensions, mime:source:url, default:description_locale}
+        }
+
+        table pkg_http_headers_request{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field http:header string;
+            field default:example string;
+            field default:description_locale string;
+        
+            sequence{key, http:header, default:example, default:description_locale}
+        }
+
+        table pkg_http_request_methods{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field http:method string;
+            field default:description_locale string;
+    
+            sequence{key, http:method, default:description_locale}
+        }
+
+        table pkg_http_status_codes{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field http:status:code string;
+            field http:status:code:text string;
+            field http:category string;
+            field http:protocol string;
+            field default:description_locale string;
+       
+            sequence{key, http:status:code, http:status:code:text, http:category, http:protocol, default:description_locale}
         }
     }
 #endif

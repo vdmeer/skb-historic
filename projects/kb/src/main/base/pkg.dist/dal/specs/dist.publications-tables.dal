@@ -110,7 +110,7 @@
 
     table publications{
         field key string primkey(abort) notnull(abort) unique(abort);
-        field publications:entry_type_key string notnull(abort) unique(abort);
+        field publications:entry_type_key string notnull(abort);
         field publications:conference_key string;
         field publications:journal_key string;
         field publications:publishedin_key string;

@@ -77,7 +77,7 @@
                 core:use = "core"
                 core:entries_name = "default:acronym"
                 core:http_req_name = "acronym"
-                core:default_db = "acronyms"
+                core:default_db = "skb:acronyms"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"

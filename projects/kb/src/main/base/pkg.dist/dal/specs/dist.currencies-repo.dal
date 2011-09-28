@@ -93,7 +93,7 @@
                 core:use = "core"
                 core:entries_name = "currencies:replacedby"
                 core:http_req_name = "replacedby"
-                core:default_db = "currencies"
+                core:default_db = "skb:currencies"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"

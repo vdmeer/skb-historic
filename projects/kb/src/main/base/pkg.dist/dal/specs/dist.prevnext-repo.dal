@@ -74,7 +74,7 @@
                 ;
         }
 
-        table pkg_request{
+        table pkg_requests{
             row Dist.PrevNext
                 key = "Dist.PrevNext"
                 core:requests:fields = "request:active%plain,request:collection%plain,request:part%plain,request:entry%plain,request:element_keys%plain,default:description%plain,request:request%plain"

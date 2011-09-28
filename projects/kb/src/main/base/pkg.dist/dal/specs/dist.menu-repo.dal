@@ -395,7 +395,7 @@
                 ;
         }
 
-        table pkg_request{
+        table pkg_requests{
             row Dist.Menu
                 key = "Dist.Menu"
                 core:requests:fields = "request:active%plain,c_entry%plain,menu:levels%plain,menu:navbar_last%plain,menu:navbar_first%plain,menu:navbar_first_key%plain"

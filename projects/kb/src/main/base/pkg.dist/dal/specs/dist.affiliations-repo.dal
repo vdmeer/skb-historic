@@ -77,7 +77,7 @@
                 core:use = "core"
                 core:entries_name = "affiliations:type"
                 core:http_req_name = "type"
-                core:default_db = "affiliations_type"
+                core:default_db = "skb:affiliations:type"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"

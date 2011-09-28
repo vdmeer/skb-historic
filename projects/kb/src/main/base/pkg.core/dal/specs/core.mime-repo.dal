@@ -474,7 +474,6 @@
                 default:description_locale = "%added to allow for clients that want all"
                 ;
         }
-
     }
 #endif
 #define "CORE_MIME_REPO"

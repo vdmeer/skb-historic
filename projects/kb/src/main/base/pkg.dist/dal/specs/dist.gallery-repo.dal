@@ -45,7 +45,7 @@
                 core:use = "core,request"
                 core:entries_name = "gallery:fotographer"
                 core:http_req_name = "fotographer"
-                core:default_db = "people"
+                core:default_db = "skb:people"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"
@@ -125,7 +125,7 @@
                 core:use = "core"
                 core:entries_name = "gallery:artist"
                 core:http_req_name = "artist"
-                core:default_db = "art_people"
+                core:default_db = "skb:art:people"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"
@@ -141,7 +141,7 @@
                 core:use = "core,request"
                 core:entries_name = "gallery:museum"
                 core:http_req_name = "museum"
-                core:default_db = "affiliations"
+                core:default_db = "skb:affiliations"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"
@@ -157,7 +157,7 @@
                 core:use = "core"
                 core:entries_name = "gallery:material"
                 core:http_req_name = "material"
-                core:default_db = "art_material"
+                core:default_db = "skb:art:material"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"
@@ -173,7 +173,7 @@
                 core:use = "core,request"
                 core:entries_name = "gallery:item"
                 core:http_req_name = "item"
-                core:default_db = "art_items"
+                core:default_db = "skb:art:items"
                 core:explode = "0"
                 core:interpreter = ""
                 core:val_unset = "null"
@@ -189,7 +189,7 @@
                 core:use = "core,request"
                 core:entries_name = "gallery:item"
                 core:http_req_name = "item"
-                core:default_db = "art_items"
+                core:default_db = "skb:art:items"
                 core:explode = "1"
                 core:interpreter = ""
                 core:val_unset = "null"
@@ -384,7 +384,7 @@
                 ;
         }
 
-        table pkg_request{
+        table pkg_requests{
             row Dist.Gallery.Fotos
                 key = "Dist.Gallery.Fotos"
                 core:requests:fields = "request:active%http,default:city_key%http,default:country_key%http,default:year%http,request:collection%http,request:part%http,gallery:fotographer_key%http,request:entry%http,request:entry_list%plain,request:element_keys%plain,request:file_ext%plain"
