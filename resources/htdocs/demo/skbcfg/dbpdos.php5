@@ -45,7 +45,7 @@ require_once "../../../skb/classes/main.inc.php5";
 $skb_main->require_package("demo.htmlpage");
 $skb_main->require_package("core.skbinfo");
 
-$url="http://".$_SERVER["HTTP_HOST"].$skb_main->configuration->get_group("path","site")."/rest/info.php5?defh_rentry=dbpdos&lang={$skb_main->configuration->get_group("system", "lang")}";
+$url="http://".$_SERVER["HTTP_HOST"].$skb_main->configuration->get_group("path","site")."/rest/info.php5?defh_rentry=registered_dos&lang={$skb_main->configuration->get_group("system", "lang")}";
 $ct=$http_request->request_test_accept_type();
 
 $headers=array();
@@ -85,7 +85,7 @@ function info_html(){
   $request->set_value("htmlpage:execute_todo", "bodystart");
   $page->execute($request);
 
-  ?><h3>CORE Configuration => DB PDOs</h3><?php
+  ?><h3>CORE Configuration => Semantic Tags</h3><?php
 
 	global $curl_return;
   echo $curl_return;
