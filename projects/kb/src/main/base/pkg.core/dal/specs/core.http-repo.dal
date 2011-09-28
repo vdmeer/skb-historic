@@ -327,6 +327,32 @@
                 default:description_locale = "%Indicates the authentication scheme that should be used to access the requested entity."
                 ;
         }
+
+        table pkg_request{
+            row skb:http:get
+                key = "skb:http:get"
+                core:requests:fields = "request:active%plain,default:url%http,request:media_type%http,request:file_name%http"
+                core:requests:prefix = "_hg"
+                core:requests:formselect_fields = ""
+                core:requests:table = ""
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+            row default:http
+                key = "default:http"
+                core:requests:fields = "request:active%plain,request:entry%http"
+                core:requests:prefix = "defh_"
+                core:requests:formselect_fields = ""
+                core:requests:table = ""
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+
+        }
     }
 #endif
 #define "CORE_HTTP_REPO"

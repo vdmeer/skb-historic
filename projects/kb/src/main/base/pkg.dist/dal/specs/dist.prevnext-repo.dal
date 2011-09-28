@@ -73,6 +73,20 @@
                 default:description_locale = ""
                 ;
         }
+
+        table pkg_request{
+            row Dist.PrevNext
+                key = "Dist.PrevNext"
+                core:requests:fields = "request:active%plain,request:collection%plain,request:part%plain,request:entry%plain,request:element_keys%plain,default:description%plain,request:request%plain"
+                core:requests:prefix = "_pn"
+                core:requests:formselect_fields = ""
+                core:requests:table = ""
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+        }
     }
 #endif
 #define "DIST_PREVNEXT_REPO"

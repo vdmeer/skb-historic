@@ -172,6 +172,20 @@
                 default:description_locale = ""
                 ;
         }
+
+        table pkg_request{
+            row Dist.HtmlPage
+                key = "Dist.HtmlPage"
+                core:requests:fields = "request:active%plain,htmlpage:description%plain,htmlpage:keywords%plain,htmlpage:additional%plain,htmlpage:nav_end%plain,htmlpage:extra_builder%plain,htmlpage:execute_todo%plain"
+                core:requests:prefix = "_hp"
+                core:requests:formselect_fields = ""
+                core:requests:table = ""
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+        }
     }
 #endif
 #define "DIST_HTMLPAGE_REPO"

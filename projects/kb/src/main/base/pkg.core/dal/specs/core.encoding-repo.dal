@@ -225,6 +225,20 @@
                 default:description_locale = ""
                 ;
         }
+
+        table pkg_request{
+            row Core.Encoding
+                key = "Core.Encoding"
+                core:requests:fields = "request:active%plain,request:entry%plain,default:source%plain,default:target%plain"
+                core:requests:prefix = "_enc"
+                core:requests:formselect_fields = ""
+                core:requests:table = ""
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+        }
     }
 #endif
 #define "CORE_ENCODING_REPO"

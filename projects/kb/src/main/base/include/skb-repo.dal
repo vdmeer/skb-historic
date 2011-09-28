@@ -36,74 +36,80 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for Dal v1.0.0
  */
 
-repository skb.core{
-    table pkg_fields{
-        field key string primkey(abort) notnull(abort) unique(abort);
-        field core:type string setvalue(list "core" "request");
-        field core:use string setvalue(list "entity" "value");
-        field core:entries_name string;
-        field core:http_req_name string;
-        field core:default_db string;
-        field core:explode string setvalue(or "0" "1");
-        field core:interpreter string;
-        field core:val_unset string;
-        field core:isval string;
-        field core:isval_if string;
-        field core:isval_else string;
-        field core:val_do_list string;
-        field core:description string;
-
-        sequence{key, core:type, core:use, core:entries_name, core:http_req_name,
-                 core:default_db, core:explode, core:interpreter, core:val_unset, core:isval,
-                 core:isval_if, core:isval_else, core:val_do_list, core:description}
+#ifndef "SKB_CORE_REPO"
+    repository skb.core{
+        table pkg_fields{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field core:type string setvalue(list "core" "request");
+            field core:use string setvalue(list "entity" "value");
+            field core:entries_name string;
+            field core:http_req_name string;
+            field core:default_db string;
+            field core:explode string setvalue(or "0" "1");
+            field core:interpreter string;
+            field core:val_unset string;
+            field core:isval string;
+            field core:isval_if string;
+            field core:isval_else string;
+            field core:val_do_list string;
+            field core:description string;
+    
+            sequence{key, core:type, core:use, core:entries_name, core:http_req_name,
+                     core:default_db, core:explode, core:interpreter, core:val_unset, core:isval,
+                     core:isval_if, core:isval_else, core:val_do_list, core:description}
+        }
+    
+        table pkg_rabit{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field core:rabit:type string;
+            field core:rabit:target:class string;
+            field core:rabit:target:template string;
+            field core:rabit:mime_in string;
+            field core:rabit:mime_out string;
+            field core:rabit:css string;
+            field core:rabit:requests string;
+            field default:description_locale string;
+    
+            sequence{key, core:rabit:type, core:rabit:target:class, core:rabit:target:template, core:rabit:mime_in,
+                     core:rabit:mime_out, core:rabit:css, core:rabit:requests, default:description_locale}
+        }
+    
+        table pkg_request{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field core:requests:fields string;
+            field core:requests:prefix string;
+            field core:requests:formselect_fields string;
+            field core:requests:table string;
+            field core:requests:table_collections string;
+            field core:request:filter string;
+            field core:request:package string;
+            field core:description string;
+    
+            sequence{key, core:requests:fields, core:requests:prefix, core:requests:formselect_fields,
+                     core:requests:table, core:requests:table_collections,
+                     core:request:filter, core:request:package, core:description}
+        }
+    
+        table pkg_http_headers_response{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field http:header string;
+            field default:example string;
+            field default:description_locale string;
+    
+            sequence{key, http:header, default:example, default:description_locale}
+        }
+    
+        table pkg_mime_content_types{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field mime:media:type string;
+            field mime:type string;
+            field mime:sub:type string;
+            field mime:file:extensions string;
+            field mime:source:url string;
+            field default:description_locale string;
+    
+            sequence{key, mime:media:type, mime:type, mime:sub:type, mime:file:extensions, mime:source:url, default:description_locale}
+        }
     }
-
-    table pkg_rabit{
-        field key string primkey(abort) notnull(abort) unique(abort);
-        field core:rabit:type string;
-        field core:rabit:target:class string;
-        field core:rabit:target:template string;
-        field core:rabit:mime_in string;
-        field core:rabit:mime_out string;
-        field core:rabit:css string;
-        field core:rabit:requests string;
-        field default:description_locale string;
-
-        sequence{key, core:rabit:type, core:rabit:target:class, core:rabit:target:template, core:rabit:mime_in,
-                 core:rabit:mime_out, core:rabit:css, core:rabit:requests, default:description_locale}
-    }
-
-    table pkg_request{
-        field key string primkey(abort) notnull(abort) unique(abort);
-        field core:requests:fields string;
-        field core:requests:prefix string;
-        field core:requests:formselect_fields string;
-        field core:requests:table string;
-        field core:requests:table_collections string;
-        field core:description string;
-
-        sequence{key, core:requests:fields, core:requests:prefix, core:requests:formselect_fields, core:requests:table, core:requests:table_collections,
-                 core:description}
-    }
-
-    table pkg_http_headers_response{
-        field key string primkey(abort) notnull(abort) unique(abort);
-        field http:header string;
-        field default:example string;
-        field default:description_locale string;
-
-        sequence{key, http:header, default:example, default:description_locale}
-    }
-
-    table pkg_mime_content_types{
-        field key string primkey(abort) notnull(abort) unique(abort);
-        field mime:media:type string;
-        field mime:type string;
-        field mime:sub:type string;
-        field mime:file:extensions string;
-        field mime:source:url string;
-        field default:description_locale string;
-
-        sequence{key, mime:media:type, mime:type, mime:sub:type, mime:file:extensions, mime:source:url, default:description_locale}
-    }
-}
+#endif
+#define "SKB_CORE_REPO"

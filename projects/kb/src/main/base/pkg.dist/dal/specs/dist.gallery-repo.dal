@@ -383,6 +383,42 @@
                 default:description_locale = ""
                 ;
         }
+
+        table pkg_request{
+            row Dist.Gallery.Fotos
+                key = "Dist.Gallery.Fotos"
+                core:requests:fields = "request:active%http,default:city_key%http,default:country_key%http,default:year%http,request:collection%http,request:part%http,gallery:fotographer_key%http,request:entry%http,request:entry_list%plain,request:element_keys%plain,request:file_ext%plain"
+                core:requests:prefix = "_ft"
+                core:requests:formselect_fields = "default:city_key%table,default:country_key%table,default:year%table,gallery:fotographer_key%table"
+                core:requests:table = "skb:gallery:fotos"
+                core:requests:table_collections = "skb:gallery:fotos:collections"
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+            row Dist.Gallery.Figures
+                key = "Dist.Gallery.Figures"
+                core:requests:fields = "request:active%http,request:collection%http,request:part%http,request:entry%http,request:file_ext%plain"
+                core:requests:prefix = "_rf"
+                core:requests:formselect_fields = ""
+                core:requests:table = "skb:gallery:figures"
+                core:requests:table_collections = "skb:gallery:figures:collections"
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+            row Dist.Gallery.Graphics
+                key = "Dist.Gallery.Graphics"
+                core:requests:fields = "request:active%http,request:collection%http,request:part%http,request:entry%http,request:entry_list%plain,request:element_keys%plain,request:file_ext%plain"
+                core:requests:prefix = "_cf"
+                core:requests:formselect_fields = ""
+                core:requests:table = "skb:gallery:graphics"
+                core:requests:table_collections = "skb:gallery:graphics:collections"
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+        }
     }
 #endif
 #define "DIST_GALLERY_REPO"

@@ -62,6 +62,20 @@
                 default:description_locale = ""
                 ;
         }
+
+        table pkg_request{
+            row Dist.Content.Paper
+                key = "Dist.Content.Paper"
+                core:requests:fields = "request:active%plain,request:collection%http,request:part%http,request:entry%http,publications:title%plain,publications:subtitle%plain,request:request%plain"
+                core:requests:prefix = "_cp"
+                core:requests:formselect_fields = ""
+                core:requests:table = "skb:content:papers"
+                core:requests:table_collections = "skb:content:papers:collections"
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+        }
     }
 #endif
 #define "DIST_CONTENT_PAPER_REPO"

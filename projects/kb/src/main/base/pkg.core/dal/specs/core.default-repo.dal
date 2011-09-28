@@ -785,6 +785,20 @@
                 default:description_locale = "The SKB's default builder, does nothing with the given entries."
                 ;
         }
+
+        table pkg_request{
+            row Core.Default
+                key = "Core.Default"
+                core:requests:fields = "request:active%plain,request:entry%plain"
+                core:requests:prefix = "def"
+                core:requests:formselect_fields = ""
+                core:requests:table = ""
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = "The default request of the SKB with very basic fields for processing simple information."
+                ;
+        }
     }
 #endif
 #define "CORE_DEFAULT_REPO"

@@ -394,6 +394,20 @@
                 default:description_locale = ""
                 ;
         }
+
+        table pkg_request{
+            row Dist.Menu
+                key = "Dist.Menu"
+                core:requests:fields = "request:active%plain,c_entry%plain,menu:levels%plain,menu:navbar_last%plain,menu:navbar_first%plain,menu:navbar_first_key%plain"
+                core:requests:prefix = "_menu"
+                core:requests:formselect_fields = ""
+                core:requests:table = "skb:menu"
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+        }
     }
 #endif
 #define "DIST_MENU_REPO"

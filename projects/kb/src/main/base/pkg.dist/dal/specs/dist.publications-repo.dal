@@ -1146,6 +1146,20 @@
                 default:description_locale = ""
                 ;
         }
+
+        table pkg_request{
+            row Dist.Publications
+                key = "Dist.Publications"
+                core:requests:fields = "request:active%http,publications:show_abstract%http,request:show%http,default:year%http,publications:entry_type_key%http,publications:tags%http,publications:author_keys%http,publications:editor_keys%http,publications:journal_key%http,publications:conference_key%http,publications:publications_key%http"
+                core:requests:prefix = "_publ"
+                core:requests:formselect_fields = "publications:entry_type_key%table,default:year%table,publications:tags%table,publications:journal_key%table,publications:conference_key%table,publications:author_keys%table,publications:editor_keys%table"
+                core:requests:table = "skb:publications:publications"
+                core:requests:table_collections = ""
+                core:request:filter = ""
+                core:request:package = ""
+                core:description = ""
+                ;
+        }
     }
 #endif
 #define "DIST_PUBLICATIONS_REPO"
