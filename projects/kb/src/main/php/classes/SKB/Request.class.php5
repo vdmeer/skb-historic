@@ -94,6 +94,10 @@ class SKB_Request{
 				$this->init_map['core:requests:table']=null;
 			if(!isset($this->init_map['core:requests:table_collections']))
 				$this->init_map['core:requests:table_collections']=null;
+			if(!isset($this->init_map['core:requests:filter']))
+				$this->init_map['core:requests:filter']=null;
+			if(!isset($this->init_map['core:requests:package']))
+				$this->init_map['core:requests:package']=null;
 
 			$_keys=array_keys($this->init_map['core:requests:fields']);
 			$_size=count($_keys);
@@ -316,7 +320,7 @@ class SKB_Request{
 
 
 	/**
-	 * Return the keys for form select fields
+	 * Returns the keys for form select fields
 	 */
 	public function get_form_select_keys(){
 		return $this->init_map['core:requests:formselect_fields'];
@@ -324,7 +328,7 @@ class SKB_Request{
 
 
 	/**
-	 * Return the default semantic tag set for the request object.
+	 * Returns the default semantic tag set for the request object.
 	 */
 	public function get_sematag(){
 		return $this->init_map['core:requests:table'];
@@ -332,10 +336,26 @@ class SKB_Request{
 
 
 	/**
-	 * Return the default semantic tag for collections set for the request object.
+	 * Returns the default semantic tag for collections set for the request object.
 	 */
 	public function get_sematag_collections(){
 		return $this->init_map['core:requests:table_collections'];
+	}
+
+
+	/**
+	 * Returns the default filter set for the request object.
+	 */
+	public function get_filter(){
+		return $this->init_map['core:requests:filter'];
+	}
+
+
+	/**
+	 * Returns the default package for the request object.
+	 */
+	public function get_package(){
+		return $this->init_map['core:requests:package'];
 	}
 
 

@@ -116,13 +116,13 @@ abstract class SKB_Reader{
 	 */
 	public function prepare(SKB_Request $request){
 		if($request->is_activated()==true){
-			$sematag=$request->get_sematag();
-			$sematag_collections=$request->get_sematag_collections();
+			//$sematag=$request->get_sematag();
+			//$sematag_collections=$request->get_sematag_collections();
 
 			$this->entry_list=array();
 			$this->entries=array();
 
-			$this->prepare_loop($request, $sematag, $sematag_collections);
+			$this->prepare_loop($request);
 			$this->is_prepared=true;
 		}
 	}
@@ -138,7 +138,7 @@ abstract class SKB_Reader{
 	 * @param string sematag semantic tag to be used to read from external data sources
 	 * @param string sematag_collections semantic tag to be used to read collections from external data sources
 	 */
-	abstract public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections);
+	abstract public function prepare_loop(SKB_Request $request);
 
 
 	/**
