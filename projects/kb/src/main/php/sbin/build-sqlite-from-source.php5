@@ -39,72 +39,10 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
 
-$site_id="demo";
-$site_path="/www/demo";
-require_once "/dev/projects/skb/skb-git/htdocs/skb/classes/main.inc.php5";
-
-$tinos_home="v:/dev/projects/skb/skb-git";
-
-//$skb_main->load_all_site_packages();
-
-echo "skb: building SQLite databases from SQL files\n";
-$output=array();
-
 $dir="v:/dev/projects/skb/skb-git/projects/kb/target/base/";
-build_packages($dir);
 create_structure($dir);
 
-function build_packages($dir){
-  global $skb_main;
-  echo "skb: building packages\n";
-
-  if(!is_dir($dir))
-    return;
-
-  $files=array();
-  $sql_files=array();
-  if(is_dir($dir."/sql")){
-    if($dh=opendir($dir."sql")){
-      while(($file=readdir($dh))!==false){
-        if($file!=".."&&$file!="."&&$file[0]!="#"){
-          $files[]=$file;
-          $sql_files[]=$dir."/sql/".$file;
-        }
-      }
-      closedir($dh);
-    }
-  }
-
-  if(!is_dir($dir."/db-sqlite"))
-    mkdir($dir."/db-sqlite");
-
-  $db_file;
-  $_keys=array_keys($files);
-  $_size=count($_keys);
-  for($i=0;$i<$_size;$i++){
-    $file=$files[$_keys[$i]];
-    $file=str_replace(".sql","",$file);
-    echo "--> ".$file."\n";
-
-    $db_file=$dir."/db-sqlite/".$file.".db";
-    $o=new Util_PDOConnect($db_file);
-    $pdo=$o->pdo;
-    $sql_statements=file($sql_files[$_keys[$i]]);
-    foreach ($sql_statements as &$st){
-      if(strpos($st,"/* ")===false&&strpos($st," * ")===false&&strpos($st," * ")===false&&strpos($st," */")===false){
-        $sth=$pdo->prepare($st);
-        if(!is_object($sth))
-          echo " SQL statement error: {$st}\n";
-        else
-          $sth->execute();
-      }
-    }
-  }
-}
-
 function create_structure($dir){
-  //$dir=$mySKB->configuration->getGroup("path","database") . $directory;
-
   $dir_repo=$dir."/skb/skb/repository";
   $dir_cfg=$dir."/skb/skb/config";
   $dir_data=$dir."/skb/database";
