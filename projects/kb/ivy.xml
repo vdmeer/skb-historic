@@ -17,11 +17,7 @@
 
 	<dependencies>
 		<dependency org="skb" name="skb.util" rev="${skb.util}" />
-
-		<dependency org="org.junit"
-			name="com.springsource.org.junit"
-			rev="${org.junit}" conf="test->runtime" />
-
+		<dependency org="org.junit" name="com.springsource.org.junit" rev="${org.junit}" conf="test->runtime" />
 	</dependencies>
 
 </ivy-module>

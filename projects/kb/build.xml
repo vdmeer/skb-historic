@@ -14,15 +14,56 @@
 	<target name="dal2sql" depends="dal2sql.init">
 		<property name="dest.dir" value="${target.dir}/base/sql"/>
 		<generate-dal2sql dest.dir="${dest.dir}">
-		  <fileset dir="${basedir}/src/main/base/pkg.core" includes="**/*.dal" excludes="**/specs/*.dal" />
-		  <fileset dir="${basedir}/src/main/base/pkg.dist" includes="**/*.dal" excludes="**/specs/*.dal" />
-		  <fileset dir="${basedir}/src/main/base/pkg.demo" includes="**/*.dal" excludes="**/specs/*.dal" />
-		  <fileset dir="${basedir}/src/main/base/cfg" includes="**/*.dal"/>
+			<fileset dir="${basedir}/src/main/base" includes="skb.dal"/>
+<!--
+			<fileset dir="${basedir}/src/main/base/pkg.core" includes="**/*.dal" excludes="**/specs/*.dal" />
+			<fileset dir="${basedir}/src/main/base/pkg.dist" includes="**/*.dal" excludes="**/specs/*.dal" />
+			<fileset dir="${basedir}/src/main/base/pkg.demo" includes="**/*.dal" excludes="**/specs/*.dal" />
+			<fileset dir="${basedir}/src/main/base/cfg" includes="**/*.dal"/>
+-->
 		</generate-dal2sql>
 	</target>
 
-<!--
-	<target name="prepare" description="Prepares the project for building (jar)" depends="dal2sql"/>
--->
+	<target name="prepare" description="Prepares the project for building (jar)"/>
 
+	<target name="prepare-htdocs" description="Using DAL and PHP to build SQLite files from DAL sources" depends="dal2sql">
+		<!-- Copy JSON and PHP files that are part of repository -->
+		<delete quiet="true" dir="target/base/json"/>
+		<delete quiet="true" dir="target/base/php"/>
+		<copy todir="target/base">
+			<fileset dir="src/main/base/pkg.core" includes="**/*.json"/>
+			<fileset dir="src/main/base/pkg.demo" includes="**/*.json"/>
+			<fileset dir="src/main/base/pkg.demo" includes="**/*.php5"/>
+			<fileset dir="src/main/base/pkg.dist" includes="**/*.json"/>
+		</copy>
+
+		<!-- call DAL compiler to generate SQL from DAL sources -->
+		<delete quiet="true" dir="target/base/sqlite"/>
+		<copy file="./src/misc/resources/empty.sqlite3.db" tofile="target/base/sqlite/empty.sqlite3.db"/>
+
+		<!-- use PHP to create SQLite database files from SQL source -->
+		<echo>Calling PHP to generate SQLite database files from SQL sources</echo>
+		<exec executable="php"><arg value="sql2sqlite.php5"/></exec>
+
+		<!-- copy last stand-alone SQLite file (encoding) -->
+		<copy file="./src/misc/resources/encoding.db" tofile="target/base/sqlite/core.encoding.db"/>
+
+		<!-- remove the temporary empty SQLite file and files we don't need -->
+		<delete quiet="true" file="target/base/sqlite/empty.sqlite3.db"/>
+		<delete quiet="true">
+			<fileset dir="target/base/sqlite" includes="config-*-repo.*"/>
+		</delete>
+
+		<!-- create our final target dir -->
+		<delete quiet="true" dir="target/htdocs"/>
+		<mkdir dir="target/htdocs"/>
+		<echo>Calling PHP to create final structure</echo>
+		<echo>--> SQLite database files</echo>
+		<exec executable="php"><arg value="copy_sqlite.php5"/></exec>
+		<echo>--> JSON files</echo>
+		<exec executable="php"><arg value="copy_json.php5"/></exec>
+		<echo>--> PHP5 files</echo>
+		<exec executable="php"><arg value="copy_php.php5"/></exec>
+
+	</target>
 </project>
