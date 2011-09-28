@@ -29,7 +29,6 @@
 
 package org.skb.util.classic.patterns.creational.builder;
 
-import org.skb.util.composite.java.TSString;
 import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
@@ -70,10 +69,8 @@ public interface Reader {
 	 * If you want your reader to do anything in the preparation stage, simply put all that code in this function.
 	 * It will be automatically called by the base object.
 	 * @param request the request object to parameterise the method
-	 * @param table semantic tag to be used to read from external data sources
-	 * @param table_collections semantic tag to be used to read collections from external data sources
 	 */
-	public void prepareLoop(Request request, TSString table, TSString table_collections);
+	public void prepareLoop(Request request);
 
 	/**
 	 * Return the current array of entries.

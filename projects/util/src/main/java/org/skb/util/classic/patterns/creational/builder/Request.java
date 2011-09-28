@@ -71,7 +71,6 @@ public class Request {
 	public Request(){
 	}
 
-
 	/**
 	 * Initialises the request instance
 	 * @param type the type ID for the request
@@ -106,6 +105,10 @@ public class Request {
 				this.init_map.put("core:requests:formselect_fields", new TSString());
 			if(!this.init_map.containsKey("core:requests:table_collections"))
 				this.init_map.put("core:requests:table_collections", new TSString());
+			if(!this.init_map.containsKey("core:requests:filter"))
+				this.init_map.put("core:requests:filter", new TSString());
+			if(!this.init_map.containsKey("core:requests:package"))
+				this.init_map.put("core:requests:package", new TSString());
 
 			ArrayList<String> rem_keys=new ArrayList<String>();
 			TSBaseAPI _t=this.init_map.get("core:requests:fields");
@@ -164,18 +167,15 @@ public class Request {
 			return type;
 	}
 
-
 	/**
 	 * Initialise the data for that request reading HTTP request values.
 	 */
 	public void initHttp(){this.init("http");}
 
-
 	/**
 	 * Initialise the data for that request using default values.
 	 */
 	public void initPlain(){this.init("plain");}
-
 
 	/**
 	 * Private method for initialising the request.
@@ -202,7 +202,6 @@ public class Request {
 		}
 	}
 
-
 	/**
 	 * Activate the request object.
 	 *
@@ -214,7 +213,6 @@ public class Request {
 		this.init_map.put("core:requests:fields"+"/"+"request:active"+"/"+"value", new TSBoolean(true));
 	}
 
-
 	/**
 	 * Test if the request object is activated or not.
 	 * @return true if activated, boolean false otherwise
@@ -222,7 +220,6 @@ public class Request {
 	public boolean isActivated(){
 		return (boolean)((TSBoolean)this.init_map.get("core:requests:fields"+"/"+"request:active"+"/"+"value")).tsvalue;
 	}
-
 
 	/**
 	 * Return the key of the request object.
@@ -233,7 +230,6 @@ public class Request {
 	public TSString getKey(){
 		return (TSString)this.init_map.get("key");
 	}
-
 
 	/**
 	 * Add a value to a registered key/value pair of the request object.
@@ -246,7 +242,6 @@ public class Request {
 	public void addValue(String field_key, String[] value){
 		this.addValue(field_key, new TSArrayListString(value));
 	}
-
 
 	/**
 	 * Add a value to a registered key/value pair of the request object.
@@ -261,7 +256,6 @@ public class Request {
 		for(int i=0;i<value.size();i++)
 			this.addValue(field_key, value.get(i));
 	}
-
 
 	/**
 	 * Add a value to a registered key/value pair of the request object.
@@ -282,7 +276,6 @@ public class Request {
 		}
 	}
 
-
 	/**
 	 * Set a value of a registered key/value pair of the request object.
 	 * 
@@ -297,7 +290,6 @@ public class Request {
 			return;
 		this.init_map.put("core:requests:fields"+"/"+field_key+"/"+"value",value);
 	}
-
 
 	/**
 	 * Return the current value of <code>field_key</code>.
@@ -315,7 +307,6 @@ public class Request {
 		return this.init_map.get("core:requests:fields"+"/"+field_key+"/"+"value");
 	}
 
-
 	/**
 	 * Return the HTTP request name (or HTML Form name) of the given key.
 	 * 
@@ -330,7 +321,6 @@ public class Request {
 		return null;
 	}
 
-
 	/**
 	 * Return the keys for form select fields
 	 * @return set with the keys
@@ -339,24 +329,37 @@ public class Request {
 		return this.init_map.get("core:requests:formselect_fields");
 	}
 
-
 	/**
 	 * Return the default semantic tag set for the request object.
 	 * @return default semantic tag
 	 */
-	public TSString getTable(){
+	public TSString getSemaTag(){
 		return (TSString)this.init_map.get("core:requests:table");
 	}
-
 
 	/**
 	 * Return the default semantic tag for collections set for the request object.
 	 * @return default semantic tag for collections
 	 */
-	public TSString getTableCollections(){
+	public TSString getSemaTagCollections(){
 		return (TSString)this.init_map.get("core:requests:table_collections");
 	}
 
+	/**
+	 * Returns the default filter set for the request object.
+	 * @return default filter
+	 */
+	public TSString getFilter(){
+		return (TSString)this.init_map.get("core:requests:filter");
+	}
+
+	/**
+	 * Returns the default package set for the request object.
+	 * @return default package
+	 */
+	public TSString getPackage(){
+		return (TSString)this.init_map.get("core:requests:package");
+	}
 
 	/**
 	 * Build a URL adding request specific information.
@@ -371,7 +374,6 @@ public class Request {
 		logger.warn("not yet implemented");
 		return null;
 	}
-
 
 	/**
 	 * Return the HTTP Request name for a given key (field).
@@ -391,14 +393,12 @@ public class Request {
 		return null;
 	}
 
-
 	@Override
 	public String toString(){
 		if(this.is_initialised==true)
 			return "init map: \n"+this.init_map.toString()+"http: \n"+this.core_ar_http.toString()+"plain: \n"+this.core_ar_plain.toString();
 		return "";
 	}
-
 
 	private void init_http(TSLinkedHashTree ar){
 		if(ar.size()>0){
@@ -423,7 +423,6 @@ public class Request {
 		}
 
 	}
-
 
 	private void init_plain(TSLinkedHashTree ar){
 		if(ar.size()>0){
