@@ -50,11 +50,15 @@ class pkg_dist__menu___menu___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+	public function prepare_loop(SKB_Request $request){
+		$sematag=$request->get_sematag();
+		if($sematag==null)
+			$sematag="skb:menu";
+
 		$mySKB=SKB_Main::get_instance();
 		$myDM=SKB_DataManager::get_instance();
 
-		$this->entry_list=$myDM->query_data_object($myDM->prepare_query("skb:menu",null,null,"key",null,null,true,true))->ar;
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"key",null,null,true,true))->ar;
 		$site_root=$mySKB->configuration->get_group("path","site");
 
 		$this->entries['/']=array();

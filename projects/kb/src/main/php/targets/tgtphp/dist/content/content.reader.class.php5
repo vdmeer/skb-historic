@@ -50,7 +50,10 @@ class pkg_dist__content___content___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+	public function prepare_loop(SKB_Request $request){
+		$sematag=$request->get_sematag();
+		$sematag_collections=$request->get_sematag_collections();
+
 		$mySKB=SKB_Main::get_instance();
 		$myDM=SKB_DataManager::get_instance();
 

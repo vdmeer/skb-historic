@@ -50,9 +50,11 @@ class pkg_dist__publications___publications___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
-//		$mySKB=SKB_Main::get_instance();
-		
+	public function prepare_loop(SKB_Request $request){
+		$sematag=$request->get_sematag();
+		if($sematag==null)
+			$sematag="skb:publications:publications";
+
 		$skb_year=$request->get_value("default:year");
 		$skb_type=$request->get_value("publications:entry_type_key");
 		$skb_tags=$request->get_value("publications:tags");
@@ -90,7 +92,7 @@ class pkg_dist__publications___publications___reader extends SKB_Reader{
 		  return;
 
 		$myDM=SKB_DataManager::get_instance();
-		$ar=$myDM->query_data_object($myDM->prepare_query("skb:publications:publications",null,null,null,null,null,false,false))->ar;
+		$ar=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,null,null,null,false,false))->ar;
 		foreach($ar as $row){
 			if(count($skb_type)>0&&!in_array($row['publications:entry_type_key'],$skb_type))
 				continue;

@@ -50,7 +50,7 @@ class pkg_core__http___http___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare()}
 	 */
-	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+	public function prepare_loop(SKB_Request $request){
 		$this->_get("http_status_codes");
 		$this->_get("http_headers_request");
 	

@@ -54,13 +54,11 @@ class pkg_core__default___default___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare()}
 	 */
-	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
+	public function prepare_loop(SKB_Request $request){
 		$mySKB=SKB_Main::get_instance();
-	
-		$skb_collection=$request->get_value('request:collection');
-	
+
 		$myDM=SKB_DataManager::get_instance();
-		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,null,null,null,true,true))->ar;
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($request->get_sematag(),null,null,null,null,null,true,true))->ar;
 		foreach($this->entry_list as $entry)
 			$this->entries[$entry['key']]=$entry;
 	}
