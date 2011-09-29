@@ -60,7 +60,7 @@ package config-core{
         table skb_cfg {key "path:gallery"} {collection "path"} {part "gallery"} {value "/../gallery/"} {field_explodes 0} {description "Path for site gallery"}
         table skb_cfg {key "path:figures"} {collection "path"} {part "figures"} {value "/../figures/"} {field_explodes 0} {description "Path for site figures"}
         table skb_cfg {key "ini:extension"} {collection "ini"} {part "extension"} {value "ini"} {field_explodes 0} {description "Ini file extension"}
-        table skb_cfg {key "skb:file-extensions"} {collection "skb"} {part "file-extensions"} {value "doc,docx,pptx,ppt,pdf,txt.pdf,txt,abstract,toc,chm,zip,doc.zip,pdf.zip,ppt.zip,mov"} {field_explodes 1} {description "SKB - list of registered file extensions for the library/gallery readers"}
+        table skb_cfg {key "skb:file-extensions"} {collection "skb"} {part "file-extensions"} {value "doc,docx,pptx,ppt,pdf,txt.pdf,txt,abstract,toc,chm,zip,doc.zip,pdf.zip,ppt.zip,mov,mp4"} {field_explodes 1} {description "SKB - list of registered file extensions for the library/gallery readers"}
         table skb_cfg {key "path:javascript"} {collection "path"} {part "javascript"} {value "/share/javascript/"} {field_explodes 0} {description "Path for site JavaScript"}
         table skb_cfg {key "header:content-type"} {collection "header"} {part "content-type"} {value "application/xhtml+xml"} {field_explodes 0} {description "Set of content types, rabit can use that to register for http header"}
         table skb_cfg {key "path:targets"} {collection "path"} {part "targets"} {value "/targets/"} {field_explodes 0} {description "Path to targets (Readers, Applications, Builders, Interpreters, Templates)"}
