@@ -40,6 +40,9 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
+	if(!is_array($entry))
+		return;
+
 	$source=null;
 	if(isset($entry['file']['jpg']))
 		$source=$entry['file']['jpg'];

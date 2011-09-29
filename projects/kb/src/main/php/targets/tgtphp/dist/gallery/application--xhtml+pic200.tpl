@@ -40,6 +40,9 @@
  * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
  * @version    v1.0.0 build 110901 (01-Sep-11) for PHP v5.3.0
  */
+	if(!is_array($entry))
+		return;
+
 	$req=clone $request;
 	$req->set_value("request:entry", $entry['key']);
 	$href=$req->build_url($_SERVER["PHP_SELF"]);
