@@ -120,7 +120,7 @@ class SKB_DataManager{
 	 * @param string filter_id a specific filter attached to the data object, can be used in queuering methods
 	 * @param string package the package that registeres the data object
 	 */
-	public function load_data_object($sema_tag, $type, $handle, $tables, $filter_id, $package){
+	public function load_data_object($sema_tag, $type, $handle, $tables, $filter_id, $package, $replace=false){
 		$do_reg=true;
 		$dos=array();
 
@@ -190,8 +190,9 @@ class SKB_DataManager{
 			$dos['tables']=$tables;
 			$dos['filter_id']=$filter_id;
 			$dos['package']=$package;
-			if(!isset($this->registered_dos[$sema_tag]))
+			if(!isset($this->registered_dos[$sema_tag])||$replace==true){
 				$this->registered_dos[$sema_tag]=array();
+			}
 			$this->registered_dos[$sema_tag][]=$dos;
 		}
 	}
@@ -292,7 +293,7 @@ class SKB_DataManager{
 								if($query['interpret']==false)
 									$ret[]=$row;
 								else
-									$ret[]=$this->interpret_do(new Util_ArBase($row), null, 'acronyms')->ar;
+									$ret[]=$this->interpret_do(new Util_ArBase($row), null, $tables)->ar;
 							}
 						}
 						break;

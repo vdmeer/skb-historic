@@ -103,7 +103,7 @@ public class SKBDataManager extends TSAtomic {
 	 * @param filterID a specific filter attached to the data object, can be used in queueing methods
 	 * @param pkg the package that registers the data object
 	 */
-	public void loadDataObject(String semaTag, String type, String handle, String tables, String filterID, String pkg){
+	public void loadDataObject(String semaTag, String type, String handle, String tables, String filterID, String pkg, Boolean replace){
 		boolean doReg=true;
 		TSLinkedHashTree dos=new TSLinkedHashTree();
 
@@ -164,7 +164,7 @@ public class SKBDataManager extends TSAtomic {
 			dos.put("filter_id", filterID);
 			dos.put("package", pkg);
 
-			if(!this.registered_dos.containsKey(semaTag)){
+			if(!this.registered_dos.containsKey(semaTag)||replace==true){
 				TSArrayList al=new TSArrayList();
 				this.registered_dos.put(semaTag, al);
 			}

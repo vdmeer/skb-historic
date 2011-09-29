@@ -153,7 +153,7 @@ class SKB_Main{
 			else{
 				//load the skb configuration
 				$myDM=SKB_DataManager::get_instance();
-				$myDM->load_data_object("skb:core:config", "sqlite", "config://".$__cfg_array["config-core"], "skb_cfg", "skb:core:config", "core");
+				$myDM->load_data_object("skb:core:config", "sqlite", "config://".$__cfg_array["config-core"], "skb_cfg", "skb:core:config", "core", false);
 				$__cfg=$myDM->query_data_object($myDM->prepare_query("skb:core:config",null,null,null,null,null,false,false))->ar;
 				foreach($__cfg as $row){
 					if(!isset($this->configuration[$row['collection']]))
@@ -167,7 +167,7 @@ class SKB_Main{
 				self::$site_id=$this->configuration['skb']['site-id'];
 
 				//load the site specific configuration
-				$myDM->load_data_object("skb:core:config:site", "sqlite", "config://".$__cfg_array["config-site"], "configuration", "skb:core:config:site", "site");
+				$myDM->load_data_object("skb:core:config:site", "sqlite", "config://".$__cfg_array["config-site"], "configuration", "skb:core:config:site", "site", false);
 				$__cfg=$myDM->query_data_object($myDM->prepare_query("skb:core:config:site",null,null,null,null,null,false,false))->ar;
 				if(true){
 					foreach($__cfg as $row){
@@ -347,7 +347,7 @@ class SKB_Main{
 			if(isset($ar['load_repository_object'])){
 				foreach($ar['load_repository_object'] as $ln=>$dos){
 					if(isset($dos['sema_tag'])&&isset($dos['type'])&&isset($dos['handle'])&&isset($dos['tables'])&&isset($dos['filter_id'])){
-						$myDM->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package);
+						$myDM->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package, false);
 						$data=$myDM->query_data_object($myDM->prepare_query($dos['sema_tag'],null,null,null,$dos['filter_id'],$package,false,true))->ar;
 						$this->load_repository_info($dos['sema_tag'], $data, $dos['filter_id'], $package);
 					}
@@ -373,7 +373,11 @@ class SKB_Main{
 			if(isset($ar['load_data_object'])){
 				foreach($ar['load_data_object'] as $ln=>$dos){
 					if(isset($dos['sema_tag'])&&isset($dos['type'])&&isset($dos['handle'])&&isset($dos['tables'])&&isset($dos['filter_id'])){
-						$myDM->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package);
+						$replace=false;
+						if(isset($dos['replace'])){
+							$replace=$dos['replace'];
+						}
+						$myDM->load_data_object($dos['sema_tag'], $dos['type'], $dos['handle'], $dos['tables'], $dos['filter_id'], $package, $replace);
 						//$myDM->get_data_objects());
 					}
 				}

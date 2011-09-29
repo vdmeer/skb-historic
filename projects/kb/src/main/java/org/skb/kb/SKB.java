@@ -190,7 +190,7 @@ public class SKB {
 		else{
 			logger.trace("starting to load configuration data");
 			logger.trace("load skb core config from "+__cfg_array.get("config-core"));
-			myDM.loadDataObject("skb:core:config", "sqlite", "config://"+__cfg_array.get("config-core").toString(), "skb_cfg", "skb:core:config", "core");
+			myDM.loadDataObject("skb:core:config", "sqlite", "config://"+__cfg_array.get("config-core").toString(), "skb_cfg", "skb:core:config", "core", false);
 			TSLinkedHashTree __cfg=myDM.queryDataObject(myDM.prepareQuery(new TSString("skb:core:config"),null,null,null,new TSString(),new TSString(),false,false));
 			Set<String> o_set = __cfg.keySet();
 			Iterator<String> key_it = o_set.iterator();
@@ -216,7 +216,7 @@ public class SKB {
 			SKB.site_id=this.configuration.get("skb/site-id").toString();
 
 			logger.trace("load skb site config from "+__cfg_array.get("config-site"));
-			myDM.loadDataObject("skb:core:config:site", "sqlite", "config://"+__cfg_array.get("config-site").toString(), "configuration", "skb:core:config:site", "site");
+			myDM.loadDataObject("skb:core:config:site", "sqlite", "config://"+__cfg_array.get("config-site").toString(), "configuration", "skb:core:config:site", "site", false);
 			__cfg=myDM.queryDataObject(myDM.prepareQuery(new TSString("skb:core:config:site"),null,null,null,new TSString(),new TSString(),false,false));
 			o_set = __cfg.keySet();
 			key_it = o_set.iterator();
@@ -412,7 +412,7 @@ public class SKB {
 						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 							TSLinkedHashTree repo=(TSLinkedHashTree)dos;
 							if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
-								this.myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
+								this.myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg, false);
 								TSLinkedHashTree data=this.myDM.queryDataObject(this.myDM.prepareQuery((TSString)repo.get("sema_tag"), null, null, null, (TSString)repo.get("filter_id"), new TSString(pkg), false, true));
 								this.load_repository_info(repo.get("sema_tag").toString(), data, repo.get("filter_id").toString(), pkg);
 							}
@@ -450,8 +450,12 @@ public class SKB {
 					for(TSBaseAPI dos : (TSArrayList)loaddata){
 						if(dos.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 							TSLinkedHashTree data=(TSLinkedHashTree)dos;
-							if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id"))
-								myDM.loadDataObject(data.get("sema_tag").toString(), data.get("type").toString(), data.get("handle").toString(), data.get("tables").toString(), data.get("filter_id").toString(), pkg);
+							if(data.containsKey("sema_tag")&&data.containsKey("type")&&data.containsKey("handle")&&data.containsKey("tables")&&data.containsKey("filter_id")){
+								Boolean replace=false;
+								if(data.containsKey("replace"))
+									replace=true;
+								myDM.loadDataObject(data.get("sema_tag").toString(), data.get("type").toString(), data.get("handle").toString(), data.get("tables").toString(), data.get("filter_id").toString(), pkg, replace);
+							}
 						}
 					}
 				}

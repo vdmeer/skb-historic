@@ -362,6 +362,24 @@ public class Request {
 	}
 
 	/**
+	 * Sets the default filter set for the request object.
+	 * @return default filter
+	 */
+	public void setFilter(TSString filter){
+		if(filter!=null)
+			this.init_map.put("core:requests:filter", filter);
+	}
+
+	/**
+	 * Sets the default package set for the request object.
+	 * @return default package
+	 */
+	public void setPackage(TSString pkg){
+		if(pkg!=null)
+			this.init_map.put("core:requests:package", pkg);
+	}
+
+	/**
 	 * Build a URL adding request specific information.
 	 * 
 	 * This method will return a new URL adding some request specific information to it. That information is basically

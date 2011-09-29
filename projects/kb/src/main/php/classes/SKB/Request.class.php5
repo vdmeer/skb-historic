@@ -352,10 +352,28 @@ class SKB_Request{
 
 
 	/**
+	 * Sets the default filter set for the request object.
+	 */
+	public function set_filter($filter){
+		if($filter!=null&&!is_array($filter)&&strlen($filter)>0)
+			$this->init_map['core:requests:filter']=$filter;
+	}
+
+
+	/**
 	 * Returns the default package for the request object.
 	 */
 	public function get_package(){
 		return $this->init_map['core:requests:package'];
+	}
+
+
+	/**
+	 * Sets the default package for the request object.
+	 */
+	public function set_package($pkg){
+		if($pkg!=null&&!is_array($pkg)&&strlen($pkg)>0)
+			$this->init_map['core:requests:package']=$pkg;
 	}
 
 
