@@ -33,6 +33,6 @@ public class SKB_SKBInfo {
 		r.prepare(def);
 		r.execute(def);
 
-		//System.err.println(r.get_entries());
+//		System.err.println(r.getEntries());
 	}
 }

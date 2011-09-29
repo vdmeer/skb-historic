@@ -56,7 +56,7 @@ class pkg_dist__date___date_dow___reader extends SKB_Reader{
 			$sematag="skb:date:dow";
 
 		$myDM=SKB_DataManager::get_instance();
-		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"date:number",null,null,true,true))->ar;
+		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"date:number",$request->get_filter(),$request->get_package(),true,true))->ar;
 	}
 
 	/**

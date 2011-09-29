@@ -55,7 +55,7 @@ class pkg_dist__currencies___currencies___reader extends SKB_Reader{
 			$sematag="skb:currencies";
 
 		$myDM=SKB_DataManager::get_instance();
-		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"currencies:code",null,null,true,false))->ar;
+		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"currencies:code",$request->get_filter(),$request->get_package(),true,false))->ar;
 	}
 	
 	/**

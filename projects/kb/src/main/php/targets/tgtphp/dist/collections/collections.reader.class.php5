@@ -56,7 +56,7 @@ class pkg_dist__collections___collections___reader extends SKB_Reader{
 		$myDM=SKB_DataManager::get_instance();
 
 		$skb_collection=$request->get_value('request:collection');
-		$rows=$myDM->query_data_object($myDM->prepare_query($sematag_collections,null,null,"request:seq_no",null,null,false,false))->ar;
+		$rows=$myDM->query_data_object($myDM->prepare_query($sematag_collections,null,null,"request:seq_no",$request->get_filter(),$request->get_package(),false,false))->ar;
 		foreach($rows as $row){
 			if(Util_Interpreter::interpret("value:is_empty", $skb_collection)==true||$skb_collection==-1)
 				continue;

@@ -191,7 +191,7 @@ public class SKB {
 			logger.trace("starting to load configuration data");
 			logger.trace("load skb core config from "+__cfg_array.get("config-core"));
 			myDM.loadDataObject("skb:core:config", "sqlite", "config://"+__cfg_array.get("config-core").toString(), "skb_cfg", "skb:core:config", "core");
-			TSLinkedHashTree __cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config",null,null,null,null,null,false,false));
+			TSLinkedHashTree __cfg=myDM.queryDataObject(myDM.prepareQuery(new TSString("skb:core:config"),null,null,null,new TSString(),new TSString(),false,false));
 			Set<String> o_set = __cfg.keySet();
 			Iterator<String> key_it = o_set.iterator();
 			while(key_it.hasNext()){
@@ -217,7 +217,7 @@ public class SKB {
 
 			logger.trace("load skb site config from "+__cfg_array.get("config-site"));
 			myDM.loadDataObject("skb:core:config:site", "sqlite", "config://"+__cfg_array.get("config-site").toString(), "configuration", "skb:core:config:site", "site");
-			__cfg=myDM.queryDataObject(myDM.prepareQuery("skb:core:config:site",null,null,null,null,null,false,false));
+			__cfg=myDM.queryDataObject(myDM.prepareQuery(new TSString("skb:core:config:site"),null,null,null,new TSString(),new TSString(),false,false));
 			o_set = __cfg.keySet();
 			key_it = o_set.iterator();
 			while(key_it.hasNext()){
@@ -413,7 +413,7 @@ public class SKB {
 							TSLinkedHashTree repo=(TSLinkedHashTree)dos;
 							if(repo.containsKey("sema_tag")&&repo.containsKey("type")&&repo.containsKey("handle")&&repo.containsKey("tables")&&repo.containsKey("filter_id")){
 								this.myDM.loadDataObject(repo.get("sema_tag").toString(), repo.get("type").toString(), repo.get("handle").toString(), repo.get("tables").toString(), repo.get("filter_id").toString(), pkg);
-								TSLinkedHashTree data=this.myDM.queryDataObject(this.myDM.prepareQuery(repo.get("sema_tag").toString(), null, null, null, repo.get("filter_id").toString(), pkg, false, true));
+								TSLinkedHashTree data=this.myDM.queryDataObject(this.myDM.prepareQuery((TSString)repo.get("sema_tag"), null, null, null, (TSString)repo.get("filter_id"), new TSString(pkg), false, true));
 								this.load_repository_info(repo.get("sema_tag").toString(), data, repo.get("filter_id").toString(), pkg);
 							}
 						}

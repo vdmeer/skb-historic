@@ -58,7 +58,7 @@ class pkg_dist__menu___menu___reader extends SKB_Reader{
 		$mySKB=SKB_Main::get_instance();
 		$myDM=SKB_DataManager::get_instance();
 
-		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"key",null,null,true,true))->ar;
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"key",$request->get_filter(),$request->get_package(),true,true))->ar;
 		$site_root=$mySKB->configuration->get_group("path","site");
 
 		$this->entries['/']=array();

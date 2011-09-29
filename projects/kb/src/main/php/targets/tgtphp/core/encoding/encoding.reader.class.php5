@@ -58,7 +58,7 @@ class pkg_core__encoding___encoding___reader extends SKB_Reader{
 		$mySKB=SKB_Main::get_instance();
 
 		$myDM=SKB_DataManager::get_instance();
-		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,null,null,null,true,true))->ar;
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,null,$request->get_filter(),$request->get_package(),true,true))->ar;
 
 		// source/target either of: a,h,l,n,s,t,u
 		$source=$request->get_value("default:source");

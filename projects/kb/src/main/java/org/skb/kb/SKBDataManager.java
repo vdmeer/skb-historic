@@ -181,14 +181,14 @@ public class SKBDataManager extends TSAtomic {
 	/**
 	 * Prepares a query object that query_data_object can process
 	 */
-	public TSLinkedHashTree prepareQuery(String semaTag, String find, TSLinkedHashTree equals, String sort, String filterID, String pkg, boolean interpret, boolean clean){
+	public TSLinkedHashTree prepareQuery(TSString semaTag, String find, TSLinkedHashTree equals, String sort, TSString filterID, TSString pkg, boolean interpret, boolean clean){
 		TSLinkedHashTree ret=new TSLinkedHashTree();
-		ret.put("sema_tag",  new TSString(semaTag));
+		ret.put("sema_tag",  semaTag.tsCopyAtomic());
 		ret.put("find",      new TSString(find));
 		ret.put("equals",    new TSLinkedHashTree(equals));
 		ret.put("sort",      new TSString(sort));
-		ret.put("filter_id", new TSString(filterID));
-		ret.put("package",   new TSString(pkg));
+		ret.put("filter_id", filterID.tsCopyAtomic());
+		ret.put("package",   pkg.tsCopyAtomic());
 		ret.put("interpret", new TSBoolean(interpret));
 		ret.put("clean",     new TSBoolean(clean));
 		return ret;
@@ -235,7 +235,7 @@ public class SKBDataManager extends TSAtomic {
 	public TSLinkedHashTree queryDataObject(TSLinkedHashTree query){
 		TSLinkedHashTree ret=new TSLinkedHashTree();
 		query=this.testQuery(query);
-		
+
 		if(!this.registered_dos.containsKey(query.get("sema_tag").toString())){
 			logger.error("SKB_DataManager: unknown sema tag <"+query.get("sema_tag")+"> in query request");
 			return ret;
@@ -352,7 +352,7 @@ public class SKBDataManager extends TSAtomic {
 									if(scope.push(table,val.toString())==true){
 										TSLinkedHashTree equals=new TSLinkedHashTree();
 										equals.put("key", val);
-										mergeMap.put(name, this.queryDataObject(this.prepareQuery(table,"*",equals,null,null,null,true,true)));
+										mergeMap.put(name, this.queryDataObject(this.prepareQuery(new TSString(table),"*",equals,null,new TSString(),new TSString(),true,true)));
 										listRemove.add(key);
 										scope.pop();
 									}
@@ -381,9 +381,9 @@ public class SKBDataManager extends TSAtomic {
 									if(newVal.tsIsType(TSRepository.TEnum.TS_COMPOSITE_TREE_LH)){
 										TSLinkedHashTree m=(TSLinkedHashTree)newVal;
 										String lang=SKB.getInstance().getLang();
-										if(m.get(lang)!=null)
+										if(m.get(lang).tsGetTypeEnum()!=TEnum.TS_NULL)
 											mergeMap.put(name,m.get(lang));
-										else if(m.get("")!=null)
+										else if(m.get("").tsGetTypeEnum()!=TEnum.TS_NULL)
 											mergeMap.put(name,m.get(""));
 										else
 											mergeMap.put(name,"");

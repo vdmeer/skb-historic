@@ -76,13 +76,13 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 			if(is_array($part)&&isset($part[0])){
 				$coll=$coll[0];
 				$part=$part[0];
-				$row=$myDM->query_data_object($myDM->prepare_query($sematag_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$coll,"request:part"=>$part),null,null,null,false,false))->ar;
+				$row=$myDM->query_data_object($myDM->prepare_query($sematag_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$coll,"request:part"=>$part),null,$request->get_filter(),$request->get_package(),false,false))->ar;
 				$test_key_ar=Util_Interpreter::interpret("array:explode", $row['request:element_keys']);
 				$test_key_ar=array_keys($test_key_ar);
 			}
 		}
 
-		$rows=$myDM->query_data_object($myDM->prepare_query($sematag,"*",null,null,null,null,false,false))->ar;
+		$rows=$myDM->query_data_object($myDM->prepare_query($sematag,"*",null,null,$request->get_filter(),$request->get_package(),false,false))->ar;
 		foreach($rows as $row){
 			//first, if we have a selection array, check if the key is in there
 			if(count($test_key_ar)>0&&!in_array($row['key'],$test_key_ar))
@@ -102,13 +102,13 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 							case "inproceedings":
 							case "proceedings":
 									if($_keys[$i]=="publications:conference"){
-										$row_conf=$myDM->query_data_object($myDM->prepare_query("skb:publications:conferences",array('key', '"default:acronym_key"', '"default:year"'),array("key"=>$row['publications:key']),null,null,null,true,true))->ar;
+										$row_conf=$myDM->query_data_object($myDM->prepare_query("skb:publications:conferences",array('key', '"default:acronym_key"', '"default:year"'),array("key"=>$row['publications:key']),null,$request->get_filter(),$request->get_package(),true,true))->ar;
 										$this->entries[$_keys[$i]][$row_conf['key']]=$row_conf['default:acronym']['acronyms:short'] . " " . $row_conf['default:year'];
 									}
 									break;
 							case "article":
 									if($_keys[$i]=="publications:journal"){
-										$row_conf=$myDM->query_data_object($myDM->prepare_query("skb:publications:journals",array('key', '"default:acronym_key"'),array("key"=>$row['publications:key']),null,null,null,true,true))->ar;
+										$row_conf=$myDM->query_data_object($myDM->prepare_query("skb:publications:journals",array('key', '"default:acronym_key"'),array("key"=>$row['publications:key']),null,$request->get_filter(),$request->get_package(),true,true))->ar;
 										$this->entries[$_keys[$i]][$row_conf['key']]=$row_conf['default:acronym']['acronyms:short'];
 									}
 									break;
@@ -131,7 +131,7 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 		//special case for museums, this impacts country and city as well, need further build
 		if(isset($this->entries['gallery:museum_key'])){
 			$this->entries['gallery:museum_key']=array_unique($this->entries['gallery:museum_key']);
-			$rows=$myDM->query_data_object($myDM->prepare_query("skb:affiliations",array('key','"default:name_locale"','"default:city_key"', '"default:country_key"'),null,null,null,null,false,false))->ar;
+			$rows=$myDM->query_data_object($myDM->prepare_query("skb:affiliations",array('key','"default:name_locale"','"default:city_key"', '"default:country_key"'),null,null,$request->get_filter(),$request->get_package(),false,false))->ar;
 			foreach($rows as $row){
 				if(in_array($row['key'],$this->entries['gallery:museum_key'])){
 					$row=Util_Interpreter::interpret("array:clean",$row);
@@ -152,7 +152,7 @@ class pkg_dist__formselect___formselect___reader extends SKB_Reader{
 				$_keys_ex=array_keys($ar);
 				$_size_ex=count($_keys_ex);
 				for($k=0;$k<$_size_ex;$k++){
-					$row_locale=$myDM->query_data_object($myDM->prepare_query($sematag_fields[$_keys[$i]]['core:default_db'],"*",array("key"=>$ar[$_keys_ex[$k]]),null,null,null,false,true))->ar;
+					$row_locale=$myDM->query_data_object($myDM->prepare_query($sematag_fields[$_keys[$i]]['core:default_db'],"*",array("key"=>$ar[$_keys_ex[$k]]),null,$request->get_filter(),$request->get_package(),false,true))->ar;
 					$row_locale=$myDM->interpret_do(new Util_ArBase($row_locale), null, $sematag_fields[$_keys[$i]]['core:default_db'])->ar;
 					//special case for people, here we want last name and then first name
 					if($_keys[$i]=="publications:author_keys"||$_keys[$i]=="publications:editor_keys"||$_keys[$i]=="gallery:fotographer_key")

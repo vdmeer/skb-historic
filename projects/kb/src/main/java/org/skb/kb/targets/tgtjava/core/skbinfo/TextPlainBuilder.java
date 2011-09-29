@@ -53,6 +53,7 @@ public class TextPlainBuilder extends SKBBuilder{
 
 	@Override
 	public void executeLoop(Request request, TSLinkedHashTree entries) {
+
 		TSSTGroupManager stgm=this.templates.get_template_object("tpl");
 		StringTemplateGroup stg=stgm.getSTG();
 		StringTemplate template=stg.getInstanceOf("build");

@@ -81,6 +81,7 @@
 		<copy todir="../../htdocs"><fileset dir="target/htdocs"/></copy>
 		<copy todir="../../htdocs/skb/classes"><fileset dir="src/main/php/classes"/></copy>
 		<copy todir="../../htdocs/skb/targets"><fileset dir="src/main/php/targets"/></copy>
+		<copy todir="../../htdocs/skb/targets"><fileset dir="src/main/resources/skb/targets"/></copy>
 
 		<copy todir="../../htdocs/skb/share/css"><fileset dir="../../resources/css"/></copy>
 		<copy todir="../../htdocs/skb/share/fonts"><fileset dir="../../resources/fonts"/></copy>

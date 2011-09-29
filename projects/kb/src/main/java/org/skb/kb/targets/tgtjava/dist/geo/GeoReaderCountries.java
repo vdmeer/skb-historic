@@ -47,11 +47,11 @@ public class GeoReaderCountries extends SKBReader {
 	@Override
 	public void prepareLoop(Request request) {
 		TSString sematag=request.getSemaTag();
-		if(sematag.tsIsType(TEnum.TS_DEFAULT))
-			sematag=new TSString("skb.geo.counries");
+		if(sematag.tsIsType(TEnum.TS_DEFAULT)||sematag.toString().length()==0)
+			sematag=new TSString("skb:geo:countries");
 
 		SKBDataManager myDM=(SKBDataManager)config.config.get(PathKeys.pathInstancesKbDatamanager);
-		this.entries=myDM.queryDataObject(myDM.prepareQuery(sematag.toString(),null,null,"key",null,null,true,true));		
+		this.entries=myDM.queryDataObject(myDM.prepareQuery(sematag,null,null,"key",request.getFilter(),request.getPackage(),true,true));		
 	}
 
 	@Override

@@ -55,7 +55,7 @@ class pkg_dist__people___people___reader extends SKB_Reader{
 			$sematag="skb:people";
 
 		$myDM=SKB_DataManager::get_instance();
-		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"key",null,null,true,true))->ar;
+		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"key",$request->get_filter(),$request->get_package(),true,true))->ar;
 	}
 	
 	/**

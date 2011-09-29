@@ -73,7 +73,7 @@ class pkg_core__http___http___reader extends SKB_Reader{
 			return;
 
 		$myDM=SKB_DataManager::get_instance();
-		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"'key'",null,null,true,true))->ar;
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"'key'",$request->get_filter(),$request->get_package(),true,true))->ar;
 
 		$pdos=$mySKB->sql_query(null, array('*'), array($sematag), null, "'key'");
 		if(!is_object($pdos)&&$pdos==-1)

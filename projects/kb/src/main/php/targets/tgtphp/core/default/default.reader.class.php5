@@ -58,7 +58,7 @@ class pkg_core__default___default___reader extends SKB_Reader{
 		$mySKB=SKB_Main::get_instance();
 
 		$myDM=SKB_DataManager::get_instance();
-		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($request->get_sematag(),null,null,null,null,null,true,true))->ar;
+		$this->entry_list=$myDM->query_data_object($myDM->prepare_query($request->get_sematag(),null,null,null,$request->get_filter(),$request->get_package(),true,true))->ar;
 		foreach($this->entry_list as $entry)
 			$this->entries[$entry['key']]=$entry;
 	}

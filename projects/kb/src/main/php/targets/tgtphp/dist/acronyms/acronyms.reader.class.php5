@@ -81,7 +81,7 @@ class pkg_dist__acronyms___acronyms___reader extends SKB_Reader{
 			$sematag="skb:acronyms";
 
 		$myDM=SKB_DataManager::get_instance();
-		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"acronyms:short",null,null,true,true))->ar;
+		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"acronyms:short",$request->get_filter(),$request->get_package(),true,true))->ar;
 	}
 
 

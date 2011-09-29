@@ -92,7 +92,7 @@ class pkg_dist__publications___publications___reader extends SKB_Reader{
 		  return;
 
 		$myDM=SKB_DataManager::get_instance();
-		$ar=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,null,null,null,false,false))->ar;
+		$ar=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,null,$request->get_filter(),$request->get_package(),false,false))->ar;
 		foreach($ar as $row){
 			if(count($skb_type)>0&&!in_array($row['publications:entry_type_key'],$skb_type))
 				continue;

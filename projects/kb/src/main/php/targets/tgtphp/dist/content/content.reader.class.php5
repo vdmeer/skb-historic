@@ -67,13 +67,13 @@ class pkg_dist__content___content___reader extends SKB_Reader{
 		$skb_collection=$skb_collection[0];
 		$skb_part=$skb_part[0];
 
-		$row=$myDM->query_data_object($myDM->prepare_query($sematag_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$skb_collection,"request:part"=>$skb_part),null,null,null,false,false))->ar;
+		$row=$myDM->query_data_object($myDM->prepare_query($sematag_collections,array('key','"request:collection"','"request:part"','"request:element_keys"'),array("request:collection"=>$skb_collection,"request:part"=>$skb_part),null,$request->get_filter(),$request->get_package(),false,false))->ar;
 		$content=Util_Interpreter::interpret("array:explode", $row['request:element_keys']);
 
 		$_keys=array_keys($content);
 		$_size=count($_keys);
 		for($i=0;$i<$_size;$i++){
-			$ar=$myDM->query_data_object($myDM->prepare_query($sematag,"*",array("key"=>$content[$_keys[$i]]),"seq_no",null,null,true,true))->ar;
+			$ar=$myDM->query_data_object($myDM->prepare_query($sematag,"*",array("key"=>$content[$_keys[$i]]),"seq_no",$request->get_filter(),$request->get_package(),true,true))->ar;
 			$this->entries[]=$ar;
 		}
 	}

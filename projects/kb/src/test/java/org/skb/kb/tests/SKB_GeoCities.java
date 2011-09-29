@@ -22,6 +22,7 @@ public class SKB_GeoCities {
 
 		SKBReader r=mySKB.getReader("Dist.Geo.Cities.DB2Entries");
 //		SKBBuilder b=mySKB.getBuilder("Dist.Acronyms.Entries2LaTeX-Table"); 
+
 //		r.set_builder(b);
 		r.prepare(def);
 //		r.execute(def);

@@ -75,7 +75,7 @@
             row Core.SkbInfo.Entries2Text-Plain
                 key = "Core.SkbInfo.Entries2Text-Plain"
                 core:rabit:type = "builder"
-                core:rabit:target:class = "java%org.skb.targets.tgtjava.core.skbinfo.TextPlainBuilder"
+                core:rabit:target:class = "java%org.skb.kb.targets.tgtjava.core.skbinfo.TextPlainBuilder"
                 core:rabit:target:template = ""
                 core:rabit:mime_in = "x-skb/entries+skbinfo"
                 core:rabit:mime_out = "x-skb/entries+skbinfo"
