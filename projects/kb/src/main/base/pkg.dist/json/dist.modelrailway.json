@@ -44,8 +44,9 @@
 		{"sema_tag":"skb:repository:fields","type":"sqlite","handle":"repo:\/\/dist\/modelrailway\/dist.modelrailway","tables":"pkg_fields","filter_id":"dist.modelrailway"},
 		{"sema_tag":"skb:repository:requests","type":"sqlite","handle":"repo:\/\/dist\/modelrailway\/dist.modelrailway","tables":"pkg_requests","filter_id":"dist.modelrailway"}
 	],
-	"load_database":[
-		{"fn":"dist\/modelrailway\/modelrailway","tables":"mr_gauge,mr_categories"}
+	"load_data_object":[
+		{"sema_tag":"skb:modelrailway:gauge","type":"sqlite","handle":"data:\/\/dist\/modelrailway\/modelrailway","tables":"mr_gauge","filter_id":"dist.modelrailway"},
+		{"sema_tag":"skb:modelrailway:categories","type":"sqlite","handle":"data:\/\/dist\/modelrailway\/modelrailway","tables":"mr_categories","filter_id":"dist.modelrailway"}
 	],
 	"text_domain":[
 		{"domain":"pkg.dist.modelrailway","path":"mo","codeset":"UTF-8"}

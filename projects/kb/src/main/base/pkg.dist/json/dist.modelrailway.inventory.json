@@ -40,9 +40,6 @@
 
 {
 	"require_package":["dist.modelrailway"],
-	"load_database":[
-		{"fn":"dist\/modelrailway\/inventory","tables":"mr_inventory"}
-	],
 	"text_domain":[
 		{"domain":"pkg.dist.modelrailway.inventory","path":"mo","codeset":"UTF-8"}
 	]

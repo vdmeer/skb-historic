@@ -51,15 +51,13 @@ class pkg_dist__modelrailway__inventory___inventory___reader extends SKB_Reader{
 	 *
 	 * Automatically called by {@link SKB_Reader#prepare() SKB_Reader->prepare}.
 	 */
-	public function prepare_loop(SKB_Request $request, $sematag, $sematag_collections){
-		$mySKB=SKB_Main::get_instance();
+	public function prepare_loop(SKB_Request $request){
+		$sematag=$request->get_sematag();
+		if($sematag==null)
+			$sematag="skb:modelrailway:inventory";
 
-		$pdos=$mySKB->sql_query(null, array('*'), array("mr_inventory"), null, '"key"');
-		if(!is_object($pdos)&&$pdos==-1)
-			return;
-
-		while($row=$pdos->fetch(PDO::FETCH_ASSOC))
-			$this->entries[]=$mySKB->interpret(new Util_ArBase($row), 'mr_inventory')->ar;
+		$myDM=SKB_DataManager::get_instance();
+		$this->entries=$myDM->query_data_object($myDM->prepare_query($sematag,null,null,"key",$request->get_filter(),$request->get_package(),true,true))->ar;
 	}
 
 
