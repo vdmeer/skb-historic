@@ -11,7 +11,11 @@
 	<import file="${env.TINOS_HOME}/projects/spring-build/tinos/package-bundle.xml"/>
 	<import file="${env.TINOS_HOME}/projects/spring-build/standard/default.xml"/>
 
-	<target name="dal2sql" depends="dal2sql.init">
+	<target name="clean-base">
+		<delete quiet="true" dir="target/base"/>
+	</target>
+
+	<target name="dal2sql" depends="clean-base, dal2sql.init">
 		<property name="dest.dir" value="${target.dir}/base/sql"/>
 		<generate-dal2sql dest.dir="${dest.dir}">
 			<fileset dir="${basedir}/src/main/base" includes="skb.dal"/>
@@ -24,12 +28,8 @@
 		</generate-dal2sql>
 	</target>
 
-	<target name="prepare" description="Prepares the project for building (jar)"/>
-
 	<target name="prepare-htdocs" description="Using DAL and PHP to build SQLite files from DAL sources" depends="dal2sql">
 		<!-- Copy JSON and PHP files that are part of repository -->
-		<delete quiet="true" dir="target/base/json"/>
-		<delete quiet="true" dir="target/base/php"/>
 		<copy todir="target/base">
 			<fileset dir="src/main/base/pkg.core" includes="**/*.json"/>
 			<fileset dir="src/main/base/pkg.demo" includes="**/*.json"/>
@@ -38,15 +38,14 @@
 		</copy>
 
 		<!-- call DAL compiler to generate SQL from DAL sources -->
-		<delete quiet="true" dir="target/base/sqlite"/>
-		<copy file="./src/misc/resources/empty.sqlite3.db" tofile="target/base/sqlite/empty.sqlite3.db"/>
+		<copy file="./deploy/empty.sqlite3.db" tofile="target/base/sqlite/empty.sqlite3.db"/>
 
 		<!-- use PHP to create SQLite database files from SQL source -->
 		<echo>Calling PHP to generate SQLite database files from SQL sources</echo>
-		<exec executable="php"><arg value="sql2sqlite.php5"/></exec>
+		<exec executable="php"><arg value="deploy/sql2sqlite.php5"/></exec>
 
 		<!-- copy last stand-alone SQLite file (encoding) -->
-		<copy file="./src/misc/resources/encoding.db" tofile="target/base/sqlite/core.encoding.db"/>
+		<copy file="./deploy/encoding.db" tofile="target/base/sqlite/core.encoding.db"/>
 
 		<!-- remove the temporary empty SQLite file and files we don't need -->
 		<delete quiet="true" file="target/base/sqlite/empty.sqlite3.db"/>
@@ -55,15 +54,40 @@
 		</delete>
 
 		<!-- create our final target dir -->
-		<delete quiet="true" dir="target/htdocs"/>
 		<mkdir dir="target/htdocs"/>
 		<echo>Calling PHP to create final structure</echo>
 		<echo>--> SQLite database files</echo>
-		<exec executable="php"><arg value="copy_sqlite.php5"/></exec>
+		<exec executable="php"><arg value="deploy/copy_sqlite.php5"/></exec>
 		<echo>--> JSON files</echo>
-		<exec executable="php"><arg value="copy_json.php5"/></exec>
+		<exec executable="php"><arg value="deploy/copy_json.php5"/></exec>
 		<echo>--> PHP5 files</echo>
-		<exec executable="php"><arg value="copy_php.php5"/></exec>
+		<exec executable="php"><arg value="deploy/copy_php.php5"/></exec>
 
+		<!-- compiling locale information -->
+		<copy todir="target/base/i18n/src"><fileset dir="../../resources/i18n"/></copy>
+		<mkdir dir="target/base/i18n/php"/>
+		<echo>Calling PHP to create dummy gettext for SQLite database files</echo>
+		<exec executable="php"><arg value="deploy/sqlite2gettext.php5"/></exec>
+		<echo>Calling BASH to build translations for GetText</echo>
+		<exec executable="V:\dev\bin\cygwin\bin\bash.exe">
+			<arg value="--login"/>
+			<arg value="-c"/> 
+			<arg value="/cygdrive/v/dev/projects/skb/skb-git/projects/kb/deploy/i18n-build.sh -locale"/> 
+		</exec>
+	</target>
+
+	<target name="build-htdocs" description="Copying all htdocs files" depends="prepare-htdocs">
+		<delete quiet="true" dir="../../htdocs"/>
+		<copy todir="../../htdocs"><fileset dir="target/htdocs"/></copy>
+		<copy todir="../../htdocs/skb/classes"><fileset dir="src/main/php/classes"/></copy>
+		<copy todir="../../htdocs/skb/targets"><fileset dir="src/main/php/targets"/></copy>
+
+		<copy todir="../../htdocs/skb/share/css"><fileset dir="../../resources/css"/></copy>
+		<copy todir="../../htdocs/skb/share/fonts"><fileset dir="../../resources/fonts"/></copy>
+		<copy todir="../../htdocs/skb/share/images"><fileset dir="../../resources/images"/></copy>
+		<copy todir="../../htdocs/skb/share/javascript"><fileset dir="../../resources/javascript"/></copy>
+		<copy todir="../../htdocs/skb/share/locale"><fileset dir="target/base/i18n/locale"/></copy>
+
+		<copy todir="../../htdocs/www/demo"><fileset dir="../../resources/htdocs/demo"/></copy>
 	</target>
 </project>
