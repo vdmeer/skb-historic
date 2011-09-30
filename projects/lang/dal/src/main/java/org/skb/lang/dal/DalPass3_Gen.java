@@ -154,7 +154,13 @@ public class DalPass3_Gen {
 			for(int i=0;i<list.size();i++){
 				if(value.length()>0)
 					value+=", ";
-				value+=StringUtils.removeEnd(StringUtils.removeStart(list.get(i).toString(), "\""), "\"");
+				String addVal=list.get(i).toString();
+				if(addVal.startsWith("'"))
+					value+=StringUtils.removeEnd(StringUtils.removeStart(list.get(i).toString(), "'"), "'");
+				else if(addVal.startsWith("\""))
+					value+=StringUtils.removeEnd(StringUtils.removeStart(list.get(i).toString(), "\""), "\"");
+				else
+					value+=addVal;
 			}
 			ret.put(key, value);
 		}

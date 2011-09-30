@@ -186,7 +186,7 @@ dalPackageRepositoryRowKV     : ^(DAL_ROW id=IDENT
 
 dalActions                   : ^(DAL_ACTIONS id=IDENT
                                  {this.pass.testAtom(id.token);}
-                                 dalActionsInsert* dalActionsRemove* dalActionsEmpty*
+                                 dalActionsInsert* dalActionsAdd* dalActionsRemove* dalActionsEmpty*
                                  {this.pass.atoms.scope.pop();}
                                );
 dalActionsInsert             : ^(DAL_ACTION_INSERT id=IDENT
@@ -194,6 +194,14 @@ dalActionsInsert             : ^(DAL_ACTION_INSERT id=IDENT
                                  tabid=dalTableIdent
                                  {this.pass.testAtom(tabid.tree.getToken());}
                                  dalKV*
+                                 {this.pass.atoms.scope.pop();}
+                                 {this.pass.atoms.scope.pop();}
+                               );
+dalActionsAdd                  : ^(DAL_ACTION_ADD id=IDENT
+                                 {this.pass.testAtom(id.token);}
+                                 tabid=dalTableIdent
+                                 {this.pass.testAtom(tabid.tree.getToken());}
+                                 dalKV string_value
                                  {this.pass.atoms.scope.pop();}
                                  {this.pass.atoms.scope.pop();}
                                );

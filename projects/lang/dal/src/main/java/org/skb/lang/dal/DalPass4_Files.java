@@ -69,6 +69,7 @@ public class DalPass4_Files {
 	public FileTemplateList getFileTemplateList(){
 		//remove everything but the dalRepository and the dalPackage
 		ArrayList<String> del=new ArrayList<String>();
+System.err.println(this.atoms.keySet());
 		del.add(DalConstants.Tokens.dalACTIONS);
 		del.add(DalConstants.Tokens.dalSEQUENCE);
 		del.add(DalConstants.Tokens.dalFIELD);
@@ -151,7 +152,7 @@ public class DalPass4_Files {
 				String[] path=StringUtils.split(rows.get(i), this.atoms.scope.separator());
 				if(this.atoms.get(path[0]).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
 					StringTemplate st=this.atoms.getST(path[0]);
-					st.setAttribute("repos", this.atoms.getST(rows.get(i)));
+					st.setAttribute("repository", this.atoms.getST(rows.get(i)));
 					this.atoms.remove(rows.get(i));
 				}
 			}

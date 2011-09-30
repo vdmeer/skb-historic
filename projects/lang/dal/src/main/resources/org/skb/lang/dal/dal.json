@@ -70,6 +70,10 @@
         },
         "lang":{
             "configuration":{
+                "dal":{
+                    "skb:util:constant:ident":"internalDalTgtDal",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target DAL"
+                },
                 "sql":{
                     "skb:util:constant:ident":"internalDalTgtSql",
                     "skb:util:constant:javadoc":"Constant to test internally for the target SQL"
@@ -136,6 +140,34 @@
                 }
             },
             "targets":{
+                "dal":{
+                    "skb.clioption.tgt-stg":{
+                            "skb:value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/dal.stg"
+                    },
+                    "skb.clioption.tgt-fileext":{
+                            "skb:value:default":".dal"
+                    },
+                    "skb.clioption.gc-scope-sep":{
+                            "skb:value:default":"::"
+                    },
+                    "skb:lang:target:config:cli":{
+                        "tgt-split-repository":{
+                            "skb:util:constant:ident":"keyTgSplitRepository",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false
+                        },
+                        "tgt-ignore-empty-st":{
+                            "skb:util:constant:ident":"keyTgIgnoreEmptyST",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":true
+                        },
+                        "tgt-repo-fileadd":{
+                            "skb:util:constant:ident":"keyTgRepoFileAdd",
+                            "skb:value:type":"ts:atomic:java:string",
+                            "skb:value:default":"-repo"
+                        }
+                    }
+                },
                 "sql":{
                     "skb.clioption.tgt-stg":{
                             "skb:value:default":"\/org\/skb\/lang\/dal\/stg\/codegen\/targets\/sql.stg"
@@ -185,7 +217,7 @@
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalDefinition":{
-                    "skb:stringtemplate:chunks:mandatory": ["package"],
+                    "skb:stringtemplate:chunks:mandatory": ["repository", "packages"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackage":{
@@ -197,7 +229,7 @@
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalTable":{
-                    "skb:stringtemplate:chunks:mandatory": ["ident", "fields"],
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "fields", "sequence"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalField":{
@@ -209,27 +241,35 @@
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalSequence":{
-                    "skb:stringtemplate:chunks:mandatory": ["ids"],
+                    "skb:stringtemplate:chunks:mandatory": ["keys"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "dalPackage":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "empty", "remove", "repository", "body"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackageRepository":{
-                    "skb:stringtemplate:chunks:mandatory": ["repo", "tables"],
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "tables"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackageRepositoryTable":{
-                    "skb:stringtemplate:chunks:mandatory": ["table", "kv"],
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "rows"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackageRepositoryRow":{
-                    "skb:stringtemplate:chunks:mandatory": ["kv"],
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "kv"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActions":{
-                    "skb:stringtemplate:chunks:mandatory": ["insert", "remove", "empty"],
+                    "skb:stringtemplate:chunks:mandatory": ["actions"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActionsInsert":{
                     "skb:stringtemplate:chunks:mandatory": ["table", "kvl"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "dalActionsAdd":{
+                    "skb:stringtemplate:chunks:mandatory": ["table", "kv", "key"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActionsRemove":{
@@ -300,6 +340,13 @@
                     "skb:lang:target:token:ident":"DAL_ACTION_INSERT",
                     "skb:lang:target:token:translate":"keyword 'insert'",
                     "skb:util:constant:javadoc":"Action Insert Keyword"
+                },
+                "dalACTION_ADD":{
+                    "skb:util:constant:ident":"dalACTION_ADD",
+                    "skb:util:constant:value":"add",
+                    "skb:lang:target:token:ident":"DAL_ACTION_ADD",
+                    "skb:lang:target:token:translate":"keyword 'add'",
+                    "skb:util:constant:javadoc":"Action Add Keyword"
                 },
                 "dalACTION_REMOVE":{
                     "skb:util:constant:ident":"dalACTION_REMOVE",

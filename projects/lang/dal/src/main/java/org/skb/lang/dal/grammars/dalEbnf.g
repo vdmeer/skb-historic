@@ -234,58 +234,71 @@ dalPackageRepositoryRowKV     : id=IDENT
 dalActions                   : DAL_ACTIONS
                                id=dalActionsID
                                {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
-                               (dalActionsInsert | dalActionsRemove | dalActionsEmpty)* '}'
+                               (dalActionsInsert | dalActionsAdd | dalActionsRemove | dalActionsEmpty)* '}'
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_ACTIONS dalActionsID dalActionsInsert* dalActionsRemove* dalActionsEmpty*);
+                               -> ^(DAL_ACTIONS dalActionsID dalActionsInsert* dalActionsAdd* dalActionsRemove* dalActionsEmpty*);
 
-dalActionsID                 : '{' -> ^({new CommonTree(new CommonToken(IDENT,"action"+Integer.toString(this.internalID++)))});
+dalActionsID                 : '{' -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalACTIONS+Integer.toString(this.internalID++)))});
 
 dalActionsInsert             : DAL_ACTION_INSERT
-                               id=internalID
+                               id=internalIDActionInsert
                                {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
                                tabid=dalTableIdent
                                {this.pass.putAtom(tabid.tree.getToken(),DalConstants.Tokens.dalTABLE);}
                                dalKV*
                                {this.pass.atoms.scope.pop();}
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_ACTION_INSERT internalID dalTableIdent dalKV*);
+                               -> ^(DAL_ACTION_INSERT internalIDActionInsert dalTableIdent dalKV*);
+dalActionsAdd                : DAL_ACTION_ADD
+                               id=internalIDActionAdd
+                               {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
+                               tabid=dalTableIdent
+                               {this.pass.putAtom(tabid.tree.getToken(),DalConstants.Tokens.dalTABLE);}
+                               dalKV string_value
+                               {this.pass.atoms.scope.pop();}
+                               {this.pass.atoms.scope.pop();}
+                               -> ^(DAL_ACTION_ADD internalIDActionAdd dalTableIdent dalKV string_value);
 dalActionsRemove             : DAL_ACTION_REMOVE
-                               id=internalID
+                               id=internalIDActionRemove
                                {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
                                tabid=dalTableIdent
                                {this.pass.putAtom(tabid.tree.getToken(),DalConstants.Tokens.dalTABLE);}
                                dalKV?
                                {this.pass.atoms.scope.pop();}
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_ACTION_REMOVE internalID dalTableIdent dalKV?);
+                               -> ^(DAL_ACTION_REMOVE internalIDActionRemove dalTableIdent dalKV?);
 dalActionsEmpty              : DAL_ACTION_EMPTY
-                               id=internalID
+                               id=internalIDActionEmpty
                                {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalACTIONS);}
                                tabid=dalTableIdent
                                {this.pass.putAtom(tabid.tree.getToken(),DalConstants.Tokens.dalTABLE);}
                                {this.pass.atoms.scope.pop();}
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_ACTION_EMPTY internalID dalTableIdent);
+                               -> ^(DAL_ACTION_EMPTY internalIDActionEmpty dalTableIdent);
 
 dalData                      : s=dalDataID
                                {this.pass.putAtom(s.tree.getToken(),DalConstants.Tokens.dalDATA);}
                                '{' dalDataRow* '}'
                                {this.pass.atoms.scope.pop();}
                                -> ^(DAL_DATA dalDataID dalDataRow*);
-dalDataRow                   : id=internalID
+dalDataRow                   : id=internalIDDataRow
                                {this.pass.putAtom(id.tree.getToken(),DalConstants.Tokens.dalROW);}
                                tabid=dalTableIdent
                                {this.pass.putAtom(tabid.tree.getToken(),DalConstants.Tokens.dalTABLE);}
                                dalKV*
                                {this.pass.atoms.scope.pop();}
                                {this.pass.atoms.scope.pop();}
-                               -> ^(DAL_ROW internalID dalTableIdent dalKV*);
+                               -> ^(DAL_ROW internalIDDataRow dalTableIdent dalKV*);
 
 dalTableIdent                : IDENT;
 
-internalID                   : DAL_TABLE -> ^({new CommonTree(new CommonToken(IDENT,Integer.toString(this.internalID++)))});
+internalIDActionInsert       : DAL_TABLE -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalACTION_INSERT+Integer.toString(this.internalID++)))});
+internalIDActionAdd          : DAL_TABLE -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalACTION_ADD+Integer.toString(this.internalID++)))});
+internalIDActionRemove       : DAL_TABLE -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalACTION_REMOVE+Integer.toString(this.internalID++)))});
+internalIDActionEmpty        : DAL_TABLE -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalACTION_EMPTY+Integer.toString(this.internalID++)))});
+internalIDDataRow            : DAL_TABLE -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalROW+Integer.toString(this.internalID++)))});
+dalDataID                    : DAL_DATA -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalDATA+Integer.toString(this.internalID++)))});
 internalSeqID                : DAL_SEQUENCE -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalSEQUENCE))});
-dalDataID                    : DAL_DATA -> ^({new CommonTree(new CommonToken(IDENT,DalConstants.Tokens.dalDATA))});
 
 dalKV                        : '{'
                                  id=IDENT
@@ -347,6 +360,7 @@ DAL_EXPR_LIST          : 'list';
 DAL_ACTION_EMPTY       : 'empty';
 DAL_ACTION_REMOVE      : 'remove';
 DAL_ACTION_INSERT      : 'insert';
+DAL_ACTION_ADD         : 'add';
 
 
 // DAL Keywords -> TYPES
@@ -370,7 +384,7 @@ DAL_TRUE     : 'true';
 WS            : (' '|'\r'|'\t'|'\u000C'|'\n') {$channel=HIDDEN;};
 SL_COMMENT    : '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;};
 ML_COMMENT    : '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;};
-VAL_CHAR      : '\'' ( ESC | ~('\''|'\\') ) '\'';
+VAL_CHAR      : '\'' ( ESC | ~('\''|'\\') )* '\'';
 VAL_STRING    : '"' ( ESC | ~('\\'|'"') )* '"';
 
 fragment ESC  : '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\') | UnicodeEscape | OctalEscape;

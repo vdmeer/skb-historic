@@ -93,7 +93,7 @@ dalRepository                : ^(DAL_REPOSITORY id=IDENT
                                  {this.curRepo=null;}
                                -> dalRepository(ident={$id.text}, tables={$tables});
 dalTable                     : ^(DAL_TABLE id=IDENT (fields+=dalField)* dalSequence)
-                               ->dalTable(ident={$id.text}, fields={this.pass.sequenceFields(this.curRepo, $id.text, $fields)});
+                               ->dalTable(ident={$id.text}, fields={this.pass.sequenceFields(this.curRepo, $id.text, $fields)}, sequence={$dalSequence.st});
 dalField                     : ^(DAL_FIELD id=IDENT type=base_type
                                  {this.pass.addFieldName(id.token);}
                                  {ArrayList<StringTemplate> cons=new ArrayList<StringTemplate>();}
@@ -126,7 +126,7 @@ dalSequence                  : ^(DAL_SEQUENCE IDENT
                                    {this.pass.addToSequence(id.token);}
                                  )*
                                )
-                               -> dalSequence(ids={$id});
+                               -> dalSequence(keys={$id});
 
 
 dalPackage                   : ^(DAL_PACKAGE id=IDENT cpp_directive*
@@ -137,31 +137,33 @@ dalPackage                   : ^(DAL_PACKAGE id=IDENT cpp_directive*
                                  {this.pass.addST($dalPackageRepository.st);}
                                  (tables+=dalTable)* (actions+=dalActions)* (data+=dalData)*)
                                  {this.curRepo=null;}
-                               ->dalPackage(ident={$id.text}, empty={$dalActionsEmpty.st}, tables={$tables}, actions={$actions}, data={$data});
+                               ->dalPackage(ident={$id.text}, empty={$dalActionsEmpty.st}, remove={$dalActionsRemove.st});
 
 
 dalPackageRepository         : ^(DAL_REPOSITORY repo=IDENT
                                  {this.pass.atoms.scope.push($repo.token);}
                                  (tables+=dalPackageRepositoryTable)*
                                )
-                               -> dalPackageRepository(repo={$repo.text}, tables={$tables});
+                               -> dalPackageRepository(ident={$repo.text}, tables={$tables});
 dalPackageRepositoryTable    : ^(DAL_TABLE table=IDENT (kvs+=dalPackageRepositoryRow)*)
-                               -> dalPackageRepositoryTable(table={$table.text}, kv={$kvs});
-dalPackageRepositoryRow      : ^(DAL_ROW IDENT
+                               -> dalPackageRepositoryTable(ident={$table.text}, rows={$kvs});
+dalPackageRepositoryRow      : ^(DAL_ROW id=IDENT
                                  {this.tmpKV.clear();}
                                  dalPackageRepositoryRowKV*
                                )
-                               -> dalPackageRepositoryRow(kv={this.pass.fixKV(this.tmpKV)});
+                               -> dalPackageRepositoryRow(ident={$id.text}, kv={this.pass.fixKV(this.tmpKV)});
 dalPackageRepositoryRowKV    : ^(DAL_ROW id=IDENT (cv+=const_value)*)
                                {this.tmpKV.put($id.text, $cv);}
                                ;
 
 
-dalActions                   : ^(s=DAL_ACTIONS IDENT (insert+=dalActionsInsert)* (remove+=dalActionsRemove)* (empty+=dalActionsEmpty)*)
-                               -> dalActions(insert={$insert}, remove={$remove}, empty={$empty});
+dalActions                   : ^(s=DAL_ACTIONS IDENT (insert+=dalActionsInsert)* (add+=dalActionsAdd)* (remove+=dalActionsRemove)* (empty+=dalActionsEmpty)*)
+                               -> dalActions();
 
 dalActionsInsert             : ^(DAL_ACTION_INSERT IDENT table=dalTableIdent {this.tmpKV.clear();} dalKV*)
                                -> dalActionsInsert(table={$table.st}, kvl={this.pass.fixKV(this.tmpKV)});
+dalActionsAdd                : ^(DAL_ACTION_ADD IDENT table=dalTableIdent {this.tmpKV.clear();} dalKV key=string_value)
+                               -> dalActionsAdd(table={$table.st}, kv={this.pass.fixKV(this.tmpKV)}, key={$key.text});
 dalActionsRemove             : ^(DAL_ACTION_REMOVE IDENT table=dalTableIdent {this.tmpKV.clear();} dalKV?)
                                -> dalActionsRemove(table={$table.st}, kv={this.pass.fixKV(this.tmpKV)});
 dalActionsEmpty              : ^(DAL_ACTION_EMPTY IDENT table=dalTableIdent)

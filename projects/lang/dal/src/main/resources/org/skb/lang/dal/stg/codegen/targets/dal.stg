@@ -27,7 +27,7 @@
  */
 
 /*
- * Template file for the target sql in Org.SKB.Lang.Dal
+ * Template file for the target dal in Org.SKB.Lang.Dal
  *
  * @package    org.skb.lang.dal
  * @author     Sven van der Meer <sven@vandermeer.de>
@@ -36,108 +36,106 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for StringTemplate v3.2.0
  */
 
-group sql;
+group dal;
 
 mlcomment_start(dummy) ::= "/*"
 mlcomment_end(dummy) ::= "*/"
-slcomment(comment) ::= "-- <comment>"
+slcomment(comment) ::= "// <comment>"
 
+dalSpecification(definition) ::= <<
+<definition>
+>>
 
-dalElementTypeMap ::= [
-  "string":"TEXT",
-  "integer":"INT",
-  default:"TEXT"
-]
-
-dalSpecification(definition) ::= ""
-
-dalDefinition(repository, packages) ::= ""
+dalDefinition(repository, packages) ::= <<
+<repository>
+<packages; separator="\n\n">
+>>
 
 dalRepository(ident, tables) ::= <<
-<tables;separator="\n\n">
+repository <ident>{
+    <tables;separator="\n\n">
+}
 >>
 
 dalTable(ident, fields, sequence) ::= <<
-<!#ifndef "TABLE_<ident>" !>
-#ifdef "DROP_CREATE_TABLE"
-DROP TABLE IF EXISTS <ident>;
-CREATE TABLE [<ident>] (<fields; separator=", ">);
-#endif
-#ifdef "EMPTY_TABLE"
-DELETE FROM <ident>;
-#endif
-<! #endif !>
-<! #define "TABLE_<ident>" !>
+table <ident>{
+    <fields; separator="\n">
+
+    <sequence>
+}
 >>
 
 dalField(ident, type, constraints, size, precision, others) ::= <<
-[<ident>] <dalElementTypeMap.(type)><if(size)> (<size><endif><if(precision)>,<precision><endif><if(size)>)<endif><if(constraints)> <constraints; separator=" "><endif><if(others)> <others; separator=" "><endif>
+field <ident> <type><if(size)> size(<size>)<endif><if(precision)> precision(<precision>)<endif><if(constraints)> <constraints; separator=" "><endif><if(others)> <others; separator=" "><endif>;
 >>
 
-dalFieldConstraintReasonMap ::= [
-  "primkey":"PRIMARY KEY",
-  "notnull":"NOT NULL",
-  "unique":"UNIQUE",
-  default:key
-]
-dalFieldConstraintActionMap ::= [
-  "abort":"ABORT",
-  "rollback":"ROLLBACK",
-  default:key
-]
-
 dalFieldConstraint(reason, action) ::= <<
-<if(reason)><if(action)><dalFieldConstraintReasonMap.(reason)> ON CONFLICT <dalFieldConstraintActionMap.(action)><endif><endif>
+<if(reason)><if(action)><reason>(<action>)<endif><endif>
 >>
 
 dalSequence(keys) ::= <<
+sequence{<keys;separator=", ">}
 >>
 
 dalPackage(ident, empty, remove, repository, body) ::= <<
-<if(empty)><empty><endif>
-<if(remove)><remove><endif>
-<repository>
-<body>
+package <ident>{
+    <if(empty)><empty><endif>
+    <if(remove)><remove><endif>
+
+    <repository>
+
+    <body;separator="\n\n">
+}
 >>
 
 dalPackageRepository(ident, tables) ::= <<
-<tables; separator="\n">
+repository <ident>{
+    <tables;separator="\n\n">
+}
 >>
 
 dalPackageRepositoryTable(ident, rows) ::= <<
-<rows:{ rows | INSERT OR REPLACE INTO <table> <rows>};separator="\n">
+table <ident>{
+    <rows;separator="\n">
+}
 >>
 
 dalPackageRepositoryRow(ident, kv) ::= <<
-(<kv.keys:{k| "<k>"};separator=", ">) VALUES(<kv.keys:{k|"<kv.(k)>"};separator=", ">);
+    row <ident>
+        <kv.keys:{k| <k> = "<kv.(k)>"};separator="\n">
+        ;
 >>
 
 dalActions(actions) ::= <<
-<actions; separator="\n">
+actions{
+    <actions; separator="\n">
+}
 >>
 
 dalActionsInsert(table, kvl) ::= <<
-INSERT OR REPLACE INTO <table> (<kvl.keys:{k| "<k>"};separator=", ">) VALUES(<kvl.keys:{k|'<kvl.(k)>'};separator=", ">);
+insert table <table> <kvl.keys:{k|<k> <kvl.(k)>};separator=" ">
 >>
 
 dalActionsAdd(table, kv, key) ::= <<
-UPDATE <table> SET <kv.keys:{k| "<k>" = "<k>" || '<kv.(k)>'};separator=" AND "> WHERE key = <key>;
+add table <table> <kv.keys:{k|<k> <kv.(k)>};separator=" "> <key>
 >>
 
 dalActionsRemove(table, kv) ::= <<
-<if(kv)>DELETE FROM <table> WHERE <kv.keys:{k| "<k>" = "<kv.(k)>"};separator=" AND ">;<else>DROP TABLE <table>;<endif>
+remove table <table> <kv.keys:{k|<k> <kv.(k)>};separator=" ">
 >>
 
 dalActionsEmpty(table) ::= <<
-DELETE FROM <table>;
+empty table <table>
 >>
 
 dalData(rows) ::= <<
-<rows;separator="\n">
+data{
+    <rows;separator="\n">
+}
 >>
 
 dalDataRow(table, kvl) ::= <<
-INSERT OR REPLACE INTO <table> (<kvl.keys:{k| "<k>"};separator=", ">) VALUES(<kvl.keys:{k|'<kvl.(k)>'};separator=", ">);
+table <table> <kvl.keys:{k|<k> <kvl.(k)>};separator=" ">
 >>
 
 const_value(val) ::= "<val>"

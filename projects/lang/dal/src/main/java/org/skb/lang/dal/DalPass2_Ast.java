@@ -80,21 +80,21 @@ public class DalPass2_Ast {
 		}
 
 		//first can be Repository or Package
-		if(path.get(keys.get(0)).equals(DalConstants.Tokens.dalREPOSITORY)){
+		if(path.get(keys.get(0)).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
 			//in Repository, we have only tables, in there lots of fields (nothing to test) and optionally a sequence
-			if(path.get(keys.get(2)).equals(DalConstants.Tokens.dalSEQUENCE)){
+			if(path.get(keys.get(2)).toString().equals(DalConstants.Tokens.dalSEQUENCE)){
 				//in sequence we have many fields (level 4)
-				if(path.get(keys.get(3)).equals(DalConstants.Tokens.dalFIELD)){
+				if(path.get(keys.get(3)).toString().equals(DalConstants.Tokens.dalFIELD)){
 					//now remove "sequence@@" and test if Atom exists
 					String t=atomScope.replace("sequence"+scopeSep, "");
 					if(!this.atoms.containsKey(t))
-						System.err.println("erorr in repository: field in sequence not defined for table");
+						System.err.println("erorr in repository: field in sequence not defined for table: <"+t+">");
 				}
 			}
 		}
-		else if(path.get(keys.get(0)).equals(DalConstants.Tokens.dalPACKAGE)){
+		else if(path.get(keys.get(0)).toString().equals(DalConstants.Tokens.dalPACKAGE)){
 			//first check for definitions for a repository table
-			if(path.get(keys.get(1)).equals(DalConstants.Tokens.dalREPOSITORY)&&path.get(keys.get(2)).equals(DalConstants.Tokens.dalTABLE)){
+			if(path.get(keys.get(1)).toString().equals(DalConstants.Tokens.dalREPOSITORY)&&path.get(keys.get(2)).toString().equals(DalConstants.Tokens.dalTABLE)){
 				//remove the first path entry (current package) and test for the repository, print error only for the actual repo Atom
 				if(pathSize==3&&!this.atoms.containsKey(keys.get(1).substring(keys.get(1).indexOf(scopeSep)+2))){
 					System.err.println("unknown repository referenced in package");
@@ -112,22 +112,22 @@ public class DalPass2_Ast {
 				}
 			}
 			//next check if we are defining a package table
-			if(path.get(keys.get(1)).equals(DalConstants.Tokens.dalTABLE)){
+			if(path.get(keys.get(1)).toString().equals(DalConstants.Tokens.dalTABLE)){
 				//in a table, we have lots of fields and optionally a sequence (s=3), but we can only check on the sequence at the end
-				if(path.get(keys.get(2)).equals(DalConstants.Tokens.dalFIELD)){
+				if(path.get(keys.get(2)).toString().equals(DalConstants.Tokens.dalFIELD)){
 					//System.err.println(pathSize+" = table field = "+atomScope);
 				}
-				if(path.get(keys.get(2)).equals(DalConstants.Tokens.dalSEQUENCE)){
+				if(path.get(keys.get(2)).toString().equals(DalConstants.Tokens.dalSEQUENCE)){
 					//in sequence we only care about size of 4
 					if(pathSize==4){
 						String t=atomScope.replace("sequence"+scopeSep, "");
 						if(!this.atoms.containsKey(t))
-							System.err.println("erorr in repository: field in sequence not defined for table");
+							System.err.println("erorr in repository: field in sequence not defined for table: <"+t+">");
 					}
 				}
 			}
 			//next check if we are adding actions to the package
-			if(path.get(keys.get(1)).equals(DalConstants.Tokens.dalACTIONS)){
+			if(path.get(keys.get(1)).toString().equals(DalConstants.Tokens.dalACTIONS)){
 				//check for the referenced table, size=4
 				if(pathSize==4){
 					String[] split=StringUtils.split(atomScope, scopeSep);
@@ -144,7 +144,7 @@ public class DalPass2_Ast {
 				}
 			}
 			//last check if we are adding data to the package
-			if(path.get(keys.get(1)).equals(DalConstants.Tokens.dalDATA)){
+			if(path.get(keys.get(1)).toString().equals(DalConstants.Tokens.dalDATA)){
 				//first check if referenced table exists in the package
 				if(pathSize==4){
 					String[] split=StringUtils.split(atomScope, scopeSep);
