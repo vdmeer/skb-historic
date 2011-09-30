@@ -351,10 +351,10 @@ public class Tribe {
 
         /**
          * CLI Option case 5: test src with target and exit options
-         * - we have a parser selected, and all exit options are processed, now we need an input file or we can't proceed
+         * - we have a parser selected, and all exit options are processed, now we need an source file or we can't proceed
          */
         if (this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).tsIsType(TEnum.TS_NULL)||this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString().equals("")){
-        	String msg="no input file specified";
+        	String msg="no source file specified";
         	this.repMgr.error(msg);
         	TSError ret=new TSError();
 			ret.tsSetMessage(msg);

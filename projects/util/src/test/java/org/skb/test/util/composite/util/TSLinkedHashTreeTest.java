@@ -29,19 +29,15 @@
 
 package org.skb.test.util.composite.util;
 
-import java.io.StringWriter;
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.skb.util.classic.json.Json2TS;
-import org.skb.util.classic.json.TS2Json;
 import org.skb.util.classic.misc.LogManager;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSNull;
@@ -400,19 +396,19 @@ public class TSLinkedHashTreeTest extends TestCase{
 //		public TSBase put(String[] list, TSBase val)
 	}
 
-	@Test public void testT(){
-		this.initComplex();
-
-		try{
-			StringWriter sw=new StringWriter();
-			ObjectMapper mapper=TS2Json.getMapperD3();
-			JsonGenerator jsonGenerator=TS2Json.getJsonGeneratorSW(sw);
-			mapper.writeValue(jsonGenerator, this.complex);
-			sw.close();
-			String res=sw.getBuffer().toString();
-			System.out.println(res);
-		} catch(Exception e){
-			System.err.println(e);
-		}
-	}
+//	@Test public void testT(){
+//		this.initComplex();
+//
+//		try{
+//			StringWriter sw=new StringWriter();
+//			ObjectMapper mapper=TS2Json.getMapperD3();
+//			JsonGenerator jsonGenerator=TS2Json.getJsonGeneratorSW(sw);
+//			mapper.writeValue(jsonGenerator, this.complex);
+//			sw.close();
+//			String res=sw.getBuffer().toString();
+//			System.out.println(res);
+//		} catch(Exception e){
+//			System.err.println(e);
+//		}
+//	}
 }

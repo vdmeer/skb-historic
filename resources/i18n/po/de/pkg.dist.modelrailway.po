@@ -111,7 +111,7 @@ msgid "Maintenance Facility"
 msgstr "Betriebswerk"
 
 #: src/autogen/pkg.dist.modelrailway.php5:41
-msgid "Mechanic's Workshop"
+msgid "Mechanic&#39;s Workshop"
 msgstr "Reperaturwerkstatt"
 
 #: src/autogen/pkg.dist.modelrailway.php5:15
