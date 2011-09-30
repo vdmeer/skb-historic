@@ -56,6 +56,9 @@ property $id$: @type($type$$if(array)$[]$endif$ = $val; separator=", "$),
   $if(evaluate)$  $evaluate; separator="\n  "$,$endif$
   @description($description.token$);
 
+<if(body)>
+  <body>
+<endif>
 >>
 
 aApplicability(appl) ::= <<@applicability($appl; separator=", "$)>>

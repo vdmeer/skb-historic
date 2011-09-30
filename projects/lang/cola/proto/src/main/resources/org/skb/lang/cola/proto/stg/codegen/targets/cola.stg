@@ -42,13 +42,16 @@ mlcomment_start(dummy) ::= "/*"
 mlcomment_end(dummy) ::= "*/"
 slcomment(comment) ::= "//<comment>"
 
-colaSpecification(stage, environment, clevel, language, spec) ::= <<
+colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
 @stage <stage>;
 @environment <environment>;
 @clevel <clevel>;
 @language <language>;
 @spec <spec>;
 
+<if(body)>
+<body; separator="\n\n">
+<endif>
 >>
 
 colaFunction(id, parameter, ret_type, ret_array) ::= <<

@@ -1,0 +1,1008 @@
+/* Copyright (c) 2011-2011 Sven van der Meer
+ * All rights reserved.
+ *
+ * Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+ * modification, are permitted provided that the following conditions are met:
+ * 
+ *     + Redistributions of source code must retain the above copyright notice,
+ *       this list of conditions and the following disclaimer.
+ *     + Redistributions  in binary  form must  reproduce the  above copyright
+ *       notice, this list  of conditions and  the following disclaimer  in the
+ *       documentation and/or other materials provided with the distribution.
+ *     + Neither the name of the the author nor the names of its contributors
+ *       may be used to endorse or promote products derived from this software
+ *       without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+ * AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+ * LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+ * CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+ * SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+ * CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*
+ * Template file for the target dal in Org.SKB.Lang.Cola.Proto
+ *
+ * @package    org.skb.lang.cola.proto
+ * @author     Sven van der Meer <sven@vandermeer.de>
+ * @copyright  2011-2011 Sven van der Meer
+ * @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+ * @version    v1.0.0 build 110901 (01-Sep-11) for StringTemplate v3.2.0
+ */
+
+group dal;
+
+mlcomment_start(dummy) ::= "/*"
+mlcomment_end(dummy) ::= "*/"
+slcomment(comment) ::= "//<comment>"
+
+colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
+<!
+@stage <stage>;
+@environment <environment>;
+@clevel <clevel>;
+@language <language>;
+@spec <spec>;
+!>
+
+    repository skb.core{
+        table pkg_fields{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field core:type string setvalue(list "core" "request");
+            field core:use string setvalue(list "entity" "value");
+            field core:entries_name string;
+            field core:http_req_name string;
+            field core:default_db string;
+            field core:explode string setvalue(or "0" "1");
+            field core:interpreter string;
+            field core:val_unset string;
+            field core:isval string;
+            field core:isval_if string;
+            field core:isval_else string;
+            field core:val_do_list string;
+            field core:description string;
+    
+            sequence{key, core:type, core:use, core:entries_name, core:http_req_name,
+                     core:default_db, core:explode, core:interpreter, core:val_unset, core:isval,
+                     core:isval_if, core:isval_else, core:val_do_list, core:description}
+        }
+    
+        table pkg_rabit{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field core:rabit:type string;
+            field core:rabit:target:class string;
+            field core:rabit:target:template string;
+            field core:rabit:mime_in string;
+            field core:rabit:mime_out string;
+            field core:rabit:css string;
+            field core:rabit:requests string;
+            field default:description_locale string;
+    
+            sequence{key, core:rabit:type, core:rabit:target:class, core:rabit:target:template, core:rabit:mime_in,
+                     core:rabit:mime_out, core:rabit:css, core:rabit:requests, default:description_locale}
+        }
+    
+        table pkg_requests{
+            field key string primkey(abort) notnull(abort) unique(abort);
+            field core:requests:fields string;
+            field core:requests:prefix string;
+            field core:requests:formselect_fields string;
+            field core:requests:table string;
+            field core:requests:table_collections string;
+            field core:request:filter string;
+            field core:request:package string;
+            field core:description string;
+    
+            sequence{key, core:requests:fields, core:requests:prefix, core:requests:formselect_fields,
+                     core:requests:table, core:requests:table_collections,
+                     core:request:filter, core:request:package, core:description}
+        }
+    }
+
+package cola.proto{
+    repository skb.core{
+        table pkg_fields{
+            row 
+                key = ""
+                core:type = ""
+                core:use = ""
+                core:entries_name = ""
+                core:http_req_name = ""
+                core:default_db = ""
+                core:explode = ""
+                core:interpreter = ""
+                core:val_unset = ""
+                core:isval = ""
+                core:isval_if = ""
+                core:isval_else = ""
+                core:val_do_list = ""
+                core:description = ""
+                ;
+        }
+        table pkg_rabit{
+            row SKB.Lang.Cola.Proto.DB2Entries 
+                key = "SKB.Lang.Cola.Proto.DB2Entries"
+                core:rabit:type = "reader"
+                core:rabit:target:class = "php%pkg_a3ds__languages__cola___cola___reader,java%org.skb.lang.cola"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/db"
+                core:rabit:mime_out = "x-skb/entries+a3dscola"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row SKB.Lang.Cola.Proto.Entries2XHTML-Table
+                key = "SKB.Lang.Cola.Proto.Entries2XHTML-Table"
+                core:rabit:type = "builder"
+                core:rabit:target:class = "php%pkg_a3ds__languages__cola___application__xhtml__table___builder,java%org.a3ds.languages.cola.ApplicationXhtml_Table"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/entries+a3dscola"
+                core:rabit:mime_out = "x-skb/entries+a3dscola"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row SKB.Lang.Cola.Proto.Entries2XHTML-Table:Template
+                key = "SKB.Lang.Cola.Proto.Entries2XHTML-Table:Template"
+                core:rabit:type = "template"
+                core:rabit:target:class = ""
+                core:rabit:target:template = "php%a3ds/languages/cola/application--xhtml+table,java%org/a3ds/languages/cola/application--xhtml+table"
+                core:rabit:mime_in = "x-skb/entries+a3dscola"
+                core:rabit:mime_out = "application/xhtml+xml"
+                core:rabit:css = "dist/table-widegrey"
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+            row SKB.Lang.Cola.Proto.Entries2GPB-Proto
+                key = "SKB.Lang.Cola.Proto.Entries2GPB-Proto"
+                core:rabit:type = "builder"
+                core:rabit:target:class = "php%pkg_a3ds__languages__cola___application__gpb__proto___builder"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = "x-skb/entries+a3dscola"
+                core:rabit:mime_out = "x-skb/entries+a3dscola"
+                core:rabit:css = ""
+                core:rabit:requests = "skb:default"
+                default:description_locale = ""
+                ;
+            row SKB.Lang.Cola.Proto.Entries2GPB-Proto:Template
+                key = "SKB.Lang.Cola.Proto.Entries2GPB-Proto:Template"
+                core:rabit:type = "template"
+                core:rabit:target:class = ""
+                core:rabit:target:template = "php%a3ds/languages/cola/application--gpb+proto"
+                core:rabit:mime_in = "x-skb/entries+a3dscola"
+                core:rabit:mime_out = "application/gpb+poto"
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+            row SKB.Lang.Cola.Proto.Interpreter.BodyKeys
+                key = "SKB.Lang.Cola.Proto.Interpreter.BodyKeys"
+                core:rabit:type = "interpreter:entity"
+                core:rabit:target:class = "php%pkg_a3ds__languages__cola___body_keys___interpreter"
+                core:rabit:target:template = ""
+                core:rabit:mime_in = ""
+                core:rabit:mime_out = ""
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+            row SKB.Lang.Cola.Proto.Interpreter.BodyKey
+                key = "SKB.Lang.Cola.Proto.Interpreter.BodyKey"
+                core:rabit:type = "interpreter:entity"
+                core:rabit:target:class = ""
+                core:rabit:target:template = ""
+                core:rabit:mime_in = ""
+                core:rabit:mime_out = ""
+                core:rabit:css = ""
+                core:rabit:requests = ""
+                default:description_locale = ""
+                ;
+        }
+    }
+
+
+
+	table a3dsSpec{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:languages:stage string;
+		field a3ds:languages:environment string;
+		field a3ds:languages:clevel string;
+		field a3ds:languages:language string;
+		field a3ds:languages:cola:definition string;
+
+		sequence{key,a3ds:languages:stage, a3ds:languages:environment, a3ds:languages:clevel, a3ds:languages:language, a3ds:languages:cola:definition}
+	}
+
+	table colaAction{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:action:return-scoped_name string;
+		field a3ds:languages:cola:action:return-based_type string;
+		field a3ds:languages:cola:action:return-void boolean;
+		field a3ds:languages:cola:action:return-array boolean;
+		field a3ds:languages:cola:++body_keys string;
+		field a3ds:languages:cola:inline_code string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:action:return-scoped_name, a3ds:languages:cola:action:return-based_type, a3ds:languages:cola:action:return-void, a3ds:languages:cola:action:return-array, a3ds:languages:cola:++body_keys, a3ds:languages:cola:inline_code}
+	}
+
+	table colaAttribute{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:attribute:type-scoped_name string;
+		field a3ds:languages:cola:attribute:type-based_type string;
+		field a3ds:languages:cola:attribute:type-array boolean;
+		field a3ds:languages:cola:inline_code string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:attribute:type-scoped_name, a3ds:languages:cola:attribute:type-based_type, a3ds:languages:cola:attribute:type-array, a3ds:languages:cola:inline_code}
+	}
+
+	table colaContractDecl{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:contract:at_scope string;
+		field a3ds:languages:cola:contract:at_description string;
+		field a3ds:languages:cola:contractItem_keys string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:contract:at_scope, a3ds:languages:cola:contract:at_description, a3ds:languages:cola:contractItem_keys}
+	}
+
+	table colaDefinition{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:languages:spec string notnull(abort);
+		field a3ds:languages:cola:++body_keys string;
+
+		sequence{key, a3ds:languages:spec, a3ds:languages:cola:++body_keys}
+	}
+
+	table colaElement{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:colaContractDefList_key string;
+		field a3ds:languages:cola:element:at_extends string;
+		field a3ds:languages:cola:element:at_provides string;
+		field a3ds:languages:cola:element:at_requires string;
+		field a3ds:languages:cola:++body_keys string;
+		field a3ds:languages:cola:inline_code string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:colaContractDefList_key, a3ds:languages:cola:element:at_extends, a3ds:languages:cola:element:at_provides, a3ds:languages:cola:element:at_requires, a3ds:languages:cola:++body_keys, a3ds:languages:cola:inline_code}
+	}
+
+	table colaFacility{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:colaContractDefList_key string;
+		field a3ds:languages:cola:facility:at_extends string;
+		field a3ds:languages:cola:facility:at_requires string;
+		field a3ds:languages:cola:++body_keys string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:colaContractDefList_key, a3ds:languages:cola:facility:at_extends, a3ds:languages:cola:facility:at_requires, a3ds:languages:cola:++body_keys}
+	}
+
+	table colaFunction{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:param-list::base_type string;
+		field a3ds:languages:cola:return-type::base_type string;
+
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:param-list::base_type, a3ds:languages:cola:return-type::base_type}
+	}
+
+	table colaItemDef{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:const_value-list string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT, a3ds:languages:cola:const_value-list}
+	}
+
+	table colaItemDefList{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field contract:cola:ladsItemDef string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, contract:cola:ladsItemDef}
+	}
+
+	table colaMember{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:member:type-scoped_name string;
+		field a3ds:languages:cola:member:type-based_type string;
+		field a3ds:languages:cola:member:type-array boolean;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:member:type-scoped_name, a3ds:languages:cola:member:type-based_type, a3ds:languages:cola:member:type-array}
+	}
+
+	table colaPackage{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:++body_keys string;
+		field a3ds:languages:cola:inline_code string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:++body_keys, a3ds:languages:cola:inline_code}
+	}
+
+	table colaParameter{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:parameter:type-scoped_name string;
+		field a3ds:languages:cola:parameter:type-based_type string;
+		field a3ds:languages:cola:parameter:type-array boolean;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:parameter:type-scoped_name, a3ds:languages:cola:parameter:type-based_type, a3ds:languages:cola:parameter:type-array}
+	}
+
+	table colaPropertyDecl{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:property:at_type string;
+		field a3ds:languages:cola:property:at_scope string;
+		field a3ds:languages:cola:property:apply+pre string;
+		field a3ds:languages:cola:property:apply+post string;
+		field a3ds:languages:cola:property:apply+inv string;
+		field a3ds:languages:cola:property:at_alterable string;
+		field a3ds:languages:cola:property:at_negotiable string;
+		field a3ds:languages:cola:property:at_description string;
+		field a3ds:languages:cola:property:at_extends string;
+		field a3ds:languages:cola:property:at_requires string;
+		field a3ds:languages:cola:property:at_priority string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:property:at_type, a3ds:languages:cola:property:at_scope, a3ds:languages:cola:property:apply+pre, a3ds:languages:cola:property:apply+post, a3ds:languages:cola:property:apply+inv, a3ds:languages:cola:property:at_alterable, a3ds:languages:cola:property:at_negotiable, a3ds:languages:cola:property:at_description, a3ds:languages:cola:property:at_extends, a3ds:languages:cola:property:at_requires, a3ds:languages:cola:property:at_priority}
+	}
+
+	table colaPropertyDef{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:property:decl string;
+		field a3ds:languages:cola:property:type string;
+		field a3ds:languages:cola:const_value-list string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT, a3ds:languages:cola:property:decl, a3ds:languages:cola:property:type, a3ds:languages:cola:const_value-list}
+	}
+
+	table colaPropertyDefList{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDef_keys string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:colaPropertyDef_keys}
+	}
+
+	table colaStruct{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:++body_keys string;
+		field a3ds:languages:cola:inline_code string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:++body_keys, a3ds:languages:cola:inline_code}
+	}
+
+	table colaTypeDef{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:colaPropertyDefList_key string;
+		field a3ds:languages:cola:typedef:type-scoped_name string;
+		field a3ds:languages:cola:typedef:type-based_type string;
+		field a3ds:languages:cola:typedef:type-array boolean;
+		field a3ds:languages:cola:inline_code string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:colaPropertyDefList_key, a3ds:languages:cola:typedef:type-scoped_name, a3ds:languages:cola:typedef:type-based_type, a3ds:languages:cola:typedef:type-array, a3ds:languages:cola:inline_code}
+	}
+
+	table contractItem{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:contractItemProp_keys string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:contractItemProp_keys}
+	}
+
+	table contractItemProp{
+		field key string primkey(abort) notnull(abort) unique(abort);
+		field a3ds:language:scope:current string notnull(abort);
+		field a3ds:languages:cola:++IDENT string notnull(abort);
+		field a3ds:languages:cola:IDENT+SC string notnull(abort);
+		field a3ds:languages:cola:IDENT string notnull(abort);
+		field a3ds:languages:cola:property:at_type string;
+		field a3ds:languages:cola:property:at_scope string;
+		field a3ds:languages:cola:property:apply+pre string;
+		field a3ds:languages:cola:property:apply+post string;
+		field a3ds:languages:cola:property:apply+inv string;
+		field a3ds:languages:cola:property:at_alterable string;
+		field a3ds:languages:cola:property:at_negotiable string;
+		field a3ds:languages:cola:property:at_description string;
+		field a3ds:languages:cola:property:at_priority string;
+
+		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:property:at_type, a3ds:languages:cola:property:at_scope, a3ds:languages:cola:property:apply+pre, a3ds:languages:cola:property:apply+post, a3ds:languages:cola:property:apply+inv, a3ds:languages:cola:property:at_alterable, a3ds:languages:cola:property:at_negotiable, a3ds:languages:cola:property:at_description, a3ds:languages:cola:property:at_priority}
+	}
+
+    actions{
+        insert table a3dsSpec {key "<stage>:<environment>:<clevel>:<language>:<spec>"} {a3ds:languages:stage "<stage>"} {a3ds:languages:environment "<environment>"} {a3ds:languages:clevel "<clevel>"} {a3ds:languages:language "<language>"} {a3ds:languages:cola:definition "<spec>"}
+        insert table colaDefinition {key "<spec>"} {a3ds:languages:spec "<spec>"} {a3ds:languages:cola:++body_keys ""}
+    }
+
+<if(body)>
+        <body; separator="\n\n">
+<endif>
+
+}
+>>
+
+colaFunction(id, parameter, ret_type, ret_array) ::= <<
+<! a3ds:languages:cola:param-list::base_type !>
+<! a3ds:languages:cola:return-type::base_type !>
+>>
+colaFunctionParam(type, id, array) ::= << >>
+
+
+colaPropertyDecl(id, type, val, array, propertyScope, apply, aExtends, aRequires, alterable, negotiable, priorityBT, priorityCV, description, misc) ::= <<
+<if(misc.inPackage)>
+    actions {
+        insert table colaPropertyDecl {key '<misc.specificationName>++<misc.currentScope>'}
+                                      {a3ds:language:scope:current 'colaPropertyDecl'}
+                                      {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentScope>%<misc.parrentCategory>'}
+                                      {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<id>'}
+                                      {a3ds:languages:cola:IDENT '<id>'}
+                                      {a3ds:languages:cola:property:at_type '<type><if(array)>[]<endif>%<val; separator=",">'}
+                                      {a3ds:languages:cola:property:at_scope 'contract%<propertyScope.contract>,package%<propertyScope.package>,element%<propertyScope.element>,facility%<propertyScope.facility>,action%<propertyScope.action>,parameter%<propertyScope.parameter>,attribute%<propertyScope.attribute>'}
+                                      {a3ds:languages:cola:property:apply+pre '<if(apply.pre)><first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:apply+post '<if(apply.post)><first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:apply+inv '<if(apply.inv)><first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:at_alterable '<if(alterable)>1<else>0<endif>'}
+                                      {a3ds:languages:cola:property:at_negotiable '<if(negotiable)>1<else>0<endif>'}
+                                      {a3ds:languages:cola:property:at_description '<description>'}
+                                      {a3ds:languages:cola:property:at_extends '<if(aExtends)><aExtends; separator=","><endif>'}
+                                      {a3ds:languages:cola:property:at_requires '<if(aRequires)><aRequires; separator=","><endif>'}
+                                      {a3ds:languages:cola:property:at_priority '<if(priorityBT)><priorityBT>%<priorityCV><endif>'}
+         
+        add table colaPackage {a3ds:languages:cola:++body_keys ",<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>"} "<misc.specificationName>++<misc.parrentId>"  
+    }
+<else>
+    actions{
+        insert table colaPropertyDecl {key '<misc.specificationName>++<misc.currentScope>'}
+                                      {a3ds:language:scope:current 'colaPropertyDecl'}
+                                      {a3ds:languages:cola:++IDENT '<misc.specificationName>%<misc.parrentCategory>'}
+                                      {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<id>'}
+                                      {a3ds:languages:cola:IDENT '<id>'}
+                                      {a3ds:languages:cola:property:at_type '<type><if(array)>[]<endif>%<val; separator=",">'}
+                                      {a3ds:languages:cola:property:at_scope 'contract%<propertyScope.contract>,package%<propertyScope.package>,element%<propertyScope.element>,facility%<propertyScope.facility>,action%<propertyScope.action>,parameter%<propertyScope.parameter>,attribute%<propertyScope.attribute>'}
+                                      {a3ds:languages:cola:property:apply+pre '<if(apply.pre)><first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:apply+post '<if(apply.post)><first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:apply+inv '<if(apply.inv)><first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:at_alterable '<if(alterable)>1<else>0<endif>'}
+                                      {a3ds:languages:cola:property:at_negotiable '<if(negotiable)>1<else>0<endif>'}
+                                      {a3ds:languages:cola:property:at_description '<description>'}
+                                      {a3ds:languages:cola:property:at_extends '<if(aExtends)><aExtends; separator=","><endif>'}
+                                      {a3ds:languages:cola:property:at_requires '<if(aRequires)><aRequires; separator=","><endif>'}
+                                      {a3ds:languages:cola:property:at_priority '<if(priorityBT)><priorityBT>%<priorityCV><endif>'}
+        add table colaDefinition {a3ds:languages:cola:++body_keys ",<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>"} "<misc.specificationName>"  
+    }
+<endif>
+>>
+aVisibility(id) ::= << >>
+
+
+
+colaPropertyDefList(property) ::=<<
+<if(property)><property; separator="\n"><endif>
+>>
+colaPropertyDef(sn, id, type, val, array, misc) ::= <<
+    actions{
+        insert table colaPropertyDefList {key '<misc.specificationName>++<misc.currentScope>'}
+                                         {a3ds:language:scope:current 'colaPropertyDefList'}
+                                         {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'}
+                                         {a3ds:languages:cola:colaPropertyDef_keys ''}
+        insert table colaPropertyDef {key '<misc.specificationName>++<misc.currentScope>::<sn>::<id>'}
+                                     {a3ds:language:scope:current 'colaPropertyDef'}
+                                     {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'}
+                                     {a3ds:languages:cola:IDENT '<id>'}
+                                     {a3ds:languages:cola:property:decl '<sn>'}
+                                     {a3ds:languages:cola:property:type '<type>'}
+                                     {a3ds:languages:cola:const_value-list '<if(val)><val; separator=","><endif>'}
+        add table colaPropertyDefList {a3ds:languages:cola:colaPropertyDef_keys ",<misc.specificationName>++<misc.currentScope>::<sn>::<id>"} "<misc.specificationName>++<misc.currentScope>"  
+    }
+>>
+
+
+colaContractDecl(id, contractScope, description, items, misc) ::= <<
+<if(misc.inPackage)>
+    actions{
+        insert table colaContractDecl {key '<misc.specificationName>++<misc.currentScope>'}
+                                      {a3ds:language:scope:current 'colaContractDecl'}
+                                      {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                      {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                      {a3ds:languages:cola:IDENT '<id>'}
+                                      {a3ds:languages:cola:contract:at_scope 'element%<contractScope.element>,facility%<contractScope.facility>'}
+                                      {a3ds:languages:cola:contract:at_description '<description>'}
+                                      {a3ds:languages:cola:contractItem_keys ''}
+    }
+<else>
+    actions{
+        insert table colaContractDecl {key '<misc.specificationName>++<misc.currentScope>'}
+                                      {a3ds:language:scope:current 'colaContractDecl'}
+                                      {a3ds:languages:cola:++IDENT '<misc.specificationName>%<misc.parrentCategory>'}
+                                      {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                      {a3ds:languages:cola:IDENT '<id>'}
+                                      {a3ds:languages:cola:contract:at_scope 'element%<contractScope.element>,facility%<contractScope.facility>'}
+                                      {a3ds:languages:cola:contract:at_description '<description>'}
+                                      {a3ds:languages:cola:contractItem_keys ''}
+    }
+  
+<endif>
+
+  <if(items)><items; separator="\n"><endif>
+
+>>
+
+contractItem(id, property, misc) ::= <<
+    actions{
+        insert table contractItem {key '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:language:scope:current 'contractItem'}
+                                  {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                  {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:languages:cola:IDENT '<id>'}
+                                  {a3ds:languages:cola:contractItemProp_keys ''}
+    }
+  
+    <property; separator="\n">
+
+    actions{
+        add table colaContractDecl {a3ds:languages:cola:contractItem_keys ",<misc.specificationName>++<misc.currentScope>"} "<misc.specificationName>++<misc.parrentId>"  
+    }
+>>
+
+contractItemProp(id, type, val, array, rank, apply, alterable, negotiable, description, priorityBT, priorityCV, misc) ::= <<
+    actions{
+        insert table contractItemProp {key '<misc.specificationName>++<misc.currentScope>'}
+                                      {a3ds:language:scope:current 'contractItemProp'}
+                                      {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentScope>%<misc.parrentCategory>'}
+                                      {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<id>'}
+                                      {a3ds:languages:cola:IDENT '<id>'}
+                                      {a3ds:languages:cola:property:at_type '<type><if(array)>[]<endif>%<val; separator=",">'}
+                                      {a3ds:languages:cola:property:at_scope '<rank>'}
+                                      {a3ds:languages:cola:property:apply+pre '<if(apply.pre)><first(apply.preList):{ n | =<n>}><rest(apply.preList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:apply+post '<if(apply.post)><first(apply.postList):{ n | =<n>}><rest(apply.postList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:apply+inv '<if(apply.inv)><first(apply.invList):{ n | =<n>}><rest(apply.invList):{ n | ,<n>}><endif>'}
+                                      {a3ds:languages:cola:property:at_alterable '<if(alterable)>1<else>0<endif>'}
+                                      {a3ds:languages:cola:property:at_negotiable '<if(negotiable)>1<else>0<endif>'}
+                                      {a3ds:languages:cola:property:at_description '<description>'}
+                                      {a3ds:languages:cola:property:at_priority '<if(priorityBT)><priorityBT>%<priorityCV><endif>'}
+        add table contractItem {a3ds:languages:cola:contractItemProp_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+>>
+
+
+
+
+colaContractDefList(contract, misc) ::= << >>
+colaContractDef(scoped_name, id, items, misc) ::= << >>
+
+colaContractItemDef(id, properties, misc) ::= << >>
+colaItemDef(id, val, misc) ::= << >>
+
+
+
+
+
+
+colaPackage(id, body, inline_code, properties, misc) ::= <<
+
+<if(misc.inPackage)>
+    actions{
+        insert table colaPackage {key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:language:scope:current 'colaPackage'}
+                                 {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                 {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:IDENT '<id>'}
+                                 {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:++body_keys ''}
+                                 {a3ds:languages:cola:inline_code '<inline_code>'}
+    }
+<else>
+    actions{
+        insert table colaPackage {key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:language:scope:current 'colaPackage'}
+                                 {a3ds:languages:cola:++IDENT '<misc.specificationName>%<misc.parrentCategory>'}
+                                 {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:IDENT '<id>'}
+                                 {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:++body_keys ''}
+                                 {a3ds:languages:cola:inline_code '<inline_code>'}
+    }
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+    actions{
+        add table colaPackage {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<else>
+    actions{
+        add table colaDefinition {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>"
+    }
+<endif>
+
+  <body>
+
+>>
+
+
+colaElement(id, body, aExtends, aProvides, aRequires, inline_code, properties, contracts, misc) ::= <<
+<if(misc.inPackage)>
+    actions{
+        insert table colaElement {key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:language:scope:current 'colaElement'}
+                                 {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                 {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:IDENT '<id>'}
+                                 {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:colaContractDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:element:at_extends '<if(aExtends)><aExtends><endif>'}
+                                 {a3ds:languages:cola:element:at_provides '<if(aProvides)><aProvides; separator=","><endif>'}
+                                 {a3ds:languages:cola:element:at_requires '<if(aRequires)><aRequires; separator=","><endif>'}
+                                 {a3ds:languages:cola:++body_keys ''}
+                                 {a3ds:languages:cola:inline_code '<inline_code>'}
+    }
+<else>
+    actions{
+        insert table colaElement {key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:language:scope:current 'colaElement'}
+                                 {a3ds:languages:cola:++IDENT '<misc.specificationName>%<misc.parrentCategory>'}
+                                 {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:IDENT '<id>'}
+                                 {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:colaContractDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:element:at_extends '<if(aExtends)><aExtends><endif>'}
+                                 {a3ds:languages:cola:element:at_provides '<if(aProvides)><aProvides; separator=","><endif>'}
+                                 {a3ds:languages:cola:element:at_requires '<if(aRequires)><aRequires; separator=","><endif>'}
+                                 {a3ds:languages:cola:++body_keys ''}
+                                 {a3ds:languages:cola:inline_code '<inline_code>'}
+    }
+<endif>
+
+<if(contracts)><contracts><endif>
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+    actions{
+        add table colaPackage {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<else>
+    actions{
+        add table colaDefinition {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>"
+    }
+<endif>
+
+  <body>
+
+>>
+
+
+colaFacility(id, body, aExtends, aRequires, properties, contracts, misc) ::= <<
+<if(misc.inPackage)>
+    actions{
+        insert table colaFacility {key '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:language:scope:current 'colaFacility'}
+                                  {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                  {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:languages:cola:IDENT '<id>'}
+                                  {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:languages:cola:colaContractDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:languages:cola:facility:at_extends '<if(aExtends)><aExtends; separator=","><endif>'}
+                                  {a3ds:languages:cola:facility:at_requires '<if(aRequires)><aRequires; separator=","><endif>'}
+                                  {a3ds:languages:cola:++body_keys ''}
+    }
+<else>
+    actions{
+        insert table colaFacility {key '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:language:scope:current 'colaFacility'}
+                                  {a3ds:languages:cola:++IDENT '<misc.specificationName>%<misc.parrentCategory>'}
+                                  {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:languages:cola:IDENT '<id>'}
+                                  {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:languages:cola:colaContractDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                  {a3ds:languages:cola:facility:at_extends '<if(aExtends)><aExtends; separator=","><endif>'}
+                                  {a3ds:languages:cola:facility:at_requires '<if(aRequires)><aRequires; separator=","><endif>'}
+                                  {a3ds:languages:cola:++body_keys ''}
+    }
+<endif>
+
+<if(contracts)><contracts><endif>
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+    actions{
+        add table colaPackage {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<else>
+    actions{
+        add table colaDefinition {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>"
+    }
+<endif>
+  <body>
+>>
+
+
+colaAction(id, type, parameter, inline_code, properties, misc) ::= <<
+<if(misc.inElement)>
+    actions{
+        insert table colaAction {key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:language:scope:current 'colaAction'}
+                                {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:IDENT '<id>'}
+                                {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:action:return-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                {a3ds:languages:cola:action:return-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                {a3ds:languages:cola:action:return-void '<if(type.void)>1<else>0<endif>'}
+                                {a3ds:languages:cola:action:return-array '<if(type.array)>1<else>0<endif>'}
+                                {a3ds:languages:cola:++body_keys ''}
+                                {a3ds:languages:cola:inline_code '<inline_code>'}
+    }
+<elseif(misc.inFacility)>
+    actions{
+        insert table colaAction {key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:language:scope:current 'colaAction'}
+                                {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:IDENT '<id>'}
+                                {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:action:return-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                {a3ds:languages:cola:action:return-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                {a3ds:languages:cola:action:return-void '<if(type.void)>1<else>0<endif>'}
+                                {a3ds:languages:cola:action:return-array '<if(type.array)>1<else>0<endif>'}
+                                {a3ds:languages:cola:++body_keys ''}
+                                {a3ds:languages:cola:inline_code '<inline_code>'}
+    }
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inElement)>
+    actions{
+        add table colaElement {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<elseif(misc.inFacility)>
+    actions{
+        add table colaFacility {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<endif>
+
+  <parameter; separator="\n">
+>>
+
+colaParameter(id, type, properties, misc) ::= <<
+    actions{
+        insert table colaParameter {key '<misc.specificationName>++<misc.currentScope>::<id>'}
+                                   {a3ds:language:scope:current 'colaParameter'}
+                                   {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.currentScope>%<misc.parrentCategory>'}
+                                   {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>::<id>'}
+                                   {a3ds:languages:cola:IDENT '<id>'}
+                                   {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>::<id>'}
+                                   {a3ds:languages:cola:parameter:type-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                   {a3ds:languages:cola:parameter:type-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                   {a3ds:languages:cola:parameter:type-array '<if(type.array)>1<else>0<endif>'}
+    }
+<if(properties)><properties><endif>
+
+    actions{
+        add table colaAction {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>::<id>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+>>
+
+
+colaTypeDef(id, type, inline_code, properties, propertiesInstances, misc) ::= <<
+<if(misc.inPackage)>
+    actions{
+        insert table colaTypeDef {key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:language:scope:current 'colaTypeDef'}
+                                 {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                 {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:IDENT '<id>'}
+                                 {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:typedef:type-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                 {a3ds:languages:cola:typedef:type-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                 {a3ds:languages:cola:typedef:type-array '<if(type.array)>1<else>0<endif>'}
+                                 {a3ds:languages:cola:inline_code '<inline_code; separator="\n">'}
+    }
+<else>
+    actions{
+        insert table colaTypeDef {key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:language:scope:current 'colaTypeDef'}
+                                 {a3ds:languages:cola:++IDENT '<misc.specificationName>%<misc.parrentCategory>'}
+                                 {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:IDENT '<id>'}
+                                 {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                 {a3ds:languages:cola:typedef:type-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                 {a3ds:languages:cola:typedef:type-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                 {a3ds:languages:cola:typedef:type-array '<if(type.array)>1<else>0<endif>'}
+                                 {a3ds:languages:cola:inline_code '<inline_code; separator="\n">'}
+    }
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+    actions{
+        add table colaPackage {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<else>
+    actions{
+        add table colaDefinition {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>"
+    }
+<endif>
+
+
+>>
+
+
+colaAttribute(id, type, inline_code, properties, misc) ::= <<
+<if(misc.inElement)>
+    actions{
+        insert table colaAttribute {key '<misc.specificationName>++<misc.currentScope>'}
+                                   {a3ds:language:scope:current 'colaAttribute'}
+                                   {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                   {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                   {a3ds:languages:cola:IDENT '<id>'}
+                                   {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                   {a3ds:languages:cola:attribute:type-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                   {a3ds:languages:cola:attribute:type-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                   {a3ds:languages:cola:attribute:type-array '<if(type.array)>1<else>0<endif>'}
+                                   {a3ds:languages:cola:inline_code '<inline_code; separator="\n">'}
+    }
+<elseif(misc.inFacility)>
+    actions{
+        insert table colaAttribute {key '<misc.specificationName>++<misc.currentScope>'}
+                                   {a3ds:language:scope:current 'colaAttribute'}
+                                   {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                   {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                   {a3ds:languages:cola:IDENT '<id>'}
+                                   {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                   {a3ds:languages:cola:attribute:type-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                   {a3ds:languages:cola:attribute:type-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                   {a3ds:languages:cola:attribute:type-array '<if(type.array)>1<else>0<endif>'}
+                                   {a3ds:languages:cola:inline_code '<inline_code; separator="\n">'}
+    }
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inElement)>
+    actions{
+        add table colaElement {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<elseif(misc.inFacility)>
+    actions{
+        add table colaFacility {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<endif>
+>>
+
+
+colaStruct(id, member, inline_code, properties, misc) ::= <<
+<if(misc.inPackage)>
+    actions{
+        insert table colaStruct {key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:language:scope:current 'colaStruct'}
+                                {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.parrentId>%<misc.parrentCategory>'}
+                                {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:IDENT '<id>'}
+                                {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:++body_keys ''}
+                                {a3ds:languages:cola:inline_code '<inline_code; separator="\n">'}
+    }  
+<else>
+    actions{
+        insert table colaStruct {key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:language:scope:current 'colaStruct'}
+                                {a3ds:languages:cola:++IDENT '<misc.specificationName>%<misc.parrentCategory>'}
+                                {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:IDENT '<id>'}
+                                {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:++body_keys ''}
+                                {a3ds:languages:cola:inline_code '<inline_code; separator="\n">'}
+    }
+<endif>
+
+<if(properties)><properties><endif>
+
+<if(misc.inPackage)>
+    actions{
+        add table colaPackage {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+<else>
+    actions{
+        add table colaDefinition {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>%<misc.currentCategory>'} "<misc.specificationName>"
+    }
+<endif>
+
+<if(member)><member; separator="\n"><endif>
+>>
+
+colaMember(id, type, properties, misc) ::= <<
+    actions{
+        insert table colaMember {key '<misc.specificationName>++<misc.currentScope>::<id>'}
+                                {a3ds:language:scope:current 'colaMember'}
+                                {a3ds:languages:cola:++IDENT '<misc.specificationName>++<misc.currentScope>%<misc.parrentCategory>'}
+                                {a3ds:languages:cola:IDENT+SC '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:IDENT '<id>'}
+                                {a3ds:languages:cola:colaPropertyDefList_key '<misc.specificationName>++<misc.currentScope>'}
+                                {a3ds:languages:cola:member:type-scoped_name '<if(type.scoped_name)><type.scoped_name><endif>'}
+                                {a3ds:languages:cola:member:type-based_type '<if(type.base_type)><type.base_type><endif>'}
+                                {a3ds:languages:cola:member:type-array '<if(type.array)>1<else>0<endif>'}
+    }
+<if(properties)><properties><endif>
+
+    actions{
+        add table colaStruct {a3ds:languages:cola:++body_keys ',<misc.specificationName>++<misc.currentScope>::<id>%<misc.currentCategory>'} "<misc.specificationName>++<misc.parrentId>"
+    }
+>>
+
+const_value(type, val) ::= "<val>"
+scoped_name(id, add) ::= <<<id; separator="::">
+>>
+
+
+inline_code(language, code) ::= "{@language=<language> \<\<?<code>?\>\>}"

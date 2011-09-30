@@ -115,12 +115,17 @@ public class ColaPass4_Files {
 			this._processPackages(null);
 
 			//final cleanup, like remove all functions if we're not in cola target mode
+			//TODO check for function handling
 			this.removeFunctions();
 
+			StringTemplate spec=this.atoms.getST(ColaConstants.Tokens.colaSPECIFICATION);
 			ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 			Integer size=rows.size();
-			for(int i=0;i<size;i++)
-				this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
+			for(int i=1;i<size;i++){ //i=1 means we avoid the spec template itself
+				spec.setAttribute("body", this.atoms.getST(rows.get(i)));
+				//this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
+			}
+			this.ftl.addTemplate(fn,spec);
 		}
 		else{
 			//now check the split code options. default is by AtomInstance (else part)
@@ -137,7 +142,7 @@ public class ColaPass4_Files {
 				ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 				Integer size=rows.size();
 				for(int i=1;i<size;i++){
-					if(this.atoms.get(rows.get(i), TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE))
+					if(this.atoms.get(rows.get(i), TSAtomList.alValCategory).toString().equals(ColaConstants.Tokens.colaPACKAGE))
 						fn=rows.get(i).replace(this.prop.getValue(FieldKeys.fieldCliOptionGCScopeSep).toString(), "_"); 
 					else{
 						File f=new File(this.prop.getValue(FieldKeys.fieldCliOptionSrcFile).toString());
@@ -186,7 +191,7 @@ public class ColaPass4_Files {
 				for(int i=0;i<size;i++){
 					fn=rows.get(i).replace(ColaConstants.Tokens.parserScopeSep, System.getProperty("file.separator"));
 					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
-					if(this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
+					if(this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage).toString().equals(ColaConstants.Properties.internalColaTgtJava)){
 						if(defPkg.length()>0)
 							calcPkg=new String(defPkg)+this.prop.getValue(ColaConstants.Properties.keyScopeSep);
 						else
@@ -222,7 +227,7 @@ public class ColaPass4_Files {
 					continue;
 				}
 				//not an element, then continue
-				if(!this.atoms.get(currentElem,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaELEMENT)){
+				if(!this.atoms.get(currentElem,TSAtomList.alValCategory).toString().equals(ColaConstants.Tokens.colaELEMENT)){
 					continue;
 				}
 				map=this.atoms.getImports(currentElem);
@@ -340,13 +345,14 @@ public class ColaPass4_Files {
 		Integer size=_r.size();
 		for(int i=0;i<size;i++){
 			current=_r.get(i);
-			if(this.atoms.get(current,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaPACKAGE)){
+			if(this.atoms.get(current, TSAtomList.alValCategory).toString().equals(ColaConstants.Tokens.colaPACKAGE)){
 				Integer count=ColaPass4_Files.countIndexOf(current, ColaConstants.Tokens.parserScopeSep);
 				if(!pkgMap.containsKey(count))
 					pkgMap.put(count, new ArrayList<String>());
 				pkgMap.get(count).add(current);
 			}
 		}
+
 		//ok, we have all pkg's in the map, lets go through the map
 		TreeSet<Integer>idx=new TreeSet<Integer>(pkgMap.descendingKeySet());
 		Integer curK;
@@ -394,7 +400,7 @@ public class ColaPass4_Files {
 		if(size>0){
 			for(int i=0;i<size;i++){
 				current=rows.get(i);
-				if(this.atoms.get(current,TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
+				if(this.atoms.get(current,TSAtomList.alValCategory).toString().equals(ColaConstants.Tokens.colaFUNCTION))
 					removeList.add(current);
 			}
 		}

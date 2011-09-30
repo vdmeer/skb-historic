@@ -94,7 +94,7 @@ public class ContractDeclarationList extends TSAtomic {
 		if(this.contractItemsDeclMap.containsKey(contract)){
 			if(this.contractItemsDeclMap.get(contract).containsKey(item)){
 				if(this.contractItemsDeclMap.get(contract).get(item).containsKey(property)){
-					if(this.contractItemsDeclMap.get(contract).get(item).get(property).equals(rank)){
+					if(this.contractItemsDeclMap.get(contract).get(item).get(property).toString().equals(rank)){
 						return true;
 					}
 					return false;
@@ -112,7 +112,7 @@ public class ContractDeclarationList extends TSAtomic {
 				Iterator<String> itr2 = lSet.iterator();
 				while(itr2.hasNext()){
 					String key = itr2.next();
-					if(this.contractItemsDeclMap.get(contract).get(item).get(key).equals(rank))
+					if(this.contractItemsDeclMap.get(contract).get(item).get(key).toString().equals(rank))
 						ret.add(key);
 				}
 			}

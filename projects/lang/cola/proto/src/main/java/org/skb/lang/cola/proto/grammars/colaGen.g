@@ -211,10 +211,6 @@ colaAction              : ^(ACTION id=IDENT {this.pass.atoms.scope.push($id.toke
 colaParameter           : ^(PARAMETER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList)
                           -> colaParameter(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()});
 
-//colaAction              : ^(ACTION id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type? (void_type {this.pass.simple_typeVoid();})? lpd=colaPropertyDefList (params+=colaParameter)* (ic+=inline_code)*)
-//                          -> colaAction(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, parameter={$params},  misc={this.pass.misc()}, inline_code={$ic});
-//colaParameter           : ^(PARAMETER id=IDENT simple_type lpd=colaPropertyDefList)
-//                          -> colaParameter(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()});
 colaTypeDef             : ^(TYPEDEF id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList (ic+=inline_code)*)
                           -> colaTypeDef(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, inline_code={$ic}, propertiesInstances={this.pass.getPropDefList()}, misc={this.pass.misc()});
 colaAttribute           : ^(ATTRIBUTE id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList (ic+=inline_code)*)
@@ -224,11 +220,6 @@ colaStruct              : ^(STRUCT id=IDENT {this.pass.atoms.scope.push($id.toke
                           -> colaStruct(id={$id}, properties={$lpd.st}, inline_code={$ic}, misc={this.pass.misc()});
 colaMember              : ^(MEMBER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList)
                           -> colaMember(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()});
-
-//colaStruct              : ^(STRUCT id=IDENT {this.pass.atoms.scope.push($id.token);} lpd=colaPropertyDefList (mem+=colaMember)* (ic+=inline_code)*)
-//                          -> colaStruct(id={$id}, properties={$lpd.st}, member={$mem}, inline_code={$ic}, misc={this.pass.misc()});
-//colaMember              : ^(MEMBER id=IDENT simple_type lpd=colaPropertyDefList)
-//                          -> colaMember(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()});
 
 scoped_name             : {this.pass.sn.clear();}
                           ^(AT_SCOPE (id+=IDENT {this.pass.sn.push(id.token);})*) -> scoped_name(id={$id}, add={this.pass.scopeTgtLangAdd()});

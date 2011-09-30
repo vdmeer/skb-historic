@@ -198,9 +198,9 @@ public class ColaPass3_Gen {
 
 	public String scopeTgtLangAdd(){
 		String ret=null;
-		if(this.atoms.get(this.sn.toString(),TSAtomList.alValCategory).equals(ColaConstants.Tokens.colaFUNCTION))
+		if(this.atoms.get(this.sn.toString(),TSAtomList.alValCategory).toString().equals(ColaConstants.Tokens.colaFUNCTION))
 			return ret;
-		if(config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage).equals(ColaConstants.Properties.internalColaTgtJava)){
+		if(config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage).toString().equals(ColaConstants.Properties.internalColaTgtJava)){
 			TSBaseAPI javaPkg=config.getProperties().getValue(ColaConstants.Properties.keyXtJavaPackage);
 			if(javaPkg!=null&&javaPkg.toString().length()>0)
 				ret=config.getProperties().getValue(ColaConstants.Properties.keyXtJavaPackage).toString();

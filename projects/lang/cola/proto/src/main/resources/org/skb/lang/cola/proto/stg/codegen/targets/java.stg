@@ -87,7 +87,11 @@ typeMap ::= [
 ]
 
 
-colaSpecification(stage, environment, clevel, language, spec) ::= << >>
+colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
+<if(body)>
+<body; separator="\n\n">
+<endif>
+>>
 
 colaFunction(id, parameter, ret_type, ret_array) ::= <<
 public <if(ret_array)>ArrayList\<<endif><typeMap.(ret_type)><if(ret_array)>\><endif> <id> (<if(parameter)><parameter; separator=", "><endif>){

@@ -90,6 +90,10 @@
                     "skb:util:constant:ident":"internalColaTgtSql",
                     "skb:util:constant:javadoc":"Constant to test internally for the target SQL"
                 },
+                "dal":{
+                    "skb:util:constant:ident":"internalColaTgtDal",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target DAL"
+                },
                 "internal-scope-sep":{
                     "skb:util:constant:ident":"keyScopeSep",
                     "skb:value:type":"ts:atomic:java:string",
@@ -377,6 +381,34 @@
                             "skb:util:constant:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
                         }
                     }
+                },
+                "dal":{
+                    "skb.clioption.tgt-stg":{
+                            "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/targets\/dal.stg"
+                    },
+                    "skb.clioption.tgt-fileext":{
+                            "skb:value:default":".dal"
+                    },
+                    "skb.clioption.gc-scope-sep":{
+                            "skb:value:default":"::"
+                    },
+                    "skb:lang:target:config:cli":{
+                        "xt-do-includes":{
+                            "skb:util:constant:ident":"keyXtDoIncludes",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:cli:option:long":"xt-do-includes",
+                            "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                            "skb:util:cli:descr:short":"Generate includes",
+                            "skb:util:constant:javadoc":"Generate includes"
+                        },
+                        "tgt-split-code":{
+                            "skb:util:constant:ident":"keyTgSplitCode",
+                            "skb:value:type":"ts:atomic:java:boolean",
+                            "skb:value:default":false,
+                            "skb:util:constant:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                        }
+                    }
                 }
             },
 
@@ -395,7 +427,7 @@
                 },
         
                 "colaSpecification":{
-                    "skb:stringtemplate:chunks:mandatory": ["stage", "environment", "clevel", "language", "spec"],
+                    "skb:stringtemplate:chunks:mandatory": ["stage", "environment", "clevel", "language", "spec", "body"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
         

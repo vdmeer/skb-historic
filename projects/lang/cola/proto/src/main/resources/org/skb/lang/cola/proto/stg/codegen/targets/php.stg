@@ -86,7 +86,11 @@ typeMap ::= [
   default: key
 ]
 
-colaSpecification(stage, environment, clevel, language, spec) ::= << >>
+colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
+<if(body)>
+<body; separator="\n\n">
+<endif>
+>>
 
 colaFunction(id, parameter, ret_type, ret_array) ::= <<
 public function <id> (<if(parameter)><parameter; separator=", "><endif>){
