@@ -133,7 +133,7 @@ public class PolaPass3_Gen {
 	public String scopeTgtLangAdd(){
 		String ret=null;
 		//if function then no add...
-		if(this.atoms.get(this.toString(),TSAtomList.alValCategory).equals(PolaConstants.Tokens.polaFUNCTION))
+		if(this.atoms.get(this.toString(),TSAtomList.alValCategory).toString().equals(PolaConstants.Tokens.polaFUNCTION))
 			return ret;
 		return ret;
 	}
