@@ -80,7 +80,7 @@
         table mr_categories {key "residential_building"} {default:name_locale "pkg.dist.modelrailway%%Residential Building"}
         table mr_categories {key "freight_shed"} {default:name_locale "pkg.dist.modelrailway%%Freight Shed"}
         table mr_categories {key "factory"} {default:name_locale "pkg.dist.modelrailway%%Factory"}
-        table mr_categories {key "mechanic_workshop"} {default:name_locale "pkg.dist.modelrailway%%Mechanic's Workshop"}
+        table mr_categories {key "mechanic_workshop"} {default:name_locale "pkg.dist.modelrailway%%Mechanic&#39;s Workshop"}
         table mr_categories {key "service_station"} {default:name_locale "pkg.dist.modelrailway%%Service Station"}
         table mr_categories {key "sawmill"} {default:name_locale "pkg.dist.modelrailway%%Sawmill"}
         table mr_categories {key "gasworks"} {default:name_locale "pkg.dist.modelrailway%%Gasworks"}
