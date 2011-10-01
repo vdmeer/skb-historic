@@ -93,9 +93,7 @@ dalFieldConstraint(reason, action) ::= <<
 dalSequence(keys) ::= <<
 >>
 
-dalPackage(ident, empty, remove, repository, body) ::= <<
-<if(empty)><empty><endif>
-<if(remove)><remove><endif>
+dalPackage(ident, repository, body) ::= <<
 <repository>
 <body>
 >>
@@ -105,15 +103,15 @@ dalPackageRepository(ident, tables) ::= <<
 >>
 
 dalPackageRepositoryTable(ident, rows) ::= <<
-<rows:{ rows | INSERT OR REPLACE INTO <table> <rows>};separator="\n">
+<rows:{ rows | INSERT OR REPLACE INTO <ident> <rows>};separator="\n">
 >>
 
 dalPackageRepositoryRow(ident, kv) ::= <<
 (<kv.keys:{k| "<k>"};separator=", ">) VALUES(<kv.keys:{k|"<kv.(k)>"};separator=", ">);
 >>
 
-dalActions(actions) ::= <<
-<actions; separator="\n">
+dalActions(body) ::= <<
+<body; separator="\n">
 >>
 
 dalActionsInsert(table, kvl) ::= <<

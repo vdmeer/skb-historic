@@ -156,7 +156,7 @@ dalSequence                   : ^(DAL_SEQUENCE id=IDENT
 
 dalPackage                    : ^(DAL_PACKAGE id=IDENT cpp_directive*
                                   {this.pass.testAtom(id.token);}
-                                  dalActionsEmpty? dalActionsRemove? dalPackageRepository dalTable* dalActions* dalData*
+                                  dalPackageRepository dalTable* dalActions* dalData*
                                   {this.pass.atoms.scope.pop();}
                                 );
 

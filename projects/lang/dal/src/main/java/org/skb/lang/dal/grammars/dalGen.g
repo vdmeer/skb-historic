@@ -89,10 +89,12 @@ dalDefinition                : dalRepository {this.pass.addST($dalRepository.st)
 dalRepository                : ^(DAL_REPOSITORY id=IDENT
                                  {this.pass.atoms.scope.push($id.token);}
                                  {this.curRepo=$id.text;}
-                                 (tables+=dalTable)*)
+                                 (tables+=dalTable {this.pass.atoms.scope.pop();})*)
                                  {this.curRepo=null;}
                                -> dalRepository(ident={$id.text}, tables={$tables});
-dalTable                     : ^(DAL_TABLE id=IDENT (fields+=dalField)* dalSequence)
+dalTable                     : ^(DAL_TABLE id=IDENT {this.pass.atoms.scope.push($id.token);}
+                                 (fields+=dalField)* dalSequence
+                               )
                                ->dalTable(ident={$id.text}, fields={this.pass.sequenceFields(this.curRepo, $id.text, $fields)}, sequence={$dalSequence.st});
 dalField                     : ^(DAL_FIELD id=IDENT type=base_type
                                  {this.pass.addFieldName(id.token);}
@@ -130,14 +132,15 @@ dalSequence                  : ^(DAL_SEQUENCE IDENT
 
 
 dalPackage                   : ^(DAL_PACKAGE id=IDENT cpp_directive*
-                                 {this.curRepo=$id.text;}
-                                 {this.pass.atoms.scope.push($id.token);}
-                                 dalActionsEmpty? dalActionsRemove?
-                                 dalPackageRepository
-                                 {this.pass.addST($dalPackageRepository.st);}
-                                 (tables+=dalTable)* (actions+=dalActions)* (data+=dalData)*)
+                                   {this.curRepo=$id.text;}
+                                   {this.pass.atoms.scope.push($id.token);}
+                                   dalPackageRepository {this.pass.addST($dalPackageRepository.st);}
+                                   (dalTable {this.pass.addST($dalTable.st);})*
+                                   (dalActions {this.pass.addST($dalActions.st);})*
+                                   (dalData {this.pass.addST($dalData.st);})*
+                                 )
                                  {this.curRepo=null;}
-                               ->dalPackage(ident={$id.text}, empty={$dalActionsEmpty.st}, remove={$dalActionsRemove.st});
+                               ->dalPackage(ident={$id.text});
 
 
 dalPackageRepository         : ^(DAL_REPOSITORY repo=IDENT
@@ -157,20 +160,33 @@ dalPackageRepositoryRowKV    : ^(DAL_ROW id=IDENT (cv+=const_value)*)
                                ;
 
 
-dalActions                   : ^(s=DAL_ACTIONS IDENT (insert+=dalActionsInsert)* (add+=dalActionsAdd)* (remove+=dalActionsRemove)* (empty+=dalActionsEmpty)*)
+dalActions                   : ^(s=DAL_ACTIONS id=IDENT {this.pass.atoms.scope.push($id.token);}
+                                 (dalActionsInsert {this.pass.addST($dalActionsInsert.st);})*
+                                 (dalActionsAdd {this.pass.addST($dalActionsAdd.st);})*
+                                 (dalActionsRemove {this.pass.addST($dalActionsRemove.st);})*
+                                 (dalActionsEmpty {this.pass.addST($dalActionsEmpty.st);})*
+                               )
                                -> dalActions();
 
-dalActionsInsert             : ^(DAL_ACTION_INSERT IDENT table=dalTableIdent {this.tmpKV.clear();} dalKV*)
+dalActionsInsert             : ^(DAL_ACTION_INSERT id=IDENT {this.pass.atoms.scope.push($id.token);}
+                                 table=dalTableIdent {this.tmpKV.clear();} dalKV*
+                               )
                                -> dalActionsInsert(table={$table.st}, kvl={this.pass.fixKV(this.tmpKV)});
-dalActionsAdd                : ^(DAL_ACTION_ADD IDENT table=dalTableIdent {this.tmpKV.clear();} dalKV key=string_value)
+dalActionsAdd                : ^(DAL_ACTION_ADD id=IDENT {this.pass.atoms.scope.push($id.token);}
+                                 table=dalTableIdent {this.tmpKV.clear();} dalKV key=string_value
+                               )
                                -> dalActionsAdd(table={$table.st}, kv={this.pass.fixKV(this.tmpKV)}, key={$key.text});
-dalActionsRemove             : ^(DAL_ACTION_REMOVE IDENT table=dalTableIdent {this.tmpKV.clear();} dalKV?)
+dalActionsRemove             : ^(DAL_ACTION_REMOVE id=IDENT {this.pass.atoms.scope.push($id.token);}
+                                 table=dalTableIdent {this.tmpKV.clear();} dalKV?
+                               )
                                -> dalActionsRemove(table={$table.st}, kv={this.pass.fixKV(this.tmpKV)});
-dalActionsEmpty              : ^(DAL_ACTION_EMPTY IDENT table=dalTableIdent)
+dalActionsEmpty              : ^(DAL_ACTION_EMPTY id=IDENT {this.pass.atoms.scope.push($id.token);}
+                                 table=dalTableIdent
+                               )
                                ->dalActionsEmpty(table={$table.st});
 
 
-dalData                      : ^(DAL_DATA IDENT (rows+=dalDataRow)*)
+dalData                      : ^(DAL_DATA id=IDENT {this.pass.atoms.scope.push($id.token);} (rows+=dalDataRow)*)
                                -> dalData(rows={$rows});
 dalDataRow                   : ^(DAL_ROW
                                  id=IDENT

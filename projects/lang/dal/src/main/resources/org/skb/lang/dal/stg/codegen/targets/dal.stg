@@ -77,11 +77,8 @@ dalSequence(keys) ::= <<
 sequence{<keys;separator=", ">}
 >>
 
-dalPackage(ident, empty, remove, repository, body) ::= <<
+dalPackage(ident, repository, body) ::= <<
 package <ident>{
-    <if(empty)><empty><endif>
-    <if(remove)><remove><endif>
-
     <repository>
 
     <body;separator="\n\n">
@@ -106,22 +103,22 @@ dalPackageRepositoryRow(ident, kv) ::= <<
         ;
 >>
 
-dalActions(actions) ::= <<
+dalActions(body) ::= <<
 actions{
-    <actions; separator="\n">
+    <body; separator="\n">
 }
 >>
 
 dalActionsInsert(table, kvl) ::= <<
-insert table <table> <kvl.keys:{k|<k> <kvl.(k)>};separator=" ">
+insert table <table> <kvl.keys:{k|\{<k> "<kvl.(k)>"\}};separator=" ">
 >>
 
 dalActionsAdd(table, kv, key) ::= <<
-add table <table> <kv.keys:{k|<k> <kv.(k)>};separator=" "> <key>
+add table <table> <kv.keys:{k|\{<k> "<kv.(k)>"\}};separator=" "> <key>
 >>
 
 dalActionsRemove(table, kv) ::= <<
-remove table <table> <kv.keys:{k|<k> <kv.(k)>};separator=" ">
+remove table <table> <kv.keys:{k|\{<k> "<kv.(k)>"\}};separator=" ">
 >>
 
 dalActionsEmpty(table) ::= <<
@@ -135,7 +132,7 @@ data{
 >>
 
 dalDataRow(table, kvl) ::= <<
-table <table> <kvl.keys:{k|<k> <kvl.(k)>};separator=" ">
+table <table> <kvl.keys:{k|\{<k> "<kvl.(k)>"\}};separator=" ">
 >>
 
 const_value(val) ::= "<val>"

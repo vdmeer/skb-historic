@@ -220,10 +220,6 @@
                     "skb:stringtemplate:chunks:mandatory": ["repository", "packages"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
-                "dalPackage":{
-                    "skb:stringtemplate:chunks:mandatory": ["ident", "empty", "repos", "tables", "actions", "data"],
-                    "skb:stringtemplate:chunks:optional":  []
-                },
                 "dalRepository":{
                     "skb:stringtemplate:chunks:mandatory": ["ident", "tables"],
                     "skb:stringtemplate:chunks:optional":  []
@@ -245,7 +241,7 @@
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackage":{
-                    "skb:stringtemplate:chunks:mandatory": ["ident", "empty", "remove", "repository", "body"],
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "repository", "body"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalPackageRepository":{
@@ -261,7 +257,7 @@
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActions":{
-                    "skb:stringtemplate:chunks:mandatory": ["actions"],
+                    "skb:stringtemplate:chunks:mandatory": ["body"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
                 "dalActionsInsert":{

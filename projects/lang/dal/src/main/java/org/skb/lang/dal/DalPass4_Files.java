@@ -67,16 +67,33 @@ public class DalPass4_Files {
 	}
 
 	public FileTemplateList getFileTemplateList(){
-		//remove everything but the dalRepository and the dalPackage
+		//remove everything that is already added to parent 
 		ArrayList<String> del=new ArrayList<String>();
-System.err.println(this.atoms.keySet());
-		del.add(DalConstants.Tokens.dalACTIONS);
-		del.add(DalConstants.Tokens.dalSEQUENCE);
-		del.add(DalConstants.Tokens.dalFIELD);
-		del.add(DalConstants.Tokens.dalDATA);
-		del.add(DalConstants.Tokens.dalTABLE);
+		del.add(DalConstants.Tokens.dalDEFVAL);		// all KVs
+		del.add(DalConstants.Tokens.dalROW);		// all data rows
+		del.add(DalConstants.Tokens.dalSEQUENCE);	// all table sequences
+		del.add(DalConstants.Tokens.dalFIELD);		// all repo fields
 		this.removeEntries(del);
 
+		//remove all tables that are already prcocess, those are from actions and data
+		del.clear();
+		del.add(DalConstants.Tokens.dalACTIONS);
+		del.add(DalConstants.Tokens.dalDATA);
+		this.removeTables(del);
+
+		//add individual actions to <actions>
+		del.clear();
+		del.add(DalConstants.Tokens.dalACTIONS);
+		this.completeAtoms(del, DalConstants.Tokens.dalACTIONS);
+
+		//add <table>, <actions> and <data> to <package>
+		del.clear();
+		del.add(DalConstants.Tokens.dalTABLE);
+		del.add(DalConstants.Tokens.dalACTIONS);
+		del.add(DalConstants.Tokens.dalDATA);
+		this.completeAtoms(del, DalConstants.Tokens.dalPACKAGE);
+
+		//left now is repository with it's tables and packages with their repo-tables
 		Boolean tgtSplitRepo=false;
 		Boolean tgtIgnoreEmptyST=false;
 		try {
@@ -127,18 +144,55 @@ System.err.println(this.atoms.keySet());
 	private void removeEntries(ArrayList<String> categories){
 		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 		ArrayList<String>removeList=new ArrayList<String>();
-		Integer size=rows.size();
 		String current;
 		String cat;
-		for(int i=0;i<size;i++){
+		for(int i=0;i<rows.size();i++){
 			current=rows.get(i);
 			cat=this.atoms.get(current,TSAtomList.alValCategory).toString();
-			if(categories.contains(cat))
+			if(categories.contains(cat)){
 				removeList.add(current);
+			}
 		}
-		//now remove the processed atoms
-		size=removeList.size();
-        for(int i=0;i<size;i++)
+        for(int i=0;i<removeList.size();i++)
+        	this.atoms.remove(removeList.get(i));
+	}
+ 
+	private void removeTables(ArrayList<String> parentCategories){
+		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
+		ArrayList<String>removeList=new ArrayList<String>();
+		String current;
+		String cat;
+		for(int i=0;i<rows.size();i++){
+			current=rows.get(i);
+			cat=this.atoms.get(current,TSAtomList.alValCategory).toString();
+			if(cat.equals(DalConstants.Tokens.dalTABLE)){
+				String scopeSep=this.prop.getValue(DalConstants.Properties.keyScopeSep).toString();
+				String[] count=current.split(scopeSep);
+				if(count.length>2){
+					if(parentCategories.contains(this.atoms.getParrentCategory(this.atoms.getParrentId(current)).toString())){
+						removeList.add(current);
+					}
+				}
+			}
+		}
+        for(int i=0;i<removeList.size();i++)
+        	this.atoms.remove(removeList.get(i));
+	}
+
+	private void completeAtoms(ArrayList<String> categories, String parentCategory){
+		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
+		ArrayList<String>removeList=new ArrayList<String>();
+		String current;
+		for(int i=0;i<rows.size();i++){
+			current=rows.get(i);
+			String cat=this.atoms.get(current,TSAtomList.alValCategory).toString();
+			String parCat=this.atoms.getParrentCategory(current);
+			if(categories.contains(cat)&&parCat!=null&&parCat.equals(parentCategory)){
+				this.atoms.getST(this.atoms.getParrentId(current)).setAttribute("body", this.atoms.getST(current));
+				removeList.add(current);
+			}
+		}
+        for(int i=0;i<removeList.size();i++)
         	this.atoms.remove(removeList.get(i));
 	}
 
