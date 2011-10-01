@@ -40,38 +40,37 @@
     repository skb.core{
         table pkg_rabit{
             row Demo.HtmlPage.Entries2XHTML-Page
-                key = "Demo.HtmlPage.Entries2XHTML-Page"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_demo__htmlpage___application__xhtml___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+htmlpage"
-                core:rabit:mime_out = "x-skb/entries+htmlpage"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:html:page"
-                default:description_locale = ""
-                ;
+                {key "Demo.HtmlPage.Entries2XHTML-Page"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_demo__htmlpage___application__xhtml___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+htmlpage"}
+                {core:rabit:mime_out "x-skb/entries+htmlpage"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:html:page"}
+                {default:description_locale ""}
+
             row Demo.HtmlPage.Entries2XHTML-Page:Template:Body-Start
-                key = "Demo.HtmlPage.Entries2XHTML-Page:Template:Body-Start"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%demo/htmlpage/application--xhtml+body-start"
-                core:rabit:mime_in = "x-skb/entries+htmlpage"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = "demo/htmlpage/00-defaults,demo/htmlpage/01-containers,demo/htmlpage/02-header,demo/htmlpage/03-content,demo/htmlpage/04-footer,demo/menu/99-menubrick"
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Demo.HtmlPage.Entries2XHTML-Page:Template:Body-Start"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%demo/htmlpage/application--xhtml+body-start"}
+                {core:rabit:mime_in "x-skb/entries+htmlpage"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css "demo/htmlpage/00-defaults,demo/htmlpage/01-containers,demo/htmlpage/02-header,demo/htmlpage/03-content,demo/htmlpage/04-footer,demo/menu/99-menubrick"}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Demo.HtmlPage.Entries2XHTML-Page:Template:Body-End
-                key = "Demo.HtmlPage.Entries2XHTML-Page:Template:Body-End"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%demo/htmlpage/application--xhtml+body-end"
-                core:rabit:mime_in = "x-skb/entries+htmlpage"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Demo.HtmlPage.Entries2XHTML-Page:Template:Body-End"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%demo/htmlpage/application--xhtml+body-end"}
+                {core:rabit:mime_in "x-skb/entries+htmlpage"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
         }
     }
 #endif

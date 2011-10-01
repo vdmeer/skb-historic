@@ -152,12 +152,9 @@ dalPackageRepositoryTable    : ^(DAL_TABLE table=IDENT (kvs+=dalPackageRepositor
                                -> dalPackageRepositoryTable(ident={$table.text}, rows={$kvs});
 dalPackageRepositoryRow      : ^(DAL_ROW id=IDENT
                                  {this.tmpKV.clear();}
-                                 dalPackageRepositoryRowKV*
+                                 dalKV*
                                )
                                -> dalPackageRepositoryRow(ident={$id.text}, kv={this.pass.fixKV(this.tmpKV)});
-dalPackageRepositoryRowKV    : ^(DAL_ROW id=IDENT (cv+=const_value)*)
-                               {this.tmpKV.put($id.text, $cv);}
-                               ;
 
 
 dalActions                   : ^(s=DAL_ACTIONS id=IDENT {this.pass.atoms.scope.push($id.token);}

@@ -40,247 +40,245 @@
     repository skb.core{
         table pkg_fields{
             row request:active
-                key = "request:active"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "active"
-                core:http_req_name = "active"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:collection
-                key = "request:collection"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:collection"
-                core:http_req_name = "rcoll"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:element_keys
-                key = "request:element_keys"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:element_keys"
-                core:http_req_name = "relemkeys"
-                core:default_db = ""
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:entry
-                key = "request:entry"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:entry"
-                core:http_req_name = "rentry"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:entry_list
-                key = "request:entry_list"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:entry_list"
-                core:http_req_name = "rentrylist"
-                core:default_db = ""
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:file_ext
-                key = "request:file_ext"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:file_ext"
-                core:http_req_name = "rfileext"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:hbr
-                key = "request:hbr"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:hbr"
-                core:http_req_name = "rhbr"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:part
-                key = "request:part"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:part"
-                core:http_req_name = "rpart"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:request
-                key = "request:request"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "request:request"
-                core:http_req_name = "rreq"
-                core:default_db = ""
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:seq_no
-                key = "request:seq_no"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:seq_no"
-                core:http_req_name = "rseqno"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:todo
-                key = "request:todo"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "request:todo"
-                core:http_req_name = "rtodo"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:show
-                key = "request:show"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:show"
-                core:http_req_name = "rshow"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:url_frag
-                key = "request:url_frag"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "request:url_frag"
-                core:http_req_name = "rurlfrag"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:file_name
-                key = "request:file_name"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "request:file_name"
-                core:http_req_name = "file_name"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-            row request:media_type
-                key = "request:media_type"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "request:media_type"
-                core:http_req_name = "media_type"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
-        }
+                {key "request:active"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "active"}
+                {core:http_req_name "active"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
 
+            row request:collection
+                {key "request:collection"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:collection"}
+                {core:http_req_name "rcoll"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:element_keys
+                {key "request:element_keys"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:element_keys"}
+                {core:http_req_name "relemkeys"}
+                {core:default_db ""}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:entry
+                {key "request:entry"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:entry"}
+                {core:http_req_name "rentry"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:entry_list
+                {key "request:entry_list"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:entry_list"}
+                {core:http_req_name "rentrylist"}
+                {core:default_db ""}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:file_ext
+                {key "request:file_ext"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:file_ext"}
+                {core:http_req_name "rfileext"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:hbr
+                {key "request:hbr"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:hbr"}
+                {core:http_req_name "rhbr"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:part
+                {key "request:part"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:part"}
+                {core:http_req_name "rpart"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:request
+                {key "request:request"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "request:request"}
+                {core:http_req_name "rreq"}
+                {core:default_db ""}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:seq_no
+                {key "request:seq_no"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:seq_no"}
+                {core:http_req_name "rseqno"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:todo
+                {key "request:todo"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "request:todo"}
+                {core:http_req_name "rtodo"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:show
+                {key "request:show"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:show"}
+                {core:http_req_name "rshow"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:url_frag
+                {key "request:url_frag"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "request:url_frag"}
+                {core:http_req_name "rurlfrag"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:file_name
+                {key "request:file_name"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "request:file_name"}
+                {core:http_req_name "file_name"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
+            row request:media_type
+                {key "request:media_type"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "request:media_type"}
+                {core:http_req_name "media_type"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+        }
     }
 #endif
 #define "CORE_REQUEST_REPO"

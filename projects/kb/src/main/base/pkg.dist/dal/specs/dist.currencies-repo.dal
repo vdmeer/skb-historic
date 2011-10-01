@@ -40,121 +40,119 @@
     repository skb.core{
         table pkg_fields{
             row currencies:code
-                key = "currencies:code"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "currencies:code"
-                core:http_req_name = "code"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "currencies:code"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "currencies:code"}
+                {core:http_req_name "code"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row currencies:number
-                key = "currencies:number"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "currencies:number"
-                core:http_req_name = "number"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "currencies:number"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "currencies:number"}
+                {core:http_req_name "number"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row currencies:e
-                key = "currencies:e"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "currencies:e"
-                core:http_req_name = "e"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "currencies:e"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "currencies:e"}
+                {core:http_req_name "e"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row currencies:replacedby_key
-                key = "currencies:replacedby_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "currencies:replacedby"
-                core:http_req_name = "replacedby"
-                core:default_db = "skb:currencies"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "currencies:replacedby_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "currencies:replacedby"}
+                {core:http_req_name "replacedby"}
+                {core:default_db "skb:currencies"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row currencies:active
-                key = "currencies:active"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "currencies:active"
-                core:http_req_name = "active"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "currencies:active"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "currencies:active"}
+                {core:http_req_name "active"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
         }
 
         table pkg_rabit{
             row Dist.Currencies.Entries2XHTML-Table
-                key = "Dist.Currencies.Entries2XHTML-Table"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__currencies___application__xhtml__table___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+currencies"
-                core:rabit:mime_out = "x-skb/entries+currencies"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Dist.Currencies.Entries2XHTML-Table"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__currencies___application__xhtml__table___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+currencies"}
+                {core:rabit:mime_out "x-skb/entries+currencies"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
             row Dist.Currencies.Entries2XHTML-Table:Template
-                key = "Dist.Currencies.Entries2XHTML-Table:Template"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/currencies/application--xhtml+table"
-                core:rabit:mime_in = "x-skb/entries+currencies"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = "dist/table-widegrey"
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Currencies.Entries2XHTML-Table:Template"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/currencies/application--xhtml+table"}
+                {core:rabit:mime_in "x-skb/entries+currencies"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css "dist/table-widegrey"}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Currencies.DB2Entries
-                key = "Dist.Currencies.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__currencies___currencies___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+currencies"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Dist.Currencies.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__currencies___currencies___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+currencies"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
         }
     }
 #endif

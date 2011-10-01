@@ -40,151 +40,148 @@
     repository skb.core{
         table pkg_fields{
             row htmlpage:additional
-                key = "htmlpage:additional"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "htmlpage:additional"
-                core:http_req_name = "additional"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "htmlpage:additional"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "htmlpage:additional"}
+                {core:http_req_name "additional"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row htmlpage:nav_end
-                key = "htmlpage:nav_end"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "htmlpage:nav_end"
-                core:http_req_name = "nav_end"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "htmlpage:nav_end"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "htmlpage:nav_end"}
+                {core:http_req_name "nav_end"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row htmlpage:description
-                key = "htmlpage:description"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "htmlpage:description"
-                core:http_req_name = "description"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "htmlpage:description"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "htmlpage:description"}
+                {core:http_req_name "description"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row htmlpage:execute_todo
-                key = "htmlpage:execute_todo"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "htmlpage:execute_todo"
-                core:http_req_name = "execute_todo"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "htmlpage:execute_todo"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "htmlpage:execute_todo"}
+                {core:http_req_name "execute_todo"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row htmlpage:extra_builder
-                key = "htmlpage:extra_builder"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "htmlpage:extra_builder"
-                core:http_req_name = "extra_builder"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "htmlpage:extra_builder"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "htmlpage:extra_builder"}
+                {core:http_req_name "extra_builder"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row htmlpage:keywords
-                key = "htmlpage:keywords"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "htmlpage:keywords"
-                core:http_req_name = "keywords"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "htmlpage:keywords"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "htmlpage:keywords"}
+                {core:http_req_name "keywords"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
         }
 
         table pkg_rabit{
             row Dist.HtmlPage.Entries2XHTML-Page
-                key = "Dist.HtmlPage.Entries2XHTML-Page"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__htmlpage___application__xhtml___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+htmlpage"
-                core:rabit:mime_out = "x-skb/entries+htmlpage"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:html:page"
-                default:description_locale = ""
-                ;
+                {key "Dist.HtmlPage.Entries2XHTML-Page"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__htmlpage___application__xhtml___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+htmlpage"}
+                {core:rabit:mime_out "x-skb/entries+htmlpage"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:html:page"}
+                {default:description_locale ""}
+
             row Dist.HtmlPage.Entries2XHTML-Page:Template:Head
-                key = "Dist.HtmlPage.Entries2XHTML-Page:Template:Head"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/htmlpage/application--xhtml+head"
-                core:rabit:mime_in = "x-skb/entries+htmlpage"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.HtmlPage.Entries2XHTML-Page:Template:Head"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/htmlpage/application--xhtml+head"}
+                {core:rabit:mime_in "x-skb/entries+htmlpage"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.HtmlPage.DB2Entries
-                key = "Dist.HtmlPage.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__htmlpage___htmlpage___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+htmlpage"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:html:page"
-                default:description_locale = ""
-                ;
+                {key "Dist.HtmlPage.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__htmlpage___htmlpage___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+htmlpage"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:html:page"}
+                {default:description_locale ""}
         }
 
         table pkg_requests{
             row Dist.HtmlPage
-                key = "Dist.HtmlPage"
-                core:requests:fields = "request:active%plain,htmlpage:description%plain,htmlpage:keywords%plain,htmlpage:additional%plain,htmlpage:nav_end%plain,htmlpage:extra_builder%plain,htmlpage:execute_todo%plain"
-                core:requests:prefix = "_hp"
-                core:requests:formselect_fields = ""
-                core:requests:table = ""
-                core:requests:table_collections = ""
-                core:request:filter = ""
-                core:request:package = ""
-                core:description = ""
-                ;
+                {key "Dist.HtmlPage"}
+                {core:requests:fields "request:active%plain,htmlpage:description%plain,htmlpage:keywords%plain,htmlpage:additional%plain,htmlpage:nav_end%plain,htmlpage:extra_builder%plain,htmlpage:execute_todo%plain"}
+                {core:requests:prefix "_hp"}
+                {core:requests:formselect_fields ""}
+                {core:requests:table ""}
+                {core:requests:table_collections ""}
+                {core:request:filter ""}
+                {core:request:package ""}
+                {core:description ""}
         }
     }
 #endif

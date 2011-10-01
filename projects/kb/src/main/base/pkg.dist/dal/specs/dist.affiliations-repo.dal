@@ -40,105 +40,103 @@
     repository skb.core{
         table pkg_fields{
             row affiliations:short
-                key = "affiliations:short"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "affiliations:short"
-                core:http_req_name = "short"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "affiliations:short"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "affiliations:short"}
+                {core:http_req_name "short"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row affiliations:address
-                key = "affiliations:address"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "affiliations:address"
-                core:http_req_name = "address"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "affiliations:address"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "affiliations:address"}
+                {core:http_req_name "address"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row affiliations:type_key
-                key = "affiliations:type_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "affiliations:type"
-                core:http_req_name = "type"
-                core:default_db = "skb:affiliations:type"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "affiliations:type_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "affiliations:type"}
+                {core:http_req_name "type"}
+                {core:default_db "skb:affiliations:type"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row affiliations:im_locale
-                key = "affiliations:im_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "affiliations:im"
-                core:http_req_name = "im"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "affiliations:im_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "affiliations:im"}
+                {core:http_req_name "im"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
         }
 
         table pkg_rabit{
             row Dist.Affiliations.DB2Entries
-                key = "Dist.Affiliations.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__affiliations___affiliations___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+affiliations"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Dist.Affiliations.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__affiliations___affiliations___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+affiliations"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
             row Dist.Affiliations.Entries2XHTML-Table
-                key = "Dist.Affiliations.Entries2XHTML-Table"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__affiliations___application__xhtml__table___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+affiliations"
-                core:rabit:mime_out = "x-skb/entries+affiliations"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Dist.Affiliations.Entries2XHTML-Table"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__affiliations___application__xhtml__table___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+affiliations"}
+                {core:rabit:mime_out "x-skb/entries+affiliations"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
             row Dist.Affiliations.Entries2XHTML-Table:Template
-                key = "Dist.Affiliations.Entries2XHTML-Table:Template"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/affiliations/application--xhtml+table"
-                core:rabit:mime_in = "x-skb/entries+affiliations"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = "dist/table-widegrey"
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Affiliations.Entries2XHTML-Table:Template"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/affiliations/application--xhtml+table"}
+                {core:rabit:mime_in "x-skb/entries+affiliations"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css "dist/table-widegrey"}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
         }
     }
 #endif

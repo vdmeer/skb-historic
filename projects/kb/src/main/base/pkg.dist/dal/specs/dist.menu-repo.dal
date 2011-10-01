@@ -40,373 +40,370 @@
     repository skb.core{
         table pkg_fields{
             row menu:class_b
-                key = "menu:class_b"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:class_b"
-                core:http_req_name = "class_b"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:class_b"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:class_b"}
+                {core:http_req_name "class_b"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:id_a
-                key = "menu:id_a"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:id_a"
-                core:http_req_name = "id_a"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:id_a"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:id_a"}
+                {core:http_req_name "id_a"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:url
-                key = "menu:url"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:url"
-                core:http_req_name = "url"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:url"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:url"}
+                {core:http_req_name "url"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:title_locale
-                key = "menu:title_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:title"
-                core:http_req_name = "title"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:title_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:title"}
+                {core:http_req_name "title"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:text_sitemap_locale
-                key = "menu:text_sitemap_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:text_sitemap"
-                core:http_req_name = "text_sitemap"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:text_sitemap_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:text_sitemap"}
+                {core:http_req_name "text_sitemap"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:name_link_locale
-                key = "menu:name_link_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:name_link"
-                core:http_req_name = "name_link"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:name_link_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:name_link"}
+                {core:http_req_name "name_link"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:navbar_first
-                key = "menu:navbar_first"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "menu:navbar_first"
-                core:http_req_name = "navbar_first"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:navbar_first"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "menu:navbar_first"}
+                {core:http_req_name "navbar_first"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:levels
-                key = "menu:levels"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "menu:levels"
-                core:http_req_name = "levels"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:levels"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "menu:levels"}
+                {core:http_req_name "levels"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:image
-                key = "menu:image"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:image"
-                core:http_req_name = "image"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:image"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:image"}
+                {core:http_req_name "image"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:navbar_last
-                key = "menu:navbar_last"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "menu:navbar_last"
-                core:http_req_name = "navbar_last"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:navbar_last"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "menu:navbar_last"}
+                {core:http_req_name "navbar_last"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:navbar_locale
-                key = "menu:navbar_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:navbar"
-                core:http_req_name = "navbar"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:navbar_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:navbar"}
+                {core:http_req_name "navbar"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:options
-                key = "menu:options"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "menu:options"
-                core:http_req_name = "options"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:options"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "menu:options"}
+                {core:http_req_name "options"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row menu:navbar_first_key
-                key = "menu:navbar_first_key"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "menu:navbar_first_key"
-                core:http_req_name = "navbar_first_key"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "menu:navbar_first_key"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "menu:navbar_first_key"}
+                {core:http_req_name "navbar_first_key"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
         }
 
         table pkg_rabit{
             row Dist.Menu.Entries2XHTML-Menu:Template:DD-Entry
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:DD-Entry"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+dd-entry"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:DD-Entry"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+dd-entry"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu:Template:DD-Navbar
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:DD-Navbar"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+dd-navbar"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:DD-Navbar"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+dd-navbar"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu:Template:DD-List
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:DD-List"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+dd-list"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:DD-List"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+dd-list"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.DB2Entries
-                key = "Dist.Menu.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__menu___menu___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+menu"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:menu"
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__menu___menu___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+menu"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:menu"}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu-DD
-                key = "Dist.Menu.Entries2XHTML-Menu-DD"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__menu___application__xhtml__dd___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "x-skb/entries+menu"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:menu"
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu-DD"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__menu___application__xhtml__dd___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "x-skb/entries+menu"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:menu"}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu:Template:DD-Start
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:DD-Start"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+dd-start"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:DD-Start"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+dd-start"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu-DD-Navbar
-                key = "Dist.Menu.Entries2XHTML-Menu-DD-Navbar"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__menu___application__xhtml__dd_navbar___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "x-skb/entries+menu"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:menu"
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu-DD-Navbar"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__menu___application__xhtml__dd_navbar___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "x-skb/entries+menu"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:menu"}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu-Sitemap
-                key = "Dist.Menu.Entries2XHTML-Menu-Sitemap"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__menu___application__xhtml__sitemap___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "x-skb/entries+menu"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:menu"
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu-Sitemap"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__menu___application__xhtml__sitemap___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "x-skb/entries+menu"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:menu"}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Entry
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Entry"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+sitemap-entry"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Entry"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+sitemap-entry"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-List
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-List"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+sitemap-list"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-List"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+sitemap-list"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Start
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Start"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+sitemap-start"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = "dist/menu/div-sitemap,dist/menu/sitemap"
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:Sitemap-Start"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+sitemap-start"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css "dist/menu/div-sitemap,dist/menu/sitemap"}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu:Template:Brick
-                key = "Dist.Menu.Entries2XHTML-Menu:Template:Brick"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/menu/application--xhtml+brick"
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu:Template:Brick"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/menu/application--xhtml+brick"}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
             row Dist.Menu.Entries2XHTML-Menu-Brick
-                key = "Dist.Menu.Entries2XHTML-Menu-Brick"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__menu___application__xhtml__brick___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+menu"
-                core:rabit:mime_out = "x-skb/entries+menu"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:menu"
-                default:description_locale = ""
-                ;
+                {key "Dist.Menu.Entries2XHTML-Menu-Brick"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__menu___application__xhtml__brick___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+menu"}
+                {core:rabit:mime_out "x-skb/entries+menu"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:menu"}
+                {default:description_locale ""}
         }
 
         table pkg_requests{
             row Dist.Menu
-                key = "Dist.Menu"
-                core:requests:fields = "request:active%plain,c_entry%plain,menu:levels%plain,menu:navbar_last%plain,menu:navbar_first%plain,menu:navbar_first_key%plain"
-                core:requests:prefix = "_menu"
-                core:requests:formselect_fields = ""
-                core:requests:table = "skb:menu"
-                core:requests:table_collections = ""
-                core:request:filter = ""
-                core:request:package = ""
-                core:description = ""
-                ;
+                {key "Dist.Menu"}
+                {core:requests:fields "request:active%plain,c_entry%plain,menu:levels%plain,menu:navbar_last%plain,menu:navbar_first%plain,menu:navbar_first_key%plain"}
+                {core:requests:prefix "_menu"}
+                {core:requests:formselect_fields ""}
+                {core:requests:table "skb:menu"}
+                {core:requests:table_collections ""}
+                {core:request:filter ""}
+                {core:request:package ""}
+                {core:description ""}
         }
     }
 #endif

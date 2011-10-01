@@ -40,174 +40,172 @@
     repository skb.core{
         table pkg_fields{
             row content:url:url_locale
-                key = "content:url:url_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "content:url:url"
-                core:http_req_name = "url"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:url:url_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "content:url:url"}
+                {core:http_req_name "url"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:url:url_request_locale
-                key = "content:url:url_request_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "content:url:url_request"
-                core:http_req_name = "url_request"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:url:url_request_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "content:url:url_request"}
+                {core:http_req_name "url_request"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:url_keys
-                key = "content:url_keys"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "content:url"
-                core:http_req_name = "content_url"
-                core:default_db = "content_urls"
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:url_keys"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "content:url"}
+                {core:http_req_name "content_url"}
+                {core:default_db "content_urls"}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:url_key
-                key = "content:url_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "content:url"
-                core:http_req_name = "content_url"
-                core:default_db = "content_urls"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:url_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "content:url"}
+                {core:http_req_name "content_url"}
+                {core:default_db "content_urls"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:foto_keys
-                key = "content:foto_keys"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "content:foto"
-                core:http_req_name = "content_foto"
-                core:default_db = "gallery_fotos"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:foto_keys"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "content:foto"}
+                {core:http_req_name "content_foto"}
+                {core:default_db "gallery_fotos"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:title
-                key = "content:title"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "content:title"
-                core:http_req_name = "title"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:title"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "content:title"}
+                {core:http_req_name "title"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:subtitle
-                key = "content:subtitle"
-                core:type = "value"
-                core:use = "request"
-                core:entries_name = "content:subtitle"
-                core:http_req_name = "subtitle"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:subtitle"}
+                {core:type "value"}
+                {core:use "request"}
+                {core:entries_name "content:subtitle"}
+                {core:http_req_name "subtitle"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:graphic_keys
-                key = "content:graphic_keys"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "content:graphic"
-                core:http_req_name = "content_graphic"
-                core:default_db = "gallery_graphics"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:graphic_keys"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "content:graphic"}
+                {core:http_req_name "content_graphic"}
+                {core:default_db "gallery_graphics"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row content:wherepublished_key
-                key = "content:wherepublished_key"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "content:wherepublished"
-                core:http_req_name = "wherepublished"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "content:wherepublished_key"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "content:wherepublished"}
+                {core:http_req_name "wherepublished"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
         }
 
         table pkg_rabit{
             row Dist.Content.DB2Entries
-                key = "Dist.Content.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__content___content___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+content"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:content"
-                default:description_locale = ""
-                ;
+                {key "Dist.Content.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__content___content___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+content"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:content"}
+                {default:description_locale ""}
+
             row Dist.Content.Application
-                key = "Dist.Content.Application"
-                core:rabit:type = "application"
-                core:rabit:target:class = "php%pkg_dist__content___content___application"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Content.Application"}
+                {core:rabit:type "application"}
+                {core:rabit:target:class "php%pkg_dist__content___content___application"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
         }
     }
 #endif

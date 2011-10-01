@@ -174,15 +174,9 @@ dalPackageRepositoryTable     : ^(DAL_TABLE
                                 );
 dalPackageRepositoryRow       : ^(DAL_ROW id=IDENT
                                   {this.pass.testAtom(id.token);}
-                                  dalPackageRepositoryRowKV*
+                                  dalKV*
                                   {this.pass.atoms.scope.pop();}
                                 );
-dalPackageRepositoryRowKV     : ^(DAL_ROW id=IDENT
-                                  {this.pass.testAtom(id.token);}
-                                  const_value*
-                                  {this.pass.atoms.scope.pop();}
-                                );
-
 
 dalActions                   : ^(DAL_ACTIONS id=IDENT
                                  {this.pass.testAtom(id.token);}

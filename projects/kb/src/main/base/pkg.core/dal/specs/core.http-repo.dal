@@ -40,988 +40,979 @@
     repository skb.core{
         table pkg_fields{
             row http:header
-                key = "http:header"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "http:header"
-                core:http_req_name = "http_header"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "http:header"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "http:header"}
+                {core:http_req_name "http_header"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row http:method
-                key = "http:method"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "http:method"
-                core:http_req_name = "http_method"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "http:method"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "http:method"}
+                {core:http_req_name "http_method"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row http:statuscode:text
-                key = "http:statuscode:text"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "http:statuscode:text"
-                core:http_req_name = "http_statuscode_text"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "http:statuscode:text"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "http:statuscode:text"}
+                {core:http_req_name "http_statuscode_text"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row http:statuscode
-                key = "http:statuscode"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "http:statuscode"
-                core:http_req_name = "http_statuscode"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "http:statuscode"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "http:statuscode"}
+                {core:http_req_name "http_statuscode"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row http:category
-                key = "http:category"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "http:category"
-                core:http_req_name = "http_category"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "http:category"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "http:category"}
+                {core:http_req_name "http_category"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row http:protocol
-                key = "http:protocol"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "http:protocol"
-                core:http_req_name = "http_protocol"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "http:protocol"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "http:protocol"}
+                {core:http_req_name "http_protocol"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
         }
 
         table pkg_rabit{
             row Core.HTTP.DB2Entries
-                key = "Core.HTTP.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_core__http___http___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+http"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Core.HTTP.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_core__http___http___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+http"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
         }
 
         table pkg_http_headers_response{
             row Accept-Ranges
-                key = "Accept-Ranges"
-                http:header = "Accept-Ranges"
-                default:example = "Accept-Ranges: bytes"
-                default:description_locale = "%What partial content range types this server supports"
-                ;
-            row Age
-                key = "Age"
-                http:header = "Age"
-                default:example = "Age: 12"
-                default:description_locale = "%The age the object has been in a proxy cache in seconds"
-                ;
-            row Allow
-                key = "Allow"
-                http:header = "Allow"
-                default:example = "Allow: GET, HEAD"
-                default:description_locale = "%Valid actions for a specified resource. To be used for a 405 Method not allowed"
-                ;
-            row Cache-Control
-                key = "Cache-Control"
-                http:header = "Cache-Control"
-                default:example = "Cache-Control: no-cache"
-                default:description_locale = "%Tells all caching mechanisms from server to client whether they may cache this object"
-                ;
-            row Content-Encoding
-                key = "Content-Encoding"
-                http:header = "Content-Encoding"
-                default:example = "Content-Encoding: gzip"
-                default:description_locale = "%The type of encoding used on the data"
-                ;
-            row Content-Language
-                key = "Content-Language"
-                http:header = "Content-Language"
-                default:example = "Content-Language: da"
-                default:description_locale = "%The language the content is in"
-                ;
-            row Content-Length
-                key = "Content-Length"
-                http:header = "Content-Length"
-                default:example = "Content-Length: 348"
-                default:description_locale = "%The length of the response body in octets (8-bit bytes)"
-                ;
-            row Content-Location
-                key = "Content-Location"
-                http:header = "Content-Location"
-                default:example = "Content-Location: /index.htm"
-                default:description_locale = "%An alternate location for the returned data"
-                ;
-            row Content-Disposition
-                key = "Content-Disposition"
-                http:header = "Content-Disposition"
-                default:example = "Content-Disposition: attachment; filename=fname.ext"
-                default:description_locale = "%An opportunity to raise a 'File Download' dialogue box for a known MIME type"
-                ;
-            row Content-MD5
-                key = "Content-MD5"
-                http:header = "Content-MD5"
-                default:example = "Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ=="
-                default:description_locale = "%A Base64-encoded binary MD5 sum of the content of the response"
-                ;
-            row Content-Range
-                key = "Content-Range"
-                http:header = "Content-Range"
-                default:example = "Content-Range: bytes 21010-47021/47022"
-                default:description_locale = "%Where in a full body message this partial message belongs"
-                ;
-            row Content-Type
-                key = "Content-Type"
-                http:header = "Content-Type"
-                default:example = "Content-Type: text/html; charset=utf-8"
-                default:description_locale = "%The mime type of this content"
-                ;
-            row Date
-                key = "Date"
-                http:header = "Date"
-                default:example = "Date: Tue, 15 Nov 1994 08:12:31 GMT"
-                default:description_locale = "%The date and time that the message was sent"
-                ;
-            row ETag
-                key = "ETag"
-                http:header = "ETag"
-                default:example = "ETag: '737060cd8c284d8af7ad3082f209582d'"
-                default:description_locale = "%An identifier for a specific version of a resource, often a Message Digest"
-                ;
-            row Expires
-                key = "Expires"
-                http:header = "Expires"
-                default:example = "Expires: Thu, 01 Dec 1994 16:00:00 GMT"
-                default:description_locale = "%Gives the date/time after which the response is considered stale"
-                ;
-            row Last-Modified
-                key = "Last-Modified"
-                http:header = "Last-Modified"
-                default:example = "Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT"
-                default:description_locale = "%The last modified date for the requested object, in RFC 2822 format"
-                ;
-            row Location
-                key = "Location"
-                http:header = "Location"
-                default:example = "Location: http://www.w3.org/pub/WWW/People.html"
-                default:description_locale = "%Used in redirection, or when a new resource has been created."
-                ;
-            row Pragma
-                key = "Pragma"
-                http:header = "Pragma"
-                default:example = "Pragma: no-cache"
-                default:description_locale = "%Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                ;
-            row Proxy-Authenticate
-                key = "Proxy-Authenticate"
-                http:header = "Proxy-Authenticate"
-                default:example = "Proxy-Authenticate: Basic"
-                default:description_locale = "%Request authentication to access the proxy."
-                ;
-            row Refresh
-                key = "Refresh"
-                http:header = "Refresh"
-                default:example = "Refresh: 5; url=http://www.w3.org/pub/WWW/People.html"
-                default:description_locale = "%Used in redirection, or when a new resource has been created. This refresh redirects after 5 seconds. (This is a proprietary/non-standard header extension introduced by Netscape and supported by most web browsers.)"
-                ;
-            row Retry-After
-                key = "Retry-After"
-                http:header = "Retry-After"
-                default:example = "Retry-After: 120"
-                default:description_locale = "%If an entity is temporarily unavailable, this instructs the client to try again after a specified period of time."
-                ;
-            row Server
-                key = "Server"
-                http:header = "Server"
-                default:example = "Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)"
-                default:description_locale = "%A name for the server"
-                ;
-            row Set-Cookie
-                key = "Set-Cookie"
-                http:header = "Set-Cookie"
-                default:example = "Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1"
-                default:description_locale = "%an HTTP cookie"
-                ;
-            row Trailer
-                key = "Trailer"
-                http:header = "Trailer"
-                default:example = "Trailer: Max-Forwards"
-                default:description_locale = "%The Trailer general field value indicates that the given set of header fields is present in the trailer of a message encoded with chunked transfer-coding."
-                ;
-            row Transfer-Encoding
-                key = "Transfer-Encoding"
-                http:header = "Transfer-Encoding"
-                default:example = "Transfer-Encoding: chunked"
-                default:description_locale = "%The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-                ;
-            row Vary
-                key = "Vary"
-                http:header = "Vary"
-                default:example = "Vary: *"
-                default:description_locale = "%Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
-                ;
-            row Via
-                key = "Via"
-                http:header = "Via"
-                default:example = "Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)"
-                default:description_locale = "%Informs the client of proxies through which the response was sent."
-                ;
-            row Warning
-                key = "Warning"
-                http:header = "Warning"
-                default:example = "Warning: 199 Miscellaneous warning"
-                default:description_locale = "%A general warning about possible problems with the entity body."
-                ;
-            row WWW-Authenticate
-                key = "WWW-Authenticate"
-                http:header = "WWW-Authenticate"
-                default:example = "WWW-Authenticate: Basic"
-                default:description_locale = "%Indicates the authentication scheme that should be used to access the requested entity."
-                ;
-        }
+                {key "Accept-Ranges"}
+                {http:header "Accept-Ranges"}
+                {default:example "Accept-Ranges: bytes"}
+                {default:description_locale "%What partial content range types this server supports"}
 
+            row Age
+                {key "Age"}
+                {http:header "Age"}
+                {default:example "Age: 12"}
+                {default:description_locale "%The age the object has been in a proxy cache in seconds"}
+
+            row Allow
+                {key "Allow"}
+                {http:header "Allow"}
+                {default:example "Allow: GET, HEAD"}
+                {default:description_locale "%Valid actions for a specified resource. To be used for a 405 Method not allowed"}
+
+            row Cache-Control
+                {key "Cache-Control"}
+                {http:header "Cache-Control"}
+                {default:example "Cache-Control: no-cache"}
+                {default:description_locale "%Tells all caching mechanisms from server to client whether they may cache this object"}
+
+            row Content-Encoding
+                {key "Content-Encoding"}
+                {http:header "Content-Encoding"}
+                {default:example "Content-Encoding: gzip"}
+                {default:description_locale "%The type of encoding used on the data"}
+
+            row Content-Language
+                {key "Content-Language"}
+                {http:header "Content-Language"}
+                {default:example "Content-Language: da"}
+                {default:description_locale "%The language the content is in"}
+
+            row Content-Length
+                {key "Content-Length"}
+                {http:header "Content-Length"}
+                {default:example "Content-Length: 348"}
+                {default:description_locale "%The length of the response body in octets (8-bit bytes)"}
+
+            row Content-Location
+                {key "Content-Location"}
+                {http:header "Content-Location"}
+                {default:example "Content-Location: /index.htm"}
+                {default:description_locale "%An alternate location for the returned data"}
+
+            row Content-Disposition
+                {key "Content-Disposition"}
+                {http:header "Content-Disposition"}
+                {default:example "Content-Disposition: attachment; filename=fname.ext"}
+                {default:description_locale "%An opportunity to raise a 'File Download' dialogue box for a known MIME type"}
+
+            row Content-MD5
+                {key "Content-MD5"}
+                {http:header "Content-MD5"}
+                {default:example "Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ=="}
+                {default:description_locale "%A Base64-encoded binary MD5 sum of the content of the response"}
+
+            row Content-Range
+                {key "Content-Range"}
+                {http:header "Content-Range"}
+                {default:example "Content-Range: bytes 21010-47021/47022"}
+                {default:description_locale "%Where in a full body message this partial message belongs"}
+
+            row Content-Type
+                {key "Content-Type"}
+                {http:header "Content-Type"}
+                {default:example "Content-Type: text/html; charset=utf-8"}
+                {default:description_locale "%The mime type of this content"}
+
+            row Date
+                {key "Date"}
+                {http:header "Date"}
+                {default:example "Date: Tue, 15 Nov 1994 08:12:31 GMT"}
+                {default:description_locale "%The date and time that the message was sent"}
+
+            row ETag
+                {key "ETag"}
+                {http:header "ETag"}
+                {default:example "ETag: '737060cd8c284d8af7ad3082f209582d'"}
+                {default:description_locale "%An identifier for a specific version of a resource, often a Message Digest"}
+
+            row Expires
+                {key "Expires"}
+                {http:header "Expires"}
+                {default:example "Expires: Thu, 01 Dec 1994 16:00:00 GMT"}
+                {default:description_locale "%Gives the date/time after which the response is considered stale"}
+
+            row Last-Modified
+                {key "Last-Modified"}
+                {http:header "Last-Modified"}
+                {default:example "Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT"}
+                {default:description_locale "%The last modified date for the requested object, in RFC 2822 format"}
+
+            row Location
+                {key "Location"}
+                {http:header "Location"}
+                {default:example "Location: http://www.w3.org/pub/WWW/People.html"}
+                {default:description_locale "%Used in redirection, or when a new resource has been created."}
+
+            row Pragma
+                {key "Pragma"}
+                {http:header "Pragma"}
+                {default:example "Pragma: no-cache"}
+                {default:description_locale "%Implementation-specific headers that may have various effects anywhere along the request-response chain."}
+
+            row Proxy-Authenticate
+                {key "Proxy-Authenticate"}
+                {http:header "Proxy-Authenticate"}
+                {default:example "Proxy-Authenticate: Basic"}
+                {default:description_locale "%Request authentication to access the proxy."}
+
+            row Refresh
+                {key "Refresh"}
+                {http:header "Refresh"}
+                {default:example "Refresh: 5; url=http://www.w3.org/pub/WWW/People.html"}
+                {default:description_locale "%Used in redirection, or when a new resource has been created. This refresh redirects after 5 seconds. (This is a proprietary/non-standard header extension introduced by Netscape and supported by most web browsers.)"}
+
+            row Retry-After
+                {key "Retry-After"}
+                {http:header "Retry-After"}
+                {default:example "Retry-After: 120"}
+                {default:description_locale "%If an entity is temporarily unavailable, this instructs the client to try again after a specified period of time."}
+
+            row Server
+                {key "Server"}
+                {http:header "Server"}
+                {default:example "Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)"}
+                {default:description_locale "%A name for the server"}
+
+            row Set-Cookie
+                {key "Set-Cookie"}
+                {http:header "Set-Cookie"}
+                {default:example "Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1"}
+                {default:description_locale "%an HTTP cookie"}
+
+            row Trailer
+                {key "Trailer"}
+                {http:header "Trailer"}
+                {default:example "Trailer: Max-Forwards"}
+                {default:description_locale "%The Trailer general field value indicates that the given set of header fields is present in the trailer of a message encoded with chunked transfer-coding."}
+
+            row Transfer-Encoding
+                {key "Transfer-Encoding"}
+                {http:header "Transfer-Encoding"}
+                {default:example "Transfer-Encoding: chunked"}
+                {default:description_locale "%The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."}
+
+            row Vary
+                {key "Vary"}
+                {http:header "Vary"}
+                {default:example "Vary: *"}
+                {default:description_locale "%Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."}
+
+            row Via
+                {key "Via"}
+                {http:header "Via"}
+                {default:example "Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)"}
+                {default:description_locale "%Informs the client of proxies through which the response was sent."}
+
+            row Warning
+                {key "Warning"}
+                {http:header "Warning"}
+                {default:example "Warning: 199 Miscellaneous warning"}
+                {default:description_locale "%A general warning about possible problems with the entity body."}
+
+            row WWW-Authenticate
+                {key "WWW-Authenticate"}
+                {http:header "WWW-Authenticate"}
+                {default:example "WWW-Authenticate: Basic"}
+                {default:description_locale "%Indicates the authentication scheme that should be used to access the requested entity."}
+        }
 
         table pkg_http_headers_request{
             row Accept
-                key = "Accept"
-                http:header = "Accept"
-                default:example = "Accept: text/plain"
-                default:description_locale = "%Content-Types that are acceptable"
-                ;
+                {key "Accept"}
+                {http:header "Accept"}
+                {default:example "Accept: text/plain"}
+                {default:description_locale "%Content-Types that are acceptable"}
+
             row Accept-Charset
-                key = "Accept-Charset"
-                http:header = "Accept-Charset"
-                default:example = "Accept-Charset: iso-8859-5"
-                default:description_locale = "%Character sets that are acceptable"
-                ;
+                {key "Accept-Charset"}
+                {http:header "Accept-Charset"}
+                {default:example "Accept-Charset: iso-8859-5"}
+                {default:description_locale "%Character sets that are acceptable"}
+
             row Accept-Encoding 	
-                key = "Accept-Encoding"
-                http:header = "Accept-Encoding"
-                default:example = "Accept-Encoding: compress, gzip"
-                default:description_locale = "%Acceptable encodings"
-                ;
+                {key "Accept-Encoding"}
+                {http:header "Accept-Encoding"}
+                {default:example "Accept-Encoding: compress, gzip"}
+                {default:description_locale "%Acceptable encodings"}
+
             row Accept-Language
-                key = "Accept-Language"
-                http:header = "Accept-Language"
-                default:example = "Accept-Language: da"
-                default:description_locale = "%Acceptable languages for response"
-                ;
+                {key "Accept-Language"}
+                {http:header "Accept-Language"}
+                {default:example "Accept-Language: da"}
+                {default:description_locale "%Acceptable languages for response"}
+
             row Accept-Ranges
-                key = "Accept-Ranges"
-                http:header = "Accept-Ranges"
-                default:example = "Accept-Ranges: bytes"
-                default:description_locale = "%Allows the server to indicate its acceptance of range requests for a resource"
-                ;
+                {key "Accept-Ranges"}
+                {http:header "Accept-Ranges"}
+                {default:example "Accept-Ranges: bytes"}
+                {default:description_locale "%Allows the server to indicate its acceptance of range requests for a resource"}
+
             row Authorization
-                key = "Authorization"
-                http:header = "Authorization"
-                default:example = "Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
-                default:description_locale = "%Authentication credentials for HTTP authentication"
-                ;
+                {key "Authorization"}
+                {http:header "Authorization"}
+                {default:example "Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="}
+                {default:description_locale "%Authentication credentials for HTTP authentication"}
+
             row Cache-Control
-                key = "Cache-Control"
-                http:header = "Cache-Control"
-                default:example = "Cache-Control: no-cache"
-                default:description_locale = "%Used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain"
-                ;
+                {key "Cache-Control"}
+                {http:header "Cache-Control"}
+                {default:example "Cache-Control: no-cache"}
+                {default:description_locale "%Used to specify directives that MUST be obeyed by all caching mechanisms along the request/response chain"}
+
             row Connection
-                key = "Connection"
-                http:header = "Connection"
-                default:example = "Connection: close"
-                default:description_locale = "%What type of connection the user-agent would prefer"
-                ;
+                {key "Connection"}
+                {http:header "Connection"}
+                {default:example "Connection: close"}
+                {default:description_locale "%What type of connection the user-agent would prefer"}
+
             row Cookie
-                key = "Cookie"
-                http:header = "Cookie"
-                default:example = "Cookie: $Version=1; Skin=new;"
-                default:description_locale = "%an HTTP cookie previously sent by the server with Set-Cookie"
-                ;
+                {key "Cookie"}
+                {http:header "Cookie"}
+                {default:example "Cookie: $Version=1; Skin=new;"}
+                {default:description_locale "%an HTTP cookie previously sent by the server with Set-Cookie"}
+
             row Content-Length
-                key = "Content-Length"
-                http:header = "Content-Length"
-                default:example = "Content-Length: 348"
-                default:description_locale = "%The length of the request body in octets (8-bit bytes)"
-                ;
+                {key "Content-Length"}
+                {http:header "Content-Length"}
+                {default:example "Content-Length: 348"}
+                {default:description_locale "%The length of the request body in octets (8-bit bytes)"}
+
             row Content-Type
-                key = "Content-Type"
-                http:header = "Content-Type"
-                default:example = "Content-Type: application/x-www-form-urlencoded"
-                default:description_locale = "%The mime type of the body of the request (used with POST and PUT requests)"
-                ;
+                {key "Content-Type"}
+                {http:header "Content-Type"}
+                {default:example "Content-Type: application/x-www-form-urlencoded"}
+                {default:description_locale "%The mime type of the body of the request (used with POST and PUT requests)"}
+
             row Date
-                key = "Date"
-                http:header = "Date"
-                default:example = "Date: Tue, 15 Nov 1994 08:12:31 GMT"
-                default:description_locale = "%The date and time that the message was sent"
-                ;
+                {key "Date"}
+                {http:header "Date"}
+                {default:example "Date: Tue, 15 Nov 1994 08:12:31 GMT"}
+                {default:description_locale "%The date and time that the message was sent"}
+
             row Expect
-                key = "Expect"
-                http:header = "Expect"
-                default:example = "Expect: 100-continue"
-                default:description_locale = "%Indicates that particular server behaviors are required by the client"
-                ;
+                {key "Expect"}
+                {http:header "Expect"}
+                {default:example "Expect: 100-continue"}
+                {default:description_locale "%Indicates that particular server behaviors are required by the client"}
+
             row From
-                key = "From"
-                http:header = "From"
-                default:example = "From: user@email.com"
-                default:description_locale = "%The email address of the user making the request"
-                ;
+                {key "From"}
+                {http:header "From"}
+                {default:example "From: user@email.com"}
+                {default:description_locale "%The email address of the user making the request"}
+
             row Host
-                key = "Host"
-                http:header = "Host"
-                default:example = "Host: en.wikipedia.org"
-                default:description_locale = "%The domain name of the server (for virtual hosting), mandatory since HTTP/1.1"
-                ;
+                {key "Host"}
+                {http:header "Host"}
+                {default:example "Host: en.wikipedia.org"}
+                {default:description_locale "%The domain name of the server (for virtual hosting), mandatory since HTTP/1.1"}
+
             row If-Match
-                key = "If-Match"
-                http:header = "If-Match"
-                default:example = "If-Match: '737060cd8c284d8af7ad3082f209582d'"
-                default:description_locale = "%Only perform the action if the client supplied entity matches the same entity on the server. This is mainly for methods like PUT to only update a resource if it has not been modified since the user last updated it."
-                ;
+                {key "If-Match"}
+                {http:header "If-Match"}
+                {default:example "If-Match: '737060cd8c284d8af7ad3082f209582d'"}
+                {default:description_locale "%Only perform the action if the client supplied entity matches the same entity on the server. This is mainly for methods like PUT to only update a resource if it has not been modified since the user last updated it."}
+
             row If-Modified-Since
-                key = "If-Modified-Since"
-                http:header = "If-Modified-Since"
-                default:example = "If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT"
-                default:description_locale = "%Allows a 304 Not Modified to be returned if content is unchanged"
-                ;
+                {key "If-Modified-Since"}
+                {http:header "If-Modified-Since"}
+                {default:example "If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT"}
+                {default:description_locale "%Allows a 304 Not Modified to be returned if content is unchanged"}
+
             row If-None-Match
-                key = "If-None-Match"
-                http:header = "If-None-Match"
-                default:example = "If-None-Match: '737060cd8c284d8af7ad3082f209582d'"
-                default:description_locale = "%Allows a 304 Not Modified to be returned if content is unchanged, see HTTP ETag"
-                ;
+                {key "If-None-Match"}
+                {http:header "If-None-Match"}
+                {default:example "If-None-Match: '737060cd8c284d8af7ad3082f209582d'"}
+                {default:description_locale "%Allows a 304 Not Modified to be returned if content is unchanged, see HTTP ETag"}
+
             row If-Range
-                key = "If-Range"
-                http:header = "If-Range"
-                default:example = "If-Range: '737060cd8c284d8af7ad3082f209582d'"
-                default:description_locale = "%If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity"
-                ;
+                {key "If-Range"}
+                {http:header "If-Range"}
+                {default:example "If-Range: '737060cd8c284d8af7ad3082f209582d'"}
+                {default:description_locale "%If the entity is unchanged, send me the part(s) that I am missing; otherwise, send me the entire new entity"}
+
             row If-Unmodified-Since
-                key = "If-Unmodified-Since"
-                http:header = "If-Unmodified-Since"
-                default:example = "If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT"
-                default:description_locale = "%Only send the response if the entity has not been modified since a specific time."
-                ;
+                {key "If-Unmodified-Since"}
+                {http:header "If-Unmodified-Since"}
+                {default:example "If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT"}
+                {default:description_locale "%Only send the response if the entity has not been modified since a specific time."}
+
             row Max-Forwards
-                key = "Max-Forwards"
-                http:header = "Max-Forwards"
-                default:example = "Max-Forwards: 10"
-                default:description_locale = "%Limit the number of times the message can be forwarded through proxies or gateways."
-                ;
+                {key "Max-Forwards"}
+                {http:header "Max-Forwards"}
+                {default:example "Max-Forwards: 10"}
+                {default:description_locale "%Limit the number of times the message can be forwarded through proxies or gateways."}
+
             row Pragma
-                key = "Pragma"
-                http:header = "Pragma"
-                default:example = "Pragma: no-cache"
-                default:description_locale = "%Implementation-specific headers that may have various effects anywhere along the request-response chain."
-                ;
+                {key "Pragma"}
+                {http:header "Pragma"}
+                {default:example "Pragma: no-cache"}
+                {default:description_locale "%Implementation-specific headers that may have various effects anywhere along the request-response chain."}
+
             row Proxy-Authorization
-                key = "Proxy-Authorization"
-                http:header = "Proxy-Authorization"
-                default:example = "Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
-                default:description_locale = "%Authorization credentials for connecting to a proxy."
-                ;
+                {key "Proxy-Authorization"}
+                {http:header "Proxy-Authorization"}
+                {default:example "Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="}
+                {default:description_locale "%Authorization credentials for connecting to a proxy."}
+
             row Range
-                key = "Range"
-                http:header = "Range"
-                default:example = "Range: bytes=500-999"
-                default:description_locale = "%Request only part of an entity."
-                ;
+                {key "Range"}
+                {http:header "Range"}
+                {default:example "Range: bytes=500-999"}
+                {default:description_locale "%Request only part of an entity."}
+
             row Referer
-                key = "Referer"
-                http:header = "Referer"
-                default:example = "Referer: http://en.wikipedia.org/wiki/Main_Page"
-                default:description_locale = "%This is the address of the previous web page from which a link to the currently requested page was followed."
-                ;
+                {key "Referer"}
+                {http:header "Referer"}
+                {default:example "Referer: http://en.wikipedia.org/wiki/Main_Page"}
+                {default:description_locale "%This is the address of the previous web page from which a link to the currently requested page was followed."}
+
             row TE
-                key = "TE"
-                http:header = "TE"
-                default:example = "TE: trailers, deflate;q=0.5"
-                default:description_locale = "%The transfer encodings the user agent is willing to accept: the same values as for the response header Transfer-Encoding can be used, plus the 'trailers' value (related to the 'chunked' transfer method) to notify the server it accepts to receive additional headers (the trailers) after the last, zero-sized, chunk."
-                ;
+                {key "TE"}
+                {http:header "TE"}
+                {default:example "TE: trailers, deflate;q=0.5"}
+                {default:description_locale "%The transfer encodings the user agent is willing to accept: the same values as for the response header Transfer-Encoding can be used, plus the 'trailers' value (related to the 'chunked' transfer method) to notify the server it accepts to receive additional headers (the trailers) after the last, zero-sized, chunk."}
+
             row Upgrade
-                key = "Upgrade"
-                http:header = "Upgrade"
-                default:example = "Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11"
-                default:description_locale = "%Ask the server to upgrade to another protocol."
-                ;
+                {key "Upgrade"}
+                {http:header "Upgrade"}
+                {default:example "Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11"}
+                {default:description_locale "%Ask the server to upgrade to another protocol."}
+
             row User-Agent
-                key = "User-Agent"
-                http:header = "User-Agent"
-                default:example = "User-Agent: Mozilla/5.0 (Linux; X11)"
-                default:description_locale = "%The user agent string of the user agent"
-                ;
+                {key "User-Agent"}
+                {http:header "User-Agent"}
+                {default:example "User-Agent: Mozilla/5.0 (Linux; X11)"}
+                {default:description_locale "%The user agent string of the user agent"}
+
             row Via
-                key = "Via"
-                http:header = "Via"
-                default:example = "Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)"
-                default:description_locale = "%Informs the server of proxies through which the request was sent."
-                ;
+                {key "Via"}
+                {http:header "Via"}
+                {default:example "Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)"}
+                {default:description_locale "%Informs the server of proxies through which the request was sent."}
+
             row Warn
-                key = "Warn"
-                http:header = "Warn"
-                default:example = "Warn: 199 Miscellaneous warning"
-                default:description_locale = "%A general warning about possible problems with the entity body."
-                ;
+                {key "Warn"}
+                {http:header "Warn"}
+                {default:example "Warn: 199 Miscellaneous warning"}
+                {default:description_locale "%A general warning about possible problems with the entity body."}
         }
 
         table pkg_http_request_methods{
             row GET
-                key = "GET"
-                http:method = "GET"
-                default:description_locale = "%Requests a representation of the specified resource. Note that GET should not be used for operations that cause side-effects, such as using it for taking actions in web applications. One reason for this is that GET may be used arbitrarily by robots or crawlers, which should not need to consider the side effects that a request should cause. See safe methods below."
-                ;
+                {key "GET"}
+                {http:method "GET"}
+                {default:description_locale "%Requests a representation of the specified resource. Note that GET should not be used for operations that cause side-effects, such as using it for taking actions in web applications. One reason for this is that GET may be used arbitrarily by robots or crawlers, which should not need to consider the side effects that a request should cause. See safe methods below."}
+
             row POST
-                key = "POST"
-                http:method = "POST"
-                default:description_locale = "%Submits data to be processed (e.g., from an HTML form) to the identified resource. The data is included in the body of the request. This may result in the creation of a new resource or the updates of existing resources or both."
-                ;
+                {key "POST"}
+                {http:method "POST"}
+                {default:description_locale "%Submits data to be processed (e.g., from an HTML form) to the identified resource. The data is included in the body of the request. This may result in the creation of a new resource or the updates of existing resources or both."}
+
             row OPTIONS
-                key = "OPTIONS"
-                http:method = "OPTIONS"
-                default:description_locale = ""
-                ;
+                {key "OPTIONS"}
+                {http:method "OPTIONS"}
+                {default:description_locale ""}
+
             row HEAD
-                key = "HEAD"
-                http:method = "HEAD"
-                default:description_locale = "%Asks for the response identical to the one that would correspond to a GET request, but without the response body. This is useful for retrieving meta-information written in response headers, without having to transport the entire content."
-                ;
+                {key "HEAD"}
+                {http:method "HEAD"}
+                {default:description_locale "%Asks for the response identical to the one that would correspond to a GET request, but without the response body. This is useful for retrieving meta-information written in response headers, without having to transport the entire content."}
+
             row PUT
-                key = "PUT"
-                http:method = "PUT"
-                default:description_locale = "%Uploads a representation of the specified resource."
-                ;
+                {key "PUT"}
+                {http:method "PUT"}
+                {default:description_locale "%Uploads a representation of the specified resource."}
+
             row DELETE
-                key = "DELETE"
-                http:method = "DELETE"
-                default:description_locale = "%Deletes the specified resource."
-                ;
+                {key "DELETE"}
+                {http:method "DELETE"}
+                {default:description_locale "%Deletes the specified resource."}
+
             row TRACE
-                key = "TRACE"
-                http:method = "TRACE"
-                default:description_locale = "%Echoes back the received request, so that a client can see what intermediate servers are adding or changing in the request."
-                ;
+                {key "TRACE"}
+                {http:method "TRACE"}
+                {default:description_locale "%Echoes back the received request, so that a client can see what intermediate servers are adding or changing in the request."}
+
             row CONNECT
-                key = "CONNECT"
-                http:method = "CONNECT"
-                default:description_locale = "%Converts the request connection to a transparent TCP/IP tunnel, usually to facilitate SSL-encrypted communication (HTTPS) through an unencrypted HTTP proxy."
-                ;
+                {key "CONNECT"}
+                {http:method "CONNECT"}
+                {default:description_locale "%Converts the request connection to a transparent TCP/IP tunnel, usually to facilitate SSL-encrypted communication (HTTPS) through an unencrypted HTTP proxy."}
         }
 
         table pkg_http_status_codes{
             row sc100
-                key = "100"
-                http:status:code = "100"
-                http:status:code:text = "Continue"
-                http:category = "1xx Informational"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%This means that the server has received the request headers, and that the client should proceed to send the request body (in the case of a request for which a body needs to be sent; for example, a POST request). If the request body is large, sending it to a server when a request has already been rejected based upon inappropriate headers is inefficient. To have a server check if the request could be accepted based on the requests headers alone, a client must send Expect: 100-continue as a header in its initial request and check if a 100 Continue status code is received in response before continuing (or receive 417 Expectation Failed and not continue)."
-                ;
+                {key "100"}
+                {http:status:code "100"}
+                {http:status:code:text "Continue"}
+                {http:category "1xx Informational"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%This means that the server has received the request headers, and that the client should proceed to send the request body (in the case of a request for which a body needs to be sent; for example, a POST request). If the request body is large, sending it to a server when a request has already been rejected based upon inappropriate headers is inefficient. To have a server check if the request could be accepted based on the requests headers alone, a client must send Expect: 100-continue as a header in its initial request and check if a 100 Continue status code is received in response before continuing (or receive 417 Expectation Failed and not continue)."}
+
             row sc101
-                key = "101"
-                http:status:code = "101"
-                http:status:code:text = "Switching Protocols"
-                http:category = "1xx Informational"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%This means the requester has asked the server to switch protocols and the server is acknowledging that it will do so."
-                ;
+                {key "101"}
+                {http:status:code "101"}
+                {http:status:code:text "Switching Protocols"}
+                {http:category "1xx Informational"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%This means the requester has asked the server to switch protocols and the server is acknowledging that it will do so."}
+
             row sc102
-                key = "102"
-                http:status:code = "102"
-                http:status:code:text = "Processing"
-                http:category = "1xx Informational"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%As a WebDAV request may contain many sub-requests involving file operations, it may take a long time to complete the request. This code indicates that the server has received and is processing the request, but no response is available yet. This prevents the client from timing out and assuming the request was lost."
-                ;
+                {key "102"}
+                {http:status:code "102"}
+                {http:status:code:text "Processing"}
+                {http:category "1xx Informational"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%As a WebDAV request may contain many sub-requests involving file operations, it may take a long time to complete the request. This code indicates that the server has received and is processing the request, but no response is available yet. This prevents the client from timing out and assuming the request was lost."}
+
             row sc200
-                key = "200"
-                http:status:code = "200"
-                http:status:code:text = "OK"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-                ;
+                {key "200"}
+                {http:status:code "200"}
+                {http:status:code:text "OK"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."}
+
             row sc201
-                key = "201"
-                http:status:code = "201"
-                http:status:code:text = "Created"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request has been fulfilled and resulted in a new resource being created."
-                ;
+                {key "201"}
+                {http:status:code "201"}
+                {http:status:code:text "Created"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request has been fulfilled and resulted in a new resource being created."}
+
             row sc202
-                key = "202"
-                http:status:code = "202"
-                http:status:code:text = "Accepted"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place."
-                ;
+                {key "202"}
+                {http:status:code "202"}
+                {http:status:code:text "Accepted"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place."}
+
             row sc203
-                key = "203"
-                http:status:code = "203"
-                http:status:code:text = "Non-Authoritative Information"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.1"
-                default:description_locale = "%The server successfully processed the request, but is returning information that may be from another source."
-                ;
+                {key "203"}
+                {http:status:code "203"}
+                {http:status:code:text "Non-Authoritative Information"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.1"}
+                {default:description_locale "%The server successfully processed the request, but is returning information that may be from another source."}
+
             row sc204
-                key = "204"
-                http:status:code = "204"
-                http:status:code:text = "No Content"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server successfully processed the request, but is not returning any content."
-                ;
+                {key "204"}
+                {http:status:code "204"}
+                {http:status:code:text "No Content"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server successfully processed the request, but is not returning any content."}
+
             row sc205
-                key = "205"
-                http:status:code = "205"
-                http:status:code:text = "Reset Content"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server successfully processed the request, but is not returning any content. Unlike a 204 response, this response requires that the requester reset the document view."
-                ;
+                {key "205"}
+                {http:status:code "205"}
+                {http:status:code:text "Reset Content"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server successfully processed the request, but is not returning any content. Unlike a 204 response, this response requires that the requester reset the document view."}
+
             row sc206
-                key = "206"
-                http:status:code = "206"
-                http:status:code:text = "Partial Content"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server is delivering only part of the resource due to a range header sent by the client. This is used by tools like wget to enable resuming of interrupted downloads, or split a download into multiple simultaneous streams."
-                ;
+                {key "206"}
+                {http:status:code "206"}
+                {http:status:code:text "Partial Content"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server is delivering only part of the resource due to a range header sent by the client. This is used by tools like wget to enable resuming of interrupted downloads, or split a download into multiple simultaneous streams."}
+
             row sc207
-                key = "207"
-                http:status:code = "207"
-                http:status:code:text = "Multi-Status"
-                http:category = "2xx Success"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The message body that follows is an XML message and can contain a number of separate response codes, depending on how many sub-requests were made."
-                ;
+                {key "207"}
+                {http:status:code "207"}
+                {http:status:code:text "Multi-Status"}
+                {http:category "2xx Success"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The message body that follows is an XML message and can contain a number of separate response codes, depending on how many sub-requests were made."}
+
             row sc300
-                key = "300"
-                http:status:code = "300"
-                http:status:code:text = "Multiple Choices"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Indicates multiple options for the resource that the client may follow. It, for instance, could be used to present different format options for video, list files with different extensions, or word sense disambiguation."
-                ;
+                {key "300"}
+                {http:status:code "300"}
+                {http:status:code:text "Multiple Choices"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Indicates multiple options for the resource that the client may follow. It, for instance, could be used to present different format options for video, list files with different extensions, or word sense disambiguation."}
+
             row sc301
-                key = "301"
-                http:status:code = "301"
-                http:status:code:text = "Moved Permanently"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%This and all future requests should be directed to the given URI."
-                ;
+                {key "301"}
+                {http:status:code "301"}
+                {http:status:code:text "Moved Permanently"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%This and all future requests should be directed to the given URI."}
+
             row sc302
-                key = "302"
-                http:status:code = "302"
-                http:status:code:text = "Found"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = ""
-                ;
+                {key "302"}
+                {http:status:code "302"}
+                {http:status:code:text "Found"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale ""}
+
             row sc303
-                key = "303"
-                http:status:code = "303"
-                http:status:code:text = "See Other"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.1"
-                default:description_locale = "%The response to the request can be found under another URI using a GET method. When received in response to a PUT, it should be assumed that the server has received the data and the redirect should be issued with a separate GET message."
-                ;
+                {key "303"}
+                {http:status:code "303"}
+                {http:status:code:text "See Other"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.1"}
+                {default:description_locale "%The response to the request can be found under another URI using a GET method. When received in response to a PUT, it should be assumed that the server has received the data and the redirect should be issued with a separate GET message."}
+
             row sc304
-                key = "304"
-                http:status:code = "304"
-                http:status:code:text = "Not Modified"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Indicates the resource has not been modified since last requested. Typically, the HTTP client provides a header like the If-Modified-Since header to provide a time against which to compare. Utilizing this saves bandwidth and reprocessing on both the server and client, as only the header data must be sent and received in comparison to the entirety of the page being re-processed by the server, then resent using more bandwidth of the server and client."
-                ;
+                {key "304"}
+                {http:status:code "304"}
+                {http:status:code:text "Not Modified"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Indicates the resource has not been modified since last requested. Typically, the HTTP client provides a header like the If-Modified-Since header to provide a time against which to compare. Utilizing this saves bandwidth and reprocessing on both the server and client, as only the header data must be sent and received in comparison to the entirety of the page being re-processed by the server, then resent using more bandwidth of the server and client."}
+
             row sc305
-                key = "305"
-                http:status:code = "305"
-                http:status:code:text = "Use Proxy"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.1"
-                default:description_locale = "%Many HTTP clients (such as Mozilla and Internet Explorer) do not correctly handle responses with this status code, primarily for security reasons."
-                ;
+                {key "305"}
+                {http:status:code "305"}
+                {http:status:code:text "Use Proxy"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.1"}
+                {default:description_locale "%Many HTTP clients (such as Mozilla and Internet Explorer) do not correctly handle responses with this status code, primarily for security reasons."}
+
             row sc306
-                key = "306"
-                http:status:code = "306"
-                http:status:code:text = "Switch Proxy"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%No longer used."
-                ;
+                {key "306"}
+                {http:status:code "306"}
+                {http:status:code:text "Switch Proxy"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%No longer used."}
+
             row sc307
-                key = "307"
-                http:status:code = "307"
-                http:status:code:text = "Temporary Redirect"
-                http:category = "3xx Redirection"
-                http:protocol = "HTTP/1.1"
-                default:description_locale = "%In this occasion, the request should be repeated with another URI, but future requests can still use the original URI. In contrast to 303, the request method should not be changed when reissuing the original request. For instance, a POST request must be repeated using another POST request."
-                ;
+                {key "307"}
+                {http:status:code "307"}
+                {http:status:code:text "Temporary Redirect"}
+                {http:category "3xx Redirection"}
+                {http:protocol "HTTP/1.1"}
+                {default:description_locale "%In this occasion, the request should be repeated with another URI, but future requests can still use the original URI. In contrast to 303, the request method should not be changed when reissuing the original request. For instance, a POST request must be repeated using another POST request."}
+
             row sc400
-                key = "400"
-                http:status:code = "400"
-                http:status:code:text = "Bad Request"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request contains bad syntax or cannot be fulfilled."
-                ;
+                {key "400"}
+                {http:status:code "400"}
+                {http:status:code:text "Bad Request"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request contains bad syntax or cannot be fulfilled."}
+
             row sc401
-                key = "401"
-                http:status:code = "401"
-                http:status:code:text = "Unauthorized"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."
-                ;
+                {key "401"}
+                {http:status:code "401"}
+                {http:status:code:text "Unauthorized"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource."}
+
             row sc402
-                key = "402"
-                http:status:code = "402"
-                http:status:code:text = "Payment Required"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Reserved for future use. The original intention was that this code might be used as part of some form of digital cash or micropayment scheme, but that has not happened, and this code is not usually used. As an example of its use, however, Apple s MobileMe service generates a 402 error ('httpStatusCode:402' in the Mac OS X Console log) if the MobileMe account is delinquent."
-                ;
+                {key "402"}
+                {http:status:code "402"}
+                {http:status:code:text "Payment Required"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Reserved for future use. The original intention was that this code might be used as part of some form of digital cash or micropayment scheme, but that has not happened, and this code is not usually used. As an example of its use, however, Apple s MobileMe service generates a 402 error ('httpStatusCode:402' in the Mac OS X Console log) if the MobileMe account is delinquent."}
+
             row sc403
-                key = "403"
-                http:status:code = "403"
-                http:status:code:text = "Forbidden"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request was a legal request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference."
-                ;
+                {key "403"}
+                {http:status:code "403"}
+                {http:status:code:text "Forbidden"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request was a legal request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference."}
+
             row sc404
-                key = "404"
-                http:status:code = "404"
-                http:status:code:text = "Not Found"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."
-                ;
+                {key "404"}
+                {http:status:code "404"}
+                {http:status:code:text "Not Found"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible."}
+
             row sc405
-                key = "405"
-                http:status:code = "405"
-                http:status:code:text = "Method Not Allowed"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%A request was made of a resource using a request method not supported by that resource; for example, using GET on a form which requires data to be presented via POST, or using PUT on a read-only resource."
-                ;
+                {key "405"}
+                {http:status:code "405"}
+                {http:status:code:text "Method Not Allowed"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%A request was made of a resource using a request method not supported by that resource; for example, using GET on a form which requires data to be presented via POST, or using PUT on a read-only resource."}
+
             row sc406
-                key = "406"
-                http:status:code = "406"
-                http:status:code:text = "Not Acceptable"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The requested resource is only capable of generating content not acceptable according to the Accept headers sent in the request."
-                ;
+                {key "406"}
+                {http:status:code "406"}
+                {http:status:code:text "Not Acceptable"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The requested resource is only capable of generating content not acceptable according to the Accept headers sent in the request."}
+
             row sc407
-                key = "407"
-                http:status:code = "407"
-                http:status:code:text = "Proxy Authentication Required"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = ""
-                ;
+                {key "407"}
+                {http:status:code "407"}
+                {http:status:code:text "Proxy Authentication Required"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale ""}
+
             row sc408
-                key = "408"
-                http:status:code = "408"
-                http:status:code:text = "Request Timeout"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server timed out waiting for the request. According to W3 HTTP specifications: 'The client did not produce a request within the time that the server was prepared to wait. The client MAY repeat the request without modifications at any later time.'"
-                ;
+                {key "408"}
+                {http:status:code "408"}
+                {http:status:code:text "Request Timeout"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server timed out waiting for the request. According to W3 HTTP specifications: 'The client did not produce a request within the time that the server was prepared to wait. The client MAY repeat the request without modifications at any later time.'"}
+
             row sc409
-                key = "409"
-                http:status:code = "409"
-                http:status:code:text = "Conflict"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Indicates that the request could not be processed because of conflict in the request, such as an edit conflict."
-                ;
+                {key "409"}
+                {http:status:code "409"}
+                {http:status:code:text "Conflict"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Indicates that the request could not be processed because of conflict in the request, such as an edit conflict."}
+
             row sc410
-                key = "410"
-                http:status:code = "410"
-                http:status:code:text = "Gone"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Indicates that the resource requested is no longer available and will not be available again. This should be used when a resource has been intentionally removed; however, it is not necessary to return this code and a 404 Not Found can be issued instead. Upon receiving a 410 status code, the client should not request the resource again in the future. Clients such as search engines should remove the resource from their indexes."
-                ;
+                {key "410"}
+                {http:status:code "410"}
+                {http:status:code:text "Gone"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Indicates that the resource requested is no longer available and will not be available again. This should be used when a resource has been intentionally removed; however, it is not necessary to return this code and a 404 Not Found can be issued instead. Upon receiving a 410 status code, the client should not request the resource again in the future. Clients such as search engines should remove the resource from their indexes."}
+
             row sc411
-                key = "411"
-                http:status:code = "411"
-                http:status:code:text = "Length Required"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request did not specify the length of its content, which is required by the requested resource."
-                ;
+                {key "411"}
+                {http:status:code "411"}
+                {http:status:code:text "Length Required"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request did not specify the length of its content, which is required by the requested resource."}
+
             row sc412
-                key = "412"
-                http:status:code = "412"
-                http:status:code:text = "Precondition Failed"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server does not meet one of the preconditions that the requester put on the request."
-                ;
+                {key "412"}
+                {http:status:code "412"}
+                {http:status:code:text "Precondition Failed"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server does not meet one of the preconditions that the requester put on the request."}
+
             row sc413
-                key = "413"
-                http:status:code = "413"
-                http:status:code:text = "Request Entity Too Large"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request is larger than the server is willing or able to process."
-                ;
+                {key "413"}
+                {http:status:code "413"}
+                {http:status:code:text "Request Entity Too Large"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request is larger than the server is willing or able to process."}
+
             row sc414
-                key = "414"
-                http:status:code = "414"
-                http:status:code:text = "Request-URI Too Long"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The URI provided was too long for the server to process."
-                ;
+                {key "414"}
+                {http:status:code "414"}
+                {http:status:code:text "Request-URI Too Long"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The URI provided was too long for the server to process."}
+
             row sc415
-                key = "415"
-                http:status:code = "415"
-                http:status:code:text = "Unsupported Media Type"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request did not specify any media types that the server or resource supports.For example the client specified that an image resource should be served as image/svg+xml, but the server cannot find a matching version of the image."
-                ;
+                {key "415"}
+                {http:status:code "415"}
+                {http:status:code:text "Unsupported Media Type"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request did not specify any media types that the server or resource supports.For example the client specified that an image resource should be served as image/svg+xml, but the server cannot find a matching version of the image."}
+
             row sc416
-                key = "416"
-                http:status:code = "416"
-                http:status:code:text = "Requested Range Not Satisfiable"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The client has asked for a portion of the file, but the server cannot supply that portion. For example, if the client asked for a part of the file that lies beyond the end of the file."
-                ;
+                {key "416"}
+                {http:status:code "416"}
+                {http:status:code:text "Requested Range Not Satisfiable"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The client has asked for a portion of the file, but the server cannot supply that portion. For example, if the client asked for a part of the file that lies beyond the end of the file."}
+
             row sc417
-                key = "417"
-                http:status:code = "417"
-                http:status:code:text = "Expectation Failed"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server cannot meet the requirements of the Expect request-header field."
-                ;
+                {key "417"}
+                {http:status:code "417"}
+                {http:status:code:text "Expectation Failed"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server cannot meet the requirements of the Expect request-header field."}
+
             row sc418
-                key = "418"
-                http:status:code = "418"
-                http:status:code:text = "Im a teapot"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The HTCPCP server is a teapot. The responding entity MAY be short and stout. This code was defined as one of the traditional IETF April Fools jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol, and is not expected to be implemented by actual HTTP servers."
-                ;
+                {key "418"}
+                {http:status:code "418"}
+                {http:status:code:text "Im a teapot"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The HTCPCP server is a teapot. The responding entity MAY be short and stout. This code was defined as one of the traditional IETF April Fools jokes, in RFC 2324, Hyper Text Coffee Pot Control Protocol, and is not expected to be implemented by actual HTTP servers."}
+
             row sc422
-                key = "422"
-                http:status:code = "422"
-                http:status:code:text = "Unprocessable Entity"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request was well-formed but was unable to be followed due to semantic errors."
-                ;
+                {key "422"}
+                {http:status:code "422"}
+                {http:status:code:text "Unprocessable Entity"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request was well-formed but was unable to be followed due to semantic errors."}
+
             row sc423
-                key = "423"
-                http:status:code = "423"
-                http:status:code:text = "Locked"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The resource that is being accessed is locked"
-                ;
+                {key "423"}
+                {http:status:code "423"}
+                {http:status:code:text "Locked"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The resource that is being accessed is locked"}
+
             row sc424
-                key = "424"
-                http:status:code = "424"
-                http:status:code:text = "Failed Dependency"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The request failed due to failure of a previous request (e.g. a PROPPATCH)."
-                ;
+                {key "424"}
+                {http:status:code "424"}
+                {http:status:code:text "Failed Dependency"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The request failed due to failure of a previous request (e.g. a PROPPATCH)."}
+
             row sc425
-                key = "425"
-                http:status:code = "425"
-                http:status:code:text = "Unordered Collection"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Defined in drafts of 'WebDAV Advanced Collections Protocol', but not present in 'Web Distributed Authoring and Versioning (WebDAV) Ordered Collections Protocol'."
-                ;
+                {key "425"}
+                {http:status:code "425"}
+                {http:status:code:text "Unordered Collection"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Defined in drafts of 'WebDAV Advanced Collections Protocol', but not present in 'Web Distributed Authoring and Versioning (WebDAV) Ordered Collections Protocol'."}
+
             row sc426
-                key = "426"
-                http:status:code = "426"
-                http:status:code:text = "Upgrade Required"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The client should switch to a different protocol such as TLS/1.0."
-                ;
+                {key "426"}
+                {http:status:code "426"}
+                {http:status:code:text "Upgrade Required"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The client should switch to a different protocol such as TLS/1.0."}
+
             row sc449
-                key = "449"
-                http:status:code = "449"
-                http:status:code:text = "Retry With"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%A Microsoft extension. The request should be retried after doing the appropriate action."
-                ;
+                {key "449"}
+                {http:status:code "449"}
+                {http:status:code:text "Retry With"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%A Microsoft extension. The request should be retried after doing the appropriate action."}
+
             row sc450
-                key = "450"
-                http:status:code = "450"
-                http:status:code:text = "Blocked by Windows Parental Controls"
-                http:category = "4xx Client Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%A Microsoft extension. This error is given when Windows Parental Controls are turned on and are blocking access to the given webpage."
-                ;
+                {key "450"}
+                {http:status:code "450"}
+                {http:status:code:text "Blocked by Windows Parental Controls"}
+                {http:category "4xx Client Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%A Microsoft extension. This error is given when Windows Parental Controls are turned on and are blocking access to the given webpage."}
+
             row sc500
-                key = "500"
-                http:status:code = "500"
-                http:status:code:text = "Internal Server Error"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%A generic error message, given when no more specific message is suitable."
-                ;
+                {key "500"}
+                {http:status:code "500"}
+                {http:status:code:text "Internal Server Error"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%A generic error message, given when no more specific message is suitable."}
+
             row sc501
-                key = "501"
-                http:status:code = "501"
-                http:status:code:text = "Not Implemented"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server either does not recognise the request method, or it lacks the ability to fulfill the request."
-                ;
+                {key "501"}
+                {http:status:code "501"}
+                {http:status:code:text "Not Implemented"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server either does not recognise the request method, or it lacks the ability to fulfill the request."}
+
             row sc502
-                key = "502"
-                http:status:code = "502"
-                http:status:code:text = "Bad Gateway"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server was acting as a gateway or proxy and received an invalid response from the downstream server."
-                ;
+                {key "502"}
+                {http:status:code "502"}
+                {http:status:code:text "Bad Gateway"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server was acting as a gateway or proxy and received an invalid response from the downstream server."}
+
             row sc503
-                key = "503"
-                http:status:code = "503"
-                http:status:code:text = "Service Unavailable"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state."
-                ;
+                {key "503"}
+                {http:status:code "503"}
+                {http:status:code:text "Service Unavailable"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server is currently unavailable (because it is overloaded or down for maintenance). Generally, this is a temporary state."}
+
             row sc504
-                key = "504"
-                http:status:code = "504"
-                http:status:code:text = "Gateway Timeout"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server was acting as a gateway or proxy and did not receive a timely request from the downstream server."
-                ;
+                {key "504"}
+                {http:status:code "504"}
+                {http:status:code:text "Gateway Timeout"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server was acting as a gateway or proxy and did not receive a timely request from the downstream server."}
+
             row sc505
-                key = "505"
-                http:status:code = "505"
-                http:status:code:text = "HTTP Version Not Supported"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%The server does not support the HTTP protocol version used in the request."
-                ;
+                {key "505"}
+                {http:status:code "505"}
+                {http:status:code:text "HTTP Version Not Supported"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%The server does not support the HTTP protocol version used in the request."}
+
             row sc506
-                key = "506"
-                http:status:code = "506"
-                http:status:code:text = "Variant Also Negotiates"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Transparent content negotiation for the request, results in a circular reference."
-                ;
+                {key "506"}
+                {http:status:code "506"}
+                {http:status:code:text "Variant Also Negotiates"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Transparent content negotiation for the request, results in a circular reference."}
+
             row sc507
-                key = "507"
-                http:status:code = "507"
-                http:status:code:text = "Insufficient Storage"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = ""
-                ;
+                {key "507"}
+                {http:status:code "507"}
+                {http:status:code:text "Insufficient Storage"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale ""}
+
             row sc509
-                key = "509"
-                http:status:code = "509"
-                http:status:code:text = "Bandwidth Limit Exceeded"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = ""
-                ;
+                {key "509"}
+                {http:status:code "509"}
+                {http:status:code:text "Bandwidth Limit Exceeded"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale ""}
+
             row sc510
-                key = "510"
-                http:status:code = "510"
-                http:status:code:text = "Not Extended"
-                http:category = "5xx Server Error"
-                http:protocol = "HTTP/1.0,HTTP/1.1"
-                default:description_locale = "%Further extensions to the request are required for the server to fulfill it."
-                ;
+                {key "510"}
+                {http:status:code "510"}
+                {http:status:code:text "Not Extended"}
+                {http:category "5xx Server Error"}
+                {http:protocol "HTTP/1.0,HTTP/1.1"}
+                {default:description_locale "%Further extensions to the request are required for the server to fulfill it."}
         }
 
         table pkg_requests{
             row skb:http:get
-                key = "skb:http:get"
-                core:requests:fields = "request:active%plain,default:url%http,request:media_type%http,request:file_name%http"
-                core:requests:prefix = "_hg"
-                core:requests:formselect_fields = ""
-                core:requests:table = ""
-                core:requests:table_collections = ""
-                core:request:filter = ""
-                core:request:package = ""
-                core:description = ""
-                ;
-            row default:http
-                key = "default:http"
-                core:requests:fields = "request:active%plain,request:entry%http"
-                core:requests:prefix = "defh_"
-                core:requests:formselect_fields = ""
-                core:requests:table = ""
-                core:requests:table_collections = ""
-                core:request:filter = ""
-                core:request:package = ""
-                core:description = ""
-                ;
+                {key "skb:http:get"}
+                {core:requests:fields "request:active%plain,default:url%http,request:media_type%http,request:file_name%http"}
+                {core:requests:prefix "_hg"}
+                {core:requests:formselect_fields ""}
+                {core:requests:table ""}
+                {core:requests:table_collections ""}
+                {core:request:filter ""}
+                {core:request:package ""}
+                {core:description ""}
 
+            row default:http
+                {key "default:http"}
+                {core:requests:fields "request:active%plain,request:entry%http"}
+                {core:requests:prefix "defh_"}
+                {core:requests:formselect_fields ""}
+                {core:requests:table ""}
+                {core:requests:table_collections ""}
+                {core:request:filter ""}
+                {core:request:package ""}
+                {core:description ""}
         }
     }
 #endif

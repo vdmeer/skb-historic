@@ -40,764 +40,761 @@
     repository skb.core{
         table pkg_fields{
             row default:name_locale
-                key = "default:name_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:name"
-                core:http_req_name = "name"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A name, given as a link to a locale entry."
-                ;
+                {key "default:name_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:name"}
+                {core:http_req_name "name"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A name, given as a link to a locale entry."}
+
             row default:country_key
-                key = "default:country_key"
-                core:type = "entity"
-                core:use = "core,request"
-                core:entries_name = "default:country"
-                core:http_req_name = "country"
-                core:default_db = "skb:geo:countries"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A key that links to an entry in the table geo_countries."
-                ;
+                {key "default:country_key"}
+                {core:type "entity"}
+                {core:use "core,request"}
+                {core:entries_name "default:country"}
+                {core:http_req_name "country"}
+                {core:default_db "skb:geo:countries"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A key that links to an entry in the table geo_countries."}
+
             row default:url
-                key = "default:url"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:url"
-                core:http_req_name = "url"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A URL according to IETF RFC specifications for URL."
-                ;
+                {key "default:url"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:url"}
+                {core:http_req_name "url"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A URL according to IETF RFC specifications for URL."}
+
             row default:continent_key
-                key = "default:continent_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:continent"
-                core:http_req_name = "continent"
-                core:default_db = "skb:geo:continents"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A key that links to an entry in the table geo_continents."
-                ;
+                {key "default:continent_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:continent"}
+                {core:http_req_name "continent"}
+                {core:default_db "skb:geo:continents"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A key that links to an entry in the table geo_continents."}
+
             row default:name
-                key = "default:name"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:name"
-                core:http_req_name = "name"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A name."
-                ;
+                {key "default:name"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:name"}
+                {core:http_req_name "name"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A name."}
+
             row default:plural
-                key = "default:plural"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:plural"
-                core:http_req_name = "plural"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Plural form of a word, for instance default:name in plural."
-                ;
+                {key "default:plural"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:plural"}
+                {core:http_req_name "plural"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Plural form of a word, for instance default:name in plural."}
+
             row default:plural_locale
-                key = "default:plural_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:plural"
-                core:http_req_name = "plural"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Plural form of a word, for instance default:name in plural, given as a link to a locale file."
-                ;
+                {key "default:plural_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:plural"}
+                {core:http_req_name "plural"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Plural form of a word, for instance default:name in plural, given as a link to a locale file."}
+
             row default:detail_locale
-                key = "default:detail_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:detail"
-                core:http_req_name = "detail"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Detail information on an entry, field, etc, as a link to a locale file."
-                ;
+                {key "default:detail_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:detail"}
+                {core:http_req_name "detail"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Detail information on an entry, field, etc, as a link to a locale file."}
+
             row default:detail
-                key = "default:detail"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:detail"
-                core:http_req_name = "detail"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Detail information on an entry, field, etc. Should be some natural language."
-                ;
+                {key "default:detail"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:detail"}
+                {core:http_req_name "detail"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Detail information on an entry, field, etc. Should be some natural language."}
+
             row default:description
-                key = "default:description"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:description"
-                core:http_req_name = "description"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A description in a natural language."
-                ;
+                {key "default:description"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:description"}
+                {core:http_req_name "description"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A description in a natural language."}
+
             row default:description_locale
-                key = "default:description_locale"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:description"
-                core:http_req_name = "description"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A description in a natrual language as a link to a locale file."
-                ;
+                {key "default:description_locale"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:description"}
+                {core:http_req_name "description"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A description in a natrual language as a link to a locale file."}
+
             row default:year
-                key = "default:year"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:year"
-                core:http_req_name = "year"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A year, should be given as 4 digit number."
-                ;
+                {key "default:year"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:year"}
+                {core:http_req_name "year"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A year, should be given as 4 digit number."}
+
             row default:month_key
-                key = "default:month_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:month"
-                core:http_req_name = "month"
-                core:default_db = "skb:date:month"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Key to an entry in the table date_month."
-                ;
+                {key "default:month_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:month"}
+                {core:http_req_name "month"}
+                {core:default_db "skb:date:month"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Key to an entry in the table date_month."}
+
             row default:dow_key
-                key = "default:dow_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:dow"
-                core:http_req_name = "dow"
-                core:default_db = "skb:date:dow"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Key to an entry in the table date_dow (Day of the Week)."
-                ;
+                {key "default:dow_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:dow"}
+                {core:http_req_name "dow"}
+                {core:default_db "skb:date:dow"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Key to an entry in the table date_dow (Day of the Week)."}
+
             row default:city_key
-                key = "default:city_key"
-                core:type = "entity"
-                core:use = "core,request"
-                core:entries_name = "default:city"
-                core:http_req_name = "city"
-                core:default_db = "skb:geo:cities"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Key to an entry in the table geo_cities."
-                ;
+                {key "default:city_key"}
+                {core:type "entity"}
+                {core:use "core,request"}
+                {core:entries_name "default:city"}
+                {core:http_req_name "city"}
+                {core:default_db "skb:geo:cities"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Key to an entry in the table geo_cities."}
+
             row default:organization_key
-                key = "default:organization_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:organization"
-                core:http_req_name = "organization"
-                core:default_db = "skb:affiliations"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Key to an entry in the table affiliations, which should be interpreted as an organisation."
-                ;
+                {key "default:organization_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:organization"}
+                {core:http_req_name "organization"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Key to an entry in the table affiliations, which should be interpreted as an organisation."}
+
             row default:organization_keys
-                key = "default:organization_keys"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:organization"
-                core:http_req_name = "organization"
-                core:default_db = "skb:affiliations"
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "List of key to an entry in the table affiliations, which should be interpreted as organisations."
-                ;
+                {key "default:organization_keys"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:organization"}
+                {core:http_req_name "organization"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "List of key to an entry in the table affiliations, which should be interpreted as organisations."}
+
             row default:day_start
-                key = "default:day_start"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:day_start"
-                core:http_req_name = "day_start"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The day something started (began), given as a 2 digit number."
-                ;
+                {key "default:day_start"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:day_start"}
+                {core:http_req_name "day_start"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The day something started (began), given as a 2 digit number."}
+
             row default:day_end
-                key = "default:day_end"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:day_end"
-                core:http_req_name = "day_end"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The day something ended (finished), given as a 2 digit number."
-                ;
+                {key "default:day_end"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:day_end"}
+                {core:http_req_name "day_end"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The day something ended (finished), given as a 2 digit number."}
+
             row default:month_start_key
-                key = "default:month_start_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:month_start"
-                core:http_req_name = "month_start"
-                core:default_db = "skb:date:month"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The month something started (began), given as a key to the table date_month."
-                ;
+                {key "default:month_start_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:month_start"}
+                {core:http_req_name "month_start"}
+                {core:default_db "skb:date:month"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The month something started (began), given as a key to the table date_month."}
+
             row default:month_end_key
-                key = "default:month_end_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:month_end"
-                core:http_req_name = "month_end"
-                core:default_db = "skb:date:month"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The month something ended (finished), given as a key to the table date_month."
-                ;
+                {key "default:month_end_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:month_end"}
+                {core:http_req_name "month_end"}
+                {core:default_db "skb:date:month"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The month something ended (finished), given as a key to the table date_month."}
+
             row default:year_start
-                key = "default:year_start"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:year_start"
-                core:http_req_name = "year_start"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The year something started (began), given as a 4 digit number."
-                ;
+                {key "default:year_start"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:year_start"}
+                {core:http_req_name "year_start"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The year something started (began), given as a 4 digit number."}
+
             row default:year_end
-                key = "default:year_end"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:year_end"
-                core:http_req_name = "year_end"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The year something ended (finished), given as a 4 digit number."
-                ;
+                {key "default:year_end"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:year_end"}
+                {core:http_req_name "year_end"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The year something ended (finished), given as a 4 digit number."}
+
             row default:day
-                key = "default:day"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:day"
-                core:http_req_name = "day"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A day, should be given as a 2 digit number."
-                ;
+                {key "default:day"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:day"}
+                {core:http_req_name "day"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A day, should be given as a 2 digit number."}
+
             row default:sponsor_key
-                key = "default:sponsor_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:sponsor"
-                core:http_req_name = "sponsor"
-                core:default_db = "skb:affiliations"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Key to an entry in the table affiliations, which should be interpreted as an sponsor."
-                ;
+                {key "default:sponsor_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:sponsor"}
+                {core:http_req_name "sponsor"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Key to an entry in the table affiliations, which should be interpreted as an sponsor."}
+
             row default:sponsor_keys
-                key = "default:sponsor_keys"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:sponsor"
-                core:http_req_name = "sponsor"
-                core:default_db = "skb:affiliations"
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "List of keys to an entry in the table affiliations, which should be interpreted as an sponsors."
-                ;
+                {key "default:sponsor_keys"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:sponsor"}
+                {core:http_req_name "sponsor"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "List of keys to an entry in the table affiliations, which should be interpreted as an sponsors."}
+
             row default:institution_key
-                key = "default:institution_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:institution"
-                core:http_req_name = "institution"
-                core:default_db = "skb:affiliations"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Key to an entry in the table affiliations, which should be interpreted as an institution."
-                ;
+                {key "default:institution_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:institution"}
+                {core:http_req_name "institution"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Key to an entry in the table affiliations, which should be interpreted as an institution."}
+
             row default:publisher_key
-                key = "default:publisher_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:publisher"
-                core:http_req_name = "publisher"
-                core:default_db = "skb:affiliations"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Key to an entry in the table affiliations, which should be interpreted as an publisher."
-                ;
+                {key "default:publisher_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:publisher"}
+                {core:http_req_name "publisher"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Key to an entry in the table affiliations, which should be interpreted as an publisher."}
+
             row default:url_day
-                key = "default:url_day"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:url_day"
-                core:http_req_name = "url_day"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Day of an URL, usually the day it was visited last."
-                ;
+                {key "default:url_day"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:url_day"}
+                {core:http_req_name "url_day"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Day of an URL, usually the day it was visited last."}
+
             row default:url_year
-                key = "default:url_year"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:url_year"
-                core:http_req_name = "url_year"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Year of an URL, usually the year it was visited last."
-                ;
+                {key "default:url_year"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:url_year"}
+                {core:http_req_name "url_year"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Year of an URL, usually the year it was visited last."}
+
             row default:url_month_key
-                key = "default:url_month_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:url_month"
-                core:http_req_name = "url_month"
-                core:default_db = "skb:date:month"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Month of a URL given as a link to the table date_month, usually the month it was visited last."
-                ;
+                {key "default:url_month_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:url_month"}
+                {core:http_req_name "url_month"}
+                {core:default_db "skb:date:month"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Month of a URL given as a link to the table date_month, usually the month it was visited last."}
+
             row default:institution_keys
-                key = "default:institution_keys"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:institution"
-                core:http_req_name = "institution"
-                core:default_db = "skb:affiliations"
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "List of key to an entry in the table affiliations, which should be interpreted as a institutions."
-                ;
+                {key "default:institution_keys"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:institution"}
+                {core:http_req_name "institution"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "List of key to an entry in the table affiliations, which should be interpreted as a institutions."}
+
             row default:name_sub
-                key = "default:name_sub"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:name_sub"
-                core:http_req_name = "name_sub"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Secondary name of something."
-                ;
+                {key "default:name_sub"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:name_sub"}
+                {core:http_req_name "name_sub"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Secondary name of something."}
+
             row default:name_sub_locale
-                key = "default:name_sub_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:name_sub"
-                core:http_req_name = "name_sub"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "Secondary name of something given as a link to a locale file."
-                ;
+                {key "default:name_sub_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:name_sub"}
+                {core:http_req_name "name_sub"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "Secondary name of something given as a link to a locale file."}
+
             row default:keywords
-                key = "default:keywords"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:keywords"
-                core:http_req_name = "keywords"
-                core:default_db = ""
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "One or more keywords."
-                ;
+                {key "default:keywords"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:keywords"}
+                {core:http_req_name "keywords"}
+                {core:default_db ""}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "One or more keywords."}
+
             row default:example
-                key = "default:example"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:example"
-                core:http_req_name = "example"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "An example."
-                ;
+                {key "default:example"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:example"}
+                {core:http_req_name "example"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "An example."}
+
             row default:country_keys
-                key = "default:country_keys"
-                core:type = "entity"
-                core:use = "core,request"
-                core:entries_name = "default:country"
-                core:http_req_name = "country"
-                core:default_db = "skb:geo:countries"
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "List of keys to entries in the table geo_countries."
-                ;
+                {key "default:country_keys"}
+                {core:type "entity"}
+                {core:use "core,request"}
+                {core:entries_name "default:country"}
+                {core:http_req_name "country"}
+                {core:default_db "skb:geo:countries"}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "List of keys to entries in the table geo_countries."}
+
             row default:width
-                key = "default:width"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:width"
-                core:http_req_name = "width"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The width of something, usually a figure/foto/image."
-                ;
+                {key "default:width"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:width"}
+                {core:http_req_name "width"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The width of something, usually a figure/foto/image."}
+
             row default:height
-                key = "default:height"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:height"
-                core:http_req_name = "height"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The height of something, usually a figure/foto/image."
-                ;
+                {key "default:height"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:height"}
+                {core:http_req_name "height"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The height of something, usually a figure/foto/image."}
+
             row default:length
-                key = "default:length"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "default:length"
-                core:http_req_name = "length"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "The length of something."
-                ;
+                {key "default:length"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "default:length"}
+                {core:http_req_name "length"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "The length of something."}
+
             row default:unit
-                key = "default:unit"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "default:unit"
-                core:http_req_name = "unit"
-                core:default_db = "units_si"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A unit (experimental right now)"
-                ;
+                {key "default:unit"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "default:unit"}
+                {core:http_req_name "unit"}
+                {core:default_db "units_si"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A unit (experimental right now)"}
+
             row default:comment
-                key = "default:comment"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:comment"
-                core:http_req_name = "comment"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A (natural language) comment."
-                ;
+                {key "default:comment"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:comment"}
+                {core:http_req_name "comment"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A (natural language) comment."}
+
             row default:comment_locale
-                key = "default:comment_locale"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:comment"
-                core:http_req_name = "comment"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A (natrual language) comment, given as a link to a locale file."
-                ;
+                {key "default:comment_locale"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:comment"}
+                {core:http_req_name "comment"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A (natrual language) comment, given as a link to a locale file."}
+
             row default:source
-                key = "default:source"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:source"
-                core:http_req_name = "source"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A source, not further interpreted by the SKB."
-                ;
+                {key "default:source"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:source"}
+                {core:http_req_name "source"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A source, not further interpreted by the SKB."}
+
             row default:target
-                key = "default:target"
-                core:type = "value"
-                core:use = "core,request"
-                core:entries_name = "default:target"
-                core:http_req_name = "target"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = "A target, not further interpreted by the SKB."
-                ;
+                {key "default:target"}
+                {core:type "value"}
+                {core:use "core,request"}
+                {core:entries_name "default:target"}
+                {core:http_req_name "target"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description "A target, not further interpreted by the SKB."}
         }
 
         table pkg_rabit{
             row Core.Default.DB2Entries
-                key = "Core.Default.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_core__default___default___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+default"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = "The SKB's default reader, does read the table given in the request (all entries)."
-                ;
+                {key "Core.Default.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_core__default___default___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+default"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale "The SKB's default reader, does read the table given in the request (all entries)."}
+
             row Core.Default.Entries2Entries
-                key = "Core.Default.Entries2Entries"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_core__default___default___builder,java%org.skb.kb.targets.tgtjava.core.def.DefaultBuilder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+default"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = "The SKB's default builder, does nothing with the given entries."
-                ;
+                {key "Core.Default.Entries2Entries"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_core__default___default___builder,java%org.skb.kb.targets.tgtjava.core.def.DefaultBuilder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+default"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale "The SKB's default builder, does nothing with the given entries."}
         }
 
         table pkg_requests{
             row Core.Default
-                key = "Core.Default"
-                core:requests:fields = "request:active%plain,request:entry%plain"
-                core:requests:prefix = "def"
-                core:requests:formselect_fields = ""
-                core:requests:table = ""
-                core:requests:table_collections = ""
-                core:request:filter = ""
-                core:request:package = ""
-                core:description = "The default request of the SKB with very basic fields for processing simple information."
-                ;
+                {key "Core.Default"}
+                {core:requests:fields "request:active%plain,request:entry%plain"}
+                {core:requests:prefix "def"}
+                {core:requests:formselect_fields ""}
+                {core:requests:table ""}
+                {core:requests:table_collections ""}
+                {core:request:filter ""}
+                {core:request:package ""}
+                {core:description "The default request of the SKB with very basic fields for processing simple information."}
         }
     }
 #endif

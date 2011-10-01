@@ -40,16 +40,15 @@
     repository skb.core{
         table pkg_rabit{
             row Dist.FormSelect.DB2Entries
-                key = "Dist.FormSelect.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__formselect___formselect___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries"
-                core:rabit:mime_out = "x-skb/entries+formselect"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:publications,skb:gallery:fotos"
-                default:description_locale = ""
-                ;
+                {key "Dist.FormSelect.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__formselect___formselect___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries"}
+                {core:rabit:mime_out "x-skb/entries+formselect"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:publications,skb:gallery:fotos"}
+                {default:description_locale ""}
         }
     }
 #endif

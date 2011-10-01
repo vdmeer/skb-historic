@@ -40,332 +40,329 @@
     repository skb.core{
         table pkg_fields{
             row people:first
-                key = "people:first"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:first"
-                core:http_req_name = "first"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:first"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:first"}
+                {core:http_req_name "first"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:middle
-                key = "people:middle"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:middle"
-                core:http_req_name = "middle"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:middle"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:middle"}
+                {core:http_req_name "middle"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:last
-                key = "people:last"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:last"
-                core:http_req_name = "last"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:last"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:last"}
+                {core:http_req_name "last"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:affiliation_keys
-                key = "people:affiliation_keys"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:affiliation"
-                core:http_req_name = "affiliation"
-                core:default_db = "skb:affiliations"
-                core:explode = "1"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:affiliation_keys"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:affiliation"}
+                {core:http_req_name "affiliation"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "1"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:affiliation_key
-                key = "people:affiliation_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:affiliation"
-                core:http_req_name = "affiliation"
-                core:default_db = "skb:affiliations"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:affiliation_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:affiliation"}
+                {core:http_req_name "affiliation"}
+                {core:default_db "skb:affiliations"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:born_day
-                key = "people:born_day"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:born_day"
-                core:http_req_name = "born_day"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:born_day"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:born_day"}
+                {core:http_req_name "born_day"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:born_month_key
-                key = "people:born_month_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:born_month"
-                core:http_req_name = "born_month"
-                core:default_db = "skb:date:month"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:born_month_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:born_month"}
+                {core:http_req_name "born_month"}
+                {core:default_db "skb:date:month"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:born_year
-                key = "people:born_year"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:born_year"
-                core:http_req_name = "year"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:born_year"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:born_year"}
+                {core:http_req_name "year"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:born_city_key
-                key = "people:born_city_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:born_city"
-                core:http_req_name = "born_city"
-                core:default_db = "skb:geo:cities"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:born_city_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:born_city"}
+                {core:http_req_name "born_city"}
+                {core:default_db "skb:geo:cities"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:born_country_key
-                key = "people:born_country_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:born_country"
-                core:http_req_name = "born_country"
-                core:default_db = "skb:geo:countries"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:born_country_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:born_country"}
+                {core:http_req_name "born_country"}
+                {core:default_db "skb:geo:countries"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:died_day
-                key = "people:died_day"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:died_day"
-                core:http_req_name = "died_day"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:died_day"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:died_day"}
+                {core:http_req_name "died_day"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:died_year
-                key = "people:died_year"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:died_year"
-                core:http_req_name = "year"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:died_year"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:died_year"}
+                {core:http_req_name "year"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:died_month_key
-                key = "people:died_month_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:died_month"
-                core:http_req_name = "died_month"
-                core:default_db = "skb:date:month"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:died_month_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:died_month"}
+                {core:http_req_name "died_month"}
+                {core:default_db "skb:date:month"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:died_city_key
-                key = "people:died_city_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:died_city"
-                core:http_req_name = "died_city"
-                core:default_db = "skb:geo:cities"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:died_city_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:died_city"}
+                {core:http_req_name "died_city"}
+                {core:default_db "skb:geo:cities"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:died_country_key
-                key = "people:died_country_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "people:died_country"
-                core:http_req_name = "died_country"
-                core:default_db = "skb:geo:countries"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:died_country_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "people:died_country"}
+                {core:http_req_name "died_country"}
+                {core:default_db "skb:geo:countries"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row people:name
-                key = "people:name"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "people:name"
-                core:http_req_name = "name"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "people:name"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "people:name"}
+                {core:http_req_name "name"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
         }
 
         table pkg_rabit{
             row Dist.People.Interpreter.String
-                key = "Dist.People.Interpreter.String"
-                core:rabit:type = "interpreter:value"
-                core:rabit:target:class = "php%pkg_dist__people___string___interpreter"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = ""
-                core:rabit:mime_out = ""
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
-            row Dist.People.Interpreter.StringBibTeX
-                key = "Dist.People.Interpreter.StringBibTeX"
-                core:rabit:type = "interpreter:value"
-                core:rabit:target:class = "php%pkg_dist__people___string__bibtex___interpreter"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = ""
-                core:rabit:mime_out = ""
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
-            row Dist.People.Interpreter.Name
-                key = "Dist.People.Interpreter.Name"
-                core:rabit:type = "interpreter:entity"
-                core:rabit:target:class = "php%pkg_dist__people___name___interpreter"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = ""
-                core:rabit:mime_out = ""
-                core:rabit:css = ""
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
-            row Dist.People.DB2Entries
-                key = "Dist.People.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__people___people___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+people"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
-            row Dist.People.Entries2XHTML-Table
-                key = "Dist.People.Entries2XHTML-Table"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__people___application__xhtml__table___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+people"
-                core:rabit:mime_out = "x-skb/entries+people"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
-            row Dist.People.Entries2XHTML-Table:Template
-                key = "Dist.People.Entries2XHTML-Table:Template"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/people/application--xhtml+table"
-                core:rabit:mime_in = "x-skb/entries+people"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = "dist/table-widegrey"
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
-        }
+                {key "Dist.People.Interpreter.String"}
+                {core:rabit:type "interpreter:value"}
+                {core:rabit:target:class "php%pkg_dist__people___string___interpreter"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in ""}
+                {core:rabit:mime_out ""}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
 
+            row Dist.People.Interpreter.StringBibTeX
+                {key "Dist.People.Interpreter.StringBibTeX"}
+                {core:rabit:type "interpreter:value"}
+                {core:rabit:target:class "php%pkg_dist__people___string__bibtex___interpreter"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in ""}
+                {core:rabit:mime_out ""}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
+            row Dist.People.Interpreter.Name
+                {key "Dist.People.Interpreter.Name"}
+                {core:rabit:type "interpreter:entity"}
+                {core:rabit:target:class "php%pkg_dist__people___name___interpreter"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in ""}
+                {core:rabit:mime_out ""}
+                {core:rabit:css ""}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+
+            row Dist.People.DB2Entries
+                {key "Dist.People.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__people___people___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+people"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
+            row Dist.People.Entries2XHTML-Table
+                {key "Dist.People.Entries2XHTML-Table"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__people___application__xhtml__table___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+people"}
+                {core:rabit:mime_out "x-skb/entries+people"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
+            row Dist.People.Entries2XHTML-Table:Template
+                {key "Dist.People.Entries2XHTML-Table:Template"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/people/application--xhtml+table"}
+                {core:rabit:mime_in "x-skb/entries+people"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css "dist/table-widegrey"}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
+        }
     }
 #endif
 #define "DIST_PEOPLE_REPO"

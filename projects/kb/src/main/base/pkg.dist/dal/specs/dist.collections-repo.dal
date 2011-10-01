@@ -40,38 +40,37 @@
     repository skb.core{
         table pkg_rabit{
             row Dist.Collections.Entries2XHTML-Table
-                key = "Dist.Collections.Entries2XHTML-Table"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__collections___application__xhtml__table___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+collections"
-                core:rabit:mime_out = "x-skb/entries+collections"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Dist.Collections.Entries2XHTML-Table"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__collections___application__xhtml__table___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+collections"}
+                {core:rabit:mime_out "x-skb/entries+collections"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
             row Dist.Collections.DB2Entries
-                key = "Dist.Collections.DB2Entries"
-                core:rabit:type = "reader"
-                core:rabit:target:class = "php%pkg_dist__collections___collections___reader"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/db"
-                core:rabit:mime_out = "x-skb/entries+collections"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Dist.Collections.DB2Entries"}
+                {core:rabit:type "reader"}
+                {core:rabit:target:class "php%pkg_dist__collections___collections___reader"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/db"}
+                {core:rabit:mime_out "x-skb/entries+collections"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
             row Dist.Collections.Entries2XHTML-Table:Template
-                key = "Dist.Collections.Entries2XHTML-Table:Template"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/collections/application--xhtml+table"
-                core:rabit:mime_in = "x-skb/entries+collections"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = "dist/gallery/table-gallery-list"
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Collections.Entries2XHTML-Table:Template"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/collections/application--xhtml+table"}
+                {core:rabit:mime_in "x-skb/entries+collections"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css "dist/gallery/table-gallery-list"}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
         }
     }
 #endif

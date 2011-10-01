@@ -222,14 +222,9 @@ dalPackageRepositoryTable     : DAL_TABLE id=IDENT
                                 -> ^(DAL_TABLE IDENT dalPackageRepositoryRow*);
 dalPackageRepositoryRow       : DAL_ROW id=IDENT
                                 {this.pass.putAtom(id,DalConstants.Tokens.dalROW);}
-                                dalPackageRepositoryRowKV* ';'
+                                dalKV*
                                 {this.pass.atoms.scope.pop();}
-                                -> ^(DAL_ROW IDENT dalPackageRepositoryRowKV*);
-dalPackageRepositoryRowKV     : id=IDENT
-                                {this.pass.putAtom(id,DalConstants.Tokens.dalFIELD);}
-                                '=' const_value*
-                                {this.pass.atoms.scope.pop();}
-                                -> ^(DAL_ROW IDENT const_value*);
+                                -> ^(DAL_ROW IDENT dalKV*);
 
 dalActions                   : DAL_ACTIONS
                                id=dalActionsID

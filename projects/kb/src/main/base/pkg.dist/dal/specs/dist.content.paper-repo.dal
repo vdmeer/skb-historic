@@ -40,41 +40,39 @@
     repository skb.core{
         table pkg_rabit{
             row Dist.Content.Paper.Entries2XHTML
-                key = "Dist.Content.Paper.Entries2XHTML"
-                core:rabit:type = "builder"
-                core:rabit:target:class = "php%pkg_dist__content__paper___application__xhtml___builder"
-                core:rabit:target:template = ""
-                core:rabit:mime_in = "x-skb/entries+content"
-                core:rabit:mime_out = "x-skb/entries+content-paper"
-                core:rabit:css = ""
-                core:rabit:requests = "skb:default"
-                default:description_locale = ""
-                ;
+                {key "Dist.Content.Paper.Entries2XHTML"}
+                {core:rabit:type "builder"}
+                {core:rabit:target:class "php%pkg_dist__content__paper___application__xhtml___builder"}
+                {core:rabit:target:template ""}
+                {core:rabit:mime_in "x-skb/entries+content"}
+                {core:rabit:mime_out "x-skb/entries+content-paper"}
+                {core:rabit:css ""}
+                {core:rabit:requests "skb:default"}
+                {default:description_locale ""}
+
             row Dist.Content.Paper.Entries2XHTML:Template
-                key = "Dist.Content.Paper.Entries2XHTML:Template"
-                core:rabit:type = "template"
-                core:rabit:target:class = ""
-                core:rabit:target:template = "php%dist/content/paper/application--xhtml"
-                core:rabit:mime_in = "x-skb/entries+content-paper"
-                core:rabit:mime_out = "application/xhtml+xml"
-                core:rabit:css = "dist/content/paper/div-paper,dist/gallery/div-img-frame,dist/gallery/div-img-shadow"
-                core:rabit:requests = ""
-                default:description_locale = ""
-                ;
+                {key "Dist.Content.Paper.Entries2XHTML:Template"}
+                {core:rabit:type "template"}
+                {core:rabit:target:class ""}
+                {core:rabit:target:template "php%dist/content/paper/application--xhtml"}
+                {core:rabit:mime_in "x-skb/entries+content-paper"}
+                {core:rabit:mime_out "application/xhtml+xml"}
+                {core:rabit:css "dist/content/paper/div-paper,dist/gallery/div-img-frame,dist/gallery/div-img-shadow"}
+                {core:rabit:requests ""}
+                {default:description_locale ""}
         }
 
         table pkg_requests{
             row Dist.Content.Paper
-                key = "Dist.Content.Paper"
-                core:requests:fields = "request:active%plain,request:collection%http,request:part%http,request:entry%http,publications:title%plain,publications:subtitle%plain,request:request%plain"
-                core:requests:prefix = "_cp"
-                core:requests:formselect_fields = ""
-                core:requests:table = "skb:content:papers"
-                core:requests:table_collections = "skb:content:papers:collections"
-                core:request:filter = ""
-                core:request:package = ""
-                core:description = ""
-                ;
+                {key "Dist.Content.Paper"}
+                {core:requests:fields "request:active%plain,request:collection%http,request:part%http,request:entry%http,publications:title%plain,publications:subtitle%plain,request:request%plain"}
+                {core:requests:prefix "_cp"}
+                {core:requests:formselect_fields ""}
+                {core:requests:table "skb:content:papers"}
+                {core:requests:table_collections "skb:content:papers:collections"}
+                {core:request:filter ""}
+                {core:request:package ""}
+                {core:description ""}
         }
     }
 #endif

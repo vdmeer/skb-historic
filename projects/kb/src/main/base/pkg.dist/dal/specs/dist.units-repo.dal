@@ -40,373 +40,373 @@
     repository skb.core{
         table pkg_fields{
             row units:symbol
-                key = "units:symbol"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:symbol"
-                core:http_req_name = "symbol"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:symbol"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:symbol"}
+                {core:http_req_name "symbol"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:definition
-                key = "units:definition"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:definition"
-                core:http_req_name = "definition"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:definition"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:definition"}
+                {core:http_req_name "definition"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:rel_to_si
-                key = "units:rel_to_si"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:rel_to_si"
-                core:http_req_name = "rel_to_si"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:rel_to_si"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:rel_to_si"}
+                {core:http_req_name "rel_to_si"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:defined_in
-                key = "units:defined_in"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:defined_in"
-                core:http_req_name = "defined_in"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:defined_in"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:defined_in"}
+                {core:http_req_name "defined_in"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:quantity_key
-                key = "units:quantity_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "units:quantity"
-                core:http_req_name = "quantity"
-                core:default_db = "units_quantity"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:quantity_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "units:quantity"}
+                {core:http_req_name "quantity"}
+                {core:default_db "units_quantity"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:historic
-                key = "units:historic"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:historic"
-                core:http_req_name = "historic"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:historic"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:historic"}
+                {core:http_req_name "historic"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:prefix_key
-                key = "units:prefix_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "units:prefix"
-                core:http_req_name = "prefix"
-                core:default_db = "units_si_prefix"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:prefix_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "units:prefix"}
+                {core:http_req_name "prefix"}
+                {core:default_db "units_si_prefix"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:prefix
-                key = "units:prefix"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:prefix"
-                core:http_req_name = "prefix"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:prefix"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:prefix"}
+                {core:http_req_name "prefix"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:1000m
-                key = "units:1000m"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:1000m"
-                core:http_req_name = "1000m"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:1000m"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:1000m"}
+                {core:http_req_name "1000m"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:10n
-                key = "units:10n"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:10n"
-                core:http_req_name = "10n"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:10n"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:10n"}
+                {core:http_req_name "10n"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:decimal
-                key = "units:decimal"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:decimal"
-                core:http_req_name = "decimal"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:decimal"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:decimal"}
+                {core:http_req_name "decimal"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:scale_locale
-                key = "units:scale_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:scale"
-                core:http_req_name = "scale"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:scale_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:scale"}
+                {core:http_req_name "scale"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:scale:short_locale
-                key = "units:scale:short_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:scale:short"
-                core:http_req_name = "scale_short"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:scale:short_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:scale:short"}
+                {core:http_req_name "scale_short"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:scale:long_locale
-                key = "units:scale:long_locale"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:scale:long"
-                core:http_req_name = "scale_long"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:scale:long_locale"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:scale:long"}
+                {core:http_req_name "scale_long"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:base:2
-                key = "units:base:2"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:base:2"
-                core:http_req_name = "base2"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:base:2"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:base:2"}
+                {core:http_req_name "base2"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:base:1024
-                key = "units:base:1024"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:base:1024"
-                core:http_req_name = "base1024"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:base:1024"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:base:1024"}
+                {core:http_req_name "base1024"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:value
-                key = "units:value"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:value"
-                core:http_req_name = "value"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:value"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:value"}
+                {core:http_req_name "value"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:base:10
-                key = "units:base:10"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:base:10"
-                core:http_req_name = "base10"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:base:10"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:base:10"}
+                {core:http_req_name "base10"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:bin_dec
-                key = "units:bin_dec"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:bin_dec"
-                core:http_req_name = "bin_dec"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:bin_dec"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:bin_dec"}
+                {core:http_req_name "bin_dec"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:dec_bin
-                key = "units:dec_bin"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:dec_bin"
-                core:http_req_name = "dec_bin"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:dec_bin"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:dec_bin"}
+                {core:http_req_name "dec_bin"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:perc_dif
-                key = "units:perc_dif"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:perc_dif"
-                core:http_req_name = "perc_dif"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:perc_dif"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:perc_dif"}
+                {core:http_req_name "perc_dif"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:custom_prefix_key
-                key = "units:custom_prefix_key"
-                core:type = "entity"
-                core:use = "core"
-                core:entries_name = "units:custom_prefix"
-                core:http_req_name = "customprefix"
-                core:default_db = "units_si_prefix"
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:custom_prefix_key"}
+                {core:type "entity"}
+                {core:use "core"}
+                {core:entries_name "units:custom_prefix"}
+                {core:http_req_name "customprefix"}
+                {core:default_db "units_si_prefix"}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
             row units:custom_symbol
-                key = "units:custom_symbol"
-                core:type = "value"
-                core:use = "core"
-                core:entries_name = "units:custom_symbol"
-                core:http_req_name = "customsymbol"
-                core:default_db = ""
-                core:explode = "0"
-                core:interpreter = ""
-                core:val_unset = "null"
-                core:isval = ""
-                core:isval_if = ""
-                core:isval_else = ""
-                core:val_do_list = ""
-                core:description = ""
-                ;
+                {key "units:custom_symbol"}
+                {core:type "value"}
+                {core:use "core"}
+                {core:entries_name "units:custom_symbol"}
+                {core:http_req_name "customsymbol"}
+                {core:default_db ""}
+                {core:explode "0"}
+                {core:interpreter ""}
+                {core:val_unset "null"}
+                {core:isval ""}
+                {core:isval_if ""}
+                {core:isval_else ""}
+                {core:val_do_list ""}
+                {core:description ""}
+
         }
     }
 #endif
