@@ -431,7 +431,7 @@
                 "dalREPOSITORY":{
                     "skb:util:constant:ident":"dalREPOSITORY",
                     "skb:util:constant:value":"repository",
-                    "skb:lang:target:token:ident":"DA_REPOSITORY",
+                    "skb:lang:target:token:ident":"DAL_REPOSITORY",
                     "skb:lang:target:token:translate":"keyword 'repository'",
                     "skb:util:constant:javadoc":"Repository Keyword"
                 },

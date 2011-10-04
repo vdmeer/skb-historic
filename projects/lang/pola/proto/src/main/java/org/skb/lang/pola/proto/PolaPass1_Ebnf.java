@@ -60,5 +60,7 @@ public class PolaPass1_Ebnf {
 		this.atoms.addRow(PolaConstants.Tokens.polaSPECIFICATION);
 		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, TSAtomList.alValCategory, PolaConstants.Tokens.polaVOID);
 		this.atoms.put(PolaConstants.Tokens.polaSPECIFICATION, TSAtomList.alValType, PolaConstants.Tokens.polaVOID);
+
+		this.atoms.setReportMgt(config.getReportManager());
 	}
 }

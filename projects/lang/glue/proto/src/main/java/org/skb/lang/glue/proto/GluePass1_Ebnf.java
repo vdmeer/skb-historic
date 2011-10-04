@@ -31,6 +31,7 @@
 package org.skb.lang.glue.proto;
 
 import org.apache.log4j.Logger;
+import org.skb.util.classic.config.Configuration;
 
 /**
  * Pass 1 of the Glue parser doing syntactical checks and building symbol table.
@@ -41,4 +42,11 @@ import org.apache.log4j.Logger;
 public class GluePass1_Ebnf {
 	/** Logger instance */
 	static Logger logger = Logger.getLogger(GluePass1_Ebnf.class);
+
+	/** Configuration instance */
+	public static Configuration config=Configuration.getConfiguration(GlueParser.class);
+
+	public GluePass1_Ebnf(){
+		config.getAtomlist().setReportMgt(config.getReportManager());
+	}
 }

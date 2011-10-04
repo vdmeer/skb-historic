@@ -118,8 +118,9 @@ public class ColaPass1_Ebnf {
 		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, TSAtomList.alValType, ColaConstants.Tokens.colaVOID);
 
 		this.atoms.setDefaultCategory(ColaConstants.Tokens.colaDEFINITION);
-
+		
 		this.reportManager=config.getReportManager();
+		this.atoms.setReportMgt(this.reportManager);
 	}
 
 	/**

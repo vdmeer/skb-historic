@@ -169,7 +169,8 @@ colaElement             : ^(ELEMENT s=IDENT {this.pass.atoms.scope.push(s.token)
                              atVisibility?
                              {this.pass.eprStart(ColaConstants.Tokens.colaELEMENT);} aExtends? aProvides? aRequires?
                              elementBody*
-                          ) {this.pass.atoms.scope.pop();};
+                          )
+                          {this.pass.atoms.scope.pop();};
 elementBody             : elementContains | colaAttribute | colaAction | inline_code;
 elementContains         : ^(AT_CONTAINS s=IDENT {this.pass.atoms.scope.push(s.token);} scoped_name {this.pass.testSN(ColaConstants.Tokens.colaELEMENT, ColaConstants.Tokens.colaAT_CONTAINS);} {this.pass.atoms.scope.pop();});
 
