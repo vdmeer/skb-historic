@@ -1,0 +1,467 @@
+//
+// [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
+// Copyright (c) 2010-2011, Sven van der Meer <sven@vandermeer.de>
+// All rights reserved.
+//
+// Redistribution  and  use  in  source  and  binary  forms,  with  or  without
+// modification, are permitted provided that the following conditions are met:
+// 
+//     + Redistributions of source code must retain the above copyright notice,
+//       this list of conditions and the following disclaimer.
+//     + Redistributions  in binary  form must  reproduce the  above copyright
+//       notice, this list  of conditions and  the following disclaimer  in the
+//       documentation and/or other materials provided with the distribution.
+//     + Neither the name of the the author nor the names of its contributors
+//       may be used to endorse or promote products derived from this software
+//       without specific prior written permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS  IS"
+// AND ANY EXPRESS  OR IMPLIED WARRANTIES,  INCLUDING, BUT NOT  LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY  AND FITNESS FOR A  PARTICULAR PURPOSE
+// ARE DISCLAIMED. IN  NO EVENT SHALL  THE COPYRIGHT HOLDER  OR CONTRIBUTORS BE
+// LIABLE  FOR  ANY  DIRECT,  INDIRECT,  INCIDENTAL,  SPECIAL,  EXEMPLARY,   OR
+// CONSEQUENTIAL  DAMAGES  (INCLUDING,  BUT  NOT  LIMITED  TO,  PROCUREMENT  OF
+// SUBSTITUTE GOODS  OR SERVICES;  LOSS OF  USE, DATA,  OR PROFITS; OR BUSINESS
+// INTERRUPTION) HOWEVER  CAUSED AND  ON ANY  THEORY OF  LIABILITY, WHETHER  IN
+// CONTRACT,  STRICT LIABILITY,  OR TORT  (INCLUDING NEGLIGENCE  OR OTHERWISE)
+// ARISING IN ANY WAY OUT OF THE  USE OF THIS SOFTWARE, EVEN IF ADVISED  OF THE
+// POSSIBILITY OF SUCH DAMAGE.
+//
+
+//
+// Configuration file for the Org.SKB.Lang.Mess
+//
+// @package    org.skb.lang.mess
+// @author     Sven van der Meer <sven@vandermeer.de>
+// @copyright  2011-2011 Sven van der Meer
+// @license    http://www.opensource.org/licenses/bsd-license.php  BSD License
+// @version    v0.30 build 110309 (09-Mar-11)
+//
+
+{
+    "skb":{
+        "tribe":{
+            "configuration":{
+                "skb.application.name":{
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"MESS"
+                },
+                "skb.application.copyright":{
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"Copyright (c) 2011-2011 Sven van der Meer <sven@vandermeer.de>"
+                },
+                "skb.application.version":{
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"0.01"
+                },
+                "skb.application.build":{
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"110309"
+                },
+                "skb.application.builddate":{
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"2011-Mar-09"
+                },
+                "skb.application.generic-stg":{
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/mess\/proto\/stg\/codegen\/internal\/generic.stg"
+                }
+            }
+        },
+        "lang":{
+            "configuration":{
+                "mess":{
+                    "skb:util:constant:ident":"internalMessTgtMess",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target MESS"
+                },
+                "java":{
+                    "skb:util:constant:ident":"internalMessTgtJava",
+                    "skb:util:constant:javadoc":"Constant to test internally for the target JAVA"
+                },
+                "internal-scope-sep":{
+                    "skb:util:constant:ident":"keyScopeSep",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":" --> ",
+                    "skb:util:constant:javadoc":"Internal scope separator"
+                },
+                "tgt-split-code":{
+                    "skb:util:constant:ident":"keyTgtSplitCode",
+                    "skb:value:type":"ts:atomic:java:boolean",
+                    "skb:value:default":false,
+                    "skb:util:cli:option:long":"tgt-split-code",
+                    "skb:util:cli:option:type":"ts:atomic:java:boolean",
+                    "skb:util:cli:descr:short":"Split code (i.e. packages in directories, elements and facilities in files)",
+                    "skb:util:constant:javadoc":"Split code (i.e. packages in directories, elements and facilities in files)"
+                }
+            },
+            "targets":{
+                "mess":{
+                    "skb.clioption.tgt-stg":{
+                            "skb:value:default":"\/org\/skb\/lang\/mess\/proto\/stg\/codegen\/targets\/mess.stg"
+                    },
+                    "skb.clioption.tgt-fileext":{
+                            "skb:value:default":".mess"
+                    },
+                    "skb.clioption.gc-scope-sep":{
+                            "skb:value:default":"::"
+                    },
+                    "skb:lang:target:config:cli":{
+                        "tgt-split-code":{
+                            "skb:value:default":false
+                        }
+                    }
+                },
+                "java":{
+                    "skb.clioption.tgt-stg":{
+                            "skb:value:default":"\/org\/skb\/lang\/mess\/proto\/stg\/codegen\/targets\/java.stg"
+                    },
+                    "skb.clioption.tgt-fileext":{
+                            "skb:value:default":".java"
+                    },
+                    "skb.clioption.gc-scope-sep":{
+                            "skb:value:default":"."
+                    },
+                    "skb:lang:target:config:cli":{
+                        "tgt-split-code":{
+                            "skb:value:default":true
+                        },
+                        "tgt-domain-pkg":{
+                            "skb:util:constant:ident":"keyTgtDomainPkg",
+                            "skb:value:type":"ts:atomic:java:string",
+                            "skb:value:default":"org.skb.lang.mess.domains",
+                            "skb:util:cli:option:long":"tgt-domain-pkg",
+                            "skb:util:cli:option:type":"ts:atomic:java:string",
+                            "skb:util:cli:descr:short":"Domain package name for code generation",
+                            "skb:util:constant:javadoc":"Domain package name for code generation"
+                        },
+                        "tgt-runtime-pkg":{
+                            "skb:util:constant:ident":"keyTgtRuntimePkg",
+                            "skb:value:type":"ts:atomic:java:string",
+                            "skb:value:default":"org.skb.lang.mess.runtime",
+                            "skb:util:cli:option:long":"tgt-runtime-pkg",
+                            "skb:util:cli:option:type":"ts:atomic:java:string",
+                            "skb:util:cli:descr:short":"Runtime package name for code generation",
+                            "skb:util:constant:javadoc":"Runtime package name for code generation"
+                        },
+
+                        "tgt-runtime-api":{
+                            "skb:util:constant:ident":"keyTgtRuntimeAPI",
+                            "skb:value:type":"ts:atomic:java:string",
+                            "skb:value:default":"MessMessageTS_API",
+                            "skb:util:cli:option:long":"tgt-runtime-api",
+                            "skb:util:cli:option:type":"ts:atomic:java:string",
+                            "skb:util:cli:descr:short":"Runtime interface (API) name for code generation",
+                            "skb:util:constant:javadoc":"Runtime interface (API) name for code generation"
+                        },
+                        "tgt-runtime-impl":{
+                            "skb:util:constant:ident":"keyTgtRuntimeImpl",
+                            "skb:value:type":"ts:atomic:java:string",
+                            "skb:value:default":"MessMessageTS",
+                            "skb:util:cli:option:long":"tgt-runtime-impl",
+                            "skb:util:cli:option:type":"ts:atomic:java:string",
+                            "skb:util:cli:descr:short":"Runtime class (Impl) name for code generation",
+                            "skb:util:constant:javadoc":"Runtime class (Impl) name for code generation"
+                        }
+                    }
+                }
+            },
+
+            "stgchunks":{
+                "mlcomment_start":{
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "mlcomment_end":{
+                    "skb:stringtemplate:chunks:mandatory": ["dummy"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "slcomment":{
+                    "skb:stringtemplate:chunks:mandatory": ["comment"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+
+                "messSpecification":{
+                    "skb:stringtemplate:chunks:mandatory": ["body"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messDomain":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messContentType":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "mime_ct", "value"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messField":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "mime", "value"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessage":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "extends", "fieldDeclarations", "fieldDefinitions"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessageChangeDecl":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "value"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessageRequiresDecl":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "value", "immutable"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessageOptionalDecl":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "value", "immutable"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessageChangeDef":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "value"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessageRequiresDef":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "value", "immutable"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessageOptionalDef":{
+                    "skb:stringtemplate:chunks:mandatory": ["ident", "value", "immutable"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+
+                "messMessageRuntimeAPI":{
+                    "skb:stringtemplate:chunks:mandatory": [],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+                "messMessageRuntimeImplementation":{
+                    "skb:stringtemplate:chunks:mandatory": [],
+                    "skb:stringtemplate:chunks:optional":  []
+                }
+            },
+
+            "tokens":{
+                // for parser
+                "parserIDENTIFIER":{
+                    "skb:util:constant:ident":"parserIDENTIFIER",
+                    "skb:util:constant:value":"identifier",
+                    "skb:util:constant:javadoc":"Parser - identifier"
+                },
+                "parserScopeSep":{
+                    "skb:util:constant:ident":"parserScopeSep",
+                    "skb:util:constant:value":"::",
+                    "skb:util:constant:javadoc":"Parser - scope separator"
+                },
+
+                // MESS Keywords -> MESS Specific
+                "messCONTENT_TYPE":{
+                    "skb:util:constant:ident":"messCONTENT_TYPE",
+                    "skb:util:constant:value":"content-type",
+                    "skb:lang:target:token:ident":"MESS_CONTENT_TYPE",
+                    "skb:lang:target:token:translate":"keyword 'content-type'",
+                    "skb:util:constant:javadoc":"Content-Type Keyword"
+                },
+                "messDOMAIN":{
+                    "skb:util:constant:ident":"messDOMAIN",
+                    "skb:util:constant:value":"domain",
+                    "skb:lang:target:token:ident":"MESS_DOMAIN",
+                    "skb:lang:target:token:translate":"keyword 'domain'",
+                    "skb:util:constant:javadoc":"Domain Keyword"
+                },
+                "messEXTENDS":{
+                    "skb:util:constant:ident":"messEXTENDS",
+                    "skb:util:constant:value":"extends",
+                    "skb:lang:target:token:ident":"MESS_EXTENDS",
+                    "skb:lang:target:token:translate":"keyword 'extends'",
+                    "skb:util:constant:javadoc":"Extends Keyword"
+                },
+                "messFIELD":{
+                    "skb:util:constant:ident":"messFIELD",
+                    "skb:util:constant:value":"field",
+                    "skb:lang:target:token:ident":"MESS_FIELD",
+                    "skb:lang:target:token:translate":"keyword 'field'",
+                    "skb:util:constant:javadoc":"Field Keyword"
+                },
+                "messIMMUTABLE":{
+                    "skb:util:constant:ident":"messIMMUTABLE",
+                    "skb:util:constant:value":"immutable",
+                    "skb:lang:target:token:ident":"MESS_IMMUTABLE",
+                    "skb:lang:target:token:translate":"keyword 'immutable'",
+                    "skb:util:constant:javadoc":"Immutable Keyword"
+                },
+                "messMESSAGE":{
+                    "skb:util:constant:ident":"messMESSAGE",
+                    "skb:util:constant:value":"message",
+                    "skb:lang:target:token:ident":"MESS_MESSAGE",
+                    "skb:lang:target:token:translate":"keyword 'message'",
+                    "skb:util:constant:javadoc":"Message Keyword"
+                },
+                "messCHANGE":{
+                    "skb:util:constant:ident":"messCHANGE",
+                    "skb:util:constant:value":"change",
+                    "skb:lang:target:token:ident":"MESS_CHANGE",
+                    "skb:lang:target:token:translate":"keyword 'change'",
+                    "skb:util:constant:javadoc":"Change Keyword"
+                },
+                "messOPTIONAL":{
+                    "skb:util:constant:ident":"messOPTIONAL",
+                    "skb:util:constant:value":"optional",
+                    "skb:lang:target:token:ident":"MESS_OPTIONAL",
+                    "skb:lang:target:token:translate":"keyword 'optional'",
+                    "skb:util:constant:javadoc":"Optional Keyword"
+                },
+                "messREQUIRES":{
+                    "skb:util:constant:ident":"messREQUIRES",
+                    "skb:util:constant:value":"requires",
+                    "skb:lang:target:token:ident":"MESS_REQUIRES",
+                    "skb:lang:target:token:translate":"keyword 'requires'",
+                    "skb:util:constant:javadoc":"Requires Keyword"
+                },
+                "messWITH":{
+                    "skb:util:constant:ident":"messWITH",
+                    "skb:util:constant:value":"with",
+                    "skb:lang:target:token:ident":"MESS_WITH",
+                    "skb:lang:target:token:translate":"keyword 'with'",
+                    "skb:util:constant:javadoc":"With Keyword"
+                },
+                "messAS":{
+                    "skb:util:constant:ident":"messAS",
+                    "skb:util:constant:value":"as",
+                    "skb:lang:target:token:ident":"MESS_AS",
+                    "skb:lang:target:token:translate":"keyword 'as'",
+                    "skb:util:constant:javadoc":"As Keyword"
+                },
+                "messIS":{
+                    "skb:util:constant:ident":"messIS",
+                    "skb:util:constant:value":"is",
+                    "skb:lang:target:token:ident":"MESS_IS",
+                    "skb:lang:target:token:translate":"keyword 'is'",
+                    "skb:util:constant:javadoc":"Is Keyword"
+                },
+                "messTO":{
+                    "skb:util:constant:ident":"messTO",
+                    "skb:util:constant:value":"to",
+                    "skb:lang:target:token:ident":"MESS_TO",
+                    "skb:lang:target:token:translate":"keyword 'to'",
+                    "skb:util:constant:javadoc":"To Keyword"
+                },
+
+                "messRUNTIME_API":{
+                    "skb:util:constant:ident":"messRUNTIME_API",
+                    "skb:util:constant:value":"runtime-api",
+                    "skb:lang:target:token:ident":"MESS_RUNTIME_API",
+                    "skb:lang:target:token:translate":"keyword 'runtime-api'",
+                    "skb:util:constant:javadoc":"Runtime-api Keyword"
+                },
+                "messRUNTIME_IMPL":{
+                    "skb:util:constant:ident":"messRUNTIME_IMPL",
+                    "skb:util:constant:value":"runtime-impl",
+                    "skb:lang:target:token:ident":"MESS_RUNTIME_IMPL",
+                    "skb:lang:target:token:translate":"keywotd 'runtime-impl'",
+                    "skb:util:constant:javadoc":"Runtime-impl Keyword"
+                },
+
+                // MESS Keywords -> @@@
+                "messAT_SPEC":{
+                    "skb:util:constant:ident":"messAT_SPEC",
+                    "skb:util:constant:value":"@spec",
+                    "skb:lang:target:token:ident":"AT_SPEC",
+                    "skb:lang:target:token:translate":"an @ keyword '@spec'",
+                    "skb:util:constant:javadoc":"Constant for &#64;Spec"
+                },
+
+                //for lexer to print proper error messages
+                "messCPP_DIRECTIVE":{
+                    "skb:util:constant:ident":"messCPP_DIRECTIVE",
+                    "skb:util:constant:value":"preprocessor directive",
+                    "skb:lang:target:token:ident":"CPP_DIRECTIVE",
+                    "skb:lang:target:token:translate":"preprocessor directive",
+                    "skb:util:constant:javadoc":"CPP Directive"
+                },
+                "messESC":{
+                    "skb:util:constant:ident":"messESC",
+                    "skb:util:constant:value":"escape sequence",
+                    "skb:lang:target:token:ident":"ESC",
+                    "skb:lang:target:token:translate":"escape sequence",
+                    "skb:util:constant:javadoc":"Escape Sequence"
+                },
+                "messHexDigit":{
+                    "skb:util:constant:ident":"messHexDigit",
+                    "skb:util:constant:value":"hexadecimal digit",
+                    "skb:lang:target:token:ident":"HexDigit",
+                    "skb:lang:target:token:translate":"hexadecimal digit",
+                    "skb:util:constant:javadoc":"Hex Digit"
+                },
+                "messIDENT":{
+                    "skb:util:constant:ident":"messIDENT",
+                    "skb:util:constant:value":"identifier",
+                    "skb:lang:target:token:ident":"IDENT",
+                    "skb:lang:target:token:translate":"an identifier",
+                    "skb:util:constant:javadoc":"Identifier"
+                },
+                "messMIME":{
+                    "skb:util:constant:ident":"messMIME",
+                    "skb:util:constant:value":"mime content type",
+                    "skb:lang:target:token:ident":"MIME",
+                    "skb:lang:target:token:translate":"a mime content type",
+                    "skb:util:constant:javadoc":"Mime Content Type"
+                },
+                "messML_COMMENT":{
+                    "skb:util:constant:ident":"messML_COMMENT",
+                    "skb:util:constant:value":"multiple line comment",
+                    "skb:lang:target:token:ident":"ML_COMMENT",
+                    "skb:lang:target:token:translate":"multiple line comment",
+                    "skb:util:constant:javadoc":"Multiline Comment"
+                },
+                "messOctalEscape":{
+                    "skb:util:constant:ident":"messOctalEscape",
+                    "skb:util:constant:value":"octal escape sequence",
+                    "skb:lang:target:token:ident":"OctalEscape",
+                    "skb:lang:target:token:translate":"octal escape sequence",
+                    "skb:util:constant:javadoc":"Octal Escape"
+                },
+                "messSL_COMMENT":{
+                    "skb:util:constant:ident":"messSL_COMMENT",
+                    "skb:util:constant:value":"single line comment",
+                    "skb:lang:target:token:ident":"SL_COMMENT",
+                    "skb:lang:target:token:translate":"single line comment",
+                    "skb:util:constant:javadoc":"Single Line Comment"
+                },
+                "messUnicodeEscape":{
+                    "skb:util:constant:ident":"messUnicodeEscape",
+                    "skb:util:constant:value":"unicode escape sequence",
+                    "skb:lang:target:token:ident":"UnicodeEscape",
+                    "skb:lang:target:token:translate":"unicode escape sequence",
+                    "skb:util:constant:javadoc":"Unicode Escape"
+                },
+                "messVAL_HEX":{
+                    "skb:util:constant:ident":"messVAL_HEX",
+                    "skb:util:constant:value":"hexadecimal value",
+                    "skb:lang:target:token:ident":"VAL_HEX",
+                    "skb:lang:target:token:translate":"hexadecimal value",
+                    "skb:util:constant:javadoc":"Hex value"
+                },
+                "messVAL_STRING":{
+                    "skb:util:constant:ident":"messVAL_STRING",
+                    "skb:util:constant:value":"string value",
+                    "skb:lang:target:token:ident":"VAL_STRING",
+                    "skb:lang:target:token:translate":"string value",
+                    "skb:util:constant:javadoc":"String value"
+                },
+                "messWS":{
+                    "skb:util:constant:ident":"messWS",
+                    "skb:util:constant:value":"whitespace",
+                    "skb:lang:target:token:ident":"WS",
+                    "skb:lang:target:token:translate":"whitespace",
+                    "skb:util:constant:javadoc":"Whitespace"
+                }
+            },
+
+            "rules":{
+                "identifier:01":{
+                    "skb:util:constant:ident":"ruleIdentifier06",
+                    "skb:lang:parser:rules:message":"#### used more than once",
+                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
+                    "skb:lang:parser:rules:message:insert:path":"parserIDENTIFIER",
+                    "skb:lang:target:rules:message:add:insert:path":"colaCONTRACT",
+                    "skb:util:constant:javadoc":"Rule for identifier #06"
+                }                
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+domain is Rina
+
+content-type MIME1 x-message/bla+foo "test mime type number1, best used with strings"
+content-type MIME2 x-message/bla "test mime type number2, usually used with floats"
+content-type Mime3 x-message/bla "test mime type number2, usually used with floats"
+content-type Mime x-message/bla "test mime type number2, usually used with floats"
+
+field Sven1 as MIME1 with "my text"
+field Sven2 as MIME2 with "2.2"
+field Sven3 as Mime3 with "2.2"
+field MIME2 as Mime with "2.2"
+
+message RootM 
+	requires Sven1 with "new default" is immutable
+	optional Sven2 with "1.0"
+
+message InheritA extends RootM
+	change Sven1 to "super default"
+
+message Sven1 extends RootM
+	change Sven1 to "super default"
+	//change Sven2 to "2.0"
