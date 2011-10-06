@@ -197,7 +197,7 @@ public class LangParserImpl implements LangParserAPI {
 				FileTemplateList ftl=this.langParser.pass4Files();
 				ftl.init(this.prop.getValue(FieldKeys.fieldCliOptionTgtDir));
 
-				FileManager fm=new FileManager(this.tribeStgm.getSTG().getInstanceOf("std"), this.tribeStgm.getSTG().getInstanceOf("fileStart"), this.tribeStgm.getSTG().getInstanceOf("fileEnd"));
+				FileManager fm=new FileManager(this.tribeStgm.getSTG().getInstanceOf("std"), this.tribeStgm.getSTG().getInstanceOf("fileStart"), this.tribeStgm.getSTG().getInstanceOf("fileEnd"), this.tribeStgm.getSTG().getInstanceOf("fImport"));
 				fm.init(this.prop.getValue(FieldKeys.fieldCliOptionSrcLanguage),
 						this.prop.getValue(FieldKeys.fieldCliOptionSrcFile),
 						this.prop.getValue(FieldKeys.fieldCliOptionTgtLanguage),

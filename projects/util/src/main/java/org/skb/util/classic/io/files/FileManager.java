@@ -58,6 +58,9 @@ public class FileManager {
 	/** Header for code files, will prepend all other content */
 	private StringTemplate codeHeader=null;
 
+	/** StringTemplate for any imports */
+	private StringTemplate fImport=null;
+
 	/** StringTemplate for the start of a file, file header */
 	private StringTemplate fileStart=null;
 
@@ -80,21 +83,23 @@ public class FileManager {
 	private TSBoolean canPrint;
 
 	/**
-	 * Class constructor, requires code header, file start and file end paramters
+	 * Class constructor, requires code header, file start and file end parameters.
 	 * @param codeHeader the header to be added to each code file
 	 * @param fileStart a start text for files
 	 * @param fileEnd a final text for files
+	 * @param fImport imports for the file
 	 */
-	public FileManager(StringTemplate codeHeader, StringTemplate fileStart, StringTemplate fileEnd){
+	public FileManager(StringTemplate codeHeader, StringTemplate fileStart, StringTemplate fileEnd, StringTemplate fImport){
 		this.codeHeader=codeHeader;
 		this.fileStart=fileStart;
 		this.fileEnd=fileEnd;
+		this.fImport=fImport;
 
 		this.canPrint=new TSBoolean((false));
 	}
 
 	/**
-	 * Initialisation of the File Manager
+	 * Initialisation of the File Manager.
 	 * @param srcLang source language
 	 * @param srcFile source file name
 	 * @param tgtLang target language
@@ -118,7 +123,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Write the given file list
+	 * Writes the given file list.
 	 * @param list list of file names and associated templates
 	 * @return true if successful, false otherwise
 	 */
@@ -133,7 +138,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Write a single file
+	 * Writes a single file.
 	 * @param dir target directory
 	 * @param file target file name
 	 * @param fts template to be written
@@ -157,6 +162,7 @@ public class FileManager {
 			aout=new FileWriter(outputFile);
 			aout.write(this.stdFileStart());
 			aout.write(this.stdHeader(fts.getMisc()));
+			aout.write(this.fImport(fts.getImports()));
 			for (Iterator<StringTemplate> it=set.iterator(); it.hasNext(); ){
 				StringTemplate ao = it.next();
 				aout.write(ao.toString());
@@ -177,7 +183,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Return the current status of <canPrint>
+	 * Returns the current status of <canPrint>.
 	 * @return current print status
 	 */
 	public boolean canPrint(){
@@ -185,7 +191,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Return the standard header
+	 * Returns the standard header.
 	 * 
 	 * The standard header includes the source file, the source language, the target language and time and date information.
 	 * @param ms misc items to be added to the standard header
@@ -233,8 +239,29 @@ public class FileManager {
 		return ret;
 	}
 
+	private String fImport(LinkedHashSet<String> imports){
+		String ret="";
+		if(imports==null||imports.size()==0)
+			return ret;
+		if(this.targetLanguage==null){
+			logger.error("no target language set");
+		}
+		else if(this.fImport==null){
+			logger.error("no file fImport template set");
+		}
+		else{
+			this.fImport.reset();
+			TreeMap<String,String> target=new TreeMap<String, String>();
+			target.put(this.targetLanguage.toString(), this.targetLanguage.toString());
+			this.fImport.setAttribute("target", target);
+			this.fImport.setAttribute("import", imports);
+			ret=this.fImport.toString();
+		}
+		return ret;
+	}
+
 	/**
-	 * Compile and return the standard pre-text of a file
+	 * Compiles and returns the standard pre-text of a file.
 	 * @return text to be used as pre-text
 	 */
 	private String stdFileStart(){
@@ -256,7 +283,7 @@ public class FileManager {
 	}
 
 	/**
-	 * Compile and return the standard pre-text of a file
+	 * Compiles and returns the standard pre-text of a file.
 	 * @return text to be used as pre-text
 	 */
 	private String stdFileEnd(){

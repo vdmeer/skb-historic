@@ -141,6 +141,7 @@ public class Tribe {
 		Configuration parserConfig=this.parser.getConfiguration();
 		this.prop=parserConfig.getProperties();
 		this.repMgr=parserConfig.getReportManager();
+		this.setOptions(args);
 
 		//call phase 2, the actual parser related evaluation of parameters and the parsing
 		result=this.phase2_Parser();
@@ -388,8 +389,6 @@ public class Tribe {
 			return checkRet;
 		}
 
-        this.setOptions(args);
-
         logger.trace("finshed phase 1 -- tribe");
 		return new TSNull();
 	}
@@ -603,5 +602,4 @@ public class Tribe {
 			}
 		}
 	}
-
 }

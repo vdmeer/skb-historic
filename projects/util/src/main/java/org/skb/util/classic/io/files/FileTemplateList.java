@@ -90,7 +90,7 @@ public class FileTemplateList {
 	}
 
 	/**
-	 * Return the current size of the tempalte list
+	 * Return the current size of the template list
 	 * @return size of the template list
 	 */
 	public int size(){
