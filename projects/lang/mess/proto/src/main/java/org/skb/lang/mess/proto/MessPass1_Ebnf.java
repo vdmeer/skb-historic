@@ -65,7 +65,7 @@ public class MessPass1_Ebnf {
 		this.atoms.put(MessConstants.Tokens.messAT_SPEC, TSAtomList.alValCategory, MessConstants.Tokens.messAT_SPEC);
 		this.atoms.put(MessConstants.Tokens.messAT_SPEC, TSAtomList.alValType, MessConstants.Tokens.messAT_SPEC);
 
-		this.atoms.setReportMgt(config.getReportManager());
+		this.atoms.setReportMgr(config.getReportManager());
 	}
 
 	/**

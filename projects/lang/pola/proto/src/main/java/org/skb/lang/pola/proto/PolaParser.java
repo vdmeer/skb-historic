@@ -132,4 +132,10 @@ public class PolaParser implements TribeParserAPI {
 	public String getOptionKeyword() {
 		return "key";
 	}
+
+	@Override
+	public String getParserRuleSTGFileName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

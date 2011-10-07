@@ -69,7 +69,7 @@ public class DalPass2_Ast {
 	public void testAtom(Token tk){
 		this.atoms.scope.push(tk);
 		String atomScope=this.atoms.scope.toString();
-		String scopeSep=this.atoms.scope.separator();
+		String scopeSep=this.atoms.scope.getSeparator();
 		LinkedHashMap<String,String> path=this.buildPathList(atomScope, scopeSep);
 		ArrayList<String> keys=new ArrayList<String>(path.keySet());
 		int pathSize=StringUtils.split(atomScope, scopeSep).length;

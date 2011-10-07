@@ -84,7 +84,7 @@ public class MessPass2_Ast {
 		if(type!=null){
 			String id=ident.getText();
 			String idType=type.getText();
-			String scSep=this.atoms.scope.separator();
+			String scSep=this.atoms.scope.getSeparator();
 
 			if(idType.equals(MessConstants.Tokens.messFIELD)){
 				//test MIME idents in fields against content types

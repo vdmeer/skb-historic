@@ -39,7 +39,7 @@ import org.apache.log4j.Logger;
 import org.skb.lang.mess.proto.constants.MessConstants;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
-import org.skb.util.classic.lang.ScopeString;
+import org.skb.util.classic.lang.NameScope;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.antlr.TSStringTemplate;
 import org.skb.util.composite.lang.TSAtomList;
@@ -61,7 +61,7 @@ public class MessPass3_Gen {
 
 	private ConfigurationProperties prop;
 
-	public ScopeString sn;
+	public NameScope sn;
 
 	private Token fieldValue=null;
 	private Token fieldImmut=null;
@@ -74,7 +74,7 @@ public class MessPass3_Gen {
 
 		this.prop=config.getProperties();
 
-		this.sn=new ScopeString();
+		this.sn=new NameScope();
 		this.defs=new ArrayList<StringTemplate>();
 	}
 

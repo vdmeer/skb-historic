@@ -58,7 +58,7 @@ public class DalPass1_Ebnf {
 	 */
 	public DalPass1_Ebnf(){
 		this.atoms=config.getAtomlist();
-		this.atoms.setReportMgt(config.getReportManager());
+		this.atoms.setReportMgr(config.getReportManager());
 		this.atoms.setScopeSeparator(config.getProperties().getValueDefault("internal-scope-sep").toString());
 	}
 

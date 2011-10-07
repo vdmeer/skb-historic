@@ -40,6 +40,8 @@ import org.skb.util.FieldKeys;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.classic.lang.AtomListUtils;
+import org.skb.util.classic.lang.NameScopeUtils;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.lang.TSAtomList;
 
@@ -169,7 +171,7 @@ public class DalPass4_Files {
 				String scopeSep=this.prop.getValue(DalConstants.Properties.keyScopeSep).toString();
 				String[] count=current.split(scopeSep);
 				if(count.length>2){
-					if(parentCategories.contains(this.atoms.getParrentCategory(this.atoms.getParrentId(current)).toString())){
+					if(parentCategories.contains(AtomListUtils.getParentCategory(NameScopeUtils.getParentID(current, this.atoms.scope.getSeparator()), this.atoms))){
 						removeList.add(current);
 					}
 				}
@@ -186,9 +188,9 @@ public class DalPass4_Files {
 		for(int i=0;i<rows.size();i++){
 			current=rows.get(i);
 			String cat=this.atoms.get(current,TSAtomList.alValCategory).toString();
-			String parCat=this.atoms.getParrentCategory(current);
+			String parCat=AtomListUtils.getParentCategory(current, this.atoms);
 			if(categories.contains(cat)&&parCat!=null&&parCat.equals(parentCategory)){
-				this.atoms.getST(this.atoms.getParrentId(current)).setAttribute("body", this.atoms.getST(current));
+				this.atoms.getST(NameScopeUtils.getParentID(current, this.atoms.scope.getSeparator())).setAttribute("body", this.atoms.getST(current));
 				removeList.add(current);
 			}
 		}
@@ -203,7 +205,7 @@ public class DalPass4_Files {
 			if(this.atoms.getST(rows.get(i)).toString().length()==0)
 				continue;
 			if(this.atoms.get(rows.get(i)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
-				String[] path=StringUtils.split(rows.get(i), this.atoms.scope.separator());
+				String[] path=StringUtils.split(rows.get(i), this.atoms.scope.getSeparator());
 				if(this.atoms.get(path[0]).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
 					StringTemplate st=this.atoms.getST(path[0]);
 					st.setAttribute("repository", this.atoms.getST(rows.get(i)));

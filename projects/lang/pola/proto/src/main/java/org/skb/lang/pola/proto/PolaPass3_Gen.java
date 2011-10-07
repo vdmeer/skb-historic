@@ -36,7 +36,9 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.ScopeString;
+import org.skb.util.classic.lang.AtomListUtils;
+import org.skb.util.classic.lang.NameScope;
+import org.skb.util.classic.lang.NameScopeUtils;
 import org.skb.util.composite.lang.TSAtomList;
 
 /**
@@ -53,7 +55,7 @@ public class PolaPass3_Gen {
 	public static Configuration config=Configuration.getConfiguration(PolaParser.class);
 
 	public TSAtomList atoms;
-	public ScopeString sn;
+	public NameScope sn;
 
 	//for simple_type, to get all options to all DPOLAtoms
 	private TreeMap<String,String> simple_type;
@@ -65,7 +67,7 @@ public class PolaPass3_Gen {
 		this.simple_type=new TreeMap<String,String>();
 		this._initSimple_type();
 
-		this.sn=new ScopeString();
+		this.sn=new NameScope();
 	}
 
 	private void _initSimple_type(){
@@ -102,15 +104,15 @@ public class PolaPass3_Gen {
 	//keep key and cat null if you want to use current values or use overload function below
 	public TreeMap<String,String> genMiscAttribute(String key, String cat){
 		TreeMap<String,String>ret=new TreeMap<String,String>();
-		ret.put(PolaConstants.Tokens.gcMiscParrentID, this.atoms.getParrentId(key));
-		ret.put(PolaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
+		ret.put(PolaConstants.Tokens.gcMiscParrentID, NameScopeUtils.getParentID(key, this.atoms.scope.getSeparator()));
+		ret.put(PolaConstants.Tokens.gcMiscParrentCat, AtomListUtils.getParentCategory(key, this.atoms));
 		ret.put(PolaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
 		ret.put(PolaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
 		ret.put(PolaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)
-			cmpCat=this.atoms.getParrentCategory(key);
+			cmpCat=AtomListUtils.getParentCategory(key, this.atoms);
 		if(cmpCat.equals(PolaConstants.Tokens.polaCONTRACT))
 			ret.put(PolaConstants.Tokens.gcMiscInContract, "true");
 		if(cmpCat.equals(PolaConstants.Tokens.polaITEM))

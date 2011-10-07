@@ -47,6 +47,6 @@ public class GluePass1_Ebnf {
 	public static Configuration config=Configuration.getConfiguration(GlueParser.class);
 
 	public GluePass1_Ebnf(){
-		config.getAtomlist().setReportMgt(config.getReportManager());
+		config.getAtomlist().setReportMgr(config.getReportManager());
 	}
 }

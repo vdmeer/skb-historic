@@ -39,6 +39,7 @@ import org.skb.util.FieldKeys;
 import org.skb.util.classic.config.Configuration;
 import org.skb.util.classic.config.ConfigurationProperties;
 import org.skb.util.classic.io.files.FileTemplateList;
+import org.skb.util.classic.lang.NameScopeUtils;
 import org.skb.util.composite.TSRepository.TEnum;
 import org.skb.util.composite.antlr.TSStringTemplate;
 import org.skb.util.composite.java.TSBoolean;
@@ -80,7 +81,7 @@ public class MessPass4_Files {
 		if(size>0){
 			for(int i=0;i<size;i++){
 				currentElem=rows.get(i);
-				String parrentId=this.atoms.getParrentId(currentElem);
+				String parrentId=NameScopeUtils.getParentID(currentElem, this.atoms.scope.getSeparator());
 				if(parrentId!=null){
 					if(parrentId.endsWith(MessConstants.Tokens.messCHANGE)||parrentId.endsWith(MessConstants.Tokens.messREQUIRES)||parrentId.endsWith(MessConstants.Tokens.messOPTIONAL)){
 						this.atoms.remove(currentElem);
@@ -126,7 +127,7 @@ public class MessPass4_Files {
 					continue;
 
 				String current=rows.get(i);
-				String currentId=current.replace(this.atoms.scope.separator(), fileSep);
+				String currentId=current.replace(this.atoms.scope.getSeparator(), fileSep);
 
 				pkg=domainPkg+scopeSep+domain.toLowerCase()+scopeSep+currentId;
 				fn=pkg.replace(scopeSep, fileSep);

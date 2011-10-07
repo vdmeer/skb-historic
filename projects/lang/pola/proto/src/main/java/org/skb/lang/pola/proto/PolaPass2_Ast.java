@@ -34,7 +34,9 @@ import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.ScopeToken;
+import org.skb.util.classic.lang.NameScope;
+import org.skb.util.classic.lang.TokenUtils;
+import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.lang.TSAtomList;
 
 /**
@@ -57,7 +59,7 @@ public class PolaPass2_Ast {
 //	private LanguageRuleMap cr;
 
 	/** Scope processing using ANTLR Tokens */
-	public ScopeToken sn;
+	public NameScope sn;
 
 	// temp Type and Value for testing
 	private Token lastBaseType=null;
@@ -67,7 +69,7 @@ public class PolaPass2_Ast {
 	public PolaPass2_Ast(){
 		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
-		this.sn=new ScopeToken();
+		this.sn=new NameScope();
 	}
 
 
@@ -92,13 +94,13 @@ public class PolaPass2_Ast {
 			return ret;
 		String scoped="";
 		for (int i=0; i<this.sn.size()-1; i++){
-			Token tk=this.sn.get(i);
+			TSBaseAPI tk=this.sn.get(i);
 			if(scoped.length()>0)
 				scoped+=config.getProperties().getValue(PolaConstants.Properties.keyScopeSep).toString();
-			scoped+=this.sn.get(i).getText();
+			scoped+=this.sn.get(i).toString();
 			//first check if there is any Atom registered, if so the test node category to be valid scoped_name node
 			if(this.atoms.containsKey(scoped)==false){
-				config.getReportManager().error("invalid scoped name (" + scoped + ")","no atom of that name declared",tk.getLine(),tk.getCharPositionInLine());
+				config.getReportManager().error("invalid scoped name (" + scoped + ")","no atom of that name declared",TokenUtils.getLine(tk),TokenUtils.getColumn(tk));
 				ret=false;
 			}
 			else{
@@ -107,7 +109,7 @@ public class PolaPass2_Ast {
 				   !leafCat.equals(PolaConstants.Tokens.polaELEMENT)&&
 				   !leafCat.equals(PolaConstants.Tokens.polaFACILITY)
 				  ){
-					config.getReportManager().error("invalid scoped name (" + scoped + ")",scoped + " of type " + leafCat + " can't be used as part of scoped names",tk.getLine(),tk.getCharPositionInLine());
+					config.getReportManager().error("invalid scoped name (" + scoped + ")",scoped + " of type " + leafCat + " can't be used as part of scoped names",TokenUtils.getLine(tk),TokenUtils.getColumn(tk));
 					ret=false;
 				}
 			}
@@ -115,20 +117,20 @@ public class PolaPass2_Ast {
 		//now test if the leaf is valid, if so, check also if it points to the correct Atom category
 		if(scoped.length()>0)
 			scoped+=config.getProperties().getValue(PolaConstants.Properties.keyScopeSep).toString();
-		scoped+=this.sn.get(this.sn.size()-1).getText();
-		Token tk=this.sn.get(this.sn.size()-1);
+		scoped+=this.sn.get(this.sn.size()-1).toString();
+		TSBaseAPI tk=this.sn.get(this.sn.size()-1);
 		if(this.atoms.containsKey(scoped)==false){
-			config.getReportManager().error("invalid scoped name <" + scoped + ">","no atom of that name declared",tk.getLine(),tk.getCharPositionInLine());
+			config.getReportManager().error("invalid scoped name <" + scoped + ">","no atom of that name declared",TokenUtils.getLine(tk),TokenUtils.getColumn(tk));
 			ret=false;
 		}
 		else{
 			String leafCat=this.atoms.get(scoped, TSAtomList.alValCategory).toString();
 			if(leafCat.equals(PolaConstants.Tokens.polaPARAMETER)||leafCat.equals(PolaConstants.Tokens.polaACTION)){
-				config.getReportManager().error("invalid scoped name <" + scoped + ">","cannot scope "+leafCat+"s",tk.getLine(),tk.getCharPositionInLine());
+				config.getReportManager().error("invalid scoped name <" + scoped + ">","cannot scope "+leafCat+"s",TokenUtils.getLine(tk),TokenUtils.getColumn(tk));
 				ret=false;
 			}
 			else if(leafCat.equals(PolaConstants.Tokens.parserMEMBER)){
-				config.getReportManager().error("invalid scoped name <" + scoped + ">","cannot scope members",tk.getLine(),tk.getCharPositionInLine());
+				config.getReportManager().error("invalid scoped name <" + scoped + ">","cannot scope members",TokenUtils.getLine(tk),TokenUtils.getColumn(tk));
 				ret=false;
 			}
 			else{
@@ -174,7 +176,7 @@ public class PolaPass2_Ast {
 					String msg=scoped + " of type " + leafCat + " can't be used as leaf of scoped names for " + category;
 					if(catElem!=null)
 						msg+=" " + catElem;
-					config.getReportManager().error("invalid scoped name (" + scoped + ")",msg,tk.getLine(),tk.getCharPositionInLine());
+					config.getReportManager().error("invalid scoped name (" + scoped + ")",msg,TokenUtils.getLine(tk),TokenUtils.getColumn(tk));
 					ret=false;
 				}
 			}

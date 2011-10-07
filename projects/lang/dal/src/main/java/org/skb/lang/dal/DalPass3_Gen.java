@@ -43,7 +43,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.lang.dal.constants.DalConstants;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.ScopeString;
+import org.skb.util.classic.lang.NameScope;
 import org.skb.util.composite.java.TSBoolean;
 import org.skb.util.composite.lang.TSAtomList;
 import org.skb.util.composite.util.TSArrayListString;
@@ -62,7 +62,7 @@ public class DalPass3_Gen {
 	public static Configuration config=Configuration.getConfiguration(DalParser.class);
 
 	public TSAtomList atoms;
-	public ScopeString sn;
+	public NameScope sn;
 
 	//for simple_type, to get all options to all ColaAtoms
 	private TreeMap<String,String> simple_type;
@@ -77,7 +77,7 @@ public class DalPass3_Gen {
 		this.simple_type=new TreeMap<String,String>();
 		this._initSimple_type();
 
-		this.sn=new ScopeString();
+		this.sn=new NameScope();
 
 		this.tempSeq=new TSArrayListString();
 	}
