@@ -100,6 +100,12 @@
                     "skb:value:default":"::",
                     "skb:util:constant:javadoc":"Internal scope separator"
                 },
+                "internal-rule-stg":{
+                    "skb:util:constant:ident":"keyParserRuleStg",
+                    "skb:value:type":"ts:atomic:java:string",
+                    "skb:value:default":"\/org\/skb\/lang\/cola\/proto\/stg\/codegen\/internal\/rules.stg",
+                    "skb:util:constant:javadoc":"File maintaining the StringTemplateGroup for parser rules"
+                },
                 "pr-stats":{
                     "skb:util:constant:ident":"keyPrStat",
                     "skb:value:type":"ts:atomic:java:boolean",
@@ -1232,6 +1238,12 @@
                 }
             },
 
+            "rules-stgchunks":{
+                "property14":{"skb:stringtemplate:chunks:mandatory": ["do_error", "do_descr", "scope", "ident"]},
+                "contract05":{"skb:stringtemplate:chunks:mandatory": ["do_error", "do_descr", "scope", "ident"]},
+                "identifier01":{"skb:stringtemplate:chunks:mandatory": ["do_error", "do_descr", "ident", "category", "categoryOrig", "fileOrig", "lineOrig", "colOrig"]}
+            },
+
             "rules":{
                 "property:01":{
                     "skb:util:constant:ident":"ruleProperty01",
@@ -1323,12 +1335,6 @@
                     "skb:lang:parser:rules:message:add":"type declared is <%s>, value associated is of type <%s>",
                     "skb:util:constant:javadoc":"Rule for properties #13"
                 },
-                "property:14":{
-                    "skb:util:constant:ident":"ruleProperty14",
-                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for #### <%s>",
-                    "skb:lang:rule:message:replace":"colaPROPERTY",
-                    "skb:util:constant:javadoc":"Rule for properties #14"
-                },
 
                 "contract:01":{
                     "skb:util:constant:ident":"ruleContract01",
@@ -1355,12 +1361,6 @@
                     "skb:lang:parser:rules:message:add":"all required contracts need to be declared",
                     "skb:lang:rule:message:replace":"colaCONTRACT",
                     "skb:util:constant:javadoc":"Rule for contracts #04"
-                },
-                "contract:05":{
-                    "skb:util:constant:ident":"ruleContract05",
-                    "skb:lang:parser:rules:message":"#### scope <%s> redefined for %s <%s>",
-                    "skb:lang:rule:message:replace":"colaCONTRACT",
-                    "skb:util:constant:javadoc":"Rule for contracts #05"
                 },
                 
                 "item:01":{

@@ -48,6 +48,9 @@ public class ContractDeclarationList extends TSAtomic {
 	private LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> contractScopesDeclMap;
 	private LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>> contractItemsDeclMap;
 
+	/**
+	 * Class constructor.
+	 */
 	public ContractDeclarationList(){
 		this.contractItemsDeclMap=new LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>>();
 
@@ -70,16 +73,35 @@ public class ContractDeclarationList extends TSAtomic {
 		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 	}
 
-	public void add(String key, String column, String val){
-		this.contractScopesDeclMap.get(key).get(column).add(val);
+	/**
+	 * Add a contract scope declaration.
+	 * @param scopeRank the scope rank of the declaration, for instance not_def, required, mandatory
+	 * @param scopeAtom the atom the rank is declared for, for instance element, contract, package
+	 * @param declID the identifier of the contract that declares the scope 
+	 */
+	public void add(String scopeRank, String scopeAtom, String declID){
+		this.contractScopesDeclMap.get(scopeRank).get(scopeAtom).add(declID);
 	}
 
-	public boolean get(String key, String column, String contract){
-		return this.contractScopesDeclMap.get(key).get(column).contains(contract);
+	/**
+	 * Determines if a particular scope is defined.
+	 * @param scopeRank the scope rank to look for
+	 * @param scopeAtom the scope atom to look for
+	 * @param declID the contract that should declare it
+	 * @return
+	 */
+	public boolean get(String scopeRank, String scopeAtom, String declID){
+		return this.contractScopesDeclMap.get(scopeRank).get(scopeAtom).contains(declID);
 	}
 
-	public ArrayList<String> get(String key, String column){
-		return this.contractScopesDeclMap.get(key).get(column);
+	/**
+	 * Returns all contracts that declare the specified scope
+	 * @param scopeRank scope rank to look for
+	 * @param scopeAtom scope atom to look for
+	 * @return list of contract identifiers that declare the scope
+	 */
+	public ArrayList<String> get(String scopeRank, String scopeAtom){
+		return this.contractScopesDeclMap.get(scopeRank).get(scopeAtom);
 	}
 
 	public void addItemDecl(String contract, String item, String property, String rank){

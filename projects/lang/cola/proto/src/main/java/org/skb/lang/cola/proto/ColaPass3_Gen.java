@@ -39,7 +39,9 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.util.FieldKeys;
 import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.ScopeString;
+import org.skb.util.classic.lang.AtomListUtils;
+import org.skb.util.classic.lang.NameScope;
+import org.skb.util.classic.lang.NameScopeUtils;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.lang.TSAtomList;
@@ -58,7 +60,7 @@ public class ColaPass3_Gen {
 	public static Configuration config=Configuration.getConfiguration(ColaParser.class);
 
 	public TSAtomList atoms;
-	public ScopeString sn;
+	public NameScope sn;
 
 	//for property Declarations, to get the whole scope as an array into the template
 	private TreeMap<String,String> propertyScope;
@@ -81,7 +83,7 @@ public class ColaPass3_Gen {
 		this.simple_type=new TreeMap<String,String>();
 		this._initSimple_type();
 
-		this.sn=new ScopeString();
+		this.sn=new NameScope();
 	}
 
 	private void _initPropertyScope(){
@@ -168,15 +170,15 @@ public class ColaPass3_Gen {
   	//keep key and cat null if you want to use current values or use overload function below
 	public TreeMap<String,String> genMiscAttribute(String key, String cat){
 		TreeMap<String,String>ret=new TreeMap<String,String>();
-		ret.put(ColaConstants.Tokens.gcMiscParrentID, this.atoms.getParrentId(key));
-		ret.put(ColaConstants.Tokens.gcMiscParrentCat, this.atoms.getParrentCategory(key));
+		ret.put(ColaConstants.Tokens.gcMiscParrentID, NameScopeUtils.getParentID(key, this.atoms.scope.getSeparator()));
+		ret.put(ColaConstants.Tokens.gcMiscParrentCat, AtomListUtils.getParentCategory(key, this.atoms));
 		ret.put(ColaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
 		ret.put(ColaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
 		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString());
 
 		String cmpCat=cat;
 		if(cmpCat==null)
-			cmpCat=this.atoms.getParrentCategory(key);
+			cmpCat=AtomListUtils.getParentCategory(key, this.atoms);
 		if(cmpCat.equals(ColaConstants.Tokens.colaCONTRACT))
 			ret.put(ColaConstants.Tokens.gcMiscInContract, "true");
 		if(cmpCat.equals(ColaConstants.Tokens.colaITEM))

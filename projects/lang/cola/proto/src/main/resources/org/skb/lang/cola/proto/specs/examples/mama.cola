@@ -65,6 +65,7 @@ property BitMap: @type(string[] = "")
          [action:not_def] [attribute:optional] [parameter:optional])
   @apply(inv)
   @description("http://www.vandermeer.de/mama/doc/q/bitmap.php")
+  @extends(ArrayType)
   @requires(Behavior);
 
 property BitValues: @type(string[] = NULL)

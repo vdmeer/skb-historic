@@ -242,5 +242,4 @@ string_value            : (VAL_STRING | COLA_NULL);
 boolean_value           : (COLA_TRUE | COLA_FALSE);
 
 inline_code             : ^(AT_LANGUAGE string_value ic=INLINE_CODE)
-                          -> inline_code(language={this.pass.inline_codeLanguage($string_value.text)}, code={this.pass.inline_code($ic.text)})
-                          ;
+                          -> inline_code(language={this.pass.inline_codeLanguage($string_value.text)}, code={this.pass.inline_code($ic.text)});

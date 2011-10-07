@@ -37,7 +37,7 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.util.composite.TSAtomic;
 
 /**
- * Internal class maintaining a list of property declarations.
+ * Helper class maintaining the list of property declarations.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
@@ -45,6 +45,9 @@ import org.skb.util.composite.TSAtomic;
 public class PropertyDeclarationList extends TSAtomic {
 	private LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> propertyDeclMap;
 	
+	/**
+	 * Class constructor.
+	 */
 	public PropertyDeclarationList(){
 		this.propertyDeclMap=new LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>>();
 
@@ -85,18 +88,41 @@ public class PropertyDeclarationList extends TSAtomic {
 		this.propertyDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaPARAMETER, new ArrayList<String>());
 	}
 
-	public void add(String key, String column, String val){
-		this.propertyDeclMap.get(key).get(column).add(val);
+	/**
+	 * Add a property scope declaration.
+	 * @param scopeRank the scope rank of the declaration, for instance not_def, required, mandatory
+	 * @param scopeAtom the atom the rank is declared for, for instance element, contract, package
+	 * @param declID the identifier of the property that declares the scope 
+	 */
+	public void add(String scopeRank, String scopeAtom, String declID){
+		this.propertyDeclMap.get(scopeRank).get(scopeAtom).add(declID);
 	}
 
-	public boolean get(String key, String column, String property){
-		return this.propertyDeclMap.get(key).get(column).contains(property);
+	/**
+	 * Determines if a particular scope is defined.
+	 * @param scopeRank the scope rank to look for
+	 * @param scopeAtom the scope atom to look for
+	 * @param declID the property that should declare it
+	 * @return
+	 */
+	public boolean get(String scopeRank, String scopeAtom, String declID){
+		return this.propertyDeclMap.get(scopeRank).get(scopeAtom).contains(declID);
 	}
 
-	public ArrayList<String> get(String key, String column){
-		return this.propertyDeclMap.get(key).get(column);
+	/**
+	 * Returns all properties that declare the specified scope
+	 * @param scopeRank scope rank to look for
+	 * @param scopeAtom scope atom to look for
+	 * @return list of property identifiers that declare the scope
+	 */
+	public ArrayList<String> get(String scopeRank, String scopeAtom){
+		return this.propertyDeclMap.get(scopeRank).get(scopeAtom);
 	}
 
+	/**
+	 * Returns the complete property declaration list.
+	 * @return property declaration list
+	 */
 	public LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> getList(){
 		return new LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>>(this.propertyDeclMap);
 	}

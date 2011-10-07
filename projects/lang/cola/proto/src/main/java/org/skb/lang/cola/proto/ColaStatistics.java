@@ -41,6 +41,7 @@ import org.apache.log4j.Logger;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.util.classic.config.Configuration;
+import org.skb.util.classic.lang.AtomListUtils;
 import org.skb.util.classic.stringtemplate.STWriterXtoY;
 import org.skb.util.composite.antlr.TSSTGroupManager;
 import org.skb.util.composite.lang.TSAtomList;
@@ -98,9 +99,8 @@ public class ColaStatistics {
 
 			this.simpleStat=stg.getInstanceOf("simpleStat");
 			//simpleStat.setAttribute("file", ReportManager.getInstance().getFileName());
-
-			LinkedHashMap<String, Integer> map=atoms.atomNumbers();
-			simpleStat.setAttribute("ids", atoms.noOfAtoms());
+			LinkedHashMap<String, Integer> map=AtomListUtils.atomsPerCategory(atoms);
+			simpleStat.setAttribute("ids", atoms.size());
 //			simpleStat.setAttribute("properties.{decl,def}", map.get(ColaConstants.Tokens.colaPROPERTY),  atoms.retDefinedProperties());
 			simpleStat.setAttribute("items.{decl,def}",      map.get(ColaConstants.Tokens.colaITEM),      0);
 			simpleStat.setAttribute("contracts.{decl,def}",  map.get(ColaConstants.Tokens.colaCONTRACT),  0);

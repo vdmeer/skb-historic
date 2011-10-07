@@ -118,6 +118,11 @@ public class ColaParser implements TribeParserAPI {
 	}
 
 	@Override
+	public String getParserRuleSTGFileName(){
+		return config.getProperties().getValue(ColaConstants.Properties.keyParserRuleStg).toString();
+	}
+
+	@Override
 	public CommonTree pass1ParseEBNF(CommonTokenStream tokens) throws RecognitionException {
 		colaEbnfParser parser=new colaEbnfParser(tokens);
 		return (CommonTree)parser.colaSpecification().getTree();
