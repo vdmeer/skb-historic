@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.antlr\com.springsource.org.antlr\3.1.3\com.springsource.org.antlr-sources-3.1.3.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.digester\1.8.0\com.springsource.org.apache.commons.digester-1.8.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.collections\3.2.0\com.springsource.org.apache.commons.collections-sources-3.2.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.ant\com.springsource.org.apache.tools.ant\1.7.0\com.springsource.org.apache.tools.ant-sources-1.7.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\javax.mail\com.springsource.javax.mail\1.4.0\com.springsource.javax.mail-sources-1.4.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.antlr\com.springsource.org.antlr.runtime\3.1.3\com.springsource.org.antlr.runtime-sources-3.1.3.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.codec\1.3.0\com.springsource.org.apache.commons.codec-1.3.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\javax.jms\com.springsource.javax.jms\1.1.0\com.springsource.javax.jms-1.1.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.jxpath\1.2.0\com.springsource.org.apache.commons.jxpath-1.2.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.ant\com.springsource.org.apache.tools.ant\1.7.0\com.springsource.org.apache.tools.ant-1.7.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.junit\com.springsource.org.junit\4.4.0\com.springsource.org.junit-4.4.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.lang\2.4.0\com.springsource.org.apache.commons.lang-2.4.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.cli\1.2.0\com.springsource.org.apache.commons.cli-1.2.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.codehaus.jackson\jackson-mapper-asl\1.8.5\jackson-mapper-asl-1.8.5.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.codehaus.jackson\jackson-core-asl\1.8.5\jackson-core-asl-1.8.5.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.antlr\com.springsource.org.antlr.runtime\3.1.3\com.springsource.org.antlr.runtime-3.1.3.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.digester\1.8.0\com.springsource.org.apache.commons.digester-sources-1.8.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.configuration\1.5.0\com.springsource.org.apache.commons.configuration-sources-1.5.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.antlr\com.springsource.org.antlr.stringtemplate\3.2.0\com.springsource.org.antlr.stringtemplate-3.2.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.codec\1.3.0\com.springsource.org.apache.commons.codec-sources-1.3.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\javax.mail\com.springsource.javax.mail\1.4.0\com.springsource.javax.mail-1.4.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.jdom\com.springsource.org.jdom\1.0.0\com.springsource.org.jdom-1.0.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.ant\com.springsource.org.apache.tools.ant\1.7.0\notice-1.7.0.txt" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.junit\com.springsource.org.junit\4.4.0\license-4.4.0.txt" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.antlr\com.springsource.org.antlr\3.1.3\com.springsource.org.antlr-3.1.3.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.junit\com.springsource.junit\3.8.2\com.springsource.junit-3.8.2.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.junit\com.springsource.junit\3.8.2\com.springsource.junit-sources-3.8.2.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\javax.jms\com.springsource.javax.jms\1.1.0\com.springsource.javax.jms-sources-1.1.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.log4j\com.springsource.org.apache.log4j\1.2.15\com.springsource.org.apache.log4j-sources-1.2.15.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.jxpath\1.2.0\com.springsource.org.apache.commons.jxpath-sources-1.2.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.collections\3.2.0\com.springsource.org.apache.commons.collections-3.2.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.beanutils\1.7.0\com.springsource.org.apache.commons.beanutils-1.7.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.logging\1.1.1\com.springsource.org.apache.commons.logging-1.1.1.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.junit\com.springsource.org.junit\4.4.0\com.springsource.org.junit-sources-4.4.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.lang\2.4.0\com.springsource.org.apache.commons.lang-sources-2.4.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.cli\1.2.0\com.springsource.org.apache.commons.cli-sources-1.2.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.beanutils\1.7.0\com.springsource.org.apache.commons.beanutils-sources-1.7.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.logging\1.1.1\com.springsource.org.apache.commons.logging-sources-1.1.1.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.jdom\com.springsource.org.jdom\1.0.0\com.springsource.org.jdom-sources-1.0.0.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.log4j\com.springsource.org.apache.log4j\1.2.15\com.springsource.org.apache.log4j-1.2.15.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\org.apache.commons.lang\2.6\commons.lang-2.6.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\org.apache.commons.io\2.0.1\commons.io-2.0.1.jar" />
+	<classpathentry ivygen="true" kind="lib" path="v:\dev\projects\skb\skb-git\repository\ivy-cache\repository\org.apache.commons\com.springsource.org.apache.commons.configuration\1.5.0\com.springsource.org.apache.commons.configuration-1.5.0.jar" />
+</classpath>

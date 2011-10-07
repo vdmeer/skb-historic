@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://ivyrep.jayasoft.org/ivy-doc.xsl"?>
+<ivy-module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://incubator.apache.org/ivy/schemas/ivy.xsd" version="2.0">
+	
+	<info organisation="skb" module="${ant.project.name}">
+		<ivyauthor name="Author Name" />
+	</info>
+
+	<configurations>
+		<include file="${spring.build.dir}/common/default-ivy-configurations.xml"/>
+	</configurations>
+
+	<publications>
+		<artifact name="${ant.project.name}"/>
+		<artifact name="${ant.project.name}-sources" type="src" ext="jar"/>
+	</publications>
+
+	<dependencies>
+		<dependency org="org.antlr" name="com.springsource.org.antlr.runtime" rev="${org.antlr.runtime}" />
+		<dependency org="org.antlr" name="com.springsource.org.antlr.stringtemplate" rev="${org.antlr.stringtemplate}" />
+		<dependency org="org.apache.commons" name="org.apache.commons.io" rev="${org.apache.commons.io}" />
+		<dependency org="org.apache.commons" name="org.apache.commons.lang" rev="${org.apache.commons.lang}" />
+		<dependency org="org.apache.commons" name="com.springsource.org.apache.commons.cli" rev="${org.apache.commons.cli}" />
+		<dependency org="org.apache.commons" name="com.springsource.org.apache.commons.configuration" rev="${org.apache.commons.configuration}" />
+		<dependency org="org.codehaus.jackson" name="jackson-core-asl" rev="${codehaus.jackson}" />
+		<dependency org="org.codehaus.jackson" name="jackson-mapper-asl" rev="${codehaus.jackson}" />
+		<dependency org="org.apache.log4j" name="com.springsource.org.apache.log4j" rev="${org.apache.log4j}" />
+		<dependency org="org.junit" name="com.springsource.org.junit" rev="${org.junit}" conf="test->runtime" />
+	</dependencies>
+
+</ivy-module>

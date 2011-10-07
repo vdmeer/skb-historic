@@ -1,0 +1,154 @@
+{
+	"boolean-string__long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-string__long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:string",
+        "skb:util:cli:descr:short":"Boolean/String as long option, with argument"
+	},
+	"boolean-string__short-long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"a",
+        "skb:util:cli:option:long":"boolean-string__short-long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:string",
+        "skb:util:cli:descr:short":"Boolean/String as short and long option, with argument"
+	},
+
+	"boolean-integer__long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-integer__long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:integer",
+        "skb:util:cli:descr:short":"Boolean/Integer as long option, with argument"
+	},
+	"boolean-integer__short-long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"b",
+        "skb:util:cli:option:long":"boolean-integer__short-long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:integer",
+        "skb:util:cli:descr:short":"Boolean/Integer as short and long option, with argument"
+	},
+
+	"boolean-double__long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-double__long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:double",
+        "skb:util:cli:descr:short":"Boolean/Double as long option, with argument"
+	},
+	"boolean-double__short-long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"c",
+        "skb:util:cli:option:long":"boolean-double__short-long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:double",
+        "skb:util:cli:descr:short":"Boolean/Double as short and long option, with argument"
+	},
+
+	"boolean-long__long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-long__long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:long",
+        "skb:util:cli:descr:short":"Boolean/Long as long option, with argument"
+	},
+	"boolean-long__short-long__arg":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"d",
+        "skb:util:cli:option:long":"boolean-long__short-long__arg",
+        "skb:util:cli:descr:arguments":"foo",
+        "skb:util:cli:option:type":"ts:atomic:java:long",
+        "skb:util:cli:descr:short":"Boolean/Long as short and long option, with argument"
+	},
+
+
+	"boolean-string__long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-string__long",
+        "skb:util:cli:option:type":"ts:atomic:java:string",
+        "skb:util:cli:descr:short":"Boolean/String as long option"
+	},
+	"boolean-string__short-long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"f",
+        "skb:util:cli:option:long":"boolean-string__short-long",
+        "skb:util:cli:option:type":"ts:atomic:java:string",
+        "skb:util:cli:descr:short":"Boolean/String as short and long option"
+	},
+
+	"boolean-integer__long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-integer__long",
+        "skb:util:cli:option:type":"ts:atomic:java:integer",
+        "skb:util:cli:descr:short":"Boolean/Integer as long option"
+	},
+	"boolean-integer__short-long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"g",
+        "skb:util:cli:option:long":"boolean-integer__short-long",
+        "skb:util:cli:option:type":"ts:atomic:java:integer",
+        "skb:util:cli:descr:short":"Boolean/Integer as short and long option"
+	},
+
+	"boolean-double__long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-double__long",
+        "skb:util:cli:option:type":"ts:atomic:java:double",
+        "skb:util:cli:descr:short":"Boolean/Double as long option"
+	},
+	"boolean-double__short-long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"h",
+        "skb:util:cli:option:long":"boolean-double__short-long",
+        "skb:util:cli:option:type":"ts:atomic:java:double",
+        "skb:util:cli:descr:short":"Boolean/Double as short and long option"
+	},
+
+	"boolean-long__long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-long__long",
+        "skb:util:cli:option:type":"ts:atomic:java:long",
+        "skb:util:cli:descr:short":"Boolean/Long as long option"
+	},
+	"boolean-long__short-long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"i",
+        "skb:util:cli:option:long":"boolean-long__short-long",
+        "skb:util:cli:option:type":"ts:atomic:java:long",
+        "skb:util:cli:descr:short":"Boolean/Long as short and long option"
+	},
+
+	"boolean-boolean__long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:long":"boolean-boolean__long",
+        "skb:util:cli:option:type":"ts:atomic:java:boolean",
+        "skb:util:cli:descr:short":"Boolean/Boolean as long option"
+	},
+	"boolean-boolean__short-long":{
+        "skb:value:type":"ts:atomic:java:boolean",
+        "skb:value:default":false,
+        "skb:util:cli:option:short":"j",
+        "skb:util:cli:option:long":"boolean-boolean__short-long",
+        "skb:util:cli:option:type":"ts:atomic:java:boolean",
+        "skb:util:cli:descr:short":"Boolean/Boolean as short and long option"
+	}
+}
