@@ -27,13 +27,13 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.java;
+package org.skb.base.composite.java;
 
-import org.skb.util.composite.TSAtomic;
-import org.skb.util.composite.TSAtomicAPI;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.base.composite.TSAtomic;
+import org.skb.base.composite.TSAtomicAPI;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
 
 /**
  * A wrapper for the class {@link Float}.

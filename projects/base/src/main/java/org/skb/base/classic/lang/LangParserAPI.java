@@ -28,13 +28,13 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.lang;
+package org.skb.base.classic.lang;
 
 import java.io.InputStream;
 
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.composite.TSDefault;
-import org.skb.util.composite.util.TSArrayListString;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.composite.TSDefault;
+import org.skb.base.composite.util.TSArrayListString;
 
 /**
  * Interface for a Language Parser.

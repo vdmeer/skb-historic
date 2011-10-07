@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.antlr;
+package org.skb.base.composite.antlr;
 
 import java.io.FileReader;
 import java.io.InputStream;
@@ -40,18 +40,18 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomic;
-import org.skb.util.composite.TSAtomicAPI;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSDefault;
-import org.skb.util.composite.TSError;
-import org.skb.util.composite.TSNull;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSArrayList;
-import org.skb.util.composite.util.TSArrayListString;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.TSAtomic;
+import org.skb.base.composite.TSAtomicAPI;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSDefault;
+import org.skb.base.composite.TSError;
+import org.skb.base.composite.TSNull;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSArrayList;
+import org.skb.base.composite.util.TSArrayListString;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * String Template Group Manager.

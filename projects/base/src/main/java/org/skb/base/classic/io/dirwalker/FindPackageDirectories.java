@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.io.dirwalker;
+package org.skb.base.classic.io.dirwalker;
 
 import java.io.File;
 import java.util.ArrayList;

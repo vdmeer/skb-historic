@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.json;
+package org.skb.base.classic.json;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -39,8 +39,8 @@ import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.SerializerProvider;
 import org.codehaus.jackson.map.TypeSerializer;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Serialiser for Jackson library, serialising TSLinkhedHashTree.

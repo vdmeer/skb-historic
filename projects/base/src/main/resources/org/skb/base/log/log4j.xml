@@ -93,10 +93,10 @@
         </appender>
 	<!-- ORG.SKB.TRIBE -->
 
-	<!-- ORG.SKB.UTIL -->
-        <appender name="Org.Skb.Util"
+	<!-- ORG.SKB.BASE -->
+        <appender name="Org.Skb.Base"
                 class="org.apache.log4j.RollingFileAppender">
-                <param name="File" value="v:/dev/projects/skb/skb-git/autogen-local/logs/util.log" />
+                <param name="File" value="v:/dev/projects/skb/skb-git/autogen-local/logs/base.log" />
                 <param name="Append" value="false" />
                 <param name="MaxBackupIndex" value="1" />
                 <param name="MaxFileSize" value="100KB" />
@@ -104,9 +104,9 @@
                    <param name="ConversionPattern" value="%l %d %-5p [%t] %C{2} (%F=%M:%L) - %m%n"/>
                 </layout>    
         </appender>
-	<!-- ORG.SKB.UTIL -->
+	<!-- ORG.SKB.BASE -->
 
-	<!-- ORG.SKB.UTIL ReportManager Reports-->
+	<!-- ORG.SKB.BASE ReportManager Reports-->
         <appender name="SKBLoggerReportManagerSTDOUT"
                 class="org.apache.log4j.ConsoleAppender">
                 <param name="Target" value="System.out" />
@@ -124,7 +124,7 @@
                    <param name="ConversionPattern" value="%m"/>
                 </layout>    
         </appender>
-	<!-- ORG.SKB.UTIL ReportManager Reports-->
+	<!-- ORG.SKB.BASE ReportManager Reports-->
 
         <appender name="R"
                 class="org.apache.log4j.RollingFileAppender">
@@ -194,16 +194,16 @@
         </logger>
 	<!-- ORG.SKB.TRIBE -->
 
-	<!-- ORG.SKB.UTIL -->
-        <logger name="org.skb.util">
+	<!-- ORG.SKB.BASE -->
+        <logger name="org.skb.base">
             <level value="all"/>
-            <appender-ref ref="Org.Skb.Util"/>
+            <appender-ref ref="Org.Skb.Base"/>
             <!--<appender-ref ref="stdout"/>-->
         </logger>
-	<!-- ORG.SKB.UTIL -->
+	<!-- ORG.SKB.BASE -->
 
 
-	<!-- ORG.SKB.UTIL ReportManager Reports-->
+	<!-- ORG.SKB.BASE ReportManager Reports-->
 		<logger name="SKBLoggerReportManagerInfo">
 			<level value="all"/>
 			<appender-ref ref="SKBLoggerReportManagerSTDOUT"/>
@@ -218,7 +218,7 @@
 			<level value="all"/>
 			<appender-ref ref="SKBLoggerReportManagerSTDOUT"/>
 		</logger>
-	<!-- ORG.SKB.UTIL ReportManager Reports-->
+	<!-- ORG.SKB.BASE ReportManager Reports-->
 
 
         <logger name="org.apache.commons">

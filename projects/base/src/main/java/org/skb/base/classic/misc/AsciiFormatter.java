@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.misc;
+package org.skb.base.classic.misc;
 
 import java.util.Iterator;
 import java.util.Map;

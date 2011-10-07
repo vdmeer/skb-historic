@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.composite.java;
+package org.skb.test.base.composite.java;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -37,15 +37,15 @@ import java.util.Set;
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSArrayListString;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSArrayListString;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
- * Test cases for {@link org.skb.util.composite.java.TSString}.
+ * Test cases for {@link org.skb.base.composite.java.TSString}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

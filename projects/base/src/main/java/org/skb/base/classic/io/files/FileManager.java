@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.io.files;
+package org.skb.base.classic.io.files;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -42,8 +42,8 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.java.TSBoolean;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.java.TSBoolean;
 
 /**
  * A manager for file lists to prepare output.

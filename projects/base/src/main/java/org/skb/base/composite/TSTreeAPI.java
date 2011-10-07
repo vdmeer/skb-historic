@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite;
+package org.skb.base.composite;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.skb.util.composite.java.TSString;
+import org.skb.base.composite.java.TSString;
 
 /**
  * Base interface for a tree classes.

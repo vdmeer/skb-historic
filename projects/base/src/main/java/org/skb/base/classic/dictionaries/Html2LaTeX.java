@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.dictionaries;
+package org.skb.base.classic.dictionaries;
 
 import java.util.Dictionary;
 import java.util.Enumeration;

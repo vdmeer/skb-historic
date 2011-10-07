@@ -30,8 +30,8 @@
 
 package org.skb.kb;
 
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Interface for an SKB interpreter that processes entries (Key/TBase maps and tables)

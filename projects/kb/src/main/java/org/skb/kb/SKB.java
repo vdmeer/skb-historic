@@ -39,20 +39,20 @@ import java.util.Set;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
-import org.skb.util.PathKeys;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.io.dirwalker.FindPackageDirectories;
-import org.skb.util.classic.json.Json2TS;
-import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSBoolean;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.misc.TSI18NManager;
-import org.skb.util.composite.util.TSArrayList;
-import org.skb.util.composite.util.TSArrayListString;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.PathKeys;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.io.dirwalker.FindPackageDirectories;
+import org.skb.base.classic.json.Json2TS;
+import org.skb.base.classic.patterns.creational.builder.Request;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.misc.TSI18NManager;
+import org.skb.base.composite.util.TSArrayList;
+import org.skb.base.composite.util.TSArrayListString;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Main SKB class

@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.misc;
+package org.skb.base.composite.misc;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -35,9 +35,9 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomic;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.base.composite.TSAtomic;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
 
 /**
  * A class handling internationalisation using properties.

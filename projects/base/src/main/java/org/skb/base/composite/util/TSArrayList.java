@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.util;
+package org.skb.base.composite.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,13 +36,13 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomicAPI;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSComposite;
-import org.skb.util.composite.TSCompositeAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSString;
+import org.skb.base.composite.TSAtomicAPI;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSComposite;
+import org.skb.base.composite.TSCompositeAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
 
 /**
  * An Array list of TSBase types.

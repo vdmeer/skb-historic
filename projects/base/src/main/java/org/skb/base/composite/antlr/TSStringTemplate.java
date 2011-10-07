@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.antlr;
+package org.skb.base.composite.antlr;
 
 import java.util.Arrays;
 import java.util.EnumSet;
@@ -40,10 +40,10 @@ import java.util.Vector;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomicAPI;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.base.composite.TSAtomicAPI;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
 
 /**
  * Wrapper for the string template class {@link StringTemplate}.

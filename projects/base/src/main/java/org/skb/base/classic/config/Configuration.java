@@ -27,17 +27,17 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.config;
+package org.skb.base.classic.config;
 
-import org.skb.util.FieldKeys;
-import org.skb.util.PathKeys;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.antlr.TSSTGroupManager;
-import org.skb.util.composite.lang.TSAtomList;
-import org.skb.util.composite.misc.TSReportManager;
-import org.skb.util.composite.util.TSLangRuleMap;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.FieldKeys;
+import org.skb.base.PathKeys;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.antlr.TSSTGroupManager;
+import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.composite.misc.TSReportManager;
+import org.skb.base.composite.util.TSLangRuleMap;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Configuration class, maintains configuration information for a specific class.

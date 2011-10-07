@@ -27,16 +27,16 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.composite;
+package org.skb.test.base.composite;
 
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.skb.util.composite.TSDefault;
-import org.skb.util.composite.TSRepository;
+import org.skb.base.composite.TSDefault;
+import org.skb.base.composite.TSRepository;
 
 /**
- * Test cases for {@link org.skb.util.composite.TSDefault}.
+ * Test cases for {@link org.skb.base.composite.TSDefault}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

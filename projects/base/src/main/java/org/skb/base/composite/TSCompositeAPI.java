@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite;
+package org.skb.base.composite;
 
 /**
  * Base interface for all TSComposite types.

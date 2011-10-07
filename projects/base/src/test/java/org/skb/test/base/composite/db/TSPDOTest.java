@@ -27,17 +27,17 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.composite.db;
+package org.skb.test.base.composite.db;
 
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.junit.Test;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.db.TSPDO;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.db.TSPDO;
 
 /**
- * Test cases for {@link org.skb.util.composite.db.TSPDO}.
+ * Test cases for {@link org.skb.base.composite.db.TSPDO}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.cli;
+package org.skb.base.classic.cli;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -43,16 +43,16 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
-import org.skb.util.FieldKeys;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSBoolean;
-import org.skb.util.composite.java.TSDouble;
-import org.skb.util.composite.java.TSInteger;
-import org.skb.util.composite.java.TSLong;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSPropertyMap;
+import org.skb.base.FieldKeys;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.java.TSDouble;
+import org.skb.base.composite.java.TSInteger;
+import org.skb.base.composite.java.TSLong;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSPropertyMap;
 
 /**
  * Implementation of the CLI interface using Apache Commons CLI.

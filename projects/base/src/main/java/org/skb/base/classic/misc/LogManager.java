@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.misc;
+package org.skb.base.classic.misc;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
@@ -54,7 +54,7 @@ public class LogManager {
 			logger.info("initialised Logger from environment with <"+fn+">");
 		}
 		else{
-			fn="/org/skb/util/log/log4j.xml";
+			fn="/org/skb/base/log/log4j.xml";
 			DOMConfigurator.configure(LogManager.class.getResource(fn));
 			logger.info("initialised Logger from default with <"+fn+">");
 		}

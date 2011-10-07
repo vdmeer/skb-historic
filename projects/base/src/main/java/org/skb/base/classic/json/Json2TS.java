@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.json;
+package org.skb.base.classic.json;
 
 import java.io.File;
 import java.util.Iterator;
@@ -38,14 +38,14 @@ import org.apache.log4j.Logger;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.java.TSBoolean;
-import org.skb.util.composite.java.TSDouble;
-import org.skb.util.composite.java.TSFloat;
-import org.skb.util.composite.java.TSInteger;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSArrayList;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.java.TSDouble;
+import org.skb.base.composite.java.TSFloat;
+import org.skb.base.composite.java.TSInteger;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSArrayList;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Class that reads a JSON file and transforms it into an TSMapLH.
@@ -140,7 +140,7 @@ public class Json2TS {
 	/**
 	 * Recurses through the given node and constructs a TSBase return.
 	 * @param node starting node for recursion
-	 * @return TSBase object that is either and TSArrayList, a TSMapLH or an atomic type from the package {@link org.skb.util.composite.java}
+	 * @return TSBase object that is either and TSArrayList, a TSMapLH or an atomic type from the package {@link org.skb.base.composite.java}
 	 */
 	private TSBaseAPI traverse(JsonNode node){
 		if(node.isArray()){

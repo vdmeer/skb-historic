@@ -30,7 +30,7 @@
 
 package org.skb.kb;
 
-import org.skb.util.composite.TSBaseAPI;
+import org.skb.base.composite.TSBaseAPI;
 
 /**
  * Interface for an SKB interpreter that processes entities (identifiers as string and tables)

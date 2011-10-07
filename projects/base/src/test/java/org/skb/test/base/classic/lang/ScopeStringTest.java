@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.classic.lang;
+package org.skb.test.base.classic.lang;
 
 import junit.framework.TestCase;
 

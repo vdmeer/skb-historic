@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.db;
+package org.skb.base.composite.db;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -42,12 +42,12 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomic;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSArrayList;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.TSAtomic;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSArrayList;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * PDO Class.

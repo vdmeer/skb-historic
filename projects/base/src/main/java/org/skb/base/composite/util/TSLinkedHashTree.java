@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.util;
+package org.skb.base.composite.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,15 +41,15 @@ import java.util.TreeSet;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomicAPI;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSComposite;
-import org.skb.util.composite.TSCompositeAPI;
-import org.skb.util.composite.TSNull;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.TSTreeAPI;
-import org.skb.util.composite.java.TSString;
+import org.skb.base.composite.TSAtomicAPI;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSComposite;
+import org.skb.base.composite.TSCompositeAPI;
+import org.skb.base.composite.TSNull;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSTreeAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
 
 /**
  * The composite class for a linked hash tree.

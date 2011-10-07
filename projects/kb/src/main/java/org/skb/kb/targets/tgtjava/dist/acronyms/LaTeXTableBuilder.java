@@ -32,10 +32,10 @@ package org.skb.kb.targets.tgtjava.dist.acronyms;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
+import org.skb.base.classic.patterns.creational.builder.Request;
+import org.skb.base.composite.antlr.TSSTGroupManager;
+import org.skb.base.composite.util.TSLinkedHashTree;
 import org.skb.kb.SKBBuilder;
-import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.antlr.TSSTGroupManager;
-import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * SKB Acronyms Builder for LaTeX output using the LaTeX longtable environment (Dist Package)

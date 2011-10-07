@@ -40,21 +40,21 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.skb.util.PathKeys;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.TSAtomic;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.db.TSPDO;
-import org.skb.util.composite.java.TSBoolean;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.misc.TSI18NManager;
-import org.skb.util.composite.util.TSArrayList;
-import org.skb.util.composite.util.TSArrayListString;
-import org.skb.util.composite.util.TSLinkedHashTree;
-import org.skb.util.composite.util.TSScope;
+import org.skb.base.PathKeys;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.patterns.creational.builder.Request;
+import org.skb.base.composite.TSAtomic;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.db.TSPDO;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.misc.TSI18NManager;
+import org.skb.base.composite.util.TSArrayList;
+import org.skb.base.composite.util.TSArrayListString;
+import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.util.TSScope;
 
 /**
  * The SKB Data Manager, handling access to all registered data

@@ -30,12 +30,12 @@
 
 package org.skb.kb.targets.tgtjava.dist.acronyms;
 
+import org.skb.base.PathKeys;
+import org.skb.base.classic.patterns.creational.builder.Request;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
 import org.skb.kb.SKBDataManager;
 import org.skb.kb.SKBReader;
-import org.skb.util.PathKeys;
-import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSString;
 
 /**
  * SKB Acronyms Reader (Dist Package)

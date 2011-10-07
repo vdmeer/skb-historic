@@ -27,9 +27,9 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.patterns.creational.builder;
+package org.skb.base.classic.patterns.creational.builder;
 
-import org.skb.util.composite.antlr.TSSTGroupManager;
+import org.skb.base.composite.antlr.TSSTGroupManager;
 
 /**
  * A class managing templates for a builder.

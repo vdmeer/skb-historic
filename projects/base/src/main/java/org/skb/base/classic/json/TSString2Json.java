@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.json;
+package org.skb.base.classic.json;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.SerializerProvider;
 import org.codehaus.jackson.map.TypeSerializer;
-import org.skb.util.composite.java.TSString;
+import org.skb.base.composite.java.TSString;
 
 /**
  * Serialiser for Jackson library, serialising TSString.

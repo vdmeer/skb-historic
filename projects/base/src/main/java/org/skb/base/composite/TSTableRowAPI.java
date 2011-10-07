@@ -27,11 +27,11 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite;
+package org.skb.base.composite;
 
 import java.util.Map;
 
-import org.skb.util.composite.java.TSString;
+import org.skb.base.composite.java.TSString;
 
 /**
  * Interface for a Table Row.

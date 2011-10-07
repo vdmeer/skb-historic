@@ -27,10 +27,10 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.lang;
+package org.skb.base.classic.lang;
 
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSDefault;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSDefault;
 
 /**
  * Utilities for processing named scopes.

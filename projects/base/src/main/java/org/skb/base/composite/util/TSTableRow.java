@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.util;
+package org.skb.base.composite.util;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -37,15 +37,15 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomicAPI;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSComposite;
-import org.skb.util.composite.TSCompositeAPI;
-import org.skb.util.composite.TSNull;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.TSTableRowAPI;
-import org.skb.util.composite.java.TSString;
+import org.skb.base.composite.TSAtomicAPI;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSComposite;
+import org.skb.base.composite.TSCompositeAPI;
+import org.skb.base.composite.TSNull;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSTableRowAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
 
 /**
  * Implementation of a Table row with predefined columns.

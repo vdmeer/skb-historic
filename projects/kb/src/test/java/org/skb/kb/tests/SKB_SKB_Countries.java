@@ -1,9 +1,9 @@
 package org.skb.kb.tests;
 
+import org.skb.base.classic.patterns.creational.builder.Request;
 import org.skb.kb.SKB;
 import org.skb.kb.SKBInit;
 import org.skb.kb.SKBReader;
-import org.skb.util.classic.patterns.creational.builder.Request;
 
 public class SKB_SKB_Countries {
 

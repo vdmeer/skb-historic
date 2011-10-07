@@ -30,10 +30,10 @@
 
 package org.skb.kb;
 
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.patterns.creational.builder.Builder;
-import org.skb.util.classic.patterns.creational.builder.Request;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.patterns.creational.builder.Builder;
+import org.skb.base.classic.patterns.creational.builder.Request;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Abstract class to implement builders for the SKB.

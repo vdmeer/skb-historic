@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite.lang;
+package org.skb.base.composite.lang;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -36,16 +36,16 @@ import java.util.TreeMap;
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.classic.lang.NameScope;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.TSTableRowAPI;
-import org.skb.util.composite.antlr.TSStringTemplate;
-import org.skb.util.composite.antlr.TSToken;
-import org.skb.util.composite.misc.TSReportManager;
-import org.skb.util.composite.util.TSTable;
-import org.skb.util.composite.util.TSTableRow;
+import org.skb.base.classic.lang.NameScope;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSTableRowAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.antlr.TSStringTemplate;
+import org.skb.base.composite.antlr.TSToken;
+import org.skb.base.composite.misc.TSReportManager;
+import org.skb.base.composite.util.TSTable;
+import org.skb.base.composite.util.TSTableRow;
 
 /**
  * AtomList for language parsers (symbol table)

@@ -27,16 +27,16 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.composite.util;
+package org.skb.test.base.composite.util;
 
 import junit.framework.TestCase;
 
 import org.junit.Test;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.util.TSLangRuleMap;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.util.TSLangRuleMap;
 
 /**
- * Test cases for {@link org.skb.util.composite.util.TSLinkedHashTree}.
+ * Test cases for {@link org.skb.base.composite.util.TSLinkedHashTree}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

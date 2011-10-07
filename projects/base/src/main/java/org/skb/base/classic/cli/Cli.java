@@ -27,11 +27,11 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.cli;
+package org.skb.base.classic.cli;
 
 import org.apache.commons.cli.ParseException;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.util.TSPropertyMap;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.util.TSPropertyMap;
 
 /**
  * Interface for CLI processing.

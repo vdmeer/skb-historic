@@ -27,12 +27,12 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.lang;
+package org.skb.base.classic.lang;
 
 import org.antlr.runtime.Token;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.antlr.TSToken;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.antlr.TSToken;
 
 /**
  * Utilities that help processing ANTLR Tokens and Trees.

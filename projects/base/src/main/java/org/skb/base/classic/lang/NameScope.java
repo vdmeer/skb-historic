@@ -27,19 +27,19 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.lang;
+package org.skb.base.classic.lang;
 
 import java.util.ArrayList;
 import java.util.Vector;
 
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSAtomic;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSComposite;
-import org.skb.util.composite.TSDefault;
-import org.skb.util.composite.antlr.TSToken;
-import org.skb.util.composite.java.TSString;
+import org.skb.base.composite.TSAtomic;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSComposite;
+import org.skb.base.composite.TSDefault;
+import org.skb.base.composite.antlr.TSToken;
+import org.skb.base.composite.java.TSString;
 
 /**
  * Implementation of a named scope using Strings and ANTLR Tokens.

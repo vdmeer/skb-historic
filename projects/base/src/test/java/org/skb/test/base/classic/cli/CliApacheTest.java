@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.classic.cli;
+package org.skb.test.base.classic.cli;
 
 import junit.framework.TestCase;
 
@@ -35,19 +35,19 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.junit.Test;
-import org.skb.util.FieldKeys;
-import org.skb.util.classic.cli.CliApache;
-import org.skb.util.classic.json.Json2TS;
-import org.skb.util.classic.misc.LogManager;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSInteger;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSLinkedHashTree;
-import org.skb.util.composite.util.TSPropertyMap;
+import org.skb.base.FieldKeys;
+import org.skb.base.classic.cli.CliApache;
+import org.skb.base.classic.json.Json2TS;
+import org.skb.base.classic.misc.LogManager;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSInteger;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.util.TSPropertyMap;
 
 /**
- * Test cases for {@link org.skb.util.classic.cli.CliApache}.
+ * Test cases for {@link org.skb.base.classic.cli.CliApache}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

@@ -28,7 +28,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.config;
+package org.skb.base.classic.config;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -36,14 +36,14 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.skb.util.FieldKeys;
-import org.skb.util.classic.json.Json2TS;
-import org.skb.util.classic.misc.PropertyHandler;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.TSTableRowAPI;
-import org.skb.util.composite.util.TSLinkedHashTree;
-import org.skb.util.composite.util.TSPropertyMap;
+import org.skb.base.FieldKeys;
+import org.skb.base.classic.json.Json2TS;
+import org.skb.base.classic.misc.PropertyHandler;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSTableRowAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.util.TSPropertyMap;
 
 /**
  * Special property map with pre-loaded rows for configurations.
@@ -63,7 +63,7 @@ public class ConfigurationProperties extends TSPropertyMap {
 	 */
 	public ConfigurationProperties(){
 		super();
-		this._trInit("/org/skb/util/config/load.properties");
+		this._trInit("/org/skb/base/config/load.properties");
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class ConfigurationProperties extends TSPropertyMap {
 
 		PropertyHandler ph=new PropertyHandler();
 		this.config=ph.load(propFN, ConfigurationProperties.class.getName());
-		String cfgFile=this.config.getProperty("org.skb.util.config.jsonfile");
+		String cfgFile=this.config.getProperty("org.skb.base.config.jsonfile");
 
 		if(cfgFile==null){
 			System.err.println("skb: no configuration file given in properties");
@@ -131,7 +131,7 @@ public class ConfigurationProperties extends TSPropertyMap {
 		//TODO check if cfgFile exists as URL or FILE
 
 		Json2TS j2o=new Json2TS();
-		TSBaseAPI c=j2o.read(this.config.getProperty("org.skb.util.config.jsonfile"));
+		TSBaseAPI c=j2o.read(this.config.getProperty("org.skb.base.config.jsonfile"));
 		TSLinkedHashTree cfg=null;
 		if(c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH))
 			cfg=(TSLinkedHashTree)c;

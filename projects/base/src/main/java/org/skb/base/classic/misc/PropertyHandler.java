@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.misc;
+package org.skb.base.classic.misc;
 
 import java.io.IOException;
 import java.util.Properties;

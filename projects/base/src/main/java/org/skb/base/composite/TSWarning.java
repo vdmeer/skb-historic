@@ -27,10 +27,10 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.composite;
+package org.skb.base.composite;
 
 import org.apache.log4j.Logger;
-import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.base.composite.TSRepository.TEnum;
 
 /**
  * Warning Class, can be used to return a warning message.

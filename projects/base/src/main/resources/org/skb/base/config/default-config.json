@@ -29,7 +29,7 @@
 //
 
 //
-// Configuration file for the Org.SKB.Util.Config providing default configuration
+// Configuration file for the Org.SKB.Base.Config providing default configuration
 //
 // @package    org.skb.tribe
 // @author     Sven van der Meer <sven@vandermeer.de>
@@ -123,7 +123,7 @@
         },
         "skb.clioption.repmgr-stg":{
             "skb:value:type":"ts:atomic:java:string",
-            "skb:value:default":"/org/skb/util/misc/ReportManager.stg",
+            "skb:value:default":"/org/skb/base/misc/ReportManager.stg",
             "skb:util:cli:option:long":"repmgr-stg",
             "skb:util:cli:descr:arguments":"file",
             "skb:util:cli:option:type":"ts:atomic:java:string",

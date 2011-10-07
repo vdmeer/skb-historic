@@ -27,14 +27,14 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.test.util.classic.io.files;
+package org.skb.test.base.classic.io.files;
 
 import junit.framework.TestCase;
 
 import org.junit.Test;
 
 /**
- * Test cases for {@link org.skb.util.classic.io.files.FileTemplateList}.
+ * Test cases for {@link org.skb.base.classic.io.files.FileTemplateList}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

@@ -1,4 +1,4 @@
-package org.skb.util.classic.lang;
+package org.skb.base.classic.lang;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,12 +6,12 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSDefault;
-import org.skb.util.composite.TSError;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.TSWarning;
-import org.skb.util.composite.lang.TSAtomList;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSDefault;
+import org.skb.base.composite.TSError;
+import org.skb.base.composite.TSWarning;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.lang.TSAtomList;
 
 public class AtomListUtils {
 

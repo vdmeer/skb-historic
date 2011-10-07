@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.stringtemplate;
+package org.skb.base.classic.stringtemplate;
 
 import java.io.IOException;
 import java.io.Writer;

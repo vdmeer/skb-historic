@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.util.classic.json;
+package org.skb.base.classic.json;
 
 import java.io.StringWriter;
 
@@ -36,16 +36,16 @@ import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.MappingJsonFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.module.SimpleModule;
-import org.skb.util.composite.java.TSBoolean;
-import org.skb.util.composite.java.TSByte;
-import org.skb.util.composite.java.TSDouble;
-import org.skb.util.composite.java.TSFloat;
-import org.skb.util.composite.java.TSInteger;
-import org.skb.util.composite.java.TSLong;
-import org.skb.util.composite.java.TSObject;
-import org.skb.util.composite.java.TSShort;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.java.TSByte;
+import org.skb.base.composite.java.TSDouble;
+import org.skb.base.composite.java.TSFloat;
+import org.skb.base.composite.java.TSInteger;
+import org.skb.base.composite.java.TSLong;
+import org.skb.base.composite.java.TSObject;
+import org.skb.base.composite.java.TSShort;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Class that provides initialised ObjectMappers for serialising TS object.
