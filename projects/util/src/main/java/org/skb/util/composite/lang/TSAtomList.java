@@ -29,17 +29,14 @@
 
 package org.skb.util.composite.lang;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.util.classic.lang.ScopeString;
+import org.skb.util.classic.lang.NameScope;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository;
 import org.skb.util.composite.TSRepository.TEnum;
@@ -87,19 +84,16 @@ public class TSAtomList extends TSTable {
 	/** Column identifier for the scoped identifier */
 	public final static String alValScopedID	= "id:scoped";
 
-	/**  Default category */
-	private String defaultCategory;
-
 	/** Specification name */
 	private String specificationName;
 
 	/** Current scope */
-	public ScopeString scope;
+	public NameScope scope;
 
 	/** List of imports */
 	private TreeMap<String, LinkedHashMap<String, String>> imports;
 
-	/** Reportmanager instance, used to set file name for atoms */
+	/** Report Manager instance, used to set file name for atoms */
 	private TSReportManager reportMgr=null;
 
 	/**
@@ -137,7 +131,7 @@ public class TSAtomList extends TSTable {
 
 		this.specificationName="default";
 
-		this.scope=new ScopeString();
+		this.scope=new NameScope();
 		this.imports=new TreeMap<String, LinkedHashMap<String, String>>();
 	}
 
@@ -145,7 +139,7 @@ public class TSAtomList extends TSTable {
 	 * Set the report manager
 	 * @param rm Report Manager instance
 	 */
-	public void setReportMgt(TSReportManager rm){
+	public void setReportMgr(TSReportManager rm){
 		this.reportMgr=rm;
 	}
 
@@ -178,7 +172,7 @@ public class TSAtomList extends TSTable {
 	 * @param s the new scope separator
 	 */
 	public void setScopeSeparator(String s){
-		this.scope.separator(s);
+		this.scope.setSeparator(s);
 	}
 
 	/**
@@ -186,7 +180,7 @@ public class TSAtomList extends TSTable {
 	 * return the current scope separator
 	 */
 	public String getScopeSeparator(){
-		return this.scope.separator();
+		return this.scope.getSeparator();
 	}
 
 	/**
@@ -283,67 +277,12 @@ public class TSAtomList extends TSTable {
 	}
 
 	/**
-	 * Returns a list of of strings (categories) and the atoms defined for each of them.
-	 * @return and empty list (of no atoms registered) or a list of string/integer pairs
-	 */
-	public LinkedHashMap<String, Integer> atomNumbers(){
-		LinkedHashMap<String, Integer> ret=new LinkedHashMap<String, Integer>();
-		Set<String> rows=this.getRows();
-
-		for (Iterator<String> i = rows.iterator(); i.hasNext(); i.hasNext()){
-			String current=i.next();
-        	String category=this.get(current,TSAtomList.alValCategory).toString();
-        	if(!ret.containsKey(category))
-        		ret.put(category, 0);
-        	ret.put(category, ret.get(category)+1);
-		}
-		return ret;
-	}
-
-	/**
-	 * Returns the number of atoms in the list
-	 * @return size of the atom list
-	 */
-	public Integer noOfAtoms(){
-		return this.size();
-	}
-
-	/**
 	 * Returns import list 
 	 * @param row name of an atom to look for
 	 * @return the list of recorded imports for this atom
 	 */
 	public LinkedHashMap<String, String> getImports(String row){
 		return this.imports.get(row);
-	}
-
-	/**
-	 * Gets last atom in the current scope.
-	 * @return id of the last atom the the current scope
-	 */
-	public String getLastID(){
-		return this.scope.lastElement();
-	}
-
-	/**
-	 * Removes all language atoms of a given category
-	 * @param cat
-	 */
-	public void removeCategory(String cat){
-		Set<String> rows=this.getRows();
-		ArrayList<String> removeList=new ArrayList<String>();
-		String current;
-		String category;
-        for (Iterator<String> i = rows.iterator(); i.hasNext(); i.hasNext()){
-        	current=i.next();
-       		category=this.get(current,TSAtomList.alValCategory).toString();
-       		if(category.equals(cat))
-       			removeList.add(current);
-		}
-        //now go through the remove list and remove the no longer needed atoms
-        int size=removeList.size();
-        for(int i=0;i<size;i++)
-        	this.remove(removeList.get(i));
 	}
 
 	/**
@@ -371,43 +310,5 @@ public class TSAtomList extends TSTable {
 		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_ANTLR_TOKEN))
 			ret=((TSToken)ata);
 		return (Token)ret;
-	}
-
-	/**
-	 * Returns the category of the parent atom for the atom with name 's'.
-	 * @param s name of the atom
-	 * @return category of the atom's parent
-	 */
-	public String getParrentCategory(String s){
-		String ret=s;
-		if(ret==null)
-			ret=this.scope.toString();
-		if(ret.lastIndexOf(this.scope.separator())==-1)
-			return this.defaultCategory;
-		String par=ret.substring(0,ret.lastIndexOf(this.scope.separator()));
-		return this.get(par, TSAtomList.alValCategory).toString();
-	}
-
-	/**
-	 * Returns the name (identifier) of the parent atom for the atom with name 's'.
-	 * @param s name of the atom
-	 * @return identifier of the atom's parent
-	 */
-	public String getParrentId(String s){
-		String ret=s;
-		if(ret==null)
-			ret=this.scope.toString();
-		if(ret.lastIndexOf(this.scope.separator())==-1)
-			return null;
-		String par=ret.substring(0,ret.lastIndexOf(this.scope.separator()));
-		return par;
-	}
-
-	/**
-	 * Sets the default category.
-	 * @param s
-	 */
-	public void setDefaultCategory(String s){
-		this.defaultCategory=s;
 	}
 }

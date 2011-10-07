@@ -77,6 +77,12 @@ public interface TribeParserAPI {
 	public String getLangRuleClassName();
 
 	/**
+	 * Returns the file name of the STG file with parser language rules.
+	 * @return STG file name as fully qualified file name (directory+file)
+	 */
+	public String getParserRuleSTGFileName();
+
+	/**
 	 * Returns the key (prefix) to be used to auto-load language rules for the parser from the options class.
 	 * @return key
 	 */

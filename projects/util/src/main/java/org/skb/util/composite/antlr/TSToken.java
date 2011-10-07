@@ -148,4 +148,9 @@ public final class TSToken extends ClassicToken implements TSAtomicAPI {
 	public TSToken tsCopyAtomic(){
 		return new TSToken(this);
 	}
+
+	@Override
+	public String toString(){
+		return this.getText();
+	}
 }

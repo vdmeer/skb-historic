@@ -33,6 +33,7 @@ import org.skb.util.FieldKeys;
 import org.skb.util.PathKeys;
 import org.skb.util.composite.TSBaseAPI;
 import org.skb.util.composite.TSRepository.TEnum;
+import org.skb.util.composite.antlr.TSSTGroupManager;
 import org.skb.util.composite.lang.TSAtomList;
 import org.skb.util.composite.misc.TSReportManager;
 import org.skb.util.composite.util.TSLangRuleMap;
@@ -157,6 +158,22 @@ public class Configuration {
 	public boolean addLangRuleMap(){
 		this.config.put(PathKeys.pathInstancesLangrulemap, new TSLangRuleMap());
 		return true;
+	}
+
+	public boolean addParserRuleManager(TSSTGroupManager gm){
+		if(gm!=null)
+			this.config.put(PathKeys.pathInstancesParserrulemanager, gm.tsCopyAtomic());
+		else
+			this.config.put(PathKeys.pathInstancesParserrulemanager, new TSSTGroupManager());
+		return true;
+	}
+
+	public TSSTGroupManager getParserRuleManager(){
+		TSBaseAPI base=this.config.get(PathKeys.pathInstancesParserrulemanager);
+		if(base.tsIsType(TEnum.TS_ATOMIC_STGROUPMANAGER)){
+			return (TSSTGroupManager)base;
+		}
+		return new TSSTGroupManager();
 	}
 
 	/**

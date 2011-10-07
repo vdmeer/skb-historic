@@ -221,7 +221,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report an error or a warning
+	 * Reports an error or a warning
 	 * 
 	 * This is the method that does all reporting, all other error, warning or message methods redirect to here.
 	 * @param msgType type of message, either "warning" or "error"
@@ -276,7 +276,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report an error from string with additional information
+	 * Reports an error from string with additional information
 	 * 
 	 * File name and programme name will be used as set (either default or last change).
 	 * @param m message to be reported
@@ -289,7 +289,19 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report an error from Token with additional information
+	 * Reports an error with line/column information.
+	 * 
+	 * File name and programme name will be used as set (either default or last change).
+	 * @param m message to be reported
+	 * @param line line in which the error occurred
+	 * @param column column in which the error occurred
+	 */
+	public void error(String m, int line, int column){
+		this.report("error", m, null, line, column);
+	}
+
+	/**
+	 * Reports an error from Token with additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
@@ -301,7 +313,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report an error from Token without additional information
+	 * Reports an error from Token without additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
@@ -312,7 +324,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple error message
+	 * Reports an error message.
 	 * 
 	 * No additional information will be reported, and line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
@@ -322,7 +334,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple error message with additional information
+	 * Reports an simple message with additional information
 	 * 
 	 * Line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
@@ -333,7 +345,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple error message without a file name
+	 * Reports an error message without a file name.
 	 * 
 	 * Programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
@@ -346,7 +358,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report an error message with an ANTLR exception without additional information
+	 * Reports an error message with an ANTLR exception without additional information.
 	 * 
 	 * Line number and column will extracted from the exception. File name and programme name will be used as set (either default or last change).
 	 * @param m error message to be reported
@@ -357,7 +369,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a message from string with additional information
+	 * Reports a message from string with additional information.
 	 * 
 	 * File name and programme name will be used as set (either default or last change).
 	 * @param m message to be reported
@@ -370,7 +382,19 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a message from Token with additional information
+	 * Reports a message from string with line/column information.
+	 * 
+	 * File name and programme name will be used as set (either default or last change).
+	 * @param m message to be reported
+	 * @param line line to which the message corresponds
+	 * @param column column to which the message corresponds
+	 */
+	public void message(String m, int line, int column){
+		this.report(null, m, null, line, column);
+	}
+
+	/**
+	 * Reports a message from Token with additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
 	 * @param m message to be reported
@@ -382,7 +406,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a message from Token without additional information
+	 * Reports a message from Token without additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
 	 * @param m message to be reported
@@ -393,7 +417,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple message
+	 * Reports a message.
 	 * 
 	 * No additional information will be reported, and line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m message to be reported
@@ -403,7 +427,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple message with additional information
+	 * Reports a message with additional information.
 	 * 
 	 * Line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m message to be reported
@@ -414,7 +438,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple message without a file name
+	 * Reports a message without a file name.
 	 * 
 	 * Programme name will be used as set (either default or last change).
 	 * @param m message to be reported
@@ -427,7 +451,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a warning from string with additional information
+	 * Reports a warning from string with additional information.
 	 * 
 	 * File name and programme name will be used as set (either default or last change).
 	 * @param m warning to be reported
@@ -440,7 +464,19 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a warning from Token with additional information
+	 * Reports a warning from string with line/column information.
+	 * 
+	 * File name and programme name will be used as set (either default or last change).
+	 * @param m warning to be reported
+	 * @param line line in which the warning occurred
+	 * @param column column in which the warning occurred
+	 */
+	public void warning(String m, int line, int column){
+		this.report("warning", m, null, line, column);
+	}
+
+	/**
+	 * Reports a warning from Token with additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
 	 * @param m warning message to be reported
@@ -452,7 +488,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a warning from Token without additional information
+	 * Reports a warning from Token without additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
 	 * @param m warning message to be reported
@@ -463,7 +499,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple warning message
+	 * Reports a warning message.
 	 * 
 	 * No additional information will be reported, and line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m warning message to be reported
@@ -473,7 +509,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple warning message with additional information
+	 * Reports a warning message with additional information.
 	 * 
 	 * Line number and column will not be used in the report. File name and programme name will be used as set (either default or last change).
 	 * @param m warning message to be reported
@@ -484,7 +520,7 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Report a simple warning message without a file name
+	 * Reports a warning message without a file name.
 	 * 
 	 * Programme name will be used as set (either default or last change).
 	 * @param m warning message to be reported
@@ -511,13 +547,17 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
-	 * Returns the manager's STGroup
+	 * Returns the manager's STGroup.
 	 * @return null if not set or not initialised, STGroup otherwise
 	 */
 	public StringTemplateGroup getSTG(){
 		return this.stgm.getSTG();
 	}
 
+	/**
+	 * Returns the local StringTemplateGroup in stringified form.
+	 * @return stringified form of the StringTemplateGroup
+	 */
 	public String stgmToString(){
 		return this.stgm.toString();
 	}

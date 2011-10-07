@@ -49,7 +49,11 @@ public class PathKeys {
 	public final static String pathInstancesAtomlist					= "skb/instances/atomlist";
 
 	/** Key for a path to the language rule map (TSLangRuleMap) in a configuration */
+	@Deprecated
 	public final static String pathInstancesLangrulemap					= "skb/instances/langrulemap";
+
+	/** Key for a path to the language rule manager, a TSSTGroupManager */
+	public final static String pathInstancesParserrulemanager				= "skb/instances/parserrulemanager";
 
 	/** Key for a path to the internationalisation manager (TSI18NManager) in a configuration */
 	public final static String pathInstancesI18nmanager					= "skb/instances/i18nmanager";
@@ -79,9 +83,13 @@ public class PathKeys {
 	/** Key for a path that holds information about target languages */
 	public final static String pathConfigurationParserLangTargets		= "skb/lang/targets";
 
-	/** Key for a path that holds information on StringTemplate chunks */
+	/** Key for a path that holds information on StringTemplate chunks for language targets */
 	public final static String pathConfigurationParserLangStgChunks		= "skb/lang/stgchunks";
 
+	/** Key for a path that holds information on StringTemplate chunks for parser rules */
+	public final static String pathConfigurationParserRulesStgChunks	= "skb/lang/rules-stgchunks";
+
 	/** Key for a path that holds information language rules */
+	@Deprecated
 	public final static String pathConfigurationParserLangRules			= "skb/lang/rules";
 }

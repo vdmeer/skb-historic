@@ -69,7 +69,7 @@ public class TSSTGroupManager extends TSAtomic {
 	/** File name for the STG */
 	protected TSAtomicAPI stgFile=null;
 
-	/** Enum type identifying the type of the stgFile */
+	/** Enumerate type identifying the type of the stgFile */
 	public enum stgLoadType{URL, FILESYSTEM}
 
 	/** Application name the STGManager is working for */
