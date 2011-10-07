@@ -59,31 +59,18 @@ public class ScopeString {
 	}
 
 	/**
-	 * Sets the scope separator to the given string.
-	 * @param s new scope separator.
+	 * Clears the vector, empty the scope.
 	 */
-	public void separator(String s){
-		this.separator=s;
+	public void clear(){
+		this.field.clear();
 	}
 
 	/**
-	 * Returns the currently used scope separator.
-	 * @return scope separator currently used.
+	 * Returns the last entry of the vector.
+	 * @return last entry of the vector
 	 */
-	public String separator(){
-		return this.separator;
-	}
-
-	/**
-	 * Returns the current scope as string.
-	 */
-	public String toString(){
-		String ret="";
-		for (int i = 0; i < this.field.size(); i++)
-			ret+=this.field.get(i)+this.separator;
-	    if(ret!="")
-	    	ret=ret.substring(0, ret.lastIndexOf(this.separator));
-		return ret;
+	public String lastElement(){
+		return this.field.lastElement();
 	}
 
 	/**
@@ -102,17 +89,30 @@ public class ScopeString {
 	}
 
 	/**
-	 * Clears the vector, empty the scope.
+	 * Returns the currently used scope separator.
+	 * @return scope separator currently used.
 	 */
-	public void clear(){
-		this.field.clear();
+	public String separator(){
+		return this.separator;
 	}
 
 	/**
-	 * Returns the last entry of the vector.
-	 * @return last entry of the vector
+	 * Sets the scope separator to the given string.
+	 * @param s new scope separator.
 	 */
-	public String lastElement(){
-		return this.field.lastElement();
+	public void separator(String s){
+		this.separator=s;
+	}
+
+	/**
+	 * Returns the current scope as string.
+	 */
+	public String toString(){
+		String ret="";
+		for (int i = 0; i < this.field.size(); i++)
+			ret+=this.field.get(i)+this.separator;
+	    if(ret!="")
+	    	ret=ret.substring(0, ret.lastIndexOf(this.separator));
+		return ret;
 	}
 }

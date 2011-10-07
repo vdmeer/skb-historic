@@ -60,31 +60,35 @@ public class ScopeToken {
 	}
 
 	/**
-	 * Set the scope separator to the given string.
-	 * @param s new scope separator.
+	 * Clear the vector, empty the scope.
 	 */
-	public void separator(String s){
-		this.separator=s;
+	public void clear(){
+		this.field.clear();
 	}
 
 	/**
-	 * Return the currently used scope separator.
-	 * @return scope separator currently used.
+	 * Return the ANTLR token of the given index.
+	 * @param index index of the vector
+	 * @return ANTLR token at the given index
 	 */
-	public String separator(){
-		return this.separator;
+	public Token get(int index){
+		return this.field.get(index);
 	}
 
 	/**
-	 * Return the current scope as string.
+	 * Return the vector as an array list of tokens.
+	 * @return the array list form of the vector
 	 */
-	public String toString(){
-		String ret="";
-		for (int i = 0; i < this.field.size(); i++)
-			ret+=this.field.get(i).getText()+this.separator;
-	    if(ret!="")
-	    	ret=ret.substring(0, ret.lastIndexOf(this.separator));
-		return ret;
+	public ArrayList<Token> getList(){
+		return new ArrayList<Token>(this.field);
+	}
+
+	/**
+	 * Return the last entry of the vector.
+	 * @return last entry of the vector
+	 */
+	public Token lastElement(){
+		return this.field.lastElement();
 	}
 
 	/**
@@ -103,27 +107,19 @@ public class ScopeToken {
 	}
 
 	/**
-	 * Clear the vector, empty the scope.
+	 * Return the currently used scope separator.
+	 * @return scope separator currently used.
 	 */
-	public void clear(){
-		this.field.clear();
+	public String separator(){
+		return this.separator;
 	}
 
 	/**
-	 * Return the last entry of the vector.
-	 * @return last entry of the vector
+	 * Set the scope separator to the given string.
+	 * @param s new scope separator.
 	 */
-	public Token lastElement(){
-		return this.field.lastElement();
-	}
-
-	/**
-	 * Return the ANTLR token of the given index.
-	 * @param index index of the vector
-	 * @return ANTLR token at the given index
-	 */
-	public Token get(int index){
-		return this.field.get(index);
+	public void separator(String s){
+		this.separator=s;
 	}
 
 	/**
@@ -135,10 +131,14 @@ public class ScopeToken {
 	}
 
 	/**
-	 * Return the vector as an array list of tokens.
-	 * @return the array list form of the vector
+	 * Return the current scope as string.
 	 */
-	public ArrayList<Token> getList(){
-		return new ArrayList<Token>(this.field);
+	public String toString(){
+		String ret="";
+		for (int i = 0; i < this.field.size(); i++)
+			ret+=this.field.get(i).getText()+this.separator;
+	    if(ret!="")
+	    	ret=ret.substring(0, ret.lastIndexOf(this.separator));
+		return ret;
 	}
 }
