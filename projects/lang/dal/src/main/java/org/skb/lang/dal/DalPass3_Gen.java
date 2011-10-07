@@ -41,12 +41,12 @@ import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.lang.NameScope;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.composite.util.TSArrayListString;
 import org.skb.lang.dal.constants.DalConstants;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.NameScope;
-import org.skb.util.composite.java.TSBoolean;
-import org.skb.util.composite.lang.TSAtomList;
-import org.skb.util.composite.util.TSArrayListString;
 
 /**
  * Pass 3 of the DAL parser using templates to generate a target language specification.

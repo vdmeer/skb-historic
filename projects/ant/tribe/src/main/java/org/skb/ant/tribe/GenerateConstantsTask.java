@@ -41,14 +41,14 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
-import org.skb.util.FieldKeys;
-import org.skb.util.PathKeys;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.json.Json2TS;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.util.TSLinkedHashTree;
+import org.skb.base.FieldKeys;
+import org.skb.base.PathKeys;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.json.Json2TS;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.util.TSLinkedHashTree;
 
 /**
  * Ant task for generating constant classes for parsers.
@@ -134,25 +134,25 @@ public class GenerateConstantsTask extends Task{
 	 * 		{@link Configuration} is used to parse the JSON source file and to retrieve properties, rules and tokens. For tokens, the following three
 	 * 		JSON fields are processed:
 	 * 		<ul>
-	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
-	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantValue} - as "value"</li>
-	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
+	 * 			<li>{@link org.skb.base.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
+	 * 			<li>{@link org.skb.base.FieldKeys#fieldLangTargetConstantValue} - as "value"</li>
+	 * 			<li>{@link org.skb.base.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
 	 * 		</ul>
 	 * 		For rules, the JSON source can have an map with rule specifications each of which is a key/map pair (the map holding the details). This map
 	 * 		is then used in the following way:
 	 * 		<ul>
-	 * 			<li>{@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
-	 * 			<li>the key providing {@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as "value"</li>
-	 * 			<li>the key providing {@link org.skb.util.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
+	 * 			<li>{@link org.skb.base.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
+	 * 			<li>the key providing {@link org.skb.base.FieldKeys#fieldLangTargetConstantIdent} - as "value"</li>
+	 * 			<li>the key providing {@link org.skb.base.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
 	 * 		</ul>
 	 * 		For properties (usually access to some configuration information in a property map), the JSON source file should to provide the path
-	 * 		{@link org.skb.util.PathKeys#pathConfigurationParserTribe} for general properties and the path
-	 * 		{@link org.skb.util.PathKeys#patConfigurationParserLang} for target specific configurations. The general configuration and each of the target
+	 * 		{@link org.skb.base.PathKeys#pathConfigurationParserTribe} for general properties and the path
+	 * 		{@link org.skb.base.PathKeys#patConfigurationParserLang} for target specific configurations. The general configuration and each of the target
 	 * 		configurations will be processed and JSON fields used in the following way:
 	 * 		<ul>
-	 * 			<li>path plus specific key plus {@link org.skb.util.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
+	 * 			<li>path plus specific key plus {@link org.skb.base.FieldKeys#fieldLangTargetConstantIdent} - as key for the resulting map</li>
 	 * 			<li>path plus specific key - as "value"</li> 
-	 * 			<li>path plus specific key plus {@link org.skb.util.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
+	 * 			<li>path plus specific key plus {@link org.skb.base.FieldKeys#fieldLangTargetConstantJavadoc} - as "javadoc"</li>
 	 * 		</ul>
  	 * </p>
      */

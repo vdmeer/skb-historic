@@ -32,10 +32,10 @@ package org.skb.lang.mess.proto;
 
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.composite.misc.TSReportManager;
 import org.skb.lang.mess.proto.constants.MessConstants;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.composite.lang.TSAtomList;
-import org.skb.util.composite.misc.TSReportManager;
 
 /**
  * Pass 2 of the MESS parser, mostly looking into semantic analysis.

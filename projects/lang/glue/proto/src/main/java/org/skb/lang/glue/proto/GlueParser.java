@@ -37,14 +37,14 @@ import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.io.files.FileTemplateList;
 import org.skb.lang.glue.proto.constants.GlueConstants;
 import org.skb.lang.glue.proto.grammars.glueAst;
 import org.skb.lang.glue.proto.grammars.glueEbnfLexer;
 import org.skb.lang.glue.proto.grammars.glueEbnfParser;
 import org.skb.lang.glue.proto.grammars.glueGen;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.io.files.FileTemplateList;
 
 /**
  * Parser class for GLUE-Proto.

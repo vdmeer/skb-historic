@@ -31,9 +31,9 @@
 package org.skb.lang.pola.proto;
 
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.composite.lang.TSAtomList;
 import org.skb.lang.pola.proto.constants.PolaConstants;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 1 of the Pola parser, syntax checks and building a symbol table.

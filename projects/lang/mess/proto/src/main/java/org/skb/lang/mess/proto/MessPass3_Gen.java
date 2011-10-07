@@ -36,13 +36,13 @@ import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.config.ConfigurationProperties;
+import org.skb.base.classic.lang.NameScope;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.antlr.TSStringTemplate;
+import org.skb.base.composite.lang.TSAtomList;
 import org.skb.lang.mess.proto.constants.MessConstants;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.config.ConfigurationProperties;
-import org.skb.util.classic.lang.NameScope;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.antlr.TSStringTemplate;
-import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 3 of the MESS parser using templates to generate a target language specification.

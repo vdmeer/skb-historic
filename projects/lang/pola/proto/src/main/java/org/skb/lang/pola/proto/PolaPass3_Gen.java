@@ -34,12 +34,12 @@ import java.util.TreeMap;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.lang.AtomListUtils;
+import org.skb.base.classic.lang.NameScope;
+import org.skb.base.classic.lang.NameScopeUtils;
+import org.skb.base.composite.lang.TSAtomList;
 import org.skb.lang.pola.proto.constants.PolaConstants;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomListUtils;
-import org.skb.util.classic.lang.NameScope;
-import org.skb.util.classic.lang.NameScopeUtils;
-import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 3 of the Pola parser using templates to generate target language specifications.

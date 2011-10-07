@@ -31,10 +31,10 @@
 package org.skb.lang.cola.proto;
 
 import org.apache.log4j.Logger;
+import org.skb.base.classic.lang.LangParserAPI;
+import org.skb.base.classic.misc.LogManager;
 import org.skb.tribe.Tribe;
 import org.skb.tribe.LangParserImpl;
-import org.skb.util.classic.lang.LangParserAPI;
-import org.skb.util.classic.misc.LogManager;
 
 /**
  * General entry point for Cola parsing.

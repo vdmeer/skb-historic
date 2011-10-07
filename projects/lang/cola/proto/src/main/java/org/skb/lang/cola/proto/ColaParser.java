@@ -37,6 +37,8 @@ import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.io.files.FileTemplateList;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.grammars.colaAst;
 import org.skb.lang.cola.proto.grammars.colaEbnfLexer;
@@ -45,8 +47,6 @@ import org.skb.lang.cola.proto.grammars.colaGen;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.io.files.FileTemplateList;
 
 /**
  * Parser for COLA-Proto.

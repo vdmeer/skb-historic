@@ -32,12 +32,12 @@ package org.skb.lang.pola.proto;
 
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.lang.NameScope;
+import org.skb.base.classic.lang.TokenUtils;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.lang.TSAtomList;
 import org.skb.lang.pola.proto.constants.PolaConstants;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.NameScope;
-import org.skb.util.classic.lang.TokenUtils;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.lang.TSAtomList;
 
 /**
  * Pass 2 of the Pola parser mostly doing semantic analysis.

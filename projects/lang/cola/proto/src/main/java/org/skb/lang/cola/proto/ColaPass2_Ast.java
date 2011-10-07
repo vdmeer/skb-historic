@@ -40,19 +40,19 @@ import org.antlr.runtime.tree.CommonTree;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.lang.GrammarUtils;
+import org.skb.base.classic.lang.NameScope;
+import org.skb.base.classic.lang.NameScopeUtils;
+import org.skb.base.classic.lang.TokenUtils;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.antlr.TSToken;
+import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.composite.misc.TSReportManager;
+import org.skb.base.composite.util.TSLangRuleMap;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.GrammarUtils;
-import org.skb.util.classic.lang.NameScope;
-import org.skb.util.classic.lang.NameScopeUtils;
-import org.skb.util.classic.lang.TokenUtils;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.antlr.TSToken;
-import org.skb.util.composite.lang.TSAtomList;
-import org.skb.util.composite.misc.TSReportManager;
-import org.skb.util.composite.util.TSLangRuleMap;
 
 /**
  * Pass 2 of the Cola parser, mostly looking into semantic analysis.

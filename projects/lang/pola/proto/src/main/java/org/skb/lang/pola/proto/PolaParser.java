@@ -37,14 +37,14 @@ import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.io.files.FileTemplateList;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 import org.skb.lang.pola.proto.grammars.polaAst;
 import org.skb.lang.pola.proto.grammars.polaEbnfLexer;
 import org.skb.lang.pola.proto.grammars.polaEbnfParser;
 import org.skb.lang.pola.proto.grammars.polaGen;
 import org.skb.tribe.TribeParserAPI;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.io.files.FileTemplateList;
 
 /**
  * Parser class for POLA-Proto.

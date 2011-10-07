@@ -34,15 +34,15 @@ import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.lang.AtomListUtils;
+import org.skb.base.classic.lang.NameScopeUtils;
+import org.skb.base.composite.TSTableRowAPI;
+import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.composite.misc.TSReportManager;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.lang.AtomListUtils;
-import org.skb.util.classic.lang.NameScopeUtils;
-import org.skb.util.composite.TSTableRowAPI;
-import org.skb.util.composite.lang.TSAtomList;
-import org.skb.util.composite.misc.TSReportManager;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.

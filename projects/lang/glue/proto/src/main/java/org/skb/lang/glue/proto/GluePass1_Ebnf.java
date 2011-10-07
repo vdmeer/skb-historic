@@ -31,7 +31,7 @@
 package org.skb.lang.glue.proto;
 
 import org.apache.log4j.Logger;
-import org.skb.util.classic.config.Configuration;
+import org.skb.base.classic.config.Configuration;
 
 /**
  * Pass 1 of the Glue parser doing syntactical checks and building symbol table.

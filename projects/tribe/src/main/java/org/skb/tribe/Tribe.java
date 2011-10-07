@@ -44,28 +44,28 @@ import java.util.Properties;
 import org.apache.commons.cli.ParseException;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.skb.base.ConfigKeys;
+import org.skb.base.FieldKeys;
+import org.skb.base.PathKeys;
+import org.skb.base.classic.cli.Cli;
+import org.skb.base.classic.cli.CliApache;
+import org.skb.base.classic.config.Configuration;
+import org.skb.base.classic.config.ConfigurationProperties;
+import org.skb.base.classic.json.Json2TS;
+import org.skb.base.classic.lang.LangParserAPI;
+import org.skb.base.classic.misc.PropertyHandler;
+import org.skb.base.composite.TSBaseAPI;
+import org.skb.base.composite.TSDefault;
+import org.skb.base.composite.TSError;
+import org.skb.base.composite.TSNull;
+import org.skb.base.composite.TSRepository;
+import org.skb.base.composite.TSWarning;
+import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.java.TSString;
+import org.skb.base.composite.misc.TSReportManager;
+import org.skb.base.composite.util.TSLinkedHashTree;
 import org.skb.lang.cpp.CPP;
-import org.skb.util.ConfigKeys;
-import org.skb.util.FieldKeys;
-import org.skb.util.PathKeys;
-import org.skb.util.classic.cli.Cli;
-import org.skb.util.classic.cli.CliApache;
-import org.skb.util.classic.config.Configuration;
-import org.skb.util.classic.config.ConfigurationProperties;
-import org.skb.util.classic.json.Json2TS;
-import org.skb.util.classic.lang.LangParserAPI;
-import org.skb.util.classic.misc.PropertyHandler;
-import org.skb.util.composite.TSBaseAPI;
-import org.skb.util.composite.TSDefault;
-import org.skb.util.composite.TSError;
-import org.skb.util.composite.TSNull;
-import org.skb.util.composite.TSRepository;
-import org.skb.util.composite.TSRepository.TEnum;
-import org.skb.util.composite.TSWarning;
-import org.skb.util.composite.java.TSBoolean;
-import org.skb.util.composite.java.TSString;
-import org.skb.util.composite.misc.TSReportManager;
-import org.skb.util.composite.util.TSLinkedHashTree;
 
 /**
  * This is the main Tribe class, it does all the magic.
@@ -123,7 +123,7 @@ public class Tribe {
 		//get the chunks for the standard STG file
 		Properties cfgFile=new PropertyHandler().load(this.propertyFile, Tribe.class.getName());
 		Json2TS j2o=new Json2TS();
-		TSBaseAPI c=j2o.read(cfgFile.getProperty("org.skb.util.config.jsonfile"));
+		TSBaseAPI c=j2o.read(cfgFile.getProperty("org.skb.base.config.jsonfile"));
 		if(c.tsIsType(TEnum.TS_COMPOSITE_TREE_LH)){
 			TSLinkedHashTree cfg=(TSLinkedHashTree)c;
 			config.config.put(PathKeys.pathConfigurationParserTribeStgChunks, cfg.get(PathKeys.pathConfigurationParserTribeStgChunks));

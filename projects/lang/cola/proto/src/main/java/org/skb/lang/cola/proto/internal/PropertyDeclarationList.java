@@ -33,8 +33,8 @@ package org.skb.lang.cola.proto.internal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
+import org.skb.base.composite.TSAtomic;
 import org.skb.lang.cola.proto.constants.ColaConstants;
-import org.skb.util.composite.TSAtomic;
 
 /**
  * Helper class maintaining the list of property declarations.

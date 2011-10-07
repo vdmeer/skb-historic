@@ -35,8 +35,8 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
+import org.skb.base.composite.TSAtomic;
 import org.skb.lang.cola.proto.constants.ColaConstants;
-import org.skb.util.composite.TSAtomic;
 
 /**
  * Internal class maintaining a list of contract declarations.

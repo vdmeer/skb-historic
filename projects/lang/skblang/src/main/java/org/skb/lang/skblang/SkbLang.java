@@ -31,14 +31,14 @@
 package org.skb.lang.skblang;
 
 import org.apache.log4j.Logger;
+import org.skb.base.classic.lang.LangParserAPI;
+import org.skb.base.classic.misc.LogManager;
 import org.skb.lang.cola.proto.ColaParser;
 import org.skb.lang.dal.DalParser;
 import org.skb.lang.glue.proto.GlueParser;
 import org.skb.lang.pola.proto.PolaParser;
 import org.skb.tribe.LangParserImpl;
 import org.skb.tribe.Tribe;
-import org.skb.util.classic.lang.LangParserAPI;
-import org.skb.util.classic.misc.LogManager;
 
 /**
  * Class combining all SKB Language Parsers into a single tool.
