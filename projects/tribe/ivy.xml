@@ -21,7 +21,7 @@
 		<dependency org="org.apache.log4j" name="com.springsource.org.apache.log4j" rev="${org.apache.log4j}" />
 		<dependency org="org.apache.commons" name="com.springsource.org.apache.commons.collections" rev="${org.apache.commons.collections}" />
 
-		<dependency org="skb" name="skb.util" rev="${skb.util}" />
+		<dependency org="skb" name="skb.base" rev="${skb.base}" />
 		<dependency org="skb.lang" name="skb.lang.cpp" rev="${skb.lang.cpp}" />
 
 		<dependency org="org.junit" name="com.springsource.org.junit" rev="${org.junit}" conf="test->runtime" />
