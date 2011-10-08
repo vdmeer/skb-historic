@@ -32,9 +32,9 @@ package org.skb.kb;
 
 import org.apache.log4j.Logger;
 import org.skb.base.PathKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.misc.LogManager;
 import org.skb.base.composite.misc.TSI18NManager;
+import org.skb.base.config.Configuration;
+import org.skb.base.misc.LogManager;
 
 /**
  * Static class that provides an init method to realise all SKB initialisation.

@@ -53,7 +53,7 @@ options
 
   import java.util.LinkedHashMap;
 
-  import org.skb.util.classic.config.Configuration;
+  import org.skb.base.classic.config.Configuration;
   import org.skb.lang.mess.proto.MessParser;
   import org.skb.lang.mess.proto.MessPass1_Ebnf;
   import org.skb.lang.mess.proto.constants.MessConstants;
@@ -64,7 +64,7 @@ options
 {
   package org.skb.lang.mess.proto.grammars;
 
-  import org.skb.util.classic.config.Configuration;
+  import org.skb.base.classic.config.Configuration;
   import org.skb.lang.mess.proto.MessParser;
   import org.skb.lang.mess.proto.constants.MessConstants;
 }

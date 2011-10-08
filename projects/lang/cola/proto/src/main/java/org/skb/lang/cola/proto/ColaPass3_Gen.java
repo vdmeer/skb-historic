@@ -37,13 +37,13 @@ import java.util.TreeSet;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.base.FieldKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.lang.AtomListUtils;
-import org.skb.base.classic.lang.NameScope;
-import org.skb.base.classic.lang.NameScopeUtils;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository;
 import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.config.Configuration;
+import org.skb.base.lang.AtomListUtils;
+import org.skb.base.lang.NameScope;
+import org.skb.base.lang.NameScopeUtils;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 
 /**

@@ -32,9 +32,9 @@ package org.skb.kb.targets.tgtjava.dist.acronyms;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.skb.base.classic.patterns.creational.builder.Request;
 import org.skb.base.composite.antlr.TSSTGroupManager;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.patterns.creational.builder.Request;
 import org.skb.kb.SKBBuilder;
 
 /**

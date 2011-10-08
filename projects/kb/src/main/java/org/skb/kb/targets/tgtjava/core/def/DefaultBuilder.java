@@ -30,8 +30,8 @@
 
 package org.skb.kb.targets.tgtjava.core.def;
 
-import org.skb.base.classic.patterns.creational.builder.Request;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.patterns.creational.builder.Request;
 import org.skb.kb.SKBBuilder;
 
 /**

@@ -17,7 +17,7 @@
 
 	<dependencies>
 
-	<dependency org="skb" name="skb.util" rev="${skb.util}" />
+	<dependency org="skb" name="skb.base" rev="${skb.base}" />
 	<dependency org="skb" name="skb.tribe" rev="${skb.tribe}" /> 
 
 	<dependency org="skb.lang" name="skb.lang.cola.proto" rev="${skb.lang.cola.proto}" />

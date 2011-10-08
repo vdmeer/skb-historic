@@ -33,9 +33,9 @@ package org.skb.lang.mess.proto;
 
 import org.antlr.runtime.Token;
 import org.apache.log4j.Logger;
-import org.skb.base.classic.config.Configuration;
 import org.skb.base.composite.TSTableRowAPI;
 import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.config.Configuration;
 import org.skb.lang.mess.proto.constants.MessConstants;
 
 /**

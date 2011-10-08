@@ -34,7 +34,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
- * Test cases for {@link org.skb.base.classic.stringtemplate.STWriterXtoY}.
+ * Test cases for {@link org.skb.base.stringtemplate.STWriterXtoY}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

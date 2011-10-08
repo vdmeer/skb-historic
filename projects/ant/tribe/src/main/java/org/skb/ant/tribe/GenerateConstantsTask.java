@@ -43,12 +43,12 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 import org.skb.base.FieldKeys;
 import org.skb.base.PathKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.json.Json2TS;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository.TEnum;
 import org.skb.base.composite.java.TSString;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.config.Configuration;
+import org.skb.base.json.Json2TS;
 
 /**
  * Ant task for generating constant classes for parsers.

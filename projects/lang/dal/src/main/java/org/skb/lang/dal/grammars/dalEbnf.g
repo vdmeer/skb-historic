@@ -53,7 +53,7 @@ options
 
   import java.util.LinkedHashMap;
 
-  import org.skb.util.classic.config.Configuration;
+  import org.skb.base.classic.config.Configuration;
   import org.skb.lang.dal.DalParser;
   import org.skb.lang.dal.DalPass1_Ebnf;
   import org.skb.lang.dal.constants.DalConstants;
@@ -64,7 +64,7 @@ options
 {
   package org.skb.lang.dal.grammars;
 
-  import org.skb.util.classic.config.Configuration;
+  import org.skb.base.classic.config.Configuration;
   import org.skb.lang.dal.DalParser;
   import org.skb.lang.dal.constants.DalConstants;
 }

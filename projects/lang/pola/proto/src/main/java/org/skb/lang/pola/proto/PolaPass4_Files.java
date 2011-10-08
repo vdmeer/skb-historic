@@ -34,10 +34,10 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 import org.skb.base.FieldKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.config.ConfigurationProperties;
-import org.skb.base.classic.io.files.FileTemplateList;
 import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.config.Configuration;
+import org.skb.base.config.ConfigurationProperties;
+import org.skb.base.io.files.FileTemplateList;
 
 /**
  * Pass 4 of the Pola parser generating output files.

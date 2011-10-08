@@ -43,7 +43,6 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.apache.log4j.Logger;
 import org.skb.base.FieldKeys;
-import org.skb.base.classic.json.Json2TS;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSDefault;
 import org.skb.base.composite.TSError;
@@ -51,6 +50,7 @@ import org.skb.base.composite.TSNull;
 import org.skb.base.composite.TSRepository;
 import org.skb.base.composite.TSTableRowAPI;
 import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.json.Json2TS;
 
 /**
  * Provides a map of properties based on TSTable

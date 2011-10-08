@@ -34,7 +34,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
- * Test cases for {@link org.skb.base.classic.io.files.FileTemplateList}.
+ * Test cases for {@link org.skb.base.io.files.FileTemplateList}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

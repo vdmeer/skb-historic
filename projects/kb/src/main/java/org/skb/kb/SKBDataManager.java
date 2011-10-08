@@ -41,8 +41,6 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.skb.base.PathKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.patterns.creational.builder.Request;
 import org.skb.base.composite.TSAtomic;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository;
@@ -55,6 +53,8 @@ import org.skb.base.composite.util.TSArrayList;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
 import org.skb.base.composite.util.TSScope;
+import org.skb.base.config.Configuration;
+import org.skb.base.patterns.creational.builder.Request;
 
 /**
  * The SKB Data Manager, handling access to all registered data

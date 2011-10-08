@@ -36,12 +36,12 @@ import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.config.ConfigurationProperties;
-import org.skb.base.classic.lang.NameScope;
 import org.skb.base.composite.TSRepository.TEnum;
 import org.skb.base.composite.antlr.TSStringTemplate;
 import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.config.Configuration;
+import org.skb.base.config.ConfigurationProperties;
+import org.skb.base.lang.NameScope;
 import org.skb.lang.mess.proto.constants.MessConstants;
 
 /**

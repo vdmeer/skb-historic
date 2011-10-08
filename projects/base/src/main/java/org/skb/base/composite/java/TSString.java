@@ -33,7 +33,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Locale;
 
-import org.skb.base.classic.dictionaries.Html2LaTeX;
 import org.skb.base.composite.TSAtomic;
 import org.skb.base.composite.TSAtomicAPI;
 import org.skb.base.composite.TSBaseAPI;
@@ -41,6 +40,7 @@ import org.skb.base.composite.TSRepository;
 import org.skb.base.composite.TSRepository.TEnum;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.dictionaries.Html2LaTeX;
 
 /**
  * A wrapper for the class {@link String}.

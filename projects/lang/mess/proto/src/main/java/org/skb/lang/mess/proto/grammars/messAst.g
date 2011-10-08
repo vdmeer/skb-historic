@@ -52,7 +52,7 @@ options
 {
   package org.skb.lang.mess.proto.grammars;
 
-  import org.skb.util.classic.config.Configuration;
+  import org.skb.base.classic.config.Configuration;
   import org.skb.lang.mess.proto.MessPass2_Ast;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.mess.proto.MessParser;

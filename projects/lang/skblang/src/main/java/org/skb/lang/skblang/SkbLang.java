@@ -31,8 +31,8 @@
 package org.skb.lang.skblang;
 
 import org.apache.log4j.Logger;
-import org.skb.base.classic.lang.LangParserAPI;
-import org.skb.base.classic.misc.LogManager;
+import org.skb.base.lang.LangParserAPI;
+import org.skb.base.misc.LogManager;
 import org.skb.lang.cola.proto.ColaParser;
 import org.skb.lang.dal.DalParser;
 import org.skb.lang.glue.proto.GlueParser;

@@ -40,10 +40,6 @@ import java.util.Set;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.skb.base.PathKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.io.dirwalker.FindPackageDirectories;
-import org.skb.base.classic.json.Json2TS;
-import org.skb.base.classic.patterns.creational.builder.Request;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository;
 import org.skb.base.composite.TSRepository.TEnum;
@@ -53,6 +49,10 @@ import org.skb.base.composite.misc.TSI18NManager;
 import org.skb.base.composite.util.TSArrayList;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.config.Configuration;
+import org.skb.base.io.dirwalker.FindPackageDirectories;
+import org.skb.base.json.Json2TS;
+import org.skb.base.patterns.creational.builder.Request;
 
 /**
  * Main SKB class

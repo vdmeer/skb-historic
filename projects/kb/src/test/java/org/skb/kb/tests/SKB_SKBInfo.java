@@ -1,6 +1,6 @@
 package org.skb.kb.tests;
 
-import org.skb.base.classic.patterns.creational.builder.Request;
+import org.skb.base.patterns.creational.builder.Request;
 import org.skb.kb.SKB;
 import org.skb.kb.SKBBuilder;
 import org.skb.kb.SKBInit;

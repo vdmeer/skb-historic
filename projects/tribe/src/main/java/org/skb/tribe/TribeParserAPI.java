@@ -36,8 +36,8 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.io.files.FileTemplateList;
+import org.skb.base.config.Configuration;
+import org.skb.base.io.files.FileTemplateList;
 
 /**
  * Interface for tribe's implementation of a language parser.

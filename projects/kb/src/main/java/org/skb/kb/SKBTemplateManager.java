@@ -31,9 +31,9 @@
 package org.skb.kb;
 
 import org.apache.log4j.Logger;
-import org.skb.base.classic.patterns.creational.builder.TemplateManager;
 import org.skb.base.composite.antlr.TSSTGroupManager;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.patterns.creational.builder.TemplateManager;
 
 /**
  * SKB specific Template Manager, supporting builders in managing templates.

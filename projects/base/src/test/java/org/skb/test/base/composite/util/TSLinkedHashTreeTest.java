@@ -37,8 +37,6 @@ import junit.framework.TestSuite;
 import org.apache.log4j.Logger;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.skb.base.classic.json.Json2TS;
-import org.skb.base.classic.misc.LogManager;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSNull;
 import org.skb.base.composite.TSRepository;
@@ -49,6 +47,8 @@ import org.skb.base.composite.java.TSInteger;
 import org.skb.base.composite.java.TSString;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.json.Json2TS;
+import org.skb.base.misc.LogManager;
 
 /**
  * Test cases for {@link org.skb.base.composite.util.TSLinkedHashTree}.

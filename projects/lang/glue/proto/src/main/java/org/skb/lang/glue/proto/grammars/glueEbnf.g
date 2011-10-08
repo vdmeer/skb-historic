@@ -53,7 +53,7 @@ options
 
   import java.util.LinkedHashMap;
 
-  import org.skb.util.classic.config.Configuration;
+  import org.skb.base.classic.config.Configuration;
   import org.skb.lang.glue.proto.GlueParser;
   import org.skb.lang.glue.proto.GluePass1_Ebnf;
   import org.skb.tribe.TribeHelpers;
@@ -65,7 +65,7 @@ options
   package org.skb.lang.glue.proto.grammars;
 
   import org.skb.lang.glue.proto.GlueParser;
-  import org.skb.util.classic.config.Configuration;
+  import org.skb.base.classic.config.Configuration;
   import org.skb.lang.glue.proto.constants.GlueConstants;
 }
 

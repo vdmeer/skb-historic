@@ -36,7 +36,6 @@ import java.util.TreeMap;
 import org.antlr.runtime.Token;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
-import org.skb.base.classic.lang.NameScope;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository;
 import org.skb.base.composite.TSTableRowAPI;
@@ -46,6 +45,7 @@ import org.skb.base.composite.antlr.TSToken;
 import org.skb.base.composite.misc.TSReportManager;
 import org.skb.base.composite.util.TSTable;
 import org.skb.base.composite.util.TSTableRow;
+import org.skb.base.lang.NameScope;
 
 /**
  * AtomList for language parsers (symbol table)

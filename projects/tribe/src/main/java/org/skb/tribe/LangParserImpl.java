@@ -46,12 +46,6 @@ import org.antlr.runtime.tree.CommonTreeNodeStream;
 import org.apache.log4j.Logger;
 import org.skb.base.FieldKeys;
 import org.skb.base.PathKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.config.ConfigurationProperties;
-import org.skb.base.classic.io.files.FileManager;
-import org.skb.base.classic.io.files.FileTemplateList;
-import org.skb.base.classic.json.Json2TS;
-import org.skb.base.classic.lang.LangParserAPI;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSDefault;
 import org.skb.base.composite.TSRepository;
@@ -62,6 +56,12 @@ import org.skb.base.composite.misc.TSReportManager;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
 import org.skb.base.composite.util.TSPropertyMap;
+import org.skb.base.config.Configuration;
+import org.skb.base.config.ConfigurationProperties;
+import org.skb.base.io.files.FileManager;
+import org.skb.base.io.files.FileTemplateList;
+import org.skb.base.json.Json2TS;
+import org.skb.base.lang.LangParserAPI;
 
 /**
  * Tribe's implementation of a language parser.

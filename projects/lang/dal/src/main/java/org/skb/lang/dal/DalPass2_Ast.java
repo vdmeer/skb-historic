@@ -36,8 +36,8 @@ import java.util.LinkedHashMap;
 import org.antlr.runtime.Token;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.skb.base.classic.config.Configuration;
 import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.config.Configuration;
 import org.skb.lang.dal.constants.DalConstants;
 
 /**

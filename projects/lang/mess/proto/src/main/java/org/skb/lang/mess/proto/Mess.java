@@ -31,8 +31,8 @@
 package org.skb.lang.mess.proto;
 
 import org.apache.log4j.Logger;
-import org.skb.base.classic.lang.LangParserAPI;
-import org.skb.base.classic.misc.LogManager;
+import org.skb.base.lang.LangParserAPI;
+import org.skb.base.misc.LogManager;
 import org.skb.tribe.Tribe;
 import org.skb.tribe.LangParserImpl;
 

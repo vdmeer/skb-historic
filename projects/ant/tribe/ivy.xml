@@ -19,7 +19,7 @@
 		<dependency org="org.antlr" name="com.springsource.org.antlr.stringtemplate" rev="${org.antlr.stringtemplate}" />
 		<dependency org="org.apache.ant" name="com.springsource.org.apache.tools.ant" rev="${org.apache.ant}" />
 
-		<dependency org="skb" name="skb.util" rev="${skb.util}" />
+		<dependency org="skb" name="skb.base" rev="${skb.base}" />
 		<dependency org="skb" name="skb.tribe" rev="${skb.tribe}" />
 
 		<dependency org="org.junit" name="com.springsource.org.junit" rev="${org.junit}" conf="test->runtime" />

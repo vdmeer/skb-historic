@@ -35,14 +35,14 @@ import java.util.ArrayList;
 import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.base.FieldKeys;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.config.ConfigurationProperties;
-import org.skb.base.classic.io.files.FileTemplateList;
-import org.skb.base.classic.lang.NameScopeUtils;
 import org.skb.base.composite.TSRepository.TEnum;
 import org.skb.base.composite.antlr.TSStringTemplate;
 import org.skb.base.composite.java.TSBoolean;
 import org.skb.base.composite.lang.TSAtomList;
+import org.skb.base.config.Configuration;
+import org.skb.base.config.ConfigurationProperties;
+import org.skb.base.io.files.FileTemplateList;
+import org.skb.base.lang.NameScopeUtils;
 import org.skb.lang.mess.proto.constants.MessConstants;
 
 /**

@@ -38,13 +38,13 @@ import java.util.LinkedHashMap;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.lang.AtomListUtils;
-import org.skb.base.classic.stringtemplate.STWriterXtoY;
 import org.skb.base.composite.antlr.TSSTGroupManager;
 import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.config.Configuration;
+import org.skb.base.lang.AtomListUtils;
+import org.skb.base.stringtemplate.STWriterXtoY;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 

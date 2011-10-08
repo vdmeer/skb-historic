@@ -38,11 +38,7 @@ import java.util.TreeSet;
 
 import org.skb.base.FieldKeys;
 import org.skb.base.PathKeys;
-import org.skb.base.classic.cli.Cli;
-import org.skb.base.classic.config.Configuration;
-import org.skb.base.classic.config.ConfigurationProperties;
-import org.skb.base.classic.lang.LangParserAPI;
-import org.skb.base.classic.misc.AsciiFormatter;
+import org.skb.base.cli.Cli;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSDefault;
 import org.skb.base.composite.TSRepository.TEnum;
@@ -51,6 +47,10 @@ import org.skb.base.composite.java.TSBoolean;
 import org.skb.base.composite.util.TSArrayList;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.config.Configuration;
+import org.skb.base.config.ConfigurationProperties;
+import org.skb.base.lang.LangParserAPI;
+import org.skb.base.misc.AsciiFormatter;
 
 /**
  * Helper methods for Tribe processing.

@@ -31,9 +31,9 @@
 package org.skb.kb.targets.tgtjava.dist.geo;
 
 import org.skb.base.PathKeys;
-import org.skb.base.classic.patterns.creational.builder.Request;
 import org.skb.base.composite.TSRepository.TEnum;
 import org.skb.base.composite.java.TSString;
+import org.skb.base.patterns.creational.builder.Request;
 import org.skb.kb.SKBDataManager;
 import org.skb.kb.SKBReader;
 

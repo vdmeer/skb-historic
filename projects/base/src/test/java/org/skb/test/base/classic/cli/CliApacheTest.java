@@ -36,18 +36,18 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.junit.Test;
 import org.skb.base.FieldKeys;
-import org.skb.base.classic.cli.CliApache;
-import org.skb.base.classic.json.Json2TS;
-import org.skb.base.classic.misc.LogManager;
+import org.skb.base.cli.CliApache;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository.TEnum;
 import org.skb.base.composite.java.TSInteger;
 import org.skb.base.composite.java.TSString;
 import org.skb.base.composite.util.TSLinkedHashTree;
 import org.skb.base.composite.util.TSPropertyMap;
+import org.skb.base.json.Json2TS;
+import org.skb.base.misc.LogManager;
 
 /**
- * Test cases for {@link org.skb.base.classic.cli.CliApache}.
+ * Test cases for {@link org.skb.base.cli.CliApache}.
  * 
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6

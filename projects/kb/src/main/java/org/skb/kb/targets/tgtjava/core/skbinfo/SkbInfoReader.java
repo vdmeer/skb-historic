@@ -33,11 +33,11 @@ package org.skb.kb.targets.tgtjava.core.skbinfo;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.skb.base.classic.patterns.creational.builder.Request;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository;
 import org.skb.base.composite.util.TSArrayListString;
 import org.skb.base.composite.util.TSLinkedHashTree;
+import org.skb.base.patterns.creational.builder.Request;
 import org.skb.kb.SKB;
 import org.skb.kb.SKBReader;
 
