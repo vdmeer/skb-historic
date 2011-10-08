@@ -53,7 +53,7 @@ options
 
   import java.util.LinkedHashMap;
 
-  import org.skb.base.classic.config.Configuration;
+  import org.skb.base.config.Configuration;
   import org.skb.lang.cola.proto.ColaPass1_Ebnf;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.cola.proto.ColaParser;
@@ -64,7 +64,7 @@ options
 {
   package org.skb.lang.cola.proto.grammars;
 
-  import org.skb.base.classic.config.Configuration;
+  import org.skb.base.config.Configuration;
   import org.skb.lang.cola.proto.ColaParser;
   import org.skb.lang.cola.proto.constants.ColaConstants;
 }

@@ -52,7 +52,7 @@ options
 {
   package org.skb.lang.dal.grammars;
 
-  import org.skb.base.classic.config.Configuration;
+  import org.skb.base.config.Configuration;
   import org.skb.lang.dal.DalPass2_Ast;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.dal.DalParser;

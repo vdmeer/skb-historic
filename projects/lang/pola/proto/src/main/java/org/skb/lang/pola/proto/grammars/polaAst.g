@@ -52,7 +52,7 @@ options
 {
   package org.skb.lang.pola.proto.grammars;
 
-  import org.skb.base.classic.config.Configuration;
+  import org.skb.base.config.Configuration;
   import org.skb.lang.pola.proto.PolaPass2_Ast;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.pola.proto.PolaParser;

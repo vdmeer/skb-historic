@@ -53,7 +53,7 @@ options
 
   import java.util.LinkedHashMap;
 
-  import org.skb.base.classic.config.Configuration;
+  import org.skb.base.config.Configuration;
   import org.skb.lang.pola.proto.PolaPass1_Ebnf;
   import org.skb.tribe.TribeHelpers;
   import org.skb.lang.pola.proto.PolaParser;
@@ -64,7 +64,7 @@ options
 {
   package org.skb.lang.pola.proto.grammars;
 
-  import org.skb.base.classic.config.Configuration;
+  import org.skb.base.config.Configuration;
   import org.skb.lang.pola.proto.PolaParser;
   import org.skb.lang.pola.proto.constants.PolaConstants;
 }
