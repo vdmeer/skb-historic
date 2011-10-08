@@ -29,4 +29,4 @@ skb.lang.mess.runtime=1.0.1
 skb.lang.pola.proto=1.0.1
 skb.lang.skblang=1.0.1
 skb.tribe=1.0.1
-skb.util=1.0.1
+skb.base=1.0.1
