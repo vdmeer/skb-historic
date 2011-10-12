@@ -257,12 +257,14 @@ public class LangParserImpl implements LangParserAPI {
 		}
 		prop.addProperties(opm);
 
-		TSSTGroupManager prm=TribeHelpers.loadSTGM(this.config, PathKeys.pathConfigurationParserRulesStgChunks, this.prop.getValue(FieldKeys.fieldApplicationGenericSTG).toString(), this.langParser.getParserRuleSTGFileName());
-		prm.useLexerAngelB();
-		TSDefault prmRet=prm.loadSTG("loading parser rule templates", "");
-		if(prmRet.tsIsType(TEnum.TS_ERROR))
-			return prmRet;
-		this.config.addParserRuleManager(prm);
+		if(this.langParser.getParserRuleSTGFileName()!=null){
+			TSSTGroupManager prm=TribeHelpers.loadSTGM(this.config, PathKeys.pathConfigurationParserRulesStgChunks, this.prop.getValue(FieldKeys.fieldApplicationName).toString(), this.langParser.getParserRuleSTGFileName());
+			prm.useLexerAngelB();
+			TSDefault prmRet=prm.loadSTG("loading parser rule templates", "");
+			if(prmRet.tsIsType(TEnum.TS_ERROR))
+				return prmRet;
+			this.config.addParserRuleManager(prm);
+		}
 
 		logger.trace("setOptions -- out");
 		return this.loadTargetLanguage();
