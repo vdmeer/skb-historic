@@ -186,7 +186,7 @@ public class TSAtomList extends TSTable {
 	 * @return true if the atom value type is specified as an array, false in any other case (for instance atom not specified)
 	 */
 	public Boolean atomTypeIsArray(String atom){
-		TSBaseAPI cat=this.get(atom, TSAtomList.alValType);
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValTypeArray);
 		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
 			return ((TSBoolean)cat).tsvalue;
 		return false;
@@ -227,7 +227,7 @@ public class TSAtomList extends TSTable {
 	 */
 	public Integer getAtomColumn(String atom){
 		TSBaseAPI cat=this.get(atom, TSAtomList.alValColumn);
-		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_INTEGER))
 			return ((TSInteger)cat).tsvalue;
 		return 0;
 	}
@@ -267,7 +267,7 @@ public class TSAtomList extends TSTable {
 	 */
 	public Integer getAtomLine(String atom){
 		TSBaseAPI cat=this.get(atom, TSAtomList.alValLine);
-		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_INTEGER))
 			return ((TSInteger)cat).tsvalue;
 		return 0;
 	}
