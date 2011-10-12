@@ -32,6 +32,7 @@ package org.skb.base.composite.misc;
 import java.io.File;
 
 import org.antlr.runtime.Token;
+import org.antlr.runtime.tree.Tree;
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.apache.log4j.Logger;
@@ -313,6 +314,18 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
+	 * Reports an error from Tree with additional information.
+	 * 
+	 * The line and column are extracted from the tree. File name and programme name will be used as set (either default or last change).
+	 * @param m error message to be reported
+	 * @param t tree position at which the error occurred
+	 * @param add additional message to be reported
+	 */
+	public void error(String m, Tree t, String add){
+		this.error(m, add, t.getLine(), t.getCharPositionInLine());
+	}
+
+	/**
 	 * Reports an error from Token without additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
@@ -323,6 +336,17 @@ public class TSReportManager extends TSAtomic {
 		this.error(m, t, null);
 	}
 
+	/**
+	 * Reports an error from Tree without additional information.
+	 * 
+	 * The line and column are extracted from the tree. File name and programme name will be used as set (either default or last change).
+	 * @param m error message to be reported
+	 * @param t tree position at which the error occurred
+	 */
+	public void error(String m, Tree t){
+		this.error(m, t, null);
+	}
+	
 	/**
 	 * Reports an error message.
 	 * 
@@ -406,6 +430,18 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
+	 * Reports a message from Tree with additional information.
+	 * 
+	 * The line and column are extracted from the tree. File name and programme name will be used as set (either default or last change).
+	 * @param m message to be reported
+	 * @param t tree position to which the message corresponds
+	 * @param add additional message to be reported
+	 */
+	public void message(String m, Tree t, String add){
+		this.message(m, add, t.getLine(), t.getCharPositionInLine());
+	}
+
+	/**
 	 * Reports a message from Token without additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
@@ -413,6 +449,17 @@ public class TSReportManager extends TSAtomic {
 	 * @param t token to which the message corresponds
 	 */
 	public void message(String m, Token t){
+		this.message(m, t, null);
+	}
+
+	/**
+	 * Reports a message from Tree without additional information.
+	 * 
+	 * The line and column are extracted from the tree. File name and programme name will be used as set (either default or last change).
+	 * @param m message to be reported
+	 * @param t tree position to which the message corresponds
+	 */
+	public void message(String m, Tree t){
 		this.message(m, t, null);
 	}
 
@@ -488,6 +535,18 @@ public class TSReportManager extends TSAtomic {
 	}
 
 	/**
+	 * Reports a warning from Tree with additional information.
+	 * 
+	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
+	 * @param m warning message to be reported
+	 * @param t tree position at which the warning occurred
+	 * @param add additional message to be reported
+	 */
+	public void warning(String m, Tree t, String add){
+		this.warning(m, add, t.getLine(), t.getCharPositionInLine());
+	}
+
+	/**
 	 * Reports a warning from Token without additional information.
 	 * 
 	 * The line and column are extracted from the token. File name and programme name will be used as set (either default or last change).
@@ -495,6 +554,17 @@ public class TSReportManager extends TSAtomic {
 	 * @param t token at which the warning occurred
 	 */
 	public void warning(String m, Token t){
+		 this.warning(m, t, null);
+	}
+
+	/**
+	 * Reports a warning from Tree without additional information.
+	 * 
+	 * The line and column are extracted from the tree. File name and programme name will be used as set (either default or last change).
+	 * @param m warning message to be reported
+	 * @param t tree position at which the warning occurred
+	 */
+	public void warning(String m, Tree t){
 		 this.warning(m, t, null);
 	}
 

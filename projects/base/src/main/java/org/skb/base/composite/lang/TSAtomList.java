@@ -38,10 +38,12 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository;
-import org.skb.base.composite.TSTableRowAPI;
 import org.skb.base.composite.TSRepository.TEnum;
+import org.skb.base.composite.TSTableRowAPI;
 import org.skb.base.composite.antlr.TSStringTemplate;
 import org.skb.base.composite.antlr.TSToken;
+import org.skb.base.composite.java.TSBoolean;
+import org.skb.base.composite.java.TSInteger;
 import org.skb.base.composite.misc.TSReportManager;
 import org.skb.base.composite.util.TSTable;
 import org.skb.base.composite.util.TSTableRow;
@@ -136,43 +138,200 @@ public class TSAtomList extends TSTable {
 	}
 
 	/**
-	 * Set the report manager
-	 * @param rm Report Manager instance
+	 * Adds an import to the list of imports.
+	 * @param sn the import as scoped name
 	 */
-	public void setReportMgr(TSReportManager rm){
-		this.reportMgr=rm;
+	public void addImport(String sn){
+		this.imports.get(this.scope.toString()).put(sn,this.get(sn,TSAtomList.alValCategory).toString());
 	}
 
 	/**
-	 * Sets the specification name, which is the root of an atom list hierarchy
-	 * @param s the new specification name as string
+	 * Adds a list of imports to the list of imports
+	 * @param row
+	 * @param m
 	 */
-	public void specificationName(String s){
-		this.specificationName=s;
+	public void addImportsAll(String row, Map <String, String> m){
+		this.imports.get(row).putAll(m);
 	}
 
 	/**
-	 * Sets the specification name, which is the root of an atom list hierarchy
-	 * @param tk the new specification name as ANTLR token, getText is used to get the string
+	 * Adds a string template to a language atom
+	 * @param row
+	 * @param st
 	 */
-	public void specificationName(Token tk){
-		this.specificationName=tk.getText();
+	public void addST(String row, StringTemplate st){
+		if(st!=null)
+			this.put(row, TSAtomList.alValST, new TSStringTemplate(st));
 	}
 
 	/**
-	 * Returns the specification name, which is the root of an atom list hierarchy
-	 * @return the specification name, default is "default"
+	 * Adds a string template to a language atom
+	 * @param st
 	 */
-	public String specificationName(){
-		return this.specificationName;
+	public void addST(StringTemplate st){
+		this.addST(this.scope.toString(),st);
 	}
 
 	/**
-	 * Sets the scope separator.
-	 * @param s the new scope separator
+	 * Returns true if the value of the current scope is specified as an array, false in any other cases.
+	 * @return true if the current scope's value type is specified as an array, false in any other case (for instance atom not specified)
 	 */
-	public void setScopeSeparator(String s){
-		this.scope.setSeparator(s);
+	public Boolean atomTypeIsArray(){
+		return this.atomTypeIsArray(this.scope.toString());
+	}
+
+	/**
+	 * Returns true if the value of the atom is specified as an array, false in any other cases.
+	 * @param atom atom to look for
+	 * @return true if the atom value type is specified as an array, false in any other case (for instance atom not specified)
+	 */
+	public Boolean atomTypeIsArray(String atom){
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValType);
+		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+			return ((TSBoolean)cat).tsvalue;
+		return false;
+	}
+
+	/**
+	 * Returns the category of the current scope.
+	 * @return category or empty string ("") if atom does not exist or category not set
+	 */
+	public String getAtomCategory(){
+		return this.getAtomCategory(this.scope.toString());
+	}
+
+	/**
+	 * Returns the category of the specified atom.
+	 * @param atom atom to look for
+	 * @return category or empty string ("") if atom does not exist or category not set
+	 */
+	public String getAtomCategory(String atom){
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValCategory);
+		if(!cat.tsIsType(TEnum.TS_DEFAULT))
+			return cat.toString();
+		return "";
+	}
+
+	/**
+	 * Returns the column the current scope was declared in.
+	 * @return column the current scope was declared in, or 0 in any other cases (for instance current scope not in list, column not set)
+	 */
+	public Integer getAtomColumn(){
+		return this.getAtomColumn(this.scope.toString());
+	}
+
+	/**
+	 * Returns the column the atom was declared in.
+	 * @param atom atom to look for
+	 * @return column the atom was declared in, or 0 in any other cases (for instance atom not in list, column not set)
+	 */
+	public Integer getAtomColumn(String atom){
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValColumn);
+		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+			return ((TSInteger)cat).tsvalue;
+		return 0;
+	}
+
+	/**
+	 * Returns the file name for the current scope, which is the file the atom was declared in.
+	 * @return file name if current scope is in the list and file name set, empty string ("") otherwise
+	 */
+	public String getAtomFile(){
+		return this.getAtomFile(this.scope.toString());
+	}
+
+	/**
+	 * Returns the file name for the atom, which is the file the atom was declared in.
+	 * @param atom atom to look for
+	 * @return file name if atom is in the list and file name set, empty string ("") otherwise
+	 */
+	public String getAtomFile(String atom){
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValFile);
+		if(!cat.tsIsType(TEnum.TS_DEFAULT))
+			return cat.toString();
+		return "";
+	}
+
+	/**
+	 * Returns the line the current scope was declared in.
+	 * @return line the current scope was declared in, or 0 in any other cases (for instance current scope not in list, line not set)
+	 */
+	public Integer getAtomLine(){
+		return this.getAtomLine(this.scope.toString());
+	}
+
+	/**
+	 * Returns the line the atom was declared in.
+	 * @param atom atom to look for
+	 * @return line the atom was declared in, or 0 in any other cases (for instance atom not in list, line not set)
+	 */
+	public Integer getAtomLine(String atom){
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValLine);
+		if(cat.tsIsType(TEnum.TS_ATOMIC_JAVA_BOOLEAN))
+			return ((TSInteger)cat).tsvalue;
+		return 0;
+	}
+
+	/**
+	 * Returns the scoped ID of the current scope.
+	 * @return scoped ID if atom is in list and ID set, empty string ("") otherwise
+	 */
+	public String getAtomScopedID(){
+		return this.getAtomScopedID(this.scope.toString());
+	}
+
+	/**
+	 * Returns the scoped ID of the specified atom.
+	 * @param atom atom to look for
+	 * @return scoped ID if atom is in list and ID set, empty string ("") otherwise
+	 */
+	public String getAtomScopedID(String atom){
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValScopedID);
+		if(!cat.tsIsType(TEnum.TS_DEFAULT))
+			return cat.toString();
+		return "";
+	}
+
+	/**
+	 * Returns the string template of a language atom
+	 * @param row atom the read the template for
+	 * @return the current set string template
+	 */
+	public StringTemplate getAtomST(String row){
+		TSBaseAPI st=this.get(row, TSAtomList.alValST);
+		StringTemplate ret=new StringTemplate("");
+		if(st!=null&&st.tsIsType(TSRepository.TEnum.TS_ATOMIC_STRINGTEMPLATE_ST))
+			ret=((TSStringTemplate)st);
+		return ret;
+	}
+
+	/**
+	 * Returns the value type of the current scope.
+	 * @return value type or empty string ("") if atom does not exist or value type not set
+	 */
+	public String getAtomValueType(){
+		return this.getAtomValueType(this.scope.toString());
+	}
+
+	/**
+	 * Returns the value type of the specified atom.
+	 * @param atom atom to look for
+	 * @return value type or empty string ("") if atom does not exist or value type not set
+	 */
+	public String getAtomValueType(String atom){
+		TSBaseAPI cat=this.get(atom, TSAtomList.alValType);
+		if(!cat.tsIsType(TEnum.TS_DEFAULT))
+			return cat.toString();
+		return "";
+	}
+
+	/**
+	 * Returns import list 
+	 * @param row name of an atom to look for
+	 * @return the list of recorded imports for this atom
+	 */
+	public LinkedHashMap<String, String> getImports(String row){
+		return this.imports.get(row);
 	}
 
 	/**
@@ -181,6 +340,28 @@ public class TSAtomList extends TSTable {
 	 */
 	public String getScopeSeparator(){
 		return this.scope.getSeparator();
+	}
+
+	/**
+	 * Returns the specification name, which is the root of an atom list hierarchy
+	 * @return the specification name, default is "default"
+	 */
+	public String getSpecificationName(){
+		return this.specificationName;
+	}
+
+	/**
+	 * Returns the ANTLR runtime token for the given atom (row) and column
+	 * @param row name of the atom
+	 * @param column column to read the token from
+	 * @return an ANTLR runtime token
+	 */
+	public Token getToken(String row, String column){
+		TSToken ret=null;
+		TSBaseAPI ata=this.get(row, column);
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_ANTLR_TOKEN))
+			ret=((TSToken)ata);
+		return (Token)ret;
 	}
 
 	/**
@@ -242,73 +423,34 @@ public class TSAtomList extends TSTable {
 	}
 
 	/**
-	 * Adds an import to the list of imports.
-	 * @param sn the import as scoped name
+	 * Set the report manager
+	 * @param rm Report Manager instance
 	 */
-	public void addImport(String sn){
-		this.imports.get(this.scope.toString()).put(sn,this.get(sn,TSAtomList.alValCategory).toString());
+	public void setReportMgr(TSReportManager rm){
+		this.reportMgr=rm;
 	}
 
 	/**
-	 * Adds a list of imports to the list of imports
-	 * @param row
-	 * @param m
+	 * Sets the scope separator.
+	 * @param s the new scope separator
 	 */
-	public void addImportsAll(String row, Map <String, String> m){
-		this.imports.get(row).putAll(m);
+	public void setScopeSeparator(String s){
+		this.scope.setSeparator(s);
 	}
 
 	/**
-	 * Adds a string template to a language atom
-	 * @param row
-	 * @param st
+	 * Sets the specification name, which is the root of an atom list hierarchy
+	 * @param s the new specification name as string
 	 */
-	public void addST(String row, StringTemplate st){
-		if(st!=null)
-			this.put(row, TSAtomList.alValST, new TSStringTemplate(st));
+	public void setSpecificationName(String s){
+		this.specificationName=s;
 	}
 
 	/**
-	 * Adds a string template to a language atom
-	 * @param st
+	 * Sets the specification name, which is the root of an atom list hierarchy
+	 * @param tk the new specification name as ANTLR token, getText is used to get the string
 	 */
-	public void addST(StringTemplate st){
-		this.addST(this.scope.toString(),st);
-	}
-
-	/**
-	 * Returns import list 
-	 * @param row name of an atom to look for
-	 * @return the list of recorded imports for this atom
-	 */
-	public LinkedHashMap<String, String> getImports(String row){
-		return this.imports.get(row);
-	}
-
-	/**
-	 * Returns the string template of a language atom
-	 * @param row atom the read the template for
-	 * @return the current set string template
-	 */
-	public StringTemplate getST(String row){
-		TSBaseAPI st=this.get(row, TSAtomList.alValST);
-		StringTemplate ret=new StringTemplate("");
-		if(st!=null&&st.tsIsType(TSRepository.TEnum.TS_ATOMIC_STRINGTEMPLATE_ST))
-			ret=((TSStringTemplate)st);
-		return ret;
-	}
-
-	/**
-	 * Returns the ANTLR runtime token for the given atom (row) and column
-	 * @param row name of the atom
-	 * @param column column to read the token from
-	 * @return an ANTLR runtime token
-	 */
-	public Token getToken(String row, String column){
-		TSToken ret=null;
-		TSBaseAPI ata=this.get(row, column);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_ANTLR_TOKEN))
-			ret=((TSToken)ata);
-		return (Token)ret;
+	public void specificationName(Token tk){
+		this.specificationName=tk.getText();
 	}
 }

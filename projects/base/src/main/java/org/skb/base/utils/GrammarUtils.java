@@ -27,51 +27,35 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.base.lang;
+package org.skb.base.utils;
 
-import org.skb.base.composite.TSBaseAPI;
-import org.skb.base.composite.TSDefault;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
- * Utilities for processing named scopes.
+ * Utilities that help processing ANTLR grammars.
  *
  * @author     Sven van der Meer <sven@vandermeer.de>
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
-public class NameScopeUtils {
-
+public class GrammarUtils {
 	/**
-	 * Returns the parent ID of the given ID using the given separator.
-	 * @param id
-	 * @param separator
-	 * @return parent ID of the given current scope  or "" of not existent
+	 * Tests integer types for base type and the type of the constant value.
+	 * @param baseType base type to be tested
+	 * @param constValue constant value with type information
+	 * @param intTypes array to be used for testing
+	 * @return false if any parameter is null or if the base type is not equal to the type in the array, true otherwise
 	 */
-	public static String getParentID(String id, String separator){
-		if(id==null)
-			return "";
-		if(separator==null)
-			return "";
-		if(id.lastIndexOf(separator)==-1)
-			return "";
-		return id.substring(0,id.lastIndexOf(separator));
-	}
+	public static boolean testBasetypeAndConstvalueInteger(String baseType, String constValue, String[] intTypes){
+		if(baseType==null||constValue==null||intTypes==null)
+			return false;
 
-	/**
-	 * Returns the parent ID of the current scope using the scope's separator
-	 * @param scope
-	 * @return parent ID of the given current scope  or "" of not existent
-	 */
-	public static String getParentID(NameScope scope){
-		return NameScopeUtils.getParentID(scope.toString(), scope.getSeparator());
-	}
-
-	/**
-	 * Return the last name in the scope.
-	 * @return last entry of the vector or TSDefault if no name is in the scope
-	 */
-	public static TSBaseAPI lastName(NameScope scope){
-		if(scope.size()>0)
-			return scope.get(scope.size()-1);
-		return new TSDefault();
+		for (String type:intTypes){
+			ArrayList<String> testAr=new ArrayList<String>(Arrays.asList(intTypes));
+			testAr.remove(type);
+			if(baseType.equals(type)&&StringUtils.equalsAny(constValue, testAr))
+				return false;
+		}
+		return true;
 	}
 }

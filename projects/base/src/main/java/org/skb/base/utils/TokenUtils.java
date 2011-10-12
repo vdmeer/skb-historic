@@ -27,7 +27,7 @@
  * [The BSD License, http://www.opensource.org/licenses/bsd-license.php]
  */
 
-package org.skb.base.lang;
+package org.skb.base.utils;
 
 import org.antlr.runtime.Token;
 import org.skb.base.composite.TSBaseAPI;
@@ -64,8 +64,8 @@ public class TokenUtils {
 
 	/**
 	 * Returns the string version of the child of a tree.
-	 * @param tree
-	 * @param child
+	 * @param tree tree tree to process
+	 * @param child child index
 	 * @return string version of the child requested, of child index 0 if child is null or "" of tree is null
 	 */
 	public static String getTreeString(org.antlr.runtime.tree.Tree tree, Integer child){
@@ -78,12 +78,56 @@ public class TokenUtils {
 
 	/**
 	 * Returns the string version of the child of a tree as lower case string.
-	 * @param tree
-	 * @param child
+	 * @param tree tree tree to process
+	 * @param child child index
 	 * @return string version of the child requested, of child index 0 if child is null or "" of tree is nulls
 	 */
 	public static String getTreeString2Lower(org.antlr.runtime.tree.Tree tree, Integer child){
 		return TokenUtils.getTreeString(tree, child).toLowerCase();
+	}
+
+	/**
+	 * Returns the string version of all direct children of the tree using the given separator.
+	 * @param tree tree to process
+	 * @param separator separator to be used to concatenate the children
+	 * @return
+	 */
+	public static String getTreeString(org.antlr.runtime.tree.Tree tree, String separator){
+		String ret=new String();
+		for(int i=0;i<tree.getChildCount();i++){
+			if(ret.length()>0)
+				ret+=separator;
+			ret+=tree.getChild(i);
+		}
+		return ret;
+	}
+
+	/**
+	 * Returns the string version of all direct children of the tree using the given separator.
+	 * @param tree tree to process
+	 * @return
+	 */
+	public static String getTreeString(org.antlr.runtime.tree.Tree tree){
+		return TokenUtils.getTreeString(tree, "");
+	}
+
+	/**
+	 * Returns the string version of all direct children of the tree using the given separator.
+	 * @param tree tree to process
+	 * @param separator separator to be used to concatenate the children
+	 * @return
+	 */
+	public static String getTreeString2Lower(org.antlr.runtime.tree.Tree tree, String separator){
+		return TokenUtils.getTreeString(tree, separator).toLowerCase();
+	}
+
+	/**
+	 * Returns the string version of all direct children of the tree using the given separator.
+	 * @param tree tree to process
+	 * @return
+	 */
+	public static String getTreeString2Lower(org.antlr.runtime.tree.Tree tree){
+		return TokenUtils.getTreeString2Lower(tree, "");
 	}
 
 	/**
@@ -136,6 +180,17 @@ public class TokenUtils {
 	}
 
 	/**
+	 * Returns the line of the given tree
+	 * @param tree
+	 * @return 0 if the tree is null, the line of the requested child otherwise
+	 */
+	public static int getLine(org.antlr.runtime.tree.Tree tree){
+		if(tree==null)
+			return 0;
+		return tree.getLine();
+	}
+
+	/**
 	 * Returns the column the token was recognised in.
 	 * @param tk token
 	 * @return column it was recognised in
@@ -182,5 +237,16 @@ public class TokenUtils {
 		if(child==null)
 			return tree.getChild(0).getCharPositionInLine();
 		return tree.getChild(child).getCharPositionInLine();
+	}
+
+	/**
+	 * Returns the column of the given tree
+	 * @param tree
+	 * @return 0 if the tree is null, the column of the requested child otherwise
+	 */
+	public static int getColumn(org.antlr.runtime.tree.Tree tree){
+		if(tree==null)
+			return 0;
+		return tree.getCharPositionInLine();
 	}
 }
