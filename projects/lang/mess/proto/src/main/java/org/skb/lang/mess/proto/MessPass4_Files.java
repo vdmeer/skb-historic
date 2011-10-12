@@ -42,7 +42,7 @@ import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.config.Configuration;
 import org.skb.base.config.ConfigurationProperties;
 import org.skb.base.io.files.FileTemplateList;
-import org.skb.base.lang.NameScopeUtils;
+import org.skb.base.utils.NameScopeUtils;
 import org.skb.lang.mess.proto.constants.MessConstants;
 
 /**
@@ -103,12 +103,12 @@ public class MessPass4_Files {
 			//add the final template to the ftl and give back
 			fn=this.prop.getValue(FieldKeys.fieldCliOptionTgtFile).toString();
 
-			StringTemplate spec=this.atoms.getST(MessConstants.Tokens.messAT_SPEC);
+			StringTemplate spec=this.atoms.getAtomST(MessConstants.Tokens.messAT_SPEC);
 			rows=new ArrayList<String>(this.atoms.getRows());
 			size=rows.size();
 			for(int i=1;i<size;i++){ //i=1 means we avoid the spec template itself
-				if(this.atoms.getST(rows.get(i)).toString().length()!=0)
-						spec.setAttribute("body", this.atoms.getST(rows.get(i)));
+				if(this.atoms.getAtomST(rows.get(i)).toString().length()!=0)
+						spec.setAttribute("body", this.atoms.getAtomST(rows.get(i)));
 			}
 			this.ftl.addTemplate(fn,spec);
 		}
@@ -123,7 +123,7 @@ public class MessPass4_Files {
 			size=rows.size();
 			for(int i=2;i<size;i++){ //i=2 means we avoid the spec and the domain templates
 				//no like empty templates
-				if(this.atoms.getST(rows.get(i)).toString().length()==0)
+				if(this.atoms.getAtomST(rows.get(i)).toString().length()==0)
 					continue;
 
 				String current=rows.get(i);
@@ -133,7 +133,7 @@ public class MessPass4_Files {
 				fn=pkg.replace(scopeSep, fileSep);
 				pkg=pkg.substring(0, pkg.lastIndexOf(fileSep));
 				
-				this.ftl.addTemplate(fn, this.atoms.getST(current));
+				this.ftl.addTemplate(fn, this.atoms.getAtomST(current));
 				this.ftl.addMisc(fn,"package",pkg);
 				if(!this.prop.getValue(MessConstants.Properties.keyTgtRuntimeAPI).tsIsType(TEnum.TS_DEFAULT)){
 					this.ftl.addImport(fn, runtimePkg+scopeSep+this.prop.getValue(MessConstants.Properties.keyTgtRuntimeAPI).toString());

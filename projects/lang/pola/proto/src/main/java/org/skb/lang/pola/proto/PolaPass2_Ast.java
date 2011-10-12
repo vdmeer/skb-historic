@@ -36,7 +36,7 @@ import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.config.Configuration;
 import org.skb.base.lang.NameScope;
-import org.skb.base.lang.TokenUtils;
+import org.skb.base.utils.TokenUtils;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 
 /**

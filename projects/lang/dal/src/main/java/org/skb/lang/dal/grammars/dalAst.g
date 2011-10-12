@@ -240,15 +240,14 @@ dalKV                        : ^(DAL_DATA
 
 
 void_type                    : VOID;
-base_type                    : (s=SHORT | s=INTEGER | s=LONG | s=HEX | s=BINARY | s=FLOAT | s=DOUBLE | s=CHAR | s=STRING | s=BOOLEAN)
-                               {this.pass.setLastBaseType(s.token);};
+base_type                    : (SHORT | INTEGER | LONG | HEX | BINARY | FLOAT | DOUBLE | CHAR | STRING | BOOLEAN);
 
-const_value                  : ^(AT_PROVIDES type=INTEGER value=VAL_INTEGER {this.pass.setLastCommonValuePlusType(value.token,type.token);}) |
-                               ^(AT_PROVIDES type=HEX     value=VAL_HEX     {this.pass.setLastCommonValuePlusType(value.token,type.token);}) |
-                               ^(AT_PROVIDES type=BINARY  value=VAL_BINARY  {this.pass.setLastCommonValuePlusType(value.token,type.token);}) |
-                               ^(AT_PROVIDES type=FLOAT   value=VAL_FLOAT   {this.pass.setLastCommonValuePlusType(value.token,type.token);}) |
-                               ^(AT_PROVIDES type=CHAR    value=VAL_CHAR    {this.pass.setLastCommonValuePlusType(value.token,type.token);}) |
-                               ^(AT_PROVIDES type=STRING  string_value      {this.pass.setLastCommonValueType(type.token);})|
-                               ^(AT_PROVIDES type=BOOLEAN boolean_value     {this.pass.setLastCommonValueType(type.token);});
-string_value                 : (value=VAL_STRING | value=DAL_NULL)  {this.pass.setLastCommonValue(value.token);};
-boolean_value                : (value=DAL_TRUE  | value=DAL_FALSE) {this.pass.setLastCommonValue(value.token);};
+const_value                  : ^(AT_PROVIDES INTEGER VAL_INTEGER) |
+                               ^(AT_PROVIDES HEX VAL_HEX)         |
+                               ^(AT_PROVIDES BINARY VAL_BINARY)   |
+                               ^(AT_PROVIDES FLOATVAL_FLOAT)      |
+                               ^(AT_PROVIDES CHAR VAL_CHAR)       |
+                               ^(AT_PROVIDES STRING string_value) |
+                               ^(AT_PROVIDES BOOLEAN boolean_value);
+string_value                 : (VAL_STRING | DAL_NULL);
+boolean_value                : (DAL_TRUE  | DAL_FALSE);

@@ -72,7 +72,7 @@ public class PolaPass4_Files {
 		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 		Integer size=rows.size();
 		for(int i=1;i<size;i++)
-			this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
+			this.ftl.addTemplate(fn,this.atoms.getAtomST(rows.get(i)));
 		return this.ftl;
 	}
 }

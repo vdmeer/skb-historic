@@ -36,9 +36,9 @@ import org.antlr.stringtemplate.StringTemplate;
 import org.apache.log4j.Logger;
 import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.config.Configuration;
-import org.skb.base.lang.AtomListUtils;
 import org.skb.base.lang.NameScope;
-import org.skb.base.lang.NameScopeUtils;
+import org.skb.base.utils.AtomListUtils;
+import org.skb.base.utils.NameScopeUtils;
 import org.skb.lang.pola.proto.constants.PolaConstants;
 
 /**
@@ -106,7 +106,7 @@ public class PolaPass3_Gen {
 		TreeMap<String,String>ret=new TreeMap<String,String>();
 		ret.put(PolaConstants.Tokens.gcMiscParrentID, NameScopeUtils.getParentID(key, this.atoms.scope.getSeparator()));
 		ret.put(PolaConstants.Tokens.gcMiscParrentCat, AtomListUtils.getParentCategory(key, this.atoms));
-		ret.put(PolaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
+		ret.put(PolaConstants.Tokens.gcMiscSpecName, this.atoms.getSpecificationName());
 		ret.put(PolaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
 		ret.put(PolaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString());
 

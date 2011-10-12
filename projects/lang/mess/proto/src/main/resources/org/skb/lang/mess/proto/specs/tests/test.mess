@@ -1,22 +1,20 @@
 domain is Rina
 
-content-type MIME1 x-message/bla+foo "test mime type number1, best used with strings"
-content-type MIME2 x-message/bla "test mime type number2, usually used with floats"
-content-type Mime3 x-message/bla "test mime type number2, usually used with floats"
-content-type Mime x-message/bla "test mime type number2, usually used with floats"
+content-type Text text/text "plain text, best used for strings"
+content-type Json text/json "text in JSON format"
+content-type JPG application/jpeg "a message in form of an image"
+content-type Default text/text "something to use as default, here plain text"
 
-field Sven1 as MIME1 with "my text"
-field Sven2 as MIME2 with "2.2"
-field Sven3 as Mime3 with "2.2"
-field MIME2 as Mime with "2.2"
+field Error as Text with "my text"
+field Logging as Json with "{}"
+field ImageLogging as JPG with ""
 
-message RootM 
-	requires Sven1 with "new default" is immutable
-	optional Sven2 with "1.0"
+message DefaultError 
+	requires Error with "this is an error message" is immutable
+	optional Logging with "{\"message\":[\"part 1: this is an error\", \"part 2: this is a really bad error\"]}"
 
-message InheritA extends RootM
-	change Sven1 to "super default"
+message SpecificError extends DefaultError
+	change Error to "this is a specific error now"
 
-message Sven1 extends RootM
-	change Sven1 to "super default"
-	//change Sven2 to "2.0"
+message ErrorWithExtraLogging extends DefaultError
+	requires ImageLogging with "{\"message\":[\"part 1: this is an error\", \"part 2: this is a really bad error\"]}"

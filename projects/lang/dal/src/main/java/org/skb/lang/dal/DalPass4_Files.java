@@ -41,8 +41,8 @@ import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.config.Configuration;
 import org.skb.base.config.ConfigurationProperties;
 import org.skb.base.io.files.FileTemplateList;
-import org.skb.base.lang.AtomListUtils;
-import org.skb.base.lang.NameScopeUtils;
+import org.skb.base.utils.AtomListUtils;
+import org.skb.base.utils.NameScopeUtils;
 import org.skb.lang.dal.constants.DalConstants;
 
 /**
@@ -121,23 +121,23 @@ public class DalPass4_Files {
 					pkg=fn;
 					//create the file with the core defs, if they are not empty
 					if(this.atoms.get(rows.get(0)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
-						if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(0)).toString().length()>0))
-							this.ftl.addTemplate(fn+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString(),this.atoms.getST(rows.get(0)));
+						if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getAtomST(rows.get(0)).toString().length()>0))
+							this.ftl.addTemplate(fn+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString(),this.atoms.getAtomST(rows.get(0)));
 					}
 				}
 				else if(this.atoms.get(rows.get(i)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
-					if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(0)).toString().length()>0))
+					if(tgtIgnoreEmptyST==false||(tgtIgnoreEmptyST==true&&this.atoms.getAtomST(rows.get(0)).toString().length()>0))
 						fn=pkg+this.prop.getValue(DalConstants.Properties.keyTgRepoFileAdd).toString();
 				}
 			}
 			else{
 				//if no split for repos, and just started, then add the repo to the current fn
 				if(i==1&&this.atoms.get(rows.get(0)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY))
-					this.ftl.addTemplate(fn,this.atoms.getST(rows.get(0)));
+					this.ftl.addTemplate(fn,this.atoms.getAtomST(rows.get(0)));
 			}
-			if(tgtIgnoreEmptyST==true&&this.atoms.getST(rows.get(i)).toString().length()==0)
+			if(tgtIgnoreEmptyST==true&&this.atoms.getAtomST(rows.get(i)).toString().length()==0)
 				continue;
-			this.ftl.addTemplate(fn,this.atoms.getST(rows.get(i)));
+			this.ftl.addTemplate(fn,this.atoms.getAtomST(rows.get(i)));
 		}
 
 		return this.ftl;
@@ -190,7 +190,7 @@ public class DalPass4_Files {
 			String cat=this.atoms.get(current,TSAtomList.alValCategory).toString();
 			String parCat=AtomListUtils.getParentCategory(current, this.atoms);
 			if(categories.contains(cat)&&parCat!=null&&parCat.equals(parentCategory)){
-				this.atoms.getST(NameScopeUtils.getParentID(current, this.atoms.scope.getSeparator())).setAttribute("body", this.atoms.getST(current));
+				this.atoms.getAtomST(NameScopeUtils.getParentID(current, this.atoms.scope.getSeparator())).setAttribute("body", this.atoms.getAtomST(current));
 				removeList.add(current);
 			}
 		}
@@ -202,13 +202,13 @@ public class DalPass4_Files {
 		ArrayList<String> rows=new ArrayList<String>(this.atoms.getRows());
 		Integer size=rows.size();
 		for(int i=1;i<size;i++){
-			if(this.atoms.getST(rows.get(i)).toString().length()==0)
+			if(this.atoms.getAtomST(rows.get(i)).toString().length()==0)
 				continue;
 			if(this.atoms.get(rows.get(i)).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalREPOSITORY)){
 				String[] path=StringUtils.split(rows.get(i), this.atoms.scope.getSeparator());
 				if(this.atoms.get(path[0]).get(TSAtomList.alValCategory).toString().equals(DalConstants.Tokens.dalPACKAGE)){
-					StringTemplate st=this.atoms.getST(path[0]);
-					st.setAttribute("repository", this.atoms.getST(rows.get(i)));
+					StringTemplate st=this.atoms.getAtomST(path[0]);
+					st.setAttribute("repository", this.atoms.getAtomST(rows.get(i)));
 					this.atoms.remove(rows.get(i));
 				}
 			}

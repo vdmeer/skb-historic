@@ -56,11 +56,6 @@ public class DalPass2_Ast {
 	/** Atom List (Symbol Table) */
 	public TSAtomList atoms;
 
-	// temp Type and Value for testing
-	private Token lastBaseType=null;
-	private Token lastCommonValue=null;
-	private Token lastCommonValueType=null;
-
 	public DalPass2_Ast(){
 		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
@@ -170,7 +165,6 @@ public class DalPass2_Ast {
 	 * @return an array list with the constructed paths
 	 */
 	private LinkedHashMap<String,String> buildPathList(String scope, String scopeSep){
-
 		String[] path=StringUtils.split(scope, scopeSep);
 		LinkedHashMap<String,String> ret=new LinkedHashMap<String,String>();
 		if(path.length!=0){
@@ -195,20 +189,5 @@ public class DalPass2_Ast {
 			}
 		}
 		return ret;
-	}
-
-	// temp Type and Value for testing
-	public void setLastBaseType(Token tk){
-		this.lastBaseType=tk;
-	}
-	public void setLastCommonValue(Token tk){
-		this.lastCommonValue=tk;
-	}
-	public void setLastCommonValueType(Token tk){
-		this.lastCommonValueType=tk;
-	}
-	public void setLastCommonValuePlusType(Token value, Token type){
-		this.setLastCommonValueType(type);
-		this.setLastCommonValue(value);
 	}
 }
