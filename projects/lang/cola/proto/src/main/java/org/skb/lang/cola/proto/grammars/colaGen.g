@@ -81,9 +81,9 @@ colaPropertyDecl        : ^(PROPERTY id=IDENT ^(AT_TYPE bt=base_type cv=const_va
                             {this.pass.clearPropertyScope();}
                             ^(AT_SCOPE propertyScope*)
                             {LinkedHashMap<String, ArrayList<String>> apply=new LinkedHashMap<String, ArrayList<String>>();}
-                            ^(AT_APPLY (^(PRE {apply.put("pre",new ArrayList<String>());apply.get("pre").add("pre");} {apply.put("preList",new ArrayList<String>());} (pre=scoped_name {apply.get("preList").add(this.pass.atoms.getST($pre.text).toString());})*))?
-                                       (^(POST {apply.put("post",new ArrayList<String>());apply.get("post").add("post");} {apply.put("postList",new ArrayList<String>());} (post=scoped_name {apply.get("postList").add(this.pass.atoms.getST($post.text).toString());})*))?
-                                       (^(INV {apply.put("inv",new ArrayList<String>());apply.get("inv").add("inv");} {apply.put("invList",new ArrayList<String>());} (inv=scoped_name {apply.get("invList").add(this.pass.atoms.getST($inv.text).toString());})*))? )
+                            ^(AT_APPLY (^(PRE {apply.put("pre",new ArrayList<String>());apply.get("pre").add("pre");} {apply.put("preList",new ArrayList<String>());} (pre=scoped_name {apply.get("preList").add(this.pass.atoms.getAtomST($pre.text).toString());})*))?
+                                       (^(POST {apply.put("post",new ArrayList<String>());apply.get("post").add("post");} {apply.put("postList",new ArrayList<String>());} (post=scoped_name {apply.get("postList").add(this.pass.atoms.getAtomST($post.text).toString());})*))?
+                                       (^(INV {apply.put("inv",new ArrayList<String>());apply.get("inv").add("inv");} {apply.put("invList",new ArrayList<String>());} (inv=scoped_name {apply.get("invList").add(this.pass.atoms.getAtomST($inv.text).toString());})*))? )
                             atVisibility? AT_ALTERABLE? AT_NEGOTIABLE? atDescription
                             (^(AT_EXTENDS (ext+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))? (^(AT_REQUIRES (req+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))?
                             (^(AT_PRIORITY pbt=base_type pcv=const_value))?
@@ -111,7 +111,8 @@ atVisibilityData        : '('
 
 atDescription           : ^(AT_DESCRIPTION string_value)-> template(token={$string_value.text}) "<token>";
 
-colaPropertyDefList     : {this.pass.clearPropDefList();} (lpd+=colaPropertyDef)*
+colaPropertyDefList     : {this.pass.clearPropDefList();} 
+                          ^(PROPERTY_DEF (lpd+=colaPropertyDef)*)
                           -> colaPropertyDefList(property={$lpd});
 colaPropertyDef         : ^(PROPERTY id=IDENT sn=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());} (cv+=const_value)*)
                           {this.pass.addPropDefList($id.text);}
@@ -138,9 +139,9 @@ contractItemProp        : ^(PROPERTY id=IDENT
                             ^(AT_TYPE bt=base_type cv=const_value ARRAY?)
                              ipr=contractItemPropRank
                             {LinkedHashMap<String, ArrayList<String>> apply=new LinkedHashMap<String, ArrayList<String>>();}
-                            ^(AT_APPLY (^(PRE {apply.put("pre",new ArrayList<String>());apply.get("pre").add("pre");} {apply.put("preList",new ArrayList<String>());} (pre=scoped_name {apply.get("preList").add(this.pass.atoms.getST($pre.text).toString());})*))?
-                                       (^(POST {apply.put("post",new ArrayList<String>());apply.get("post").add("post");} {apply.put("postList",new ArrayList<String>());} (post=scoped_name {apply.get("postList").add(this.pass.atoms.getST($post.text).toString());})*))?
-                                       (^(INV {apply.put("inv",new ArrayList<String>());apply.get("inv").add("inv");} {apply.put("invList",new ArrayList<String>());} (inv=scoped_name {apply.get("invList").add(this.pass.atoms.getST($inv.text).toString());})*))? )
+                            ^(AT_APPLY (^(PRE {apply.put("pre",new ArrayList<String>());apply.get("pre").add("pre");} {apply.put("preList",new ArrayList<String>());} (pre=scoped_name {apply.get("preList").add(this.pass.atoms.getAtomST($pre.text).toString());})*))?
+                                       (^(POST {apply.put("post",new ArrayList<String>());apply.get("post").add("post");} {apply.put("postList",new ArrayList<String>());} (post=scoped_name {apply.get("postList").add(this.pass.atoms.getAtomST($post.text).toString());})*))?
+                                       (^(INV {apply.put("inv",new ArrayList<String>());apply.get("inv").add("inv");} {apply.put("invList",new ArrayList<String>());} (inv=scoped_name {apply.get("invList").add(this.pass.atoms.getAtomST($inv.text).toString());})*))? )
                              AT_ALTERABLE? AT_NEGOTIABLE? atDescription
                             (^(AT_PRIORITY pbt=base_type pcv=const_value))?)
                           -> contractItemProp(id={$id}, type={$bt.text}, val={$cv.st}, array={$ARRAY.text}, rank={$ipr.text}, apply={apply},
@@ -150,7 +151,7 @@ contractItemProp        : ^(PROPERTY id=IDENT
 
 contractItemPropRank    : (s=REQUIRED | s=MANDATORY | s=OPTIONAL);
 
-colaContractDefList     : (lcd+=colaContractDef)*
+colaContractDefList     : ^(CONTRACT_DEF (lcd+=colaContractDef)*)
                           -> colaContractDefList(contract={$lcd}, misc={this.pass.misc()});
 colaContractDef         : ^(CONTRACT id=IDENT scoped_name items+=colaContractItemDef*)
                           -> colaContractDef(id={$id.text}, scoped_name={$scoped_name.st}, items={$items}, misc={this.pass.misc()});
@@ -185,10 +186,10 @@ colaDefinition          : colaFunction {this.pass.addST($colaFunction.st);} -> t
 
 cpp_directive           : CPP_DIRECTIVE;
 
-colaPackage             : ^(PACKAGE id=IDENT {this.pass.atoms.scope.push($id.token);} lpd=colaPropertyDefList (def+=colaDefinition)* (ic+=inline_code)*)
+colaPackage             : ^(PACKAGE id=IDENT {this.pass.atoms.scope.push($id.token);} (lpd=colaPropertyDefList)? (def+=colaDefinition)* (ic+=inline_code)*)
                           -> colaPackage(id={$id}, properties={$lpd.st}, inline_code={$ic}, misc={this.pass.misc()});
 
-colaElement             : ^(ELEMENT id=IDENT {this.pass.atoms.scope.push($id.token);} lpd=colaPropertyDefList lcd=colaContractDefList atVisibility?
+colaElement             : ^(ELEMENT id=IDENT {this.pass.atoms.scope.push($id.token);} (lpd=colaPropertyDefList)? (lcd=colaContractDefList)? atVisibility?
                              (^(AT_EXTENDS  (ext+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))?
                              (^(AT_PROVIDES (pro+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))?
                              (^(AT_REQUIRES (req+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))?
@@ -198,7 +199,7 @@ colaElement             : ^(ELEMENT id=IDENT {this.pass.atoms.scope.push($id.tok
 elementBody             : elementContains | colaAttribute {this.pass.addST($colaAttribute.st);} | colaAction  {this.pass.addST($colaAction.st);} | inline_code {this.pass.addST($inline_code.st);};
 elementContains         : ^(AT_CONTAINS IDENT scoped_name);
 
-colaFacility            : ^(FACILITY id=IDENT {this.pass.atoms.scope.push($id.token);} lpd=colaPropertyDefList lcd=colaContractDefList atVisibility?
+colaFacility            : ^(FACILITY id=IDENT {this.pass.atoms.scope.push($id.token);} (lpd=colaPropertyDefList)? (lcd=colaContractDefList)? atVisibility?
                              (^(AT_EXTENDS  (ext+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))?
                              (^(AT_REQUIRES (req+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))?
                              facilityBody*
@@ -206,19 +207,19 @@ colaFacility            : ^(FACILITY id=IDENT {this.pass.atoms.scope.push($id.to
                           -> colaFacility(id={$id}, properties={$lpd.st}, contracts={$lcd.st}, aExtends={$ext}, aRequires={$req}, misc={this.pass.misc()});
 facilityBody            : colaAttribute {this.pass.addST($colaAttribute.st);} | colaAction {this.pass.addST($colaAction.st);};
 
-colaAction              : ^(ACTION id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type? (void_type {this.pass.simple_typeVoid();})? lpd=colaPropertyDefList (colaParameter {this.pass.addST($colaParameter.st);})* (ic+=inline_code)*)
+colaAction              : ^(ACTION id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type? (void_type {this.pass.simple_typeVoid();})? (lpd=colaPropertyDefList)? (colaParameter {this.pass.addST($colaParameter.st);})* (ic+=inline_code)*)
                           -> colaAction(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()}, inline_code={$ic});
-colaParameter           : ^(PARAMETER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList)
+colaParameter           : ^(PARAMETER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type (lpd=colaPropertyDefList)?)
                           -> colaParameter(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()});
 
-colaTypeDef             : ^(TYPEDEF id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList (ic+=inline_code)*)
+colaTypeDef             : ^(TYPEDEF id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type (lpd=colaPropertyDefList)? (ic+=inline_code)*)
                           -> colaTypeDef(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, inline_code={$ic}, propertiesInstances={this.pass.getPropDefList()}, misc={this.pass.misc()});
-colaAttribute           : ^(ATTRIBUTE id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList (ic+=inline_code)*)
+colaAttribute           : ^(ATTRIBUTE id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type (lpd=colaPropertyDefList)? (ic+=inline_code)*)
                           -> colaAttribute(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, inline_code={$ic}, misc={this.pass.misc()});
 
-colaStruct              : ^(STRUCT id=IDENT {this.pass.atoms.scope.push($id.token);} lpd=colaPropertyDefList (colaMember {this.pass.addST($colaMember.st);})* (ic+=inline_code)*)
+colaStruct              : ^(STRUCT id=IDENT {this.pass.atoms.scope.push($id.token);} (lpd=colaPropertyDefList)? (colaMember {this.pass.addST($colaMember.st);})* (ic+=inline_code)*)
                           -> colaStruct(id={$id}, properties={$lpd.st}, inline_code={$ic}, misc={this.pass.misc()});
-colaMember              : ^(MEMBER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type lpd=colaPropertyDefList)
+colaMember              : ^(MEMBER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type (lpd=colaPropertyDefList)?)
                           -> colaMember(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()});
 
 scoped_name             : {this.pass.sn.clear();}

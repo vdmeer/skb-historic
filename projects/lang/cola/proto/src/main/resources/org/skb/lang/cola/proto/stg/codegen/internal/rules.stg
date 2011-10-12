@@ -38,7 +38,7 @@
 
 group rules;
 
-property12(do_error, do_descr, ident, base_type, const_type) ::= <<
+property12(do_error, do_descr, ident, base_type, const_type, base_type_file, base_type_line, base_type_col) ::= <<
 <if(do_error)>
 type mismatch for property declaration \<<ident>\>
        ==\> type declared is \<<base_type>\>, value associated is of type \<<const_type>\>
@@ -48,7 +48,7 @@ type mismatch for property declaration \<<ident>\>
 <endif>
 >>
 
-property13(do_error, do_descr, ident, base_type, const_type) ::= <<
+property13(do_error, do_descr, ident, base_type, const_type, base_type_file, base_type_line, base_type_col) ::= <<
 <if(do_error)>
 potential type mismatch for property declaration \<<ident>\>
        ==\> type declared is \<<base_type>\>, value associated is of type \<<const_type>\>

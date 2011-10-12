@@ -2130,7 +2130,7 @@ package MAMA {
     } // element oManagedObject
 
     [Abstract abs,
-     Behavior beh("###"),
+     Behavior beh("##"),
      Description descr(""),
      Revision rev(0),
      SpecStatus spS("current"),
@@ -2156,5 +2156,3 @@ package MAMA {
   } // package mgmt
 
 } // package MAMA
-
-

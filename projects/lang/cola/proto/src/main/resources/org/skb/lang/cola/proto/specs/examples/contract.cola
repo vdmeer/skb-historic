@@ -37,10 +37,10 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
-@spec contracts;
+@spec mama;
 
 element aaa{}
 

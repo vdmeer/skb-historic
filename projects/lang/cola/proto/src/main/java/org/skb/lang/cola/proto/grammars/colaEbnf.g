@@ -205,7 +205,7 @@ atVisibilityData        : '('
 atDescription           : AT_DESCRIPTION '(' string_value ')' -> ^(AT_DESCRIPTION string_value);
 
 colaPropertyDefList     : '[' colaPropertyDef (',' colaPropertyDef)* ']'
-                          -> colaPropertyDef*;
+                          -> ^(PROPERTY_DEF colaPropertyDef*);
 
 colaPropertyDef         : scoped_name s=IDENT ('(' const_value (',' const_value)* ')')?
                           -> ^(PROPERTY IDENT scoped_name const_value*);
@@ -248,7 +248,7 @@ contractItemProp        : '[' s=IDENT ':'
 
 contractItemPropRank    : (REQUIRED | MANDATORY | OPTIONAL);
 
-colaContractDefList     : '[' '[' colaContractDef (',' colaContractDef)* ']' ']' -> colaContractDef*;
+colaContractDefList     : '[' '[' colaContractDef (',' colaContractDef)* ']' ']' -> ^(CONTRACT_DEF colaContractDef*);
 
 colaContractDef         : '{' scoped_name s=IDENT '=' colaContractItemDef (',' colaContractItemDef)* '}'
                           -> ^(CONTRACT IDENT scoped_name colaContractItemDef*);
@@ -367,6 +367,8 @@ inline_code             : '{' AT_LANGUAGE '=' string_value INLINE_CODE '}'
 //for parsing only
 ARRAY         : '__array';
 MEMBER        : '__member';
+PROPERTY_DEF  : '__propertydef';
+CONTRACT_DEF  : '_contractdef';
 
 // COLA Keywords
 ACTION        : 'action';

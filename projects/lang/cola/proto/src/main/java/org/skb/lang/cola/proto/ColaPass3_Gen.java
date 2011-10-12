@@ -41,9 +41,9 @@ import org.skb.base.composite.TSBaseAPI;
 import org.skb.base.composite.TSRepository;
 import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.config.Configuration;
-import org.skb.base.lang.AtomListUtils;
 import org.skb.base.lang.NameScope;
-import org.skb.base.lang.NameScopeUtils;
+import org.skb.base.utils.AtomListUtils;
+import org.skb.base.utils.NameScopeUtils;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 
 /**
@@ -113,14 +113,16 @@ public class ColaPass3_Gen {
 	public void addPropDefList(String p){this.propDefList.add(p);}
 	public TreeSet<String> getPropDefList(){return this.propDefList;}
 
-	public String getPropDefBaseType(String p){return this.atoms.getToken(p,TSAtomList.alValType).getText();}
+	public String getPropDefBaseType(String p){
+		return this.atoms.getToken(p,TSAtomList.alValType).getText();
+	}
 
 	private void _initSimple_type(){
 		this.simple_type.clear();
 		this.simple_type.put(ColaConstants.Tokens.parserScopedName, null);
 		this.simple_type.put(ColaConstants.Tokens.parserBaseType, null);
 		this.simple_type.put(ColaConstants.Tokens.parserARRAY, null);
-		this.simple_type.put(ColaConstants.Tokens.colaVOID, null);
+		this.simple_type.put(ColaConstants.Tokens.typeVOID, null);
 	}
 	public void simple_typeClear(){this._initSimple_type();}
 	public void simple_type(StringTemplate sc, String bt, String ar){
@@ -131,8 +133,8 @@ public class ColaPass3_Gen {
 	}
 	public void simple_typeVoid(){
 		this._initSimple_type();
-		this.simple_type.put(ColaConstants.Tokens.parserBaseType, ColaConstants.Tokens.colaVOID);
-		this.simple_type.put(ColaConstants.Tokens.colaVOID, ColaConstants.Tokens.colaVOID);
+		this.simple_type.put(ColaConstants.Tokens.parserBaseType, ColaConstants.Tokens.typeVOID);
+		this.simple_type.put(ColaConstants.Tokens.typeVOID, ColaConstants.Tokens.typeVOID);
 	}
 	public TreeMap<String,String> simple_type(){return new TreeMap<String,String>(this.simple_type);}
 
@@ -165,18 +167,20 @@ public class ColaPass3_Gen {
 		return null;
 	}
 
-	public TreeMap<String,String> genMiscAttribute(){return this. genMiscAttribute(null, null);}
+	public TreeMap<String,String> genMiscAttribute(){
+		return this. genMiscAttribute(null, null);
+	}
 	
   	//keep key and cat null if you want to use current values or use overload function below
 	public TreeMap<String,String> genMiscAttribute(String key, String cat){
 		TreeMap<String,String>ret=new TreeMap<String,String>();
-		ret.put(ColaConstants.Tokens.gcMiscParrentID, NameScopeUtils.getParentID(key, this.atoms.scope.getSeparator()));
-		ret.put(ColaConstants.Tokens.gcMiscParrentCat, AtomListUtils.getParentCategory(key, this.atoms));
-		ret.put(ColaConstants.Tokens.gcMiscSpecName, this.atoms.specificationName());
+		ret.put(ColaConstants.Tokens.gcMiscParrentID, NameScopeUtils.getParentID(this.atoms.scope.toString(), this.atoms.scope.getSeparator()));
+		ret.put(ColaConstants.Tokens.gcMiscParrentCat, AtomListUtils.getParentCategory(this.atoms.scope.toString(), this.atoms));
+		ret.put(ColaConstants.Tokens.gcMiscSpecName, this.atoms.getSpecificationName());
 		ret.put(ColaConstants.Tokens.gcMiscCurrentScope, this.atoms.scope.toString());
-		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString());
+		ret.put(ColaConstants.Tokens.gcMiscCurrentCat, this.atoms.getAtomCategory());
 
-		String cmpCat=cat;
+		String cmpCat=AtomListUtils.getParentCategory(this.atoms.scope.toString(), this.atoms);
 		if(cmpCat==null)
 			cmpCat=AtomListUtils.getParentCategory(key, this.atoms);
 		if(cmpCat.equals(ColaConstants.Tokens.colaCONTRACT))

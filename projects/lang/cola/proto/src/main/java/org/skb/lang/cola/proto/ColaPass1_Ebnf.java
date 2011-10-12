@@ -38,8 +38,8 @@ import org.skb.base.composite.TSTableRowAPI;
 import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.composite.misc.TSReportManager;
 import org.skb.base.config.Configuration;
-import org.skb.base.lang.AtomListUtils;
-import org.skb.base.lang.NameScopeUtils;
+import org.skb.base.utils.AtomListUtils;
+import org.skb.base.utils.NameScopeUtils;
 import org.skb.lang.cola.proto.constants.ColaConstants;
 import org.skb.lang.cola.proto.internal.ContractDeclarationList;
 import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
@@ -82,8 +82,8 @@ public class ColaPass1_Ebnf {
 		//initialise the AtomList with spec
 		this.atoms=config.getAtomlist();
 		this.atoms.addRow(ColaConstants.Tokens.colaSPECIFICATION);
-		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, TSAtomList.alValCategory, ColaConstants.Tokens.colaVOID);
-		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, TSAtomList.alValType, ColaConstants.Tokens.colaVOID);
+		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, TSAtomList.alValCategory, ColaConstants.Tokens.typeVOID);
+		this.atoms.put(ColaConstants.Tokens.colaSPECIFICATION, TSAtomList.alValType, ColaConstants.Tokens.typeVOID);
 
 		//this.atoms.setDefaultCategory(ColaConstants.Tokens.colaDEFINITION);
 		
@@ -146,6 +146,7 @@ public class ColaPass1_Ebnf {
 		boolean ar=false;
 		if(array!=null)
 			ar=true;
+
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, type, ar);
 		if(otr!=null){
 			StringTemplate err;
@@ -156,26 +157,16 @@ public class ColaPass1_Ebnf {
 				String parCat=AtomListUtils.getParentCategory(scopeAtom, this.atoms);
 				scopeAtom=scopeAtom.substring(scopeAtom.indexOf(this.atoms.scope.getSeparator())+this.atoms.scope.getSeparator().length(), scopeAtom.length());
 				if(parCat.equals(ColaConstants.Tokens.colaPROPERTY)){
-					err=this.rules.getInstanceOf("property14");
+					err=RuleManager.property14(this.rules, scopeAtom, declId);
 				}
 				else{
-					err=this.rules.getInstanceOf("contract05");
+					err=RuleManager.contract05(this.rules, scopeAtom, declId);
 				}
-				err.setAttribute("do_error", true);
-				err.setAttribute("scope", scopeAtom);
-				err.setAttribute("ident", declId);
 				this.reportManager.error(err.toString(), token);
 			}
 			else{
 				//general problem with not unique Identifier
-				err=this.rules.getInstanceOf("identifier01");
-				err.setAttribute("do_error", true);
-				err.setAttribute("ident", otr.get(TSAtomList.alValScopedID));
-				err.setAttribute("category", category);
-				err.setAttribute("categoryOrig", otr.get(TSAtomList.alValCategory));
-				err.setAttribute("fileOrig", otr.get(TSAtomList.alValFile));
-				err.setAttribute("lineOrig", otr.get(TSAtomList.alValLine));
-				err.setAttribute("colOrig", otr.get(TSAtomList.alValColumn));
+				err=RuleManager.identifier01(this.rules, otr.get(TSAtomList.alValScopedID), category, otr.get(TSAtomList.alValCategory), otr.get(TSAtomList.alValFile), otr.get(TSAtomList.alValLine), otr.get(TSAtomList.alValColumn));
 				this.reportManager.error(err.toString(), token);
 			}
 			return;
