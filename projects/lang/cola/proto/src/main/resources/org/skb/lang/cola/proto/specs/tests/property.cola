@@ -37,8 +37,9 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
+@language cola;
 @spec testProperty;
 
 property TestBoolean: @type(boolean = TRUE)

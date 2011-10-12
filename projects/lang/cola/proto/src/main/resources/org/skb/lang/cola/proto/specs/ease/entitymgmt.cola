@@ -37,7 +37,7 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec easeEM;

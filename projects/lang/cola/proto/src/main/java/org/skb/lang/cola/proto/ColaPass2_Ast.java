@@ -93,13 +93,17 @@ public class ColaPass2_Ast {
 		this.reportManager=config.getReportManager();
 	}
 
-	//test property declaration description, must be string and non-empty
+	/**
+	 * Tests the description of a property declaration, which needs to be non-empty.
+	 * 
+	 * If the value is NULL or an empty string (length=0), an error will be issued. Otherwise this method does nothing.
+	 * @param value value of the description
+	 */
 	public void testPropDeclDescription(Tree value){
 		String val=value.toStringTree().replace('"', ' ');
 		if(val.equals(ColaConstants.Tokens.valueNULL)||val.trim().length()==0){
-			//TODO
-			System.err.println("problem with description, no text given");
-			//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleProperty11, new String[]{this.atoms.get(this.atoms.scope.toString(), TSAtomList.alValCategory).toString(), this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty11), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+			StringTemplate err=RuleManager.property11(this.rules, this.atoms.scope.toString(), this.atoms.getAtomCategory());
+			this.reportManager.error(err.toString(), TokenUtils.getLine(value), TokenUtils.getColumn(value));
 		}
 	}
 
@@ -277,12 +281,14 @@ public class ColaPass2_Ast {
 			scoped+=snTree.getChild(i).toString();
 			//first check if there is any Atom registered, if so the test node category to be valid scoped_name node
 			if(this.atoms.containsKey(scoped)==false){
+				//TODO
 				this.reportManager.error("invalid scoped name (" + scoped + ")", "no atom of that name declared", TokenUtils.getLine(snTree, i), TokenUtils.getColumn(snTree, i));
 				ret=false;
 			}
 			else{
 				String leafCat=this.atoms.getAtomCategory(scoped);
 				if(StringUtils.equalsNone(leafCat, new String[]{ColaConstants.Tokens.colaPACKAGE, ColaConstants.Tokens.colaELEMENT, ColaConstants.Tokens.colaFACILITY})){
+					//TODO
 					this.reportManager.error("invalid scoped name (" + scoped + ")", scoped + " of type " + leafCat + " can't be used as part of scoped names", TokenUtils.getLine(snTree, i), TokenUtils.getColumn(snTree, i));
 					ret=false;
 				}
@@ -295,6 +301,7 @@ public class ColaPass2_Ast {
 		scoped+=snTree.getChild(snTree.getChildCount()-1).toString();
 		Tree lastScoped=snTree.getChild(snTree.getChildCount()-1);
 		if(this.atoms.containsKey(scoped)==false){
+			//TODO
 			this.reportManager.error("invalid scoped name <" + scoped + ">", "no atom of that name declared", TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
 			ret=false;
 		}
@@ -303,14 +310,17 @@ public class ColaPass2_Ast {
 			boolean errLeaf=false;
 			//parameters, actions and members cannot be accessed with scoped names
 			if(StringUtils.equalsAny(leafCat, new String[]{ColaConstants.Tokens.colaPARAMETER, ColaConstants.Tokens.colaACTION, ColaConstants.Tokens.parserMEMBER})){
+				//TODO
 				this.reportManager.error("invalid scoped name <" + scoped + ">", "cannot scope "+leafCat+"s", TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
 				ret=false;
 			}
 			//if specific reason, test against
 			else if(!reason.equals("")){
 				//put the scoped name into our tempAtom list to check for reuse
-				if(this.putTempAtom(currentAtom, scoped, reason)==false)
-					System.err.println(scoped+" already used for "+currentAtom);//TODO error message about already used
+				if(this.putTempAtom(currentAtom, scoped, reason)==false){
+					System.err.println(scoped+" already used for "+currentAtom);
+					//TODO error message about already used
+				}
 
 				//we have a specific reason, test against
 				if(reason.equals(ColaConstants.Tokens.colaAT_EXTENDS)){
@@ -344,14 +354,14 @@ public class ColaPass2_Ast {
 					else{
 						//scoped name is a property so check scope/rank
 						//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
-						String testCat=currentAtomCat.toString();
+						String testCat=currentAtomCat;
 						if(StringUtils.equalsAny(currentAtomCat.toString(), new String[]{ColaConstants.Tokens.colaTYPEDEF, ColaConstants.Tokens.colaSTRUCT, ColaConstants.Tokens.parserMEMBER})){
 							testCat=ColaConstants.Tokens.colaATTRIBUTE;
 						}
 						//now, if property is declared not_def for category, that's an error
 						if(this.propertyDeclList.get(ColaConstants.Tokens.colaNOT_DEF, testCat, scoped)==true){
-							System.err.println("property not specified for atom cat <"+currentAtom+">"); //TODO
-							//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleProperty09, new String[]{scoped, category}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty09), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
+							StringTemplate err=RuleManager.property09(this.rules, scoped, currentAtomCat);
+							this.reportManager.error(err.toString(), TokenUtils.getLine(snTree), TokenUtils.getColumn(snTree));
 						}
 					}
 				}
@@ -364,8 +374,8 @@ public class ColaPass2_Ast {
 						String testCat=currentAtomCat.toString();
 						//now, if contract is declared not_def for category, that's an error
 						if(this.contractDeclList.get(ColaConstants.Tokens.colaNOT_DEF, testCat, scoped)==true){
-							System.err.println("contract not specified for atom cat <"+currentAtom+">"); //TODO
-							//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleContract02, new String[]{this.sn.toString(), category}), null, TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
+							StringTemplate err=RuleManager.contract02(this.rules, scoped, currentAtomCat);
+							this.reportManager.error(err.toString(), TokenUtils.getLine(snTree), TokenUtils.getColumn(snTree));
 						}
 					}
 				}
@@ -390,13 +400,14 @@ public class ColaPass2_Ast {
 				//for them, the scoped name cannot be Property, Item, Contract, Package, Element, Facility
 				if(StringUtils.equalsAny(currentAtomCat.toString(), new String[]{ColaConstants.Tokens.colaACTION, ColaConstants.Tokens.colaPARAMETER, ColaConstants.Tokens.colaATTRIBUTE, ColaConstants.Tokens.colaTYPEDEF, ColaConstants.Tokens.parserMEMBER})){
 					if(StringUtils.equalsAny(leafCat, new String[]{ColaConstants.Tokens.colaPROPERTY, ColaConstants.Tokens.colaITEM, ColaConstants.Tokens.colaCONTRACT, ColaConstants.Tokens.colaPACKAGE, ColaConstants.Tokens.colaELEMENT, ColaConstants.Tokens.colaFACILITY})){
-						System.err.println(currentAtomCat+" == "+leafCat);
+						System.err.println(currentAtomCat+" == "+leafCat); //TODO
 						errLeaf=true;
 					}
 				}
 			}
 
 			if(errLeaf==true){
+				//TODO
 				String msg=scoped + " of type " + leafCat + " can't be used as leaf of scoped names for " + currentAtomCat;
 				this.reportManager.error("invalid scoped name (" + scoped + ")", msg, TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
 				ret=false;
@@ -486,11 +497,9 @@ public class ColaPass2_Ast {
 			//we have a required property, check the value (can only do Strings right now)
 			String value=TokenUtils.getTreeString(constValue, 1).replace('"', ' ');
 			if(value.equals(ColaConstants.Tokens.valueNULL)||value.trim().length()==0){
-				//TODO
-				System.err.println("required property defined w/o value");
-				//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleProperty03, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty03), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+				StringTemplate st=RuleManager.property03(this.rules, snStr);
+				this.reportManager.error(st.toString(), TokenUtils.getLine(constValue, 1), TokenUtils.getColumn(constValue, 1));
 			}
-
 		}
 	}
 
@@ -510,20 +519,19 @@ public class ColaPass2_Ast {
 			currentAtomCategory=ColaConstants.Tokens.colaATTRIBUTE;
 		if(this.propertyDeclList.get(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory, snStr)==true&&values==0){
 			//property is required, so needs to have a value, if values==0, then error
-			//TODO
-			System.err.println("required property w/o any value: "+currentAtom+"("+snStr+")");
-			//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleProperty04, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty04), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
+			StringTemplate st=RuleManager.property04(this.rules, snStr);
+			this.reportManager.error(st.toString(), TokenUtils.getLine(sn), TokenUtils.getColumn(sn));
 		}
 
 		//error, type is not array but more than one value given
 		if(btArray==false&&values>1){
-			//TODO
-			//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleProperty06, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty06, new String[]{type, this.propDefListValues.toString()}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+			StringTemplate st=RuleManager.property06(this.rules, snStr, values);
+			this.reportManager.error(st.toString(), TokenUtils.getLine(sn), TokenUtils.getColumn(sn));
 		}
 		//warning, type is array but only one value given
-		if(btArray==true&&values==1){
-			//TODO
-			//this.reportManager.warning(this.cr.getRule(ColaConstants.Rules.ruleProperty05, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty05, new String[]{type, this.propDefListValues.toString()}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+		if(btArray==true&&values<2){
+			StringTemplate st=RuleManager.property05(this.rules, snStr, values);
+			this.reportManager.warning(st.toString(), TokenUtils.getLine(sn), TokenUtils.getColumn(sn));
 		}
 	}
 
@@ -532,9 +540,12 @@ public class ColaPass2_Ast {
 	 * @param ident identifier of property definition
 	 */
 	public void testPropDefIdent(Token ident){
-		if(ident!=null)
-			if(this.putTempAtom(this.atoms.scope.toString(), ident.getText(), ColaConstants.Tokens.colaAT_PROVIDES)==false)
-				System.err.println("ident already used in context PropertyDefList");//TODO Error message about identifier already used
+		if(ident!=null){
+			if(this.putTempAtom(this.atoms.scope.toString(), ident.getText(), ColaConstants.Tokens.colaAT_PROVIDES)==false){
+				System.err.println("ident already used in context PropertyDefList");
+				//TODO Error message about identifier already used
+			}
+		}
 	}
 
 	/**
@@ -554,9 +565,8 @@ public class ColaPass2_Ast {
 		ArrayList<String> al=this.propertyDeclList.get(ColaConstants.Tokens.colaMANDATORY, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!propertyDefList.contains(al.get(i))){
-				//TODO
-				System.err.println("missing mandatory property in propertydeflist: <"+al.get(i));
-				//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleProperty01, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty01), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
+				StringTemplate st=RuleManager.property01(this.rules, al.get(i), currentAtomCategory, currentAtom);
+				this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 			}
 			else
 				propertyDefList.remove(al.get(i));
@@ -566,9 +576,8 @@ public class ColaPass2_Ast {
 		al=this.propertyDeclList.get(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!propertyDefList.contains(al.get(i))){
-				//TODO
-				System.err.println("missing required property in propertydeflist: <"+al.get(i));
-				//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleProperty02, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleProperty02), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
+				StringTemplate st=RuleManager.property02(this.rules, al.get(i), currentAtomCategory, currentAtom);
+				this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 			}
 			else
 				propertyDefList.remove(al.get(i));
@@ -642,8 +651,6 @@ public class ColaPass2_Ast {
 			//TODO
 			System.err.println("contracts illegally defined: "+contractDefList);
 		}
-
-
 //		//finally, see if all items that are part of a contract declarations are defined
 //		LinkedHashMap<String, ArrayList<String>> cntDecl=this.contractDeclList.getDeclaredItems();
 //		String key;
@@ -662,18 +669,5 @@ public class ColaPass2_Ast {
 //		}
 	//}
 
-
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 }

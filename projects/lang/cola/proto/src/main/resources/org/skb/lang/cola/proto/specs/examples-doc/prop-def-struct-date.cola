@@ -37,45 +37,45 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec docPDSD;
 
 property Contact: @type(string = NULL)
-  @scope([contract:mandatory] [package:mandatory] [element:mandatory]
+  @scope([package:mandatory] [element:mandatory]
          [facility:mandatory] [action:optional] [attribute:optional])
-  @apply([pre][post][invariant])
+  @apply(inv)
   @description("Contact details of organisation who specified an atom");
 
 property Counter: @type(boolean = TRUE)
   @scope([attribute:optional] [parameter:optional])
-  @apply([pre][post][invariant])
+  @apply(inv)
   @description("Identifies a counter, for attributes and parameters");
 
 property StepIndex: @type(short = 1)
   @scope([attribute:optional] [parameter:optional])
-  @apply([pre][post][invariant]) @alterable
+  @apply(inv) @alterable
   @description("Defines the step index for a counter.")
   @requires(Counter);
 
 property Description: @type(string = NULL)
-  @scope([contract:mandatory] [package:mandatory] [element:mandatory]
+  @scope([package:mandatory] [element:mandatory]
          [facility:mandatory] [action:mandatory] [attribute:mandatory])
-  @apply([pre][post][invariant])
+  @apply(inv)
   @description("description of the atom, as plain text or URL to website");
 
 property MaxValue: @type(long = 1024)
   @scope([attribute:optional] [parameter:optional])
-  @apply([pre][post][invariant]) @alterable
+  @apply(inv) @alterable
   @description("maximum value for attributes/parameters");
 
 property MinValue: @type(long = 0)
   @scope([attribute:optional] [parameter:optional])
-  @apply([pre][post][invariant]) @alterable
+  @apply(inv) @alterable
   @description("minimum value for attributes/parameters");
 
-  [Description descr("A structure for Date")]
+[Description descr("A structure for Date")]
 struct Date {
     [Description descr("2 Digit: 01-12"),
      MaxValue max_v(12),

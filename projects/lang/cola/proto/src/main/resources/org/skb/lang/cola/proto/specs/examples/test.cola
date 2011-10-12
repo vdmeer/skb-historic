@@ -37,10 +37,10 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
-@spec test;
+@spec testi;
 
 property test3: @type(string="BBB")
   @scope([package:not_def] [element:required])
@@ -74,7 +74,7 @@ property myProperty: @type(string = NULL)
 
 typedef string t;
 
-property test: @type(integer=123)
+property testi: @type(integer=123)
   @scope([package:not_def])
   @apply(pre)
   @description("###");

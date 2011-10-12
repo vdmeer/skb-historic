@@ -37,14 +37,13 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec docPDCon;
 
 property Contact: @type(string = NULL)
-  @scope([contract:mandatory]
-         [package:mandatory] [element:mandatory] [facility:mandatory]
+  @scope([package:mandatory] [element:mandatory] [facility:mandatory]
          [action:optional] [attribute:optional] [parameter:not_def])
-  @apply([pre][post][invariant])
+  @apply(inv)
   @description("Contact details of organisation who specified an atom");

@@ -37,7 +37,7 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec mamaj;
@@ -389,7 +389,7 @@ package P1 {
 			[Behavior beh("###"),
 			 SpecStatus spS(""),
 			 Status stat("")]
-			action string a1inC1inP2([In _i] string test){
+			action string a1inC1inP2([In _i] string testi){
 				{@language="lads" <<?  ?>>}
 			};
 

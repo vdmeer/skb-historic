@@ -38,6 +38,116 @@
 
 group rules;
 
+
+contract02(do_error, do_descr, ident, category) ::= <<
+<if(do_error)>
+used contract \<<ident>\> is not specified for \<<category>\>
+<endif>
+<if(do_descr)>
+  Contract Rule 02: ##add explanation##
+<endif>
+>>
+
+contract05(do_error, do_descr, scope, ident) ::= <<
+<if(do_error)>
+scope for atom \<<scope>\> redefined in contract \<<ident>\>
+<endif>
+<if(do_descr)>
+  Contract Rule 05: ##add explanation##
+<endif>
+>>
+
+
+contract05(do_error, do_descr, scope, ident) ::= <<
+<if(do_error)>
+scope for atom \<<scope>\> redefined in contract \<<ident>\>
+<endif>
+<if(do_descr)>
+  Contract Rule 05: ##add explanation##
+<endif>
+>>
+
+
+property01(do_error, do_descr, property, category, atom) ::= <<
+<if(do_error)>
+missing mandatory property \<<property>\> for <category> \<<atom>\>
+       ==\> all mandatory properties need to be declared
+<endif>
+<if(do_descr)>
+  Property Rule 01: ##add explanation##
+<endif>
+>>
+
+property02(do_error, do_descr, property, category, atom) ::= <<
+<if(do_error)>
+missing required property \<<property>\> for <category> \<<atom>\>
+       ==\> all required properties need to be declared
+<endif>
+<if(do_descr)>
+  Property Rule 02: ##add explanation##
+<endif>
+>>
+
+property03(do_error, do_descr, ident) ::= <<
+<if(do_error)>
+missing value for required property \<<ident>\>, one empty value given
+       ==\> required properties must be declared non-empty
+<endif>
+<if(do_descr)>
+  Property Rule 03: ##add explanation##
+<endif>
+>>
+
+property04(do_error, do_descr, ident) ::= <<
+<if(do_error)>
+missing value for required property \<<ident>\>, no value given
+       ==\> required properties must be declared non-empty
+<endif>
+<if(do_descr)>
+  Property Rule 04: ##add explanation##
+<endif>
+>>
+
+property05(do_error, do_descr, ident, values) ::= <<
+<if(do_error)>
+potential type mismatch for property definition \<<ident>\>
+       ==\> array expected, but only \<<values>\> value given
+<endif>
+<if(do_descr)>
+  Property Rule 05: ##add explanation##
+<endif>
+>>
+
+property06(do_error, do_descr, ident, values) ::= <<
+<if(do_error)>
+type mismatch for property definition \<<ident>\>
+       ==\> \<<values>\> values given for a non-array type
+<endif>
+<if(do_descr)>
+  Property Rule 06: ##add explanation##
+<endif>
+>>
+
+property09(do_error, do_descr, ident, category) ::= <<
+<if(do_error)>
+used property \<<ident>\> is not specified for \<<category>\>
+       ==\> note: typedef, struct and member are handled as attributes
+<endif>
+<if(do_descr)>
+  Property Rule 09: ##add explanation##
+<endif>
+>>
+
+property11(do_error, do_descr, ident, category) ::= <<
+<if(do_error)>
+empty description in \<<category>\> \<<ident>\>
+       ==\> description needs to be a non-empty string
+<endif>
+<if(do_descr)>
+  Property Rule 11: ##add explanation##
+<endif>
+>> 
+
 property12(do_error, do_descr, ident, base_type, const_type, base_type_file, base_type_line, base_type_col) ::= <<
 <if(do_error)>
 type mismatch for property declaration \<<ident>\>
@@ -64,24 +174,5 @@ scope for atom \<<scope>\> redefined in property \<<ident>\>
 <endif>
 <if(do_descr)>
   Property Rule 14: ##add explanation##
-<endif>
->>
-
-contract05(do_error, do_descr, scope, ident) ::= <<
-<if(do_error)>
-scope for atom \<<scope>\> redefined in contract \<<ident>\>
-<endif>
-<if(do_descr)>
-  Contract Rule 05: ##add explanation##
-<endif>
->>
-
-identifier01(do_error, do_descr, ident, category, categoryOrig, fileOrig, lineOrig, colOrig) ::= <<
-<if(do_error)>
-identifier used more than once
-       ==\> identifier \<<ident>\> as \<<category>\>, previously defined as \<<categoryOrig>\> in file <fileOrig>:<lineOrig>:<colOrig>  
-<endif>
-<if(do_descr)>
-  Identifier Rule 01: ##add explanation##
 <endif>
 >>

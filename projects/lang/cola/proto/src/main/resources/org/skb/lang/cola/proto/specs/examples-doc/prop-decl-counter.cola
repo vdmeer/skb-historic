@@ -37,17 +37,17 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec docPDC;
 
 property Counter: @type(boolean = TRUE)
   @scope([attribute:optional] [parameter:optional])
-  @apply([pre][post][invariant])
+  @apply(inv)
   @description("Identifies a counter, for attributes and parameters");
 
 property StepIndex: @type(short = 1)
   @scope([attribute:optional] [parameter:optional])
-  @apply([pre][post][invariant]) @alterable
+  @apply(inv) @alterable
   @description("Defines the step index for a counter.");

@@ -37,14 +37,14 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec docDV;
 
 property Values: @type(string[] = NULL)
   @scope([attribute:optional] [parameter:optional])
-  @apply([pre][post])
+  @apply(inv)
   @description("gives a set of valid values for attributes/parameters");
 
 [Values v("property", "function", "item", "contract",

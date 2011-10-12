@@ -37,7 +37,7 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec docAppend;
@@ -45,12 +45,12 @@
 property Description: @type(string = NULL)
   @scope([package:mandatory] [element:mandatory] [facility:mandatory]
          [action:optional] [attribute:optional])
-  @apply([pre][post][invariant])
+  @apply(inv)
   @description("Description of an atom");
 
-  [Description _d("an L-ADS package with 1 property")]
+  [Description _d("a COLA package with 1 property")]
 package PkgExample {
-    [Description _d("an L-ADS element with 1 property")]
+    [Description _d("a COLA element with 1 property")]
   element ElemExample {
     attribute string attr;
     action integer showIt(string param1, integer param2);

@@ -37,7 +37,7 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec docNS;
@@ -74,7 +74,7 @@ package D1 {
 
     element E1inD2 @extends D1::E1inD1 @provides D1::D2::F1inD2 {
       attribute string A1inE1inD2 { {@language="lads" <<? s ?>>} };
-      action string a1inE1inD2(string test);
+      action string a1inE1inD2(string testi);
       attribute string A12nE1inD2 ;
     }
   }

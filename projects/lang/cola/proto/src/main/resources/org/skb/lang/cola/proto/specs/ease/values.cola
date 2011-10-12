@@ -37,15 +37,15 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec easeValues;
 
-function test:parameter([string s])@return(boolean);
+function assert:parameter([string s])@return(boolean);
 
 property Values: @type(string[] = NULL)
-  @scope([attribute:optional]) @apply(inv=test)
+  @scope([attribute:optional]) @apply(inv=assert)
   @description("gives a set of valid values for attributes");
 
 element router{

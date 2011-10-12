@@ -209,25 +209,36 @@ colaElement             : ^(ELEMENT s=IDENT {this.pass.atoms.scope.push(s.token)
 
 elementBody             : elementContains | colaAttribute | colaAction | inline_code;
 
-elementContains         : ^(contains=AT_CONTAINS s=IDENT {this.pass.atoms.scope.push(s.token);} scoped_name {this.pass.testScopedName($scoped_name.tree, contains.token);} {this.pass.atoms.scope.pop();});
+elementContains         : ^(contains=AT_CONTAINS s=IDENT {this.pass.atoms.scope.push(s.token);}
+                            scoped_name {this.pass.testScopedName($scoped_name.tree, contains.token);})
+                          {this.pass.atoms.scope.pop();};
 
 colaFacility            : ^(FACILITY s=IDENT {this.pass.atoms.scope.push(s.token);}
-                             colaPropertyDefList? colaContractDefList? atVisibility? aExtends? aRequires? facilityBody*
-                          ) {this.pass.atoms.scope.pop();};
+                            colaPropertyDefList? colaContractDefList? atVisibility? aExtends? aRequires? facilityBody*)
+                          {this.pass.atoms.scope.pop();};
 
 facilityBody            : colaAttribute | colaAction;
 
-colaAction              : ^(ACTION    s=IDENT {this.pass.atoms.scope.push(s.token);} (simple_type {this.pass.testSimpleType($simple_type.tree);})? void_type? colaPropertyDefList? colaParameter* inline_code*) {this.pass.atoms.scope.pop();};
+colaAction              : ^(ACTION s=IDENT {this.pass.atoms.scope.push(s.token);} (simple_type {this.pass.testSimpleType($simple_type.tree);})?
+                            void_type? colaPropertyDefList? colaParameter* inline_code*)
+                          {this.pass.atoms.scope.pop();};
 
-colaParameter           : ^(PARAMETER s=IDENT {this.pass.atoms.scope.push(s.token);}  simple_type {this.pass.testSimpleType($simple_type.tree);}              colaPropertyDefList?)                             {this.pass.atoms.scope.pop();};
+colaParameter           : ^(PARAMETER s=IDENT {this.pass.atoms.scope.push(s.token);} simple_type {this.pass.testSimpleType($simple_type.tree);} colaPropertyDefList?)
+                          {this.pass.atoms.scope.pop();};
 
-colaTypeDef             : ^(TYPEDEF   s=IDENT {this.pass.atoms.scope.push(s.token);}  simple_type {this.pass.testSimpleType($simple_type.tree);}              colaPropertyDefList?                inline_code*) {this.pass.atoms.scope.pop();};
+colaTypeDef             : ^(TYPEDEF s=IDENT {this.pass.atoms.scope.push(s.token);} simple_type {this.pass.testSimpleType($simple_type.tree);}
+                            colaPropertyDefList? inline_code*)
+                          {this.pass.atoms.scope.pop();};
 
-colaAttribute           : ^(ATTRIBUTE s=IDENT {this.pass.atoms.scope.push(s.token);}  simple_type {this.pass.testSimpleType($simple_type.tree);}              colaPropertyDefList?                inline_code*) {this.pass.atoms.scope.pop();};
+colaAttribute           : ^(ATTRIBUTE s=IDENT {this.pass.atoms.scope.push(s.token);} simple_type {this.pass.testSimpleType($simple_type.tree);}
+                            colaPropertyDefList? inline_code*)
+                          {this.pass.atoms.scope.pop();};
 
-colaStruct              : ^(STRUCT    s=IDENT {this.pass.atoms.scope.push(s.token);}                                                                          colaPropertyDefList? colaMember*    inline_code*) {this.pass.atoms.scope.pop();};
+colaStruct              : ^(STRUCT s=IDENT {this.pass.atoms.scope.push(s.token);} colaPropertyDefList? colaMember* inline_code*)
+                          {this.pass.atoms.scope.pop();};
 
-colaMember              : ^(MEMBER    s=IDENT {this.pass.atoms.scope.push(s.token);}  simple_type {this.pass.testSimpleType($simple_type.tree);}              colaPropertyDefList?)                             {this.pass.atoms.scope.pop();};
+colaMember              : ^(MEMBER s=IDENT {this.pass.atoms.scope.push(s.token);} simple_type {this.pass.testSimpleType($simple_type.tree);} colaPropertyDefList?)
+                          {this.pass.atoms.scope.pop();};
 
 scoped_name             : ^(AT_SCOPE IDENT*);
 

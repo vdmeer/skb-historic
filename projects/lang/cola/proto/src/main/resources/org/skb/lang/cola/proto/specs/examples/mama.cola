@@ -267,7 +267,7 @@ package MAMA {
    Values values("inconsistent", "char", "string", "boolean", "octet", "short", "ushort", "long", "ulong", "longlong", "ulonglong", "float", "double", "longdouble", "array", "struct")]
   typedef short tDataType;
 
-  [Description descr("This &lt;short&gt; type represents an enumerate that identifies the reuqested action for a type###"),
+  [Description descr("This &lt;short&gt; type represents an enumerate that identifies the requested action for a type###"),
    SpecStatus spS("current"),
    Status stat("required"),
    Values values("none", "read", "write", "exec")]

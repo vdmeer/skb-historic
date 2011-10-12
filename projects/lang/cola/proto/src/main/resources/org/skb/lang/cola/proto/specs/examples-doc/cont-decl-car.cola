@@ -37,26 +37,26 @@
  */
 
 @stage design;
-@env test;
+@environment test;
 @clevel system;
 @language cola;
 @spec docConDC;
 
 property Amount: @type(integer=0)
   @scope([contract:optional])
-  @apply([pre][post]) @negotiable
+  @apply(inv) @negotiable
   @description("The amount of purchase or offer.")
   @requires(Unit) @priority(short=1);
 
 property Unit: @type(string="euro")
   @scope([contract:optional])
-  @apply([pre][post]) @negotiable
+  @apply(inv) @negotiable
   @description("The unit of an amount, i.e. Euro.")
   @priority(short=3);
 
 property Colour: @type(string=NULL)
   @scope([contract:optional])
-  @apply([pre][post]) @negotiable
+  @apply(inv) @negotiable
   @description("The colour of an offered good")
   @priority(short=2);
 
