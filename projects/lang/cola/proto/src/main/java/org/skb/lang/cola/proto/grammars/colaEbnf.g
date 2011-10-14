@@ -257,10 +257,8 @@ colaContractItemDef     : IDENT colaItemDefList;
 
 colaItemDefList         : '[' (colaItemDef (',' colaItemDef)*)? ']' -> colaItemDef*;
 
-colaItemDef             : IDENT s=IDENT ('(' const_value (',' const_value)* ')')?
+colaItemDef             : IDENT IDENT ('(' const_value (',' const_value)* ')')?
                           -> ^(IDENT IDENT const_value*);
-
-
 
 colaPackage             : colaPropertyDefList? PACKAGE s=IDENT
                           {this.pass.putAtom(s,ColaConstants.Tokens.colaPACKAGE);}
@@ -368,7 +366,7 @@ inline_code             : '{' AT_LANGUAGE '=' string_value INLINE_CODE '}'
 ARRAY         : '__array';
 MEMBER        : '__member';
 PROPERTY_DEF  : '__propertydef';
-CONTRACT_DEF  : '_contractdef';
+CONTRACT_DEF  : '__contractdef';
 
 // COLA Keywords
 ACTION        : 'action';

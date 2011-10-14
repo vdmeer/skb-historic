@@ -189,15 +189,21 @@ colaContractDefList     : ^(CONTRACT_DEF colaContractDef*)
                           ;
 
 colaContractDef         : ^(cont=CONTRACT
-                          id=IDENT
-                          {this.pass.testContDefIdent(id.token);}
-                          scoped_name {this.pass.testScopedName($scoped_name.tree, cont.token);}
-                          colaContractItemDef*);
+                            id=IDENT
+                            {this.pass.testContDefIdent(id.token);}
+                            scoped_name
+                            {this.pass.testScopedName($scoped_name.tree, cont.token);}
+                            colaContractItemDef*
+                          );
 
-colaContractItemDef     : s=IDENT {this.pass.itemDefListStart(s.token);} colaItemDef* {this.pass.itemDefListFinish();};
+colaContractItemDef     : s=IDENT colaItemDef*;
 
-colaItemDef             : ^(prop=IDENT s=IDENT {this.pass.itemDef(prop.token); this.pass.itemDefValueStart();}
-                          (const_value {this.pass.itemDefValueTest(prop.token);})*) {this.pass.itemDefFinish(prop.token);};
+colaItemDef             : ^(prop=IDENT id=IDENT
+                            {this.pass.testItemDef(prop.token, id.token);}
+                            {int cv=0;}
+                            (const_value {this.pass.testItemDefConstValue(prop.token, $const_value.tree); cv++;})*
+                            {this.pass.testItemDefConstValue(prop.token, cv);}
+                          );
 
 colaPackage             : ^(PACKAGE s=IDENT {this.pass.atoms.scope.push(s.token);} colaPropertyDefList? colaDefinition* inline_code*) {this.pass.atoms.scope.pop();};
 

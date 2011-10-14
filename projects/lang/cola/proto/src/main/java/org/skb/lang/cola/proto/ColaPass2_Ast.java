@@ -107,120 +107,6 @@ public class ColaPass2_Ast {
 		}
 	}
 
-	public void itemDefListStart(Token item){
-//		this.currentItemDef=item;
-//		this.contDefList.get(this.sn.toString()).add(item.getText());
-//		this.itemDefList.clear();
-	}
-
-	public void itemDef(Token itemProp){
-//		boolean add=true;
-//		String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
-//		//itemDef not declared
-//		if(this.atoms.containsKey(scoped)==false){
-//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem02), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem02, new String[]{scoped}), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
-//			add=false;
-//		}
-//		//used once or more?
-//		if(this.itemDefList.containsKey(scoped)){
-//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleIdentifier03), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier03, new String[]{scoped}), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
-//			add=false;
-//		}
-//
-//		//item-property is declared, and defined only once. we can add it, since scope is always valid (only rank differs
-//		if(add==true)
-//			this.itemDefList.put(new String(scoped), this.sn.getList());
-	}
-
-	public void itemDefValueStart(){
-//		this.itemDefListValues=0;
-	}
-
-	public void itemDefValueTest(Token itemProp){
-//		String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
-//		//first check if we have a item-property of that type
-//		if(!this.atoms.containsKey(scoped))
-//			return;
-//
-//		String type=this.atoms.getToken(scoped,TSAtomList.alValType).getText();
-//		String const_valueType=this.lastCommonValueType.getText().toLowerCase();
-//		if(!type.equals(const_valueType)){
-//			if((type.equals(ColaConstants.Tokens.colaINTEGER)||type.equals(ColaConstants.Tokens.colaSHORT)||type.equals(ColaConstants.Tokens.colaLONG))&&
-//			   (const_valueType.equals(ColaConstants.Tokens.colaINTEGER)||const_valueType.equals(ColaConstants.Tokens.colaSHORT)||const_valueType.equals(ColaConstants.Tokens.colaLONG))
-//			){
-//				this.reportManager.warning(this.cr.getRule(ColaConstants.Rules.ruleItem03, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem03, new String[]{type, const_valueType}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
-//			}
-//			else{
-//				this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem04, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem04, new String[]{type, const_valueType}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
-//			}
-//		}
-//		this.itemDefListValues++;
-	}
-
-	public void itemDefFinish(Token itemProp){
-//		String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
-//		//first check if we have a property of that type
-//		if(!this.atoms.containsKey(scoped))
-//			return;
-//
-//		String type=this.atoms.getToken(scoped,TSAtomList.alValType).getText();
-//
-//		//error, type is not array but more than one value given
-//		if(this.atoms.get(scoped,TSAtomList.alValTypeArray).equals(ColaConstants.Tokens.colaFALSE)&&this.itemDefListValues>1){
-//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem05, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem05, new String[]{type, this.itemDefListValues.toString()}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
-//		}
-//		//warning, type is array but only one value given
-//		if(this.atoms.get(scoped,TSAtomList.alValTypeArray).equals(ColaConstants.Tokens.colaTRUE)&&(this.itemDefListValues==0||this.itemDefListValues==1)){
-//			this.reportManager.warning(this.cr.getRule(ColaConstants.Rules.ruleItem06, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem06, new String[]{type, this.itemDefListValues.toString()}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
-//		}
-//
-//		//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
-//		String category=this.atoms.get(this.atoms.scope.toString(),TSAtomList.alValCategory).toString();
-//		if(category.equals(ColaConstants.Tokens.colaTYPEDEF)||category.equals(ColaConstants.Tokens.colaSTRUCT)||category.equals(ColaConstants.Tokens.parserMEMBER))
-//			category=ColaConstants.Tokens.colaATTRIBUTE;
-//
-//		if(this.contractDeclList.getItemDeclPropertyRank(this.sn.toString(), this.currentItemDef.getText(), itemProp.getText(), ColaConstants.Tokens.colaREQUIRED)==true){
-//			//required property with no value, error
-//			if(this.itemDefListValues==0){
-//				this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem07, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem07), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
-//			}
-//			//required property with 1 value, can only test for Strings now
-//			if(this.itemDefListValues==1){
-//				String const_valueType=this.lastCommonValueType.getText().toLowerCase();
-//				if(const_valueType.equals(ColaConstants.Tokens.colaSTRING)){
-//					String const_value=this.lastCommonValue.getText();
-//					const_value=const_value.replace('"', ' ');
-//					if(const_value.equals(ColaConstants.Tokens.colaNULL)||const_value.trim().length()==0){
-//						this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem08, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem08), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
-//					}
-//				}
-//			}
-//		}
-	}
-
-	public void itemDefListFinish(){
-//		String category=ColaConstants.Tokens.colaITEM;
-//		String scoped_add=this.sn.toString()+"::"+this.currentItemDef.getText()+"::";
-//		//now we need to check if all mandatory and required item-properties have been defined
-//		//let's start with the mandatory properties
-//		ArrayList<String> al=this.contractDeclList.getArrayForRank(this.sn.toString(), this.currentItemDef.getText(), ColaConstants.Tokens.colaMANDATORY);
-//		int size=al.size();
-//		for(int i=0; i<size; i++){
-//			if(!this.itemDefList.containsKey(scoped_add+al.get(i))){
-//				this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem09, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem09), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
-//			}
-//		}
-//
-//				al=this.contractDeclList.getArrayForRank(this.sn.toString(), this.currentItemDef.getText(), ColaConstants.Tokens.colaREQUIRED);
-//		size=al.size();
-//		for(int i=0; i<size; i++){
-//			if(!this.itemDefList.containsKey(scoped_add+al.get(i))){
-//				this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem10, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem10), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
-//			}
-//		}
-//		this.currentItemDef=null;
-	}
-
 
 
 ////////////////////////////////////////////////////////////
@@ -281,15 +167,15 @@ public class ColaPass2_Ast {
 			scoped+=snTree.getChild(i).toString();
 			//first check if there is any Atom registered, if so the test node category to be valid scoped_name node
 			if(this.atoms.containsKey(scoped)==false){
-				//TODO
-				this.reportManager.error("invalid scoped name (" + scoped + ")", "no atom of that name declared", TokenUtils.getLine(snTree, i), TokenUtils.getColumn(snTree, i));
+				StringTemplate st=RuleManager.scopename01(this.rules, scoped);
+				this.reportManager.error(st.toString(), TokenUtils.getLine(snTree, i), TokenUtils.getColumn(snTree, i));
 				ret=false;
 			}
 			else{
 				String leafCat=this.atoms.getAtomCategory(scoped);
 				if(StringUtils.equalsNone(leafCat, new String[]{ColaConstants.Tokens.colaPACKAGE, ColaConstants.Tokens.colaELEMENT, ColaConstants.Tokens.colaFACILITY})){
-					//TODO
-					this.reportManager.error("invalid scoped name (" + scoped + ")", scoped + " of type " + leafCat + " can't be used as part of scoped names", TokenUtils.getLine(snTree, i), TokenUtils.getColumn(snTree, i));
+					StringTemplate st=RuleManager.scopename02(this.rules, scoped, leafCat);
+					this.reportManager.error(st.toString(), TokenUtils.getLine(snTree, i), TokenUtils.getColumn(snTree, i));
 					ret=false;
 				}
 			}
@@ -301,8 +187,8 @@ public class ColaPass2_Ast {
 		scoped+=snTree.getChild(snTree.getChildCount()-1).toString();
 		Tree lastScoped=snTree.getChild(snTree.getChildCount()-1);
 		if(this.atoms.containsKey(scoped)==false){
-			//TODO
-			this.reportManager.error("invalid scoped name <" + scoped + ">", "no atom of that name declared", TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
+			StringTemplate st=RuleManager.scopename01(this.rules, scoped);
+			this.reportManager.error(st.toString(), TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
 			ret=false;
 		}
 		else{
@@ -310,16 +196,16 @@ public class ColaPass2_Ast {
 			boolean errLeaf=false;
 			//parameters, actions and members cannot be accessed with scoped names
 			if(StringUtils.equalsAny(leafCat, new String[]{ColaConstants.Tokens.colaPARAMETER, ColaConstants.Tokens.colaACTION, ColaConstants.Tokens.parserMEMBER})){
-				//TODO
-				this.reportManager.error("invalid scoped name <" + scoped + ">", "cannot scope "+leafCat+"s", TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
+				StringTemplate st=RuleManager.scopename02(this.rules, scoped, leafCat);
+				this.reportManager.error(st.toString(), TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
 				ret=false;
 			}
 			//if specific reason, test against
 			else if(!reason.equals("")){
 				//put the scoped name into our tempAtom list to check for reuse
 				if(this.putTempAtom(currentAtom, scoped, reason)==false){
-					System.err.println(scoped+" already used for "+currentAtom);
-					//TODO error message about already used
+					StringTemplate st=RuleManager.scopename03(this.rules, scoped, currentAtom, reason.toLowerCase());
+					this.reportManager.error(st.toString(), TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
 				}
 
 				//we have a specific reason, test against
@@ -349,7 +235,8 @@ public class ColaPass2_Ast {
 				}
 				else if(reason.toLowerCase().equals(ColaConstants.Tokens.colaPROPERTY)){
 					if(!leafCat.equals(ColaConstants.Tokens.colaPROPERTY)){
-						System.err.println("scoped name for PropDef is not a property"); //TODO
+						StringTemplate err=RuleManager.scopename04(this.rules, scoped, leafCat);
+						this.reportManager.error(err.toString(), TokenUtils.getLine(snTree.getChild(snTree.getChildCount()-1)), TokenUtils.getColumn(snTree.getChild(snTree.getChildCount()-1)));
 					}
 					else{
 						//scoped name is a property so check scope/rank
@@ -367,7 +254,8 @@ public class ColaPass2_Ast {
 				}
 				else if(reason.toLowerCase().equals(ColaConstants.Tokens.colaCONTRACT)){
 					if(!leafCat.equals(ColaConstants.Tokens.colaCONTRACT)){
-						System.err.println("scoped name for ContDef is not a contract"); //TODO
+						StringTemplate err=RuleManager.scopename05(this.rules, scoped, leafCat);
+						this.reportManager.error(err.toString(), TokenUtils.getLine(snTree.getChild(snTree.getChildCount()-1)), TokenUtils.getColumn(snTree.getChild(snTree.getChildCount()-1)));
 					}
 					else{
 						//scoped name is a contract so check scope/rank
@@ -400,16 +288,15 @@ public class ColaPass2_Ast {
 				//for them, the scoped name cannot be Property, Item, Contract, Package, Element, Facility
 				if(StringUtils.equalsAny(currentAtomCat.toString(), new String[]{ColaConstants.Tokens.colaACTION, ColaConstants.Tokens.colaPARAMETER, ColaConstants.Tokens.colaATTRIBUTE, ColaConstants.Tokens.colaTYPEDEF, ColaConstants.Tokens.parserMEMBER})){
 					if(StringUtils.equalsAny(leafCat, new String[]{ColaConstants.Tokens.colaPROPERTY, ColaConstants.Tokens.colaITEM, ColaConstants.Tokens.colaCONTRACT, ColaConstants.Tokens.colaPACKAGE, ColaConstants.Tokens.colaELEMENT, ColaConstants.Tokens.colaFACILITY})){
-						System.err.println(currentAtomCat+" == "+leafCat); //TODO
-						errLeaf=true;
+						StringTemplate err=RuleManager.scopename06(this.rules, scoped, currentAtomCat, leafCat);
+						this.reportManager.error(err.toString(), TokenUtils.getLine(snTree), TokenUtils.getColumn(snTree));
 					}
 				}
 			}
 
 			if(errLeaf==true){
-				//TODO
-				String msg=scoped + " of type " + leafCat + " can't be used as leaf of scoped names for " + currentAtomCat;
-				this.reportManager.error("invalid scoped name (" + scoped + ")", msg, TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
+				StringTemplate err=RuleManager.scopename06(this.rules, scoped, currentAtomCat, leafCat);
+				this.reportManager.error(err.toString(), TokenUtils.getLine(lastScoped), TokenUtils.getColumn(lastScoped));
 				ret=false;
 			}
 		}
@@ -542,8 +429,8 @@ public class ColaPass2_Ast {
 	public void testPropDefIdent(Token ident){
 		if(ident!=null){
 			if(this.putTempAtom(this.atoms.scope.toString(), ident.getText(), ColaConstants.Tokens.colaAT_PROVIDES)==false){
-				System.err.println("ident already used in context PropertyDefList");
-				//TODO Error message about identifier already used
+				StringTemplate st=RuleManager.identifier02(this.rules, ident.getText());
+				this.reportManager.error(st.toString(), TokenUtils.getLine(ident), TokenUtils.getColumn(ident));
 			}
 		}
 	}
@@ -590,8 +477,8 @@ public class ColaPass2_Ast {
 		}
 		if(propertyDefList.size()>0){
 			//there are too many property defs in the list, mark them as error
-			//TODO
-			System.err.println("properties illegally defined: "+propertyDefList);
+			StringTemplate st=RuleManager.property15(this.rules, currentAtom, propertyDefList);
+			this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 		}
 	}
 
@@ -600,9 +487,12 @@ public class ColaPass2_Ast {
 	 * @param ident identifier of contract definition
 	 */
 	public void testContDefIdent(Token ident){
-		if(ident!=null)
-			if(this.putTempAtom(this.atoms.scope.toString(), ident.getText(), ColaConstants.Tokens.colaAT_CONTAINS)==false)
-				System.err.println("ident already used in context ContractDefList");//TODO Error message about identifier already used
+		if(ident!=null){
+			if(this.putTempAtom(this.atoms.scope.toString(), ident.getText(), ColaConstants.Tokens.colaAT_CONTAINS)==false){
+				StringTemplate st=RuleManager.identifier03(this.rules, ident.getText());
+				this.reportManager.error(st.toString(), TokenUtils.getLine(ident), TokenUtils.getColumn(ident));
+			}
+		}
 	}
 
 
@@ -621,9 +511,8 @@ public class ColaPass2_Ast {
 		ArrayList<String> al=this.contractDeclList.get(ColaConstants.Tokens.colaMANDATORY, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!contractDefList.contains(al.get(i))){
-				//TODO
-				System.err.println("missing mandatory contract in propertydeflist: <"+al.get(i));
-				//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleContract03, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleContract03), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
+				StringTemplate st=RuleManager.contract03(this.rules, al.get(i), currentAtomCategory, currentAtom);
+				this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 			}
 			else
 				contractDefList.remove(al.get(i));
@@ -633,9 +522,8 @@ public class ColaPass2_Ast {
 		al=this.contractDeclList.get(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!contractDefList.contains(al.get(i))){
-				//TODO
-				System.err.println("missing required contract in propertydeflist: <"+al.get(i));
-				//this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleContract04, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleContract04), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
+				StringTemplate st=RuleManager.contract04(this.rules, al.get(i), currentAtomCategory, currentAtom);
+				this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 			}
 			else
 				contractDefList.remove(al.get(i));
@@ -647,10 +535,11 @@ public class ColaPass2_Ast {
 				contractDefList.remove(al.get(i));
 		}
 		if(contractDefList.size()>0){
-			//there are too many property defs in the list, mark them as error
-			//TODO
-			System.err.println("contracts illegally defined: "+contractDefList);
+			//there are too many contract defs in the list, mark them as error
+			StringTemplate st=RuleManager.contract06(this.rules, currentAtom, contractDefList);
+			this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 		}
+
 //		//finally, see if all items that are part of a contract declarations are defined
 //		LinkedHashMap<String, ArrayList<String>> cntDecl=this.contractDeclList.getDeclaredItems();
 //		String key;
@@ -670,4 +559,129 @@ public class ColaPass2_Ast {
 	//}
 
 	}
+
+	public void testItemDef(Token property, Token ident){
+		if(ident!=null){
+			if(this.putTempAtom(this.atoms.scope.toString(), ident.getText(), ColaConstants.Tokens.colaAT_SPEC)==false){
+				StringTemplate st=RuleManager.identifier02(this.rules, ident.getText());
+				this.reportManager.error(st.toString(), TokenUtils.getLine(ident), TokenUtils.getColumn(ident));
+			}
+		}
+	}
+
+	public void testItemDefConstValue(Token property, Tree constValue){
+		
+	}
+
+	public void testItemDefConstValue(Token property, int values){
+		
+	}
+
+
+
+
+//public void itemDef(Token itemProp){
+//	boolean add=true;
+//	String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
+//	//itemDef not declared
+//	if(this.atoms.containsKey(scoped)==false){
+//		this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem02), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem02, new String[]{scoped}), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
+//		add=false;
+//	}
+//	//used once or more?
+//	if(this.itemDefList.containsKey(scoped)){
+//		this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleIdentifier03), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier03, new String[]{scoped}), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
+//		add=false;
+//	}
+//
+//	//item-property is declared, and defined only once. we can add it, since scope is always valid (only rank differs
+//	if(add==true)
+//		this.itemDefList.put(new String(scoped), this.sn.getList());
+//}
+
+//public void itemDefValueTest(Token itemProp){
+//	String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
+//	//first check if we have a item-property of that type
+//	if(!this.atoms.containsKey(scoped))
+//		return;
+//
+//	String type=this.atoms.getToken(scoped,TSAtomList.alValType).getText();
+//	String const_valueType=this.lastCommonValueType.getText().toLowerCase();
+//	if(!type.equals(const_valueType)){
+//		if((type.equals(ColaConstants.Tokens.colaINTEGER)||type.equals(ColaConstants.Tokens.colaSHORT)||type.equals(ColaConstants.Tokens.colaLONG))&&
+//		   (const_valueType.equals(ColaConstants.Tokens.colaINTEGER)||const_valueType.equals(ColaConstants.Tokens.colaSHORT)||const_valueType.equals(ColaConstants.Tokens.colaLONG))
+//		){
+//			this.reportManager.warning(this.cr.getRule(ColaConstants.Rules.ruleItem03, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem03, new String[]{type, const_valueType}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+//		}
+//		else{
+//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem04, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem04, new String[]{type, const_valueType}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+//		}
+//	}
+//	this.itemDefListValues++;
+//}
+
+//public void itemDefFinish(Token itemProp){
+//	String scoped=this.sn.toString()+"::"+this.currentItemDef.getText()+"::"+itemProp.getText();
+//	//first check if we have a property of that type
+//	if(!this.atoms.containsKey(scoped))
+//		return;
+//
+//	String type=this.atoms.getToken(scoped,TSAtomList.alValType).getText();
+//
+//	//error, type is not array but more than one value given
+//	if(this.atoms.get(scoped,TSAtomList.alValTypeArray).equals(ColaConstants.Tokens.colaFALSE)&&this.itemDefListValues>1){
+//		this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem05, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem05, new String[]{type, this.itemDefListValues.toString()}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+//	}
+//	//warning, type is array but only one value given
+//	if(this.atoms.get(scoped,TSAtomList.alValTypeArray).equals(ColaConstants.Tokens.colaTRUE)&&(this.itemDefListValues==0||this.itemDefListValues==1)){
+//		this.reportManager.warning(this.cr.getRule(ColaConstants.Rules.ruleItem06, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem06, new String[]{type, this.itemDefListValues.toString()}), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+//	}
+//
+//	//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
+//	String category=this.atoms.get(this.atoms.scope.toString(),TSAtomList.alValCategory).toString();
+//	if(category.equals(ColaConstants.Tokens.colaTYPEDEF)||category.equals(ColaConstants.Tokens.colaSTRUCT)||category.equals(ColaConstants.Tokens.parserMEMBER))
+//		category=ColaConstants.Tokens.colaATTRIBUTE;
+//
+//	if(this.contractDeclList.getItemDeclPropertyRank(this.sn.toString(), this.currentItemDef.getText(), itemProp.getText(), ColaConstants.Tokens.colaREQUIRED)==true){
+//		//required property with no value, error
+//		if(this.itemDefListValues==0){
+//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem07, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem07), TokenUtils.getLine(NameScopeUtils.lastName(this.sn)), TokenUtils.getColumn(NameScopeUtils.lastName(this.sn)));
+//		}
+//		//required property with 1 value, can only test for Strings now
+//		if(this.itemDefListValues==1){
+//			String const_valueType=this.lastCommonValueType.getText().toLowerCase();
+//			if(const_valueType.equals(ColaConstants.Tokens.colaSTRING)){
+//				String const_value=this.lastCommonValue.getText();
+//				const_value=const_value.replace('"', ' ');
+//				if(const_value.equals(ColaConstants.Tokens.colaNULL)||const_value.trim().length()==0){
+//					this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem08, new String[]{scoped}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem08), this.lastCommonValue.getLine(), this.lastCommonValue.getCharPositionInLine());
+//				}
+//			}
+//		}
+//	}
+//}
+
+//public void itemDefListFinish(){
+//	String category=ColaConstants.Tokens.colaITEM;
+//	String scoped_add=this.sn.toString()+"::"+this.currentItemDef.getText()+"::";
+//	//now we need to check if all mandatory and required item-properties have been defined
+//	//let's start with the mandatory properties
+//	ArrayList<String> al=this.contractDeclList.getArrayForRank(this.sn.toString(), this.currentItemDef.getText(), ColaConstants.Tokens.colaMANDATORY);
+//	int size=al.size();
+//	for(int i=0; i<size; i++){
+//		if(!this.itemDefList.containsKey(scoped_add+al.get(i))){
+//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem09, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem09), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
+//		}
+//	}
+//
+//			al=this.contractDeclList.getArrayForRank(this.sn.toString(), this.currentItemDef.getText(), ColaConstants.Tokens.colaREQUIRED);
+//	size=al.size();
+//	for(int i=0; i<size; i++){
+//		if(!this.itemDefList.containsKey(scoped_add+al.get(i))){
+//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleItem10, new String[]{al.get(i), category, this.atoms.scope.toString()}), this.cr.getRuleAdd(ColaConstants.Rules.ruleItem10), this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValLine).tsvalue, this.atoms.getInteger(this.atoms.scope.toString(),TSAtomList.alValColumn).tsvalue);
+//		}
+//	}
+//}
+
+
 }

@@ -48,6 +48,26 @@ used contract \<<ident>\> is not specified for \<<category>\>
 <endif>
 >>
 
+contract03(do_error, do_descr, contract, category, atom) ::= <<
+<if(do_error)>
+missing mandatory contract \<<contract>\> for <category> \<<atom>\>
+       ==\> all mandatory contracts need to be declared
+<endif>
+<if(do_descr)>
+  Contract Rule 03: ##add explanation##
+<endif>
+>>
+
+contract04(do_error, do_descr, contract, category, atom) ::= <<
+<if(do_error)>
+missing required contract \<<contract>\> for <category> \<<atom>\>
+       ==\> all required contracts need to be declared
+<endif>
+<if(do_descr)>
+  Contract Rule 04: ##add explanation##
+<endif>
+>>
+
 contract05(do_error, do_descr, scope, ident) ::= <<
 <if(do_error)>
 scope for atom \<<scope>\> redefined in contract \<<ident>\>
@@ -57,16 +77,105 @@ scope for atom \<<scope>\> redefined in contract \<<ident>\>
 <endif>
 >>
 
-
-contract05(do_error, do_descr, scope, ident) ::= <<
+contract06(do_error, do_descr, ident, contracts) ::= <<
 <if(do_error)>
-scope for atom \<<scope>\> redefined in contract \<<ident>\>
+problem with contract definitions for \<<ident>\>
+       ==\> the following contracts cannot be defined for this atom: <contracts; separator=", ">
 <endif>
 <if(do_descr)>
-  Contract Rule 05: ##add explanation##
+  Contract Rule 16: ##add explanation##
 <endif>
 >>
 
+scopename01(do_error, do_descr, scoped_name) ::= <<
+<if(do_error)>
+invalid scoped name \<<scoped_name>\>, no atom of that name declared
+       ==\> cannot reference undeclared atoms
+<endif>
+<if(do_descr)>
+  Scoped Name Rule 01: ##add explanation##
+<endif>
+>>
+
+scopename02(do_error, do_descr, scoped_name, leaf_category) ::= <<
+<if(do_error)>
+invalid scoped name \<<scoped_name>\>, parts of the scoped name are wrong
+       ==\> \<<scoped_name>\> of type \<<leaf_category>\> cannot be used as part of a scoped name
+<endif>
+<if(do_descr)>
+  Scoped Name Rule 02: ##add explanation##
+<endif>
+>>
+
+scopename03(do_error, do_descr, scoped_name, current_atom, reason) ::= <<
+<if(do_error)>
+scoped name used more than once in same context
+       ==\> \<<scoped_name>\> for atom \<<current_atom>\> already used in context \<<reason>\>
+<endif>
+<if(do_descr)>
+  Scoped Name Rule 03: ##add explanation##
+<endif>
+>>
+
+scopename04(do_error, do_descr, scoped_name, category) ::= <<
+<if(do_error)>
+scoped name is not a property, it points to \<<category>\>
+       ==\> \<<scoped_name>\> in propery definition does not point to a property
+<endif>
+<if(do_descr)>
+  Scoped Name Rule 04: ##add explanation##
+<endif>
+>>
+
+scopename05(do_error, do_descr, scoped_name, category) ::= <<
+<if(do_error)>
+scoped name is not a contract, it points to \<<category>\>
+       ==\> \<<scoped_name>\> in contract definition does not point to a contract
+<endif>
+<if(do_descr)>
+  Scoped Name Rule 05: ##add explanation##
+<endif>
+>>
+
+scopename06(do_error, do_descr, scoped_name, current_atom_category, scoped_name_category) ::= <<
+<if(do_error)>
+invalide scoped name \<<scoped_name>\>
+       ==\> cannot use a \<<scoped_name_category>\> for \<<current_atom_category>\>
+<endif>
+<if(do_descr)>
+  Scoped Name Rule 06: ##add explanation##
+<endif>
+>>
+
+identifier01(do_error, do_descr, ident, category, categoryOrig, fileOrig, lineOrig, colOrig) ::= <<
+<if(do_error)>
+identifier used more than once
+       ==\> identifier \<<ident>\> as \<<category>\>, previously defined as \<<categoryOrig>\> in file <fileOrig>:<lineOrig>:<colOrig>
+<endif>
+<if(do_descr)>
+  Identifier Rule 01: ##add explanation##
+<endif>
+>>
+
+identifier02(do_error, do_descr, ident) ::= <<
+<if(do_error)>
+identifier used more than once
+       ==\> identifier \<<ident>\> in context property definitions
+<endif>
+<if(do_descr)>
+  Identifier Rule 02: ##add explanation##
+<endif>
+>>
+
+identifier03(do_error, do_descr, ident) ::= <<
+<if(do_error)>
+identifier used more than once
+       ==\> identifier \<<ident>\> in context contract definitions
+<endif>
+<if(do_descr)>
+  Identifier Rule 03: ##add explanation##
+<endif>
+>>
 
 property01(do_error, do_descr, property, category, atom) ::= <<
 <if(do_error)>
@@ -174,5 +283,15 @@ scope for atom \<<scope>\> redefined in property \<<ident>\>
 <endif>
 <if(do_descr)>
   Property Rule 14: ##add explanation##
+<endif>
+>>
+
+property15(do_error, do_descr, ident, properties) ::= <<
+<if(do_error)>
+problem with propery definitions for \<<ident>\>
+       ==\> the following properties cannot be defined for this atom: <properties; separator=", ">
+<endif>
+<if(do_descr)>
+  Property Rule 15: ##add explanation##
 <endif>
 >>
