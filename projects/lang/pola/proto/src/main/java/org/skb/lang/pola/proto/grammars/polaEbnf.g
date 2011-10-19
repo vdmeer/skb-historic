@@ -142,7 +142,7 @@ skbCLevel               : 'business' | 'system' | 'element';
 
 polaSpecification         @init{this.init();}
                         : 
-                          cpp_directive AT_STAGE skbStage ';' AT_ENVIRONMENT skbEnvironment ';' AT_CLEVEL skbCLevel ';' AT_LANGUAGE l=IDENT ';' AT_SPEC spec=IDENT ';' {this.pass.atoms.specificationName(spec);} polaDefinition* EOF
+                          cpp_directive AT_STAGE skbStage ';' AT_ENVIRONMENT skbEnvironment ';' AT_CLEVEL skbCLevel ';' AT_LANGUAGE l=IDENT ';' AT_SPEC spec=IDENT ';' {this.pass.atoms.setSpecificationName(spec);} polaDefinition* EOF
                           -> ^(AT_SPEC skbStage skbEnvironment skbCLevel ^(AT_LANGUAGE $l) ^(AT_SPEC $spec) cpp_directive polaDefinition*);                          
 polaDefinition          : cpp_directive | managementPolicy;
 
