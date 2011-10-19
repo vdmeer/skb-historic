@@ -90,7 +90,7 @@ public class TokenUtils {
 	 * Returns the string version of all direct children of the tree using the given separator.
 	 * @param tree tree to process
 	 * @param separator separator to be used to concatenate the children
-	 * @return
+	 * @return string version of the tree
 	 */
 	public static String getTreeString(org.antlr.runtime.tree.Tree tree, String separator){
 		String ret=new String();
@@ -105,7 +105,7 @@ public class TokenUtils {
 	/**
 	 * Returns the string version of all direct children of the tree using the given separator.
 	 * @param tree tree to process
-	 * @return
+	 * @return string version of the tree
 	 */
 	public static String getTreeString(org.antlr.runtime.tree.Tree tree){
 		return TokenUtils.getTreeString(tree, "");
@@ -115,7 +115,7 @@ public class TokenUtils {
 	 * Returns the string version of all direct children of the tree using the given separator.
 	 * @param tree tree to process
 	 * @param separator separator to be used to concatenate the children
-	 * @return
+	 * @return string version of the tree
 	 */
 	public static String getTreeString2Lower(org.antlr.runtime.tree.Tree tree, String separator){
 		return TokenUtils.getTreeString(tree, separator).toLowerCase();
@@ -124,7 +124,7 @@ public class TokenUtils {
 	/**
 	 * Returns the string version of all direct children of the tree using the given separator.
 	 * @param tree tree to process
-	 * @return
+	 * @return string version of the tree
 	 */
 	public static String getTreeString2Lower(org.antlr.runtime.tree.Tree tree){
 		return TokenUtils.getTreeString2Lower(tree, "");

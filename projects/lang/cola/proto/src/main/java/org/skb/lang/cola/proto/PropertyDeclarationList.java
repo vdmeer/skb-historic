@@ -98,7 +98,7 @@ public class PropertyDeclarationList {
 	 * @param scopeRank the scope rank to look for
 	 * @param scopeAtom the scope atom to look for
 	 * @param declID the property that should declare it
-	 * @return
+	 * @return true if scope is defined for the property, false otherwise
 	 */
 	public boolean get(String scopeRank, String scopeAtom, String declID){
 		return this.propertyDeclMap.get(scopeRank).get(scopeAtom).contains(declID);

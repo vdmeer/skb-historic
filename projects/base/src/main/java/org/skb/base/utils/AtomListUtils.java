@@ -52,7 +52,7 @@ public class AtomListUtils {
 
 	/**
 	 * Returns the parent ID of the current scope in the given AtomList
-	 * @param scope
+	 * @param al atom list to be used
 	 * @return parent ID of the current scope in the given AtomList or "" of not existent
 	 */
 	public static String getParentID(TSAtomList al){

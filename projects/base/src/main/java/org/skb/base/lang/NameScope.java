@@ -87,7 +87,7 @@ public class NameScope {
 
 	/**
 	 * Sets the scope separator to the given string.
-	 * @param s new scope separator.
+	 * @param sep new scope separator.
 	 */
 	public void setSeparator(String sep){
 		if(sep!=null)

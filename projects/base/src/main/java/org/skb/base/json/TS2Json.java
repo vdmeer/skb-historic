@@ -109,7 +109,7 @@ public class TS2Json {
 
 	/**
 	 * Creates a new module and adds serialisers for atomic types.
-	 * @return
+	 * @return new serialiser
 	 */
 	private static SimpleModule getStandardSerialisers(){
 	    SimpleModule module=new SimpleModule("SKBSerialiseJson", new Version(0, 1, 0, "alpha"));

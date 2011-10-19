@@ -87,7 +87,7 @@ public class ContractDeclarationList {
 	 * @param scopeRank the scope rank to look for
 	 * @param scopeAtom the scope atom to look for
 	 * @param declID the contract that should declare it
-	 * @return
+	 * @return true if the declaration ID is in the map, false otherwise
 	 */
 	public boolean get(String scopeRank, String scopeAtom, String declID){
 		return this.contractScopesDeclMap.get(scopeRank).get(scopeAtom).contains(declID);
@@ -124,7 +124,7 @@ public class ContractDeclarationList {
 	 * @param item item to look for 
 	 * @param property property to look for
 	 * @param rank rank to test for
-	 * @return
+	 * @return true if rank is declared, false otherwise
 	 */
 	public boolean getItemDeclPropertyRank(String contract, String item, String property, String rank){
 		if(this.contractItemsDeclMap.containsKey(contract)){

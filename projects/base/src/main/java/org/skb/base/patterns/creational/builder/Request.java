@@ -363,7 +363,6 @@ public class Request {
 
 	/**
 	 * Sets the default filter set for the request object.
-	 * @return default filter
 	 */
 	public void setFilter(TSString filter){
 		if(filter!=null)
@@ -372,7 +371,6 @@ public class Request {
 
 	/**
 	 * Sets the default package set for the request object.
-	 * @return default package
 	 */
 	public void setPackage(TSString pkg){
 		if(pkg!=null)

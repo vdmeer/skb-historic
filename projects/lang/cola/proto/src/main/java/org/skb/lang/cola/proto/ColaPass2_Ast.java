@@ -166,8 +166,6 @@ public class ColaPass2_Ast {
 	 * Puts a new atom into the Atom List (Symbol Table), logs an error if Atom already exists.
 	 * @param token of the atom
 	 * @param category the atom belongs to
-	 * @param type of the atom
-	 * @param array null if no array, anything else otherwise
 	 */
 	public void putAtom(Token token, String category){
 		this.atoms.scope.push(token);
@@ -438,8 +436,7 @@ public class ColaPass2_Ast {
 	/**
 	 * Tests scoped names in current context.
 	 * @param snTree scoped name as tree
-	 * @param reasonTK reason as token
-	 * @return true if no problems, false otherwise
+	 * @param reason reason as token
 	 */
 	public void testScopedName(CommonTree snTree, String reason){
 		if(snTree==null||reason==null||snTree.getChildCount()==0)
