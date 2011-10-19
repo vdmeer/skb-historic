@@ -43,16 +43,18 @@ mlcomment_end(dummy) ::= "*/"
 slcomment(comment) ::= "-- <comment>"
 
 
-colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
-INSERT OR IGNORE INTO a3dsSpec (key, "a3ds:languages:stage", "a3ds:languages:environment", "a3ds:languages:clevel", "a3ds:languages:language", "a3ds:languages:cola:definition") VALUES ('<stage>:<environment>:<clevel>:<language>:<spec>', '<stage>', '<environment>', '<clevel>', '<language>', '<spec>');
-
-INSERT OR IGNORE INTO colaDefinition (key, "a3ds:languages:spec", "a3ds:languages:cola:++body_keys") VALUES('<spec>', '<spec>', '');
+colaSpecification(skbheader, body) ::= <<
+<if(skbheader)><skbheader><endif>
 
 <if(body)>
 <body; separator="\n\n">
 <endif>
 >>
 
+skbSpecificationHeader(stage, environment, clevel, language, spec) ::= <<
+INSERT OR IGNORE INTO a3dsSpec (key, "a3ds:languages:stage", "a3ds:languages:environment", "a3ds:languages:clevel", "a3ds:languages:language", "a3ds:languages:cola:definition") VALUES ('<stage>:<environment>:<clevel>:<language>:<spec>', '<stage>', '<environment>', '<clevel>', '<language>', '<spec>');
+INSERT OR IGNORE INTO colaDefinition (key, "a3ds:languages:spec", "a3ds:languages:cola:++body_keys") VALUES('<spec>', '<spec>', '');
+>>
 
 colaFunction(id, parameter, ret_type, ret_array) ::= <<
 //a3ds:languages:cola:param-list::base_type

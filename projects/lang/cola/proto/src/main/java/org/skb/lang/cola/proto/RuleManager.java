@@ -24,15 +24,12 @@ public class RuleManager {
 		return ret;
 	}
 
-	public static StringTemplate identifier01(StringTemplateGroup rules, TSBaseAPI ident, String category, TSBaseAPI categoryOrig, TSBaseAPI fileOrig, TSBaseAPI lineOrig, TSBaseAPI colOrig){
+	public static StringTemplate identifier01(StringTemplateGroup rules, TSBaseAPI ident, String category, String previous){
 		StringTemplate ret=rules.getInstanceOf("identifier01");
 		ret.setAttribute("do_error", true);
 		ret.setAttribute("ident", ident);
 		ret.setAttribute("category", category);
-		ret.setAttribute("categoryOrig", categoryOrig);
-		ret.setAttribute("fileOrig", fileOrig);
-		ret.setAttribute("lineOrig", lineOrig);
-		ret.setAttribute("colOrig", colOrig);
+		ret.setAttribute("previous", previous);
 		return ret;
 	}
 
@@ -230,4 +227,13 @@ public class RuleManager {
 		return ret;
 	}
 
+
+	public static StringTemplate found(StringTemplateGroup rules, TSBaseAPI category, TSBaseAPI file, TSBaseAPI line, TSBaseAPI column){
+		StringTemplate ret=rules.getInstanceOf("found");
+		ret.setAttribute("category", category);
+		ret.setAttribute("file", file);
+		ret.setAttribute("line", line);
+		ret.setAttribute("column", column);
+		return ret;
+	}
 }

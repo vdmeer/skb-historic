@@ -431,9 +431,14 @@
                     "skb:stringtemplate:chunks:mandatory": ["comment"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
-        
+
+                "skbSpecificationHeader":{
+                    "skb:stringtemplate:chunks:mandatory": ["stage", "environment", "clevel", "language", "spec"],
+                    "skb:stringtemplate:chunks:optional":  []
+                },
+
                 "colaSpecification":{
-                    "skb:stringtemplate:chunks:mandatory": ["stage", "environment", "clevel", "language", "spec", "body"],
+                    "skb:stringtemplate:chunks:mandatory": ["skbheader", "body"],
                     "skb:stringtemplate:chunks:optional":  []
                 },
         
@@ -549,15 +554,70 @@
 
             "tokens":{
                 // for parser
-                "parserARRAY":{
-                    "skb:util:constant:ident":"parserARRAY",
+                "parserArray":{
+                    "skb:util:constant:ident":"parserArray",
                     "skb:util:constant:value":"array",
                     "skb:util:constant:javadoc":"Parser - array"
                 },
-                "parserMEMBER":{
-                    "skb:util:constant:ident":"parserMEMBER",
+                "parserMember":{
+                    "skb:util:constant:ident":"parserMember",
                     "skb:util:constant:value":"member",
                     "skb:util:constant:javadoc":"Parser - member"
+                },
+                "parserFunctionParameter":{
+                    "skb:util:constant:ident":"parserFunctionParameter",
+                    "skb:util:constant:value":"function parameter",
+                    "skb:util:constant:javadoc":"Parser - function parameter"
+                },
+                "parserPropertyScopeAtom":{
+                    "skb:util:constant:ident":"parserPropertyScopeAtom",
+                    "skb:util:constant:value":"property scope atom",
+                    "skb:util:constant:javadoc":"Parser - property scope atom"
+                },
+                "parserPropertyScopeRank":{
+                    "skb:util:constant:ident":"parserPropertyScopeRank",
+                    "skb:util:constant:value":"property scope rank",
+                    "skb:util:constant:javadoc":"Parser - property scope rank"
+                },
+                "parserContractScopeAtom":{
+                    "skb:util:constant:ident":"parserContractScopeAtom",
+                    "skb:util:constant:value":"contract scope atom",
+                    "skb:util:constant:javadoc":"Parser - contract scope atom"
+                },
+                "parserContractScopeRank":{
+                    "skb:util:constant:ident":"parserContractScopeRank",
+                    "skb:util:constant:value":"contract scope rank",
+                    "skb:util:constant:javadoc":"Parser - contract scope rank"
+                },
+                "parserContractItemProperty":{
+                    "skb:util:constant:ident":"parserContractItemProperty",
+                    "skb:util:constant:value":"contract item property",
+                    "skb:util:constant:javadoc":"Parser - contract item property"
+                },
+                "parserPropertyDefIdent":{
+                    "skb:util:constant:ident":"parserPropertyDefIdent",
+                    "skb:util:constant:value":"property definition - identifier",
+                    "skb:util:constant:javadoc":"Parser - property definition - identifier"
+                },
+                "parserContractDefIdent":{
+                    "skb:util:constant:ident":"parserContractDefIdent",
+                    "skb:util:constant:value":"contract definition - identifier",
+                    "skb:util:constant:javadoc":"Parser - contract definition - identifier"
+                },
+                "parserContractDefItemIdent":{
+                    "skb:util:constant:ident":"parserContractDefItemIdent",
+                    "skb:util:constant:value":"contract definition - item identifier",
+                    "skb:util:constant:javadoc":"Parser - contract definition - item identifier"
+                },
+                "parserContractDefItemProperty":{
+                    "skb:util:constant:ident":"parserContractDefItemProperty",
+                    "skb:util:constant:value":"contract definition - item property",
+                    "skb:util:constant:javadoc":"Parser - contract definition - item property"
+                },
+                "parserContractDefItemPropertyIdent":{
+                    "skb:util:constant:ident":"parserContractDefItemPropertyIdent",
+                    "skb:util:constant:value":"contract definition - item property identifier",
+                    "skb:util:constant:javadoc":"Parser - contract definition - item property identifier"
                 },
                 "parserIDENTIFIER":{
                     "skb:util:constant:ident":"parserIDENTIFIER",
@@ -574,16 +634,12 @@
                     "skb:util:constant:value":"base_type",
                     "skb:util:constant:javadoc":"Parser - base type"
                 },
-                "parserItemProp":{
-                    "skb:util:constant:ident":"parserItemProp",
-                    "skb:util:constant:value":"item-property",
-                    "skb:util:constant:javadoc":"Parser - item-property"
-                },
                 "parserScopeSep":{
                     "skb:util:constant:ident":"parserScopeSep",
                     "skb:util:constant:value":"::",
                     "skb:util:constant:javadoc":"Parser - scope separator"
                 },
+
                 "gcMiscParrentID":{
                     "skb:util:constant:ident":"gcMiscParrentID",
                     "skb:util:constant:value":"parrentId",
@@ -649,7 +705,6 @@
                     "skb:util:constant:value":"currentScope",
                     "skb:util:constant:javadoc":"Generate Code - current scope"
                 },
-
 
                 // COLA Keywords
                 "colaACTION":{
@@ -1241,7 +1296,7 @@
             "rules-stgchunks":{
                 "property14":{"skb:stringtemplate:chunks:mandatory": ["do_error", "do_descr", "scope", "ident"]},
                 "contract05":{"skb:stringtemplate:chunks:mandatory": ["do_error", "do_descr", "scope", "ident"]},
-                "identifier01":{"skb:stringtemplate:chunks:mandatory": ["do_error", "do_descr", "ident", "category", "categoryOrig", "fileOrig", "lineOrig", "colOrig"]}
+                "identifier01":{"skb:stringtemplate:chunks:mandatory": ["do_error", "do_descr", "ident", "category", "previous"]}
             },
 
             "rules":{
@@ -1362,7 +1417,7 @@
                     "skb:lang:rule:message:replace":"colaCONTRACT",
                     "skb:util:constant:javadoc":"Rule for contracts #04"
                 },
-                
+
                 "item:01":{
                     "skb:util:constant:ident":"ruleItem01",
                     "skb:lang:parser:rules:message":"missing declared item <%s> for declared contract <%2>",
@@ -1377,48 +1432,6 @@
                     "skb:lang:target:rules:message:add:insert:path":"parserItemProp",
                     "skb:util:constant:javadoc":"Rule for items #02"
                 },
-                "item:03":{
-                    "skb:util:constant:ident":"ruleItem03",
-                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "skb:lang:rule:message:replace":"parserItemProp",
-                    "skb:util:constant:javadoc":"Rule for items #03"
-                },
-                "item:04":{
-                    "skb:util:constant:ident":"ruleItem04",
-                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "skb:lang:parser:rules:message:add":"expected <%s>, found <%s>",
-                    "skb:lang:rule:message:replace":"parserItemProp",
-                    "skb:util:constant:javadoc":"Rule for items #04"
-                },
-                "item:05":{
-                    "skb:util:constant:ident":"ruleItem05",
-                    "skb:lang:parser:rules:message":"type mismatch for #### definition <%s>",
-                    "skb:lang:parser:rules:message:add":"type expected is <%s>, but %s values given",
-                    "skb:lang:rule:message:replace":"parserItemProp",
-                    "skb:util:constant:javadoc":"Rule for items #05"
-                },
-                "item:06":{
-                    "skb:util:constant:ident":"ruleItem06",
-                    "skb:lang:parser:rules:message":"potential type mismatch for #### definition <%s>",
-                    "skb:lang:parser:rules:message:add":"type expected is <%s[]>, but only %s value given",
-                    "skb:lang:rule:message:replace":"parserItemProp",
-                    "skb:util:constant:javadoc":"Rule for items #06"
-                },
-                "item:07":{
-                    "skb:util:constant:ident":"ruleItem07",
-                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, no value given",
-                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
-                    "skb:lang:rule:message:replace":"parserItemProp",
-                    "skb:util:constant:javadoc":"Rule for items #07"
-                },
-                "item:08":{
-                    "skb:util:constant:ident":"ruleItem08",
-                    "skb:lang:parser:rules:message":"missing value for required #### <%s>, one empty value given",
-                    "skb:lang:parser:rules:message:add":"required item-properties must be declared non-empty",
-                    "skb:lang:rule:message:replace":"parserItemProp",
-                    "skb:util:constant:javadoc":"Rule for items #08"
-                },
                 "item:09":{
                     "skb:util:constant:ident":"ruleItem09",
                     "skb:lang:parser:rules:message":"missing mandatory #### <%s> for %s <%s>",
@@ -1432,91 +1445,6 @@
                     "skb:lang:parser:rules:message:add":"all required item-properties need to be declared",
                     "skb:lang:rule:message:replace":"colaPROPERTY",
                     "skb:util:constant:javadoc":"Rule for items #10"
-                },
-
-                "identifier:01":{
-                    "skb:util:constant:ident":"ruleIdentifier01",
-                    "skb:lang:parser:rules:message":"#### used more than once",
-                    "skb:lang:parser:rules:message:add":"#### <%s> in property definitions",
-                    "skb:lang:rule:message:replace":"parserIDENTIFIER",
-                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER",
-                    "skb:util:constant:javadoc":"Rule for identifier #01"
-                },
-                "identifier:02":{
-                    "skb:util:constant:ident":"ruleIdentifier02",
-                    "skb:lang:parser:rules:message":"#### used more than once",
-                    "skb:lang:parser:rules:message:add":"in <%s> declaration for <%s>: <%s> (previously used in <%s>)",
-                    "skb:lang:rule:message:replace":"parserIDENTIFIER",
-                    "skb:util:constant:javadoc":"Rule for identifier #02"
-                },
-                "identifier:03":{
-                    "skb:util:constant:ident":"ruleIdentifier03",
-                    "skb:lang:parser:rules:message":"#### used more than once",
-                    "skb:lang:parser:rules:message:add":"#### <%s> in item-property definitions",
-                    "skb:lang:rule:message:replace":"parserIDENTIFIER",
-                    "skb:lang:target:rules:message:add:insert:path":"parserIDENTIFIER",
-                    "skb:util:constant:javadoc":"Rule for identifier #03"
-                },
-                "identifier:04":{
-                    "skb:util:constant:ident":"ruleIdentifier04",
-					"skb:lang:parser:rules:message":"#### used more than once",
-                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
-                    "skb:lang:rule:message:replace":"parserIDENTIFIER",
-                    "skb:lang:target:rules:message:add:insert:path":"parserItemProp",
-                    "skb:util:constant:javadoc":"Rule for identifier #04"
-                },
-                "identifier:05":{
-                    "skb:util:constant:ident":"ruleIdentifier05",
-                    "skb:lang:parser:rules:message":"#### used more than once",
-                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
-                    "skb:lang:rule:message:replace":"parserIDENTIFIER",
-                    "skb:lang:target:rules:message:add:insert:path":"colaPROPERTY",
-                    "skb:util:constant:javadoc":"Rule for identifier #05"
-                },
-                "identifier:06":{
-                    "skb:util:constant:ident":"ruleIdentifier06",
-                    "skb:lang:parser:rules:message":"#### used more than once",
-                    "skb:lang:parser:rules:message:add":"in #### definition: %s",
-                    "skb:lang:rule:message:replace":"parserIDENTIFIER",
-                    "skb:lang:target:rules:message:add:insert:path":"colaCONTRACT",
-                    "skb:util:constant:javadoc":"Rule for identifier #06"
-                },
-                
-                "scoped-name:01":{
-                    "skb:util:constant:ident":"ruleScopedName01",
-                    "skb:lang:parser:rules:message":"",
-                    "skb:lang:parser:rules:message:add":"",
-                    "skb:util:constant:javadoc":"Rule for scoped naming #01"
-                },
-                "scoped-name:02":{
-                    "skb:util:constant:ident":"ruleScopedName02",
-                    "skb:lang:parser:rules:message":"",
-                    "skb:lang:parser:rules:message:add":"",
-                    "skb:util:constant:javadoc":"Rule for scoped naming #02"
-                },
-                "scoped-name:03":{
-                    "skb:util:constant:ident":"ruleScopedName03",
-                    "skb:lang:parser:rules:message":"",
-                    "skb:lang:parser:rules:message:add":"",
-                    "skb:util:constant:javadoc":"Rule for scoped naming #03"
-                },
-                "scoped-name:04":{
-                    "skb:util:constant:ident":"ruleScopedName04",
-                    "skb:lang:parser:rules:message":"",
-                    "skb:lang:parser:rules:message:add":"",
-                    "skb:util:constant:javadoc":"Rule for scoped naming #04"
-                },
-                "scoped-name:05":{
-                    "skb:util:constant:ident":"ruleScopedName05",
-                    "skb:lang:parser:rules:message":"",
-                    "skb:lang:parser:rules:message:add":"",
-                    "skb:util:constant:javadoc":"Rule for scoped naming #05"
-                },
-                "scoped-name:06":{
-                    "skb:util:constant:ident":"ruleScopedName06",
-                    "skb:lang:parser:rules:message":"",
-                    "skb:lang:parser:rules:message:add":"",
-                    "skb:util:constant:javadoc":"Rule for scoped naming #06"
                 }
             }
         }

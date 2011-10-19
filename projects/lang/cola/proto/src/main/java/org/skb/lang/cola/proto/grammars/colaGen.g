@@ -67,16 +67,38 @@ options
   }
 }
 
-skbStage                : 'architecture' | 'model' | 'design' | 'development' | 'deployment' | 'runtime';
-skbEnvironment          : 'production' | 'test' | 'demonstrator';
-skbCLevel               : 'business' | 'system' | 'element';
+colaSpecification           @init{this.init();}
+                        : ^(AT_SPEC skbSpecificationHeader
+                            {
+                              StringTemplate spec=templateLib.getInstanceOf("colaSpecification");
+                              spec.setAttribute("skbheader", $skbSpecificationHeader.st);
+                              this.pass.atoms.addST(ColaConstants.Tokens.colaSPECIFICATION, spec);
+                            }
+                            cpp_directive (def+=colaDefinition)*
+                          )
+                          -> template(token={$def}) "<token>";
 
-colaFunction            : ^(FUNCTION id=IDENT par+=colaFunctionParam* bt=base_type ARRAY? ^(AT_LANGUAGE string_value)) {this.pass.atoms.scope.push($id.token);}
-                          -> colaFunction(id={$id}, parameter={$par}, ret_type={$bt.text}, ret_array={$ARRAY.text});
-colaFunctionParam       : ^(PARAMETER bt=base_type ARRAY? id=IDENT)
-                          -> colaFunctionParam(type={$bt.text}, array={$ARRAY.text}, id={$id});
+skbSpecificationHeader  : ^(AT_STAGE stage=VAL_STRING AT_ENVIRONMENT env=VAL_STRING AT_CLEVEL clevel=VAL_STRING AT_LANGUAGE lang=VAL_STRING AT_SPEC spec=VAL_STRING)
+                          -> skbSpecificationHeader(stage={$stage}, environment={$env}, clevel={$clevel}, language={$lang}, spec={$spec});
 
-colaPropertyDecl        : ^(PROPERTY id=IDENT ^(AT_TYPE bt=base_type cv=const_value ARRAY?)
+colaDefinition          : colaFunction {this.pass.addST($colaFunction.st);} -> template(token={$colaFunction.st}) "<token>" |
+                          colaPropertyDecl {this.pass.addST($colaPropertyDecl.st);} -> template(token={$colaPropertyDecl.st}) "<token>" |
+                          colaContractDecl {this.pass.addST($colaContractDecl.st);} -> template(token={$colaContractDecl.st}) "<token>" |
+                          colaPackage {this.pass.addST($colaPackage.st);} -> template(token={$colaPackage.st}) "<token>" |
+                          colaElement {this.pass.addST($colaElement.st);} -> template(token={$colaElement.st}) "<token>" |
+                          colaFacility {this.pass.addST($colaFacility.st);} -> template(token={$colaFacility.st}) "<token>" |
+                          colaTypeDef {this.pass.addST($colaTypeDef.st);} -> template(token={$colaTypeDef.st}) "<token>" |
+                          colaStruct {this.pass.addST($colaStruct.st);} -> template(token={$colaStruct.st}) "<token>" |
+                          cpp_directive;
+
+cpp_directive           : CPP_DIRECTIVE;
+
+colaFunction            : ^(FUNCTION id=IDENT par+=colaFunctionParam* bt=base_type PARSER_ARRAY? ^(AT_LANGUAGE string_value)) {this.pass.atoms.scope.push($id.token);}
+                          -> colaFunction(id={$id}, parameter={$par}, ret_type={$bt.text}, ret_array={$PARSER_ARRAY.text});
+colaFunctionParam       : ^(PARAMETER bt=base_type PARSER_ARRAY? id=IDENT)
+                          -> colaFunctionParam(type={$bt.text}, array={$PARSER_ARRAY.text}, id={$id});
+
+colaPropertyDecl        : ^(PROPERTY id=IDENT ^(AT_TYPE bt=base_type cv=const_value PARSER_ARRAY?)
                             {this.pass.atoms.scope.push($id.token);}
                             {this.pass.clearPropertyScope();}
                             ^(AT_SCOPE propertyScope*)
@@ -88,7 +110,7 @@ colaPropertyDecl        : ^(PROPERTY id=IDENT ^(AT_TYPE bt=base_type cv=const_va
                             (^(AT_EXTENDS (ext+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))? (^(AT_REQUIRES (req+=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());})*))?
                             (^(AT_PRIORITY pbt=base_type pcv=const_value))?
                           )
-                          -> colaPropertyDecl(id={$id}, type={$bt.text}, val={$cv.st}, array={$ARRAY.text},
+                          -> colaPropertyDecl(id={$id}, type={$bt.text}, val={$cv.st}, array={$PARSER_ARRAY.text},
                                               propertyScope={this.pass.propertyScope()},
                                               apply={apply},
                                               aExtends={$ext}, aRequires={$req},
@@ -112,7 +134,7 @@ atVisibilityData        : '('
 atDescription           : ^(AT_DESCRIPTION string_value)-> template(token={$string_value.text}) "<token>";
 
 colaPropertyDefList     : {this.pass.clearPropDefList();} 
-                          ^(PROPERTY_DEF (lpd+=colaPropertyDef)*)
+                          ^(PARSER_PROPERTY_DEF (lpd+=colaPropertyDef)*)
                           -> colaPropertyDefList(property={$lpd});
 colaPropertyDef         : ^(PROPERTY id=IDENT sn=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());} (cv+=const_value)*)
                           {this.pass.addPropDefList($id.text);}
@@ -136,7 +158,7 @@ contractItem            : ^(ITEM id=IDENT
                           -> contractItem(id={$id}, property={$single}, misc={this.pass.misc()});
 contractItemProp        : ^(PROPERTY id=IDENT
                             {this.pass.atoms.scope.push($id.token);}
-                            ^(AT_TYPE bt=base_type cv=const_value ARRAY?)
+                            ^(AT_TYPE bt=base_type cv=const_value PARSER_ARRAY?)
                              ipr=contractItemPropRank
                             {LinkedHashMap<String, ArrayList<String>> apply=new LinkedHashMap<String, ArrayList<String>>();}
                             ^(AT_APPLY (^(PRE {apply.put("pre",new ArrayList<String>());apply.get("pre").add("pre");} {apply.put("preList",new ArrayList<String>());} (pre=scoped_name {apply.get("preList").add(this.pass.atoms.getAtomST($pre.text).toString());})*))?
@@ -144,14 +166,14 @@ contractItemProp        : ^(PROPERTY id=IDENT
                                        (^(INV {apply.put("inv",new ArrayList<String>());apply.get("inv").add("inv");} {apply.put("invList",new ArrayList<String>());} (inv=scoped_name {apply.get("invList").add(this.pass.atoms.getAtomST($inv.text).toString());})*))? )
                              AT_ALTERABLE? AT_NEGOTIABLE? atDescription
                             (^(AT_PRIORITY pbt=base_type pcv=const_value))?)
-                          -> contractItemProp(id={$id}, type={$bt.text}, val={$cv.st}, array={$ARRAY.text}, rank={$ipr.text}, apply={apply},
+                          -> contractItemProp(id={$id}, type={$bt.text}, val={$cv.st}, array={$PARSER_ARRAY.text}, rank={$ipr.text}, apply={apply},
                                               alterable={$AT_ALTERABLE.text}, negotiable={$AT_NEGOTIABLE.text}, description={$atDescription.st},
                                               priorityBT={$pbt.text}, priorityCV={$pcv.st}, misc={this.pass.misc()}
                              );
 
 contractItemPropRank    : (s=REQUIRED | s=MANDATORY | s=OPTIONAL);
 
-colaContractDefList     : ^(CONTRACT_DEF (lcd+=colaContractDef)*)
+colaContractDefList     : ^(PARSER_CONTRACT_DEF (lcd+=colaContractDef)*)
                           -> colaContractDefList(contract={$lcd}, misc={this.pass.misc()});
 colaContractDef         : ^(CONTRACT id=IDENT scoped_name items+=colaContractItemDef*)
                           -> colaContractDef(id={$id.text}, scoped_name={$scoped_name.st}, items={$items}, misc={this.pass.misc()});
@@ -159,32 +181,6 @@ colaContractItemDef     : id=IDENT def+=colaItemDef*
                           -> colaContractItemDef(id={$id.text}, properties={$def}, misc={this.pass.misc()});
 colaItemDef             : ^(IDENT id=IDENT val+=const_value*)
                           -> colaItemDef(id={$id.text}, val={$val}, misc={this.pass.misc()});
-
-colaSpecification           @init{this.init();}
-                        : ^(AT_SPEC stage=skbStage env=skbEnvironment clevel=skbCLevel ^(AT_LANGUAGE lang=IDENT)
-                          ^(AT_SPEC s=IDENT
-                           {StringTemplate spec=templateLib.getInstanceOf("colaSpecification");
-                            spec.setAttribute("stage", $stage.text);
-                            spec.setAttribute("environment", $env.text);
-                            spec.setAttribute("clevel", $clevel.text);
-                            spec.setAttribute("language", $lang.text);
-                            spec.setAttribute("spec", $s);
-                            this.pass.atoms.addST(ColaConstants.Tokens.colaSPECIFICATION,spec);
-                           })
-                           cpp_directive (def+=colaDefinition)*
-                          )
-                          -> template(specification={spec}, token={$def}) "<specification>\n\n<token>";
-colaDefinition          : colaFunction {this.pass.addST($colaFunction.st);} -> template(token={$colaFunction.st}) "<token>" |
-                          colaPropertyDecl {this.pass.addST($colaPropertyDecl.st);} -> template(token={$colaPropertyDecl.st}) "<token>" |
-                          colaContractDecl {this.pass.addST($colaContractDecl.st);} -> template(token={$colaContractDecl.st}) "<token>" |
-                          colaPackage {this.pass.addST($colaPackage.st);} -> template(token={$colaPackage.st}) "<token>" |
-                          colaElement {this.pass.addST($colaElement.st);} -> template(token={$colaElement.st}) "<token>" |
-                          colaFacility {this.pass.addST($colaFacility.st);} -> template(token={$colaFacility.st}) "<token>" |
-                          colaTypeDef {this.pass.addST($colaTypeDef.st);} -> template(token={$colaTypeDef.st}) "<token>" |
-                          colaStruct {this.pass.addST($colaStruct.st);} -> template(token={$colaStruct.st}) "<token>" |
-                          cpp_directive;
-
-cpp_directive           : CPP_DIRECTIVE;
 
 colaPackage             : ^(PACKAGE id=IDENT {this.pass.atoms.scope.push($id.token);} (lpd=colaPropertyDefList)? (def+=colaDefinition)* (ic+=inline_code)*)
                           -> colaPackage(id={$id}, properties={$lpd.st}, inline_code={$ic}, misc={this.pass.misc()});
@@ -219,7 +215,7 @@ colaAttribute           : ^(ATTRIBUTE id=IDENT {this.pass.atoms.scope.push($id.t
 
 colaStruct              : ^(STRUCT id=IDENT {this.pass.atoms.scope.push($id.token);} (lpd=colaPropertyDefList)? (colaMember {this.pass.addST($colaMember.st);})* (ic+=inline_code)*)
                           -> colaStruct(id={$id}, properties={$lpd.st}, inline_code={$ic}, misc={this.pass.misc()});
-colaMember              : ^(MEMBER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type (lpd=colaPropertyDefList)?)
+colaMember              : ^(PARSER_MEMBER id=IDENT {this.pass.atoms.scope.push($id.token);} simple_type (lpd=colaPropertyDefList)?)
                           -> colaMember(id={$id}, type={this.pass.simple_type()}, properties={$lpd.st}, misc={this.pass.misc()});
 
 scoped_name             : {this.pass.sn.clear();}
@@ -227,8 +223,8 @@ scoped_name             : {this.pass.sn.clear();}
 
 void_type               : t=VOID -> template(token={$t}) "<token>";
 simple_type             : {this.pass.simple_typeClear();}
-                          ((sc=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());}) | bt=base_type) ARRAY?
-                          {this.pass.simple_type($sc.st,$bt.text,$ARRAY.text);};
+                          ((sc=scoped_name {this.pass.atoms.addImport(this.pass.sn.toString());}) | bt=base_type) PARSER_ARRAY?
+                          {this.pass.simple_type($sc.st,$bt.text,$PARSER_ARRAY.text);};
 base_type               : SHORT | INTEGER | LONG | OCTET | HEX | BINARY | FLOAT | DOUBLE | CHAR | STRING | BOOLEAN;
 
 const_value             : ^(AT_PROVIDES type=INTEGER cv=VAL_INTEGER) -> const_value(type={$type.text}, val={$cv.text}) |

@@ -147,10 +147,10 @@ invalide scoped name \<<scoped_name>\>
 <endif>
 >>
 
-identifier01(do_error, do_descr, ident, category, categoryOrig, fileOrig, lineOrig, colOrig) ::= <<
+identifier01(do_error, do_descr, ident, category, previous) ::= <<
 <if(do_error)>
 identifier used more than once
-       ==\> identifier \<<ident>\> as \<<category>\>, previously defined as \<<categoryOrig>\> in file <fileOrig>:<lineOrig>:<colOrig>
+       ==\> identifier \<<ident>\> as \<<category>\><if(previous)>, previously defined as <previous><endif>
 <endif>
 <if(do_descr)>
   Identifier Rule 01: ##add explanation##
@@ -295,3 +295,8 @@ problem with propery definitions for \<<ident>\>
   Property Rule 15: ##add explanation##
 <endif>
 >>
+
+
+found(category, file, line, column) ::= <<
+ <if(category)>\<<category>\><endif><if(file)> in file <file><endif>:<if(line)><line><endif>:<if(column)><column><endif>
+ >>

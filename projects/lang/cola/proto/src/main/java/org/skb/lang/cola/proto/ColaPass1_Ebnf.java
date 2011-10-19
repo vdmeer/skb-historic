@@ -40,9 +40,8 @@ import org.skb.base.composite.misc.TSReportManager;
 import org.skb.base.config.Configuration;
 import org.skb.base.utils.AtomListUtils;
 import org.skb.base.utils.NameScopeUtils;
+import org.skb.base.utils.StringUtils;
 import org.skb.lang.cola.proto.constants.ColaConstants;
-import org.skb.lang.cola.proto.internal.ContractDeclarationList;
-import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 
 /**
  * Pass 1 of the Cola parser, mostly looking into syntax analysis and creation of symbol table.
@@ -66,12 +65,6 @@ public class ColaPass1_Ebnf {
 	/** Parser Rule Manager for error/warning reporting */
 	private StringTemplateGroup rules;
 
-	/** List for Property Declarations */
-	private PropertyDeclarationList propertyDeclList=(PropertyDeclarationList)config.config.get(ColaParser.pathInstancePropertyDeclarationList);
-
-	/** List for Contract Declarations */
-	private ContractDeclarationList contractDeclList=(ContractDeclarationList)config.config.get(ColaParser.pathInstanceContractDeclarationList);
-
 
 	/**
 	 * Class constructor, initialises the atom list (symbol table) and other local fields
@@ -91,49 +84,9 @@ public class ColaPass1_Ebnf {
 		this.atoms.setReportMgr(this.reportManager);
 	}
 
-	/**
-	 * Checks and adds a token to the list of temporary stored property identifiers.
-	 * 
-	 * The property identifier should have been defined in an Item declaration. The method will test if it is unique for
-	 * this item declaration, and add if unique or log an error if not.
-	 * @param token to be added and checked
-	 */
-//	public void identsAddItemDef(Token token){
-//		if(this.tempPropIdents.contains(token.getText()))
-//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleIdentifier04), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier04, new String[]{token.getText()}), token.getLine(), token.getCharPositionInLine());
-//		else
-//			this._identsAdd(token);
-//	}
-
-	/**
-	 * Checks and adds a token to the list of temporary stored property identifiers.
-	 * 
-	 * The property identifier should have been defined in a Contract declaration. The method will test if it is unique for
-	 * this contract declaration, and add if unique or log an error if not.
-	 * @param token to be added and checked
-	 */
-//	public void identsAddPropDef(Token token){
-//		if(this.tempPropIdents.contains(token.getText()))
-//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleIdentifier05), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier05, new String[]{token.getText()}), token.getLine(), token.getCharPositionInLine());
-//		else
-//			this._identsAdd(token);
-//	}
-
-	/**
-	 * Checks and adds a token to the list of temporary stored contract identifiers.
-	 * 
-	 * If the token is already in the list, an error will be logged, otherwise the token will be added to the list.
-	 * @param token to be added
-	 */
-//	public void contIdentsAdd(Token token){
-//		if(this.tempContIdents.contains(token.getText()))
-//			this.reportManager.error(this.cr.getRule(ColaConstants.Rules.ruleIdentifier06), this.cr.getRuleAdd(ColaConstants.Rules.ruleIdentifier06, new String[]{token.getText()}), token.getLine(), token.getCharPositionInLine());
-//		else
-//			this.tempContIdents.add(token.getText());
-//	}
-
-
-
+	public void setSpecificationName(Token name){
+		this.atoms.setSpecificationName(name.getText());		
+	}
 
 	/**
 	 * Puts a new atom into the Atom List (Symbol Table), logs an error if Atom already exists.
@@ -143,47 +96,37 @@ public class ColaPass1_Ebnf {
 	 * @param array null if no array, anything else otherwise
 	 */
 	public void putAtom(Token token, String category, Token type, Object array){
+		this.atoms.scope.push(token);
+
+		//change array into boolean
 		boolean ar=false;
 		if(array!=null)
 			ar=true;
 
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, type, ar);
 		if(otr!=null){
-			StringTemplate err;
-			if(category.equals(ColaConstants.Tokens.colaAT_SCOPE)){
+			StringTemplate found=RuleManager.found(this.rules, otr.get(TSAtomList.alValCategory), otr.get(TSAtomList.alValFile), otr.get(TSAtomList.alValLine), otr.get(TSAtomList.alValColumn));
+			StringTemplate st;
+
+			if(StringUtils.equalsAny(category, new String[]{ColaConstants.Tokens.parserPropertyScopeRank, ColaConstants.Tokens.parserContractScopeRank})){
 				//we have an error for either Property Scope or Contract Scope declarations
 				String scopeAtom=AtomListUtils.getParentID(this.atoms);
 				String declId=NameScopeUtils.getParentID(scopeAtom, this.atoms.scope.getSeparator());
-				String parCat=AtomListUtils.getParentCategory(scopeAtom, this.atoms);
 				scopeAtom=scopeAtom.substring(scopeAtom.indexOf(this.atoms.scope.getSeparator())+this.atoms.scope.getSeparator().length(), scopeAtom.length());
-				if(parCat.equals(ColaConstants.Tokens.colaPROPERTY)){
-					err=RuleManager.property14(this.rules, scopeAtom, declId);
+				if(category.equals(ColaConstants.Tokens.parserPropertyScopeRank)){
+					st=RuleManager.property14(this.rules, scopeAtom, declId);
 				}
 				else{
-					err=RuleManager.contract05(this.rules, scopeAtom, declId);
+					st=RuleManager.contract05(this.rules, scopeAtom, declId);
 				}
-				this.reportManager.error(err.toString(), token);
+				this.reportManager.error(st.toString(), token);
 			}
 			else{
 				//general problem with not unique Identifier
-				err=RuleManager.identifier01(this.rules, otr.get(TSAtomList.alValScopedID), category, otr.get(TSAtomList.alValCategory), otr.get(TSAtomList.alValFile), otr.get(TSAtomList.alValLine), otr.get(TSAtomList.alValColumn));
-				this.reportManager.error(err.toString(), token);
+				st=RuleManager.identifier01(this.rules, otr.get(TSAtomList.alValScopedID), category, found.toString());
+				this.reportManager.error(st.toString(), token);
 			}
 			return;
-		}
-		if(category.equals(ColaConstants.Tokens.colaAT_SCOPE)){
-			//current scope holds all information: declId::scopeAtom::scopeRank - now we tokenise it and use the last three entries in the array (everything else is scoped name)
-			String[] tok=this.atoms.scope.toString().split(this.atoms.scope.getSeparator());
-			int tokLen=tok.length-1;
-
-			String scopeRank=tok[tokLen];
-			String scopeAtom=tok[tokLen-1];
-			String declID=tok[tokLen-2];
-			String parCat=AtomListUtils.getParentCategory(AtomListUtils.getParentID(this.atoms), this.atoms);
-			if(parCat.equals(ColaConstants.Tokens.colaPROPERTY))
-				this.propertyDeclList.add(scopeRank, scopeAtom, declID);
-			if(parCat.equals(ColaConstants.Tokens.colaCONTRACT))
-				this.contractDeclList.add(scopeRank, scopeAtom, declID);
 		}
 	}
 
@@ -194,15 +137,5 @@ public class ColaPass1_Ebnf {
 	 */
 	public void putAtom(Token token, String category){
 		this.putAtom(token, category, null, null);
-	}
-
-	/**
-	 * Puts a new atom into the Atom List (Symbol Table), logs an error if Atom already exists.
-	 * @param token of the atom
-	 * @param category the atom belongs to
-	 * @param type of the atom
-	 */
-	public void putAtom(Token token, String category, Token type){
-		this.putAtom(token, category, type, null);
 	}
 }

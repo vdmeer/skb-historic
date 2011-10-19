@@ -46,7 +46,6 @@ import org.skb.base.config.Configuration;
 import org.skb.base.stringtemplate.STWriterXtoY;
 import org.skb.base.utils.AtomListUtils;
 import org.skb.lang.cola.proto.constants.ColaConstants;
-import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 
 /**
  * Class implementing statistic methods for Cola parser.
@@ -112,7 +111,7 @@ public class ColaStatistics {
 			simpleStat.setAttribute("parameters.{decl,def}", map.get(ColaConstants.Tokens.colaPARAMETER), 0);
 			simpleStat.setAttribute("typedefs.{decl,def}",   map.get(ColaConstants.Tokens.colaTYPEDEF),   0);
 			simpleStat.setAttribute("structs.{decl,def}",    map.get(ColaConstants.Tokens.colaSTRUCT),    0);
-			simpleStat.setAttribute("members.{decl,def}",    map.get(ColaConstants.Tokens.parserMEMBER),  0);
+			simpleStat.setAttribute("members.{decl,def}",    map.get(ColaConstants.Tokens.parserMember),  0);
 		}
 	}
 

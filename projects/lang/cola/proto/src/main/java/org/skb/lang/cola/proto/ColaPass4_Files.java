@@ -77,9 +77,6 @@ public class ColaPass4_Files {
 	public FileTemplateList getFileTemplateList(){
 		String fn;
 
-		//first remove everything that pass1/2/3 might have added for testing purposes
-		AtomListUtils.removeCategory(this.atoms, ColaConstants.Tokens.colaAT_SCOPE);
-
 		//now we do have a list (not tree) of all declared COLA atoms
 		//parameters and members are already in action/structure -> pass3 is taking care of that
 		//now we need to check the code generation options

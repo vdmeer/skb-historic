@@ -44,8 +44,6 @@ import org.skb.lang.cola.proto.grammars.colaAst;
 import org.skb.lang.cola.proto.grammars.colaEbnfLexer;
 import org.skb.lang.cola.proto.grammars.colaEbnfParser;
 import org.skb.lang.cola.proto.grammars.colaGen;
-import org.skb.lang.cola.proto.internal.ContractDeclarationList;
-import org.skb.lang.cola.proto.internal.PropertyDeclarationList;
 import org.skb.tribe.TribeParserAPI;
 
 /**
@@ -73,8 +71,6 @@ public class ColaParser implements TribeParserAPI {
 	public ColaParser(){
 		config.addAtomList();
 		config.addLangRuleMap();
-		config.config.put(ColaParser.pathInstanceContractDeclarationList, new ContractDeclarationList());
-		config.config.put(ColaParser.pathInstancePropertyDeclarationList, new PropertyDeclarationList());
 	}
 
 	@Override

@@ -86,10 +86,22 @@ typeMap ::= [
   default: key
 ]
 
-colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
+colaSpecification(skbheader, body) ::= <<
+<if(skbheader)><skbheader><endif>
+
 <if(body)>
 <body; separator="\n\n">
 <endif>
+>>
+
+skbSpecificationHeader(stage, environment, clevel, language, spec) ::= <<
+/*
+  @stage <stage>;
+  @environment <environment>;
+  @clevel <clevel>;
+  @language <language>;
+  @spec <spec>;
+*/
 >>
 
 colaFunction(id, parameter, ret_type, ret_array) ::= <<

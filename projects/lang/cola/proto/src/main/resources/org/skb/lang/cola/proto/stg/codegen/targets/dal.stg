@@ -42,7 +42,7 @@ mlcomment_start(dummy) ::= "/*"
 mlcomment_end(dummy) ::= "*/"
 slcomment(comment) ::= "//<comment>"
 
-colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
+colaSpecification(skbheader, body) ::= <<
     repository skb.core{
         table pkg_fields{
             field key string primkey(abort) notnull(abort) unique(abort);
@@ -983,7 +983,6 @@ package cola.proto{
     }
 
 
-
 	table a3dsSpec{
 		field key string primkey(abort) notnull(abort) unique(abort);
 		field a3ds:languages:stage string;
@@ -1253,16 +1252,20 @@ package cola.proto{
 		sequence{key, a3ds:language:scope:current, a3ds:languages:cola:++IDENT, a3ds:languages:cola:IDENT+SC, a3ds:languages:cola:IDENT, a3ds:languages:cola:property:at_type, a3ds:languages:cola:property:at_scope, a3ds:languages:cola:property:apply+pre, a3ds:languages:cola:property:apply+post, a3ds:languages:cola:property:apply+inv, a3ds:languages:cola:property:at_alterable, a3ds:languages:cola:property:at_negotiable, a3ds:languages:cola:property:at_description, a3ds:languages:cola:property:at_priority}
 	}
 
-    actions{
-        insert table a3dsSpec {key "<stage>:<environment>:<clevel>:<language>:<spec>"} {a3ds:languages:stage "<stage>"} {a3ds:languages:environment "<environment>"} {a3ds:languages:clevel "<clevel>"} {a3ds:languages:language "<language>"} {a3ds:languages:cola:definition "<spec>"}
-        insert table colaDefinition {key "<spec>"} {a3ds:languages:spec "<spec>"} {a3ds:languages:cola:++body_keys ""}
-    }
+<if(skbheader)><skbheader><endif>
 
 <if(body)>
         <body; separator="\n\n">
 <endif>
 
 }
+>>
+
+skbSpecificationHeader(stage, environment, clevel, language, spec) ::= <<
+    actions{
+        insert table a3dsSpec {key "<stage>:<environment>:<clevel>:<language>:<spec>"} {a3ds:languages:stage "<stage>"} {a3ds:languages:environment "<environment>"} {a3ds:languages:clevel "<clevel>"} {a3ds:languages:language "<language>"} {a3ds:languages:cola:definition "<spec>"}
+        insert table colaDefinition {key "<spec>"} {a3ds:languages:spec "<spec>"} {a3ds:languages:cola:++body_keys ""}
+    }
 >>
 
 colaFunction(id, parameter, ret_type, ret_array) ::= <<

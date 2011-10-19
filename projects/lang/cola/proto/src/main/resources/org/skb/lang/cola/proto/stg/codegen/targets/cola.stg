@@ -42,16 +42,20 @@ mlcomment_start(dummy) ::= "/*"
 mlcomment_end(dummy) ::= "*/"
 slcomment(comment) ::= "//<comment>"
 
-colaSpecification(stage, environment, clevel, language, spec, body) ::= <<
+colaSpecification(skbheader, body) ::= <<
+<if(skbheader)><skbheader><endif>
+
+<if(body)>
+<body; separator="\n\n">
+<endif>
+>>
+
+skbSpecificationHeader(stage, environment, clevel, language, spec) ::= <<
 @stage <stage>;
 @environment <environment>;
 @clevel <clevel>;
 @language <language>;
 @spec <spec>;
-
-<if(body)>
-<body; separator="\n\n">
-<endif>
 >>
 
 colaFunction(id, parameter, ret_type, ret_array) ::= <<

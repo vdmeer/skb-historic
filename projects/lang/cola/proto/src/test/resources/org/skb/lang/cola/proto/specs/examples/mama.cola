@@ -36,11 +36,11 @@
  * @version    v1.0.0 build 110901 (01-Sep-11) for Cola-Proto v1.0.0
  */
 
-@stage design;
-@environment test;
-@clevel system;
-@language cola;
-@spec mama;
+@stage "design";
+@environment "test";
+@clevel "system";
+@language "cola";
+@spec "mama";
 
 property Abstract: @type(boolean = TRUE)
   @scope([package:not_def] [element:optional] [facility:not_def]
@@ -2130,7 +2130,7 @@ package MAMA {
     } // element oManagedObject
 
     [Abstract abs,
-     Behavior beh("##"),
+     Behavior beh("###"),
      Description descr(""),
      Revision rev(0),
      SpecStatus spS("current"),

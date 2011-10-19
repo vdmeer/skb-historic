@@ -84,6 +84,17 @@ public class ColaPass3_Gen {
 		this._initSimple_type();
 
 		this.sn=new NameScope();
+
+		//remove all atoms that are not relevant for code generation
+		AtomListUtils.removeCategory(this.atoms, new String[]{"ColaConstants.Tokens.parserContractDefIdent",
+				                                              "ColaConstants.Tokens.parserContractDefItemIdent",
+				                                              "ColaConstants.Tokens.parserContractDefItemPropertyIdent",
+				                                              "ColaConstants.Tokens.parserPropertyDefIdent",
+				                                              "ColaConstants.Tokens.parserPropertyScopeAtom",
+				                                              "ColaConstants.Tokens.parserPropertyScopeRank",
+				                                              "ColaConstants.Tokens.parserContractItemProperty",
+				                                              "ColaConstants.Tokens.parserContractScopeAtom",
+				                                              "ColaConstants.Tokens.parserContractScopeRank"});
 	}
 
 	private void _initPropertyScope(){
@@ -96,49 +107,15 @@ public class ColaPass3_Gen {
 		this.propertyScope.put(ColaConstants.Tokens.colaATTRIBUTE, ColaConstants.Tokens.colaNOT_DEF);
 		this.propertyScope.put(ColaConstants.Tokens.colaPARAMETER, ColaConstants.Tokens.colaNOT_DEF);
 	}
-	public void clearPropertyScope(){this._initPropertyScope();}
-	public void addPropertyScope(StringTemplate atom, StringTemplate rank){this.propertyScope.put(atom.toString(), rank.toString());}
-	public TreeMap<String,String> propertyScope(){return new TreeMap<String,String>(this.propertyScope);}
-
-	public boolean propertyDefIsArray(List<Object> cv){
-		boolean ret=false;
-		if(cv==null)
-			return ret;
-		if(cv.size()>1)
-			ret=true;
-		return ret;
-	}
-
-	public void clearPropDefList(){this.propDefList.clear();}
-	public void addPropDefList(String p){this.propDefList.add(p);}
-	public TreeSet<String> getPropDefList(){return this.propDefList;}
-
-	public String getPropDefBaseType(String p){
-		return this.atoms.getToken(p,TSAtomList.alValType).getText();
-	}
-
 	private void _initSimple_type(){
 		this.simple_type.clear();
 		this.simple_type.put(ColaConstants.Tokens.parserScopedName, null);
 		this.simple_type.put(ColaConstants.Tokens.parserBaseType, null);
-		this.simple_type.put(ColaConstants.Tokens.parserARRAY, null);
+		this.simple_type.put(ColaConstants.Tokens.parserArray, null);
 		this.simple_type.put(ColaConstants.Tokens.typeVOID, null);
 	}
-	public void simple_typeClear(){this._initSimple_type();}
-	public void simple_type(StringTemplate sc, String bt, String ar){
-		if(sc!=null)
-			this.simple_type.put(ColaConstants.Tokens.parserScopedName, sc.toString());
-		this.simple_type.put(ColaConstants.Tokens.parserBaseType, bt);
-		this.simple_type.put(ColaConstants.Tokens.parserARRAY, ar);
-	}
-	public void simple_typeVoid(){
-		this._initSimple_type();
-		this.simple_type.put(ColaConstants.Tokens.parserBaseType, ColaConstants.Tokens.typeVOID);
-		this.simple_type.put(ColaConstants.Tokens.typeVOID, ColaConstants.Tokens.typeVOID);
-	}
-	public TreeMap<String,String> simple_type(){return new TreeMap<String,String>(this.simple_type);}
-
-	public TreeMap<String,String> misc(){return this.genMiscAttribute();}
+	public void addPropDefList(String p){this.propDefList.add(p);}
+	public void addPropertyScope(StringTemplate atom, StringTemplate rank){this.propertyScope.put(atom.toString(), rank.toString());}
 
 	//add ST to AtomList, so that we can manipulate them as needed later and keep the definition order intact
 	public void addST(StringTemplate st){
@@ -146,32 +123,13 @@ public class ColaPass3_Gen {
 		this.atoms.scope.pop();
 	}
 
-	public String inline_code(String ic){
-		String ret=ic.replace("<<?", "");
-		return ret.replace("?>>", "");
-	}
-
-
-	public String inline_codeLanguage(String lang){
-		TSBaseAPI ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola)){
-			return lang;
-		}
-
-		String ret=lang.replace("\"", "");
-		ret.replace("\"", "");
-		ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
-		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ret)){
-			return ret;
-		}
-		return null;
-	}
-
+	public void clearPropDefList(){this.propDefList.clear();}
+	public void clearPropertyScope(){this._initPropertyScope();}
 	public TreeMap<String,String> genMiscAttribute(){
 		return this. genMiscAttribute(null, null);
 	}
-	
-  	//keep key and cat null if you want to use current values or use overload function below
+
+	//keep key and cat null if you want to use current values or use overload function below
 	public TreeMap<String,String> genMiscAttribute(String key, String cat){
 		TreeMap<String,String>ret=new TreeMap<String,String>();
 		ret.put(ColaConstants.Tokens.gcMiscParrentID, NameScopeUtils.getParentID(this.atoms.scope.toString(), this.atoms.scope.getSeparator()));
@@ -202,6 +160,41 @@ public class ColaPass3_Gen {
 		return ret;
 	}
 
+	public String getPropDefBaseType(String p){
+		return this.atoms.getToken(p,TSAtomList.alValType).getText();
+	}
+	public TreeSet<String> getPropDefList(){return this.propDefList;}
+	public String inline_code(String ic){
+		String ret=ic.replace("<<?", "");
+		return ret.replace("?>>", "");
+	}
+	public String inline_codeLanguage(String lang){
+		TSBaseAPI ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ColaConstants.Properties.internalColaTgtCola)){
+			return lang;
+		}
+
+		String ret=lang.replace("\"", "");
+		ret.replace("\"", "");
+		ata=config.getProperties().getValue(FieldKeys.fieldCliOptionTgtLanguage);
+		if(ata!=null&&ata.tsIsType(TSRepository.TEnum.TS_ATOMIC_JAVA_STRING)&&ata.toString().equals(ret)){
+			return ret;
+		}
+		return null;
+	}
+	public TreeMap<String,String> misc(){return this.genMiscAttribute();}
+
+	public boolean propertyDefIsArray(List<Object> cv){
+		boolean ret=false;
+		if(cv==null)
+			return ret;
+		if(cv.size()>1)
+			ret=true;
+		return ret;
+	}
+
+	public TreeMap<String,String> propertyScope(){return new TreeMap<String,String>(this.propertyScope);}
+
 	public String scopeTgtLangAdd(){
 		String ret=null;
 		if(this.atoms.get(this.sn.toString(),TSAtomList.alValCategory).toString().equals(ColaConstants.Tokens.colaFUNCTION))
@@ -212,5 +205,23 @@ public class ColaPass3_Gen {
 				ret=config.getProperties().getValue(ColaConstants.Properties.keyXtJavaPackage).toString();
 		}
 		return ret;
+	}
+
+
+	public TreeMap<String,String> simple_type(){return new TreeMap<String,String>(this.simple_type);}
+
+	public void simple_type(StringTemplate sc, String bt, String ar){
+		if(sc!=null)
+			this.simple_type.put(ColaConstants.Tokens.parserScopedName, sc.toString());
+		this.simple_type.put(ColaConstants.Tokens.parserBaseType, bt);
+		this.simple_type.put(ColaConstants.Tokens.parserArray, ar);
+	}
+	
+  	public void simple_typeClear(){this._initSimple_type();}
+
+	public void simple_typeVoid(){
+		this._initSimple_type();
+		this.simple_type.put(ColaConstants.Tokens.parserBaseType, ColaConstants.Tokens.typeVOID);
+		this.simple_type.put(ColaConstants.Tokens.typeVOID, ColaConstants.Tokens.typeVOID);
 	}
 }
