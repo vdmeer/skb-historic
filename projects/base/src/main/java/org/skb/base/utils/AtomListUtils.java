@@ -63,7 +63,7 @@ public class AtomListUtils {
 	 * Returns the parent category of the given ID from the given AtomList
 	 * @param id
 	 * @param al
-	 * @return parent category of the given ID or "" of not existent or any other error occured
+	 * @return parent category of the given ID or "" of not existent or any other error occurred
 	 */
 	public static String getParentCategory(String id, TSAtomList al){
 		if(id==null)

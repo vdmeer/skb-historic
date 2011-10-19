@@ -106,18 +106,6 @@ public class TSAtomList extends TSTable {
 		this._initAL();
 	}
 
-//	public AtomList(HashSet<String>rows){
-//		super();
-//		this._init();
-//		this.addRows(rows);
-//	}
-//
-//	public AtomList(String ref_class, String rowPrefix){
-//		super();
-//		this._init();
-//		this.addRows(ref_class, rowPrefix);
-//	}
-
 	/**
 	 * Initialises the atom list, create the table and set default values.
 	 */
@@ -160,7 +148,7 @@ public class TSAtomList extends TSTable {
 	 * @param st
 	 */
 	public void addST(String row, StringTemplate st){
-		if(st!=null)
+		if(st!=null&&row!=null)
 			this.put(row, TSAtomList.alValST, new TSStringTemplate(st));
 	}
 
@@ -397,7 +385,7 @@ public class TSAtomList extends TSTable {
 	 * @see java.util.Map#put(java.lang.Object, java.lang.Object)
 	 */
 	public TSTableRowAPI putAtom(Token tk, String category, Token type, Boolean array){
-		this.scope.push(tk);
+		//this.scope.push(tk);
 		String id=this.scope.toString();
 		if(this.containsKey(id)==false){
 			this.addRow(id);
@@ -406,10 +394,10 @@ public class TSAtomList extends TSTable {
 				this.put(id, TSAtomList.alValType, new TSToken(type));
 			else
 				this.put(id, TSAtomList.alValType, new TSToken());
-			if(array==false)
-				this.put(id, TSAtomList.alValTypeArray, false);
+			if(array!=null)
+				this.put(id, TSAtomList.alValTypeArray, array);
 			else
-				this.put(id, TSAtomList.alValTypeArray, true);
+				this.put(id, TSAtomList.alValTypeArray, false);
 			if(this.reportMgr!=null)
 				this.put(id, TSAtomList.alValFile, this.reportMgr.getFileName());
 			this.put(id, TSAtomList.alValLine, tk.getLine());
@@ -420,6 +408,27 @@ public class TSAtomList extends TSTable {
 			return null;
 		}
 		return this.get(id);
+	}
+
+	/**
+	 * Adds a type to the atom identified by the current scope.
+	 * @param type type to be added
+	 * @param array true if type is an array, false or null otherwise
+	 * @return true if type/array is added, false otherwise
+	 */
+	public boolean addAtomType(Token type, Boolean array){
+		String id=this.scope.toString();
+		if(type!=null)
+			return false;
+		if(this.containsKey(id)==true){
+			this.put(id, TSAtomList.alValType, new TSToken(type));
+			if(array!=null)
+				this.put(id, TSAtomList.alValTypeArray, array);
+			else
+				this.put(id, TSAtomList.alValTypeArray, false);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -443,6 +452,8 @@ public class TSAtomList extends TSTable {
 	 * @param s the new specification name as string
 	 */
 	public void setSpecificationName(String s){
+		s=s.replace('"', ' ');
+		s=s.trim();
 		this.specificationName=s;
 	}
 
@@ -450,7 +461,7 @@ public class TSAtomList extends TSTable {
 	 * Sets the specification name, which is the root of an atom list hierarchy
 	 * @param tk the new specification name as ANTLR token, getText is used to get the string
 	 */
-	public void specificationName(Token tk){
+	public void setSpecificationName(Token tk){
 		this.specificationName=tk.getText();
 	}
 }
