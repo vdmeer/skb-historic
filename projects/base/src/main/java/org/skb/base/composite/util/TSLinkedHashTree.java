@@ -84,8 +84,7 @@ public class TSLinkedHashTree extends TSComposite implements TSTreeAPI {
 	/**
 	 * Local initialisation method.
 	 * 
-	 * This method adds TS_COMPOSITE, TS_COMPOSITE_TREE and TS_COMPOSITE_TREE_LH to the type lists (string and enum) and
-	 * initialises the local map.
+	 * This method adds TS_COMPOSITE_TREE and TS_COMPOSITE_TREE_LH to the type lists (string and enum) and initialises the local map.
 	 */
 	protected void _init(){
 		this.typeString.add(TSRepository.TString.TS_COMPOSITE_TREE);
