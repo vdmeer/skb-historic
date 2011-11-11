@@ -32,6 +32,7 @@ package org.skb.lang.cola.proto;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -46,6 +47,7 @@ import org.skb.base.composite.TSTableRowAPI;
 import org.skb.base.composite.lang.TSAtomList;
 import org.skb.base.composite.misc.TSReportManager;
 import org.skb.base.config.Configuration;
+import org.skb.base.utils.AtomListUtils;
 import org.skb.base.utils.GrammarUtils;
 import org.skb.base.utils.NameScopeUtils;
 import org.skb.base.utils.StringUtils;
@@ -76,11 +78,11 @@ public class ColaPass2_Ast {
 
 	private TreeMap<String, ArrayList<String>> tempScopedNames;
 
-	/** List for Property Declarations */
-	private PropertyDeclarationList propertyDeclList;
+	/** List for Declarations of properties, contracts and contract items and contract item properties */
+	private DeclarationLists declList;
 
-	/** List for Contract Declarations */
-	private ContractDeclarationList contractDeclList;
+	/** Holds the scope separator from atom list */
+	private String scopeSeparator;
 
 	/**
 	 * Class constructor, initialises local fields.
@@ -90,6 +92,7 @@ public class ColaPass2_Ast {
 
 		this.atoms=config.getAtomlist();
 		this.atoms.scope.clear();
+		this.scopeSeparator=this.atoms.scope.getSeparator();
 
 		this.tempScopedNames=new TreeMap<String, ArrayList<String>>();
 
@@ -102,42 +105,37 @@ public class ColaPass2_Ast {
 	 * Builds lists for property and contract declarations from the current atom list.
 	 */
 	private void buildDeclarationLists(){
-		this.propertyDeclList=new PropertyDeclarationList();
-		this.contractDeclList=new ContractDeclarationList();
-
-		Vector<String> prop=new Vector<String>();
+		this.declList=new DeclarationLists();
 
 		Set<String> rows=this.atoms.getRows();
 		String currentAtom;
 		String currentAtomCat;
-		Boolean property=true;
-		String seperator=this.atoms.scope.getSeparator();
+
         for (Iterator<String> i = rows.iterator(); i.hasNext(); i.hasNext()){
         	currentAtom=i.next();
         	currentAtomCat=this.atoms.getAtomCategory(currentAtom);
-        	String[] currentAtomIDArr=currentAtom.split(seperator);
-        	String currentAtomID=currentAtomIDArr[currentAtomIDArr.length-1];
-        	//if category is property or contract, we have a declaration
-        	if(StringUtils.equalsAny(currentAtomCat, new String[]{ColaConstants.Tokens.colaPROPERTY, ColaConstants.Tokens.colaCONTRACT})){
-        		prop.add(0, currentAtomID);
-        		if(currentAtomCat.equals(ColaConstants.Tokens.colaPROPERTY))
-        			property=true;
-        		else
-        			property=false;
+
+        	String[] currentAtomIDArr=currentAtom.split(this.scopeSeparator);
+        	if(currentAtomCat.equals(ColaConstants.Tokens.parserPropertyScopeRank)){
+        		String rank=currentAtomIDArr[currentAtomIDArr.length-1];
+        		String scope=currentAtomIDArr[currentAtomIDArr.length-2];
+        		String id=currentAtomIDArr[currentAtomIDArr.length-3];
+        		this.declList.addPropertyDecl(rank, scope, id);
         	}
-        	if(StringUtils.equalsAny(currentAtomCat, new String[]{ColaConstants.Tokens.parserPropertyScopeAtom, ColaConstants.Tokens.parserContractScopeAtom})){
-        		prop.add(1, currentAtomID);
+        	if(currentAtomCat.equals(ColaConstants.Tokens.parserContractScopeRank)){
+        		String rank=currentAtomIDArr[currentAtomIDArr.length-1];
+        		String scope=currentAtomIDArr[currentAtomIDArr.length-2];
+        		String id=currentAtomIDArr[currentAtomIDArr.length-3];
+        		this.declList.addContractScope(rank, scope, id);
         	}
-        	if(StringUtils.equalsAny(currentAtomCat, new String[]{ColaConstants.Tokens.parserPropertyScopeRank, ColaConstants.Tokens.parserContractScopeRank})){
-        		prop.add(2, currentAtomID);
-        		if(property){
-        			this.propertyDeclList.add(prop.get(2), prop.get(1), prop.get(0));
-        		}
-        		else{
-        			this.contractDeclList.add(prop.get(2), prop.get(1), prop.get(0));
-        		}
-        	}
-		}
+//        	if(currentAtomCat.equals(ColaConstants.Tokens.parserContractItemPropertyRank)){
+//        		String rank=currentAtomIDArr[currentAtomIDArr.length-1];
+//        		String property=currentAtomIDArr[currentAtomIDArr.length-2];
+//        		String item=currentAtomIDArr[currentAtomIDArr.length-3];
+//        		String contract=currentAtomIDArr[currentAtomIDArr.length-4];
+//        		this.declList.addItemDecl(contract, item, property, rank);
+//        	}
+        }
 	}
 
 	/**
@@ -148,18 +146,16 @@ public class ColaPass2_Ast {
 		if(rank==null)
 			return;
 
-		String separator=this.atoms.scope.getSeparator();
-
 		String property=this.atoms.scope.toString();
-		String item=NameScopeUtils.getParentID(property, separator);
-		String contract=NameScopeUtils.getParentID(item, separator);
+		String item=NameScopeUtils.getParentID(property, this.scopeSeparator);
+		String contract=NameScopeUtils.getParentID(item, this.scopeSeparator);
 
-		if(property.contains(separator))
-			property=property.substring(property.lastIndexOf(separator)+separator.length(), property.length());
-		if(item.contains(separator))
-			item=item.substring(item.lastIndexOf(separator)+separator.length(), item.length());
+		if(property.contains(this.scopeSeparator))
+			property=property.substring(property.lastIndexOf(this.scopeSeparator)+this.scopeSeparator.length(), property.length());
+		if(item.contains(this.scopeSeparator))
+			item=item.substring(item.lastIndexOf(this.scopeSeparator)+this.scopeSeparator.length(), item.length());
 
-		this.contractDeclList.addItemDecl(contract, item, property, rank.getText());
+//		this.contractDeclList.addItemDecl(contract, item, property, rank.getText());
 	}
 
 	/**
@@ -207,12 +203,11 @@ public class ColaPass2_Ast {
 		String currentAtom=this.atoms.scope.toString();
 		//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
 		String currentAtomCategory=this.atoms.getAtomCategory(currentAtom);
-
-		ArrayList<String> contractDefList=this.tempScopedNames.get(currentAtom+this.atoms.scope.getSeparator()+ColaConstants.Tokens.colaCONTRACT);
+		ArrayList<String> contractDefList=this.tempScopedNames.get(currentAtom+this.scopeSeparator+ColaConstants.Tokens.colaCONTRACT);
 
 		//now we need to check if all mandatory and required contracts have been defined
 		//let's start with the mandatory properties
-		ArrayList<String> al=this.contractDeclList.get(ColaConstants.Tokens.colaMANDATORY, currentAtomCategory);
+		ArrayList<String> al=this.declList.getContractScope(ColaConstants.Tokens.colaMANDATORY, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!contractDefList.contains(al.get(i))){
 				StringTemplate st=RuleManager.contract03(this.rules, al.get(i), currentAtomCategory, currentAtom);
@@ -223,26 +218,84 @@ public class ColaPass2_Ast {
 			}
 		}
 		//now required contracts
-		al=this.contractDeclList.get(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory);
+		al=this.declList.getContractScope(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!contractDefList.contains(al.get(i))){
 				StringTemplate st=RuleManager.contract04(this.rules, al.get(i), currentAtomCategory, currentAtom);
 				this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 			}
-			else
+			else{
 				contractDefList.remove(al.get(i));
+			}
 		}
 		//now remove all optional (thus legal) contract defs
-		al=this.contractDeclList.get(ColaConstants.Tokens.colaOPTIONAL, currentAtomCategory);
+		al=this.declList.getContractScope(ColaConstants.Tokens.colaOPTIONAL, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
-			if(contractDefList.contains(al.get(i)))
+			if(contractDefList.contains(al.get(i))){
 				contractDefList.remove(al.get(i));
+			}
 		}
 		if(contractDefList.size()>0){
 			//there are too many contract defs in the list, mark them as error
 			StringTemplate st=RuleManager.contract06(this.rules, currentAtom, contractDefList);
 			this.reportManager.error(st.toString(), this.atoms.getAtomLine(), this.atoms.getAtomColumn());
 		}
+	}
+
+	/**
+	 * Tests the current contract definition.
+	 */
+	public void testContractDef(Tree scopedName){
+		String contractDefinitionID=this.atoms.scope.toString();
+		String contractDeclarationSN=TokenUtils.getTreeString(scopedName, this.scopeSeparator);
+
+		//something wrong with the scope name of contract declaration, return (error will be logged in scoped name processing)
+		if(!this.atoms.containsKey(contractDeclarationSN))
+			return;
+
+		LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> definition=new LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>>();
+		definition.put(contractDeclarationSN, new LinkedHashMap<String, ArrayList<String>>());
+//		TreeSet<String> definition=new TreeSet<String>();
+
+		//collect all items and their properties for the definition as well as for the declaration
+		Set<String> keys=this.atoms.keySet();
+        for (Iterator<String> i = keys.iterator(); i.hasNext(); i.hasNext()){
+        	String currentKey=i.next();
+
+        	if(currentKey.startsWith(contractDefinitionID+this.scopeSeparator)){
+        		if(this.atoms.getAtomCategory(currentKey).equals(ColaConstants.Tokens.parserContractDefItemPropertyIdent))
+        			continue;
+        		String add=org.apache.commons.lang.StringUtils.substringAfter(currentKey, contractDefinitionID+this.scopeSeparator);
+System.err.println(add);
+//        		definition.add(add);
+        	}
+        }
+
+        ArrayList<String> declaration;
+
+
+        //we now have the list of declared and the list of defined items and their properties.
+        //check for the declaration against the definition first
+        //a) all declared items must be defined
+        //b) all declared @required properties must be there
+        //c) all declared @mandatory properties must be there
+//        for (Iterator<String> i = declaration.iterator(); i.hasNext(); i.hasNext()){
+//        	String def=i.next();
+//        	if(!definition.contains(def)){
+//        		//TODO the definition has an item or an item property that is no in the declaration
+//        		//System.err.println(def);
+//        	}
+//        	else{
+//        		//System.err.println(currentContDeclSN+this.scopeSeparator+def);
+//        	}
+//        }
+
+System.err.println(definition);
+
+//System.err.println(definition);
+//System.err.println(declaration);
+
+
 
 //		//finally, see if all items that are part of a contract declarations are defined
 //		LinkedHashMap<String, ArrayList<String>> cntDecl=this.contractDeclList.getDeclaredItems();
@@ -260,6 +313,7 @@ public class ColaPass2_Ast {
 //				}
 //			}
 //		}
+
 	}
 
 	/**
@@ -277,21 +331,20 @@ public class ColaPass2_Ast {
 	 * @param constValue constant value as type/value pair to test with
 	 */
 	public void testItemDefConstValue(Token property, Tree constValue){
-		String separator=this.atoms.scope.getSeparator();
-		String[] currentAtomAr=this.atoms.scope.toString().split(separator);
+		String[] currentAtomAr=this.atoms.scope.toString().split(this.scopeSeparator);
 		String currentAtom=new String();
 		for(int i=0;i<currentAtomAr.length-3;i++){
 			if(currentAtom.length()>0)
-				currentAtom+=separator;
+				currentAtom+=this.scopeSeparator;
 			currentAtom+=currentAtomAr[i];
 		}
-		ArrayList<String> contracts=this.tempScopedNames.get(currentAtom+separator+ColaConstants.Tokens.colaCONTRACT);
+		ArrayList<String> contracts=this.tempScopedNames.get(currentAtom+this.scopeSeparator+ColaConstants.Tokens.colaCONTRACT);
 		String contract=contracts.get(contracts.size()-1);
-		String itemPropScoped=currentAtomAr[currentAtomAr.length-2]+separator+currentAtomAr[currentAtomAr.length-1];
+		String itemPropScoped=currentAtomAr[currentAtomAr.length-2]+this.scopeSeparator+currentAtomAr[currentAtomAr.length-1];
 		String itemID=currentAtomAr[currentAtomAr.length-2];
 		String propertyID=currentAtomAr[currentAtomAr.length-1];
 
-		String declarationSN=contract+separator+itemPropScoped;
+		String declarationSN=contract+this.scopeSeparator+itemPropScoped;
 		String bt=this.atoms.getAtomValueType(declarationSN);
 		String btFile=this.atoms.get(declarationSN, TSAtomList.alValFile).toString();
 		Integer btLine=this.atoms.getAtomLine(declarationSN);
@@ -300,14 +353,14 @@ public class ColaPass2_Ast {
 		String cvType=TokenUtils.getTreeString2Lower(constValue, 0);
 		this.testTypesBTvsCV(bt, btLine, btCol, btFile, cvType, TokenUtils.getLine(constValue, 1), TokenUtils.getColumn(constValue, 1));
 
-		if(this.contractDeclList.getItemDeclPropertyRank(contract, itemID, propertyID, ColaConstants.Tokens.colaREQUIRED)==true){
-			//we have a required property, check the value (can only do Strings right now)
-			String value=TokenUtils.getTreeString(constValue, 1).replace('"', ' ');
-			if(value.equals(ColaConstants.Tokens.valueNULL)||value.trim().length()==0){
-				StringTemplate st=RuleManager.property03(this.rules, declarationSN);
-				this.reportManager.error(st.toString(), TokenUtils.getLine(constValue, 1), TokenUtils.getColumn(constValue, 1));
-			}
-		}
+//		if(this.contractDeclList.getItemDeclPropertyRank(contract, itemID, propertyID, ColaConstants.Tokens.colaREQUIRED)==true){
+//			//we have a required property, check the value (can only do Strings right now)
+//			String value=TokenUtils.getTreeString(constValue, 1).replace('"', ' ');
+//			if(value.equals(ColaConstants.Tokens.valueNULL)||value.trim().length()==0){
+//				StringTemplate st=RuleManager.property03(this.rules, declarationSN);
+//				this.reportManager.error(st.toString(), TokenUtils.getLine(constValue, 1), TokenUtils.getColumn(constValue, 1));
+//			}
+//		}
 
 	}
 
@@ -331,7 +384,7 @@ public class ColaPass2_Ast {
 	 * @param values number of values defined for this property
 	 */
 	public void testPropertyDefConstValue(Tree sn, int values){
-		String snStr=TokenUtils.getTreeString(sn, this.atoms.scope.getSeparator());
+		String snStr=TokenUtils.getTreeString(sn, this.scopeSeparator);
 		Boolean btArray=this.atoms.atomTypeIsArray(snStr);
 
 		String currentAtom=this.atoms.scope.toString();
@@ -339,7 +392,7 @@ public class ColaPass2_Ast {
 		//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
 		if(StringUtils.equalsAny(currentAtomCategory, new String[]{ColaConstants.Tokens.colaTYPEDEF, ColaConstants.Tokens.colaSTRUCT, ColaConstants.Tokens.parserMember}))
 			currentAtomCategory=ColaConstants.Tokens.colaATTRIBUTE;
-		if(this.propertyDeclList.get(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory, snStr)==true&&values==0){
+		if(this.declList.getPropertyScope(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory, snStr)==true&&values==0){
 			//property is required, so needs to have a value, if values==0, then error
 			StringTemplate st=RuleManager.property04(this.rules, snStr);
 			this.reportManager.error(st.toString(), TokenUtils.getLine(sn), TokenUtils.getColumn(sn));
@@ -363,7 +416,7 @@ public class ColaPass2_Ast {
 	 * @param constValue constant value as type/value pair to test with
 	 */
 	public void testPropertyDefConstValue(Tree sn, Tree constValue){
-		String snStr=TokenUtils.getTreeString(sn, this.atoms.scope.getSeparator());
+		String snStr=TokenUtils.getTreeString(sn, this.scopeSeparator);
 		String bt=this.atoms.getAtomValueType(snStr);
 		String btFile=this.atoms.get(snStr, TSAtomList.alValFile).toString();
 		Integer btLine=this.atoms.getAtomLine(snStr);
@@ -376,7 +429,7 @@ public class ColaPass2_Ast {
 		//categories TYPEDEF, STRUCT and MEMBER are handled like ATTRIBUTE
 		if(StringUtils.equalsAny(currentAtomCategory, new String[]{ColaConstants.Tokens.colaTYPEDEF, ColaConstants.Tokens.colaSTRUCT, ColaConstants.Tokens.parserMember}))
 			currentAtomCategory=ColaConstants.Tokens.colaATTRIBUTE;
-		if(this.propertyDeclList.get(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory, snStr)==true){
+		if(this.declList.getPropertyScope(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory, snStr)==true){
 			//we have a required property, check the value (can only do Strings right now)
 			String value=TokenUtils.getTreeString(constValue, 1).replace('"', ' ');
 			if(value.equals(ColaConstants.Tokens.valueNULL)||value.trim().length()==0){
@@ -396,11 +449,11 @@ public class ColaPass2_Ast {
 		if(StringUtils.equalsAny(currentAtomCategory, new String[]{ColaConstants.Tokens.colaTYPEDEF, ColaConstants.Tokens.colaSTRUCT, ColaConstants.Tokens.parserMember}))
 			currentAtomCategory=ColaConstants.Tokens.colaATTRIBUTE;
 
-		ArrayList<String> propertyDefList=this.tempScopedNames.get(this.atoms.scope.toString()+this.atoms.scope.getSeparator()+ColaConstants.Tokens.colaPROPERTY);
+		ArrayList<String> propertyDefList=this.tempScopedNames.get(this.atoms.scope.toString()+this.scopeSeparator+ColaConstants.Tokens.colaPROPERTY);
 
 		//now we need to check if all mandatory and required properties have been defined
 		//let's start with the mandatory properties
-		ArrayList<String> al=this.propertyDeclList.get(ColaConstants.Tokens.colaMANDATORY, currentAtomCategory);
+		ArrayList<String> al=this.declList.getPropertyScope(ColaConstants.Tokens.colaMANDATORY, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!propertyDefList.contains(al.get(i))){
 				StringTemplate st=RuleManager.property01(this.rules, al.get(i), currentAtomCategory, currentAtom);
@@ -411,7 +464,7 @@ public class ColaPass2_Ast {
 			}
 		}
 		//now required properties
-		al=this.propertyDeclList.get(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory);
+		al=this.declList.getPropertyScope(ColaConstants.Tokens.colaREQUIRED, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(!propertyDefList.contains(al.get(i))){
 				StringTemplate st=RuleManager.property02(this.rules, al.get(i), currentAtomCategory, currentAtom);
@@ -421,7 +474,7 @@ public class ColaPass2_Ast {
 				propertyDefList.remove(al.get(i));
 		}
 		//now remove all optional (thus legal) property defs
-		al=this.propertyDeclList.get(ColaConstants.Tokens.colaOPTIONAL, currentAtomCategory);
+		al=this.declList.getPropertyScope(ColaConstants.Tokens.colaOPTIONAL, currentAtomCategory);
 		for(int i=0; i<al.size(); i++){
 			if(propertyDefList.contains(al.get(i)))
 				propertyDefList.remove(al.get(i));
@@ -442,7 +495,6 @@ public class ColaPass2_Ast {
 		if(snTree==null||reason==null||snTree.getChildCount()==0)
 			return;
 
-		String separator=this.atoms.scope.getSeparator();
 		String currentAtom=this.atoms.scope.toString();
 		String currentAtomCategory=this.atoms.getAtomCategory();
 		StringTemplate st;
@@ -453,7 +505,7 @@ public class ColaPass2_Ast {
 		for(int i=0;i<snTree.getChildCount();i++){
 			tk=((CommonTree)snTree.getChild(i)).getToken();
 			if(scopedName.length()>0)
-				scopedName+=separator;
+				scopedName+=this.scopeSeparator;
 			scopedName+=tk.getText();
 
 			//first check if there is any Atom registered
@@ -475,7 +527,7 @@ public class ColaPass2_Ast {
 		}
 
 		//if the overall scoped name does not exist, return with an error
-		scopedName=TokenUtils.getTreeString(snTree, separator);
+		scopedName=TokenUtils.getTreeString(snTree, this.scopeSeparator);
 		if(this.atoms.containsKey(scopedName)==false){
 			st=RuleManager.scopename01(this.rules, scopedName);
 			this.reportManager.error(st.toString(), TokenUtils.getLine(scopedTokens.get(scopedTokens.size()-1)), TokenUtils.getColumn(scopedTokens.get(scopedTokens.size()-1)));
@@ -493,7 +545,7 @@ public class ColaPass2_Ast {
 		}
 
 		//scoped name exists and is correct, see if it was already used (for all reasons it can only be used once!)
-		String put=currentAtom+separator+reason;
+		String put=currentAtom+this.scopeSeparator+reason;
 		ArrayList<String> list=new ArrayList<String>();
 		if(this.tempScopedNames.containsKey(put))
 			list=this.tempScopedNames.get(put);
@@ -554,7 +606,7 @@ public class ColaPass2_Ast {
 				//scoped name is a contract so check scope/rank
 				String testCat=currentAtomCategory.toString();
 				//now, if contract is declared not_def for category, that's an error
-				if(this.contractDeclList.get(ColaConstants.Tokens.colaNOT_DEF, testCat, scopedName)==true){
+				if(this.declList.getContractScope(ColaConstants.Tokens.colaNOT_DEF, testCat, scopedName)==true){
 					StringTemplate err=RuleManager.contract02(this.rules, scopedName, currentAtomCategory);
 					this.reportManager.error(err.toString(), TokenUtils.getLine(tk), TokenUtils.getColumn(tk));
 				}
@@ -573,7 +625,7 @@ public class ColaPass2_Ast {
 					testCat=ColaConstants.Tokens.colaATTRIBUTE;
 				}
 				//now, if property is declared not_def for category, that's an error
-				if(this.propertyDeclList.get(ColaConstants.Tokens.colaNOT_DEF, testCat, scopedName)==true){
+				if(this.declList.getPropertyScope(ColaConstants.Tokens.colaNOT_DEF, testCat, scopedName)==true){
 					StringTemplate err=RuleManager.property09(this.rules, scopedName, currentAtomCategory);
 					this.reportManager.error(err.toString(), TokenUtils.getLine(tk), TokenUtils.getColumn(tk));
 				}
@@ -607,8 +659,26 @@ public class ColaPass2_Ast {
 				//error since types don't match
 				StringTemplate st=RuleManager.property12(this.rules, this.atoms.scope.toString(), bt, cv, btFile, btLine, btCol);
 				this.reportManager.error(st.toString(), cvLine, cvCol);
+				//TODO: if no type defined earlier we should use a different message
 			}
 		}
+	}
+
+	/**
+	 * Clean up. Essentially remove all atoms from the atom list that have been inserted for testing purposes only.
+	 */
+	public void cleanUp(){
+		//remove all atoms that are not relevant for code generation
+		AtomListUtils.removeCategory(this.atoms, new String[]{"ColaConstants.Tokens.parserContractDefIdent",
+				                                              "ColaConstants.Tokens.parserContractDefItemIdent",
+				                                              "ColaConstants.Tokens.parserContractDefItemPropertyIdent",
+				                                              "ColaConstants.Tokens.parserPropertyDefIdent",
+				                                              "ColaConstants.Tokens.parserPropertyScopeAtom",
+				                                              "ColaConstants.Tokens.parserPropertyScopeRank",
+				                                              "ColaConstants.Tokens.parserContractItemProperty",
+				                                              "ColaConstants.Tokens.parserContractScopeAtom",
+				                                              "ColaConstants.Tokens.parserContractScopeRank",
+				                                              "ColaConstants.Tokens.parserContractItemPropertyRank"});
 	}
 }
 

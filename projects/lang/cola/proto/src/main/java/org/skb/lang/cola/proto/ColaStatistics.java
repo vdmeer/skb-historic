@@ -132,8 +132,8 @@ public class ColaStatistics {
 			System.out.println(completeStatStart);
 
 			this.completeStatPrintArray = stg.getInstanceOf("completeStatPrintArray");
-			PropertyDeclarationList propDeclList=(PropertyDeclarationList)config.config.get(ColaParser.pathInstancePropertyDeclarationList);
-			LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> properties=propDeclList.getList();
+//			PropertyDeclarationList propDeclList=(PropertyDeclarationList)config.config.get(ColaParser.pathInstancePropertyDeclarationList);
+//			LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> properties=propDeclList.getList();
 
 //			TribeProperties prop=TribeProperties.getInstance();
 			boolean scope=false;
@@ -144,33 +144,33 @@ public class ColaStatistics {
 //						scope=((TSBoolean)ata).tsvalue;
 			} catch (Exception e) {}
 
-			_printCompleteStatisticArray("Properties required for contracts",   properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaCONTRACT),   completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties mandatory for contracts",  properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaCONTRACT),  completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties optional for contracts",   properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaCONTRACT),   completeStatPrintArray, scope);
-
-			_printCompleteStatisticArray("Properties required for packages",    properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaPACKAGE),    completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties mandatory for packages",   properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaPACKAGE),   completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties optional for packages",    properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaPACKAGE),    completeStatPrintArray, scope);
-
-			_printCompleteStatisticArray("Properties required for elements",    properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaELEMENT),    completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties mandatory for elements",   properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaELEMENT),   completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties optional for elements",    properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaELEMENT),    completeStatPrintArray, scope);
-
-			_printCompleteStatisticArray("Properties required for facilities",  properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaFACILITY),   completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties mandatory for facilities", properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaFACILITY),  completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties optional for facilities",  properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaFACILITY),   completeStatPrintArray, scope);
-
-			_printCompleteStatisticArray("Properties required for attributes",  properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaATTRIBUTE),  completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties mandatory for attributes", properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaATTRIBUTE), completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties optional for attributes",  properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaATTRIBUTE),  completeStatPrintArray, scope);
-
-			_printCompleteStatisticArray("Properties required for actions",     properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaACTION),     completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties mandatory for actions",    properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaACTION),    completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties optional for actions",     properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaACTION),     completeStatPrintArray, scope);
-
-			_printCompleteStatisticArray("Properties required for parameters",  properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaPARAMETER),  completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties mandatory for parameters", properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaPARAMETER), completeStatPrintArray, scope);
-			_printCompleteStatisticArray("Properties optional for parameters",  properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaPARAMETER),  completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties required for contracts",   properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaCONTRACT),   completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties mandatory for contracts",  properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaCONTRACT),  completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties optional for contracts",   properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaCONTRACT),   completeStatPrintArray, scope);
+//
+//			_printCompleteStatisticArray("Properties required for packages",    properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaPACKAGE),    completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties mandatory for packages",   properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaPACKAGE),   completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties optional for packages",    properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaPACKAGE),    completeStatPrintArray, scope);
+//
+//			_printCompleteStatisticArray("Properties required for elements",    properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaELEMENT),    completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties mandatory for elements",   properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaELEMENT),   completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties optional for elements",    properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaELEMENT),    completeStatPrintArray, scope);
+//
+//			_printCompleteStatisticArray("Properties required for facilities",  properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaFACILITY),   completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties mandatory for facilities", properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaFACILITY),  completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties optional for facilities",  properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaFACILITY),   completeStatPrintArray, scope);
+//
+//			_printCompleteStatisticArray("Properties required for attributes",  properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaATTRIBUTE),  completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties mandatory for attributes", properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaATTRIBUTE), completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties optional for attributes",  properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaATTRIBUTE),  completeStatPrintArray, scope);
+//
+//			_printCompleteStatisticArray("Properties required for actions",     properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaACTION),     completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties mandatory for actions",    properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaACTION),    completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties optional for actions",     properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaACTION),     completeStatPrintArray, scope);
+//
+//			_printCompleteStatisticArray("Properties required for parameters",  properties.get(ColaConstants.Tokens.colaREQUIRED).get(ColaConstants.Tokens.colaPARAMETER),  completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties mandatory for parameters", properties.get(ColaConstants.Tokens.colaMANDATORY).get(ColaConstants.Tokens.colaPARAMETER), completeStatPrintArray, scope);
+//			_printCompleteStatisticArray("Properties optional for parameters",  properties.get(ColaConstants.Tokens.colaOPTIONAL).get(ColaConstants.Tokens.colaPARAMETER),  completeStatPrintArray, scope);
 		}
 	}
 

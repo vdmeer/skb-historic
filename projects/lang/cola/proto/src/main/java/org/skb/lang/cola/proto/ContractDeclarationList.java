@@ -44,7 +44,7 @@ import org.skb.lang.cola.proto.constants.ColaConstants;
  * @version    v1.0.0 build 110901 (01-Sep-11) with Java 1.6
  */
 public class ContractDeclarationList {
-	private LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> contractScopesDeclMap;
+	private LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>> contractDeclMap;
 	private LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>> contractItemsDeclMap;
 
 	/**
@@ -53,54 +53,23 @@ public class ContractDeclarationList {
 	public ContractDeclarationList(){
 		this.contractItemsDeclMap=new LinkedHashMap<String, LinkedHashMap<String, LinkedHashMap<String, String>>>();
 
-		this.contractScopesDeclMap=new LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>>();
+		this.contractDeclMap=new LinkedHashMap<String, LinkedHashMap<String, ArrayList<String>>>();
 
-		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaREQUIRED, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
+		this.contractDeclMap.put(ColaConstants.Tokens.colaREQUIRED, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaREQUIRED).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 
-		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaMANDATORY, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
+		this.contractDeclMap.put(ColaConstants.Tokens.colaMANDATORY, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaMANDATORY).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 
-		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaOPTIONAL, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
+		this.contractDeclMap.put(ColaConstants.Tokens.colaOPTIONAL, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaOPTIONAL).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 
-		this.contractScopesDeclMap.put(ColaConstants.Tokens.colaNOT_DEF, new LinkedHashMap<String, ArrayList<String>>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
-		this.contractScopesDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
-	}
-
-	/**
-	 * Add a contract scope declaration.
-	 * @param scopeRank the scope rank of the declaration, for instance not_def, required, mandatory
-	 * @param scopeAtom the atom the rank is declared for, for instance element, contract, package
-	 * @param declID the identifier of the contract that declares the scope 
-	 */
-	public void add(String scopeRank, String scopeAtom, String declID){
-		this.contractScopesDeclMap.get(scopeRank).get(scopeAtom).add(declID);
-	}
-
-	/**
-	 * Determines if a particular scope is defined.
-	 * @param scopeRank the scope rank to look for
-	 * @param scopeAtom the scope atom to look for
-	 * @param declID the contract that should declare it
-	 * @return true if the declaration ID is in the map, false otherwise
-	 */
-	public boolean get(String scopeRank, String scopeAtom, String declID){
-		return this.contractScopesDeclMap.get(scopeRank).get(scopeAtom).contains(declID);
-	}
-
-	/**
-	 * Returns all contracts that declare the specified scope
-	 * @param scopeRank scope rank to look for
-	 * @param scopeAtom scope atom to look for
-	 * @return list of contract identifiers that declare the scope
-	 */
-	public ArrayList<String> get(String scopeRank, String scopeAtom){
-		return this.contractScopesDeclMap.get(scopeRank).get(scopeAtom);
+		this.contractDeclMap.put(ColaConstants.Tokens.colaNOT_DEF, new LinkedHashMap<String, ArrayList<String>>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaELEMENT, new ArrayList<String>());
+		this.contractDeclMap.get(ColaConstants.Tokens.colaNOT_DEF).put(ColaConstants.Tokens.colaFACILITY, new ArrayList<String>());
 	}
 
 	/**
@@ -140,21 +109,21 @@ public class ContractDeclarationList {
 		return false;
 	}
 
-	public ArrayList<String> getArrayForRank(String contract, String item, String rank){
-		ArrayList<String> ret=new ArrayList<String>();
-		if(this.contractItemsDeclMap.containsKey(contract)){
-			if(this.contractItemsDeclMap.get(contract).containsKey(item)){
-				Set<String> lSet= this.contractItemsDeclMap.get(contract).get(item).keySet();
-				Iterator<String> itr2 = lSet.iterator();
-				while(itr2.hasNext()){
-					String key = itr2.next();
-					if(this.contractItemsDeclMap.get(contract).get(item).get(key).toString().equals(rank))
-						ret.add(key);
-				}
-			}
-		}
-		return ret;
-	}
+//	public ArrayList<String> getArrayForRank(String contract, String item, String rank){
+//		ArrayList<String> ret=new ArrayList<String>();
+//		if(this.contractItemsDeclMap.containsKey(contract)){
+//			if(this.contractItemsDeclMap.get(contract).containsKey(item)){
+//				Set<String> lSet= this.contractItemsDeclMap.get(contract).get(item).keySet();
+//				Iterator<String> itr2 = lSet.iterator();
+//				while(itr2.hasNext()){
+//					String key = itr2.next();
+//					if(this.contractItemsDeclMap.get(contract).get(item).get(key).toString().equals(rank))
+//						ret.add(key);
+//				}
+//			}
+//		}
+//		return ret;
+//	}
 
 	public LinkedHashMap<String, ArrayList<String>> getDeclaredItems(){
 		LinkedHashMap<String, ArrayList<String>> ret=new LinkedHashMap<String, ArrayList<String>>();

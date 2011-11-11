@@ -84,17 +84,6 @@ public class ColaPass3_Gen {
 		this._initSimple_type();
 
 		this.sn=new NameScope();
-
-		//remove all atoms that are not relevant for code generation
-		AtomListUtils.removeCategory(this.atoms, new String[]{"ColaConstants.Tokens.parserContractDefIdent",
-				                                              "ColaConstants.Tokens.parserContractDefItemIdent",
-				                                              "ColaConstants.Tokens.parserContractDefItemPropertyIdent",
-				                                              "ColaConstants.Tokens.parserPropertyDefIdent",
-				                                              "ColaConstants.Tokens.parserPropertyScopeAtom",
-				                                              "ColaConstants.Tokens.parserPropertyScopeRank",
-				                                              "ColaConstants.Tokens.parserContractItemProperty",
-				                                              "ColaConstants.Tokens.parserContractScopeAtom",
-				                                              "ColaConstants.Tokens.parserContractScopeRank"});
 	}
 
 	private void _initPropertyScope(){

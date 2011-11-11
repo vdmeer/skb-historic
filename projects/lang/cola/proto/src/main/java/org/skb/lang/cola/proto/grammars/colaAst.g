@@ -98,7 +98,9 @@ options
 }
 
 colaSpecification        @init{this.init();}
-                        : ^(AT_SPEC skbSpecificationHeader cpp_directive colaDefinition*);
+                        : ^(AT_SPEC skbSpecificationHeader cpp_directive colaDefinition*)
+                          {this.pass.cleanUp();}
+                          ;
 
 skbSpecificationHeader  : ^(AT_STAGE VAL_STRING AT_ENVIRONMENT VAL_STRING AT_CLEVEL VAL_STRING AT_LANGUAGE VAL_STRING AT_SPEC VAL_STRING);
 
@@ -194,6 +196,7 @@ colaContractDef         : ^(CONTRACT
                             scoped_name {this.pass.testScopedName($scoped_name.tree, ColaConstants.Tokens.colaCONTRACT);}
                             {this.pass.putAtom(id.token, ColaConstants.Tokens.parserContractDefIdent);}
                             colaContractItemDef*
+                            {this.pass.testContractDef($scoped_name.tree);}
                             {this.pass.popAtom();}
                           );
 

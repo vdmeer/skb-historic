@@ -594,6 +594,11 @@
                     "skb:util:constant:value":"contract item property",
                     "skb:util:constant:javadoc":"Parser - contract item property"
                 },
+                "parserContractItemPropertyRank":{
+                    "skb:util:constant:ident":"parserContractItemPropertyRank",
+                    "skb:util:constant:value":"contract item property rank",
+                    "skb:util:constant:javadoc":"Parser - contract item property rank"
+                },
                 "parserPropertyDefIdent":{
                     "skb:util:constant:ident":"parserPropertyDefIdent",
                     "skb:util:constant:value":"property definition - identifier",

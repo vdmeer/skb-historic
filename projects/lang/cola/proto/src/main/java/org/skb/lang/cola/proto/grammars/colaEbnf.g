@@ -184,9 +184,9 @@ propertyScope           : '[' atom=propertyScopeAtom ':' rank=propertyScopeRank 
                           }
                           -> ^(propertyScopeAtom propertyScopeRank);
 
-propertyScopeAtom       : (PACKAGE | ELEMENT | FACILITY | ACTION | ATTRIBUTE | PARAMETER);
+propertyScopeAtom       : PACKAGE | ELEMENT | FACILITY | ACTION | ATTRIBUTE | PARAMETER;
 
-propertyScopeRank       : (REQUIRED | MANDATORY | OPTIONAL | NOT_DEF);
+propertyScopeRank       : REQUIRED | MANDATORY | OPTIONAL | NOT_DEF;
 
 propertyApply           : AT_APPLY '(' ((PRE ('=' idpre+=scoped_name (',' idpre+=scoped_name)*)?) |
                                         (POST ('=' idpost+=scoped_name (',' idpost+=scoped_name)*)?) |
@@ -229,9 +229,9 @@ contractScope           : '[' atom=contractScopeAtom ':' rank=contractScopeRank 
                           }
                           -> contractScopeAtom contractScopeRank;
 
-contractScopeAtom       : (ELEMENT | FACILITY);
+contractScopeAtom       : ELEMENT | FACILITY;
 
-contractScopeRank       : (REQUIRED | MANDATORY | OPTIONAL | NOT_DEF);
+contractScopeRank       : REQUIRED | MANDATORY | OPTIONAL | NOT_DEF;
 
 contractItem            : ITEM id=IDENT {this.pass.putAtom(id,ColaConstants.Tokens.colaITEM);}
                           '{' contractItemProp (',' contractItemProp)* '}'
@@ -242,6 +242,8 @@ contractItemProp        : '[' id=IDENT ':'
                               AT_TYPE '(' bt=base_type (ar=array)? '=' const_value ')'
                               {this.pass.putAtom(id,ColaConstants.Tokens.parserContractItemProperty, bt.tree.getToken(), ar);}
                               AT_RANK '(' rank=contractItemPropRank ')'
+                              {this.pass.putAtom(rank.tree.getToken(),ColaConstants.Tokens.parserContractItemPropertyRank);}
+                              {this.pass.atoms.scope.pop();}
                               propertyApply AT_ALTERABLE? AT_NEGOTIABLE? atDescription
                               (AT_PRIORITY '(' base_type '=' const_value ')')?
                               {this.pass.atoms.scope.pop();}
@@ -250,7 +252,7 @@ contractItemProp        : '[' id=IDENT ':'
                              contractItemPropRank propertyApply AT_ALTERABLE? AT_NEGOTIABLE? atDescription
                              ^(AT_PRIORITY base_type const_value)?);
 
-contractItemPropRank    : (REQUIRED | MANDATORY | OPTIONAL);
+contractItemPropRank    : REQUIRED | MANDATORY | OPTIONAL;
 
 colaContractDefList     : '[' '[' colaContractDef (',' colaContractDef)* ']' ']' -> ^(PARSER_CONTRACT_DEF colaContractDef*);
 
