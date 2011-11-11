@@ -74,6 +74,9 @@ public class MessPass1_Ebnf {
 	 * @param category the atom belongs to
 	 */
 	public void putAtom(Token token, String category){
+		if(token==null)
+			return;
+		this.atoms.scope.push(token);
 		TSTableRowAPI otr=this.atoms.putAtom(token, category, null);
 		if(otr!=null){
 			config.getReportManager().error(MessConstants.Tokens.parserIDENTIFIER+" used more than once", token, MessConstants.Tokens.parserIDENTIFIER+": " + otr.get(TSAtomList.alValScopedID) + " as " + category + ", previously declared as " + otr.get(TSAtomList.alValCategory) + " at " + otr.get(TSAtomList.alValFile) + ":" + otr.get(TSAtomList.alValLine) + ":" + otr.get(TSAtomList.alValColumn));

@@ -36,6 +36,7 @@ import org.skb.base.misc.LogManager;
 import org.skb.lang.cola.proto.ColaParser;
 import org.skb.lang.dal.DalParser;
 import org.skb.lang.glue.proto.GlueParser;
+import org.skb.lang.mess.proto.MessParser;
 import org.skb.lang.pola.proto.PolaParser;
 import org.skb.tribe.LangParserImpl;
 import org.skb.tribe.Tribe;
@@ -73,10 +74,13 @@ public class SkbLang {
 		LangParserImpl glueProto=new LangParserImpl();
 		glueProto.setLangParser(new GlueParser());
 
+		LangParserImpl messProto=new LangParserImpl();
+		messProto.setLangParser(new MessParser());
+
 		LangParserImpl dal=new LangParserImpl();
 		dal.setLangParser(new DalParser());
 
-		LangParserAPI[] supportedLanguages={colaProto, polaProto, glueProto, dal};
+		LangParserAPI[] supportedLanguages={colaProto, polaProto, glueProto, dal, messProto};
 
 		logger.trace("calling tribe to parse");
 		tribe.execute(supportedLanguages, args);

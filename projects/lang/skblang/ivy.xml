@@ -24,6 +24,7 @@
 	<dependency org="skb.lang" name="skb.lang.pola.proto" rev="${skb.lang.pola.proto}" />
 	<dependency org="skb.lang" name="skb.lang.glue.proto" rev="${skb.lang.glue.proto}" />
 	<dependency org="skb.lang" name="skb.lang.dal" rev="${skb.lang.dal}" />
+	<dependency org="skb.lang" name="skb.lang.mess.proto" rev="${skb.lang.mess.proto}" />
 
 	<dependency org="org.junit"
 		name="com.springsource.org.junit"
