@@ -116,6 +116,7 @@ dalActions(body) ::= <<
 
 dalActionsInsert(table, kvl) ::= <<
 INSERT OR REPLACE INTO <table> (<kvl.keys:{k| "<k>"};separator=", ">) VALUES(<kvl.keys:{k|'<kvl.(k)>'};separator=", ">);
+
 >>
 
 dalActionsAdd(table, kv, key) ::= <<
